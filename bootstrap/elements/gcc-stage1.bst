@@ -9,6 +9,9 @@ depends:
 - filename: binutils-stage1.bst
   type: build
 
+variables:
+  debugdir: "%{tools-debugdir}"
+
 config:
   configure-commands:
     - |

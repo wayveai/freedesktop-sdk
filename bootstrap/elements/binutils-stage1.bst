@@ -7,6 +7,9 @@ depends:
 - filename: dependencies/config.bst
   type: build
 
+variables:
+  debugdir: "%{tools-debugdir}"
+
 config:
   configure-commands:
     - |
