@@ -32,7 +32,6 @@ variables:
 config:
   configure-commands:
     - |
-      cd source && \
       ./configure \
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
@@ -41,12 +40,11 @@ config:
 
   build-commands:
     - |
-      cd source && \
       cp /coreutils-manpages/man1/* man/
 
     - |
-      cd source && %{make}
+      %{make}
 
   install-commands:
     - |
-      cd source && make -j1 install DESTDIR="%{install-root}/cross-installation"
+      %{cross-install}
