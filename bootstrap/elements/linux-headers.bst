@@ -5,9 +5,16 @@ depends:
 - filename: dependencies/base-sdk.bst
   type: build
 
+variables:
+  (?):
+    - target_arch == "aarch64":
+        kernel_arch: arm64
+    - target_arch != "aarch64":
+        kernel_arch: "%{target_arch}"
+
 config:
   install-commands:
-  - make ARCH="%{target_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
+  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
 
 sources:
 - kind: tar
