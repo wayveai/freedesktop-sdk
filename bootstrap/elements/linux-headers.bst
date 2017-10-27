@@ -7,7 +7,7 @@ depends:
 
 config:
   install-commands:
-  - make INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
+  - make ARCH="%{target_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
 
 sources:
 - kind: tar

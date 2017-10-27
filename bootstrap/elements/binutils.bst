@@ -28,7 +28,7 @@ config:
     --build=$(sh /config/config.guess) \
     --prefix=%{prefix} \
     --disable-werror \
-    --with-lib-path="%{libdir}"
+    --with-lib-path="%{libdir}:%{prefix}/lib"
 
   install-commands:
     - |

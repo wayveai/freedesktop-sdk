@@ -32,12 +32,14 @@ config:
       --disable-static \
       --prefix=%{prefix} \
       --with-curses \
-      LDFLAGS=-L%{sysroot}%{libdir} \
       CPPFLAGS=-I%{sysroot}%{includedir}
 
   install-commands:
     - |
       %{cross-install}
+
+    - |
+      make -j1 install DESTDIR="%{install-root}/readline-separate-install"
 
 sources:
 - kind: tar

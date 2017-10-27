@@ -21,7 +21,8 @@ config:
       --with-sysroot=%{sysroot} \
       --disable-nls \
       --disable-multilib \
-      --disable-werror
+      --disable-werror \
+      --with-lib-path="%{libdir}:%{prefix}/lib"
 
 sources:
 - kind: tar

@@ -68,6 +68,9 @@ config:
     - |
       cd ncursesw-build && %{cross-install}
 
+    - |
+      cd ncurses-build && make -j1 install DESTDIR="%{install-root}/readline-separate-install"
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz

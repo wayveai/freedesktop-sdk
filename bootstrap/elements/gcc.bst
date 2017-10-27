@@ -27,12 +27,14 @@ config:
       cd build && \
       ../configure \
       --prefix=%{prefix} \
+      --libdir=%{libdir} \
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --target=%{triple} \
       --enable-multiarch \
       --disable-bootstrap \
-      --enable-languages=c,c++
+      --enable-languages=c,c++ \
+      LDFLAGS="-L%{sysroot}%{libdir}"
 
   build-commands:
     - |

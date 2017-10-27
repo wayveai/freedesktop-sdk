@@ -34,12 +34,12 @@ config:
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --with-curses \
-      --with-installed-readline=%{sysroot}%{prefix} \
-      --prefix=/usr \
+      --with-installed-readline="/readline-separate-install%{prefix}" \
+      --prefix=%{prefix} \
       --enable-job-control \
       ac_cv_rl_version=7.0 \
       bash_cv_job_control_missing=present \
-      LDFLAGS=-L%{sysroot}%{libdir}
+      LDFLAGS="-L%{sysroot}%{libdir}"
 
   install-commands:
     - |
