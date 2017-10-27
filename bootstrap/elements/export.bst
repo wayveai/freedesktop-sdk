@@ -1,6 +1,8 @@
 kind: manual
 
 depends:
+- filename: dependencies/base-sdk.bst
+  type: build
 - filename: bootstrap.bst
   type: build
 
