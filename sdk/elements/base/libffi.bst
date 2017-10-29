@@ -20,7 +20,9 @@ config:
     - |
       case "$(gcc -print-multi-os-directory)" in
       .) ;;
-      *) mv "%{install-root}/%{libdir}/$(gcc -print-multi-os-directory)"/* "%{install-root}/%{libdir}"
+      *)
+        mv "%{install-root}/%{libdir}/$(gcc -print-multi-os-directory)"/* "%{install-root}/%{libdir}"
+        rm "%{install-root}/%{libdir}"/*.la
         rm -r "%{install-root}/%{libdir}/$(gcc -print-multi-os-directory)"
         ;;
       esac
