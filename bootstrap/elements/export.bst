@@ -9,4 +9,4 @@ depends:
 config:
   install-commands:
     - |
-      cd "%{sysroot}" && tar Jcf "%{install-root}/bootstrap-image-%{target_arch}.tar.xz" .
+      cd "%{sysroot}" && tar zcf "%{install-root}/bootstrap-image-%{target_arch}.tar.gz" .
