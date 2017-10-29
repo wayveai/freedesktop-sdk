@@ -34,6 +34,9 @@ config:
     - |
       %{cross-install}
 
+environment:
+  LEXLIB: " "
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz
