@@ -8,12 +8,14 @@ depends:
 variables:
   conf-extra: |
     --host=%{triple} \
-    --build=%{triple}
+    --build=%{triple} \
+    --enable-shared \
+    LDFLAGS="-L%{libdir}"
 
 config:
   configure-commands:
     - |
-      %{configure} LDFLAGS="-L%{libdir}"
+      %{configure}
 
   install-commands:
     - |
