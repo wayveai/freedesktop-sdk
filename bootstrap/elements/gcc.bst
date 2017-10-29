@@ -44,8 +44,20 @@ config:
   install-commands:
     - |
       cd build && %{cross-install}
+
     - |
       ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
+
+    - |
+      rellib="$(/cross/bin/%{triple}-gcc -print-multi-os-directory)"
+      case "$rellib" in
+        .) ;;
+        *)
+          for pattern in '*.so' '*.so.*' '*.la' '*.a' '*.spec' '*.o'; do
+            mv "%{install-root}%{sysroot}%{libdir}/${rellib}/"${pattern} "%{install-root}%{sysroot}%{libdir}/" || true
+          done
+          ;;
+      esac
 
 sources:
 - kind: tar
