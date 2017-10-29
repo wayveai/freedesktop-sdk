@@ -31,6 +31,7 @@ config:
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --target=%{triple} \
+      --disable-multilib \
       --enable-multiarch \
       --disable-bootstrap \
       --enable-languages=c,c++ \

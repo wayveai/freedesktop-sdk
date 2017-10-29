@@ -33,6 +33,7 @@ config:
       --host=$(sh /config/config.guess) \
       --target=%{triple} \
       --enable-multiarch \
+      --disable-multilib \
       --disable-bootstrap \
       --disable-nls \
       --disable-multilib \
