@@ -46,6 +46,10 @@ depends:
   type: build
 - filename: base/less.bst
   type: build
+- filename: base/libcap.bst
+  type: build
+- filename: base/libelf.bst
+  type: build
 - filename: base/libffi.bst
   type: build
 - filename: base/libidn2.bst
@@ -85,6 +89,10 @@ depends:
 - filename: base/python2.bst
   type: build
 - filename: base/python3.bst
+  type: build
+- filename: base/sqlite.bst
+  type: build
+- filename: base/sndfile.bst
   type: build
 - filename: base/texinfo.bst
   type: build
