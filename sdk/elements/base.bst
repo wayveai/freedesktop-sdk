@@ -35,6 +35,8 @@ depends:
   type: build
 - filename: base/help2man.bst
   type: build
+- filename: base/intltool.bst
+  type: build
 - filename: base/jpeg.bst
   type: build
 - filename: base/less.bst
