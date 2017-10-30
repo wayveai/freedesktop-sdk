@@ -10,23 +10,44 @@ depends:
   type: build
 - filename: base/automake.bst
   type: build
+- filename: base/bison.bst
+  type: build
+- filename: base/cmake.bst
+  type: build
 - filename: base/diffutils.bst
+  type: build
+- filename: base/expat.bst
   type: build
 - filename: base/file.bst
   type: build
-- filename: base/gettext.bst
+- filename: base/flex.bst
+  type: build
   type: build
 - filename: base/gdb.bst
   type: build
+- filename: base/gettext.bst
+  type: build
 - filename: base/glib.bst
   type: build
+- filename: base/gperf.bst
+  type: build
 - filename: base/gzip.bst
+  type: build
+- filename: base/help2man.bst
+  type: build
+- filename: base/jpeg.bst
   type: build
 - filename: base/less.bst
   type: build
 - filename: base/libffi.bst
   type: build
+- filename: base/libpng.bst
+  type: build
 - filename: base/libtool.bst
+  type: build
+- filename: base/libxml2.bst
+  type: build
+- filename: base/libxslt.bst
   type: build
 - filename: base/m4.bst
   type: build
@@ -40,6 +61,8 @@ depends:
   type: build
 - filename: base/perl.bst
   type: build
+- filename: base/perl-xml-parser.bst
+  type: build
 - filename: base/pkg-config.bst
   type: build
 - filename: base/python2.bst
@@ -49,6 +72,8 @@ depends:
 - filename: base/texinfo.bst
   type: build
 - filename: base/util-linux.bst
+  type: build
+- filename: base/which.bst
   type: build
 - filename: base/zlib.bst
   type: build
