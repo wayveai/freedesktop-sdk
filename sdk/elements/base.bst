@@ -12,6 +12,8 @@ depends:
   type: build
 - filename: base/bison.bst
   type: build
+- filename: base/bzip2.bst
+  type: build
 - filename: base/cmake.bst
   type: build
 - filename: base/diffutils.bst
