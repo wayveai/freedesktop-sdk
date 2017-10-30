@@ -28,6 +28,10 @@ depends:
   type: build
 - filename: base/glib.bst
   type: build
+- filename: base/gmp.bst
+  type: build
+- filename: base/gnutls.bst
+  type: build
 - filename: base/gperf.bst
   type: build
 - filename: base/gzip.bst
@@ -42,9 +46,15 @@ depends:
   type: build
 - filename: base/libffi.bst
   type: build
+- filename: base/libidn2.bst
+  type: build
 - filename: base/libpng.bst
   type: build
+- filename: base/libtasn1.bst
+  type: build
 - filename: base/libtool.bst
+  type: build
+- filename: base/libunistring.bst
   type: build
 - filename: base/libxml2.bst
   type: build
@@ -55,6 +65,10 @@ depends:
 - filename: base/meson.bst
   type: build
 - filename: base/nano.bst
+  type: build
+- filename: base/nettle.bst
+  type: build
+- filename: base/p11-kit.bst
   type: build
 - filename: base/pcre2.bst
   type: build
