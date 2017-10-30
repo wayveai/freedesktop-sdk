@@ -15,6 +15,10 @@ depends:
   - filename: base/pkg-config-stage1.bst
     type: build
 
+variables:
+  conf-extra:
+    --with-pcre=system
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/glib/2.54/glib-2.54.1.tar.xz
