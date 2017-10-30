@@ -22,7 +22,6 @@ depends:
   type: build
 - filename: base/flex.bst
   type: build
-  type: build
 - filename: base/gdb.bst
   type: build
 - filename: base/gettext.bst
