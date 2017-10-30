@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU debugger
 
 depends:
@@ -11,14 +11,8 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
+  conf-link-args: |
+    --enable-shared
 
 sources:
   - kind: tar

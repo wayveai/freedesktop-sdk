@@ -1,22 +1,12 @@
-kind: autotools
+kind: myautotools
 description: libffi
 
 depends:
   - filename: bootstrap-import.bst
 
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
 config:
-  configure-commands:
-    - |
-      %{configure}
-
   install-commands:
-    - |
-      make -j1 install DESTDIR="%{install-root}"
+    (>):
     - |
       case "$(gcc -print-multi-os-directory)" in
       .) ;;

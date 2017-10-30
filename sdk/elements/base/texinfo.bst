@@ -1,20 +1,10 @@
-kind: autotools
+kind: myautotools
 description: GNU texinfo
 
 depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
     type: build
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

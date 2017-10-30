@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: Python 2
 
 depends:
@@ -7,21 +7,14 @@ depends:
 
 variables:
   conf-extra: |
-    --host=%{triple} \
-    --build=%{triple} \
     --enable-shared \
     LDFLAGS="-L%{libdir}"
 
 config:
-  configure-commands:
-    - |
-      %{configure}
-
   install-commands:
-    - |
-      make -j1 install DESTDIR="%{install-root}"
-    - |
-      ln -s "../%{triple}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
+    (>):
+      - |
+        ln -s "../%{triple}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
 
 sources:
   - kind: tar

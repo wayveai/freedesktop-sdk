@@ -1,19 +1,9 @@
-kind: autotools
+kind: myautotools
 description: GNU automake
 
 depends:
   - filename: bootstrap-import.bst
   - filename: base/autoconf.bst
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

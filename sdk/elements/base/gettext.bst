@@ -1,20 +1,10 @@
-kind: autotools
+kind: myautotools
 description: GNU gettext
 
 depends:
   - filename: bootstrap-import.bst
   - filename: base/gzip.bst
     type: build
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

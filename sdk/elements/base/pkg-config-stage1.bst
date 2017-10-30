@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: pkg-config
 
 depends:
@@ -11,13 +11,7 @@ depends:
 
 variables:
   conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure} --with-internal-glib
+    --with-internal-glib
 
 sources:
   - kind: tar

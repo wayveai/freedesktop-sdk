@@ -1,18 +1,8 @@
-kind: autotools
+kind: myautotools
 description: GNU less
 
 depends:
   - filename: bootstrap-import.bst
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

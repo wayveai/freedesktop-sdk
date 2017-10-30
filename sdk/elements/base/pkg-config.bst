@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: pkg-config
 
 depends:
@@ -10,16 +10,6 @@ depends:
   - filename: base/glib.bst
   - filename: base/pkg-config-stage1.bst
     type: build
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

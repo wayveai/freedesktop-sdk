@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: util-linux
 
 depends:
@@ -10,15 +10,8 @@ depends:
 
 variables:
   conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure} \
-      --disable-wall \
-      --disable-makeinstall-chown
+    --disable-wall \
+    --disable-makeinstall-chown
 
 sources:
   - kind: tar

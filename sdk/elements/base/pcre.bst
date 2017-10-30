@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: pcre
 
 depends:
@@ -10,13 +10,7 @@ depends:
 
 variables:
   conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure} --enable-unicode-properties
+    --enable-unicode-properties
 
 sources:
   - kind: tar

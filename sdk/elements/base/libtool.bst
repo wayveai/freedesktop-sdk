@@ -1,19 +1,9 @@
-kind: autotools
+kind: myautotools
 description: GNU libtool
 
 depends:
   - filename: bootstrap-import.bst
   - filename: base/m4.bst
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar

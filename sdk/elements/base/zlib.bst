@@ -1,18 +1,14 @@
-kind: autotools
+kind: myautotools
 description: zlib
 
 depends:
   - filename: bootstrap-import.bst
 
 variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      ./configure --prefix=%{prefix} --sharedlibdir=%{libdir} --libdir=%{libdir}
+  conf-args: |
+    --prefix=%{prefix} \
+    --sharedlibdir=%{libdir} \
+    --libdir=%{libdir}
 
 sources:
   - kind: tar

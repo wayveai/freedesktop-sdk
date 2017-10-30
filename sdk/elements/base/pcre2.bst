@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: pcre2
 
 depends:
@@ -7,16 +7,6 @@ depends:
     type: build
   - filename: base/file.bst
     type: build
-
-variables:
-  conf-extra: |
-    --host=%{triple} \
-    --build=%{triple}
-
-config:
-  configure-commands:
-    - |
-      %{configure}
 
 sources:
   - kind: tar
