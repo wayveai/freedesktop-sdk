@@ -1,5 +1,4 @@
 kind: manual
-description: GNU libtool
 
 depends:
   - filename: bootstrap-import.bst
