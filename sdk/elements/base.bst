@@ -76,9 +76,9 @@ depends:
   type: build
 - filename: base/nano.bst
   type: build
-- filename: base/ninja.bst
-  type: build
 - filename: base/nettle.bst
+  type: build
+- filename: base/ninja.bst
   type: build
 - filename: base/p11-kit.bst
   type: build
@@ -96,9 +96,9 @@ depends:
   type: build
 - filename: base/python3.bst
   type: build
-- filename: base/sqlite.bst
-  type: build
 - filename: base/sndfile.bst
+  type: build
+- filename: base/sqlite.bst
   type: build
 - filename: base/texinfo.bst
   type: build
