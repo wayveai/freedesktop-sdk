@@ -46,6 +46,8 @@ depends:
   type: build
 - filename: base/less.bst
   type: build
+- filename: base/libarchive.bst
+  type: build
 - filename: base/libcap.bst
   type: build
 - filename: base/libelf.bst
@@ -57,6 +59,8 @@ depends:
 - filename: base/libpng.bst
   type: build
 - filename: base/libtasn1.bst
+  type: build
+- filename: base/libtiff.bst
   type: build
 - filename: base/libtool.bst
   type: build
@@ -71,6 +75,8 @@ depends:
 - filename: base/meson.bst
   type: build
 - filename: base/nano.bst
+  type: build
+- filename: base/ninja.bst
   type: build
 - filename: base/nettle.bst
   type: build
@@ -95,6 +101,8 @@ depends:
 - filename: base/sndfile.bst
   type: build
 - filename: base/texinfo.bst
+  type: build
+- filename: base/utf8-locale.bst
   type: build
 - filename: base/util-linux.bst
   type: build
