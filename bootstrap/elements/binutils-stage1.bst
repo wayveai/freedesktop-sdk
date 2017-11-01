@@ -10,7 +10,7 @@ depends:
 variables:
   debugdir: "%{tools-debugdir}"
   conf-args: |
-    --target=%{triple} \
+    --target=%{triplet} \
     --build=$(sh /config/config.guess) \
     --host=$(sh /config/config.guess) \
     --prefix=%{tools} \
@@ -18,7 +18,7 @@ variables:
     --disable-nls \
     --disable-multilib \
     --disable-werror \
-    --with-lib-path="%{libdir}:%{prefix}/lib"
+    --with-lib-path="%{libdir}:%{indep-libdir}"
 
 sources:
 - kind: tar

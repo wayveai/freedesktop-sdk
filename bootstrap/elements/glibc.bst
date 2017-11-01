@@ -24,7 +24,7 @@ config:
       echo slibdir=%{libdir} >configparms
       echo rootsbindir=%{sbindir} >>configparms
       ../configure \
-      --host=%{triple} \
+      --host=%{triplet} \
       --build=$(sh /config/config.guess) \
       --prefix=%{prefix} \
       --with-headers=%{sysroot}%{includedir}

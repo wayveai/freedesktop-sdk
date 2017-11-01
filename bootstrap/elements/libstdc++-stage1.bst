@@ -26,7 +26,7 @@ config:
       mkdir "%{builddir}"
       cd "%{builddir}"
       ../libstdc++-v3/configure \
-      --host=%{triple} \
+      --host=%{triplet} \
       --build=$(sh /config/config.guess) \
       --enable-multiarch \
       --prefix=%{prefix} \

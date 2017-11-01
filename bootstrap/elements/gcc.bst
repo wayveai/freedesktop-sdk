@@ -22,8 +22,8 @@ variables:
   conf-args: |
     --prefix=%{prefix} \
     --build=$(sh /config/config.guess) \
-    --host=%{triple} \
-    --target=%{triple} \
+    --host=%{triplet} \
+    --target=%{triplet} \
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
@@ -38,17 +38,6 @@ config:
 
     - |
       ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
-
-    - |
-      rellib="$(/cross/bin/%{triple}-gcc -print-multi-os-directory)"
-      case "$rellib" in
-        .) ;;
-        *)
-          for pattern in '*.so' '*.so.*' '*.la' '*.a' '*.spec' '*.o'; do
-            mv "%{install-root}%{sysroot}%{libdir}/${rellib}/"${pattern} "%{install-root}%{sysroot}%{libdir}/" || true
-          done
-          ;;
-      esac
 
 sources:
 - kind: tar
@@ -66,3 +55,5 @@ sources:
   url: http://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz
   directory: mpc
   ref: 617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3
+- kind: patch
+  path: elements/gcc-multiarch-os-dir.patch

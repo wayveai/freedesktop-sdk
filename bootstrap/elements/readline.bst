@@ -23,7 +23,7 @@ variables:
   debugdir: "%{cross-debugdir}"
   conf-args: |
     --build=$(sh /config/config.guess) \
-    --host=%{triple} \
+    --host=%{triplet} \
     --libdir=%{libdir} \
     --disable-static \
     --prefix=%{prefix} \

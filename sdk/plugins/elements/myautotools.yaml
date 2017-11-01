@@ -8,8 +8,8 @@ variables:
 
   conf-args: |
     %{conf-link-args} \
-    --host=%{triple} \
-    --build=%{triple} \
+    --host=%{triplet} \
+    --build=%{triplet} \
     --prefix=%{prefix} \
     --exec-prefix=%{exec_prefix} \
     --bindir=%{bindir} \

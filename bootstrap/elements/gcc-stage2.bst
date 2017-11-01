@@ -25,7 +25,7 @@ variables:
     --prefix=%{tools} \
     --build=$(sh /config/config.guess) \
     --host=$(sh /config/config.guess) \
-    --target=%{triple} \
+    --target=%{triplet} \
     --enable-multiarch \
     --disable-multilib \
     --disable-bootstrap \
@@ -50,4 +50,5 @@ sources:
   url: http://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz
   directory: mpc
   ref: 617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3
-
+- kind: patch
+  path: elements/gcc-multiarch-os-dir.patch

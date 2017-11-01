@@ -10,8 +10,8 @@ depends:
 variables:
   # Building llvm5 takes a lot of memory
   max-jobs: 2
-  lib: "lib/%{triple}"
-  libdir: "%{prefix}/lib/%{triple}"
+  lib: "lib/%{gcc_triplet}"
+  libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
     - target_arch == "i586":
         targets: "X86;AMDGPU;NVPTX"

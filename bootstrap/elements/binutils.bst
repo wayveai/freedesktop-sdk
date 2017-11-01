@@ -20,11 +20,11 @@ depends:
 variables:
   debugdir: "%{cross-debugdir}"
   conf-args: |
-    --host=%{triple} \
+    --host=%{triplet} \
     --build=$(sh /config/config.guess) \
     --prefix=%{prefix} \
     --disable-werror \
-    --with-lib-path="%{libdir}:%{prefix}/lib"
+    --with-lib-path="%{libdir}:%{indep-libdir}"
 
 config:
   install-commands:

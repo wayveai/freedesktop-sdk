@@ -14,7 +14,7 @@ config:
   install-commands:
     (>):
       - |
-        ln -s "../%{triple}/python3.6/lib-dynload" "%{install-root}/usr/lib/python3.6/lib-dynload"
+        ln -s "../%{gcc_triplet}/python3.6/lib-dynload" "%{install-root}/usr/lib/python3.6/lib-dynload"
 
 sources:
   - kind: tar

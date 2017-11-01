@@ -8,7 +8,7 @@ depends:
   - filename: desktop/wayland.bst
 
 variables:
-  lib: lib/%{triple}
+  lib: "lib/%{gcc_triplet}"
 
   cmake-extra: |
     -DCMAKE_BUILD_TYPE=Release \

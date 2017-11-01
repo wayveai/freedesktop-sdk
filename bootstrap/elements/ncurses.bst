@@ -29,7 +29,7 @@ config:
       cd ncurses-build &&
       ../configure \
       --build=$(sh /config/config.guess) \
-      --host=%{triple} \
+      --host=%{triplet} \
       --libdir=%{libdir} \
       --with-pkg-config-libdir="%{libdir}/pkgconfig" \
       --disable-widec \
@@ -45,7 +45,7 @@ config:
       cd ncursesw-build &&
       ../configure \
       --build=$(sh /config/config.guess) \
-      --host=%{triple} \
+      --host=%{triplet} \
       --libdir=%{libdir} \
       --with-pkg-config-libdir="%{libdir}/pkgconfig" \
       --enable-widec \

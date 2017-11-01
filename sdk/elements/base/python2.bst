@@ -14,7 +14,7 @@ config:
   install-commands:
     (>):
       - |
-        ln -s "../%{triple}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
+        ln -s "../%{gcc_triplet}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
 
 sources:
   - kind: tar

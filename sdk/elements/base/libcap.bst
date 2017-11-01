@@ -12,7 +12,7 @@ config:
 
   install-commands:
     - |
-      make -j1 prefix="%{prefix}" lib="lib/%{triple}" DESTDIR="%{install-root}" RAISE_SETFCAP=no install
+      make -j1 prefix="%{prefix}" lib="lib/%{gcc_triplet}" DESTDIR="%{install-root}" RAISE_SETFCAP=no install
 
 environment:
   MAKEFLAGS: -j%{max-jobs}
