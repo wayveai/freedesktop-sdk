@@ -31,6 +31,7 @@ config:
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --libdir=%{libdir} \
+      --with-pkg-config-libdir="%{libdir}/pkgconfig" \
       --disable-widec \
       --with-shared \
       --without-ada \
@@ -46,6 +47,7 @@ config:
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --libdir=%{libdir} \
+      --with-pkg-config-libdir="%{libdir}/pkgconfig" \
       --enable-widec \
       --with-shared \
       --without-ada \
