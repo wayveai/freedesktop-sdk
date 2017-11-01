@@ -22,6 +22,7 @@ config:
       mkdir "%{builddir}"
       cd "%{builddir}"
       echo slibdir=%{libdir} >configparms
+      echo rootsbindir=%{sbindir} >>configparms
       ../configure \
       --host=%{triple} \
       --build=$(sh /config/config.guess) \
