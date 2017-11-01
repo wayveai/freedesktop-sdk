@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU Binutils Stage 1
 
 depends:
@@ -9,20 +9,16 @@ depends:
 
 variables:
   debugdir: "%{tools-debugdir}"
-
-config:
-  configure-commands:
-    - |
-      ./configure \
-      --target=%{triple} \
-      --build=$(sh /config/config.guess) \
-      --host=$(sh /config/config.guess) \
-      --prefix=%{tools} \
-      --with-sysroot=%{sysroot} \
-      --disable-nls \
-      --disable-multilib \
-      --disable-werror \
-      --with-lib-path="%{libdir}:%{prefix}/lib"
+  conf-args: |
+    --target=%{triple} \
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --prefix=%{tools} \
+    --with-sysroot=%{sysroot} \
+    --disable-nls \
+    --disable-multilib \
+    --disable-werror \
+    --with-lib-path="%{libdir}:%{prefix}/lib"
 
 sources:
 - kind: tar

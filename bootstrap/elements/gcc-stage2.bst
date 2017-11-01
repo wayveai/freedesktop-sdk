@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU gcc Stage 2
 
 depends:
@@ -21,32 +21,18 @@ depends:
 
 variables:
   debugdir: "%{tools-debugdir}"
-
-config:
-  configure-commands:
-    - |
-      mkdir build && \
-      cd build && \
-      ../configure \
-      --prefix=%{tools} \
-      --build=$(sh /config/config.guess) \
-      --host=$(sh /config/config.guess) \
-      --target=%{triple} \
-      --enable-multiarch \
-      --disable-multilib \
-      --disable-bootstrap \
-      --disable-nls \
-      --disable-multilib \
-      --with-sysroot=%{sysroot} \
-      --enable-languages=c,c++
-
-  build-commands:
-    - |
-      cd build && %{make}
-
-  install-commands:
-    - |
-      cd build && %{make-install}
+  conf-args: |
+    --prefix=%{tools} \
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --target=%{triple} \
+    --enable-multiarch \
+    --disable-multilib \
+    --disable-bootstrap \
+    --disable-nls \
+    --disable-multilib \
+    --with-sysroot=%{sysroot} \
+    --enable-languages=c,c++
 
 sources:
 - kind: tar

@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU coreutils
 
 sources:
@@ -28,23 +28,20 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triple} \
+    --prefix=%{prefix} \
+    --enable-install-program=hostname
 
 config:
-  configure-commands:
-    - |
-      ./configure \
-      --build=$(sh /config/config.guess) \
-      --host=%{triple} \
-      --prefix=%{prefix} \
-      --enable-install-program=hostname
-
   build-commands:
-    - |
-      cp /coreutils-manpages/man1/* man/
-
-    - |
-      %{make}
+    (<):
+      - |
+        mkdir -p "%{builddir}/man"
+        cp /coreutils-manpages/man1/* "%{builddir}/man/"
 
   install-commands:
     - |
+      cd "%{builddir}"
       %{cross-install}

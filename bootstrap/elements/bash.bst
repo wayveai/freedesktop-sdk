@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU Bash
 
 depends:
@@ -26,24 +26,23 @@ environment:
 
 variables:
   debugdir: "%{cross-debugdir}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triple} \
+    --with-curses \
+    --with-installed-readline="/readline-separate-install%{prefix}" \
+    --prefix=%{prefix} \
+    --enable-job-control \
+    ac_cv_rl_version=7.0 \
+    bash_cv_job_control_missing=present \
+    LDFLAGS="-L%{sysroot}%{libdir}"
 
 config:
-  configure-commands:
-    - |
-      ./configure \
-      --build=$(sh /config/config.guess) \
-      --host=%{triple} \
-      --with-curses \
-      --with-installed-readline="/readline-separate-install%{prefix}" \
-      --prefix=%{prefix} \
-      --enable-job-control \
-      ac_cv_rl_version=7.0 \
-      bash_cv_job_control_missing=present \
-      LDFLAGS="-L%{sysroot}%{libdir}"
-
   install-commands:
     - |
+      cd "%{builddir}"
       %{cross-install}
+
     - |
       ln -s bash "%{install-root}%{sysroot}%{bindir}/sh"
 

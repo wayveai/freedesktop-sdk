@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU ncurses
 
 depends:

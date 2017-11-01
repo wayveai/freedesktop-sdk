@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU readline
 
 depends:
@@ -21,24 +21,23 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triple} \
+    --libdir=%{libdir} \
+    --disable-static \
+    --prefix=%{prefix} \
+    --with-curses \
+    CPPFLAGS=-I%{sysroot}%{includedir}
 
 config:
-  configure-commands:
-    - |
-      ./configure \
-      --build=$(sh /config/config.guess) \
-      --host=%{triple} \
-      --libdir=%{libdir} \
-      --disable-static \
-      --prefix=%{prefix} \
-      --with-curses \
-      CPPFLAGS=-I%{sysroot}%{includedir}
-
   install-commands:
     - |
+      cd "%{builddir}"
       %{cross-install}
 
     - |
+      cd "%{builddir}"
       make -j1 install DESTDIR="%{install-root}/readline-separate-install"
 
 sources:

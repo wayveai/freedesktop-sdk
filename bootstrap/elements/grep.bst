@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU grep
 
 depends:
@@ -19,17 +19,15 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triple} \
+    --prefix=%{prefix}
 
 config:
-  configure-commands:
-    - |
-      ./configure \
-      --build=$(sh /config/config.guess) \
-      --host=%{triple} \
-      --prefix=%{prefix}
-
   install-commands:
     - |
+      cd "%{builddir}"
       %{cross-install}
 
 sources:

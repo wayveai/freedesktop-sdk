@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU C Library
 
 depends:
@@ -23,8 +23,8 @@ variables:
 config:
   configure-commands:
     - |
-      mkdir build && \
-      cd build && \
+      mkdir "%{builddir}"
+      cd "%{builddir}"
       ../libstdc++-v3/configure \
       --host=%{triple} \
       --build=$(sh /config/config.guess) \
@@ -33,13 +33,10 @@ config:
       --disable-nls \
       --disable-multilib
 
-  build-commands:
-    - |
-      cd build && %{make}
-
   install-commands:
     - |
-      cd build && %{cross-install}
+      cd "%{builddir}"
+      %{cross-install}
 
 sources:
 - kind: tar

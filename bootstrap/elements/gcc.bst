@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU gcc stage 2
 
 depends:
@@ -19,31 +19,22 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
+  conf-args: |
+    --prefix=%{prefix} \
+    --build=$(sh /config/config.guess) \
+    --host=%{triple} \
+    --target=%{triple} \
+    --disable-multilib \
+    --enable-multiarch \
+    --disable-bootstrap \
+    --enable-languages=c,c++ \
+    LDFLAGS="-L%{sysroot}%{libdir}"
 
 config:
-  configure-commands:
-    - |
-      mkdir build && \
-      cd build && \
-      ../configure \
-      --prefix=%{prefix} \
-      --libdir=%{libdir} \
-      --build=$(sh /config/config.guess) \
-      --host=%{triple} \
-      --target=%{triple} \
-      --disable-multilib \
-      --enable-multiarch \
-      --disable-bootstrap \
-      --enable-languages=c,c++ \
-      LDFLAGS="-L%{sysroot}%{libdir}"
-
-  build-commands:
-    - |
-      cd build && %{make}
-
   install-commands:
     - |
-      cd build && %{cross-install}
+      cd %{builddir}
+      %{cross-install}
 
     - |
       ln -s gcc %{install-root}%{sysroot}%{bindir}/cc

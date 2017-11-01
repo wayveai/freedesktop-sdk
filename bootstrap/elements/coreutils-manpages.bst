@@ -1,17 +1,19 @@
-kind: autotools
+kind: myautotools
 description: GNU coreutils
 
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
 
-config:
-  configure-commands:
-    - |
-      ./configure --enable-install-program=hostname --mandir=/coreutils-manpages
+variables:
+  conf-args: |
+    --enable-install-program=hostname \
+    --mandir=/coreutils-manpages
 
+config:
   install-commands:
     - |
+      cd "%{builddir}"
       make -j1 install-man DESTDIR="%{install-root}"
 
 sources:

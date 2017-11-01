@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU C Library
 
 depends:
@@ -19,22 +19,19 @@ variables:
 config:
   configure-commands:
     - |
-      mkdir build && \
-      cd build && \
-      echo slibdir=%{libdir} >configparms && \
+      mkdir "%{builddir}"
+      cd "%{builddir}"
+      echo slibdir=%{libdir} >configparms
       ../configure \
       --host=%{triple} \
       --build=$(sh /config/config.guess) \
       --prefix=%{prefix} \
       --with-headers=%{sysroot}%{includedir}
 
-  build-commands:
-    - |
-      cd build && %{make}
-
   install-commands:
     - |
-      cd build && %{cross-install}
+      cd "%{builddir}"
+      %{cross-install}
 
 sources:
 - kind: tar

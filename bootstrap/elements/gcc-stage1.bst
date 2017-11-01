@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU gcc Stage 1
 
 depends:
@@ -11,42 +11,29 @@ depends:
 
 variables:
   debugdir: "%{tools-debugdir}"
-
-config:
-  configure-commands:
-    - |
-      mkdir build && \
-      cd build && \
-      ../configure \
-      --prefix=%{tools} \
-      --build=$(sh /config/config.guess) \
-      --host=$(sh /config/config.guess) \
-      --target=%{triple} \
-      --with-newlib \
-      --enable-multiarch \
-      --with-sysroot=%{sysroot} \
-      --without-headers \
-      --disable-bootstrap \
-      --disable-nls \
-      --disable-shared \
-      --disable-threads \
-      --disable-libstdcxx \
-      --disable-decimal-float \
-      --disable-libatomic \
-      --disable-libgomp \
-      --disable-libmpx \
-      --disable-libquadmath \
-      --disable-libssp \
-      --disable-libvtv \
-      --disable-multilib \
-      --enable-languages=c,c++
-
-  build-commands:
-    - |
-      cd build && %{make}
-  install-commands:
-    - |
-      cd build && %{make-install}
+  conf-args: |
+    --prefix=%{tools} \
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --target=%{triple} \
+    --with-newlib \
+    --enable-multiarch \
+    --with-sysroot=%{sysroot} \
+    --without-headers \
+    --disable-bootstrap \
+    --disable-nls \
+    --disable-shared \
+    --disable-threads \
+    --disable-libstdcxx \
+    --disable-decimal-float \
+    --disable-libatomic \
+    --disable-libgomp \
+    --disable-libmpx \
+    --disable-libquadmath \
+    --disable-libssp \
+    --disable-libvtv \
+    --disable-multilib \
+    --enable-languages=c,c++
 
 sources:
 - kind: tar

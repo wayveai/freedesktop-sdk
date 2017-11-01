@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU Binutils
 
 depends:
@@ -19,19 +19,17 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
-
-config:
-  configure-commands:
-  - |
-    ./configure \
+  conf-args: |
     --host=%{triple} \
     --build=$(sh /config/config.guess) \
     --prefix=%{prefix} \
     --disable-werror \
     --with-lib-path="%{libdir}:%{prefix}/lib"
 
+config:
   install-commands:
     - |
+      cd "%{builddir}"
       %{cross-install}
 
 environment:

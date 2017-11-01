@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU sed
 
 depends:
@@ -19,17 +19,15 @@ depends:
 
 variables:
   debugdir: "%{cross-debugdir}"
-
-config:
-  configure-commands:
-    - |
-      ./configure \
+  conf-args: |
       --build=$(sh /config/config.guess) \
       --host=%{triple} \
       --prefix=%{prefix}
 
+config:
   install-commands:
     - |
+      cd %{builddir}
       %{cross-install}
 
 sources:

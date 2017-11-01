@@ -1,4 +1,4 @@
-kind: autotools
+kind: myautotools
 description: GNU ncurses stage 1
 
 depends:
@@ -9,18 +9,14 @@ depends:
 
 variables:
   debugdir: "%{tools-debugdir}"
-
-config:
-  configure-commands:
-    - |
-      ./configure \
-      --build=$(sh /config/config.guess) \
-      --host=$(sh /config/config.guess) \
-      --without-shared \
-      --without-ada \
-      --with-normal \
-      --enable-widec \
-      --prefix=%{tools}
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --without-shared \
+    --without-ada \
+    --with-normal \
+    --enable-widec \
+    --prefix=%{tools}
 
 sources:
 - kind: tar
