@@ -62,6 +62,9 @@ config:
   - |
     %{strip-binaries}
 
+  - |
+    find "%{install-root}" -type f -name "*.la" -exec rm {} ";"
+
 environment:
   MAKEFLAGS: -j%{max-jobs}
   V: 1
