@@ -19,6 +19,8 @@ depends:
   type: build
 - filename: desktop/dbus.bst
   type: build
+- filename: desktop/dejavu-fonts.bst
+  type: build
 - filename: desktop/desktop-file-utils.bst
   type: build
 - filename: desktop/fontconfig.bst
@@ -30,6 +32,8 @@ depends:
 - filename: desktop/gdk-pixbuf.bst
   type: build
 - filename: desktop/glib-networking.bst
+  type: build
+- filename: desktop/gnu-free-fonts.bst
   type: build
 - filename: desktop/gobject-introspection.bst
   type: build
@@ -64,6 +68,8 @@ depends:
 - filename: desktop/libdrm.bst
   type: build
 - filename: desktop/libepoxy.bst
+  type: build
+- filename: desktop/liberation-fonts.bst
   type: build
 - filename: desktop/libglvnd.bst
   type: build
