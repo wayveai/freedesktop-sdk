@@ -70,6 +70,8 @@ depends:
   type: build
 - filename: base/libxslt.bst
   type: build
+- filename: base/locales.bst
+  type: build
 - filename: base/m4.bst
   type: build
 - filename: base/meson.bst
@@ -101,8 +103,6 @@ depends:
 - filename: base/sqlite.bst
   type: build
 - filename: base/texinfo.bst
-  type: build
-- filename: base/utf8-locale.bst
   type: build
 - filename: base/util-linux.bst
   type: build

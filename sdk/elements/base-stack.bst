@@ -35,6 +35,7 @@ depends:
 - filename: base/libunistring.bst
 - filename: base/libxml2.bst
 - filename: base/libxslt.bst
+- filename: base/locales.bst
 - filename: base/m4.bst
 - filename: base/meson.bst
 - filename: base/nano.bst
