@@ -52,7 +52,6 @@ depends:
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
 - filename: base/texinfo.bst
-- filename: base/utf8-locale.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
 - filename: base/zlib.bst
