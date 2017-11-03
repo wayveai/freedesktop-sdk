@@ -111,6 +111,8 @@ depends:
   type: build
 - filename: desktop/multiarch-links.bst
   type: build
+- filename: desktop/mythes.bst
+  type: build
 - filename: desktop/orc.bst
   type: build
 - filename: desktop/pango.bst
