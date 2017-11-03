@@ -95,6 +95,10 @@ depends:
   type: build
 - filename: desktop/libthai.bst
   type: build
+- filename: desktop/libva.bst
+  type: build
+- filename: desktop/libva-vdpau-driver.bst
+  type: build
 - filename: desktop/libvdpau.bst
   type: build
 - filename: desktop/libxkbcommon.bst
