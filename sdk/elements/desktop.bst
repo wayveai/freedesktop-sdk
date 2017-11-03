@@ -9,6 +9,8 @@ depends:
   type: build
 - filename: desktop/appstream-glib.bst
   type: build
+- filename: desktop/aspell.bst
+  type: build
 - filename: desktop/atk.bst
   type: build
 - filename: desktop/at-spi2-atk.bst
