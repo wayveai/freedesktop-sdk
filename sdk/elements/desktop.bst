@@ -123,6 +123,16 @@ depends:
   type: build
 - filename: desktop/pulseaudio.bst
   type: build
+- filename: desktop/sdl2.bst
+  type: build
+- filename: desktop/sdl2-image.bst
+  type: build
+- filename: desktop/sdl2-mixer.bst
+  type: build
+- filename: desktop/sdl2-net.bst
+  type: build
+- filename: desktop/sdl2-ttf.bst
+  type: build
 - filename: desktop/shared-mime-info.bst
   type: build
 - filename: desktop/vulkan.bst
