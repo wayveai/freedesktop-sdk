@@ -11,7 +11,7 @@ config:
   install-commands:
     - |
       install -d -m0755 "%{confdir}/conf.avail" "%{confdir}/conf.d" "%{fontdir}/gnu-free"
-      install -p -m0644 fonts/freefont-20120503/*.ttf "%{fontdir}/gnu-free"
+      install -p -m0644 fonts/*.ttf "%{fontdir}/gnu-free"
       for i in config/gnu-free-*.conf; do
         install -p -m0644 "$i" "%{confdir}/conf.avail/69-$(basename "$i")"
         ln -s "../conf.avail/69-$(basename "$i")" "%{confdir}/conf.d/69-$(basename "$i")"
