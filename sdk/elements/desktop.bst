@@ -37,6 +37,8 @@ depends:
   type: build
 - filename: desktop/gdk-pixbuf.bst
   type: build
+- filename: desktop/geoclue2.bst
+  type: build
 - filename: desktop/glib-networking.bst
   type: build
 - filename: desktop/gnu-free-fonts.bst
