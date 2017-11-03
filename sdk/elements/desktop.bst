@@ -91,6 +91,8 @@ depends:
   type: build
 - filename: desktop/mpg123.bst
   type: build
+- filename: desktop/multiarch-links.bst
+  type: build
 - filename: desktop/orc.bst
   type: build
 - filename: desktop/pango.bst
