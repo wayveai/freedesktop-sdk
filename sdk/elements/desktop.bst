@@ -27,6 +27,8 @@ depends:
   type: build
 - filename: desktop/desktop-file-utils.bst
   type: build
+- filename: desktop/flatpak-xdg-utils.bst
+  type: build
 - filename: desktop/fontconfig.bst
   type: build
 - filename: desktop/freetype.bst
