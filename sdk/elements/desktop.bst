@@ -155,6 +155,8 @@ depends:
   type: build
 - filename: desktop/xcb-util-wm.bst
   type: build
+- filename: desktop/xdg-user-dirs.bst
+  type: build
 - filename: desktop/xorg-app-xkbcomp.bst
   type: build
 - filename: desktop/xorg-data-xkeyboard-config.bst
