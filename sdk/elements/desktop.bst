@@ -67,6 +67,8 @@ depends:
   type: build
 - filename: desktop/hyphen.bst
   type: build
+- filename: desktop/ibus.bst
+  type: build
 - filename: desktop/itstools.bst
   type: build
 - filename: desktop/json-glib.bst
