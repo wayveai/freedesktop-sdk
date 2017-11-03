@@ -65,6 +65,8 @@ depends:
   type: build
 - filename: desktop/hunspell.bst
   type: build
+- filename: desktop/hyphen.bst
+  type: build
 - filename: desktop/itstools.bst
   type: build
 - filename: desktop/json-glib.bst
