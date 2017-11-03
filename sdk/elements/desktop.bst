@@ -135,6 +135,8 @@ depends:
   type: build
 - filename: desktop/shared-mime-info.bst
   type: build
+- filename: desktop/sound-theme-freedesktop.bst
+  type: build
 - filename: desktop/vulkan.bst
   type: build
 - filename: desktop/wayland.bst
