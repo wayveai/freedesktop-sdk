@@ -89,6 +89,8 @@ depends:
   type: build
 - filename: desktop/librsvg.bst
   type: build
+- filename: desktop/libseccomp.bst
+  type: build
 - filename: desktop/libsoup.bst
   type: build
 - filename: desktop/libthai.bst
