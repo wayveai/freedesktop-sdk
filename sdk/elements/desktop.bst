@@ -19,6 +19,8 @@ depends:
   type: build
 - filename: desktop/cairo.bst
   type: build
+- filename: desktop/cups.bst
+  type: build
 - filename: desktop/dbus.bst
   type: build
 - filename: desktop/dejavu-fonts.bst
