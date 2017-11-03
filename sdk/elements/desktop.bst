@@ -277,3 +277,5 @@ depends:
   type: build
 - filename: desktop/xorg-util-macros.bst
   type: build
+- filename: desktop/zenity.bst
+  type: build
