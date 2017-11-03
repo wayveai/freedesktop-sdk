@@ -21,6 +21,7 @@ depends:
 - filename: base/gzip.bst
 - filename: base/help2man.bst
 - filename: base/intltool.bst
+- filename: base/iso-codes.bst
 - filename: base/jpeg.bst
 - filename: base/less.bst
 - filename: base/libarchive.bst
@@ -42,6 +43,7 @@ depends:
 - filename: base/nettle.bst
 - filename: base/ninja.bst
 - filename: base/p11-kit.bst
+- filename: base/patch.bst
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
 - filename: base/perl.bst
@@ -51,6 +53,7 @@ depends:
 - filename: base/python3.bst
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
+- filename: base/tar.bst
 - filename: base/texinfo.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst

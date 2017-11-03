@@ -40,6 +40,8 @@ depends:
   type: build
 - filename: base/help2man.bst
   type: build
+- filename: base/iso-codes.bst
+  type: build
 - filename: base/intltool.bst
   type: build
 - filename: base/jpeg.bst
@@ -84,6 +86,8 @@ depends:
   type: build
 - filename: base/p11-kit.bst
   type: build
+- filename: base/patch.bst
+  type: build
 - filename: base/pcre2.bst
   type: build
 - filename: base/pcre.bst
@@ -97,6 +101,8 @@ depends:
 - filename: base/python2.bst
   type: build
 - filename: base/python3.bst
+  type: build
+- filename: base/tar.bst
   type: build
 - filename: base/sndfile.bst
   type: build
