@@ -38,6 +38,11 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+environment:
+  CFLAGS: "-O2 -g"
+  CXXFLAGS: "-O2 -g"
+  LDFLAGS: ""
+
 sources:
 - kind: tar
   url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz

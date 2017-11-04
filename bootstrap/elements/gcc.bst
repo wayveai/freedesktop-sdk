@@ -27,8 +27,7 @@ variables:
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
-    --enable-languages=c,c++ \
-    LDFLAGS="-L%{sysroot}%{libdir}"
+    --enable-languages=c,c++
 
 config:
   install-commands:

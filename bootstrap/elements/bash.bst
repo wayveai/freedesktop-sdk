@@ -31,8 +31,7 @@ variables:
     --prefix=%{prefix} \
     --enable-job-control \
     ac_cv_rl_version=7.0 \
-    bash_cv_job_control_missing=present \
-    LDFLAGS="-L%{sysroot}%{libdir}"
+    bash_cv_job_control_missing=present
 
 config:
   install-commands:

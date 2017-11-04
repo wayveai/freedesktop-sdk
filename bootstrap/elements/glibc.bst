@@ -34,6 +34,11 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+environment:
+  CFLAGS: "-O2 -g"
+  CXXFLAGS: "-O2 -g"
+  LDFLAGS: ""
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/glibc/glibc-2.26.tar.xz
