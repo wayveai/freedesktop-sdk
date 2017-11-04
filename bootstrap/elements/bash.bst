@@ -21,9 +21,6 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
-environment:
-  PATH: /cross/bin:/bin
-
 variables:
   debugdir: "%{cross-debugdir}"
   conf-args: |
