@@ -3,7 +3,7 @@ kind: manual
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: bootstrap.bst
+- filename: bootstrap-with-links.bst
   type: build
 
 config:

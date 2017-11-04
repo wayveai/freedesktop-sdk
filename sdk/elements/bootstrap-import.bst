@@ -11,6 +11,3 @@ sources:
       path: bootstrap-image-arm.tar.gz
   - target_arch == "aarch64":
       path: bootstrap-image-aarch64.tar.gz
-
-- kind: local
-  path: elements/bootstrap-links
