@@ -17,9 +17,6 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
-variables:
-  debugdir: "%{cross-debugdir}"
-
 config:
   configure-commands:
     - |

@@ -19,9 +19,6 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
-variables:
-  debugdir: "%{cross-debugdir}"
-
 config:
   configure-commands:
     - |
@@ -38,7 +35,7 @@ config:
       --without-normal \
       --enable-pc-files \
       --prefix=/usr \
-      TIC_PATH=/cross/bin/tic
+      TIC_PATH="%{tools}/bin/tic"
 
     - |
       mkdir ncursesw-build &&
@@ -54,7 +51,7 @@ config:
       --without-normal \
       --enable-pc-files \
       --prefix=/usr \
-      TIC_PATH=/cross/bin/tic
+      TIC_PATH="%{tools}/bin/tic"
 
   build-commands:
     - |

@@ -8,7 +8,8 @@ depends:
   type: build
 
 variables:
-  debugdir: "%{tools-debugdir}"
+  prefix: "%{tools}"
+  libdir: "%{tools}/lib"
   conf-args: |
     --build=$(sh /config/config.guess) \
     --host=$(sh /config/config.guess) \
@@ -16,7 +17,7 @@ variables:
     --without-ada \
     --with-normal \
     --enable-widec \
-    --prefix=%{tools}
+    --prefix=%{prefix}
 
 sources:
 - kind: tar

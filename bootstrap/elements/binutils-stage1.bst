@@ -8,12 +8,13 @@ depends:
   type: build
 
 variables:
-  debugdir: "%{tools-debugdir}"
+  prefix: "%{tools}"
+  libdir: "%{tools}/lib"
   conf-args: |
     --target=%{triplet} \
     --build=$(sh /config/config.guess) \
     --host=$(sh /config/config.guess) \
-    --prefix=%{tools} \
+    --prefix=%{prefix} \
     --with-sysroot=%{sysroot} \
     --disable-nls \
     --disable-multilib \

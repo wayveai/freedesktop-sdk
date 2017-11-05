@@ -10,9 +10,10 @@ depends:
   type: build
 
 variables:
-  debugdir: "%{tools-debugdir}"
+  prefix: "%{tools}"
+  libdir: "%{tools}/lib"
   conf-args: |
-    --prefix=%{tools} \
+    --prefix=%{prefix} \
     --build=$(sh /config/config.guess) \
     --host=$(sh /config/config.guess) \
     --target=%{triplet} \

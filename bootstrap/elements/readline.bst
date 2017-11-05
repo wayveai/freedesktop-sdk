@@ -20,7 +20,6 @@ depends:
   type: build
 
 variables:
-  debugdir: "%{cross-debugdir}"
   conf-args: |
     --build=$(sh /config/config.guess) \
     --host=%{triplet} \

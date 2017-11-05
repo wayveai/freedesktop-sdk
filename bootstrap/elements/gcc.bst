@@ -18,7 +18,6 @@ depends:
   type: build
 
 variables:
-  debugdir: "%{cross-debugdir}"
   conf-args: |
     --prefix=%{prefix} \
     --build=$(sh /config/config.guess) \
