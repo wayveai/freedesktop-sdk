@@ -4,6 +4,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/libdatrie.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libthai.so"
+
 sources:
   - kind: tar
     url: https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.27.tar.xz
