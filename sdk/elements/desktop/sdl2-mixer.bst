@@ -4,6 +4,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/sdl2.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libSDL2_mixer.so"
+
 sources:
   - kind: tar
     url: http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.1.tar.gz

@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libdatrie.so"
+
 sources:
   - kind: tar
     url: https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.10.tar.xz

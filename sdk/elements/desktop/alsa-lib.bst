@@ -10,6 +10,12 @@ variables:
     --disable-old-symbols \
     --with-pcm-plugins="hw ioplug extplug"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libasound.so"
+
 sources:
   - kind: tar
     url: ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.1.4.1.tar.bz2

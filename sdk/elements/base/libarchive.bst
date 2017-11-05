@@ -4,6 +4,12 @@ description: Glib
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libarchive.so"
+
 sources:
   - kind: tar
     url: http://libarchive.org/downloads/libarchive-3.3.2.tar.gz

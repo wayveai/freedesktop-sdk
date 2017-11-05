@@ -10,6 +10,12 @@ depends:
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-proto-kb.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXt.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXt-1.1.5.tar.bz2

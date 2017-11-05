@@ -4,6 +4,12 @@ description: file
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libmagic.so"
+
 sources:
   - kind: tar
     url: ftp://ftp.astron.com/pub/file/file-5.32.tar.gz

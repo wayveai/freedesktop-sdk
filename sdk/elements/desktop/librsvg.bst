@@ -7,6 +7,12 @@ depends:
   - filename: desktop/cairo.bst
   - filename: desktop/libcroco.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/librsvg-2.so"
+
 sources:
   # FIXME: 2.41 requires rust
   - kind: tar

@@ -3,6 +3,13 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libtiff.so"
+        - "%{libdir}/libtiffxx.so"
+
 sources:
   - kind: tar
     url: http://download.osgeo.org/libtiff/tiff-4.0.8.tar.gz

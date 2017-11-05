@@ -8,6 +8,17 @@ variables:
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR:PATH=%{libdir} \
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/alrecord"
+        - "%{bindir}/altonegen"
+        - "%{bindir}/bsincgen"
+        - "%{bindir}/makehrtf"
+        - "%{bindir}/openal-info"
+        - "%{libdir}/libopenal.so"
+
 sources:
   - kind: tar
     url: http://kcat.strangesoft.net/openal-releases/openal-soft-1.18.2.tar.bz2

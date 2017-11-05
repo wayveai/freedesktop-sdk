@@ -9,6 +9,12 @@ variables:
   conf-extra: |
     --disable-webkitgtk
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm -r "%{install-root}%{datadir}/help"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/zenity/3.24/zenity-3.24.0.tar.xz

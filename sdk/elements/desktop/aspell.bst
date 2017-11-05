@@ -6,6 +6,13 @@ depends:
 variables:
   builddir: ''
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libaspell.so"
+        - "%{libdir}/libpspell.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz

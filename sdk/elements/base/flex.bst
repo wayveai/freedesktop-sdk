@@ -8,6 +8,12 @@ depends:
     type: build
   - filename: base/m4.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libflex.so"
+
 sources:
   - kind: tar
     url: https://github.com/westes/flex/files/981163/flex-2.6.4.tar.gz

@@ -9,6 +9,12 @@ depends:
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-proto-xf86vidmode.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXxf86vm.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXxf86vm-1.1.4.tar.bz2

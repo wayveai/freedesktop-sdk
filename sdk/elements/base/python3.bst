@@ -16,6 +16,12 @@ config:
       - |
         ln -s "../%{gcc_triplet}/python3.6/lib-dynload" "%{install-root}/usr/lib/python3.6/lib-dynload"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpython3.6m.so"
+
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz

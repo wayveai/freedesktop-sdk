@@ -8,6 +8,12 @@ depends:
   - filename: desktop/xorg-proto-render.bst
   - filename: desktop/xorg-proto-randr.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXrandr.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXrandr-1.5.1.tar.bz2

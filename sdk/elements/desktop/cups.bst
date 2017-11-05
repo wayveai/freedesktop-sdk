@@ -20,6 +20,13 @@ config:
     - |
       make -j1 DSTROOT="%{install-root}" install
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/cups-config"
+        - "%{libdir}/libcups.so"
+
 sources:
   - kind: tar
     url: https://github.com/apple/cups/releases/download/v2.2.6/cups-2.2.6-source.tar.gz

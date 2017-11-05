@@ -27,6 +27,17 @@ variables:
       --enable-x11-backend \
       --enable-wayland-backend
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/gtk3-*"
+        - "%{bindir}/gtk-builder-tool"
+        - "%{bindir}/gtk-encode-symbolic-svg"
+        - "%{libdir}/libgdk-3.so"
+        - "%{libdir}/libgtk-3.so"
+        - "%{libdir}/libgailutil-3.so"
+
 sources:
   - kind: tar
     # gtk+ 3.22.25 requires new wayland-protocols not released yet with support for server side decoration

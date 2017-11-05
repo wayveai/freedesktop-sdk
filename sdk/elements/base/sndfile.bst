@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libsndfile.so"
+
 sources:
   - kind: tar
     url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz

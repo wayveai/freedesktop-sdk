@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libunistring.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz

@@ -17,8 +17,21 @@ variables:
     --disable-stemmer \
     --disable-man
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm -r "%{install-root}%{datadir}/installed-tests"
+
 environment:
   LC_ALL: en_US.UTF-8
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libappstream-glib.so"
+        - "%{libdir}/libappstream-builder.so"
 
 sources:
   - kind: tar

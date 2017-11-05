@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libidn2.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/libidn/libidn2-2.0.4.tar.gz

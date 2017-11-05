@@ -6,6 +6,13 @@ depends:
   - filename: desktop/freetype-stage1.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/freetype-config"
+        - "%{libdir}/libfreetype.so"
+
 variables:
   conf-extra: |
 

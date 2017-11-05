@@ -29,6 +29,12 @@ config:
       install -D -m 755 bzlib.h --target-directory %{install-root}%{includedir}
       install -D -m 755 bzgrep.1 bzmore.1 bzdiff.1 --target-directory %{install-root}%{mandir}/man1
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libbz2.so"
+
 sources:
   - kind: tar
     url: http://bzip.org/1.0.6/bzip2-1.0.6.tar.gz

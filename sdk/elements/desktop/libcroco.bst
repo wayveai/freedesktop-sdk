@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libcroco-0.6.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/libcroco/0.6/libcroco-0.6.12.tar.xz

@@ -11,6 +11,13 @@ depends:
   - filename: desktop/xorg-lib-xtrans.bst
   - filename: desktop/xorg-lib-xcb.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libX11.so"
+        - "%{libdir}/libX11-xcb.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libX11-1.6.5.tar.bz2

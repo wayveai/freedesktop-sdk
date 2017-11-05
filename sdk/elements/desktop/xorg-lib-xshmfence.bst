@@ -5,6 +5,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/xorg-proto-x.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxshmfence.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libxshmfence-1.2.tar.bz2

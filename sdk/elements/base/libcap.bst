@@ -20,6 +20,12 @@ environment:
 environment-nocache:
 - MAKEFLAGS
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libcap.so"
+
 sources:
   - kind: tar
     url: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz

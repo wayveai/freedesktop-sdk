@@ -5,6 +5,12 @@ depends:
   - filename: desktop/atk.bst
   - filename: desktop/at-spi2-core.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libatk-bridge-2.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/at-spi2-atk/2.26/at-spi2-atk-2.26.0.tar.xz

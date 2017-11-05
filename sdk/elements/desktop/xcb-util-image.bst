@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-lib-pthread-stubs.bst
   - filename: desktop/xcb-util.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxcb-image.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/xcb/xcb-util-image-0.4.0.tar.bz2

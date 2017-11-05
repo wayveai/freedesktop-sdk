@@ -18,6 +18,12 @@ variables:
     -DWITH_PERL=OFF \
     -DWITH_GNOME3=OFF
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libproxy.so"
+
 sources:
   - kind: tar
     url: https://github.com/libproxy/libproxy/releases/download/0.4.15/libproxy-0.4.15.tar.xz

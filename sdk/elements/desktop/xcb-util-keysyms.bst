@@ -5,6 +5,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/xorg-lib-xcb.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxcb-keysyms.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/xcb/xcb-util-keysyms-0.4.0.tar.bz2

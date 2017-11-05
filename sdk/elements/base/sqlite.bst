@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libsqlite3.so"
+
 sources:
   - kind: tar
     url: https://sqlite.org/2017/sqlite-autoconf-3210000.tar.gz

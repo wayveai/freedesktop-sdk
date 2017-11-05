@@ -8,6 +8,12 @@ depends:
   - filename: desktop/xorg-proto-xext.bst
   - filename: desktop/xorg-lib-x11.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXfixes.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXfixes-5.0.3.tar.bz2

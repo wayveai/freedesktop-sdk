@@ -10,6 +10,12 @@ variables:
     --sharedlibdir=%{libdir} \
     --libdir=%{libdir}
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libz.so"
+
 sources:
   - kind: tar
     url: http://zlib.net/zlib-1.2.11.tar.xz

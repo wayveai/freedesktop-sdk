@@ -17,6 +17,23 @@ variables:
     --disable-bluez5 \
     --disable-systemd
 
+config:
+  install-commands:
+    (>):
+      - |
+          rm "%{install-root}%{bindir}/pasuspender"
+          rm -r "%{install-root}%{libdir}"/pulse-*/modules
+          rm -r "%{install-root}%{sysconfdir}/pulse/daemon.conf"
+          rm -r "%{install-root}%{sysconfdir}/pulse"/*.pa
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpulse.so"
+        - "%{libdir}/libpulse-simple.so"
+        - "%{libdir}/libpulse-mainloop-glib.so"
+
 sources:
   - kind: tar
     url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-11.1.tar.xz

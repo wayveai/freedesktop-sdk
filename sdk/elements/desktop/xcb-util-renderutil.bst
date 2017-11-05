@@ -6,6 +6,12 @@ depends:
   - filename: desktop/xorg-lib-xcb.bst
   - filename: desktop/xorg-lib-pthread-stubs.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxcb-render-util.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/xcb/xcb-util-renderutil-0.3.9.tar.bz2

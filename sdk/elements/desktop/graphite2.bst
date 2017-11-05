@@ -30,6 +30,12 @@ config:
         done
         rm "%{install-root}%{prefix}/lib"/*.la
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libgraphite2.so"
+
 sources:
   - kind: tar
     url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.10.tgz

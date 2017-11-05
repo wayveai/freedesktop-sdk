@@ -41,6 +41,12 @@ config:
       cd build-python3/python
       %{make-install} top_builddir=../../%{builddir}
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxml2.so"
+
 sources:
   - kind: tar
     url: ftp://xmlsoft.org/libxml2/libxml2-2.9.6.tar.gz

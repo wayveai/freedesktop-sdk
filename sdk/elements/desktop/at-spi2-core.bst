@@ -4,6 +4,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/dbus.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libatspi.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.0.tar.xz

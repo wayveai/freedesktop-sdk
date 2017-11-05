@@ -6,6 +6,12 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-proto-kb.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxkbfile.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libxkbfile-1.0.9.tar.bz2

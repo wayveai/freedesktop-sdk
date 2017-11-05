@@ -9,6 +9,19 @@ variables:
       --with-default-audio=pulse \
       --with-audio=pulse
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{bindir}"/*
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libout123.so"
+        - "%{libdir}/libmpg123.so"
+
 sources:
   - kind: tar
     url: http://mpg123.org/download/mpg123-1.25.7.tar.bz2

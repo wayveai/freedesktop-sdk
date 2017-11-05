@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-proto-render.bst
   - filename: desktop/xorg-lib-x11.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXrender.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXrender-0.9.10.tar.bz2

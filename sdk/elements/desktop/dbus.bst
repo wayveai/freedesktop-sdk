@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libdbus-1.so"
+
 sources:
   - kind: tar
     url: https://dbus.freedesktop.org/releases/dbus/dbus-1.11.22.tar.gz

@@ -8,6 +8,13 @@ depends:
   - filename: base/file.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpcre2-8.so"
+        - "%{libdir}/libpcre2-posix.so"
+
 sources:
   - kind: tar
     url: https://ftp.pcre.org/pub/pcre/pcre2-10.30.tar.bz2

@@ -13,6 +13,12 @@ variables:
   conf-extra: |
     --with-cursorpath=~/.icons:/app/share/icons:%{datadir}/icons:%{datadir}/pixmaps:%{datadir}/runtime/share/icons:/run/host/share/icons
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXcursor.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXcursor-1.1.14.tar.bz2

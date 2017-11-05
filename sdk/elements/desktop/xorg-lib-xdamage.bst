@@ -9,6 +9,12 @@ depends:
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-x11.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXdamage.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXdamage-1.1.4.tar.bz2

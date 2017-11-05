@@ -8,6 +8,12 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXv.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXv-1.0.11.tar.bz2

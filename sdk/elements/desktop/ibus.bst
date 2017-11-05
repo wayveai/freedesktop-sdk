@@ -18,6 +18,23 @@ variables:
     --disable-appindicator \
     --disable-tests
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm -r "%{install-root}%{bindir}"
+        rm -r "%{install-root}%{datadir}/bash-completion"
+        rm -r "%{install-root}%{datadir}/dbus-1"
+        rm -r "%{install-root}%{datadir}/icons"
+        rm -r "%{install-root}%{datadir}/man"
+        rm -r "%{install-root}%{datadir}/ibus"
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libibus-1.0.so"
+
 sources:
   - kind: tar
     url: https://github.com/ibus/ibus/releases/download/1.5.17/ibus-1.5.17.tar.gz

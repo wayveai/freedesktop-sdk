@@ -5,6 +5,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/xorg-proto-x.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXau.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXau-1.0.8.tar.bz2

@@ -16,6 +16,12 @@ config:
       - |
         ln -s "../%{gcc_triplet}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpython2.7.so"
+
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz

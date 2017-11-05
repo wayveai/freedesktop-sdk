@@ -10,6 +10,12 @@ config:
       - |
         rm -f src/fcobjshash.h
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libfontconfig.so"
+
 sources:
   - kind: tar
     url: https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.6.tar.bz2

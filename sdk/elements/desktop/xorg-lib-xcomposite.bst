@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xfixes.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXcomposite.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXcomposite-0.4.4.tar.bz2

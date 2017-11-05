@@ -14,6 +14,13 @@ variables:
   conf-link-args: |
     --enable-shared
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libbfd.so"
+        - "%{libdir}/libopcodes.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/gdb/gdb-8.0.1.tar.xz

@@ -3,6 +3,15 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/gobject-introspection/giscanner"
+        - "%{datadir}/gobject-introspection/giscanner"
+        - "%{bindir}/g-ir-*"
+        - "%{libdir}/libgirepository-1.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gobject-introspection/1.54/gobject-introspection-1.54.1.tar.xz

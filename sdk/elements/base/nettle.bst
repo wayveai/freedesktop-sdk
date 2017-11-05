@@ -4,6 +4,13 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/gmp.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libnettle.so"
+        - "%{libdir}/libhogweed.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/nettle/nettle-3.3.tar.gz

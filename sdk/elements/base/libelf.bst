@@ -9,6 +9,12 @@ config:
       cd %{builddir}
       make -j1 instroot="%{install-root}" install
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libelf.so"
+
 sources:
   - kind: tar
     url: http://www.mr511.de/software/libelf-0.8.13.tar.gz

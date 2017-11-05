@@ -8,6 +8,12 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXinerama.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXinerama-1.1.3.tar.bz2

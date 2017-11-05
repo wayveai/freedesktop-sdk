@@ -39,6 +39,13 @@ config:
       cd "%{builddir}"
       make -j1 install DESTDIR="%{install-root}/readline-separate-install"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{sysroot}%{libdir}/libreadline.so"
+        - "%{sysroot}%{libdir}/libhistory.so"
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz

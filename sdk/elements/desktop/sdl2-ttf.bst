@@ -6,6 +6,12 @@ depends:
   - filename: desktop/sdl2.bst
   - filename: desktop/libglvnd.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libSDL2_ttf.so"
+
 sources:
   - kind: tar
     url: https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.14.tar.gz

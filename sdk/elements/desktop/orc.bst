@@ -3,6 +3,14 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/orc"
+        - "%{libdir}/liborc-0.4.so"
+        - "%{libdir}/liborc-test-0.4.so"
+
 sources:
   - kind: tar
     url: https://gstreamer.freedesktop.org/src/orc/orc-0.4.27.tar.xz

@@ -17,6 +17,13 @@ variables:
     --enable-video-wayland \
     --enable-wayland-shared=no
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/sdl2-config"
+        - "%{libdir}/libSDL2.so"
+
 sources:
   - kind: tar
     url: https://www.libsdl.org/release/SDL2-2.0.7.tar.gz

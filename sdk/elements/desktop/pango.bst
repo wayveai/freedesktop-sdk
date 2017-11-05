@@ -7,6 +7,14 @@ depends:
   - filename: desktop/fontconfig.bst
   - filename: desktop/gobject-introspection.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpango-1.0.so"
+        - "%{libdir}/libpangoft2-1.0.so"
+        - "%{libdir}/libpangocairo-1.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/pango/1.40/pango-1.40.13.tar.xz

@@ -19,6 +19,23 @@ variables:
   conf-extra:
     --with-pcre=system
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{datadir}/glib-2.0/codegen"
+        - "%{datadir}/glib-2.0/codegen/**"
+        - "%{bindir}/glib-*"
+        - "%{bindir}/gdbus-codegen"
+        - "%{bindir}/gobject-query"
+        - "%{bindir}/gresource"
+        - "%{bindir}/gtester*"
+        - "%{libdir}/libglib-2.0.so"
+        - "%{libdir}/libgmodule-2.0.so"
+        - "%{libdir}/libgobject-2.0.so"
+        - "%{libdir}/libgio-2.0.so"
+        - "%{libdir}/libgthread-2.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/glib/2.54/glib-2.54.1.tar.xz

@@ -1,5 +1,4 @@
 kind: compose
-description: Bootstrap
 
 depends:
 - filename: coreutils.bst

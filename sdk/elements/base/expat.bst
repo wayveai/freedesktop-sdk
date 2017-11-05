@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libexpat.so"
+
 sources:
   - kind: tar
     url: https://github.com/libexpat/libexpat/releases/download/R_2_2_4/expat-2.2.4.tar.bz2

@@ -13,6 +13,15 @@ variables:
     --disable-wall \
     --disable-makeinstall-chown
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libfdisk.so"
+        - "%{libdir}/libblkid.so"
+        - "%{libdir}/libsmartcols.so"
+        - "%{libdir}/libmount.so"
+
 sources:
   - kind: tar
     url: https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.tar.xz

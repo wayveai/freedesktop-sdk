@@ -12,6 +12,12 @@ variables:
   conf-extra: |
     --with-trust-paths=/etc/ssl/certs/ca-certificates.crt
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libp11-kit.so"
+
 sources:
   - kind: tar
     url: https://github.com/p11-glue/p11-kit/releases/download/0.23.9/p11-kit-0.23.9.tar.gz

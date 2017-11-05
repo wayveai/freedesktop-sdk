@@ -5,6 +5,13 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/xorg-lib-x11.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libvdpau.so"
+        - "%{libdir}/vdpau/libvdpau_trace.so"
+
 sources:
   - kind: tar
     url: https://people.freedesktop.org/~aplattner/vdpau/libvdpau-1.1.1.tar.bz2

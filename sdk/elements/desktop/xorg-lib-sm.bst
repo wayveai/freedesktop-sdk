@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-lib-xtrans.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libSM.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libSM-1.2.2.tar.bz2

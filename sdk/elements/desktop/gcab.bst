@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libgcab-1.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gcab/0.7/gcab-0.7.tar.xz

@@ -8,6 +8,13 @@ variables:
   conf-extra: |
     --enable-x11
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxkbcommon.so"
+        - "%{libdir}/libxkbcommon-x11.so"
+
 sources:
   - kind: tar
     url: https://xkbcommon.org/download/libxkbcommon-0.7.2.tar.xz

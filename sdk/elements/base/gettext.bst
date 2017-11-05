@@ -6,6 +6,15 @@ depends:
   - filename: base/gzip.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libgettextsrc.so"
+        - "%{libdir}/libgettextlib.so"
+        - "%{libdir}/libgettextpo.so"
+        - "%{libdir}/libasprintf.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/gettext/gettext-0.19.8.1.tar.xz

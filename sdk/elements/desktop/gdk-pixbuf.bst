@@ -11,6 +11,13 @@ variables:
     --without-libjasper \
     --with-included-loaders=png,jpeg
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/gdk-pixbuf-*"
+        - "%{libdir}/libgdk_pixbuf-2.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.11.tar.xz

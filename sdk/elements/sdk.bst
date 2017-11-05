@@ -1,0 +1,26 @@
+kind: flatpak-image
+
+config:
+  directory: "%{prefix}"
+  exclude:
+    - debug
+
+  metadata:
+    Runtime:
+      name: org.freedesktop.Sdk
+      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+
+    Environment:
+      GI_TYPELIB_PATH: /app/lib/girepository-1.0
+      GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:/usr/lib/gstreamer-1.0
+      XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
+
+    'Extension org.freedesktop.Sdk.Debug':
+      directory: "%{lib}/%{gcc_triplet}/debug"
+      autodelete: true
+      no-autodownload: true
+
+depends:
+  - filename: desktop.bst
+    type: build

@@ -10,6 +10,13 @@ depends:
   - filename: base/pkg-config.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libgnutls.so"
+        - "%{libdir}/libgnutlsxx.so"
+
 sources:
   - kind: tar
     url: ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/gnutls-3.6.1.tar.xz

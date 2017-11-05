@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpixman-1.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/pixman-0.34.0.tar.bz2

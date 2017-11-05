@@ -4,6 +4,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/hunspell.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libmythes-1.2.so"
+
 sources:
   - kind: tar
     url: http://downloads.sourceforge.net/hunspell/mythes-1.2.4.tar.gz

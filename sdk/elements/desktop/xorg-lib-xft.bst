@@ -8,6 +8,12 @@ depends:
   - filename: desktop/freetype.bst
   - filename: desktop/fontconfig.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXft.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXft-2.3.2.tar.bz2

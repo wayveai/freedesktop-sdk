@@ -11,6 +11,12 @@ variables:
     --disable-tif-shared \
     --disable-webp-shared
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libSDL2_image.so"
+
 sources:
   - kind: tar
     url: https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.2.tar.gz

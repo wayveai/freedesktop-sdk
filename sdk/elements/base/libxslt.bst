@@ -4,6 +4,13 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/libxml2.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxslt.so"
+        - "%{libdir}/libexslt.so"
+
 sources:
   - kind: tar
     url: ftp://xmlsoft.org/libxml2/libxslt-1.1.31.tar.gz

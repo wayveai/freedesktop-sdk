@@ -14,6 +14,12 @@ variables:
   conf-extra: |
     --disable-specs
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXi.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXi-1.7.9.tar.bz2

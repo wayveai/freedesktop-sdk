@@ -9,6 +9,18 @@ depends:
   - filename: desktop/mesa.bst
   - filename: desktop/wayland-protocols.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libva.so"
+        - "%{libdir}/libva-tpi.so"
+        - "%{libdir}/libva-x11.so"
+        - "%{libdir}/libva-drm.so"
+        - "%{libdir}/libva-egl.so"
+        - "%{libdir}/libva-glx.so"
+        - "%{libdir}/libva-wayland.so"
+
 sources:
   - kind: tar
     url: https://www.freedesktop.org/software/vaapi/releases/libva/libva-1.8.2.tar.bz2

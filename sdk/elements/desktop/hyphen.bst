@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libhyphen.so"
+
 sources:
   - kind: tar
     url: http://downloads.sourceforge.net/hunspell/hyphen-2.8.8.tar.gz

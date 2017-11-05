@@ -7,6 +7,15 @@ variables:
   conf-extra: |
       --disable-documentation
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{bindir}/wayland-scanner"
+        - "%{libdir}/libwayland-cursor.so"
+        - "%{libdir}/libwayland-server.so"
+        - "%{libdir}/libwayland-client.so"
+
 sources:
   - kind: tar
     url: https://wayland.freedesktop.org/releases/wayland-1.14.0.tar.xz

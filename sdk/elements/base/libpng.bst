@@ -4,6 +4,13 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/zlib.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libpng.so"
+        - "%{libdir}/libpng16.so"
+
 sources:
   - kind: tar
     url: https://download.sourceforge.net/libpng/libpng-1.6.32.tar.xz

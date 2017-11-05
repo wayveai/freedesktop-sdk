@@ -8,6 +8,12 @@ depends:
   - filename: desktop/xcb-util-renderutil.bst
   - filename: desktop/xcb-util-image.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libxcb-cursor.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/xcb/xcb-util-cursor-0.1.3.tar.bz2

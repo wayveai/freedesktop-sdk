@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-proto-xext.bst
   - filename: desktop/xorg-lib-x11.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXext.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXext-1.3.3.tar.bz2

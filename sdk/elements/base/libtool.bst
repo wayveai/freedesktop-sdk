@@ -5,6 +5,12 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/m4.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libtldl.so"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz

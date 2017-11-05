@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libjson-glib-1.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/json-glib/1.4/json-glib-1.4.2.tar.xz

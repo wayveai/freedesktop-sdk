@@ -4,6 +4,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/gobject-introspection.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libatk-1.0.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/atk/2.27/atk-2.27.1.tar.xz

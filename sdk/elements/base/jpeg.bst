@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libjpeg.so"
+
 sources:
   - kind: tar
     url: http://www.ijg.org/files/jpegsrc.v9b.tar.gz

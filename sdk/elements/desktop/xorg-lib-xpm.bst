@@ -7,6 +7,12 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-proto-x.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXpm.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXpm-3.5.12.tar.bz2

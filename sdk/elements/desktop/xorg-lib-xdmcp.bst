@@ -5,6 +5,12 @@ depends:
   - filename: base-stack.bst
   - filename: desktop/xorg-proto-x.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXdmcp.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXdmcp-1.1.2.tar.bz2

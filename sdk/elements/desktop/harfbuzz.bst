@@ -11,6 +11,13 @@ variables:
     --with-gobject \
     --with-graphite2
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libharfbuzz-gobject.so"
+        - "%{libdir}/libharfbuzz.so"
+
 sources:
   - kind: tar
     url: https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.6.3.tar.bz2

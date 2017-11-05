@@ -37,6 +37,32 @@ environment:
   CXXFLAGS: "-O2 -g"
   LDFLAGS: ""
 
+variables:
+  stdlib: "%{prefix}/lib"
+  (?):
+    - target_arch == "x86_64" or target_arch == "aarch64":
+        stdlib: "%{prefix}/lib64"
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{sysroot}%{stdlib}/libdl.so"
+        - "%{sysroot}%{stdlib}/libnsl.so"
+        - "%{sysroot}%{stdlib}/libBrokenLocale.so"
+        - "%{sysroot}%{stdlib}/libthread_db.so"
+        - "%{sysroot}%{stdlib}/librt.so"
+        - "%{sysroot}%{stdlib}/libcrypt.so"
+        - "%{sysroot}%{stdlib}/libnss_dns.so"
+        - "%{sysroot}%{stdlib}/libanl.so"
+        - "%{sysroot}%{stdlib}/libnss_files.so"
+        - "%{sysroot}%{stdlib}/libresolv.so"
+        - "%{sysroot}%{stdlib}/libmvec.so"
+        - "%{sysroot}%{stdlib}/libcidn.so"
+        - "%{sysroot}%{stdlib}/libnss_hesiod.so"
+        - "%{sysroot}%{stdlib}/libnss_db.so"
+        - "%{sysroot}%{stdlib}/libutil.so"
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/glibc/glibc-2.26.tar.xz

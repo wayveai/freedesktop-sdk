@@ -10,6 +10,12 @@ depends:
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xi.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libXtst.so"
+
 sources:
   - kind: tar
     url: https://www.x.org/archive/individual/lib/libXtst-1.2.3.tar.bz2
