@@ -17,7 +17,7 @@ config:
       XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
 
     'Extension org.freedesktop.Sdk.Debug':
-      directory: "%{lib}/%{gcc_triplet}/debug"
+      directory: "%{lib}/debug"
       autodelete: true
       no-autodownload: true
 
