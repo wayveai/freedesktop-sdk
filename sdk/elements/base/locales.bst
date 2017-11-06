@@ -1,6 +1,8 @@
 kind: script
 
 depends:
+  - filename: bootstrap-import.bst
+    type: build
   - filename: base/gzip.bst
     type: build
   - filename: base/supported-locales.bst

@@ -3,6 +3,7 @@ description: pcre2
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/diffutils.bst
     type: build
   - filename: base/file.bst

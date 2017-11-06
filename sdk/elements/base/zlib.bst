@@ -3,6 +3,7 @@ description: zlib
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
 
 variables:
   conf-args: |

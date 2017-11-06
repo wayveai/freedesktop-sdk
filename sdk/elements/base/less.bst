@@ -3,6 +3,7 @@ description: GNU less
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
 
 sources:
   - kind: tar

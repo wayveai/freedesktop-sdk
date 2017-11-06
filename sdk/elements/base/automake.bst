@@ -3,6 +3,7 @@ description: GNU automake
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/autoconf.bst
 
 sources:

@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/help2man.bst
     type: build
   - filename: base/texinfo.bst

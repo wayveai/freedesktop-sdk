@@ -3,6 +3,7 @@ description: Python 3
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/python3.bst
 
 config:

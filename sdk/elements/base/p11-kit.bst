@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/libtasn1.bst
   - filename: base/pkg-config.bst
     type: build

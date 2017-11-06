@@ -3,6 +3,7 @@ description: GNU diffutils
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
 
 sources:
   - kind: tar

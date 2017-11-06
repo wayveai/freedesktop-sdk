@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
 
 config:
   configure-commands:

@@ -3,6 +3,7 @@ description: Python 2
 
 depends:
   - filename: bootstrap-import.bst
+    type: build
   - filename: base/zlib.bst
 
 variables:
