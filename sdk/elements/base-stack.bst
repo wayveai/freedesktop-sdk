@@ -29,10 +29,12 @@ depends:
 - filename: base/libelf.bst
 - filename: base/libffi.bst
 - filename: base/libidn2.bst
+- filename: base/libogg.bst
 - filename: base/libpng.bst
 - filename: base/libtasn1.bst
 - filename: base/libtiff.bst
 - filename: base/libtool.bst
+- filename: base/libvorbis.bst
 - filename: base/libunistring.bst
 - filename: base/libxml2.bst
 - filename: base/libxslt.bst

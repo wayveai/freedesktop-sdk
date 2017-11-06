@@ -41,6 +41,8 @@ depends:
   type: build
 - filename: base/libidn2.bst
   type: build
+- filename: base/libogg.bst
+  type: build
 - filename: base/libpng.bst
   type: build
 - filename: base/libtasn1.bst
@@ -48,6 +50,8 @@ depends:
 - filename: base/libtiff.bst
   type: build
 - filename: base/libtool.bst
+  type: build
+- filename: base/libvorbis.bst
   type: build
 - filename: base/libunistring.bst
   type: build
