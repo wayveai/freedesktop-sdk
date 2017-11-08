@@ -39,6 +39,10 @@ public:
         - "%{libdir}/libgtk-3.so"
         - "%{libdir}/libgailutil-3.so"
 
+    integration-commands:
+      - |
+        gtk-query-immodules-3.0 --update-cache
+
 sources:
   - kind: tar
     # gtk+ 3.22.25 requires new wayland-protocols not released yet with support for server side decoration
