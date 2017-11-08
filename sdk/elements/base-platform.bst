@@ -9,6 +9,8 @@ depends:
   type: build
 - filename: base/bzip2.bst
   type: build
+- filename: base/curl.bst
+  type: build
 - filename: base/diffutils.bst
   type: build
 - filename: base/expat.bst
@@ -64,6 +66,8 @@ depends:
 - filename: base/nano.bst
   type: build
 - filename: base/nettle.bst
+  type: build
+- filename: base/openssl.bst
   type: build
 - filename: base/p11-kit.bst
   type: build

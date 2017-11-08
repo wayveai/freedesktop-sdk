@@ -16,6 +16,8 @@ depends:
   type: build
 - filename: base/cmake.bst
   type: build
+- filename: base/curl.bst
+  type: build
 - filename: base/diffutils.bst
   type: build
 - filename: base/expat.bst
@@ -87,6 +89,8 @@ depends:
 - filename: base/nettle.bst
   type: build
 - filename: base/ninja.bst
+  type: build
+- filename: base/openssl.bst
   type: build
 - filename: base/p11-kit.bst
   type: build

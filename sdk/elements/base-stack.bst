@@ -7,6 +7,7 @@ depends:
 - filename: base/bison.bst
 - filename: base/bzip2.bst
 - filename: base/cmake.bst
+- filename: base/curl.bst
 - filename: base/diffutils.bst
 - filename: base/expat.bst
 - filename: base/file.bst
@@ -43,6 +44,7 @@ depends:
 - filename: base/nano.bst
 - filename: base/nettle.bst
 - filename: base/ninja.bst
+- filename: base/openssl.bst
 - filename: base/p11-kit.bst
 - filename: base/patch.bst
 - filename: base/pcre2.bst
