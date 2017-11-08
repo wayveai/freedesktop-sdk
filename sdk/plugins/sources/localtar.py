@@ -8,11 +8,11 @@ from buildstream import utils
 class LocalTarSource(Source):
 
     def configure(self, node):
-        project = self.get_project()
+        project_directory = self.get_project_directory()
 
         self.node_validate(node, ['path'] + Source.COMMON_CONFIG_KEYS)
         self.path = self.node_get_member(node, str, 'path')
-        self.fullpath = os.path.join(project.directory, self.path)
+        self.fullpath = os.path.join(project_directory, self.path)
 
     def preflight(self):
         if not os.path.exists(self.fullpath):
