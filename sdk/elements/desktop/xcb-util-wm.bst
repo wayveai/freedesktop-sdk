@@ -3,6 +3,7 @@ description: X.org xcb-util-wm
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-lib-xcb.bst
 
 public:

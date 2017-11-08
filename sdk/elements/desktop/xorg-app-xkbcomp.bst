@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-lib-x11.bst

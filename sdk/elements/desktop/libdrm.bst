@@ -3,6 +3,7 @@ description: libdrm
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-lib-pciaccess.bst
 
 variables:

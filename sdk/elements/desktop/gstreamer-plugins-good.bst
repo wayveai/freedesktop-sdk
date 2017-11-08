@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst

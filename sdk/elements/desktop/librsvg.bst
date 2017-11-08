@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst

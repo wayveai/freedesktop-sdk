@@ -3,6 +3,7 @@ description: X.org proto resource
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 sources:
   - kind: tar

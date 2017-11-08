@@ -3,6 +3,7 @@ description: libvdpau
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-lib-x11.bst
 
 public:

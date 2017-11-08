@@ -3,6 +3,7 @@ description: X.org lib xdamage
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-proto-damage.bst
   - filename: desktop/xorg-proto-fixes.bst
   - filename: desktop/xorg-proto-xext.bst

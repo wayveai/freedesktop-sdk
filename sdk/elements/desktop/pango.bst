@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/cairo.bst
   - filename: desktop/harfbuzz.bst
   - filename: desktop/fontconfig.bst

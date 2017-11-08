@@ -3,6 +3,7 @@ description: X.org util macros
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 sources:
   - kind: tar

@@ -1,7 +1,6 @@
 kind: stack
 
 depends:
-- filename: bootstrap-import.bst
 - filename: base/autoconf-archive.bst
 - filename: base/autoconf.bst
 - filename: base/automake.bst

@@ -3,6 +3,7 @@ description: X.org lib xcb
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-proto-xcb.bst
   - filename: desktop/xorg-util-macros.bst

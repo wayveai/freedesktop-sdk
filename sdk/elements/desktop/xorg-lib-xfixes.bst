@@ -3,6 +3,7 @@ description: X.org lib xfixes
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-proto-fixes.bst
   - filename: desktop/xorg-proto-xext.bst

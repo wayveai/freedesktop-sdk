@@ -3,6 +3,7 @@ description: X.org lib pciaccess
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 public:
   bst:

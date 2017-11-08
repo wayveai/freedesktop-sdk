@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/json-glib.bst
   - filename: desktop/libsoup.bst
 

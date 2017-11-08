@@ -3,6 +3,7 @@ description: X.org lib Xcursor
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-proto-fixes.bst
   - filename: desktop/xorg-lib-x11.bst

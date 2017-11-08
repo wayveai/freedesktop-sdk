@@ -3,6 +3,7 @@ description: X.org lib xpm
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-proto-x.bst

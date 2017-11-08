@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/llvm5.bst
     type: build
   - filename: desktop/libglvnd.bst

@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/wayland-protocols.bst
   - filename: desktop/atk.bst
   - filename: desktop/at-spi2-atk.bst

@@ -2,6 +2,7 @@ kind: manual
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 variables:
   fontdir: "%{install-root}%{datadir}/fonts"

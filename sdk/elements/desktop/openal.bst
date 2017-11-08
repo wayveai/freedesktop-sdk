@@ -2,6 +2,7 @@ kind: cmake
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 variables:
   cmake-extra: |

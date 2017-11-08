@@ -3,6 +3,7 @@ description: X.org proto evieext
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 sources:
   - kind: tar

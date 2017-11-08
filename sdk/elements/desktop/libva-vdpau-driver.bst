@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/libva.bst
   - filename: desktop/libvdpau.bst
 

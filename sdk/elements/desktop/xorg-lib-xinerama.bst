@@ -3,6 +3,7 @@ description: X.org lib xinerama
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-proto-xext.bst
   - filename: desktop/xorg-proto-xinerama.bst
   - filename: desktop/xorg-lib-x11.bst

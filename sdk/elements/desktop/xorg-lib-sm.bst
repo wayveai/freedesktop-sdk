@@ -3,6 +3,7 @@ description: X.org lib SM
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-lib-ice.bst
   - filename: desktop/xorg-proto-x.bst
   - filename: desktop/xorg-lib-xtrans.bst

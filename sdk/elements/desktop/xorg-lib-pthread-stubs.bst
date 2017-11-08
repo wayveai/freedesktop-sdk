@@ -3,6 +3,7 @@ description: X.org dist pthread stubs
 
 depends:
   - filename: base-stack.bst
+    type: build
 
 sources:
   - kind: tar

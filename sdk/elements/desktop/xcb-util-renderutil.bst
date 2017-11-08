@@ -3,6 +3,7 @@ description: X.org xcb-util-renderutil
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-lib-xcb.bst
   - filename: desktop/xorg-lib-pthread-stubs.bst
 

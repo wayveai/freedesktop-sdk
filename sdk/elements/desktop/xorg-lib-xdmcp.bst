@@ -3,6 +3,7 @@ description: X.org lib xdmcp
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/xorg-proto-x.bst
 
 public:

@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/harfbuzz.bst
   - filename: desktop/freetype-stage1.bst
     type: build

@@ -2,6 +2,7 @@ kind: myautotools
 
 depends:
   - filename: base-stack.bst
+    type: build
   - filename: desktop/gtk3.bst
   - filename: desktop/itstools.bst
 
