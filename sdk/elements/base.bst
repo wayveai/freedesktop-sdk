@@ -1,4 +1,4 @@
-kind: compose
+kind: mycompose
 description: base sdk
 
 depends:

@@ -1,4 +1,4 @@
-kind: compose
+kind: mycompose
 
 depends:
 - filename: base.bst

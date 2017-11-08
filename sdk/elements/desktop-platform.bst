@@ -1,4 +1,4 @@
-kind: compose
+kind: mycompose
 
 config:
   exclude:
