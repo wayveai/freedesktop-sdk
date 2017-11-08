@@ -113,6 +113,8 @@ depends:
   type: build
 - filename: desktop/openal.bst
   type: build
+- filename: desktop/os-release.bst
+  type: build
 - filename: desktop/orc.bst
   type: build
 - filename: desktop/pango.bst
