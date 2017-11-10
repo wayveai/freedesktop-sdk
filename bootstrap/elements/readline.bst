@@ -27,7 +27,7 @@ variables:
     --disable-static \
     --prefix=%{prefix} \
     --with-curses \
-    CPPFLAGS=-I%{sysroot}%{includedir}
+    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
 
 config:
   install-commands:
