@@ -54,6 +54,7 @@ depends:
 - filename: base/python3.bst
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
+- filename: base/strace.bst
 - filename: base/tar.bst
 - filename: base/texinfo.bst
 - filename: base/util-linux.bst

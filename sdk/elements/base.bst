@@ -112,6 +112,8 @@ depends:
   type: build
 - filename: base/sqlite.bst
   type: build
+- filename: base/strace.bst
+  type: build
 - filename: base/texinfo.bst
   type: build
 - filename: base/util-linux.bst
