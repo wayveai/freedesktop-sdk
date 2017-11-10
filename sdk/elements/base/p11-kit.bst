@@ -6,8 +6,6 @@ depends:
   - filename: base/libtasn1.bst
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/diffutils.bst
-    type: build
 
 variables:
   conf-extra: |

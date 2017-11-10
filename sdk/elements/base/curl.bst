@@ -3,10 +3,6 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/file.bst
-    type: build
-  - filename: base/diffutils.bst
-    type: build
   - filename: base/pkg-config.bst
     type: build
   - filename: base/gnutls.bst

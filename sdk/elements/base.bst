@@ -18,11 +18,7 @@ depends:
   type: build
 - filename: base/curl.bst
   type: build
-- filename: base/diffutils.bst
-  type: build
 - filename: base/expat.bst
-  type: build
-- filename: base/file.bst
   type: build
 - filename: base/flex.bst
   type: build

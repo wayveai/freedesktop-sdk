@@ -8,9 +8,7 @@ depends:
 - filename: base/bzip2.bst
 - filename: base/cmake.bst
 - filename: base/curl.bst
-- filename: base/diffutils.bst
 - filename: base/expat.bst
-- filename: base/file.bst
 - filename: base/flex.bst
 - filename: base/gdb.bst
 - filename: base/gettext.bst

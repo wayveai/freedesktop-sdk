@@ -27,3 +27,7 @@ depends:
   type: build
 - filename: ncurses.bst
   type: build
+- filename: diffutils.bst
+  type: build
+- filename: file.bst
+  type: build

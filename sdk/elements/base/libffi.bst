@@ -4,8 +4,6 @@ description: libffi
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/file.bst
-    type: build
 
 public:
   bst:
