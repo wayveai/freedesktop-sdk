@@ -48,6 +48,8 @@ public:
   bst:
     split-rules:
       devel:
+        - "%{sysroot}%{stdlib}/*.o"
+        - "%{sysroot}%{stdlib}/lib*.a"
         - "%{sysroot}%{stdlib}/libdl.so"
         - "%{sysroot}%{stdlib}/libnsl.so"
         - "%{sysroot}%{stdlib}/libBrokenLocale.so"
