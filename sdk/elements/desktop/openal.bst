@@ -3,11 +3,13 @@ kind: cmake
 depends:
   - filename: base-stack.bst
     type: build
+  - filename: desktop/pulseaudio.bst
+  - filename: desktop/sdl2.bst
 
 variables:
   cmake-extra: |
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR:PATH=%{libdir} \
+    -DLIB_INSTALL_DIR:PATH=%{lib} \
 
 public:
   bst:

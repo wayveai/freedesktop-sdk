@@ -3,6 +3,12 @@ kind: myautotools
 depends:
   - filename: base-stack.bst
     type: build
+  - filename: desktop/ibus.bst
+  - filename: desktop/dbus.bst
+  - filename: desktop/mesa.bst
+  - filename: desktop/xorg-lib-x11.bst
+  - filename: desktop/wayland.bst
+  - filename: desktop/pulseaudio.bst
 
 variables:
   conf-extra: |
