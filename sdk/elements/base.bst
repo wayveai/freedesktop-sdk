@@ -38,6 +38,8 @@ depends:
   type: build
 - filename: base/help2man.bst
   type: build
+- filename: base/icu.bst
+  type: build
 - filename: base/iso-codes.bst
   type: build
 - filename: base/intltool.bst

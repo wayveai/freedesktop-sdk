@@ -23,6 +23,8 @@ depends:
   type: build
 - filename: base/gzip.bst
   type: build
+- filename: base/icu.bst
+  type: build
 - filename: base/iso-codes.bst
   type: build
 - filename: base/jpeg.bst

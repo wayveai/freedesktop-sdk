@@ -19,6 +19,7 @@ depends:
 - filename: base/gzip.bst
 - filename: base/help2man.bst
 - filename: base/intltool.bst
+- filename: base/icu.bst
 - filename: base/iso-codes.bst
 - filename: base/jpeg.bst
 - filename: base/less.bst
