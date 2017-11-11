@@ -8,11 +8,17 @@ depends:
 
 variables:
   builddir: ''
+  openssl-target: linux-%{arch}
+  (?):
+    - target_arch == "i586":
+        openssl-target: linux-x86
+    - target_arch == "arm":
+        openssl-target: linux-armv4
 
 config:
   configure-commands:
     - |
-      ./config \
+      ./Configure %{openssl-target} \
         --prefix=%{prefix} \
         --libdir=%{lib} \
         shared \
