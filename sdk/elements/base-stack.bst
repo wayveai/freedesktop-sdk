@@ -14,6 +14,7 @@ depends:
 - filename: base/gettext.bst
 - filename: base/glib.bst
 - filename: base/gmp.bst
+- filename: base/gnupg.bst
 - filename: base/gnutls.bst
 - filename: base/gperf.bst
 - filename: base/gzip.bst
@@ -24,9 +25,13 @@ depends:
 - filename: base/jpeg.bst
 - filename: base/less.bst
 - filename: base/libarchive.bst
+- filename: base/libassuan.bst
 - filename: base/libcap.bst
 - filename: base/libelf.bst
 - filename: base/libffi.bst
+- filename: base/libgcrypt.bst
+- filename: base/libgpg-error.bst
+- filename: base/libksba.bst
 - filename: base/libidn2.bst
 - filename: base/libogg.bst
 - filename: base/libpng.bst
@@ -43,6 +48,7 @@ depends:
 - filename: base/nano.bst
 - filename: base/nettle.bst
 - filename: base/ninja.bst
+- filename: base/npth.bst
 - filename: base/openssl.bst
 - filename: base/p11-kit.bst
 - filename: base/patch.bst

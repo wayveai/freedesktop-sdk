@@ -30,6 +30,8 @@ depends:
   type: build
 - filename: base/gmp.bst
   type: build
+- filename: base/gnupg.bst
+  type: build
 - filename: base/gnutls.bst
   type: build
 - filename: base/gperf.bst
@@ -50,11 +52,19 @@ depends:
   type: build
 - filename: base/libarchive.bst
   type: build
+- filename: base/libassuan.bst
+  type: build
 - filename: base/libcap.bst
   type: build
 - filename: base/libelf.bst
   type: build
 - filename: base/libffi.bst
+  type: build
+- filename: base/libgcrypt.bst
+  type: build
+- filename: base/libgpg-error.bst
+  type: build
+- filename: base/libksba.bst
   type: build
 - filename: base/libidn2.bst
   type: build
@@ -87,6 +97,8 @@ depends:
 - filename: base/nettle.bst
   type: build
 - filename: base/ninja.bst
+  type: build
+- filename: base/npth.bst
   type: build
 - filename: base/openssl.bst
   type: build
