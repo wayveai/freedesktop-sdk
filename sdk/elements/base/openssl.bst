@@ -11,7 +11,7 @@ variables:
   openssl-target: linux-%{arch}
   (?):
     - target_arch == "i586":
-        openssl-target: linux-x86
+        openssl-target: linux-generic32
     - target_arch == "arm":
         openssl-target: linux-armv4
 
@@ -25,9 +25,11 @@ config:
         threads
 
   install-commands:
-    (>):
-      - |
-        rm %{install-root}%{libdir}/lib*.a
+    - |
+      make -j1 INSTALL_PREFIX="%{install-root}" install
+
+    - |
+      rm %{install-root}%{libdir}/lib*.a
 
 public:
   bst:
@@ -37,6 +39,7 @@ public:
         - "%{libdir}/libcrypto.so"
 
 sources:
+  # Too many things depends on 1.0.
   - kind: tar
-    url: https://www.openssl.org/source/openssl-1.1.0g.tar.gz
-    ref: de4d501267da39310905cb6dc8c6121f7a2cad45a7707f76df828fe1b85073af
+    url: https://www.openssl.org/source/openssl-1.0.2m.tar.gz
+    ref: 8c6ff15ec6b319b50788f42c7abc2890c08ba5a1cdcd3810eb9092deada37b0f
