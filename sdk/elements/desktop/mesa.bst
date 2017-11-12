@@ -12,6 +12,7 @@ depends:
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst
   - filename: desktop/wayland-protocols.bst
+  - filename: desktop/libglvnd.bst
 
 variables:
   (?):
@@ -42,7 +43,20 @@ variables:
     --with-gallium-drivers=%{gallium_drivers} \
     --with-dri-drivers=%{dri_drivers}
 
+config:
+  install-commands:
+    (>):
+      - |
+        ln -s libEGL_mesa.so %{install-root}%{libdir}/libEGL_indirect.so
+        ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
+        ln -s libGLX_mesa.so %{install-root}%{libdir}/libGLX_indirect.so
+        ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
+
 sources:
   - kind: tar
     url: https://mesa.freedesktop.org/archive/mesa-17.2.2.tar.xz
     ref: cf522244d6a5a1ecde3fc00e7c96935253fe22f808f064cab98be6f3faa65782
+  - kind: patch
+    path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
+  - kind: patch
+    path: elements/desktop/mesa-Fix-linkage-against-shared-glapi.patch
