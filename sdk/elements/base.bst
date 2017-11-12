@@ -94,6 +94,8 @@ depends:
   type: build
 - filename: base/nano.bst
   type: build
+- filename: base/nasm.bst
+  type: build
 - filename: base/nettle.bst
   type: build
 - filename: base/ninja.bst
@@ -133,6 +135,8 @@ depends:
 - filename: base/util-linux.bst
   type: build
 - filename: base/which.bst
+  type: build
+- filename: base/yasm.bst
   type: build
 - filename: base/xz.bst
   type: build

@@ -46,6 +46,7 @@ depends:
 - filename: base/m4.bst
 - filename: base/meson.bst
 - filename: base/nano.bst
+- filename: base/nasm.bst
 - filename: base/nettle.bst
 - filename: base/ninja.bst
 - filename: base/npth.bst
@@ -66,5 +67,6 @@ depends:
 - filename: base/texinfo.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
+- filename: base/yasm.bst
 - filename: base/xz.bst
 - filename: base/zlib.bst
