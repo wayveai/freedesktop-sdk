@@ -60,6 +60,8 @@ class FlatpakImageElement(Element):
 
         os.makedirs(allfiles, exist_ok=True)
         os.makedirs(filesdir, exist_ok=True)
+        if self.metadata.has_section('Application'):
+            os.makedirs(os.path.join(installdir, 'export'), exist_ok=True)
 
         with self.timed_activity("Creating flatpak image", silent_nested=True):
             self.stage_dependency_artifacts(sandbox, Scope.BUILD,
