@@ -95,5 +95,7 @@ depends:
   type: build
 - filename: base/which.bst
   type: build
+- filename: base/xz.bst
+  type: build
 - filename: base/zlib.bst
   type: build

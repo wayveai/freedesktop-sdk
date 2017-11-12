@@ -60,4 +60,5 @@ depends:
 - filename: base/texinfo.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
+- filename: base/xz.bst
 - filename: base/zlib.bst
