@@ -21,6 +21,24 @@ config:
       autodelete: true
       no-autodownload: true
 
+    (?):
+      - target_arch == "x86_64":
+          'Extension org.freedesktop.Compat.i386':
+            directory: "lib/i386-linux-gnu"
+            add-ld-path: .
+          'Extension org.freedesktop.Compat.i386.Debug':
+            directory: "lib/i386-linux-gnu/debug"
+            autodelete: true
+            no-autodownload: true
+      - target_arch == "aarch64":
+          'Extension org.freedesktop.Compat.arm':
+            directory: "lib/arm-linux-gnu"
+            add-ld-path: .
+          'Extension org.freedesktop.Compat.arm.Debug':
+            directory: "lib/arm-linux-gnu/debug"
+            autodelete: true
+            no-autodownload: true
+
 depends:
   - filename: desktop.bst
     type: build

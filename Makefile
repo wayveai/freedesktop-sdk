@@ -1,5 +1,10 @@
 BRANCH=manual-rewrite
 ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
+ifeq ($(ARCH),i586)
+FLATPAK_ARCH=i386
+else
+FLATPAK_ARCH=$(ARCH)
+endif
 
 all: repo
 
@@ -18,18 +23,31 @@ bootstrap: $(BOOTSTRAP_IMAGES)
 RUNTIMES=					\
 	sdk					\
 	sdk-debug				\
-	platform
+	platform				\
+	platform-arch-libs			\
+	platform-arch-libs-debug
 
-RUNTIME_DIRECTORIES=$(addprefix sdk/,$(RUNTIMES))
+RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
 
 $(RUNTIME_DIRECTORIES): $(BOOTSTRAP_IMAGES)
 	cd sdk && bst -o target_arch $(ARCH) build all.bst
-	cd sdk && bst -o target_arch $(ARCH) checkout "$$(basename "$@").bst" "$$(basename "$@")"
+	cd sdk && bst -o target_arch $(ARCH) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 repo: $(RUNTIME_DIRECTORIES)
 	for dir in $(RUNTIME_DIRECTORIES); do				 \
-	  flatpak build-export --files=files repo "$${dir}" "$(BRANCH)"; \
+	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files repo "$${dir}" "$(BRANCH)"; \
 	done
+
+export: $(RUNTIME_DIRECTORIES)
+	for dir in $(RUNTIME_DIRECTORIES); do				 \
+	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$${dir}" "$(BRANCH)"; \
+	done
+	if test "$(ARCH)" = "i586" ; then \
+	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
+        fi
+
+runtime: $(BOOTSTRAP_IMAGES)
+	cd sdk && bst -o target_arch $(ARCH) build all.bst
 
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
@@ -39,4 +57,4 @@ clean-bootstrap:
 
 clean: clean-bootstrap clean-runtime
 
-.PHONY: clean clean-bootstrap clean-runtime
+.PHONY: clean clean-bootstrap clean-runtime export runtime bootstrap
