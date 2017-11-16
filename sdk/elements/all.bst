@@ -1,5 +1,8 @@
 kind: stack
 depends:
+  - filename: basesdk.bst
+  - filename: basesdk-debug.bst
+  - filename: baseplatform.bst
   - filename: sdk.bst
   - filename: sdk-debug.bst
   - filename: platform.bst

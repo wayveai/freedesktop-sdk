@@ -27,7 +27,11 @@ RUNTIMES=					\
 	platform-arch-libs			\
 	platform-arch-libs-debug		\
 	glxinfo					\
-	glxinfo-debug
+	glxinfo-debug				\
+	basesdk					\
+	basesdk-debug				\
+	baseplatform
+
 
 RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
 
