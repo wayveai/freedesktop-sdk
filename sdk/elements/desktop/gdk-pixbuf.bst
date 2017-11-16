@@ -19,6 +19,10 @@ public:
         - "%{bindir}/gdk-pixbuf-*"
         - "%{libdir}/libgdk_pixbuf-2.0.so"
 
+    integration-commands:
+      - |
+        gdk-pixbuf-query-loaders --update-cache
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.11.tar.xz

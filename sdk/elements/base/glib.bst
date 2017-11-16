@@ -37,6 +37,10 @@ public:
         - "%{libdir}/libgio-2.0.so"
         - "%{libdir}/libgthread-2.0.so"
 
+    integration-commands:
+      - |
+        glib-compile-schemas %{datadir}/glib-2.0/schemas
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/glib/2.54/glib-2.54.1.tar.xz
