@@ -8,8 +8,6 @@ depends:
   type: build
 - filename: binutils-stage1.bst
   type: build
-- filename: gcc-stage1.bst
-  type: build
 - filename: glibc.bst
   type: build
 - filename: linux-headers.bst
