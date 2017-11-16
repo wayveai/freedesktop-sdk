@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib xtst
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-proto-record.bst
   - filename: desktop/xorg-proto-input.bst

@@ -4,7 +4,6 @@ config:
   directory: "%{prefix}"
   exclude:
     - debug
-    - devel
 
   metadata:
     Runtime:
@@ -28,5 +27,5 @@ config:
             add-ld-path: .
 
 depends:
-  - filename: desktop-platform.bst
+  - filename: desktop-platform-image.bst
     type: build

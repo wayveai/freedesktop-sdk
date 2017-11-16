@@ -2,7 +2,7 @@ kind: myautotools
 description: libvdpau
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-lib-x11.bst
 

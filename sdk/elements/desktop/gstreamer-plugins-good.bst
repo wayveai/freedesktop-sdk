@@ -1,7 +1,7 @@
 kind: myautotools
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst

@@ -4,7 +4,6 @@ config:
   directory: "%{libdir}"
   exclude:
     - debug
-    - devel
 
   metadata:
     Runtime:
@@ -14,5 +13,5 @@ config:
       ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
 
 depends:
-  - filename: desktop.bst
+  - filename: desktop-platform-image.bst
     type: build

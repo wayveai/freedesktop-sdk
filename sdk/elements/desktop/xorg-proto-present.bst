@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org proto present
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
 
 sources:

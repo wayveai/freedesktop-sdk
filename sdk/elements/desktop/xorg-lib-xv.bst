@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib xv
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-proto-video.bst
   - filename: desktop/xorg-proto-xext.bst

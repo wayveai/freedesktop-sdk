@@ -1,7 +1,7 @@
 kind: myautotools
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/pixman.bst
   - filename: desktop/xorg-lib-x11.bst

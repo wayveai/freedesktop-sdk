@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib x11
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-proto-x.bst

@@ -1,7 +1,7 @@
 kind: manual
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/appstream-glib.bst
     type: build

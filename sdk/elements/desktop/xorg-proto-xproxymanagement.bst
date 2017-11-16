@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org proto X proxy management
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
 
 sources:

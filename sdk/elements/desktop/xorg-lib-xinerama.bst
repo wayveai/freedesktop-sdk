@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib xinerama
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-proto-xext.bst
   - filename: desktop/xorg-proto-xinerama.bst

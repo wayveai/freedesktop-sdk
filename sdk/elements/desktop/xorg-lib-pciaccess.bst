@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib pciaccess
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
 
 public:

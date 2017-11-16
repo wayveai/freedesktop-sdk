@@ -40,5 +40,5 @@ config:
             no-autodownload: true
 
 depends:
-  - filename: desktop.bst
+  - filename: desktop-image.bst
     type: build

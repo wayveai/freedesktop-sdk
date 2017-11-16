@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib SM
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-lib-ice.bst
   - filename: desktop/xorg-proto-x.bst

@@ -1,7 +1,7 @@
 kind: myautotools
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/shared-mime-info.bst
   - filename: desktop/gobject-introspection.bst

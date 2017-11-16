@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org xcb-util
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-lib-xau.bst
   - filename: desktop/xorg-lib-xcb.bst

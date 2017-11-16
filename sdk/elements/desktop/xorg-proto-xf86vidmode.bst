@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org proto XF86 vidmode
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
 
 sources:

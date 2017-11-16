@@ -1,7 +1,7 @@
 kind: cmake
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
 
 variables:

@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org xcb-util-cursor
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-lib-pthread-stubs.bst
   - filename: desktop/xorg-lib-xcb.bst

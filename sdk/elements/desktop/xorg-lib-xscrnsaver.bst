@@ -2,7 +2,7 @@ kind: myautotools
 description: X.org lib XScrnSaver
 
 depends:
-  - filename: base-stack.bst
+  - filename: base.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-x11.bst
