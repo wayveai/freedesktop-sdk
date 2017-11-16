@@ -12,6 +12,13 @@ depends:
 variables:
   prefix: "%{tools}"
   libdir: "%{tools}/lib"
+  (?):
+    - target_arch == "arm":
+        conf-extra: |
+          --with-mode=thumb \
+          --with-fpu=vfpv3-d16 \
+          --with-arch=armv7-a \
+          --with-float=hard
   conf-args: |
     --prefix=%{prefix} \
     --build=$(sh /config/config.guess) \
@@ -34,7 +41,8 @@ variables:
     --disable-libssp \
     --disable-libvtv \
     --disable-multilib \
-    --enable-languages=c,c++
+    --enable-languages=c,c++ \
+    %{conf-extra}
 
 sources:
 - kind: tar

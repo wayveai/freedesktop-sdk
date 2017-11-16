@@ -18,6 +18,14 @@ depends:
   type: build
 
 variables:
+  (?):
+    - target_arch == "arm":
+        conf-extra: |
+          --with-mode=thumb \
+          --with-fpu=vfpv3-d16 \
+          --with-arch=armv7-a \
+          --with-float=hard
+
   conf-args: |
     --prefix=%{prefix} \
     --build=$(sh /config/config.guess) \
@@ -26,7 +34,8 @@ variables:
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
-    --enable-languages=c,c++
+    --enable-languages=c,c++ \
+    %{conf-extra}
 
 config:
   install-commands:
