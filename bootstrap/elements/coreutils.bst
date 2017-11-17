@@ -43,4 +43,4 @@ config:
   install-commands:
     - |
       cd "%{builddir}"
-      %{cross-install}
+      %{cross-install} INSTALL=install
