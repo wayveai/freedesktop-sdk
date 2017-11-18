@@ -5,7 +5,6 @@ depends:
     type: build
   - filename: desktop/freetype.bst
   - filename: desktop/sdl2.bst
-  - filename: desktop/libglvnd.bst
 
 public:
   bst:

@@ -5,7 +5,6 @@ depends:
     type: build
   - filename: desktop/llvm5.bst
     type: build
-  - filename: desktop/libglvnd.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-proto-dri2.bst
   - filename: desktop/xorg-lib-xdamage.bst
@@ -47,10 +46,11 @@ config:
   install-commands:
     (>):
       - |
-        ln -s libEGL_mesa.so %{install-root}%{libdir}/libEGL_indirect.so
         ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
-        ln -s libGLX_mesa.so %{install-root}%{libdir}/libGLX_indirect.so
         ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
+        rm -f "%{install-root}%{libdir}"/libGLESv2*
+        rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
+        rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
 
 sources:
   - kind: tar
