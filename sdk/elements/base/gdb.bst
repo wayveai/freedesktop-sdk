@@ -8,23 +8,29 @@ depends:
     type: build
   - filename: base/perl.bst
     type: build
+  - filename: base/zlib.bst
 
 variables:
   conf-link-args: |
     --enable-shared
 
-public:
-  bst:
-    split-rules:
-      devel:
-        - "%{libdir}/libbfd.so"
-        - "%{libdir}/libopcodes.so"
+  conf-extra: |
+    --without-zlib \
+    --with-system-zlib \
+    --disable-readline \
+    --with-system-readline \
+    --disable-install-libbfd \
+    --disable-install-libiberty \
+    --with-separate-debug-dir="%{debugdir}"
 
 config:
   install-commands:
     (>):
       - |
         rm "%{install-root}%{infodir}/dir"
+        rm -f "%{install-root}%{infodir}/bfd.info"
+        rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/bfd.mo
+        rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/opcodes.mo
 
 sources:
   - kind: tar
