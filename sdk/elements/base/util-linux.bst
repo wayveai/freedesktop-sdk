@@ -8,7 +8,8 @@ depends:
 variables:
   conf-extra: |
     --disable-wall \
-    --disable-makeinstall-chown
+    --disable-makeinstall-chown \
+    --disable-kill
 
 public:
   bst:
