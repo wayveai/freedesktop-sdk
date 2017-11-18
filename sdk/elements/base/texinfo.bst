@@ -7,6 +7,20 @@ depends:
   - filename: base/perl.bst
     type: build
 
+public:
+  bst:
+    integration-commands:
+      - |
+        for f in "%{infodir}"/*; do
+          case "$(basename "${f}")" in
+            *.png|*.jpg|*-[0-9])
+              ;;
+            *)
+              install-info --info-dir="%{infodir}" "${f}"
+              ;;
+          esac
+        done
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/texinfo/texinfo-6.5.tar.xz

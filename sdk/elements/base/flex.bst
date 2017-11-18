@@ -9,6 +9,12 @@ depends:
     type: build
   - filename: base/m4.bst
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 public:
   bst:
     split-rules:

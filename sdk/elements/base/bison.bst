@@ -10,6 +10,12 @@ depends:
   - filename: base/m4.bst
   - filename: base/perl.bst
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.xz

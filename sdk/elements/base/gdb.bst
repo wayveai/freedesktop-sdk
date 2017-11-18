@@ -20,6 +20,12 @@ public:
         - "%{libdir}/libbfd.so"
         - "%{libdir}/libopcodes.so"
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/gdb/gdb-8.0.1.tar.xz

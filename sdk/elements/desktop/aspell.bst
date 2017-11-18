@@ -14,6 +14,12 @@ public:
         - "%{libdir}/libaspell.so"
         - "%{libdir}/libpspell.so"
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz
