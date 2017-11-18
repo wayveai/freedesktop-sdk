@@ -8,12 +8,6 @@ depends:
   - filename: base/libksba.bst
   - filename: base/npth.bst
 
-public:
-  bst:
-    split-rules:
-      devel:
-        - "%{libdir}/libnpth.so"
-
 sources:
   - kind: tar
     url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.2.tar.bz2

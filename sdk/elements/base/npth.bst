@@ -4,6 +4,12 @@ depends:
   - filename: bootstrap-import.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        - "%{libdir}/libnpth.so"
+
 sources:
   - kind: tar
     url: https://www.gnupg.org/ftp/gcrypt/npth/npth-1.5.tar.bz2
