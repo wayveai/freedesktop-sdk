@@ -15,7 +15,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libicu*.so"
+        (>):
+          - "%{libdir}/libicu*.so"
 
 sources:
   - kind: tar

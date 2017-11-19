@@ -11,7 +11,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxcb-render-util.so"
+        (>):
+          - "%{libdir}/libxcb-render-util.so"
 
 sources:
   - kind: tar

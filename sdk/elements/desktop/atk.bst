@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libatk-1.0.so"
+        (>):
+          - "%{libdir}/libatk-1.0.so"
 
 sources:
   - kind: tar

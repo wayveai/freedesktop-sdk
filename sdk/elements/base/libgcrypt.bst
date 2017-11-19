@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgcrypt.so"
+        (>):
+          - "%{libdir}/libgcrypt.so"
 
 sources:
   - kind: tar

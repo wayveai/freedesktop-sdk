@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libunistring.so"
+        (>):
+          - "%{libdir}/libunistring.so"
 
 sources:
   - kind: tar

@@ -23,12 +23,13 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/cairo-sphinx"
-        - "%{bindir}/cairo-trace"
-        - "%{libdir}/libcairo-script-interpreter.so"
-        - "%{libdir}/libcairo-gobject.so"
-        - "%{libdir}/libcairo.so"
-        - "%{libdir}/cairo/libcairo-trace.so"
+        (>):
+          - "%{bindir}/cairo-sphinx"
+          - "%{bindir}/cairo-trace"
+          - "%{libdir}/libcairo-script-interpreter.so"
+          - "%{libdir}/libcairo-gobject.so"
+          - "%{libdir}/libcairo.so"
+          - "%{libdir}/cairo/libcairo-trace.so"
 
 sources:
   - kind: tar

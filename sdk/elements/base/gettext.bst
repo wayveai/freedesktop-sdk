@@ -11,10 +11,11 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgettextsrc.so"
-        - "%{libdir}/libgettextlib.so"
-        - "%{libdir}/libgettextpo.so"
-        - "%{libdir}/libasprintf.so"
+        (>):
+          - "%{libdir}/libgettextsrc.so"
+          - "%{libdir}/libgettextlib.so"
+          - "%{libdir}/libgettextpo.so"
+          - "%{libdir}/libasprintf.so"
 
 sources:
   - kind: tar

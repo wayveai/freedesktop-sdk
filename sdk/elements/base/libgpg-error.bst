@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgpg-error.so"
+        (>):
+          - "%{libdir}/libgpg-error.so"
 
 sources:
   - kind: tar

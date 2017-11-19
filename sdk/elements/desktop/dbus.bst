@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libdbus-1.so"
+        (>):
+          - "%{libdir}/libdbus-1.so"
 
 sources:
   - kind: tar

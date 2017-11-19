@@ -14,7 +14,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXdamage.so"
+        (>):
+          - "%{libdir}/libXdamage.so"
 
 sources:
   - kind: tar

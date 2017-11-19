@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libatk-bridge-2.0.so"
+        (>):
+          - "%{libdir}/libatk-bridge-2.0.so"
 
 sources:
   - kind: tar

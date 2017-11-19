@@ -17,7 +17,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libcurl.so"
+        (>):
+          - "%{libdir}/libcurl.so"
 
 sources:
   - kind: tar

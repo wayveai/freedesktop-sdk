@@ -13,8 +13,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libsoup-2.4.so"
-        - "%{libdir}/libsoup-gnome-2.4.so"
+        (>):
+          - "%{libdir}/libsoup-2.4.so"
+          - "%{libdir}/libsoup-gnome-2.4.so"
 
 sources:
   - kind: tar

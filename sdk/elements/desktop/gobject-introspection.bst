@@ -8,10 +8,11 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/gobject-introspection/giscanner"
-        - "%{datadir}/gobject-introspection/giscanner"
-        - "%{bindir}/g-ir-*"
-        - "%{libdir}/libgirepository-1.0.so"
+        (>):
+          - "%{libdir}/gobject-introspection/giscanner"
+          - "%{datadir}/gobject-introspection/giscanner"
+          - "%{bindir}/g-ir-*"
+          - "%{libdir}/libgirepository-1.0.so"
 
 sources:
   - kind: tar

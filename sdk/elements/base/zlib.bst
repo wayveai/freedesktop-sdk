@@ -15,7 +15,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libz.so"
+        (>):
+          - "%{libdir}/libz.so"
 
 sources:
   - kind: tar

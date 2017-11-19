@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libepoxy.so"
+        (>):
+          - "%{libdir}/libepoxy.so"
 
 sources:
   - kind: tar

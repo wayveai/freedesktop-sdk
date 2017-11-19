@@ -13,11 +13,12 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgstcheck-1.0.so"
-        - "%{libdir}/libgstbase-1.0.so"
-        - "%{libdir}/libgstnet-1.0.so"
-        - "%{libdir}/libgstreamer-1.0.so"
-        - "%{libdir}/libgstcontroller-1.0.so"
+        (>):
+          - "%{libdir}/libgstcheck-1.0.so"
+          - "%{libdir}/libgstbase-1.0.so"
+          - "%{libdir}/libgstnet-1.0.so"
+          - "%{libdir}/libgstreamer-1.0.so"
+          - "%{libdir}/libgstcontroller-1.0.so"
 
 sources:
   - kind: tar

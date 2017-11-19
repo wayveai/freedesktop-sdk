@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpciaccess.so"
+        (>):
+          - "%{libdir}/libpciaccess.so"
 
 sources:
   - kind: tar

@@ -46,7 +46,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxml2.so"
+        (>):
+          - "%{libdir}/libxml2.so"
 
 sources:
   - kind: tar

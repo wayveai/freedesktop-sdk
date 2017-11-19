@@ -19,7 +19,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXi.so"
+        (>):
+          - "%{libdir}/libXi.so"
 
 sources:
   - kind: tar

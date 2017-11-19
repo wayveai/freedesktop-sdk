@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libhunspell-1.3.so"
+        (>):
+          - "%{libdir}/libhunspell-1.3.so"
 
 sources:
   - kind: tar

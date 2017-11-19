@@ -16,8 +16,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libX11.so"
-        - "%{libdir}/libX11-xcb.so"
+        (>):
+          - "%{libdir}/libX11.so"
+          - "%{libdir}/libX11-xcb.so"
 
 sources:
   - kind: tar

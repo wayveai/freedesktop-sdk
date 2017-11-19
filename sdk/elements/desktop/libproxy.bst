@@ -23,7 +23,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libproxy.so"
+        (>):
+          - "%{libdir}/libproxy.so"
 
 sources:
   - kind: tar

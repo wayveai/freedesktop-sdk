@@ -20,8 +20,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libout123.so"
-        - "%{libdir}/libmpg123.so"
+        (>):
+          - "%{libdir}/libout123.so"
+          - "%{libdir}/libmpg123.so"
 
 sources:
   - kind: tar

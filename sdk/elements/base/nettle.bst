@@ -9,8 +9,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libnettle.so"
-        - "%{libdir}/libhogweed.so"
+        (>):
+          - "%{libdir}/libnettle.so"
+          - "%{libdir}/libhogweed.so"
 
 sources:
   - kind: tar

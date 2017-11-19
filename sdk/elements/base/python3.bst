@@ -21,7 +21,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpython3.6m.so"
+        (>):
+          - "%{libdir}/libpython3.6m.so"
 
 sources:
   - kind: tar

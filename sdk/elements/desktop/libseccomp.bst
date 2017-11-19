@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libseccomp.so"
+        (>):
+          - "%{libdir}/libseccomp.so"
 
 sources:
   - kind: tar

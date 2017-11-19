@@ -74,15 +74,16 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{sysroot}%{libdir}/libformw.so"
-        - "%{sysroot}%{libdir}/libform.so"
-        - "%{sysroot}%{libdir}/libpanel.so"
-        - "%{sysroot}%{libdir}/libmenuw.so"
-        - "%{sysroot}%{libdir}/libmenu.so"
-        - "%{sysroot}%{libdir}/libcurses.so"
-        - "%{sysroot}%{libdir}/libncursesw.so"
-        - "%{sysroot}%{libdir}/libncurses.so"
-        - "%{sysroot}%{libdir}/libpanelw.so"
+        (>):
+          - "%{sysroot}%{libdir}/libformw.so"
+          - "%{sysroot}%{libdir}/libform.so"
+          - "%{sysroot}%{libdir}/libpanel.so"
+          - "%{sysroot}%{libdir}/libmenuw.so"
+          - "%{sysroot}%{libdir}/libmenu.so"
+          - "%{sysroot}%{libdir}/libcurses.so"
+          - "%{sysroot}%{libdir}/libncursesw.so"
+          - "%{sysroot}%{libdir}/libncurses.so"
+          - "%{sysroot}%{libdir}/libpanelw.so"
 
 sources:
 - kind: tar

@@ -8,8 +8,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libtiff.so"
-        - "%{libdir}/libtiffxx.so"
+        (>):
+          - "%{libdir}/libtiff.so"
+          - "%{libdir}/libtiffxx.so"
 
 sources:
   - kind: tar

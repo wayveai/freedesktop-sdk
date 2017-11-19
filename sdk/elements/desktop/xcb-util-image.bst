@@ -12,7 +12,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxcb-image.so"
+        (>):
+          - "%{libdir}/libxcb-image.so"
 
 sources:
   - kind: tar

@@ -11,7 +11,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxkbfile.so"
+        (>):
+          - "%{libdir}/libxkbfile.so"
 
 sources:
   - kind: tar

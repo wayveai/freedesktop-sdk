@@ -34,7 +34,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libbz2.so"
+        (>):
+          - "%{libdir}/libbz2.so"
 
 sources:
   - kind: tar

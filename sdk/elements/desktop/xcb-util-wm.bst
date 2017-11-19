@@ -10,8 +10,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxcb-ewmh.so"
-        - "%{libdir}/libxcb-icccm.so"
+        (>):
+          - "%{libdir}/libxcb-ewmh.so"
+          - "%{libdir}/libxcb-icccm.so"
 
 sources:
   - kind: tar

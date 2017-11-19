@@ -16,7 +16,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libSDL2_image.so"
+        (>):
+          - "%{libdir}/libSDL2_image.so"
 
 sources:
   - kind: tar

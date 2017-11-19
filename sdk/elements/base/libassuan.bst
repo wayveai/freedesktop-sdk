@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libassuan.so"
+        (>):
+          - "%{libdir}/libassuan.so"
 
 sources:
   - kind: tar

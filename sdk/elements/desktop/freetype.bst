@@ -11,8 +11,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/freetype-config"
-        - "%{libdir}/libfreetype.so"
+        (>):
+          - "%{bindir}/freetype-config"
+          - "%{libdir}/libfreetype.so"
 
 variables:
   conf-extra: |

@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXft.so"
+        (>):
+          - "%{libdir}/libXft.so"
 
 sources:
   - kind: tar

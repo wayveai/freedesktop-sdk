@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libSDL2_ttf.so"
+        (>):
+          - "%{libdir}/libSDL2_ttf.so"
 
 sources:
   - kind: tar

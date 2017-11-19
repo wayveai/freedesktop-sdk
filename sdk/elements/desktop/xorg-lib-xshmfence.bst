@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxshmfence.so"
+        (>):
+          - "%{libdir}/libxshmfence.so"
 
 sources:
   - kind: tar

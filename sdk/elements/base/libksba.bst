@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libksba.so"
+        (>):
+          - "%{libdir}/libksba.so"
 
 sources:
   - kind: tar

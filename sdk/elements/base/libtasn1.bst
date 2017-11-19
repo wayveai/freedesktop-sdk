@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libtasn1.so"
+        (>):
+          - "%{libdir}/libtasn1.so"
 
 sources:
   - kind: tar

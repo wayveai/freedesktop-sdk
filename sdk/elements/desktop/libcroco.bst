@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libcroco-0.6.so"
+        (>):
+          - "%{libdir}/libcroco-0.6.so"
 
 sources:
   - kind: tar

@@ -15,7 +15,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXt.so"
+        (>):
+          - "%{libdir}/libXt.so"
 
 sources:
   - kind: tar

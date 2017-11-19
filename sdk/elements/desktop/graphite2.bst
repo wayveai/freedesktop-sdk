@@ -35,7 +35,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgraphite2.so"
+        (>):
+          - "%{libdir}/libgraphite2.so"
 
 sources:
   - kind: tar

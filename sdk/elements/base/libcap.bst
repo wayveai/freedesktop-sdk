@@ -25,7 +25,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libcap.so"
+        (>):
+          - "%{libdir}/libcap.so"
 
 sources:
   - kind: tar

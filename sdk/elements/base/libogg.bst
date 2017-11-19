@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libogg.so"
+        (>):
+          - "%{libdir}/libogg.so"
 
 sources:
   - kind: tar

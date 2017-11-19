@@ -25,8 +25,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/cups-config"
-        - "%{libdir}/libcups.so"
+        (>):
+          - "%{bindir}/cups-config"
+          - "%{libdir}/libcups.so"
 
 sources:
   - kind: tar

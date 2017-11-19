@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxcb-cursor.so"
+        (>):
+          - "%{libdir}/libxcb-cursor.so"
 
 sources:
   - kind: tar

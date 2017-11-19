@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXrandr.so"
+        (>):
+          - "%{libdir}/libXrandr.so"
 
 sources:
   - kind: tar

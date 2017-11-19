@@ -14,7 +14,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXss.so"
+        (>):
+          - "%{libdir}/libXss.so"
 
 sources:
   - kind: tar

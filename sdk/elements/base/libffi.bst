@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libffi.so"
+        (>):
+          - "%{libdir}/libffi.so"
 
 sources:
   - kind: tar

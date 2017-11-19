@@ -15,12 +15,13 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/alrecord"
-        - "%{bindir}/altonegen"
-        - "%{bindir}/bsincgen"
-        - "%{bindir}/makehrtf"
-        - "%{bindir}/openal-info"
-        - "%{libdir}/libopenal.so"
+        (>):
+          - "%{bindir}/alrecord"
+          - "%{bindir}/altonegen"
+          - "%{bindir}/bsincgen"
+          - "%{bindir}/makehrtf"
+          - "%{bindir}/openal-info"
+          - "%{libdir}/libopenal.so"
 
 sources:
   - kind: tar

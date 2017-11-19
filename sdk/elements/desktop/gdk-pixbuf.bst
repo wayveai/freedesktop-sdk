@@ -16,8 +16,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/gdk-pixbuf-*"
-        - "%{libdir}/libgdk_pixbuf-2.0.so"
+        (>):
+          - "%{bindir}/gdk-pixbuf-*"
+          - "%{libdir}/libgdk_pixbuf-2.0.so"
 
     integration-commands:
       - |

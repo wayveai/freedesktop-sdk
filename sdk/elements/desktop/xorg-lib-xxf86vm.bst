@@ -14,7 +14,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXxf86vm.so"
+        (>):
+          - "%{libdir}/libXxf86vm.so"
 
 sources:
   - kind: tar

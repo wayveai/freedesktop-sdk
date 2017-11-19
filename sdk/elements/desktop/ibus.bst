@@ -34,7 +34,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libibus-1.0.so"
+        (>):
+          - "%{libdir}/libibus-1.0.so"
 
 sources:
   - kind: tar

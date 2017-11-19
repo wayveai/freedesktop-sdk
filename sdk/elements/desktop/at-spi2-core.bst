@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libatspi.so"
+        (>):
+          - "%{libdir}/libatspi.so"
 
 sources:
   - kind: tar

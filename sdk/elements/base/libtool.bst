@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libtldl.so"
+        (>):
+          - "%{libdir}/libtldl.so"
 
 sources:
   - kind: tar

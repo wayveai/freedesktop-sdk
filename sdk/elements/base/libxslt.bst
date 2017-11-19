@@ -9,8 +9,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxslt.so"
-        - "%{libdir}/libexslt.so"
+        (>):
+          - "%{libdir}/libxslt.so"
+          - "%{libdir}/libexslt.so"
 
 sources:
   - kind: tar

@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXinerama.so"
+        (>):
+          - "%{libdir}/libXinerama.so"
 
 sources:
   - kind: tar

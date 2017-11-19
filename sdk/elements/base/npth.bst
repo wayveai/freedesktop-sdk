@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libnpth.so"
+        (>):
+          - "%{libdir}/libnpth.so"
 
 sources:
   - kind: tar

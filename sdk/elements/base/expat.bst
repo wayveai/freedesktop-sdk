@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libexpat.so"
+        (>):
+          - "%{libdir}/libexpat.so"
 
 sources:
   - kind: tar

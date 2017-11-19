@@ -31,9 +31,10 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpulse.so"
-        - "%{libdir}/libpulse-simple.so"
-        - "%{libdir}/libpulse-mainloop-glib.so"
+        (>):
+          - "%{libdir}/libpulse.so"
+          - "%{libdir}/libpulse-simple.so"
+          - "%{libdir}/libpulse-mainloop-glib.so"
 
 sources:
   - kind: tar

@@ -15,7 +15,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libasound.so"
+        (>):
+          - "%{libdir}/libasound.so"
 
 sources:
   - kind: tar

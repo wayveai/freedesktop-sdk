@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libarchive.so"
+        (>):
+          - "%{libdir}/libarchive.so"
 
 sources:
   - kind: tar

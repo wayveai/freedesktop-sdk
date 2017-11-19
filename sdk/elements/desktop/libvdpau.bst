@@ -10,8 +10,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libvdpau.so"
-        - "%{libdir}/vdpau/libvdpau_trace.so"
+        (>):
+          - "%{libdir}/libvdpau.so"
+          - "%{libdir}/vdpau/libvdpau_trace.so"
 
 sources:
   - kind: tar

@@ -12,7 +12,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXpm.so"
+        (>):
+          - "%{libdir}/libXpm.so"
 
 sources:
   - kind: tar

@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libthai.so"
+        (>):
+          - "%{libdir}/libthai.so"
 
 sources:
   - kind: tar

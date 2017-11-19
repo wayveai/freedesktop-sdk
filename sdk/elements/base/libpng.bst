@@ -9,8 +9,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpng.so"
-        - "%{libdir}/libpng16.so"
+        (>):
+          - "%{libdir}/libpng.so"
+          - "%{libdir}/libpng16.so"
 
 sources:
   - kind: tar

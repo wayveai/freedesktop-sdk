@@ -28,8 +28,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/sdl2-config"
-        - "%{libdir}/libSDL2.so"
+        (>):
+          - "%{bindir}/sdl2-config"
+          - "%{libdir}/libSDL2.so"
 
 sources:
   - kind: tar

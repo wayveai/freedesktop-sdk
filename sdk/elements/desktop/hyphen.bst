@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libhyphen.so"
+        (>):
+          - "%{libdir}/libhyphen.so"
 
 sources:
   - kind: tar

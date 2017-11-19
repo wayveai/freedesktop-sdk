@@ -15,7 +15,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libp11-kit.so"
+        (>):
+          - "%{libdir}/libp11-kit.so"
 
 sources:
   - kind: tar

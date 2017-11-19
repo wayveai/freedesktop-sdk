@@ -13,9 +13,10 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpcre.so"
-        - "%{libdir}/libpcrecpp.so"
-        - "%{libdir}/libpcreposix.so"
+        (>):
+          - "%{libdir}/libpcre.so"
+          - "%{libdir}/libpcrecpp.so"
+          - "%{libdir}/libpcreposix.so"
 
 sources:
   - kind: tar

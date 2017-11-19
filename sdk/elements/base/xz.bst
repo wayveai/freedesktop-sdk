@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/liblzma.so"
+        (>):
+          - "%{libdir}/liblzma.so"
 
 sources:
   - kind: tar

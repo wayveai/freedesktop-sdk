@@ -15,8 +15,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgnutls.so"
-        - "%{libdir}/libgnutlsxx.so"
+        (>):
+          - "%{libdir}/libgnutls.so"
+          - "%{libdir}/libgnutlsxx.so"
 
 sources:
   - kind: tar

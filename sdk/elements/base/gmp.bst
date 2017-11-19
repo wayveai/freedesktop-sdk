@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgmp.so"
+        (>):
+          - "%{libdir}/libgmp.so"
 
 sources:
   - kind: tar

@@ -32,12 +32,13 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/gtk3-*"
-        - "%{bindir}/gtk-builder-tool"
-        - "%{bindir}/gtk-encode-symbolic-svg"
-        - "%{libdir}/libgdk-3.so"
-        - "%{libdir}/libgtk-3.so"
-        - "%{libdir}/libgailutil-3.so"
+        (>):
+          - "%{bindir}/gtk3-*"
+          - "%{bindir}/gtk-builder-tool"
+          - "%{bindir}/gtk-encode-symbolic-svg"
+          - "%{libdir}/libgdk-3.so"
+          - "%{libdir}/libgtk-3.so"
+          - "%{libdir}/libgailutil-3.so"
 
     integration-commands:
       - |

@@ -43,8 +43,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{sysroot}%{libdir}/libreadline.so"
-        - "%{sysroot}%{libdir}/libhistory.so"
+        (>):
+          - "%{sysroot}%{libdir}/libreadline.so"
+          - "%{sysroot}%{libdir}/libhistory.so"
 
 sources:
 - kind: tar

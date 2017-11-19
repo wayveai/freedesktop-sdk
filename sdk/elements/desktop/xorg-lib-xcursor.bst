@@ -18,7 +18,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXcursor.so"
+        (>):
+          - "%{libdir}/libXcursor.so"
 
 sources:
   - kind: tar

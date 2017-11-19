@@ -22,7 +22,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpython2.7.so"
+        (>):
+          - "%{libdir}/libpython2.7.so"
 
 sources:
   - kind: tar

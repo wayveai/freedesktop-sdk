@@ -9,9 +9,10 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libvorbis.so"
-        - "%{libdir}/libvorbisfile.so"
-        - "%{libdir}/libvorbisenc.so"
+        (>):
+          - "%{libdir}/libvorbis.so"
+          - "%{libdir}/libvorbisfile.so"
+          - "%{libdir}/libvorbisenc.so"
 
 sources:
   - kind: tar

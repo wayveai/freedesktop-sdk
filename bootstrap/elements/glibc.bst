@@ -50,23 +50,24 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{sysroot}%{stdlib}/*.o"
-        - "%{sysroot}%{stdlib}/lib*.a"
-        - "%{sysroot}%{stdlib}/libdl.so"
-        - "%{sysroot}%{stdlib}/libnsl.so"
-        - "%{sysroot}%{stdlib}/libBrokenLocale.so"
-        - "%{sysroot}%{stdlib}/libthread_db.so"
-        - "%{sysroot}%{stdlib}/librt.so"
-        - "%{sysroot}%{stdlib}/libcrypt.so"
-        - "%{sysroot}%{stdlib}/libnss_dns.so"
-        - "%{sysroot}%{stdlib}/libanl.so"
-        - "%{sysroot}%{stdlib}/libnss_files.so"
-        - "%{sysroot}%{stdlib}/libresolv.so"
-        - "%{sysroot}%{stdlib}/libmvec.so"
-        - "%{sysroot}%{stdlib}/libcidn.so"
-        - "%{sysroot}%{stdlib}/libnss_hesiod.so"
-        - "%{sysroot}%{stdlib}/libnss_db.so"
-        - "%{sysroot}%{stdlib}/libutil.so"
+        (>):
+          - "%{sysroot}%{stdlib}/*.o"
+          - "%{sysroot}%{stdlib}/lib*.a"
+          - "%{sysroot}%{stdlib}/libdl.so"
+          - "%{sysroot}%{stdlib}/libnsl.so"
+          - "%{sysroot}%{stdlib}/libBrokenLocale.so"
+          - "%{sysroot}%{stdlib}/libthread_db.so"
+          - "%{sysroot}%{stdlib}/librt.so"
+          - "%{sysroot}%{stdlib}/libcrypt.so"
+          - "%{sysroot}%{stdlib}/libnss_dns.so"
+          - "%{sysroot}%{stdlib}/libanl.so"
+          - "%{sysroot}%{stdlib}/libnss_files.so"
+          - "%{sysroot}%{stdlib}/libresolv.so"
+          - "%{sysroot}%{stdlib}/libmvec.so"
+          - "%{sysroot}%{stdlib}/libcidn.so"
+          - "%{sysroot}%{stdlib}/libnss_hesiod.so"
+          - "%{sysroot}%{stdlib}/libnss_db.so"
+          - "%{sysroot}%{stdlib}/libutil.so"
 
 sources:
 - kind: tar

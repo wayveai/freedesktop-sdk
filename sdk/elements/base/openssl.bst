@@ -35,8 +35,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libssl.so"
-        - "%{libdir}/libcrypto.so"
+        (>):
+          - "%{libdir}/libssl.so"
+          - "%{libdir}/libcrypto.so"
 
 sources:
   # Too many things depends on 1.0.

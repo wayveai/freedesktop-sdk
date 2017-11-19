@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libSDL2_net.so"
+        (>):
+          - "%{libdir}/libSDL2_net.so"
 
 sources:
   - kind: tar

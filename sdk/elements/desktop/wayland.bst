@@ -12,10 +12,11 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{bindir}/wayland-scanner"
-        - "%{libdir}/libwayland-cursor.so"
-        - "%{libdir}/libwayland-server.so"
-        - "%{libdir}/libwayland-client.so"
+        (>):
+          - "%{bindir}/wayland-scanner"
+          - "%{libdir}/libwayland-cursor.so"
+          - "%{libdir}/libwayland-server.so"
+          - "%{libdir}/libwayland-client.so"
 
 sources:
   - kind: tar

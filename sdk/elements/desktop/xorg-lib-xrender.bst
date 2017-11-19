@@ -12,7 +12,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXrender.so"
+        (>):
+          - "%{libdir}/libXrender.so"
 
 sources:
   - kind: tar

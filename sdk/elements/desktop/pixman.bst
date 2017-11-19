@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpixman-1.so"
+        (>):
+          - "%{libdir}/libpixman-1.so"
 
 sources:
   - kind: tar

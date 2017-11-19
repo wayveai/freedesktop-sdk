@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libSDL2_mixer.so"
+        (>):
+          - "%{libdir}/libSDL2_mixer.so"
 
 sources:
   - kind: tar

@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXau.so"
+        (>):
+          - "%{libdir}/libXau.so"
 
 sources:
   - kind: tar

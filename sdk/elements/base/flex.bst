@@ -19,7 +19,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libflex.so"
+        (>):
+          - "%{libdir}/libflex.so"
 
 sources:
   - kind: tar

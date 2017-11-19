@@ -9,8 +9,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libpcre2-8.so"
-        - "%{libdir}/libpcre2-posix.so"
+        (>):
+          - "%{libdir}/libpcre2-8.so"
+          - "%{libdir}/libpcre2-posix.so"
 
 sources:
   - kind: tar

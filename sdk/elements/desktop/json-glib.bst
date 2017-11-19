@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libjson-glib-1.0.so"
+        (>):
+          - "%{libdir}/libjson-glib-1.0.so"
 
 sources:
   - kind: tar

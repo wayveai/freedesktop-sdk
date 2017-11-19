@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libsqlite3.so"
+        (>):
+          - "%{libdir}/libsqlite3.so"
 
 sources:
   - kind: tar

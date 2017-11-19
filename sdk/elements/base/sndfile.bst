@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libsndfile.so"
+        (>):
+          - "%{libdir}/libsndfile.so"
 
 sources:
   - kind: tar

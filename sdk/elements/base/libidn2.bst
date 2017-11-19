@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libidn2.so"
+        (>):
+          - "%{libdir}/libidn2.so"
 
 sources:
   - kind: tar

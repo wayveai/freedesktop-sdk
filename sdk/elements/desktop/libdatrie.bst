@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libdatrie.so"
+        (>):
+          - "%{libdir}/libdatrie.so"
 
 sources:
   - kind: tar

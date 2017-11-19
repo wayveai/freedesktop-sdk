@@ -31,8 +31,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libappstream-glib.so"
-        - "%{libdir}/libappstream-builder.so"
+        (>):
+          - "%{libdir}/libappstream-glib.so"
+          - "%{libdir}/libappstream-builder.so"
 
 sources:
   - kind: tar

@@ -14,13 +14,14 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libva.so"
-        - "%{libdir}/libva-tpi.so"
-        - "%{libdir}/libva-x11.so"
-        - "%{libdir}/libva-drm.so"
-        - "%{libdir}/libva-egl.so"
-        - "%{libdir}/libva-glx.so"
-        - "%{libdir}/libva-wayland.so"
+        (>):
+          - "%{libdir}/libva.so"
+          - "%{libdir}/libva-tpi.so"
+          - "%{libdir}/libva-x11.so"
+          - "%{libdir}/libva-drm.so"
+          - "%{libdir}/libva-egl.so"
+          - "%{libdir}/libva-glx.so"
+          - "%{libdir}/libva-wayland.so"
 
 sources:
   - kind: tar

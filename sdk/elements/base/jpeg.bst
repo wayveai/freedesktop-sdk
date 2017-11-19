@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libjpeg.so"
+        (>):
+          - "%{libdir}/libjpeg.so"
 
 sources:
   - kind: tar

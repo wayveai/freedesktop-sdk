@@ -9,7 +9,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libmythes-1.2.so"
+        (>):
+          - "%{libdir}/libmythes-1.2.so"
 
 sources:
   - kind: tar

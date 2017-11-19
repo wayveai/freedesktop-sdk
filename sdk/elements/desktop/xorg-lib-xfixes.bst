@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXfixes.so"
+        (>):
+          - "%{libdir}/libXfixes.so"
 
 sources:
   - kind: tar

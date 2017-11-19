@@ -12,7 +12,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXcomposite.so"
+        (>):
+          - "%{libdir}/libXcomposite.so"
 
 sources:
   - kind: tar

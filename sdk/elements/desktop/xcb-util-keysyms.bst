@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libxcb-keysyms.so"
+        (>):
+          - "%{libdir}/libxcb-keysyms.so"
 
 sources:
   - kind: tar

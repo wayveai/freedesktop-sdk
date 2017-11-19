@@ -13,7 +13,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXv.so"
+        (>):
+          - "%{libdir}/libXv.so"
 
 sources:
   - kind: tar

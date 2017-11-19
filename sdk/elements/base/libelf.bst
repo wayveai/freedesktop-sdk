@@ -14,7 +14,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libelf.so"
+        (>):
+          - "%{libdir}/libelf.so"
 
 sources:
   - kind: tar

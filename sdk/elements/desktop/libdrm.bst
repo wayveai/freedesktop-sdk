@@ -14,12 +14,13 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libdrm_nouveau.so"
-        - "%{libdir}/libdrm_radeon.so"
-        - "%{libdir}/libdrm_intel.so"
-        - "%{libdir}/libdrm_amdgpu.so"
-        - "%{libdir}/libdrm.so"
-        - "%{libdir}/libkms.so"
+        (>):
+          - "%{libdir}/libdrm_nouveau.so"
+          - "%{libdir}/libdrm_radeon.so"
+          - "%{libdir}/libdrm_intel.so"
+          - "%{libdir}/libdrm_amdgpu.so"
+          - "%{libdir}/libdrm.so"
+          - "%{libdir}/libkms.so"
 
 sources:
   - kind: tar

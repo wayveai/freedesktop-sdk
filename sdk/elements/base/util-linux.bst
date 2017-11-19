@@ -16,10 +16,11 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libfdisk.so"
-        - "%{libdir}/libblkid.so"
-        - "%{libdir}/libsmartcols.so"
-        - "%{libdir}/libmount.so"
+        (>):
+          - "%{libdir}/libfdisk.so"
+          - "%{libdir}/libblkid.so"
+          - "%{libdir}/libsmartcols.so"
+          - "%{libdir}/libmount.so"
 
 config:
   install-commands:

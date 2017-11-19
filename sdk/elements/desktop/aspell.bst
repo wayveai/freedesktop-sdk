@@ -11,8 +11,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libaspell.so"
-        - "%{libdir}/libpspell.so"
+        (>):
+          - "%{libdir}/libaspell.so"
+          - "%{libdir}/libpspell.so"
 
 config:
   install-commands:

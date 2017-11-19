@@ -20,7 +20,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libfontconfig.so"
+        (>):
+          - "%{libdir}/libfontconfig.so"
 
 sources:
   - kind: tar

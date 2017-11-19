@@ -11,7 +11,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libICE.so"
+        (>):
+          - "%{libdir}/libICE.so"
 
 sources:
   - kind: tar

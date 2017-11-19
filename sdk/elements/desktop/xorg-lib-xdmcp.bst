@@ -10,7 +10,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libXdmcp.so"
+        (>):
+          - "%{libdir}/libXdmcp.so"
 
 sources:
   - kind: tar

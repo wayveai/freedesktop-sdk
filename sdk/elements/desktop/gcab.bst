@@ -8,7 +8,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgcab-1.0.so"
+        (>):
+          - "%{libdir}/libgcab-1.0.so"
 
 sources:
   - kind: tar

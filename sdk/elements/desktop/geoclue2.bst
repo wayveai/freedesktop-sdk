@@ -26,8 +26,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2*"
-        - "%{libdir}/libgeoclue-2.so"
+        (>):
+          - "%{datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2*"
+          - "%{libdir}/libgeoclue-2.so"
 
 sources:
   - kind: tar

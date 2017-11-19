@@ -35,7 +35,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libmagic.so"
+        (>):
+          - "%{sysroot}%{libdir}/libmagic.so"
 
 sources:
   - kind: tar

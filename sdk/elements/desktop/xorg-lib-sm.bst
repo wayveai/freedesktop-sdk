@@ -12,7 +12,8 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libSM.so"
+        (>):
+          - "%{libdir}/libSM.so"
 
 sources:
   - kind: tar
