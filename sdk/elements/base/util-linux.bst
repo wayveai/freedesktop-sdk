@@ -9,7 +9,8 @@ variables:
   conf-extra: |
     --disable-wall \
     --disable-makeinstall-chown \
-    --disable-kill
+    --disable-kill \
+    --enable-usrdir-path
 
 public:
   bst:
@@ -19,6 +20,14 @@ public:
         - "%{libdir}/libblkid.so"
         - "%{libdir}/libsmartcols.so"
         - "%{libdir}/libmount.so"
+
+config:
+  install-commands:
+    (>):
+      - |
+        install -d -m0755 "%{install-root}%{bindir}"
+        mv "%{install-root}%{prefix}/sbin"/* "%{install-root}%{bindir}/"
+        rm -rf "%{install-root}%{prefix}/sbin"
 
 sources:
   - kind: tar

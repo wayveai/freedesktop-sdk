@@ -31,6 +31,9 @@ config:
       done
 
     - |
+      ln -s bin "%{root}/usr/sbin"
+
+    - |
       for i in lib lib32 lib64; do
         libdir="%{root}/${i}"
         targetdir="%{root}/usr/${i}"

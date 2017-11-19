@@ -20,7 +20,9 @@ config:
       mkdir "%{builddir}"
       cd "%{builddir}"
       echo slibdir=%{libdir} >configparms
+      echo gconvdir=%{libdir}/gconv >>configparms
       echo rootsbindir=%{sbindir} >>configparms
+      echo sbindir=%{sbindir} >>configparms
       ../configure \
       --host=%{triplet} \
       --build=$(sh /config/config.guess) \
