@@ -7,6 +7,7 @@ depends:
 - filename: base/bison.bst
 - filename: base/bzip2.bst
 - filename: base/cmake.bst
+- filename: base/ca-certificates.bst
 - filename: base/curl.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
