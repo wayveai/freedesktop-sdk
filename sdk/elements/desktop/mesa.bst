@@ -11,6 +11,7 @@ depends:
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst
   - filename: desktop/wayland-protocols.bst
+    type: build
   - filename: desktop/libglvnd.bst
 
 variables:

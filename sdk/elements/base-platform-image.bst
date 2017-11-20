@@ -7,5 +7,5 @@ config:
 depends:
 - filename: bootstrap-import-platform.bst
   type: build
-- filename: just-base.bst
+- filename: just-base-platform.bst
   type: build

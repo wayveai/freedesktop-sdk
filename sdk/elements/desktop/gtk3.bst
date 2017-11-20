@@ -4,6 +4,7 @@ depends:
   - filename: base.bst
     type: build
   - filename: desktop/wayland-protocols.bst
+    type: build
   - filename: desktop/atk.bst
   - filename: desktop/at-spi2-atk.bst
   - filename: desktop/pango.bst
