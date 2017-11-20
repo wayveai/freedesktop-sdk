@@ -14,6 +14,12 @@ variables:
       --disable-avcodec \
       --with-speex=no
 
+config:
+  install-commands:
+    (>):
+      - |
+        mv "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf.example" "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf"
+
 sources:
   - kind: tar
     url: ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.4.tar.bz2
