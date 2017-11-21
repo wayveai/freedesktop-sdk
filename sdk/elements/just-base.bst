@@ -7,6 +7,7 @@ depends:
 - filename: base/automake.bst
 - filename: base/bison.bst
 - filename: base/cmake.bst
+- filename: base/ed.bst
 - filename: base/gdb.bst
 - filename: base/git.bst
 - filename: base/gperf.bst
