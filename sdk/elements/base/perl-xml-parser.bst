@@ -15,6 +15,9 @@ config:
     - |
       make -j1 install
 
+    - |
+      find "%{install-root}" -type f -name perllocal.pod -delete
+
 environment:
   MAKEFLAGS: -j%{max-jobs}
 

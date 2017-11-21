@@ -8,6 +8,7 @@ depends:
 - filename: base/bison.bst
 - filename: base/cmake.bst
 - filename: base/gdb.bst
+- filename: base/git.bst
 - filename: base/gperf.bst
 - filename: base/help2man.bst
 - filename: base/intltool.bst
