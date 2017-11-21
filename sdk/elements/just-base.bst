@@ -5,6 +5,7 @@ depends:
 - filename: base/autoconf-archive.bst
 - filename: base/autoconf.bst
 - filename: base/automake.bst
+- filename: base/bc.bst
 - filename: base/bison.bst
 - filename: base/cmake.bst
 - filename: base/ed.bst
