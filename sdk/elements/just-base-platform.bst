@@ -35,6 +35,7 @@ depends:
 - filename: base/libxml2.bst
 - filename: base/libxslt.bst
 - filename: base/locales.bst
+- filename: base/lzip.bst
 - filename: base/nano.bst
 - filename: base/nettle.bst
 - filename: base/npth.bst
