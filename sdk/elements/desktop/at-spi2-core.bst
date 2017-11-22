@@ -4,6 +4,7 @@ depends:
   - filename: base.bst
     type: build
   - filename: desktop/dbus.bst
+  - filename: desktop/gtk-doc.bst
 
 public:
   bst:

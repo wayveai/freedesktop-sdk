@@ -6,6 +6,7 @@ depends:
   - filename: desktop/graphite2.bst
   - filename: desktop/freetype-stage1.bst
     type: build
+  - filename: desktop/gtk-doc.bst
 
 variables:
   conf-extra: |

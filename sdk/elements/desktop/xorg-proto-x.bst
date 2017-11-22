@@ -4,6 +4,8 @@ description: X.org proto X
 depends:
   - filename: base.bst
     type: build
+  - filename: desktop/xorg-util-macros.bst
+    type: build
 
 sources:
   - kind: tar

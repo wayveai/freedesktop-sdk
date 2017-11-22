@@ -3,6 +3,7 @@ kind: myautotools
 depends:
   - filename: base.bst
     type: build
+  - filename: desktop/gtk-doc.bst
 
 public:
   bst:

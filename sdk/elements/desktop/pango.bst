@@ -7,6 +7,7 @@ depends:
   - filename: desktop/harfbuzz.bst
   - filename: desktop/fontconfig.bst
   - filename: desktop/gobject-introspection.bst
+  - filename: desktop/gtk-doc.bst
 
 public:
   bst:

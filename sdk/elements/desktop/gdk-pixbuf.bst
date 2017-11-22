@@ -5,6 +5,7 @@ depends:
     type: build
   - filename: desktop/shared-mime-info.bst
   - filename: desktop/gobject-introspection.bst
+  - filename: desktop/gtk-doc.bst
 
 variables:
   conf-extra: |

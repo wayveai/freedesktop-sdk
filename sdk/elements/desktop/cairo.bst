@@ -8,6 +8,7 @@ depends:
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/freetype.bst
   - filename: desktop/fontconfig.bst
+  - filename: desktop/gtk-doc.bst
 
 variables:
   conf-extra: |
