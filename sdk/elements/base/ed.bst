@@ -16,6 +16,11 @@ config:
       - |
         tar --lzip --strip-components=1 -xf ed-1.14.2.tar.lz
 
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: file
     url: https://ftp.gnu.org/gnu/ed/ed-1.14.2.tar.lz
