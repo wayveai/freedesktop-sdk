@@ -1,4 +1,12 @@
-kind: mycompose
+kind: compose
+
+public:
+  bst:
+    split-rules:
+      docs:
+        - "%{datadir}/runtime/docs/**"
+      locale:
+        - "%{datadir}/runtime/locale/**"
 
 depends:
 - filename: bootstrap-import.bst

@@ -42,6 +42,24 @@ public:
         mv %{datadir}/gtk-doc/html %{datadir}/runtime/docs/gtk-doc/
         ln -s %{datadir}/runtime/docs/gtk-doc/html %{datadir}/gtk-doc/html
 
+      - |
+        for parentpath in "%{indep-libdir}" "%{datadir}"; do
+          targetdir="%{datadir}/runtime/locale/$(basename "${parentpath}")"
+          mkdir -p "${targetdir}"
+          origpath="${parentpath}/locale"
+          for langpath in "${origpath}"/*; do
+            lang="$(basename "${langpath}" | sed 's/[@\._].*//g')"
+            case "${lang}" in
+              C|en)
+              ;;
+              *)
+                mv "${langpath}" "${targetdir}/"
+                ln -s "$(realpath --relative-to="${origpath}" "${targetdir}/$(basename "${langpath}")")" "${langpath}"
+              ;;
+            esac
+          done
+        done
+
 sources:
   - kind: local
     path: elements/desktop/os-release

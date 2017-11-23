@@ -1,4 +1,4 @@
-kind: mycompose
+kind: compose
 
 depends:
 - filename: bootstrap-import.bst

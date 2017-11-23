@@ -1,8 +1,16 @@
-kind: mycompose
+kind: compose
 
 config:
   exclude:
     - devel
+
+public:
+  bst:
+    split-rules:
+      docs:
+        - "%{datadir}/runtime/docs/**"
+      locale:
+        - "%{datadir}/runtime/locale/**"
 
 depends:
 - filename: bootstrap-import-platform.bst

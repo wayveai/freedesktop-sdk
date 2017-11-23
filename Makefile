@@ -23,7 +23,10 @@ bootstrap: $(BOOTSTRAP_IMAGES)
 RUNTIMES=					\
 	sdk					\
 	sdk-debug				\
+	sdk-docs				\
+	sdk-locale				\
 	platform				\
+	platform-locale				\
 	platform-arch-libs			\
 	platform-arch-libs-debug		\
 	glxinfo					\
@@ -50,6 +53,7 @@ export: $(RUNTIME_DIRECTORIES)
 	done
 	if test "$(ARCH)" = "i586" ; then \
 	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
+	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
         fi
 
 runtime: $(BOOTSTRAP_IMAGES)

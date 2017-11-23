@@ -1,7 +1,9 @@
 kind: flatpak-image
 
 config:
-  directory: "%{debugdir}%{libdir}"
+  directory: "%{libdir}"
+  include:
+    - debug
 
   metadata:
     Runtime:
