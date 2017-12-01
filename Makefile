@@ -9,14 +9,16 @@ endif
 all: repo
 
 BOOTSTRAP_IMAGES=					\
-	sdk/bootstrap-image-platform-$(ARCH).tar.gz	\
-	sdk/bootstrap-image-$(ARCH).tar.gz
+	sdk/bootstrap-image-platform-$(ARCH)		\
+	sdk/bootstrap-image-$(ARCH)
 
-$(BOOTSTRAP_IMAGES):
-	cd bootstrap && bst -o target_arch $(ARCH) build export.bst
-	rm -rf co
-	cd bootstrap && bst -o target_arch $(ARCH) checkout export.bst ../co
-	mv co/$$(basename "$@") "$@"
+sdk/bootstrap-image-$(ARCH):
+	cd bootstrap && bst -o target_arch $(ARCH) build bootstrap-with-links.bst
+	cd bootstrap && bst -o target_arch $(ARCH) checkout bootstrap-with-links.bst ../sdk/bootstrap-image-$(ARCH)
+
+sdk/bootstrap-image-platform-$(ARCH):
+	cd bootstrap && bst -o target_arch $(ARCH) build bootstrap-platform-with-links.bst
+	cd bootstrap && bst -o target_arch $(ARCH) checkout bootstrap-platform-with-links.bst ../sdk/bootstrap-image-platform-$(ARCH)
 
 bootstrap: $(BOOTSTRAP_IMAGES)
 

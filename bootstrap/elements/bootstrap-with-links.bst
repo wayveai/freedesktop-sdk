@@ -7,36 +7,37 @@ depends:
     type: build
 
 variables:
-  root: "%{install-root}%{sysroot}"
+  root: /buildstream/install
+  install-root: "%{root}/%{sysroot}"
 
 config:
   layout:
     - element: bootstrap.bst
-      destination: "%{install-root}"
+      destination: "%{root}"
     - element: dependencies/base-sdk.bst
       destination: /
 
   commands:
     - |
       for f in /etc/rpc /var/db/Makefile; do
-        target="%{root}/usr$(dirname "$f")"
+        target="%{install-root}/usr$(dirname "$f")"
         [ -d "${target}" ] || mkdir -p "${target}"
-        mv "%{root}$f" "${target}"
+        mv "%{install-root}$f" "${target}"
       done
 
     - |
       for f in /bin /sbin /etc /var; do
-        rm -rf "%{root}$f"
-        ln -s "usr$f" "%{root}$f"
+        rm -rf "%{install-root}$f"
+        ln -s "usr$f" "%{install-root}$f"
       done
 
     - |
-      ln -s bin "%{root}/usr/sbin"
+      ln -s bin "%{install-root}/usr/sbin"
 
     - |
       for i in lib lib32 lib64; do
-        libdir="%{root}/${i}"
-        targetdir="%{root}/usr/${i}"
+        libdir="%{install-root}/${i}"
+        targetdir="%{install-root}/usr/${i}"
         [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
         if [ -d "${libdir}" ]; then
           for f in "${libdir}"/*; do
