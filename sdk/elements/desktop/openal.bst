@@ -7,7 +7,7 @@ depends:
   - filename: desktop/sdl2.bst
 
 variables:
-  cmake-extra: |
+  cmake-local: |
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR:PATH=%{lib} \
 
