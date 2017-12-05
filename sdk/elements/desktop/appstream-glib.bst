@@ -1,4 +1,4 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -13,12 +13,11 @@ depends:
   - filename: desktop/gobject-introspection.bst
 
 variables:
-  conf-extra: |
-    --disable-fonts \
-    --disable-dep11 \
-    --disable-rpm \
-    --disable-stemmer \
-    --disable-man
+  meson-local: |
+    -Denable-fonts=false \
+    -Denable-dep11=false \
+    -Denable-rpm=false \
+    -Denable-stemmer=false
 
 config:
   install-commands:
