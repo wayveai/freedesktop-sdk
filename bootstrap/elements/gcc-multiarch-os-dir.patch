@@ -1,0 +1,14 @@
+diff -ur gcc-7.2.0.old/gcc/gcc.c gcc-7.2.0/gcc/gcc.c
+--- gcc-7.2.0.old/gcc/gcc.c	2017-06-22 13:38:56.224791000 +0200
++++ gcc-7.2.0/gcc/gcc.c	2017-11-01 10:27:14.520653924 +0100
+@@ -7922,7 +7922,9 @@
+ 
+   if (print_multi_os_directory)
+     {
+-      if (multilib_os_dir == NULL)
++      if (multiarch_dir != NULL)
++	printf ("%s\n", multiarch_dir);
++      else if (multilib_os_dir == NULL)
+ 	printf (".\n");
+       else
+ 	printf ("%s\n", multilib_os_dir);

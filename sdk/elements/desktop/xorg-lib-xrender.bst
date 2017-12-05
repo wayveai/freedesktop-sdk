@@ -1,0 +1,21 @@
+kind: myautotools
+description: X.org lib xrender
+
+depends:
+  - filename: base.bst
+    type: build
+  - filename: desktop/xorg-util-macros.bst
+  - filename: desktop/xorg-proto-render.bst
+  - filename: desktop/xorg-lib-x11.bst
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libXrender.so"
+
+sources:
+  - kind: tar
+    url: https://www.x.org/archive/individual/lib/libXrender-0.9.10.tar.bz2
+    ref: c06d5979f86e64cabbde57c223938db0b939dff49fdb5a793a1d3d0396650949

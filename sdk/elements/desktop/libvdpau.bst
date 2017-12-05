@@ -1,0 +1,20 @@
+kind: myautotools
+description: libvdpau
+
+depends:
+  - filename: base.bst
+    type: build
+  - filename: desktop/xorg-lib-x11.bst
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libvdpau.so"
+          - "%{libdir}/vdpau/libvdpau_trace.so"
+
+sources:
+  - kind: tar
+    url: https://people.freedesktop.org/~aplattner/vdpau/libvdpau-1.1.1.tar.bz2
+    ref: 857a01932609225b9a3a5bf222b85e39b55c08787d0ad427dbd9ec033d58d736

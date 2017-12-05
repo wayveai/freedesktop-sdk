@@ -1,0 +1,35 @@
+kind: myautotools
+
+depends:
+- filename: dependencies/base-sdk.bst
+  type: build
+- filename: dependencies/config.bst
+  type: build
+- filename: linux-headers.bst
+  type: build
+- filename: gcc-stage2.bst
+  type: build
+- filename: binutils-stage1.bst
+  type: build
+- filename: glibc.bst
+  type: build
+- filename: cross-installation-links.bst
+  type: build
+
+variables:
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix="%{prefix}" \
+    gl_cv_func_getopt_gnu=yes
+
+config:
+  install-commands:
+    - |
+      cd "%{builddir}"
+      %{cross-install}
+
+sources:
+  - kind: tar
+    url: http://ftp.gnu.org/gnu/diffutils/diffutils-3.6.tar.xz
+    ref: d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6
