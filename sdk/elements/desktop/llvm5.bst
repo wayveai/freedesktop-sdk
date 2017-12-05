@@ -45,23 +45,6 @@ variables:
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
 
-config:
-  configure-commands:
-  - |
-    mkdir build
-    cd build
-    cmake .. %{cmake-args}
-
-  build-commands:
-  - |
-    cd build
-    %{make}
-
-  install-commands:
-  - |
-    cd build
-    %{make-install}
-
 sources:
   - kind: tar
     url: http://llvm.org/releases/5.0.0/llvm-5.0.0.src.tar.xz
