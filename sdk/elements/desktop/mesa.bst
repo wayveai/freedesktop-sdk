@@ -23,7 +23,7 @@ variables:
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
         dri_drivers: "swrast,nouveau,radeon,r200"
 
-  conf-extra: |
+  conf-local: |
     --enable-libglvnd \
     --disable-selinux \
     --disable-osmesa \

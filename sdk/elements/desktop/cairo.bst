@@ -11,7 +11,7 @@ depends:
   - filename: desktop/gtk-doc.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --enable-xlib \
       --enable-ft \
       --enable-svg \

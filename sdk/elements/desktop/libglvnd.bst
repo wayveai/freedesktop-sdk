@@ -8,7 +8,7 @@ depends:
   - filename: desktop/xorg-proto-gl.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-asm \
     --enable-tls
 

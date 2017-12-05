@@ -11,7 +11,7 @@ depends:
   - filename: desktop/xorg-lib-pthread-stubs.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-xkb \
     --disable-xprint
 

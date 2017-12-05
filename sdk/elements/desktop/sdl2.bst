@@ -11,7 +11,7 @@ depends:
   - filename: desktop/pulseaudio.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-sdl-dlopen \
     --disable-arts \
     --disable-esd \

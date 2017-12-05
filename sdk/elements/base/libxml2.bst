@@ -7,7 +7,7 @@ depends:
   - filename: base/python3.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --without-python
 
 config:

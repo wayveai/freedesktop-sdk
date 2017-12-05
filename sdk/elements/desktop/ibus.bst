@@ -8,7 +8,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-xim \
     --disable-dconf \
     --disable-schemas-compile \

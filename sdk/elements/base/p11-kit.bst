@@ -8,7 +8,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --with-trust-paths=/etc/ssl/certs/ca-certificates.crt
 
 public:

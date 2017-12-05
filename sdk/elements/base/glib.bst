@@ -17,7 +17,7 @@ depends:
     type: build
 
 variables:
-  conf-extra:
+  conf-local: |
     --with-pcre=system
 
 public:

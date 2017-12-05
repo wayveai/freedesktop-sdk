@@ -6,7 +6,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-unicode-properties
 
 public:

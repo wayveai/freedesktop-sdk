@@ -6,7 +6,7 @@ depends:
   - filename: desktop/xorg-data-xkeyboard-config.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-x11
 
 public:

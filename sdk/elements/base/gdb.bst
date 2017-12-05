@@ -14,7 +14,7 @@ variables:
   conf-link-args: |
     --enable-shared
 
-  conf-extra: |
+  conf-local: |
     --without-zlib \
     --with-system-zlib \
     --disable-readline \

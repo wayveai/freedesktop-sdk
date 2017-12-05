@@ -19,7 +19,7 @@ depends:
   - filename: desktop/mesa.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --enable-xkb \
       --enable-xinerama \
       --enable-xrandr \

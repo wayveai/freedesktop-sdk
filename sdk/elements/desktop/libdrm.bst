@@ -7,7 +7,7 @@ depends:
   - filename: desktop/xorg-lib-pciaccess.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-udev
 
 public:

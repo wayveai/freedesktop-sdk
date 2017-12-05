@@ -7,7 +7,7 @@ depends:
   - filename: desktop/mesa.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-tools
 
 config:

@@ -5,7 +5,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-debug \
     --disable-examples
 

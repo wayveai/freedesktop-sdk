@@ -7,7 +7,7 @@ depends:
   - filename: desktop/pulseaudio.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --disable-jack \
       --enable-pulseaudio \
       --disable-samplerate \

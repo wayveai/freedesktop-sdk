@@ -6,7 +6,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-wall \
     --disable-makeinstall-chown \
     --disable-kill \

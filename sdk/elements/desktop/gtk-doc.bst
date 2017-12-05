@@ -6,7 +6,7 @@ depends:
   - filename: desktop/itstools.bst
 
 variables:
-  conf-extra:
+  conf-local: |
     PYTHON="/usr/bin/python2"
 
 sources:

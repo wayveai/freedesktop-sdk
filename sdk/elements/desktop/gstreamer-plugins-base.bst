@@ -7,7 +7,7 @@ depends:
   - filename: desktop/gstreamer.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --enable-experimental \
       --enable-orc
 

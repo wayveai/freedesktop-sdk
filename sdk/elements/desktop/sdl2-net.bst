@@ -6,7 +6,7 @@ depends:
   - filename: desktop/sdl2.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-gui
 
 public:
