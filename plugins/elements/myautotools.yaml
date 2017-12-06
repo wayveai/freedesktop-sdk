@@ -1,7 +1,9 @@
 variables:
   builddir: bst_build_dir
   conf-cmd: configure
+  conf-global: ''
   conf-extra: ''
+  conf-local: ''
   conf-link-args: |
     --enable-shared \
     --disable-static
@@ -23,7 +25,7 @@ variables:
     --sharedstatedir=%{sharedstatedir} \
     --mandir=%{mandir} \
     --infodir=%{infodir} \
-    %{conf-extra}
+    %{conf-global} %{conf-extra} %{conf-local}
 
   configure: |
     %{conf-cmd} %{conf-args}
