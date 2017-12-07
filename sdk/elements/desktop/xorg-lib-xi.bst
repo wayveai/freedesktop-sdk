@@ -12,7 +12,7 @@ depends:
   - filename: desktop/xorg-lib-xfixes.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-specs
 
 public:

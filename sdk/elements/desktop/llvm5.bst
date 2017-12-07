@@ -23,7 +23,7 @@ variables:
     - target_arch == "aarch64":
         targets: "AArch64;AMDGPU;NVPTX"
 
-  cmake-extra: |
+  cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \

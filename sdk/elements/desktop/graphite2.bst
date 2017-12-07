@@ -9,7 +9,7 @@ depends:
   - filename: desktop/wayland.bst
 
 variables:
-  cmake-extra: |
+  cmake-local: |
     -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \
     -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \

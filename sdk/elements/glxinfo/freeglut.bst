@@ -13,7 +13,7 @@ variables:
   lib: lib
   prefix: /app
 
-  cmake-extra: |
+  cmake-local: |
     -DFREEGLUT_BUILD_DEMOS:BOOL=OFF
 
 environment:

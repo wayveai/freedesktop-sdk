@@ -11,7 +11,7 @@ depends:
 variables:
   lib: "lib/%{gcc_triplet}"
 
-  cmake-extra: |
+  cmake-local: |
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DBUILD_VKJSON=OFF \

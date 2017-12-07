@@ -6,7 +6,7 @@ depends:
   - filename: desktop/glib-networking.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-vala
 
 public:

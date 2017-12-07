@@ -5,7 +5,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-rpath \
     --with-system-user=pulse \
     --with-system-group=pulse \

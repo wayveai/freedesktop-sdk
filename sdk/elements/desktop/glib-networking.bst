@@ -6,7 +6,7 @@ depends:
   - filename: desktop/libproxy.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --with-libproxy \
     --with-ca-certificates="/etc/ssl/certs/ca-certificates.crt"
 

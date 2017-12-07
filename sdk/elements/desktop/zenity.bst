@@ -9,7 +9,7 @@ depends:
   - filename: desktop/itstools.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-webkitgtk
 
 config:

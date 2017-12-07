@@ -7,7 +7,7 @@ depends:
   - filename: base/pcre.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --with-internal-glib
 
 sources:

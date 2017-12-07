@@ -7,7 +7,7 @@ depends:
   - filename: desktop/libsoup.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-3g-source \
     --disable-cdma-source \
     --disable-modem-gps-source \

@@ -7,7 +7,7 @@ depends:
   - filename: base/zlib.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-shared \
     LDFLAGS="-L%{libdir}"
 

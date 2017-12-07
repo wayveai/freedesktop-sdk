@@ -5,8 +5,7 @@ depends:
     type: build
 
 variables:
-  conf-extra: |
-
+  conf-local: |
     --with-zlib=yes \
     --with-bzip2=yes \
     --with-png=yes \

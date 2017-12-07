@@ -6,7 +6,7 @@ depends:
   - filename: desktop/pulseaudio.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --with-default-audio=pulse \
       --with-audio=pulse
 

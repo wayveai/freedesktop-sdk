@@ -9,7 +9,7 @@ depends:
   - filename: base/openssl.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --with-gnutls \
     --with-ssl
 

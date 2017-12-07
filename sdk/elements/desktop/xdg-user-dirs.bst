@@ -6,7 +6,7 @@ depends:
 
 variables:
   conf-link-args: ''
-  conf-extra: |
+  conf-local: |
     --disable-documentation
 
 config:

@@ -7,7 +7,7 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
       --disable-asfdemux \
       --disable-dvdlpcmdec \
       --disable-dvdsub \

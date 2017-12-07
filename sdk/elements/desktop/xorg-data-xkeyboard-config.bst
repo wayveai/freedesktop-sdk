@@ -7,7 +7,7 @@ depends:
   - filename: desktop/xorg-app-xkbcomp.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --enable-compat-rules \
     --with-xkb-base=/usr/share/X11/xkb \
     --with-xkb-rules-symlink=xorg

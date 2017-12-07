@@ -8,7 +8,7 @@ depends:
   - filename: desktop/gtk-doc.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --without-x11 \
     --without-libjasper \
     --with-included-loaders=png,jpeg

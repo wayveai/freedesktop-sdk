@@ -6,7 +6,7 @@ depends:
   - filename: desktop/sdl2.bst
 
 variables:
-  conf-extra: |
+  conf-local: |
     --disable-jpg-shared \
     --disable-png-shared \
     --disable-tif-shared \
