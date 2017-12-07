@@ -13,11 +13,17 @@ depends:
 - filename: base/docbook-xsl.bst
 - filename: base/ed.bst
 - filename: base/gdb.bst
+- filename: base/gdbm.bst
 - filename: base/git.bst
 - filename: base/gperf.bst
+- filename: base/groff.bst
 - filename: base/help2man.bst
 - filename: base/intltool.bst
+- filename: base/libpipeline.bst
 - filename: base/m4.bst
+- filename: base/man-db.bst
+- filename: base/man-pages-posix.bst
+- filename: base/man-pages.bst
 - filename: base/meson.bst
 - filename: base/nasm.bst
 - filename: base/ninja.bst

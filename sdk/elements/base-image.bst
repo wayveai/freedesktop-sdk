@@ -5,3 +5,5 @@ depends:
   type: build
 - filename: just-base.bst
   type: build
+- filename: base/man-db-generate.bst
+  type: build
