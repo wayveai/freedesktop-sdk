@@ -15,3 +15,5 @@ depends:
   type: build
 - filename: just-desktop.bst
   type: build
+- filename: base/man-db-generate.bst
+  type: build
