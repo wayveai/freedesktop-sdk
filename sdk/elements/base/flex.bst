@@ -20,7 +20,7 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libflex.so"
+          - "%{libdir}/libfl.so"
 
 sources:
   - kind: tar
