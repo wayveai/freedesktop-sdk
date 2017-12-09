@@ -5,6 +5,7 @@ depends:
     type: build
   - filename: base/perl.bst
     type: build
+  - filename: base/krb5.bst
 
 variables:
   builddir: ''
@@ -21,6 +22,8 @@ config:
       ./Configure %{openssl-target} \
         --prefix=%{prefix} \
         --libdir=%{lib} \
+        enable-krb5 \
+        --with-krb5-flavor=MIT \
         shared \
         threads
 
