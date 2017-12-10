@@ -4,6 +4,7 @@ depends:
 - filename: base/bzip2.bst
 - filename: base/ca-certificates.bst
 - filename: base/curl.bst
+- filename: base/cyrus-sasl.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
 - filename: base/gettext.bst
