@@ -31,3 +31,7 @@ depends:
   type: build
 - filename: file.bst
   type: build
+- filename: attr.bst
+  type: build
+- filename: acl.bst
+  type: build

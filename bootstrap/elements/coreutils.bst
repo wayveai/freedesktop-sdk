@@ -25,13 +25,15 @@ depends:
   type: build
 - filename: coreutils-manpages.bst
   type: build
+- filename: acl.bst
 
 variables:
   conf-args: |
     --build=$(sh /config/config.guess) \
     --host=%{triplet} \
     --prefix=%{prefix} \
-    --enable-install-program=hostname
+    --enable-install-program=hostname \
+    --enable-acl
 
 config:
   build-commands:
