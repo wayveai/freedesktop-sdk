@@ -35,3 +35,5 @@ depends:
   type: build
 - filename: acl.bst
   type: build
+- filename: procps.bst
+  type: build

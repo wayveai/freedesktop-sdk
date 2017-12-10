@@ -1,0 +1,35 @@
+kind: myautotools
+
+depends:
+  - filename: dependencies/base-sdk.bst
+    type: build
+  - filename: dependencies/config.bst
+    type: build
+  - filename: linux-headers.bst
+    type: build
+  - filename: gcc-stage2.bst
+    type: build
+  - filename: binutils-stage1.bst
+    type: build
+  - filename: glibc.bst
+    type: build
+  - filename: cross-installation-links.bst
+    type: build
+  - filename: ncurses.bst
+    type: build
+
+variables:
+  # Behavior of malloc cannot be tested when cross-compiling so
+  # ac_cv_func_malloc_0_nonull is set manually.
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix=%{prefix} \
+    --with-ncurses \
+    ac_cv_func_malloc_0_nonnull=yes \
+    ac_cv_func_realloc_0_nonnull=yes
+
+sources:
+  - kind: tar
+    url: https://download.sourceforge.net/procps-ng/procps-ng-3.3.12.tar.xz
+    ref: 6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4
