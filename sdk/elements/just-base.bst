@@ -29,4 +29,5 @@ depends:
 - filename: base/ninja.bst
 - filename: base/patch.bst
 - filename: base/pkg-config.bst
+- filename: base/ruby.bst
 - filename: base/strace.bst
