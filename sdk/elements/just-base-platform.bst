@@ -54,6 +54,7 @@ depends:
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
 - filename: base/texinfo.bst
+- filename: base/tzdata.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
 - filename: base/yasm.bst
