@@ -7,11 +7,13 @@ depends:
     type: build
   - filename: base/gnutls.bst
   - filename: base/openssl.bst
+  - filename: base/krb5.bst
 
 variables:
   conf-local: |
     --with-gnutls \
-    --with-ssl
+    --with-ssl \
+    --with-gssapi
 
 public:
   bst:

@@ -15,6 +15,7 @@ depends:
 - filename: base/icu.bst
 - filename: base/iso-codes.bst
 - filename: base/jpeg.bst
+- filename: base/krb5.bst
 - filename: base/less.bst
 - filename: base/libarchive.bst
 - filename: base/libassuan.bst
