@@ -7,6 +7,7 @@ depends:
 - filename: base/automake.bst
 - filename: base/bc.bst
 - filename: base/bison.bst
+- filename: base/ccache.bst
 - filename: base/chrpath.bst
 - filename: base/cmake.bst
 - filename: base/docbook-xml.bst
