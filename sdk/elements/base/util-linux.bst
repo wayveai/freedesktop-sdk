@@ -21,6 +21,7 @@ public:
           - "%{libdir}/libblkid.so"
           - "%{libdir}/libsmartcols.so"
           - "%{libdir}/libmount.so"
+          - "%{libdir}/libuuid.so"
 
 config:
   install-commands:

@@ -11,7 +11,7 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libtldl.so"
+          - "%{libdir}/libltdl.so"
 
 sources:
   - kind: tar
