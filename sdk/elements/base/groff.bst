@@ -7,6 +7,14 @@ depends:
   - filename: base/texinfo.bst
     type: build
 
+config:
+  build-commands:
+    (<):
+      # This is a workaround for a bug with parallel builds.
+      - |
+        cd "%{builddir}"
+        make -j1 arch/misc
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
