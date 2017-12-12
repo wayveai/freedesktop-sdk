@@ -3,6 +3,7 @@ kind: stack
 depends:
 - filename: base/bzip2.bst
 - filename: base/ca-certificates.bst
+- filename: base/cracklib.bst
 - filename: base/curl.bst
 - filename: base/cyrus-sasl.bst
 - filename: base/expat.bst
