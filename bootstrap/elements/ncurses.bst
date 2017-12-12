@@ -34,6 +34,7 @@ config:
       --without-ada \
       --without-normal \
       --enable-pc-files \
+      --with-termlib \
       --prefix=/usr \
       TIC_PATH="%{tools}/bin/tic"
 
@@ -50,6 +51,7 @@ config:
       --without-ada \
       --without-normal \
       --enable-pc-files \
+      --with-termlib \
       --prefix=/usr \
       TIC_PATH="%{tools}/bin/tic"
 
