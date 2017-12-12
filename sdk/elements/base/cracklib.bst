@@ -21,6 +21,9 @@ config:
         cd build_python2
         ../%{configure} --with-python PYTHON=/usr/bin/python2
 
+      # Include path is not correctly detected and uses version
+      # number. We need to force version to 3.6m for the headers to be
+      # found.
       - |
         mkdir build_python3
         cd build_python3
