@@ -20,9 +20,12 @@ variables:
 
 config:
   build-commands:
+    # cyrus-sasl seems to use old version of automake and libtool that
+    # seems to not properly compile in parallel when a .c files is
+    # reused for several targets
     - |
       cd "%{builddir}"
-      %{make} sasldir="%{libdir}/sasl2"
+      %{make} -j1 sasldir="%{libdir}/sasl2"
 
   install-commands:
     - |
