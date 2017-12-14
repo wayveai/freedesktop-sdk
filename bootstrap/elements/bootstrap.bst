@@ -37,3 +37,5 @@ depends:
   type: build
 - filename: procps.bst
   type: build
+- filename: zlib.bst
+  type: build

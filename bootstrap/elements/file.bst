@@ -17,6 +17,7 @@ depends:
   type: build
 - filename: files-stage1.bst
   type: build
+- filename: zlib.bst
 
 variables:
   conf-args: |

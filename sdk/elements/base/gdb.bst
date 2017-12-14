@@ -8,7 +8,6 @@ depends:
     type: build
   - filename: base/perl.bst
     type: build
-  - filename: base/zlib.bst
 
 variables:
   conf-link-args: |
