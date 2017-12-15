@@ -4,6 +4,14 @@ depends:
   - filename: bootstrap-import.bst
     type: build
 
+variables:
+  (?):
+    - target_arch == "aarch64":
+        # Without it, it tries to compile arm 32 bit assembly which
+        # does not work.
+        conf-local: |
+          --disable-neon
+
 public:
   bst:
     split-rules:
