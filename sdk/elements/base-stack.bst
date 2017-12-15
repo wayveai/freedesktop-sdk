@@ -69,4 +69,3 @@ depends:
 - filename: base/which.bst
 - filename: base/yasm.bst
 - filename: base/xz.bst
-- filename: base/zlib.bst

@@ -4,7 +4,6 @@ description: Glib
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/zlib.bst
   - filename: base/libffi.bst
   - filename: base/gettext.bst
     type: build

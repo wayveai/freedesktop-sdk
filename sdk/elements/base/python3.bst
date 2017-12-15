@@ -4,7 +4,6 @@ description: Python 3
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/zlib.bst
 
 variables:
   conf-local: |

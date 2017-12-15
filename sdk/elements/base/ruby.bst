@@ -7,7 +7,6 @@ depends:
     type: build
   - filename: base/openssl.bst
   - filename: base/libffi.bst
-  - filename: base/zlib.bst
   - filename: base/gdbm.bst
 
 variables:

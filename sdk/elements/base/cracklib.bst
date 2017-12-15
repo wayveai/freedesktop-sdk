@@ -3,7 +3,6 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/zlib.bst
   - filename: base/python2.bst
     type: build
   - filename: base/python3.bst
