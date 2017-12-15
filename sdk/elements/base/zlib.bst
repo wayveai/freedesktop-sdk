@@ -11,6 +11,11 @@ variables:
     --sharedlibdir=%{libdir} \
     --libdir=%{libdir}
 
+config:
+  install-commands:
+    (>):
+      - rm -f "%{install-root}%{libdir}/libz.a"
+
 public:
   bst:
     split-rules:
