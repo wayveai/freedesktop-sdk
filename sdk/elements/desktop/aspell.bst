@@ -6,6 +6,8 @@ depends:
 
 variables:
   builddir: ''
+  conf-local: |
+    --enable-curses="-ltinfow -lncursesw"
 
 public:
   bst:
