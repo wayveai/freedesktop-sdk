@@ -19,6 +19,11 @@ config:
     - |
       make %{make-args} -j1 DESTDIR="%{install-root}" install
 
+    # Man pages are provided by Linux's man-pages
+    # sdk/elements/base/man-pages.bst
+    - |
+      rm -rf "%{install-root}%{mandir}"
+
 sources:
   - kind: tar
     url: ftp://ftp.iana.org/tz/releases/tzdata2017c.tar.gz
