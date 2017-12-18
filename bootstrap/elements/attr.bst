@@ -36,6 +36,11 @@ config:
     - |
       %{cross-install} install-dev install-lib
 
+    # Man pages will be provided by Linux's man-pages
+    # sdk/elements/base/man-pages.bst
+    - |
+      rm -rf "%{install-root}%{sysroot}%{mandir}"
+
 sources:
   - kind: tar
     url: http://download.savannah.nongnu.org/releases/attr/attr-2.4.47.src.tar.gz
