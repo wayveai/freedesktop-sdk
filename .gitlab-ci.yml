@@ -1,0 +1,40 @@
+image: buildstream/buildstream-fedora:latest
+
+variables:
+  # Store everything under the /builds directory. This is a separate Docker
+  # volume. Note that GitLab CI will only cache stuff inside the build
+  # directory.
+  XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
+  GET_SOURCES_ATTEMPTS: 3
+
+stages:
+  - bootstrap
+
+before_script:
+  - export PATH=~/.local/bin:${PATH}
+  - export BST_SHA='8c0aaa1c68017357c73055120568d24f672c4bac'
+  - git clone https://gitlab.com/BuildStream/buildstream.git
+  - git -C buildstream checkout $BST_SHA
+  - pip3 install --user buildstream/
+
+# Store all the downloaded git and ostree repos in the distributed cache.
+# This saves us fetching them on every build
+.bst_cache: &bst_cache
+  cache:
+    key: bst
+    paths:
+      - "${XDG_CACHE_HOME}/buildstream/sources/"
+
+.bootstrap_template: &bootstrap_definition
+  stage: bootstrap
+  tags:
+    - x86_64
+  script:
+    - cd bootstrap
+    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+
+bootstrap_x86_64:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: x86_64
