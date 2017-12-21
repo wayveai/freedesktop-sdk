@@ -17,6 +17,37 @@ before_script:
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
 
+  # Create ~/.ssh for storing keys
+  - mkdir -p ~/.ssh
+
+  # Private key stored as a protected variable that allows pushing to
+  # artifacts@cache.sdk.freedesktop.org
+  - |
+    if [ -z "$freedesktop_ostree_cache_private_key" ]; then
+        echo >&2 "Private key for cache.sdk.freedesktop.org is not available."
+    else
+        echo "$freedesktop_ostree_cache_private_key" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+    fi
+
+  # Trust the host key of the cache server.
+  - ssh-keyscan -p 22200 cache.sdk.freedesktop.org >> ~/.ssh/known_hosts
+
+  # If we can push, then enable push and pull for freedesktop-sdk artifact cache
+  # (default config is pull only)
+  - |
+    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
+        mkdir -p ~/.config
+        echo "projects:" > ~/.config/buildstream.conf
+        echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
+        echo "    artifacts:" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org:22200/artifacts/" >> ~/.config/buildstream.conf
+        echo "  base-sdk:" >> ~/.config/buildstream.conf
+        echo "    artifacts:" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org:22200/artifacts/" >> ~/.config/buildstream.conf
+    fi
+
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
 .bst_cache: &bst_cache
