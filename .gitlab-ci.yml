@@ -65,6 +65,16 @@ before_script:
     - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
     - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
 
+bootstrap_aarch64:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: aarch64
+
+bootstrap_arm:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: arm
+
 bootstrap_x86_64:
   <<: *bootstrap_definition
   variables:
