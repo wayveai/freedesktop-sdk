@@ -79,3 +79,8 @@ bootstrap_x86_64:
   <<: *bootstrap_definition
   variables:
     ARCH: x86_64
+
+bootstrap_i586:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: i586
