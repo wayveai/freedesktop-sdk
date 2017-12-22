@@ -47,5 +47,5 @@ variables:
 
 sources:
   - kind: tar
-    url: http://llvm.org/releases/5.0.0/llvm-5.0.0.src.tar.xz
-    ref: e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da
+    url: http://releases.llvm.org/5.0.1/llvm-5.0.1.src.tar.xz
+    ref: 5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0
