@@ -101,6 +101,8 @@ bootstrap_i586:
     - bst -o target_arch "${ARCH}" build all.bst
 
 build_x86_64:
+  dependencies:
+    - bootstrap_x86_64
   <<: *build_definition
   tags:
     - x86_64
@@ -108,6 +110,8 @@ build_x86_64:
     ARCH: x86_64
 
 build_i586:
+  dependencies:
+    - bootstrap_i586
   <<: *build_definition
   tags:
     - x86_64
