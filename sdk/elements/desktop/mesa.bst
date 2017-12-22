@@ -55,8 +55,8 @@ config:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-17.2.2.tar.xz
-    ref: cf522244d6a5a1ecde3fc00e7c96935253fe22f808f064cab98be6f3faa65782
+    url: https://mesa.freedesktop.org/archive/mesa-17.3.1.tar.xz
+    ref: 9ae607e0998a586fb2c866cfc8e45e6f52d1c56cb1b41288253ea83eada824c1
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
