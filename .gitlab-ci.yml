@@ -1,0 +1,81 @@
+image: buildstream/buildstream-fedora:latest
+
+variables:
+  # Store everything under the /builds directory. This is a separate Docker
+  # volume. Note that GitLab CI will only cache stuff inside the build
+  # directory.
+  XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
+  GET_SOURCES_ATTEMPTS: 3
+
+stages:
+  - bootstrap
+
+before_script:
+  - export PATH=~/.local/bin:${PATH}
+  - export BST_SHA='8c0aaa1c68017357c73055120568d24f672c4bac'
+  - git clone https://gitlab.com/BuildStream/buildstream.git
+  - git -C buildstream checkout $BST_SHA
+  - pip3 install --user buildstream/
+
+  # Create ~/.ssh for storing keys
+  - mkdir -p ~/.ssh
+
+  # Private key stored as a protected variable that allows pushing to
+  # artifacts@cache.sdk.freedesktop.org
+  - |
+    if [ -z "$freedesktop_ostree_cache_private_key" ]; then
+        echo >&2 "Private key for cache.sdk.freedesktop.org is not available."
+    else
+        echo "$freedesktop_ostree_cache_private_key" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+    fi
+
+  # Trust the host key of the cache server.
+  - ssh-keyscan -p 22200 cache.sdk.freedesktop.org >> ~/.ssh/known_hosts
+
+  # If we can push, then enable push and pull for freedesktop-sdk artifact cache
+  # (default config is pull only)
+  - |
+    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
+        mkdir -p ~/.config
+        echo "projects:" > ~/.config/buildstream.conf
+        echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
+        echo "    artifacts:" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org:22200/artifacts/" >> ~/.config/buildstream.conf
+        echo "  base-sdk:" >> ~/.config/buildstream.conf
+        echo "    artifacts:" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org:22200/artifacts/" >> ~/.config/buildstream.conf
+    fi
+
+# Store all the downloaded git and ostree repos in the distributed cache.
+# This saves us fetching them on every build
+.bst_cache: &bst_cache
+  cache:
+    key: bst
+    paths:
+      - "${XDG_CACHE_HOME}/buildstream/sources/"
+
+.bootstrap_template: &bootstrap_definition
+  stage: bootstrap
+  tags:
+    - x86_64
+  script:
+    - cd bootstrap
+    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+
+bootstrap_aarch64:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: aarch64
+
+bootstrap_arm:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: arm
+
+bootstrap_x86_64:
+  <<: *bootstrap_definition
+  variables:
+    ARCH: x86_64
