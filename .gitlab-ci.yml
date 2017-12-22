@@ -9,6 +9,7 @@ variables:
 
 stages:
   - bootstrap
+  - build
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -82,5 +83,33 @@ bootstrap_x86_64:
 
 bootstrap_i586:
   <<: *bootstrap_definition
+  variables:
+    ARCH: i586
+
+
+.build_template: &build_definition
+  stage: build
+  script:
+    - cd bootstrap
+    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - bst -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
+    - bst -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
+    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
+    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
+    - cd "${CI_PROJECT_DIR}"/sdk
+    - bst -o target_arch "${ARCH}" build all.bst
+
+build_x86_64:
+  <<: *build_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+build_i586:
+  <<: *build_definition
+  tags:
+    - x86_64
   variables:
     ARCH: i586
