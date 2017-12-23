@@ -11,7 +11,6 @@ variables:
     --with-system-group=pulse \
     --with-access-group=pulse-access \
     --disable-oss-output \
-    --disable-oss-output \
     --disable-jack \
     --disable-lirc \
     --disable-bluez4 \
