@@ -6,8 +6,10 @@ depends:
     type: build
 
 variables:
+  # We need to install pip separatly to avoid conflict with setuptools
   conf-local: |
     --enable-shared \
+    --without-ensurepip \
     LDFLAGS="-L%{libdir}"
 
 config:

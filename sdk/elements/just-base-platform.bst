@@ -57,8 +57,12 @@ depends:
 - filename: base/perl.bst
 - filename: base/perl-xml-parser.bst
 - filename: base/python2.bst
+- filename: base/python2-pip.bst
+- filename: base/python2-setuptools.bst
 - filename: base/python2-six.bst
 - filename: base/python3.bst
+- filename: base/python3-pip.bst
+- filename: base/python3-setuptools.bst
 - filename: base/python3-six.bst
 - filename: base/tar.bst
 - filename: base/sndfile.bst
