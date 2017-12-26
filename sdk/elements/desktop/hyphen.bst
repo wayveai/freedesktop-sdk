@@ -4,6 +4,13 @@ depends:
   - filename: base.bst
     type: build
 
+config:
+  install-commands:
+    (>):
+      # Dictionaries will be installed by desktop/dictionaries.bst
+      - |
+        rm -f %{install-root}%{datadir}/hyphen/hyph_en_US.dic
+
 public:
   bst:
     split-rules:
