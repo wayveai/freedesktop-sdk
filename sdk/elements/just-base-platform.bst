@@ -50,6 +50,8 @@ depends:
 - filename: base/nano.bst
 - filename: base/nettle.bst
 - filename: base/npth.bst
+- filename: base/nspr.bst
+- filename: base/nss.bst
 - filename: base/openssl.bst
 - filename: base/p11-kit.bst
 - filename: base/pcre2.bst
