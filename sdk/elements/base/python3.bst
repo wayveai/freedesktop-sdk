@@ -7,12 +7,16 @@ depends:
     # glib depends on python
   - filename: base/pkg-config-stage1.bst
     type: build
+  - filename: base/expat.bst
+  - filename: base/libffi.bst
 
 variables:
   # We need to install pip separatly to avoid conflict with setuptools
   conf-local: |
     --enable-shared \
     --without-ensurepip \
+    --with-system-expat \
+    --with-system-ffi \
     LDFLAGS="-L%{libdir}"
 
 config:
