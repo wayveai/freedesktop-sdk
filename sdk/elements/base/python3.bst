@@ -28,6 +28,12 @@ public:
         (>):
           - "%{libdir}/libpython3.6m.so"
 
+    integration-commands:
+      - |
+        python3 -m compileall "%{indep-libdir}/python3.6/usercustomize.py"
+        python3 -O -m compileall "%{indep-libdir}/python3.6/usercustomize.py"
+        python3 -OO -m compileall "%{indep-libdir}/python3.6/usercustomize.py"
+
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz

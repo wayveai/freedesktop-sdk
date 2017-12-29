@@ -29,6 +29,12 @@ public:
         (>):
           - "%{libdir}/libpython2.7.so"
 
+    integration-commands:
+      - |
+        python2 -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
+        python2 -O -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
+        python2 -OO -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
+
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
