@@ -4,6 +4,9 @@ description: Python 2
 depends:
   - filename: bootstrap-import.bst
     type: build
+    # glib depends on python
+  - filename: base/pkg-config-stage1.bst
+    type: build
 
 variables:
   # We need to install pip separatly to avoid conflict with setuptools
