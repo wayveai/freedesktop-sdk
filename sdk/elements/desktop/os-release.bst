@@ -33,6 +33,9 @@ config:
       mkdir -p "%{install-root}%{datadir}/runtime/docs"
       mkdir -p "%{install-root}%{datadir}/runtime/docs/gtk-doc"
 
+    - |
+      mkdir -p "%{install-root}%{libdir}/GL"
+
 public:
   bst:
     integration-commands:

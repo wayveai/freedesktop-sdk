@@ -18,6 +18,18 @@ config:
       GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:/usr/lib/gstreamer-1.0
       XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
 
+    'Extension org.freedesktop.Platform.GL':
+      versions: "1.6;1.4"
+      version: "1.4"
+      directory: "%{lib}/GL"
+      subdirectories: true
+      no-autodownload: true
+      autodelete: false
+      add-ld-path: "lib"
+      merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d"
+      download-if: "active-gl-driver"
+      enable-if: "active-gl-driver"
+
     'Extension org.freedesktop.Sdk.Debug':
       directory: "%{lib}/debug"
       autodelete: true
