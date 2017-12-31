@@ -26,8 +26,9 @@ config:
   install-commands:
     (>):
       - |
-        mkdir -p %{install-root}%{libdir}/GL/vulkan/icd.d
-        ln -s "%{libdir}/GL/vulkan" "%{install-root}/usr/etc/vulkan"
+        mkdir -p "%{install-root}%{libdir}/GL/vulkan/icd.d"
+        mkdir -p "%{install-root}%{sysconfdir}/vulkan"
+        ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
         mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
 
 sources:
