@@ -8,11 +8,13 @@ depends:
   - filename: base/gnutls.bst
   - filename: base/openssl.bst
   - filename: base/krb5.bst
+  - filename: base/nss.bst
 
 variables:
   conf-local: |
     --with-gnutls \
     --with-ssl \
+    --with-nss \
     --with-gssapi
 
 public:
