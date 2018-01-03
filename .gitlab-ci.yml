@@ -1,4 +1,4 @@
-image: buildstream/buildstream-fedora:latest
+image: buildstream/buildstream-fedora:master-34-461ab56
 
 variables:
   # Store everything under the /builds directory. This is a separate Docker
