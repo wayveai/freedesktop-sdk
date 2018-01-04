@@ -4,12 +4,26 @@ description: Python 2
 depends:
   - filename: bootstrap-import.bst
     type: build
+    # glib depends on python
+  - filename: base/pkg-config-stage1.bst
+    type: build
+  - filename: base/expat.bst
+  - filename: base/libffi.bst
+  - filename: base/gdbm.bst
+  - filename: base/openssl.bst
+  - filename: base/sqlite.bst
+  - filename: base/xz.bst
+  - filename: base/bzip2.bst
 
 variables:
   # We need to install pip separatly to avoid conflict with setuptools
   conf-local: |
     --enable-shared \
     --without-ensurepip \
+    --with-system-expat \
+    --with-system-ffi \
+    --enable-loadable-sqlite-extensions \
+    --with-dbmliborder=gdbm \
     LDFLAGS="-L%{libdir}"
 
 config:
