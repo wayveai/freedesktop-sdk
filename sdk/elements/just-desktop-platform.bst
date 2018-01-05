@@ -12,6 +12,7 @@ depends:
 - filename: desktop/cups.bst
 - filename: desktop/dbus.bst
 - filename: desktop/dejavu-fonts.bst
+- filename: desktop/dictionaries.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst

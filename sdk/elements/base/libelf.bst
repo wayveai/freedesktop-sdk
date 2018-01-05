@@ -3,6 +3,8 @@ kind: myautotools
 depends:
   - filename: bootstrap-import.bst
     type: build
+  - filename: base/gettext.bst
+    type: build
 
 config:
   install-commands:

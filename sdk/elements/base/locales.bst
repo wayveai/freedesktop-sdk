@@ -15,8 +15,8 @@ config:
       mkdir -p %{install-root}/usr/lib/locale
 
       while read name encoding; do
-        command="localedef --prefix=/tmp -i ${name%%.*} -f ${encoding} ${name}"
+        command="localedef --prefix=/tmp --no-archive -i ${name%%.*} -f ${encoding} ${name}"
         echo "Generating ${name}"
         ${command}
       done <%{datadir}/i18n/SUPPORTED
-      mv /tmp/usr/lib/locale/locale-archive %{install-root}/usr/lib/locale/locale-archive
+      mv /tmp/usr/lib/locale/* %{install-root}/usr/lib/locale/

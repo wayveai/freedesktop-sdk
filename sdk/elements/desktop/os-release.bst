@@ -43,22 +43,28 @@ public:
         ln -s %{datadir}/runtime/docs/gtk-doc/html %{datadir}/gtk-doc/html
 
       - |
-        for parentpath in "%{indep-libdir}" "%{datadir}"; do
-          targetdir="%{datadir}/runtime/locale/$(basename "${parentpath}")"
-          mkdir -p "${targetdir}"
-          origpath="${parentpath}/locale"
+        targetdir="%{datadir}/runtime/locale"
+        mkdir -p "${targetdir}"
+        movelocale() {
+          subdir="$1"
+          origpath="$2"
           for langpath in "${origpath}"/*; do
-            lang="$(basename "${langpath}" | sed 's/[@\._].*//g')"
-            case "${lang}" in
-              C|en)
-              ;;
-              *)
-                mv "${langpath}" "${targetdir}/"
-                ln -s "$(realpath --relative-to="${origpath}" "${targetdir}/$(basename "${langpath}")")" "${langpath}"
-              ;;
-            esac
+            if [ -d "${langpath}" ]; then
+              lang=$(basename "${langpath}" | sed 's/[@\._].*//g')
+              case "${lang}" in
+                C|en)
+                  ;;
+                *)
+                    mkdir -p "${targetdir}/${lang}/${subdir}"
+                    mv "${langpath}" "${targetdir}/${lang}/${subdir}/"
+                    ln -s "$(realpath --relative-to="${origpath}" "${targetdir}/${lang}/${subdir}/$(basename "${langpath}")")" "${langpath}"
+                  ;;
+              esac
+            fi
           done
-        done
+        }
+        movelocale "share" "%{datadir}/locale"
+        movelocale "lib" "%{indep-libdir}/locale"
 
 sources:
   - kind: local
