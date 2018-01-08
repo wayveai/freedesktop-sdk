@@ -16,23 +16,22 @@ Located here you should find releases built for multiple architectures (aarch64,
 
 ## Building locally
 
-If you wish to build locally, you must have BuildStream installed and a local instance of OtStree -> [libostree](https://ostree.readthedocs.io/) on your machine.
+If you wish to build locally, you must have BuildStream installed and a local instance of [libostree](https://ostree.readthedocs.io/) on your machine.
 
 The instructions for building can be found the in the projects Gitlab-CI file.
 
 We are hoping to provide a more in-depth guide in the future.
 
 # Structure
-Currently the freedesktop-sdk repo also includes a set of instructions to bootstrap a minimal sysroot, used to build all the flatpak runtimes in the sdk folder.
-
-In order to host both projects in the same repository we have two main directories:
+Current directory structure is:
 
  - bootstrap
  - sdk
+ - plugins
 
-The baseruntime is hosted in the boostrap folder and contains all of the required packages to build the minimal sysroot, that we then use to build the freedesktop-sdk.
+The bootstrap folder includes a set of instructions to bootstrap a minimal sysroot, used to build all the freedesktop flatpak runtimes in the sdk folder.
 
-The freedesktop-sdk is located under sdk, and contains all of the dependencies currently required to build/run a Flatpak application.
+The sdk folder contains the instructions to build the freedesktop-sdk flatpak runtimes.
 
 The plugins directory, is a custom directory needed to host our custom Buildstream [plugins](https://buildstream.gitlab.io/buildstream/pluginindex.html#plugins)
 
