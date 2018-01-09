@@ -61,6 +61,8 @@ config:
     'Extension org.freedesktop.Platform.VAAPI.Intel':
       directory: "%{lib}/dri/intel-vaapi-driver"
       autodelete: false
+      no-autodownload: true
+      download-if: "have-intel-gpu"
 
 depends:
   - filename: desktop-image.bst
