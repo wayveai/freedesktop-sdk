@@ -10,7 +10,8 @@ depends:
 
 variables:
   # Building llvm5 takes a lot of memory
-  max-jobs: 2
+  # In our current runners (8 cores/8GB), builds sometimes fail if more cores are used
+  max-jobs: 4
   lib: "lib/%{gcc_triplet}"
   libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
