@@ -19,9 +19,9 @@ variables:
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "arm":
-        targets: "ARM;NVPTX"
+        targets: "ARM"
     - target_arch == "aarch64":
-        targets: "AArch64;NVPTX"
+        targets: "AArch64"
 
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
