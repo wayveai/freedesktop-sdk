@@ -7,6 +7,9 @@ variables:
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
 
+  # Generic variable for invoking buildstream
+  BST: bst --colors
+
 stages:
   - bootstrap
   - build
@@ -63,8 +66,8 @@ before_script:
     - x86_64
   script:
     - cd bootstrap
-    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
 
 bootstrap_aarch64:
   <<: *bootstrap_definition
@@ -91,14 +94,14 @@ bootstrap_i586:
   stage: build
   script:
     - cd bootstrap
-    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-    - bst -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
-    - bst -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
+    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
     - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
     - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
     - cd "${CI_PROJECT_DIR}"/sdk
-    - bst -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst
 
 build_x86_64:
   dependencies:
