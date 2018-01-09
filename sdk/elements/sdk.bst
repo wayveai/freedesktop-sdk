@@ -52,6 +52,7 @@ config:
       subdirectory-suffix: "gtk-3.0"
       no-autodownload: true
       version: "3.22"
+      download-if: "active-gtk-theme"
 
     'Extension org.freedesktop.Sdk.Extension':
       subdirectories: true
