@@ -24,5 +24,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://dri.freedesktop.org/libdrm/libdrm-2.4.85.tar.bz2
-    ref: 64e4cd87eaee38ae60b2984ef02b66159b9bdd33030040db2a04339cf15f6173
+    url: https://dri.freedesktop.org/libdrm/libdrm-2.4.89.tar.bz2
+    ref: 629f9782aabbb4809166de5f24d26fe0766055255038f16935602d89f136a02e
