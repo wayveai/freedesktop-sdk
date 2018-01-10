@@ -36,5 +36,5 @@ environment:
 
 sources:
 - kind: tar
-  url: http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz
-  ref: 0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85
+  url: http://ftp.gnu.org/gnu/binutils/binutils-2.29.1.tar.xz
+  ref: e7010a46969f9d3e53b650a518663f98a5dde3c3ae21b7d71e5e6803bc36b577
