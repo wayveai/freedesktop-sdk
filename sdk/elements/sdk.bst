@@ -52,6 +52,7 @@ config:
       subdirectory-suffix: "gtk-3.0"
       no-autodownload: true
       version: "3.22"
+      download-if: "active-gtk-theme"
 
     'Extension org.freedesktop.Sdk.Extension':
       subdirectories: true
@@ -61,6 +62,8 @@ config:
     'Extension org.freedesktop.Platform.VAAPI.Intel':
       directory: "%{lib}/dri/intel-vaapi-driver"
       autodelete: false
+      no-autodownload: true
+      download-if: "have-intel-gpu"
 
 depends:
   - filename: desktop-image.bst
