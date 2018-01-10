@@ -18,5 +18,5 @@ config:
 
 sources:
 - kind: tar
-  url: http://ftp.gnu.org/gnu/coreutils/coreutils-8.28.tar.xz
-  ref: 1117b1a16039ddd84d51a9923948307cfa28c2cea03d1a2438742253df0a0c65
+  url: http://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz
+  ref: 92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e
