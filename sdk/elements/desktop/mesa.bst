@@ -7,6 +7,8 @@ depends:
     type: build
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-proto-dri2.bst
+  - filename: desktop/xorg-proto-dri3.bst
+  - filename: desktop/xorg-proto-present.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst
@@ -41,6 +43,7 @@ variables:
     --enable-llvm \
     --disable-llvm-shared-libs \
     --enable-dri \
+    --enable-dri3 \
     --with-gallium-drivers=%{gallium_drivers} \
     --with-dri-drivers=%{dri_drivers}
 
