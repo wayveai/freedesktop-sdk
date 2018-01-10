@@ -1,0 +1,17 @@
+kind: manual
+depends:
+  - filename: bootstrap-import.bst
+    type: build
+  - filename: base/python3.bst
+
+config:
+  install-commands:
+    - |
+      install -m 644 -D python3-usercustomize.py "%{install-root}%{indep-libdir}/python3.6/usercustomize.py"
+      python3 -m compileall "%{install-root}%{indep-libdir}/python3.6/usercustomize.py"
+      python3 -O -m compileall "%{install-root}%{indep-libdir}/python3.6/usercustomize.py"
+      python3 -OO -m compileall "%{install-root}%{indep-libdir}/python3.6/usercustomize.py"
+
+sources:
+  - kind: local
+    path: elements/base/python3-usercustomize.py

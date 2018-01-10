@@ -33,9 +33,6 @@ config:
         ln -s "../%{gcc_triplet}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
         rm -f "%{install-root}%{bindir}/2to3"
 
-      - |
-        install -m 0755 python2-usercustomize.py %{install-root}%{indep-libdir}/python2.7/usercustomize.py
-
 public:
   bst:
     split-rules:
@@ -43,15 +40,7 @@ public:
         (>):
           - "%{libdir}/libpython2.7.so"
 
-    integration-commands:
-      - |
-        python2 -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
-        python2 -O -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
-        python2 -OO -m compileall "%{indep-libdir}/python2.7/usercustomize.py"
-
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
     ref: 71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66
-  - kind: local
-    path: elements/base/python2-usercustomize.py
