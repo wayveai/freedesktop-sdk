@@ -22,9 +22,11 @@ variables:
     - target_arch == "i586" or target_arch == "x86_64":
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi"
         dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
+        vulkan_drivers: "intel,radeon"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
         dri_drivers: "swrast,nouveau,radeon,r200"
+        vulkan_drivers: "radeon"
 
   conf-local: |
     --enable-libglvnd \
@@ -45,7 +47,8 @@ variables:
     --enable-dri \
     --enable-dri3 \
     --with-gallium-drivers=%{gallium_drivers} \
-    --with-dri-drivers=%{dri_drivers}
+    --with-dri-drivers=%{dri_drivers} \
+    --with-vulkan-drivers=%{vulkan_drivers}
 
 config:
   install-commands:
