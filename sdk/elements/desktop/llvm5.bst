@@ -10,7 +10,8 @@ depends:
 
 variables:
   # Building llvm5 takes a lot of memory
-  max-jobs: 2
+  # In our current runners (8 cores/8GB), builds sometimes fail if more cores are used
+  max-jobs: 4
   lib: "lib/%{gcc_triplet}"
   libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
@@ -19,9 +20,9 @@ variables:
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "arm":
-        targets: "ARM;AMDGPU;NVPTX"
+        targets: "ARM"
     - target_arch == "aarch64":
-        targets: "AArch64;AMDGPU;NVPTX"
+        targets: "AArch64"
 
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
