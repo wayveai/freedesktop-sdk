@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -29,6 +29,7 @@ public:
           - "%{libdir}/libgstpbutils-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.3.tar.xz
-    ref: d3d37b8489d37fa0018973d850bd2067b98af335fef2fa543ee7d40359e3cea5
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-base
+    track: 1.12
+    ref: c7272689ddce50afdc53f89f70802fd9a4ccc95a  # 1.12.3
