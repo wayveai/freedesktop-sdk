@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -31,6 +31,10 @@ public:
           - "%{libdir}/libgstphotography-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.3.tar.xz
-    ref: 36d059761852bed0f1a7fcd3ef64a8aeecab95d2bca53cd6aa0f08054b1cbfec
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-bad
+    track: 1.12
+    ref: 8f66ff25f9cabc170c57d75a74984103c7fcb965  # 1.12.13
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
