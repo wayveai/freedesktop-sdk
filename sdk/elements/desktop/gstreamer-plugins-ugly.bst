@@ -18,7 +18,7 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-ugly
     track: 1.12
-    ref: ffbf076dd13783786d7c7147b4d909af52f7b341  # 1.12.3
+    ref: 46fab99f2ef5581d63c2d11c57fb741553ede37f  # 1.12.4
     submodules:
       common:
         url: freedesktop:gstreamer/common
