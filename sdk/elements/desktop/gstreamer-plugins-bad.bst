@@ -34,7 +34,7 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-bad
     track: 1.12
-    ref: 8f66ff25f9cabc170c57d75a74984103c7fcb965  # 1.12.13
+    ref: cbdbd8d4f6893e6042dbf7b8258e23a8d2aaf081  # 1.12.14
     submodules:
       common:
         url: freedesktop:gstreamer/common
