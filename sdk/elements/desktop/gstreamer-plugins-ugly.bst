@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -15,6 +15,10 @@ variables:
       --disable-realmedia
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.12.3.tar.xz
-    ref: e88ca584c94ea78eeecbf3af00ef7f134b66bdee7408aa4aa6c547235e060052
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-ugly
+    track: 1.12
+    ref: ffbf076dd13783786d7c7147b4d909af52f7b341  # 1.12.3
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
