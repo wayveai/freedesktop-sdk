@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -19,6 +19,10 @@ variables:
       --with-default-visualizer=autoaudiosink
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz
-    ref: 13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-good
+    track: 1.12
+    ref: 4ce0249911fb4dda1a7e643a91490a10f2a6d415  # 1.12.13
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
