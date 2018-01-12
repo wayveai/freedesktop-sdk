@@ -32,4 +32,4 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-base
     track: 1.12
-    ref: c7272689ddce50afdc53f89f70802fd9a4ccc95a  # 1.12.3
+    ref: e07c69f65598068b380753066783a1c67e3d4464  # 1.12.14
