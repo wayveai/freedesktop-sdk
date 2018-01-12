@@ -24,7 +24,7 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gstreamer
     track: 1.12
-    ref: a6653b617cf42de70be087188d41c1cff6193b05  # 1.12.13
+    ref: 505a24ff6843a04e4f75c5e03caa7b2774806fc3  # 1.12.14
     submodules:
       common:
         url: freedesktop:gstreamer/common
