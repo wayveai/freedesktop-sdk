@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -21,6 +21,10 @@ public:
           - "%{libdir}/libgstcontroller-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.3.tar.xz
-    ref: d388f492440897f02b01eebb033ca2d41078a3d85c0eddc030cdea5a337a216e
+  - kind: git
+    url: freedesktop:gstreamer/gstreamer
+    track: 1.12
+    ref: a6653b617cf42de70be087188d41c1cff6193b05  # 1.12.13
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
