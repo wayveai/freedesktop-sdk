@@ -36,7 +36,7 @@ before_script:
     fi
 
   # Trust the host key of the cache server.
-  - ssh-keyscan cache.sdk.freedesktop.org >> ~/.ssh/known_hosts
+  - ssh-keyscan ${GITLAB_BST_CACHE_IP} >> ~/.ssh/known_hosts
 
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
   # (default config is pull only)
@@ -46,10 +46,10 @@ before_script:
         echo "projects:" > ~/.config/buildstream.conf
         echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts-internal@${GITLAB_BST_CACHE_IP}/artifacts/" >> ~/.config/buildstream.conf
         echo "  base-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: ssh://artifacts@cache.sdk.freedesktop.org/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: ssh://artifacts-internal@${GITLAB_BST_CACHE_IP}/artifacts/" >> ~/.config/buildstream.conf
     fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
