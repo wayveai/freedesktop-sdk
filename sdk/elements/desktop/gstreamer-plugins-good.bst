@@ -22,7 +22,7 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-good
     track: 1.12
-    ref: 4ce0249911fb4dda1a7e643a91490a10f2a6d415  # 1.12.13
+    ref: 224938300a3b0fd8263422c3548576ac939032e5  # 1.12.14
     submodules:
       common:
         url: freedesktop:gstreamer/common
