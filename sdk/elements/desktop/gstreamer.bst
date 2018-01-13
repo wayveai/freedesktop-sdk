@@ -1,13 +1,12 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
     type: build
 
 variables:
-  conf-local: |
-    --enable-debug \
-    --disable-examples
+  meson-local: |
+    -Ddisable-examples=true
 
 public:
   bst:
