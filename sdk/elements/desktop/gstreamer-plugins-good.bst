@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -8,15 +8,8 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
 
 variables:
-  conf-local: |
-      --enable-experimental \
-      --enable-orc \
-      --disable-monoscope \
-      --disable-aalib \
-      --enable-cairo \
-      --disable-libcaca \
-      --disable-jack \
-      --with-default-visualizer=autoaudiosink
+  meson-local: |
+    -Duse_orc=yes
 
 sources:
   - kind: git
