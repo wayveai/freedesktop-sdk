@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -7,9 +7,8 @@ depends:
   - filename: desktop/gstreamer.bst
 
 variables:
-  conf-local: |
-      --enable-experimental \
-      --enable-orc
+  meson-local: |
+    -Duse_orc=yes
 
 public:
   bst:
