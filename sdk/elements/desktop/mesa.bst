@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: bootstrap-import.bst
@@ -16,6 +16,10 @@ depends:
   - filename: desktop/libglvnd.bst
   - filename: desktop/libvdpau.bst
   - filename: base/libelf.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
   - filename: base/pkg-config.bst
     type: build
   - filename: base/python2.bst
@@ -26,36 +30,34 @@ variables:
     - target_arch == "i586" or target_arch == "x86_64":
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
         dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
-        vulkan_drivers: "intel,radeon"
+        vulkan_drivers: "intel,amd"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
         dri_drivers: "swrast,nouveau,r200"
         vulkan_drivers: ""
 
-  conf-local: |
-    --enable-libglvnd \
-    --disable-selinux \
-    --disable-osmesa \
-    --enable-egl \
-    --disable-gles1 \
-    --enable-gles2 \
-    --enable-vdpau \
-    --enable-va \
-    --enable-xa \
-    --disable-xvmc \
-    --with-platforms=x11,drm,surfaceless,wayland \
-    --enable-shared-glapi \
-    --enable-gbm \
-    --disable-opencl \
-    --enable-glx-tls \
-    --enable-texture-float=yes \
-    --enable-llvm \
-    --enable-llvm-shared-libs \
-    --enable-dri \
-    --enable-dri3 \
-    --with-gallium-drivers=%{gallium_drivers} \
-    --with-dri-drivers=%{dri_drivers} \
-    --with-vulkan-drivers=%{vulkan_drivers}
+  meson-local: |
+    -Dglvnd=true \
+    -Dselinux=false \
+    -Dosmesa=none \
+    -Degl=true \
+    -Dgles1=false \
+    -Dgles2=true \
+    -Dgallium-vdpau=true \
+    -Dgallium-va=true \
+    -Dgallium-xa=true \
+    -Dgallium-xvmc=false \
+    -Dplatforms=x11,drm,surfaceless,wayland \
+    -Dshared-glapi=true \
+    -Dgbm=true \
+    -Dgallium-opencl=disabled \
+    -Dglx=auto \
+    -Dtexture-float=true \
+    -Dllvm=true \
+    -Ddri3=true \
+    -Dgallium-drivers=%{gallium_drivers} \
+    -Ddri-drivers=%{dri_drivers} \
+    -Dvulkan-drivers=%{vulkan_drivers}
 
 config:
   install-commands:
