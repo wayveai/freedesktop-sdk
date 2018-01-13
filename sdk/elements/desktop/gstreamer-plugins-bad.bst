@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -9,8 +9,7 @@ depends:
 
 variables:
   conf-local: |
-      --enable-experimental \
-      --enable-orc
+    -Duse_orc=yes
 
 public:
   bst:
