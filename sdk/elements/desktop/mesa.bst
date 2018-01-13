@@ -25,8 +25,8 @@ variables:
         vulkan_drivers: "intel,radeon"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
-        dri_drivers: "swrast,nouveau,radeon,r200"
-        vulkan_drivers: "radeon"
+        dri_drivers: "swrast,nouveau,r200"
+        vulkan_drivers: ""
 
   conf-local: |
     --enable-libglvnd \
