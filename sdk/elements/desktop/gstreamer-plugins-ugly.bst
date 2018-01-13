@@ -1,18 +1,10 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
     type: build
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
-
-variables:
-  conf-local: |
-      --disable-asfdemux \
-      --disable-dvdlpcmdec \
-      --disable-dvdsub \
-      --disable-xingmux \
-      --disable-realmedia
 
 sources:
   - kind: git
