@@ -7,9 +7,12 @@ depends:
     type: build
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-proto-dri2.bst
+  - filename: desktop/xorg-proto-dri3.bst
+  - filename: desktop/xorg-proto-present.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst
+  - filename: desktop/xorg-lib-xxf86vm.bst
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/libglvnd.bst
@@ -19,9 +22,11 @@ variables:
     - target_arch == "i586" or target_arch == "x86_64":
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi"
         dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
+        vulkan_drivers: "intel,radeon"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
-        dri_drivers: "swrast,nouveau,radeon,r200"
+        dri_drivers: "swrast,nouveau,r200"
+        vulkan_drivers: ""
 
   conf-local: |
     --enable-libglvnd \
@@ -40,8 +45,10 @@ variables:
     --enable-llvm \
     --disable-llvm-shared-libs \
     --enable-dri \
+    --enable-dri3 \
     --with-gallium-drivers=%{gallium_drivers} \
-    --with-dri-drivers=%{dri_drivers}
+    --with-dri-drivers=%{dri_drivers} \
+    --with-vulkan-drivers=%{vulkan_drivers}
 
 config:
   install-commands:
@@ -55,8 +62,8 @@ config:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-17.3.1.tar.xz
-    ref: 9ae607e0998a586fb2c866cfc8e45e6f52d1c56cb1b41288253ea83eada824c1
+    url: https://mesa.freedesktop.org/archive/mesa-17.3.2.tar.xz
+    ref: e2844a13f2d6f8f24bee65804a51c42d8dc6ae9c36cff7ee61d0940e796d64c6
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
