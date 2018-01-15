@@ -60,7 +60,6 @@ depends:
 - filename: desktop/pango.bst
 - filename: desktop/pixman.bst
 - filename: desktop/pulseaudio.bst
-- filename: desktop/s2tc.bst
 - filename: desktop/sdl2-image.bst
 - filename: desktop/sdl2-mixer.bst
 - filename: desktop/sdl2-net.bst
