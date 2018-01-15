@@ -1,4 +1,4 @@
-image: buildstream/buildstream-fedora:master-34-461ab56
+image: buildstream/buildstream-fedora:1.0.1
 
 variables:
   # Store everything under the /builds directory. This is a separate Docker
@@ -16,7 +16,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='9a291305a8fc63958c1475af47aab5b76b858ec8' # 1.0.0-14-g9a29130
+  - export BST_SHA='b340f995455b997995fc55277a993d5f5a1656e5' # 1.0.1
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
