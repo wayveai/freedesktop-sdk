@@ -6,6 +6,8 @@ variables:
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
+  BST_CACHE_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
+  BST_CACHE_SSH_USER: 'artifacts'
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -35,8 +37,15 @@ before_script:
         ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
     fi
 
+  # Use internal network only if we are using x86_64 runners from DigitalOcean
+  - |
+    if [ "${CI_RUNNER_DESCRIPTION}" == 'manager-runner-freedesktop' ]; then
+        export BST_CACHE_SERVER_ADDRESS="${GITLAB_BST_CACHE_IP}"
+        export BST_CACHE_SSH_USER='artifacts-internal'
+    fi
+
   # Trust the host key of the cache server.
-  - ssh-keyscan ${GITLAB_BST_CACHE_IP} >> ~/.ssh/known_hosts
+  - ssh-keyscan "${BST_CACHE_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
 
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
   # (default config is pull only)
@@ -46,10 +55,10 @@ before_script:
         echo "projects:" > ~/.config/buildstream.conf
         echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: ssh://artifacts-internal@${GITLAB_BST_CACHE_IP}/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: ssh://${BST_CACHE_SSH_USER}@${BST_CACHE_SERVER_ADDRESS}/artifacts/" >> ~/.config/buildstream.conf
         echo "  base-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: ssh://artifacts-internal@${GITLAB_BST_CACHE_IP}/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: ssh://${BST_CACHE_SSH_USER}@${BST_CACHE_SERVER_ADDRESS}/artifacts/" >> ~/.config/buildstream.conf
     fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
