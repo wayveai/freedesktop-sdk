@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -24,8 +24,9 @@ public:
           - "%{libdir}/libfontconfig.so"
 
 sources:
-  - kind: tar
-    url: https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.6.tar.bz2
-    ref: cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017
+  - kind: git
+    url: https://anongit.freedesktop.org/git/fontconfig
+    track: master
+    ref: b546940435ebfb0df575bc7a2350d1e913919c34 #  2.12.6
   - kind: local
     path: elements/desktop/fontconfig-flatpak.conf
