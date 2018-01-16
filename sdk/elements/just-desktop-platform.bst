@@ -14,6 +14,7 @@ depends:
 - filename: desktop/dconf.bst
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst
+- filename: desktop/ffmpeg.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst
