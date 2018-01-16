@@ -11,6 +11,7 @@ depends:
 - filename: desktop/cairo.bst
 - filename: desktop/cups.bst
 - filename: desktop/dbus.bst
+- filename: desktop/dconf.bst
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst
 - filename: desktop/flatpak-xdg-utils.bst
