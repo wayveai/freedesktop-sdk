@@ -6,11 +6,6 @@ depends:
   - filename: desktop/freetype.bst
 
 config:
-  build-commands:
-    (<):
-      - |
-        rm -f src/fcobjshash.h
-
   install-commands:
     (>):
     - |
@@ -27,6 +22,6 @@ sources:
   - kind: git
     url: https://anongit.freedesktop.org/git/fontconfig
     track: master
-    ref: b546940435ebfb0df575bc7a2350d1e913919c34 #  2.12.6
+    ref: d7d40b5aa8216f30a38492bd2bde5884c492c82d #  2.12.92
   - kind: local
     path: elements/desktop/fontconfig-flatpak.conf
