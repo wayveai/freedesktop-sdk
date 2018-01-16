@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -33,6 +33,7 @@ public:
           - "%{libdir}/cairo/libcairo-trace.so"
 
 sources:
-  - kind: tar
-    url: https://www.cairographics.org/releases/cairo-1.14.12.tar.xz
-    ref: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
+  - kind: git
+    url: https://anongit.freedesktop.org/git/cairo
+    track: 1.14
+    ref: 7cf32a065e7c3d8721ae5f4eccf6695152fe14b7 # 1.14.12
