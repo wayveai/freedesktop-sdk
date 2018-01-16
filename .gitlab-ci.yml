@@ -19,7 +19,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='315c4ef768d3c21ea7484a35052c17fb2e7ec1c4' # 1.0.0-87-g315c4ef
+  - export BST_SHA='d95c98bc7a1b0c3d59ac86820195063aaa0e54e7' # 1.0.0-127-gd95c98b
   # Manually install packages, needed for ARM runners until #39 is solved
   - dnf install -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip
   - git clone https://gitlab.com/BuildStream/buildstream.git
@@ -79,15 +79,8 @@ before_script:
 .build_template: &build_definition
   stage: build
   script:
-    - cd bootstrap
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
-    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
-    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
   artifacts:
     when: always
     paths:
@@ -122,15 +115,8 @@ build_aarch64:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - cd bootstrap
-    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-    - bst -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
-    - bst -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
-    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
-    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
     - cd "${CI_PROJECT_DIR}"/sdk
-    - bst -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
@@ -191,16 +177,9 @@ minimal_vm_image_x86_64:
     - git clone https://gitlab.com/BuildStream/bst-external.git
     - git -C bst-external checkout $BST_EXTERNAL_SHA
     - pip3 install --user ./bst-external
-    - cd bootstrap
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
-    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
-    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
-    - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
+    - cd sdk
+    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
+    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
     - dnf install -y qemu-system-x86
     - ../utils/test-minimal-system vm/sda.img
   tags:
