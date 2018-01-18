@@ -9,6 +9,8 @@ depends:
   - filename: desktop/at-spi2-atk.bst
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst
+  - filename: desktop/dconf.bst
+    type: runtime
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/xorg-lib-xinerama.bst
   - filename: desktop/xorg-lib-xi.bst

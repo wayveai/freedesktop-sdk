@@ -1,7 +1,8 @@
 kind: myautotools
 
 depends:
-  - filename: glib2.bst
+  - filename: base.bst
+    type: build
 
 variables:
   conf-local: |
