@@ -1,4 +1,4 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -9,8 +9,7 @@ depends:
 
 variables:
   conf-local: |
-      --enable-experimental \
-      --enable-orc
+    -Duse_orc=yes
 
 public:
   bst:
@@ -31,6 +30,10 @@ public:
           - "%{libdir}/libgstphotography-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.3.tar.xz
-    ref: 36d059761852bed0f1a7fcd3ef64a8aeecab95d2bca53cd6aa0f08054b1cbfec
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-bad
+    track: 1.12
+    ref: cbdbd8d4f6893e6042dbf7b8258e23a8d2aaf081  # 1.12.14
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common

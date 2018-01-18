@@ -1,13 +1,12 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
     type: build
 
 variables:
-  conf-local: |
-    --enable-debug \
-    --disable-examples
+  meson-local: |
+    -Ddisable-examples=true
 
 public:
   bst:
@@ -21,6 +20,10 @@ public:
           - "%{libdir}/libgstcontroller-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.3.tar.xz
-    ref: d388f492440897f02b01eebb033ca2d41078a3d85c0eddc030cdea5a337a216e
+  - kind: git
+    url: freedesktop:gstreamer/gstreamer
+    track: 1.12
+    ref: 505a24ff6843a04e4f75c5e03caa7b2774806fc3  # 1.12.14
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common

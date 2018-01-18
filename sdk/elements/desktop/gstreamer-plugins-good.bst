@@ -1,4 +1,4 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -8,17 +8,14 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
 
 variables:
-  conf-local: |
-      --enable-experimental \
-      --enable-orc \
-      --disable-monoscope \
-      --disable-aalib \
-      --enable-cairo \
-      --disable-libcaca \
-      --disable-jack \
-      --with-default-visualizer=autoaudiosink
+  meson-local: |
+    -Duse_orc=yes
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz
-    ref: 13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-good
+    track: 1.12
+    ref: 224938300a3b0fd8263422c3548576ac939032e5  # 1.12.14
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common

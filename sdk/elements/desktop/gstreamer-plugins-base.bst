@@ -1,4 +1,4 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -7,9 +7,8 @@ depends:
   - filename: desktop/gstreamer.bst
 
 variables:
-  conf-local: |
-      --enable-experimental \
-      --enable-orc
+  meson-local: |
+    -Duse_orc=yes
 
 public:
   bst:
@@ -29,6 +28,7 @@ public:
           - "%{libdir}/libgstpbutils-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.3.tar.xz
-    ref: d3d37b8489d37fa0018973d850bd2067b98af335fef2fa543ee7d40359e3cea5
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-base
+    track: 1.12
+    ref: e07c69f65598068b380753066783a1c67e3d4464  # 1.12.14

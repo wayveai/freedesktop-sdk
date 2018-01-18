@@ -1,4 +1,4 @@
-kind: myautotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -6,15 +6,11 @@ depends:
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
 
-variables:
-  conf-local: |
-      --disable-asfdemux \
-      --disable-dvdlpcmdec \
-      --disable-dvdsub \
-      --disable-xingmux \
-      --disable-realmedia
-
 sources:
-  - kind: tar
-    url: https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.12.3.tar.xz
-    ref: e88ca584c94ea78eeecbf3af00ef7f134b66bdee7408aa4aa6c547235e060052
+  - kind: git
+    url: freedesktop:gstreamer/gst-plugins-ugly
+    track: 1.12
+    ref: 46fab99f2ef5581d63c2d11c57fb741553ede37f  # 1.12.4
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
