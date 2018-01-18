@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: base.bst
@@ -6,11 +6,6 @@ depends:
   - filename: desktop/freetype.bst
 
 config:
-  build-commands:
-    (<):
-      - |
-        rm -f src/fcobjshash.h
-
   install-commands:
     (>):
     - |
@@ -24,8 +19,9 @@ public:
           - "%{libdir}/libfontconfig.so"
 
 sources:
-  - kind: tar
-    url: https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.6.tar.bz2
-    ref: cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017
+  - kind: git
+    url: https://anongit.freedesktop.org/git/fontconfig
+    track: master
+    ref: d7d40b5aa8216f30a38492bd2bde5884c492c82d #  2.12.92
   - kind: local
     path: elements/desktop/fontconfig-flatpak.conf
