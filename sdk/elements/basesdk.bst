@@ -13,8 +13,8 @@ config:
 
     'Extension org.freedesktop.BaseSdk.Debug':
       directory: "%{lib}/debug"
-      autodelete: true
-      no-autodownload: true
+      autodelete: "true"
+      no-autodownload: "true"
 
 depends:
   - filename: base-image.bst

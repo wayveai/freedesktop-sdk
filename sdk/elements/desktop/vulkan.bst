@@ -22,6 +22,15 @@ variables:
     -DBUILD_DEMOS=OFF \
     -DBUILD_LAYERS=OFF
 
+config:
+  install-commands:
+    (>):
+      - |
+        mkdir -p "%{install-root}%{libdir}/GL/vulkan/icd.d"
+        mkdir -p "%{install-root}%{sysconfdir}/vulkan"
+        ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
+        mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
+
 sources:
   - kind: tar
     url: https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.0.61.1.tar.gz
