@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: libdrm
 
 depends:

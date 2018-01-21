@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: X.org lib x11
 
 depends:

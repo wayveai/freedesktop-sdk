@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: GNU Binutils Stage 1
 
 depends:

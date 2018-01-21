@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: bootstrap-import.bst

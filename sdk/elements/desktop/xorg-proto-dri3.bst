@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: X.org proto dri3
 
 depends:

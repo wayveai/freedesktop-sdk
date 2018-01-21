@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: X.org dist pthread stubs
 
 depends:
