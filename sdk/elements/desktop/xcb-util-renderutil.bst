@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: X.org xcb-util-renderutil
 
 depends:

@@ -6,6 +6,11 @@ depends:
   - filename: desktop/freetype.bst
 
 config:
+  configure-commands:
+    (<):
+      - |
+        %{autogen}
+
   install-commands:
     (>):
     - |

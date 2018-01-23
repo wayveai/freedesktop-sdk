@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: util-linux
 
 depends:

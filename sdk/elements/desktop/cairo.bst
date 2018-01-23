@@ -20,6 +20,12 @@ variables:
       --enable-tee \
       --enable-gobject
 
+config:
+  configure-commands:
+    (<):
+      - |
+        %{autogen}
+
 public:
   bst:
     split-rules:

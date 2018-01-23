@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: Python 3
 
 depends:

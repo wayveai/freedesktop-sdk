@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 description: GNU m4
 
 depends:

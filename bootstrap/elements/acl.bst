@@ -1,4 +1,4 @@
-kind: myautotools
+kind: autotools
 
 depends:
   - filename: dependencies/base-sdk.bst
