@@ -44,5 +44,5 @@ public:
 sources:
   - kind: git
     url: https://chromium.googlesource.com/webm/libvpx
-    track: longtailedduck
-    ref: 0c0a05046db1c0b59a7fcc29785a190fdbbe39c2
+    track: mandarinduck
+    ref: f80be22a1099b2a431c2796f529bb261064ec6b4 #  v1.7.0
