@@ -42,6 +42,7 @@ public:
           - "%{libdir}/libvpx.so"
 
 sources:
-  - kind: tar
-    url: http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.6.1.tar.bz2
-    ref: 1c2c0c2a97fba9474943be34ee39337dee756780fc12870ba1dc68372586a819
+  - kind: git
+    url: https://chromium.googlesource.com/webm/libvpx
+    track: longtailedduck
+    ref: 0c0a05046db1c0b59a7fcc29785a190fdbbe39c2
