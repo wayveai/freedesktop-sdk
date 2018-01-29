@@ -11,6 +11,11 @@ config:
       runtime: org.freedesktop.BasePlatform/%{gcc_arch}/%{branch}
       sdk: org.freedesktop.BaseSdk/%{gcc_arch}/%{branch}
 
+    'Extension org.freedesktop.BaseSdk.Locale':
+      directory: "share/runtime/locale"
+      autodelete: "true"
+      locale-subset: "true"
+
 depends:
   - filename: base-platform-image.bst
     type: build

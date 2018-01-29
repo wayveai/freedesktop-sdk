@@ -4,6 +4,8 @@ config:
   directory: "%{prefix}"
   exclude:
     - debug
+    - docs
+    - locale
 
   metadata:
     Runtime:
@@ -15,6 +17,16 @@ config:
       directory: "%{lib}/debug"
       autodelete: "true"
       no-autodownload: "true"
+
+    'Extension org.freedesktop.BaseSdk.Docs':
+      directory: "share/runtime/docs"
+      autodelete: "true"
+      no-autodownload: "true"
+
+    'Extension org.freedesktop.BasePlatform.Locale':
+      directory: "share/runtime/locale"
+      autodelete: "true"
+      locale-subset: "true"
 
 depends:
   - filename: base-image.bst

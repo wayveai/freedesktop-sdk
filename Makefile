@@ -35,7 +35,10 @@ RUNTIMES=					\
 	glxinfo-debug				\
 	basesdk					\
 	basesdk-debug				\
-	baseplatform
+	basesdk-locale				\
+	basesdk-docs				\
+	baseplatform				\
+	baseplatform-locale
 
 
 RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
