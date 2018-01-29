@@ -15,6 +15,7 @@ variables:
 stages:
   - bootstrap
   - build
+  - flatpak
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -71,6 +72,8 @@ before_script:
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
+
+
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
   tags:
@@ -99,6 +102,7 @@ bootstrap_i586:
   <<: *bootstrap_definition
   variables:
     ARCH: i586
+
 
 
 .build_template: &build_definition
@@ -131,3 +135,53 @@ build_i586:
     - x86_64
   variables:
     ARCH: i586
+
+
+
+.flatpak_template: &flatpak_definition
+  stage: flatpak
+  script:
+    - cd bootstrap
+    - bst -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - bst -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - bst -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
+    - bst -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
+    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
+    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
+    - cd "${CI_PROJECT_DIR}"/sdk
+    - bst -o target_arch "${ARCH}" build all.bst
+
+    - echo "Export runtimes to a ostree repo"
+    - mkdir runtimes
+    - |
+      for runtime in sdk platform; do
+        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+      done
+    - cd ${CI_PROJECT_DIR}
+
+    - echo "Use flatpak builder to export the runtimes to a ostree repo"
+    - dnf install -y flatpak flatpak-builder
+    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
+    - flatpakarch="${ARCH/i586/i386}"
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
+
+    - echo "Locally install generated flatpak runtimes"
+    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
+    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//unstable
+    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//unstable
+
+    - echo "Build basic flatpak app"
+    - flatpak-builder --arch="${flatpakarch}" build_folder tests/org.flatpak.Hello.json
+
+    - echo "Run basic application"
+    - flatpak-builder --arch="${flatpakarch}" --run build_folder tests/org.flatpak.Hello.json hello.sh
+
+app_x86_64:
+  dependencies:
+    - build_x86_64
+  <<: *flatpak_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
