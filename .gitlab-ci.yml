@@ -108,6 +108,14 @@ build_i586:
   variables:
     ARCH: i586
 
+build_aarch64:
+  image: arm64v8/fedora:27
+  <<: *build_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
 
 
 .flatpak_template: &flatpak_definition
@@ -163,3 +171,13 @@ app_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+
+app_aarch64:
+  image: arm64v8/fedora:27
+  dependencies:
+    - build_aarch64
+  <<: *flatpak_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
