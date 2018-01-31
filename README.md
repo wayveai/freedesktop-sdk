@@ -27,7 +27,7 @@ Current directory structure is:
 
  - bootstrap
  - sdk
- - plugins
+   - plugins
 
 The bootstrap folder includes a set of instructions to bootstrap a minimal sysroot, used to build all the freedesktop flatpak runtimes in the sdk folder.
 
