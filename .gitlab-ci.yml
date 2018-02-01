@@ -6,7 +6,7 @@ variables:
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
-  BST_CACHE_SERVER_ADDRESS: '46.101.55.213'
+  BST_CACHE_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
   BST_CACHE_SSH_USER: 'artifacts'
 
   # Generic variable for invoking buildstream
