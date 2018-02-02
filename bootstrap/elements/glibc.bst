@@ -71,7 +71,5 @@ public:
 
 sources:
 - kind: tar
-  url: http://ftp.gnu.org/gnu/glibc/glibc-2.26.tar.xz
-  ref: e54e0a934cd2bc94429be79da5e9385898d2306b9eaf3c92d5a77af96190f6bd
-- kind: patch
-  path: elements/glibc-aarch64.patch
+  url: http://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
+  ref: 5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72
