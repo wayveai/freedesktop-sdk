@@ -15,6 +15,7 @@ variables:
 stages:
   - build
   - flatpak
+  - vm
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -181,3 +182,28 @@ app_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+
+
+minimal_vm_image_x86_64:
+  stage: vm
+  script:
+    - export BST_EXTERNAL_SHA=db543278fae6cc12b2ef4cfb0f68b5326ac9dd76
+    - git clone https://gitlab.com/BuildStream/bst-external.git
+    - git -C bst-external checkout $BST_EXTERNAL_SHA
+    - pip3 install --user ./bst-external
+    - cd bootstrap
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
+    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
+    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
+    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
+    - cd "${CI_PROJECT_DIR}"/sdk
+    - ${BST} -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
+    - dnf install -y qemu-system-x86
+    - ../utils/test-minimal-system vm/sda.img
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
