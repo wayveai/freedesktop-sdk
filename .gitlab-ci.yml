@@ -84,6 +84,10 @@ before_script:
     - cd bootstrap
     - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
     - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
 
@@ -121,6 +125,10 @@ bootstrap_i586:
     - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
 
@@ -182,6 +190,10 @@ build_i586:
 
     - echo "Run basic application"
     - flatpak-builder --arch="${flatpakarch}" --run build_folder tests/org.flatpak.Hello.json hello.sh
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
 
