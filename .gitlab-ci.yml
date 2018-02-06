@@ -13,7 +13,6 @@ variables:
   BST: bst --colors
 
 stages:
-  - bootstrap
   - build
   - flatpak
 
@@ -76,43 +75,6 @@ before_script:
 
 
 
-.bootstrap_template: &bootstrap_definition
-  stage: bootstrap
-  tags:
-    - x86_64
-  script:
-    - cd bootstrap
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
-    - master
-
-bootstrap_aarch64:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: aarch64
-
-bootstrap_arm:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: arm
-
-bootstrap_x86_64:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: x86_64
-
-bootstrap_i586:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: i586
-
-
-
 .build_template: &build_definition
   stage: build
   script:
@@ -133,8 +95,6 @@ bootstrap_i586:
     - master
 
 build_x86_64:
-  dependencies:
-    - bootstrap_x86_64
   <<: *build_definition
   tags:
     - x86_64
@@ -142,13 +102,19 @@ build_x86_64:
     ARCH: x86_64
 
 build_i586:
-  dependencies:
-    - bootstrap_i586
   <<: *build_definition
   tags:
     - x86_64
   variables:
     ARCH: i586
+
+build_aarch64:
+  image: arm64v8/fedora:27
+  <<: *build_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
 
 
 
@@ -205,3 +171,13 @@ app_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+
+app_aarch64:
+  image: arm64v8/fedora:27
+  dependencies:
+    - build_aarch64
+  <<: *flatpak_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
