@@ -66,6 +66,11 @@ config:
       version: "3.22"
       download-if: "active-gtk-theme"
 
+    'Extension org.freedesktop.Platform.ffmpeg':
+      directory: "lib/ffmpeg"
+      add-ld-path: "lib"
+      no-autodownload": "true"
+
     'Extension org.freedesktop.Sdk.Extension':
       subdirectories: "true"
       directory: "%{lib}/sdk"
