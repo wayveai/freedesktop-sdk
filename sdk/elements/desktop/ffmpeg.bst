@@ -47,9 +47,10 @@ variables:
     --enable-protocol=file \
 
 sources:
-- kind: tar
-  url: https://ffmpeg.org/releases/ffmpeg-3.4.1.tar.xz
-  ref: 5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0
+- kind: git
+  url: https://github.com/FFmpeg/FFmpeg.git
+  track: release/3.4
+  ref: bc839fb39dc376d462856863de2933f0b6b0351a # n3.4.1
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
