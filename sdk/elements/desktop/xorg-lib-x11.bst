@@ -5,10 +5,7 @@ depends:
   - filename: base.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
-  - filename: desktop/xorg-proto-x.bst
-  - filename: desktop/xorg-proto-xext.bst
-  - filename: desktop/xorg-proto-kb.bst
-  - filename: desktop/xorg-proto-input.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xtrans.bst
   - filename: desktop/xorg-lib-xcb.bst
 

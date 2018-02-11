@@ -4,9 +4,7 @@ description: X.org lib xfixes
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/xorg-proto-x.bst
-  - filename: desktop/xorg-proto-fixes.bst
-  - filename: desktop/xorg-proto-xext.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-x11.bst
 
 public:

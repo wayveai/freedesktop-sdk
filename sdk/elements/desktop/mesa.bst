@@ -6,9 +6,7 @@ depends:
   - filename: desktop/llvm5.bst
     type: build
   - filename: desktop/libdrm.bst
-  - filename: desktop/xorg-proto-dri2.bst
-  - filename: desktop/xorg-proto-dri3.bst
-  - filename: desktop/xorg-proto-present.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst

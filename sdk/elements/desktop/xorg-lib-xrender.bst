@@ -5,7 +5,7 @@ depends:
   - filename: base.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
-  - filename: desktop/xorg-proto-render.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-x11.bst
 
 public:
