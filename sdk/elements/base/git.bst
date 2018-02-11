@@ -8,7 +8,7 @@ depends:
   - filename: base/gnupg.bst
   - filename: base/curl.bst
   - filename: base/openssl.bst
-  - filename: base/pcre.bst
+  - filename: base/pcre2.bst
   - filename: base/expat.bst
   - filename: base/libffi.bst
   - filename: base/gettext.bst
