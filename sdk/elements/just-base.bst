@@ -29,6 +29,8 @@ depends:
 - filename: base/meson.bst
 - filename: base/nasm.bst
 - filename: base/ninja.bst
+- filename: base/perl.bst
+- filename: base/perl-xml-parser.bst
 - filename: base/python2-mako.bst
 - filename: base/python3-mako.bst
 - filename: base/openssh.bst
