@@ -28,9 +28,11 @@ variables:
 
 config:
   install-commands:
-    (>):
-      - |
-        ln -s "../%{gcc_triplet}/python3.6/lib-dynload" "%{install-root}/usr/lib/python3.6/lib-dynload"
+    - |
+      if [ -n "%{builddir}" ]; then
+      cd %{builddir}
+      fi
+      %{make-install} DESTSHARED=/usr/lib/python3.6/lib-dynload
 
 public:
   bst:

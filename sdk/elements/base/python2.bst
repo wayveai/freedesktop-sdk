@@ -28,10 +28,14 @@ variables:
 
 config:
   install-commands:
-    (>):
-      - |
-        ln -s "../%{gcc_triplet}/python2.7/lib-dynload" "%{install-root}/usr/lib/python2.7/lib-dynload"
-        rm -f "%{install-root}%{bindir}/2to3"
+    - |
+      if [ -n "%{builddir}" ]; then
+        cd %{builddir}
+      fi
+      %{make-install} DESTSHARED=/usr/lib/python2.7/lib-dynload
+
+    - |
+      rm -f "%{install-root}%{bindir}/2to3"
 
 public:
   bst:
