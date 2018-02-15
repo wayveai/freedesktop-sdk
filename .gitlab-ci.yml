@@ -16,6 +16,7 @@ stages:
   - build
   - flatpak
   - vm
+  - publish
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -188,3 +189,54 @@ minimal_vm_image_x86_64:
     ARCH: x86_64
   except:
     - master
+
+
+
+.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
+  stage: publish
+  script:
+    - cd "${CI_PROJECT_DIR}"/sdk
+    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
+
+    - mkdir runtimes
+    - |
+      for runtime in sdk platform; do
+        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+      done
+
+    - echo "Clone the releases OSTree repo locally"
+    - ostree init --repo=releases --mode=archive-z2
+    - ostree remote add --repo=releases origin https://"${BST_CACHE_SERVER_ADDRESS}"/releases/ --no-gpg-verify
+    - ostree pull --repo=releases origin
+
+    - echo "Commit the binaries to the correct branch"
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/"${ARCH}"/unstable runtimes/sdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform/"${ARCH}"/unstable runtimes/platform
+
+    - echo "Push to the releases ostree repo"
+    - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
+    - git clone https://github.com/ssssam/ostree-push.git
+    - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Sdk/"${ARCH}"/unstable
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Platform/"${ARCH}"/unstable
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  only:
+    - master
+
+publish_x86_64:
+  <<: *flatpak_runtimes_publish
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+publish_aarch64:
+  image: arm64v8/fedora:27
+  <<: *flatpak_runtimes_publish
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
