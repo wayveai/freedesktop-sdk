@@ -16,7 +16,8 @@ stages:
   - build
   - flatpak
   - vm
-  - publish
+  - publish_x86
+  - publish_arm
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -193,7 +194,6 @@ minimal_vm_image_x86_64:
 
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
-  stage: publish
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
@@ -227,6 +227,7 @@ minimal_vm_image_x86_64:
     - master
 
 publish_x86_64:
+  stage: publish_x86
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -234,6 +235,7 @@ publish_x86_64:
     ARCH: x86_64
 
 publish_aarch64:
+  stage: publish_arm
   image: arm64v8/fedora:27
   <<: *flatpak_runtimes_publish
   tags:
