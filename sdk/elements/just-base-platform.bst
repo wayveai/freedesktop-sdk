@@ -56,8 +56,6 @@ depends:
 - filename: base/p11-kit.bst
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
-- filename: base/perl.bst
-- filename: base/perl-xml-parser.bst
 - filename: base/python2.bst
 - filename: base/python2-pip.bst
 - filename: base/python2-setuptools.bst
