@@ -30,7 +30,7 @@ public:
   bst:
     integration-commands:
     - |
-      if which depmod; then
+      if type depmod > /dev/null; then
         cd /usr/lib/modules
         for version in *; do
           depmod -a "$version";
