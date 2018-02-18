@@ -186,3 +186,5 @@ minimal_vm_image_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+  except:
+    - master
