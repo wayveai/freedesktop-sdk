@@ -70,11 +70,10 @@ before_script:
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
-.bst_cache: &bst_cache
-  cache:
-    key: bst
-    paths:
-      - "${XDG_CACHE_HOME}/buildstream/sources/"
+cache:
+  key: bst
+  paths:
+    - "${XDG_CACHE_HOME}/buildstream/sources/"
 
 
 
