@@ -18,6 +18,7 @@ public:
           - "%{libdir}/libxkbcommon-x11.so"
 
 sources:
-  - kind: tar
-    url: https://xkbcommon.org/download/libxkbcommon-0.7.2.tar.xz
-    ref: 28a4dc2735863bec2dba238de07fcdff28c5dd2300ae9dfdb47282206cd9b9d8
+  - kind: git
+    url: https://github.com/xkbcommon/libxkbcommon.git
+    track: master
+    ref: ba9568bdb128f3c5f717b8503439ef6e50a66e97 #  xkbcommon-0.7.2
