@@ -217,8 +217,8 @@ minimal_vm_image_x86_64:
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
     - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Sdk/"${ARCH}"/unstable
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Platform/"${ARCH}"/unstable
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Sdk/"${ARCH}"/unstable > /dev/null
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Platform/"${ARCH}"/unstable > /dev/null
   artifacts:
     when: always
     paths:
