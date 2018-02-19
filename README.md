@@ -41,4 +41,4 @@ Finally if you would like to contribute or suggest any improvements to the boots
 
 In the future we are going to configure the CI to allow users to push/test their fixes/improvements automatically across all supported platforms.
 
-If you would like to ask any questions on how to use/improve this project, you will find us over at #freedesktop-sdk on Freenode.
+If you would like to ask any questions on how to use/improve this project, you will find us over at #freedesktop-sdk on Freenode, and we have a mailing list https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk.
