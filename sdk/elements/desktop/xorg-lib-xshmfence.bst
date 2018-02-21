@@ -4,7 +4,7 @@ description: X.org lib xshmfence
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/xorg-proto-x.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
 
 public:
   bst:

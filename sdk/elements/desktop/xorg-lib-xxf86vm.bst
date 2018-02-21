@@ -4,11 +4,9 @@ description: X.org lib Xxf86vm
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/xorg-proto-x.bst
-  - filename: desktop/xorg-proto-xext.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
-  - filename: desktop/xorg-proto-xf86vidmode.bst
 
 public:
   bst:

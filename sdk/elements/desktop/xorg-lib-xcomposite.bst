@@ -4,7 +4,7 @@ description: X.org lib Xcomposite
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/xorg-proto-composite.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xfixes.bst
 

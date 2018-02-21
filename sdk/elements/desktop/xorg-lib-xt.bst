@@ -8,8 +8,7 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-sm.bst
   - filename: desktop/xorg-lib-ice.bst
-  - filename: desktop/xorg-proto-x.bst
-  - filename: desktop/xorg-proto-kb.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
 
 public:
   bst:

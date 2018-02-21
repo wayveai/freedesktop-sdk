@@ -7,8 +7,7 @@ depends:
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
-  - filename: desktop/xorg-proto-xext.bst
-  - filename: desktop/xorg-proto-scrnsaver.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
 
 public:
   bst:

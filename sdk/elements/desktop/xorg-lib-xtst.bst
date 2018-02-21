@@ -4,9 +4,7 @@ description: X.org lib xtst
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/xorg-proto-record.bst
-  - filename: desktop/xorg-proto-input.bst
-  - filename: desktop/xorg-proto-xext.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xi.bst

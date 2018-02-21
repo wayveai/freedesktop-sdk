@@ -6,8 +6,7 @@ depends:
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xrender.bst
-  - filename: desktop/xorg-proto-render.bst
-  - filename: desktop/xorg-proto-randr.bst
+  - filename: desktop/xorg-proto-xorgproto.bst
 
 public:
   bst:
