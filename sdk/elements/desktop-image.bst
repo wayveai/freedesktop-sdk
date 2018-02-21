@@ -1,5 +1,9 @@
 kind: compose
 
+config:
+  exclude:
+    - devel-libtool
+
 public:
   bst:
     split-rules:
