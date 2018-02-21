@@ -206,7 +206,7 @@ minimal_vm_image_x86_64:
 
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
-    - ostree remote add --repo=releases origin https://"${BST_CACHE_SERVER_ADDRESS}"/releases/ --no-gpg-verify
+    - ostree remote add --repo=releases origin https://cache.sdk.freedesktop.org/releases/ --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
     - echo "Commit the binaries to the correct branch"
