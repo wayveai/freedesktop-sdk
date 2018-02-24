@@ -12,6 +12,10 @@ depends:
   - filename: desktop/sdl2.bst
 
 variables:
+  ffmpeg-arch: "%{arch}"
+  (?):
+    - target_arch == "i586":
+        ffmpeg-arch: x86
   conf-local: |
     --disable-debug \
     --disable-doc \
@@ -45,6 +49,7 @@ variables:
     --enable-demuxer=ogg,matroska,wav,mp3,gif,flac \
     --enable-filter=crop,scale \
     --enable-protocol=file \
+    --arch=%{ffmpeg-arch}
 
 sources:
 - kind: git
