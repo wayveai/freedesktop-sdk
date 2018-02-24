@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
     type: build
   - filename: base/perl.bst
-  - filename: base/python2.bst
+  - filename: base/python3.bst
   - filename: base/gnupg.bst
   - filename: base/curl.bst
   - filename: base/openssl.bst
