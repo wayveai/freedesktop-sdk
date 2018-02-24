@@ -6,7 +6,7 @@ depends:
 
 variables:
   conf-local:
-    PYTHON="/usr/bin/python2"
+    PYTHON="/usr/bin/python3"
 
 sources:
   # itstool 2.0.4 crashes when building gtk-doc
