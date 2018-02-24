@@ -11,4 +11,4 @@ sources:
   - kind: git
     url: git://anongit.freedesktop.org/xorg/proto/xorgproto
     track: master
-    ref: c1c8cf73601e0e1fee843d338b3f0f5cc0bf1c17 #  xorgproto-2018.2-3-gc1c8cf7
+    ref: cd7b5a4bee3d3ae2c72820406ccf3a5bc4bd82d0 #  xorgproto-2018.3
