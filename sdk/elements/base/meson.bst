@@ -17,5 +17,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://pypi.python.org/packages/c0/98/bcbda7862f8ca18dbdaa57b9c51cf7333cdc59b48278ed279217cd6ad8ff/meson-0.44.0.tar.gz
-    ref: 16d3481ae9e3a8a2eee06f4963d682e4080503743e0ed8dcee24efc563baf8e6
+    url: https://pypi.python.org/packages/9f/d7/3ac5066d2e41b78a8947cccccc679cdc683c225fd61dad55762018314fe6/meson-0.44.1.tar.gz
+    ref: b060d8115be24d89675b9e0ab7278b970088c48c12a450b30d0d3005d58bc13c
