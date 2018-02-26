@@ -1,19 +1,9 @@
-kind: manual
-description: Python 3
+kind: distutils
 
 depends:
   - filename: bootstrap-import.bst
     type: build
   - filename: base/python3.bst
-
-config:
-  build-commands:
-    - |
-      python3 setup.py build
-
-  install-commands:
-    - |
-      python3 setup.py install --root="%{install-root}"
 
 sources:
   - kind: tar
