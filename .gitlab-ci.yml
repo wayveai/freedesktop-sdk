@@ -201,7 +201,7 @@ minimal_vm_image_x86_64:
     - mkdir runtimes
     - |
       for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug} baseplatform; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+        bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
       done
 
     - echo "Clone the releases OSTree repo locally"
