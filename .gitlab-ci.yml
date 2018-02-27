@@ -200,8 +200,8 @@ minimal_vm_image_x86_64:
 
     - mkdir runtimes
     - |
-      for runtime in sdk platform; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug} baseplatform; do
+        bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
       done
 
     - echo "Clone the releases OSTree repo locally"
@@ -210,15 +210,23 @@ minimal_vm_image_x86_64:
     - ostree pull --repo=releases origin --mirror
 
     - echo "Commit the binaries to the correct branch"
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk/"${ARCH}"/unstable runtimes/basesdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Debug/"${ARCH}"/unstable runtimes/basesdk-debug
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform/"${ARCH}"/unstable runtimes/baseplatform
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/"${ARCH}"/unstable runtimes/sdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Debug/"${ARCH}"/unstable runtimes/sdk-debug
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Docs/"${ARCH}"/unstable runtimes/sdk-docs
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Locale/"${ARCH}"/unstable runtimes/sdk-locale
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform/"${ARCH}"/unstable runtimes/platform
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Locale/"${ARCH}"/unstable runtimes/platform-locale
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo/"${ARCH}"/unstable runtimes/glxinfo
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo.Debug/"${ARCH}"/unstable runtimes/glxinfo-debug
 
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
     - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Sdk/"${ARCH}"/unstable > /dev/null
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}" runtime/org.freedesktop.Platform/"${ARCH}"/unstable > /dev/null
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}"
   artifacts:
     when: always
     paths:
