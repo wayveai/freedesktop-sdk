@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
     type: build
   - filename: base/python2.bst
+    type: build
 
 config:
   build-commands:
