@@ -65,7 +65,7 @@ depends:
 - filename: base/python3-pip.bst
 - filename: base/python3-setuptools.bst
 - filename: base/python3-six.bst
-- filename: base/python2-usercustomize.bst
+- filename: base/python3-usercustomize.bst
 - filename: base/tar.bst
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
