@@ -7,5 +7,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://xcb.freedesktop.org/dist/xcb-proto-1.12.tar.bz2
-    ref: 5922aba4c664ab7899a29d92ea91a87aa4c1fc7eb5ee550325c3216c480a4906
+    url: https://xcb.freedesktop.org/dist/xcb-proto-1.13.tar.bz2
+    ref: 7b98721e669be80284e9bbfeab02d2d0d54cd11172b72271e47a2fe875e2bde1
