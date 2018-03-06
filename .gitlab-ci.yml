@@ -21,7 +21,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='2643b095c59db6e8cbc2b8620c2ad820c7a5636d' #  1.1.0
+  - export BST_SHA='ec5ee795f6b730e1013edb2faff60e07041a9cd3' #  1.1.1
   # Manually install packages, needed for ARM runners until #39 is solved
   - dnf install --best -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip
   - git clone https://gitlab.com/BuildStream/buildstream.git
