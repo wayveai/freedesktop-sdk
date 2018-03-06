@@ -7,6 +7,6 @@ depends:
 
 sources:
   - kind: tar
-    url: https://www.x.org/archive/individual/util/util-macros-1.19.1.tar.bz2
-    ref: 18d459400558f4ea99527bc9786c033965a3db45bf4c6a32eefdc07aa9e306a6
+    url: https://www.x.org/archive/individual/util/util-macros-1.19.2.tar.bz2
+    ref: d7e43376ad220411499a79735020f9d145fdc159284867e99467e0d771f3e712
 
