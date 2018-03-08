@@ -14,5 +14,6 @@ depends:
   - filename: platform-locale.bst
   - filename: platform-arch-libs.bst
   - filename: platform-arch-libs-debug.bst
+  - filename: platform-vaapi.bst
   - filename: glxinfo.bst
   - filename: glxinfo-debug.bst
