@@ -57,8 +57,8 @@ sources:
   directory: mpfr
   ref: 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e
 - kind: tar
-  url: http://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz
+  url: http://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
   directory: mpc
-  ref: 617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3
+  ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
 - kind: patch
   path: elements/gcc-multiarch-os-dir.patch
