@@ -5,7 +5,6 @@ depends:
 - filename: desktop/desktop-file-utils.bst
 - filename: desktop/gtk-doc.bst
 - filename: desktop/itstools.bst
-- filename: desktop/llvm5.bst
 - filename: desktop/wayland-protocols.bst
 - filename: desktop/xorg-proto-xcb.bst
 - filename: desktop/xorg-proto-xorgproto.bst

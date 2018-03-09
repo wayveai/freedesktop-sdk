@@ -1,0 +1,29 @@
+From commit 5d61fa4e68b7eb6d481a37efdbb35fdce675a6ad
+
+gallivm: Use new LLVM fast-math-flags API
+LLVM 6 changed the API on the fast-math-flags:
+https://reviews.llvm.org/rL317488
+
+NOTE: This also enables the new flag 'ApproxFunc' to allow for
+approximations for library functions (sin, cos, ...). I'm not completly
+convinced, that this is something mesa should do.
+
+Signed-off-by: Tobias Droste <tdroste@gmx.de>
+Reviewed-by: Marek Olšák <marek.olsak@amd.com>
+Reviewed-and-Tested-by: Michel Dänzer <michel.daenzer@amd.com>
+
+diff -ur mesa-17.3.6.old/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp mesa-17.3.6/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+--- mesa-17.3.6.old/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp	2018-02-27 01:21:09.000000000 +0100
++++ mesa-17.3.6/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp	2018-03-09 19:38:05.231451147 +0100
+@@ -830,7 +830,11 @@
+       llvm::unwrap(builder)->setFastMathFlags(flags);
+       break;
+    case LP_FLOAT_MODE_UNSAFE_FP_MATH:
++#if HAVE_LLVM >= 0x0600
++      flags.setFast();
++#else
+       flags.setUnsafeAlgebra();
++#endif
+       llvm::unwrap(builder)->setFastMathFlags(flags);
+       break;
+    }
