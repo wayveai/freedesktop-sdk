@@ -24,6 +24,11 @@ variables:
     --prefix=%{prefix}
 
 config:
+  configure-commands:
+    (<):
+      - |
+        autoreconf -fvi
+
   install-commands:
     - |
       cd "%{builddir}"
