@@ -27,9 +27,12 @@ variables:
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
+    -DLLVM_DYLIB_SYMBOL_VERSIONING:BOOL=ON \
+    -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DLLVM_LIBDIR_SUFFIX= \
+    -DLLVM_LIBDIR_SUFFIX="/%{gcc_triplet}" \
     -DLLVM_ENABLE_LIBCXX:BOOL=OFF \
     -DLLVM_ENABLE_ZLIB:BOOL=ON \
     -DLLVM_ENABLE_FFI:BOOL=ON \
@@ -41,13 +44,20 @@ variables:
     -DLLVM_INSTALL_UTILS:BOOL=ON \
     -DLLVM_INCLUDE_DOCS:BOOL=OFF \
     -DLLVM_ENABLE_DOXYGEN:BOOL=OFF \
-    -DLLVM_BUILD_LLVM_DYLIB:BOOL=OFF \
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/libLLVM.so'
+        - '%{libdir}/libLTO.so'
+
 sources:
   - kind: tar
-    url: http://releases.llvm.org/5.0.1/llvm-5.0.1.src.tar.xz
-    ref: 5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0
+    url: http://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
+    ref: 1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408

@@ -3,7 +3,7 @@ kind: autotools
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/llvm5.bst
+  - filename: desktop/llvm6.bst
     type: build
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-proto-xorgproto.bst
@@ -41,7 +41,7 @@ variables:
     --enable-glx-tls \
     --enable-texture-float=yes \
     --enable-llvm \
-    --disable-llvm-shared-libs \
+    --enable-llvm-shared-libs \
     --enable-dri \
     --enable-dri3 \
     --with-gallium-drivers=%{gallium_drivers} \
@@ -60,9 +60,11 @@ config:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-17.3.5.tar.xz
-    ref: eb9228fc8aaa71e0205c1481c5b157752ebaec9b646b030d27478e25a6d7936a
+    url: https://mesa.freedesktop.org/archive/mesa-17.3.6.tar.xz
+    ref: e5915680d44ac9d05defdec529db7459ac9edd441c9845266eff2e2d3e57fbf8
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
     path: elements/desktop/mesa-Fix-linkage-against-shared-glapi.patch
+  - kind: patch
+    path: elements/desktop/mesa-llvm6.patch
