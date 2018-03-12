@@ -34,7 +34,7 @@ variables:
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
-    --enable-languages=c,c++ \
+    --enable-languages=c,c++,fortran \
     %{conf-extra}
 
 config:

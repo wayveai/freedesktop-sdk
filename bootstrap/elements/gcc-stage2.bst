@@ -38,7 +38,7 @@ variables:
     --disable-nls \
     --disable-multilib \
     --with-sysroot=%{sysroot} \
-    --enable-languages=c,c++ \
+    --enable-languages=c,c++,fortran \
     %{conf-extra}
 
 sources:
