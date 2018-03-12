@@ -1,0 +1,3 @@
+# Ignore buildstream local state directories
+bootstrap/.bst
+sdk/.bst
