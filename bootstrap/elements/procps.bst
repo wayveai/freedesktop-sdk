@@ -25,9 +25,16 @@ variables:
     --build=$(sh /config/config.guess) \
     --host=%{triplet} \
     --prefix=%{prefix} \
+    --sbindir=%{sbindir} \
     --with-ncurses \
     ac_cv_func_malloc_0_nonnull=yes \
     ac_cv_func_realloc_0_nonnull=yes
+
+config:
+  install-commands:
+    - |
+      cd "%{builddir}"
+      %{cross-install}
 
 sources:
   - kind: tar
