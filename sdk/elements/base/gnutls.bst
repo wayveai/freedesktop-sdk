@@ -11,6 +11,10 @@ depends:
   - filename: base/pkg-config.bst
     type: build
 
+variables:
+  conf-local: |
+    --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt
+
 public:
   bst:
     split-rules:
