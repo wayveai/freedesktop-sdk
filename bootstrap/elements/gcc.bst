@@ -35,6 +35,8 @@ variables:
     --enable-multiarch \
     --disable-bootstrap \
     --enable-languages=c,c++,fortran \
+    --enable-default-pie \
+    --enable-default-ssp \
     %{conf-extra}
 
 config:

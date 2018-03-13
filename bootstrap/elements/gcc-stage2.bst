@@ -39,6 +39,8 @@ variables:
     --disable-multilib \
     --with-sysroot=%{sysroot} \
     --enable-languages=c,c++,fortran \
+    --enable-default-pie \
+    --enable-default-ssp \
     %{conf-extra}
 
 sources:
