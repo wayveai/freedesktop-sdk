@@ -18,6 +18,11 @@ variables:
     --disable-systemd
 
 config:
+  configure-commands:
+    (<):
+      - |
+        AUTOPOINT='intltoolize --automake --copy' autoreconf -fvi
+
   install-commands:
     (>):
       - |
@@ -39,3 +44,5 @@ sources:
   - kind: tar
     url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-11.1.tar.xz
     ref: f2521c525a77166189e3cb9169f75c2ee2b82fa3fcf9476024fbc2c3a6c9cd9e
+  - kind: patch
+    path: elements/desktop/pulseaudio-glibc-2.27.patch

@@ -16,5 +16,5 @@ variables:
 
 sources:
   - kind: tar
-    url: http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.43.7.tar.gz
-    ref: 87035f2eae8da5f9869f78ffc177969b4e3cf75a5da489521c1ffe4268e1a1c4
+    url: http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.44.0.tar.gz
+    ref: 04abf8c2c7c9a70aa3aa9757da23a929baf18423ccd06e8a0320c2effe091fd1

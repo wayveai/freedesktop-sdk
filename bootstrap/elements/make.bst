@@ -24,6 +24,11 @@ variables:
     --prefix=%{prefix}
 
 config:
+  configure-commands:
+    (<):
+      - |
+        autoreconf -fvi
+
   install-commands:
     - |
       cd "%{builddir}"
@@ -33,3 +38,7 @@ sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/make/make-4.2.1.tar.bz2
   ref: d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589
+- kind: patch
+  path: elements/Support_GLIBC_glob_interface_version_2-48c8a116a914a325a0497721f5d8b58d5bba34d4.patch
+- kind: patch
+  path: elements/make-lstat.patch
