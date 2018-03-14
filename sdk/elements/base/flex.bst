@@ -8,8 +8,25 @@ depends:
   - filename: base/help2man.bst
     type: build
   - filename: base/m4.bst
+  - filename: base/automake.bst
+    type: build
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/tar.bst
+    type: build
+  - filename: base/gzip.bst
+    type: build
 
 config:
+  configure-commands:
+    (<):
+      - |
+        ./autogen.sh
+
   install-commands:
     (>):
       - |
@@ -26,3 +43,5 @@ sources:
   - kind: tar
     url: https://github.com/westes/flex/files/981163/flex-2.6.4.tar.gz
     ref: e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
+  - kind: patch
+    path: elements/base/flex-pie.patch
