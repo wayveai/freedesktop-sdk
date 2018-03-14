@@ -9,9 +9,6 @@ depends:
   - filename: desktop/wayland.bst
 
 variables:
-  # Building llvm5 takes a lot of memory
-  # In our current runners (8 cores/8GB), builds sometimes fail if more cores are used
-  max-jobs: 3
   lib: "lib/%{gcc_triplet}"
   libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
