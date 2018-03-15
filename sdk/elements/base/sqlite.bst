@@ -4,6 +4,10 @@ depends:
   - filename: bootstrap-import.bst
     type: build
 
+variables:
+  conf-local: |
+    --enable-fts5
+
 public:
   bst:
     split-rules:
