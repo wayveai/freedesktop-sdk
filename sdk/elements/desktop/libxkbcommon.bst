@@ -3,6 +3,7 @@ kind: meson
 depends:
   - filename: base.bst
     type: build
+  - filename: desktop/wayland-protocols.bst
   - filename: desktop/xorg-data-xkeyboard-config.bst
 
 variables:
