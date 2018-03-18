@@ -21,4 +21,4 @@ sources:
   - kind: git
     url: https://github.com/xkbcommon/libxkbcommon.git
     track: master
-    ref: ba9568bdb128f3c5f717b8503439ef6e50a66e97 #  xkbcommon-0.7.2
+    ref: b82e3b764e60df337ca695e8f8642e7bf42b0cca #  xkbcommon-0.8.0
