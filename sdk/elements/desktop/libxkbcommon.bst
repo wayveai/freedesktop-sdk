@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: base.bst
@@ -6,8 +6,9 @@ depends:
   - filename: desktop/xorg-data-xkeyboard-config.bst
 
 variables:
-  conf-local: |
-    --enable-x11
+  meson-local: |
+    -Denable-docs=false \
+    -Denable-x11=true
 
 public:
   bst:
