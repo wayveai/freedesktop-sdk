@@ -23,7 +23,9 @@ variables:
     --build=$(sh /config/config.guess) \
     --prefix=%{prefix} \
     --disable-werror \
-    --with-lib-path="%{libdir}:%{indep-libdir}"
+    --with-lib-path="%{libdir}:%{indep-libdir}" \
+    --libdir="%{libdir}" \
+    --enable-shared
 
 config:
   install-commands:
