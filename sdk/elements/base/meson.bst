@@ -7,5 +7,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://pypi.python.org/packages/9f/d7/3ac5066d2e41b78a8947cccccc679cdc683c225fd61dad55762018314fe6/meson-0.44.1.tar.gz
-    ref: b060d8115be24d89675b9e0ab7278b970088c48c12a450b30d0d3005d58bc13c
+    url: https://pypi.python.org/packages/62/ff/7009bc115a56d245063593bee143ccf7c52564d2d9c80298ba862a1fe0df/meson-0.45.0.tar.gz
+    ref: d7447bbb232712de303135f23e8f41ef767d02d50d3022cf055d13f69c2540be
