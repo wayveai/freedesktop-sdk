@@ -14,10 +14,10 @@ depends:
 
 variables:
   meson-local: |
-    -Denable-fonts=false \
-    -Denable-dep11=false \
-    -Denable-rpm=false \
-    -Denable-stemmer=false
+    -Dfonts=false \
+    -Ddep11=false \
+    -Drpm=false \
+    -Dstemmer=false
 
 config:
   install-commands:
@@ -38,5 +38,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.3.tar.xz
-    ref: f0424d1808a4d38e9b20cee3b700671e70aff8b3ce01836b8e80c75769fd54a4
+    url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.7.tar.xz
+    ref: bc979456c4ff6bc7434115ef20718d9f7c79cae5110f15d6fe5fae53a5fe800a
