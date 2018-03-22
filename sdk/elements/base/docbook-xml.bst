@@ -32,6 +32,9 @@ config:
         add public "-//OASIS//ENTITIES DocBook Additional General Entities V${version}//EN" ${version}/dbgenent.mod
         add public "-//OASIS//ENTITIES DocBook Notations V${version}//EN" ${version}/dbnotnx.mod
         add public "-//OASIS//ENTITIES DocBook Character Entities V${version}//EN" ${version}/dbcentx.mod
+
+        # Fix paths to .ent files.
+        sed -ri 's,"ent/iso-?,"%{data}/ent/iso,' ${version}/dbcentx.mod
       done
 
       add public "ISO 8879:1986//ENTITIES Diacritical Marks//EN//XML" ent/isodia.ent
