@@ -7,7 +7,7 @@ depends:
 
 variables:
   meson-local: |
-    -Ddisable-examples=true
+    -Ddisable_examples=true
 
 public:
   bst:
