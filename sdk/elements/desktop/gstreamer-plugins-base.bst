@@ -7,7 +7,9 @@ depends:
   - filename: desktop/gstreamer.bst
 
 variables:
+  # disable gtk-doc until https://github.com/mesonbuild/meson/issues/3317 is fixed
   meson-local: |
+    -Ddisable_gtkdoc=true \
     -Duse_orc=yes
 
 public:
