@@ -3,6 +3,7 @@ kind: meson
 depends:
   - filename: base.bst
     type: build
+  - filename: desktop/gobject-introspection.bst
 
 variables:
   meson-local: |
