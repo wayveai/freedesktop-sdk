@@ -43,3 +43,6 @@ sources:
   - kind: tar
     url: http://downloads.sourceforge.net/docbook/docbook-xsl-1.79.1.tar.bz2
     ref: 725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968
+  - kind: patch
+    strip-level: 2
+    path: elements/base/docbook-xsl-non-recursive_string_subst.patch
