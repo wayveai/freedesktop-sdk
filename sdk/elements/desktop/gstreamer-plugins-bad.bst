@@ -8,7 +8,7 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
 
 variables:
-  conf-local: |
+  meson-local: |
     -Duse_orc=yes
 
 public:
