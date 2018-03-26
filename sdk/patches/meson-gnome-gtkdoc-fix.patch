@@ -1,0 +1,23 @@
+commit c1fcc8ab3e1cac0823f3527000e543cc96885d48
+Author: Iñigo Martínez <inigomartinez@gmail.com>
+Date:   Tue Apr 3 19:31:41 2018 +0200
+
+    gnome.gtkdoc: Fix generated files used as content files
+    
+    The `gtkdoc` function in the `gnome` module is able to use generated
+    files as content files, but the path to these is wrong in the used
+    command line.
+
+diff --git a/mesonbuild/modules/gnome.py b/mesonbuild/modules/gnome.py
+index 8b6397ea..30364a6e 100644
+--- a/mesonbuild/modules/gnome.py
++++ b/mesonbuild/modules/gnome.py
+@@ -792,7 +792,7 @@ This will become a hard error in the future.''')
+                                                   state.backend.get_target_dir(s),
+                                                   s.get_outputs()[0]))
+             elif isinstance(s, mesonlib.File):
+-                content_files.append(s.rel_to_builddir(state.build_to_src))
++                content_files.append(os.path.join(state.environment.get_build_dir(), s.subdir, s.fname))
+             elif isinstance(s, build.GeneratedList):
+                 depends.append(s)
+                 for gen_src in s.get_outputs():
