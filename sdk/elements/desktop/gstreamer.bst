@@ -3,10 +3,13 @@ kind: meson
 depends:
   - filename: base.bst
     type: build
+  - filename: desktop/gobject-introspection.bst
 
 variables:
+  # disable gtk-doc until https://github.com/mesonbuild/meson/issues/3317 is fixed
   meson-local: |
-    -Ddisable-examples=true
+    -Ddisable_gtkdoc=true \
+    -Ddisable_examples=true
 
 public:
   bst:
@@ -22,8 +25,8 @@ public:
 sources:
   - kind: git
     url: freedesktop:gstreamer/gstreamer
-    track: 1.12
-    ref: 505a24ff6843a04e4f75c5e03caa7b2774806fc3  # 1.12.14
+    track: 1.14
+    ref: 80e0e90d00bb358ca9dc071cf6de010ec5ae2644 # 1.14.0
     submodules:
       common:
         url: freedesktop:gstreamer/common

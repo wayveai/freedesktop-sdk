@@ -7,7 +7,9 @@ depends:
   - filename: desktop/gstreamer.bst
 
 variables:
+  # disable gtk-doc until https://github.com/mesonbuild/meson/issues/3317 is fixed
   meson-local: |
+    -Ddisable_gtkdoc=true \
     -Duse_orc=yes
 
 public:
@@ -30,5 +32,5 @@ public:
 sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-base
-    track: 1.12
-    ref: e07c69f65598068b380753066783a1c67e3d4464  # 1.12.14
+    track: 1.14
+    ref: 46fc41f1a8378639f2982b777035bbcddd4e5000 # 1.14.0
