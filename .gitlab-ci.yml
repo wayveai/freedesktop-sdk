@@ -206,18 +206,20 @@ minimal_systemd_vm_image_x86_64:
     ARCH: x86_64
     TYPE: minimal-systemd
 
-
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst
-
     - mkdir runtimes
     - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale}; do
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale}; do
+        if [ "${runtime}" = "platform-vaapi" ]; then
+           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "Armv7" ]; then
+             continue
+           fi
+        fi
         bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
       done
-
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
     - ostree remote add --repo=releases origin https://cache.sdk.freedesktop.org/releases/ --no-gpg-verify
@@ -237,7 +239,12 @@ minimal_systemd_vm_image_x86_64:
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Locale/"${ARCH}"/unstable runtimes/platform-locale
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo/"${ARCH}"/unstable runtimes/glxinfo
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo.Debug/"${ARCH}"/unstable runtimes/glxinfo-debug
-
+    - |
+      case "${ARCH}" in
+        "x86_64"|"i586")
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.VAAPI.Intel/"${ARCH}"/unstable runtimes/platform-vaapi
+          ;;
+      esac
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
