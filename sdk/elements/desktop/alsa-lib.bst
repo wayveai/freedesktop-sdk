@@ -9,6 +9,8 @@ variables:
     --disable-aload \
     --disable-alisp \
     --disable-old-symbols \
+    --with-pythonlibs="-lpthread -lm -ldl -lpython2.7" \
+    --with-pythonincludes=-I/usr/include/python2.7 \
     --with-pcm-plugins="hw ioplug extplug"
 
 public:

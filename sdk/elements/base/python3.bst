@@ -41,6 +41,10 @@ public:
         (>):
           - "%{libdir}/libpython3.6m.so"
 
+    integration-commands:
+      - test -x "%{prefix}"/bin/python || ln -s python3.6 "%{prefix}"/bin/python
+      - test -x "%{prefix}"/bin/python-config || ln -s python3.6-config "%{prefix}"/bin/python-config
+
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
