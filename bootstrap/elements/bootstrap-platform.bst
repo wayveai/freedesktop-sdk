@@ -39,3 +39,5 @@ depends:
   type: build
 - filename: zlib.bst
   type: build
+- filename: utf-locale.bst
+  type: build
