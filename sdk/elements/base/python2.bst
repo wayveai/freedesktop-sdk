@@ -44,6 +44,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libpython2.7.so"
+          - "%{libdir}/python2.7/config"
+          - "%{libdir}/python2.7/config/**"
 
 sources:
   - kind: tar

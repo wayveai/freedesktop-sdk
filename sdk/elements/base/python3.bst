@@ -40,6 +40,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libpython3.6m.so"
+          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}"
+          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}/**"
 
     integration-commands:
       - test -x "%{prefix}"/bin/python || ln -s python3.6 "%{prefix}"/bin/python
