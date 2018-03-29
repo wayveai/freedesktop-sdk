@@ -34,6 +34,11 @@ config:
       fi
       %{make-install} DESTSHARED=/usr/lib/python3.6/lib-dynload
 
+    - |
+      rm -rf %{install-root}%{bindir}/idle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/idlelib
+
 public:
   bst:
     split-rules:

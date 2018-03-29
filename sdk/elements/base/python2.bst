@@ -39,6 +39,10 @@ config:
       rm -f "%{install-root}%{bindir}/2to3"
     - |
       rm -rf %{install-root}%{indep-libdir}/python2.7/lib2to3
+    - |
+      rm -rf %{install-root}%{bindir}/idle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python2.7/idlelib
 
 public:
   bst:
