@@ -39,9 +39,12 @@ public:
     split-rules:
       devel:
         (>):
+          - "%{bindir}/2to3*"
           - "%{libdir}/libpython3.6m.so"
           - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}"
           - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}/**"
+          - "%{indep-libdir}/python3.6/lib2to3"
+          - "%{indep-libdir}/python3.6/lib2to3/**"
           - "%{indep-libdir}/python3.6/test"
           - "%{indep-libdir}/python3.6/test/**"
           - "%{indep-libdir}/python3.6/*/test"
