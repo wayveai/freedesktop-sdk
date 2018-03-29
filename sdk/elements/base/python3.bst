@@ -38,6 +38,12 @@ config:
       rm -rf %{install-root}%{bindir}/idle*
     - |
       rm -rf %{install-root}%{indep-libdir}/python3.6/idlelib
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/tkinter
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/turtle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/__pycache__/turtle.*
 
 public:
   bst:

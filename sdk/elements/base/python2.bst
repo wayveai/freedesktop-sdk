@@ -43,6 +43,8 @@ config:
       rm -rf %{install-root}%{bindir}/idle*
     - |
       rm -rf %{install-root}%{indep-libdir}/python2.7/idlelib
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python2.7/lib-tk
 
 public:
   bst:
