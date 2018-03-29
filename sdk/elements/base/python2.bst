@@ -46,6 +46,12 @@ public:
           - "%{libdir}/libpython2.7.so"
           - "%{libdir}/python2.7/config"
           - "%{libdir}/python2.7/config/**"
+          - "%{indep-libdir}/python2.7/test"
+          - "%{indep-libdir}/python2.7/test/**"
+          - "%{indep-libdir}/python2.7/*/test"
+          - "%{indep-libdir}/python2.7/*/test/**"
+          - "%{indep-libdir}/python2.7/*/tests"
+          - "%{indep-libdir}/python2.7/*/tests/**"
 
 sources:
   - kind: tar
