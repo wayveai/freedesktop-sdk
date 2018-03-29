@@ -24,6 +24,7 @@ config:
         --libdir=%{lib} \
         enable-krb5 \
         --with-krb5-flavor=MIT \
+        --with-krb5-dir=/usr \
         shared \
         threads
 
