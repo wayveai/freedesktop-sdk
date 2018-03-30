@@ -199,7 +199,7 @@ minimal_vm_image_x86_64:
 
     - mkdir runtimes
     - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug} baseplatform; do
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale}; do
         bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
       done
 
@@ -210,8 +210,10 @@ minimal_vm_image_x86_64:
 
     - echo "Commit the binaries to the correct branch"
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk/"${ARCH}"/unstable runtimes/basesdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Locale/"${ARCH}"/unstable runtimes/basesdk-locale
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Debug/"${ARCH}"/unstable runtimes/basesdk-debug
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform/"${ARCH}"/unstable runtimes/baseplatform
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform.Locale/"${ARCH}"/unstable runtimes/baseplatform-locale
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/"${ARCH}"/unstable runtimes/sdk
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Debug/"${ARCH}"/unstable runtimes/sdk-debug
     - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Docs/"${ARCH}"/unstable runtimes/sdk-docs
