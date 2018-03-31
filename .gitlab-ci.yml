@@ -81,7 +81,7 @@ cache:
   stage: build
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst
   artifacts:
     when: always
     paths:
@@ -117,7 +117,7 @@ build_aarch64:
   stage: flatpak
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
@@ -179,8 +179,8 @@ minimal_vm_image_x86_64:
     - git -C bst-external checkout $BST_EXTERNAL_SHA
     - pip3 install --user ./bst-external
     - cd sdk
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
+    - ${BST} -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
     - dnf install -y qemu-system-x86
     - ../utils/test-minimal-system vm/sda.img
   tags:
@@ -195,7 +195,7 @@ minimal_vm_image_x86_64:
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst
 
     - mkdir runtimes
     - |
