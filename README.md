@@ -76,12 +76,12 @@ If you wish to build locally, you must have BuildStream installed and a local in
 ```
 
 The build is configured to pull from our remote artifact cache, meaning you should not have to build
-anything localy, only if buildstream detects any custom changes/additions locally will you have to
+anything locally, only if buildstream detects any custom changes/additions locally will you have to
 rebuild, and even then buildstream is smart enough to figure out what actually *needs* to be re-built
 instead of re-building everything.
 
 
-These instructions for building can be found the in the projects Gitlab-CI file.
+These instructions for building can be found in the projects Gitlab-CI file.
 
 # Structure
 Current directory structure is:

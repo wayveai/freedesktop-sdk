@@ -37,6 +37,14 @@ config:
 
     - |
       rm -f "%{install-root}%{bindir}/2to3"
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python2.7/lib2to3
+    - |
+      rm -rf %{install-root}%{bindir}/idle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python2.7/idlelib
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python2.7/lib-tk
 
 public:
   bst:
@@ -44,6 +52,14 @@ public:
       devel:
         (>):
           - "%{libdir}/libpython2.7.so"
+          - "%{libdir}/python2.7/config"
+          - "%{libdir}/python2.7/config/**"
+          - "%{indep-libdir}/python2.7/test"
+          - "%{indep-libdir}/python2.7/test/**"
+          - "%{indep-libdir}/python2.7/*/test"
+          - "%{indep-libdir}/python2.7/*/test/**"
+          - "%{indep-libdir}/python2.7/*/tests"
+          - "%{indep-libdir}/python2.7/*/tests/**"
 
 sources:
   - kind: tar

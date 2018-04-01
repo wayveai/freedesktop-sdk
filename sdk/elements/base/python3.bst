@@ -34,12 +34,34 @@ config:
       fi
       %{make-install} DESTSHARED=/usr/lib/python3.6/lib-dynload
 
+    - |
+      rm -rf %{install-root}%{bindir}/idle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/idlelib
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/tkinter
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/turtle*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/__pycache__/turtle.*
+
 public:
   bst:
     split-rules:
       devel:
         (>):
+          - "%{bindir}/2to3*"
           - "%{libdir}/libpython3.6m.so"
+          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}"
+          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}/**"
+          - "%{indep-libdir}/python3.6/lib2to3"
+          - "%{indep-libdir}/python3.6/lib2to3/**"
+          - "%{indep-libdir}/python3.6/test"
+          - "%{indep-libdir}/python3.6/test/**"
+          - "%{indep-libdir}/python3.6/*/test"
+          - "%{indep-libdir}/python3.6/*/test/**"
+          - "%{indep-libdir}/python3.6/*/tests"
+          - "%{indep-libdir}/python3.6/*/tests/**"
 
     integration-commands:
       - test -x "%{prefix}"/bin/python || ln -s python3.6 "%{prefix}"/bin/python
