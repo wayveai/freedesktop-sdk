@@ -51,7 +51,5 @@ public:
 
 sources:
   - kind: tar
-    url: ftp://xmlsoft.org/libxml2/libxml2-2.9.7.tar.gz
-    ref: f63c5e7d30362ed28b38bfa1ac6313f9a80230720b7fb6c80575eeab3ff5900c
-  - kind: patch
-    path: elements/base/libxml2-python3.patch
+    url: ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz
+    ref: 0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732
