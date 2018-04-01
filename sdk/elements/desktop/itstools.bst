@@ -5,7 +5,7 @@ depends:
 
 variables:
   conf-local:
-    PYTHON="/usr/bin/python2"
+    PYTHON="/usr/bin/python3"
 
 sources:
   - kind: tar
