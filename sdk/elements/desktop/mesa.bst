@@ -60,11 +60,9 @@ config:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-17.3.6.tar.xz
-    ref: e5915680d44ac9d05defdec529db7459ac9edd441c9845266eff2e2d3e57fbf8
+    url: https://mesa.freedesktop.org/archive/mesa-18.0.0.tar.xz
+    ref: 694e5c3d37717d23258c1f88bc134223c5d1aac70518d2f9134d6df3ee791eea
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
     path: elements/desktop/mesa-Fix-linkage-against-shared-glapi.patch
-  - kind: patch
-    path: elements/desktop/mesa-llvm6.patch
