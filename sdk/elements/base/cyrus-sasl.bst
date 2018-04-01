@@ -32,6 +32,9 @@ config:
       cd "%{builddir}"
       %{make-install} sasldir="%{libdir}/sasl2"
 
+    - |
+      %{delete_libtool_files}
+
 public:
   bst:
     split-rules:
