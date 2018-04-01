@@ -48,6 +48,9 @@ config:
     - |
       ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
 
+    - |
+      %{delete_libtool_files}
+
 public:
   bst:
     split-rules:

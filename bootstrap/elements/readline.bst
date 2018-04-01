@@ -39,6 +39,9 @@ config:
       cd "%{builddir}"
       make -j1 install DESTDIR="%{install-root}/readline-separate-install"
 
+    - |
+      %{delete_libtool_files}
+
 public:
   bst:
     split-rules:

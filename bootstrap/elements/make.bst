@@ -34,6 +34,9 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+    - |
+      %{delete_libtool_files}
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/make/make-4.2.1.tar.bz2

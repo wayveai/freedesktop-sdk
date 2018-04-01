@@ -41,6 +41,9 @@ config:
     - |
       rm -rf "%{install-root}%{sysroot}%{mandir}"
 
+    - |
+      %{delete_libtool_files}
+
 sources:
   - kind: tar
     url: http://download.savannah.nongnu.org/releases/attr/attr-2.4.47.src.tar.gz

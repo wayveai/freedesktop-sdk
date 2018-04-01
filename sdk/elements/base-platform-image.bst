@@ -3,7 +3,6 @@ kind: compose
 config:
   exclude:
     - devel
-    - devel-libtool
 
 public:
   bst:

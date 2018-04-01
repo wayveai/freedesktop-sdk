@@ -33,6 +33,9 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+    - |
+      %{delete_libtool_files}
+
 environment:
   LEXLIB: " "
 

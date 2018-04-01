@@ -31,6 +31,8 @@ config:
     - |
       cd "%{builddir}"
       %{cross-install}
+    - |
+      %{delete_libtool_files}
 
 public:
   bst:
