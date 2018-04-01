@@ -14,6 +14,7 @@ depends:
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/libglvnd.bst
+  - filename: desktop/libvdpau.bst
 
 variables:
   (?):
