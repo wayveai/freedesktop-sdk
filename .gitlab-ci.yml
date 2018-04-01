@@ -24,7 +24,7 @@ before_script:
   - export PATH=~/.local/bin:${PATH}
   - export BST_SHA='e91dc8336074d22126e559a29e23ef2d52c5506a' #  1.1.2
   # Manually install packages, needed for ARM runners until #39 is solved
-  - dnf install --best -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip
+  - dnf install --best -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip binutils
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
@@ -90,7 +90,15 @@ before_script:
   stage: build
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
+    - ${BST}  -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
+    - bash ../utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
+    - |
+      if [ -s found_so_files.txt ]; then
+        echo "Found development .so files:" 1>&2
+        cat found_so_files.txt 1>&2
+        false
+      fi
   artifacts:
     when: always
     paths:
