@@ -5,8 +5,6 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: components/glib.bst
-- filename: components/intltool.bst
-  type: build
 - filename: components/sndfile.bst
 - filename: components/speexdsp.bst
 - filename: components/dbus.bst
@@ -37,7 +35,7 @@ config:
   configure-commands:
     (<):
     - |
-      AUTOPOINT='intltoolize --automake --copy' autoreconf -fvi
+      autoreconf -fvi
 
   install-commands:
     (>):
@@ -62,3 +60,5 @@ sources:
 - kind: tar
   url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.gz
   ref: 67d1531576231e98d24bc307e980237bdca5142bda8920af89e6e6e887cb90ec
+- kind: patch
+  path: patches/libpulse/pulseaudio-Use-upstream-gettext-instead-intltool.patch
