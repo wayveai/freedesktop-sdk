@@ -51,6 +51,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{libdir}/libLLVM-6.0.0.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLTO.so'
 

@@ -13,7 +13,7 @@ public:
       devel:
         (>):
           - "%{libdir}/libvdpau.so"
-          - "%{libdir}/vdpau/libvdpau_trace.so"
+          - "%{libdir}/vdpau/libvdpau_*.so"
 
 sources:
   - kind: tar

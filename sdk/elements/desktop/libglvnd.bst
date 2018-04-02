@@ -18,6 +18,19 @@ config:
       - |
         ./autogen.sh
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libGLdispatch.so"
+          - "%{libdir}/libGLESv1_CM.so"
+          - "%{libdir}/libOpenGL.so"
+          - "%{libdir}/libEGL.so"
+          - "%{libdir}/libGL.so"
+          - "%{libdir}/libGLX.so"
+          - "%{libdir}/libGLESv2.so"
+
 sources:
   - kind: git
     url: https://github.com/NVIDIA/libglvnd.git

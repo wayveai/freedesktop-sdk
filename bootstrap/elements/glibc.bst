@@ -71,6 +71,8 @@ public:
           - "%{sysroot}%{stdlib}/libnss_hesiod.so"
           - "%{sysroot}%{stdlib}/libnss_db.so"
           - "%{sysroot}%{stdlib}/libutil.so"
+          - "%{sysroot}%{stdlib}/libnss_compat.so"
+          - "%{sysroot}%{stdlib}/libm.so"
 
 sources:
 - kind: tar

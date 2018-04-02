@@ -65,6 +65,8 @@ public:
           - "%{sysroot}%{datadir}/info/**"
           - "%{sysroot}%{datadir}/locale"
           - "%{sysroot}%{datadir}/locale/**"
+          - "%{sysroot}%{indep-libdir}/gcc"
+          - "%{sysroot}%{indep-libdir}/gcc/**"
           - "%{sysroot}%{libdir}/gcc"
           - "%{sysroot}%{libdir}/gcc/**"
           - "%{sysroot}%{libdir}/liblsan.so"
@@ -80,6 +82,9 @@ public:
           - "%{sysroot}%{libdir}/libcilkrts.so"
           - "%{sysroot}%{libdir}/libssp.so"
           - "%{sysroot}%{libdir}/libasan.so"
+          - "%{sysroot}%{libdir}/libgfortran.so"
+          - "%{sysroot}%{libdir}/libcc1.so"
+          - "%{sysroot}%{libdir}/libgcc_s.so"
 
 sources:
 - kind: tar

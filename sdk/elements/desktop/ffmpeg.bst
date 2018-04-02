@@ -53,6 +53,20 @@ variables:
     --enable-protocol=file \
     --arch=%{ffmpeg-arch}
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libavdevice.so"
+          - "%{libdir}/libavcodec.so"
+          - "%{libdir}/libswscale.so"
+          - "%{libdir}/libpostproc.so"
+          - "%{libdir}/libavutil.so"
+          - "%{libdir}/libavfilter.so"
+          - "%{libdir}/libavformat.so"
+          - "%{libdir}/libswresample.so"
+
 sources:
 - kind: git
   url: https://github.com/FFmpeg/FFmpeg.git

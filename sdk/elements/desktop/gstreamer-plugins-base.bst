@@ -27,6 +27,7 @@ public:
           - "%{libdir}/libgsttag-1.0.so"
           - "%{libdir}/libgstaudio-1.0.so"
           - "%{libdir}/libgstpbutils-1.0.so"
+          - "%{libdir}/libgstgl-1.0.so"
 
 sources:
   - kind: git

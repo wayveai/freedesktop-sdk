@@ -18,7 +18,7 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libharfbuzz-gobject.so"
+          - "%{libdir}/libharfbuzz-*.so"
           - "%{libdir}/libharfbuzz.so"
 
 sources:

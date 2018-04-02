@@ -26,6 +26,7 @@ variables:
     --host=%{triplet} \
     --prefix=%{prefix} \
     --sbindir=%{sbindir} \
+    --libdir=%{libdir} \
     --with-ncurses \
     ac_cv_func_malloc_0_nonnull=yes \
     ac_cv_func_realloc_0_nonnull=yes
@@ -38,6 +39,13 @@ config:
 
     - |
       %{delete_libtool_files}
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{sysroot}%{libdir}/libprocps.so"
 
 sources:
   - kind: tar

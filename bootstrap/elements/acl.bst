@@ -23,6 +23,8 @@ public:
       devel:
         (>):
           - "%{sysroot}%{libdir}/libattr.so"
+          - "%{sysroot}%{libdir}/libacl.so"
+          - "%{sysroot}%{libexecdir}/libacl.so"
 
 variables:
   builddir: ''

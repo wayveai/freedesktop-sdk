@@ -9,6 +9,13 @@ variables:
       --disable-static \
       --disable-man
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libdconf.so"
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/dconf/0.26/dconf-0.26.1.tar.xz
