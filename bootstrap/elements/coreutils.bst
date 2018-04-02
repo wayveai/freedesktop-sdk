@@ -50,4 +50,4 @@ sources:
   url: http://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz
   ref: 92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e
 - kind: patch
-  path: elements/coreutils-no-man-deps.patch
+  path: patches/coreutils-no-man-deps.patch

@@ -58,4 +58,4 @@ sources:
   # Readline should link to ncurses so that dependencies on readline
   # that do not use ncurses directly do not fail on linking.
 - kind: patch
-  path: elements/readline-link-to-ncurses.patch
+  path: patches/readline-link-to-ncurses.patch
