@@ -15,6 +15,11 @@ config:
       mkdir -p %{install-root}/usr/lib/locale
 
       while read name encoding; do
+        case "${name}" in
+          en_US.UTF-8)
+            continue
+            ;;
+        esac
         command="localedef --prefix=/tmp --no-archive -i ${name%%.*} -f ${encoding} ${name}"
         echo "Generating ${name}"
         ${command}

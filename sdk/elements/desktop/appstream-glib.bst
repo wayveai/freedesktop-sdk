@@ -25,9 +25,6 @@ config:
       - |
         rm -r "%{install-root}%{datadir}/installed-tests"
 
-environment:
-  LC_ALL: en_US.UTF-8
-
 public:
   bst:
     split-rules:
