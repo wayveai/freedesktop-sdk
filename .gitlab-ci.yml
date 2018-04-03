@@ -171,7 +171,7 @@ app_aarch64:
     ARCH: aarch64
 
 
-minimal_vm_image_x86_64:
+.vm_image_template: &vm_image
   stage: vm
   script:
     - export BST_EXTERNAL_SHA=db543278fae6cc12b2ef4cfb0f68b5326ac9dd76
@@ -179,16 +179,24 @@ minimal_vm_image_x86_64:
     - git -C bst-external checkout $BST_EXTERNAL_SHA
     - pip3 install --user ./bst-external
     - cd sdk
-    - ${BST} -o target_arch "${ARCH}" build vm/minimal-vm-image-x86_64.bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/minimal-vm-image-x86_64.bst ./vm
+    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
     - dnf install -y qemu-system-x86
     - ../utils/test-minimal-system vm/sda.img
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+
+minimal_vm_image_x86_64:
+  tags:
+    - x86_64
+  <<: *vm_image
+  variables:
+    ARCH: x86_64
+    TYPE: minimal
 
 
 
