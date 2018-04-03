@@ -4,6 +4,8 @@ depends:
   - filename: bootstrap-import.bst
     type: build
   - filename: base/libxml2.bst
+  - filename: base/docbook-xml.bst
+    type: runtime
 
 variables:
   data: "%{datadir}/xml/docbook/xml/xsl-stylesheets"
