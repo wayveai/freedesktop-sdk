@@ -19,6 +19,8 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
+- filename: vm/linux-vm-boot/systemd.bst
+  type: build
 
 config:
   include:
