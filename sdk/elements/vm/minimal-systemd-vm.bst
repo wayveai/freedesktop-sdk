@@ -21,6 +21,9 @@ depends:
   type: build
 - filename: vm/linux-vm-boot/systemd.bst
   type: build
+- filename: vm/linux-vm-boot/shadow.bst
+  type: build
+
 
 config:
   include:
