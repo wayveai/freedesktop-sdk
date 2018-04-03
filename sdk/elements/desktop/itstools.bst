@@ -2,14 +2,14 @@ kind: autotools
 
 depends:
   - filename: base.bst
-    type: build
 
 variables:
   conf-local:
-    PYTHON="/usr/bin/python2"
+    PYTHON="/usr/bin/python3"
 
 sources:
-  # itstool 2.0.4 crashes when building gtk-doc
   - kind: tar
-    url: http://files.itstool.org/itstool/itstool-2.0.2.tar.bz2
-    ref: bf909fb59b11a646681a8534d5700fec99be83bb2c57badf8c1844512227033a
+    url: http://files.itstool.org/itstool/itstool-2.0.4.tar.bz2
+    ref: 97c208b51da33e0b553e830b92655f8deb9132f8fbe9a646771f95c33226eb60
+  - kind: patch
+    path: elements/desktop/itstool-Be-more-careful-about-libxml2-memory-management.patch 
