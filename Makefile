@@ -5,22 +5,9 @@ FLATPAK_ARCH=i386
 else
 FLATPAK_ARCH=$(ARCH)
 endif
+REPO=repo
 
-all: repo
-
-BOOTSTRAP_IMAGES=					\
-	sdk/bootstrap-image-platform-$(ARCH)		\
-	sdk/bootstrap-image-$(ARCH)
-
-sdk/bootstrap-image-$(ARCH):
-	cd bootstrap && bst -o target_arch $(ARCH) build bootstrap-with-links.bst
-	cd bootstrap && bst -o target_arch $(ARCH) checkout bootstrap-with-links.bst ../sdk/bootstrap-image-$(ARCH)
-
-sdk/bootstrap-image-platform-$(ARCH):
-	cd bootstrap && bst -o target_arch $(ARCH) build bootstrap-platform-with-links.bst
-	cd bootstrap && bst -o target_arch $(ARCH) checkout bootstrap-platform-with-links.bst ../sdk/bootstrap-image-platform-$(ARCH)
-
-bootstrap: $(BOOTSTRAP_IMAGES)
+all: runtime
 
 RUNTIMES=					\
 	sdk					\
@@ -40,17 +27,13 @@ RUNTIMES=					\
 	baseplatform				\
 	baseplatform-locale
 
+ARCH_OPTS=-o target_arch $(ARCH)
 
 RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
 
 $(RUNTIME_DIRECTORIES): $(BOOTSTRAP_IMAGES)
-	cd sdk && bst -o target_arch $(ARCH) build all.bst
-	cd sdk && bst -o target_arch $(ARCH) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
-
-repo: $(RUNTIME_DIRECTORIES)
-	for dir in $(RUNTIME_DIRECTORIES); do				 \
-	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files repo "$${dir}" "$(BRANCH)"; \
-	done
+	cd sdk && bst $(ARCH_OPTS) build all.bst
+	cd sdk && bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
 	for dir in $(RUNTIME_DIRECTORIES); do				 \
@@ -62,14 +45,11 @@ export: $(RUNTIME_DIRECTORIES)
         fi
 
 runtime: $(BOOTSTRAP_IMAGES)
-	cd sdk && bst -o target_arch $(ARCH) build all.bst
+	cd sdk && bst $(ARCH_OPTS) build all.bst
 
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
 
-clean-bootstrap:
-	rm -f $(BOOTSTRAP_IMAGES)
+clean: clean-runtime
 
-clean: clean-bootstrap clean-runtime
-
-.PHONY: clean clean-bootstrap clean-runtime export runtime bootstrap
+.PHONY: clean clean-runtime export runtime

@@ -46,7 +46,7 @@ If you wish to build locally, you must have BuildStream installed and a local in
 
 ```
 - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o target_arch "${ARCH}" build all.bst
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
