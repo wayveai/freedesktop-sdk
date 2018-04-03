@@ -17,6 +17,8 @@ variables:
     - target_arch == "i586":
         ffmpeg-arch: x86
   conf-local: |
+    --prefix=%{prefix} \
+    --libdir=%{libdir} \
     --disable-debug \
     --disable-doc \
     --disable-static \
