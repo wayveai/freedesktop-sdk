@@ -5,7 +5,8 @@ depends:
   - filename: bootstrap-import.bst
     type: build
   - filename: base/gzip.bst
-    type: build
+  - filename: base/tar.bst
+    type: runtime
 
 public:
   bst:
