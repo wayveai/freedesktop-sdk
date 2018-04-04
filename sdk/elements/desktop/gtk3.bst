@@ -49,6 +49,5 @@ public:
 
 sources:
   - kind: tar
-    # gtk+ 3.22.25 requires new wayland-protocols not released yet with support for server side decoration
-    url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.26.tar.xz
-    ref: 61eef0d320e541976e2dfe445729f12b5ade53050ee9de6184235cb60cd4b967
+    url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.29.tar.xz
+    ref: a07d64b939fcc034a066b7723fdf9b24e92c9cfb6a8497593f3471fe56fbbbf8
