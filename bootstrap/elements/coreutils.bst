@@ -42,6 +42,9 @@ config:
       cd "%{builddir}"
       %{cross-install} INSTALL=install
 
+    - |
+      %{delete_libtool_files}
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz

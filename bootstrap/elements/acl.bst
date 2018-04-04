@@ -36,6 +36,8 @@ config:
   install-commands:
     - |
       %{cross-install} install-dev install-lib
+    - |
+      %{delete_libtool_files}
 
 sources:
   - kind: tar

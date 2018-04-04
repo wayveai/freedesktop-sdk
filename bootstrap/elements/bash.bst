@@ -44,6 +44,9 @@ config:
     - |
       ln -s bash "%{install-root}%{sysroot}%{bindir}/sh"
 
+    - |
+      %{delete_libtool_files}
+
 sources:
   - kind: tar
     url: http://ftp.gnu.org/gnu/bash/bash-4.4.12.tar.gz

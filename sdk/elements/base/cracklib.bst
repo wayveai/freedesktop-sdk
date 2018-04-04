@@ -48,6 +48,8 @@ config:
         cd build_python3/python
         %{make-install} top_builddir="../../%{builddir}"
 
+      - |
+        %{delete_libtool_files}
 
 public:
   bst:

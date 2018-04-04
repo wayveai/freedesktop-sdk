@@ -28,6 +28,8 @@ config:
     - |
       cd "%{builddir}"
       %{cross-install}
+    - |
+      %{delete_libtool_files}
 
 sources:
 - kind: tar

@@ -36,6 +36,9 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+    - |
+      %{delete_libtool_files}
+
 sources:
   - kind: tar
     url: https://download.sourceforge.net/procps-ng/procps-ng-3.3.12.tar.xz

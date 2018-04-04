@@ -42,6 +42,9 @@ config:
       cd build-python3/python
       %{make-install} top_builddir=../../%{builddir}
 
+    - |
+      %{delete_libtool_files}
+
 public:
   bst:
     split-rules:

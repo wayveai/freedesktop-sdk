@@ -29,6 +29,9 @@ config:
       cd %{builddir}
       %{cross-install}
 
+    - |
+      %{delete_libtool_files}
+
 sources:
 - kind: tar
   url: http://ftp.gnu.org/gnu/sed/sed-4.4.tar.xz

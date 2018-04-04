@@ -34,6 +34,9 @@ config:
       cd "%{builddir}"
       %{cross-install}
 
+    - |
+      %{delete_libtool_files}
+
 environment:
   CPPFLAGS: ""
   CFLAGS: "-O2 -g"
