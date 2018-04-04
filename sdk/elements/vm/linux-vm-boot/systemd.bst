@@ -27,7 +27,6 @@ depends:
 variables:
   meson-local: |
     -Drootlibdir=%{libdir} \
-    -Dacl=false \
     -Daudit=false \
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
