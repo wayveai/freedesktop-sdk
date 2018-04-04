@@ -41,5 +41,5 @@ public:
 sources:
   - kind: git
     url: https://anongit.freedesktop.org/git/cairo
-    track: 1.14
-    ref: 7cf32a065e7c3d8721ae5f4eccf6695152fe14b7 # 1.14.12
+    track: master
+    ref: 95c464d5feaae58b6cc0990434ce2498cc315dc6 #  1.15.10
