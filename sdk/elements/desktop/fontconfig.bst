@@ -22,6 +22,6 @@ sources:
   - kind: git
     url: https://anongit.freedesktop.org/git/fontconfig
     track: master
-    ref: d7d40b5aa8216f30a38492bd2bde5884c492c82d #  2.12.92
+    ref: f075ca1aeaedbc288d42a70df5cf2fd069ea0d10 #  2.13
   - kind: local
     path: elements/desktop/fontconfig-flatpak.conf
