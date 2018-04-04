@@ -16,7 +16,7 @@ stages:
   - build
   - flatpak
   - vm
-  - publish_x86
+  - publish_x86_64
   - publish_arm
 
 before_script:
@@ -258,7 +258,7 @@ minimal_systemd_vm_image_x86_64:
     - master
 
 publish_x86_64:
-  stage: publish_x86
+  stage: publish_x86_64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
