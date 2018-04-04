@@ -7,6 +7,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://wayland.freedesktop.org/releases/wayland-protocols-1.11.tar.xz
-    ref: 3afcee1d51c5b1d70b59da790c9830b354236324b19b2b7af9683bd3b7be6804
-
+    url: https://wayland.freedesktop.org/releases/wayland-protocols-1.13.tar.xz
+    ref: 0758bc8008d5332f431b2a84fea7de64d971ce270ed208206a098ff2ebc68f38
