@@ -17,6 +17,7 @@ stages:
   - flatpak
   - vm
   - publish_x86_64
+  - publish_i586
   - publish_arm
 
 before_script:
@@ -264,6 +265,14 @@ publish_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+
+publish_i586:
+  stage: publish_i586
+  <<: *flatpak_runtimes_publish
+  tags:
+    - x86_64
+  variables:
+    ARCH: i586
 
 publish_aarch64:
   stage: publish_arm
