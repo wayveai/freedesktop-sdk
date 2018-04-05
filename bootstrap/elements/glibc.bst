@@ -77,4 +77,4 @@ sources:
   url: http://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
   ref: 5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72
 - kind: patch
-  path: elements/glibc-reorder-end.patch
+  path: patches/glibc-reorder-end.patch

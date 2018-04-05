@@ -63,6 +63,6 @@ sources:
     url: https://mesa.freedesktop.org/archive/mesa-18.0.0.tar.xz
     ref: 694e5c3d37717d23258c1f88bc134223c5d1aac70518d2f9134d6df3ee791eea
   - kind: patch
-    path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
+    path: patches/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
-    path: elements/desktop/mesa-Fix-linkage-against-shared-glapi.patch
+    path: patches/mesa-Fix-linkage-against-shared-glapi.patch
