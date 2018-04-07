@@ -8,7 +8,6 @@ depends:
   - filename: base/gettext.bst
     type: build
   - filename: base/util-linux.bst
-    type: build
   - filename: base/pcre.bst
   - filename: base/python3.bst
     type: build
