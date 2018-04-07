@@ -53,7 +53,6 @@ depends:
 - filename: desktop/libva.bst
 - filename: desktop/libvdpau.bst
 - filename: desktop/libxkbcommon.bst
-- filename: desktop/llvm6.bst
 - filename: desktop/mesa.bst
 - filename: desktop/mpg123.bst
 - filename: desktop/multiarch-links.bst
