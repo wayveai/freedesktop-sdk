@@ -19,5 +19,5 @@ depends:
   type: build
 - filename: split-docs.bst
   type: build
-- filename: base/llvm6.bst
+- filename: base/rust.bst
   type: build
