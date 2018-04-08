@@ -211,6 +211,7 @@ minimal_systemd_vm_image_x86_64:
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst
+    - flatpakarch="${ARCH/i586/i386}"
     - mkdir runtimes
     - |
       for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale}; do
@@ -227,23 +228,34 @@ minimal_systemd_vm_image_x86_64:
     - ostree pull --repo=releases origin --mirror
 
     - echo "Commit the binaries to the correct branch"
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk/"${ARCH}"/unstable runtimes/basesdk
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Locale/"${ARCH}"/unstable runtimes/basesdk-locale
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Debug/"${ARCH}"/unstable runtimes/basesdk-debug
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform/"${ARCH}"/unstable runtimes/baseplatform
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform.Locale/"${ARCH}"/unstable runtimes/baseplatform-locale
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/"${ARCH}"/unstable runtimes/sdk
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Debug/"${ARCH}"/unstable runtimes/sdk-debug
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Docs/"${ARCH}"/unstable runtimes/sdk-docs
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Locale/"${ARCH}"/unstable runtimes/sdk-locale
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform/"${ARCH}"/unstable runtimes/platform
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Locale/"${ARCH}"/unstable runtimes/platform-locale
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo/"${ARCH}"/unstable runtimes/glxinfo
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo.Debug/"${ARCH}"/unstable runtimes/glxinfo-debug
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk/"${flatpakarch}"/unstable runtimes/basesdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Locale/"${flatpakarch}"/unstable runtimes/basesdk-locale
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BaseSdk.Debug/"${flatpakarch}"/unstable runtimes/basesdk-debug
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform/"${flatpakarch}"/unstable runtimes/baseplatform
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.BasePlatform.Locale/"${flatpakarch}"/unstable runtimes/baseplatform-locale
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/"${flatpakarch}"/unstable runtimes/sdk
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Debug/"${flatpakarch}"/unstable runtimes/sdk-debug
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Docs/"${flatpakarch}"/unstable runtimes/sdk-docs
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk.Locale/"${flatpakarch}"/unstable runtimes/sdk-locale
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform/"${flatpakarch}"/unstable runtimes/platform
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Locale/"${flatpakarch}"/unstable runtimes/platform-locale
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo/"${flatpakarch}"/unstable runtimes/glxinfo
+    - ostree commit --repo=releases --branch=runtime/org.freedesktop.GlxInfo.Debug/"${flatpakarch}"/unstable runtimes/glxinfo-debug
     - |
       case "${ARCH}" in
         "x86_64"|"i586")
-          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.VAAPI.Intel/"${ARCH}"/unstable runtimes/platform-vaapi
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.VAAPI.Intel/"${flatpakarch}"/unstable runtimes/platform-vaapi
+          ;;
+      esac
+    - |
+      case "${ARCH}" in
+        "i586")
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/unstable runtimes/platform-arch-libs
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/unstable runtimes/platform-arch-libs-debug
+          ;;
+        "arm")
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/unstable runtimes/platform-arch-libs
+          ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/unstable runtimes/platform-arch-libs-debug
           ;;
       esac
     - echo "Push to the releases ostree repo"
