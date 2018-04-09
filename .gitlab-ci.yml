@@ -71,10 +71,18 @@ before_script:
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
-cache:
-  key: bst
-  paths:
-    - "${XDG_CACHE_HOME}/buildstream/sources/"
+.gitlab_cache_template_pull: &gitlab_cache_pull
+  cache:
+    key: bst
+    paths:
+      - "${XDG_CACHE_HOME}/buildstream/sources/"
+    policy: pull
+
+.gitlab_cache_template_pull_push: &gitlab_cache_pull_push
+  cache:
+    key: bst
+    paths:
+      - "${XDG_CACHE_HOME}/buildstream/sources/"
 
 
 
@@ -89,6 +97,7 @@ cache:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+  <<: *gitlab_cache_pull
 
 build_x86_64:
   <<: *build_definition
@@ -151,6 +160,7 @@ build_aarch64:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+  <<: *gitlab_cache_pull
 
 app_x86_64:
   dependencies:
@@ -190,6 +200,7 @@ app_aarch64:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+  <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
   tags:
@@ -269,6 +280,7 @@ minimal_systemd_vm_image_x86_64:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
     - master
+  <<: *gitlab_cache_pull_push
 
 publish_x86_64:
   stage: publish_x86_64
