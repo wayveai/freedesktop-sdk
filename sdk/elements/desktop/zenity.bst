@@ -7,6 +7,7 @@ depends:
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/itstools.bst
+    type: build
 
 variables:
   conf-local: |
