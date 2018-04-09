@@ -21,7 +21,7 @@ variables:
   sector-size: 512
   swap-size: 40K
 
-  kernel-args: root=/dev/sda2 rootfstype=ext4 init=/bin/sh console=ttyS0
+  kernel-args: root=/dev/sda2 rootfstype=ext4 init=/usr/lib/systemd/systemd console=ttyS0
 
 config:
   base: vm/deploy-tools.bst
