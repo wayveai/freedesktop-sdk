@@ -3,7 +3,13 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
     type: build
+  - filename: base/automake.bst
+    type: build
   - filename: base/gdbm.bst
+  - filename: base/groff.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
   - filename: base/sqlite.bst
   - filename: base/openssl.bst
 
@@ -20,12 +26,9 @@ variables:
 
 config:
   build-commands:
-    # cyrus-sasl seems to use old version of automake and libtool that
-    # seems to not properly compile in parallel when a .c files is
-    # reused for several targets
     - |
       cd "%{builddir}"
-      %{make} -j1 sasldir="%{libdir}/sasl2"
+      %{make} sasldir="%{libdir}/sasl2"
 
   install-commands:
     - |
@@ -45,6 +48,6 @@ public:
           - "%{libdir}/libsasl2.so"
 
 sources:
-  - kind: tar
-    url: ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-2.1.26.tar.gz
-    ref: 8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3
+  - kind: git
+    url: https://github.com/cyrusimap/cyrus-sasl.git
+    ref: 3f420d388d88e720ceb9f8bc53a590395c761f03 # 2.1.27-rc7
