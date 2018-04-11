@@ -41,6 +41,7 @@ variables:
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
+    --enable-deterministic-archives \
     %{conf-extra}
 
 sources:

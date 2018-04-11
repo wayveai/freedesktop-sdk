@@ -43,6 +43,7 @@ variables:
     --disable-libvtv \
     --disable-multilib \
     --enable-languages=c,c++ \
+    --enable-deterministic-archives \
     %{conf-extra}
 
 sources:
