@@ -6,15 +6,11 @@ depends:
 - filename: dependencies/config.bst
   type: build
 
-config:
-  configure-commands:
-    - |
-      mkdir "%{builddir}"
-      cd "%{builddir}"
-      ../configure \
-      --host=$(sh /config/config.guess)  \
-      --build=$(sh /config/config.guess) \
-      --prefix=/glibc
+variables:
+  prefix: "/glibc"
+  lib: "lib"
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "$(sh /config/config.guess)"
 
 environment:
   CPPFLAGS: ""

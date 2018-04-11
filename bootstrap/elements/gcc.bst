@@ -26,10 +26,16 @@ variables:
           --with-arch=armv7-a \
           --with-float=hard
 
-  conf-args: |
-    --prefix=%{prefix} \
-    --build=$(sh /config/config.guess) \
-    --host=%{triplet} \
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "%{triplet}"
+
+  # gcc installs correctly libraries in the multiarch library
+  # directory, but needs to be provided /usr/lib for --libdir.
+  lib: "lib"
+  multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
+  debugdir: "%{multiarch_libdir}/debug"
+
+  conf-local: |
     --target=%{triplet} \
     --disable-multilib \
     --enable-multiarch \
@@ -69,22 +75,22 @@ public:
           - "%{sysroot}%{indep-libdir}/gcc/**"
           - "%{sysroot}%{libdir}/gcc"
           - "%{sysroot}%{libdir}/gcc/**"
-          - "%{sysroot}%{libdir}/liblsan.so"
-          - "%{sysroot}%{libdir}/libstdc++.so"
-          - "%{sysroot}%{libdir}/libgomp.so"
-          - "%{sysroot}%{libdir}/libatomic.so"
-          - "%{sysroot}%{libdir}/libubsan.so"
-          - "%{sysroot}%{libdir}/libquadmath.so"
-          - "%{sysroot}%{libdir}/libitm.so"
-          - "%{sysroot}%{libdir}/libtsan.so"
-          - "%{sysroot}%{libdir}/libmpxwrappers.so"
-          - "%{sysroot}%{libdir}/libmpx.so"
-          - "%{sysroot}%{libdir}/libcilkrts.so"
-          - "%{sysroot}%{libdir}/libssp.so"
-          - "%{sysroot}%{libdir}/libasan.so"
-          - "%{sysroot}%{libdir}/libgfortran.so"
-          - "%{sysroot}%{libdir}/libcc1.so"
-          - "%{sysroot}%{libdir}/libgcc_s.so"
+          - "%{sysroot}%{multiarch_libdir}/liblsan.so"
+          - "%{sysroot}%{multiarch_libdir}/libstdc++.so"
+          - "%{sysroot}%{multiarch_libdir}/libgomp.so"
+          - "%{sysroot}%{multiarch_libdir}/libatomic.so"
+          - "%{sysroot}%{multiarch_libdir}/libubsan.so"
+          - "%{sysroot}%{multiarch_libdir}/libquadmath.so"
+          - "%{sysroot}%{multiarch_libdir}/libitm.so"
+          - "%{sysroot}%{multiarch_libdir}/libtsan.so"
+          - "%{sysroot}%{multiarch_libdir}/libmpxwrappers.so"
+          - "%{sysroot}%{multiarch_libdir}/libmpx.so"
+          - "%{sysroot}%{multiarch_libdir}/libcilkrts.so"
+          - "%{sysroot}%{multiarch_libdir}/libssp.so"
+          - "%{sysroot}%{multiarch_libdir}/libasan.so"
+          - "%{sysroot}%{multiarch_libdir}/libgfortran.so"
+          - "%{sysroot}%{multiarch_libdir}/libcc1.so"
+          - "%{sysroot}%{multiarch_libdir}/libgcc_s.so"
 
 sources:
 - kind: tar

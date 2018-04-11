@@ -20,11 +20,8 @@ depends:
 - filename: zlib.bst
 
 variables:
-  conf-args: |
-    --build=$(sh /config/config.guess) \
-    --host=%{triplet} \
-    --prefix="%{prefix}" \
-    --libdir="%{libdir}"
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "%{triplet}"
 
 config:
   install-commands:

@@ -8,16 +8,16 @@ depends:
   type: build
 
 variables:
-  conf-args: |
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "$(sh /config/config.guess)"
+  prefix: "%{tools}"
+  conf-local: |
     --target=%{triplet} \
-    --build=$(sh /config/config.guess) \
-    --host=$(sh /config/config.guess) \
-    --prefix=%{tools} \
     --with-sysroot=%{sysroot} \
     --disable-nls \
     --disable-multilib \
     --disable-werror \
-    --with-lib-path="%{libdir}:%{indep-libdir}"
+    --with-lib-path="/usr/%{lib}:/usr/lib"
 
 sources:
 - kind: tar
