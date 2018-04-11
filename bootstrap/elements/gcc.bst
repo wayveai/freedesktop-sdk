@@ -43,6 +43,7 @@ variables:
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
+    --without-isl \
     %{conf-extra}
 
 config:
