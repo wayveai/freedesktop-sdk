@@ -25,5 +25,5 @@ public:
 
 sources:
   - kind: tar
-    url: ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/gnutls-3.6.1.tar.xz
-    ref: 20b10d2c9994bc032824314714d0e84c0f19bdb3d715d8ed55beb7364a8ebaed
+    url: https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.2.tar.xz
+    ref: bcd5db7b234e02267f36b5d13cf5214baac232b7056a506252b7574ea7738d1f
