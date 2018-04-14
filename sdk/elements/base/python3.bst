@@ -45,6 +45,9 @@ config:
     - |
       rm -rf %{install-root}%{indep-libdir}/python3.6/__pycache__/turtle.*
 
+    - |
+      %{fix-pyc-timestamps}
+
 public:
   bst:
     split-rules:
