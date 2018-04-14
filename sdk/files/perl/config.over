@@ -1,0 +1,1 @@
+cf_time=$(LC_ALL=C date --utc -d "@${SOURCE_DATE_EPOCH}")
