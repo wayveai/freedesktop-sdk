@@ -16,5 +16,5 @@ variables:
 
 sources:
   - kind: tar
-    url: https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.2.tar.gz
-    ref: 93b9e75e00b262bc4def6b26b7ae8717efc252c47154abb7392e54357e6c8c9c
+    url: https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.gz
+    ref: dac81822325b79c3ba9532b048c2123357d3310b2b40024202f360251d9829b1
