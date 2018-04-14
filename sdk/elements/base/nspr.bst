@@ -11,6 +11,7 @@ variables:
         arch-conf: |
           --enable-64bit
   conf-local: '%{arch-conf}'
+  make: make SH_DATE="$(date --date="@${SOURCE_DATE_EPOCH}" "+%Y-%m-%d %T")" SH_NOW="${SOURCE_DATE_EPOCH}"
 
 public:
   bst:
