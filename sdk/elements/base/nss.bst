@@ -63,4 +63,4 @@ sources:
     url: https://archive.mozilla.org/pub/security/nss/releases/NSS_3_34_1_RTM/src/nss-3.34.1.tar.gz
     ref: a3c15d367caf784f33d96dbafbdffc16a8e42fb8c8aedfce97bf92a9f918dda0
   - kind: local
-    path: elements/base/nss.pc.in
+    path: files/nss.pc.in
