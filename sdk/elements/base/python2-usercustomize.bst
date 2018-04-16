@@ -14,4 +14,4 @@ config:
 
 sources:
   - kind: local
-    path: elements/base/python2-usercustomize.py
+    path: files/python2-usercustomize.py

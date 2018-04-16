@@ -24,5 +24,5 @@ sources:
     ref: 7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af
     directory: fonts
   - kind: local
-    path: elements/desktop/font-conf
+    path: files/font-conf
     directory: config

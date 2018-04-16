@@ -44,5 +44,5 @@ public:
 
 sources:
   - kind: local
-    path: elements/desktop/os-release
+    path: files/os-release
 

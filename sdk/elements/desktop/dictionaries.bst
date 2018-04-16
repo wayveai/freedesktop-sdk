@@ -18,6 +18,6 @@ sources:
     ref: c0379d0ff639cf4a51244011a944f862703b92df
     track: libreoffice-5.4.1.1
   - kind: local
-    path: elements/desktop/dictionaries/install-dicts.py
+    path: files/dictionaries/install-dicts.py
   - kind: local
-    path: elements/desktop/dictionaries/th_gen_idx.pl
+    path: files/dictionaries/th_gen_idx.pl
