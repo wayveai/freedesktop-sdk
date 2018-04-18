@@ -36,7 +36,6 @@ variables:
     --disable-multilib \
     --disable-bootstrap \
     --disable-nls \
-    --disable-multilib \
     --with-sysroot=%{sysroot} \
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
