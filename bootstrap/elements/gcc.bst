@@ -1,5 +1,5 @@
 kind: autotools
-description: GNU gcc stage 2
+description: GNU gcc Stage 3
 
 depends:
 - filename: dependencies/base-sdk.bst
