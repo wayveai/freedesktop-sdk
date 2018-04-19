@@ -31,6 +31,13 @@ config:
         ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
         mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libvulkan.so"
+
 sources:
   - kind: tar
     url: https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.0.61.1.tar.gz

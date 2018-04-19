@@ -13,19 +13,19 @@ public:
     split-rules:
       devel:
         (>):
-          - "libcom_err.so"
-          - "libgssapi_krb5.so"
-          - "libgssrpc.so"
-          - "libk5crypto.so"
-          - "libkadm5clnt_mit.so"
-          - "libkadm5clnt.so"
-          - "libkadm5srv_mit.so"
-          - "libkadm5srv.so"
-          - "libkdb5.so"
-          - "libkrad.so"
-          - "libkrb5.so"
-          - "libkrb5support.so"
-          - "libverto.so"
+          - "%{libdir}/libcom_err.so"
+          - "%{libdir}/libgssapi_krb5.so"
+          - "%{libdir}/libgssrpc.so"
+          - "%{libdir}/libk5crypto.so"
+          - "%{libdir}/libkadm5clnt_mit.so"
+          - "%{libdir}/libkadm5clnt.so"
+          - "%{libdir}/libkadm5srv_mit.so"
+          - "%{libdir}/libkadm5srv.so"
+          - "%{libdir}/libkdb5.so"
+          - "%{libdir}/libkrad.so"
+          - "%{libdir}/libkrb5.so"
+          - "%{libdir}/libkrb5support.so"
+          - "%{libdir}/libverto.so"
 
 config:
   configure-commands:

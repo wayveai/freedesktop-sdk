@@ -80,6 +80,8 @@ public:
     split-rules:
       devel:
         (>):
+          - "%{sysroot}%{libdir}/libtinfo.so"
+          - "%{sysroot}%{libdir}/libtinfow.so"
           - "%{sysroot}%{libdir}/libformw.so"
           - "%{sysroot}%{libdir}/libform.so"
           - "%{sysroot}%{libdir}/libpanel.so"

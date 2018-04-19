@@ -59,6 +59,16 @@ config:
         rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
         rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libgbm.so"
+          - "%{libdir}/libglapi.so"
+          - "%{libdir}/libwayland-egl.so"
+          - "%{libdir}/vdpau/libvdpau_*.so"
+
 sources:
   - kind: tar
     url: https://mesa.freedesktop.org/archive/mesa-18.0.0.tar.xz

@@ -17,6 +17,8 @@ variables:
     - target_arch == "i586":
         ffmpeg-arch: x86
   conf-local: |
+    --prefix=%{prefix} \
+    --libdir=%{libdir} \
     --disable-debug \
     --disable-doc \
     --disable-static \
@@ -50,6 +52,20 @@ variables:
     --enable-filter=crop,scale \
     --enable-protocol=file \
     --arch=%{ffmpeg-arch}
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libavdevice.so"
+          - "%{libdir}/libavcodec.so"
+          - "%{libdir}/libswscale.so"
+          - "%{libdir}/libpostproc.so"
+          - "%{libdir}/libavutil.so"
+          - "%{libdir}/libavfilter.so"
+          - "%{libdir}/libavformat.so"
+          - "%{libdir}/libswresample.so"
 
 sources:
 - kind: git

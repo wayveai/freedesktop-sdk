@@ -28,6 +28,8 @@ public:
           - "%{libdir}/libgsturidownloader-1.0.so"
           - "%{libdir}/libgstbasecamerabinsrc-1.0.so"
           - "%{libdir}/libgstphotography-1.0.so"
+          - "%{libdir}/libgstisoff-1.0.so"
+          - "%{libdir}/libgstwebrtc-1.0.so"
 
 sources:
   - kind: git

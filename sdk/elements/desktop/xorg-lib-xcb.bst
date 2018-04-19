@@ -42,6 +42,7 @@ public:
           - "%{libdir}/libxcb-xinerama.so"
           - "%{libdir}/libxcb-present.so"
           - "%{libdir}/libxcb-xkb.so"
+          - "%{libdir}/libxcb-xinput.so"
 
 sources:
   - kind: tar
