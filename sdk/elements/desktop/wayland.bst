@@ -14,12 +14,12 @@ public:
       devel:
         (>):
           - "%{bindir}/wayland-scanner"
-          - "%{libdir}/libwayland-cursor.so"
-          - "%{libdir}/libwayland-server.so"
           - "%{libdir}/libwayland-client.so"
+          - "%{libdir}/libwayland-cursor.so"
+          - "%{libdir}/libwayland-egl.so"
+          - "%{libdir}/libwayland-server.so"
 
 sources:
   - kind: tar
-    url: https://wayland.freedesktop.org/releases/wayland-1.14.0.tar.xz
-    ref: ed80cabc0961a759a42092e2c39aabfc1ec9a13c86c98bbe2b812f008da27ab8
-
+    url: https://wayland.freedesktop.org/releases/wayland-1.15.0.tar.xz
+    ref: eb3fbebb8559d56a80ad3753ec3db800f587329067962dbf65e14488b4b7aeb0
