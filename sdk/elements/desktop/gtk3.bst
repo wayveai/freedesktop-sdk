@@ -12,6 +12,7 @@ depends:
   - filename: desktop/dconf.bst
     type: runtime
   - filename: desktop/gdk-pixbuf.bst
+  - filename: desktop/gsettings-desktop-schemas.bst
   - filename: desktop/xorg-lib-xinerama.bst
   - filename: desktop/xorg-lib-xi.bst
   - filename: desktop/xorg-lib-xcomposite.bst
