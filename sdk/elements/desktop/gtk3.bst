@@ -12,6 +12,7 @@ depends:
   - filename: desktop/dconf.bst
     type: runtime
   - filename: desktop/gdk-pixbuf.bst
+  - filename: desktop/gsettings-desktop-schemas.bst
   - filename: desktop/xorg-lib-xinerama.bst
   - filename: desktop/xorg-lib-xi.bst
   - filename: desktop/xorg-lib-xcomposite.bst
@@ -49,5 +50,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.29.tar.xz
-    ref: a07d64b939fcc034a066b7723fdf9b24e92c9cfb6a8497593f3471fe56fbbbf8
+    url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.30.tar.xz
+    ref: a1a4a5c12703d4e1ccda28333b87ff462741dc365131fbc94c218ae81d9a6567
