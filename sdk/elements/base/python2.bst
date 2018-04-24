@@ -46,6 +46,9 @@ config:
     - |
       rm -rf %{install-root}%{indep-libdir}/python2.7/lib-tk
 
+    - |
+      %{fix-pyc-timestamps}
+
 public:
   bst:
     split-rules:

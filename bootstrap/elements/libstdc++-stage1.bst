@@ -17,18 +17,23 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
+variables:
+  lib: "lib"
+  debugdir: "%{prefix}/lib/%{gcc_triplet}/debug"
+
+  host-triplet: "%{triplet}"
+  build-triplet: "$(sh /config/config.guess)"
+  conf-local: |
+      --enable-multiarch \
+      --disable-nls \
+      --disable-multilib
+
 config:
   configure-commands:
     - |
       mkdir "%{builddir}"
       cd "%{builddir}"
-      ../libstdc++-v3/configure \
-      --host=%{triplet} \
-      --build=$(sh /config/config.guess) \
-      --enable-multiarch \
-      --prefix=%{prefix} \
-      --disable-nls \
-      --disable-multilib
+      ../libstdc++-v3/%{configure}
 
   install-commands:
     - |

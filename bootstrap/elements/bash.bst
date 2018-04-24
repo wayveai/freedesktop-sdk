@@ -22,14 +22,13 @@ depends:
   type: build
 
 variables:
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "%{triplet}"
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected
-  conf-args: |
-    --build=$(sh /config/config.guess) \
-    --host=%{triplet} \
+  conf-local: |
     --with-curses \
     --with-installed-readline="/readline-separate-install%{prefix}" \
-    --prefix=%{prefix} \
     --enable-job-control \
     ac_cv_rl_version=7.0 \
     bash_cv_job_control_missing=present \

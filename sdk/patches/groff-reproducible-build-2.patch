@@ -1,0 +1,36 @@
+Source: https://sources.debian.org/data/main/g/groff/1.22.3-10/debian/patches/hdtbl-examples-less-random.patch
+
+From b78ead018666fbee30624359caa4a294efb0c517 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Fri, 6 Nov 2015 11:06:04 +0000
+Subject: Remove unnecessary randomness from example output
+
+The hdtbl examples don't need good randomness, as they're only example
+output; removing the process ID from consideration allows better
+integration with reproducible builds.
+
+Forwarded: no
+Last-Update: 2015-11-06
+
+Patch-Name: hdtbl-examples-less-random.patch
+---
+ contrib/hdtbl/examples/common.roff | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/hdtbl/examples/common.roff b/contrib/hdtbl/examples/common.roff
+index ddb6d4ac..9bd9f901 100644
+--- a/contrib/hdtbl/examples/common.roff
++++ b/contrib/hdtbl/examples/common.roff
+@@ -231,7 +231,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .af mo 00
+ .af dy 00
+ .
+-.ds random-s1 \n[minutes]\n[seconds]\n[$$]\n[hours]\"
++.\" Since this just generates example output, we don't need good randomness;
++.\" basing this purely on the time and not on the process ID allows better
++.\" integration with reproducible builds.
++.\" .ds random-s1 \n[minutes]\n[seconds]\n[$$]\n[hours]\"
++.ds random-s1 \n[minutes]\n[seconds]\n[hours]\"
+ .\" prevent overflow
+ .substring random-s1 0 8
+ .

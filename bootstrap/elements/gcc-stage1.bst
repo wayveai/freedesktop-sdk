@@ -11,7 +11,7 @@ depends:
 
 variables:
   prefix: "%{tools}"
-  libdir: "%{tools}/lib"
+  lib: "lib"
   (?):
     - target_arch == "arm":
         conf-extra: |
@@ -19,10 +19,11 @@ variables:
           --with-fpu=vfpv3-d16 \
           --with-arch=armv7-a \
           --with-float=hard
-  conf-args: |
-    --prefix=%{prefix} \
-    --build=$(sh /config/config.guess) \
-    --host=$(sh /config/config.guess) \
+
+  build-triplet: "$(sh /config/config.guess)"
+  host-triplet: "$(sh /config/config.guess)"
+
+  conf-local: |
     --target=%{triplet} \
     --with-newlib \
     --enable-multiarch \
@@ -42,6 +43,8 @@ variables:
     --disable-libvtv \
     --disable-multilib \
     --enable-languages=c,c++ \
+    --without-isl \
+    --enable-deterministic-archives \
     %{conf-extra}
 
 sources:
