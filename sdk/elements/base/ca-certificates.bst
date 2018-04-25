@@ -36,6 +36,6 @@ public:
 
 sources:
   - kind: git
-    url: git://anonscm.debian.org/collab-maint/ca-certificates.git
+    url: https://salsa.debian.org/debian/ca-certificates.git
     track: master
     ref: 238e0aa38b26bcbd6d0b0130868bec9efa6566be
