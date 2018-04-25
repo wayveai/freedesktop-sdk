@@ -14,7 +14,7 @@ config:
 
 sources:
   - kind: git
-    url: https://anongit.freedesktop.org/git/libreoffice/dictionaries.git
+    url: freedesktop:libreoffice/dictionaries.git
     ref: c0379d0ff639cf4a51244011a944f862703b92df
     track: libreoffice-5.4.1.1
   - kind: local
