@@ -18,6 +18,9 @@ depends:
   type: build
 
 variables:
+  conf-link-args: |
+    --enable-shared \
+    --enable-static
   prefix: "%{tools}"
   lib: "lib"
   (?):
