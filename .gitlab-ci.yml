@@ -1,4 +1,4 @@
-image: buildstream/buildstream-fedora:1.0.1
+image: buildstream/buildstream-fedora:master-81-06ae434
 
 variables:
   # Store everything under the /builds directory. This is a separate Docker
@@ -23,8 +23,6 @@ stages:
 before_script:
   - export PATH=~/.local/bin:${PATH}
   - export BST_SHA='e91dc8336074d22126e559a29e23ef2d52c5506a' #  1.1.2
-  # Manually install packages, needed for ARM runners until #39 is solved
-  - dnf install --best -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip binutils
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
@@ -122,7 +120,7 @@ build_i586:
     ARCH: i586
 
 build_aarch64:
-  image: fedora:27
+  image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
   <<: *build_definition
   tags:
     - aarch64
@@ -180,7 +178,7 @@ app_x86_64:
     ARCH: x86_64
 
 app_aarch64:
-  image: fedora:27
+  image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
   dependencies:
     - build_aarch64
   <<: *flatpak_definition
@@ -308,7 +306,7 @@ publish_i586:
 
 publish_aarch64:
   stage: publish_arm
-  image: fedora:27
+  image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
