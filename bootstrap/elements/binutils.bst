@@ -23,6 +23,8 @@ variables:
   conf-local: |
     --disable-werror \
     --with-lib-path="%{libdir}:%{indep-libdir}" \
+    --enable-gold \
+    --enable-ld=default \
     --enable-shared
 
 config:
