@@ -19,3 +19,5 @@ depends:
   type: build
 - filename: split-locales.bst
   type: build
+- filename: flatpak-builder-configuration.bst
+  type: build

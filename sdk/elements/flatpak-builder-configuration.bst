@@ -1,0 +1,24 @@
+kind: manual
+
+depends:
+  - filename: bootstrap-import.bst
+    type: build
+
+config:
+  build-commands:
+    - |
+      cat >defaults.json <<EOF
+      {
+        'prefix': '%{prefix}',
+        'libdir': '%{libdir}',
+        'cflags': '${CFLAGS}',
+        'cxxflags': '${CXXFLAGS}',
+        'cppflags': '${CPPFLAGS}',
+        'ldflags': '${LDFLAGS}'
+      }
+      EOF
+
+
+  install-commands:
+    - |
+      install -Dm 0644 -t "%{install-root}%{sysconfdir}/flatpak-builder" defaults.json
