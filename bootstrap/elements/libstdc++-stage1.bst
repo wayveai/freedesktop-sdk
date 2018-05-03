@@ -51,5 +51,5 @@ environment:
 
 sources:
 - kind: tar
-  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.xz
-  ref: 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c
+  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-8.1.0/gcc-8.1.0.tar.xz
+  ref: 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
