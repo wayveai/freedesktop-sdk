@@ -20,7 +20,7 @@ public:
 
 sources:
   - kind: git
-    url: https://anongit.freedesktop.org/git/fontconfig
+    url: freedesktop:fontconfig
     track: master
     ref: f075ca1aeaedbc288d42a70df5cf2fd069ea0d10 #  2.13
   - kind: local

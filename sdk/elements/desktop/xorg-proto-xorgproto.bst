@@ -9,6 +9,6 @@ depends:
 
 sources:
   - kind: git
-    url: git://anongit.freedesktop.org/xorg/proto/xorgproto
+    url: freedesktop:xorg/proto/xorgproto
     track: master
     ref: cd7b5a4bee3d3ae2c72820406ccf3a5bc4bd82d0 #  xorgproto-2018.3
