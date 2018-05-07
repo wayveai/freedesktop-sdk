@@ -21,3 +21,5 @@ depends:
   type: build
 - filename: flatpak-builder-configuration.bst
   type: build
+- filename: multiarch-debugdir.bst
+  type: build
