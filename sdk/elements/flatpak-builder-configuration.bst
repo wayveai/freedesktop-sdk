@@ -9,7 +9,6 @@ config:
     - |
       cat >defaults.json <<EOF
       {
-        'prefix': '%{prefix}',
         'libdir': '%{libdir}',
         'cflags': '${CFLAGS}',
         'cxxflags': '${CXXFLAGS}',
