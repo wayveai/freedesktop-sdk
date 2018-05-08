@@ -9,8 +9,6 @@ depends:
   - filename: desktop/wayland.bst
 
 variables:
-  lib: "lib/%{gcc_triplet}"
-  libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
     - target_arch == "i586":
         targets: "X86;AMDGPU;NVPTX"
@@ -45,6 +43,12 @@ variables:
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
+
+config:
+  install-commands:
+    (>):
+      - |
+        rm -f "%{install-root}%{libdir}"/lib*.a
 
 public:
   bst:
