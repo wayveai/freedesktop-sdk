@@ -40,6 +40,7 @@ variables:
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
+    --with-build-sysroot=%{sysroot} \
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
