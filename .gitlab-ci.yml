@@ -247,6 +247,7 @@ minimal_systemd_vm_image_x86_64:
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
+    - ${BST} -o target_arch "${ARCH}" fetch all.bst
     - ${BST} -o target_arch "${ARCH}" build all.bst
     - flatpakarch="${ARCH/i586/i386}"
     - mkdir runtimes
