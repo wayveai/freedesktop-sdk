@@ -135,6 +135,7 @@ build_arm:
     - armhf
   variables:
     ARCH: arm
+  when: manual
 
 
 .flatpak_template: &flatpak_definition
@@ -204,6 +205,7 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
+  when: manual
 
 
 .vm_image_template: &vm_image
@@ -339,3 +341,4 @@ publish_arm:
     - armhf
   variables:
     ARCH: arm
+  when: manual
