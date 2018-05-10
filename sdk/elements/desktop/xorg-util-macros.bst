@@ -2,8 +2,13 @@ kind: autotools
 description: X.org util macros
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "/**"
 
 sources:
   - kind: tar

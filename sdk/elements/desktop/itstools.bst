@@ -1,8 +1,8 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: base/python3.bst
+  - filename: base/libxslt.bst
 
 variables:
   conf-local:

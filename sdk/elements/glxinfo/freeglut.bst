@@ -1,13 +1,15 @@
 kind: cmake
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-lib-xi.bst
     type: build
   - filename: desktop/mesa.bst
     type: build
   - filename: glxinfo/glu.bst
+  - filename: base/cmake.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
 
 variables:
   lib: lib

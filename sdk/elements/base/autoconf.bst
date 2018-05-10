@@ -2,8 +2,6 @@ kind: autotools
 description: GNU autoconf
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/m4.bst
   - filename: base/perl.bst
 

@@ -2,11 +2,10 @@ kind: autotools
 description: X.org lib xdamage
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-x11.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

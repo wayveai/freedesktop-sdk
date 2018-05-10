@@ -1,10 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/dbus.bst
   - filename: desktop/gtk-doc.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/glib.bst
 
 public:
   bst:

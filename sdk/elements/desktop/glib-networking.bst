@@ -1,9 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/libproxy.bst
+  - filename: base/glib.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gnutls.bst
 
 variables:
   conf-local: |

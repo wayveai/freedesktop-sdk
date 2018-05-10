@@ -1,7 +1,10 @@
 kind: manual
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/python3.bst
+    type: build
+  - filename: base/perl.bst
     type: build
 
 config:

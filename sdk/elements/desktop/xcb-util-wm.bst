@@ -2,9 +2,11 @@ kind: autotools
 description: X.org xcb-util-wm
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-lib-xcb.bst
+  - filename: base/m4.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

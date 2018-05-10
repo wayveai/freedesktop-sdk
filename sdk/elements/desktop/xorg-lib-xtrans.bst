@@ -2,8 +2,7 @@ kind: autotools
 description: X.org lib xtrans
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
 
 sources:
   - kind: tar

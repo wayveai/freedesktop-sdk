@@ -2,11 +2,10 @@ kind: autotools
 description: X.org lib SM
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-lib-ice.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xtrans.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

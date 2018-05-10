@@ -2,7 +2,6 @@ kind: manual
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
 
 variables:
   make-args: |

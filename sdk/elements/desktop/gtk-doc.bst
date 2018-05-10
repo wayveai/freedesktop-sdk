@@ -1,9 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/itstools.bst
+  - filename: base/docbook-xml.bst
+  - filename: base/docbook-xsl.bst
+  - filename: base/gettext.bst
+    type: build
 
 variables:
   conf-local: |

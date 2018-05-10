@@ -1,8 +1,7 @@
 kind: manual
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/appstream-glib.bst
     type: build
 

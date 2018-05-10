@@ -1,8 +1,12 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/pkg-config.bst
     type: build
+  - filename: base/expat.bst
+  - filename: base/libxml2.bst
+  - filename: base/libffi.bst
 
 variables:
   conf-local: |

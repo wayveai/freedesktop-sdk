@@ -1,10 +1,12 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-app-xkbcomp.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/intltool.bst
+    type: build
 
 variables:
   conf-local: |

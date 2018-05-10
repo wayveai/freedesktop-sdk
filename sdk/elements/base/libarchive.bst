@@ -3,7 +3,6 @@ description: Glib
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
 
 public:
   bst:

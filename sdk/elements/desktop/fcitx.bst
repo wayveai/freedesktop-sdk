@@ -1,8 +1,6 @@
 kind: cmake
 
 depends:
-- filename: base.bst
-  type: build
 - filename: desktop/extra-cmake-modules.bst
   type: build
 - filename: desktop/gtk3.bst

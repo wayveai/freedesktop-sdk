@@ -2,12 +2,14 @@ kind: autotools
 description: X.org lib xcb
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-proto-xcb.bst
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-xau.bst
   - filename: desktop/xorg-lib-pthread-stubs.bst
+  - filename: base/python3.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

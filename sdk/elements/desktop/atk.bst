@@ -1,10 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/gobject-introspection.bst
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

@@ -1,8 +1,6 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/libogg.bst
 
 variables:

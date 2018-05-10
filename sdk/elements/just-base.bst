@@ -1,7 +1,6 @@
 kind: stack
 
 depends:
-- filename: just-base-platform.bst
 - filename: base/autoconf-archive.bst
 - filename: base/autoconf.bst
 - filename: base/automake.bst

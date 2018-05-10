@@ -1,9 +1,17 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/freetype.bst
+  - filename: base/gperf.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 config:
   install-commands:

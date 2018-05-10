@@ -2,8 +2,6 @@ kind: autotools
 description: Python 3
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
     # glib depends on python
   - filename: base/pkg-config.bst
     type: build

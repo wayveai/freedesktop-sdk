@@ -9,8 +9,6 @@ public:
         - "%{datadir}/runtime/locale/**"
 
 depends:
-- filename: bootstrap-import.bst
-  type: build
 - filename: just-base.bst
   type: build
 - filename: base/man-db-generate.bst

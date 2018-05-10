@@ -1,8 +1,6 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/automake.bst
     type: build
   - filename: base/gdbm.bst

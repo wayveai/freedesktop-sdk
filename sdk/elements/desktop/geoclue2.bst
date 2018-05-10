@@ -1,10 +1,12 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/json-glib.bst
   - filename: desktop/libsoup.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/intltool.bst
+    type: build
 
 variables:
   conf-local: |

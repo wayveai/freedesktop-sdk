@@ -1,8 +1,25 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/autoconf-archive.bst
     type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/intltool.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/libcap.bst
+  - filename: base/sndfile.bst
+  - filename: desktop/alsa-lib.bst
+  - filename: desktop/xorg-lib-xcb.bst
+  - filename: desktop/xorg-lib-ice.bst
+  - filename: desktop/xorg-lib-sm.bst
+  - filename: desktop/xorg-lib-xtst.bst
+  - filename: desktop/gtk3.bst
 
 variables:
   conf-local: |

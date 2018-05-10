@@ -1,8 +1,7 @@
 kind: manual
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
 
 variables:
   fontdir: "%{install-root}%{datadir}/fonts"

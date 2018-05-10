@@ -1,9 +1,9 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/libdatrie.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

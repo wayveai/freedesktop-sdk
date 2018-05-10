@@ -1,7 +1,7 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
     type: build
 
 public:

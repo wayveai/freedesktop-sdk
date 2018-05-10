@@ -2,10 +2,10 @@ kind: autotools
 description: libvdpau
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

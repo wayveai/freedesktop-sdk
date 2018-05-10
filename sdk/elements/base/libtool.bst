@@ -2,8 +2,6 @@ kind: autotools
 description: GNU libtool
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/m4.bst
 
 public:

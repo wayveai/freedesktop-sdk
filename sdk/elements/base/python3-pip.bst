@@ -1,8 +1,6 @@
 kind: distutils
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/python3.bst
   - filename: base/python3-setuptools.bst
     type: build

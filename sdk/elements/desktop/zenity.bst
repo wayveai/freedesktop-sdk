@@ -1,12 +1,14 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/gtk3.bst
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/itstools.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gettext.bst
     type: build
 
 variables:

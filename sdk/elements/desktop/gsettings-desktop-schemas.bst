@@ -1,10 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: base/glib.bst
   - filename: desktop/gobject-introspection.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/intltool.bst
+    type: build
+  - filename: base/python2.bst
+    type: build
 
 sources:
   - kind: tar

@@ -1,12 +1,14 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/graphite2.bst
+  - filename: base/glib.bst
   - filename: desktop/freetype-stage1.bst
     type: build
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

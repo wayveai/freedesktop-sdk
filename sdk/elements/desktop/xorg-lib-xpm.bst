@@ -2,11 +2,11 @@ kind: autotools
 description: X.org lib xpm
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-x11.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
 
 public:
   bst:

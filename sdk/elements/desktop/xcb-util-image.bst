@@ -2,11 +2,11 @@ kind: autotools
 description: X.org xcb-util-image
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-lib-xcb.bst
   - filename: desktop/xorg-lib-pthread-stubs.bst
   - filename: desktop/xcb-util.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

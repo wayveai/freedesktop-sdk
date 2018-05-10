@@ -1,12 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xrender.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

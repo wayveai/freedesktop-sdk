@@ -3,7 +3,6 @@ description: pcre2
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
 
 public:
   bst:

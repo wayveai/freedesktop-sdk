@@ -1,11 +1,15 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/shared-mime-info.bst
   - filename: desktop/gobject-introspection.bst
+  - filename: base/libtiff.bst
+  - filename: base/libpng.bst
+  - filename: base/jpeg.bst
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

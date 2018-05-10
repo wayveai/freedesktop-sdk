@@ -3,7 +3,6 @@ description: GNU debugger
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
   - filename: base/texinfo.bst
     type: build
   - filename: base/perl.bst

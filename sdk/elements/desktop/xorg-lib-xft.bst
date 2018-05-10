@@ -1,13 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrender.bst
   - filename: desktop/freetype.bst
   - filename: desktop/fontconfig.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

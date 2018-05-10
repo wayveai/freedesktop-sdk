@@ -1,8 +1,7 @@
 kind: cmake
 
 depends:
-- filename: base.bst
-  type: build
+- filename: bootstrap-import.bst
 
 variables:
   cmake-local: |

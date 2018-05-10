@@ -44,3 +44,9 @@ sources:
 - kind: tar
   url: https://sourceware.org/pub/binutils/releases/binutils-2.30.tar.xz
   ref: 6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "/**"

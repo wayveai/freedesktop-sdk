@@ -34,6 +34,29 @@ config:
     - |
       mkdir -p "%{install-root}%{sysroot}%{prefix}/etc"
       mv "%{install-root}%{sysroot}%{sysconfdir}/rpc" "%{install-root}%{sysroot}%{prefix}/etc/rpc"
+      rm -r "%{install-root}%{sysroot}%{sysconfdir}"
+
+    # Move /lib* links into the prefix.
+    - |
+      root="%{install-root}%{sysroot}"
+      for i in lib lib32 lib64; do
+        libdir="${root}/${i}"
+        targetdir="${root}%{prefix}/${i}"
+        if [ -d "${libdir}" ]; then
+          for f in "${libdir}"/*; do
+            if [ -h "$f" ]; then
+              [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
+              targetpath="${targetdir}/$(basename "$f")"
+              sourcepath="${libdir}/$(readlink "$f")"
+              relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
+              ln -s "${relsourcepath}" "${targetpath}"
+              rm "$f"
+            fi
+          done
+          rm -r "${libdir}"
+          ln -s "$(realpath "${targetdir}" --relative-to="${root}")" "${libdir}"
+        fi
+      done
 
     - |
       %{delete_libtool_files}

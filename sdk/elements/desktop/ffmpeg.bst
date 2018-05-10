@@ -1,8 +1,6 @@
 kind: manual
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/fontconfig.bst
   - filename: desktop/freetype.bst
   - filename: desktop/mesa.bst
@@ -10,6 +8,14 @@ depends:
   - filename: desktop/openal.bst
   - filename: desktop/pulseaudio.bst
   - filename: desktop/sdl2.bst
+  - filename: base/gnutls.bst
+  - filename: base/speex.bst
+  - filename: base/libtheora.bst
+  - filename: base/libvorbis.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/nasm.bst
+    type: build
 
 variables:
   ffmpeg-arch: "%{arch}"

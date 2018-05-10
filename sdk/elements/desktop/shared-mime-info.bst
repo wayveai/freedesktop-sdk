@@ -1,8 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/intltool.bst
     type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/libxml2.bst
+  - filename: base/glib.bst
 
 variables:
   max-jobs: 1

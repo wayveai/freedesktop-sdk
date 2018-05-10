@@ -1,10 +1,14 @@
 kind: meson
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 sources:
   - kind: git

@@ -1,8 +1,6 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/libtiff.bst
   - filename: base/jpeg.bst
   - filename: base/openssl.bst

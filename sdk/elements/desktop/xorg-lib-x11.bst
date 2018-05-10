@@ -2,12 +2,12 @@ kind: autotools
 description: X.org lib x11
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xtrans.bst
   - filename: desktop/xorg-lib-xcb.bst
+  - filename: base/perl.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

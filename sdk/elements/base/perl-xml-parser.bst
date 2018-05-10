@@ -1,8 +1,6 @@
 kind: manual
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
   - filename: base/perl.bst
   - filename: base/expat.bst
 

@@ -1,10 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/libva.bst
   - filename: desktop/libvdpau.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 sources:
   - kind: tar
