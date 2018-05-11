@@ -68,6 +68,16 @@ before_script:
         echo "      push: true" >> ~/.config/buildstream.conf
     fi
 
+  # Go easy on the artifact server. The fixed unchangeable connection
+  # timeout for ostree is 30 seconds. And it cannot be changed.
+  - |
+    [ -d "${HOME}/.config"] || mkdir -p "${HOME}/.config"
+    cat >>"${HOME}/.config/buildstream.conf" <<EOF
+    scheduler:
+      fetchers: 5
+      network-retries: 4
+    EOF
+
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
 .gitlab_cache_template_pull: &gitlab_cache_pull
