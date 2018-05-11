@@ -6,6 +6,7 @@ depends:
   - filename: desktop/llvm6.bst
     type: build
   - filename: desktop/libdrm.bst
+  - filename: desktop/libva.bst
   - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
@@ -19,7 +20,7 @@ depends:
 variables:
   (?):
     - target_arch == "i586" or target_arch == "x86_64":
-        gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi"
+        gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
         dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
         vulkan_drivers: "intel,radeon"
     - target_arch == "arm" or target_arch == "aarch64":
@@ -34,6 +35,9 @@ variables:
     --enable-egl \
     --disable-gles1 \
     --enable-gles2 \
+    --enable-vdpau \
+    --enable-va \
+    --enable-xa \
     --disable-xvmc \
     --with-platforms=x11,drm,surfaceless,wayland \
     --enable-shared-glapi \
@@ -70,6 +74,7 @@ public:
           - "%{libdir}/libgbm.so"
           - "%{libdir}/libglapi.so"
           - "%{libdir}/libwayland-egl.so"
+          - "%{libdir}/libxatracker.so"
           - "%{libdir}/vdpau/libvdpau_*.so"
 
 sources:
