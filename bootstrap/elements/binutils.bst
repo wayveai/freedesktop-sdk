@@ -25,7 +25,8 @@ variables:
     --with-lib-path="%{libdir}:%{indep-libdir}" \
     --enable-gold \
     --enable-ld=default \
-    --enable-shared
+    --enable-shared \
+    --enable-plugins
 
 config:
   install-commands:
