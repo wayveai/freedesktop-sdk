@@ -13,6 +13,7 @@ public:
           - "%{libdir}/libtiffxx.so"
 
 sources:
-  - kind: tar
-    url: http://download.osgeo.org/libtiff/tiff-4.0.8.tar.gz
-    ref: 59d7a5a8ccd92059913f246877db95a2918e6c04fb9d43fd74e5c3390dac2910
+  - kind: git
+    url: https://gitlab.com/libtiff/libtiff.git
+    ref: 020bd2fd3b4235b2175dafa9633d2b191c50e7cd
+    track: Release-v4-0-9
