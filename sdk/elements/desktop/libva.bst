@@ -7,7 +7,6 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xfixes.bst
-  - filename: desktop/mesa.bst
   - filename: desktop/wayland-protocols.bst
     type: build
 
