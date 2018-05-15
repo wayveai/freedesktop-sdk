@@ -50,7 +50,6 @@ variables:
 
   multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
   lib: "lib"
-  debugdir: "%{multiarch_libdir}/debug"
 
   host-triplet: "%{triplet}"
   build-triplet: "$(sh /config/config.guess)"

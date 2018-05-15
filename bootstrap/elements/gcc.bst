@@ -33,7 +33,6 @@ variables:
   # directory, but needs to be provided /usr/lib for --libdir.
   lib: "lib"
   multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
-  debugdir: "%{multiarch_libdir}/debug"
 
   conf-local: |
     --target=%{triplet} \

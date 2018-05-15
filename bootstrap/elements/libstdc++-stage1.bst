@@ -19,7 +19,6 @@ depends:
 
 variables:
   lib: "lib"
-  debugdir: "%{prefix}/lib/%{gcc_triplet}/debug"
 
   host-triplet: "%{triplet}"
   build-triplet: "$(sh /config/config.guess)"
