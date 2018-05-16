@@ -21,7 +21,8 @@ variables:
     OS_RELEASE=3.4 \
     "OS_TEST=%{arch}" \
     NSS_USE_SYSTEM_SQLITE=1 \
-    NSS_ENABLE_ECC=1
+    NSS_ENABLE_ECC=1 \
+    NSS_ENABLE_WERROR=0
 
 public:
   bst:
@@ -53,14 +54,14 @@ config:
       s,@exec_prefix@,%{exec_prefix},g
       s,@libdir@,%{libdir},g
       s,@includedir@,%{includedir}/nss,g
-      s,@version@,3.34.1,g
-      s,@nspr_version@,4.17,g
+      s,@version@,3.37,g
+      s,@nspr_version@,4.19,g
       EOF
       install -m 644 -D -t "%{install-root}/%{libdir}/pkgconfig" nss.pc
 
 sources:
   - kind: tar
-    url: https://archive.mozilla.org/pub/security/nss/releases/NSS_3_34_1_RTM/src/nss-3.34.1.tar.gz
-    ref: a3c15d367caf784f33d96dbafbdffc16a8e42fb8c8aedfce97bf92a9f918dda0
+    url: https://archive.mozilla.org/pub/security/nss/releases/NSS_3_36_1_RTM/src/nss-3.36.1.tar.gz
+    ref: 6025441d528ff6a7f1a4b673b6ee7d3540731ada3f78d5acd5c3b3736b222bff
   - kind: local
     path: files/nss.pc.in

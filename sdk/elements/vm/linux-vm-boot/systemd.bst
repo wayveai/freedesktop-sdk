@@ -42,5 +42,5 @@ config:
 sources:
 - kind: git
   url: https://github.com/systemd/systemd.git
-  track: v237
-  ref: 46659f7deb962f55c728e70597e37c2a3ab6326d
+  track: v238
+  ref: 738ab7502afb7663d9aacdd73e79025aa7cd0a9b
