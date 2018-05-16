@@ -32,6 +32,13 @@ variables:
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999
 
+config:
+  install-commands:
+    (>):
+      - |
+        mv %{install-root}/etc %{install-root}/usr/etc
+        mv %{install-root}/var %{install-root}/usr/var
+
 sources:
 - kind: git
   url: https://github.com/systemd/systemd.git
