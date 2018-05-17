@@ -10,8 +10,14 @@ depends:
   - filename: base/krb5.bst
   - filename: base/nss.bst
 
+# Curl must be configured --with-ca-bundle in order to find the
+# correct certificate bundle at runtime, which is later generated
+# by update-ca-certificates. Other applications such as git, rely
+# on curl knowing the default location of the certs.
+
 variables:
   conf-local: |
+    --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
     --with-gnutls \
     --with-ssl \
     --with-nss \
