@@ -58,6 +58,9 @@ config:
         rm -f "%{install-root}%{libdir}"/libGLESv2*
         rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
         rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+        # Those files are provided by desktop/wayland.bst
+        rm -f "%{install-root}%{libdir}"/libwayland-egl.so*
+        rm -f "%{install-root}%{libdir}"/pkgconfig/wayland-egl.pc
 
 public:
   bst:
