@@ -1,0 +1,31 @@
+kind: autotools
+
+depends:
+  - filename: bootstrap-import.bst
+    type: build
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/flex.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libpam.so"
+          - "%{libdir}/libpam_misc.so"
+          - "%{libdir}/libpamc.so"
+
+sources:
+  - kind: tar
+    url: https://github.com/linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz
+    ref: eff47a4ecd833fbf18de9686632a70ee8d0794b79aecb217ebd0ce11db4cd0db
