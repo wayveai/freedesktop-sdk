@@ -42,5 +42,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/glib/2.54/glib-2.54.3.tar.xz
-    ref: 963fdc6685dc3da8e5381dfb9f15ca4b5709b28be84d9d05a9bb8e446abac0a8
+    url: https://download.gnome.org/sources/glib/2.56/glib-2.56.1.tar.xz
+    ref: 40ef3f44f2c651c7a31aedee44259809b6f03d3d20be44545cd7d177221c0b8d
