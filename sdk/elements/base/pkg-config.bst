@@ -16,6 +16,13 @@ config:
         ln -s pkgconf "%{install-root}%{bindir}/pkg-config"
         ln -s pkgconf.1 "%{install-root}%{mandir}/man1/pkg-config.1"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libpkgconf.so"
+
 sources:
   - kind: tar
     url: https://github.com/pkgconf/pkgconf/archive/pkgconf-1.4.2.tar.gz
