@@ -11,7 +11,7 @@ depends:
   - filename: base/pcre.bst
   - filename: base/python3.bst
     type: build
-  - filename: base/pkg-config-stage1.bst
+  - filename: base/pkg-config.bst
     type: build
 
 variables:

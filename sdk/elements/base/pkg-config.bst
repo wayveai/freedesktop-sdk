@@ -4,11 +4,19 @@ description: pkg-config
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/glib.bst
-  - filename: base/pkg-config-stage1.bst
+  - filename: base/automake.bst
     type: build
+  - filename: base/libtool.bst
+    type: build
+
+config:
+  install-commands:
+    (>):
+      - |
+        ln -s pkgconf "%{install-root}%{bindir}/pkg-config"
+        ln -s pkgconf.1 "%{install-root}%{mandir}/man1/pkg-config.1"
 
 sources:
   - kind: tar
-    url: https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
-    ref: 6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591
+    url: https://github.com/pkgconf/pkgconf/archive/pkgconf-1.4.2.tar.gz
+    ref: 24307a1970e51809b61219cd3c1ac61f44efb5f3867024672b57a76fa6bc6e82
