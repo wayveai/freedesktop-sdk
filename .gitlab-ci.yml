@@ -71,7 +71,7 @@ before_script:
   # Go easy on the artifact server. The fixed unchangeable connection
   # timeout for ostree is 30 seconds. And it cannot be changed.
   - |
-    [ -d "${HOME}/.config"] || mkdir -p "${HOME}/.config"
+    [ -d "${HOME}/.config" ] || mkdir -p "${HOME}/.config"
     cat >>"${HOME}/.config/buildstream.conf" <<EOF
     scheduler:
       fetchers: 5
