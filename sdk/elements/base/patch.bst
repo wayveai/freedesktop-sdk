@@ -6,5 +6,5 @@ depends:
 
 sources:
   - kind: tar
-    url: http://ftp.gnu.org/gnu/patch/patch-2.7.tar.xz
-    ref: 5c2c91fe41542962126f0be150aa4fa349485cf2edc0c7ea7dbc24cb817111ae
+    url: http://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
+    ref: ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd
