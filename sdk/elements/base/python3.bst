@@ -5,7 +5,7 @@ depends:
   - filename: bootstrap-import.bst
     type: build
     # glib depends on python
-  - filename: base/pkg-config-stage1.bst
+  - filename: base/pkg-config.bst
     type: build
   - filename: base/expat.bst
   - filename: base/libffi.bst
