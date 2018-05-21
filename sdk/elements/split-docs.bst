@@ -13,7 +13,9 @@ public:
         }
         move_doc man man
         move_doc doc doc
+        move_doc examples examples
         move_doc info info
+        move_doc help help
         move_doc gtk-doc/html gtk-doc/html
         move_doc ri ri
         for cmakedir in "%{datadir}"/cmake-*; do
