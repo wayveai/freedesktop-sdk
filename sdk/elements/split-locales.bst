@@ -4,18 +4,9 @@ depends:
   - filename: bootstrap-import.bst
     type: build
 
-config:
-  install-commands:
-    - |
-      mkdir -p "%{install-root}%{datadir}/runtime/docs"
-
 public:
   bst:
     integration-commands:
-      - |
-        mv %{datadir}/man %{datadir}/runtime/docs/
-        ln -s %{datadir}/runtime/docs/man %{datadir}/man
-
       - |
         targetdir="%{datadir}/runtime/locale"
         mkdir -p "${targetdir}"

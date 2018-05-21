@@ -21,3 +21,5 @@ depends:
   type: build
 - filename: split-locales.bst
   type: build
+- filename: split-docs.bst
+  type: build

@@ -19,6 +19,8 @@ depends:
   type: build
 - filename: split-locales.bst
   type: build
+- filename: split-docs.bst
+  type: build
 - filename: flatpak-builder-configuration.bst
   type: build
 - filename: multiarch-debugdir.bst
