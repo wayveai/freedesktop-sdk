@@ -15,6 +15,7 @@ public:
         move_doc doc doc
         move_doc info info
         move_doc gtk-doc/html gtk-doc/html
+        move_doc ri ri
         for cmakedir in "%{datadir}"/cmake-*; do
           basename="$(basename "${cmakedir}")"
           move_doc "${basename}/Help" "${basename}"
