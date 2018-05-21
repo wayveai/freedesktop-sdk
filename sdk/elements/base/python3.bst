@@ -44,6 +44,12 @@ config:
       rm -rf %{install-root}%{indep-libdir}/python3.6/turtle*
     - |
       rm -rf %{install-root}%{indep-libdir}/python3.6/__pycache__/turtle.*
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/test
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/*/test
+    - |
+      rm -rf %{install-root}%{indep-libdir}/python3.6/*/tests
 
     - |
       %{fix-pyc-timestamps}
@@ -59,12 +65,6 @@ public:
           - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}/**"
           - "%{indep-libdir}/python3.6/lib2to3"
           - "%{indep-libdir}/python3.6/lib2to3/**"
-          - "%{indep-libdir}/python3.6/test"
-          - "%{indep-libdir}/python3.6/test/**"
-          - "%{indep-libdir}/python3.6/*/test"
-          - "%{indep-libdir}/python3.6/*/test/**"
-          - "%{indep-libdir}/python3.6/*/tests"
-          - "%{indep-libdir}/python3.6/*/tests/**"
 
     integration-commands:
       - test -x "%{prefix}"/bin/python || ln -s python3.6 "%{prefix}"/bin/python
