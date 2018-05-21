@@ -30,17 +30,9 @@ config:
     - |
       mkdir -p "%{install-root}%{datadir}/runtime/share/themes"
       mkdir -p "%{install-root}%{datadir}/runtime/share/icons"
-      mkdir -p "%{install-root}%{datadir}/runtime/docs/gtk-doc"
 
     - |
       mkdir -p "%{install-root}%{libdir}/GL"
-
-public:
-  bst:
-    integration-commands:
-      - |
-        mv %{datadir}/gtk-doc/html %{datadir}/runtime/docs/gtk-doc/
-        ln -s %{datadir}/runtime/docs/gtk-doc/html %{datadir}/gtk-doc/html
 
 sources:
   - kind: local
