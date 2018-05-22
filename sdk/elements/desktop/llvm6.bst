@@ -34,7 +34,7 @@ variables:
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
     -DLLVM_INCLUDE_EXAMPLES:BOOL=OFF \
-    -DLLVM_INCLUDE_UTILS:BOOL=ON \
+    -DLLVM_INCLUDE_UTILS:BOOL=OFF \
     -DLLVM_INCLUDE_DOCS:BOOL=OFF \
     -DLLVM_ENABLE_DOXYGEN:BOOL=OFF \
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
@@ -53,6 +53,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/**'
         - '%{libdir}/libLLVM-6.0.0.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLTO.so'
