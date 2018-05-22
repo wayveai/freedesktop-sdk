@@ -16,6 +16,10 @@ depends:
   - filename: base/pkg-config.bst
     type: build
 
+variables:
+  conf-local: |
+    --includedir="%{includedir}/security"
+
 public:
   bst:
     split-rules:
