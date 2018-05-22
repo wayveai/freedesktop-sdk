@@ -4,6 +4,12 @@ depends:
   - filename: base.bst
     type: build
 
+config:
+  install-commands:
+    (>):
+      - rm -r "%{install-root}%{libexecdir}/installed-tests"
+      - rm -r "%{install-root}%{datadir}/installed-tests"
+
 public:
   bst:
     split-rules:
