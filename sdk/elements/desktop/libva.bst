@@ -25,5 +25,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.freedesktop.org/software/vaapi/releases/libva/libva-1.8.2.tar.bz2
-    ref: 9ed3e3ddc8f47a715d4c6ec366beb21c83fc4e8a3d4d39a811baff76f0a0cede
+    url: https://github.com/intel/libva/releases/download/2.1.0/libva-2.1.0.tar.bz2    
+    ref: f3fa953a11d3210c3a4ee79031abdbe0863d5ce13d9b3f93f315f1eec60a4b0f 

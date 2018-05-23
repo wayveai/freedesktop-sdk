@@ -14,5 +14,5 @@ variables:
 
 sources:
   - kind: tar
-    url: https://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/intel-vaapi-driver-1.8.2.tar.bz2
-    ref: 866cdf9974911e58b0d3a2cade29dbe7b5b68836e142cf092b99db68e366b702
+    url: https://github.com/intel/intel-vaapi-driver/releases/download/2.1.0/intel-vaapi-driver-2.1.0.tar.bz2
+    ref: ecfaf2ccc4b9af7340e002d2ef807d1e33051d4992f1983f5f4d60e516f86bdf 
