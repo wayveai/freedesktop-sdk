@@ -1,7 +1,7 @@
-diff -up meson-0.42.0/mesonbuild/mesonlib.py.lib64 meson-0.42.0/mesonbuild/mesonlib.py
+diff -up meson-0.46.1/mesonbuild/mesonlib.py.lib64 meson-0.46.1/mesonbuild/mesonlib.py
 --- meson-0.42.0/mesonbuild/mesonlib.py.lib64	2017-09-14 16:01:33.812927457 +0200
 +++ meson-0.42.0/mesonbuild/mesonlib.py	2017-09-14 16:02:17.575331515 +0200
-@@ -334,7 +334,7 @@ def default_libdir():
+@@ -499,7 +499,7 @@ def default_libdir():
                  return 'lib/' + archpath
          except Exception:
              pass
