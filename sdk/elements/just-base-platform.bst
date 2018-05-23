@@ -76,5 +76,4 @@ depends:
 - filename: base/tzdata.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
-- filename: base/yasm.bst
 - filename: base/xz.bst
