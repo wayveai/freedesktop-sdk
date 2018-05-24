@@ -2,9 +2,10 @@ kind: autotools
 description: libdrm
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-pciaccess.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

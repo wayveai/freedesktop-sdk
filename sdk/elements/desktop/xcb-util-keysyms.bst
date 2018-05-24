@@ -2,9 +2,10 @@ kind: autotools
 description: X.org xcb-util-keysyms
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-xcb.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

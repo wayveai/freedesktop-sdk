@@ -1,13 +1,14 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/wayland-protocols.bst
+    type: build
+  - filename: base/pkg-config.bst
     type: build
 
 public:

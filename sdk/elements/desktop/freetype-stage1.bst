@@ -1,7 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/bzip2.bst
+  - filename: base/libpng.bst
+  - filename: base/pkg-config.bst
     type: build
 
 variables:

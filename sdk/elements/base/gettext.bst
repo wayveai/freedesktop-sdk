@@ -3,7 +3,6 @@ description: GNU gettext
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
   - filename: base/gzip.bst
   - filename: base/tar.bst
     type: runtime

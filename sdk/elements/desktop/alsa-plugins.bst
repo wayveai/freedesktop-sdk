@@ -1,10 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/alsa-lib.bst
   - filename: desktop/pulseaudio.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

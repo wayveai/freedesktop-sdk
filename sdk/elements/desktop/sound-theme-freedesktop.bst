@@ -1,7 +1,8 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/intltool.bst
     type: build
 
 variables:

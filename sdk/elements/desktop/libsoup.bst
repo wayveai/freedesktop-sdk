@@ -1,9 +1,16 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/glib-networking.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/intltool.bst
+    type: build
+  - filename: base/libxml2.bst
+  - filename: base/sqlite.bst
+  - filename: base/python3.bst
+    type: build
 
 variables:
   conf-local: |

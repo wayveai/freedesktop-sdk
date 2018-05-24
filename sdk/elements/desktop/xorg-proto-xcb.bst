@@ -2,7 +2,8 @@ kind: autotools
 description: X.org proto xcb
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/python3.bst
     type: build
 
 sources:

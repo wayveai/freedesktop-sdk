@@ -2,9 +2,10 @@ kind: autotools
 description: X.org lib Xau
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

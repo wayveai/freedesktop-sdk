@@ -11,11 +11,7 @@ public:
 depends:
 - filename: vm/base-filesystem.bst
   type: build
-- filename: bootstrap-import.bst
-  type: build
-- filename: just-base.bst
-  type: build
-- filename: just-desktop.bst
+- filename: desktop.bst
   type: build
 - filename: base/man-db-generate.bst
   type: build

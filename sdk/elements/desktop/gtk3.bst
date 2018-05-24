@@ -1,8 +1,7 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/atk.bst
@@ -20,6 +19,10 @@ depends:
   - filename: desktop/libxkbcommon.bst
   - filename: desktop/libepoxy.bst
   - filename: desktop/mesa.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/perl.bst
+    type: build
 
 variables:
   conf-local: |

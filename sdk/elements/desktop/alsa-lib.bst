@@ -1,7 +1,8 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/python2.bst
     type: build
 
 variables:

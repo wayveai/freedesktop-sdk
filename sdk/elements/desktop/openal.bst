@@ -1,10 +1,13 @@
 kind: cmake
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/pulseaudio.bst
   - filename: desktop/sdl2.bst
+  - filename: base/cmake.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
 
 variables:
   cmake-local: |

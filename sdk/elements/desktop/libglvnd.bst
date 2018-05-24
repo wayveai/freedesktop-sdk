@@ -1,11 +1,17 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/python3.bst
+    type: build
 
 variables:
   conf-local: |

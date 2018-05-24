@@ -2,11 +2,10 @@ kind: autotools
 description: X.org lib xrender
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

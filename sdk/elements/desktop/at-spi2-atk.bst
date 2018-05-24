@@ -1,10 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/atk.bst
   - filename: desktop/at-spi2-core.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

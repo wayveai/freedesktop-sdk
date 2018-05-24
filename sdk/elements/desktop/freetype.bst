@@ -1,10 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
+  - filename: base/bzip2.bst
+  - filename: base/libpng.bst
   - filename: desktop/harfbuzz.bst
   - filename: desktop/freetype-stage1.bst
+    type: build
+  - filename: base/pkg-config.bst
     type: build
 
 public:

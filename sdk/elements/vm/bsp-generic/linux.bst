@@ -2,7 +2,19 @@ kind: manual
 description: Linux kernel configured for use in virtual machines.
 
 depends:
-- filename: base.bst
+- filename: bootstrap-import.bst
+  type: build
+- filename: base/bison.bst
+  type: build
+- filename: base/flex.bst
+  type: build
+- filename: base/libelf.bst
+  type: build
+- filename: base/openssl.bst
+  type: build
+- filename: base/bc.bst
+  type: build
+- filename: base/gzip.bst
   type: build
 
 variables:

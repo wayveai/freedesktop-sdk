@@ -1,8 +1,7 @@
 kind: meson
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/libsoup.bst
   - filename: desktop/json-glib.bst
   - filename: desktop/gdk-pixbuf.bst
@@ -11,6 +10,17 @@ depends:
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/gobject-introspection.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gperf.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/libarchive.bst
 
 variables:
   meson-local: |

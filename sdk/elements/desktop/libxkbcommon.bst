@@ -1,10 +1,17 @@
 kind: meson
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/wayland-protocols.bst
   - filename: desktop/xorg-data-xkeyboard-config.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
+  - filename: base/bison.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   meson-local: |

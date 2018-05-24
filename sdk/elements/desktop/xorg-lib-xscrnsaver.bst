@@ -2,12 +2,11 @@ kind: autotools
 description: X.org lib XScrnSaver
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

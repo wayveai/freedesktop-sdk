@@ -3,7 +3,6 @@ description: pcre
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
 
 variables:
   conf-local: |

@@ -1,12 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xkbfile.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 sources:
   - kind: tar

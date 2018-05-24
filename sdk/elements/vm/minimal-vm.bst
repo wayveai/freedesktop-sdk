@@ -11,7 +11,7 @@ public:
 depends:
 - filename: vm/base-filesystem.bst
   type: build
-- filename: bootstrap-import-platform.bst
+- filename: bootstrap-import.bst
   type: build
 - filename: base/util-linux.bst
   type: build

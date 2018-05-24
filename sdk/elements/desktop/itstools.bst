@@ -1,8 +1,9 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
+  - filename: base/python3.bst
+  - filename: base/libxslt.bst
 
 variables:
   conf-local:

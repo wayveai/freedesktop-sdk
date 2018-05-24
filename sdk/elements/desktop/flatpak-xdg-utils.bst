@@ -1,8 +1,18 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/automake.bst
     type: build
+  - filename: base/autoconf-archive.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/glib.bst
 
 config:
   configure-commands:

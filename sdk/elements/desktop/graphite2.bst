@@ -1,12 +1,14 @@
 kind: cmake
 
 depends:
-  - filename: base.bst
-    type: build
-  - filename: desktop/xorg-proto-xorgproto.bst
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrandr.bst
   - filename: desktop/wayland.bst
+  - filename: base/cmake.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
 
 variables:
   cmake-local: |

@@ -1,8 +1,18 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/meson.bst
     type: build
+  - filename: base/which.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: desktop/gobject-introspection.bst
 
 config:
   install-commands:

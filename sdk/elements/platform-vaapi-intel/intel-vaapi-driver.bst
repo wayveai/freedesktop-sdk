@@ -3,7 +3,7 @@ kind: autotools
 depends:
   - filename: desktop/libdrm.bst
   - filename: desktop/libva.bst
-  - filename: base.bst
+  - filename: base/pkg-config.bst
     type: build
 
 variables:

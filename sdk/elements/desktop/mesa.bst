@@ -1,13 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/llvm6.bst
-    type: build
   - filename: desktop/libdrm.bst
   - filename: desktop/libva.bst
-  - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/xorg-lib-xshmfence.bst
@@ -16,6 +13,11 @@ depends:
     type: build
   - filename: desktop/libglvnd.bst
   - filename: desktop/libvdpau.bst
+  - filename: base/libelf.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/python2.bst
+    type: build
 
 variables:
   (?):

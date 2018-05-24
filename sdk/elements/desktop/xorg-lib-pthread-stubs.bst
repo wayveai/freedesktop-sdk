@@ -2,8 +2,7 @@ kind: autotools
 description: X.org dist pthread stubs
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
 
 sources:
   - kind: tar

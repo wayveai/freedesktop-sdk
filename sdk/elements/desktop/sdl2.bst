@@ -1,8 +1,7 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/ibus.bst
   - filename: desktop/dbus.bst
   - filename: desktop/mesa.bst

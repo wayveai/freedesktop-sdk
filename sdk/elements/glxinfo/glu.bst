@@ -1,8 +1,6 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
   - filename: desktop/mesa.bst
     type: build
 

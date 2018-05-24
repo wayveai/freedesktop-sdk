@@ -1,12 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst
   - filename: desktop/libcroco.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:

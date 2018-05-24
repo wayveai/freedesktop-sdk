@@ -1,10 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/dbus.bst
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/glib.bst
 
 public:
   bst:

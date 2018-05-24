@@ -1,14 +1,22 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/pixman.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/freetype.bst
   - filename: desktop/fontconfig.bst
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/which.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |

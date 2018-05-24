@@ -1,7 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/gnutls.bst
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gzip.bst
     type: build
 
 variables:

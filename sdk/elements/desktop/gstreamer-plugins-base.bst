@@ -1,11 +1,16 @@
 kind: meson
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   meson-local: |

@@ -2,7 +2,10 @@ kind: meson
 description: X.Org combined protocol headers
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
     type: build

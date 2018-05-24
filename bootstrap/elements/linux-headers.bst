@@ -22,3 +22,9 @@ sources:
 - kind: tar
   url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.13.8.tar.xz
   ref: 64e68ca8223c65282d4fc16e0839f2fa7629b151cb6874aeb19dc8c4ef23f427
+
+public:
+  bst:
+    split-rules:
+      devel:
+        - "/**"

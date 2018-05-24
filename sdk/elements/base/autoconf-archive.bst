@@ -3,7 +3,6 @@ description: GNU autoconf archive
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
 
 sources:
   - kind: tar

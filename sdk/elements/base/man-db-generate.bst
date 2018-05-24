@@ -4,7 +4,6 @@ kind: manual
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
   - filename: base/man-db.bst
 
 public:

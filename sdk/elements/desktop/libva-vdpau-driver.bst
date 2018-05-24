@@ -1,10 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
   - filename: desktop/libva.bst
   - filename: desktop/libvdpau.bst
+  - filename: base/pkg-config.bst
+    type: build
 
 sources:
   - kind: tar

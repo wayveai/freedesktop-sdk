@@ -1,6 +1,12 @@
 kind: stack
 
 depends:
-- filename: bootstrap-import.bst
-- filename: just-base.bst
-- filename: just-desktop.bst
+- filename: base.bst
+- filename: desktop-platform.bst
+- filename: desktop/desktop-file-utils.bst
+- filename: desktop/gtk-doc.bst
+- filename: desktop/itstools.bst
+- filename: desktop/wayland-protocols.bst
+- filename: desktop/xorg-proto-xcb.bst
+- filename: desktop/xorg-proto-xorgproto.bst
+- filename: desktop/xorg-util-macros.bst

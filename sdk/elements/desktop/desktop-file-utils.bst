@@ -1,8 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
+  - filename: bootstrap-import.bst
+  - filename: base/pkg-config.bst
     type: build
+  - filename: base/glib.bst
 
 sources:
   - kind: tar

@@ -2,9 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-    type: build
   - filename: base/perl.bst
   - filename: base/perl-xml-parser.bst
+  - filename: base/gettext.bst
+    type: runtime
 
 sources:
   - kind: tar

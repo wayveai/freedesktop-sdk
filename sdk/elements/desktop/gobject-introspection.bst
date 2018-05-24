@@ -1,9 +1,23 @@
 kind: autotools
 
 depends:
-  - filename: base.bst
-    type: build
+  - filename: bootstrap-import.bst
+  - filename: base/glib.bst
+  - filename: base/python3.bst
   - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/flex.bst
+    type: build
+  - filename: base/bison.bst
+    type: build
+  - filename: base/which.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+
+variables:
+  conf-local: |
+    PYTHON="/usr/bin/python3"
 
 public:
   bst:
