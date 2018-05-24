@@ -3,7 +3,6 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
-    type: build
   - filename: base/krb5.bst
 
 variables:
