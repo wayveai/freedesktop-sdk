@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/libgpg-error.bst
 
 public:

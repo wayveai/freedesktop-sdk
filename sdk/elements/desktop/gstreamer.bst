@@ -1,6 +1,7 @@
 kind: meson
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/gobject-introspection.bst
   - filename: base/meson.bst
     type: build

@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/shared-mime-info.bst
   - filename: desktop/gobject-introspection.bst
   - filename: base/libtiff.bst

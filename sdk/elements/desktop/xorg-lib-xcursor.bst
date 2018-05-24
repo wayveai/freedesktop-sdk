@@ -2,6 +2,7 @@ kind: autotools
 description: X.org lib Xcursor
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrender.bst
   - filename: desktop/xorg-lib-xfixes.bst

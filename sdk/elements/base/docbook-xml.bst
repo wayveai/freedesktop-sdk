@@ -1,6 +1,7 @@
 kind: manual
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/libxml2.bst
 
 variables:

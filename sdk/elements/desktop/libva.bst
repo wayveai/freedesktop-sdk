@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst

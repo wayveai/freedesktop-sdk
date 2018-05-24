@@ -1,6 +1,7 @@
 kind: cmake
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrandr.bst
   - filename: desktop/wayland.bst

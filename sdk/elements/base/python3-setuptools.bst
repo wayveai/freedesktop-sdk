@@ -1,6 +1,7 @@
 kind: distutils
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/python3.bst
 
 variables:

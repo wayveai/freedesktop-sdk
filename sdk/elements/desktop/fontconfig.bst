@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/freetype.bst
   - filename: base/gperf.bst
     type: build

@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/llvm6.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/libva.bst

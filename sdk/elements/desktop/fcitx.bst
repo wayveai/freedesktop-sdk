@@ -1,6 +1,7 @@
 kind: cmake
 
 depends:
+  - filename: bootstrap-import.bst
 - filename: desktop/extra-cmake-modules.bst
   type: build
 - filename: desktop/gtk3.bst

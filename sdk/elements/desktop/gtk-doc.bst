@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/itstools.bst
   - filename: base/docbook-xml.bst
   - filename: base/docbook-xsl.bst

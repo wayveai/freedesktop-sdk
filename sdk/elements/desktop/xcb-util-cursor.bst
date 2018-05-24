@@ -2,6 +2,7 @@ kind: autotools
 description: X.org xcb-util-cursor
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-pthread-stubs.bst
   - filename: desktop/xorg-lib-xcb.bst
   - filename: desktop/xcb-util-renderutil.bst

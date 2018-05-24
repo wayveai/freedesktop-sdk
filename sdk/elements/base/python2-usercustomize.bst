@@ -1,5 +1,6 @@
 kind: manual
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/python2.bst
 
 config:

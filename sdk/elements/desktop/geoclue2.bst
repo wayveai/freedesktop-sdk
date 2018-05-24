@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/json-glib.bst
   - filename: desktop/libsoup.bst
   - filename: base/pkg-config.bst

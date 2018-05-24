@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/perl.bst
   - filename: base/perl-xml-parser.bst
   - filename: base/gettext.bst

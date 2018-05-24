@@ -2,6 +2,7 @@ kind: autotools
 description: X.org lib xpm
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: base/pkg-config.bst
     type: build

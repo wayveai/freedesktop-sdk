@@ -2,6 +2,7 @@ kind: autotools
 description: X.org lib xv
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: base/pkg-config.bst

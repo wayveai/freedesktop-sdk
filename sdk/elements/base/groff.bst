@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/perl.bst
   - filename: base/texinfo.bst
     type: build

@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/atk.bst

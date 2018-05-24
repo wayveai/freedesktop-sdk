@@ -2,6 +2,7 @@ kind: autotools
 description: Glib
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/libffi.bst
   - filename: base/gettext.bst
     type: build

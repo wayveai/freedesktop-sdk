@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/libpng.bst
   - filename: base/jpeg.bst
   - filename: base/giflib.bst

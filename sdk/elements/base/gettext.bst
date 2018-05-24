@@ -2,6 +2,7 @@ kind: autotools
 description: GNU gettext
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/gzip.bst
   - filename: base/tar.bst
     type: runtime

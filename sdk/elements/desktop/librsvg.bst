@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst

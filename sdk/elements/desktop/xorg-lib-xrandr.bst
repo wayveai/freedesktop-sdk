@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-xext.bst
   - filename: desktop/xorg-lib-xrender.bst
   - filename: base/pkg-config.bst

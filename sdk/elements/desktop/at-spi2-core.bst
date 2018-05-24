@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/dbus.bst
   - filename: desktop/gtk-doc.bst
   - filename: base/pkg-config.bst

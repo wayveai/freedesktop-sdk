@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/freetype.bst
   - filename: desktop/sdl2.bst
 

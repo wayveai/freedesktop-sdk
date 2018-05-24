@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/glib.bst
   - filename: base/python3.bst
   - filename: desktop/gtk-doc.bst

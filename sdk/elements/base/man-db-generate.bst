@@ -3,6 +3,7 @@
 kind: manual
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/man-db.bst
 
 public:

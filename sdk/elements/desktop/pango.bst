@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/cairo.bst
   - filename: desktop/harfbuzz.bst
   - filename: desktop/fontconfig.bst

@@ -1,6 +1,7 @@
 kind: manual
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/perl.bst
   - filename: base/expat.bst
 

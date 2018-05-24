@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/graphite2.bst
   - filename: base/glib.bst
   - filename: desktop/freetype-stage1.bst

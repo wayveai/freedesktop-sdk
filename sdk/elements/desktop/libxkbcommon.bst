@@ -1,6 +1,7 @@
 kind: meson
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/wayland-protocols.bst
   - filename: desktop/xorg-data-xkeyboard-config.bst
   - filename: base/meson.bst

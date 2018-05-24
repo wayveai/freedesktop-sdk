@@ -2,6 +2,7 @@ kind: autotools
 description: X.org lib xcb
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/xorg-proto-xcb.bst
   - filename: desktop/xorg-util-macros.bst
   - filename: desktop/xorg-lib-xau.bst

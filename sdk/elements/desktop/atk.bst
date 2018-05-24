@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/gobject-introspection.bst
   - filename: desktop/gtk-doc.bst
     type: build

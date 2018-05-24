@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/libproxy.bst
   - filename: base/glib.bst
   - filename: base/pkg-config.bst

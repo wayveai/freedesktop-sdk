@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/glib-networking.bst
   - filename: base/pkg-config.bst
     type: build

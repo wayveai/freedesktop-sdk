@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/mesa.bst
   - filename: base/pkg-config.bst
     type: build

@@ -2,6 +2,7 @@ kind: autotools
 description: GNU automake
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/autoconf.bst
 
 sources:

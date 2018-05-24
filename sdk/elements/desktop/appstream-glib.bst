@@ -1,6 +1,7 @@
 kind: meson
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/libsoup.bst
   - filename: desktop/json-glib.bst
   - filename: desktop/gdk-pixbuf.bst

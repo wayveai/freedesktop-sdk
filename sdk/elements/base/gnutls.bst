@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/nettle.bst
   - filename: base/libtasn1.bst
   - filename: base/libunistring.bst

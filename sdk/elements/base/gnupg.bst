@@ -1,6 +1,7 @@
 kind: autotools
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: base/libgcrypt.bst
   - filename: base/libassuan.bst
   - filename: base/libksba.bst

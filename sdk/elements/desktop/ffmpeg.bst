@@ -1,6 +1,7 @@
 kind: manual
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/fontconfig.bst
   - filename: desktop/freetype.bst
   - filename: desktop/mesa.bst

@@ -1,6 +1,7 @@
 kind: meson
 
 depends:
+  - filename: bootstrap-import.bst
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
