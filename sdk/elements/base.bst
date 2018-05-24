@@ -38,3 +38,4 @@ depends:
 - filename: base/ruby.bst
 - filename: base/strace.bst
 - filename: base/yasm.bst
+- filename: base/texinfo.bst
