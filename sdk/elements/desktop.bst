@@ -1,6 +1,7 @@
 kind: stack
 
 depends:
+- filename: base.bst
 - filename: desktop-platform.bst
 - filename: desktop/desktop-file-utils.bst
 - filename: desktop/gtk-doc.bst

@@ -9,8 +9,6 @@ public:
         - "%{datadir}/runtime/locale/**"
 
 depends:
-- filename: base.bst
-  type: build
 - filename: desktop.bst
   type: build
 - filename: base/man-db-generate.bst

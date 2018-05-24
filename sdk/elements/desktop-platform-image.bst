@@ -13,8 +13,6 @@ public:
         - "%{datadir}/runtime/locale/**"
 
 depends:
-- filename: base-platform.bst
-  type: build
 - filename: desktop-platform.bst
   type: build
 - filename: split-locales.bst

@@ -1,6 +1,7 @@
 kind: stack
 
 depends:
+- filename: base-platform.bst
 - filename: desktop/alsa-lib.bst
 - filename: desktop/alsa-plugins.bst
 - filename: desktop/appstream-glib.bst

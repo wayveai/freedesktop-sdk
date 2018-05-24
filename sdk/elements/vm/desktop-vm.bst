@@ -13,8 +13,6 @@ depends:
   type: build
 - filename: bootstrap-import.bst
   type: build
-- filename: base.bst
-  type: build
 - filename: desktop.bst
   type: build
 - filename: base/man-db-generate.bst
