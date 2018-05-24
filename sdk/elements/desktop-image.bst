@@ -11,7 +11,7 @@ public:
 depends:
 - filename: base.bst
   type: build
-- filename: just-desktop.bst
+- filename: desktop.bst
   type: build
 - filename: base/man-db-generate.bst
   type: build
