@@ -34,6 +34,9 @@ config:
     - |
       rm %{install-root}%{libdir}/lib*.a
 
+    - mkdir -p %{install-root}%{datadir}
+    - mv %{install-root}%{prefix}/ssl/man %{install-root}%{datadir}
+
 public:
   bst:
     split-rules:
