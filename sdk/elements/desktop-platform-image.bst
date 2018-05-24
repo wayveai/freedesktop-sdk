@@ -15,7 +15,7 @@ public:
 depends:
 - filename: base-platform.bst
   type: build
-- filename: just-desktop-platform.bst
+- filename: desktop-platform.bst
   type: build
 - filename: split-locales.bst
   type: build
