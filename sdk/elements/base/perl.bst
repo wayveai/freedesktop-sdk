@@ -23,6 +23,13 @@ config:
     - |
       make -j1 DESTDIR="%{install-root}" install
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "**"
+
 sources:
   - kind: tar
     url: http://www.cpan.org/src/5.0/perl-5.26.1.tar.gz
