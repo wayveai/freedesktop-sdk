@@ -41,8 +41,10 @@ public:
     split-rules:
       devel:
         (>):
+          - "%{bindir}/*"
           - "%{libdir}/libssl.so"
           - "%{libdir}/libcrypto.so"
+          - "%{prefix}/ssl/misc/*"
 
 sources:
   # Too many things depends on 1.0.
