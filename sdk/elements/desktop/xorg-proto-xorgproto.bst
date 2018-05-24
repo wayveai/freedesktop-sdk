@@ -10,12 +10,6 @@ depends:
   - filename: desktop/xorg-util-macros.bst
     type: build
 
-public:
-  bst:
-    split-rules:
-      devel:
-        - "/**"
-
 sources:
   - kind: git
     url: freedesktop:xorg/proto/xorgproto

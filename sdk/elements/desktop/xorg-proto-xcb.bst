@@ -6,12 +6,6 @@ depends:
   - filename: base/python3.bst
     type: build
 
-public:
-  bst:
-    split-rules:
-      devel:
-        - "/**"
-
 sources:
   - kind: tar
     url: https://xcb.freedesktop.org/dist/xcb-proto-1.13.tar.bz2
