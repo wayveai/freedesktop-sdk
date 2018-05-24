@@ -3,6 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-util-macros.bst
+    type: build
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrender.bst
   - filename: desktop/freetype.bst

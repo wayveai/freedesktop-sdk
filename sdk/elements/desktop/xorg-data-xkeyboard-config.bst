@@ -3,6 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-util-macros.bst
+    type: build
   - filename: desktop/xorg-app-xkbcomp.bst
   - filename: base/pkg-config.bst
     type: build

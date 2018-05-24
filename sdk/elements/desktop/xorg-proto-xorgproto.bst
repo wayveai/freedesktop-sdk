@@ -8,6 +8,7 @@ depends:
   - filename: base/ninja.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
+    type: build
 
 public:
   bst:
