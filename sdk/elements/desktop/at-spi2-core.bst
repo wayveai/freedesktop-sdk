@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/dbus.bst
   - filename: desktop/gtk-doc.bst
+    type: build
   - filename: base/pkg-config.bst
     type: build
   - filename: base/glib.bst
