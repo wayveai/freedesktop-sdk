@@ -13,7 +13,7 @@ depends:
   type: build
 - filename: bootstrap-import.bst
   type: build
-- filename: just-base.bst
+- filename: base.bst
   type: build
 - filename: just-desktop.bst
   type: build

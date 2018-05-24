@@ -9,7 +9,7 @@ public:
         - "%{datadir}/runtime/locale/**"
 
 depends:
-- filename: just-base.bst
+- filename: base.bst
   type: build
 - filename: just-desktop.bst
   type: build

@@ -9,7 +9,7 @@ public:
         - "%{datadir}/runtime/locale/**"
 
 depends:
-- filename: just-base.bst
+- filename: base.bst
   type: build
 - filename: base/man-db-generate.bst
   type: build
