@@ -37,5 +37,4 @@ depends:
 - filename: base/pkg-config.bst
 - filename: base/ruby.bst
 - filename: base/strace.bst
-- filename: base/yasm.bst
 - filename: base/texinfo.bst
