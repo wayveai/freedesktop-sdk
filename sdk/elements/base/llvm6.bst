@@ -2,6 +2,7 @@ kind: cmake
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/libffi.bst
   - filename: base/cmake.bst
     type: build
   - filename: base/ninja.bst
