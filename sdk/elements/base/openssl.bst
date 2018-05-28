@@ -3,7 +3,6 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
-    type: build
   - filename: base/krb5.bst
 
 variables:
@@ -42,8 +41,10 @@ public:
     split-rules:
       devel:
         (>):
+          - "%{bindir}/*"
           - "%{libdir}/libssl.so"
           - "%{libdir}/libcrypto.so"
+          - "%{prefix}/ssl/misc/*"
 
 sources:
   # Too many things depends on 1.0.

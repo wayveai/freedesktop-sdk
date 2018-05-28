@@ -72,7 +72,6 @@ depends:
 - filename: base/sqlite.bst
 - filename: base/speex.bst
 - filename: base/speexdsp.bst
-- filename: base/texinfo.bst
 - filename: base/tzdata.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
