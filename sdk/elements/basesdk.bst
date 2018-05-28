@@ -14,7 +14,7 @@ config:
       sdk: org.freedesktop.BaseSdk/%{gcc_arch}/%{branch}
 
     'Extension org.freedesktop.BaseSdk.Debug':
-      directory: "%{lib}/debug"
+      directory: "lib/debug"
       autodelete: "true"
       no-autodownload: "true"
 
