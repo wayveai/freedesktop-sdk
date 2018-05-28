@@ -31,7 +31,7 @@ config:
       enable-if: "active-gl-driver"
 
     'Extension org.freedesktop.Sdk.Debug':
-      directory: "%{lib}/debug"
+      directory: "lib/debug"
       autodelete: "true"
       no-autodownload: "true"
 
