@@ -25,10 +25,10 @@ config:
 
 sources:
   - kind: tar
-    url: ftp://ftp.iana.org/tz/releases/tzdata2017c.tar.gz
-    ref: d6543f92a929826318e2f44ff3a7611ce5f565a43e10250b42599d0ba4cbd90b
+    url: https://data.iana.org/time-zones/releases/tzdata2018e.tar.gz
+    ref: 6b288e5926841a4cb490909fe822d85c36ae75538ad69baf20da9628b63b692e
     base-dir: ''
   - kind: tar
-    url: ftp://ftp.iana.org/tz/releases/tzcode2017c.tar.gz
-    ref: 81e8b4bc23e60906640c266bbff3789661e22f0fa29fe61b96ec7c2816c079b7
+    url: https://data.iana.org/time-zones/releases/tzcode2018e.tar.gz
+    ref: ca340cf20e80b699d6e5c49b4ba47361b3aa681f06f38a0c88a8e8308c00ebce
     base-dir: ''
