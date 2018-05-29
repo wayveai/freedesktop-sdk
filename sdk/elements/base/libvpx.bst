@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
     type: build
-  - filename: base/yasm.bst
+  - filename: base/nasm.bst
     type: build
 
 variables:
@@ -31,7 +31,7 @@ variables:
     --enable-libs \
     --disable-install-docs \
     --disable-optimizations \
-    --as=yasm
+    --as=nasm
 
 public:
   bst:
