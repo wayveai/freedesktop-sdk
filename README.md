@@ -1,10 +1,21 @@
 # freedesktop-sdk
 
-The freedesktop-sdk is a project that provides Platform and SDK runtimes for [flatpak](https://flatpak.org) apps and runtimes based on freedesktop modules.
+**Some context...**
 
-It's being built with [Buildstream](https://gitlab.com/BuildStream/buildstream), with multi-architecture support out of the box.
+The freedesktop-sdk is a project that provides Platform and SDK runtimes for [flatpak](https://flatpak.org) apps and runtimes based on freedesktop modules. It was originally started as a [Flatpak subproject](https://github.com/flatpak/freedesktop-sdk-images) to create a basic-neutral runtime. It's now a separate project, similar to what is happening with the GNOME runtime and the KDE one.
 
-This project is still in the beta stage, so we have no official stable release yet.
+The long term goal is to maintain a neutral baseline which can be consumed by Flatpak, GNOME, KDE and any other interested project.
+
+As explained in Alex's [blog post](https://blogs.gnome.org/alexl/2018/05/16/introducing-1-8-freedesktop-runtime/) there has long been a desire to upgrade and modernize the sdk, which is where this specific project comes into the story...
+
+Our goals:
+* Improve maintainability, using a single metadata format instead several different ones. We use [BuildStream](https://gitlab.com/BuildStream/buildstream) for this.
+* Suport multiple architectures out of the box ( armv7, aarch64, x86, and x86_64).
+* Long term maintenance of the SDK, with improved automation to do so, including tests for ABI stability.
+* Define formal release cycles.
+* Host on official freedesktop.org infrastructure (ie. migrate from gitlab.com to gitlab.freedesktop.org)
+* Add minimal bootable system and generic sysroot.
+
 
 # Usage
 
@@ -82,6 +93,7 @@ instead of re-building everything.
 
 
 These instructions for building can be found in the projects Gitlab-CI file.
+
 
 # Structure
 Current directory structure is:
