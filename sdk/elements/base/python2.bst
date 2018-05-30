@@ -26,6 +26,13 @@ variables:
     --enable-unicode=ucs4 \
     LDFLAGS="-L%{libdir}"
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "**"
+
 config:
   install-commands:
     - |
