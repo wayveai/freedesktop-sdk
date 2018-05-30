@@ -24,6 +24,8 @@ depends:
     type: build
   - filename: base/python2.bst
     type: build
+  - filename: base/python2-mako.bst
+    type: build
 
 variables:
   (?):
