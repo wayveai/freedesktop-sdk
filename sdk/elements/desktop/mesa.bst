@@ -29,11 +29,11 @@ variables:
   (?):
     - target_arch == "i586" or target_arch == "x86_64":
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
-        dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
+        dri_drivers: "nouveau,radeon,r200,i915,i965"
         vulkan_drivers: "intel,amd"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "swrast,nouveau,freedreno,vc4"
-        dri_drivers: "swrast,nouveau,r200"
+        dri_drivers: "nouveau,r200"
         vulkan_drivers: ""
 
   meson-local: |
