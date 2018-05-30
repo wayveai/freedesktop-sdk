@@ -43,6 +43,7 @@ variables:
     -Degl=true \
     -Dgles1=false \
     -Dgles2=true \
+    -Dgallium-omx=false \
     -Dgallium-vdpau=true \
     -Dgallium-va=true \
     -Dgallium-xa=true \
