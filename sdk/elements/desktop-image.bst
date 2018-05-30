@@ -21,3 +21,5 @@ depends:
   type: build
 - filename: multiarch-debugdir.bst
   type: build
+- filename: debug-app-link.bst
+  type: build
