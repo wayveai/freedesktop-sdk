@@ -15,6 +15,8 @@ depends:
     type: build
   - filename: desktop/libglvnd.bst
   - filename: desktop/libvdpau.bst
+  - filename: base/bison.bst
+    type: build
   - filename: base/libelf.bst
   - filename: base/meson.bst
     type: build
