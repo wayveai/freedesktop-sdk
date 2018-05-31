@@ -2,51 +2,19 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/python2.bst
-    type: build
   - filename: base/python3.bst
     type: build
 
 variables:
   conf-local:
-    --without-python
+    # Include path is not correctly detected and uses version
+    # number. We need to force version to 3.6m for the headers to be
+    # found
+    --with-python PYTHON=/usr/bin/python3 am_cv_python_version=3.6m
 
 config:
-  configure-commands:
-    (>):
-      - |
-        mkdir build_python2
-        cd build_python2
-        ../%{configure} --with-python PYTHON=/usr/bin/python2
-
-      # Include path is not correctly detected and uses version
-      # number. We need to force version to 3.6m for the headers to be
-      # found.
-      - |
-        mkdir build_python3
-        cd build_python3
-        ../%{configure} --with-python PYTHON=/usr/bin/python3 am_cv_python_version=3.6m
-
-  build-commands:
-    (>):
-      - |
-        cd build_python2/python
-        %{make} top_builddir="../../%{builddir}"
-
-      - |
-        cd build_python3/python
-        %{make} top_builddir="../../%{builddir}"
-
   install-commands:
     (>):
-      - |
-        cd build_python2/python
-        %{make-install} top_builddir="../../%{builddir}"
-
-      - |
-        cd build_python3/python
-        %{make-install} top_builddir="../../%{builddir}"
-
       - |
         %{delete_libtool_files}
 

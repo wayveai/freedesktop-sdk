@@ -7,8 +7,6 @@ depends:
     type: build
   - filename: base/intltool.bst
     type: build
-  - filename: base/python2.bst
-    type: build
 
 sources:
   - kind: tar

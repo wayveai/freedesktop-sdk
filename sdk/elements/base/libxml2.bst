@@ -3,47 +3,16 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/xz.bst
-  - filename: base/python2.bst
-    type: build
   - filename: base/python3.bst
     type: build
 
 variables:
   conf-local: |
-    --without-python
+    --with-python=%{bindir}/python3
 
 config:
-  configure-commands:
-    (>):
-    - |
-      mkdir build-python2
-      cd build-python2
-      ../%{configure} --with-python=%{bindir}/python2
-    - |
-      mkdir build-python3
-      cd build-python3
-      ../%{configure} --with-python=%{bindir}/python3
-
-  build-commands:
-    (>):
-    - |
-      cd build-python2/python
-      %{make} top_builddir=../../%{builddir}
-
-    - |
-      cd build-python3/python
-      %{make} top_builddir=../../%{builddir}
-
   install-commands:
     (>):
-    - |
-      cd build-python2/python
-      %{make-install} top_builddir=../../%{builddir}
-
-    - |
-      cd build-python3/python
-      %{make-install} top_builddir=../../%{builddir}
-
     - |
       %{delete_libtool_files}
 
