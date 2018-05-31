@@ -12,7 +12,7 @@ variables:
     - target_arch == "i586":
         openssl-target: linux-generic32
     - target_arch == "arm":
-        openssl-target: linux-armv4
+        openssl-target: linux-generic32
 
 config:
   configure-commands:
