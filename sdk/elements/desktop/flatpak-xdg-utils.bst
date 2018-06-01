@@ -23,5 +23,5 @@ config:
 sources:
   - kind: git
     url: https://github.com/flatpak/flatpak-xdg-utils.git
-    ref: c2266e2bce9d8f72e3f705e04719c7d9a924fd87
+    ref: 2baef89211f82857f46867f43c6c86c584ebe346
     track: master
