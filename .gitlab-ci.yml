@@ -6,7 +6,8 @@ variables:
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
-  BST_CACHE_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
+  BST_CACHE_SERVER_ADDRESS: 'artifacts.freedesktop.codethink.co.uk'
+  BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
   BST_CACHE_SSH_USER: 'artifacts'
 
   # Generic variable for invoking buildstream
@@ -45,7 +46,7 @@ before_script:
   # Use internal network only if we are using x86_64 runners from DigitalOcean
   - |
     if [ "${CI_RUNNER_DESCRIPTION}" == 'manager-runner-freedesktop' ]; then
-        export BST_CACHE_SERVER_ADDRESS="${GITLAB_BST_CACHE_IP}"
+        export BST_CACHE_SERVER_ADDRESS="${GITLAB_BST_CACHE_SERVER_IP}"
         export BST_CACHE_SSH_USER='artifacts-internal'
     fi
 
@@ -270,7 +271,7 @@ minimal_systemd_vm_image_x86_64:
       done
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
-    - ostree remote add --repo=releases origin https://cache.sdk.freedesktop.org/releases/ --no-gpg-verify
+    - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
     - echo "Commit the binaries to the correct branch"
@@ -308,7 +309,7 @@ minimal_systemd_vm_image_x86_64:
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
     - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_CACHE_SERVER_ADDRESS}"
+    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_RELEASES_SERVER_ADDRESS}"
   artifacts:
     when: always
     paths:
