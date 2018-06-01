@@ -20,6 +20,14 @@ public:
 config:
   configure-commands:
     - |
+      case "%{arch}" in
+      *arm*)
+        sed -e 's/LDFLAGSICUDT/#LDFLAGSICUDT/' -i source/config/mh-linux
+        ;;
+      *)
+        ;;
+      esac
+    - |
       cd source
       ./%{configure}
 
