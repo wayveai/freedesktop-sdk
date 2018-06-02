@@ -3,6 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/graphite2.bst
+  - filename: desktop/icu.bst
   - filename: base/glib.bst
   - filename: desktop/freetype-stage1.bst
     type: build
@@ -13,6 +14,7 @@ depends:
 
 variables:
   conf-local: |
+    --with-icu \
     --with-gobject \
     --with-graphite2
 
