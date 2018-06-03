@@ -309,6 +309,8 @@ minimal_systemd_vm_image_x86_64:
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
     - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
+    # Trust the host key of the release server.
+    - ssh-keyscan "${BST_RELEASES_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
     - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_RELEASES_SERVER_ADDRESS}"
   artifacts:
     when: always
