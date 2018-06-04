@@ -3,17 +3,22 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/itstools.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
   - filename: base/docbook-xml.bst
   - filename: base/docbook-xsl.bst
   - filename: base/gettext.bst
     type: build
   - filename: base/pkg-config.bst # gtk-doc uses pkg-config during runtime.
-
-variables:
-  conf-local: |
-    PYTHON="/usr/bin/python3"
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/python3.bst
+  - filename: base/which.bst
+    type: build
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/gtk-doc/1.27/gtk-doc-1.27.tar.xz
-    ref: e26bd3f7080c749b1cb66c46c6bf8239e2f320a949964fb9c6d56e1b0c6d9a6f
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/gtk-doc.git
+    ref: 695816a36b492140529ed84c59ee246be2b952b7 #  GTK_DOC_1_28
