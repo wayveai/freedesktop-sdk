@@ -2,9 +2,9 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: desktop/graphite2.bst
-  - filename: desktop/icu.bst
   - filename: base/glib.bst
+  - filename: base/icu.bst
+  - filename: desktop/graphite2.bst
   - filename: desktop/freetype-stage1.bst
     type: build
   - filename: desktop/gtk-doc.bst
