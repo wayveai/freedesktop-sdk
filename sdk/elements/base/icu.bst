@@ -15,11 +15,17 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libicu*.so"
+          - "%{libdir}/libicudata.so"
+          - "%{libdir}/libicui18n.so"
+          - "%{libdir}/libicuio.so"
+          - "%{libdir}/libicutest.so"
+          - "%{libdir}/libicutu.so"
+          - "%{libdir}/libicuuc.so"
+
 
 sources:
   - kind: tar
-    url: http://download.icu-project.org/files/icu4c/60.1/icu4c-60_1-src.tgz
-    ref: f8f5a6c8fbf32c015a467972bdb1477dc5f5d5dfea908b6ed218715eeb5ee225
+    url: http://download.icu-project.org/files/icu4c/61.1/icu4c-61_1-src.tgz
+    ref: d007f89ae8a2543a53525c74359b65b36412fa84b3349f1400be6dcf409fafef
   - kind: patch
     path: patches/icu-fix-shared-linking.patch
