@@ -14,6 +14,10 @@ depends:
   - filename: base/pkg-config.bst
     type: build
 
+variables:
+  conf-local: |
+    --with-templatedir="%{sysconfdir}/fonts/conf.avail"
+
 config:
   install-commands:
     (>):
