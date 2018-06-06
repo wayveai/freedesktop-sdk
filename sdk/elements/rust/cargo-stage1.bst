@@ -8,7 +8,7 @@ config:
   install-commands:
     - |
       bash install.sh \
-        --prefix=/usr \
+        --prefix="%{prefix}" \
         --destdir="%{install-root}" \
         --disable-ldconfig
 

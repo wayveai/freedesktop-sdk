@@ -23,7 +23,3 @@ depends:
   type: build
 - filename: debug-app-link.bst
   type: build
-- filename: base/rust.bst
-  type: build
-- filename: base/cargo.bst
-  type: build

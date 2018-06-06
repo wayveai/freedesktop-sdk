@@ -2,9 +2,9 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/rust.bst
+  - filename: rust/rust.bst
     type: build
-  - filename: base/cargo.bst
+  - filename: rust/cargo.bst
     type: build
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst
@@ -19,6 +19,9 @@ public:
       devel:
         (>):
           - "%{libdir}/librsvg-2.so"
+
+environment:
+  PATH: "/usr/bin:/usr/lib/sdk/rust/bin"
 
 sources:
   - kind: tar

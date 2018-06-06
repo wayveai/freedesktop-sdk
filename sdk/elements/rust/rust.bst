@@ -3,7 +3,7 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/rust-stage1.bst
+  - filename: rust/rust-stage1.bst
     type: build
   - filename: base/ninja.bst
     type: build
@@ -15,6 +15,10 @@ depends:
   - filename: base/libxml2.bst
 
 variables:
+  prefix: "/usr/lib/sdk/rust"
+  lib: "lib"
+  debugdir: "/usr/lib/debug"
+
   # ThinLTO takes a lot of memory. We disable it for some architectures.
   thinlto: "true"
   debuginfo-only-std: "false"
@@ -39,10 +43,10 @@ config:
       build = "%{rust-target}"
       host = ["%{rust-target}"]
       target = ["%{rust-target}"]
-      cargo = "%{bindir}/cargo"
-      rustc = "%{bindir}/rustc"
+      cargo = "/usr/bin/cargo"
+      rustc = "/usr/bin/rustc"
       submodules = false
-      python = "%{bindir}/python3"
+      python = "/usr/bin/python3"
       locked-deps = true
       vendor = true
       verbose = 2
@@ -62,13 +66,13 @@ config:
       use-jemalloc = true
       rpath = false
       thinlto = %{thinlto}
-      default-linker = "%{bindir}/gcc"
+      default-linker = "/usr/bin/gcc"
       [target.%{rust-target}]
-      cc = "%{bindir}/%{host-triplet}-gcc"
-      cxx = "%{bindir}/%{host-triplet}-g++"
-      linker = "%{bindir}/%{host-triplet}-gcc"
-      ar = "%{bindir}/%{host-triplet}-gcc-ar"
-      llvm-config = "%{bindir}/llvm-config"
+      cc = "/usr/bin/%{host-triplet}-gcc"
+      cxx = "/usr/bin/%{host-triplet}-g++"
+      linker = "/usr/bin/%{host-triplet}-gcc"
+      ar = "/usr/bin/%{host-triplet}-gcc-ar"
+      llvm-config = "/usr/bin/llvm-config"
       EOF
 
   build-commands:
@@ -98,6 +102,13 @@ public:
           - "%{bindir}/*"
           - "%{libdir}/rustlib"
           - "%{libdir}/rustlib/**"
+
+    integration-commands:
+      - |
+        echo "%{libdir}" >>/etc/ld.so.conf
+
+      - |
+        ldconfig
 
 sources:
   - kind: tar

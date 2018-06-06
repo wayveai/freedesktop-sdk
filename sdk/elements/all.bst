@@ -17,3 +17,4 @@ depends:
   - filename: platform-vaapi.bst
   - filename: glxinfo.bst
   - filename: glxinfo-debug.bst
+  - filename: rust.bst

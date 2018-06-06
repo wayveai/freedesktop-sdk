@@ -25,7 +25,8 @@ RUNTIMES=					\
 	basesdk-locale				\
 	basesdk-docs				\
 	baseplatform				\
-	baseplatform-locale
+	baseplatform-locale			\
+	rust
 
 ARCH_OPTS=-o target_arch $(ARCH)
 

@@ -3,16 +3,21 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/cargo-stage1.bst
+  - filename: rust/cargo-stage1.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/rust.bst
+  - filename: rust/rust.bst
   - filename: base/openssl.bst
   - filename: base/cmake.bst
     type: build
   - filename: base/perl.bst
     type: build
+
+variables:
+  prefix: "/usr/lib/sdk/rust"
+  lib: "lib"
+  debugdir: "/usr/lib/debug"
 
 config:
   configure-commands:
@@ -37,6 +42,7 @@ config:
 
 environment:
   CARGO_HOME: "%{build-root}/home"
+  PATH: "/usr/bin:%{bindir}"
 
 sources:
   - kind: tar
