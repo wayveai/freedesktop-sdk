@@ -68,6 +68,8 @@ depends:
 - filename: base/speex.bst
 - filename: base/speexdsp.bst
 - filename: base/tzdata.bst
+- filename: base/unzip.bst
 - filename: base/util-linux.bst
 - filename: base/which.bst
 - filename: base/xz.bst
+- filename: base/zip.bst
