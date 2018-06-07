@@ -9,6 +9,7 @@ public:
   bst:
     integration-commands:
       - |
+        rm -f "%{infodir}/dir"
         for f in "%{infodir}"/*; do
           case "$(basename "${f}")" in
             *.png|*.jpg|*-[0-9])
