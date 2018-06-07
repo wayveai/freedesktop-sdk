@@ -6,6 +6,12 @@ depends:
     type: build
   - filename: base/glib.bst
 
+public:
+  bst:
+    integration-commands:
+      - |
+        update-desktop-database
+
 sources:
   - kind: tar
     url: https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.23.tar.xz
