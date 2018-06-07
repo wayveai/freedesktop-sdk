@@ -42,14 +42,17 @@ class ExtractIntegrationElement(Element):
 
         with open(script_path, 'w', opener=opener) as f:
             f.write('#!/bin/sh\n')
-            f.write('set -e\n')
+            f.write('set -e\n\n')
             for dependency in self.dependencies(Scope.BUILD):
                 bstdata = dependency.get_public_data('bst')
                 if bstdata is not None:
                     commands = dependency.node_get_member(bstdata, list, 'integration-commands', [])
+                    if commands:
+                        f.write('# integration commands from {}\n'.format(dependency.name))
                     for i in range(len(commands)):
                         cmd = dependency.node_subst_list_element(bstdata, 'integration-commands', [i])
-                        f.write('{}\n'.format(cmd))
+
+                        f.write('{}\n\n'.format(cmd))
 
         return os.path.sep
 
