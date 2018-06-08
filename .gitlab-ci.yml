@@ -274,6 +274,8 @@ minimal_systemd_vm_image_x86_64:
     - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
+    - echo "Use flatpak builder to export the runtimes to a ostree repo"
+    - dnf install -y flatpak flatpak-builder
     - echo "Commit the binaries to the correct branch"
     - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk org.freedesktop.BaseSdk unstable
     - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-locale org.freedesktop.BaseSdk.Locale unstable
