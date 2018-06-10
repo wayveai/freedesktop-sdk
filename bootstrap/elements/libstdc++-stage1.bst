@@ -50,5 +50,5 @@ environment:
 
 sources:
 - kind: tar
-  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-8.1.0/gcc-8.1.0.tar.xz
+  url: https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
   ref: 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
