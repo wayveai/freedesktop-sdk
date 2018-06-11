@@ -277,25 +277,15 @@ minimal_systemd_vm_image_x86_64:
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - dnf install -y flatpak flatpak-builder
     - echo "Commit the binaries to the correct branch"
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-debug unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform-locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-debug unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-docs unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo-debug unstable
     - |
-      case "${ARCH}" in
-        "x86_64"|"i586")
-          flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-vaapi unstable
-          ;;
-      esac
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale}; do
+        if [ "${runtime}" = "platform-vaapi" ]; then
+           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "Armv7" ]; then
+             continue
+           fi
+        fi
+        flatpak build-export --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
+      done
     - |
       case "${ARCH}" in
         "i586")
