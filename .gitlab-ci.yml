@@ -293,7 +293,7 @@ minimal_systemd_vm_image_x86_64:
     - |
       case "${ARCH}" in
         "x86_64"|"i586")
-          flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-vaapi org.freedesktop.Platform.VAAPI.Intel unstable
+          flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-vaapi unstable
           ;;
       esac
     - |
