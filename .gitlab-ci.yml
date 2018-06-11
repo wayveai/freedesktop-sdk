@@ -277,19 +277,19 @@ minimal_systemd_vm_image_x86_64:
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - dnf install -y flatpak flatpak-builder
     - echo "Commit the binaries to the correct branch"
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk org.freedesktop.BaseSdk unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-locale org.freedesktop.BaseSdk.Locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-debug org.freedesktop.BaseSdk.Debug unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform org.freedesktop.BasePlatform unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform-locale org.freedesktop.BasePlatform.Locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk org.freedesktop.Sdk unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-debug org.freedesktop.Sdk.Debug unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-docs org.freedesktop.Sdk.Docs unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-locale org.freedesktop.Sdk.Locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform org.freedesktop.Platform unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-locale org.freedesktop.Platform.Locale unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo org.freedesktop.GlxInfo unstable
-    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo-debug org.freedesktop.GlxInfo.Debug unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-locale unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/basesdk-debug unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/baseplatform-locale unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-debug unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-docs unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/sdk-locale unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/platform-locale unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo unstable
+    - flatpak build-export --arch="${flatpakarch}" --files=files releases runtimes/glxinfo-debug unstable
     - |
       case "${ARCH}" in
         "x86_64"|"i586")
