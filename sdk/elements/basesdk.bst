@@ -31,3 +31,5 @@ config:
 depends:
   - filename: base-image.bst
     type: build
+  - filename: basesdk-integration.bst
+    type: build

@@ -31,6 +31,13 @@ public:
         (>):
           - "%{libdir}/libfontconfig.so"
 
+    integration-commands:
+      - |
+        if [ -d "%{datadir}/fonts" ]; then
+          touch -d @0 "%{datadir}/fonts" /usr/share/fonts/*
+          fc-cache -rs
+        fi
+
 sources:
   - kind: git
     url: freedesktop:fontconfig

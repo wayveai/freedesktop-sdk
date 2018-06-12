@@ -3,6 +3,8 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
   - filename: base/libxml2.bst
+  - filename: base/clean-xml-catalog.bst
+    type: runtime
 
 variables:
   data: "%{datadir}/xml/docbook/xml-dtd"

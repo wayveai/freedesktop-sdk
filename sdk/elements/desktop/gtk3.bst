@@ -51,6 +51,9 @@ public:
       - |
         gtk-query-immodules-3.0 --update-cache
 
+      - |
+        gtk-update-icon-cache
+
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.30.tar.xz

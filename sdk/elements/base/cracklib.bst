@@ -22,6 +22,7 @@ public:
   bst:
     integration-commands:
       - |
+        rm -f "%{datadir}/cracklib/pw_dict"{,.pwd,.pwi}
         "%{sbindir}/create-cracklib-dict" -o "%{datadir}/cracklib/pw_dict" "%{datadir}/cracklib/cracklib-small"
 
     split-rules:
