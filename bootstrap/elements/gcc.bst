@@ -95,18 +95,18 @@ public:
 
 sources:
 - kind: tar
-  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-8.1.0/gcc-8.1.0.tar.xz
+  url: https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
   ref: 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
 - kind: tar
-  url: http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
+  url: https://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
   directory: gmp
   ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
 - kind: tar
-  url: http://ftp.gnu.org/gnu/mpfr/mpfr-4.0.1.tar.xz
+  url: https://ftp.gnu.org/gnu/mpfr/mpfr-4.0.1.tar.xz
   directory: mpfr
   ref: 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e
 - kind: tar
-  url: http://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
+  url: https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
   directory: mpc
   ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
 - kind: patch
