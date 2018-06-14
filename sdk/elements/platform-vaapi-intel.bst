@@ -6,9 +6,12 @@ depends:
 
 config:
   directory: "%{prefix}"
-  
+
   metadata:
-    Application:
-      name: org.freedesktop.Platform
+    Runtime:
+      name: org.freedesktop.Platform.VAAPI.Intel
       runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+
+    ExtensionOf:
+      ref: org.freedesktop.Platform/%{gcc_arch}/%{branch}
