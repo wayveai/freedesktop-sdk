@@ -11,7 +11,7 @@ depends:
     type: build
   - filename: base/python3.bst
     type: build
-  - filename: base/llvm6.bst
+  - filename: desktop/llvm6.bst
   - filename: base/libxml2.bst
 
 variables:

@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/python2-mako.bst
     type: build
-  - filename: base/llvm6.bst
+  - filename: desktop/llvm6.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/libva.bst
   - filename: desktop/xorg-lib-xdamage.bst

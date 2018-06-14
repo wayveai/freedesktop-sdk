@@ -47,7 +47,6 @@ depends:
 - filename: base/libxml2.bst
 - filename: base/libxslt.bst
 - filename: base/linux-pam.bst
-- filename: base/llvm6.bst
 - filename: base/locales.bst
 - filename: base/lzip.bst
 - filename: base/nano.bst
