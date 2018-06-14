@@ -43,5 +43,5 @@ config:
 
 sources:
   - kind: tar
-    url: http://download.savannah.nongnu.org/releases/attr/attr-2.4.47.src.tar.gz
+    url: https://download.savannah.nongnu.org/releases/attr/attr-2.4.47.src.tar.gz
     ref: 25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859
