@@ -23,7 +23,9 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/gdk-pixbuf-*"
+          - "%{bindir}/gdk-pixbuf-csource"
+          - "%{bindir}/gdk-pixbuf-pixdata"
+          - "%{bindir}/gdk-pixbuf-thumbnailer"
           - "%{libdir}/libgdk_pixbuf-2.0.so"
 
     integration-commands:
