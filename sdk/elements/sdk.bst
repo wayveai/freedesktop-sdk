@@ -88,3 +88,5 @@ depends:
     type: build
   - filename: flatpak-basesdk-dirs.bst
     type: build
+  - filename: flatpak-platform-dirs.bst
+    type: build
