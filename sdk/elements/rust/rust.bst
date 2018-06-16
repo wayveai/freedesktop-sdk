@@ -19,15 +19,10 @@ variables:
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
-  # ThinLTO takes a lot of memory. We disable it for some architectures.
-  thinlto: "true"
   debuginfo-only-std: "false"
   rust-target: "%{host-triplet}"
   (?):
-    - target_arch == "i586":
-        thinlto: "false"
     - target_arch == "arm":
-        thinlto: "false"
         rust-target: "armv7-unknown-linux-gnueabihf"
         # armv7 exhausts memory on stage0 librustc w/ debuginfo
         # https://github.com/rust-lang/rust/issues/45854
@@ -65,7 +60,6 @@ config:
       debuginfo-only-std = %{debuginfo-only-std}
       use-jemalloc = true
       rpath = false
-      thinlto = %{thinlto}
       default-linker = "/usr/bin/gcc"
       [target.%{rust-target}]
       cc = "/usr/bin/%{host-triplet}-gcc"
