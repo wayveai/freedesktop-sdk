@@ -24,7 +24,7 @@ config:
 
       for version in 4.0 4.1.2 4.2 4.3 4.4 4.5; do
         add public "-//OASIS//DTD DocBook XML V${version}//EN" ${version}/docbookx.dtd
-        add system "http://www.oasis-open.org/docbook/xml/${version}/docbookx.dtd" ${version}/docbookx.dtd
+        add system "https://www.oasis-open.org/docbook/xml/${version}/docbookx.dtd" ${version}/docbookx.dtd
         add public "-//OASIS//DTD DocBook CALS Table Model V${version}//EN" ${version}/calstblx.dtd
         add public "-//OASIS//ELEMENTS DocBook XML HTML Tables V${version}//EN" ${version}/htmltblx.mod
         add public "//OASIS//DTD XML Exchange Table Model 19990315//EN" ${version}/soextblx.dtd
@@ -85,32 +85,32 @@ public:
 
 sources:
   - kind: zip
-    url: http://docbook.org/xml/4.5/docbook-xml-4.5.zip
+    url: https://docbook.org/xml/4.5/docbook-xml-4.5.zip
     ref: 4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4
     base-dir: ''
     directory: 4.5
   - kind: zip
-    url: http://www.oasis-open.org/docbook/xml/4.4/docbook-xml-4.4.zip
+    url: https://www.oasis-open.org/docbook/xml/4.4/docbook-xml-4.4.zip
     ref: 02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090
     base-dir: ''
     directory: 4.4
   - kind: zip
-    url: http://www.oasis-open.org/docbook/xml/4.3/docbook-xml-4.3.zip
+    url: https://www.oasis-open.org/docbook/xml/4.3/docbook-xml-4.3.zip
     ref: 23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464
     base-dir: ''
     directory: 4.3
   - kind: zip
-    url: http://www.oasis-open.org/docbook/xml/4.2/docbook-xml-4.2.zip
+    url: https://www.oasis-open.org/docbook/xml/4.2/docbook-xml-4.2.zip
     ref: acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2
     base-dir: ''
     directory: 4.2
   - kind: zip
-    url: http://www.oasis-open.org/docbook/xml/4.1.2/docbkx412.zip
+    url: https://www.oasis-open.org/docbook/xml/4.1.2/docbkx412.zip
     ref: 30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772
     base-dir: ''
     directory: 4.1.2
   - kind: zip
-    url: http://www.oasis-open.org/docbook/xml/4.0/docbkx40.zip
+    url: https://www.oasis-open.org/docbook/xml/4.0/docbkx40.zip
     ref: 8edb0630fcb659f2547534ef3856a7e30de7cd0afe2405fa7abdebb83affca90
     base-dir: ''
     directory: 4.0

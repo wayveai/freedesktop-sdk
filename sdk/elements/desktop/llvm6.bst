@@ -59,5 +59,5 @@ public:
 
 sources:
   - kind: tar
-    url: http://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
+    url: https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
     ref: 1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408

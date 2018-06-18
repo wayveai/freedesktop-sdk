@@ -18,5 +18,5 @@ variables:
 
 sources:
   - kind: tar
-    url: http://download.savannah.nongnu.org/releases/man-db/man-db-2.7.6.1.tar.xz
+    url: https://download.savannah.nongnu.org/releases/man-db/man-db-2.7.6.1.tar.xz
     ref: 08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f
