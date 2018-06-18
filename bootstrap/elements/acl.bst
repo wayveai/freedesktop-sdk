@@ -40,5 +40,5 @@ config:
 
 sources:
   - kind: tar
-    url: http://download.savannah.nongnu.org/releases/acl/acl-2.2.52.src.tar.gz
+    url: https://download.savannah.nongnu.org/releases/acl/acl-2.2.52.src.tar.gz
     ref: 179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23

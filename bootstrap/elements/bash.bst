@@ -48,5 +48,5 @@ config:
 
 sources:
   - kind: tar
-    url: http://ftp.gnu.org/gnu/bash/bash-4.4.12.tar.gz
+    url: https://ftp.gnu.org/gnu/bash/bash-4.4.12.tar.gz
     ref: 57d8432be54541531a496fd4904fdc08c12542f43605a9202594fa5d5f9f2331

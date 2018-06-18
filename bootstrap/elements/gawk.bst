@@ -31,5 +31,5 @@ config:
 
 sources:
 - kind: tar
-  url: http://ftp.gnu.org/gnu/gawk/gawk-4.2.0.tar.xz
+  url: https://ftp.gnu.org/gnu/gawk/gawk-4.2.0.tar.xz
   ref: d4f3cd31c001fd0ed52832d4fbfbdfeaa38ad541c182f80ff8fdf87324a6a9f2
