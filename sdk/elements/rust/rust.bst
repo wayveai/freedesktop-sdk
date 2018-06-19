@@ -28,6 +28,12 @@ variables:
         # https://github.com/rust-lang/rust/issues/45854
         debuginfo-only-std: "true"
 
+environment-nocache:
+  - MAXJOBS
+
+environment:
+  MAXJOBS: "%{max-jobs}"
+
 config:
   configure-commands:
     - |
@@ -71,7 +77,7 @@ config:
 
   build-commands:
     - |
-      python3 x.py build -j%{max-jobs}
+      python3 x.py build -j${MAXJOBS}
 
   install-commands:
     - |
