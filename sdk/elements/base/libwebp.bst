@@ -32,5 +32,5 @@ public:
 
 sources:
   - kind: tar
-    url: http://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.1.tar.gz
+    url: https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.1.tar.gz
     ref: 06503c782d9f151baa325591c3579c68ed700ffc62d4f5a32feead0ff017d8ab

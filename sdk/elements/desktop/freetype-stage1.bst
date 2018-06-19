@@ -16,5 +16,5 @@ variables:
 
 sources:
   - kind: tar
-    url: http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2
+    url: https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2
     ref: e6ffba3c8cef93f557d1f767d7bc3dee860ac7a3aaff588a521e081bc36f4c8a

@@ -35,5 +35,5 @@ config:
 
 sources:
   - kind: tar
-    url: http://web.mit.edu/Kerberos/dist/krb5/1.16/krb5-1.16.tar.gz
+    url: https://web.mit.edu/Kerberos/dist/krb5/1.16/krb5-1.16.tar.gz
     ref: faeb125f83b0fb4cdb2f99f088140631bb47d975982de0956d18c85842969e08
