@@ -76,12 +76,6 @@ config:
       no-autodownload: "true"
       add-ld-path: "lib"
 
-    'Extension org.freedesktop.BaseSdk.Extension':
-      subdirectories: "true"
-      directory: "lib/sdk"
-      no-autodownload: "true"
-      add-ld-path: "lib"
-
     'Extension org.freedesktop.Platform.VAAPI.Intel':
       directory: "%{lib}/dri/intel-vaapi-driver"
       autodelete: "false"
