@@ -62,3 +62,5 @@ config:
 depends:
   - filename: desktop-platform-image.bst
     type: build
+  - filename: flatpak-platform-dirs.bst
+    type: build
