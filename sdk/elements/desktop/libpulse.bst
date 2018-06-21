@@ -44,7 +44,6 @@ config:
   install-commands:
     (>):
       - |
-          rm -r "%{install-root}%{datadir}/pulseaudio"
           rm "%{install-root}%{bindir}/pulseaudio"
           rm "%{install-root}%{bindir}/start-pulseaudio-x11"
           rm "%{install-root}%{bindir}/pasuspender"

@@ -7,7 +7,7 @@ depends:
   - filename: desktop/mesa.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/wayland.bst
-  - filename: desktop/pulseaudio.bst
+  - filename: desktop/libpulse.bst
 
 variables:
   conf-local: |

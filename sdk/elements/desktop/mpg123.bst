@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: desktop/pulseaudio.bst
+  - filename: desktop/libpulse.bst
   - filename: base/pkg-config.bst
     type: build
 
