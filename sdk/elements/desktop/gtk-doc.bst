@@ -7,6 +7,7 @@ depends:
   - filename: base/docbook-xsl.bst
   - filename: base/gettext.bst
     type: build
+  - filename: base/pkg-config.bst # gtk-doc uses pkg-config during runtime.
 
 variables:
   conf-local: |
