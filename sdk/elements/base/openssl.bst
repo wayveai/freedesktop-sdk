@@ -36,6 +36,16 @@ config:
     - mkdir -p %{install-root}%{datadir}
     - mv %{install-root}%{prefix}/ssl/man %{install-root}%{datadir}
 
+    - |
+      for man3 in "%{install-root}%{datadir}/man/man3"/*.3; do
+        if [ -L "${man3}" ]; then
+          ln -s "$(readlink "${man3}")ssl" "${man3}ssl"
+          rm "${man3}"
+        else
+          mv "${man3}" "${man3}ssl"
+        fi
+      done
+
 public:
   bst:
     split-rules:
