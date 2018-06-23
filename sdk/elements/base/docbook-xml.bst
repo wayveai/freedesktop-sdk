@@ -24,7 +24,7 @@ config:
 
       for version in 4.0 4.1.2 4.2 4.3 4.4 4.5; do
         add public "-//OASIS//DTD DocBook XML V${version}//EN" ${version}/docbookx.dtd
-        add system "https://www.oasis-open.org/docbook/xml/${version}/docbookx.dtd" ${version}/docbookx.dtd
+        add system "http://www.oasis-open.org/docbook/xml/${version}/docbookx.dtd" ${version}/docbookx.dtd
         add public "-//OASIS//DTD DocBook CALS Table Model V${version}//EN" ${version}/calstblx.dtd
         add public "-//OASIS//ELEMENTS DocBook XML HTML Tables V${version}//EN" ${version}/htmltblx.mod
         add public "//OASIS//DTD XML Exchange Table Model 19990315//EN" ${version}/soextblx.dtd
