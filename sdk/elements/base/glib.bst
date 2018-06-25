@@ -24,7 +24,10 @@ public:
         (>):
           - "%{datadir}/glib-2.0/codegen"
           - "%{datadir}/glib-2.0/codegen/**"
-          - "%{bindir}/glib-*"
+          - "%{bindir}/glib-compile-resources"
+          - "%{bindir}/glib-genmarshal"
+          - "%{bindir}/glib-gettextize"
+          - "%{bindir}/glib-mkenums"
           - "%{bindir}/gdbus-codegen"
           - "%{bindir}/gobject-query"
           - "%{bindir}/gresource"

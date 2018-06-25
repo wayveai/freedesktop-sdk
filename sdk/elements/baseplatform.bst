@@ -19,3 +19,5 @@ config:
 depends:
   - filename: base-platform-image.bst
     type: build
+  - filename: baseplatform-integration.bst
+    type: build

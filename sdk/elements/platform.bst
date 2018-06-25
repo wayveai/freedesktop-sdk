@@ -64,3 +64,5 @@ depends:
     type: build
   - filename: flatpak-platform-dirs.bst
     type: build
+  - filename: platform-integration.bst
+    type: build
