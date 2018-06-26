@@ -13,6 +13,8 @@ variables:
     --disable-fsck \
     --disable-uuidd
 
+  make-install: make -j1 DESTDIR="%{install-root}" install install-libs
+
 sources:
   - kind: tar
     url: https://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.44.0.tar.gz
