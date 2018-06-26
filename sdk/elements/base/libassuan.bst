@@ -13,5 +13,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.4.3.tar.bz2
-    ref: 22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
+    url: https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.1.tar.bz2
+    ref: 47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449

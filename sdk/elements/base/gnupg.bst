@@ -9,5 +9,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.2.tar.bz2
-    ref: bfb62c7412ceb3b9422c6c7134a34ff01a560f98eb981c2d96829c1517c08197
+    url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.8.tar.bz2
+    ref: 777b4cb8ced21965a5053d4fa20fe11484f0a478f3d011cef508a1a49db50dcd
