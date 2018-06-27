@@ -13,6 +13,7 @@ depends:
 - filename: base/docbook-xsl.bst
 - filename: base/e2fsprogs.bst
 - filename: base/ed.bst
+- filename: base/elfutils.bst
 - filename: base/gdb.bst
 - filename: base/gdbm.bst
 - filename: base/git.bst
