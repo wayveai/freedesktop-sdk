@@ -2,7 +2,7 @@ kind: cmake
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: desktop/pulseaudio.bst
+  - filename: desktop/libpulse.bst
   - filename: desktop/sdl2.bst
   - filename: base/cmake.bst
     type: build

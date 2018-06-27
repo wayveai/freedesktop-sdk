@@ -7,7 +7,7 @@ depends:
   - filename: desktop/mesa.bst
   - filename: desktop/mpg123.bst
   - filename: desktop/openal.bst
-  - filename: desktop/pulseaudio.bst
+  - filename: desktop/libpulse.bst
   - filename: desktop/sdl2.bst
   - filename: base/gnutls.bst
   - filename: base/speex.bst

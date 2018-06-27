@@ -6,20 +6,20 @@ depends:
     type: build
   - filename: base/automake.bst
     type: build
+  - filename: base/glib.bst
   - filename: base/intltool.bst
     type: build
   - filename: base/libtool.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/libcap.bst
   - filename: base/sndfile.bst
-  - filename: desktop/alsa-lib.bst
+  - filename: base/speexdsp.bst
+  - filename: desktop/dbus.bst
   - filename: desktop/xorg-lib-xcb.bst
   - filename: desktop/xorg-lib-ice.bst
   - filename: desktop/xorg-lib-sm.bst
   - filename: desktop/xorg-lib-xtst.bst
-  - filename: desktop/gtk3.bst
 
 variables:
   conf-local: |
@@ -27,6 +27,7 @@ variables:
     --with-system-user=pulse \
     --with-system-group=pulse \
     --with-access-group=pulse-access \
+    --without-caps \
     --disable-oss-output \
     --disable-jack \
     --disable-lirc \
@@ -43,6 +44,8 @@ config:
   install-commands:
     (>):
       - |
+          rm "%{install-root}%{bindir}/pulseaudio"
+          rm "%{install-root}%{bindir}/start-pulseaudio-x11"
           rm "%{install-root}%{bindir}/pasuspender"
           rm -r "%{install-root}%{libdir}"/pulse-*/modules
           rm -r "%{install-root}%{sysconfdir}/pulse/daemon.conf"
