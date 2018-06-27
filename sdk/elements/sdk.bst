@@ -72,7 +72,7 @@ config:
 
     'Extension org.freedesktop.Sdk.Extension':
       subdirectories: "true"
-      directory: "%{lib}/sdk"
+      directory: "lib/sdk"
       no-autodownload: "true"
 
     'Extension org.freedesktop.Platform.VAAPI.Intel':
@@ -89,4 +89,6 @@ depends:
   - filename: flatpak-basesdk-dirs.bst
     type: build
   - filename: flatpak-platform-dirs.bst
+    type: build
+  - filename: flatpak-sdk-dirs.bst
     type: build
