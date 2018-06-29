@@ -8,9 +8,9 @@ depends:
 variables:
   conf-local:
     # Include path is not correctly detected and uses version
-    # number. We need to force version to 3.6m for the headers to be
+    # number. We need to force version to 3.7m for the headers to be
     # found
-    --with-python PYTHON=/usr/bin/python3 am_cv_python_version=3.6m
+    --with-python PYTHON=/usr/bin/python3 am_cv_python_version=3.7m
 
 config:
   install-commands:

@@ -31,24 +31,24 @@ config:
       if [ -n "%{builddir}" ]; then
       cd %{builddir}
       fi
-      %{make-install} DESTSHARED=/usr/lib/python3.6/lib-dynload
+      %{make-install} DESTSHARED=/usr/lib/python3.7/lib-dynload
 
     - |
       rm -rf %{install-root}%{bindir}/idle*
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/idlelib
+      rm -rf %{install-root}%{indep-libdir}/python3.7/idlelib
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/tkinter
+      rm -rf %{install-root}%{indep-libdir}/python3.7/tkinter
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/turtle*
+      rm -rf %{install-root}%{indep-libdir}/python3.7/turtle*
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/__pycache__/turtle.*
+      rm -rf %{install-root}%{indep-libdir}/python3.7/__pycache__/turtle.*
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/test
+      rm -rf %{install-root}%{indep-libdir}/python3.7/test
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/*/test
+      rm -rf %{install-root}%{indep-libdir}/python3.7/*/test
     - |
-      rm -rf %{install-root}%{indep-libdir}/python3.6/*/tests
+      rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
 
     - |
       %{fix-pyc-timestamps}
@@ -59,17 +59,17 @@ public:
       devel:
         (>):
           - "%{bindir}/2to3*"
-          - "%{libdir}/libpython3.6m.so"
-          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}"
-          - "%{indep-libdir}/python3.6/config-3.6m-%{gcc_triplet}/**"
-          - "%{indep-libdir}/python3.6/lib2to3"
-          - "%{indep-libdir}/python3.6/lib2to3/**"
+          - "%{libdir}/libpython3.7m.so"
+          - "%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}"
+          - "%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**"
+          - "%{indep-libdir}/python3.7/lib2to3"
+          - "%{indep-libdir}/python3.7/lib2to3/**"
 
     integration-commands:
-      - test -x "%{prefix}"/bin/python || ln -s python3.6 "%{prefix}"/bin/python
-      - test -x "%{prefix}"/bin/python-config || ln -s python3.6-config "%{prefix}"/bin/python-config
+      - test -x "%{prefix}"/bin/python || ln -s python3.7 "%{prefix}"/bin/python
+      - test -x "%{prefix}"/bin/python-config || ln -s python3.7-config "%{prefix}"/bin/python-config
 
 sources:
   - kind: tar
-    url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
-    ref: cda7d967c9a4bfa52337cdf551bcc5cff026b6ac50a8834e568ce4a794ca81da
+    url: https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+    ref: 0382996d1ee6aafe59763426cf0139ffebe36984474d0ec4126dd1c40a8b3549
