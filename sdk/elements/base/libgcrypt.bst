@@ -13,5 +13,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.1.tar.bz2
-    ref: 7a2875f8b1ae0301732e878c0cca2c9664ff09ef71408f085c50e332656a78b3
+    url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.3.tar.bz2
+    ref: 66ec90be036747602f2b48f98312361a9180c97c68a690a5f376fa0f67d0af7c
