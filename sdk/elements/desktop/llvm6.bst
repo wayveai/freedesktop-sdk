@@ -2,6 +2,7 @@ kind: cmake
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/libffi.bst
   - filename: base/cmake.bst
     type: build
   - filename: base/ninja.bst
@@ -33,7 +34,8 @@ variables:
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
     -DLLVM_INCLUDE_EXAMPLES:BOOL=OFF \
-    -DLLVM_INCLUDE_UTILS:BOOL=OFF \
+    -DLLVM_INCLUDE_UTILS:BOOL=ON \
+    -DLLVM_INSTALL_UTILS:BOOL=ON \
     -DLLVM_INCLUDE_DOCS:BOOL=OFF \
     -DLLVM_ENABLE_DOXYGEN:BOOL=OFF \
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
