@@ -174,11 +174,15 @@ build_arm:
     - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//unstable
     - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//unstable
 
-    - echo "Build basic flatpak app"
-    - flatpak-builder --arch="${flatpakarch}" build_folder tests/org.flatpak.Hello.json
+    - echo "Build basic flatpak application  (script)"
+    - flatpak-builder --arch="${flatpakarch}" build_folder_hello tests/org.flatpak.Hello.json
+    - echo "Build basic flatpak application (C binary)"
+    - flatpak-builder --arch="${flatpakarch}" build_folder_gnu_hello tests/org.gnu.hello.json
 
-    - echo "Run basic application"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder tests/org.flatpak.Hello.json hello.sh
+    - echo "Run basic flatpak application (script)"
+    - flatpak-builder --arch="${flatpakarch}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
+    - echo "Run basic flatpak application (C binary)"
+    - flatpak-builder --arch="${flatpakarch}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
   artifacts:
     when: always
     paths:
