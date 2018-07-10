@@ -9,7 +9,7 @@ depends:
 
 variables:
   conf-local: |
-    --with-trust-paths=/etc/ssl/certs/ca-certificates.crt
+    --with-trust-paths=%{ca_path}
 
 public:
   bst:

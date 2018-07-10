@@ -12,7 +12,7 @@ depends:
 
 variables:
   conf-local: |
-    --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt
+    --with-default-trust-store-file=%{ca_path}
 
 public:
   bst:
