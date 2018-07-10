@@ -4,9 +4,23 @@
 
 The freedesktop-sdk is a project that provides Platform and SDK runtimes for [flatpak](https://flatpak.org) apps and runtimes based on freedesktop modules. It was originally started as a [Flatpak subproject](https://github.com/flatpak/freedesktop-sdk-images) to create a basic-neutral runtime. It's now a separate project, similar to what is happening with the GNOME runtime and the KDE one.
 
-The long term goal is to maintain a neutral baseline which can be consumed by Flatpak, GNOME, KDE and any other interested project.
-
 As explained in Alex's [blog post](https://blogs.gnome.org/alexl/2018/05/16/introducing-1-8-freedesktop-runtime/) there has long been a desire to upgrade and modernize the sdk, which is where this specific project comes into the story...
+
+This is a diagram of how freedeskop-sdk flatpak runtime interact with the rest of the flatpak ecosystem:
+```mermaid
+graph TD;
+app(Flatpak Application) --> GNOME_SDK(GNOME SDK.);
+GNOME_SDK(GNOME SDK.) --> freedesktop-sdk(freedesktop-sdk);
+app(Flatpak Application) --> freedesktop-sdk(freedesktop-sdk);
+app(Flatpak Application) --> KDE_SDK(KDE SDK);
+KDE_SDK(KDE SDK) --> freedesktop-sdk(freedesktop-sdk);
+freedesktop-sdk(freedesktop-sdk) --> linux(Linux-based OS)
+freedesktop-sdk(freedesktop-sdk) --> container(Docker container)
+style app fill:#f9f,stroke:#333,stroke-width:2px
+style KDE_SDK fill:#591,stroke:#333,stroke-width:2px
+style GNOME_SDK fill:#591,stroke:#333,stroke-width:2px
+style freedesktop-sdk fill:#ee4,stroke:#333,stroke-width:2px
+```
 
 Our goals:
 * Improve maintainability, using a single metadata format instead several different ones. We use [BuildStream](https://gitlab.com/BuildStream/buildstream) for this.
@@ -15,6 +29,7 @@ Our goals:
 * Define formal release cycles.
 * Host on official freedesktop.org infrastructure (ie. migrate from gitlab.com to gitlab.freedesktop.org)
 * Add minimal bootable system and generic sysroot.
+* Maintain a neutral baseline which can be consumed by Flatpak, GNOME, KDE and any other interested project.
 
 
 # Usage
