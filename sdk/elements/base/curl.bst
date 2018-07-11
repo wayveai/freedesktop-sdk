@@ -16,7 +16,7 @@ depends:
 
 variables:
   conf-local: |
-    --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
+    --with-ca-bundle=%{ca_path} \
     --with-gnutls \
     --with-ssl \
     --with-nss \

@@ -11,7 +11,7 @@ depends:
 variables:
   conf-local: |
     --with-libproxy \
-    --with-ca-certificates="/etc/ssl/certs/ca-certificates.crt"
+    --with-ca-certificates=%{ca_path}
 
 sources:
   - kind: tar
