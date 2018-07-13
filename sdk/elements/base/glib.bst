@@ -12,6 +12,14 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/which.bst
+    type: build
 
 variables:
   conf-local: |
@@ -43,6 +51,6 @@ public:
         glib-compile-schemas %{datadir}/glib-2.0/schemas
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/glib/2.56/glib-2.56.1.tar.xz
-    ref: 40ef3f44f2c651c7a31aedee44259809b6f03d3d20be44545cd7d177221c0b8d
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/glib
+    ref: d0364b443805dcb832c200fcf8bf58a64fdf3e7d    #2.56.1
