@@ -28,6 +28,10 @@ before_script:
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
+  - export BST_EXTERNAL_SHA='cf53cff64f4a6b3b3e2f0ac7ec13290511e9a137' #  0.2
+  - git clone https://gitlab.com/BuildStream/bst-external.git
+  - git -C bst-external checkout $BST_EXTERNAL_SHA
+  - pip3 install --user ./bst-external
 
   # Create ~/.ssh for storing keys
   - mkdir -p ~/.ssh
@@ -224,10 +228,6 @@ app_arm:
 .vm_image_template: &vm_image
   stage: vm
   script:
-    - export BST_EXTERNAL_SHA=db543278fae6cc12b2ef4cfb0f68b5326ac9dd76
-    - git clone https://gitlab.com/BuildStream/bst-external.git
-    - git -C bst-external checkout $BST_EXTERNAL_SHA
-    - pip3 install --user ./bst-external
     - cd sdk
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm

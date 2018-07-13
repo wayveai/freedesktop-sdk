@@ -1,4 +1,4 @@
-kind: flatpak-image
+kind: flatpak_image
 
 variables:
   lib: lib

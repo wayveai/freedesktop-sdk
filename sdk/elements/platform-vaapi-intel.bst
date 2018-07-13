@@ -1,4 +1,4 @@
-kind: flatpak-image
+kind: flatpak_image
 
 depends:
   - filename: platform-vaapi-intel/intel-vaapi-driver.bst
