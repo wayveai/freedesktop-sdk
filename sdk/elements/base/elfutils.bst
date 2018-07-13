@@ -29,4 +29,4 @@ sources:
 - kind: git
   url: git://sourceware.org/git/elfutils.git
   track: elfutils-0.172
-  ref: 1553166973aad9501a3b90fb3dfbabf213fad19c
+  ref: 1553166973aad9501a3b90fb3dfbabf213fad19c # 0.172
