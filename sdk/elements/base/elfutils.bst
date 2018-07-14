@@ -15,6 +15,16 @@ variables:
   conf-local: |
     --enable-maintainer-mode
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{bindir}/**"
+          - "%{libdir}/libasm.so"
+          - "%{libdir}/libdw.so"
+          - "%{libdir}/libelf.so"
+
 sources:
 - kind: git
   url: git://sourceware.org/git/elfutils.git

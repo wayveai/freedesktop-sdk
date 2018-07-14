@@ -6,6 +6,7 @@ depends:
 - filename: base/cracklib.bst
 - filename: base/curl.bst
 - filename: base/cyrus-sasl.bst
+- filename: base/elfutils.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
 - filename: base/gettext.bst
@@ -25,7 +26,6 @@ depends:
 - filename: base/libarchive.bst
 - filename: base/libassuan.bst
 - filename: base/libcap.bst
-- filename: base/libelf.bst
 - filename: base/libexif.bst
 - filename: base/libffi.bst
 - filename: base/libflac.bst
