@@ -29,6 +29,7 @@ QEMU = 'qemu-system-x86_64'
 QEMU_EXTRA_ARGS = ['-m', '256']
 
 FAILURE_TIMEOUT = 60   # seconds
+BUFFER_SIZE = 80 # how many characters to read at once
 
 DIALOGS = {
     'minimal':
@@ -81,16 +82,32 @@ def argument_parser():
 
     return parser
 
+buf = b''
 
 async def await_line(stream, marker):
     '''Read from 'stream' until a line appears that starts with 'marker'.'''
     marker = marker
-    async for line in stream:
-        decoded_line = line.decode('unicode-escape')
-        sys.stdout.write(decoded_line)
-        if decoded_line.strip().startswith(marker):
-            logging.debug("Matched line with marker: %s", decoded_line)
-            return decoded_line
+    global buf
+
+    while not stream.at_eof():
+        buf += await stream.read(BUFFER_SIZE)
+
+        lineend = buf.find(b'\n')
+        if lineend >= 0:
+            line = buf[:lineend+1]
+            buf = buf[lineend+1:]
+
+            decoded_line = line.decode('unicode-escape')
+            sys.stdout.write(decoded_line)
+            if marker in decoded_line.strip():
+                logging.debug("Matched line with marker: %s", decoded_line)
+                return decoded_line
+        else:
+            decoded_buf = buf.decode('unicode-escape')
+            if marker in decoded_buf.strip():
+                logging.debug("Matched incomplete line with marker: %s", decoded_buf)
+                sys.stdout.write(decoded_buf)
+                return decoded_buf
 
 
 async def run_qemu_test(sda, dialog):
