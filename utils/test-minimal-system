@@ -29,30 +29,90 @@ QEMU = 'qemu-system-x86_64'
 QEMU_EXTRA_ARGS = ['-m', '256']
 
 FAILURE_TIMEOUT = 60   # seconds
+BUFFER_SIZE = 80 # how many characters to read at once
 
-INIT_BANNER = "Started '/init' script from initramfs."
+DIALOGS = {
+    'minimal':
+    [
+        "Started '/init' script from initramfs.",
+        '\nuname -a',
+        "Linux"
+    ],
+    'systemd-firstboot':
+    [
+        '-- Press any key to proceed --',
+        '',
+        'Please enter system locale name or number',
+        '1',
+        'Please enter system message locale name or number',
+        '',
+        'Please enter timezone name or number',
+        '1',
+        'Please enter a new root password',
+        'root',
+        'Please enter new root password again',
+        'root',
+        'localhost login',
+        'root',
+        'Password',
+        'root',
+        'sh',
+        'uname -a',
+        'Linux'
+    ],
+    'root-login':
+    [
+        'localhost login',
+        'root',
+        'Password',
+        'root',
+        'sh',
+        'uname -a',
+        'Linux'
+    ]
+}
 
 
 def argument_parser():
     parser = argparse.ArgumentParser(
         description="Test that a minimal-system VM image works as expected")
     parser.add_argument("sda", help="Path to disk image file")
+    parser.add_argument('--dialog', dest='dialog', default='root-login',
+                        help='dialog to follow (valid values {}, default: root-login)'.format(DIALOGS.keys()))
+
     return parser
 
+buf = b''
 
 async def await_line(stream, marker):
     '''Read from 'stream' until a line appears that starts with 'marker'.'''
     marker = marker
-    async for line in stream:
-        decoded_line = line.decode('unicode-escape')
-        sys.stdout.write(decoded_line)
-        if decoded_line.strip().startswith(marker):
-            logging.debug("Matched line with marker: %s", decoded_line)
-            return decoded_line
+    global buf
+
+    while not stream.at_eof():
+        buf += await stream.read(BUFFER_SIZE)
+
+        lineend = buf.find(b'\n')
+        if lineend >= 0:
+            line = buf[:lineend+1]
+            buf = buf[lineend+1:]
+
+            decoded_line = line.decode('unicode-escape')
+            sys.stdout.write(decoded_line)
+            if marker in decoded_line.strip():
+                logging.debug("Matched line with marker: %s", decoded_line)
+                return decoded_line
+        else:
+            decoded_buf = buf.decode('unicode-escape')
+            if marker in decoded_buf.strip():
+                logging.debug("Matched incomplete line with marker: %s", decoded_buf)
+                sys.stdout.write(decoded_buf)
+                return decoded_buf
 
 
-async def run_qemu_test(sda):
+async def run_qemu_test(sda, dialog):
     command = [QEMU, '-drive', 'file=%s,format=raw' % sda, '-nographic'] + QEMU_EXTRA_ARGS
+    dialog = DIALOGS[dialog]
 
     logging.debug("Starting process: %s", command)
     process = await asyncio.create_subprocess_exec(
@@ -60,15 +120,13 @@ async def run_qemu_test(sda):
 
     success = False
     try:
-        init_banner = await await_line(process.stdout, INIT_BANNER)
-        print("Got init banner:", init_banner)
-        assert init_banner != None
+        while dialog:
+            prompt = await await_line(process.stdout, dialog.pop(0))
+            print("Got:", prompt)
+            assert prompt != None
 
-        process.stdin.write('\nuname -a\n'.encode('ascii'))
-
-        uname = await await_line(process.stdout, "Linux")
-        print("Got `uname -a` output:", uname)
-        assert uname != None
+            if dialog:
+                process.stdin.write(dialog.pop(0).encode('ascii') + b'\n')
 
         print("Test successful")
         success = True
@@ -91,7 +149,7 @@ def main():
     args = argument_parser().parse_args()
 
     loop = asyncio.get_event_loop()
-    qemu_task = loop.create_task(run_qemu_test(args.sda))
+    qemu_task = loop.create_task(run_qemu_test(args.sda, args.dialog))
     loop.call_later(FAILURE_TIMEOUT, fail_timeout, qemu_task)
     loop.run_until_complete(qemu_task)
     loop.close()

@@ -8,11 +8,8 @@ depends:
 - filename: base/gperf.bst
   type: build
 - filename: base/libcap.bst
-  type: build
 - filename: base/libgcrypt.bst
-  type: build
 - filename: base/libgpg-error.bst
-  type: build
 - filename: base/m4.bst
   type: build
 - filename: base/meson.bst
@@ -22,7 +19,7 @@ depends:
 - filename: base/pkg-config.bst
   type: build
 - filename: base/util-linux.bst
-  type: build
+- filename: base/xz.bst
 
 variables:
   meson-local: |
