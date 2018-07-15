@@ -8,7 +8,7 @@ depends:
 config:
   build-commands:
     - |
-      make
+      PYTHON=python3 make
 
   install-commands:
     - |
