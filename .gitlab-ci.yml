@@ -257,7 +257,7 @@ minimal_systemd_vm_image_x86_64:
   variables:
     ARCH: x86_64
     TYPE: minimal-systemd
-    DIALOG: systemd-firstboot
+    DIALOG: root-login
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
