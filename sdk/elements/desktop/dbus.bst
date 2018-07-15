@@ -5,6 +5,8 @@ depends:
   - filename: base/expat.bst
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/python3.bst
+    type: build
 
 public:
   bst:
