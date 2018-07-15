@@ -6,6 +6,7 @@ depends:
 
 variables:
   conf-local: |
+    --without-python \
     --disable-wall \
     --disable-makeinstall-chown \
     --disable-kill \
