@@ -2,8 +2,6 @@ kind: meson
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/python2-mako.bst
-    type: build
   - filename: desktop/llvm6.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/libva.bst
