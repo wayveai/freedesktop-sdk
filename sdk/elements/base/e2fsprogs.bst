@@ -8,6 +8,7 @@ depends:
 
 variables:
   conf-local: |
+    --enable-elf-shlibs \
     --disable-libblkid \
     --disable-libuuid \
     --disable-fsck \
