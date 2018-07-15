@@ -16,6 +16,16 @@ variables:
 
   make-install: make -j1 DESTDIR="%{install-root}" install install-libs
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libss.so"
+          - "%{libdir}/libcom_err.so"
+          - "%{libdir}/libe2p.so"
+          - "%{libdir}/libext2fs.so"
+
 sources:
   - kind: tar
     url: https://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.44.0.tar.gz
