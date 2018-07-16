@@ -9,6 +9,7 @@ depends:
 
 variables:
   conf-local: |
+    --enable-etnaviv-experimental-api \
     --disable-udev
 
 public:
