@@ -12,6 +12,16 @@ config:
     - |
       make -j1 DESTDIR="%{install-root}" install
 
+    # We're really only interested in the timezone data
+    - |
+      rm -rf "%{install-root}%{bindir}"
+    - |
+      rm -rf "%{install-root}/etc"
+    - |
+      rm -rf "%{install-root}%{indep-libdir}"
+    - |
+      rm -rf "%{install-root}%{prefix}/sbin"
+
     # Man pages are provided by Linux's man-pages
     # sdk/elements/base/man-pages.bst
     - |
