@@ -8,12 +8,23 @@ depends:
 
 variables:
   conf-local: |
+    --enable-elf-shlibs \
     --disable-libblkid \
     --disable-libuuid \
     --disable-fsck \
     --disable-uuidd
 
   make-install: make -j1 DESTDIR="%{install-root}" install install-libs
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libss.so"
+          - "%{libdir}/libcom_err.so"
+          - "%{libdir}/libe2p.so"
+          - "%{libdir}/libext2fs.so"
 
 sources:
   - kind: tar

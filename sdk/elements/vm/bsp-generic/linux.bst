@@ -8,7 +8,7 @@ depends:
   type: build
 - filename: base/flex.bst
   type: build
-- filename: base/libelf.bst
+- filename: base/elfutils.bst
   type: build
 - filename: base/openssl.bst
   type: build

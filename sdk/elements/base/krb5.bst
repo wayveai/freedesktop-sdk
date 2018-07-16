@@ -6,13 +6,15 @@ depends:
     type: build
   - filename: base/bison.bst
     type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/e2fsprogs.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libcom_err.so"
           - "%{libdir}/libgssapi_krb5.so"
           - "%{libdir}/libgssrpc.so"
           - "%{libdir}/libk5crypto.so"
@@ -31,7 +33,7 @@ config:
     - |
       mkdir "%{builddir}"
       cd "%{builddir}"
-      ../src/%{configure}
+      ../src/%{configure} --with-system-et --with-system-ss
 
 sources:
   - kind: tar
