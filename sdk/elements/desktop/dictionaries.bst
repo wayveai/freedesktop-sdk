@@ -18,7 +18,7 @@ config:
 sources:
   - kind: git
     url: freedesktop:libreoffice/dictionaries.git
-    ref: c0379d0ff639cf4a51244011a944f862703b92df
+    ref: c0379d0ff639cf4a51244011a944f862703b92df #5.4.1.1
     track: libreoffice-5.4.1.1
   - kind: local
     path: files/dictionaries/install-dicts.py
