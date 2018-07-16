@@ -36,7 +36,7 @@ variables:
         dri_drivers: "nouveau,r100,r200,i915,i965"
         vulkan_drivers: "intel,amd"
     - target_arch == "arm" or target_arch == "aarch64":
-        gallium_drivers: "pl111,vc4,vc5,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast"
+        gallium_drivers: "pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast"
         dri_drivers: ""
         vulkan_drivers: ""
 
