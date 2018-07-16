@@ -10,6 +10,7 @@ depends:
 variables:
   conf-local: |
     --enable-etnaviv-experimental-api \
+    --enable-tegra-experimental-api \
     --disable-udev
 
 public:
