@@ -31,6 +31,7 @@ depends:
 - filename: base/perl.bst
 - filename: base/perl-xml-parser.bst
 - filename: base/python2.bst
+- filename: base/python2-docutils.bst
 - filename: base/python2-mako.bst
 - filename: base/python2-setuptools.bst
 - filename: base/python2-usercustomize.bst
