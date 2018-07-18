@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/fontconfig.bst
   - filename: desktop/freetype.bst
+  - filename: desktop/libfdk-aac.bst
   - filename: desktop/mesa.bst
   - filename: desktop/mpg123.bst
   - filename: desktop/openal.bst
@@ -30,6 +31,7 @@ variables:
     --disable-doc \
     --disable-static \
     --enable-gpl \
+    --enable-nonfree \
     --enable-optimizations \
     --enable-libvpx \
     --enable-shared \
@@ -49,12 +51,13 @@ variables:
     --enable-openal \
     --enable-opengl \
     --enable-sdl2 \
+    --enable-encoder=ac3,mp2 \
     --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
     --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
-    --enable-decoder=theora,vorbis,vp8,vp9,mp3,flac,webp \
+    --enable-decoder=theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
     --enable-decoder=rawvideo,png,gif \
-    --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac \
-    --enable-demuxer=ogg,matroska,wav,mp3,gif,flac \
+    --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac,aac,ac3 \
+    --enable-demuxer=ogg,matroska,wav,mp3,gif,flac,aac,ac3,m4a \
     --enable-filter=crop,scale \
     --enable-protocol=file \
     --arch=%{ffmpeg-arch}
