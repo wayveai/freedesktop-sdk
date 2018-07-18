@@ -26,5 +26,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/libsoup/2.60/libsoup-2.60.2.tar.xz
-    ref: 7263cfe18872e2e652c196f5667e514616d9c97c861dfca82a65a55f45f0da01
+    url: https://download.gnome.org/sources/libsoup/2.62/libsoup-2.62.2.tar.xz
+    ref: 9e536fe3da60b25d2c63addb84a9d5072d00b0d8b8cbeabc629a6bcd63f879b6

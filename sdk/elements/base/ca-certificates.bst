@@ -8,7 +8,7 @@ depends:
 config:
   build-commands:
     - |
-      make
+      PYTHON=python3 make
 
   install-commands:
     - |
@@ -38,3 +38,5 @@ sources:
     url: https://salsa.debian.org/debian/ca-certificates.git
     track: master
     ref: 238e0aa38b26bcbd6d0b0130868bec9efa6566be
+  - kind: patch
+    path: patches/ca-certificates-Make-it-possible-to-overwrite-python-version.patch

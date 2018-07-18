@@ -10,7 +10,7 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/python3.bst
+  - filename: base/python2.bst
     type: build
 
 variables:

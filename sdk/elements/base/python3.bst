@@ -65,10 +65,6 @@ public:
           - "%{indep-libdir}/python3.7/lib2to3"
           - "%{indep-libdir}/python3.7/lib2to3/**"
 
-    integration-commands:
-      - test -x "%{prefix}"/bin/python || ln -s python3.7 "%{prefix}"/bin/python
-      - test -x "%{prefix}"/bin/python-config || ln -s python3.7-config "%{prefix}"/bin/python-config
-
 sources:
   - kind: tar
     url: https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
