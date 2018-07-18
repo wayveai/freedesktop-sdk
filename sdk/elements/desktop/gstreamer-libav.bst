@@ -28,3 +28,7 @@ sources:
     submodules:
       common:
         url: freedesktop:gstreamer/common
+      gst-libs/ext/libav:
+        url: https://git.ffmpeg.org/ffmpeg.git
+      gst-libs/ext/gas-preprocessor:
+        url: git://git.libav.org/gas-preprocessor.git
