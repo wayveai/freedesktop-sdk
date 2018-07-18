@@ -33,7 +33,3 @@ depends:
     type: build
   - filename: basesdk-integration.bst
     type: build
-  - filename: flatpak-basesdk-dirs.bst
-    type: build
-  - filename: flatpak-sdk-dirs.bst
-    type: build
