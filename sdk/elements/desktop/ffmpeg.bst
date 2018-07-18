@@ -35,7 +35,6 @@ variables:
     --enable-shared \
     --disable-ffplay \
     --disable-ffprobe \
-    --disable-ffserver \
     --disable-everything \
     --enable-gnutls \
     --enable-libfontconfig \
@@ -74,12 +73,6 @@ public:
           - "%{libdir}/libavformat.so"
           - "%{libdir}/libswresample.so"
 
-sources:
-- kind: git
-  url: https://github.com/FFmpeg/FFmpeg.git
-  track: release/3.4
-  ref: bc839fb39dc376d462856863de2933f0b6b0351a # n3.4.1
-
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
   configure-commands:
@@ -90,3 +83,9 @@ config:
 
   install-commands:
     - make -j1 DESTDIR="%{install-root}" install
+
+sources:
+- kind: git
+  url: https://git.ffmpeg.org/ffmpeg.git
+  track: release/4.0
+  ref: e049f7c24fc6aa5fc925f860e2ad940a75cfd84f # n4.0.1
