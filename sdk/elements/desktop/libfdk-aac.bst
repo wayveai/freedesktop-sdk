@@ -11,6 +11,13 @@ depends:
   - filename: base/pkg-config.bst
     type: build
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libfdk-aac.so"
+
 sources:
   - kind: git
     url: git://people.freedesktop.org/~wtay/fdk-aac
