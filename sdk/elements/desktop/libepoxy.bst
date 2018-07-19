@@ -5,6 +5,16 @@ depends:
   - filename: desktop/mesa.bst
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: desktop/xorg-util-macros.bst
+    type: build
+  - filename: base/python3.bst
+    type: build
 
 public:
   bst:
@@ -14,6 +24,7 @@ public:
           - "%{libdir}/libepoxy.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/anholt/libepoxy/releases/download/1.5.0/libepoxy-1.5.0.tar.xz
-    ref: 4c94995398a6ebf691600dda2e9685a0cac261414175c2adf4645cdfab42a5d5
+  - kind: git
+    url: https://github.com/anholt/libepoxy/
+    track: release/1.5.2
+    ref: 707f50e680ab4f1861b1e54ca6e2907aaca56c12
