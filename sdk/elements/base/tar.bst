@@ -8,5 +8,5 @@ environment:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
-    ref: 402dcfd0022fd7a1f2c5611f5c61af1cd84910a760a44a688e18ddbff4e9f024
+    url: https://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz
+    ref: f1bf92dbb1e1ab27911a861ea8dde8208ee774866c46c0bb6ead41f4d1f4d2d3
