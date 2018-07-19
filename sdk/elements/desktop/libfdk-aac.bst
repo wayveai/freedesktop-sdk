@@ -22,4 +22,4 @@ sources:
   - kind: git
     url: git://people.freedesktop.org/~wtay/fdk-aac
     track: stripped2
-    ref: 4b07abf077727764ba16fe0fe28ce5561e66b809
+    ref: ba7ffc9dd95b73b2b5f465f127609aa4235f6800
