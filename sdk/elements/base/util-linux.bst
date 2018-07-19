@@ -33,5 +33,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.1.tar.xz
-    ref: 1a51b16fa9cd51d26ef9ab52d2f1de12403b810fc8252bf7d478df91b3cddf11
+    url: https://www.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.1.tar.xz
+    ref: 86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2
