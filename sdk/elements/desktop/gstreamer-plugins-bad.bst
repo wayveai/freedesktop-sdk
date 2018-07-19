@@ -5,6 +5,7 @@ depends:
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
+  - filename: desktop/libfdk-aac.bst
   - filename: base/meson.bst
     type: build
   - filename: base/ninja.bst
