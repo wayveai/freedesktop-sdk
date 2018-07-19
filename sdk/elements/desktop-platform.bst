@@ -59,6 +59,7 @@ depends:
 - filename: desktop/multiarch-links.bst
 - filename: desktop/mythes.bst
 - filename: desktop/openal.bst
+- filename: desktop/opencl.bst
 - filename: desktop/orc.bst
 - filename: desktop/os-release.bst
 - filename: desktop/pango.bst
