@@ -21,6 +21,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.16.tar.gz
-    ref: 770fb42c8809d192c661585a0ee9ed9b65ebaca7532abe7dd68eca0e4962e3e6
-
+    url: https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.17.tar.gz
+    ref: 2a07052823788e8614925c5a19ef5b968d8db734fdee656699ea4f97d132418c
