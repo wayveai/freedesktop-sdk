@@ -3,6 +3,16 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/libogg.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
 
 variables:
   conf-local: |
@@ -18,6 +28,7 @@ public:
           - "%{libdir}/libFLAC++.so"
 
 sources:
-  - kind: tar
-    url: https://downloads.xiph.org/releases/flac/flac-1.3.2.tar.xz
-    ref: 91cfc3ed61dc40f47f050a109b08610667d73477af6ef36dcad31c31a4a8d53f
+  - kind: git
+    url: https://git.xiph.org/flac.git
+    track: tag/1.3.2
+    ref: ac39d3719f16dfb6e08d2fbde8ccaf34a266c81d
