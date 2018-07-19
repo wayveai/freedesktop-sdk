@@ -7,6 +7,12 @@ depends:
   - filename: desktop/gtk-doc.bst
     type: build
   - filename: base/glib.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
 
 public:
   bst:
@@ -16,6 +22,7 @@ public:
           - "%{libdir}/libcroco-0.6.so"
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/libcroco/0.6/libcroco-0.6.12.tar.xz
-    ref: ddc4b5546c9fb4280a5017e2707fbd4839034ed1aba5b7d4372212f34f84f860
+  - kind: git
+    url: https://github.com/GNOME/libcroco
+    track: release/0.6.12
+    ref: 0d0162098ac6630113da9e66620ab29459352dd6  # 0.6.12
