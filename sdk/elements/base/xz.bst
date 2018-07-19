@@ -12,5 +12,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://tukaani.org/xz/xz-5.2.3.tar.xz
-    ref: 7876096b053ad598c31f6df35f7de5cd9ff2ba3162e5a5554e4fc198447e0347
+    url: https://tukaani.org/xz/xz-5.2.4.tar.xz
+    ref: 9717ae363760dedf573dad241420c5fea86256b65bc21d2cf71b2b12f0544f4b
