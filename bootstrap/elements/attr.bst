@@ -24,14 +24,14 @@ public:
           - "%{sysroot}%{libdir}/libattr.so"
 
 variables:
-  builddir: ''
   build-triplet: "$(sh /config/config.guess)"
   host-triplet: "%{triplet}"
 
 config:
   install-commands:
     - |
-      %{cross-install} install-dev install-lib
+      cd %{builddir}
+      %{cross-install}
 
     # Man pages will be provided by Linux's man-pages
     # sdk/elements/base/man-pages.bst
@@ -43,5 +43,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://download.savannah.nongnu.org/releases/attr/attr-2.4.47.src.tar.gz
-    ref: 25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859
+    url: https://download.savannah.nongnu.org/releases/attr/attr-2.4.48.tar.gz
+    ref: 5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7

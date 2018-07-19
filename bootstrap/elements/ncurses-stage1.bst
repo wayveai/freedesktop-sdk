@@ -20,5 +20,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz
-  ref: f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260
+  url: https://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
+  ref: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
