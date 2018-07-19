@@ -5,20 +5,14 @@ depends:
   type: build
 - filename: dependencies/config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
+- filename: tools-lib-path.bst
+  type: runtime
 
 variables:
   build-triplet: "$(sh /config/config.guess)"
   host-triplet: "$(sh /config/config.guess)"
+  prefix: "%{tools}"
+  lib: "lib"
 
 sources:
   - kind: tar

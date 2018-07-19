@@ -17,7 +17,6 @@ depends:
     type: build
   - filename: base/flex.bst
     type: build
-  - filename: base/elfutils.bst
   - filename: base/meson.bst
     type: build
   - filename: base/ninja.bst

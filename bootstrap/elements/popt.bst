@@ -1,10 +1,11 @@
 kind: autotools
-description: zlib
 
 depends:
   - filename: dependencies/base-sdk.bst
     type: build
   - filename: dependencies/config.bst
+    type: build
+  - filename: file.bst
     type: build
   - filename: linux-headers.bst
     type: build
@@ -20,10 +21,8 @@ depends:
     type: build
 
 variables:
-  conf-args: |
-    --prefix=%{prefix} \
-    --sharedlibdir=%{libdir} \
-    --libdir=%{libdir}
+  host-triplet: "%{triplet}"
+  build-triplet: "$(sh /config/config.guess)"
 
 config:
   install-commands:
@@ -34,17 +33,7 @@ config:
     - |
       %{delete_libtool_files}
 
-environment:
-  CHOST: "%{triplet}"
-
-public:
-  bst:
-    split-rules:
-      devel:
-        (>):
-          - "%{sysroot}%{libdir}/libz.so"
-
 sources:
   - kind: tar
-    url: https://zlib.net/zlib-1.2.11.tar.xz
-    ref: 4ff941449631ace0d4d203e3483be9dbc9da454084111f97ea0a2114e19bf066
+    url: http://ftp.rpm.org/mirror/popt/popt-1.16.tar.gz
+    ref: e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8

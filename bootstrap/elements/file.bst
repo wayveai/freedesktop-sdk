@@ -15,9 +15,11 @@ depends:
   type: build
 - filename: cross-installation-links.bst
   type: build
-- filename: files-stage1.bst
+- filename: file-stage1.bst
   type: build
 - filename: zlib.bst
+- filename: debugedit-host.bst
+  type: build
 
 variables:
   build-triplet: "$(sh /config/config.guess)"

@@ -19,6 +19,8 @@ depends:
 - filename: coreutils-manpages.bst
   type: build
 - filename: acl.bst
+- filename: debugedit-host.bst
+  type: build
 
 variables:
   build-triplet: "$(sh /config/config.guess)"

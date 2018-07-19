@@ -2,7 +2,6 @@ kind: manual
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/bzip2.bst
 
 config:
   configure-commands:

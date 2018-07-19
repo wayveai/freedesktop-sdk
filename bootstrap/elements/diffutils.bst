@@ -15,6 +15,8 @@ depends:
   type: build
 - filename: cross-installation-links.bst
   type: build
+- filename: debugedit-host.bst
+  type: build
 
 variables:
   build-triplet: "$(sh /config/config.guess)"

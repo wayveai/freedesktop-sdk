@@ -8,7 +8,6 @@ depends:
     type: build
   - filename: base/libpipeline.bst
   - filename: base/gzip.bst
-  - filename: base/bzip2.bst
   - filename: base/xz.bst
   - filename: base/lzip.bst
 

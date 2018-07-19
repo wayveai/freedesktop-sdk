@@ -13,9 +13,13 @@ depends:
     type: build
   - filename: glibc.bst
     type: build
-  - filename: cross-installation-links.bst
+  - filename: zlib.bst
     type: build
-  - filename: ncurses.bst
+  - filename: bzip2.bst
+    type: build
+  - filename: libstdc++-stage1.bst
+    type: build
+  - filename: cross-installation-links.bst
     type: build
   - filename: debugedit-host.bst
     type: build
@@ -23,14 +27,13 @@ depends:
 variables:
   build-triplet: "$(sh /config/config.guess)"
   host-triplet: "%{triplet}"
-  # Behavior of malloc cannot be tested when cross-compiling so
-  # ac_cv_func_malloc_0_nonull is set manually.
-  conf-local: |
-    --with-ncurses \
-    ac_cv_func_malloc_0_nonnull=yes \
-    ac_cv_func_realloc_0_nonnull=yes
 
 config:
+  configure-commands:
+    (<):
+      - |
+        autoreconf -f -v -i
+
   install-commands:
     - |
       cd "%{builddir}"
@@ -44,9 +47,14 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libprocps.so"
+          - "%{sysroot}%{bindir}/**"
+          - "%{sysroot}%{libdir}/libasm.so"
+          - "%{sysroot}%{libdir}/libdw.so"
+          - "%{sysroot}%{libdir}/libelf.so"
 
 sources:
-  - kind: tar
-    url: https://download.sourceforge.net/procps-ng/procps-ng-3.3.12.tar.xz
-    ref: 6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4
+- kind: tar
+  url: ftp://sourceware.org/pub/elfutils/0.173/elfutils-0.173.tar.bz2
+  ref: b76d8c133f68dad46250f5c223482c8299d454a69430d9aa5c19123345a000ff
+- kind: patch
+  path: patches/elfutils-bz2-link.patch
