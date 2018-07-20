@@ -27,6 +27,6 @@ public:
 
 sources:
   - kind: tar
-    url: https://mpg123.org/download/mpg123-1.25.7.tar.bz2
-    ref: 31b15ebcf26111b874732e07c8e60de5053ee555eea15fb70c657a4f9f0344f3
+    url: https://www.mpg123.de/download/mpg123-1.25.10.tar.bz2
+    ref: 6c1337aee2e4bf993299851c70b7db11faec785303cfca3a5c3eb5f329ba7023
 
