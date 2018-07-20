@@ -6,6 +6,12 @@ depends:
   - filename: base/jpeg.bst
   - filename: base/giflib.bst
   - filename: base/libtiff.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
 
 variables:
   conf-local: |
@@ -31,6 +37,6 @@ public:
           - "%{libdir}/libwebp.so"
 
 sources:
-  - kind: tar
-    url: https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.1.tar.gz
-    ref: 06503c782d9f151baa325591c3579c68ed700ffc62d4f5a32feead0ff017d8ab
+  - kind: git
+    url: https://chromium.googlesource.com/webm/libwebp
+    ref: 698b8844e38a0c5ca50bb20f866e71291bfc3b36  # 1.0.0
