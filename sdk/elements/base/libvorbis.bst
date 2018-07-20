@@ -14,6 +14,6 @@ public:
           - "%{libdir}/libvorbisenc.so"
 
 sources:
-  - kind: tar
-    url: https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz
-    ref: 54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1
+  - kind: git
+    url: https://github.com/xiph/vorbis
+    ref: d22c3ab5f633460abc2532feee60ca0892134cbf  # 1.3.6
