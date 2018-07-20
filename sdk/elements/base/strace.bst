@@ -3,7 +3,10 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
 
+variables:
+  conf-local: "--enable-mpers=check"
+
 sources:
   - kind: tar
-    url: https://sourceforge.net/projects/strace/files/strace/4.19/strace-4.19.tar.xz/download
-    ref: 7c93ebc6c29280f47c24a0eb86873a99ccb2cac6512c60a60ba4ef99ab807281
+    url: https://github.com/strace/strace/releases/download/v4.23/strace-4.23.tar.xz
+    ref: 7860a6965f1dd832747bd8281a04738274398d32c56e9fbd0a68b1bb9ec09aad

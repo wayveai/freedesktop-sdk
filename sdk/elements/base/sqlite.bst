@@ -16,7 +16,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://sqlite.org/2017/sqlite-autoconf-3210000.tar.gz
-    ref: d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbbbe3
-
-
+    url: https://sqlite.org/2018/sqlite-autoconf-3240000.tar.gz
+    ref: d9d14e88c6fb6d68de9ca0d1f9797477d82fc3aed613558f87ffbdbbc5ceb74a
