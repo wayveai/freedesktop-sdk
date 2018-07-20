@@ -46,7 +46,7 @@ config:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz
-  ref: 92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e
+  url: https://ftp.gnu.org/gnu/coreutils/coreutils-8.30.tar.xz
+  ref: e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057
 - kind: patch
   path: patches/coreutils-no-man-deps.patch

@@ -48,5 +48,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/bash/bash-4.4.12.tar.gz
-    ref: 57d8432be54541531a496fd4904fdc08c12542f43605a9202594fa5d5f9f2331
+    url: https://ftp.gnu.org/gnu/bash/bash-4.4.18.tar.gz
+    ref: 604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23

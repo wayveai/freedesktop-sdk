@@ -27,18 +27,18 @@ public:
           - "%{sysroot}%{libexecdir}/libacl.so"
 
 variables:
-  builddir: ''
   build-triplet: "$(sh /config/config.guess)"
   host-triplet: "%{triplet}"
 
 config:
   install-commands:
     - |
-      %{cross-install} install-dev install-lib
+      cd %{builddir}
+      %{cross-install}
     - |
       %{delete_libtool_files}
 
 sources:
   - kind: tar
-    url: https://download.savannah.nongnu.org/releases/acl/acl-2.2.52.src.tar.gz
-    ref: 179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23
+    url: https://download.savannah.nongnu.org/releases/acl/acl-2.2.53.tar.gz
+    ref: 06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7
