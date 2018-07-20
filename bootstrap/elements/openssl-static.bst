@@ -29,8 +29,8 @@ variables:
 
 environment:
   CC: "%{triplet}-gcc"
-  AR: "%{triplet}-ar"
-  RANLIB: "%{triplet}-ranlib"
+  AR: "%{triplet}-gcc-ar"
+  RANLIB: "%{triplet}-gcc-ranlib"
 
 config:
   configure-commands:
