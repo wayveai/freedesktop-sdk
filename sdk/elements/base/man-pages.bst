@@ -12,6 +12,6 @@ config:
       make DESTDIR="%{install-root}" install
 
 sources:
-  - kind: tar
-    url: https://www.kernel.org/pub/linux/docs/man-pages/man-pages-4.14.tar.xz
-    ref: 3052b87898c313c089848a913e5cf44a0565cc4d21d94119ef6586d971f5c971
+  - kind: git
+    url: https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
+    ref: 7c76c80c8ea19217556179ffefc2296f78dba35e  # 4.16
