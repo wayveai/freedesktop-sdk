@@ -13,7 +13,7 @@ config:
         'cflags': '${CFLAGS}',
         'cxxflags': '${CXXFLAGS}',
         'cppflags': '${CPPFLAGS}',
-        'ldflags': '${LDFLAGS}'
+        'ldflags': '-L/app/lib ${LDFLAGS}'
       }
       EOF
 
