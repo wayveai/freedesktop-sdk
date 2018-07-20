@@ -40,7 +40,7 @@ variables:
     --with-crypto=openssl \
     --without-archive \
     --with-external-db \
-    LDFLAGS="${LDFLAGS} -lbz2"
+    %{cross-ldflags}
 
 config:
   configure-commands:

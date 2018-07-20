@@ -29,7 +29,7 @@ variables:
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
     --enable-acl \
-    ac_cv_search_acl_get_file="-lattr -lacl"
+    %{cross-ldflags}
 
 config:
   build-commands:

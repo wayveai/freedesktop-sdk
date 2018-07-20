@@ -27,6 +27,11 @@ variables:
     - target_arch == "arm":
         openssl-target: linux-generic32
 
+environment:
+  CC: "%{triplet}-gcc"
+  AR: "%{triplet}-ar"
+  RANLIB: "%{triplet}-ranlib"
+
 config:
   configure-commands:
     - |

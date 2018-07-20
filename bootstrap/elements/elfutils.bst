@@ -27,6 +27,8 @@ depends:
 variables:
   build-triplet: "$(sh /config/config.guess)"
   host-triplet: "%{triplet}"
+  conf-local: |
+    %{cross-ldflags}
 
 config:
   configure-commands:
@@ -56,5 +58,3 @@ sources:
 - kind: tar
   url: ftp://sourceware.org/pub/elfutils/0.173/elfutils-0.173.tar.bz2
   ref: b76d8c133f68dad46250f5c223482c8299d454a69430d9aa5c19123345a000ff
-- kind: patch
-  path: patches/elfutils-bz2-link.patch

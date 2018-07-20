@@ -27,7 +27,8 @@ variables:
 
   conf-local: |
     --with-curses \
-    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
+    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}" \
+    %{cross-ldflags}
 
 config:
   install-commands:
@@ -54,8 +55,3 @@ sources:
 - kind: tar
   url: https://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz
   ref: 750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334
-
-  # Readline should link to ncurses so that dependencies on readline
-  # that do not use ncurses directly do not fail on linking.
-- kind: patch
-  path: patches/readline-link-to-ncurses.patch
