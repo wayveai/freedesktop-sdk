@@ -2,6 +2,12 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
 
 public:
   bst:
