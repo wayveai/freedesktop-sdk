@@ -33,6 +33,13 @@ config:
     - |
       %{delete_libtool_files}
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{sysroot}%{libdir}/libpopt.so"
+
 sources:
   - kind: tar
     url: http://ftp.rpm.org/mirror/popt/popt-1.16.tar.gz

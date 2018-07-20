@@ -49,7 +49,7 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libbz2.so"
+          - "%{sysroot}%{libdir}/libbz2.so"
 
 sources:
   - kind: tar
