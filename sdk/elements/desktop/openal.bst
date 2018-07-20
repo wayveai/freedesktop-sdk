@@ -27,6 +27,6 @@ public:
           - "%{libdir}/libopenal.so"
 
 sources:
-  - kind: tar
-    url: http://kcat.strangesoft.net/openal-releases/openal-soft-1.18.2.tar.bz2
-    ref: 9f8ac1e27fba15a59758a13f0c7f6540a0605b6c3a691def9d420570506d7e82
+  - kind: git
+    url: https://github.com/kcat/openal-soft
+    ref: ce6076091bac3c00cd10803916e8911495580bd0 # 1.18.2
