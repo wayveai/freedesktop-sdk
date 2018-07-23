@@ -3,6 +3,8 @@ description: pkg-config
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
   - filename: base/automake.bst
     type: build
   - filename: base/libtool.bst
@@ -23,6 +25,6 @@ public:
           - "%{libdir}/libpkgconf.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/pkgconf/pkgconf/archive/pkgconf-1.4.2.tar.gz
-    ref: 24307a1970e51809b61219cd3c1ac61f44efb5f3867024672b57a76fa6bc6e82
+  - kind: git
+    url: https://github.com/pkgconf/pkgconf
+    ref: 4735e17287003b24e86b909f473af14771b8b32c  # 1.5.2
