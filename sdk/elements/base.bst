@@ -33,7 +33,6 @@ depends:
 - filename: base/python2.bst
 - filename: base/python2-docutils.bst
 - filename: base/python2-mako.bst
-- filename: base/python2-setuptools.bst
 - filename: base/python2-usercustomize.bst
 - filename: base/python3-mako.bst
 - filename: base/openssh.bst

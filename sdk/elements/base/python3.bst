@@ -3,7 +3,6 @@ description: Python 3
 
 depends:
   - filename: bootstrap-import.bst
-    # glib depends on python
   - filename: base/pkg-config.bst
     type: build
   - filename: base/expat.bst
@@ -14,10 +13,9 @@ depends:
   - filename: base/xz.bst
 
 variables:
-  # We need to install pip separatly to avoid conflict with setuptools
   conf-local: |
     --enable-shared \
-    --without-ensurepip \
+    --with-ensurepip=yes \
     --with-system-expat \
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \

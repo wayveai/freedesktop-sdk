@@ -4,8 +4,6 @@ description: Mercurial source control management
 depends:
   - filename: bootstrap-import.bst
   - filename: base/python2.bst
-  - filename: base/python2-setuptools.bst
-    type: build
   - filename: base/python2-docutils.bst
     type: build
 
