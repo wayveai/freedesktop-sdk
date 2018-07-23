@@ -25,6 +25,6 @@ environment-nocache:
 
 sources:
   - kind: tar
-    url: http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz
-    ref: 9fd529867402456bd826fe0e5588d35b3a2e27e586a2fd838d1352b71c2ed73f
+    url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
+    ref: 1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216
 
