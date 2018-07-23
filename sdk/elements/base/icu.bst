@@ -25,7 +25,7 @@ public:
 
 sources:
   - kind: tar
-    url: http://download.icu-project.org/files/icu4c/61.1/icu4c-61_1-src.tgz
-    ref: d007f89ae8a2543a53525c74359b65b36412fa84b3349f1400be6dcf409fafef
+    url: https://sourceforge.net/projects/icu/files/ICU4C/62.1/icu4c-62_1-src.tgz
+    ref: 3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3
   - kind: patch
     path: patches/icu-fix-shared-linking.patch
