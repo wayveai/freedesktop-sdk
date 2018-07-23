@@ -10,6 +10,7 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: desktop/fribidi.bst
 
 public:
   bst:
