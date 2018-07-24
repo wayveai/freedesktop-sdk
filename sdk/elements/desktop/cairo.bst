@@ -50,4 +50,4 @@ sources:
   - kind: git
     url: freedesktop:cairo
     track: master
-    ref: 95c464d5feaae58b6cc0990434ce2498cc315dc6 #  1.15.10
+    ref: 7149686456ec3c481fa1d3dbe76a0dab1e42b519 # 1.15.12
