@@ -19,6 +19,7 @@ depends:
 
 variables:
   conf-local: |
+    --with-module-config=/etc/pkcs11/modules/ \
     --with-trust-paths=%{ca_path}
 
 public:
