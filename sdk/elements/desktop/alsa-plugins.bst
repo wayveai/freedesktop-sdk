@@ -23,5 +23,5 @@ config:
 
 sources:
   - kind: tar
-    url: ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.4.tar.bz2
-    ref: 530d1c3bdaeb058f2a03607a33b9e16ee5369bfd30a96bc09bd2c69b4ddd1a8a
+    url: ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.6.tar.bz2
+    ref: 6f1d31ebe3b1fa1cc8dade60b7bed1cb2583ac998167002d350dc0a5e3e40c13
