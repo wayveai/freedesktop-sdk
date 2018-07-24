@@ -45,5 +45,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.8.tar.xz
-    ref: eb0e2cfd5a6070615efea4c87b1fc539f4566085aa5f5b41945f679d9d61dd4c
+    url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.10.tar.xz
+    ref: 43453b8cde676b203830e70981e5aff91c7809233eeca96edaf8b73d2d047a21
