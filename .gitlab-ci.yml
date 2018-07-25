@@ -260,6 +260,16 @@ minimal_systemd_vm_image_x86_64:
     DIALOG: root-login
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
+  before_script:
+    - |
+      dnf install -y gpg
+
+    - |
+      [ -n "${FREEDESKTOP_GPG_PRIV}" ]
+
+    - |
+      echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
+
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" fetch all.bst
@@ -290,17 +300,17 @@ minimal_systemd_vm_image_x86_64:
              continue
            fi
         fi
-        flatpak build-export --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
+        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
       done
     - |
       case "${ARCH}" in
         "i586")
-          flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/master
-          flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/master
           ;;
         "arm")
-          flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/master
-          flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/master
           ;;
       esac
     - echo "Push to the releases ostree repo"
