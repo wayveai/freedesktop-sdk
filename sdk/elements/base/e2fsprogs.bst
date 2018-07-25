@@ -28,5 +28,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.44.0.tar.gz
-    ref: 04abf8c2c7c9a70aa3aa9757da23a929baf18423ccd06e8a0320c2effe091fd1
+    url: https://sourceforge.net/projects/e2fsprogs/files/e2fsprogs/v1.44.3/e2fsprogs-1.44.3.tar.gz
+    ref: c2ae6d8ce6fb96b55886cf761411fc22ab41976f4f8297fc54c706df442483be
