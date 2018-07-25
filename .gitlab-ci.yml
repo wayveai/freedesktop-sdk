@@ -260,7 +260,7 @@ minimal_systemd_vm_image_x86_64:
     DIALOG: root-login
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
-  before_script:
+  script:
     - |
       dnf install -y gpg
 
@@ -270,7 +270,6 @@ minimal_systemd_vm_image_x86_64:
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
-  script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" fetch all.bst
     - ${BST} -o target_arch "${ARCH}" build all.bst
