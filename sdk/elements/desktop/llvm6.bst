@@ -41,6 +41,7 @@ variables:
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
+    -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
 
 config:
