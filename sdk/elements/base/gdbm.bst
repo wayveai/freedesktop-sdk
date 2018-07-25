@@ -12,5 +12,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/gdbm/gdbm-1.13.tar.gz
-    ref: 9d252cbd7d793f7b12bcceaddda98d257c14f4d1890d851c386c37207000a253
+    url: https://ftp.gnu.org/gnu/gdbm/gdbm-1.16.tar.gz
+    ref: c8a18bc6259da0c3eefefb018f8aa298fddc6f86c6fc0f0dec73270896ab512f
