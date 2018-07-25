@@ -27,6 +27,8 @@ depends:
 - filename: desktop/glib-networking.bst
 - filename: desktop/gnu-free-fonts.bst
 - filename: desktop/gobject-introspection.bst
+- filename: desktop/google-crosextra-caladea.bst
+- filename: desktop/google-crosextra-carlito.bst
 - filename: desktop/graphite2.bst
 - filename: desktop/gstreamer-plugins-bad.bst
 - filename: desktop/gstreamer-plugins-base.bst
