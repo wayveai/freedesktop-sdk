@@ -24,5 +24,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://download.fcitx-im.org/fcitx/fcitx-4.2.9.5.tar.xz
-  ref: 9479cef9b66e53df0e874637d55759ec08a195cb8790513e133135d8e49ad911
+  url: https://download.fcitx-im.org/fcitx/fcitx-4.2.9.6.tar.xz
+  ref: d55eee3f094037b5c32f0c5397d585fdf932cbc7d2091ed6f78fd7a9ae512c47
