@@ -5,5 +5,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://download.savannah.gnu.org/releases/lzip/lzip-1.19.tar.gz
-    ref: ffadc4f56be1bc0d3ae155ec4527bd003133bdc703a753b2cc683f610e646ba9
+    url: https://download.savannah.gnu.org/releases/lzip/lzip-1.20.tar.gz
+    ref: c93b81a5a7788ef5812423d311345ba5d3bd4f5ebf1f693911e3a13553c1290c

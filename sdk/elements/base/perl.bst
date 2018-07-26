@@ -32,7 +32,7 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.cpan.org/src/5.0/perl-5.26.1.tar.gz
-    ref: e763aa485e8dc1a70483dbe6d615986bbf32b977f38016480d68c99237e701dd
+    url: https://www.cpan.org/src/5.0/perl-5.28.0.tar.gz
+    ref: 7e929f64d4cb0e9d1159d4a59fc89394e27fa1f7004d0836ca0d514685406ea8
   - kind: local
     path: files/perl/config.over

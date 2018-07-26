@@ -62,7 +62,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-11.1.tar.xz
-    ref: f2521c525a77166189e3cb9169f75c2ee2b82fa3fcf9476024fbc2c3a6c9cd9e
-  - kind: patch
-    path: patches/pulseaudio-glibc-2.27.patch
+    url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.gz
+    ref: 67d1531576231e98d24bc307e980237bdca5142bda8920af89e6e6e887cb90ec

@@ -63,5 +63,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
-    ref: 71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66
+    url: https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tgz
+    ref: 18617d1f15a380a919d517630a9cd85ce17ea602f9bbdc58ddc672df4b0239db

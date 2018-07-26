@@ -4,6 +4,12 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
   - filename: base/krb5.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
 
 variables:
   builddir: ''
@@ -58,6 +64,6 @@ public:
 
 sources:
   # Too many things depends on 1.0.
-  - kind: tar
-    url: https://www.openssl.org/source/openssl-1.0.2o.tar.gz
-    ref: ec3f5c9714ba0fd45cb4e087301eb1336c317e0d20b575a125050470e8089e4d
+  - kind: git
+    url: https://github.com/openssl/openssl
+    ref: 3ce7bc40a3c48da1c96c2d04c10045bd797c6aa3  # 1.0.2o

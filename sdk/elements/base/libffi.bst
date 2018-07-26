@@ -3,6 +3,14 @@ description: libffi
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/texinfo.bst
+    type: build
 
 public:
   bst:
@@ -12,6 +20,7 @@ public:
           - "%{libdir}/libffi.so"
 
 sources:
-  - kind: tar
-    url: ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
-    ref: d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37
+  - kind: git
+    url: https://github.com/libffi/libffi
+    track: release/v3.2.1
+    ref: 20562ac0427c3578250d04c6e34fb0127d4551cf

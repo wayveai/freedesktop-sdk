@@ -2,6 +2,14 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
 
 public:
   bst:
@@ -11,6 +19,7 @@ public:
           - "%{libdir}/libexif.so"
 
 sources:
-  - kind: tar
-    url: https://download.sourceforge.net/libexif/libexif-0.6.21.tar.bz2
-    ref: 16cdaeb62eb3e6dfab2435f7d7bccd2f37438d21c5218ec4e58efa9157d4d41a
+  - kind: git
+    url: https://github.com/libexif/libexif
+    track: release/libexif-0_6_21-release
+    ref: 9ab318d93b274df204c195c9a729f778401a8d8f

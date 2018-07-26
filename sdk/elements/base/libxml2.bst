@@ -5,6 +5,14 @@ depends:
   - filename: base/xz.bst
   - filename: base/python3.bst
     type: build
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 variables:
   conf-local: |
@@ -24,9 +32,9 @@ public:
           - "%{libdir}/libxml2.so"
 
 sources:
-  - kind: tar
-    url: ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz
-    ref: 0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/libxml2
+    ref: 18890f471c420411aa3c989e104d090966ec9dbf  # 2.9.8
   - kind: patch
     path: patches/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
   - kind: patch

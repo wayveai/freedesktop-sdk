@@ -12,5 +12,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.31.tar.bz2
-    ref: 40d0a823c9329478063903192a1f82496083b277265904878f4bc09e0db7a4ef
+    url: https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.32.tar.bz2
+    ref: c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca

@@ -12,5 +12,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.10.tar.xz
-    ref: 180eff7b0309ca19a02d5864e744185d715f021398a096fec6cf960f8ebfaa2b
+    url: https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.12.tar.xz
+    ref: 452dcc4d3a96c01f80f7c291b42be11863cd1554ff78b93e110becce6e00b149

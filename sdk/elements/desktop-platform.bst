@@ -19,6 +19,7 @@ depends:
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst
+- filename: desktop/fribidi.bst
 - filename: desktop/gcab.bst
 - filename: desktop/gdk-pixbuf.bst
 - filename: desktop/geoclue2.bst

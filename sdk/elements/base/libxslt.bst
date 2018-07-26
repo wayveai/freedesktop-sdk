@@ -3,6 +3,14 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/libxml2.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
+  - filename: base/pkg-config.bst
+    type: build
 
 public:
   bst:
@@ -13,6 +21,6 @@ public:
           - "%{libdir}/libexslt.so"
 
 sources:
-  - kind: tar
-    url: ftp://xmlsoft.org/libxml2/libxslt-1.1.31.tar.gz
-    ref: db25e96b6b801144277e67c05b10560ac09dfff82ccd53a154ce86e43622f3ab
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/libxslt
+    ref: 8307b072adb86c8064897f4c5e12e5ae142f3bff  # 1.1.32
