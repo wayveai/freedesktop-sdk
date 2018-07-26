@@ -19,7 +19,7 @@ variables:
 sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-good
-    track: 1.14.2
+    track: 1.14
     ref: a0f3d00302fe733ccbc6f308799dd53a109537b7 # 1.14.2
     submodules:
       common:
