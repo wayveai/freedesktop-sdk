@@ -30,5 +30,5 @@ public:
 sources:
   - kind: git
     url: https://git.xiph.org/flac.git
-    track: tag/1.3.2
-    ref: ac39d3719f16dfb6e08d2fbde8ccaf34a266c81d
+    track: 1.3.2
+    ref: ac39d3719f16dfb6e08d2fbde8ccaf34a266c81d # 1.3.2
