@@ -3,20 +3,24 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
 
-variables:
-  make-args: |
-    TOPDIR="%{prefix}" \
-    MANDIR="%{mandir}" \
-    TZDIR="%{datadir}/zoneinfo"
-
 config:
   build-commands:
     - |
-      make %{make-args}
+      make
 
   install-commands:
     - |
-      make %{make-args} -j1 DESTDIR="%{install-root}" install
+      make -j1 DESTDIR="%{install-root}" install
+
+    # We're really only interested in the timezone data
+    - |
+      rm -rf "%{install-root}%{bindir}"
+    - |
+      rm -rf "%{install-root}/etc"
+    - |
+      rm -rf "%{install-root}%{indep-libdir}"
+    - |
+      rm -rf "%{install-root}%{prefix}/sbin"
 
     # Man pages are provided by Linux's man-pages
     # sdk/elements/base/man-pages.bst
