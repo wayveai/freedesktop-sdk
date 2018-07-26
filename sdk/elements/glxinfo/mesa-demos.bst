@@ -24,5 +24,5 @@ environment:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/demos/8.3.0/mesa-demos-8.3.0.tar.bz2
-    ref: c173154bbd0d5fb53d732471984def42fb1b14ac85fcb834138fb9518b3e0bef
+    url: https://mesa.freedesktop.org/archive/demos/mesa-demos-8.4.0.tar.gz
+    ref: b997fe1a07584fdc9f25fc9807ea9fd8df15032d6cf1631aa3ba69f8fe09d633
