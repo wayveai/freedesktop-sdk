@@ -32,6 +32,7 @@ variables:
     --with-curses \
     --with-installed-readline="/readline-separate-install%{prefix}" \
     --enable-job-control \
+    --without-bash-malloc \
     ac_cv_rl_version=7.0 \
     bash_cv_job_control_missing=present \
     bash_cv_termcap_lib=libtinfo
