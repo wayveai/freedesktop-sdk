@@ -97,8 +97,8 @@ public:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
-  ref: 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
+  url: https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+  ref: 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
 - kind: tar
   url: https://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
   directory: gmp
