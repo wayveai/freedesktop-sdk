@@ -15,6 +15,7 @@ depends:
 - filename: desktop/dconf.bst
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst
+- filename: desktop/emoji-one-font.bst
 - filename: desktop/ffmpeg.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
@@ -26,6 +27,8 @@ depends:
 - filename: desktop/glib-networking.bst
 - filename: desktop/gnu-free-fonts.bst
 - filename: desktop/gobject-introspection.bst
+- filename: desktop/google-crosextra-caladea.bst
+- filename: desktop/google-crosextra-carlito.bst
 - filename: desktop/graphite2.bst
 - filename: desktop/gstreamer-plugins-bad.bst
 - filename: desktop/gstreamer-plugins-base.bst
