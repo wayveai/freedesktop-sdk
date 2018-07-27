@@ -16,6 +16,8 @@ depends:
   - filename: cross-installation-links.bst
     type: build
   - filename: attr.bst
+  - filename: debugedit-host.bst
+    type: build
 
 public:
   bst:

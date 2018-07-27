@@ -12,7 +12,6 @@ depends:
   - filename: base/openssl.bst
   - filename: base/sqlite.bst
   - filename: base/xz.bst
-  - filename: base/bzip2.bst
 
 variables:
   # We need to install pip separatly to avoid conflict with setuptools

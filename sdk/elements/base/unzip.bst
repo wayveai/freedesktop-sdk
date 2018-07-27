@@ -2,7 +2,6 @@ kind: manual
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/bzip2.bst
 
 variables:
   target: "linux_noasm"

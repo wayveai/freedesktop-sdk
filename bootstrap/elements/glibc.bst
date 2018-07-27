@@ -12,6 +12,8 @@ depends:
   type: build
 - filename: binutils-stage1.bst
   type: build
+- filename: debugedit-host.bst
+  type: build
 
 config:
   configure-commands:

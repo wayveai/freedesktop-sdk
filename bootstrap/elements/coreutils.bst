@@ -19,6 +19,8 @@ depends:
 - filename: coreutils-manpages.bst
   type: build
 - filename: acl.bst
+- filename: debugedit-host.bst
+  type: build
 
 variables:
   build-triplet: "$(sh /config/config.guess)"
@@ -27,7 +29,7 @@ variables:
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
     --enable-acl \
-    ac_cv_search_acl_get_file="-lattr -lacl"
+    %{cross-ldflags}
 
 config:
   build-commands:
