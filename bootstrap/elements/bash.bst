@@ -4,7 +4,7 @@ description: GNU Bash
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 - filename: linux-headers.bst
   type: build
@@ -24,7 +24,7 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   host-triplet: "%{triplet}"
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected

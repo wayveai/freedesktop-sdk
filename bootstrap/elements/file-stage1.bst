@@ -3,14 +3,14 @@ kind: autotools
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 - filename: tools-lib-path.bst
   type: runtime
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   prefix: "%{tools}"
   lib: "lib"
 

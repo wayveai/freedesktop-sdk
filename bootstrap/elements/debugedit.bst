@@ -3,7 +3,7 @@ kind: autotools
 depends:
   - filename: dependencies/base-sdk.bst
     type: build
-  - filename: dependencies/config.bst
+  - filename: gnu-config.bst
     type: build
   - filename: file.bst
     type: build
@@ -31,7 +31,7 @@ depends:
 variables:
   builddir: ""
   host-triplet: "%{triplet}"
-  build-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   conf-link-args: |
     --disable-shared \
     --disable-static
