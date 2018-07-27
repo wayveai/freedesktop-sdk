@@ -16,6 +16,7 @@ depends:
 - filename: gawk.bst
 - filename: gcc.bst
 - filename: glibc.bst
+- filename: gnu-config.bst
 - filename: grep.bst
 - filename: linux-headers.bst
 - filename: make.bst
