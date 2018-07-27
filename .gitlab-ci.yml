@@ -13,7 +13,6 @@ variables:
   BST: bst --colors
 
 stages:
-  - build
   - flatpak
   - vm
   - publish_x86_64
@@ -95,8 +94,8 @@ before_script:
 
 
 
-.build_template: &build_definition
-  stage: build
+.flatpak_template: &flatpak_definition
+  stage: flatpak
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
@@ -108,50 +107,11 @@ before_script:
         cat found_so_files.txt 1>&2
         false
       fi
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
-    - master
-  <<: *gitlab_cache_pull
 
-build_x86_64:
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
-
-build_i586:
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: i586
-
-build_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
-  <<: *build_definition
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
-
-build_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
-  <<: *build_definition
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
-
-
-.flatpak_template: &flatpak_definition
-  stage: flatpak
-  script:
-    - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    # Do not run basic flatpak app on i586, see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues/279
+    - if [ "${ARCH}" = "i586" ]; then
+        exit 0;
+      fi
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
@@ -164,24 +124,23 @@ build_arm:
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpakarch="${ARCH/i586/i386}"
     - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
     - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//unstable
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//unstable
+    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//unstable
+    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//unstable
 
     - echo "Build basic flatpak application  (script)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_hello tests/org.flatpak.Hello.json
+    - flatpak-builder --arch="${ARCH}" build_folder_hello tests/org.flatpak.Hello.json
     - echo "Build basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_gnu_hello tests/org.gnu.hello.json
+    - flatpak-builder --arch="${ARCH}" build_folder_gnu_hello tests/org.gnu.hello.json
 
     - echo "Run basic flatpak application (script)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
+    - flatpak-builder --arch="${ARCH}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
     - echo "Run basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
+    - flatpak-builder --arch="${ARCH}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
   artifacts:
     when: always
     paths:
@@ -191,18 +150,21 @@ build_arm:
   <<: *gitlab_cache_pull
 
 app_x86_64:
-  dependencies:
-    - build_x86_64
   <<: *flatpak_definition
   tags:
     - x86_64
   variables:
     ARCH: x86_64
 
+app_i586:
+  <<: *flatpak_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: i586
+
 app_aarch64:
   image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
-  dependencies:
-    - build_aarch64
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -211,8 +173,6 @@ app_aarch64:
 
 app_arm:
   image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
-  dependencies:
-    - build_arm
   <<: *flatpak_definition
   tags:
     - armhf
