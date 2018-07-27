@@ -40,5 +40,5 @@ public:
 sources:
   - kind: git
     url: https://github.com/NVIDIA/libglvnd.git
-    track: release/1.0.0
+    track: v1.0.0
     ref: 005fd3a0c449f809d0128921da8ef6762fecffc9 #  v1.0.0
