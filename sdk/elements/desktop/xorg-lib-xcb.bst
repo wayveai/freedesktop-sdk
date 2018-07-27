@@ -7,7 +7,12 @@ depends:
   - filename: desktop/xorg-util-macros.bst
     type: build
   - filename: desktop/xorg-lib-xau.bst
-  - filename: desktop/xorg-lib-pthread-stubs.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
   - filename: base/python3.bst
     type: build
   - filename: base/pkg-config.bst
@@ -48,7 +53,15 @@ public:
           - "%{libdir}/libxcb-xkb.so"
           - "%{libdir}/libxcb-xinput.so"
 
+config:
+  configure-commands:
+    (<):
+      - |
+        autoreconf -ivf
+
 sources:
   - kind: tar
     url: https://xcb.freedesktop.org/dist/libxcb-1.13.tar.bz2
     ref: 188c8752193c50ff2dbe89db4554c63df2e26a2e47b0fa415a70918b5b851daa
+  - kind: patch
+    path: patches/xorg-lib-xcb-pthread-stub.patch

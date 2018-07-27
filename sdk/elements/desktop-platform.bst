@@ -89,7 +89,6 @@ depends:
 - filename: desktop/xorg-data-xkeyboard-config.bst
 - filename: desktop/xorg-lib-ice.bst
 - filename: desktop/xorg-lib-pciaccess.bst
-- filename: desktop/xorg-lib-pthread-stubs.bst
 - filename: desktop/xorg-lib-sm.bst
 - filename: desktop/xorg-lib-x11.bst
 - filename: desktop/xorg-lib-xau.bst
