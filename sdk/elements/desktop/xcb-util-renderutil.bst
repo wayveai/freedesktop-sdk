@@ -4,7 +4,6 @@ description: X.org xcb-util-renderutil
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-xcb.bst
-  - filename: desktop/xorg-lib-pthread-stubs.bst
   - filename: base/pkg-config.bst
     type: build
 
