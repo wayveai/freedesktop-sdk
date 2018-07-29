@@ -8,7 +8,6 @@ variables:
     --without-selinux
 
 sources:
-  # building from git requires gnome-doc-tools
   - kind: tar
-    url: https://github.com/shadow-maint/shadow/releases/download/4.5/shadow-4.5.tar.xz
-    ref: fc8c858381ad577a5c25ff5beb6ee60a34f8719c73e4e7c61e74188b4e54b741
+    url: https://github.com/shadow-maint/shadow/releases/download/4.6/shadow-4.6.tar.xz
+    ref: 0998c8d84242a231ab0acb7f8613927ff5bcff095f8aa6b79478893a03f05583
