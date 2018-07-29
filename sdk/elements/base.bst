@@ -41,3 +41,4 @@ depends:
 - filename: base/ruby.bst
 - filename: base/strace.bst
 - filename: base/texinfo.bst
+- filename: base/valgrind.bst
