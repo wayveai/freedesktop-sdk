@@ -44,7 +44,7 @@ The current set of commands to run your application with 1.8 (unstable) are:
 
 Install the new runtime from remote:
 ```
-  flatpak remote-add --if-not-exists --user --no-gpg-verify freedesktop-sdk https://cache.sdk.freedesktop.org/releases/
+  flatpak remote-add --if-not-exists --user freedesktop-sdk https://cache.sdk.freedesktop.org/freedesktop-sdk.flatpakrepo
   flatpak install --user freedesktop-sdk runtime/org.freedesktop.Sdk//unstable
   flatpak install --user freedesktop-sdk runtime/org.freedesktop.Platform//unstable
 ```
