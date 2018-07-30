@@ -4,11 +4,22 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/libtasn1.bst
   - filename: base/libffi.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
   - filename: base/pkg-config.bst
+    type: build
+  - filename: base/which.bst
     type: build
 
 variables:
   conf-local: |
+    --with-module-config=/etc/pkcs11/modules/ \
     --with-trust-paths=%{ca_path}
 
 public:
@@ -19,7 +30,6 @@ public:
           - "%{libdir}/libp11-kit.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/p11-glue/p11-kit/releases/download/0.23.9/p11-kit-0.23.9.tar.gz
-    ref: e1c1649c335107a8d33cf3762eb7f57b2d0681f0c7d8353627293a58d6b4db63
-
+  - kind: git
+    url: https://github.com/p11-glue/p11-kit/
+    ref: 3dd5810143e51dabdc58069e55b09a950349fa08  # 0.23.12
