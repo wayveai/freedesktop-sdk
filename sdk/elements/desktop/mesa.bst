@@ -89,8 +89,8 @@ public:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-18.1.4.tar.xz
-    ref: 3061488b5d85504092cf4343816cfb2d96f2ad9bc2edec31fc96933d184cf58b
+    url: https://mesa.freedesktop.org/archive/mesa-18.1.5.tar.xz
+    ref: 69dbe6f1a6660386f5beb85d4fcf003ee23023ed7b9a603de84e9a37e8d98dea
   - kind: patch
     path: patches/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
