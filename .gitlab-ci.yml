@@ -304,12 +304,12 @@ minimal_systemd_vm_image_x86_64:
     - |
       case "${ARCH}" in
         "i586")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/master
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/unstable
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/unstable
           ;;
         "arm")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/master
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/master
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/unstable
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/unstable
           ;;
       esac
     - echo "Push to the releases ostree repo"
