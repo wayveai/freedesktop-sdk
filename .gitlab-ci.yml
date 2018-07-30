@@ -8,6 +8,7 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
+  RUNTIME_VERSION: 'unstable'
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -124,13 +125,13 @@ before_script:
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk "${RUNTIME_VERSION}";
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform "${RUNTIME_VERSION}";
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//unstable
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//unstable
+    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//"${RUNTIME_VERSION}"
+    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//"${RUNTIME_VERSION}"
 
     - echo "Build basic flatpak application  (script)"
     - flatpak-builder --arch="${ARCH}" build_folder_hello tests/org.flatpak.Hello.json
@@ -254,17 +255,17 @@ minimal_systemd_vm_image_x86_64:
              continue
            fi
         fi
-        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
+        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" "${RUNTIME_VERSION}"
       done
     - |
       case "${ARCH}" in
         "i586")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/unstable
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/unstable
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/"${RUNTIME_VERSION}"
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/"${RUNTIME_VERSION}"
           ;;
         "arm")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/unstable
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/unstable
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/"${RUNTIME_VERSION}"
+          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/"${RUNTIME_VERSION}"
           ;;
       esac
     - echo "Push to the releases ostree repo"
