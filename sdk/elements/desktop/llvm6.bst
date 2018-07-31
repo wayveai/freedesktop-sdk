@@ -9,7 +9,6 @@ depends:
     type: build
 
 variables:
-  max-jobs: 2
   (?):
     - target_arch == "i586":
         targets: "X86;AMDGPU;NVPTX"
