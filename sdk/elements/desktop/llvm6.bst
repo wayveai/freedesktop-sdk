@@ -9,11 +9,13 @@ depends:
     type: build
 
 variables:
+  max-jobs: 2
   (?):
     - target_arch == "i586":
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"
+        max-jobs: 2
     - target_arch == "arm":
         targets: "ARM"
     - target_arch == "aarch64":
@@ -41,6 +43,7 @@ variables:
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
+    -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
 
 config:
@@ -55,11 +58,32 @@ public:
       devel:
         (>):
         - '%{bindir}/**'
-        - '%{libdir}/libLLVM-6.0.0.so'
+        - '%{libexecdir}/**'
+        - '%{libdir}/libLLVM-6.0.1.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLTO.so'
+        - '%{libdir}/libclang.so'
+        - '%{libdir}/BugpointPasses.so'
+        - '%{libdir}/clang'
+        - '%{libdir}/clang/**'
+        - '%{datadir}/clang'
+        - '%{datadir}/clang/**'
+        - '%{datadir}/opt-viewer'
+        - '%{datadir}/opt-viewer/**'
+        - '%{datadir}/scan-build'
+        - '%{datadir}/scan-build/**'
+        - '%{datadir}/scan-view'
+        - '%{datadir}/scan-view/**'
 
 sources:
   - kind: tar
-    url: https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
-    ref: 1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408
+    url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
+    ref: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
+  - kind: tar
+    url: https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz
+    ref: 7c243f1485bddfdfedada3cd402ff4792ea82362ff91fbdac2dae67c6026b667
+    directory: tools/clang
+  - kind: tar
+    url: http://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
+    ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
+    directory: tools/compiler-rt
