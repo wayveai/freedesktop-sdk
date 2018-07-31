@@ -8,7 +8,6 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
-  BST_CACHE_SSH_USER: 'artifacts'
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -37,7 +36,7 @@ before_script:
   - mkdir -p ~/.ssh
 
   # Private key stored as a protected variable that allows pushing to
-  # artifacts@cache.sdk.freedesktop.org
+  # cache.sdk.freedesktop.org
   - |
     if [ -z "$freedesktop_ostree_cache_private_key" ]; then
         echo >&2 "Private key for cache.sdk.freedesktop.org is not available."
@@ -59,16 +58,6 @@ before_script:
        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
     fi
 
-  # Use internal network only if we are using x86_64 runners from DigitalOcean
-  - |
-    if [ "${CI_RUNNER_DESCRIPTION}" == 'manager-runner-freedesktop' ]; then
-        export BST_CACHE_SERVER_ADDRESS="${GITLAB_BST_CACHE_SERVER_IP}"
-        export BST_CACHE_SSH_USER='artifacts-internal'
-    fi
-
-  # Trust the host key of the cache server.
-  - ssh-keyscan "${BST_CACHE_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
-
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
   # (default config is pull only)
   - |
@@ -88,16 +77,6 @@ before_script:
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
     fi
-
-  # Go easy on the artifact server. The fixed unchangeable connection
-  # timeout for ostree is 30 seconds. And it cannot be changed.
-  - |
-    [ -d "${HOME}/.config" ] || mkdir -p "${HOME}/.config"
-    cat >>"${HOME}/.config/buildstream.conf" <<EOF
-    scheduler:
-      fetchers: 5
-      network-retries: 4
-    EOF
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
