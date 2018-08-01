@@ -3,7 +3,8 @@ description: Import the base freedesktop SDK
 sources:
 - kind: ostree
   url: https://sdk.gnome.org/repo/
-  gpg-key: keys/gnome-sdk.gpg
+  # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
+  #gpg-key: keys/gnome-sdk.gpg
   (?):
   - build_arch == "x86_64":
       track: runtime/org.freedesktop.BaseSdk/x86_64/1.6
