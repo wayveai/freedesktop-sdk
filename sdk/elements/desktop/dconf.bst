@@ -1,11 +1,15 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/python3.bst
-  - filename: base/glib.bst
+  - filename: desktop/vala.bst
+    type: build
 
 variables:
   conf-local: |
@@ -20,8 +24,9 @@ public:
           - "%{libdir}/libdconf.so"
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/dconf/0.26/dconf-0.26.1.tar.xz
-    ref: d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/dconf
+    track: master
+    ref: fd884c24cf7d9631836c106ed4a895f18d707120 #  0.28.0
   - kind: patch
     path: patches/dconf-override.patch
