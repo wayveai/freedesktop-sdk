@@ -31,7 +31,6 @@ variables:
     --disable-doc \
     --disable-static \
     --enable-optimizations \
-    --enable-libvpx \
     --enable-shared \
     --disable-ffplay \
     --disable-ffprobe \
