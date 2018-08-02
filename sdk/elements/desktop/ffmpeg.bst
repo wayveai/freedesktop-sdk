@@ -30,8 +30,6 @@ variables:
     --disable-debug \
     --disable-doc \
     --disable-static \
-    --enable-gpl \
-    --enable-nonfree \
     --enable-optimizations \
     --enable-libvpx \
     --enable-shared \
@@ -39,6 +37,7 @@ variables:
     --disable-ffprobe \
     --disable-everything \
     --enable-gnutls \
+    --enable-libfdk-aac \
     --enable-libfontconfig \
     --enable-libfreetype \
     --enable-libopus \
