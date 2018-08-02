@@ -26,6 +26,7 @@ config:
       ./Configure %{openssl-target} \
         --prefix=%{prefix} \
         --libdir=%{lib} \
+        --openssldir=%{sysconfdir}/ssl \
         enable-krb5 \
         --with-krb5-flavor=MIT \
         --with-krb5-dir=/usr \
@@ -40,7 +41,7 @@ config:
       rm %{install-root}%{libdir}/lib*.a
 
     - mkdir -p %{install-root}%{datadir}
-    - mv %{install-root}%{prefix}/ssl/man %{install-root}%{datadir}
+    - mv %{install-root}%{sysconfdir}/ssl/man %{install-root}%{datadir}
 
     - |
       for man3 in "%{install-root}%{datadir}/man/man3"/*.3; do
