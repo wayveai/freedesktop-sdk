@@ -63,13 +63,13 @@ before_script:
     if [ -n "$freedesktop_ostree_cache_private_key" ]; then
         mkdir -p ~/.config
         echo "projects:" > ~/.config/buildstream.conf
-        echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
+        echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
         echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
-        echo "  base-sdk:" >> ~/.config/buildstream.conf
+        echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
         echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf

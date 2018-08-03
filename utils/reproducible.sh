@@ -5,7 +5,7 @@
 #
 # Then disable artifacts cache in project.conf. Then call it with .bst file
 #
-#   bash ../utils/reproducible.sh all.bst base-sdk
+#   bash ../utils/reproducible.sh all.bst freedesktop-sdk
 #
 # Extra parameters are passed to bst. That is useful to pass architecture
 # options.
