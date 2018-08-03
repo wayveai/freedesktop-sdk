@@ -2,6 +2,7 @@ kind: manual
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/openssl.bst
   - filename: base/python3.bst
     type: build
 
@@ -36,7 +37,7 @@ public:
 sources:
   - kind: git
     url: https://salsa.debian.org/debian/ca-certificates.git
-    track: master
-    ref: 238e0aa38b26bcbd6d0b0130868bec9efa6566be
+    track: debian/20161130+nmu1+deb9u1
+    ref: 024d12e7f29fed75e527df90175a3a73a3e1a7b4
   - kind: patch
     path: patches/ca-certificates-Make-it-possible-to-overwrite-python-version.patch
