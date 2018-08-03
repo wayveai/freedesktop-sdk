@@ -14,7 +14,6 @@ variables:
     --enable-debug \
     --with-components=core \
     --with-dbusdir=/etc/dbus-1 \
-    --enable-avahi \
     --disable-systemd \
     --enable-threads \
     --enable-gnutls \
