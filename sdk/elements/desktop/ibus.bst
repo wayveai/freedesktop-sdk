@@ -24,7 +24,8 @@ variables:
     --disable-libnotify \
     --disable-emoji-dict \
     --disable-appindicator \
-    --disable-tests
+    --disable-tests \
+    --disable-unicode-dict
 
 config:
   install-commands:
@@ -46,5 +47,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://github.com/ibus/ibus/releases/download/1.5.17/ibus-1.5.17.tar.gz
-    ref: 0347a8055977ca458e8add750af5f9b76e1a524844cc3b0e2fad70ce153dd219
+    url: https://github.com/ibus/ibus/releases/download/1.5.18/ibus-1.5.18.tar.gz
+    ref: 8551f7d027fb65d48225642fc8f3b232412ea75a4eb375244dd72a4d73c2639e
