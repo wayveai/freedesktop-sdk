@@ -1,4 +1,4 @@
-BRANCH=unstable
+BRANCH=18.08
 ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
 ifeq ($(ARCH),i586)
 FLATPAK_ARCH=i386
