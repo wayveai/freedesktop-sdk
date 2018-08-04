@@ -8,6 +8,7 @@ depends:
 
 variables:
   conf-local: |
+    --enable-freetype-config \
     --with-zlib=yes \
     --with-bzip2=yes \
     --with-png=yes \
