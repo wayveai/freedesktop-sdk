@@ -40,23 +40,23 @@ So you simply need to point your Flatpak build to our release server http://cach
 
 Located here you should find releases built for multiple architectures (aarch64, i586, x86_64).
 
-The current set of commands to run your application with 1.8 (unstable) are:
+The current set of commands to run your application with 18.08 are:
 
 Install the new runtime from remote:
 ```
   flatpak remote-add --if-not-exists --user freedesktop-sdk https://cache.sdk.freedesktop.org/freedesktop-sdk.flatpakrepo
-  flatpak install --user freedesktop-sdk runtime/org.freedesktop.Sdk//unstable
-  flatpak install --user freedesktop-sdk runtime/org.freedesktop.Platform//unstable
+  flatpak install --user freedesktop-sdk runtime/org.freedesktop.Sdk//18.08
+  flatpak install --user freedesktop-sdk runtime/org.freedesktop.Platform//18.08
 ```
 Once this has been installed, you then need to change the:
 
 ```
-  "runtime-version": stable
+  "runtime-version": 1.6
 ```
 To
 
 ```
-  "runtime-version": unstable
+  "runtime-version": 18.08
 ```
 
 Build and run your flatpak app as normal:
@@ -86,13 +86,13 @@ If you wish to build locally, you must have BuildStream installed and a local in
     - dnf install -y flatpak flatpak-builder
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - flatpakarch="${ARCH/i586/i386}"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk 18.08;
+    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform 18.08;
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//unstable
-    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//unstable
+    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//18.08
+    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//18.08
 
     - echo "Build basic flatpak app"
     - flatpak-builder --arch="${flatpakarch}" build_folder tests/org.flatpak.Hello.json
