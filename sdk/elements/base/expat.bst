@@ -12,5 +12,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://github.com/libexpat/libexpat/releases/download/R_2_2_4/expat-2.2.4.tar.bz2
-    ref: 03ad85db965f8ab2d27328abcf0bc5571af6ec0a414874b2066ee3fdd372019e
+    url: https://github.com/libexpat/libexpat/releases/download/R_2_2_5/expat-2.2.5.tar.bz2
+    ref: d9dc32efba7e74f788fcc4f212a43216fc37cf5f23f4c2339664d473353aedf6

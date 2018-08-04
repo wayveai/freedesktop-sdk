@@ -7,5 +7,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz
-    ref: af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf
+    url: https://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.xz
+    ref: 5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921

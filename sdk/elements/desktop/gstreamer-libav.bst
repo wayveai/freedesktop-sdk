@@ -24,7 +24,7 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-libav
     track: 1.14
-    ref: 1830c75cd28fc68bd26f9530db18c2da474a4aa2 #  1.14.0
+    ref: 8886a016fce625e1c25a4902be4021196a6784a2 #  1.14.2
     submodules:
       common:
         url: freedesktop:gstreamer/common

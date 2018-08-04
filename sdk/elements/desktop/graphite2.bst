@@ -42,5 +42,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.10.tgz
-    ref: 90fde3b2f9ea95d68ffb19278d07d9b8a7efa5ba0e413bebcea802ce05cda1ae
+    url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.11.tgz
+    ref: bab92ed1844d6538e7e5bda76f6ac9aaf633e38b683983b942c78c8ce063ad7c

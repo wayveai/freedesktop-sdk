@@ -16,5 +16,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz
-    ref: b5d86f12ae0072db520fdbdad67405f799eb728b610ed66043c20a92b4906ca1
+    url: https://cmake.org/files/v3.12/cmake-3.12.0.tar.gz
+    ref: d0781a90f6cdb9049d104ac16a150f9350b693498b9dea8a0331e799db6b9d69

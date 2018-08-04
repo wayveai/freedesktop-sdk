@@ -18,5 +18,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.0.tar.xz
-    ref: 511568a65fda11fdd5ba5d4adfd48d5d76810d0e6ba4f7460f1b2ec0dbbbc337
+    url: https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.2.tar.xz
+    ref: c80e0cdf5e3d713400315b63c7deffa561032a6c37289211d8afcfaa267c2615

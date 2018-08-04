@@ -89,4 +89,4 @@ sources:
 - kind: git
   url: https://git.ffmpeg.org/ffmpeg.git
   track: release/4.0
-  ref: e049f7c24fc6aa5fc925f860e2ad940a75cfd84f # n4.0.1
+  ref: 0a155c57bd8eb92ccaf7f5857dc6ab276d235846 # n4.0.2

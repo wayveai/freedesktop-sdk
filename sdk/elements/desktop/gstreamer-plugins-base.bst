@@ -38,4 +38,4 @@ sources:
   - kind: git
     url: freedesktop:gstreamer/gst-plugins-base
     track: 1.14
-    ref: 46fc41f1a8378639f2982b777035bbcddd4e5000 # 1.14.0
+    ref: 5c637f685fb4f791e07c43d9818d0369bdb97dca # 1.14.2

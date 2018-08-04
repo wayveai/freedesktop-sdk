@@ -10,5 +10,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://download.kde.org/stable/frameworks/5.39/extra-cmake-modules-5.39.0.tar.xz
-  ref: b80536d7bed8c12fc492857d3d433b3859462402fe231e463efcd3bf44ffbcd1
+  url: https://download.kde.org/stable/frameworks/5.48/extra-cmake-modules-5.48.0.tar.xz
+  ref: fc5b7a9dedb4f6a91db17482578c33f1ec55f11791c592ee431f6d9898ede598

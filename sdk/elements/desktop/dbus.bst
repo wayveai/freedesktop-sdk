@@ -20,5 +20,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://dbus.freedesktop.org/releases/dbus/dbus-1.12.2.tar.gz
-    ref: 272bb5091770b047c8188b926d5e6038fa4fe6745488b2add96b23e2d9a83d88
+    url: https://dbus.freedesktop.org/releases/dbus/dbus-1.12.8.tar.gz
+    ref: e2dc99e7338303393b6663a98320aba6a63421bcdaaf571c8022f815e5896eb3
