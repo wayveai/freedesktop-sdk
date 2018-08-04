@@ -14,6 +14,11 @@ config:
         cd "%{builddir}"
         make -j1 arch/misc
 
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: tar
     url: https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
