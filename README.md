@@ -111,15 +111,12 @@ These instructions for building can be found in the projects Gitlab-CI file.
 
 
 # Structure
-Current directory structure is:
+Current directory structure is the usual of a builstream project with the exception of:
 
  - bootstrap
- - sdk
-   - plugins
 
-The bootstrap folder includes a set of instructions to bootstrap a minimal sysroot, used to build all the freedesktop flatpak runtimes in the sdk folder.
-
-The sdk folder contains the elements to build the freedesktop-sdk flatpak runtimes.
+The bootstrap folder includes a buildstream subproject with a set of instructions to bootstrap a minimal sysroot,
+used to build all the freedesktop flatpak runtimes defined in the elements folder.
 
 The plugins directory, is a custom directory needed to host our custom Buildstream [plugins](https://buildstream.gitlab.io/buildstream/pluginindex.html#plugins)
 
