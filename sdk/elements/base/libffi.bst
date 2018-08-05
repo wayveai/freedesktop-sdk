@@ -19,6 +19,12 @@ public:
         (>):
           - "%{libdir}/libffi.so"
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
   - kind: git
     url: https://github.com/libffi/libffi
