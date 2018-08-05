@@ -7,6 +7,11 @@ variables:
   conf-local: |
     --without-selinux
 
+public:
+  bst:
+    overlap-whitelist:
+    - "**"
+
 sources:
   - kind: tar
     url: https://github.com/shadow-maint/shadow/releases/download/4.6/shadow-4.6.tar.xz
