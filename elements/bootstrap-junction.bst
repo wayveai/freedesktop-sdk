@@ -2,7 +2,7 @@ kind: junction
 
 sources:
 - kind: local
-  path: ../bootstrap
+  path: bootstrap
 
 config:
   options:

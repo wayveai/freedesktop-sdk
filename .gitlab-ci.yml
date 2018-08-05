@@ -98,10 +98,9 @@ before_script:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
     - ${BST}  -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
-    - bash ../utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
+    - utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
     - |
       if [ -s found_so_files.txt ]; then
         echo "Found development .so files:" 1>&2
@@ -120,13 +119,12 @@ before_script:
       for runtime in sdk platform; do
         bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
       done
-    - cd ${CI_PROJECT_DIR}
 
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform "${RUNTIME_VERSION}";
+    - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/sdk "${RUNTIME_VERSION}";
+    - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/platform "${RUNTIME_VERSION}";
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
@@ -184,11 +182,10 @@ app_arm:
 .vm_image_template: &vm_image
   stage: vm
   script:
-    - cd sdk
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
     - dnf install -y qemu-system-x86
-    - ../utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
+    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
   artifacts:
     when: always
     paths:
@@ -226,7 +223,6 @@ minimal_systemd_vm_image_x86_64:
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
-    - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" fetch all.bst
     - ${BST} -o target_arch "${ARCH}" build all.bst
     - flatpakarch="${ARCH/i586/i386}"
