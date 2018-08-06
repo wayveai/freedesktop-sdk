@@ -33,8 +33,8 @@ ARCH_OPTS=-o target_arch $(ARCH)
 RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
 
 $(RUNTIME_DIRECTORIES): $(BOOTSTRAP_IMAGES)
-	cd sdk && bst $(ARCH_OPTS) build all.bst
-	cd sdk && bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
+	bst $(ARCH_OPTS) build all.bst
+	bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
 	for dir in $(RUNTIME_DIRECTORIES); do				 \
@@ -46,7 +46,7 @@ export: $(RUNTIME_DIRECTORIES)
         fi
 
 runtime: $(BOOTSTRAP_IMAGES)
-	cd sdk && bst $(ARCH_OPTS) build all.bst
+	bst $(ARCH_OPTS) build all.bst
 
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
