@@ -27,7 +27,7 @@ before_script:
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
-  - export BST_EXTERNAL_SHA='d5a031ed87e2c3c10f3e4f35d09695a60624bafa' #  0.2-12-gd5a031e 
+  - export BST_EXTERNAL_SHA='1622d57dfbde94f6cee84e1d8dfd430c86040251' #  0.3.1
   - git clone https://gitlab.com/BuildStream/bst-external.git
   - git -C bst-external checkout $BST_EXTERNAL_SHA
   - pip3 install --user ./bst-external
