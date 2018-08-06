@@ -101,6 +101,9 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
+    - dnf install -y libabigail --enablerepo=updates-testing
+    - ./utils/check-abi --old=${RUNTIME_VERSION} --new=${CI_COMMIT_SHA}
+
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
