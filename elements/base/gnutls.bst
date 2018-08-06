@@ -12,8 +12,7 @@ depends:
 
 variables:
   conf-local: |
-    --with-default-trust-store-pkcs11="pkcs11:" \
-    --with-default-trust-store-file=%{ca_path}
+    --with-default-trust-store-pkcs11="pkcs11:"
 
 public:
   bst:
