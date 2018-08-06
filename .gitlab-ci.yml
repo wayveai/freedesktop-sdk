@@ -1,4 +1,4 @@
-image: buildstream/buildstream-fedora:master-103-1016dcb4
+image: buildstream/buildstream-fedora:master-108-bd2b3d8d
 
 variables:
   # Store everything under the /builds directory. This is a separate Docker
@@ -163,7 +163,7 @@ app_i586:
     ARCH: i586
 
 app_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -171,7 +171,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_definition
   tags:
     - armhf
@@ -297,7 +297,7 @@ publish_i586:
 
 publish_aarch64:
   stage: publish_aarch64
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -306,7 +306,7 @@ publish_aarch64:
 
 publish_arm:
   stage: publish_arm
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
