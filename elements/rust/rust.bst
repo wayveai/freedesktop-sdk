@@ -116,3 +116,5 @@ sources:
     ref: 1d5a81729c6f23a0a23b584dd249e35abe9c6f7569cee967cc42b1758ecd6486
   - kind: patch
     path: patches/rust-codegen-libdir.patch
+  - kind: patch
+    path: patches/rust-cannonicalize-install.patch
