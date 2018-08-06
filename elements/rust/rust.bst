@@ -22,6 +22,9 @@ variables:
   debuginfo-only-std: "false"
   rust-target: "%{host-triplet}"
   (?):
+    - target_arch == "i586":
+        # i686 also exhausts memory on stage0
+        debuginfo-only-std: "true"
     - target_arch == "arm":
         rust-target: "armv7-unknown-linux-gnueabihf"
         # armv7 exhausts memory on stage0 librustc w/ debuginfo
