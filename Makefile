@@ -32,9 +32,9 @@ ARCH_OPTS=-o target_arch $(ARCH)
 
 RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
 
-$(RUNTIME_DIRECTORIES): $(BOOTSTRAP_IMAGES)
-	cd sdk && bst $(ARCH_OPTS) build all.bst
-	cd sdk && bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
+$(RUNTIME_DIRECTORIES):
+	bst $(ARCH_OPTS) build all.bst
+	bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
 	for dir in $(RUNTIME_DIRECTORIES); do				 \
@@ -45,8 +45,8 @@ export: $(RUNTIME_DIRECTORIES)
 	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
         fi
 
-runtime: $(BOOTSTRAP_IMAGES)
-	cd sdk && bst $(ARCH_OPTS) build all.bst
+runtime:
+	bst $(ARCH_OPTS) build all.bst
 
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
