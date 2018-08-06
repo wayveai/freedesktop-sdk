@@ -30,7 +30,7 @@ RUNTIMES=					\
 
 ARCH_OPTS=-o target_arch $(ARCH)
 
-RUNTIME_DIRECTORIES=$(addprefix sdk/$(ARCH)-,$(RUNTIMES))
+RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
 $(RUNTIME_DIRECTORIES):
 	bst $(ARCH_OPTS) build all.bst
