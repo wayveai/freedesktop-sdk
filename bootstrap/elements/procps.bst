@@ -3,7 +3,7 @@ kind: autotools
 depends:
   - filename: dependencies/base-sdk.bst
     type: build
-  - filename: dependencies/config.bst
+  - filename: gnu-config.bst
     type: build
   - filename: linux-headers.bst
     type: build
@@ -21,7 +21,7 @@ depends:
     type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   host-triplet: "%{triplet}"
   # Behavior of malloc cannot be tested when cross-compiling so
   # ac_cv_func_malloc_0_nonull is set manually.

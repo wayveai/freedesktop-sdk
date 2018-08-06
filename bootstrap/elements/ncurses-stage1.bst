@@ -4,14 +4,14 @@ description: GNU ncurses stage 1
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 
 variables:
   prefix: "%{tools}"
   libdir: "%{tools}/lib"
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   conf-link-args: "--without-shared"
   conf-local: |
     --without-ada \

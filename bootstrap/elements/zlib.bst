@@ -4,7 +4,7 @@ description: zlib
 depends:
   - filename: dependencies/base-sdk.bst
     type: build
-  - filename: dependencies/config.bst
+  - filename: gnu-config.bst
     type: build
   - filename: linux-headers.bst
     type: build

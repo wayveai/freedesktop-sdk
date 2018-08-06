@@ -4,7 +4,7 @@ description: GNU gcc Stage 3
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 - filename: linux-headers.bst
   type: build
@@ -28,7 +28,7 @@ variables:
           --with-arch=armv7-a \
           --with-float=hard
 
-  build-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   host-triplet: "%{triplet}"
 
   # gcc installs correctly libraries in the multiarch library

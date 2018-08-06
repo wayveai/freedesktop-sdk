@@ -4,7 +4,7 @@ description: GNU C Library
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 - filename: linux-headers.bst
   type: build
@@ -77,7 +77,7 @@ variables:
   lib: "lib"
 
   host-triplet: "%{triplet}"
-  build-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
   conf-local: |
     --with-headers=%{sysroot}%{includedir}
 

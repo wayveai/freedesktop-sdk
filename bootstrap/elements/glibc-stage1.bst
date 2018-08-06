@@ -3,14 +3,14 @@ kind: autotools
 depends:
 - filename: dependencies/base-sdk.bst
   type: build
-- filename: dependencies/config.bst
+- filename: gnu-config.bst
   type: build
 
 variables:
   prefix: "/glibc"
   lib: "lib"
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
+  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
 
 environment:
   CPPFLAGS: ""
