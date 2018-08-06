@@ -8,7 +8,7 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
-  RUNTIME_VERSION: 'unstable'
+  RUNTIME_VERSION: '18.08'
 
   # Generic variable for invoking buildstream
   BST: bst --colors
