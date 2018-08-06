@@ -1,4 +1,4 @@
-image: buildstream/buildstream-fedora:master-103-1016dcb4
+image: buildstream/buildstream-fedora:master-108-bd2b3d8d
 
 variables:
   # Store everything under the /builds directory. This is a separate Docker
@@ -23,11 +23,11 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='58cfe019e484a755b9ecebabb8a9eb49070807eb' #  1.1.4-32-g58cfe019
+  - export BST_SHA='0c57cdda9ee98c9601b2944958338a02dfefcbb8' #  1.1.5
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
-  - export BST_EXTERNAL_SHA='d5a031ed87e2c3c10f3e4f35d09695a60624bafa' #  0.2-12-gd5a031e 
+  - export BST_EXTERNAL_SHA='1622d57dfbde94f6cee84e1d8dfd430c86040251' #  0.3.1
   - git clone https://gitlab.com/BuildStream/bst-external.git
   - git -C bst-external checkout $BST_EXTERNAL_SHA
   - pip3 install --user ./bst-external
@@ -163,7 +163,7 @@ app_i586:
     ARCH: i586
 
 app_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -171,7 +171,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_definition
   tags:
     - armhf
@@ -297,7 +297,7 @@ publish_i586:
 
 publish_aarch64:
   stage: publish_aarch64
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -306,7 +306,7 @@ publish_aarch64:
 
 publish_arm:
   stage: publish_arm
-  image: buildstream/buildstream-fedora:aarch64-master-103-709b9bca
+  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
