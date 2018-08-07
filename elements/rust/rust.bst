@@ -22,6 +22,9 @@ variables:
   debuginfo-only-std: "false"
   rust-target: "%{host-triplet}"
   (?):
+    - target_arch == "i586":
+        # i686 also exhausts memory on stage0
+        debuginfo-only-std: "true"
     - target_arch == "arm":
         rust-target: "armv7-unknown-linux-gnueabihf"
         # armv7 exhausts memory on stage0 librustc w/ debuginfo
@@ -112,7 +115,9 @@ public:
 
 sources:
   - kind: tar
-    url: https://static.rust-lang.org/dist/rustc-1.26.2-src.tar.gz
-    ref: fb9ecf304488c9b56600ab20cfd1937482057f7e5db7899fddb86e0774548700
+    url: https://static.rust-lang.org/dist/rustc-1.28.0-src.tar.gz
+    ref: 1d5a81729c6f23a0a23b584dd249e35abe9c6f7569cee967cc42b1758ecd6486
   - kind: patch
     path: patches/rust-codegen-libdir.patch
+  - kind: patch
+    path: patches/rust-cannonicalize-install.patch
