@@ -1,7 +1,7 @@
 {
     "app-id": "org.flatpak.Hello",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "unstable",
+    "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "hello.sh",
     "modules": [
