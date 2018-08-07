@@ -116,7 +116,7 @@ before_script:
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
     - |
-      for runtime in sdk platform; do
+      for runtime in sdk platform rust; do
         bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
       done
 
@@ -125,21 +125,27 @@ before_script:
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/sdk "${RUNTIME_VERSION}";
     - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/platform "${RUNTIME_VERSION}";
+    - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/rust "${RUNTIME_VERSION}";
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
     - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//"${RUNTIME_VERSION}"
     - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//"${RUNTIME_VERSION}"
+    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk.Extension.rust-stable//"${RUNTIME_VERSION}"
 
     - echo "Build basic flatpak application  (script)"
     - flatpak-builder --arch="${ARCH}" build_folder_hello tests/org.flatpak.Hello.json
     - echo "Build basic flatpak application (C binary)"
     - flatpak-builder --arch="${ARCH}" build_folder_gnu_hello tests/org.gnu.hello.json
+    - echo "Build basic flatpak application  (Rust binary)"
+    - flatpak-builder --arch="${ARCH}" build_folder_rust_hello tests/org.flatpak.Rust.Hello.json
 
     - echo "Run basic flatpak application (script)"
     - flatpak-builder --arch="${ARCH}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
     - echo "Run basic flatpak application (C binary)"
     - flatpak-builder --arch="${ARCH}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
+    - echo "Run basic flatpak application (Rust binary)"
+    - flatpak-builder --arch="${ARCH}" --run build_folder_rust_hello tests/org.flatpak.Rust.Hello.json hello
   artifacts:
     when: always
     paths:
