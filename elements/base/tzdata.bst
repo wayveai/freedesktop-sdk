@@ -27,6 +27,12 @@ config:
     - |
       rm -rf "%{install-root}%{mandir}"
 
+    # Set up a default timezone, for when Flatpak can't use the host one
+    - |
+      mkdir -p "%{install-root}%{sysconfdir}"
+    - |
+      ln -sf "%{datadir}/zoneinfo/UTC" "%{install-root}%{sysconfdir}/localtime"
+
 sources:
   - kind: tar
     url: https://data.iana.org/time-zones/releases/tzdata2018e.tar.gz
