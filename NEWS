@@ -1,0 +1,17 @@
+Freedesktop-SDK
+
+CHANGES WITH 18.08:
+    * Moved to an independent repo at https://gitlab.com/freedesktop-sdk/freedesktop-sdk/
+    * Use gitlab-ci capabilities to continuously and transparently build for i386, x86_64, armv7 and aarch64
+    * Switched to a time-based naming convention (year.month)
+    * Use a unique tool (buildstream) to build the whole project. This means:
+        * No need to use 2 different tools / metadata (Yocto + flatpak-builder)
+        * org.freedesktop.BaseSdk and org.freedesktop.BasePlatform are not needed anymore;
+          use org.freedesktop.Sdk and org.freedesktop.Platform directly instead
+    * Library directories now follow multiarch convention in order to avoid problems with RUNPATHs and multi-architecture applications.
+    * .Compat32 extension has been renamed to .Compat.i386 and only contains the multiarch library directory.
+    * Python 2 is not in .Platform, only in .Sdk; intention is to remove it completely in the next release
+    * Changed pkg-config to pkg-conf
+    * All the components have been updated to their latest stable versions:
+       https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/Release-Contents
+    * Established branching and release model: https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release
