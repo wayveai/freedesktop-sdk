@@ -20,8 +20,8 @@ variables:
           --with-arch=armv7-a \
           --with-float=hard
 
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
-  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
+  host-triplet: "%{guessed-triplet}"
 
   conf-local: |
     --target=%{triplet} \

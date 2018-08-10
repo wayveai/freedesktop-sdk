@@ -27,7 +27,7 @@ config:
       mkdir ncurses-build &&
       cd ncurses-build &&
       ../configure \
-      --build=$(sh %{sysroot}%{datadir}/gnu-config/config.guess) \
+      --build=%{guessed-triplet} \
       --host=%{triplet} \
       --libdir=%{libdir} \
       --with-pkg-config-libdir="%{libdir}/pkgconfig" \
@@ -44,7 +44,7 @@ config:
       mkdir ncursesw-build &&
       cd ncursesw-build &&
       ../configure \
-      --build=$(sh %{sysroot}%{datadir}/gnu-config/config.guess) \
+      --build=%{guessed-triplet} \
       --host=%{triplet} \
       --libdir=%{libdir} \
       --with-pkg-config-libdir="%{libdir}/pkgconfig" \

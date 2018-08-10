@@ -21,7 +21,7 @@ variables:
   lib: "lib"
 
   host-triplet: "%{triplet}"
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
   conf-local: |
       --enable-multiarch \
       --disable-nls \
