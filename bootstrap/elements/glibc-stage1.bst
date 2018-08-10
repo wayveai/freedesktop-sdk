@@ -9,8 +9,8 @@ depends:
 variables:
   prefix: "/glibc"
   lib: "lib"
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
-  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
+  host-triplet: "%{guessed-triplet}"
 
 environment:
   CPPFLAGS: ""

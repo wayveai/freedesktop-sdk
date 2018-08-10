@@ -10,8 +10,8 @@ depends:
 variables:
   prefix: "%{tools}"
   libdir: "%{tools}/lib"
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
-  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
+  host-triplet: "%{guessed-triplet}"
   conf-link-args: "--without-shared"
   conf-local: |
     --without-ada \

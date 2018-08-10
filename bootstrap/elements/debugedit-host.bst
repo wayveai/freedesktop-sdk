@@ -10,8 +10,8 @@ depends:
 
 variables:
   builddir: ""
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
-  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
+  host-triplet: "%{guessed-triplet}"
   prefix: "%{tools}"
   conf-link-args: |
     --disable-shared \

@@ -24,7 +24,7 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
   host-triplet: "%{triplet}"
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected

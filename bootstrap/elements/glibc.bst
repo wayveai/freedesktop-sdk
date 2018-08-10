@@ -77,7 +77,7 @@ variables:
   lib: "lib"
 
   host-triplet: "%{triplet}"
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
   conf-local: |
     --with-headers=%{sysroot}%{includedir}
 
