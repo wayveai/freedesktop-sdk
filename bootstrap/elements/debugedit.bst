@@ -39,8 +39,7 @@ variables:
     --without-lua \
     --with-crypto=openssl \
     --without-archive \
-    --with-external-db \
-    %{cross-ldflags}
+    --with-external-db
 
 config:
   configure-commands:
