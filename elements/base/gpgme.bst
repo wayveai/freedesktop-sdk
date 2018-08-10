@@ -7,6 +7,14 @@ depends:
   - filename: base/gnupg.bst
     type: build
 
+variables:
+  conf-local: |
+    --disable-glibtest     \
+    --disable-gpgconf-test \
+    --disable-gpg-test     \
+    --disable-gpgsm-test   \
+    --disable-g13-test
+
 public:
   bst:
     split-rules:
