@@ -27,8 +27,7 @@ variables:
 
   conf-local: |
     --with-curses \
-    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}" \
-    %{cross-ldflags}
+    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
 
 config:
   install-commands:

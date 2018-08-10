@@ -28,8 +28,7 @@ variables:
   conf-local: |
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
-    --enable-acl \
-    %{cross-ldflags}
+    --enable-acl
 
 config:
   build-commands:

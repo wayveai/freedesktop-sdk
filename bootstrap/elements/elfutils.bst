@@ -28,8 +28,7 @@ variables:
   build-triplet: "%{guessed-triplet}"
   host-triplet: "%{triplet}"
   conf-local: |
-    --without-lzma \
-    %{cross-ldflags}
+    --without-lzma
 
 config:
   configure-commands:
