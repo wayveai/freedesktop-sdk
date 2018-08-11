@@ -103,11 +103,16 @@ async def await_line(stream, marker):
                 logging.debug("Matched line with marker: %s", decoded_line)
                 return decoded_line
         else:
-            decoded_buf = buf.decode('unicode-escape')
-            if marker in decoded_buf.strip():
-                logging.debug("Matched incomplete line with marker: %s", decoded_buf)
-                sys.stdout.write(decoded_buf)
-                return decoded_buf
+            try:
+                decoded_buf = buf.decode('unicode-escape')
+                if marker in decoded_buf.strip():
+                    logging.debug("Matched incomplete line with marker: %s", decoded_buf)
+                    sys.stdout.write(decoded_buf)
+                    buf = b''
+                    return decoded_buf
+            except UnicodeDecodeError:
+                # we read part of a unicode char
+                continue
 
 
 async def run_qemu_test(sda, dialog):
