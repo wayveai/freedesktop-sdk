@@ -25,7 +25,7 @@ depends:
     type: build
 
 variables:
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
   host-triplet: "%{triplet}"
   conf-local: |
     --without-lzma \

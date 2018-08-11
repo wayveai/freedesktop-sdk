@@ -8,8 +8,8 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
-  host-triplet: "$(sh %{sysroot}%{datadir}/gnu-config/config.guess)"
+  build-triplet: "%{guessed-triplet}"
+  host-triplet: "%{guessed-triplet}"
   prefix: "%{tools}"
   conf-local: |
     --target=%{triplet} \
