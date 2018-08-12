@@ -7,6 +7,8 @@ depends:
   - filename: desktop/mesa.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/wayland.bst
+  - filename: desktop/wayland-protocols.bst
+    type: build
   - filename: desktop/libpulse.bst
 
 variables:
