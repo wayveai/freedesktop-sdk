@@ -42,6 +42,7 @@ depends:
 - filename: desktop/hyphen.bst
 - filename: desktop/ibus.bst
 - filename: desktop/json-glib.bst
+- filename: desktop/lame.bst
 - filename: desktop/libcroco.bst
 - filename: desktop/libdatrie.bst
 - filename: desktop/libdrm.bst

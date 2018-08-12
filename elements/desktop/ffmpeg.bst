@@ -5,6 +5,7 @@ depends:
   - filename: desktop/fontconfig.bst
   - filename: desktop/freetype.bst
   - filename: desktop/libfdk-aac.bst
+  - filename: desktop/lame.bst
   - filename: desktop/mesa.bst
   - filename: desktop/mpg123.bst
   - filename: desktop/openal.bst
@@ -37,6 +38,7 @@ variables:
     --disable-everything \
     --enable-gnutls \
     --enable-libfdk-aac \
+    --enable-libmp3lame \
     --enable-libfontconfig \
     --enable-libfreetype \
     --enable-libopus \
@@ -49,7 +51,7 @@ variables:
     --enable-openal \
     --enable-opengl \
     --enable-sdl2 \
-    --enable-encoder=ac3,mp2 \
+    --enable-encoder=ac3,mp2,libmp3lame,libfdk_aac \
     --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
     --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
     --enable-decoder=theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
