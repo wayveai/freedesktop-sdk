@@ -14,7 +14,7 @@ config:
       install -p -m0644 ttf/*.ttf %{fontdir}/dejavu
       for i in fontconfig/*.conf; do
         install -p -m0644 "$i" "%{confdir}/conf.avail"
-        ln -s "../conf.avail/$i" "%{confdir}/conf.d/$(basename "$i")"
+        ln -s "../conf.avail/$(basename "$i")" "%{confdir}/conf.d/$(basename "$i")"
       done
 
 sources:
