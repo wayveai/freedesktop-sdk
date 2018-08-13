@@ -8,6 +8,7 @@ depends:
   type: build
 
 variables:
+  lib: "lib"
   build-triplet: "%{guessed-triplet}"
   host-triplet: "%{guessed-triplet}"
   prefix: "%{tools}"
@@ -17,7 +18,7 @@ variables:
     --disable-nls \
     --disable-multilib \
     --disable-werror \
-    --with-lib-path="/usr/%{lib}:/usr/lib"
+    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib"
 
 sources:
 - kind: tar
