@@ -23,5 +23,5 @@ sources:
     ref: 7890278a6cd17873c57d9cd785c2d230d9abdea837e96516019c5885dd271504
     directory: fonts
   - kind: local
-    path: files/font-conf
+    path: files/font-conf/liberation-fonts
     directory: config
