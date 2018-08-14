@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/pkg-config.bst
+    type: build
   - filename: desktop/ibus.bst
   - filename: desktop/dbus.bst
   - filename: desktop/mesa.bst
@@ -17,7 +19,6 @@ variables:
     --disable-arts \
     --disable-esd \
     --disable-nas \
-    --enable-pulseaudio \
     --disable-alsa \
     --disable-oss \
     --disable-sndio \
