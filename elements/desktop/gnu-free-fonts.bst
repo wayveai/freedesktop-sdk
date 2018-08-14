@@ -19,7 +19,7 @@ config:
 
 sources:
   - kind: zip
-    url: https://ftp.gnu.org/gnu/freefont/freefont-ttf-20120503.zip
+    url: ftp_gnu_org:freefont/freefont-ttf-20120503.zip
     ref: 7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af
     directory: fonts
   - kind: local

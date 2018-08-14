@@ -6,5 +6,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/gzip/gzip-1.9.tar.xz
+    url: ftp_gnu_org:gzip/gzip-1.9.tar.xz
     ref: ae506144fc198bd8f81f1f4ad19ce63d5a2d65e42333255977cf1dcf1479089a
