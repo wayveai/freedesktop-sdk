@@ -96,5 +96,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
+  url: ftp_gnu_org:ncurses/ncurses-6.1.tar.gz
   ref: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
