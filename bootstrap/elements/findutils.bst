@@ -33,5 +33,5 @@ config:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/findutils/findutils-4.6.0.tar.gz
+  url: ftp_gnu_org:findutils/findutils-4.6.0.tar.gz
   ref: ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d

@@ -50,5 +50,5 @@ environment:
 
 sources:
 - kind: tar
-  url: https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+  url: ftp_gnu_org:gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
   ref: 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080

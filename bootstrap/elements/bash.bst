@@ -51,5 +51,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/bash/bash-4.4.18.tar.gz
+    url: ftp_gnu_org:bash/bash-4.4.18.tar.gz
     ref: 604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23
