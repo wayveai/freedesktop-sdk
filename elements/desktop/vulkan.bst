@@ -29,7 +29,7 @@ config:
     (>):
       - |
         mkdir -p "%{install-root}%{libdir}/GL/vulkan/icd.d"
-        mkdir -p "%{install-root}%{sysconfdir}/vulkan"
+        mkdir -p "%{install-root}%{sysconfdir}"
         ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
         mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
 
