@@ -85,5 +85,5 @@ config:
 depends:
   - filename: desktop-image.bst
     type: build
-  - filename: basesdk-integration.bst
+  - filename: sdk-integration.bst
     type: build
