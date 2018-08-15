@@ -16,10 +16,8 @@ variables:
   prefix: /app
 
   cmake-local: |
-    -DFREEGLUT_BUILD_DEMOS:BOOL=OFF
-
-environment:
-  CFLAGS: "-O2 -g -fstack-protector-strong -I/app/include"
+    -DFREEGLUT_BUILD_DEMOS:BOOL=OFF \
+    -DCMAKE_C_FLAGS="${CFLAGS} -I/app/include"
 
 sources:
   - kind: tar
