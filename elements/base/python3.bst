@@ -19,8 +19,7 @@ variables:
     --with-system-expat \
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \
-    --with-dbmliborder=gdbm \
-    LDFLAGS="-L%{libdir}"
+    --with-dbmliborder=gdbm
 
 config:
   install-commands:
