@@ -21,7 +21,7 @@ config:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
+    url: ftp_gnu_org:groff/groff-1.22.3.tar.gz
     ref: 3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5
   - kind: patch
     path: patches/groff-reproducible-build.patch

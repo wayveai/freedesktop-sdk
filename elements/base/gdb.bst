@@ -32,5 +32,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/gdb/gdb-8.1.tar.xz
+    url: ftp_gnu_org:gdb/gdb-8.1.tar.xz
     ref: af61a0263858e69c5dce51eab26662ff3d2ad9aa68da9583e8143b5426be4b34

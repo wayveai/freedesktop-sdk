@@ -8,5 +8,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz
+    url: ftp_gnu_org:autoconf/autoconf-2.69.tar.xz
     ref: 64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684
