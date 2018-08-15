@@ -6,5 +6,5 @@ depends:
 
 sources:
   - kind: tar
-    url: https://wayland.freedesktop.org/releases/wayland-protocols-1.15.tar.xz
-    ref: dabb727a4b64e87bfa8c025c1d63919ce12100b49fdeded31857644a59729ee2
+    url: https://wayland.freedesktop.org/releases/wayland-protocols-1.16.tar.xz
+    ref: 6b1485951fdcd36a960c870c46f28b03a3e5121fb46246916333ed07f78c98c5
