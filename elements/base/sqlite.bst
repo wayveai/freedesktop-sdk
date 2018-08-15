@@ -3,12 +3,10 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
 
-environment:
-  CPPFLAGS: "-O2 -D_FORTIFY_SOURCE=2 -DSQLITE_ENABLE_COLUMN_METADATA=1"
-
 variables:
   conf-local: |
-    --enable-fts5
+    --enable-fts5 \
+    CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1"
 
 public:
   bst:
