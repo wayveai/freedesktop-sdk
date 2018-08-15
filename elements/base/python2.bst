@@ -20,8 +20,7 @@ variables:
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \
     --with-dbmliborder=gdbm \
-    --enable-unicode=ucs4 \
-    LDFLAGS="-L%{libdir}"
+    --enable-unicode=ucs4
 
 public:
   bst:
