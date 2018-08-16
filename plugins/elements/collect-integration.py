@@ -1,3 +1,11 @@
+"""Collect Integration Element
+
+A buildstream plugin used to collect the integration
+commands of all its dependencies, and compose them
+into a single shell script.
+
+Used to generate freedesktop-post.sh
+"""
 import os
 import stat
 from buildstream import Element, ElementError, Scope
