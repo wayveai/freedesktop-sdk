@@ -18,6 +18,7 @@ RUNTIMES=					\
 	platform-locale				\
 	platform-arch-libs			\
 	platform-arch-libs-debug		\
+	platform-html5				\
 	glxinfo					\
 	glxinfo-debug				\
 	basesdk					\
