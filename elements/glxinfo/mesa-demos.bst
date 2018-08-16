@@ -19,8 +19,6 @@ variables:
 
 environment:
   PKG_CONFIG_PATH: "/app/lib/pkgconfig:"
-  CPPFLAGS: "-O2 -D_FORTIFY_SOURCE=2 -I/app/include"
-  LDFLAGS: "-fstack-protector-strong -Wl,-z,relro,-z,now -L/app/lib"
 
 sources:
   - kind: tar
