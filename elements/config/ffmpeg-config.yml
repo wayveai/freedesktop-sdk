@@ -1,0 +1,36 @@
+conf-local: |
+  --prefix="%{prefix}" \
+  --libdir="%{libdir}" \
+  --disable-debug \
+  --disable-doc \
+  --disable-static \
+  --enable-optimizations \
+  --enable-shared \
+  --disable-ffplay \
+  --disable-ffprobe \
+  --disable-everything \
+  --enable-gnutls \
+  --enable-libfdk-aac \
+  --enable-libmp3lame \
+  --enable-libfontconfig \
+  --enable-libfreetype \
+  --enable-libopus \
+  --enable-libpulse \
+  --enable-libspeex \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
+  --enable-libwebp \
+  --enable-openal \
+  --enable-opengl \
+  --enable-sdl2 \
+  --enable-encoder=ac3,mp2,libmp3lame,libfdk_aac \
+  --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
+  --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
+  --enable-decoder=theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
+  --enable-decoder=rawvideo,png,gif \
+  --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac,aac,ac3 \
+  --enable-demuxer=ogg,matroska,wav,mp3,gif,flac,aac,ac3,m4a \
+  --enable-filter=crop,scale \
+  --enable-protocol=file \
+  --arch="%{ffmpeg-arch}"

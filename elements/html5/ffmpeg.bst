@@ -28,36 +28,49 @@ variables:
   (@):
     - elements/config/ffmpeg-config.yml
 
+  conf-extra: |
+    --arch=%{ffmpeg-arch} \
+    --enable-encoder=h263,h264 \
+    --enable-hwaccel=h264_vaapi,h264_vdpau \
+    --enable-parser=h264 \
+    --enable-demuxer=h264,mov
+
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libavdevice.so"
-          - "%{libdir}/libavcodec.so"
-          - "%{libdir}/libswscale.so"
-          - "%{libdir}/libpostproc.so"
-          - "%{libdir}/libavutil.so"
-          - "%{libdir}/libavfilter.so"
-          - "%{libdir}/libavformat.so"
-          - "%{libdir}/libswresample.so"
+          - "%{libdir}/ffmpeg/lib/libavdevice.so"
+          - "%{libdir}/ffmpeg/lib/libavcodec.so"
+          - "%{libdir}/ffmpeg/lib/libswscale.so"
+          - "%{libdir}/ffmpeg/lib/libpostproc.so"
+          - "%{libdir}/ffmpeg/lib/libavutil.so"
+          - "%{libdir}/ffmpeg/lib/libavfilter.so"
+          - "%{libdir}/ffmpeg/lib/libavformat.so"
+          - "%{libdir}/ffmpeg/lib/libswresample.so"
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
   configure-commands:
-    - ./configure %{conf-local}
+    - ./configure %{conf-local} %{conf-extra}
 
   build-commands:
     - make
 
   install-commands:
-    - make -j1 DESTDIR="%{install-root}" install
+    - |
+      make -j1 DESTDIR="%{install-root}" install
+
+    - |
+      rm -rf "%{install-root}%{libdir}/ffmpeg/bin" \
+             "%{install-root}%{libdir}/ffmpeg/share" \
+             "%{install-root}%{libdir}/ffmpeg/include" \
+             "%{install-root}%{libdir}/ffmpeg/lib/pkgconfig"
 
 sources:
 - kind: git
   url: https://git.ffmpeg.org/ffmpeg.git
   track: n4.0.2
-  # We build ffmpeg again for the html5 codecs extension
-  # if you update this ref, update that one too
+  # We build ffmpeg in the main SDK too, if you update
+  # this ref, please update the main one too.
   ref: 0a155c57bd8eb92ccaf7f5857dc6ab276d235846 # n4.0.2
-  

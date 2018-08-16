@@ -236,7 +236,7 @@ minimal_systemd_vm_image_x86_64:
     - flatpakarch="${ARCH/i586/i386}"
     - mkdir runtimes
     - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale} rust; do
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale} rust; do
         if [ "${runtime}" = "platform-vaapi" ]; then
            if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
              continue
@@ -253,7 +253,7 @@ minimal_systemd_vm_image_x86_64:
     - dnf install -y flatpak --enablerepo=updates-testing
     - echo "Commit the binaries to the correct branch"
     - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} rust; do
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} rust; do
         if [ "${runtime}" = "platform-vaapi" ]; then
            if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
              continue
