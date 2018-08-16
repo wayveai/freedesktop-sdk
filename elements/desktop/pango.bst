@@ -6,6 +6,7 @@ depends:
   - filename: desktop/harfbuzz.bst
   - filename: desktop/fontconfig.bst
   - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: desktop/gtk-doc.bst
     type: build
   - filename: base/pkg-config.bst

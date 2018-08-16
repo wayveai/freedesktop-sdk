@@ -10,6 +10,7 @@ depends:
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: base/meson.bst
     type: build
   - filename: base/ninja.bst
