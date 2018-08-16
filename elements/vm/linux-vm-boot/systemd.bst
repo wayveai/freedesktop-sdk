@@ -27,6 +27,11 @@ variables:
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999
 
+public:
+  cpe:
+    vendor: freedesktop
+    version: '239'
+
 sources:
 - kind: git_tag
   url: github:systemd/systemd.git

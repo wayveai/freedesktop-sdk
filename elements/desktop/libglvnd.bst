@@ -26,6 +26,8 @@ public:
         - '%{libdir}/libGL.so'
         - '%{libdir}/libGLX.so'
         - '%{libdir}/libGLESv2.so'
+  cpe:
+    version: '1.1.0'
 
 sources:
 - kind: git_tag

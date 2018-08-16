@@ -14,6 +14,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libdbus-1.so'
+  cpe:
+    product: d-bus
 
 sources:
 - kind: tar

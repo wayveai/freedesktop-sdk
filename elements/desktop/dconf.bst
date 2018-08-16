@@ -20,6 +20,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libdconf.so'
+  cpe:
+    version: '0.30.1'
 
 sources:
 - kind: git_tag

@@ -15,6 +15,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXt.so'
+  cpe:
+    product: libxt
 
 sources:
 - kind: tar

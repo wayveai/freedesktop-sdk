@@ -44,6 +44,7 @@ public:
   cpe:
     patches:
       - 'CVE-2018-19876' 
+    version: '1.16.0'
 
 sources:
 - kind: git_tag

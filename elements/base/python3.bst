@@ -60,6 +60,8 @@ public:
         - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'
         - '%{indep-libdir}/python3.7/lib2to3'
         - '%{indep-libdir}/python3.7/lib2to3/**'
+  cpe:
+    product: python
 
 sources:
 - kind: tar

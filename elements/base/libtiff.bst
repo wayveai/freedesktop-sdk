@@ -10,6 +10,8 @@ public:
         (>):
         - '%{libdir}/libtiff.so'
         - '%{libdir}/libtiffxx.so'
+  cpe:
+    version: '4.0.9'
 
 sources:
 - kind: git_tag

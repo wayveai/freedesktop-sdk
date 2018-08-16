@@ -11,6 +11,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libseccomp.so'
+  cpe:
+    version: '2.3.3'
 
 sources:
 - kind: git_tag

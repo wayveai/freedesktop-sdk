@@ -19,6 +19,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXi.so'
+  cpe:
+    product: libxi
 
 sources:
 - kind: tar

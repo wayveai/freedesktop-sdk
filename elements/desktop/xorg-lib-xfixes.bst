@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXfixes.so'
+  cpe:
+    product: libxfixes
 
 sources:
 - kind: tar

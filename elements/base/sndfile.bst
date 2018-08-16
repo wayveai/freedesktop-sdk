@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libsndfile.so'
+  cpe:
+    product: libsndfile
 
 variables:
   conf-local: |
