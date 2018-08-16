@@ -24,7 +24,7 @@ public:
     split-rules:
       devel:
         (>):
-        - "%{libdir}/libmp3lame.so*"
+        - "%{libdir}/libmp3lame.so"
 
 sources:
 - kind: tar
