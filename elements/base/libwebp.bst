@@ -31,6 +31,8 @@ public:
         - '%{libdir}/libwebpdemux.so'
         - '%{libdir}/libwebpmux.so'
         - '%{libdir}/libwebp.so'
+  cpe:
+    version: '1.0.0'
 
 sources:
 - kind: git_tag

@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXrandr.so'
+  cpe:
+    product: libxrandr
 
 sources:
 - kind: tar

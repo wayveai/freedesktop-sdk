@@ -17,6 +17,8 @@ public:
       devel:
         (>):
         - '%{libdir}/liblcms2.so'
+  cpe:
+    product: little_cms_color_engine
 
 sources:
 - kind: tar

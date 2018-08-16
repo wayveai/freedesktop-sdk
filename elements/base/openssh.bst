@@ -20,6 +20,8 @@ public:
       - "%{mandir}/man5/sshd_config.5"
       - "%{mandir}/man8/sftp-server.8"
       - "%{mandir}/man8/sshd.8"
+  cpe:
+    version: '7.7p1'
 
 sources:
 - kind: git_tag

@@ -33,6 +33,8 @@ public:
         touch -d @0 "%{datadir}/fonts" /usr/share/fonts/*
         fc-cache -rs
       fi
+  cpe:
+    version: '2.13.1'
 
 sources:
 - kind: git_tag

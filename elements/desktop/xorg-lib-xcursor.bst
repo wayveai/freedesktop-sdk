@@ -19,6 +19,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXcursor.so'
+  cpe:
+    product: libxcursor
 
 sources:
 - kind: tar

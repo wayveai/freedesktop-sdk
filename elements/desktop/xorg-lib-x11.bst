@@ -17,6 +17,8 @@ public:
         (>):
         - '%{libdir}/libX11.so'
         - '%{libdir}/libX11-xcb.so'
+  cpe:
+    product: libx11
 
 sources:
 - kind: tar

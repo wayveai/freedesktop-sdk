@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXext.so'
+  cpe:
+    product: libxext
 
 sources:
 - kind: tar

@@ -27,6 +27,9 @@ public:
         - '%{libdir}/libkrb5.so'
         - '%{libdir}/libkrb5support.so'
         - '%{libdir}/libverto.so'
+  cpe:
+    product: kerberos
+    version: '5-1.16.1'
 
 config:
   configure-commands:

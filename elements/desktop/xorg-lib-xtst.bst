@@ -15,6 +15,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXtst.so'
+  cpe:
+    product: libxtst
 
 sources:
 - kind: tar

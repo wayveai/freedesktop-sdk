@@ -64,6 +64,8 @@ public:
 
     - |
       gtk-update-icon-cache %{datadir}/icons/hicolor
+  cpe:
+    product: gtk+
 
 sources:
 - kind: git_tag
