@@ -53,6 +53,6 @@ public:
 sources:
   - kind: git
     url: https://gitlab.gnome.org/GNOME/glib
-    ref: d0364b443805dcb832c200fcf8bf58a64fdf3e7d    #2.56.1
+    ref: d4b60396c79c7294ab69a2c591518e76ab17b603    #2.56.2
   - kind: patch
     path: patches/glib-gio-Makefile.am-Use-PYTHON-to-call-python-script.patch
