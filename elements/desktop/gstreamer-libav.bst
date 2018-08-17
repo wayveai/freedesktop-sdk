@@ -5,6 +5,8 @@ depends:
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
+  - filename: desktop/ffmpeg.bst
+    type: build
   - filename: base/autoconf.bst
     type: build
   - filename: base/autoconf-archive.bst
@@ -15,6 +17,10 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/which.bst
+    type: build
+  - filename: base/nasm.bst
+    type: build
 
 variables:
   conf-local: |
@@ -23,8 +29,10 @@ variables:
 sources:
   - kind: git
     url: freedesktop:gstreamer/gst-libav
-    track: 1.14
-    ref: 8886a016fce625e1c25a4902be4021196a6784a2 #  1.14.2
+    track: master
+    # Latest stable release doesn't support our ffmpeg, this is the closest commit
+    # to 1.14.2 which supports ffmpeg n4.0.2 with minimal patching
+    ref: 3b6597188ad25cca84ae5caa7b08767a5b4cfee7 # 1.14.0-39-g3b65971
     submodules:
       common:
         url: freedesktop:gstreamer/common
@@ -32,3 +40,7 @@ sources:
         url: https://git.ffmpeg.org/ffmpeg.git
       gst-libs/ext/gas-preprocessor:
         url: git://git.libav.org/gas-preprocessor.git
+  - kind: patch
+    path: patches/gst-libav-stop-caching-codecs.patch
+  - kind: patch
+    path: patches/gst-libav-fix-api.patch
