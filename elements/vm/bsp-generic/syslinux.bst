@@ -5,8 +5,6 @@ depends:
   type: build
 - filename: base/perl.bst
   type: build
-- filename: base/python2.bst
-  type: build
 - filename: base/nasm.bst
   type: build
 - filename: base/util-linux.bst
