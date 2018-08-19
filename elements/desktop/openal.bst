@@ -3,7 +3,6 @@ kind: cmake
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/libpulse.bst
-  - filename: desktop/sdl2.bst
   - filename: base/cmake.bst
     type: build
   - filename: base/ninja.bst
@@ -13,6 +12,7 @@ variables:
   cmake-local: |
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR:PATH=%{lib} \
+    -DALSOFT_EXAMPLES=NO
 
 public:
   bst:
