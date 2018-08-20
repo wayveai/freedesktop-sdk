@@ -1,4 +1,6 @@
 kind: stack
+description: Collection of all flatpak image elements to be built
+
 depends:
   - filename: flatpak-images/sdk.bst
   - filename: flatpak-images/sdk-debug.bst

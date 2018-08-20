@@ -1,4 +1,5 @@
 kind: compose
+description: Composes dependencies into the image to be exported
 
 variables:
   prefix: "/usr/lib/sdk/rust"

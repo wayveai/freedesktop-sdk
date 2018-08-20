@@ -1,4 +1,9 @@
 kind: stack
+description: |
+  Moves documentation into a separate documentation root,
+  this is so we can use that directory as a mountpoint for
+  the Docs extension of the SDK, and not ship the docs in the
+  actual SDK
 
 public:
   bst:

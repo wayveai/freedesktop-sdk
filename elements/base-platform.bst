@@ -1,4 +1,5 @@
 kind: stack
+description: Stack of components in base-platform
 
 depends:
 - filename: base/ca-certificates.bst
