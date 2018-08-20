@@ -1,4 +1,5 @@
 kind: manual
+description: Adds a default file to be passed to flatpak-builder
 
 depends:
   - filename: bootstrap-import.bst

@@ -1,4 +1,8 @@
 kind: manual
+description: |
+  Moves all localisation data into a separate root directory, 
+  this is so we can use this as a mountpoint for the Locale
+  extension, and not ship localisation data in the main SDK
 
 depends:
   - filename: bootstrap-import.bst

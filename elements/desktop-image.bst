@@ -1,4 +1,8 @@
 kind: compose
+description: |
+  Composes dependencies into the image to be exported
+  This is the point where devel split rules are implemented,
+  and we define docs and local split rules.
 
 public:
   bst:

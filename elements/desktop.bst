@@ -1,8 +1,9 @@
 kind: stack
+description: Stack of components in freedesktop SDK
 
 depends:
-- filename: base.bst
-- filename: desktop-platform.bst
+- filename: base.bst                        # Note we include all elements in the base sdk
+- filename: desktop-platform.bst            # and the platform
 - filename: desktop/desktop-file-utils.bst
 - filename: desktop/gtk-doc.bst
 - filename: desktop/itstools.bst

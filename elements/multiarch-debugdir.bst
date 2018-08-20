@@ -1,4 +1,5 @@
 kind: manual
+description: Creates an architecture-specific directory for debugging
 
 depends:
   - filename: bootstrap-import.bst

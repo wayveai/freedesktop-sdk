@@ -1,7 +1,8 @@
 kind: stack
+description: Stack of components in base-sdk
 
 depends:
-- filename: base-platform.bst
+- filename: base-platform.bst           # Note that every element in base platform is also included
 - filename: base/autoconf-archive.bst
 - filename: base/autoconf.bst
 - filename: base/automake.bst
