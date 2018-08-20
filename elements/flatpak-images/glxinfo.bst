@@ -27,5 +27,5 @@ config:
       no-autodownload: "true"
 
 depends:
-  - filename: glxinfo/mesa-demos.bst
+  - filename: extensions/glxinfo/mesa-demos.bst
     type: build
