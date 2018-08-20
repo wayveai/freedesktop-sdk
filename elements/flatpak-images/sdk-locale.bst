@@ -5,11 +5,11 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.BaseSdk.Locale
+      name: org.freedesktop.Sdk.Locale
 
     ExtensionOf:
-      ref: "runtime/org.freedesktop.BaseSdk/%{gcc_arch}/%{branch}"
+      ref: "runtime/org.freedesktop.Sdk/%{gcc_arch}/%{branch}"
 
 depends:
-  - filename: base-image.bst
+  - filename: desktop-image.bst
     type: build
