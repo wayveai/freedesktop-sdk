@@ -34,6 +34,7 @@ variables:
     --enable-job-control \
     --without-bash-malloc \
     ac_cv_rl_version=7.0 \
+    bash_cv_getcwd_malloc=yes \
     bash_cv_job_control_missing=present \
     bash_cv_termcap_lib=libtinfo
 
