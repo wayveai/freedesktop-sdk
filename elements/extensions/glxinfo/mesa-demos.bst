@@ -9,9 +9,9 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: glxinfo/glu.bst
-  - filename: glxinfo/glew.bst
-  - filename: glxinfo/freeglut.bst
+  - filename: extensions/glxinfo/glu.bst
+  - filename: extensions/glxinfo/glew.bst
+  - filename: extensions/glxinfo/freeglut.bst
 
 variables:
   prefix: /app

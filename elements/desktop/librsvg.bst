@@ -2,9 +2,9 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: rust/rust.bst
+  - filename: extensions/rust/rust.bst
     type: build
-  - filename: rust/cargo.bst
+  - filename: extensions/rust/cargo.bst
     type: build
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst

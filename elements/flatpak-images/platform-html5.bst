@@ -1,7 +1,7 @@
 kind: flatpak_image
 
 depends:
-  - filename: html5/ffmpeg.bst
+  - filename: extensions/html5/ffmpeg.bst
     type: build
 
 config:

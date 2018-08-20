@@ -1,7 +1,7 @@
 kind: flatpak_image
 
 depends:
-  - filename: platform-vaapi-intel/intel-vaapi-driver.bst
+  - filename: extensions/platform-vaapi-intel/intel-vaapi-driver.bst
     type: build
 
 config:
