@@ -12,6 +12,7 @@ depends:
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/libpulse.bst
+  - filename: base/libsamplerate.bst
 
 variables:
   conf-local: |
