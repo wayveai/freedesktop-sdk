@@ -2,18 +2,18 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/libsamplerate.bst
   - filename: base/pkg-config.bst
     type: build
-  - filename: desktop/ibus.bst
   - filename: desktop/dbus.bst
+  - filename: desktop/fcitx.bst
+  - filename: desktop/ibus.bst
+  - filename: desktop/libpulse.bst
   - filename: desktop/mesa.bst
-  - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/wayland.bst
   - filename: desktop/wayland-protocols.bst
     type: build
-  - filename: desktop/libpulse.bst
-  - filename: base/libsamplerate.bst
-  - filename: desktop/fcitx.bst
+  - filename: desktop/xorg-lib-x11.bst
 
 variables:
   conf-local: |
