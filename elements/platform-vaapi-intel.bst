@@ -14,4 +14,4 @@ config:
       sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
 
     ExtensionOf:
-      ref: org.freedesktop.Platform/%{gcc_arch}/%{branch}
+      ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
