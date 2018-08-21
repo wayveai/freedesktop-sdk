@@ -34,6 +34,7 @@ depends:
 - filename: base/libogg.bst
 - filename: base/libpng.bst
 - filename: base/libsamplerate.bst
+- filename: base/libselinux.bst
 - filename: base/libtasn1.bst
 - filename: base/libtheora.bst
 - filename: base/libtiff.bst
