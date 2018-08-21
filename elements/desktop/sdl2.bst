@@ -13,6 +13,7 @@ depends:
     type: build
   - filename: desktop/libpulse.bst
   - filename: base/libsamplerate.bst
+  - filename: desktop/fcitx.bst
 
 variables:
   conf-local: |
