@@ -2,6 +2,10 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 
 variables:
   cmake-local: |

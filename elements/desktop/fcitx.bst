@@ -1,7 +1,11 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 - filename: desktop/extra-cmake-modules.bst
   type: build
 - filename: desktop/gtk3.bst
@@ -21,6 +25,23 @@ variables:
     -DENABLE_X11=Off \
     -DENABLE_ENCHANT=Off \
     -DENABLE_PRESAGE=Off
+
+config:
+  install-commands:
+    (>):
+      - |
+        mkdir -p %{install-root}%{libdir}
+        mv %{install-root}%{prefix}/lib/libfcitx-* %{install-root}%{libdir}
+
+public:
+  bst: 
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libfcitx-core.so"
+          - "%{libdir}/libfcitx-gclient.so"
+          - "%{libdir}/libfcitx-config.so"
+          - "%{libdir}/libfcitx-utils.so"
 
 sources:
 - kind: tar
