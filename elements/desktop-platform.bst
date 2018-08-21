@@ -16,6 +16,7 @@ depends:
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst
 - filename: desktop/emoji-one-font.bst
+- filename: desktop/fcitx.bst
 - filename: desktop/ffmpeg.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
