@@ -99,7 +99,7 @@ before_script:
   stage: flatpak
   script:
     - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
-    - ${BST}  -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
+    - ${BST} -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
     - utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
     - |
       if [ -s found_so_files.txt ]; then
