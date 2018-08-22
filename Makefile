@@ -7,7 +7,7 @@ FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
 
-all: runtime
+all: build
 
 RUNTIMES=					\
 	sdk					\
@@ -27,6 +27,10 @@ ARCH_OPTS=-o target_arch $(ARCH)
 
 RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
+build:
+	bst $(ARCH_OPTS) build all.bst
+
+
 $(RUNTIME_DIRECTORIES):
 	bst $(ARCH_OPTS) build all.bst
 	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
@@ -40,12 +44,11 @@ export: $(RUNTIME_DIRECTORIES)
 	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
         fi
 
-runtime:
-	bst $(ARCH_OPTS) build all.bst
 
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
 
 clean: clean-runtime
 
-.PHONY: clean clean-runtime export runtime
+
+.PHONY: build clean clean-runtime export
