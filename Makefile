@@ -32,7 +32,7 @@ $(RUNTIME_DIRECTORIES):
 	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
-	for dir in $(RUNTIME_DIRECTORIES); do				 \
+	for dir in $(RUNTIME_DIRECTORIES); do \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$${dir}" "$(BRANCH)"; \
 	done
 	if test "$(ARCH)" = "i586" ; then \
