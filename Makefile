@@ -51,6 +51,20 @@ export: $(RUNTIME_DIRECTORIES)
         fi
 
 
+check-dev-files:
+	bst $(ARCH_OPTS) build desktop-platform-image.bst
+	
+	mkdir -p $(CHECKOUT_ROOT)
+	bst $(ARCH_OPTS) checkout desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
+	
+	if [ -s found_so_files.txt ]; then \
+	  echo "Found development .so files:" 1>&2; \
+	  cat found_so_files.txt 1>&2; \
+	  false; \
+	fi
+
+
 clean-repo:
 	rm -rf $(REPO)
 
@@ -60,4 +74,4 @@ clean-runtime:
 clean: clean-repo clean-runtime
 
 
-.PHONY: build clean clean-repo clean-runtime export
+.PHONY: build check-dev-files clean clean-repo clean-runtime export
