@@ -47,3 +47,5 @@ sources:
     path: files/fontconfig-flatpak.conf
   - kind: patch
     path: patches/fontconfig-relocate.patch
+  - kind: patch
+    path: patches/0001-Ensure-cache-checksums-are-determinstic.patch
