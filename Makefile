@@ -7,8 +7,6 @@ FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
 
-all: build
-
 RUNTIMES=					\
 	sdk					\
 	sdk-debug				\
@@ -26,6 +24,9 @@ RUNTIMES=					\
 ARCH_OPTS=-o target_arch $(ARCH)
 
 RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
+
+
+all: build
 
 build:
 	bst $(ARCH_OPTS) build all.bst
