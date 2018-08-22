@@ -7,6 +7,8 @@ FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
 
+ARCH_OPTS=-o target_arch $(ARCH)
+
 RUNTIMES=					\
 	sdk					\
 	sdk-debug				\
@@ -20,9 +22,6 @@ RUNTIMES=					\
 	glxinfo					\
 	glxinfo-debug				\
 	rust
-
-ARCH_OPTS=-o target_arch $(ARCH)
-
 RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
 
