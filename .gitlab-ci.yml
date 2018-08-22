@@ -108,11 +108,6 @@ before_script:
         false
       fi
 
-    # Do not run basic flatpak app on i586, see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues/279
-    - if [ "${ARCH}" = "i586" ]; then
-        exit 0;
-      fi
-
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
     - |
