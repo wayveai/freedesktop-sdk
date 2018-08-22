@@ -19,14 +19,16 @@ depends:
     type: build
 
 variables:
+  ffmpeg-prefix: "%{prefix}"
+  ffmpeg-libdir: "%{libdir}"
   ffmpeg-arch: "%{arch}"
   (?):
     - target_arch == "i586":
         ffmpeg-arch: x86
 
   conf-local: |
-    --prefix="%{prefix}" \
-    --libdir="%{libdir}" \
+    --prefix="%{ffmpeg-prefix}" \
+    --libdir="%{ffmpeg-libdir}" \
     --disable-debug \
     --disable-doc \
     --disable-static \
