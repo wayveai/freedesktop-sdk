@@ -40,6 +40,7 @@ variables:
     -DLLVM_INCLUDE_DOCS:BOOL=OFF \
     -DLLVM_ENABLE_DOXYGEN:BOOL=OFF \
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON \
+    -DLLVM_BINUTILS_INCDIR=%{includedir} \
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
@@ -60,6 +61,7 @@ public:
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-6.0.1.so'
         - '%{libdir}/libLLVM.so'
+        - '%{libdir}/LLVMgold.so'
         - '%{libdir}/libLTO.so'
         - '%{libdir}/libclang.so'
         - '%{libdir}/BugpointPasses.so'
