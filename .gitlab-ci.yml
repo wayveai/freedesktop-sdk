@@ -98,15 +98,8 @@ before_script:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
-    - ${BST} -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
-    - utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
-    - |
-      if [ -s found_so_files.txt ]; then
-        echo "Found development .so files:" 1>&2
-        cat found_so_files.txt 1>&2
-        false
-      fi
+    - make ARCH=${ARCH} build
+    - make ARCH=${ARCH} check-dev-files
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
@@ -228,7 +221,8 @@ minimal_systemd_vm_image_x86_64:
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
     - ${BST} -o target_arch "${ARCH}" fetch all.bst
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - make ARCH=${ARCH} build
+
     - flatpakarch="${ARCH/i586/i386}"
     - mkdir runtimes
     - |
