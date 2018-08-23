@@ -101,30 +101,10 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
-    - flatpakarch="${ARCH/i586/i386}"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} RUNTIMES="sdk platform rust" export
-
-    - echo "Locally install generated flatpak runtimes"
-    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//"${RUNTIME_VERSION}"
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//"${RUNTIME_VERSION}"
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk.Extension.rust-stable//"${RUNTIME_VERSION}"
-
-    - echo "Build basic flatpak application  (script)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_hello tests/org.flatpak.Hello.json
-    - echo "Build basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_gnu_hello tests/org.gnu.hello.json
-    - echo "Build basic flatpak application  (Rust binary)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_rust_hello tests/org.flatpak.Rust.Hello.json
-
-    - echo "Run basic flatpak application (script)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
-    - echo "Run basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
-    - echo "Run basic flatpak application (Rust binary)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_rust_hello tests/org.flatpak.Rust.Hello.json hello
+    - make ARCH=${ARCH} test-apps
   artifacts:
     when: always
     paths:
