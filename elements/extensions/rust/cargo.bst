@@ -3,11 +3,11 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: rust/cargo-stage1.bst
+  - filename: extensions/rust/cargo-stage1.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: rust/rust.bst
+  - filename: extensions/rust/rust.bst
   - filename: base/openssl.bst
   - filename: base/cmake.bst
     type: build

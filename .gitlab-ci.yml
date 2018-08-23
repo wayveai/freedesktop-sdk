@@ -112,7 +112,7 @@ before_script:
     - mkdir runtimes
     - |
       for runtime in sdk platform rust; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+        bst -o target_arch "${ARCH}" checkout "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
       done
 
     - echo "Use flatpak builder to export the runtimes to a ostree repo"
@@ -238,7 +238,7 @@ minimal_systemd_vm_image_x86_64:
              continue
            fi
         fi
-        bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
+        bst -o target_arch "${ARCH}" checkout --hardlinks "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
       done
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2

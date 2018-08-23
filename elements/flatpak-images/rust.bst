@@ -1,7 +1,7 @@
 kind: flatpak_image
 
 depends:
-  - filename: rust-sdk-image.bst
+  - filename: extensions/rust-sdk-image.bst
     type: build
 
 variables:

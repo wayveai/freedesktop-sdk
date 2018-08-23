@@ -1,4 +1,5 @@
 kind: stack
+description: Stack of elements in the freedesktop runtime
 
 depends:
 - filename: base-platform.bst

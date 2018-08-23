@@ -3,7 +3,7 @@ kind: manual
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: rust/rust-stage1.bst
+  - filename: extensions/rust/rust-stage1.bst
     type: build
   - filename: base/ninja.bst
     type: build

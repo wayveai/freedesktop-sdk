@@ -5,7 +5,7 @@ depends:
     type: build
   - filename: desktop/mesa.bst
     type: build
-  - filename: glxinfo/glu.bst
+  - filename: extensions/glxinfo/glu.bst
   - filename: base/cmake.bst
     type: build
   - filename: base/ninja.bst
