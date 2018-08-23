@@ -22,6 +22,9 @@ RUNTIMES=					\
 	glxinfo					\
 	glxinfo-debug				\
 	rust
+ifeq ($(ARCH),$(filter $(ARCH),i586 x86_64))
+  RUNTIMES+=platform-vaapi
+endif
 RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
 
