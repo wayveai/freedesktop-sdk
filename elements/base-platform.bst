@@ -15,6 +15,7 @@ depends:
 - filename: base/gnutls.bst
 - filename: base/gzip.bst
 - filename: base/gpgme.bst
+- filename: base/iana-config.bst
 - filename: base/icu.bst
 - filename: base/iso-codes.bst
 - filename: base/jpeg.bst
