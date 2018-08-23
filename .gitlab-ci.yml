@@ -190,7 +190,6 @@ minimal_systemd_vm_image_x86_64:
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
-    - ${BST} -o target_arch "${ARCH}" fetch all.bst
     - make ARCH=${ARCH} build
 
     - flatpakarch="${ARCH/i586/i386}"
