@@ -101,20 +101,10 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
-    - echo "Export runtimes to a ostree repo"
-    - mkdir runtimes
-    - |
-      for runtime in sdk platform rust; do
-        bst -o target_arch "${ARCH}" checkout "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
-      done
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
     - flatpakarch="${ARCH/i586/i386}"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/sdk "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/platform "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/rust "${RUNTIME_VERSION}";
+    - make ARCH=${ARCH} RUNTIMES="sdk platform rust" export
 
     - echo "Locally install generated flatpak runtimes"
     - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
