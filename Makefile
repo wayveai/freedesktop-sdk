@@ -33,16 +33,16 @@ CHECKOUT_ROOT=runtimes
 all: build
 
 build:
-	bst $(ARCH_OPTS) build all.bst
+	bst --colors $(ARCH_OPTS) build all.bst
 
 
 export:
-	bst $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
+	bst --colors $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
 	
 	mkdir -p $(CHECKOUT_ROOT)
 	for runtime in $(RUNTIMES); do \
 	  dir="$(ARCH)-$${runtime}"; \
-	  bst $(ARCH_OPTS) checkout $(CHECKOUT_OPTS) "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
+	  bst --colors $(ARCH_OPTS) checkout $(CHECKOUT_OPTS) "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(GPG_OPTS) $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
 	
@@ -59,10 +59,10 @@ export:
 
 
 check-dev-files:
-	bst $(ARCH_OPTS) build desktop-platform-image.bst
+	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
 	
 	mkdir -p $(CHECKOUT_ROOT)
-	bst $(ARCH_OPTS) checkout desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) checkout desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
 	
 	if [ -s found_so_files.txt ]; then \
