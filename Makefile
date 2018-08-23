@@ -45,10 +45,13 @@ export: $(RUNTIME_DIRECTORIES)
         fi
 
 
+clean-repo:
+	rm -rf $(REPO)
+
 clean-runtime:
 	rm -rf $(RUNTIME_DIRECTORIES)
 
-clean: clean-runtime
+clean: clean-repo clean-runtime
 
 
-.PHONY: build clean clean-runtime export
+.PHONY: build clean clean-repo clean-runtime export
