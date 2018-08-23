@@ -25,7 +25,7 @@ RUNTIMES=					\
 ifeq ($(ARCH),$(filter $(ARCH),i586 x86_64))
   RUNTIMES+=platform-vaapi
 endif
-RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
+RUNTIME_ELEMENTS=$(addprefix flatpak-images/,$(addsuffix .bst,$(RUNTIMES)))
 
 CHECKOUT_ROOT=runtimes
 
@@ -36,13 +36,13 @@ build:
 	bst $(ARCH_OPTS) build all.bst
 
 
-$(RUNTIME_DIRECTORIES):
-	bst $(ARCH_OPTS) build all.bst
-	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" $(CHECKOUT_ROOT)/"$$(basename "$@")"
-
-export: $(RUNTIME_DIRECTORIES)
+export:
+	bst $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
+	
 	mkdir -p $(CHECKOUT_ROOT)
-	for dir in $(RUNTIME_DIRECTORIES); do \
+	for runtime in $(RUNTIMES); do \
+	  dir="$(ARCH)-$${runtime}"; \
+	  bst $(ARCH_OPTS) checkout "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
 	if test "$(ARCH)" = "i586" ; then \
