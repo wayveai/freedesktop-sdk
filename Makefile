@@ -69,6 +69,20 @@ check-dev-files:
 	fi
 
 
+test-apps: $(REPO)
+	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable}}//$(BRANCH)
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Hello.json hello.sh
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.gnu.hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.gnu.hello.json hello
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Rust.Hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Rust.Hello.json hello
+
+
 clean-repo:
 	rm -rf $(REPO)
 
@@ -78,4 +92,4 @@ clean-runtime:
 clean: clean-repo clean-runtime
 
 
-.PHONY: build check-dev-files clean clean-repo clean-runtime export
+.PHONY: build check-dev-files clean clean-repo clean-runtime export test-apps
