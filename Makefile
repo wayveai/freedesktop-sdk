@@ -27,6 +27,8 @@ ifeq ($(ARCH),$(filter $(ARCH),i586 x86_64))
 endif
 RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
+CHECKOUT_ROOT=runtimes
+
 
 all: build
 
@@ -36,11 +38,12 @@ build:
 
 $(RUNTIME_DIRECTORIES):
 	bst $(ARCH_OPTS) build all.bst
-	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
+	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" $(CHECKOUT_ROOT)/"$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
+	mkdir -p $(CHECKOUT_ROOT)
 	for dir in $(RUNTIME_DIRECTORIES); do \
-	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$${dir}" "$(BRANCH)"; \
+	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
 	if test "$(ARCH)" = "i586" ; then \
 	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
@@ -52,7 +55,7 @@ clean-repo:
 	rm -rf $(REPO)
 
 clean-runtime:
-	rm -rf $(RUNTIME_DIRECTORIES)
+	rm -rf $(CHECKOUT_ROOT)
 
 clean: clean-repo clean-runtime
 
