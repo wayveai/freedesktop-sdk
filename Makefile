@@ -45,10 +45,14 @@ export:
 	  bst $(ARCH_OPTS) checkout "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
-	if test "$(ARCH)" = "i586" ; then \
-	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
-	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
-        fi
+	
+	case "$(RUNTIMES)" in \
+	  *platform-arch-libs*) \
+	    if test "$(ARCH)" = "i586" ; then \
+	      flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
+	      flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
+	    fi \
+	esac
 
 
 check-dev-files:
