@@ -186,51 +186,19 @@ minimal_systemd_vm_image_x86_64:
 
     - |
       [ -n "${FREEDESKTOP_GPG_PRIV}" ]
-
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
     - make ARCH=${ARCH} build
 
-    - flatpakarch="${ARCH/i586/i386}"
-    - mkdir runtimes
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        bst -o target_arch "${ARCH}" checkout --hardlinks "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
-      done
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
     - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
-    - echo "Use flatpak to export the runtimes to a ostree repo"
     - dnf install -y flatpak --enablerepo=updates-testing
-    - echo "Commit the binaries to the correct branch"
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" "${RUNTIME_VERSION}"
-      done
-    - |
-      case "${ARCH}" in
-        "i586")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/"${RUNTIME_VERSION}"
-          ;;
-        "arm")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/"${RUNTIME_VERSION}"
-          ;;
-      esac
+    - make ARCH=${ARCH} CHECKOUT_OPTS="--hardlinks" GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
+
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
