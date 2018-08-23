@@ -42,7 +42,7 @@ export:
 	mkdir -p $(CHECKOUT_ROOT)
 	for runtime in $(RUNTIMES); do \
 	  dir="$(ARCH)-$${runtime}"; \
-	  bst $(ARCH_OPTS) checkout "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
+	  bst $(ARCH_OPTS) checkout $(CHECKOUT_OPTS) "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
 	
