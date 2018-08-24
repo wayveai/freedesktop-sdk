@@ -21,12 +21,6 @@ RUNTIMES=					\
 	platform-html5				\
 	glxinfo					\
 	glxinfo-debug				\
-	basesdk					\
-	basesdk-debug				\
-	basesdk-locale				\
-	basesdk-docs				\
-	baseplatform				\
-	baseplatform-locale			\
 	rust
 
 ARCH_OPTS=-o target_arch $(ARCH)
