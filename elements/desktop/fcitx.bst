@@ -2,6 +2,8 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/pkg-config.bst
+  type: build
 - filename: base/cmake.bst
   type: build
 - filename: base/ninja.bst
@@ -12,6 +14,8 @@ depends:
 
 variables:
   cmake-local: |
+    -DLIB_INSTALL_DIR=%{libdir} \
+    -DSYSCONFDIR=%{sysconfdir} \
     -DENABLE_QT=Off \
     -DENABLE_PINYIN=Off \
     -DENABLE_TABLE=Off \
@@ -25,13 +29,6 @@ variables:
     -DENABLE_X11=Off \
     -DENABLE_ENCHANT=Off \
     -DENABLE_PRESAGE=Off
-
-config:
-  install-commands:
-    (>):
-      - |
-        mkdir -p %{install-root}%{libdir}
-        mv %{install-root}%{prefix}/lib/libfcitx-* %{install-root}%{libdir}
 
 public:
   bst: 
