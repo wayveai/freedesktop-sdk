@@ -42,6 +42,7 @@ variables:
     --disable-libssp \
     --disable-libvtv \
     --disable-multilib \
+    --enable-default-pie \
     --enable-languages=c,c++ \
     --without-isl \
     --enable-deterministic-archives \
