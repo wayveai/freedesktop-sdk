@@ -29,7 +29,7 @@ RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
 $(RUNTIME_DIRECTORIES):
 	bst $(ARCH_OPTS) build all.bst
-	bst $(ARCH_OPTS) checkout "$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
+	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
 
 export: $(RUNTIME_DIRECTORIES)
 	for dir in $(RUNTIME_DIRECTORIES); do				 \
