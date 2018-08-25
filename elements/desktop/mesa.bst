@@ -89,7 +89,7 @@ public:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-18.1.6.tar.xz
-    ref: bb7ce759069801804fcfb8152da3457f76cd7b4e0096e4870ff5adcb5c894289
+    url: https://mesa.freedesktop.org/archive/mesa-18.1.7.tar.xz
+    ref: 655e3b32ce3bdddd5e6e8768596e5d4bdef82d0dd37067c324cc4b2daa207306
   - kind: patch
     path: patches/mesa-Fix-linkage-against-shared-glapi.patch
