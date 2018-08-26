@@ -103,7 +103,7 @@ before_script:
 
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - make ARCH=${ARCH} RUNTIMES="sdk platform rust" export
+    - make ARCH=${ARCH} export
     - make ARCH=${ARCH} test-apps
   artifacts:
     when: always
