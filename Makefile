@@ -42,8 +42,9 @@ export:
 	mkdir -p $(CHECKOUT_ROOT)
 	set -e; for runtime in $(RUNTIMES); do \
 	  dir="$(ARCH)-$${runtime}"; \
-	  bst --colors $(ARCH_OPTS) checkout $(CHECKOUT_OPTS) "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
+	  bst --colors $(ARCH_OPTS) checkout --hardlinks "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(GPG_OPTS) $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
+	  rm -rf "$(CHECKOUT_ROOT)/$${dir}"; \
 	done
 	
 	set -e; case "$(RUNTIMES)" in \
@@ -62,8 +63,9 @@ check-dev-files:
 	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
 	
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
+	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	
 	set -e; if [ -s found_so_files.txt ]; then \
 	  echo "Found development .so files:" 1>&2; \
