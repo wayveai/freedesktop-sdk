@@ -40,13 +40,13 @@ export:
 	bst --colors $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
 	
 	mkdir -p $(CHECKOUT_ROOT)
-	for runtime in $(RUNTIMES); do \
+	set -e; for runtime in $(RUNTIMES); do \
 	  dir="$(ARCH)-$${runtime}"; \
 	  bst --colors $(ARCH_OPTS) checkout $(CHECKOUT_OPTS) "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
 	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(GPG_OPTS) $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
 	done
 	
-	case "$(RUNTIMES)" in \
+	set -e; case "$(RUNTIMES)" in \
 	  *platform-arch-libs*) \
 	    if test "$(ARCH)" = "i586" ; then \
 	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
@@ -65,7 +65,7 @@ check-dev-files:
 	bst --colors $(ARCH_OPTS) checkout desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
 	
-	if [ -s found_so_files.txt ]; then \
+	set -e; if [ -s found_so_files.txt ]; then \
 	  echo "Found development .so files:" 1>&2; \
 	  cat found_so_files.txt 1>&2; \
 	  false; \
