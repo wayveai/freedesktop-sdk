@@ -197,7 +197,7 @@ minimal_systemd_vm_image_x86_64:
     - ostree pull --repo=releases origin --mirror
 
     - dnf install -y flatpak --enablerepo=updates-testing
-    - make ARCH=${ARCH} CHECKOUT_OPTS="--hardlinks" GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
+    - make ARCH=${ARCH} GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
 
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
