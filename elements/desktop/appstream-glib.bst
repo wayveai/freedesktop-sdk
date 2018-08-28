@@ -44,6 +44,7 @@ public:
           - "%{libdir}/libappstream-builder.so"
 
 sources:
-  - kind: tar
-    url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.10.tar.xz
-    ref: 43453b8cde676b203830e70981e5aff91c7809233eeca96edaf8b73d2d047a21
+  - kind: git 
+    url: https://github.com/hughsie/appstream-glib
+    track: master
+    ref: 614ce59c184f7844146eff5513375348c42c1326 # appstream_glib_0_7_12
