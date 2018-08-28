@@ -8,6 +8,6 @@ sources:
   - kind: git
     url: https://github.com/mesonbuild/meson.git
     track: master
-    ref: 2495c38ac12a11141bcc0c49357049c83aa918e5 #  0.47.1
+    ref: 0a5ff338012a00f32c3aa9d8773835accc3e4e5b #  0.47.2
   - kind: patch
     path: patches/meson-no-lib64.patch
