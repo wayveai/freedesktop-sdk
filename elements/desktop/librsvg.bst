@@ -25,5 +25,5 @@ environment:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/librsvg/2.44/librsvg-2.44.0.tar.xz
-    ref: d1bc2aea9aedb2a41e6b557015486ef60eb94f80190d07224a81154af9d889ff
+    url: https://download.gnome.org/sources/librsvg/2.44/librsvg-2.44.1.tar.xz
+    ref: 8af2ea5a612a756d3228ec36fbd1cbbd0c35f6bc862886627360ca85a60ba33a
