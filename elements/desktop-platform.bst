@@ -25,7 +25,7 @@ depends:
 - filename: desktop/fribidi.bst
 - filename: desktop/gcab.bst
 - filename: desktop/gdk-pixbuf.bst
-- filename: desktop/geoclue2.bst
+- filename: desktop/geoclue.bst
 - filename: desktop/glib-networking.bst
 - filename: desktop/gnu-free-fonts.bst
 - filename: desktop/gobject-introspection.bst
