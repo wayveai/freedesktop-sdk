@@ -1,6 +1,12 @@
 # Ignore buildstream local state directories
-bootstrap/.bst
-sdk/.bst
+.bst
 
 # Rust hello world test
 target/
+
+# Ignore caches
+__pycache__
+
+# Ignore local testing
+repo/
+runtimes/
