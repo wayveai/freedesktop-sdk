@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/shared-mime-info.bst
   - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: base/libtiff.bst
   - filename: base/libpng.bst
   - filename: base/jpeg.bst

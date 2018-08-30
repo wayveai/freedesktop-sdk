@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/glib.bst
   - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: base/gettext.bst
     type: build
   - filename: base/meson.bst

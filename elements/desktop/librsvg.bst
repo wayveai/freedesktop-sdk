@@ -12,6 +12,10 @@ depends:
   - filename: desktop/libcroco.bst
   - filename: base/pkg-config.bst
     type: build
+  - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: desktop/gobject-introspection.bst
+    type: build
 
 public:
   bst:

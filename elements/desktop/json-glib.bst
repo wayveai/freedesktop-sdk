@@ -13,6 +13,7 @@ depends:
   - filename: base/gettext.bst
     type: build
   - filename: desktop/gobject-introspection.bst
+    type: build
 
 config:
   install-commands:

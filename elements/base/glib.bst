@@ -9,7 +9,6 @@ depends:
   - filename: base/util-linux.bst
   - filename: base/pcre.bst
   - filename: base/python3.bst
-    type: build
   - filename: base/pkg-config.bst
     type: build
   - filename: base/autoconf.bst
