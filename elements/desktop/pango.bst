@@ -23,6 +23,6 @@ public:
 
 sources:
   - kind: tar
-    url: https://ftp.gnome.org/pub/gnome/sources/pango/1.42/pango-1.42.2.tar.xz
-    ref: b1e416b4d40416ef6c8224cf146492b86848703264ba88f792290992cf3ca1e2
+    url: https://ftp.gnome.org/pub/gnome/sources/pango/1.42/pango-1.42.4.tar.xz
+    ref: 1d2b74cd63e8bd41961f2f8d952355aa0f9be6002b52c8aa7699d9f5da597c9d
 
