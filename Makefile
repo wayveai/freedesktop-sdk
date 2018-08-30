@@ -7,7 +7,7 @@ FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
 
-all: runtime
+ARCH_OPTS=-o target_arch $(ARCH)
 
 RUNTIMES=					\
 	sdk					\
@@ -22,30 +22,79 @@ RUNTIMES=					\
 	glxinfo					\
 	glxinfo-debug				\
 	rust
+ifeq ($(ARCH),$(filter $(ARCH),i586 x86_64))
+  RUNTIMES+=platform-vaapi
+endif
+RUNTIME_ELEMENTS=$(addprefix flatpak-images/,$(addsuffix .bst,$(RUNTIMES)))
 
-ARCH_OPTS=-o target_arch $(ARCH)
+CHECKOUT_ROOT=runtimes
 
-RUNTIME_DIRECTORIES=$(addprefix $(ARCH)-,$(RUNTIMES))
 
-$(RUNTIME_DIRECTORIES):
-	bst $(ARCH_OPTS) build all.bst
-	bst $(ARCH_OPTS) checkout flatpak-images/"$$(basename "$@" | sed "s/^$(ARCH)-//").bst" "$$(basename "$@")"
+all: build
 
-export: $(RUNTIME_DIRECTORIES)
-	for dir in $(RUNTIME_DIRECTORIES); do				 \
-	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(REPO) "$${dir}" "$(BRANCH)"; \
+build:
+	bst --colors $(ARCH_OPTS) build all.bst
+
+
+export:
+	bst --colors $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
+	
+	mkdir -p $(CHECKOUT_ROOT)
+	set -e; for runtime in $(RUNTIMES); do \
+	  dir="$(ARCH)-$${runtime}"; \
+	  bst --colors $(ARCH_OPTS) checkout --hardlinks "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
+	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(GPG_OPTS) $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
+	  rm -rf "$(CHECKOUT_ROOT)/$${dir}"; \
 	done
-	if test "$(ARCH)" = "i586" ; then \
-	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
-	  flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
-        fi
+	
+	set -e; case "$(RUNTIMES)" in \
+	  *platform-arch-libs*) \
+	    if test "$(ARCH)" = "i586" ; then \
+	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
+	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
+	    elif test "$(ARCH)" = "arm" ; then \
+	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/aarch64/$(BRANCH); \
+	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/aarch64/$(BRANCH); \
+	    fi \
+	esac
 
-runtime:
-	bst $(ARCH_OPTS) build all.bst
+
+check-dev-files:
+	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
+	
+	mkdir -p $(CHECKOUT_ROOT)
+	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
+	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	
+	set -e; if [ -s found_so_files.txt ]; then \
+	  echo "Found development .so files:" 1>&2; \
+	  cat found_so_files.txt 1>&2; \
+	  false; \
+	fi
+
+
+test-apps: $(REPO)
+	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable}}//$(BRANCH)
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Hello.json hello.sh
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.gnu.hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.gnu.hello.json hello
+	
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Rust.Hello.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Rust.Hello.json hello
+
+
+clean-repo:
+	rm -rf $(REPO)
 
 clean-runtime:
-	rm -rf $(RUNTIME_DIRECTORIES)
+	rm -rf $(CHECKOUT_ROOT)
 
-clean: clean-runtime
+clean: clean-repo clean-runtime
 
-.PHONY: clean clean-runtime export runtime
+
+.PHONY: build check-dev-files clean clean-repo clean-runtime export test-apps

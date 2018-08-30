@@ -98,50 +98,13 @@ before_script:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
-    - ${BST} -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
-    - utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
-    - |
-      if [ -s found_so_files.txt ]; then
-        echo "Found development .so files:" 1>&2
-        cat found_so_files.txt 1>&2
-        false
-      fi
+    - make ARCH=${ARCH} build
+    - make ARCH=${ARCH} check-dev-files
 
-    - echo "Export runtimes to a ostree repo"
-    - mkdir runtimes
-    - |
-      for runtime in sdk platform rust; do
-        bst -o target_arch "${ARCH}" checkout "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
-      done
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
-    - flatpakarch="${ARCH/i586/i386}"
     - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/sdk "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/platform "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${flatpakarch} --files=files repo/ runtimes/rust "${RUNTIME_VERSION}";
-
-    - echo "Locally install generated flatpak runtimes"
-    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//"${RUNTIME_VERSION}"
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//"${RUNTIME_VERSION}"
-    - flatpak install -y --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk.Extension.rust-stable//"${RUNTIME_VERSION}"
-
-    - echo "Build basic flatpak application  (script)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_hello tests/org.flatpak.Hello.json
-    - echo "Build basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_gnu_hello tests/org.gnu.hello.json
-    - echo "Build basic flatpak application  (Rust binary)"
-    - flatpak-builder --arch="${flatpakarch}" build_folder_rust_hello tests/org.flatpak.Rust.Hello.json
-
-    - echo "Run basic flatpak application (script)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
-    - echo "Run basic flatpak application (C binary)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
-    - echo "Run basic flatpak application (Rust binary)"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder_rust_hello tests/org.flatpak.Rust.Hello.json hello
+    - make ARCH=${ARCH} export
+    - make ARCH=${ARCH} test-apps
   artifacts:
     when: always
     paths:
@@ -223,51 +186,19 @@ minimal_systemd_vm_image_x86_64:
 
     - |
       [ -n "${FREEDESKTOP_GPG_PRIV}" ]
-
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
 
-    - ${BST} -o target_arch "${ARCH}" fetch all.bst
-    - ${BST} -o target_arch "${ARCH}" build all.bst
-    - flatpakarch="${ARCH/i586/i386}"
-    - mkdir runtimes
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        bst -o target_arch "${ARCH}" checkout --hardlinks "flatpak-images/${runtime}.bst" "runtimes/${runtime}";
-      done
+    - make ARCH=${ARCH} build
+
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
     - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
-    - echo "Use flatpak to export the runtimes to a ostree repo"
     - dnf install -y flatpak --enablerepo=updates-testing
-    - echo "Commit the binaries to the correct branch"
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi,-html5} glxinfo{,-debug} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" "${RUNTIME_VERSION}"
-      done
-    - |
-      case "${ARCH}" in
-        "i586")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/"${RUNTIME_VERSION}"
-          ;;
-        "arm")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/"${RUNTIME_VERSION}"
-          ;;
-      esac
+    - make ARCH=${ARCH} GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
+
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
