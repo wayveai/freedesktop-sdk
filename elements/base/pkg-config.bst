@@ -26,5 +26,5 @@ public:
 
 sources:
   - kind: git
-    url: https://github.com/pkgconf/pkgconf
-    ref: 4735e17287003b24e86b909f473af14771b8b32c  # 1.5.2
+    url: https://git.dereferenced.org/pkgconf/pkgconf.git
+    ref: 101b99b5b59d58fe6c6dc46ae22edb049cc0bd3a #  1.5.3
