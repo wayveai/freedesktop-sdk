@@ -23,18 +23,13 @@ depends:
 
 variables:
   meson-local: |
+    -Drootprefix=%{prefix} \
     -Drootlibdir=%{libdir} \
+    -Dsysvinit-path=%{sysconfdir}/init.d \
     -Daudit=false \
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999
-
-config:
-  install-commands:
-    (>):
-      - |
-        mv %{install-root}/etc %{install-root}/usr/etc
-        mv %{install-root}/var %{install-root}/usr/var
 
 sources:
 - kind: git
