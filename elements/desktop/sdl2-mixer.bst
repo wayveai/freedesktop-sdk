@@ -2,6 +2,9 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/libflac.bst
+  - filename: base/libvorbis.bst
+  - filename: desktop/mpg123.bst
   - filename: desktop/sdl2.bst
 
 public:
