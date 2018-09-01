@@ -1,17 +1,21 @@
-kind: autotools
+kind: meson
 description: libdrm
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-pciaccess.bst
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
+    type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: desktop/xorg-lib-pciaccess.bst
 
 variables:
-  conf-local: |
-    --enable-etnaviv-experimental-api \
-    --enable-tegra-experimental-api \
-    --disable-udev
+  meson-local: |
+    -Detnaviv=true \
+    -Dtegra=true \
+    -Dudev=false
 
 public:
   bst:
