@@ -4,6 +4,7 @@ description: GNU nano
 depends:
   - filename: bootstrap-import.bst
   - filename: base/pkg-config.bst
+    type: build
 
 sources:
   - kind: tar
