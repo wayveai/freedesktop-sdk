@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: bootstrap-import.bst
