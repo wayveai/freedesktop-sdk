@@ -4,6 +4,8 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/json-glib.bst
   - filename: base/glib.bst
+  - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: desktop/libsoup.bst
   - filename: base/pkg-config.bst
     type: build

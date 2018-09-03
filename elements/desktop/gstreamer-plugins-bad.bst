@@ -3,6 +3,8 @@ kind: meson
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/orc.bst
+  - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/libfdk-aac.bst
