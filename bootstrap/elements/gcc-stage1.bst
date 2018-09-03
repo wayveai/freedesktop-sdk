@@ -46,6 +46,7 @@ variables:
     --enable-languages=c,c++ \
     --without-isl \
     --enable-deterministic-archives \
+    --enable-linker-build-id \
     %{conf-extra}
 
 sources:
