@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: desktop/gtk3.bst
   - filename: desktop/wayland-protocols.bst
     type: build
