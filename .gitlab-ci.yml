@@ -23,7 +23,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='301a393cb6499b3f869d74827a9e8dc61b97d00e' #  1.1.7
+  - export BST_SHA='70971f24dfe09fe89a233f22b8d6034a64d11167' #  1.2.0
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
