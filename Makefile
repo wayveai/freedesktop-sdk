@@ -64,12 +64,12 @@ check-dev-files:
 	
 	mkdir -p $(CHECKOUT_ROOT)
 	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_so_files.txt
+	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	
-	set -e; if [ -s found_so_files.txt ]; then \
-	  echo "Found development .so files:" 1>&2; \
-	  cat found_so_files.txt 1>&2; \
+	set -e; if [ -s found_dev_files.txt ]; then \
+	  echo "Found development files:" 1>&2; \
+	  cat found_dev_files.txt 1>&2; \
 	  false; \
 	fi
 
