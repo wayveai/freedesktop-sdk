@@ -8,6 +8,7 @@ depends:
   - filename: base/ruby.bst
     type: build
   - filename: base/libtool.bst
+    type: build
 
 variables:
   conf-local: |
