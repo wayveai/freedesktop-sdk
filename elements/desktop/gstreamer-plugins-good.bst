@@ -4,6 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/orc.bst
   - filename: desktop/lame.bst
+  - filename: desktop/libsoup.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: base/autoconf.bst
@@ -21,6 +22,7 @@ variables:
   conf-local: |
     --enable-experimental \
     --enable-lame \
+    --enable-soup \
     --enable-orc \
     --with-default-visualizer=autoaudiosink
 
