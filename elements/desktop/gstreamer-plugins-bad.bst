@@ -8,6 +8,7 @@ depends:
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/libfdk-aac.bst
+  - filename: desktop/wayland.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/automake.bst
@@ -25,7 +26,8 @@ depends:
 variables:
   conf-local: |
     --enable-experimental \
-    --enable-orc
+    --enable-orc \
+    --enable-wayland
 
 public:
   bst:
