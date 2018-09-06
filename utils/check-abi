@@ -162,7 +162,7 @@ def get_libraries(tree):
 
     for dirpath, dirnames, filenames in os.walk(libdir):
         for filename in sorted(filenames):
-            if not fnmatch(filename, 'lib*.so*') or fnmatch(filename, '*.debug'):
+            if not fnmatch(filename, 'lib*.so'):
                 continue
 
             library = os.path.join(dirpath, filename)
