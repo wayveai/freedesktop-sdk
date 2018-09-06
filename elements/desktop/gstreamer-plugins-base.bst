@@ -17,6 +17,7 @@ depends:
     type: build
   - filename: base/git.bst
     type: build
+  - filename: base/libtheora.bst
   - filename: base/libtool.bst
     type: build
   - filename: base/libvorbis.bst
@@ -30,6 +31,7 @@ variables:
   conf-local: |
       --enable-experimental \
       --enable-orc \
+      --enable-theora \
       --enable-vorbis
 
 public:
