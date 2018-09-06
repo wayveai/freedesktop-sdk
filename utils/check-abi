@@ -126,8 +126,8 @@ def checkout_tree(name):
     print(format_title(f'Building and checking out {name}', level=1), end='\n\n', flush=True)
 
     with checkout_git_revision(name):
-        bst(['build', 'desktop-platform-image.bst'])
-        bst(['checkout', '--hardlinks', 'desktop-platform-image.bst', checkout_dir])
+        bst(['build', 'desktop-image.bst'])
+        bst(['checkout', '--hardlinks', 'desktop-image.bst', checkout_dir])
         print(flush=True)
 
     return checkout_dir
@@ -187,9 +187,10 @@ def get_libraries(tree):
     return libs
 
 
-def compare_abi(old_library, old_debug_dir, new_library, new_debug_dir):
+def compare_abi(old_library, old_debug_dir, old_include_dir, new_library, new_debug_dir, new_include_dir):
     result = subprocess.run([
             'abidiff', '--no-added-syms',
+            '--drop-private-types', '--headers-dir1', old_include_dir, '--headers-dir2', new_include_dir,
             '--suppressions', ABI_SUPPRESSION_FILE,
             '--debug-info-dir1', old_debug_dir, '--debug-info-dir2', new_debug_dir,
             old_library, new_library,
@@ -218,11 +219,13 @@ def compare_tree_abis(old_checkout, new_checkout):
 
         old_library = os.path.join(old_checkout, old_relpath)
         old_debug_dir = os.path.dirname(os.path.join(old_checkout, 'usr', 'lib', 'debug', f'{old_relpath}.debug'))
+        old_include_dir = os.path.join(old_checkout, 'usr', 'include')
 
         new_library = os.path.join(new_checkout, new_relpath)
         new_debug_dir = os.path.dirname(os.path.join(new_checkout, 'usr', 'lib', 'debug', f'{new_relpath}.debug'))
+        new_include_dir = os.path.join(new_checkout, 'usr', 'include')
 
-        result = compare_abi(old_library, old_debug_dir, new_library, new_debug_dir)
+        result = compare_abi(old_library, old_debug_dir, old_include_dir, new_library, new_debug_dir, new_include_dir)
 
         if result.abi_was_broken:
             title = format_title(f'ABI Break: {lib_key}', level=2)
