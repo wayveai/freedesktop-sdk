@@ -2,6 +2,7 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: desktop/cairo.bst
   - filename: desktop/orc.bst
   - filename: desktop/lame.bst
   - filename: desktop/libpulse.bst
@@ -21,6 +22,7 @@ depends:
 
 variables:
   conf-local: |
+    --enable-cairo \
     --enable-experimental \
     --enable-lame \
     --enable-soup \
