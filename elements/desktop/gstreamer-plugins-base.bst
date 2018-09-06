@@ -17,6 +17,7 @@ depends:
     type: build
   - filename: base/git.bst
     type: build
+  - filename: base/libogg.bst
   - filename: base/libtheora.bst
   - filename: base/libtool.bst
     type: build
@@ -30,6 +31,7 @@ depends:
 variables:
   conf-local: |
       --enable-experimental \
+      --enable-ogg \
       --enable-orc \
       --enable-theora \
       --enable-vorbis
