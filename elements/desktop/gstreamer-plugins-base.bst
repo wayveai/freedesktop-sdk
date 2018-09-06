@@ -7,6 +7,7 @@ depends:
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
+  - filename: desktop/pango.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/autoconf-archive.bst
@@ -33,6 +34,7 @@ variables:
       --enable-experimental \
       --enable-ogg \
       --enable-orc \
+      --enable-pango \
       --enable-theora \
       --enable-vorbis
 
