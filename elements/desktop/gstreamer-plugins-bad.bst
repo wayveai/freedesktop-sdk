@@ -1,4 +1,4 @@
-kind: meson
+kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
@@ -8,16 +8,24 @@ depends:
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/libfdk-aac.bst
-  - filename: base/meson.bst
+  - filename: base/autoconf.bst
     type: build
-  - filename: base/ninja.bst
+  - filename: base/automake.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/libtool.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/which.bst
+    type: build
+
 
 variables:
-  meson-local: |
-    -Duse_orc=yes
+  conf-local: |
+    --enable-experimental \
+    --enable-orc
 
 public:
   bst:
