@@ -57,6 +57,7 @@ depends:
 - filename: base/nss.bst
 - filename: base/nsswitch-config.bst
 - filename: base/openssl.bst
+- filename: base/opus.bst
 - filename: base/p11-kit.bst
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
