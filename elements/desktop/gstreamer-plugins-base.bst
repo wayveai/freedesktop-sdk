@@ -19,6 +19,7 @@ depends:
     type: build
   - filename: base/libtool.bst
     type: build
+  - filename: base/libvorbis.bst
   - filename: base/pkg-config.bst
     type: build
   - filename: base/which.bst
@@ -28,7 +29,8 @@ depends:
 variables:
   conf-local: |
       --enable-experimental \
-      --enable-orc
+      --enable-orc \
+      --enable-vorbis
 
 public:
   bst:
