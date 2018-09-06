@@ -23,6 +23,7 @@ depends:
   - filename: base/libtool.bst
     type: build
   - filename: base/libvorbis.bst
+  - filename: base/opus.bst
   - filename: base/pkg-config.bst
     type: build
   - filename: base/which.bst
@@ -33,6 +34,7 @@ variables:
   conf-local: |
       --enable-experimental \
       --enable-ogg \
+      --enable-opus \
       --enable-orc \
       --enable-pango \
       --enable-theora \
