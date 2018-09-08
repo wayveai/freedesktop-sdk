@@ -19,8 +19,9 @@ public:
   bst:
     split-rules:
       devel:
-        - "%{libdir}/libgpgme.so"
-        - "%{libdir}/libgpgmepp.so"
+        (>):
+          - "%{libdir}/libgpgme.so"
+          - "%{libdir}/libgpgmepp.so"
 
 sources:
   - kind: tar
