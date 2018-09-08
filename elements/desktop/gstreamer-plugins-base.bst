@@ -1,4 +1,4 @@
-kind: meson
+kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
@@ -7,16 +7,28 @@ depends:
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
-  - filename: base/meson.bst
+  - filename: base/autoconf.bst
     type: build
-  - filename: base/ninja.bst
+  - filename: base/autoconf-archive.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/git.bst
+    type: build
+  - filename: base/libtool.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/which.bst
+    type: build
+
 
 variables:
-  meson-local: |
-    -Duse_orc=yes
+  conf-local: |
+      --enable-experimental \
+      --enable-orc
 
 public:
   bst:
@@ -41,3 +53,6 @@ sources:
     url: freedesktop:gstreamer/gst-plugins-base
     track: 1.14
     ref: 5c637f685fb4f791e07c43d9818d0369bdb97dca # 1.14.2
+    submodules:
+      common:
+        url: freedesktop:gstreamer/common
