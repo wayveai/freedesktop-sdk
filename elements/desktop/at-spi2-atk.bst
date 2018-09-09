@@ -1,10 +1,12 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/atk.bst
 - filename: desktop/at-spi2-core.bst
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/libxml2.bst
   type: build
 
 public:
@@ -15,6 +17,7 @@ public:
         - '%{libdir}/libatk-bridge-2.0.so'
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/at-spi2-atk/2.26/at-spi2-atk-2.26.2.tar.xz
-  ref: 61891f0abae1689f6617a963105a3f1dcdab5970c4a36ded9c79a7a544b16a6e
+- kind: git_tag
+  url: gnome:at-spi2-atk
+  track: master
+  ref: AT_SPI2_ATK_2_30_0-0-g8cce3d9fa7eabfb484d9515767a80bfaca2ed8e9
