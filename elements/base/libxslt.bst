@@ -16,5 +16,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.gnome.org/GNOME/libxslt
-  ref: 8307b072adb86c8064897f4c5e12e5ae142f3bff    # 1.1.32
+  url: gnome:libxslt
+  track: master
+  ref: v1.1.32-0-g8307b072adb86c8064897f4c5e12e5ae142f3bff
