@@ -15,10 +15,6 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 
-variables:
-  conf-local: |
-    PYTHON="/usr/bin/python3"
-
 public:
   bst:
     split-rules:
