@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -6,7 +6,9 @@ depends:
   type: build
 - filename: desktop/gtk-doc.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/gettext.bst
   type: build
 
 public:
@@ -17,6 +19,7 @@ public:
         - '%{libdir}/libatk-1.0.so'
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/atk/2.28/atk-2.28.1.tar.xz
-  ref: cd3a1ea6ecc268a2497f0cd018e970860de24a6d42086919d6bf6c8e8d53f4fc
+- kind: git_tag
+  url: gnome:atk
+  track: master
+  ref: ATK_2_30_0-0-g90ed6bd964b8a2b93c7cf3ea018483e437913785
