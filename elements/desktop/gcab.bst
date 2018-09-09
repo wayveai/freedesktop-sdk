@@ -9,6 +9,8 @@ depends:
   type: build
 - filename: base/buildsystem-meson.bst
   type: build
+- filename: base/git.bst
+  type: build
 - filename: desktop/vala.bst
   type: build
 
@@ -24,6 +26,6 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.gnome.org/GNOME/gcab
+  url: gnome:gcab
   track: master
-  ref: 2d9af13213b41bdca4cecbaa5f192df71edc12be   #  v1.0
+  ref: v1.1-0-ge00b3959de71394bae726f834af1be8255cece3b
