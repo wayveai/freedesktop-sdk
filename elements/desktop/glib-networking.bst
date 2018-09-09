@@ -17,6 +17,7 @@ variables:
     -Dca_certificates_path=%{ca_path}
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/glib-networking/2.56/glib-networking-2.56.1.tar.xz
-  ref: df47b0e0a037d2dcf6b1846cbdf68dd4b3cc055e026bb40c4a55f19f29f635c8
+- kind: git_tag
+  url: gnome:glib-networking
+  track: master
+  ref: 2.58.0-0-gbd8ef31a4ca4552a10b8fe7897662a2b235f6e6f
