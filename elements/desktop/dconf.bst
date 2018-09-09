@@ -8,9 +8,8 @@ depends:
   type: build
 
 variables:
-  conf-local: |
-    --disable-static \
-    --disable-man
+  meson-local: >
+    -Dman=false
 
 public:
   bst:
