@@ -13,5 +13,5 @@ depends:
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/sources/vala/0.40/vala-0.40.8.tar.xz
-  ref: 5c35e087a7054e9f0a514a0c1f1d0a0d7cf68d3e43c1dbeb840f9b0d815c0fa5
+  url: https://download.gnome.org/sources/vala/0.42/vala-0.42.2.tar.xz
+  ref: 9e89aa42152b1cef551568f827aa2deea2a9b5487d78c91474c8617b618e5f07
