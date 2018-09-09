@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -12,7 +12,7 @@ depends:
   type: build
 - filename: base/which.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 
 public:
@@ -26,6 +26,7 @@ public:
         - '%{libdir}/libgirepository-1.0.so'
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/gobject-introspection/1.56/gobject-introspection-1.56.1.tar.xz
-  ref: 5b2875ccff99ff7baab63a34b67f8c920def240e178ff50add809e267d9ea24b
+- kind: git_tag
+  url: gnome:gobject-introspection
+  track: gnome-3-30
+  ref: 1.58.0-0-g01bf21f398d5ece9ac2d78c00b4b362091f8e05c
