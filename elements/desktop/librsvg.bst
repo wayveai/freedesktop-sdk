@@ -6,6 +6,8 @@ depends:
     type: build
   - filename: extensions/rust/cargo.bst
     type: build
+  - filename: desktop/vala.bst
+    type: build
   - filename: desktop/gdk-pixbuf.bst
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst
