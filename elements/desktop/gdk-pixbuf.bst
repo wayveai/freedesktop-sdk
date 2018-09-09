@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -10,14 +10,16 @@ depends:
 - filename: base/jpeg.bst
 - filename: desktop/gtk-doc.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/gettext.bst
   type: build
 
 variables:
-  conf-local: |
-    --without-x11 \
-    --without-libjasper \
-    --with-included-loaders=png,jpeg
+  meson-local: >
+    -Dx11=false
+    -Djasper=false
+    -Dbuiltin_loaders=png,jpeg
 
 public:
   bst:
@@ -34,6 +36,7 @@ public:
       gdk-pixbuf-query-loaders --update-cache
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.12.tar.xz
-  ref: fff85cf48223ab60e3c3c8318e2087131b590fd6f1737e42cb3759a3b427a334
+- kind: git_tag
+  url: gnome:gdk-pixbuf
+  track: master
+  ref: 2.38.0-0-g0b1eab312e77701c20b07fb8e38119009f8b34c3
