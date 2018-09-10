@@ -55,6 +55,7 @@ depends:
 - filename: desktop/liberation-fonts.bst
 - filename: desktop/libglvnd.bst
 - filename: desktop/libproxy.bst
+- filename: desktop/libpsl.bst
 - filename: desktop/librsvg.bst
 - filename: desktop/libseccomp.bst
 - filename: desktop/libsoup.bst
