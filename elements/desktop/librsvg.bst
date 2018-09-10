@@ -31,3 +31,5 @@ sources:
   - kind: tar
     url: https://download.gnome.org/sources/librsvg/2.44/librsvg-2.44.2.tar.xz
     ref: 4eec96cc53ed499417dac3db9b4604f80a76f377f8f791641c458df1d7a3631f
+  - kind: patch
+    path: patches/librsvg-srcdir.patch
