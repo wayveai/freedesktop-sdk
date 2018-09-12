@@ -7,6 +7,7 @@ depends:
   - filename: desktop/orc.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
+  - filename: desktop/pango.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/autoconf-archive.bst
@@ -17,8 +18,12 @@ depends:
     type: build
   - filename: base/git.bst
     type: build
+  - filename: base/libogg.bst
+  - filename: base/libtheora.bst
   - filename: base/libtool.bst
     type: build
+  - filename: base/libvorbis.bst
+  - filename: base/opus.bst
   - filename: base/pkg-config.bst
     type: build
   - filename: base/which.bst
@@ -28,7 +33,12 @@ depends:
 variables:
   conf-local: |
       --enable-experimental \
-      --enable-orc
+      --enable-ogg \
+      --enable-opus \
+      --enable-orc \
+      --enable-pango \
+      --enable-theora \
+      --enable-vorbis
 
 public:
   bst:
