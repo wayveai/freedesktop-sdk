@@ -49,6 +49,9 @@ variables:
     --enable-linker-build-id \
     %{conf-extra}
 
+  conf-link-args: |
+    --enable-shared
+
 config:
   install-commands:
     - |
@@ -79,6 +82,7 @@ public:
           - "%{sysroot}%{indep-libdir}/gcc/**"
           - "%{sysroot}%{libdir}/gcc"
           - "%{sysroot}%{libdir}/gcc/**"
+          - "%{sysroot}%{multiarch_libdir}/lib*.a"
           - "%{sysroot}%{multiarch_libdir}/liblsan.so"
           - "%{sysroot}%{multiarch_libdir}/libstdc++.so"
           - "%{sysroot}%{multiarch_libdir}/libgomp.so"
