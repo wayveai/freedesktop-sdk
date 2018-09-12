@@ -19,6 +19,11 @@ depends:
   - filename: desktop/gobject-introspection.bst
     type: build
 
+variables:
+  conf-local: |
+      --enable-gtk-doc \
+      --enable-vala
+
 public:
   bst:
     split-rules:
