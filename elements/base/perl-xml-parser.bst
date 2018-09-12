@@ -17,12 +17,6 @@ config:
     - |
       find "%{install-root}" -type f -name perllocal.pod -delete
 
-environment:
-  MAKEFLAGS: -j%{max-jobs}
-
-environment-nocache:
-- MAKEFLAGS
-
 sources:
   - kind: tar
     url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
