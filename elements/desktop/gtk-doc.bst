@@ -20,5 +20,6 @@ depends:
 
 sources:
   - kind: git
-    url: https://gitlab.gnome.org/GNOME/gtk-doc.git
-    ref: 695816a36b492140529ed84c59ee246be2b952b7 #  GTK_DOC_1_28
+    url: gnome:gtk-doc
+    track: master
+    ref: 7db567e83fe5d2d0659560c6dfb25ee27b338140  # GTK_DOC_1_29
