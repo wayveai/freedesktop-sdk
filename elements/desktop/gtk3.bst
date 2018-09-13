@@ -14,6 +14,7 @@ depends:
   - filename: desktop/gobject-introspection.bst
     type: build
   - filename: desktop/gsettings-desktop-schemas.bst
+  - filename: desktop/hicolor-icon-theme.bst
   - filename: desktop/xorg-lib-xinerama.bst
   - filename: desktop/xorg-lib-xi.bst
   - filename: desktop/xorg-lib-xcomposite.bst
@@ -56,7 +57,7 @@ public:
         gtk-query-immodules-3.0 --update-cache
 
       - |
-        gtk-update-icon-cache
+        gtk-update-icon-cache %{datadir}/icons/hicolor
 
 sources:
   - kind: tar
