@@ -9,6 +9,7 @@ depends:
   - filename: desktop/libsoup.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
+  - filename: base/wavpack.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/automake.bst
