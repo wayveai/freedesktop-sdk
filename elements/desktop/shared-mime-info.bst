@@ -10,7 +10,7 @@ depends:
   - filename: base/glib.bst
 
 variables:
-  max-jobs: 1
+  notparallel: True
 
 sources:
   - kind: tar

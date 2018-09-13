@@ -14,7 +14,7 @@ variables:
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"
-        max-jobs: 2
+        JOBS: 2
     - target_arch == "arm":
         targets: "ARM"
     - target_arch == "aarch64":
