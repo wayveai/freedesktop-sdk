@@ -48,6 +48,8 @@ public:
           - "%{libdir}/libgdk-3.so"
           - "%{libdir}/libgtk-3.so"
           - "%{libdir}/libgailutil-3.so"
+          - "%{datadir}/share/icons"
+          - "%{datadir}/share/icons/**"
 
     integration-commands:
       - |
