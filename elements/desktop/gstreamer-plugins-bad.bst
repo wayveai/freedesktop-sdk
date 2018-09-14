@@ -29,6 +29,7 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/sndfile.bst
   - filename: base/which.bst
     type: build
 
