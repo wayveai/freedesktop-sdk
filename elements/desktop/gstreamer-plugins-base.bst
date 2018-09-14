@@ -8,6 +8,7 @@ depends:
   - filename: desktop/gstreamer.bst
   - filename: desktop/mesa.bst
   - filename: desktop/pango.bst
+  - filename: desktop/xorg-lib-xv.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/autoconf-archive.bst
