@@ -9,7 +9,8 @@ depends:
   - filename: desktop/libsoup.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
-  - filename: base/wavpack.bst
+  - filename: desktop/gobject-introspection.bst
+    type: build
   - filename: base/autoconf.bst
     type: build
   - filename: base/automake.bst
@@ -18,6 +19,7 @@ depends:
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/wavpack.bst
   - filename: base/which.bst
     type: build
 
@@ -25,6 +27,7 @@ variables:
   conf-local: |
     --enable-cairo \
     --enable-experimental \
+    --enable-introspection \
     --enable-lame \
     --enable-soup \
     --enable-orc \
