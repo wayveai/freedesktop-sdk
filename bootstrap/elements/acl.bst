@@ -33,6 +33,9 @@ variables:
   host-triplet: '%{triplet}'
 
 config:
+  configure-commands:
+    (<):
+      - ./autogen.sh
   install-commands:
   - |
     cd %{builddir}
@@ -41,6 +44,7 @@ config:
     %{delete_libtool_files}
 
 sources:
-- kind: tar
-  url: https://download.savannah.nongnu.org/releases/acl/acl-2.2.53.tar.gz
-  ref: 06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7
+- kind: git_tag
+  url: https://git.savannah.gnu.org/git/acl.git
+  track: master
+  ref: v2.2.53-0-g65ff056ac4c25141cc06e484bce040635e4abd3d
