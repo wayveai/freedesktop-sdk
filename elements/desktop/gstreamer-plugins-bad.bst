@@ -26,6 +26,7 @@ depends:
 variables:
   conf-local: |
     --enable-experimental \
+    --enable-introspection \
     --enable-orc \
     --enable-wayland
 
