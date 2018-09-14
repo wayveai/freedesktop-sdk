@@ -9,6 +9,7 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/libfdk-aac.bst
   - filename: desktop/librsvg.bst
+  - filename: desktop/vulkan.bst
   - filename: desktop/wayland.bst
   - filename: base/autoconf.bst
     type: build
