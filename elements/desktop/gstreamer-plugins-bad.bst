@@ -15,6 +15,7 @@ depends:
     type: build
   - filename: base/automake.bst
     type: build
+  - filename: base/curl.bst
   - filename: base/gettext.bst
     type: build
   - filename: base/libtool.bst
