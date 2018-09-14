@@ -28,6 +28,10 @@ public:
 (@): target.yml
 
 config:
+  configure-commands:
+    (<):
+      - ./autogen.sh
+
   install-commands:
   - |
     cd %{builddir}
@@ -42,6 +46,6 @@ config:
     %{delete_libtool_files}
 
 sources:
-- kind: tar
-  url: https://download.savannah.nongnu.org/releases/attr/attr-2.4.48.tar.gz
-  ref: 5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7
+- kind: git_tag
+  url: savannah:attr.git
+  ref: v2.4.48-0-gcfd8e6ef491a7a5ff900ba2ba3deff7d0bebb0a6
