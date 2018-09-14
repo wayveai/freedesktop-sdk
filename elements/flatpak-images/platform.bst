@@ -58,6 +58,8 @@ config:
     'Extension org.freedesktop.Platform.VAAPI.Intel':
       directory: "%{lib}/dri/intel-vaapi-driver"
       autodelete: "false"
+      no-autodownload: "true"
+      download-if: "have-intel-gpu"
 
     'Extension org.freedesktop.Platform.html5-codecs':
       directory: "%{lib}/ffmpeg"
