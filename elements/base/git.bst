@@ -33,5 +33,5 @@ config:
 
 sources:
   - kind: tar
-    url: https://github.com/git/git/archive/v2.18.0.tar.gz
-    ref: 93993babac690a06906d832a1715c3315b4787a2845aeb500f7dcc82e1599df2
+    url: https://github.com/git/git/archive/v2.19.0.tar.gz
+    ref: c4146d94d1c74de0d099bcd6ba22cc44f799332a46146ede4ad9c9f67971aa28
