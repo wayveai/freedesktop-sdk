@@ -33,6 +33,7 @@ depends:
 variables:
   conf-local: |
       --enable-experimental \
+      --enable-introspection \
       --enable-ogg \
       --enable-opus \
       --enable-orc \
