@@ -7,6 +7,7 @@ depends:
   - filename: desktop/lame.bst
   - filename: desktop/libpulse.bst
   - filename: desktop/libsoup.bst
+  - filename: desktop/mpg123.bst
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/gobject-introspection.bst
