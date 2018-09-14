@@ -16,6 +16,7 @@ depends:
     type: build
   - filename: base/automake.bst
     type: build
+  - filename: base/libflac.bst
   - filename: base/libtool.bst
     type: build
   - filename: base/pkg-config.bst
