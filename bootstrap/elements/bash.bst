@@ -54,4 +54,4 @@ sources:
   - kind: git
     url: https://git.savannah.gnu.org/git/bash.git
     track: master
-    ref: eb78197af36bb0fb95493ebf8fce104be6832ec9 # Bash-4.4 patch 18
+    ref: b0776d8c49ab4310fa056ce1033985996c5b9807 # Bash-4.4 patch 19
