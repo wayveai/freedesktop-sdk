@@ -10,6 +10,7 @@ depends:
   - filename: desktop/libdrm.bst
   - filename: desktop/libfdk-aac.bst
   - filename: desktop/librsvg.bst
+  - filename: desktop/openal.bst
   - filename: desktop/vulkan.bst
   - filename: desktop/wayland.bst
   - filename: desktop/wayland-protocols.bst
