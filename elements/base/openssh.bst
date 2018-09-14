@@ -17,4 +17,4 @@ variables:
 sources:
   - kind: git
     url: https://github.com/openssh/openssh-portable
-    ref: a0349a1cc4a18967ad1dbff5389bcdf9da098814  # 7.7p1
+    ref: 71508e06fab14bc415a79a08f5535ad7bffa93d9  # V_7_8_P1
