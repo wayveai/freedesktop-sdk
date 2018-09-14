@@ -1,8 +1,11 @@
-kind: distutils
+kind: pip
 
 depends:
   - filename: bootstrap-import.bst
   - filename: base/python3.bst
+
+variables:
+  pip: pip3
 
 sources:
   - kind: git
