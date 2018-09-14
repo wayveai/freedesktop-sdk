@@ -9,7 +9,10 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/libfdk-aac.bst
+  - filename: desktop/libglvnd.bst
   - filename: desktop/librsvg.bst
+  - filename: desktop/libvdpau.bst
+  - filename: desktop/mesa.bst
   - filename: desktop/openal.bst
   - filename: desktop/vulkan.bst
   - filename: desktop/wayland.bst
