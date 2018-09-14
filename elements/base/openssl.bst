@@ -67,7 +67,8 @@ sources:
   # Too many things depends on 1.0.
   - kind: git
     url: https://github.com/openssl/openssl
-    ref: 3ce7bc40a3c48da1c96c2d04c10045bd797c6aa3  # 1.0.2o
+    track: master
+    ref: e71ebf275da66dfd601c92e0e80a35114c32f6f8  # OpenSSL_1_0_2p
   - kind: patch
     # Updates need to update this script if there are new symbols.
     path: patches/openssl-version-script.patch
