@@ -14,7 +14,6 @@ variables:
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"
-        JOBS: 2
     - target_arch == "arm":
         targets: "ARM"
     - target_arch == "aarch64":
@@ -45,6 +44,11 @@ variables:
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
+
+environment:
+  (?):
+    - target_arch == "x86_64":
+        JOBS: -j2
 
 config:
   install-commands:
