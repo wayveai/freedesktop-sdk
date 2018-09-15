@@ -40,7 +40,7 @@ public:
 
 sources:
   - kind: git
-    url: freedesktop:fontconfig
+    url: freedesktop:fontconfig/fontconfig
     track: master
     ref: f075ca1aeaedbc288d42a70df5cf2fd069ea0d10 #  2.13
   - kind: local

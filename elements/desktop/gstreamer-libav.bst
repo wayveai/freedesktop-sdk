@@ -28,14 +28,14 @@ variables:
 
 sources:
   - kind: git
-    url: freedesktop:gstreamer/gst-libav
+    url: freedesktop-old:gstreamer/gst-libav
     track: master
     # Latest stable release doesn't support our ffmpeg, this is the closest commit
     # to 1.14.2 which supports ffmpeg n4.0.2 with minimal patching
     ref: 3b6597188ad25cca84ae5caa7b08767a5b4cfee7 # 1.14.0-39-g3b65971
     submodules:
       common:
-        url: freedesktop:gstreamer/common
+        url: freedesktop-old:gstreamer/common
       gst-libs/ext/libav:
         url: https://git.ffmpeg.org/ffmpeg.git
       gst-libs/ext/gas-preprocessor:
