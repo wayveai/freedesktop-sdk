@@ -28,5 +28,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.8.4.tar.bz2
-  ref: 3c592f86fa0da69e2e0e98cae9f5d5b61def3bb7948aa00ca45748f27fa545fd
+  url: https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.9.0.tar.bz2
+  ref: 11eca62bf0ac549b8d6be55f4e130946399939cdfe7a562fdaee711190248b00
