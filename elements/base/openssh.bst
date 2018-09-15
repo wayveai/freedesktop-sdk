@@ -2,13 +2,16 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/openssl.bst
   - filename: base/autoconf.bst
     type: build
   - filename: base/automake.bst
     type: build
   - filename: base/libtool.bst
     type: build
+  - filename: base/openssl-1.0.bst
+    type: build
+  - filename: base/openssl-1.0-runtime-only.bst
+    type: runtime
 
 variables:
   conf-local: |
