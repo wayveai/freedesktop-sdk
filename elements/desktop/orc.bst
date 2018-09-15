@@ -20,6 +20,6 @@ public:
 
 sources:
   - kind: git
-    url: https://github.com/GStreamer/orc
+    url: freedesktop:gstreamer/orc
     ref: 31cb4bfc51de81b5c2569abdcff830b83c74499c  # 0.4.28
 
