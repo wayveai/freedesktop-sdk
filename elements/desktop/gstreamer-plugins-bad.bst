@@ -7,18 +7,29 @@ depends:
     type: build
   - filename: desktop/gstreamer.bst
   - filename: desktop/gstreamer-plugins-base.bst
+  - filename: desktop/libdrm.bst
   - filename: desktop/libfdk-aac.bst
+  - filename: desktop/libglvnd.bst
+  - filename: desktop/librsvg.bst
+  - filename: desktop/libvdpau.bst
+  - filename: desktop/mesa.bst
+  - filename: desktop/openal.bst
+  - filename: desktop/vulkan.bst
   - filename: desktop/wayland.bst
+  - filename: desktop/wayland-protocols.bst
+    type: build
   - filename: base/autoconf.bst
     type: build
   - filename: base/automake.bst
     type: build
+  - filename: base/curl.bst
   - filename: base/gettext.bst
     type: build
   - filename: base/libtool.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/sndfile.bst
   - filename: base/which.bst
     type: build
 
@@ -26,6 +37,7 @@ depends:
 variables:
   conf-local: |
     --enable-experimental \
+    --enable-introspection \
     --enable-orc \
     --enable-wayland
 
@@ -48,6 +60,7 @@ public:
           - "%{libdir}/libgstphotography-1.0.so"
           - "%{libdir}/libgstisoff-1.0.so"
           - "%{libdir}/libgstwebrtc-1.0.so"
+          - "%{libdir}/libgstwayland-1.0.so"
 
 sources:
   - kind: git
