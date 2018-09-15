@@ -11,7 +11,6 @@ depends:
     type: build
 
 variables:
-  builddir: ''
   openssl-target: linux-%{arch}
   (?):
     - target_arch == "i586":
@@ -22,7 +21,15 @@ variables:
 config:
   configure-commands:
     - |
-      ./Configure %{openssl-target} \
+      if [ -n "%{builddir}" ]; then
+        mkdir %{builddir}
+        cd %{builddir}
+          reldir=..
+        else
+          reldir=.
+      fi
+
+      ${reldir}/Configure %{openssl-target} \
         --prefix=%{prefix} \
         --libdir=%{lib} \
         --openssldir=%{sysconfdir}/ssl \
