@@ -12,6 +12,8 @@ config:
         --destdir="%{install-root}" \
         --disable-ldconfig
 
+# Use the previous version of the compiler to bootstrap the new one.
+# That's how upstream recommends doing it.
 sources:
   - kind: tar
     (?):
