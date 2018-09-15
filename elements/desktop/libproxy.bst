@@ -32,5 +32,5 @@ public:
 sources:
   - kind: git
     url: https://github.com/libproxy/libproxy/
-    track: 0.4.15
+    track: master
     ref: 5924d4223e2b7238607749d977c0a878fe33cdbc # 0.4.15

@@ -24,5 +24,5 @@ public:
 sources:
   - kind: git
     url: https://github.com/GNOME/libcroco
-    track: 0.6.12
+    track: master
     ref: 0d0162098ac6630113da9e66620ab29459352dd6  # 0.6.12
