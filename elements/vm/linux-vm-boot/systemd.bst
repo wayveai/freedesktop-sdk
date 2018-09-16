@@ -34,5 +34,5 @@ variables:
 sources:
 - kind: git
   url: https://github.com/systemd/systemd.git
-  track: v239
+  track: master
   ref: de7436b02badc82200dc127ff190b8155769b8e7 #v239
