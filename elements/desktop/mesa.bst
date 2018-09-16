@@ -17,6 +17,7 @@ depends:
     type: build
   - filename: base/flex.bst
     type: build
+  - filename: base/libunwind.bst
   - filename: base/meson.bst
     type: build
   - filename: base/ninja.bst
