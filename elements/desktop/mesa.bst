@@ -35,13 +35,16 @@ variables:
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
         dri_drivers: "nouveau,r100,r200,i915,i965"
         vulkan_drivers: "intel,amd"
+        enable_libunwind: "true"
     - target_arch == "arm" or target_arch == "aarch64":
         gallium_drivers: "pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast"
         dri_drivers: ""
         vulkan_drivers: ""
+        enable_libunwind: "false"
 
   meson-local: |
     -Dglvnd=true \
+    -Dlibunwind=%{enable_libunwind} \
     -Dselinux=false \
     -Dosmesa=none \
     -Degl=true \
