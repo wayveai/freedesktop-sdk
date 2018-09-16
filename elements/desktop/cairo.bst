@@ -48,6 +48,6 @@ public:
 
 sources:
   - kind: git
-    url: freedesktop:cairo
+    url: freedesktop:cairo/cairo
     track: master
     ref: 7149686456ec3c481fa1d3dbe76a0dab1e42b519 # 1.15.12
