@@ -2,6 +2,7 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/libunwind.bst
 
 variables:
   conf-local: "--enable-mpers=check"
