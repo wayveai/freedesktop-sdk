@@ -97,3 +97,5 @@ sources:
     ref: bd1be67fe9c73b517765264ac28911c84144682d28dbff140e1c2deb2f44c21b
   - kind: patch
     path: patches/mesa-Fix-linkage-against-shared-glapi.patch
+  - kind: patch
+    path: patches/mesa-use-build-id.patch

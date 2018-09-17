@@ -46,6 +46,7 @@ variables:
     --enable-default-pie \
     --enable-default-ssp \
     --without-isl \
+    --enable-linker-build-id \
     %{conf-extra}
 
 config:
