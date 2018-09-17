@@ -1,6 +1,104 @@
 Freedesktop-SDK
 
-CHANGES WITH 18.08:
+freedesktop-sdk-18.08.10:
+    * Fix mesa shader caching (#349)
+    * Improve error output for mesa, gstreamer
+    * openssh: Remove the server parts
+    * ca-certificates: Update to 20180409
+    * openssl: Update to 1.1.1 (we have kept OpenSSL 1.0) (#164)
+    * git: Update to 2.19.0
+    * curl: Update to 7.61.1
+    * openssh: Update to 7.8p1
+    * openssl: Update to 1.0.2p
+    * Use URL aliases for Freedesktop projects
+    * gstreamer: enable instrospection
+    * More gstreamer plugins: sndfile, openal, curl, vulkan, rsvg, flac, mpg123, xvimagesink
+    * gstreamer: Fix wayland and opengl plugins
+    * Make GST_PLUGIN_SYSTEM_PATH respect mutli-arch
+    * gstreamer-plugins-good: Build wavpack plugin
+    * Install Python modules with pip
+    * Remove python3-mako: not used at all (This shouldn't break apps, as it is only included in the Sdk, not in the Platform.)
+    * Move several components to meson
+    * Don't install Intel VAAPI driver on ARM systems
+    * Fix the icon cache generation
+    * Fix Icon theme not present (#365)
+    * Fix use of the max-jobs variable (#377)
+
+freedesktop-sdk-18.08.9:
+    * Add several gstreamer plugins: opus, pango, cairo, pulseaudio, ogg, theora, vorbis, wayland, soup, opengl (#367, #368, #369)
+    * librsvg: Generate the Vala api (#374)
+    * gtk-doc: Upgrade to 1.29
+    * gdb: Upgrade to 8.2
+    * libdrm: Upgrade to 2.4.94
+    * Check for leftover pkgconfig files
+    * mesa: Update to 18.1.8
+    * gpgme: Correctly split debug symbols (#373)
+    * Several CI fixes
+    * Add ABI checks in the CI (#108)
+
+freedesktop-sdk-18.08.8:
+    * Add the missing build deps on GObject Introspection (#358)
+    * Use new stable BuildStream 1.2.0
+    * Add nsswitch.conf (#345)
+    * Add libtirpc to the SDK (#354)
+    * popt: Install the pkgconfig file in the right place
+    * sdl2-mixer: Enable support for various audio formats (#351))
+    * librsvg: Update to 2.44.2 (#353)
+    * pkg-config.bst: Update to 1.5.3
+    * Other issues fixed: #141
+
+freedesktop-sdk-18.08.7:
+    * geoclue: Update to 2.4.12
+    * Make gobject-introspection a build-only dependency
+    * Beef up the Makefile so it can be used to build locally, and get the CI to use it (#295)
+    * pango: Update to 1.42.4 (#346)
+    * Make OpenSSL ABI compatible with other distributions (#329)
+    * Upstream collect-integration plugin (#341)
+    * meson: Update to 0.47.2
+    * librsvg: Update to 2.44.1 (#344, #336)
+    * Other issues fixed: #195, #338
+
+freedesktop-sdk-18.08.6:
+    * mesa: Update to 18.1.7 (#339)
+    * Configure fcitx properly (#323)
+    * Add /etc/protocols and /etc/services (#331)
+    * Several CI fixes
+    * Other issues fixed: #279, #301, #331, #332, #335
+
+freedesktop-sdk-18.08.5:
+    * Fix html5-codecs build (#326)
+    * Make fontconfig cache files deterministic
+    * vaapi-intel: Fix the ref of the extended runtime
+    * Build gold plugin with llvm (#321)
+
+freedesktop-sdk-18.08.4:
+    * Add samplerate and fcitx support to SDL (#327)
+    * Add libselinux (#325)
+    * Expose fcitx in the SDK (#323)
+    * gst-libav detects now changes to libavcodec (#234, #306)
+
+freedesktop-sdk-18.08.3:
+    * Fix error entering the shell disabling internall malloc bash implementation (#320)
+    * Some python2 cleanup
+    * Add support to network portal v2 (#318)
+
+freedesktop-sdk-18.08.2:
+    * Add html5 codecs extension (#174, #213)
+    * Fix no audio problems with SDL (#313)
+    * mesa: Update to 18.1.6
+    * wayland-protocols: Update to 1.16
+    * Fix symbol stripping (#296)
+    * Other issues fixed: #293, #312, #316
+
+freedesktop-sdk-18.08.1:
+    * Add LAME to the SDK (#277)
+    * Fix SDL2 compilation against wayland
+    * Fix compilation of KDE runtime (qtbase) (#311)
+    * Fix broken font symlinks
+    * Fix nvidia's vulkan drivers (#315)
+    * Other issues fixed: #285, #303, #304, #305, #308
+
+freedesktop-sdk-18.08.0:
     * Moved to an independent repo at https://gitlab.com/freedesktop-sdk/freedesktop-sdk/
     * Use gitlab-ci capabilities to continuously and transparently build for i386, x86_64, armv7 and aarch64
     * Switched to a time-based naming convention (year.month)
