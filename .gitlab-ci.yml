@@ -1,5 +1,3 @@
-image: buildstream/buildstream-fedora:master-113-499df6a5
-
 variables:
   # Store everything under the /builds directory. This is a separate Docker
   # volume. Note that GitLab CI will only cache stuff inside the build
@@ -11,6 +9,12 @@ variables:
   BST_SHA: '45304c44a437eafc85f9f322cbd9d509bb740d57' #  1.2.1
   BST_EXTERNAL_SHA: '1d6ab71151b93c8cbc0a91a36ffe9270f3b835f1' #  0.5.1
   RUNTIME_VERSION: '18.08'
+
+  # Docker Images
+  DOCKER_BST_AMD64: "buildstream/buildstream-fedora:master-113-499df6a5"
+  DOCKER_BST_AARCH64: "buildstream/buildstream-fedora:aarch64-master-113-499df6a5"
+  DOCKER_QEMU_AMD64: "buildstream/buildstream-fedora:master-113-499df6a5"
+  DOCKER_QEMU_AARCH64: "buildstream/buildstream-fedora:aarch64-master-113-499df6a5"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -121,6 +125,7 @@ before_script:
   <<: *gitlab_cache_pull
 
 app_x86_64:
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -128,6 +133,7 @@ app_x86_64:
     ARCH: x86_64
 
 app_i586:
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -135,7 +141,7 @@ app_i586:
     ARCH: i586
 
 app_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -143,7 +149,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_definition
   tags:
     - armhf
@@ -168,6 +174,7 @@ app_arm:
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
+  image: $DOCKER_QEMU_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -177,6 +184,7 @@ minimal_vm_image_x86_64:
     DIALOG: minimal
 
 minimal_systemd_vm_image_x86_64:
+  image: $DOCKER_QEMU_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -223,6 +231,7 @@ minimal_systemd_vm_image_x86_64:
 
 publish_x86_64:
   stage: publish_x86_64
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -231,6 +240,7 @@ publish_x86_64:
 
 publish_i586:
   stage: publish_i586
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -239,7 +249,7 @@ publish_i586:
 
 publish_aarch64:
   stage: publish_aarch64
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -248,7 +258,7 @@ publish_aarch64:
 
 publish_arm:
   stage: publish_arm
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
