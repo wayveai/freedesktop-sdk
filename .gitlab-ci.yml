@@ -8,6 +8,8 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
+  BST_SHA: '70971f24dfe09fe89a233f22b8d6034a64d11167' #  1.2.0
+  BST_EXTERNAL_SHA: 'ab9b37b5b52a7b2f62ddf17a68b76512da538291' #  0.5
   RUNTIME_VERSION: '18.08'
 
   # Generic variable for invoking buildstream
@@ -23,13 +25,11 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='70971f24dfe09fe89a233f22b8d6034a64d11167' #  1.2.0
   - git clone https://gitlab.com/BuildStream/buildstream.git
-  - git -C buildstream checkout $BST_SHA
+  - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
-  - export BST_EXTERNAL_SHA='ab9b37b5b52a7b2f62ddf17a68b76512da538291' #  0.5
   - git clone https://gitlab.com/BuildStream/bst-external.git
-  - git -C bst-external checkout $BST_EXTERNAL_SHA
+  - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
   - pip3 install --user ./bst-external
 
   # Create ~/.ssh for storing keys
