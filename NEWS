@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.11:
+    * Fix openssl ABI break
+
 freedesktop-sdk-18.08.10:
     * Fix mesa shader caching (#349)
     * Improve error output for mesa, gstreamer
