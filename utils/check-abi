@@ -222,11 +222,11 @@ def compare_tree_abis(old_checkout, new_checkout):
             continue
 
         old_library = os.path.join(old_checkout, old_relpath)
-        old_debug_dir = os.path.dirname(os.path.join(old_checkout, 'usr', 'lib', 'debug', f'{old_relpath}.debug'))
+        old_debug_dir = os.path.join(old_checkout, 'usr', 'lib', 'debug')
         old_include_dir = os.path.join(old_checkout, 'usr', 'include')
 
         new_library = os.path.join(new_checkout, new_relpath)
-        new_debug_dir = os.path.dirname(os.path.join(new_checkout, 'usr', 'lib', 'debug', f'{new_relpath}.debug'))
+        new_debug_dir = os.path.join(new_checkout, 'usr', 'lib', 'debug')
         new_include_dir = os.path.join(new_checkout, 'usr', 'include')
 
         result = compare_abi(old_library, old_debug_dir, old_include_dir, new_library, new_debug_dir, new_include_dir)
