@@ -48,6 +48,10 @@ def get_parser():
         '--new', default=get_current_revision(),
         help='the new revision, to compare to the reference')
 
+    parser.add_argument(
+        '--keep-checkouts', action='store_true',
+        help='do not remove the checked out trees before exiting')
+
     return parser
 
 
@@ -255,8 +259,14 @@ if __name__ == '__main__':
     if abi_compatible:
         print(format_title(f'Hurray! {args.old} and {args.new} are ABI-compatible!', level=2), flush=True)
 
-    shutil.rmtree(old_sdk)
-    shutil.rmtree(new_sdk)
+    if not args.keep_checkouts:
+        shutil.rmtree(old_sdk)
+        shutil.rmtree(new_sdk)
+
+    else:
+        print('\nChecked out trees were kept:')
+        print(f'*   {old_sdk}')
+        print(f'*   {new_sdk}')
 
     returncode = 0 if abi_compatible else 1
     sys.exit(returncode)
