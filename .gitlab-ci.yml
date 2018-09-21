@@ -21,6 +21,7 @@ variables:
 stages:
   - update
   - flatpak
+  - snap
   - vm
   - prepare-publish
   - publish
@@ -528,3 +529,47 @@ reproducible_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+
+.snap_template: &snap_definition
+  stage: snap
+  script:
+    - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} export-snap
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  except:
+    - master
+  <<: *gitlab_cache_pull
+
+snap_i686:
+  image: $DOCKER_AMD64
+  <<: *snap_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: i686
+
+snap_x86_64:
+  image: $DOCKER_AMD64
+  <<: *snap_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+snap_arm:
+  image: $DOCKER_AARCH64
+  <<: *snap_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
+snap_aarch64:
+  image: $DOCKER_AARCH64
+  <<: *snap_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64

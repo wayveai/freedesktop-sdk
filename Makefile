@@ -13,7 +13,8 @@ CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT?=vm/minimal-systemd-vm.bst
 
-ARCH_OPTS=-o target_arch $(ARCH)
+SNAP_GRADE=devel
+ARCH_OPTS=-o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
 TARBALLS=            \
 	sdk          \
 	platform
@@ -175,7 +176,11 @@ clean-test:
 
 clean: clean-repo clean-runtime clean-test clean-vm
 
+export-snap:
+	bst --colors $(ARCH_OPTS) build "snap-images/images.bst"
+	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
-	build-tar export-tar clean-vm build-vm run-vm
+	build-tar export-tar clean-vm build-vm run-vm export-snap

@@ -1,0 +1,26 @@
+diff --git a/setup.py b/setup.py
+index 8f13cd0a..cf7e6a13 100755
+--- a/setup.py
++++ b/setup.py
+@@ -150,6 +150,20 @@ else:
+             + recursive_data_files("keyrings", "share/snapcraft")
+             + recursive_data_files("extensions", "share/snapcraft")
+         ),
+-        install_requires=["pysha3", "pyxdg", "requests"],
++        install_requires=["pysha3",
++                          "pyxdg",
++                          "requests",
++                          "jsonschema",
++                          "pyelftools",
++                          "numpy",
++                          "requests_unixsocket",
++                          "requests_toolbelt",
++                          "pymacaroons",
++                          "tabulate",
++                          "progressbar",
++                          "simplejson",
++                          "pyyaml",
++                          "python-debian"
++        ],
+         test_suite="tests.unit",
+     )
