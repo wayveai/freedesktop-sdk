@@ -18,12 +18,6 @@ variables:
     --enable-asm \
     --enable-tls
 
-config:
-  configure-commands:
-    (<):
-      - |
-        ./autogen.sh
-
 public:
   bst:
     split-rules:
