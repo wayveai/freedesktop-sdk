@@ -60,7 +60,7 @@ config:
 
 sources:
   - kind: tar
-    url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_38_RTM/src/nss-3.38.tar.gz
-    ref: 2c643d3c08d6935f4d325f40743719b6990aa25a79ec2f8f712c99d086672f62
+    url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_39_RTM/src/nss-3.39.tar.gz
+    ref: 6be64dd76f212415cc8bc34343ac1e7389048db4db9a023a84873c411dc5864b
   - kind: local
     path: files/nss.pc.in
