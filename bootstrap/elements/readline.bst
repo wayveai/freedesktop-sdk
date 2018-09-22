@@ -30,6 +30,11 @@ variables:
     CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
 
 config:
+  build-commands:
+    - |
+      cd "%{builddir}"
+      %{make} SHLIB_LIBS=-lncurses
+
   install-commands:
     - |
       cd "%{builddir}"
