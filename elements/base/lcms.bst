@@ -4,7 +4,6 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/libtiff.bst
   - filename: base/jpeg.bst
-  - filename: base/openssl.bst
 
 variables:
   conf-local: |
