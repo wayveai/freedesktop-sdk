@@ -18,14 +18,19 @@ variables:
   conf-local: |
     --disable-xim \
     --disable-dconf \
+    --disable-gconf \
+    --disable-memconf \
     --disable-schemas-compile \
+    --disable-schemas-install \
     --disable-gtk2 \
     --disable-setup \
     --disable-ui \
     --disable-engine \
+    --disable-python-library \
     --disable-libnotify \
     --disable-emoji-dict \
     --disable-appindicator \
+    --disable-glibtest \
     --disable-tests \
     --disable-unicode-dict
 
