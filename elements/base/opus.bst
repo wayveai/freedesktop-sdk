@@ -6,6 +6,8 @@ depends:
     type: build
   - filename: base/automake.bst
     type: build
+  - filename: base/git.bst
+    type: build
   - filename: base/libtool.bst
     type: build
 
