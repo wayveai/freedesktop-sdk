@@ -1,6 +1,7 @@
 Freedesktop-SDK
 
 freedesktop-sdk-18.08.12:
+    * Fix "unkown version" build issue with opus (#397)
     * mesa: Upgrade to 18.2.1
     * Add 18.08 to the org.freedesktop.Platform.GL extension "versions"
     * Properly link readline against ncurses (#386)
