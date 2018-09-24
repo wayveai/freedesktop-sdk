@@ -63,6 +63,7 @@ variables:
     -Dtexture-float=true \
     -Dllvm=true \
     -Ddri3=true \
+    -Dxlib-lease=false \
     -Dgallium-drivers=%{gallium_drivers} \
     -Ddri-drivers=%{dri_drivers} \
     -Dvulkan-drivers=%{vulkan_drivers}
@@ -76,9 +77,6 @@ config:
         rm -f "%{install-root}%{libdir}"/libGLESv2*
         rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
         rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
-        # Those files are provided by desktop/wayland.bst
-        rm -f "%{install-root}%{libdir}"/libwayland-egl.so*
-        rm -f "%{install-root}%{libdir}"/pkgconfig/wayland-egl.pc
 
 public:
   bst:
@@ -93,8 +91,8 @@ public:
 
 sources:
   - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-18.1.8.tar.xz
-    ref: bd1be67fe9c73b517765264ac28911c84144682d28dbff140e1c2deb2f44c21b
+    url: https://mesa.freedesktop.org/archive/mesa-18.2.1.tar.xz
+    ref: 9636dc6f3d188abdcca02da97cedd73640d9035224efd5db724187d062c81056
   - kind: patch
     path: patches/mesa-Fix-linkage-against-shared-glapi.patch
   - kind: patch
