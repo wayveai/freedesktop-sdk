@@ -11,10 +11,11 @@ variables:
   RUNTIME_VERSION: '18.08'
 
   # Docker Images
-  DOCKER_BST_AMD64: "buildstream/buildstream-fedora:master-113-499df6a5"
-  DOCKER_BST_AARCH64: "buildstream/buildstream-fedora:aarch64-master-113-499df6a5"
-  DOCKER_QEMU_AMD64: "buildstream/buildstream-fedora:master-113-499df6a5"
-  DOCKER_QEMU_AARCH64: "buildstream/buildstream-fedora:aarch64-master-113-499df6a5"
+  DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
+  DOCKER_BST_AMD64: "${DOCKER_REGISTRY}/amd64/bst:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_BST_AARCH64: "${DOCKER_REGISTRY}/aarch64/bst:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_QEMU_AMD64: "${DOCKER_REGISTRY}/amd64/qemu:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_QEMU_AARCH64: "${DOCKER_REGISTRY}/aarch64/qemu:41754518fa64796be43ec83b80ba3839909ee7e4"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -52,7 +53,7 @@ before_script:
 
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
- 
+
   # Private SSL keys/certs for psuhing to the CAS server
   - |
     if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
@@ -108,10 +109,8 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
-    - dnf install -y libabigail --enablerepo=updates-testing
     - ./utils/check-abi --old=${RUNTIME_VERSION} --new=${CI_COMMIT_SHA}
 
-    - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
     - make ARCH=${ARCH} test-apps
@@ -162,7 +161,6 @@ app_arm:
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - dnf install -y qemu-system-x86
     - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
   artifacts:
     when: always
@@ -196,9 +194,6 @@ minimal_systemd_vm_image_x86_64:
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
     - |
-      dnf install -y gpg
-
-    - |
       [ -n "${FREEDESKTOP_GPG_PRIV}" ]
     - |
       echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
@@ -210,7 +205,6 @@ minimal_systemd_vm_image_x86_64:
     - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
-    - dnf install -y flatpak --enablerepo=updates-testing
     - make ARCH=${ARCH} GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
 
     - echo "Push to the releases ostree repo"
