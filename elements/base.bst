@@ -22,7 +22,6 @@ depends:
 - filename: base/help2man.bst
 - filename: base/intltool.bst
 - filename: base/libpipeline.bst
-- filename: base/libtirpc.bst
 - filename: base/m4.bst
 - filename: base/man-db.bst
 - filename: base/man-pages-posix.bst
