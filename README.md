@@ -73,73 +73,6 @@ The current set of commands to run your application with 18.08 are:
     $ flatpak-builder --run build_folder org.app.json
     ```
 
-
-### Building the runtimes locally
-
-If you wish to build locally, you must install:
-
- * [BuildStream](https://gitlab.com/BuildStream/buildstream)
- * [Flatpak](https://flatpak.org/setup/)
- * Flatpak Builder
-
-You can clone the Git repository and then simply run:
-
-```
-$ make build
-```
-
-Note that `build` is the default target, so the following is equivalent:
-
-```
-$ make
-```
-
-If you wish to build for a different architecture than the one of your system,
-specify the `ARCH` variable:
-
-```
-$ make ARCH=aarch64 build
-```
-
-The build is configured to pull from our remote artifact cache, so you should
-not have to actually compile anything, unless you made any local change.
-
-
-### Exporting your local builds
-
-If you want to try using your own local build of the runtimes, you can export
-your builds to a repository:
-
-```
-$ make export
-```
-
-This will build everything, then checkout the built trees, and commit them to
-a local Flatpak repository.
-
-To save some time, you can build only the few parts you want to test:
-
-```
-$ make RUNTIMES="platform sdk" export
-```
-
-Here again, you can build for a foreign architecture by specifying the `ARCH`
-variable.
-
-Once this finishes, you will find a Flatpak repository in the `repo` folder.
-
-To then use the generated runtimes you can run:
-
-```
-$ flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-$ flatpak install --arch="${ARCH}" --user test-repo org.freedesktop.Sdk//18.08
-$ flatpak install --arch="${ARCH}" --user test-repo org.freedesktop.Platform//18.08
-```
-
-At this point you can build and run your application against your build of the
-Freedesktop SDK.
-
-
 ## Structure
 
 Current directory structure is the usual of a builstream project with the
@@ -153,15 +86,4 @@ The `plugins/` directory contains our custom Buildstream
 
 ## Contributing
 
-If you would like to contribute or suggest any improvements to the Freedesktop
-SDK, please submit a merge request.
-
-We have a CI which automatically tests merge requests across all supported
-architectures, please ask a developer for access.
-
-Here is a lovely article on how to ideally structure a git commit message:
-https://chris.beams.io/posts/git-commit/#seven-rules/
-
-If you would like to ask any question on how to use/improve this project, you
-will find us over at #freedesktop-sdk on Freenode, and on our mailing list:
-https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk
+For a guide to contributing, please see our CONTRIBUTING file.
