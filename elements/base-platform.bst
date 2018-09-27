@@ -40,6 +40,7 @@ depends:
 - filename: base/libtasn1.bst
 - filename: base/libtheora.bst
 - filename: base/libtiff.bst
+- filename: base/libtirpc.bst
 - filename: base/libtool.bst
 - filename: base/libunistring.bst
 - filename: base/libvorbis.bst
