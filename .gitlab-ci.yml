@@ -6,7 +6,7 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
-  BST_SHA: '45304c44a437eafc85f9f322cbd9d509bb740d57' #  1.2.1
+  BST_SHA: '45304c44a437eafc85f9f322cbd9d509bb740d57' #  1.2.2
   BST_EXTERNAL_SHA: '1d6ab71151b93c8cbc0a91a36ffe9270f3b835f1' #  0.5.1
   RUNTIME_VERSION: '18.08'
 
