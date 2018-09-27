@@ -1,5 +1,3 @@
-image: buildstream/buildstream-fedora:master-113-499df6a5
-
 variables:
   # Store everything under the /builds directory. This is a separate Docker
   # volume. Note that GitLab CI will only cache stuff inside the build
@@ -11,6 +9,13 @@ variables:
   BST_SHA: '45304c44a437eafc85f9f322cbd9d509bb740d57' #  1.2.1
   BST_EXTERNAL_SHA: '1d6ab71151b93c8cbc0a91a36ffe9270f3b835f1' #  0.5.1
   RUNTIME_VERSION: '18.08'
+
+  # Docker Images
+  DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
+  DOCKER_BST_AMD64: "${DOCKER_REGISTRY}/amd64/bst:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_BST_AARCH64: "${DOCKER_REGISTRY}/aarch64/bst:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_QEMU_AMD64: "${DOCKER_REGISTRY}/amd64/qemu:41754518fa64796be43ec83b80ba3839909ee7e4"
+  DOCKER_QEMU_AARCH64: "${DOCKER_REGISTRY}/aarch64/qemu:41754518fa64796be43ec83b80ba3839909ee7e4"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -48,7 +53,7 @@ before_script:
 
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
- 
+
   # Private SSL keys/certs for psuhing to the CAS server
   - |
     if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
@@ -104,10 +109,8 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
-    - dnf install -y libabigail --enablerepo=updates-testing
     - ./utils/check-abi --old=${RUNTIME_VERSION} --new=${CI_COMMIT_SHA}
 
-    - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
     - make ARCH=${ARCH} test-apps
@@ -121,6 +124,7 @@ before_script:
   <<: *gitlab_cache_pull
 
 app_x86_64:
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -128,6 +132,7 @@ app_x86_64:
     ARCH: x86_64
 
 app_i586:
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -135,7 +140,7 @@ app_i586:
     ARCH: i586
 
 app_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -143,7 +148,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_definition
   tags:
     - armhf
@@ -156,7 +161,6 @@ app_arm:
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - dnf install -y qemu-system-x86
     - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
   artifacts:
     when: always
@@ -168,6 +172,7 @@ app_arm:
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
+  image: $DOCKER_QEMU_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -177,6 +182,7 @@ minimal_vm_image_x86_64:
     DIALOG: minimal
 
 minimal_systemd_vm_image_x86_64:
+  image: $DOCKER_QEMU_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -187,9 +193,6 @@ minimal_systemd_vm_image_x86_64:
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
-    - |
-      dnf install -y gpg
-
     - |
       [ -n "${FREEDESKTOP_GPG_PRIV}" ]
     - |
@@ -202,7 +205,6 @@ minimal_systemd_vm_image_x86_64:
     - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
     - ostree pull --repo=releases origin --mirror
 
-    - dnf install -y flatpak --enablerepo=updates-testing
     - make ARCH=${ARCH} GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
 
     - echo "Push to the releases ostree repo"
@@ -223,6 +225,7 @@ minimal_systemd_vm_image_x86_64:
 
 publish_x86_64:
   stage: publish_x86_64
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -231,6 +234,7 @@ publish_x86_64:
 
 publish_i586:
   stage: publish_i586
+  image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -239,7 +243,7 @@ publish_i586:
 
 publish_aarch64:
   stage: publish_aarch64
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -248,7 +252,7 @@ publish_aarch64:
 
 publish_arm:
   stage: publish_arm
-  image: buildstream/buildstream-fedora:aarch64-master-113-499df6a5
+  image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
