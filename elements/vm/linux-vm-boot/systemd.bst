@@ -36,3 +36,5 @@ sources:
   url: https://github.com/systemd/systemd.git
   track: master
   ref: de7436b02badc82200dc127ff190b8155769b8e7 #v239
+- kind: patch
+  path: patches/0001-meson-rename-Ddebug-to-Ddebug-extra.patch
