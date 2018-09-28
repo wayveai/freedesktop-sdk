@@ -66,7 +66,8 @@ variables:
     -Dxlib-lease=false \
     -Dgallium-drivers=%{gallium_drivers} \
     -Ddri-drivers=%{dri_drivers} \
-    -Dvulkan-drivers=%{vulkan_drivers}
+    -Dvulkan-drivers=%{vulkan_drivers} \
+    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
 
 config:
   install-commands:
