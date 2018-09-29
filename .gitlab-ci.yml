@@ -54,7 +54,7 @@ before_script:
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
 
-  # Private SSL keys/certs for psuhing to the CAS server
+  # Private SSL keys/certs for pushing to the CAS server
   - |
     if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
        echo >&2 "Private CAS cert not found"
