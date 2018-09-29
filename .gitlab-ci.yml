@@ -67,7 +67,7 @@ before_script:
         echo "# Get a lot of output in case of errors" >> ~/.config/buildstream.conf
         echo "logging:" >> ~/.config/buildstream.conf
         echo "  error-lines: 80" >> ~/.config/buildstream.conf
-        echo "projects:" > ~/.config/buildstream.conf
+        echo "projects:" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
         echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
