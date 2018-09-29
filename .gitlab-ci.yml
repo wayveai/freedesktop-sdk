@@ -57,10 +57,10 @@ before_script:
   # Private SSL keys/certs for pushing to the CAS server
   - |
     if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
-       echo >&2 "Private CAS cert not found"
+        echo >&2 "Private CAS cert not found"
     else
-       echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-       echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
+        echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
+        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
     fi
 
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
