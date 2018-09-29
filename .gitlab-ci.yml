@@ -43,9 +43,7 @@ before_script:
   # Private key stored as a protected variable that allows pushing to
   # cache.sdk.freedesktop.org
   - |
-    if [ -z "$freedesktop_ostree_cache_private_key" ]; then
-        echo >&2 "Private key for cache.sdk.freedesktop.org is not available."
-    else
+    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
         echo "$freedesktop_ostree_cache_private_key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
@@ -56,9 +54,7 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
-        echo >&2 "Private CAS cert not found"
-    else
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ]; then
         echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
         echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
     fi
