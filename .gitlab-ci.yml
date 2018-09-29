@@ -71,7 +71,7 @@ before_script:
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
   # (default config is pull only)
   - |
-    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
         echo "projects:" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
