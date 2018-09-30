@@ -88,8 +88,8 @@ def sanity_check():
     check_command(['objdump', '--version'])
 
 
-def sanitize_revision(revision):
-    return revision.replace('/', '-')
+def sanitize_path(name):
+    return name.replace('/', '-')
 
 
 def is_shared_lib(path):
@@ -126,7 +126,7 @@ def bst(args):
 
 def checkout_tree(name):
     os.makedirs('runtimes', exist_ok=True)
-    checkout_dir = os.path.join('runtimes', f'abi-{sanitize_revision(name)}')
+    checkout_dir = os.path.join('runtimes', f'abi-{sanitize_path(name)}')
     print(format_title(f'Building and checking out {name}', level=1), end='\n\n', flush=True)
 
     with checkout_git_revision(name):
