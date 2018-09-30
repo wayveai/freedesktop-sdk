@@ -130,13 +130,9 @@ def checkout_tree(revision):
     print(format_title(f'Building and checking out {revision}', level=1), end='\n\n', flush=True)
 
     with checkout_git_revision(revision):
-        bst(['build', 'desktop-platform-image.bst', 'desktop-image.bst'])
-        bst(['checkout', '--hardlinks', 'desktop-platform-image.bst', checkout_dir])
-        bst(['checkout', '--hardlinks', 'desktop-image.bst', f'{checkout_dir}-sdk'])
+        bst(['build', 'abi/desktop-abi-image.bst'])
+        bst(['checkout', '--hardlinks', 'abi/desktop-abi-image.bst', checkout_dir])
         print(flush=True)
-
-    os.rename(os.path.join(f'{checkout_dir}-sdk', 'usr', 'include'), os.path.join(checkout_dir, 'usr', 'include'))
-    shutil.rmtree(f'{checkout_dir}-sdk')
 
     return checkout_dir
 
