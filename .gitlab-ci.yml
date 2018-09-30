@@ -107,7 +107,7 @@ before_script:
 
     - |
       REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
-      ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA}
+      ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export

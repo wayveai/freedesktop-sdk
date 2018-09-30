@@ -52,6 +52,10 @@ def get_parser():
         '--keep-checkouts', action='store_true',
         help='do not remove the checked out trees before exiting')
 
+    parser.add_argument(
+        'element',
+        help='the Buildstream element to build/checkout, on which to check ABI')
+
     return parser
 
 
@@ -124,14 +128,15 @@ def bst(args):
     subprocess.check_call(cmd, encoding='utf-8')
 
 
-def checkout_tree(revision):
+def checkout_tree(element, revision):
     os.makedirs('runtimes', exist_ok=True)
-    checkout_dir = os.path.join('runtimes', f'abi-{sanitize_path(revision)}')
-    print(format_title(f'Building and checking out {revision}', level=1), end='\n\n', flush=True)
+    element_name = os.path.splitext(os.path.basename(element))[0]
+    checkout_dir = os.path.join('runtimes', sanitize_path(f'{element_name}-{revision}'))
+    print(format_title(f'Building and checking out {element} on {revision}', level=1), end='\n\n', flush=True)
 
     with checkout_git_revision(revision):
-        bst(['build', 'abi/desktop-abi-image.bst'])
-        bst(['checkout', '--hardlinks', 'abi/desktop-abi-image.bst', checkout_dir])
+        bst(['build', element])
+        bst(['checkout', '--hardlinks', element, checkout_dir])
         print(flush=True)
 
     return checkout_dir
@@ -248,8 +253,8 @@ if __name__ == '__main__':
 
     args = get_parser().parse_args()
 
-    old_sdk = checkout_tree(args.old)
-    new_sdk = checkout_tree(args.new)
+    old_sdk = checkout_tree(args.element, args.old)
+    new_sdk = checkout_tree(args.element, args.new)
     abi_compatible = compare_tree_abis(old_sdk, new_sdk)
 
     if abi_compatible:
