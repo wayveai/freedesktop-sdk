@@ -1,5 +1,12 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.13:
+    * Move vulkan icd.d files to libdir to support multiarch applications (#398)
+    * librsvg: Upgrade to 2.44.6
+    * libtirpc: Move to the Platform
+    * Add CONTRIBUTING.md (#283)
+    * libglvnd: Upgrade to 1.1.0 (#401)
+
 freedesktop-sdk-18.08.12:
     * Fix "unkown version" build issue with opus (#397)
     * mesa: Upgrade to 18.2.1
