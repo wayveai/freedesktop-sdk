@@ -7,6 +7,7 @@ depends:
   - filename: desktop/libva.bst
   - filename: desktop/xorg-lib-xdamage.bst
   - filename: desktop/xorg-lib-xfixes.bst
+  - filename: desktop/xorg-lib-xrandr.bst
   - filename: desktop/xorg-lib-xshmfence.bst
   - filename: desktop/xorg-lib-xxf86vm.bst
   - filename: desktop/wayland-protocols.bst
@@ -63,7 +64,7 @@ variables:
     -Dtexture-float=true \
     -Dllvm=true \
     -Ddri3=true \
-    -Dxlib-lease=false \
+    -Dxlib-lease=true \
     -Dgallium-drivers=%{gallium_drivers} \
     -Ddri-drivers=%{dri_drivers} \
     -Dvulkan-drivers=%{vulkan_drivers} \
