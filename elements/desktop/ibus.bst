@@ -9,7 +9,7 @@ depends:
     type: build
   - filename: base/intltool.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/iso-codes.bst
     type: build

@@ -3,7 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/libdatrie.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

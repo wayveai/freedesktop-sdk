@@ -3,11 +3,7 @@ description: Tool to help find memory-management problems in programs
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gdb.bst
   - filename: base/perl.bst

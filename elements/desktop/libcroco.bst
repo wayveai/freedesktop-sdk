@@ -2,16 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
-    type: build
   - filename: desktop/gtk-doc.bst
     type: build
   - filename: base/glib.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

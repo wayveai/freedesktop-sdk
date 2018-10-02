@@ -7,11 +7,7 @@ depends:
   - filename: base/help2man.bst
     type: build
   - filename: base/m4.bst
-  - filename: base/automake.bst
-    type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gettext.bst
     type: build

@@ -5,7 +5,7 @@ depends:
   - filename: desktop/glib-networking.bst
   - filename: desktop/gobject-introspection.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/intltool.bst
     type: build

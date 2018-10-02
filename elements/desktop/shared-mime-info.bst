@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/intltool.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/libxml2.bst
   - filename: base/glib.bst

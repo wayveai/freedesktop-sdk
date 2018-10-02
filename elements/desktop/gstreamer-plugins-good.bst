@@ -12,15 +12,9 @@ depends:
   - filename: desktop/gstreamer-plugins-base.bst
   - filename: desktop/gobject-introspection.bst
     type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/libflac.bst
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
   - filename: base/wavpack.bst
   - filename: base/which.bst
     type: build

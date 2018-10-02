@@ -5,7 +5,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-ice.bst
   - filename: desktop/xorg-lib-xtrans.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

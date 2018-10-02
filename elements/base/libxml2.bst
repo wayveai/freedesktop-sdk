@@ -5,13 +5,7 @@ depends:
   - filename: base/xz.bst
   - filename: base/python3.bst
     type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 variables:

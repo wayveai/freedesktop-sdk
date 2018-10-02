@@ -8,7 +8,7 @@ depends:
   - filename: desktop/xorg-lib-xfixes.bst
   - filename: desktop/wayland-protocols.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

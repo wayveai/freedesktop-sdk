@@ -6,11 +6,7 @@ depends:
   - filename: base/jpeg.bst
   - filename: base/giflib.bst
   - filename: base/libtiff.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 variables:

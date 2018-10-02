@@ -3,7 +3,7 @@ description: Python 3
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/expat.bst
   - filename: base/libffi.bst

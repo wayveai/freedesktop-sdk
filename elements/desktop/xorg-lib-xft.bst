@@ -8,7 +8,7 @@ depends:
   - filename: desktop/xorg-lib-xrender.bst
   - filename: desktop/freetype.bst
   - filename: desktop/fontconfig.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

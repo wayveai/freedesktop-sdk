@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/libva.bst
   - filename: desktop/libvdpau.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 sources:

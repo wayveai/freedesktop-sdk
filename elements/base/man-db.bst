@@ -2,10 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/buildsystem-autotools.bst
+    type: build
   - filename: base/less.bst
   - filename: base/groff.bst
-  - filename: base/pkg-config.bst
-    type: build
   - filename: base/libpipeline.bst
   - filename: base/gzip.bst
   - filename: base/xz.bst
