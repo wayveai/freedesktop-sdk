@@ -7,11 +7,7 @@ depends:
     type: build
   - filename: base/gettext.bst
     type: build
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-meson.bst
     type: build
   - filename: desktop/vala.bst
     type: build
