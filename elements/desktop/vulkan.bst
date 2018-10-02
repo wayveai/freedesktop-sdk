@@ -5,9 +5,7 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrandr.bst
   - filename: desktop/wayland.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
+  - filename: base/buildsystem-cmake.bst
     type: build
 
 variables:

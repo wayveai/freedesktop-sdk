@@ -2,11 +2,7 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/pkg-config.bst
-  type: build
-- filename: base/cmake.bst
-  type: build
-- filename: base/ninja.bst
+- filename: base/buildsystem-cmake.bst
   type: build
 - filename: desktop/extra-cmake-modules.bst
   type: build
