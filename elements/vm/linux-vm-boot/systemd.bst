@@ -3,21 +3,17 @@ kind: meson
 depends:
 - filename: bootstrap-import.bst
   type: build
+- filename: base/buildsystem-meson.bst
+  type: build
 - filename: base/gettext.bst
   type: build
 - filename: base/gperf.bst
   type: build
+- filename: base/m4.bst
+  type: build
 - filename: base/libcap.bst
 - filename: base/libgcrypt.bst
 - filename: base/libgpg-error.bst
-- filename: base/m4.bst
-  type: build
-- filename: base/meson.bst
-  type: build
-- filename: base/ninja.bst
-  type: build
-- filename: base/pkg-config.bst
-  type: build
 - filename: base/util-linux.bst
 - filename: base/xz.bst
 

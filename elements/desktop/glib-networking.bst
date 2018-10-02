@@ -8,11 +8,7 @@ depends:
   - filename: desktop/gsettings-desktop-schemas.bst
   - filename: base/ca-certificates.bst
   - filename: base/gettext.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-meson.bst
     type: build
 
 variables:

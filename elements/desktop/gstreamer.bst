@@ -6,11 +6,7 @@ depends:
   - filename: desktop/gobject-introspection.bst
     type: build
   - filename: base/libunwind.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-meson.bst
     type: build
   - filename: base/flex.bst
     type: build
