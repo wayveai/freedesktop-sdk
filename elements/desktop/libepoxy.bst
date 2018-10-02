@@ -3,13 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/mesa.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
     type: build

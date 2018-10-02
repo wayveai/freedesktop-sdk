@@ -7,7 +7,7 @@ depends:
     type: build
   - filename: base/bison.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: desktop/libgvc.bst
 

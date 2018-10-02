@@ -4,7 +4,7 @@ description: X.org lib xshmfence
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-proto-xorgproto.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

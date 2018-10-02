@@ -10,7 +10,7 @@ depends:
   - filename: base/jpeg.bst
   - filename: desktop/gtk-doc.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 variables:

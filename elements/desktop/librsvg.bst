@@ -12,7 +12,7 @@ depends:
   - filename: desktop/pango.bst
   - filename: desktop/cairo.bst
   - filename: desktop/libcroco.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: desktop/gtk-doc.bst
     type: build

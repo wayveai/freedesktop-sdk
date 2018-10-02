@@ -4,9 +4,7 @@ description: X.org xcb-util-wm
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/xorg-lib-xcb.bst
-  - filename: base/m4.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

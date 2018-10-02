@@ -6,7 +6,7 @@ depends:
   - filename: desktop/harfbuzz.bst
   - filename: desktop/freetype-stage1.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:

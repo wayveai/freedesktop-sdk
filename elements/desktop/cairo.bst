@@ -9,13 +9,9 @@ depends:
   - filename: desktop/fontconfig.bst
   - filename: desktop/gtk-doc.bst
     type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/which.bst
-    type: build
-  - filename: base/pkg-config.bst
     type: build
 
 variables:

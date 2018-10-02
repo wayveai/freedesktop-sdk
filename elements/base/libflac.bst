@@ -3,13 +3,7 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/libogg.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gettext.bst
     type: build

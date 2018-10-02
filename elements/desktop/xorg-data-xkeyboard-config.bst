@@ -5,7 +5,7 @@ depends:
   - filename: desktop/xorg-util-macros.bst
     type: build
   - filename: desktop/xorg-app-xkbcomp.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/intltool.bst
     type: build

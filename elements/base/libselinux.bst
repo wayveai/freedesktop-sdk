@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/pcre2.bst
   - filename: base/libsepol.bst

@@ -2,16 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/autoconf-archive.bst
-    type: build
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/glib.bst
   - filename: base/intltool.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
     type: build
   - filename: base/sndfile.bst
   - filename: base/speexdsp.bst

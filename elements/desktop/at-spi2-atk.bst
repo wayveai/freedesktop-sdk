@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: desktop/atk.bst
   - filename: desktop/at-spi2-core.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 public:
