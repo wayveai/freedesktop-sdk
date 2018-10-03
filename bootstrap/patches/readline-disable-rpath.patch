@@ -1,0 +1,12 @@
+diff -ur readline.old/support/shobj-conf readline/support/shobj-conf
+--- readline.old/support/shobj-conf	2014-02-24 03:06:29.000000000 +0100
++++ readline/support/shobj-conf	2018-10-03 22:30:05.455253897 +0200
+@@ -128,7 +128,7 @@
+ 	SHOBJ_LD='${CC}'
+ 	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
+ 
+-	SHLIB_XLDFLAGS='-Wl,-rpath,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
++	SHLIB_XLDFLAGS='-Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
+ 	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(SHLIB_MAJOR)$(SHLIB_MINOR)'
+ 	;;
+ 
