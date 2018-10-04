@@ -2,9 +2,9 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/libsamplerate.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
+  - filename: base/libsamplerate.bst
   - filename: desktop/dbus.bst
   - filename: desktop/fcitx.bst
   - filename: desktop/ibus.bst

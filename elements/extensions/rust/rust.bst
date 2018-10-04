@@ -5,9 +5,7 @@ depends:
     type: build
   - filename: extensions/rust/rust-stage1.bst
     type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/cmake.bst
+  - filename: base/buildsystem-cmake.bst
     type: build
   - filename: base/python3.bst
     type: build

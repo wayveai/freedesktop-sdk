@@ -6,7 +6,7 @@ depends:
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/xorg-lib-xrender.bst
   - filename: desktop/xorg-lib-xfixes.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 variables:

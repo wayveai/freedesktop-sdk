@@ -2,13 +2,13 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/buildsystem-autotools.bst
+    type: build
   - filename: base/nettle.bst
   - filename: base/libtasn1.bst
   - filename: base/libunistring.bst
   - filename: base/libidn2.bst
   - filename: base/p11-kit.bst
-  - filename: base/pkg-config.bst
-    type: build
 
 variables:
   conf-local: |

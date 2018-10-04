@@ -18,16 +18,10 @@ depends:
   - filename: desktop/wayland.bst
   - filename: desktop/wayland-protocols.bst
     type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/curl.bst
   - filename: base/gettext.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
     type: build
   - filename: base/sndfile.bst
   - filename: base/which.bst

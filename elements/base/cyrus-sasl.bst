@@ -2,12 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gdbm.bst
   - filename: base/groff.bst
-    type: build
-  - filename: base/libtool.bst
     type: build
   - filename: base/sqlite.bst
   - filename: base/openssl.bst

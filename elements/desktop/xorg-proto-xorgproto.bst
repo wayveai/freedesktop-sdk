@@ -3,9 +3,7 @@ description: X.Org combined protocol headers
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
+  - filename: base/buildsystem-meson.bst
     type: build
   - filename: desktop/xorg-util-macros.bst
     type: build

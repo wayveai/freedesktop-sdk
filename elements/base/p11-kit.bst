@@ -4,15 +4,9 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/libtasn1.bst
   - filename: base/libffi.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gettext.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
     type: build
   - filename: base/which.bst
     type: build

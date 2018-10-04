@@ -7,7 +7,7 @@ depends:
     type: build
   - filename: desktop/freetype.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: extensions/glxinfo/glu.bst
   - filename: extensions/glxinfo/glew.bst

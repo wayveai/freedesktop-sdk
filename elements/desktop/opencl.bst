@@ -1,13 +1,9 @@
 kind: autotools
 
 depends:
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/ruby.bst
-    type: build
-  - filename: base/libtool.bst
     type: build
 
 variables:

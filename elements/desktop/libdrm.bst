@@ -3,11 +3,7 @@ description: libdrm
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-meson.bst
     type: build
   - filename: desktop/xorg-lib-pciaccess.bst
 

@@ -7,7 +7,7 @@ depends:
   - filename: desktop/gobject-introspection.bst
     type: build
   - filename: desktop/libsoup.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/intltool.bst
     type: build

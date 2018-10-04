@@ -7,15 +7,9 @@ depends:
   - filename: desktop/xorg-util-macros.bst
     type: build
   - filename: desktop/xorg-lib-xau.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/python3.bst
-    type: build
-  - filename: base/pkg-config.bst
     type: build
 
 variables:

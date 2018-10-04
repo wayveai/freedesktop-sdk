@@ -19,11 +19,7 @@ depends:
   - filename: base/flex.bst
     type: build
   - filename: base/libunwind.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-meson.bst
     type: build
   - filename: base/python2.bst
     type: build

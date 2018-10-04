@@ -9,12 +9,12 @@ depends:
   - filename: desktop/openal.bst
   - filename: desktop/libpulse.bst
   - filename: desktop/sdl2.bst
+  - filename: base/buildsystem-autotools.bst
+    type: build
   - filename: base/gnutls.bst
   - filename: base/speex.bst
   - filename: base/libtheora.bst
   - filename: base/libvorbis.bst
-  - filename: base/pkg-config.bst
-    type: build
   - filename: base/nasm.bst
     type: build
 

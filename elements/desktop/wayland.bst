@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/expat.bst
   - filename: base/libxml2.bst

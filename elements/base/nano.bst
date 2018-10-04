@@ -3,7 +3,7 @@ description: GNU nano
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
 
 sources:

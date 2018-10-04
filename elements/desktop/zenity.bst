@@ -7,7 +7,7 @@ depends:
     type: build
   - filename: desktop/itstools.bst
     type: build
-  - filename: base/pkg-config.bst
+  - filename: base/buildsystem-autotools.bst
     type: build
   - filename: base/gettext.bst
     type: build
