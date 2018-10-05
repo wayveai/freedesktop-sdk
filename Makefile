@@ -34,6 +34,7 @@ all: build
 
 build:
 	bst --colors $(ARCH_OPTS) build all.bst
+	bst --colors $(ARCH_OPTS) build public-stacks/buildsystems.bst
 
 
 export:
