@@ -44,11 +44,11 @@ environment:
 
 sources:
   - kind: tar
-    url: https://github.com/rust-lang/cargo/archive/0.29.0.tar.gz
+    url: https://github.com/rust-lang/cargo/archive/0.30.0.tar.gz
     directory: source
-    ref: 9aedb9536ec0b92059ed06b79a72798daf14e3fbcf29fac308ac07d23a9493d3
+    ref: 82f3ba49192b74b115b8aeca9db24deca022ee5e6351292611ab5b50e4455251
 
-# The following is generated with script generate_cargo_dependencies.py
+  # The following is generated with script generate_cargo_dependencies.py
   - kind: crate
     url: https://static.crates.io/crates/aho-corasick/aho-corasick-0.6.6.crate
     ref: c1c6d463cbe7ed28720b5b489e7c083eeb8f90d08be2a0d6bb9e1ffea9ce1afa
@@ -100,6 +100,9 @@ sources:
   - kind: crate
     url: https://static.crates.io/crates/crossbeam/crossbeam-0.3.2.crate
     ref: 24ce9782d4d5c53674646a6a4c1863a21a8fc0cb649b3c94dfc16e45071dea19
+  - kind: crate
+    url: https://static.crates.io/crates/crossbeam-utils/crossbeam-utils-0.5.0.crate
+    ref: 677d453a17e8bd2b913fa38e8b9cf04bcdbb5be790aa294f2389661d72036015
   - kind: crate
     url: https://static.crates.io/crates/crypto-hash/crypto-hash-0.3.1.crate
     ref: 09de9ee0fc255ace04c7fa0763c9395a945c37c8292bb554f8d48361d1dcf1b4
@@ -185,8 +188,8 @@ sources:
     url: https://static.crates.io/crates/lazy_static/lazy_static-1.0.2.crate
     ref: fb497c35d362b6a331cfd94956a07fc2c78a4604cdbee844a81170386b996dd3
   - kind: crate
-    url: https://static.crates.io/crates/lazycell/lazycell-0.6.0.crate
-    ref: a6f08839bc70ef4a3fe1d566d5350f519c5912ea86be0df1740a7d247c7fc0ef
+    url: https://static.crates.io/crates/lazycell/lazycell-1.2.0.crate
+    ref: ddba4c30a78328befecec92fc94970e53b3ae385827d28620f0f5bb2493081e0
   - kind: crate
     url: https://static.crates.io/crates/libc/libc-0.2.42.crate
     ref: b685088df2b950fccadf07a7187c8ef846a959c142338a48f9dc0b94517eb5f1
@@ -215,20 +218,20 @@ sources:
     url: https://static.crates.io/crates/miow/miow-0.3.1.crate
     ref: 9224c91f82b3c47cf53dcf78dfaa20d6888fbcc5d272d5f2fcdf8a697f3c987d
   - kind: crate
-    url: https://static.crates.io/crates/num-traits/num-traits-0.2.5.crate
-    ref: 630de1ef5cc79d0cdd78b7e33b81f083cbfe90de0f4b2b2f07f905867c70e9fe
-  - kind: crate
     url: https://static.crates.io/crates/num_cpus/num_cpus-1.8.0.crate
     ref: c51a3322e4bca9d212ad9a158a02abc6934d005490c054a2778df73a70aa0a30
   - kind: crate
-    url: https://static.crates.io/crates/openssl/openssl-0.10.10.crate
-    ref: ed18a0f40ec4e9a8a81f8865033d823b7195d16a0a5721e10963ee1b0c2980ca
+    url: https://static.crates.io/crates/openssl/openssl-0.10.12.crate
+    ref: 5e2e79eede055813a3ac52fb3915caf8e1c9da2dec1587871aec9f6f7b48508d
   - kind: crate
     url: https://static.crates.io/crates/openssl-probe/openssl-probe-0.1.2.crate
     ref: 77af24da69f9d9341038eba93a073b1fdaaa1b788221b00a69bce9e762cb32de
   - kind: crate
-    url: https://static.crates.io/crates/openssl-sys/openssl-sys-0.9.33.crate
-    ref: d8abc04833dcedef24221a91852931df2f63e3369ae003134e70aff3645775cc
+    url: https://static.crates.io/crates/openssl-src/openssl-src-110.0.7+1.1.0i.crate
+    ref: c02d15268b7d1b3f0c83a2358f3d981139b54079440f1e2a29c60c1818ad5516
+  - kind: crate
+    url: https://static.crates.io/crates/openssl-sys/openssl-sys-0.9.36.crate
+    ref: 409d77eeb492a1aebd6eb322b2ee72ff7c7496b4434d98b3bf8be038755de65e
   - kind: crate
     url: https://static.crates.io/crates/percent-encoding/percent-encoding-1.0.1.crate
     ref: 31010dd2e1ac33d5b46a5b413495239882813e0369f8ed8a5e266f173602f831
@@ -271,6 +274,12 @@ sources:
   - kind: crate
     url: https://static.crates.io/crates/rustc-demangle/rustc-demangle-0.1.9.crate
     ref: bcfe5b13211b4d78e5c2cadfebd7769197d95c639c35a50057eb4c05de811395
+  - kind: crate
+    url: https://static.crates.io/crates/rustc-workspace-hack/rustc-workspace-hack-1.0.0.crate
+    ref: fc71d2faa173b74b232dedc235e3ee1696581bb132fc116fa3626d6151a1a8fb
+  - kind: crate
+    url: https://static.crates.io/crates/rustfix/rustfix-0.4.2.crate
+    ref: 756567f00f7d89c9f89a5c401b8b1caaa122e27240b9eaadd0bb52ee0b680b1b
   - kind: crate
     url: https://static.crates.io/crates/same-file/same-file-1.0.2.crate
     ref: cfb6eded0b06a0b512c8ddbcf04089138c9b4362c2f696f3c3d76039d68f3637
@@ -319,9 +328,6 @@ sources:
   - kind: crate
     url: https://static.crates.io/crates/tempfile/tempfile-3.0.3.crate
     ref: c4b103c6d08d323b92ff42c8ce62abcd83ca8efa7fd5bf7927efefec75f58c76
-  - kind: crate
-    url: https://static.crates.io/crates/termcolor/termcolor-0.3.6.crate
-    ref: adc4587ead41bf016f11af03e55a624c06568b5a19db4e90fde573d805074f83
   - kind: crate
     url: https://static.crates.io/crates/termcolor/termcolor-1.0.1.crate
     ref: 722426c4a0539da2c4ffd9b419d90ad540b4cff4a053be9069c908d4d07e2836
@@ -388,9 +394,6 @@ sources:
   - kind: crate
     url: https://static.crates.io/crates/winapi-x86_64-pc-windows-gnu/winapi-x86_64-pc-windows-gnu-0.4.0.crate
     ref: 712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f
-  - kind: crate
-    url: https://static.crates.io/crates/wincolor/wincolor-0.1.6.crate
-    ref: eeb06499a3a4d44302791052df005d5232b927ed1a9658146d842165c4de7767
   - kind: crate
     url: https://static.crates.io/crates/wincolor/wincolor-1.0.0.crate
     ref: b9dc3aa9dcda98b5a16150c54619c1ead22e3d3a5d458778ae914be760aa981a
