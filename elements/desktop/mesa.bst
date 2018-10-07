@@ -48,6 +48,7 @@ variables:
     -Dgles1=false \
     -Dgles2=true \
     -Dgallium-omx=disabled \
+    -Dgallium-nine=true \
     -Dgallium-vdpau=true \
     -Dgallium-va=true \
     -Dgallium-xa=true \
