@@ -89,9 +89,9 @@ public:
           - "%{libdir}/vdpau/libvdpau_*.so"
 
 sources:
-  - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-18.2.1.tar.xz
-    ref: 9636dc6f3d188abdcca02da97cedd73640d9035224efd5db724187d062c81056
+  - kind: git
+    url: https://gitlab.freedesktop.org/mesa/mesa.git
+    ref: 3c8c851fe46b1924d84b04c49c60885452c4fbe2 # mesa-18.2.1
   - kind: patch
     path: patches/mesa-Fix-linkage-against-shared-glapi.patch
   - kind: patch
