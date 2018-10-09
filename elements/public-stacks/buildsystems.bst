@@ -6,3 +6,4 @@ depends:
 - filename: base/buildsystem-meson.bst
 - filename: base/python3.bst
 - filename: base/perl.bst
+- filename: base/qmake.bst
