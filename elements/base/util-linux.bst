@@ -32,6 +32,6 @@ config:
         rm -rf "%{install-root}%{prefix}/sbin"
 
 sources:
-  - kind: tar
-    url: https://www.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.1.tar.xz
-    ref: 86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2
+  - kind: git
+    url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+    ref: fcee65bcb3372e8878ad80fa4d9f3bda22dcc8d2 # v2.32.1
