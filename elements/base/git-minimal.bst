@@ -25,6 +25,6 @@ config:
         find "%{install-root}" -type f -name perllocal.pod -delete
 
 sources:
-  - kind: tar
-    url: https://github.com/git/git/archive/v2.19.0.tar.gz
-    ref: c4146d94d1c74de0d099bcd6ba22cc44f799332a46146ede4ad9c9f67971aa28
+  - kind: git
+    url: https://github.com/git/git.git
+    ref: cae598d9980661a978e2df4fb338518f7bf09572 # v2.19.1
