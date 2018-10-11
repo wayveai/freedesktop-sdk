@@ -9,6 +9,8 @@ depends:
     type: build
   - filename: base/gettext.bst
     type: build
+  - filename: base/git-minimal.bst
+    type: build  
 
 variables:
   conf-local: |
@@ -41,5 +43,3 @@ sources:
   - kind: git
     url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
     ref: fcee65bcb3372e8878ad80fa4d9f3bda22dcc8d2 # v2.32.1
-  - kind: patch
-    path: bootstrap/patches/util-linux-version.patch
