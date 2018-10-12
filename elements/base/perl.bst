@@ -31,8 +31,8 @@ public:
           - "**"
 
 sources:
-  - kind: tar
-    url: https://www.cpan.org/src/5.0/perl-5.28.0.tar.gz
-    ref: 7e929f64d4cb0e9d1159d4a59fc89394e27fa1f7004d0836ca0d514685406ea8
+  - kind: git
+    url: https://perl5.git.perl.org/perl.git
+    ref:  6cb72a3d7fbefb477b95588e2fd81e33073da8b3 # v5.28.0
   - kind: local
     path: files/perl/config.over

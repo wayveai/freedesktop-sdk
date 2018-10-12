@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
 
 sources:
-  - kind: tar
+  - kind: git
     # gperf 3.1 make libcap fail to build
-    url: ftp_gnu_org:gperf/gperf-3.0.4.tar.gz
-    ref: 767112a204407e62dbc3106647cf839ed544f3cf5d0f0523aaa2508623aad63e
+    url: https://git.savannah.gnu.org/git/gperf.git
+    ref: 2adc7253aef58fdafa6cd9bddf740611c64ba582 # v3.0.4

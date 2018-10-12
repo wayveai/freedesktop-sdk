@@ -2,6 +2,11 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/buildsystem-autotools.bst
+    type: build
+
 
 public:
   bst:
@@ -11,6 +16,6 @@ public:
           - "%{libdir}/liblzma.so"
 
 sources:
-  - kind: tar
-    url: https://tukaani.org/xz/xz-5.2.4.tar.xz
-    ref: 9717ae363760dedf573dad241420c5fea86256b65bc21d2cf71b2b12f0544f4b
+  - kind: git
+    url: https://git.tukaani.org/xz.git
+    ref: b5be61cc06088bb07f488f9baf7d447ff47b37c1 # v5.2.4
