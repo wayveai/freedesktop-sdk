@@ -91,7 +91,7 @@ public:
 sources:
   - kind: git
     url: https://gitlab.freedesktop.org/mesa/mesa.git
-    ref: 3c8c851fe46b1924d84b04c49c60885452c4fbe2 # mesa-18.2.1
+    ref: abaeb79eb2c16d7abad06719f24d1e59ad775aa6 # mesa-18.2.2
   - kind: patch
     path: patches/mesa-Fix-linkage-against-shared-glapi.patch
   - kind: patch
