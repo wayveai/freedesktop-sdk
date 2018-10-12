@@ -105,7 +105,9 @@ before_script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
-    - ./utils/check-abi --old=${RUNTIME_VERSION} --new=${CI_COMMIT_SHA}
+    - |
+      REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
+      ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA}
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
