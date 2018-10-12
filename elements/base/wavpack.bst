@@ -2,6 +2,12 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+
+
+variables:
+    autogen: autoreconf -vif
 
 public:
   bst:
@@ -11,6 +17,6 @@ public:
         - "%{libdir}/libwavpack.so"
 
 sources:
-- kind: tar
-  url: http://wavpack.com/wavpack-5.1.0.tar.bz2
-  ref: 1939627d5358d1da62bc6158d63f7ed12905552f3a799c799ee90296a7612944
+- kind: git
+  url: https://github.com/dbry/WavPack.git
+  ref: 9ccc3fe4a37d069137ceabe513a4dd9b0a09c1c2 # v 5.1.0

@@ -2,8 +2,13 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/bison.bst
+    type: build
+  - filename: base/buildsystem-autotools.bst
+    type: build
+
 
 sources:
-  - kind: tar
-    url: ftp_gnu_org:patch/patch-2.7.6.tar.xz
-    ref: ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd
+  - kind: git
+    url: https://git.savannah.gnu.org/git/patch.git
+    ref: 40b387de08653a1e46872b8ac1a6a14b9b94feb3 # v2.7.6

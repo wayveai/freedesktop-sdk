@@ -27,6 +27,6 @@ public:
           - "%{libdir}/libext2fs.so"
 
 sources:
-  - kind: tar
-    url: https://sourceforge.net/projects/e2fsprogs/files/e2fsprogs/v1.44.3/e2fsprogs-1.44.3.tar.gz
-    ref: c2ae6d8ce6fb96b55886cf761411fc22ab41976f4f8297fc54c706df442483be
+  - kind: git
+    url: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+    ref: 85e53f42f98d5334914de01e972e9ed44bccd0a5 # v1.44.3

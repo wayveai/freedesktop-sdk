@@ -4,7 +4,7 @@ depends:
 - bootstrap-import.bst
 
 sources:
-- kind: tar
-  url: https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.02.98.tgz
+- kind: git
+  url: git://sourceware.org/git/lvm2.git
 
-  ref: 71030a58fef7e00d82ca4144334548e46aad24551a3cfbe7c3059b1bd137d864
+  ref: ea6a8078b41df75344aecff4c54aab9c78b67193 #v2_02_98

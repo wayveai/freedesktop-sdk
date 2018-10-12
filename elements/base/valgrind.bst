@@ -23,8 +23,8 @@ config:
         autoreconf -ivf
 
 sources:
-  - kind: tar
-    url: https://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
-    ref: d76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b
+  - kind: git
+    url: http://repo.or.cz/valgrind.git
+    ref: 1378ec95f22235e0a8c972cf1cd0abef0b9610d4 # v3.13  (svn/VALGRIND_3_13_0)
   - kind: patch
     path: patches/valgrind-arm-hot_cpu.patch
