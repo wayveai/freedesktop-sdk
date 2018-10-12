@@ -14,6 +14,6 @@ config:
       install -D -m 0755 ninja %{install-root}%{bindir}/ninja
 
 sources:
-  - kind: tar
-    url: https://github.com/ninja-build/ninja/archive/v1.8.2.tar.gz
-    ref: 86b8700c3d0880c2b44c2ff67ce42774aaf8c28cbf57725cb881569288c1c6f4
+  - kind: git
+    url: https://github.com/ninja-build/ninja.git
+    ref: 253e94c1fa511704baeb61cf69995bbf09ba435e # v1.8.2

@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/buildsystem-autotools.bst
+    type: build
 
 public:
   bst:
@@ -12,6 +14,6 @@ public:
           - "%{libdir}/libpng16.so"
 
 sources:
-  - kind: tar
-    url: https://ftp-osl.osuosl.org/pub/libpng/src/libpng16/libpng-1.6.34.tar.gz
-    ref: 574623a4901a9969080ab4a2df9437026c8a87150dfd5c235e28c94b212964a7
+  - kind: git
+    url: https://git.code.sf.net/p/libpng/code
+    ref: b78804f9a2568b270ebd30eca954ef7447ba92f7 # v1.6.34
