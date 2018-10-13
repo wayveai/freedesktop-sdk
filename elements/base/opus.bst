@@ -4,7 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/buildsystem-autotools.bst
     type: build
-  - filename: base/git.bst
+  - filename: base/git-minimal.bst
     type: build
 
 public:

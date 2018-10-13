@@ -13,7 +13,7 @@ depends:
     type: build
   - filename: base/gettext.bst
     type: build
-  - filename: base/git.bst
+  - filename: base/git-minimal.bst
     type: build
   - filename: base/libogg.bst
   - filename: base/libtheora.bst
