@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.14:
+    * Several improvements in the ABI check (#402,#403)
+    * cmake: Apply missing nolib64 patch (#418)
+    * mesa: Update to 18.2.2
+    * bash: Update to 4.4 patch 19
+    * librsvg: Update to 2.44.7
+    * Add vim as dev-tools
+    * mesa: Enable gallium-nine (#409)
+    * Add buildsystem-*.bst stack elements for autotools,meson,cmake...
+    * appstream-glib: Update to 0.7.13
+    * meson: Update to 0.48.0
+    * mesa: Enable xlib lease; needed for VR
+
 freedesktop-sdk-18.08.13:
     * Move vulkan icd.d files to libdir to support multiarch applications (#398)
     * librsvg: Upgrade to 2.44.6
