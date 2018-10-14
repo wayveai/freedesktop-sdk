@@ -2,6 +2,7 @@ Freedesktop-SDK
 
 freedesktop-sdk-18.08.14:
     * Several improvements in the ABI check (#402,#403)
+    * git: update to 2.19.1
     * cmake: Apply missing nolib64 patch (#418)
     * mesa: Update to 18.2.2
     * bash: Update to 4.4 patch 19
