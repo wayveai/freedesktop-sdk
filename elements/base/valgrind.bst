@@ -11,10 +11,9 @@ depends:
 
 environment:
   # valgrind does not like stack protector flags
-  CPPFLAGS: "-O2"
-  CFLAGS: "-O2 -g"
-  CXXFLAGS: "-O2 -g"
-  LDFLAGS: "-Wl,-z,relro,-z,now"
+  CFLAGS: "-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -grecord-gcc-switches"
+  CXXFLAGS: "-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -grecord-gcc-switches"
+  LDFLAGS: "-Wl,--as-needed,-z,relro,-z,now"
 
 config:
   configure-commands:
