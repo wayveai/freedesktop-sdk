@@ -1,24 +1,24 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/json-glib.bst
+  - filename: desktop/gtk-doc.bst
+    type: build
   - filename: base/glib.bst
   - filename: desktop/gobject-introspection.bst
     type: build
   - filename: desktop/libsoup.bst
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: base/intltool.bst
+  - filename: base/buildsystem-meson.bst
     type: build
 
 variables:
-  conf-local: |
-    --disable-3g-source \
-    --disable-cdma-source \
-    --disable-modem-gps-source \
-    --disable-nmea-source \
-    --enable-demo-agent=no
+  meson-local: |
+    -D3g-source=false \
+    -Dcdma-source=false \
+    -Dmodem-gps-source=false \
+    -Dnmea-source=false \
+    -Ddemo-agent=false
 
 config:
   install-commands:
@@ -38,6 +38,6 @@ public:
           - "%{libdir}/libgeoclue-2.so"
 
 sources:
-  - kind: tar
-    url: https://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.12.tar.xz
-    ref: 05d0e2ec077a685de2a9c63973fe6d18366ca53881d1f0750110b93c5c68caca
+  - kind: git
+    url: https://gitlab.freedesktop.org/geoclue/geoclue.git
+    ref: 9b6c03640e66a4e7d615200d95b89051b2214da1 #  2.5.1
