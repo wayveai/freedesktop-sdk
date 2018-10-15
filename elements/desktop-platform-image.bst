@@ -7,6 +7,7 @@ description: |
 config:
   exclude:
   - devel
+  - extra
 
 public:
   bst:

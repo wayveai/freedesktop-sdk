@@ -12,6 +12,10 @@ public:
       locale:
       - '%{datadir}/runtime/locale/**'
 
+config:
+  exclude:
+    - extra
+
 depends:
 - filename: desktop.bst
   type: build
