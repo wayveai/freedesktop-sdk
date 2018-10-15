@@ -2,6 +2,10 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/buildsystem-autotools.bst
+  - filename: base/libflac.bst
+  - filename: base/libogg.bst
+  - filename: base/libvorbis.bst
 
 public:
   bst:
@@ -9,6 +13,10 @@ public:
       devel:
         (>):
           - "%{libdir}/libsndfile.so"
+
+variables:
+  conf-local: |
+    --enable-external-libs
 
 sources:
   - kind: tar
