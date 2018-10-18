@@ -87,3 +87,23 @@ The `plugins/` directory contains our custom Buildstream
 ## Contributing
 
 For a guide to contributing, please see our CONTRIBUTING file.
+
+## Acknowledgements
+
+This project wouldn't be possible without the work of a few individuals and
+groups, and we would like to take a moment to thank them.
+
+*   Alex Larsson, who not only gave us [Flatpak](https://flatpak.org) but also
+    the original
+    [Freedesktop Sdk](https://github.com/flatpak/freedesktop-sdk-images)
+    (versions 1.2 to 1.6);
+*   the wider Flatpak community, of which we are only a small part, and who
+    constantly help us;
+*   the [BuildStream](https://buildstream.build/) community, who offered this
+    amazing tool to the world which makes building and maintaining our project
+    so easy and fun;
+*   Dodji Seketeli who wrote [libabigail](https://sourceware.org/libabigail/),
+    which allows us to ensure we do not break apps, and tirelessly works with
+    us on fixing any bug we encounter;
+*   [Codethink](https://www.codethink.co.uk/), for assigning some of their
+    engineers's time to this project;
