@@ -25,9 +25,6 @@ variables:
       kernel_arch: '%{arch}'
 
 config:
-  configure-commands:
-  - make defconfig
-
   build-commands:
   - make ARCH="%{kernel_arch}" $MAKEFLAGS
 
@@ -51,3 +48,5 @@ sources:
 - kind: tar
   url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.8.tar.xz
   ref: e4faad7d987b10e97eaaa272ef135c6edea8f8260e12bc1b8d1c91a7e03c98fc
+- kind: local
+  path: files/kernel/.config
