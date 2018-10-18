@@ -11,6 +11,6 @@ sources:
   - kind: git
     url: https://github.com/mesonbuild/meson.git
     track: master
-    ref: 0cf4a6ab3aa3672d74091e28f6535477794d9839 #  0.48.0
+    ref: 6aef9d32a40cf1639f4df29f141b9bb461c52dea  # 0.48.1
   - kind: patch
     path: patches/meson-no-lib64.patch
