@@ -32,7 +32,7 @@ public:
 
 sources:
   - kind: git
-    url: https://perl5.git.perl.org/perl.git
+    url: "perl5:"
     ref:  6cb72a3d7fbefb477b95588e2fd81e33073da8b3 # v5.28.0
   - kind: local
     path: files/perl/config.over
