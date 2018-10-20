@@ -22,4 +22,4 @@ public:
 sources:
 - kind: git
   url: https://github.com/libjpeg-turbo/libjpeg-turbo.git
-  ref: 574f3a772c96dc9db2c98ef24706feb3f6dbda9a #  2.0.0
+  ref: 2.0.0-3-g2260b66e1671038a362dca4a204c28d72b8f7e4e
