@@ -46,4 +46,4 @@ sources:
   - kind: git
     url: freedesktop:cairo/cairo
     track: master
-    ref: 7149686456ec3c481fa1d3dbe76a0dab1e42b519 # 1.15.12
+    ref: 3ad43122b21a3299dd729dc8462d6b8f7f01142d #  1.16.0
