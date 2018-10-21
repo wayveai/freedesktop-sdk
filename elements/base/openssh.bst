@@ -4,10 +4,7 @@ depends:
   - filename: bootstrap-import.bst
   - filename: base/buildsystem-autotools.bst
     type: build
-  - filename: base/openssl-1.0.bst
-    type: build
-  - filename: base/openssl-1.0-runtime-only.bst
-    type: runtime
+  - filename: base/openssl.bst
 
 variables:
   conf-local: |
@@ -26,4 +23,4 @@ config:
 sources:
   - kind: git
     url: https://github.com/openssh/openssh-portable
-    ref: 71508e06fab14bc415a79a08f5535ad7bffa93d9  # V_7_8_P1
+    ref: aede1c34243a6f7feae2fb2cb686ade5f9be6f3d #  V_7_9_P1
