@@ -21,6 +21,6 @@ environment:
   PKG_CONFIG_PATH: "/app/lib/pkgconfig:"
 
 sources:
-  - kind: tar
-    url: https://mesa.freedesktop.org/archive/demos/mesa-demos-8.4.0.tar.gz
-    ref: b997fe1a07584fdc9f25fc9807ea9fd8df15032d6cf1631aa3ba69f8fe09d633
+  - kind: git
+    url: freedesktop:mesa/demos.git
+    ref: 317f67fe5e75c685330d536f158acf6260b473d1 # mesa-demos-8.4.0
