@@ -69,7 +69,7 @@ For more information on git commit messages see [this guide](https://chris.beams
 
 ## Request developer access to the freedesktop-sdk repo
 Go to our gitlab [project page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk) and click the "Request Developer Access" button near the top of the page. One of the maintainers will review your request. Developer access allows you to push directly to our repo, enabling a simpler "push and merge request" workflow instead of using the github "fork and pull request" workflow.
-This has the added benefit of allowing you to use our CI, which is equipped with runners for aarch64, armv7, i586 and x86_64 architectures.
+This has the added benefit of allowing you to use our CI, which is equipped with runners for aarch64, armv7, i686 and x86_64 architectures.
 
 ## Push your changes to the remote
 Run the following commands:

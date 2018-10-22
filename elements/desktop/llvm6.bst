@@ -8,7 +8,7 @@ depends:
 
 variables:
   (?):
-    - target_arch == "i586":
+    - target_arch == "i686":
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "x86_64":
         targets: "X86;AMDGPU;NVPTX"

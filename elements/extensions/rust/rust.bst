@@ -20,7 +20,7 @@ variables:
   debuginfo-only-std: "false"
   rust-target: "%{host-triplet}"
   (?):
-    - target_arch == "i586":
+    - target_arch == "i686":
         # i686 also exhausts memory on stage0
         debuginfo-only-std: "true"
     - target_arch == "arm":

@@ -6,7 +6,7 @@ depends:
 variables:
   target: "linux_noasm"
   (?):
-    - target_arch == "i586":
+    - target_arch == "i686":
         target: "linux_asm"
 
 config:
