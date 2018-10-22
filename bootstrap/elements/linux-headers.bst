@@ -9,9 +9,9 @@ variables:
   (?):
     - target_arch == "aarch64":
         kernel_arch: arm64
-    - target_arch == "i586":
+    - target_arch == "i686":
         kernel_arch: i386
-    - target_arch != "aarch64" and target_arch != "i586":
+    - target_arch != "aarch64" and target_arch != "i686":
         kernel_arch: "%{target_arch}"
 
 config:
