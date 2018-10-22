@@ -60,7 +60,7 @@ sources:
   - kind: git
     url: freedesktop-old:gstreamer/gst-plugins-bad
     track: 1.14
-    ref: c070d6921ea3427713a11bfc7f828cfba3dcfca7 # 1.14.2
+    ref: 566e4ecc223b18fce8bd932f5e4885f41f746dd4 #  1.14.4
     submodules:
       common:
         url: freedesktop-old:gstreamer/common
