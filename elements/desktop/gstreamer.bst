@@ -32,7 +32,7 @@ sources:
   - kind: git
     url: freedesktop-old:gstreamer/gstreamer
     track: 1.14
-    ref: afb3d1b3e0d02da8b0eb5bb501356650b38e5644 # 1.14.2
+    ref: 3c586dec930c5c253da0cf49e3f3846243f0ecf5 #  1.14.4
     submodules:
       common:
         url: freedesktop-old:gstreamer/common
