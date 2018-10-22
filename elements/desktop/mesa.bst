@@ -28,7 +28,7 @@ depends:
 
 variables:
   (?):
-    - target_arch == "i586" or target_arch == "x86_64":
+    - target_arch == "i686" or target_arch == "x86_64":
         gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
         dri_drivers: "nouveau,r100,r200,i915,i965"
         vulkan_drivers: "intel,amd"

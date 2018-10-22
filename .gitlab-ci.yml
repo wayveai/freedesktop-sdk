@@ -24,7 +24,7 @@ stages:
   - flatpak
   - vm
   - publish_x86_64
-  - publish_i586
+  - publish_i686
   - publish_aarch64
   - publish_arm
 
@@ -129,13 +129,13 @@ app_x86_64:
   variables:
     ARCH: x86_64
 
-app_i586:
+app_i686:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
   variables:
-    ARCH: i586
+    ARCH: i686
 
 app_aarch64:
   image: $DOCKER_BST_AARCH64
@@ -230,14 +230,14 @@ publish_x86_64:
   variables:
     ARCH: x86_64
 
-publish_i586:
-  stage: publish_i586
+publish_i686:
+  stage: publish_i686
   image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
   variables:
-    ARCH: i586
+    ARCH: i686
 
 publish_aarch64:
   stage: publish_aarch64

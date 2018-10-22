@@ -18,7 +18,7 @@ sources:
       - target_arch == "x86_64":
           url: https://static.rust-lang.org/dist/cargo-0.29.0-x86_64-unknown-linux-gnu.tar.gz
           ref: a5e7749767c47669ed9b6e32c6fb8eda6b0fe1c63ac73a6d4666b5c1352bad24
-      - target_arch == "i586":
+      - target_arch == "i686":
           url: https://static.rust-lang.org/dist/cargo-0.29.0-i686-unknown-linux-gnu.tar.gz
           ref: ec9ba3aa064719222bb59de4cf8f2ad061bb31288e7dd4e98b80215203aa5876
       - target_arch == "aarch64":

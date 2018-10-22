@@ -1,6 +1,6 @@
 BRANCH=18.08
-ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
-ifeq ($(ARCH),i586)
+ARCH=$(shell uname -m | sed "s/^i.86$$/i686/")
+ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 else
 FLATPAK_ARCH=$(ARCH)
@@ -22,7 +22,7 @@ RUNTIMES=					\
 	glxinfo					\
 	glxinfo-debug				\
 	rust
-ifeq ($(ARCH),$(filter $(ARCH),i586 x86_64))
+ifeq ($(ARCH),$(filter $(ARCH),i686 x86_64))
   RUNTIMES+=platform-vaapi
 endif
 RUNTIME_ELEMENTS=$(addprefix flatpak-images/,$(addsuffix .bst,$(RUNTIMES)))
@@ -50,7 +50,7 @@ export:
 	
 	set -e; case "$(RUNTIMES)" in \
 	  *platform-arch-libs*) \
-	    if test "$(ARCH)" = "i586" ; then \
+	    if test "$(ARCH)" = "i686" ; then \
 	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
 	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
 	    elif test "$(ARCH)" = "arm" ; then \
