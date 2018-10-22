@@ -9,6 +9,6 @@ variables:
   lib: lib
 
 sources:
-  - kind: tar
-    url: https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2
-    ref: 1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12
+  - kind: git
+    url: freedesktop:mesa/glu.git
+    ref: 030651b64854b84a01ebebad9af188e7644c541a # gl-9.0.0
