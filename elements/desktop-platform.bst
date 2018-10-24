@@ -19,6 +19,7 @@ depends:
 - filename: desktop/emoji-one-font.bst
 - filename: desktop/fcitx.bst
 - filename: desktop/ffmpeg.bst
+- filename: desktop/fftw.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst
