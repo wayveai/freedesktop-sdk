@@ -18,7 +18,7 @@ variables:
   builddir: ''
   openssl-target: linux-%{arch}
   (?):
-    - target_arch == "i586":
+    - target_arch == "i686":
         openssl-target: linux-generic32
     - target_arch == "arm":
         openssl-target: linux-generic32

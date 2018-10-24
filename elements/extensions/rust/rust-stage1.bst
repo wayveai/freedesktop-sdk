@@ -18,7 +18,7 @@ sources:
       - target_arch == "x86_64":
           url: https://static.rust-lang.org/dist/rust-1.28.0-x86_64-unknown-linux-gnu.tar.gz
           ref: 2a1390340db1d24a9498036884e6b2748e9b4b057fc5219694e298bdaa37b810
-      - target_arch == "i586":
+      - target_arch == "i686":
           url: https://static.rust-lang.org/dist/rust-1.28.0-i686-unknown-linux-gnu.tar.gz
           ref: de7cdb4e665e897ea9b10bf6fd545f900683296456d6a11d8510397bb330455f
       - target_arch == "aarch64":

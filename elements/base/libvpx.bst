@@ -11,7 +11,7 @@ variables:
   (?):
     - target_arch == "x86_64":
         vpxtarget: "x86_64-linux-gcc"
-    - target_arch == "i586":
+    - target_arch == "i686":
         vpxtarget: "x86-linux-gcc"
     - target_arch == "arm":
         vpxtarget: "armv7-linux-gcc"
