@@ -3,6 +3,8 @@ kind: flatpak_image
 depends:
   - filename: extensions/html5/ffmpeg.bst
     type: build
+  - filename: extensions/html5/gstreamer-libav.bst
+    type: build
 
 config:
   directory: "%{libdir}/ffmpeg"
