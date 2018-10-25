@@ -73,6 +73,26 @@ The current set of commands to run your application with 18.08 are:
     $ flatpak-builder --run build_folder org.app.json
     ```
 
+## Available Runtimes
+
+Currently we provide the following runtimes:
+* org.freedesktop.Platform
+* org.freedesktop.Sdk
+
+Additionally we provide the following extensions to our platform:
+* org.freedesktop.Platform.Locale
+* org.freedesktop.Platform.VAAPI.Intel (Intel only)
+* org.freedesktop.Platform.html5-codecs
+* org.freedesktop.Platform.Compat.{architecture}
+
+And the following extensions to the SDK:
+* org.freedesktop.Sdk.Locale
+* org.freedesktop.Sdk.Docs
+* org.freedesktop.Sdk.Debug
+* org.freedesktop.Sdk.Extension.rust-stable
+
+We also provide org.freedesktop.GlxInfo and org.freedesktop.GlxInfo.Debug as flatpak applications.
+
 ## Structure
 
 Current directory structure is the usual of a builstream project with the
