@@ -19,16 +19,16 @@ config:
       XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
 
     Extension org.freedesktop.Platform.GL:
-      versions: 18.08;1.6;1.4
-      version: '1.4'
-      directory: '%{lib}/GL'
-      subdirectories: 'true'
-      no-autodownload: 'true'
-      autodelete: 'false'
-      add-ld-path: lib
-      merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d
-      download-if: active-gl-driver
-      enable-if: active-gl-driver
+      versions: "18.08;1.6;1.4"
+      version: "1.4"
+      directory: "%{lib}/GL"
+      subdirectories: "true"
+      no-autodownload: "true"
+      autodelete: "false"
+      add-ld-path: "lib"
+      merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors"
+      download-if: "active-gl-driver"
+      enable-if: "active-gl-driver"
 
     Extension org.freedesktop.Platform.Locale:
       directory: share/runtime/locale
