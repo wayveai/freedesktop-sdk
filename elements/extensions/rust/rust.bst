@@ -113,8 +113,8 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.29.2-src.tar.gz
-  ref: 5088e796aa2e47478cdf41e7243fc5443fafab0a7c70a11423e57c80c04167c9
+  url: https://static.rust-lang.org/dist/rustc-1.30.0-src.tar.gz
+  ref: cd0ba83fcca55b64c0c9f23130fe731dfc1882b73ae21bef96be8f2362c108ee
 - kind: patch
   path: patches/rust-codegen-libdir.patch
 - kind: patch
