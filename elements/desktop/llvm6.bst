@@ -1,21 +1,21 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libffi.bst
-  - filename: base/buildsystem-cmake.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/libffi.bst
+- filename: base/buildsystem-cmake.bst
+  type: build
 
 variables:
   (?):
-    - target_arch == "i686":
-        targets: "X86;AMDGPU;NVPTX"
-    - target_arch == "x86_64":
-        targets: "X86;AMDGPU;NVPTX"
-    - target_arch == "arm":
-        targets: "ARM"
-    - target_arch == "aarch64":
-        targets: "AArch64"
+  - target_arch == "i686":
+      targets: X86;AMDGPU;NVPTX
+  - target_arch == "x86_64":
+      targets: X86;AMDGPU;NVPTX
+  - target_arch == "arm":
+      targets: ARM
+  - target_arch == "aarch64":
+      targets: AArch64
 
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
@@ -45,14 +45,14 @@ variables:
 
 environment:
   (?):
-    - target_arch == "x86_64":
-        JOBS: -j2
+  - target_arch == "x86_64":
+      JOBS: -j2
 
 config:
   install-commands:
     (>):
-      - |
-        rm -f "%{install-root}%{libdir}"/lib*.a
+    - |
+      rm -f "%{install-root}%{libdir}"/lib*.a
 
 public:
   bst:
@@ -79,14 +79,14 @@ public:
         - '%{datadir}/scan-view/**'
 
 sources:
-  - kind: tar
-    url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
-    ref: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
-  - kind: tar
-    url: https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz
-    ref: 7c243f1485bddfdfedada3cd402ff4792ea82362ff91fbdac2dae67c6026b667
-    directory: tools/clang
-  - kind: tar
-    url: http://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
-    ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
-    directory: tools/compiler-rt
+- kind: tar
+  url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
+  ref: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
+- kind: tar
+  url: https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz
+  ref: 7c243f1485bddfdfedada3cd402ff4792ea82362ff91fbdac2dae67c6026b667
+  directory: tools/clang
+- kind: tar
+  url: http://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
+  ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
+  directory: tools/compiler-rt

@@ -7,14 +7,14 @@ depends:
 
 
 variables:
-    autogen: autoreconf -vif
+  autogen: autoreconf -vif
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - "%{libdir}/libwavpack.so"
+        - '%{libdir}/libwavpack.so'
 
 sources:
 - kind: git

@@ -1,9 +1,9 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/buildsystem-cmake.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-cmake.bst
+  type: build
 
 variables:
   cmake-local: |
@@ -25,10 +25,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libproxy.so"
+        - '%{libdir}/libproxy.so'
 
 sources:
-  - kind: git
-    url: https://github.com/libproxy/libproxy/
-    track: master
-    ref: 5924d4223e2b7238607749d977c0a878fe33cdbc # 0.4.15
+- kind: git
+  url: https://github.com/libproxy/libproxy/
+  track: master
+  ref: 5924d4223e2b7238607749d977c0a878fe33cdbc   # 0.4.15

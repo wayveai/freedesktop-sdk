@@ -21,18 +21,18 @@ variables:
   conf-link-args: |
     --enable-shared \
     --enable-static
-  prefix: "%{tools}"
-  lib: "lib"
+  prefix: '%{tools}'
+  lib: lib
   (?):
-    - target_arch == "arm":
-        conf-extra: |
-          --with-mode=thumb \
-          --with-fpu=vfpv3-d16 \
-          --with-arch=armv7-a \
-          --with-float=hard
+  - target_arch == "arm":
+      conf-extra: |
+        --with-mode=thumb \
+        --with-fpu=vfpv3-d16 \
+        --with-arch=armv7-a \
+        --with-float=hard
 
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{guessed-triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{guessed-triplet}'
 
   conf-local: |
     --target=%{triplet} \

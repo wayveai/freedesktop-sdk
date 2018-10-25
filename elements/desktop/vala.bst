@@ -1,15 +1,15 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/glib.bst
-  - filename: base/flex.bst
-    type: build
-  - filename: base/bison.bst
-    type: build
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: desktop/libgvc.bst
+- filename: bootstrap-import.bst
+- filename: base/glib.bst
+- filename: base/flex.bst
+  type: build
+- filename: base/bison.bst
+  type: build
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: desktop/libgvc.bst
 
 sources:
 - kind: tar

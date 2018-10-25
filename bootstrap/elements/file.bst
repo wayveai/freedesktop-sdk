@@ -22,25 +22,25 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
 
 config:
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-    - |
-      %{delete_libtool_files}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
+  - |
+    %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libmagic.so"
+        - '%{sysroot}%{libdir}/libmagic.so'
 
 sources:
-  - kind: tar
-    url: ftp://ftp.astron.com/pub/file/file-5.33.tar.gz
-    ref: 1c52c8c3d271cd898d5511c36a68059cda94036111ab293f01f83c3525b737c6
+- kind: tar
+  url: ftp://ftp.astron.com/pub/file/file-5.33.tar.gz
+  ref: 1c52c8c3d271cd898d5511c36a68059cda94036111ab293f01f83c3525b737c6

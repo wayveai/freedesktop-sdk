@@ -21,20 +21,20 @@ depends:
 
 variables:
   (?):
-    - target_arch == "arm":
-        conf-extra: |
-          --with-mode=thumb \
-          --with-fpu=vfpv3-d16 \
-          --with-arch=armv7-a \
-          --with-float=hard
+  - target_arch == "arm":
+      conf-extra: |
+        --with-mode=thumb \
+        --with-fpu=vfpv3-d16 \
+        --with-arch=armv7-a \
+        --with-float=hard
 
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
 
   # gcc installs correctly libraries in the multiarch library
   # directory, but needs to be provided /usr/lib for --libdir.
-  lib: "lib"
-  multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
+  lib: lib
+  multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
 
   conf-local: |
     --target=%{triplet} \
@@ -54,51 +54,51 @@ variables:
 
 config:
   install-commands:
-    - |
-      cd %{builddir}
-      %{cross-install}
+  - |
+    cd %{builddir}
+    %{cross-install}
 
-    - |
-      ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
+  - |
+    ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{bindir}/*"
-          - "%{sysroot}%{libexecdir}"
-          - "%{sysroot}%{libexecdir}/**"
-          - "%{sysroot}%{datadir}/man"
-          - "%{sysroot}%{datadir}/man/**"
-          - "%{sysroot}%{datadir}/info"
-          - "%{sysroot}%{datadir}/info/**"
-          - "%{sysroot}%{datadir}/locale"
-          - "%{sysroot}%{datadir}/locale/**"
-          - "%{sysroot}%{indep-libdir}/gcc"
-          - "%{sysroot}%{indep-libdir}/gcc/**"
-          - "%{sysroot}%{libdir}/gcc"
-          - "%{sysroot}%{libdir}/gcc/**"
-          - "%{sysroot}%{multiarch_libdir}/lib*.a"
-          - "%{sysroot}%{multiarch_libdir}/liblsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libstdc++.so"
-          - "%{sysroot}%{multiarch_libdir}/libgomp.so"
-          - "%{sysroot}%{multiarch_libdir}/libatomic.so"
-          - "%{sysroot}%{multiarch_libdir}/libubsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libquadmath.so"
-          - "%{sysroot}%{multiarch_libdir}/libitm.so"
-          - "%{sysroot}%{multiarch_libdir}/libtsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libmpxwrappers.so"
-          - "%{sysroot}%{multiarch_libdir}/libmpx.so"
-          - "%{sysroot}%{multiarch_libdir}/libcilkrts.so"
-          - "%{sysroot}%{multiarch_libdir}/libssp.so"
-          - "%{sysroot}%{multiarch_libdir}/libasan.so"
-          - "%{sysroot}%{multiarch_libdir}/libgfortran.so"
-          - "%{sysroot}%{multiarch_libdir}/libcc1.so"
-          - "%{sysroot}%{multiarch_libdir}/libgcc_s.so"
+        - '%{sysroot}%{bindir}/*'
+        - '%{sysroot}%{libexecdir}'
+        - '%{sysroot}%{libexecdir}/**'
+        - '%{sysroot}%{datadir}/man'
+        - '%{sysroot}%{datadir}/man/**'
+        - '%{sysroot}%{datadir}/info'
+        - '%{sysroot}%{datadir}/info/**'
+        - '%{sysroot}%{datadir}/locale'
+        - '%{sysroot}%{datadir}/locale/**'
+        - '%{sysroot}%{indep-libdir}/gcc'
+        - '%{sysroot}%{indep-libdir}/gcc/**'
+        - '%{sysroot}%{libdir}/gcc'
+        - '%{sysroot}%{libdir}/gcc/**'
+        - '%{sysroot}%{multiarch_libdir}/lib*.a'
+        - '%{sysroot}%{multiarch_libdir}/liblsan.so'
+        - '%{sysroot}%{multiarch_libdir}/libstdc++.so'
+        - '%{sysroot}%{multiarch_libdir}/libgomp.so'
+        - '%{sysroot}%{multiarch_libdir}/libatomic.so'
+        - '%{sysroot}%{multiarch_libdir}/libubsan.so'
+        - '%{sysroot}%{multiarch_libdir}/libquadmath.so'
+        - '%{sysroot}%{multiarch_libdir}/libitm.so'
+        - '%{sysroot}%{multiarch_libdir}/libtsan.so'
+        - '%{sysroot}%{multiarch_libdir}/libmpxwrappers.so'
+        - '%{sysroot}%{multiarch_libdir}/libmpx.so'
+        - '%{sysroot}%{multiarch_libdir}/libcilkrts.so'
+        - '%{sysroot}%{multiarch_libdir}/libssp.so'
+        - '%{sysroot}%{multiarch_libdir}/libasan.so'
+        - '%{sysroot}%{multiarch_libdir}/libgfortran.so'
+        - '%{sysroot}%{multiarch_libdir}/libcc1.so'
+        - '%{sysroot}%{multiarch_libdir}/libgcc_s.so'
 
 sources:
 - kind: tar

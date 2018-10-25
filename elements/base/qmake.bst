@@ -36,22 +36,22 @@ variables:
 
 config:
   build-commands:
-    - ./configure %{conf-local}
+  - ./configure %{conf-local}
 
   install-commands:
-    - |
-      mkdir "%{install-root}%{prefix}"
-      mkdir "%{install-root}%{bindir}"
-      mv bin/qmake "%{install-root}%{bindir}" 
+  - |
+    mkdir "%{install-root}%{prefix}"
+    mkdir "%{install-root}%{bindir}"
+    mv bin/qmake "%{install-root}%{bindir}" 
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/*.so"
+        - '%{libdir}/*.so'
 
 sources:
 - kind: tar
   url: https://download.qt.io/official_releases/qt/5.11/5.11.1/submodules/qtbase-everywhere-src-5.11.1.tar.xz
-  ref: a0d047b2da5782c8332c59ae203984b64e4d5dc5f4ba9c0884fdbe753d0afb46 
+  ref: a0d047b2da5782c8332c59ae203984b64e4d5dc5f4ba9c0884fdbe753d0afb46

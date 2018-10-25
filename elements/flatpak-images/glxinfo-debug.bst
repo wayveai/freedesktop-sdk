@@ -5,12 +5,12 @@ variables:
   prefix: /app
 
 config:
-  directory: "%{debugdir}%{libdir}"
+  directory: '%{debugdir}%{libdir}'
 
   metadata:
     Runtime:
       name: org.freedesktop.GlxInfo.Debug
 
 depends:
-  - filename: extensions/glxinfo/mesa-demos.bst
-    type: build
+- filename: extensions/glxinfo/mesa-demos.bst
+  type: build

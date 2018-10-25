@@ -8,9 +8,9 @@ public:
   bst:
     split-rules:
       docs:
-        - "%{datadir}/runtime/docs/**"
+      - '%{datadir}/runtime/docs/**'
       locale:
-        - "%{datadir}/runtime/locale/**"
+      - '%{datadir}/runtime/locale/**'
 
 depends:
 - filename: desktop.bst

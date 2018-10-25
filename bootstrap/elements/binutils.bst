@@ -20,8 +20,8 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
   conf-local: |
     --disable-werror \
     --with-lib-path="%{libdir}:%{indep-libdir}" \
@@ -32,15 +32,15 @@ variables:
 
 config:
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 environment:
-  LEXLIB: " "
+  LEXLIB: ' '
 
 sources:
 - kind: tar
@@ -51,4 +51,4 @@ public:
   bst:
     split-rules:
       devel:
-        - "/**"
+      - /**

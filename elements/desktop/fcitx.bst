@@ -27,14 +27,14 @@ variables:
     -DENABLE_PRESAGE=Off
 
 public:
-  bst: 
+  bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libfcitx-core.so"
-          - "%{libdir}/libfcitx-gclient.so"
-          - "%{libdir}/libfcitx-config.so"
-          - "%{libdir}/libfcitx-utils.so"
+        - '%{libdir}/libfcitx-core.so'
+        - '%{libdir}/libfcitx-gclient.so'
+        - '%{libdir}/libfcitx-config.so'
+        - '%{libdir}/libfcitx-utils.so'
 
 sources:
 - kind: tar

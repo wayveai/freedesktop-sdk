@@ -1,12 +1,12 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/gnutls.bst
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: base/gzip.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/gnutls.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gzip.bst
+  type: build
 
 variables:
   builddir: ''
@@ -21,18 +21,18 @@ variables:
 
 config:
   install-commands:
-    - |
-      make -j1 DSTROOT="%{install-root}" install
+  - |
+    make -j1 DSTROOT="%{install-root}" install
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/cups-config"
-          - "%{libdir}/libcups.so"
+        - '%{bindir}/cups-config'
+        - '%{libdir}/libcups.so'
 
 sources:
-  - kind: tar
-    url: https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
-    ref: 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4
+- kind: tar
+  url: https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
+  ref: 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4

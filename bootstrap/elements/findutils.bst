@@ -20,16 +20,16 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
 
 config:
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-    - |
-      %{delete_libtool_files}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
+  - |
+    %{delete_libtool_files}
 
 sources:
 - kind: tar

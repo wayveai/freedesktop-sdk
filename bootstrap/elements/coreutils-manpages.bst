@@ -12,9 +12,9 @@ variables:
 
 config:
   install-commands:
-    - |
-      cd "%{builddir}"
-      make -j1 install-man DESTDIR="%{install-root}"
+  - |
+    cd "%{builddir}"
+    make -j1 install-man DESTDIR="%{install-root}"
 
 sources:
 - kind: tar

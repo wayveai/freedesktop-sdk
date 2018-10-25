@@ -10,15 +10,15 @@ depends:
 config:
   configure-commands:
     (<):
-      - |
-        autoreconf -ivf
+    - |
+      autoreconf -ivf
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - "%{libdir}/libmp3lame.so"
+        - '%{libdir}/libmp3lame.so'
 
 sources:
 - kind: tar

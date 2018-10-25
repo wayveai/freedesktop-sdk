@@ -5,4 +5,4 @@ sources:
   path: elements/cross-installation-links
 
 config:
-  target: "%{sysroot}"
+  target: '%{sysroot}'

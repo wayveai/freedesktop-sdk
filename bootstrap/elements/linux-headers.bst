@@ -7,16 +7,17 @@ depends:
 
 variables:
   (?):
-    - target_arch == "aarch64":
-        kernel_arch: arm64
-    - target_arch == "i686":
-        kernel_arch: i386
-    - target_arch != "aarch64" and target_arch != "i686":
-        kernel_arch: "%{target_arch}"
+  - target_arch == "aarch64":
+      kernel_arch: arm64
+  - target_arch == "i686":
+      kernel_arch: i386
+  - target_arch != "aarch64" and target_arch != "i686":
+      kernel_arch: '%{target_arch}'
 
 config:
   install-commands:
-  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
+  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}"
+    headers_install
 
 sources:
 - kind: tar
@@ -27,4 +28,4 @@ public:
   bst:
     split-rules:
       devel:
-        - "/**"
+      - /**

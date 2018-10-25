@@ -6,7 +6,7 @@ depends:
 - vm/bsp-generic/linux.bst
 
 (?):
-  - target_arch in ["i686", "x86_64"]:
-      depends:
-        (>):
-          - vm/bsp-generic/syslinux.bst
+- target_arch in ["i686", "x86_64"]:
+    depends:
+      (>):
+      - vm/bsp-generic/syslinux.bst

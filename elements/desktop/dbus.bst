@@ -1,24 +1,24 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/expat.bst
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: base/python3.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/expat.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/python3.bst
+  type: build
 
 public:
   bst:
     integration-commands:
-      - |
-        dbus-uuidgen --ensure
+    - |
+      dbus-uuidgen --ensure
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libdbus-1.so"
+        - '%{libdir}/libdbus-1.so'
 
 sources:
-  - kind: tar
-    url: https://dbus.freedesktop.org/releases/dbus/dbus-1.12.8.tar.gz
-    ref: e2dc99e7338303393b6663a98320aba6a63421bcdaaf571c8022f815e5896eb3
+- kind: tar
+  url: https://dbus.freedesktop.org/releases/dbus/dbus-1.12.8.tar.gz
+  ref: e2dc99e7338303393b6663a98320aba6a63421bcdaaf571c8022f815e5896eb3

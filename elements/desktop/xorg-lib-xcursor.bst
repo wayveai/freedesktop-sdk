@@ -2,12 +2,12 @@ kind: autotools
 description: X.org lib Xcursor
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-x11.bst
-  - filename: desktop/xorg-lib-xrender.bst
-  - filename: desktop/xorg-lib-xfixes.bst
-  - filename: base/buildsystem-autotools.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/xorg-lib-x11.bst
+- filename: desktop/xorg-lib-xrender.bst
+- filename: desktop/xorg-lib-xfixes.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 variables:
   conf-local: |
@@ -18,9 +18,9 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libXcursor.so"
+        - '%{libdir}/libXcursor.so'
 
 sources:
-  - kind: tar
-    url: https://www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.bz2
-    ref: 294e670dd37cd23995e69aae626629d4a2dfe5708851bbc13d032401b7a3df6b
+- kind: tar
+  url: https://www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.bz2
+  ref: 294e670dd37cd23995e69aae626629d4a2dfe5708851bbc13d032401b7a3df6b

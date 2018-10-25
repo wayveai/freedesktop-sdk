@@ -8,15 +8,15 @@ depends:
 
 config:
   build-commands:
-    - |
-      mkdir -p glibc/lib/locale
+  - |
+    mkdir -p glibc/lib/locale
 
-    - |
-      /glibc/bin/localedef --prefix=${PWD} --no-archive -i en_US -f UTF-8 en_US.UTF-8
+  - |
+    /glibc/bin/localedef --prefix=${PWD} --no-archive -i en_US -f UTF-8 en_US.UTF-8
 
   install-commands:
-    - |
-      mkdir -p "%{install-root}%{sysroot}/%{indep-libdir}"
+  - |
+    mkdir -p "%{install-root}%{sysroot}/%{indep-libdir}"
 
-    - |
-      mv glibc/lib/locale "%{install-root}%{sysroot}/%{indep-libdir}"
+  - |
+    mv glibc/lib/locale "%{install-root}%{sysroot}/%{indep-libdir}"
