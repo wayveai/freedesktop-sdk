@@ -1,23 +1,23 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/cairo.bst
-  - filename: desktop/orc.bst
-  - filename: desktop/lame.bst
-  - filename: desktop/libpulse.bst
-  - filename: desktop/libsoup.bst
-  - filename: desktop/mpg123.bst
-  - filename: desktop/gstreamer.bst
-  - filename: desktop/gstreamer-plugins-base.bst
-  - filename: desktop/gobject-introspection.bst
-    type: build
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: base/libflac.bst
-  - filename: base/wavpack.bst
-  - filename: base/which.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/cairo.bst
+- filename: desktop/orc.bst
+- filename: desktop/lame.bst
+- filename: desktop/libpulse.bst
+- filename: desktop/libsoup.bst
+- filename: desktop/mpg123.bst
+- filename: desktop/gstreamer.bst
+- filename: desktop/gstreamer-plugins-base.bst
+- filename: desktop/gobject-introspection.bst
+  type: build
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/libflac.bst
+- filename: base/wavpack.bst
+- filename: base/which.bst
+  type: build
 
 variables:
   conf-local: |
@@ -31,10 +31,10 @@ variables:
     --with-default-visualizer=autoaudiosink
 
 sources:
-  - kind: git
-    url: freedesktop-old:gstreamer/gst-plugins-good
-    track: 1.14
-    ref: d88d1b0e43b140587f35c7c9bf390fae051e427d #  1.14.4
-    submodules:
-      common:
-        url: freedesktop-old:gstreamer/common
+- kind: git
+  url: freedesktop-old:gstreamer/gst-plugins-good
+  track: 1.14
+  ref: d88d1b0e43b140587f35c7c9bf390fae051e427d   #  1.14.4
+  submodules:
+    common:
+      url: freedesktop-old:gstreamer/common

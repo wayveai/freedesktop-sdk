@@ -5,64 +5,64 @@ description: OpenSSL 1.0, because some things can't build with 1.1
 depends:
   # This element gets filtered in openssl-1.0-runtime-only.bst. Runtime deps
   # here would pass through the filter, and overlap with themselves.
-  - filename: bootstrap-import.bst
-    type: build
-  - filename: base/perl.bst
-    type: build
-  - filename: base/krb5.bst
-    type: build
-  - filename: base/buildsystem-autotools.bst
-    type: build
+- filename: bootstrap-import.bst
+  type: build
+- filename: base/perl.bst
+  type: build
+- filename: base/krb5.bst
+  type: build
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 variables:
   builddir: ''
   openssl-target: linux-%{arch}
   (?):
-    - target_arch == "i686":
-        openssl-target: linux-generic32
-    - target_arch == "arm":
-        openssl-target: linux-generic32
+  - target_arch == "i686":
+      openssl-target: linux-generic32
+  - target_arch == "arm":
+      openssl-target: linux-generic32
 
 config:
   configure-commands:
-    - |
-      ./Configure %{openssl-target} \
-        --prefix=%{prefix} \
-        --libdir=%{lib} \
-        --openssldir=%{sysconfdir}/ssl \
-        enable-krb5 \
-        --with-krb5-flavor=MIT \
-        --with-krb5-dir=/usr \
-        shared \
-        threads
+  - |
+    ./Configure %{openssl-target} \
+      --prefix=%{prefix} \
+      --libdir=%{lib} \
+      --openssldir=%{sysconfdir}/ssl \
+      enable-krb5 \
+      --with-krb5-flavor=MIT \
+      --with-krb5-dir=/usr \
+      shared \
+      threads
 
   install-commands:
-    - |
-      make -j1 INSTALL_PREFIX="%{install-root}" install
+  - |
+    make -j1 INSTALL_PREFIX="%{install-root}" install
 
-    - |
-      rm %{install-root}%{libdir}/lib*.a
+  - |
+    rm %{install-root}%{libdir}/lib*.a
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/*"
-          - "%{libdir}/libssl.so"
-          - "%{libdir}/libcrypto.so"
-          - "%{sysconfdir}/ssl"
-          - "%{sysconfdir}/ssl/**"
+        - '%{bindir}/*'
+        - '%{libdir}/libssl.so'
+        - '%{libdir}/libcrypto.so'
+        - '%{sysconfdir}/ssl'
+        - '%{sysconfdir}/ssl/**'
 
       runtime:
         (>):
-          - "%{libdir}/engines/*.so"
+        - '%{libdir}/engines/*.so'
 
 sources:
-  - kind: git
-    url: https://github.com/openssl/openssl
-    track: master
-    ref: e71ebf275da66dfd601c92e0e80a35114c32f6f8  # OpenSSL_1_0_2p
-  - kind: patch
+- kind: git
+  url: https://github.com/openssl/openssl
+  track: master
+  ref: e71ebf275da66dfd601c92e0e80a35114c32f6f8    # OpenSSL_1_0_2p
+- kind: patch
     # Updates need to update this script if there are new symbols.
-    path: patches/openssl-version-script.patch
+  path: patches/openssl-version-script.patch

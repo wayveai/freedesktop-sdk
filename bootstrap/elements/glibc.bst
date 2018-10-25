@@ -17,67 +17,67 @@ depends:
 
 config:
   configure-commands:
-    - |
-      mkdir "%{builddir}"
-      cd "%{builddir}"
-      echo slibdir=%{multiarch_libdir} >configparms
-      echo gconvdir=%{multiarch_libdir}/gconv >>configparms
-      echo rootsbindir=%{sbindir} >>configparms
-      echo sbindir=%{sbindir} >>configparms
-      ../%{configure}
+  - |
+    mkdir "%{builddir}"
+    cd "%{builddir}"
+    echo slibdir=%{multiarch_libdir} >configparms
+    echo gconvdir=%{multiarch_libdir}/gconv >>configparms
+    echo rootsbindir=%{sbindir} >>configparms
+    echo sbindir=%{sbindir} >>configparms
+    ../%{configure}
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
 
-    # Because sysconfdir has to be set as /etc for ldconfig, we need
-    # manually move /etc/rpc
-    - |
-      mkdir -p "%{install-root}%{sysroot}%{prefix}/etc"
-      mv "%{install-root}%{sysroot}%{sysconfdir}/rpc" "%{install-root}%{sysroot}%{prefix}/etc/rpc"
-      rm -r "%{install-root}%{sysroot}%{sysconfdir}"
+# Because sysconfdir has to be set as /etc for ldconfig, we need
+# manually move /etc/rpc
+  - |
+    mkdir -p "%{install-root}%{sysroot}%{prefix}/etc"
+    mv "%{install-root}%{sysroot}%{sysconfdir}/rpc" "%{install-root}%{sysroot}%{prefix}/etc/rpc"
+    rm -r "%{install-root}%{sysroot}%{sysconfdir}"
 
-    # Move /lib* links into the prefix.
-    - |
-      root="%{install-root}%{sysroot}"
-      for i in lib lib32 lib64; do
-        libdir="${root}/${i}"
-        targetdir="${root}%{prefix}/${i}"
-        if [ -d "${libdir}" ]; then
-          for f in "${libdir}"/*; do
-            if [ -h "$f" ]; then
-              [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
-              targetpath="${targetdir}/$(basename "$f")"
-              sourcepath="${libdir}/$(readlink "$f")"
-              relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
-              ln -s "${relsourcepath}" "${targetpath}"
-              rm "$f"
-            fi
-          done
-          rm -r "${libdir}"
-          ln -s "$(realpath "${targetdir}" --relative-to="${root}")" "${libdir}"
-        fi
-      done
+# Move /lib* links into the prefix.
+  - |
+    root="%{install-root}%{sysroot}"
+    for i in lib lib32 lib64; do
+      libdir="${root}/${i}"
+      targetdir="${root}%{prefix}/${i}"
+      if [ -d "${libdir}" ]; then
+        for f in "${libdir}"/*; do
+          if [ -h "$f" ]; then
+            [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
+            targetpath="${targetdir}/$(basename "$f")"
+            sourcepath="${libdir}/$(readlink "$f")"
+            relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
+            ln -s "${relsourcepath}" "${targetpath}"
+            rm "$f"
+          fi
+        done
+        rm -r "${libdir}"
+        ln -s "$(realpath "${targetdir}" --relative-to="${root}")" "${libdir}"
+      fi
+    done
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 environment:
-  CPPFLAGS: ""
-  CFLAGS: "-O2 -g"
-  CXXFLAGS: "-O2 -g"
-  LDFLAGS: ""
+  CPPFLAGS: ''
+  CFLAGS: -O2 -g
+  CXXFLAGS: -O2 -g
+  LDFLAGS: ''
 
 variables:
   # flatpak places ld.so.conf in /etc and not /usr/etc.
-  sysconfdir: "/etc"
+  sysconfdir: /etc
 
-  multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
-  lib: "lib"
+  multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
+  lib: lib
 
-  host-triplet: "%{triplet}"
-  build-triplet: "%{guessed-triplet}"
+  host-triplet: '%{triplet}'
+  build-triplet: '%{guessed-triplet}'
   conf-local: |
     --with-headers=%{sysroot}%{includedir}
 
@@ -86,25 +86,25 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/*.o"
-          - "%{sysroot}%{libdir}/lib*.a"
-          - "%{sysroot}%{libdir}/libdl.so"
-          - "%{sysroot}%{libdir}/libnsl.so"
-          - "%{sysroot}%{libdir}/libBrokenLocale.so"
-          - "%{sysroot}%{libdir}/libthread_db.so"
-          - "%{sysroot}%{libdir}/librt.so"
-          - "%{sysroot}%{libdir}/libcrypt.so"
-          - "%{sysroot}%{libdir}/libnss_dns.so"
-          - "%{sysroot}%{libdir}/libanl.so"
-          - "%{sysroot}%{libdir}/libnss_files.so"
-          - "%{sysroot}%{libdir}/libresolv.so"
-          - "%{sysroot}%{libdir}/libmvec.so"
-          - "%{sysroot}%{libdir}/libcidn.so"
-          - "%{sysroot}%{libdir}/libnss_hesiod.so"
-          - "%{sysroot}%{libdir}/libnss_db.so"
-          - "%{sysroot}%{libdir}/libutil.so"
-          - "%{sysroot}%{libdir}/libnss_compat.so"
-          - "%{sysroot}%{libdir}/libm.so"
+        - '%{sysroot}%{libdir}/*.o'
+        - '%{sysroot}%{libdir}/lib*.a'
+        - '%{sysroot}%{libdir}/libdl.so'
+        - '%{sysroot}%{libdir}/libnsl.so'
+        - '%{sysroot}%{libdir}/libBrokenLocale.so'
+        - '%{sysroot}%{libdir}/libthread_db.so'
+        - '%{sysroot}%{libdir}/librt.so'
+        - '%{sysroot}%{libdir}/libcrypt.so'
+        - '%{sysroot}%{libdir}/libnss_dns.so'
+        - '%{sysroot}%{libdir}/libanl.so'
+        - '%{sysroot}%{libdir}/libnss_files.so'
+        - '%{sysroot}%{libdir}/libresolv.so'
+        - '%{sysroot}%{libdir}/libmvec.so'
+        - '%{sysroot}%{libdir}/libcidn.so'
+        - '%{sysroot}%{libdir}/libnss_hesiod.so'
+        - '%{sysroot}%{libdir}/libnss_db.so'
+        - '%{sysroot}%{libdir}/libutil.so'
+        - '%{sysroot}%{libdir}/libnss_compat.so'
+        - '%{sysroot}%{libdir}/libm.so'
 
 sources:
 - kind: tar

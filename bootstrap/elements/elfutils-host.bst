@@ -1,18 +1,18 @@
 kind: autotools
 
 depends:
-  - filename: dependencies/base-sdk.bst
-    type: build
-  - filename: gnu-config.bst
-    type: build
-  - filename: tools-lib-path.bst
-    type: runtime
+- filename: dependencies/base-sdk.bst
+  type: build
+- filename: gnu-config.bst
+  type: build
+- filename: tools-lib-path.bst
+  type: runtime
 
 variables:
-  prefix: "%{tools}"
-  lib: "lib"
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{guessed-triplet}"
+  prefix: '%{tools}'
+  lib: lib
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{guessed-triplet}'
 
 sources:
 - kind: tar

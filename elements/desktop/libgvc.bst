@@ -1,7 +1,7 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 sources:
 - kind: tar

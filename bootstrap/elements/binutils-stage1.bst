@@ -8,10 +8,10 @@ depends:
   type: build
 
 variables:
-  lib: "lib"
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{guessed-triplet}"
-  prefix: "%{tools}"
+  lib: lib
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{guessed-triplet}'
+  prefix: '%{tools}'
   conf-local: |
     --target=%{triplet} \
     --with-sysroot=%{sysroot} \

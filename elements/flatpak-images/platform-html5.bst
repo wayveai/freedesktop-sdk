@@ -1,12 +1,11 @@
 kind: flatpak_image
 
 depends:
-  - filename: extensions/html5/ffmpeg.bst
-    type: build
+- filename: extensions/html5/ffmpeg.bst
+  type: build
 
 config:
-  directory: "%{libdir}/ffmpeg"
-  
+  directory: '%{libdir}/ffmpeg'
   metadata:
     Runtime:
       name: org.freedesktop.Platform.html5-codecs

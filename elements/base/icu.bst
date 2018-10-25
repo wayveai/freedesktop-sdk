@@ -1,31 +1,31 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 config:
   configure-commands:
-    - |
-      mkdir "%{builddir}"
-      cd "%{builddir}"
-      ../source/configure %{conf-args}
+  - |
+    mkdir "%{builddir}"
+    cd "%{builddir}"
+    ../source/configure %{conf-args}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libicudata.so"
-          - "%{libdir}/libicui18n.so"
-          - "%{libdir}/libicuio.so"
-          - "%{libdir}/libicutest.so"
-          - "%{libdir}/libicutu.so"
-          - "%{libdir}/libicuuc.so"
+        - '%{libdir}/libicudata.so'
+        - '%{libdir}/libicui18n.so'
+        - '%{libdir}/libicuio.so'
+        - '%{libdir}/libicutest.so'
+        - '%{libdir}/libicutu.so'
+        - '%{libdir}/libicuuc.so'
 
 
 sources:
-  - kind: tar
-    url: https://sourceforge.net/projects/icu/files/ICU4C/62.1/icu4c-62_1-src.tgz
-    ref: 3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3
-  - kind: patch
-    path: patches/icu-fix-shared-linking.patch
+- kind: tar
+  url: https://sourceforge.net/projects/icu/files/ICU4C/62.1/icu4c-62_1-src.tgz
+  ref: 3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3
+- kind: patch
+  path: patches/icu-fix-shared-linking.patch

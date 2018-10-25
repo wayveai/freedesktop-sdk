@@ -1,20 +1,20 @@
 kind: flatpak_image
 
 depends:
-  - filename: extensions/rust-sdk-image.bst
-    type: build
+- filename: extensions/rust-sdk-image.bst
+  type: build
 
 variables:
-  prefix: "/usr/lib/sdk/rust"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
+  prefix: /usr/lib/sdk/rust
+  lib: lib
+  debugdir: /usr/lib/debug
 
 config:
-  directory: "%{prefix}"
+  directory: '%{prefix}'
   exclude:
-    - debug
-    - docs
-    - locale
+  - debug
+  - docs
+  - locale
 
   metadata:
     Runtime:

@@ -1,7 +1,7 @@
 kind: flatpak_image
 
 config:
-  directory: "%{debugdir}"
+  directory: '%{debugdir}'
 
   metadata:
     Runtime:
@@ -11,5 +11,5 @@ config:
       ref: runtime/org.freedesktop.Sdk/%{gcc_arch}/%{branch}
 
 depends:
-  - filename: desktop-image.bst
-    type: build
+- filename: desktop-image.bst
+  type: build

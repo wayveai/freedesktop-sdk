@@ -1,8 +1,8 @@
 kind: autotools
 
 depends:
-  - filename: desktop/mesa.bst
-    type: build
+- filename: desktop/mesa.bst
+  type: build
 
 variables:
   prefix: /app
@@ -17,14 +17,14 @@ config:
   configure-commands: []
 
   build-commands:
-    - |
-      make %{make-args}
+  - |
+    make %{make-args}
 
   install-commands:
-    - |
-      make -j1 install %{make-args}
+  - |
+    make -j1 install %{make-args}
 
 sources:
-  - kind: tar
-    url: https://sourceforge.net/projects/glew/files/glew/2.1.0/glew-2.1.0.tgz
-    ref: 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
+- kind: tar
+  url: https://sourceforge.net/projects/glew/files/glew/2.1.0/glew-2.1.0.tgz
+  ref: 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95

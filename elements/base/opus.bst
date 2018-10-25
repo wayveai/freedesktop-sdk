@@ -1,18 +1,18 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/buildsystem-autotools.bst
-    type: build
-  - filename: base/git-minimal.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/git-minimal.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libopus.so"
+        - '%{libdir}/libopus.so'
 
 sources:
 - kind: git

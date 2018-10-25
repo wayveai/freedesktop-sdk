@@ -1,14 +1,14 @@
 kind: stack
 
 variables:
-  prefix: "%{tools}"
-  lib: "lib"
+  prefix: '%{tools}'
+  lib: lib
 
 public:
   bst:
     integration-commands:
-      - |
-        echo "%{libdir}" >>/etc/ld.so.conf
+    - |
+      echo "%{libdir}" >>/etc/ld.so.conf
 
-      - |
-        ldconfig
+    - |
+      ldconfig

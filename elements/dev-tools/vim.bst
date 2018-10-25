@@ -4,7 +4,7 @@ depends:
 - filename: bootstrap-import.bst
 
 variables:
-  builddir: ""
+  builddir: ''
 
 sources:
 - kind: git

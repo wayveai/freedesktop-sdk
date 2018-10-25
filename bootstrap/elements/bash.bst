@@ -24,8 +24,8 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected
   conf-local: |
@@ -40,18 +40,18 @@ variables:
 
 config:
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
 
-    - |
-      ln -s bash "%{install-root}%{sysroot}%{bindir}/sh"
+  - |
+    ln -s bash "%{install-root}%{sysroot}%{bindir}/sh"
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 sources:
-  - kind: git
-    url: https://git.savannah.gnu.org/git/bash.git
-    track: master
-    ref: b0776d8c49ab4310fa056ce1033985996c5b9807 # Bash-4.4 patch 19
+- kind: git
+  url: https://git.savannah.gnu.org/git/bash.git
+  track: master
+  ref: b0776d8c49ab4310fa056ce1033985996c5b9807   # Bash-4.4 patch 19

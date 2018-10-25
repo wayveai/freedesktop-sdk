@@ -1,14 +1,14 @@
 kind: manual
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 config:
   install-commands:
-    - |
-      mkdir -p "%{install-root}%{sysconfdir}"
-      install nsswitch.conf "%{install-root}%{sysconfdir}"
+  - |
+    mkdir -p "%{install-root}%{sysconfdir}"
+    install nsswitch.conf "%{install-root}%{sysconfdir}"
 
 sources:
-  - kind: local
-    path: files/nsswitch.conf
+- kind: local
+  path: files/nsswitch.conf

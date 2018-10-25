@@ -22,8 +22,8 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
 
   conf-local: |
     --with-curses \
@@ -31,29 +31,29 @@ variables:
 
 config:
   build-commands:
-    - |
-      cd "%{builddir}"
-      %{make} SHLIB_LIBS=-lncurses
+  - |
+    cd "%{builddir}"
+    %{make} SHLIB_LIBS=-lncurses
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
 
-    - |
-      cd "%{builddir}"
-      make -j1 install DESTDIR="%{install-root}/readline-separate-install"
+  - |
+    cd "%{builddir}"
+    make -j1 install DESTDIR="%{install-root}/readline-separate-install"
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libreadline.so"
-          - "%{sysroot}%{libdir}/libhistory.so"
+        - '%{sysroot}%{libdir}/libreadline.so'
+        - '%{sysroot}%{libdir}/libhistory.so'
 
 sources:
 - kind: tar
