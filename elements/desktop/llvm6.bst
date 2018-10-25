@@ -7,6 +7,20 @@ depends:
   type: build
 
 variables:
+  clang-libs: |
+    libclangAnalysis.a \
+    libclangAST.a \
+    libclangBasic.a \
+    libclangCodeGen.a \
+    libclangDriver.a \
+    libclangEdit.a \
+    libclangFrontend.a \
+    libclangFrontendTool.a \
+    libclangLex.a \
+    libclangParse.a \
+    libclangSema.a \
+    libclangSerialization.a
+
   (?):
   - target_arch == "i686":
       targets: X86;AMDGPU;NVPTX
@@ -52,7 +66,12 @@ config:
   install-commands:
     (>):
     - |
-      rm -f "%{install-root}%{libdir}"/lib*.a
+      cd "%{install-root}%{libdir}"
+      mkdir tmp
+      mv %{clang-libs} tmp
+      rm -f lib*.a
+      mv tmp/* "%{install-root}%{libdir}"
+      rm -rf tmp
 
 public:
   bst:

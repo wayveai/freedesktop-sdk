@@ -1,0 +1,34 @@
+kind: manual
+
+depends:
+- filename: bootstrap-import.bst
+- filename: desktop/llvm6.bst
+  type: build
+- filename: base/python3.bst
+  type: build
+
+config:
+  configure-commands:
+    - |
+      ./configure.py \
+      --prefix=/usr \
+      --pkgconfigdir=%{libdir}/pkgconfig
+
+  build-commands:
+    - |
+      make
+
+  install-commands:
+    - |
+      make -j1 DESTDIR="%{install-root}" install
+
+sources:
+  # libclc uses an svn repo, and the git seems to only be a mirror.
+  # We want to use an svn plugin.
+  # This is a specific commit in master, where the copyright was updated to 
+  # 2018, I could see nothing else remotely release-like.
+- kind: git 
+  url: https://llvm.org/git/libclc
+  ref: e6e24bf34143a3d4c225376efe7eef69ead9ac7b # No git describe, no tags...
+- kind: patch
+  path: patches/libclc-force-configure-to-use-python3.patch
