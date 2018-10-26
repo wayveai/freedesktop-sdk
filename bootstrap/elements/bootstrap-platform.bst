@@ -2,7 +2,7 @@ kind: compose
 
 config:
   exclude:
-    - devel
+  - devel
 
 depends:
 - filename: bootstrap.bst

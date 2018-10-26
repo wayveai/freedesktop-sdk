@@ -1,12 +1,12 @@
 kind: filter
 
 depends:
-  - filename: base/openssl-1.0.bst
-    type: build
+- filename: base/openssl-1.0.bst
+  type: build
 
 config:
   include:
-    - runtime
+  - runtime
 
   exclude:
-    - devel
+  - devel

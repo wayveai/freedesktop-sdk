@@ -7,16 +7,16 @@ depends:
   type: build
 
 variables:
-  prefix: "/glibc"
-  lib: "lib"
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{guessed-triplet}"
+  prefix: /glibc
+  lib: lib
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{guessed-triplet}'
 
 environment:
-  CPPFLAGS: ""
-  CFLAGS: "-O2 -g"
-  CXXFLAGS: "-O2 -g"
-  LDFLAGS: ""
+  CPPFLAGS: ''
+  CFLAGS: -O2 -g
+  CXXFLAGS: -O2 -g
+  LDFLAGS: ''
 
 sources:
 - kind: tar

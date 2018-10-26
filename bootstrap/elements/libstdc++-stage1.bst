@@ -18,35 +18,35 @@ depends:
   type: build
 
 variables:
-  lib: "lib"
+  lib: lib
 
-  host-triplet: "%{triplet}"
-  build-triplet: "%{guessed-triplet}"
+  host-triplet: '%{triplet}'
+  build-triplet: '%{guessed-triplet}'
   conf-local: |
-      --enable-multiarch \
-      --disable-nls \
-      --disable-multilib
+    --enable-multiarch \
+    --disable-nls \
+    --disable-multilib
 
 config:
   configure-commands:
-    - |
-      mkdir "%{builddir}"
-      cd "%{builddir}"
-      ../libstdc++-v3/%{configure}
+  - |
+    mkdir "%{builddir}"
+    cd "%{builddir}"
+    ../libstdc++-v3/%{configure}
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
+  - |
+    cd "%{builddir}"
+    %{cross-install}
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 environment:
-  CPPFLAGS: ""
-  CFLAGS: "-O2 -g"
-  CXXFLAGS: "-O2 -g"
-  LDFLAGS: ""
+  CPPFLAGS: ''
+  CFLAGS: -O2 -g
+  CXXFLAGS: -O2 -g
+  LDFLAGS: ''
 
 sources:
 - kind: tar

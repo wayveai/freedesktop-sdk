@@ -24,4 +24,4 @@ public:
     split-rules:
       devel:
         (>):
-          - "**"
+        - '**'

@@ -1,19 +1,19 @@
 kind: manual
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/python3.bst
+- filename: bootstrap-import.bst
+- filename: base/python3.bst
 
 config:
   build-commands:
-    - |
-      python3 ./configure.py --bootstrap
+  - |
+    python3 ./configure.py --bootstrap
 
   install-commands:
-    - |
-      install -D -m 0755 ninja %{install-root}%{bindir}/ninja
+  - |
+    install -D -m 0755 ninja %{install-root}%{bindir}/ninja
 
 sources:
-  - kind: git
-    url: https://github.com/ninja-build/ninja.git
-    ref: 253e94c1fa511704baeb61cf69995bbf09ba435e # v1.8.2
+- kind: git
+  url: https://github.com/ninja-build/ninja.git
+  ref: 253e94c1fa511704baeb61cf69995bbf09ba435e   # v1.8.2

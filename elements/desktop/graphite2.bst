@@ -1,12 +1,12 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-x11.bst
-  - filename: desktop/xorg-lib-xrandr.bst
-  - filename: desktop/wayland.bst
-  - filename: base/buildsystem-cmake.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/xorg-lib-x11.bst
+- filename: desktop/xorg-lib-xrandr.bst
+- filename: desktop/wayland.bst
+- filename: base/buildsystem-cmake.bst
+  type: build
 
 variables:
   cmake-local: |
@@ -24,21 +24,21 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        install -d -m755 "%{install-root}%{libdir}"
-        for pattern in '*.so' '*.so.*' 'pkgconfig'; do
-          mv "%{install-root}%{prefix}/lib"/${pattern} "%{install-root}%{libdir}"
-        done
-        rm "%{install-root}%{prefix}/lib"/*.la
+    - |
+      install -d -m755 "%{install-root}%{libdir}"
+      for pattern in '*.so' '*.so.*' 'pkgconfig'; do
+        mv "%{install-root}%{prefix}/lib"/${pattern} "%{install-root}%{libdir}"
+      done
+      rm "%{install-root}%{prefix}/lib"/*.la
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libgraphite2.so"
+        - '%{libdir}/libgraphite2.so'
 
 sources:
-  - kind: tar
-    url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.11.tgz
-    ref: bab92ed1844d6538e7e5bda76f6ac9aaf633e38b683983b942c78c8ce063ad7c
+- kind: tar
+  url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.11.tgz
+  ref: bab92ed1844d6538e7e5bda76f6ac9aaf633e38b683983b942c78c8ce063ad7c

@@ -6,11 +6,11 @@ depends:
   type: build
 
 public:
-  bst: 
+  bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libtirpc.so"
+        - '%{libdir}/libtirpc.so'
 
 sources:
 - kind: tar

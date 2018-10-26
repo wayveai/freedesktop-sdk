@@ -2,7 +2,7 @@ kind: manual
 description: ffmpeg shipped in the html5-codec extension, has html5 codecs enabled
 
 (@):
-  - elements/config/ffmpeg.yml
+- elements/config/ffmpeg.yml
 
 variables:
   conf-extra: |
@@ -10,5 +10,5 @@ variables:
     --enable-hwaccel=h264_vaapi,h264_vdpau \
     --enable-parser=h264 \
     --enable-demuxer=h264,mov
-  ffmpeg-prefix: "%{libdir}/ffmpeg"
-  ffmpeg-libdir: "%{ffmpeg-prefix}/lib"
+  ffmpeg-prefix: '%{libdir}/ffmpeg'
+  ffmpeg-libdir: '%{ffmpeg-prefix}/lib'

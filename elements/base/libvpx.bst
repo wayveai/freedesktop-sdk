@@ -1,22 +1,22 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/perl.bst
-    type: build
-  - filename: base/nasm.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/perl.bst
+  type: build
+- filename: base/nasm.bst
+  type: build
 
 variables:
   (?):
-    - target_arch == "x86_64":
-        vpxtarget: "x86_64-linux-gcc"
-    - target_arch == "i686":
-        vpxtarget: "x86-linux-gcc"
-    - target_arch == "arm":
-        vpxtarget: "armv7-linux-gcc"
-    - target_arch == "aarch64":
-        vpxtarget: "arm64-linux-gcc"
+  - target_arch == "x86_64":
+      vpxtarget: x86_64-linux-gcc
+  - target_arch == "i686":
+      vpxtarget: x86-linux-gcc
+  - target_arch == "arm":
+      vpxtarget: armv7-linux-gcc
+  - target_arch == "aarch64":
+      vpxtarget: arm64-linux-gcc
 
   conf-args: |
     --prefix="%{prefix}" \
@@ -38,10 +38,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libvpx.so"
+        - '%{libdir}/libvpx.so'
 
 sources:
-  - kind: git
-    url: https://chromium.googlesource.com/webm/libvpx
-    track: mandarinduck
-    ref: f80be22a1099b2a431c2796f529bb261064ec6b4 #  v1.7.0
+- kind: git
+  url: https://chromium.googlesource.com/webm/libvpx
+  track: mandarinduck
+  ref: f80be22a1099b2a431c2796f529bb261064ec6b4   #  v1.7.0

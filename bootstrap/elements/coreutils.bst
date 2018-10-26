@@ -23,8 +23,8 @@ depends:
   type: build
 
 variables:
-  build-triplet: "%{guessed-triplet}"
-  host-triplet: "%{triplet}"
+  build-triplet: '%{guessed-triplet}'
+  host-triplet: '%{triplet}'
   conf-local: |
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
@@ -33,17 +33,17 @@ variables:
 config:
   build-commands:
     (<):
-      - |
-        mkdir -p "%{builddir}/man"
-        cp /coreutils-manpages/man1/* "%{builddir}/man/"
+    - |
+      mkdir -p "%{builddir}/man"
+      cp /coreutils-manpages/man1/* "%{builddir}/man/"
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install} INSTALL=install
+  - |
+    cd "%{builddir}"
+    %{cross-install} INSTALL=install
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 sources:
 - kind: tar

@@ -17,7 +17,7 @@ depends:
   type: build
 
 variables:
-  cwd: "%{build-root}"
+  cwd: '%{build-root}'
 
 config:
   layout:
@@ -28,7 +28,7 @@ config:
   - element: base/gzip.bst
     destination: /
   - element: vm/initramfs/initramfs.bst
-    destination: "%{build-root}"
+    destination: '%{build-root}'
 
   commands:
   # We need to ensure exec permissions here.
@@ -39,5 +39,4 @@ config:
   - mkdir -p ./proc
 
   - mkdir -p %{install-root}/boot
-  - (find . -print0 | cpio -0 -H newc -o) |
-    gzip -c > %{install-root}/boot/initramfs.gz
+  - (find . -print0 | cpio -0 -H newc -o) | gzip -c > %{install-root}/boot/initramfs.gz

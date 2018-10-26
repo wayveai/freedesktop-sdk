@@ -5,9 +5,9 @@ variables:
   prefix: /app
 
 config:
-  directory: "%{prefix}"
+  directory: '%{prefix}'
   exclude:
-    - debug
+  - debug
 
   metadata:
     Application:
@@ -17,15 +17,15 @@ config:
       command: glxinfo
 
     Context:
-      shared: "ipc;"
-      sockets: "x11;wayland;"
-      devices: "dri;"
+      shared: ipc;
+      sockets: x11;wayland;
+      devices: dri;
 
-    'Extension org.freedesktop.GlxInfo.Debug':
-      directory: "lib/debug"
-      autodelete: "true"
-      no-autodownload: "true"
+    Extension org.freedesktop.GlxInfo.Debug:
+      directory: lib/debug
+      autodelete: 'true'
+      no-autodownload: 'true'
 
 depends:
-  - filename: extensions/glxinfo/mesa-demos.bst
-    type: build
+- filename: extensions/glxinfo/mesa-demos.bst
+  type: build

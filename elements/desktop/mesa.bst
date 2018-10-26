@@ -1,43 +1,43 @@
 kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/llvm6.bst
-  - filename: desktop/libdrm.bst
-  - filename: desktop/libva.bst
-  - filename: desktop/xorg-lib-xdamage.bst
-  - filename: desktop/xorg-lib-xfixes.bst
-  - filename: desktop/xorg-lib-xrandr.bst
-  - filename: desktop/xorg-lib-xshmfence.bst
-  - filename: desktop/xorg-lib-xxf86vm.bst
-  - filename: desktop/wayland-protocols.bst
-    type: build
-  - filename: desktop/libglvnd.bst
-  - filename: desktop/libvdpau.bst
-  - filename: base/bison.bst
-    type: build
-  - filename: base/flex.bst
-    type: build
-  - filename: base/libunwind.bst
-  - filename: base/buildsystem-meson.bst
-    type: build
-  - filename: base/python2.bst
-    type: build
-  - filename: base/python2-mako.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/llvm6.bst
+- filename: desktop/libdrm.bst
+- filename: desktop/libva.bst
+- filename: desktop/xorg-lib-xdamage.bst
+- filename: desktop/xorg-lib-xfixes.bst
+- filename: desktop/xorg-lib-xrandr.bst
+- filename: desktop/xorg-lib-xshmfence.bst
+- filename: desktop/xorg-lib-xxf86vm.bst
+- filename: desktop/wayland-protocols.bst
+  type: build
+- filename: desktop/libglvnd.bst
+- filename: desktop/libvdpau.bst
+- filename: base/bison.bst
+  type: build
+- filename: base/flex.bst
+  type: build
+- filename: base/libunwind.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/python2.bst
+  type: build
+- filename: base/python2-mako.bst
+  type: build
 
 variables:
   (?):
-    - target_arch == "i686" or target_arch == "x86_64":
-        gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
-        dri_drivers: "nouveau,r100,r200,i915,i965"
-        vulkan_drivers: "intel,amd"
-        enable_libunwind: "true"
-    - target_arch == "arm" or target_arch == "aarch64":
-        gallium_drivers: "pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast"
-        dri_drivers: ""
-        vulkan_drivers: ""
-        enable_libunwind: "false"
+  - target_arch == "i686" or target_arch == "x86_64":
+      gallium_drivers: svga,swrast,nouveau,r600,r300,radeonsi,virgl
+      dri_drivers: nouveau,r100,r200,i915,i965
+      vulkan_drivers: intel,amd
+      enable_libunwind: 'true'
+  - target_arch == "arm" or target_arch == "aarch64":
+      gallium_drivers: pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast
+      dri_drivers: ''
+      vulkan_drivers: ''
+      enable_libunwind: 'false'
 
   meson-local: |
     -Dglvnd=true \
@@ -70,27 +70,27 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
-        ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
-        rm -f "%{install-root}%{libdir}"/libGLESv2*
-        rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
-        rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+    - |
+      ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
+      ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
+      rm -f "%{install-root}%{libdir}"/libGLESv2*
+      rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
+      rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libgbm.so"
-          - "%{libdir}/libglapi.so"
-          - "%{libdir}/libwayland-egl.so"
-          - "%{libdir}/libxatracker.so"
-          - "%{libdir}/vdpau/libvdpau_*.so"
+        - '%{libdir}/libgbm.so'
+        - '%{libdir}/libglapi.so'
+        - '%{libdir}/libwayland-egl.so'
+        - '%{libdir}/libxatracker.so'
+        - '%{libdir}/vdpau/libvdpau_*.so'
 
 sources:
-  - kind: git
-    url: https://gitlab.freedesktop.org/mesa/mesa.git
-    ref: abaeb79eb2c16d7abad06719f24d1e59ad775aa6 #  mesa-18.2.3
-  - kind: patch
-    path: patches/mesa-Fix-linkage-against-shared-glapi.patch
+- kind: git
+  url: https://gitlab.freedesktop.org/mesa/mesa.git
+  ref: abaeb79eb2c16d7abad06719f24d1e59ad775aa6   #  mesa-18.2.3
+- kind: patch
+  path: patches/mesa-Fix-linkage-against-shared-glapi.patch
