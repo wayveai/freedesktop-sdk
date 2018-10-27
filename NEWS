@@ -1,5 +1,9 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.16:
+    * rust: update to 1.30.0
+    * For 32 bit x86, build targetting i686
+
 freedesktop-sdk-18.08.15:
     * gstreamer components: update to 1.14.4
     * Add some flag optimizations for x86_64
