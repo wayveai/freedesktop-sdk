@@ -91,6 +91,4 @@ public:
 sources:
 - kind: git_tag
   url: https://gitlab.freedesktop.org/mesa/mesa.git
-  ref: abaeb79eb2c16d7abad06719f24d1e59ad775aa6 # mesa-18.2.2
-- kind: patch
-  path: patches/mesa-use-build-id.patch
+  ref: d219361b4226944835959676d1721b2a9d29da72   #  mesa-18.2.3
