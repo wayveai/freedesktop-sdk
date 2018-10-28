@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.17:
+    * mesa: revert back to 18.2.2 as the update to 18.2.3 was incorrectly done
+
 freedesktop-sdk-18.08.16:
     * rust: update to 1.30.0
     * For 32 bit x86, build targetting i686
