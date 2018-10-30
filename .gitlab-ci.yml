@@ -108,6 +108,8 @@ check_update_elements:
   script:
     - ${BST} track --deps all all.bst
     - git diff
+  only:
+    - schedules
 
 
 .flatpak_template: &flatpak_definition
