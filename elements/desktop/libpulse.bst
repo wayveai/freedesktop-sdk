@@ -10,6 +10,7 @@ depends:
 - filename: base/sndfile.bst
 - filename: base/speexdsp.bst
 - filename: desktop/dbus.bst
+- filename: desktop/fftw.bst
 - filename: desktop/xorg-lib-xcb.bst
 - filename: desktop/xorg-lib-ice.bst
 - filename: desktop/xorg-lib-sm.bst
