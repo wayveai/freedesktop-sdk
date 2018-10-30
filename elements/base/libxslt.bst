@@ -15,6 +15,6 @@ public:
         - '%{libdir}/libexslt.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.gnome.org/GNOME/libxslt
   ref: 8307b072adb86c8064897f4c5e12e5ae142f3bff    # 1.1.32

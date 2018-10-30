@@ -51,7 +51,7 @@ config:
     %{delete_libtool_files}
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.savannah.gnu.org/git/bash.git
   track: master
   ref: b0776d8c49ab4310fa056ce1033985996c5b9807   # Bash-4.4 patch 19

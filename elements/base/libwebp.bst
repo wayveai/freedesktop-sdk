@@ -33,6 +33,6 @@ public:
         - '%{libdir}/libwebp.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://chromium.googlesource.com/webm/libwebp
   ref: 698b8844e38a0c5ca50bb20f866e71291bfc3b36    # 1.0.0

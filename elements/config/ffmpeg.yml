@@ -91,7 +91,7 @@ config:
     - make -j1 DESTDIR="%{install-root}" install
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.ffmpeg.org/ffmpeg.git
   track: n4.0.2
   ref: 0a155c57bd8eb92ccaf7f5857dc6ab276d235846 # n4.0.2

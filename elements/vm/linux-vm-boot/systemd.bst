@@ -28,7 +28,7 @@ variables:
     -Dsystem-gid-max=999
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/systemd/systemd.git
   track: master
   ref: de7436b02badc82200dc127ff190b8155769b8e7 #v239

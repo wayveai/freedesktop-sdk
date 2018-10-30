@@ -19,7 +19,7 @@ variables:
     --with-system-libav
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gst-libav
   track: master
     # Latest stable release doesn't support our ffmpeg, this is the closest commit

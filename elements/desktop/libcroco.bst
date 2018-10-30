@@ -16,7 +16,7 @@ public:
         - '%{libdir}/libcroco-0.6.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/GNOME/libcroco
   track: master
   ref: 0d0162098ac6630113da9e66620ab29459352dd6    # 0.6.12

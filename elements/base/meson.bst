@@ -8,7 +8,7 @@ variables:
   pip: pip3
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/mesonbuild/meson.git
   track: master
   ref: 6aef9d32a40cf1639f4df29f141b9bb461c52dea    # 0.48.1

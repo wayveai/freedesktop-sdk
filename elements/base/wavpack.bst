@@ -17,6 +17,7 @@ public:
         - '%{libdir}/libwavpack.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/dbry/WavPack.git
+  track: master
   ref: 9ccc3fe4a37d069137ceabe513a4dd9b0a09c1c2 # v 5.1.0

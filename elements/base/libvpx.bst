@@ -41,7 +41,7 @@ public:
         - '%{libdir}/libvpx.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://chromium.googlesource.com/webm/libvpx
   track: mandarinduck
   ref: f80be22a1099b2a431c2796f529bb261064ec6b4   #  v1.7.0

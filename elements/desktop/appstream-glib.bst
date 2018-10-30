@@ -41,7 +41,7 @@ public:
         - '%{libdir}/libappstream-builder.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/hughsie/appstream-glib
   track: master
   ref: d108b8ad471ae3448b2e5049f86b54250b9c3a03    # appstream_glib_0_7_13

@@ -21,6 +21,7 @@ environment:
   PKG_CONFIG_PATH: '/app/lib/pkgconfig:'
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop:mesa/demos.git
+  track: master
   ref: 317f67fe5e75c685330d536f158acf6260b473d1   # mesa-demos-8.4.0
