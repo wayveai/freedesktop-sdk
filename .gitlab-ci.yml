@@ -21,6 +21,7 @@ variables:
   BST: bst --colors
 
 stages:
+  - update
   - flatpak
   - vm
   - publish_x86_64
@@ -97,6 +98,16 @@ before_script:
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
+
+
+check_update_elements:
+  image: $DOCKER_BST_AMD64
+  stage: update
+  tags:
+    - x86_64
+  script:
+    - ${BST} track --deps all all.bst
+    - git diff
 
 
 .flatpak_template: &flatpak_definition
