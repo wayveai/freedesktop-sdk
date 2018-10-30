@@ -59,7 +59,7 @@ public:
         - '%{libdir}/engines/*.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/openssl/openssl
   track: master
   ref: e71ebf275da66dfd601c92e0e80a35114c32f6f8    # OpenSSL_1_0_2p

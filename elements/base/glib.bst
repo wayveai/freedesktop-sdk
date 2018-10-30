@@ -44,7 +44,7 @@ public:
       glib-compile-schemas %{datadir}/glib-2.0/schemas
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.gnome.org/GNOME/glib
   ref: d4b60396c79c7294ab69a2c591518e76ab17b603      #2.56.2
 - kind: patch

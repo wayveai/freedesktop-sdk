@@ -15,7 +15,7 @@ public:
         - '%{libdir}/libopus.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.xiph.org/opus.git
   track: master
   ref: 83d5155f151ca47c9d6274ded1a7481f746b9a43 #  v1.3

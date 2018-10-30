@@ -25,7 +25,8 @@ config:
       find "%{install-root}" -type f -name perllocal.pod -delete
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/git/git.git
+  track: master
   ref: cae598d9980661a978e2df4fb338518f7bf09572   # v2.19.1
     # git-minimal.bst and git.bst must be kept in sync

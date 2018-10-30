@@ -57,7 +57,7 @@ public:
         - '%{libdir}/libgstwayland-1.0.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-bad
   track: 1.14
   ref: 566e4ecc223b18fce8bd932f5e4885f41f746dd4   #  1.14.4

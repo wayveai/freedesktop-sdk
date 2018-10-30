@@ -40,6 +40,7 @@ config:
       rm -rf "%{install-root}%{prefix}/sbin"
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+  track: stable/v2.32
   ref: fcee65bcb3372e8878ad80fa4d9f3bda22dcc8d2   # v2.32.1

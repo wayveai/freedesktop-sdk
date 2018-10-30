@@ -45,6 +45,6 @@ public:
         - '%{libdir}/libsasl2.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/cyrusimap/cyrus-sasl.git
   ref: 3f420d388d88e720ceb9f8bc53a590395c761f03   # 2.1.27-rc7

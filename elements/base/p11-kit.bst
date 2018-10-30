@@ -24,6 +24,6 @@ public:
         - '%{libdir}/libp11-kit.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/p11-glue/p11-kit/
   ref: 3dd5810143e51dabdc58069e55b09a950349fa08    # 0.23.12

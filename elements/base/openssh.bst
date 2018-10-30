@@ -21,6 +21,6 @@ config:
     - rm -f %{install-root}%{mandir}/man8/sshd.8
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/openssh/openssh-portable
   ref: aede1c34243a6f7feae2fb2cb686ade5f9be6f3d   #  V_7_9_P1

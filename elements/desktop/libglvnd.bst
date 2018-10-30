@@ -28,7 +28,7 @@ public:
         - '%{libdir}/libGLESv2.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/NVIDIA/libglvnd.git
   track: master
   ref: 59dbb141a610fed12735a0abc897daf649d39b22    # v1.1.0

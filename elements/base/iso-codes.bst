@@ -6,6 +6,7 @@ depends:
   type: build
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://salsa.debian.org/iso-codes-team/iso-codes.git
+  track: master
   ref: c1d5dd96b33cb815ebc21d2708bc045b1545249d    # v3.79

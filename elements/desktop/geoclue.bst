@@ -38,6 +38,7 @@ public:
         - '%{libdir}/libgeoclue-2.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.freedesktop.org/geoclue/geoclue.git
+  track: master
   ref: 9b6c03640e66a4e7d615200d95b89051b2214da1   #  2.5.1

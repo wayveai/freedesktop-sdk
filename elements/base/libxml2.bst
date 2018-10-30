@@ -26,7 +26,7 @@ public:
         - '%{libdir}/libxml2.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.gnome.org/GNOME/libxml2
   ref: 18890f471c420411aa3c989e104d090966ec9dbf    # 2.9.8
 - kind: patch

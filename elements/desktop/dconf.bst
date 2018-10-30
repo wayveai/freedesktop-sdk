@@ -20,7 +20,7 @@ public:
         - '%{libdir}/libdconf.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.gnome.org/GNOME/dconf
   track: master
   ref: fd884c24cf7d9631836c106ed4a895f18d707120   #  0.28.0

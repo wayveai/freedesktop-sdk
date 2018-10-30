@@ -14,6 +14,7 @@ public:
         - '%{libdir}/libpng16.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.code.sf.net/p/libpng/code
+  track: libpng16
   ref: b78804f9a2568b270ebd30eca954ef7447ba92f7   # v1.6.34

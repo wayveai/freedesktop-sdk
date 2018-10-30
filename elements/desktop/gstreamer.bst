@@ -29,7 +29,7 @@ public:
         - '%{libdir}/libgstcontroller-1.0.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gstreamer
   track: 1.14
   ref: 3c586dec930c5c253da0cf49e3f3846243f0ecf5   #  1.14.4

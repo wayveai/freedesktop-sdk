@@ -15,7 +15,7 @@ config:
     install -D -m644 -t "%{install-root}%{sysconfdir}" protocols services
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.com/freedesktop-sdk/mirrors/iana-config.git
   track: master
   ref: bc91cf638e0980c7f2e09285217f5868923ec518

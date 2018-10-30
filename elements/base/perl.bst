@@ -31,8 +31,9 @@ public:
         - '**'
 
 sources:
-- kind: git
+- kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
+  track: blead
   ref: 6cb72a3d7fbefb477b95588e2fd81e33073da8b3    # v5.28.0
 - kind: local
   path: files/perl/config.over

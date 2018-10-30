@@ -31,7 +31,7 @@ variables:
     --with-default-visualizer=autoaudiosink
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-good
   track: 1.14
   ref: d88d1b0e43b140587f35c7c9bf390fae051e427d   #  1.14.4

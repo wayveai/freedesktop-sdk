@@ -15,8 +15,9 @@ config:
     ../configure --prefix=%{prefix}
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.kitware.com/cmake/cmake
+  track: master
   ref: f84c15ef2fa30dd074fcccafccec6b9b69266619    # v3.12.0
 - kind: patch
   path: patches/cmake-nolib64.patch
