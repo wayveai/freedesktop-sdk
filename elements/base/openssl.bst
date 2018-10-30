@@ -60,4 +60,4 @@ sources:
 - kind: git_tag
   url: https://github.com/openssl/openssl
   track: master
-  ref: 1708e3e85b4a86bae26860aa5d2913fc8eff6086    # OpenSSL_1_1_1
+  ref: OpenSSL_1_1_1-0-g1708e3e85b4a86bae26860aa5d2913fc8eff6086

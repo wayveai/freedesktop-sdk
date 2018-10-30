@@ -31,8 +31,8 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop-old:gstreamer/gstreamer
-  track: 1.14
-  ref: 3c586dec930c5c253da0cf49e3f3846243f0ecf5   #  1.14.4
+  track: '1.14'
+  ref: 1.14.4-0-g3c586dec930c5c253da0cf49e3f3846243f0ecf5
   submodules:
     common:
       url: freedesktop-old:gstreamer/common

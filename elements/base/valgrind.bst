@@ -27,6 +27,6 @@ sources:
 - kind: git_tag
   url: http://repo.or.cz/valgrind.git
   track: svn/VALGRIND_3_13_0
-  ref: 1378ec95f22235e0a8c972cf1cd0abef0b9610d4   # v3.13  (svn/VALGRIND_3_13_0)
+  ref: svn/VALGRIND_3_13_0-0-g1378ec95f22235e0a8c972cf1cd0abef0b9610d4
 - kind: patch
   path: patches/valgrind-arm-hot_cpu.patch
