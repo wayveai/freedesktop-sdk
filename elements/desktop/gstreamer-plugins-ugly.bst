@@ -8,7 +8,7 @@ depends:
   type: build
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-ugly
   track: 1.14
   ref: b39a47777f899b4c3aea16d03aec80d7f0e56539   # 1.14.2

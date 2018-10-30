@@ -16,6 +16,7 @@ public:
         - '%{libdir}/libhogweed.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.lysator.liu.se/nettle/nettle.git
+  track: master
   ref: 0d9930963b4891c7823ec1382fd576821388f7d2    # v3.4

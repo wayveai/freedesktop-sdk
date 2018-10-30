@@ -23,7 +23,7 @@ variables:
   meson-local: -Ddocs=false
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://gitlab.gnome.org/GNOME/gcab
   track: master
   ref: 2d9af13213b41bdca4cecbaa5f192df71edc12be   #  v1.0

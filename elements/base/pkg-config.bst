@@ -25,6 +25,6 @@ public:
         - '%{libdir}/libpkgconf.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/pkgconf/pkgconf
   ref: 101b99b5b59d58fe6c6dc46ae22edb049cc0bd3a   #  1.5.3

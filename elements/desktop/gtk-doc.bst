@@ -19,7 +19,7 @@ depends:
   type: build
 
 sources:
-- kind: git
+- kind: git_tag
   url: gnome:gtk-doc
   track: master
   ref: 7db567e83fe5d2d0659560c6dfb25ee27b338140    # GTK_DOC_1_29

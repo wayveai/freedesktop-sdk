@@ -11,6 +11,7 @@ variables:
   lib: lib
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop:mesa/glu.git
+  track: master
   ref: 030651b64854b84a01ebebad9af188e7644c541a   # gl-9.0.0

@@ -35,7 +35,7 @@ public:
       update-ca-certificates
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://salsa.debian.org/debian/ca-certificates.git
   track: debian/20180409
   ref: dbbd11e56af93bb79f21d0ee6059a901f83f70a5

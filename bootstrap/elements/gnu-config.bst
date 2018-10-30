@@ -5,7 +5,7 @@ depends:
 - filename: dependencies/base-sdk.bst
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.savannah.gnu.org/git/config.git
   track: master
   ref: c003e5cb947924ca5edd25c3b840aaa373c66b28

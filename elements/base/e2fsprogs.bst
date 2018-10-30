@@ -27,6 +27,7 @@ public:
         - '%{libdir}/libext2fs.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+  track: master
   ref: 85e53f42f98d5334914de01e972e9ed44bccd0a5   # v1.44.3

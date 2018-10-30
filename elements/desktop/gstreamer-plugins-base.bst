@@ -53,7 +53,7 @@ public:
         - '%{libdir}/libgstgl-1.0.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-base
   track: 1.14
   ref: 384ff7d0268c71e76f7328a9ca6dfe96e4a3ab23   #  1.14.4
