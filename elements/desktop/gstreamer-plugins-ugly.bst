@@ -10,8 +10,8 @@ depends:
 sources:
 - kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-ugly
-  track: 1.14
-  ref: b39a47777f899b4c3aea16d03aec80d7f0e56539   # 1.14.2
+  track: '1.14'
+  ref: 1.14.4-0-ge1bf2aa184f83ff9fd5b7850c460129100ac6d1a
   submodules:
     common:
       url: freedesktop-old:gstreamer/common
