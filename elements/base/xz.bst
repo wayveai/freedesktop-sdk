@@ -19,4 +19,4 @@ sources:
 - kind: git_tag
   url: https://git.tukaani.org/xz.git
   track: v5.2
-  ref: b5be61cc06088bb07f488f9baf7d447ff47b37c1   # v5.2.4
+  ref: v5.2.4-0-gb5be61cc06088bb07f488f9baf7d447ff47b37c1
