@@ -59,8 +59,8 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop-old:gstreamer/gst-plugins-bad
-  track: 1.14
-  ref: 566e4ecc223b18fce8bd932f5e4885f41f746dd4   #  1.14.4
+  track: '1.14'
+  ref: 1.14.4-0-g566e4ecc223b18fce8bd932f5e4885f41f746dd4
   submodules:
     common:
       url: freedesktop-old:gstreamer/common
