@@ -5,7 +5,7 @@ depends:
   type: build
 
 config:
-  directory: '%{libdir}/ffmpeg'
+  directory: '%{indep-libdir}/ffmpeg'
   metadata:
     Runtime:
       name: org.freedesktop.Platform.html5-codecs
