@@ -63,12 +63,6 @@ config:
   - |
     %{delete_libtool_files}
 
-environment:
-  CPPFLAGS: ''
-  CFLAGS: -O2 -g
-  CXXFLAGS: -O2 -g
-  LDFLAGS: ''
-
 variables:
   # flatpak places ld.so.conf in /etc and not /usr/etc.
   sysconfdir: /etc
@@ -78,8 +72,22 @@ variables:
 
   host-triplet: '%{triplet}'
   build-triplet: '%{guessed-triplet}'
+  # -D_FORTIFY_SOURCE=2 breaks building glibc
+  common_flags: "-O2 -g -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
+  arch_options: ''
+  (?):
+    - target_arch == "i686" or target_arch == "x86_64" or target_arch == "aarch64":
+        arch_options: "--enable-static-pie"
+    - target_arch == "arm":
+    # --enable-static-pie breaks arm build
+        arch_options: ""
+
   conf-local: |
-    --with-headers=%{sysroot}%{includedir}
+    --with-headers=%{sysroot}%{includedir} \
+    --enable-stackguard-randomization \
+    --enable-stack-protector=strong \
+    --enable-bind-now \
+    %{arch_options}
 
 public:
   bst:

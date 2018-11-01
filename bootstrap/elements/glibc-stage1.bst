@@ -11,12 +11,8 @@ variables:
   lib: lib
   build-triplet: '%{guessed-triplet}'
   host-triplet: '%{guessed-triplet}'
-
-environment:
-  CPPFLAGS: ''
-  CFLAGS: -O2 -g
-  CXXFLAGS: -O2 -g
-  LDFLAGS: ''
+  # -D_FORTIFY_SOURCE=2 breaks building glibc
+  common_flags: "-O2 -g -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
 
 sources:
 - kind: tar
