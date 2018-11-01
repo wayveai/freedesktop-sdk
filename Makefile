@@ -19,6 +19,7 @@ RUNTIMES=					\
 	platform-arch-libs			\
 	platform-arch-libs-debug		\
 	platform-html5				\
+	clinfo						\
 	glxinfo					\
 	glxinfo-debug				\
 	rust
