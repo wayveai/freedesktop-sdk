@@ -17,3 +17,5 @@ sources:
   path: patches/libva-vdpau-driver-0.7.4-drop-h264-api.patch
 - kind: patch
   path: patches/libva-vdpau-driver-0.7.4-fix_type.patch
+- kind: patch
+  path: patches/libva-vdpau-sigfpe-crash.patch
