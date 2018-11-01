@@ -232,6 +232,8 @@ minimal_systemd_vm_image_x86_64:
   only:
     - master
     - '18.08'
+  except:
+    - schedules
   <<: *gitlab_cache_pull_push
 
 publish_x86_64:
