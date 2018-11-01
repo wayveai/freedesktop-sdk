@@ -1,0 +1,23 @@
+{
+    "app-id": "org.flatpak.Readline",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "readline",
+    "modules": [
+        {
+            "name": "readline",
+            "buildsystem": "simple",
+            "build-commands": [
+                "g++ -o readline -g -O2 readline.cc -lreadline",
+                "install -D readline /app/bin/readline"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "readline.cc"
+                }
+            ]
+        }
+    ]
+}
