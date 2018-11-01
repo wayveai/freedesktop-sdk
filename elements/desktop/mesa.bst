@@ -5,6 +5,7 @@ depends:
 - filename: desktop/llvm6.bst
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
+- filename: desktop/libclc.bst
 - filename: desktop/xorg-lib-xdamage.bst
 - filename: desktop/xorg-lib-xfixes.bst
 - filename: desktop/xorg-lib-xrandr.bst
@@ -53,10 +54,10 @@ variables:
     -Dgallium-va=true \
     -Dgallium-xa=true \
     -Dgallium-xvmc=false \
+    -Dgallium-opencl=icd \
     -Dplatforms=x11,drm,surfaceless,wayland \
     -Dshared-glapi=true \
     -Dgbm=true \
-    -Dgallium-opencl=disabled \
     -Dglx=auto \
     -Dtexture-float=true \
     -Dllvm=true \
@@ -71,6 +72,8 @@ config:
   install-commands:
     (>):
     - |
+      mkdir -p %{install-root}%{indep-libdir}/OpenCL/vendors
+      mv %{install-root}%{sysconfdir}/OpenCL/vendors/* %{install-root}%{indep-libdir}/OpenCL/vendors
       ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
       ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
       rm -f "%{install-root}%{libdir}"/libGLESv2*
@@ -87,6 +90,7 @@ public:
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
         - '%{libdir}/vdpau/libvdpau_*.so'
+        - '%{libdir}/libMesaOpenCL.so'
 
 sources:
 - kind: git_tag
