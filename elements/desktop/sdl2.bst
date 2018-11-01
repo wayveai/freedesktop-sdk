@@ -38,7 +38,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.libsdl.org/release/SDL2-2.0.8.tar.gz
-  ref: edc77c57308661d576e843344d8638e025a7818bff73f8fbfab09c3c5fd092ec
-- kind: patch
-  path: patches/sdl2-unity-fix.patch
+  url: https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+  ref: 255186dc676ecd0c1dbf10ec8a2cc5d6869b5079d8a38194c2aecdff54b324b1

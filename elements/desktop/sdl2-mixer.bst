@@ -16,5 +16,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.2.tar.gz
-  ref: 4e615e27efca4f439df9af6aa2c6de84150d17cbfd12174b54868c12f19c83bb
+  url: https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+  ref: b4cf5a382c061cd75081cf246c2aa2f9df8db04bdda8dcdc6b6cca55bede2419
