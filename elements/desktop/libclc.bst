@@ -11,8 +11,9 @@ config:
   configure-commands:
     - |
       ./configure.py \
-      --prefix=/usr \
-      --pkgconfigdir=%{libdir}/pkgconfig
+      --prefix=%{prefix} \
+      --pkgconfigdir=%{libdir}/pkgconfig \
+      --with-cxx-compiler=%{bindir}/g++
 
   build-commands:
     - |
