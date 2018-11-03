@@ -56,8 +56,8 @@ The current set of commands to run your application with 18.08 are:
 
     ```
     $ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    $ flatpak install --user freedesktop-sdk runtime/org.freedesktop.Sdk//18.08
-    $ flatpak install --user freedesktop-sdk runtime/org.freedesktop.Platform//18.08
+    $ flatpak install flathub org.freedesktop.Sdk//18.08
+    $ flatpak install flathub org.freedesktop.Platform//18.08
     ```
 
 2.  Set your app manifest:
