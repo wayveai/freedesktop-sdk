@@ -1,5 +1,15 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.18:
+    * Fix readline linkage with ncurses
+    * Harden glibc build
+    * Fix SIGFPE crash in libva-vdpau-driver
+    * mesa: Update 18.2.3
+    * Use `git describe` output for the `ref:`
+    * openssh: place servers in a separate domain instead remove them
+    * Remove unneded patch in mesa
+    * Add fftw
+
 freedesktop-sdk-18.08.17:
     * mesa: revert back to 18.2.2 as the update to 18.2.3 was incorrectly done
 
