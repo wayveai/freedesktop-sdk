@@ -9,13 +9,9 @@ depends:
 - filename: base/perl.bst
   type: build
 
-environment:
+variables:
   # valgrind does not like stack protector flags
-  CFLAGS: -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions
-    -grecord-gcc-switches
-  CXXFLAGS: -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions
-    -grecord-gcc-switches
-  LDFLAGS: -Wl,--as-needed,-z,relro,-z,now
+  common_flags: "-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -grecord-gcc-switches"
 
 config:
   configure-commands:
