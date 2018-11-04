@@ -1,14 +1,20 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/mesa.bst
-- filename: base/buildsystem-autotools.bst
-  type: build
-- filename: desktop/xorg-util-macros.bst
+- filename: base/buildsystem-meson.bst
   type: build
 - filename: base/python3.bst
   type: build
+
+variables:
+  meson-local: >
+    -Ddocs=false
+    -Dglx=yes
+    -Degl=yes
+    -Dx11=true
+    -Dtests=false
 
 public:
   bst:
