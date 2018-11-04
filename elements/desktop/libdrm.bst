@@ -23,6 +23,7 @@ public:
         - '%{libdir}/libkms.so'
 
 sources:
-- kind: tar
-  url: https://dri.freedesktop.org/libdrm/libdrm-2.4.94.tar.bz2
-  ref: b73c59b0a3760502c428ba81de49cd4807657d26be5e697eba3a87dd021d16be
+- kind: git_tag
+  url: freedesktop:mesa/drm.git
+  track: master
+  ref: libdrm-2.4.94-0-g8389c5454804d5cd7f62f1cadb841fb1b8a51817
