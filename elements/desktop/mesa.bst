@@ -95,4 +95,4 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  ref: mesa-18.2.3-0-gd219361b4226944835959676d1721b2a9d29da72
+  ref: mesa-18.2.4-0-g1cdef5e70ca1745b6cbc133c3bdb94cd6541ad4a
