@@ -30,4 +30,4 @@ sources:
 - kind: git_tag
   url: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
   track: master
-  ref: 85e53f42f98d5334914de01e972e9ed44bccd0a5   # v1.44.3
+  ref: v1.44.4-0-g40e66e2e8be046f909dfff73b3909f15c9d0f400

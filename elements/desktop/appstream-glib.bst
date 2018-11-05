@@ -44,4 +44,4 @@ sources:
 - kind: git_tag
   url: https://github.com/hughsie/appstream-glib
   track: master
-  ref: d108b8ad471ae3448b2e5049f86b54250b9c3a03    # appstream_glib_0_7_13
+  ref: appstream_glib_0_7_14-0-g75a7af1d8870bb0fcf216e788b273a4c41e99cec
