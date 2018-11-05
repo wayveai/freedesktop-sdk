@@ -18,14 +18,19 @@ variables:
   conf-local: |
     --disable-xim \
     --disable-dconf \
+    --disable-gconf \
+    --disable-memconf \
     --disable-schemas-compile \
+    --disable-schemas-install \
     --disable-gtk2 \
     --disable-setup \
     --disable-ui \
     --disable-engine \
+    --disable-python-library \
     --disable-libnotify \
     --disable-emoji-dict \
     --disable-appindicator \
+    --disable-glibtest \
     --disable-tests \
     --disable-unicode-dict
 
@@ -49,5 +54,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/ibus/ibus/releases/download/1.5.18/ibus-1.5.18.tar.gz
-  ref: 8551f7d027fb65d48225642fc8f3b232412ea75a4eb375244dd72a4d73c2639e
+  url: https://github.com/ibus/ibus/releases/download/1.5.19/ibus-1.5.19.tar.gz
+  ref: 4b66c798dab093f0fa738e5c10688d395a463287d13678c208a81051af5d2429
