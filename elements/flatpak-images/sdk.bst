@@ -67,7 +67,7 @@ config:
       download-if: active-gtk-theme
 
     Extension org.freedesktop.Platform.html5-codecs:
-      directory: '%{lib}/ffmpeg'
+      directory: 'lib/ffmpeg'
       add-ld-path: lib
 
     Extension org.freedesktop.Sdk.Extension:

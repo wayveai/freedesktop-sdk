@@ -7,7 +7,7 @@ Index: gst-libav1.0/ext/libav/gstav.c
    av_register_all ();
  
 +  gst_plugin_add_dependency_simple (plugin, NULL,
-+      "/usr/lib:/usr/local/lib",
++      "/usr/lib:/usr/local/lib:/usr/lib/ffmpeg/lib",
 +      "libavcodec.so.58,"
 +      "libavformat.so.58,"
 +      "libswscale.so.5",
