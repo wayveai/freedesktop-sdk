@@ -1,22 +1,24 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/glib-networking.bst
 - filename: desktop/gobject-introspection.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 - filename: base/intltool.bst
   type: build
 - filename: base/libxml2.bst
 - filename: base/sqlite.bst
+- filename: desktop/libpsl.bst
 - filename: base/python3.bst
   type: build
 
 variables:
-  conf-local: |
-    --disable-vala
+  meson-local: >
+    -Dgssapi=false
+    -Dvapi=false
 
 public:
   bst:
@@ -27,6 +29,7 @@ public:
         - '%{libdir}/libsoup-gnome-2.4.so'
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/libsoup/2.62/libsoup-2.62.2.tar.xz
-  ref: 9e536fe3da60b25d2c63addb84a9d5072d00b0d8b8cbeabc629a6bcd63f879b6
+- kind: git_tag
+  url: gnome:libsoup
+  track: gnome-3-30
+  ref: 2.64.2-0-gb25faf59f1bb782e95be94f70a98a369846d1524

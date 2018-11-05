@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 description: Glib
 
 depends:
@@ -9,14 +9,17 @@ depends:
 - filename: base/util-linux.bst
 - filename: base/pcre.bst
 - filename: base/python3.bst
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/m4.bst
   type: build
 - filename: base/which.bst
   type: build
 
 variables:
-  conf-local: |
-    --with-pcre=system
+  meson-local: >
+    -Dinternal_pcre=false
+    -Dselinux=false
 
 public:
   bst:
@@ -45,7 +48,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.gnome.org/GNOME/glib
-  ref: d4b60396c79c7294ab69a2c591518e76ab17b603      #2.56.2
-- kind: patch
-  path: patches/glib-gio-Makefile.am-Use-PYTHON-to-call-python-script.patch
+  url: gnome:glib
+  track: glib-2-58
+  ref: 2.58.1-0-ga9f5a6fa2fdd6eb2f754709d7e790d24e3ceaa18

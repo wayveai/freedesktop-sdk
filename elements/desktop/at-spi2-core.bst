@@ -1,11 +1,11 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/dbus.bst
 - filename: desktop/gtk-doc.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 - filename: base/glib.bst
 
@@ -17,6 +17,7 @@ public:
         - '%{libdir}/libatspi.so'
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.2.tar.xz
-  ref: c80e0cdf5e3d713400315b63c7deffa561032a6c37289211d8afcfaa267c2615
+- kind: git_tag
+  url: gnome:at-spi2-core
+  track: master
+  ref: AT_SPI2_CORE_2_30_0-0-g2f3b23bb626e91aa321f06374ff66a709c323430

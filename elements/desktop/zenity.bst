@@ -24,5 +24,5 @@ config:
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/sources/zenity/3.28/zenity-3.28.1.tar.xz
-  ref: db179354721fb4e2d5c418e0dc41f09c831a6b2dd440e33f7743dfc266de8a6b
+  url: https://download.gnome.org/sources/zenity/3.30/zenity-3.30.0.tar.xz
+  ref: 995ef696616492c40be6da99919851d41faed6643a97c9d24743b46bc8b537f2
