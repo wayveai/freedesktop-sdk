@@ -52,7 +52,9 @@ variables:
   target_common_flags: "%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
   arch_options: ''
   (?):
-    - target_arch == "i686" or target_arch == "x86_64" or target_arch == "aarch64":
+    - target_arch == "i686" or target_arch == "x86_64":
+        arch_options: "--enable-static-pie --enable-cet"
+    - target_arch == "aarch64":
         arch_options: "--enable-static-pie"
     - target_arch == "arm":
     # --enable-static-pie breaks arm build
@@ -64,6 +66,7 @@ variables:
     --enable-stackguard-randomization \
     --enable-stack-protector=strong \
     --enable-bind-now \
+    --disable-werror \
     %{arch_options}
 
 public:
@@ -74,6 +77,7 @@ public:
         - '%{libdir}/*.o'
         - '%{libdir}/libdl.so'
         - '%{libdir}/libnsl.so'
+        - '%{libdir}/libpthread.so'
         - '%{libdir}/libBrokenLocale.so'
         - '%{libdir}/libthread_db.so'
         - '%{libdir}/librt.so'
@@ -92,13 +96,12 @@ public:
 
   cpe:
     patches:
-      - 'CVE-2017-18269'
-      - 'CVE-2018-11236'
-      - 'CVE-2018-11237'
       - 'CVE-2018-19591'
 
 sources:
 - kind: git_tag
   url: sourceware:glibc.git
-  track: release/2.27/master
-  ref: 2.27-99-gf6d0e8c36f02b387d33f2cc58c7cb204f201d92e
+  track: release/2.28/master
+  ref: glibc-2.28-60-g4d7af7815af5217db6e8fde6032ddf4f6b2a4420
+- kind: patch
+  path: patches/glibc/0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
