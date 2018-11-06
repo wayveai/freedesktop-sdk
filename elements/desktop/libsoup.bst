@@ -7,8 +7,6 @@ depends:
   type: build
 - filename: base/buildsystem-meson.bst
   type: build
-- filename: base/intltool.bst
-  type: build
 - filename: base/libxml2.bst
 - filename: base/sqlite.bst
 - filename: desktop/libpsl.bst
