@@ -19,7 +19,7 @@ config:
       XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
 
     Extension org.freedesktop.Platform.GL:
-      versions: "18.08;1.6;1.4"
+      versions: "18.08;1.4"
       version: "1.4"
       directory: "%{lib}/GL"
       subdirectories: "true"
