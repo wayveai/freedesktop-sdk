@@ -1,88 +1,106 @@
-#!/bin/bash
-
-# First pull all required targets. e.g.:
-#   bst pull --deps all all.bst
+#!/bin/sh
 #
-# Then disable artifacts cache in project.conf. Then call it with .bst file
+# This script tests if each element is bit-for-bit reproducible.
 #
-#   bash ../utils/reproducible.sh all.bst freedesktop-sdk
+# It is required that this script is run as root.
 #
-# Extra parameters are passed to bst. That is useful to pass architecture
-# options.
+# Example of use:
 #
-# It will not go through external project. So you need to verify
-# sdk and bootstrap separatly.
+#   ./tests/test-reproducibility.sh all.bst
 #
-# Standard output will tell whether artifacts are reproducible.  File
-# "reproducible.log" contains extra logs.  File "results" will be a
-# cache of all results to not have to re-test already tested
-# artifacts.
+# Extra parameters are passed to bst. The results.cache will be a cache of all
+# results to not have to re-test already tested artifacts.
+#
 
-# Inspired by
-# https://gitlab.com/jmacarthur/buildstream/blob/jmac/reproducible/contrib/repro.py
+set -eu
 
-set -e
-
-project=$1
-element=$2
-shift 2
-bst="bst $@"
-ostree="ostree --repo=${HOME}/.cache/buildstream/artifacts/ostree"
-global_result=0
-
-tmp=
 clean_tmp() {
-    if [ -n "${tmp}" ] && [ -d "${tmp}" ]; then
+    if [ -n "${tmp}" ]; then
         rm -rf "${tmp}"
     fi
 }
 
-trap clean_tmp EXIT
+print_task() {
+    echo ======================================================================
+    echo "$1"
+    echo ======================================================================
+}
 
-touch results
+if [ $# -ne 1 ];  then
+    echo "Usage: test-reproducibility.sh TARGET\n" 2>&1
+    exit 1
+fi
 
-${bst} show --deps all $element --format '%{name},%{full-key},%{state}' 2>/dev/null |
-while IFS=, read -r name ref state; do
-    case "${name}" in
-        *:*)
-            continue
-            ;;
-    esac
-    reproducible="$(sed "\|^${name}:${ref}:|{;s///;q;};d" results)"
-    case "${reproducible}" in
+if [ $EUID -ne 0 ];  then
+    echo "This script must be run as the root user\n" 2>&1
+    exit 2
+fi
+
+target=$1 && shift
+bst="bst $@"
+tmp=
+
+trap clean_tmp EXIT INT TERM
+
+touch results.cache
+
+print_task "Pulling artifacts"
+${bst} pull --deps all "${target}"
+
+print_task "Fetching sources"
+${bst} fetch --deps all "${target}"
+
+print_task "Building elements"
+${bst} build --all "${target}"
+
+${bst} show --deps all "${target}" \
+    --format '%{name},%{full-key},%{state}' \
+    2>/dev/null | while IFS=, read -r name ref state; do
+
+    # Check whether the result is already cached
+    result="$(sed "\|^${name}:${ref}:|{;s///;q;};d" results.cache)"
+    case "${result}" in
          true)
              echo "${name} ${ref} is reproducible"
+             continue
              ;;
          false)
              echo "${name} ${ref} is not reproducible"
-             global_result=1
+             continue
              ;;
-         *)
-             sed -i "\|^${name}:${ref}:|d" results
-             case "${state}" in
-                 cached)
-                     ;;
-                 *)
-                     ${bst} build "${name}" &>>reproducible.log
-                     ;;
-             esac
-             ostree_ref="${project}/$(basename "${name/\//-}" .bst)/${ref}"
-             tmp=$(mktemp -td reproducible.XXXXXXXXXX)
-             ${ostree} checkout --user-mode ${ostree_ref} "${tmp}/a"
-             ${ostree} refs --delete ${ostree_ref}
-             ${bst} build "${name}" &>>reproducible.log
-             ${ostree} checkout --user-mode ${ostree_ref} "${tmp}/b"
-             if diff -r --no-dereference "${tmp}/a/files" "${tmp}/b/files" --exclude="*.pyc" --exclude="*.pyo" &>>reproducible.log; then
-                 echo "${name} ${ref} is reproducible"
-                 reproducible=true
-             else
-                 echo "${name} ${ref} is not reproducible"
-                 global_result=1
-                 reproducible=false
-             fi
-             rm -rf "${tmp}"
-             tmp=
-             echo "${name}:${ref}:${reproducible}" >>results
+         failed)
+             echo "${name} ${ref} failed to checkout"
+             continue
              ;;
     esac
+
+    print_task "Verifying ${name} bit-for-bit reproducibility"
+
+    tmp=$(mktemp -td reproducible.XXXXXXXXXX)
+
+    if ! ${bst} checkout "${name}" "${tmp}/a"; then
+        echo "${name}:${ref}:failed" >> results.cache
+        continue
+    fi
+
+    # TODO: use `bst artifacts delete` when implemented.
+    find "${XDG_CACHE_HOME:-${HOME}/.cache}/buildstream/artifacts/cas/refs" -name "${ref}" -delete
+
+    # TODO: use proper way of disabling artifact caches when implemented
+    # instead of wrapping the command with unshare.
+    unshare --net ${bst} build "${name}"
+
+    ${bst} checkout "${name}" "${tmp}/b"
+
+    if diff -r --no-dereference "${tmp}/a/" "${tmp}/b/"; then
+        echo -e "${name} ${ref} is reproducible\n"
+        result=true
+    else
+        echo -e "${name} ${ref} is not reproducible\n"
+        result=false
+    fi
+
+    echo "${name}:${ref}:${result}" >> results.cache
+
+    rm -rf "${tmp}"
 done
