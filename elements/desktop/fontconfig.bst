@@ -38,10 +38,6 @@ sources:
 - kind: git_tag
   url: freedesktop:fontconfig/fontconfig
   track: master
-  ref: f075ca1aeaedbc288d42a70df5cf2fd069ea0d10   #  2.13
+  ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
 - kind: local
   path: files/fontconfig-flatpak.conf
-- kind: patch
-  path: patches/fontconfig-relocate.patch
-- kind: patch
-  path: patches/0001-Ensure-cache-checksums-are-determinstic.patch
