@@ -7,8 +7,11 @@ depends:
 - filename: base/libsamplerate.bst
 - filename: desktop/dbus.bst
 - filename: desktop/fcitx.bst
+  type: build
 - filename: desktop/ibus.bst
+  type: build
 - filename: desktop/libpulse.bst
+- filename: desktop/libxkbcommon.bst
 - filename: desktop/mesa.bst
 - filename: desktop/wayland.bst
 - filename: desktop/wayland-protocols.bst
