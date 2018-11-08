@@ -27,6 +27,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
+    --disable-stripping \
     TIC_PATH="%{tools}/bin/tic"
 
   - |
@@ -45,6 +46,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
+    --disable-stripping \
     TIC_PATH="%{tools}/bin/tic"
 
   build-commands:
