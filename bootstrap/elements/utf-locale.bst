@@ -16,7 +16,7 @@ config:
 
   install-commands:
   - |
-    mkdir -p "%{install-root}%{sysroot}/%{indep-libdir}"
+    mkdir -p "%{install-root}/%{indep-libdir}"
 
   - |
-    mv glibc/lib/locale "%{install-root}%{sysroot}/%{indep-libdir}"
+    mv glibc/lib/locale "%{install-root}/%{indep-libdir}"

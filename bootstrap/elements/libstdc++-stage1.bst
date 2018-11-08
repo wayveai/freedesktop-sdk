@@ -2,20 +2,10 @@ kind: autotools
 description: GNU C Library
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage1.bst
-  type: build
-- filename: binutils-stage1.bst
+- filename: libstdc++-stage1-build-deps.bst
   type: build
 - filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
+  type: runtime
 
 environment:
   (?):
@@ -69,14 +59,6 @@ config:
     mkdir "%{builddir}"
     cd "%{builddir}"
     ../libstdc++-v3/%{configure}
-
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
 
 sources:
 - kind: tar

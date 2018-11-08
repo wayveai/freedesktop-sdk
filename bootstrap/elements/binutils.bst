@@ -2,22 +2,10 @@ kind: autotools
 description: GNU Binutils
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
+- filename: binutils-build-deps.bst
   type: build
 - filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
@@ -34,15 +22,6 @@ variables:
     --enable-ld=default \
     --enable-shared \
     --enable-plugins
-
-config:
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
 
 environment:
   LEXLIB: ' '

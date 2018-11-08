@@ -1,24 +1,10 @@
 kind: autotools
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
+- filename: procps-build-deps.bst
   type: build
 - filename: ncurses.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
@@ -30,21 +16,12 @@ variables:
     ac_cv_func_malloc_0_nonnull=yes \
     ac_cv_func_realloc_0_nonnull=yes
 
-config:
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
-
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{sysroot}%{libdir}/libprocps.so'
+        - '%{libdir}/libprocps.so'
 
 sources:
 - kind: tar

@@ -19,3 +19,9 @@ sources:
 config:
   source: files
   target: usr
+
+public:
+  bst:
+    split-rules:
+      filter:
+      - "/usr/share/gnu-config/**"
