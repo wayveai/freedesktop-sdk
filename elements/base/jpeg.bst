@@ -1,9 +1,15 @@
-kind: autotools
+kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-cmake.bst
+  type: build
 - filename: base/nasm.bst
   type: build
+
+variables:
+  cmake-local: |
+    -DCMAKE_INSTALL_LIBDIR="%{libdir}"
 
 public:
   bst:
@@ -14,6 +20,6 @@ public:
         - '%{libdir}/libturbojpeg.so'
 
 sources:
-- kind: tar
-  url: https://sourceforge.net/projects/libjpeg-turbo/files/1.5.3/libjpeg-turbo-1.5.3.tar.gz
-  ref: b24890e2bb46e12e72a79f7e965f409f4e16466d00e1dd15d93d73ee6b592523
+- kind: git
+  url: https://github.com/libjpeg-turbo/libjpeg-turbo.git
+  ref: 2.0.0-3-g2260b66e1671038a362dca4a204c28d72b8f7e4e
