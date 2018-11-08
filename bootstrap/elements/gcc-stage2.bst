@@ -2,20 +2,11 @@ kind: autotools
 description: GNU gcc Stage 2
 
 depends:
-- filename: dependencies/base-sdk.bst
+- filename: gcc-stage-2-build-deps.bst
   type: build
-- filename: gnu-config.bst
-  type: build
+
 - filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: libstdc++-stage1.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
+  type: runtime
 
 (@): build.yml
 

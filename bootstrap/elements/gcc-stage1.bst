@@ -2,11 +2,8 @@ kind: autotools
 description: GNU gcc Stage 1
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
 - filename: binutils-stage1.bst
+- filename: gnu-config.bst
   type: build
 
 (@): build.yml

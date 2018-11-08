@@ -1,32 +1,16 @@
 kind: autotools
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: file.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: bzip2.bst
-  type: build
-- filename: elfutils.bst
+- filename: debugedit-build-deps.bst
   type: build
 - filename: popt.bst
-  type: build
-- filename: openssl-static.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
+- filename: bzip2.bst
+  type: runtime
+- filename: elfutils.bst
+  type: runtime
+- filename: file.bst
+  type: runtime
 
 (@): target.yml
 
@@ -40,6 +24,8 @@ variables:
     --with-crypto=openssl \
     --without-archive \
     --with-external-db
+
+  make-install: make -j1 install-rpmlibexecPROGRAMS DESTDIR="%{install-root}" rpmlibexec_PROGRAMS="debugedit" rpmlibexecdir="%{bindir}"
 
 config:
   configure-commands:
@@ -68,13 +54,6 @@ config:
     make -C misc libmisc.la
     make -C rpmio librpmio.la
     make debugedit
-
-  install-commands:
-  - |
-    make -j1 install-rpmlibexecPROGRAMS DESTDIR="%{install-root}%{sysroot}" rpmlibexec_PROGRAMS="debugedit" rpmlibexecdir="%{bindir}"
-
-  - |
-    %{delete_libtool_files}
 
 public:
   bst:

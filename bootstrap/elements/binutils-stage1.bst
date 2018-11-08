@@ -3,7 +3,6 @@ description: GNU Binutils Stage 1
 
 depends:
 - filename: dependencies/base-sdk.bst
-  type: build
 - filename: gnu-config.bst
   type: build
 
