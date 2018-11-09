@@ -13,7 +13,7 @@ config:
     - make -j1 PREFIX=%{install-root}/app install
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://github.com/Oblomov/clinfo
-  track: 2.2.18.04.06
-  ref: 59d0daf898e48d76ccbb788acbba258fa0a8ba7c
+  track: master
+  ref: 2.2.18.04.06-0-g59d0daf898e48d76ccbb788acbba258fa0a8ba7c

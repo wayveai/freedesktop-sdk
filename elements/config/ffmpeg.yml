@@ -93,5 +93,5 @@ config:
 sources:
 - kind: git_tag
   url: https://git.ffmpeg.org/ffmpeg.git
-  track: n4.0.2
-  ref: 0a155c57bd8eb92ccaf7f5857dc6ab276d235846 # n4.0.2
+  track: release/4.0
+  ref: n4.0.2-0-g0a155c57bd8eb92ccaf7f5857dc6ab276d235846
