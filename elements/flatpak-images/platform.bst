@@ -62,7 +62,7 @@ config:
       download-if: have-intel-gpu
 
     Extension org.freedesktop.Platform.html5-codecs:
-      directory: 'lib/ffmpeg'
+      directory: '%{lib}/ffmpeg'
       add-ld-path: lib
       autodelete: 'false'
 
