@@ -22,9 +22,8 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav
   track: master
-    # Latest stable release doesn't support our ffmpeg, this is the closest commit
-    # to 1.14.2 which supports ffmpeg n4.0.2 with minimal patching
-  ref: 3b6597188ad25cca84ae5caa7b08767a5b4cfee7   # 1.14.0-39-g3b65971
+  # Snapshot used by debian so we can use their patches
+  ref: 1.14.0-54-gdb8235024523a0375443f36eb5fec627386452d5
   submodules:
     common:
       url: freedesktop:gstreamer/common
@@ -35,4 +34,10 @@ sources:
 - kind: patch
   path: patches/gst-libav-stop-caching-codecs.patch
 - kind: patch
-  path: patches/gst-libav-fix-api.patch
+  path: patches/gst-libav-disable-1.15-api.patch
+- kind: patch
+  path: patches/gst-libav-drop-1.15-dependency.patch
+- kind: patch
+  path: patches/gst-libav-avmux-Place-pva-case-after-generic-case.patch
+- kind: patch
+  path: patches/gst-libav-decoders-fix-draining.patch
