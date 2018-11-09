@@ -6,6 +6,7 @@ depends:
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
 - filename: desktop/libclc.bst
+- filename: desktop/opencl.bst
 - filename: desktop/xorg-lib-xdamage.bst
 - filename: desktop/xorg-lib-xfixes.bst
 - filename: desktop/xorg-lib-xrandr.bst
