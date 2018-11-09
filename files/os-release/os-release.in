@@ -3,3 +3,4 @@ VERSION="@@SDK_BRANCH@@ (Flatpak runtime)"
 VERSION_ID=@@SDK_BRANCH@@
 ID=org.freedesktop.Platform
 PRETTY_NAME="Freedesktop.org @@SDK_BRANCH@@ (Flatpak runtime)"
+BUG_REPORT_URL=https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues
