@@ -33,7 +33,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/OCL-dev/ocl-icd/archive/v2.2.12.tar.gz
+  url: github:OCL-dev/ocl-icd/archive/v2.2.12.tar.gz
   ref: 17500e5788304eef5b52dbe784cec197bdae64e05eecf38317840d2d05484272
 - kind: local
   directory: khronos-headers/CL/

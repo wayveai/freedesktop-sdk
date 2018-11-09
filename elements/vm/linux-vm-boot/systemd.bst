@@ -29,7 +29,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://github.com/systemd/systemd.git
+  url: github:systemd/systemd.git
   track: master
   ref: de7436b02badc82200dc127ff190b8155769b8e7 #v239
 - kind: patch

@@ -16,6 +16,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/libexif/libexif
+  url: github:libexif/libexif
   track: master
   ref: 9ab318d93b274df204c195c9a729f778401a8d8f   # 0.6.21

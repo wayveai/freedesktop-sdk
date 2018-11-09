@@ -40,7 +40,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.1.73.0.tar.gz
+  url: github:KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.1.73.0.tar.gz
   ref: ab6bd8162b246bc5d73dcfb3b69ed7a35b12b739735493f47304b0fc852463e1
 - kind: patch
   path: patches/vulkan-libdir-path.patch

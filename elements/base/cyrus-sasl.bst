@@ -46,5 +46,5 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/cyrusimap/cyrus-sasl.git
+  url: github:cyrusimap/cyrus-sasl.git
   ref: 3f420d388d88e720ceb9f8bc53a590395c761f03   # 2.1.27-rc7
