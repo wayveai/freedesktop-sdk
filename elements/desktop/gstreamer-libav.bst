@@ -18,6 +18,9 @@ variables:
   conf-local: |
     --with-system-libav
 
+environment:
+  GST_CFLAGS: -DTRIPLET=\"%{gcc_triplet}\"
+
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav
