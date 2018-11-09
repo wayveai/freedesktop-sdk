@@ -7,7 +7,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: https://github.com/dosfstools/dosfstools.git
+  url: github:dosfstools/dosfstools.git
   track: master
   ref: 820c2f90726db0468e0a684a5dc500fbde66466f # v4.1
 

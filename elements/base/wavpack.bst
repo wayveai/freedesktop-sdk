@@ -18,6 +18,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/dbry/WavPack.git
+  url: github:dbry/WavPack.git
   track: master
   ref: 5.1.0-0-g9ccc3fe4a37d069137ceabe513a4dd9b0a09c1c2

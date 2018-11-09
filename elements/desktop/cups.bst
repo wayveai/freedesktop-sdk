@@ -34,5 +34,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
+  url: github:apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
   ref: 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4
