@@ -28,5 +28,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/cracklib/cracklib/releases/download/cracklib-2.9.6/cracklib-2.9.6.tar.gz
+  url: github:cracklib/cracklib/releases/download/cracklib-2.9.6/cracklib-2.9.6.tar.gz
   ref: 17cf76943de272fd579ed831a1fd85339b393f8d00bf9e0d17c91e972f583343

@@ -54,5 +54,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/ibus/ibus/releases/download/1.5.19/ibus-1.5.19.tar.gz
+  url: github:ibus/ibus/releases/download/1.5.19/ibus-1.5.19.tar.gz
   ref: 4b66c798dab093f0fa738e5c10688d395a463287d13678c208a81051af5d2429

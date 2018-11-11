@@ -36,7 +36,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://github.com/git/git.git
+  url: github:git/git.git
   track: master
   ref: v2.19.1-0-gcae598d9980661a978e2df4fb338518f7bf09572
     # git-minimal.bst and git.bst must be kept in sync

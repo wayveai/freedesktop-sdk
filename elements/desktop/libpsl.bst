@@ -22,6 +22,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/rockdaboot/libpsl
+  url: github:rockdaboot/libpsl
   track: master
   ref: libpsl-0.20.2-0-gb7f5c1414db2ead6f15737ab79fbc336a539ea16

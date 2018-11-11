@@ -8,6 +8,6 @@ depends:
 
 sources:
 - kind: git_tag
-  url: https://github.com/flatpak/flatpak-xdg-utils.git
+  url: github:flatpak/flatpak-xdg-utils.git
   track: master
   ref: 0276d66df34f76c120bc6e15565f879e01bc0058    # 0.1-16-g0276d66

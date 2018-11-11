@@ -44,7 +44,7 @@ environment:
 
 sources:
 - kind: tar
-  url: https://github.com/rust-lang/cargo/archive/0.30.0.tar.gz
+  url: github:rust-lang/cargo/archive/0.30.0.tar.gz
   directory: source
   ref: 82f3ba49192b74b115b8aeca9db24deca022ee5e6351292611ab5b50e4455251
 

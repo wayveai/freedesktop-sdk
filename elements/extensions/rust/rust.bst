@@ -26,7 +26,7 @@ variables:
   - target_arch == "arm":
       rust-target: armv7-unknown-linux-gnueabihf
         # armv7 exhausts memory on stage0 librustc w/ debuginfo
-        # https://github.com/rust-lang/rust/issues/45854
+        # github:rust-lang/rust/issues/45854
       debuginfo-only-std: 'true'
 
 environment-nocache:
