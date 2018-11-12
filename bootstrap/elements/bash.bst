@@ -52,6 +52,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: git_savannah_gnu_org:bash.git
+  url: savannah:bash.git
   track: master
   ref: b0776d8c49ab4310fa056ce1033985996c5b9807   # Bash-4.4 patch 19
