@@ -85,6 +85,9 @@ config:
 public:
   bst:
     split-rules:
+      runtime:
+        - '%{multiarch_libdir}/lib*.so.*'
+
       devel:
         (>):
         - '%{bindir}/*'
