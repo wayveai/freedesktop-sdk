@@ -1,5 +1,47 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.19:
+    * qmake: Update to 5.11.2
+    * sdl2: make dependencies on ibus and fcitx build only
+    * Fix branch version on GL extension point
+    * Bump SDL2 libraries to 2.0.9 (#451)
+    * fontconfig: Update to 2.13.1
+    * gst-libav: Use debian patches to unstable version (#324)
+    * Use new "ref:" format in several elements
+    * jpeg: Update to 2.0.0 (#428)
+    * pcre2: Enable JIT support (#456)
+    * mesa: Update to 18.2.4
+    * gst-libav: Stop caching html5 ffmpeg codecs (#430)
+    * libdrm: Update to 2.4.96
+    * libxkbcommon: Update to xkbcommon-0.8.2
+    * libepoxy: Update to 1.5.3
+    * gstreamer-plugins-ugly: Update to 1.14.4
+    * appstream-glib: Update to appstream_glib_0_7_14
+    * strace: Update to v4.24
+    * libpng: Update to v1.6.35
+    * iso-codes: Update to iso-codes-4.1
+    * e2fsprogs: Update to v1.44.4
+    * ibus: Update to 1.5.19
+    * harfbuzz: Update to 2.0.2
+    * zenity: Upgrade to 3.30.0
+    * librsvg: Upgrade to 2.44.8
+    * libsoup: Upgrade to 2.64.2
+    * glib-networking: Upgrade to 2.58.0
+    * json-glib: Upgrade to 1.4.4
+    * gtk3: Upgrade to 3.24.1
+    * dconf: Upgrade to 0.30.1
+    * pango: Use a Git tag instead of a tarball
+    * gsettings-desktop-schemas: Upgrade to 3.28.1
+    * at-spi2-atk: Upgrade to 2.30.0
+    * atk: Upgrade to 2.30.0
+    * gdk-pixbuf: Upgrade to 2.38.0
+    * gcab: Upgrade to 1.1
+    * vala: Upgrade to 0.42.2
+    * gobject-introspection: Upgrade to 1.58.0
+    * at-spi2-core: Upgrade to 2.30.0
+    * glib: Upgrade to 2.58.1
+    * mesa.bst: Build with OpenCL support (#333)
+
 freedesktop-sdk-18.08.18:
     * Fix readline linkage with ncurses
     * Harden glibc build
