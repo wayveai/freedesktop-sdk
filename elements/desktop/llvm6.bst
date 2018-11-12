@@ -106,6 +106,6 @@ sources:
   ref: 7c243f1485bddfdfedada3cd402ff4792ea82362ff91fbdac2dae67c6026b667
   directory: tools/clang
 - kind: tar
-  url: http://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
+  url: https://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
   ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
   directory: tools/compiler-rt
