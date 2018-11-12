@@ -23,6 +23,7 @@ config:
 public:
   bst:
     split-rules:
+      runtime: []
       devel:
         (>):
         - '**'

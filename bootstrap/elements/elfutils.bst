@@ -23,6 +23,9 @@ config:
 public:
   bst:
     split-rules:
+      runtime:
+        - '%{libdir}/lib*.so.*'
+
       devel:
         (>):
         - '%{bindir}/**'
