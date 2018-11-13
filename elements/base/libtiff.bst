@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -10,11 +12,9 @@ public:
         (>):
         - '%{libdir}/libtiff.so'
         - '%{libdir}/libtiffxx.so'
-  cpe:
-    version: '4.0.9'
 
 sources:
 - kind: git_tag
   url: https://gitlab.com/libtiff/libtiff.git
   track: master
-  ref: Release-v4-0-9-0-g020bd2fd3b4235b2175dafa9633d2b191c50e7cd
+  ref: v4.0.10-0-gb8eac98dd0849c3f888518ce5cecc020f8b2991c
