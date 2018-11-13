@@ -18,6 +18,6 @@ sources:
 - kind: git_tag
   url: https://gitlab.kitware.com/cmake/cmake
   track: master
-  ref: f84c15ef2fa30dd074fcccafccec6b9b69266619    # v3.12.0
+  ref: v3.12.4-0-g3a77329c40803b02fe33ffc86197c1baf291aaff
 - kind: patch
   path: patches/cmake-nolib64.patch
