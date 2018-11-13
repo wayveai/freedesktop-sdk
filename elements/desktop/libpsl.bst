@@ -8,7 +8,7 @@ depends:
   type: build
 - filename: base/git.bst
   type: build
-- filename: base/python2.bst
+- filename: base/python3.bst
   type: build
 - filename: base/which.bst
   type: build
@@ -25,3 +25,5 @@ sources:
   url: github:rockdaboot/libpsl
   track: master
   ref: libpsl-0.20.2-0-gb7f5c1414db2ead6f15737ab79fbc336a539ea16
+- kind: patch
+  path: patches/libpsl-Use-the-detected-PYTHON-version.patch
