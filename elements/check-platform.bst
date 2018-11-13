@@ -43,7 +43,6 @@ config:
   - base/perl.bst
   - base/perl-xml-parser.bst
   - base/python2.bst
-  - base/python2-usercustomize.bst
   - base/openssh.bst
   - base/patch.bst
   - base/pkg-config.bst
