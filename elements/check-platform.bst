@@ -42,7 +42,6 @@ config:
   - base/ninja.bst
   - base/perl.bst
   - base/perl-xml-parser.bst
-  - base/python2.bst
   - base/openssh.bst
   - base/patch.bst
   - base/pkg-config.bst
