@@ -21,6 +21,7 @@ variables:
   BST: bst --colors
 
 stages:
+  - bootstrap-manifest
   - update
   - flatpak
   - vm
@@ -107,7 +108,6 @@ check_update_elements:
     - git diff
   only:
     - schedules
-
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
