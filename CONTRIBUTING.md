@@ -33,7 +33,7 @@ git clone git@gitlab.com:freedesktop-sdk/freedesktop-sdk
 ```
 to avoid having to type your password when pushing.
 
-Please make sure that your git is connected with your email and name using 
+Please make sure that your git is connected with your email and name using
 ```
 git config user.name "MY_NAME"
 git config user.email "MY_EMAIL@example.com"
@@ -66,6 +66,34 @@ When writing commit messages follow these rules:
 7. Use the body to explain what and why, rather than how - When looking through the git history at changes it may not be obvious *why* a change was implemented, making code impossible to maintain
 
 For more information on git commit messages see [this guide](https://chris.beams.io/posts/git-commit/#seven-rules/).
+
+## When modifying a git source
+We use tools to track versions/security vulnerabilities, this requires us to
+track the exact version number we are using.
+
+Freedesktop-sdk does not utilise a traditional sha format, we combine
+the version number, number of commits from the tag(HEAD) and then the sha,
+which is easier to parse and automate.
+
+When modifying a "ref" (bst sha) for a git source, you need to generate a new
+ref format for the new version, this is possible by running:
+
+```
+git describe --tags --long --abbrev=40
+
+```
+
+Which should produce something like:
+
+```
+freedesktop-sdk-18.08.18-116-g30eb35057d1e2b0beb539b92d3af6708c252d21b
+
+```
+
+This ref clearly states the project version in a human readable format, whilst
+also making it easier to regex/automate the parsing of the version by other
+tools.
+
 
 ## Request developer access to the freedesktop-sdk repo
 Go to our gitlab [project page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk) and click the "Request Developer Access" button near the top of the page. One of the maintainers will review your request. Developer access allows you to push directly to our repo, enabling a simpler "push and merge request" workflow instead of using the github "fork and pull request" workflow.
