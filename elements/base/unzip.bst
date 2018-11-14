@@ -23,7 +23,7 @@ config:
 
   install-commands:
   - |
-    install -m 755 -D -t "%{install-root}%{bindir}" unzip funzip unzipsfx
+    install -m 755 -D -t "%{install-root}%{bindir}" unzip funzip unzipsfx unix/zipgrep
     ln -s "%{install-root}%{bindir}/unzip" "%{install-root}%{bindir}/zipinfo"
     install -m 644 -D -t "%{install-root}%{datadir}/man/man1" man/funzip.1 man/unzip.1 man/unzipsfx.1 man/zipgrep.1 man/zipinfo.1
 
