@@ -8,6 +8,8 @@ depends:
 - filename: desktop/libpulse.bst
 - filename: desktop/libsoup.bst
 - filename: desktop/mpg123.bst
+- filename: desktop/gtk3.bst
+- filename: desktop/gdk-pixbuf.bst
 - filename: desktop/gstreamer.bst
 - filename: desktop/gstreamer-plugins-base.bst
 - filename: desktop/gobject-introspection.bst
