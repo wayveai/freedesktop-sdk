@@ -10,5 +10,5 @@ variables:
     --enable-hwaccel=h264_vaapi,h264_vdpau \
     --enable-parser=h264 \
     --enable-demuxer=h264,mov
-  ffmpeg-prefix: '%{indep-libdir}/ffmpeg'
+  ffmpeg-prefix: '%{libdir}/ffmpeg'
   ffmpeg-libdir: '%{ffmpeg-prefix}/lib'
