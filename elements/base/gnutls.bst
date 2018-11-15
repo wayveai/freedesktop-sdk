@@ -22,6 +22,7 @@ depends:
 
 variables:
   conf-local: |
+    --disable-doc \
     --with-default-trust-store-pkcs11="pkcs11:"
 
 config:
