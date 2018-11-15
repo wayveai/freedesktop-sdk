@@ -41,4 +41,6 @@ sources:
 - kind: git_tag
   url: https://gitlab.com/gnutls/gnutls.git
   track: master
-  ref: gnutls_3_6_3-0-gc87f22eec1b412aaafa873ff81b02f52532bfa79
+  ref: gnutls_3_6_4-0-g1c0b4baa6a88bfb79a30eb6fb7c579688d40034e
+- kind: patch
+  path: patches/gnutls-priority_set-do-not-override-the-version-afte.patch
