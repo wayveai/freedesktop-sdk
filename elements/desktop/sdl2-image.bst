@@ -3,6 +3,10 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/sdl2.bst
+- filename: base/jpeg.bst
+- filename: base/libpng.bst
+- filename: base/libtiff.bst
+- filename: base/libwebp.bst
 
 variables:
   conf-local: |
