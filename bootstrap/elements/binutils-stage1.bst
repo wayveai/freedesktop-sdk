@@ -22,5 +22,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://sourceware.org/pub/binutils/releases/binutils-2.31.tar.xz
+  url: sourceware_pub:binutils/releases/binutils-2.31.tar.xz
   ref: 231036df7ef02049cdbff0681f4575e571f26ea8086cf70c2dcd3b6c0f4216bf
