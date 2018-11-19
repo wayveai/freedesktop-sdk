@@ -16,4 +16,4 @@ sources:
 - kind: git_tag
   url: github:seccomp/libseccomp/
   track: master
-  ref: 74b190e1aa05f07da0c61fb9a30dbc9c18ce2c9d    # 2.3.3
+  ref: v2.3.3-0-g74b190e1aa05f07da0c61fb9a30dbc9c18ce2c9d
