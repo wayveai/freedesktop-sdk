@@ -106,7 +106,7 @@ The `plugins/` directory contains our custom Buildstream
 
 ## Contributing
 
-For a guide to contributing, please see our CONTRIBUTING file.
+For a guide to contributing, please see our [CONTRIBUTING](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/blob/18.08/CONTRIBUTING.md) file.
 
 ## Acknowledgements
 
