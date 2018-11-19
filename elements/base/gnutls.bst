@@ -2,17 +2,33 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/bison.bst
+  type: build
 - filename: base/buildsystem-autotools.bst
   type: build
-- filename: base/nettle.bst
+- filename: base/gettext.bst
+  type: build
+- filename: base/git-minimal.bst
+  type: build
+- filename: base/gperf.bst
+  type: build
 - filename: base/libtasn1.bst
 - filename: base/libunistring.bst
 - filename: base/libidn2.bst
+- filename: base/nettle.bst
 - filename: base/p11-kit.bst
+- filename: base/patch.bst
+  type: build
 
 variables:
   conf-local: |
+    --disable-doc \
     --with-default-trust-store-pkcs11="pkcs11:"
+
+config:
+  configure-commands:
+    (<):
+    - ./bootstrap --skip-po
 
 public:
   bst:
@@ -23,6 +39,9 @@ public:
         - '%{libdir}/libgnutlsxx.so'
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.3.tar.xz
-  ref: ed642b66a4ecf4851ab2d809cd1475c297b6201d8e8bd14b4d1c08b53ffca993
+- kind: git_tag
+  url: https://gitlab.com/gnutls/gnutls.git
+  track: master
+  ref: gnutls_3_6_4-0-g1c0b4baa6a88bfb79a30eb6fb7c579688d40034e
+- kind: patch
+  path: patches/gnutls-priority_set-do-not-override-the-version-afte.patch
