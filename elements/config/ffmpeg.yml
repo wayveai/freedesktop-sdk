@@ -92,6 +92,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.ffmpeg.org/ffmpeg.git
+  url: ffmpeg:ffmpeg.git
   track: master
   ref: n4.1-0-g10506de9ad1fb050737ef79cf4853742b793c37d
