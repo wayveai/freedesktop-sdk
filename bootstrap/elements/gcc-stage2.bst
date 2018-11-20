@@ -48,6 +48,10 @@ variables:
     --enable-linker-build-id \
     %{conf-extra}
 
+  # strip-binaries fails when cross compiling because artifact
+  # contains 2 architectures.
+  strip-binaries: "true"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
