@@ -20,9 +20,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   # Behavior of malloc cannot be tested when cross-compiling so
   # ac_cv_func_malloc_0_nonull is set manually.
   conf-local: |

@@ -9,6 +9,8 @@ depends:
 - filename: binutils-stage1.bst
   type: build
 
+(@): build.yml
+
 variables:
   prefix: '%{tools}'
   lib: lib
@@ -19,9 +21,6 @@ variables:
         --with-fpu=vfpv3-d16 \
         --with-arch=armv7-a \
         --with-float=hard
-
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
 
   conf-local: |
     --target=%{triplet} \

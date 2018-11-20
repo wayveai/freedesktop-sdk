@@ -17,11 +17,22 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
-variables:
-  lib: lib
+# FIXME: investigate why we need CFLAGS to be empty.
+# However note this is not distributed.
+#(@): target.yml
 
+environment:
+  CPPFLAGS: ''
+  CFLAGS: -O2 -g
+  CXXFLAGS: -O2 -g
+  LDFLAGS: ''
+
+variables:
   host-triplet: '%{triplet}'
   build-triplet: '%{guessed-triplet}'
+
+  lib: lib
+
   conf-local: |
     --enable-multiarch \
     --disable-nls \
@@ -41,12 +52,6 @@ config:
 
   - |
     %{delete_libtool_files}
-
-environment:
-  CPPFLAGS: ''
-  CFLAGS: -O2 -g
-  CXXFLAGS: -O2 -g
-  LDFLAGS: ''
 
 sources:
 - kind: tar

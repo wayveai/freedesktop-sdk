@@ -19,6 +19,8 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
   conf-args: |
     --prefix=%{prefix} \

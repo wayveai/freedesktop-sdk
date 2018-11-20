@@ -21,6 +21,8 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 config:
   configure-commands:
   - |

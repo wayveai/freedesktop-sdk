@@ -23,9 +23,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected
   conf-local: |

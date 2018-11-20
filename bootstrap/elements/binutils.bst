@@ -19,10 +19,15 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
+# '-fno-exceptions' nullifies '-fexceptions' which breaks build on arm.
+# https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/jobs/110741993
+# FIXME: what happens when we make it depend on gcc.bst? Does it it fix it?
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   conf-local: |
+    CFLAGS="${CFLAGS} -fno-exceptions" \
     --disable-werror \
     --with-lib-path="%{libdir}:%{indep-libdir}" \
     --enable-gold \

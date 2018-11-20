@@ -24,9 +24,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   conf-local: |
     --without-lzma
 
