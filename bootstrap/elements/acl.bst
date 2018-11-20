@@ -28,9 +28,7 @@ public:
         - '%{sysroot}%{libdir}/libacl.so'
         - '%{sysroot}%{libexecdir}/libacl.so'
 
-variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
+(@): target.yml
 
 config:
   configure-commands:

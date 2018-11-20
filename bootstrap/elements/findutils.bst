@@ -19,9 +19,7 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
-variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
+(@): target.yml
 
 config:
   install-commands:

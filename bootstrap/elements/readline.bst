@@ -21,10 +21,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
-variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
+(@): target.yml
 
+variables:
   conf-local: |
     --with-curses \
     CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"

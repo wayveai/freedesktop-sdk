@@ -28,10 +28,10 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
   builddir: ''
-  host-triplet: '%{triplet}'
-  build-triplet: '%{guessed-triplet}'
   conf-link-args: |
     --disable-shared \
     --disable-static

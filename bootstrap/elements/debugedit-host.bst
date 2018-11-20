@@ -8,10 +8,10 @@ depends:
 - filename: file-stage1.bst
 - filename: elfutils-host.bst
 
+(@): build.yml
+
 variables:
   builddir: ''
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
   prefix: '%{tools}'
   conf-link-args: |
     --disable-shared \

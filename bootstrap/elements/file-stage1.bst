@@ -8,9 +8,9 @@ depends:
 - filename: tools-lib-path.bst
   type: runtime
 
+(@): build.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
   prefix: '%{tools}'
   lib: lib
 

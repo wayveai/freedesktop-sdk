@@ -8,11 +8,11 @@ depends:
 - filename: tools-lib-path.bst
   type: runtime
 
+(@): build.yml
+
 variables:
   prefix: '%{tools}'
   lib: lib
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
 
 sources:
 - kind: tar
