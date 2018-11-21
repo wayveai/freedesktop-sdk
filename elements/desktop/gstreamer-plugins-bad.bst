@@ -23,6 +23,7 @@ depends:
 - filename: base/curl.bst
 - filename: base/gettext.bst
   type: build
+- filename: base/libwebp.bst
 - filename: base/sndfile.bst
 - filename: base/which.bst
   type: build
