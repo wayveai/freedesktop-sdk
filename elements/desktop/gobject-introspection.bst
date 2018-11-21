@@ -29,4 +29,4 @@ sources:
 - kind: git_tag
   url: gnome:gobject-introspection
   track: gnome-3-30
-  ref: 1.58.0-0-g01bf21f398d5ece9ac2d78c00b4b362091f8e05c
+  ref: 1.58.1-0-gfff9144ad557fc4d2d4f868977d19e47f57c316d
