@@ -19,7 +19,7 @@ config:
 
   build-commands:
   - |
-    make -f unix/Makefile D_USE_BZ2="-DUSE_BZIP2" L_BZ2="-lbz2" %{target}
+    make -f unix/Makefile LOCAL_UNZIP="${CFLAGS}" LFLAGS1="${LDFLAGS}" D_USE_BZ2="-DUSE_BZIP2" L_BZ2="-lbz2" %{target}
 
   install-commands:
   - |
