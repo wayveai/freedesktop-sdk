@@ -12,4 +12,4 @@ config:
 sources:
 - kind: git_tag
   url: https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
-  ref: 7c76c80c8ea19217556179ffefc2296f78dba35e    # 4.16
+  ref: man-pages-4.16-0-g7c76c80c8ea19217556179ffefc2296f78dba35e
