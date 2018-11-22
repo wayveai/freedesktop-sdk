@@ -11,6 +11,10 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 
+variables:
+  conf-local: |
+    --with-drivers-path="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
+
 public:
   bst:
     split-rules:
