@@ -39,6 +39,7 @@ depends:
 - filename: desktop/gstreamer-plugins-ugly.bst
 - filename: desktop/gstreamer.bst
 - filename: desktop/gstreamer-libav.bst
+- filename: desktop/gstreamer-vaapi.bst
 - filename: desktop/gtk3.bst
 - filename: desktop/harfbuzz.bst
 - filename: desktop/hicolor-icon-theme.bst
