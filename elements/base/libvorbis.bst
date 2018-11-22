@@ -18,4 +18,4 @@ public:
 sources:
 - kind: git_tag
   url: github:xiph/vorbis
-  ref: d22c3ab5f633460abc2532feee60ca0892134cbf    # 1.3.6
+  ref: v1.3.6-0-gd22c3ab5f633460abc2532feee60ca0892134cbf
