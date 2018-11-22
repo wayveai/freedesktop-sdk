@@ -26,4 +26,4 @@ public:
 sources:
 - kind: git_tag
   url: github:p11-glue/p11-kit/
-  ref: 3dd5810143e51dabdc58069e55b09a950349fa08    # 0.23.12
+  ref: 0.23.12-0-g3dd5810143e51dabdc58069e55b09a950349fa08
