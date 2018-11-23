@@ -21,15 +21,15 @@ variables:
     --without-opie \
     --without-des
 
+  builddir: ""
+
 config:
   build-commands:
   - |
-    cd "%{builddir}"
     %{make} sasldir="%{libdir}/sasl2"
 
   install-commands:
   - |
-    cd "%{builddir}"
     %{make-install} sasldir="%{libdir}/sasl2"
 
   - |
