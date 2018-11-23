@@ -59,11 +59,6 @@ variables:
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
 
-environment:
-  (?):
-  - target_arch == "x86_64":
-      JOBS: -j2
-
 config:
   install-commands:
     (>):
