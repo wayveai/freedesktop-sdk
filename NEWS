@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.20:
+    * gstreamer-plugins-good: Enable gdkpixbuf and gtk plugins
+    * Add missing dependencies of SDL2_image (#469)
+    * mesa: Update to 18.2.5
+    * html5-codecs: Install ffmpeg to the right place (#466 and #430)
+    * gnutls: Update to gnutls_3_6_4
+    * unzip: install 'zipgrep' tool (#465)
+    * cmake: update to 3.12.4
+    * meson: update to latest
+    * libglvnd and libpsl: make it depend on python3
+    * ffmpeg: Update to n4.1
+    * rust: Update to 1.30.1
+
 freedesktop-sdk-18.08.19:
     * qmake: Update to 5.11.2
     * sdl2: make dependencies on ibus and fcitx build only
