@@ -17,6 +17,8 @@ depends:
 - filename: cross-installation-links.bst
   type: build
 
+(@): build.yml
+
 variables:
   conf-link-args: |
     --enable-shared \
@@ -30,9 +32,6 @@ variables:
         --with-fpu=vfpv3-d16 \
         --with-arch=armv7-a \
         --with-float=hard
-
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
 
   conf-local: |
     --target=%{triplet} \
@@ -48,6 +47,10 @@ variables:
     --enable-deterministic-archives \
     --enable-linker-build-id \
     %{conf-extra}
+
+  # strip-binaries fails when cross compiling because artifact
+  # contains 2 architectures.
+  strip-binaries: "true"
 
 sources:
 - kind: tar

@@ -21,6 +21,8 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 config:
   configure-commands:
   - |
@@ -29,6 +31,7 @@ config:
     ../configure \
     --build=%{guessed-triplet} \
     --host=%{triplet} \
+    --disable-stripping \
     --libdir=%{libdir} \
     --with-pkg-config-libdir="%{libdir}/pkgconfig" \
     --disable-widec \
@@ -46,6 +49,7 @@ config:
     ../configure \
     --build=%{guessed-triplet} \
     --host=%{triplet} \
+    --disable-stripping \
     --libdir=%{libdir} \
     --with-pkg-config-libdir="%{libdir}/pkgconfig" \
     --enable-widec \

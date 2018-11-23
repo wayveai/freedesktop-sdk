@@ -22,9 +22,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   conf-local: |
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \

@@ -1,0 +1,22 @@
+variables:
+  host-triplet: '%{triplet}'
+  build-triplet: '%{guessed-triplet}'
+
+environment:
+  (?):
+    - target_arch == "x86_64":
+        CFLAGS:  "%{target_flags_x86_64}"
+        CXXFLAGS: "%{target_flags_x86_64}"
+        LDFLAGS:  "%{ldflags_defaults}"
+    - target_arch == "i686":
+        CFLAGS: "%{target_flags_i686}"
+        CXXFLAGS: "%{target_flags_i686}"
+        LDFLAGS:  "%{ldflags_defaults}"
+    - target_arch == "arm":
+        CFLAGS:  "%{target_flags_arm}"
+        CXXFLAGS: "%{target_flags_arm}"
+        LDFLAGS:  "%{ldflags_defaults}"
+    - target_arch == "aarch64":
+        CFLAGS:  "%{target_flags_aarch64}"
+        CXXFLAGS: "%{target_flags_aarch64}"
+        LDFLAGS:  "%{ldflags_defaults}"

@@ -18,9 +18,9 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
   conf-local: |
     gl_cv_func_getopt_gnu=yes
 

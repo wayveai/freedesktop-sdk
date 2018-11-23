@@ -6,11 +6,11 @@ depends:
 - filename: gnu-config.bst
   type: build
 
+(@): build.yml
+
 variables:
   prefix: /glibc
   lib: lib
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
   # -D_FORTIFY_SOURCE=2 breaks building glibc
   common_flags: "-O2 -g -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
 

@@ -1,6 +1,8 @@
 kind: autotools
 description: GNU coreutils
 
+(@): build.yml
+
 depends:
 - filename: dependencies/base-sdk.bst
   type: build

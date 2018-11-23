@@ -25,9 +25,7 @@ public:
         (>):
         - '%{sysroot}%{libdir}/libattr.so'
 
-variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{triplet}'
+(@): target.yml
 
 config:
   install-commands:

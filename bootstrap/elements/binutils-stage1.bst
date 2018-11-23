@@ -7,10 +7,10 @@ depends:
 - filename: gnu-config.bst
   type: build
 
+(@): build.yml
+
 variables:
   lib: lib
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
   prefix: '%{tools}'
   conf-local: |
     --target=%{triplet} \
