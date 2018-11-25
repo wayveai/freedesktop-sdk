@@ -13,3 +13,7 @@ sources:
   url: savannah:patch.git
   track: master
   ref: v2.7.6-0-g40b387de08653a1e46872b8ac1a6a14b9b94feb3
+  submodules:
+    gnulib:
+      checkout: True
+      url: savannah:gnulib
