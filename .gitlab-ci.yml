@@ -12,10 +12,10 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_BST_AMD64: "${DOCKER_REGISTRY}/amd64/bst:ff7883426a29249d5e4a55acc6acdd82a55a351a"
-  DOCKER_BST_AARCH64: "${DOCKER_REGISTRY}/aarch64/bst:ff7883426a29249d5e4a55acc6acdd82a55a351a"
-  DOCKER_QEMU_AMD64: "${DOCKER_REGISTRY}/amd64/qemu:ff7883426a29249d5e4a55acc6acdd82a55a351a"
-  DOCKER_QEMU_AARCH64: "${DOCKER_REGISTRY}/aarch64/qemu:ff7883426a29249d5e4a55acc6acdd82a55a351a"
+  DOCKER_BST_AMD64: "${DOCKER_REGISTRY}/amd64/bst:8a3f23d00b21604d78364384a36ad4369832d24c"
+  DOCKER_BST_AARCH64: "${DOCKER_REGISTRY}/aarch64/bst:8a3f23d00b21604d78364384a36ad4369832d24c"
+  DOCKER_QEMU_AMD64: "${DOCKER_REGISTRY}/amd64/qemu:8a3f23d00b21604d78364384a36ad4369832d24c"
+  DOCKER_QEMU_AARCH64: "${DOCKER_REGISTRY}/aarch64/qemu:8a3f23d00b21604d78364384a36ad4369832d24c"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -24,10 +24,7 @@ stages:
   - update
   - flatpak
   - vm
-  - publish_x86_64
-  - publish_i686
-  - publish_aarch64
-  - publish_arm
+  - publish
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -203,28 +200,18 @@ minimal_systemd_vm_image_x86_64:
     DIALOG: root-login
 
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
+  stage: publish
   script:
-    - |
-      [ -n "${FREEDESKTOP_GPG_PRIV}" ]
-    - |
-      echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
-
     - make ARCH=${ARCH} build
+    - make ARCH=${ARCH} export
 
-    - echo "Clone the releases OSTree repo locally"
-    - ostree init --repo=releases --mode=archive-z2
-    - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
-    - ostree pull --repo=releases origin --mirror
-
-    - make ARCH=${ARCH} GPG_OPTS="--gpg-sign=${FREEDESKTOP_GPG_ID}" REPO=releases export
-
-    - echo "Push to the releases ostree repo"
-    - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
-    - git clone https://github.com/ssssam/ostree-push.git
-    - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
     # Trust the host key of the release server.
     - ssh-keyscan "${BST_RELEASES_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_RELEASES_SERVER_ADDRESS}"
+
+    - BRANCHES=$(find repo/refs/heads/ -type f | sed s,repo/refs/heads/,,)
+
+    - rsync -a repo/ releases@${BST_RELEASES_SERVER_ADDRESS}:incoming/repo-${CI_JOB_ID}
+    - ssh releases@${BST_RELEASES_SERVER_ADDRESS} import-commits -c /etc/releases-config.json incoming/repo-${CI_JOB_ID} ${BRANCHES}
   artifacts:
     when: always
     paths:
@@ -237,7 +224,6 @@ minimal_systemd_vm_image_x86_64:
   <<: *gitlab_cache_pull_push
 
 publish_x86_64:
-  stage: publish_x86_64
   image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
@@ -246,7 +232,6 @@ publish_x86_64:
     ARCH: x86_64
 
 publish_i686:
-  stage: publish_i686
   image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
@@ -255,7 +240,6 @@ publish_i686:
     ARCH: i686
 
 publish_aarch64:
-  stage: publish_aarch64
   image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
@@ -264,7 +248,6 @@ publish_aarch64:
     ARCH: aarch64
 
 publish_arm:
-  stage: publish_arm
   image: $DOCKER_BST_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
