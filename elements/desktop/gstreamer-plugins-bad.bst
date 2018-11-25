@@ -64,4 +64,5 @@ sources:
   ref: 1.14.4-0-g566e4ecc223b18fce8bd932f5e4885f41f746dd4
   submodules:
     common:
+      checkout: True
       url: freedesktop:gstreamer/common
