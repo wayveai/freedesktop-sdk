@@ -43,5 +43,9 @@ sources:
   url: https://gitlab.com/gnutls/gnutls.git
   track: master
   ref: gnutls_3_6_4-0-g1c0b4baa6a88bfb79a30eb6fb7c579688d40034e
+  submodules:
+    gnulib:
+      checkout: True
+      url: savannah:gnulib
 - kind: patch
   path: patches/gnutls-priority_set-do-not-override-the-version-afte.patch
