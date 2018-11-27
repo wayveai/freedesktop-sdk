@@ -45,6 +45,7 @@ variables:
       enable_libunwind: 'false'
 
   meson-local: |
+    -Db_ndebug=true \
     -Dglvnd=true \
     -Dlibunwind=%{enable_libunwind} \
     -Dselinux=false \
