@@ -27,4 +27,4 @@ public:
 sources:
 - kind: git_tag
   url: github:pkgconf/pkgconf
-  ref: 101b99b5b59d58fe6c6dc46ae22edb049cc0bd3a   #  1.5.3
+  ref: pkgconf-1.5.3-0-g101b99b5b59d58fe6c6dc46ae22edb049cc0bd3a
