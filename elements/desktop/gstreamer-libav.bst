@@ -29,11 +29,8 @@ sources:
   ref: 1.14.0-54-gdb8235024523a0375443f36eb5fec627386452d5
   submodules:
     common:
+      checkout: True
       url: freedesktop:gstreamer/common
-    gst-libs/ext/libav:
-      url: https://git.ffmpeg.org/ffmpeg.git
-    gst-libs/ext/gas-preprocessor:
-      url: git://git.libav.org/gas-preprocessor.git
 - kind: patch
   path: patches/gst-libav-stop-caching-codecs.patch
 - kind: patch
