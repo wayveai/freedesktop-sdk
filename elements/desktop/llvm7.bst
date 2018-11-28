@@ -2,7 +2,9 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
+  type: build
 - filename: base/libffi.bst
+  type: build
 - filename: base/buildsystem-cmake.bst
   type: build
 
@@ -73,11 +75,16 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{debugdir}%{bindir}/**'
+        - '%{debugdir}%{libdir}/LLVMHello.so.debug'
+        - '%{debugdir}%{libdir}/LLVMgold.so.debug'
+        - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-6.0.1.so'
+        - '%{libdir}/libLLVM-7.0.0.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/LLVMgold.so'
+        - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so'
         - '%{libdir}/libclang.so'
         - '%{libdir}/BugpointPasses.so'
@@ -94,13 +101,13 @@ public:
 
 sources:
 - kind: tar
-  url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
-  ref: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
+  url: https://releases.llvm.org/7.0.0/llvm-7.0.0.src.tar.xz
+  ref: 8bc1f844e6cbde1b652c19c1edebc1864456fd9c78b8c1bea038e51b363fe222
 - kind: tar
-  url: https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz
-  ref: 7c243f1485bddfdfedada3cd402ff4792ea82362ff91fbdac2dae67c6026b667
+  url: https://releases.llvm.org/7.0.0/cfe-7.0.0.src.tar.xz
+  ref: 550212711c752697d2f82c648714a7221b1207fd9441543ff4aa9e3be45bba55
   directory: tools/clang
 - kind: tar
-  url: https://releases.llvm.org/6.0.1/compiler-rt-6.0.1.src.tar.xz
-  ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
+  url: https://releases.llvm.org/7.0.0/compiler-rt-7.0.0.src.tar.xz
+  ref: bdec7fe3cf2c85f55656c07dfb0bd93ae46f2b3dd8f33ff3ad6e7586f4c670d6
   directory: tools/compiler-rt

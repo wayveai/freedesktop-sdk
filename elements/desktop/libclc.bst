@@ -2,7 +2,7 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/llvm6.bst
+- filename: desktop/llvm7.bst
   type: build
 - filename: base/python3.bst
   type: build

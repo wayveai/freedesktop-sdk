@@ -2,7 +2,10 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/llvm6.bst
+- filename: desktop/llvm7.bst
+  type: build
+- filename: desktop/llvm7-runtime.bst
+  type: runtime
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
 - filename: desktop/libclc.bst
