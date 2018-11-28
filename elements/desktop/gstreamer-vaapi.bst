@@ -37,3 +37,7 @@ sources:
   url: freedesktop:gstreamer/gstreamer-vaapi
   track: '1.14'
   ref: 1.14.4-0-g8b1b1f44bda266830f2f28adbb95720f3bc3433f
+  submodules:
+    common:
+      checkout: True
+      url: freedesktop:gstreamer/common
