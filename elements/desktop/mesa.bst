@@ -84,6 +84,7 @@ config:
       rm -f "%{install-root}%{libdir}"/libGLESv2*
       rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
       rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+      rm -f "%{install-root}%{libdir}/libglapi.so"
 
 public:
   bst:
