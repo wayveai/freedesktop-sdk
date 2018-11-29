@@ -5,7 +5,9 @@ depends:
 - filename: base/tar.bst
 
 variables:
-  conf-local: --with-rmt="%{libexecdir}/rmt"
+  conf-local: |
+    --with-rmt="%{libexecdir}/rmt" \
+    --mandir=%{prefix}/share/runtime/docs/man
 
 sources:
 - kind: tar
