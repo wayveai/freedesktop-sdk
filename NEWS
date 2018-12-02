@@ -1,5 +1,21 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.21:
+    * mesa: Update to 18.2.6
+    * mesa: Set NDEBUG
+    * libcap: bump to 2.26
+    * Build mesa, rust and libclc against llvm7
+    * openssl: Bump version to 1.0.2q (#477)
+    * Fix Intel's VAAPI extension (#463)
+    * Enable webp plugin in gstreamer-plugins-bad (#370)
+    * Add gstreamer-vaapi (#485)
+    * cmake: Bump to v3.13.0
+    * Add source mirrors to sourceware repos (#470)
+    * findutils, m4, gzip: Fix build against glibc 2.28
+    * gobject-introspection: Bump to 1.58.1
+    * Bump strate to latest release (#481)
+    * Build flags refactoring for the bootstrap subproject
+
 freedesktop-sdk-18.08.20:
     * gstreamer-plugins-good: Enable gdkpixbuf and gtk plugins
     * Add missing dependencies of SDL2_image (#469)
