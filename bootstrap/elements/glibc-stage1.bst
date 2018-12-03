@@ -11,8 +11,6 @@ depends:
 variables:
   prefix: /glibc
   lib: lib
-  # -D_FORTIFY_SOURCE=2 breaks building glibc
-  common_flags: "-O2 -g -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
 
 sources:
 - kind: git_tag

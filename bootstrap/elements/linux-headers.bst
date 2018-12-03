@@ -5,6 +5,8 @@ depends:
 - filename: dependencies/base-sdk.bst
   type: build
 
+(@): build.yml
+
 variables:
   (?):
   - target_arch == "aarch64":
