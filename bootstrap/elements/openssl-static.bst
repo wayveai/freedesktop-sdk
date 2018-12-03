@@ -18,6 +18,8 @@ depends:
 - filename: debugedit-host.bst
   type: build
 
+(@): target.yml
+
 variables:
   builddir: ''
   openssl-target: linux-%{target_arch}

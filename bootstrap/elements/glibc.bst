@@ -73,7 +73,7 @@ variables:
   lib: lib
 
   # -D_FORTIFY_SOURCE=2 breaks building glibc
-  target_common_flags: "-O2 -g -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
+  target_common_flags: "%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
   arch_options: ''
   (?):
     - target_arch == "i686" or target_arch == "x86_64" or target_arch == "aarch64":
