@@ -64,6 +64,7 @@ public:
     product: python
 
 sources:
-- kind: tar
-  url: https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
-  ref: 0382996d1ee6aafe59763426cf0139ffebe36984474d0ec4126dd1c40a8b3549
+- kind: git_tag
+  track: master
+  url: https://github.com/python/cpython.git
+  ref: v3.7.1-0-g260ec2c36abd73bac51489108409160427979ede
