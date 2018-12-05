@@ -51,7 +51,7 @@ variables:
     -Dglvnd=true \
     -Dlibunwind=%{enable_libunwind} \
     -Dselinux=false \
-    -Dosmesa=none \
+    -Dosmesa=gallium \
     -Degl=true \
     -Dgles1=false \
     -Dgles2=true \
@@ -95,6 +95,7 @@ public:
         (>):
         - '%{libdir}/libgbm.so'
         - '%{libdir}/libglapi.so'
+        - '%{libdir}/libOSMesa.so'
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
         - '%{libdir}/vdpau/libvdpau_*.so'
