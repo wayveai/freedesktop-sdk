@@ -32,5 +32,8 @@ sources:
   url: github:systemd/systemd.git
   track: master
   ref: v239-0-gde7436b02badc82200dc127ff190b8155769b8e7
+  # We enable various kernel configurations required for systemd
+  # in vm/bsp-generic/linux.bst. When bumping the systemd version
+  # please check the systemd README for any necessary changes
 - kind: patch
   path: patches/0001-meson-rename-Ddebug-to-Ddebug-extra.patch
