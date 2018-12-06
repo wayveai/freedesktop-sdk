@@ -10,6 +10,7 @@ depends:
 - filename: base/bison.bst
 - filename: base/ccache.bst
 - filename: base/cmake.bst
+- filename: base/cpio.bst
 - filename: base/docbook-xml.bst
 - filename: base/docbook-xsl.bst
 - filename: base/e2fsprogs.bst
