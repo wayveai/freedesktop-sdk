@@ -16,6 +16,9 @@ depends:
 variables:
   prefix: /app
   lib: lib
+  builddir: ''
+  conf-local: |
+    --enable-osmesa=no
 
 environment:
   PKG_CONFIG_PATH: '/app/lib/pkgconfig:'
