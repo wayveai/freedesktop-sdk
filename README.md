@@ -1,6 +1,7 @@
 # Freedesktop SDK
 
-The Freedesktop SDK project provides Platform and SDK runtimes for
+The [Freedesktop SDK](https://freedesktop-sdk.io/ ) project provides Platform
+and SDK runtimes for
 [Flatpak](https://flatpak.org) apps and runtimes based on Freedesktop modules.
 It was originally started as a [Flatpak subproject](https://github.com/flatpak/freedesktop-sdk-images)
 to create a basic-neutral runtime. It is now a separate project, similar to
