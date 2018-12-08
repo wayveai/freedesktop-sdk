@@ -2,7 +2,10 @@ kind: pip
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/python2.bst
+- filename: base/python3.bst
+
+variables:
+  pip: pip3
 
 sources:
 - kind: tar

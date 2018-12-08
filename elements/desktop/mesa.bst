@@ -26,9 +26,11 @@ depends:
 - filename: base/libunwind.bst
 - filename: base/buildsystem-meson.bst
   type: build
-- filename: base/python2.bst
+- filename: base/python3.bst
   type: build
-- filename: base/python2-mako.bst
+- filename: base/python3-mako.bst
+  type: build
+- filename: base/gettext.bst
   type: build
 
 variables:
@@ -84,6 +86,7 @@ config:
       rm -f "%{install-root}%{libdir}"/libGLESv2*
       rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
       rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+      rm -f "%{install-root}%{libdir}/libglapi.so"
 
 public:
   bst:
@@ -100,4 +103,4 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  ref: mesa-18.2.6-0-g3e741344d79e3ae67b1ad645e7d56fe6c0fb2ae2
+  ref: mesa-18.3.0-0-gd603cd9d84c8293c22407030c7664ac775ffb97f
