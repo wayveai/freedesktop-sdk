@@ -44,9 +44,9 @@ environment:
 
 sources:
 - kind: tar
-  url: github:rust-lang/cargo/archive/0.31.1.tar.gz
+  url: github:rust-lang/cargo/archive/0.32.0.tar.gz
   directory: source
-  ref: d14462641610a56fd444200b02bb2547b663de3e63548990fba2e05435f4c096
+  ref: c62e41489179a9b8e1ae0dbed379c278f9de805abba41608a05c069478a739fd
 
 # The following is generated with script generate_cargo_dependencies.py
 - kind: crate
@@ -59,8 +59,8 @@ sources:
   url: https://static.crates.io/crates/ansi_term/ansi_term-0.11.0.crate
   ref: ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b
 - kind: crate
-  url: https://static.crates.io/crates/arrayvec/arrayvec-0.4.7.crate
-  ref: a1e964f9e24d588183fcb43503abda40d288c8657dfc27311516ce2f05675aef
+  url: https://static.crates.io/crates/arrayvec/arrayvec-0.4.8.crate
+  ref: f405cc4c21cd8b784f6c8fc2adf9bc00f59558f0049b5ec21517f875963040cc
 - kind: crate
   url: https://static.crates.io/crates/atty/atty-0.2.11.crate
   ref: 9a7d5b8723950951411ee34d271d99dddcc2035a16ab25310ea2c8cfd4369652
@@ -71,6 +71,12 @@ sources:
   url: https://static.crates.io/crates/backtrace-sys/backtrace-sys-0.1.24.crate
   ref: c66d56ac8dabd07f6aacdaf633f4b8262f5b3601a810a0dcddffd5c22c69daa0
 - kind: crate
+  url: https://static.crates.io/crates/bit-set/bit-set-0.5.0.crate
+  ref: 6f1efcc46c18245a69c38fcc5cc650f16d3a59d034f3106e9ed63748f695730a
+- kind: crate
+  url: https://static.crates.io/crates/bit-vec/bit-vec-0.5.0.crate
+  ref: 4440d5cb623bb7390ae27fec0bb6c61111969860f8e3ae198bfa0663645e67cf
+- kind: crate
   url: https://static.crates.io/crates/bitflags/bitflags-1.0.4.crate
   ref: 228047a76f468627ca71776ecdebd732a3423081fcf5125585bcd7c49886ce12
 - kind: crate
@@ -79,6 +85,12 @@ sources:
 - kind: crate
   url: https://static.crates.io/crates/build_const/build_const-0.2.1.crate
   ref: 39092a32794787acd8525ee150305ff051b0aa6cc2abaf193924f5ab05425f39
+- kind: crate
+  url: https://static.crates.io/crates/byteorder/byteorder-1.2.7.crate
+  ref: 94f88df23a25417badc922ab0f5716cc1330e87f71ddd9203b3a3ccd9cedf75d
+- kind: crate
+  url: https://static.crates.io/crates/bytesize/bytesize-1.0.0.crate
+  ref: 716960a18f978640f25101b5cbf1c6f6b0d3192fab36a2d98ca96f0ecbe41010
 - kind: crate
   url: https://static.crates.io/crates/cc/cc-1.0.25.crate
   ref: f159dfd43363c4d08055a07703eb7a3406b0dac4d0584d96965a3262db3c9d16
@@ -107,6 +119,9 @@ sources:
   url: https://static.crates.io/crates/crc/crc-1.8.1.crate
   ref: d663548de7f5cca343f1e0a48d14dcfb0e9eb4e079ec58883b7251539fa10aeb
 - kind: crate
+  url: https://static.crates.io/crates/crc32fast/crc32fast-1.1.2.crate
+  ref: e91d5240c6975ef33aeb5f148f35275c25eda8e8a5f95abe421978b05b8bf192
+- kind: crate
   url: https://static.crates.io/crates/crossbeam-channel/crossbeam-channel-0.2.6.crate
   ref: 7b85741761b7f160bc5e7e0c14986ef685b7f8bf9b7ad081c60c604bb4649827
 - kind: crate
@@ -116,8 +131,8 @@ sources:
   url: https://static.crates.io/crates/crossbeam-utils/crossbeam-utils-0.5.0.crate
   ref: 677d453a17e8bd2b913fa38e8b9cf04bcdbb5be790aa294f2389661d72036015
 - kind: crate
-  url: https://static.crates.io/crates/crossbeam-utils/crossbeam-utils-0.6.0.crate
-  ref: 6efda20eef4ccf2a862d442a1e0319d568f9133e16a085a1f8126fe9b6da852d
+  url: https://static.crates.io/crates/crossbeam-utils/crossbeam-utils-0.6.2.crate
+  ref: e07fc155212827475223f0bcfae57e945e694fc90950ddf3f6695bbfd5555c72
 - kind: crate
   url: https://static.crates.io/crates/crypto-hash/crypto-hash-0.3.1.crate
   ref: 09de9ee0fc255ace04c7fa0763c9395a945c37c8292bb554f8d48361d1dcf1b4
@@ -137,11 +152,11 @@ sources:
   url: https://static.crates.io/crates/failure_derive/failure_derive-0.1.3.crate
   ref: 64c2d913fe8ed3b6c6518eedf4538255b989945c14c2a7d5cbff62a5e2120596
 - kind: crate
-  url: https://static.crates.io/crates/filetime/filetime-0.2.2.crate
-  ref: 6f57e64bf5eae62efd4efed005ae81a7115012a61f522bba54542e1a556af921
+  url: https://static.crates.io/crates/filetime/filetime-0.2.4.crate
+  ref: a2df5c1a8c4be27e7707789dc42ae65976e60b394afd293d1419ab915833e646
 - kind: crate
-  url: https://static.crates.io/crates/flate2/flate2-1.0.4.crate
-  ref: 3b0c7353385f92079524de3b7116cf99d73947c08a7472774e9b3b04bff3b901
+  url: https://static.crates.io/crates/flate2/flate2-1.0.6.crate
+  ref: 2291c165c8e703ee54ef3055ad6188e3d51108e2ded18e9f2476e774fc5ad3d4
 - kind: crate
   url: https://static.crates.io/crates/fnv/fnv-1.0.6.crate
   ref: 2fad85553e09a6f881f739c29f0b00b0f01357c743266d478b68951ce23285f3
@@ -182,8 +197,8 @@ sources:
   url: https://static.crates.io/crates/home/home-0.3.3.crate
   ref: 80dff82fb58cfbbc617fb9a9184b010be0529201553cda50ad04372bc2333aff
 - kind: crate
-  url: https://static.crates.io/crates/humantime/humantime-1.1.1.crate
-  ref: 0484fda3e7007f2a4a0d9c3a703ca38c71c54c55602ce4660c419fd32e188c9e
+  url: https://static.crates.io/crates/humantime/humantime-1.2.0.crate
+  ref: 3ca7e5f2e110db35f93b837c81797f3714500b81d517bf20c431b16d3ca4f114
 - kind: crate
   url: https://static.crates.io/crates/idna/idna-0.1.5.crate
   ref: 38f09e0f0b1fb55fdee1f17470ad800da77af5186a1a76c026b679358b7e844e
@@ -194,8 +209,8 @@ sources:
   url: https://static.crates.io/crates/itoa/itoa-0.4.3.crate
   ref: 1306f3464951f30e30d12373d31c79fbd52d236e5e896fd92f96ec7babbbe60b
 - kind: crate
-  url: https://static.crates.io/crates/jobserver/jobserver-0.1.11.crate
-  ref: 60af5f849e1981434e4a31d3d782c4774ae9b434ce55b101a96ecfd09147e8be
+  url: https://static.crates.io/crates/jobserver/jobserver-0.1.12.crate
+  ref: dd80e58f77e0cdea53ba96acc5e04479e5ffc5d869626a6beafe50fed867eace
 - kind: crate
   url: https://static.crates.io/crates/kernel32-sys/kernel32-sys-0.2.2.crate
   ref: 7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d
@@ -203,14 +218,17 @@ sources:
   url: https://static.crates.io/crates/lazy_static/lazy_static-1.2.0.crate
   ref: a374c89b9db55895453a74c1e38861d9deec0b01b405a82516e9d5de4820dea1
 - kind: crate
-  url: https://static.crates.io/crates/lazycell/lazycell-1.2.0.crate
-  ref: ddba4c30a78328befecec92fc94970e53b3ae385827d28620f0f5bb2493081e0
+  url: https://static.crates.io/crates/lazycell/lazycell-1.2.1.crate
+  ref: b294d6fa9ee409a054354afc4352b0b9ef7ca222c69b8812cbea9e7d2bf3783f
 - kind: crate
-  url: https://static.crates.io/crates/libc/libc-0.2.43.crate
-  ref: 76e3a3ef172f1a0b9a9ff0dd1491ae5e6c948b94479a3021819ba7d860c8645d
+  url: https://static.crates.io/crates/libc/libc-0.2.44.crate
+  ref: 10923947f84a519a45c8fefb7dd1b3e8c08747993381adee176d7a82b4195311
 - kind: crate
   url: https://static.crates.io/crates/libgit2-sys/libgit2-sys-0.7.10.crate
   ref: 4916b5addc78ec36cc309acfcdf0b9f9d97ab7b84083118b248709c5b7029356
+- kind: crate
+  url: https://static.crates.io/crates/libnghttp2-sys/libnghttp2-sys-0.1.1.crate
+  ref: d75d7966bda4730b722d1eab8e668df445368a24394bae9fc1e8dc0ab3dbe4f4
 - kind: crate
   url: https://static.crates.io/crates/libssh2-sys/libssh2-sys-0.2.11.crate
   ref: 126a1f4078368b163bfdee65fbab072af08a1b374a5551b21e87ade27b1fbf9d
@@ -218,8 +236,8 @@ sources:
   url: https://static.crates.io/crates/libz-sys/libz-sys-1.0.25.crate
   ref: 2eb5e43362e38e2bca2fd5f5134c4d4564a23a5c28e9b95411652021a8675ebe
 - kind: crate
-  url: https://static.crates.io/crates/lock_api/lock_api-0.1.4.crate
-  ref: 775751a3e69bde4df9b38dd00a1b5d6ac13791e4223d4a0506577f0dd27cfb7a
+  url: https://static.crates.io/crates/lock_api/lock_api-0.1.5.crate
+  ref: 62ebf1391f6acad60e5c8b43706dde4582df75c06698ab44511d15016bc2442c
 - kind: crate
   url: https://static.crates.io/crates/log/log-0.4.6.crate
   ref: c84ec4b527950aa83a329754b01dbe3f58361d1c5efacd1f6d68c494d08a17c6
@@ -245,14 +263,17 @@ sources:
   url: https://static.crates.io/crates/miow/miow-0.3.3.crate
   ref: 396aa0f2003d7df8395cb93e09871561ccc3e785f0acb369170e8cc74ddf9226
 - kind: crate
-  url: https://static.crates.io/crates/nodrop/nodrop-0.1.12.crate
-  ref: 9a2228dca57108069a5262f2ed8bd2e82496d2e074a06d1ccc7ce1687b6ae0a2
+  url: https://static.crates.io/crates/nodrop/nodrop-0.1.13.crate
+  ref: 2f9667ddcc6cc8a43afc9b7917599d7216aa09c463919ea32c59ed6cac8bc945
+- kind: crate
+  url: https://static.crates.io/crates/num-traits/num-traits-0.2.6.crate
+  ref: 0b3a5d7cc97d6d30d8b9bc8fa19bf45349ffe46241e8816f50f62f6d6aaabee1
 - kind: crate
   url: https://static.crates.io/crates/num_cpus/num_cpus-1.8.0.crate
   ref: c51a3322e4bca9d212ad9a158a02abc6934d005490c054a2778df73a70aa0a30
 - kind: crate
-  url: https://static.crates.io/crates/opener/opener-0.3.0.crate
-  ref: 176cd8eadff5ef9fa5c6d19452535662c02c6bf29b3d594a3fc01f749bb24c94
+  url: https://static.crates.io/crates/opener/opener-0.3.2.crate
+  ref: 04b1d6b086d9b3009550f9b6f81b10ad9428cf14f404b8e1a3a06f6f012c8ec9
 - kind: crate
   url: https://static.crates.io/crates/openssl/openssl-0.10.15.crate
   ref: 5e1309181cdcbdb51bc3b6bedb33dfac2a83b3d585033d3f6d9e22e8c1928613
@@ -260,14 +281,14 @@ sources:
   url: https://static.crates.io/crates/openssl-probe/openssl-probe-0.1.2.crate
   ref: 77af24da69f9d9341038eba93a073b1fdaaa1b788221b00a69bce9e762cb32de
 - kind: crate
-  url: https://static.crates.io/crates/openssl-src/openssl-src-111.0.1+1.1.1.crate
-  ref: d1edaed888fd85a54a2646bf02992931ddefdda3b1a748fc79f088a8db27fcbe
+  url: https://static.crates.io/crates/openssl-src/openssl-src-111.1.0+1.1.1a.crate
+  ref: 26bb632127731bf4ac49bf86a5dde12d2ca0918c2234fc39d79d4da2ccbc6da7
 - kind: crate
   url: https://static.crates.io/crates/openssl-sys/openssl-sys-0.9.39.crate
   ref: 278c1ad40a89aa1e741a1eed089a2f60b18fab8089c3139b542140fc7d674106
 - kind: crate
-  url: https://static.crates.io/crates/owning_ref/owning_ref-0.3.3.crate
-  ref: cdf84f41639e037b484f93433aa3897863b561ed65c6e59c7073d7c561710f37
+  url: https://static.crates.io/crates/owning_ref/owning_ref-0.4.0.crate
+  ref: 49a4b8ea2179e6a2e27411d3bca09ca6dd630821cf6894c6c7c8467a8ee7ef13
 - kind: crate
   url: https://static.crates.io/crates/parking_lot/parking_lot-0.6.4.crate
   ref: f0802bff09003b291ba756dc7e79313e51cc31667e94afbe847def490424cde5
@@ -281,8 +302,11 @@ sources:
   url: https://static.crates.io/crates/pkg-config/pkg-config-0.3.14.crate
   ref: 676e8eb2b1b4c9043511a9b7bea0915320d7e502b0a079fb03f9635a5252b18c
 - kind: crate
-  url: https://static.crates.io/crates/proc-macro2/proc-macro2-0.4.21.crate
-  ref: ab2fc21ba78ac73e4ff6b3818ece00be4e175ffbef4d0a717d978b48b24150c4
+  url: https://static.crates.io/crates/proc-macro2/proc-macro2-0.4.24.crate
+  ref: 77619697826f31a02ae974457af0b29b723e5619e113e9397b8b82c6bd253f09
+- kind: crate
+  url: https://static.crates.io/crates/proptest/proptest-0.8.7.crate
+  ref: 926d0604475349f463fe44130aae73f2294b5309ab2ca0310b998bd334ef191f
 - kind: crate
   url: https://static.crates.io/crates/quick-error/quick-error-1.2.2.crate
   ref: 9274b940887ce9addde99c4eee6b5c44cc494b182b97e73dc8ffdcb3397fd3f0
@@ -290,11 +314,14 @@ sources:
   url: https://static.crates.io/crates/quote/quote-0.6.10.crate
   ref: 53fa22a1994bd0f9372d7a816207d8a2677ad0325b073f5c5332760f0fb62b5c
 - kind: crate
-  url: https://static.crates.io/crates/rand/rand-0.4.3.crate
-  ref: 8356f47b32624fef5b3301c1be97e5944ecdd595409cc5da11d05f211db6cfbd
-- kind: crate
   url: https://static.crates.io/crates/rand/rand-0.5.5.crate
   ref: e464cd887e869cddcae8792a4ee31d23c7edd516700695608f5b98c67ee0131c
+- kind: crate
+  url: https://static.crates.io/crates/rand/rand-0.6.1.crate
+  ref: ae9d223d52ae411a33cf7e54ec6034ec165df296ccd23533d671a28252b6f66a
+- kind: crate
+  url: https://static.crates.io/crates/rand_chacha/rand_chacha-0.1.0.crate
+  ref: 771b009e3a508cb67e8823dda454aaa5368c7bc1c16829fb77d3e980440dd34a
 - kind: crate
   url: https://static.crates.io/crates/rand_core/rand_core-0.2.2.crate
   ref: 1961a422c4d189dfb50ffa9320bf1f2a9bd54ecb92792fb9477f99a1045f3372
@@ -302,17 +329,29 @@ sources:
   url: https://static.crates.io/crates/rand_core/rand_core-0.3.0.crate
   ref: 0905b6b7079ec73b314d4c748701f6931eb79fd97c668caa3f1899b22b32c6db
 - kind: crate
-  url: https://static.crates.io/crates/redox_syscall/redox_syscall-0.1.40.crate
-  ref: c214e91d3ecf43e9a4e41e578973adeb14b474f2bee858742d127af75a0112b1
+  url: https://static.crates.io/crates/rand_hc/rand_hc-0.1.0.crate
+  ref: 7b40677c7be09ae76218dc623efbf7b18e34bced3f38883af07bb75630a21bc4
+- kind: crate
+  url: https://static.crates.io/crates/rand_isaac/rand_isaac-0.1.1.crate
+  ref: ded997c9d5f13925be2a6fd7e66bf1872597f759fd9dd93513dd7e92e5a5ee08
+- kind: crate
+  url: https://static.crates.io/crates/rand_pcg/rand_pcg-0.1.1.crate
+  ref: 086bd09a33c7044e56bb44d5bdde5a60e7f119a9e95b0775f545de759a32fe05
+- kind: crate
+  url: https://static.crates.io/crates/rand_xorshift/rand_xorshift-0.1.0.crate
+  ref: effa3fcaa47e18db002bdde6060944b6d2f9cfd8db471c30e873448ad9187be3
+- kind: crate
+  url: https://static.crates.io/crates/redox_syscall/redox_syscall-0.1.43.crate
+  ref: 679da7508e9a6390aeaf7fbd02a800fdc64b73fe2204dd2c8ae66d22d9d5ad5d
 - kind: crate
   url: https://static.crates.io/crates/redox_termios/redox_termios-0.1.1.crate
   ref: 7e891cfe48e9100a70a3b6eb652fef28920c117d366339687bd5576160db0f76
 - kind: crate
-  url: https://static.crates.io/crates/regex/regex-1.0.6.crate
-  ref: ee84f70c8c08744ea9641a731c7fadb475bf2ecc52d7f627feb833e0b3990467
+  url: https://static.crates.io/crates/regex/regex-1.1.0.crate
+  ref: 37e7cbbd370869ce2e8dff25c7018702d10b21a20ef7135316f8daecd6c25b7f
 - kind: crate
-  url: https://static.crates.io/crates/regex-syntax/regex-syntax-0.6.3.crate
-  ref: fbc557aac2b708fe84121caf261346cc2eed71978024337e42eb46b8a252ac6e
+  url: https://static.crates.io/crates/regex-syntax/regex-syntax-0.6.4.crate
+  ref: 4e47a2ed29da7a9e1960e1639e7a982e6edc6d49be308a3b02daf511504a16d1
 - kind: crate
   url: https://static.crates.io/crates/remove_dir_all/remove_dir_all-0.5.1.crate
   ref: 3488ba1b9a2084d38645c4c08276a1752dcbf2c7130d74f1569681ad5d2799c5
@@ -328,6 +367,9 @@ sources:
 - kind: crate
   url: https://static.crates.io/crates/rustfix/rustfix-0.4.2.crate
   ref: 756567f00f7d89c9f89a5c401b8b1caaa122e27240b9eaadd0bb52ee0b680b1b
+- kind: crate
+  url: https://static.crates.io/crates/rusty-fork/rusty-fork-0.2.1.crate
+  ref: 9591f190d2852720b679c21f66ad929f9f1d7bb09d1193c26167586029d8489c
 - kind: crate
   url: https://static.crates.io/crates/ryu/ryu-0.2.7.crate
   ref: eb9e9b8cde282a9fe6a42dd4681319bfb63f121b8a8ee9439c6f4107e58a46f7
@@ -347,11 +389,11 @@ sources:
   url: https://static.crates.io/crates/semver-parser/semver-parser-0.7.0.crate
   ref: 388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3
 - kind: crate
-  url: https://static.crates.io/crates/serde/serde-1.0.80.crate
-  ref: 15c141fc7027dd265a47c090bf864cf62b42c4d228bbcf4e51a0c9e2b0d3f7ef
+  url: https://static.crates.io/crates/serde/serde-1.0.81.crate
+  ref: c91eb5b0190ae87b4e2e39cbba6e3bed3ac6186935fe265f0426156c4c49961b
 - kind: crate
-  url: https://static.crates.io/crates/serde_derive/serde_derive-1.0.80.crate
-  ref: 225de307c6302bec3898c51ca302fc94a7a1697ef0845fcee6448f33c032249c
+  url: https://static.crates.io/crates/serde_derive/serde_derive-1.0.81.crate
+  ref: 477b13b646f5b5b56fc95bedfc3b550d12141ce84f466f6c44b9a17589923885
 - kind: crate
   url: https://static.crates.io/crates/serde_ignored/serde_ignored-0.0.4.crate
   ref: 190e9765dcedb56be63b6e0993a006c7e3b071a016a304736e4a315dc01fb142
@@ -362,8 +404,8 @@ sources:
   url: https://static.crates.io/crates/shell-escape/shell-escape-0.1.4.crate
   ref: 170a13e64f2a51b77a45702ba77287f5c6829375b04a69cf2222acd17d0cfab9
 - kind: crate
-  url: https://static.crates.io/crates/smallvec/smallvec-0.6.5.crate
-  ref: 153ffa32fd170e9944f7e0838edf824a754ec4c1fc64746fcc9fe1f8fa602e5d
+  url: https://static.crates.io/crates/smallvec/smallvec-0.6.7.crate
+  ref: b73ea3738b47563803ef814925e69be00799a8c07420be8b996f8e98fb2336db
 - kind: crate
   url: https://static.crates.io/crates/socket2/socket2-0.3.8.crate
   ref: c4d11a52082057d87cb5caa31ad812f4504b97ab44732cd8359df2e9ff9f48e7
@@ -374,17 +416,17 @@ sources:
   url: https://static.crates.io/crates/strsim/strsim-0.7.0.crate
   ref: bb4f380125926a99e52bc279241539c018323fab05ad6368b56f93d9369ff550
 - kind: crate
-  url: https://static.crates.io/crates/syn/syn-0.15.19.crate
-  ref: 39054bb43f2c5e4f3aef47718a391bf397c1b820fefc86f467d4d354f67bf7ef
+  url: https://static.crates.io/crates/syn/syn-0.15.22.crate
+  ref: ae8b29eb5210bc5cf63ed6149cbf9adfc82ac0be023d8735c176ee74a2db4da7
 - kind: crate
   url: https://static.crates.io/crates/synstructure/synstructure-0.10.1.crate
   ref: 73687139bf99285483c96ac0add482c3776528beac1d97d444f6e91f203a2015
 - kind: crate
-  url: https://static.crates.io/crates/tar/tar-0.4.19.crate
-  ref: 69e16840a1e0a1f1a880b739ef1cc6a4b85496c99b8aa786ccffce6e0c15624c
+  url: https://static.crates.io/crates/tar/tar-0.4.20.crate
+  ref: a303ba60a099fcd2aaa646b14d2724591a96a75283e4b7ed3d1a1658909d9ae2
 - kind: crate
-  url: https://static.crates.io/crates/tempfile/tempfile-3.0.4.crate
-  ref: 55c1195ef8513f3273d55ff59fe5da6940287a0d7a98331254397f464833675b
+  url: https://static.crates.io/crates/tempfile/tempfile-3.0.5.crate
+  ref: 7e91405c14320e5c79b3d148e1c86f40749a36e490642202a31689cb1a3452b2
 - kind: crate
   url: https://static.crates.io/crates/termcolor/termcolor-1.0.4.crate
   ref: 4096add70612622289f2fdcdbd5086dc81c1e2675e6ae58d6c4f62a16c6d7f2f
@@ -398,11 +440,11 @@ sources:
   url: https://static.crates.io/crates/thread_local/thread_local-0.3.6.crate
   ref: c6b53e329000edc2b34dbe8545fd20e55a333362d0a321909685a19bd28c3f1b
 - kind: crate
-  url: https://static.crates.io/crates/toml/toml-0.4.8.crate
-  ref: 4a2ecc31b0351ea18b3fe11274b8db6e4d82bce861bbb22e6dbed40417902c65
+  url: https://static.crates.io/crates/toml/toml-0.4.10.crate
+  ref: 758664fc71a3a69038656bee8b6be6477d2a6c315a6b81f7081f591bffa4111f
 - kind: crate
-  url: https://static.crates.io/crates/ucd-util/ucd-util-0.1.2.crate
-  ref: d0f8bfa9ff0cadcd210129ad9d2c5f145c13e9ced3d3e5d948a6213487d52444
+  url: https://static.crates.io/crates/ucd-util/ucd-util-0.1.3.crate
+  ref: 535c204ee4d8434478593480b8f86ab45ec9aae0e83c568ca81abf0fd0e88f86
 - kind: crate
   url: https://static.crates.io/crates/unicode-bidi/unicode-bidi-0.3.4.crate
   ref: 49f2bd0c6468a8230e1db229cff8029217cf623c767ea5d60bfbd42729ea54d5
@@ -436,6 +478,9 @@ sources:
 - kind: crate
   url: https://static.crates.io/crates/void/void-1.0.2.crate
   ref: 6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d
+- kind: crate
+  url: https://static.crates.io/crates/wait-timeout/wait-timeout-0.1.5.crate
+  ref: b9f3bf741a801531993db6478b95682117471f76916f5e690dd8d45395b09349
 - kind: crate
   url: https://static.crates.io/crates/walkdir/walkdir-2.2.7.crate
   ref: 9d9d7ed3431229a144296213105a390676cc49c9b6a72bd19f3176c98e129fa1
