@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: https://git.code.sf.net/p/libpng/code
   track: libpng16
-  ref: v1.6.35-0-gc17d164b4467f099b4484dfd4a279da0bc1dbd4a
+  ref: v1.6.36-0-geddf9023206dc40974c26f589ee2ad63a4227a1e
