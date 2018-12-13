@@ -31,13 +31,6 @@ config:
     cd "%{builddir}"
     %{cross-install}
 
-# Because sysconfdir has to be set as /etc for ldconfig, we need
-# manually move /etc/rpc
-  - |
-    mkdir -p "%{install-root}%{sysroot}%{prefix}/etc"
-    mv "%{install-root}%{sysroot}%{sysconfdir}/rpc" "%{install-root}%{sysroot}%{prefix}/etc/rpc"
-    rm -r "%{install-root}%{sysroot}%{sysconfdir}"
-
 # Move /lib* links into the prefix.
   - |
     root="%{install-root}%{sysroot}"
@@ -66,9 +59,6 @@ config:
 (@): target.yml
 
 variables:
-  # flatpak places ld.so.conf in /etc and not /usr/etc.
-  sysconfdir: /etc
-
   multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
   lib: lib
 
