@@ -16,7 +16,7 @@ config:
     install -d -m 0755 "%{install-root}/usr/share/ca-certificates/mozilla"
     install -d -m 0755 "%{install-root}/usr/sbin"
     install -d -m 0755 "%{install-root}/usr/bin"
-    install -d -m 0755 "%{install-root}/usr/etc/ssl/certs"
+    install -d -m 0755 "%{install-root}/etc/ssl/certs"
 
   - |
     make install DESTDIR="%{install-root}"
@@ -26,7 +26,7 @@ config:
     rm -rf "%{install-root}/usr/sbin"
 
   - |
-    (cd "%{install-root}/usr/share/ca-certificates"; find -name "*.crt") >"%{install-root}/usr/etc/ca-certificates.conf"
+    (cd "%{install-root}%{datadir}/ca-certificates"; find -name "*.crt") >"%{install-root}%{sysconfdir}/ca-certificates.conf"
 
 public:
   bst:

@@ -10,6 +10,8 @@ depends:
 
 variables:
   prefix: /glibc
+  sysconfdir: /glibc/etc
+  localstatedir: /glibc/var
   lib: lib
 
 sources:
