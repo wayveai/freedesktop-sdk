@@ -9,6 +9,10 @@ depends:
   type: build
 - filename: base/glib.bst
 
+variables:
+  conf-local: |
+    --disable-x11
+
 public:
   bst:
     split-rules:
