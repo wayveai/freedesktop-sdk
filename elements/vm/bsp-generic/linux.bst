@@ -96,6 +96,8 @@ config:
   # Required for systemd-nspawn
   - scripts/config -e DEVPTS_MULTIPLE_INSTANCES
 
+  # Required for 3D acceleration in qemu
+  - scripts/config -e CONFIG_DRM_VIRTIO_GPU
 
   build-commands:
   - make ARCH="%{kernel_arch}" $MAKEFLAGS
