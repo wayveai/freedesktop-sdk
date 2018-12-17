@@ -3,6 +3,8 @@ description: Glib
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -12,6 +14,7 @@ public:
         - '%{libdir}/libarchive.so'
 
 sources:
-- kind: tar
-  url: https://libarchive.org/downloads/libarchive-3.3.2.tar.gz
-  ref: ed2dbd6954792b2c054ccf8ec4b330a54b85904a80cef477a1c74643ddafa0ce
+- kind: git_tag
+  url: github:libarchive/libarchive.git
+  track: master
+  ref: v3.3.3-0-g5fe69dd018745a88eecf1f7db40daf12d26f7ed0
