@@ -1,7 +1,7 @@
 kind: compose
 description: |
   Composes dependencies into the image to be exported
-  This is the point where devel is split out of the runtime, 
+  This is the point where devel is split out of the runtime,
   and we define the domains for docs and locale.
 
 config:
@@ -23,4 +23,6 @@ depends:
 - filename: split-locales.bst
   type: build
 - filename: split-docs.bst
+  type: build
+- filename: platform-manifest.bst
   type: build
