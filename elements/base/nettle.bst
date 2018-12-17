@@ -19,4 +19,4 @@ sources:
 - kind: git_tag
   url: https://git.lysator.liu.se/nettle/nettle.git
   track: master
-  ref: nettle_3.4_release_20171119-0-g0d9930963b4891c7823ec1382fd576821388f7d2
+  ref: nettle_3.4.1_release_20181204-0-g4fc52f4de99b2d471ead06e4a5086b9b15b6dee3
