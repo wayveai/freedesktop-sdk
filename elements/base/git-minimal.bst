@@ -28,5 +28,5 @@ sources:
 - kind: git_tag
   url: github:git/git.git
   track: master
-  ref: v2.19.1-0-gcae598d9980661a978e2df4fb338518f7bf09572
+  ref: v2.20.1-0-g0d0ac3826a3bbb9247e39e12623bbcfdd722f24c
     # git-minimal.bst and git.bst must be kept in sync
