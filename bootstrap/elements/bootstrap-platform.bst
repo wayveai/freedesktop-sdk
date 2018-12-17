@@ -7,5 +7,3 @@ config:
 depends:
 - filename: bootstrap.bst
   type: build
-- filename: bootstrap-manifest.bst
-  type: build
