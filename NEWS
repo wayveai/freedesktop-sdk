@@ -1,5 +1,20 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.22:
+    * gnutls: Update to 3.6.5 (#502)
+    * nettle: Update to 3.4.1
+    * sqlite: Update to 3.26.0 (#532)
+    * Stop using /usr/etc and /usr/var (#439, #526)
+    * at-spi2-core: Explicitly disable X11 backend
+    * librsvg: Update to 2.44.10
+    * mesa: enable osmesa (#500)
+    * rust: Update to Rust 2018
+    * mesa: Update mesa to 18.3.1 (#168, #529)
+    * gperf: Update to 3.1 (#479)
+    * Include cpio in the SDK (#467)
+    * Fix gtk theme (#497)
+    * Others bugs fixed: #494, #382, #496
+
 freedesktop-sdk-18.08.21:
     * mesa: Update to 18.2.6
     * mesa: Set NDEBUG
