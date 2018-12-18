@@ -41,9 +41,14 @@ public:
         - '%{libdir}/libcairo-gobject.so'
         - '%{libdir}/libcairo.so'
         - '%{libdir}/cairo/libcairo-trace.so'
+  cpe:
+    patches:
+      - 'CVE-2018-19876' 
 
 sources:
 - kind: git_tag
   url: freedesktop:cairo/cairo
   track: master
   ref: 1.16.0-0-g3ad43122b21a3299dd729dc8462d6b8f7f01142d
+- kind: patch
+  path: patches/cairo-CVE-2018-19876.patch
