@@ -4,13 +4,10 @@ depends:
 - filename: bootstrap-import.bst
 
 config:
-  configure-commands:
-  - |
-    sh ./unix/configure
-
   build-commands:
   - |
-    make -f unix/Makefile generic
+    make -f unix/Makefile LOCAL_ZIP="$CFLAGS" flags
+    eval make -f unix/Makefile zips "$(cat flags)" LFLAGS1="$LDFLAGS"
 
   install-commands:
   - |
