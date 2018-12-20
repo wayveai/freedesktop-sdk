@@ -11,6 +11,3 @@ config:
 
   - |
     cp -ar /etc %{install-root}/usr/etc
-
-  - |
-    cp -ar /var %{install-root}/usr/var
