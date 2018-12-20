@@ -14,6 +14,8 @@ variables:
     NO_OPENSSL=YesPlease \
     NO_CURL=YesPlease \
     NO_GETTEXT=YesPlease \
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS" \
     prefix=%{prefix}
 
 config:

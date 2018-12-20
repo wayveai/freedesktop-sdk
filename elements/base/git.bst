@@ -24,6 +24,8 @@ variables:
   make-install: make -j1 DESTDIR="%{install-root}" install %{make-args}
   make-args: |
     NO_TCLTK=YesPlease \
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS" \
     prefix=%{prefix}
 
 config:
