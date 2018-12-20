@@ -24,6 +24,7 @@ stages:
   - prepare-publish
   - publish
   - finish-publish
+  - reproducible
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -477,3 +478,47 @@ markdown_manifest:
     - '18.08'
   except:
     - schedules
+
+.reproducible_template: &reproducible
+  stage: reproducible
+  script:
+    - ./utils/test-reproducibility.sh all.bst
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  except:
+    - schedules
+  <<: *gitlab_cache_pull
+
+reproducible_x86_64:
+  image: $DOCKER_BST_AMD64
+  <<: *reproducible
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+reproducible_i686:
+  image: $DOCKER_BST_AMD64
+  <<: *reproducible
+  tags:
+    - x86_64
+  variables:
+    ARCH: i686
+
+reproducible_aarch64:
+  image: $DOCKER_BST_AARCH64
+  <<: *reproducible
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
+reproducible_arm:
+  image: $DOCKER_BST_AARCH64
+  <<: *reproducible
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
