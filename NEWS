@@ -1,5 +1,17 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.23:
+    * gobject-introspection: Bump to 1.58.2
+    * Add /etc/mtab -> /proc/self/mounts (#523)
+    * gtk3.bst: Bump to 3.24.2 (#534)
+    * Fix /var for flatpak images
+    * Apply security patch for cairo (#542)
+    * libarchive: Update to 3.3.3 (#541)
+    * git: Update to 2.20.1 (#537)
+    * kerberos: Update to 1.16.2 (#525)
+    * libpng: Update to 1.6.36 (#501)
+    * cmake: Update to v3.13.1 (#503)
+
 freedesktop-sdk-18.08.22:
     * gnutls: Update to 3.6.5 (#502)
     * nettle: Update to 3.4.1
