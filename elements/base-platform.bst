@@ -2,6 +2,7 @@ kind: stack
 description: Stack of components in base-platform
 
 depends:
+- filename: mtab.bst
 - filename: base/ca-certificates.bst
 - filename: base/cracklib.bst
 - filename: base/curl.bst
