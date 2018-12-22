@@ -14,6 +14,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXxf86vm.so'
+  cpe:
+    product: libxf86vm
 
 sources:
 - kind: tar

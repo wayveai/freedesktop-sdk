@@ -39,6 +39,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libvpx.so'
+  cpe:
+    version: '1.7.0'
 
 sources:
 - kind: git_tag

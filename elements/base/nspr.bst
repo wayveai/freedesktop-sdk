@@ -18,6 +18,8 @@ public:
       devel:
         (>):
         - '%{bindir}/nspr-config'
+  cpe:
+    product: netscape_portable_runtime
 
 config:
   install-commands:

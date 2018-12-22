@@ -29,6 +29,8 @@ public:
       devel:
         (>):
         - '%{bindir}/*'
+  cpe:
+    product: network_security_services
 
 config:
   build-commands:

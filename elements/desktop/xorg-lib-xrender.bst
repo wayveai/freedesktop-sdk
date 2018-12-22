@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXrender.so'
+  cpe:
+    product: libxrender
 
 sources:
 - kind: tar

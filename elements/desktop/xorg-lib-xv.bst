@@ -14,6 +14,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXv.so'
+  cpe:
+    product: libxv
 
 sources:
 - kind: tar

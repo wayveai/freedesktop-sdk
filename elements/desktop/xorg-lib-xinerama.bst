@@ -14,6 +14,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libXinerama.so'
+  cpe:
+    product: libxinerama
 
 sources:
 - kind: tar

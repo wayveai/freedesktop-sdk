@@ -23,6 +23,8 @@ public:
         - '%{bindir}/makehrtf'
         - '%{bindir}/openal-info'
         - '%{libdir}/libopenal.so'
+  cpe:
+    version: '1.18.2'
 
 sources:
 - kind: git_tag

@@ -18,6 +18,8 @@ public:
         (>):
         - '%{libdir}/libjpeg.so'
         - '%{libdir}/libturbojpeg.so'
+  cpe:
+    product: libjpeg-turbo
 
 sources:
 - kind: git
