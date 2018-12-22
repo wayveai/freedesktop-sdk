@@ -13,7 +13,11 @@ config:
       -Dman3dir="%{mandir}/man3" \
       -Dlibpth="%{libdir}" \
       -Dcc=gcc \
-      -Duseshrplib
+      -Duseshrplib \
+      -Doptimize="none" \
+      -Dccflags="$CFLAGS" \
+      -Dldflags="$LDFLAGS" \
+      -Dlddlflags="-shared $LDFLAGS"
 
   build-commands:
   - |
