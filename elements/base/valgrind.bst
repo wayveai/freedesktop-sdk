@@ -11,7 +11,8 @@ depends:
 
 variables:
   # valgrind does not like stack protector flags
-  common_flags: "-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -grecord-gcc-switches"
+  common_flags: -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions
+    -grecord-gcc-switches
 
 config:
   configure-commands:
