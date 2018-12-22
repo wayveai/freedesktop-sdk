@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: gnome:gcab
   track: master
-  ref: v1.1-0-ge00b3959de71394bae726f834af1be8255cece3b
+  ref: v1.2-0-g8484568d2e5b55a87cb6d6925ccb2f655159cf99
