@@ -38,6 +38,6 @@ sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
   track: blead
-  ref: v5.28.0-0-g6cb72a3d7fbefb477b95588e2fd81e33073da8b3
+  ref: v5.28.1-0-g63afdf6c0f65af480aa5bb9ccba9f46dae52f6fc
 - kind: local
   path: files/perl/config.over
