@@ -5,6 +5,11 @@ depends:
 - filename: base/texinfo.bst
   type: build
 
+variables:
+  conf-local: |
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS"
+
 config:
   install-commands:
     (>):
