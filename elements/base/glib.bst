@@ -50,4 +50,4 @@ sources:
 - kind: git_tag
   url: gnome:glib
   track: glib-2-58
-  ref: 2.58.1-0-ga9f5a6fa2fdd6eb2f754709d7e790d24e3ceaa18
+  ref: 2.58.2-0-g97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa
