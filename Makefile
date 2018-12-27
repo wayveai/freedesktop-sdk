@@ -6,30 +6,9 @@ else
 FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
-
-ARCH_OPTS=-o target_arch $(ARCH)
-
-RUNTIMES=					\
-	sdk					\
-	sdk-debug				\
-	sdk-docs				\
-	sdk-locale				\
-	platform				\
-	platform-locale				\
-	platform-arch-libs			\
-	platform-arch-libs-debug		\
-	platform-html5				\
-	clinfo						\
-	glxinfo					\
-	glxinfo-debug				\
-	rust
-ifeq ($(ARCH),$(filter $(ARCH),i686 x86_64))
-  RUNTIMES+=platform-vaapi
-endif
-RUNTIME_ELEMENTS=$(addprefix flatpak-images/,$(addsuffix .bst,$(RUNTIMES)))
-
 CHECKOUT_ROOT=runtimes
 
+ARCH_OPTS=-o target_arch $(ARCH)
 
 all: build
 
@@ -38,27 +17,18 @@ build:
 	bst --colors $(ARCH_OPTS) build public-stacks/buildsystems.bst
 
 
-export:
-	bst --colors $(ARCH_OPTS) build $(RUNTIME_ELEMENTS)
-	
+export: clean-runtime
+	bst --colors $(ARCH_OPTS) build all.bst
+
 	mkdir -p $(CHECKOUT_ROOT)
-	set -e; for runtime in $(RUNTIMES); do \
-	  dir="$(ARCH)-$${runtime}"; \
-	  bst --colors $(ARCH_OPTS) checkout --hardlinks "flatpak-images/$${runtime}.bst" "$(CHECKOUT_ROOT)/$${dir}"; \
-	  flatpak build-export --arch=$(FLATPAK_ARCH) --files=files $(GPG_OPTS) $(REPO) "$(CHECKOUT_ROOT)/$${dir}" "$(BRANCH)"; \
-	  rm -rf "$(CHECKOUT_ROOT)/$${dir}"; \
-	done
-	
-	set -e; case "$(RUNTIMES)" in \
-	  *platform-arch-libs*) \
-	    if test "$(ARCH)" = "i686" ; then \
-	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/x86_64/$(BRANCH); \
-	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/x86_64/$(BRANCH); \
-	    elif test "$(ARCH)" = "arm" ; then \
-	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH)/aarch64/$(BRANCH); \
-	      flatpak build-commit-from $(GPG_OPTS) --src-ref=runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/$(FLATPAK_ARCH)/$(BRANCH) $(REPO) runtime/org.freedesktop.Platform.Compat.$(FLATPAK_ARCH).Debug/aarch64/$(BRANCH); \
-	    fi \
-	esac
+	bst --colors $(ARCH_OPTS) checkout --hardlinks "all.bst" $(CHECKOUT_ROOT)
+
+	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
+
+	BRANCHES=$(find repo/refs/heads/ -type f | sed s,repo/refs/heads/,,) \
+	    flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO) $${BRANCHES}
+
+	rm -rf $(CHECKOUT_ROOT)
 
 
 check-dev-files:
