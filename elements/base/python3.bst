@@ -46,8 +46,6 @@ config:
   - |
     rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
 
-  - |
-    %{fix-pyc-timestamps}
 
 public:
   bst:
