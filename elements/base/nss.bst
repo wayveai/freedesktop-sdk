@@ -59,14 +59,14 @@ config:
     s,@exec_prefix@,%{exec_prefix},g
     s,@libdir@,%{libdir},g
     s,@includedir@,%{includedir}/nss,g
-    s,@version@,3.37,g
-    s,@nspr_version@,4.19,g
+    s,@version@,3.41,g
+    s,@nspr_version@,4.20,g
     EOF
     install -m 644 -D -t "%{install-root}/%{libdir}/pkgconfig" nss.pc
 
 sources:
 - kind: tar
-  url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_39_RTM/src/nss-3.39.tar.gz
-  ref: 6be64dd76f212415cc8bc34343ac1e7389048db4db9a023a84873c411dc5864b
+  url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_41_RTM/src/nss-3.41.tar.gz
+  ref: ab2e18f5d0dd0079c0005396f9beb9a41e9a1bbc7e6c1d0a99affcef0471712d
 - kind: local
   path: files/nss.pc.in
