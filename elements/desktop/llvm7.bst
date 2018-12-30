@@ -81,7 +81,7 @@ public:
         - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-7.0.0.so'
+        - '%{libdir}/libLLVM-7.0.1.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/LLVMHello.so'
@@ -101,13 +101,13 @@ public:
 
 sources:
 - kind: tar
-  url: https://releases.llvm.org/7.0.0/llvm-7.0.0.src.tar.xz
-  ref: 8bc1f844e6cbde1b652c19c1edebc1864456fd9c78b8c1bea038e51b363fe222
+  url: https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
+  ref: a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
 - kind: tar
-  url: https://releases.llvm.org/7.0.0/cfe-7.0.0.src.tar.xz
-  ref: 550212711c752697d2f82c648714a7221b1207fd9441543ff4aa9e3be45bba55
+  url: https://releases.llvm.org/7.0.1/cfe-7.0.1.src.tar.xz
+  ref: a45b62dde5d7d5fdcdfa876b0af92f164d434b06e9e89b5d0b1cbc65dfe3f418
   directory: tools/clang
 - kind: tar
-  url: https://releases.llvm.org/7.0.0/compiler-rt-7.0.0.src.tar.xz
-  ref: bdec7fe3cf2c85f55656c07dfb0bd93ae46f2b3dd8f33ff3ad6e7586f4c670d6
+  url: https://releases.llvm.org/7.0.1/compiler-rt-7.0.1.src.tar.xz
+  ref: 782edfc119ee172f169c91dd79f2c964fb6b248bd9b73523149030ed505bbe18
   directory: tools/compiler-rt
