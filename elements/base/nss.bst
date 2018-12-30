@@ -20,8 +20,11 @@ variables:
     OS_RELEASE=3.4 \
     "OS_TEST=%{arch}" \
     NSS_USE_SYSTEM_SQLITE=1 \
-    NSS_ENABLE_ECC=1 \
-    NSS_ENABLE_WERROR=0
+    NSS_ENABLE_WERROR=0 \
+    BUILD_OPT=1 \
+    XCFLAGS="$CFLAGS" \
+    DSO_CFLAGS="-fPIC $CFLAGS" \
+    ZDEFS_FLAG="-Wl,-z,defs $LDFLAGS"
 
 public:
   bst:
