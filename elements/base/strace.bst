@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: github:strace/strace.git
   track: master
-  ref: v4.25-0-gc12d2de112d1f32a0a6ed00a8dc483fbb5596bfc
+  ref: v4.26-0-g27739ebccc96c0f70cd2aeb37fd7b0ecfef21724
