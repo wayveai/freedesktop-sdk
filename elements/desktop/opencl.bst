@@ -16,13 +16,13 @@ config:
   install-commands:
     (>):
     - |
-      mkdir -p "%{install-root}%{indep-libdir}/GL/OpenCL/vendors"
+      mkdir -p "%{install-root}%{libdir}/GL/OpenCL/vendors"
 
     - |
       mkdir -p "%{install-root}%{sysconfdir}"
 
     - |
-      ln -s "$(realpath -m --relative-to="%{sysconfdir}" "%{indep-libdir}/GL/OpenCL")" "%{install-root}%{sysconfdir}/OpenCL"
+      ln -s "$(realpath -m --relative-to="%{sysconfdir}" "%{libdir}/GL/OpenCL")" "%{install-root}%{sysconfdir}/OpenCL"
 
 public:
   bst:
