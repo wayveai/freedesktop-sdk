@@ -21,6 +21,7 @@ variables:
     "OS_TEST=%{arch}" \
     NSS_USE_SYSTEM_SQLITE=1 \
     NSS_ENABLE_WERROR=0 \
+    NSS_DISABLE_GTESTS=1 \
     BUILD_OPT=1 \
     XCFLAGS="$CFLAGS" \
     DSO_CFLAGS="-fPIC $CFLAGS" \
