@@ -6,7 +6,7 @@ depends:
 variables:
   conf-local: |
     --enable-fts5 \
-    CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1"
+    CFLAGS="${CFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_SECURE_DELETE=1"
 
 public:
   bst:
