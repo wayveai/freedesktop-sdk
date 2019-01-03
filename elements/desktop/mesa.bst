@@ -79,8 +79,8 @@ config:
   install-commands:
     (>):
     - |
-      mkdir -p %{install-root}%{indep-libdir}/OpenCL/vendors
-      mv %{install-root}%{sysconfdir}/OpenCL/vendors/* %{install-root}%{indep-libdir}/OpenCL/vendors
+      mkdir -p %{install-root}%{libdir}/GL/OpenCL/vendors
+      mv %{install-root}%{sysconfdir}/OpenCL/vendors/* %{install-root}%{libdir}/GL/OpenCL/vendors
       ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
       ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
       rm -f "%{install-root}%{libdir}"/libGLESv2*
