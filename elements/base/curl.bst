@@ -31,5 +31,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:curl/curl/releases/download/curl-7_61_1/curl-7.61.1.tar.xz
-  ref: 3d5913d6a39bd22e68e34dff697fd6e4c3c81563f580c76fca2009315cd81891
+  url: github:curl/curl/releases/download/curl-7_63_0/curl-7.63.0.tar.xz
+  ref: 9600234c794bfb8a0d3f138e9294d60a20e7a5f10e35ece8cf518e2112d968c4
