@@ -90,6 +90,22 @@ config:
       rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
       rm -f "%{install-root}%{libdir}/libglapi.so"
 
+    - |
+      for dir in vdpau dri; do
+        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
+          soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
+          if [ -L "${file}" ]; then
+            continue
+          fi
+          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
+            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
+          else
+            rm "${file}"
+          fi
+          ln -s "${soname}" "${file}"
+        done
+      done
+
 public:
   bst:
     split-rules:
@@ -100,7 +116,6 @@ public:
         - '%{libdir}/libOSMesa.so'
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
-        - '%{libdir}/vdpau/libvdpau_*.so'
         - '%{libdir}/libMesaOpenCL.so'
 
 sources:

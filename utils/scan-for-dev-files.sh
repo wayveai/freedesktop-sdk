@@ -6,6 +6,10 @@
 
 find "$1" -type l -name "lib*.so" -print0 |
 while IFS= read -r -d '' file; do
+    dirname="$(dirname "${file}")"
+    if [ "$(basename "${dirname}")" = vdpau ]; then
+	continue
+    fi
     basename="$(basename "${file}")"
     soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
     if [ -n "${soname}" ] && [ "x${soname}" != "x${basename}" ]; then

@@ -89,6 +89,30 @@ config:
     - |
       ln -s gcc %{install-root}%{bindir}/cc
 
+    - |
+      rm "%{install-root}%{bindir}/%{triplet}-c++"
+      ln -s "%{triplet}-g++" "%{install-root}%{bindir}/%{triplet}-c++"
+
+    - |
+      rm "%{install-root}%{bindir}/%{triplet}-gcc"
+      ln -s "%{triplet}-gcc-$(cat gcc/BASE-VER)" "%{install-root}%{bindir}/%{triplet}-gcc"
+
+    - |
+      for f in "%{install-root}%{bindir}/"*; do
+        base="$(basename "${f}")"
+        case "${base}" in
+          %{triplet}-*)
+            continue
+          ;;
+          *)
+            if [ -f "%{install-root}%{bindir}/%{triplet}-${base}" ]; then
+              rm "${f}"
+              ln -s "%{triplet}-${base}" "${f}"
+            fi
+          ;;
+        esac
+      done
+
 public:
   bst:
     split-rules:

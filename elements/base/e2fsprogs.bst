@@ -16,6 +16,29 @@ variables:
 
   make-install: make -j1 DESTDIR="%{install-root}" install install-libs
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm "%{install-root}%{bindir}/dumpe2fs"
+      ln -s e2mmpstatus "%{install-root}%{bindir}/dumpe2fs"
+
+    - |
+      rm "%{install-root}%{bindir}/e2label"
+      ln -s tune2fs "%{install-root}%{bindir}/e2label"
+
+    - |
+      for ext in ext2 ext3 ext4; do
+        rm "%{install-root}%{bindir}/mkfs.${ext}"
+        ln -s mke2fs "%{install-root}%{bindir}/mkfs.${ext}"
+      done
+
+    - |
+      for ext in ext2 ext3 ext4; do
+        rm "%{install-root}%{bindir}/fsck.${ext}"
+        ln -s e2fsck "%{install-root}%{bindir}/fsck.${ext}"
+      done
+
 public:
   bst:
     split-rules:

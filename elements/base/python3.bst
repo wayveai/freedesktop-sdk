@@ -46,6 +46,9 @@ config:
   - |
     rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
 
+  - |
+    rm "%{install-root}%{bindir}/python3.7m"
+    ln -s python3.7 "%{install-root}%{bindir}/python3.7m"
 
 public:
   bst:
