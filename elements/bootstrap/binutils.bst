@@ -24,6 +24,26 @@ variables:
     --enable-plugins \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
+config:
+  install-commands:
+    (>):
+    - |
+      if [ -e "%{install-root}%{prefix}/%{triplet}/bin/ld.bfd" ]; then
+        rm "%{install-root}%{prefix}/%{triplet}/bin/ld"
+        ln -s ld.bfd "%{install-root}%{prefix}/%{triplet}/bin/ld"
+      fi
+
+    - |
+      for tool in "%{install-root}%{prefix}/%{triplet}/bin"/*; do
+        toolbase="$(basename "${tool}")"
+        for link in "%{bindir}/%{triplet}-${toolbase}" "%{bindir}/${toolbase}"; do
+          if [ -f "%{install-root}${link}" ]; then
+            rm "%{install-root}${link}"
+            ln -s "$(realpath "${tool}" --relative-to="$(dirname "%{install-root}${link}")")" "%{install-root}${link}"
+          fi
+        done
+      done
+
 environment:
   LEXLIB: ' '
 

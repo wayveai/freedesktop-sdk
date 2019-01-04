@@ -23,6 +23,9 @@ config:
 
   install-commands:
     (>):
+    - |
+      rm -r "%{install-root}%{libexecdir}/getconf"
+
     # Move the dynamic linker into the prefix
     - |
       rtlddir=$(echo '@libc_cv_rtlddir@' | %{builddir}/config.status --file=-)

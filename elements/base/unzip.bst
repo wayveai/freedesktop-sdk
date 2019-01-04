@@ -25,6 +25,10 @@ config:
   - |
     make -f unix/Makefile BINDIR="%{install-root}%{bindir}" MANDIR="%{install-root}%{datadir}/man/man1" install
 
+  - |
+    rm "%{install-root}%{bindir}/zipinfo"
+    ln -s unzip "%{install-root}%{bindir}/zipinfo"
+
 public:
   cpe:
     vendor: 'info-zip'

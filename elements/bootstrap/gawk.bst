@@ -9,6 +9,13 @@ depends:
 
 (@): elements/bootstrap/target.yml
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm "%{install-root}%{bindir}/gawk"
+      ln -s gawk-4.2.1 "%{install-root}%{bindir}/gawk"
+
 sources:
 - kind: git_tag
   url: savannah:gawk.git
