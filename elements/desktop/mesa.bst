@@ -36,44 +36,46 @@ depends:
 variables:
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
-      gallium_drivers: svga,swrast,nouveau,r600,r300,radeonsi,virgl
-      dri_drivers: nouveau,r100,r200,i915,i965
-      vulkan_drivers: intel,amd
+      gallium_drivers: nouveau,r600,r300,radeonsi,svga,swrast,virgl
+      dri_drivers: i915,i965,nouveau,r100,r200
+      vulkan_drivers: amd,intel
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
-      gallium_drivers: pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast
+      gallium_drivers: etnaviv,freedreno,imx,nouveau,pl111,swrast,tegra,virgl,vc4
       dri_drivers: ''
       vulkan_drivers: ''
       enable_libunwind: 'false'
 
   meson-local: |
     -Db_ndebug=true \
-    -Dglvnd=true \
-    -Dlibunwind=%{enable_libunwind} \
-    -Dselinux=false \
-    -Dosmesa=gallium \
+    -Ddri3=true \
+    -Ddri-drivers=%{dri_drivers} \
     -Degl=true \
-    -Dgles1=false \
-    -Dgles2=true \
-    -Dgallium-omx=disabled \
+    -Dgallium-drivers=%{gallium_drivers} \
     -Dgallium-nine=true \
-    -Dgallium-vdpau=true \
+    -Dgallium-omx=disabled \
+    -Dgallium-opencl=icd \
     -Dgallium-va=true \
+    -Dgallium-vdpau=true \
     -Dgallium-xa=true \
     -Dgallium-xvmc=false \
-    -Dgallium-opencl=icd \
-    -Dplatforms=x11,drm,surfaceless,wayland \
-    -Dshared-glapi=true \
     -Dgbm=true \
+    -Dgles1=false \
+    -Dgles2=true \
+    -Dglvnd=true \
     -Dglx=auto \
-    -Dtexture-float=true \
+    -Dlibunwind=%{enable_libunwind} \
     -Dllvm=true \
-    -Ddri3=true \
-    -Dxlib-lease=true \
-    -Dgallium-drivers=%{gallium_drivers} \
-    -Ddri-drivers=%{dri_drivers} \
+    -Dlmsensors=false \
+    -Dosmesa=gallium \
+    -Dplatforms=x11,drm,surfaceless,wayland \
+    -Dselinux=false \
+    -Dshared-glapi=true \
+    -Dtexture-float=true \
+    -Dvalgrind=false \
     -Dvulkan-drivers=%{vulkan_drivers} \
-    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
+    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
+    -Dxlib-lease=true
 
 config:
   install-commands:
