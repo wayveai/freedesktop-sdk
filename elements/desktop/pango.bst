@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -7,9 +7,7 @@ depends:
 - filename: desktop/fontconfig.bst
 - filename: desktop/gobject-introspection.bst
   type: build
-- filename: desktop/gtk-doc.bst
-  type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 - filename: base/which.bst
   type: build
@@ -23,6 +21,12 @@ public:
         - '%{libdir}/libpango-1.0.so'
         - '%{libdir}/libpangoft2-1.0.so'
         - '%{libdir}/libpangocairo-1.0.so'
+
+# Those are the defaults which we explicitly match.
+variables:
+  meson-local: |
+   -Denable_docs=false \
+   -Dgir=true
 
 sources:
 - kind: git_tag
