@@ -6,7 +6,5 @@ depends:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gzip/gzip-1.9.tar.xz
-  ref: ae506144fc198bd8f81f1f4ad19ce63d5a2d65e42333255977cf1dcf1479089a
-- kind: patch
-  path: patches/gzip-glibc-2.28-gnulib.patch
+  url: ftp_gnu_org:gzip/gzip-1.10.tar.xz
+  ref: 8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0
