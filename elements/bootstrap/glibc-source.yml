@@ -4,3 +4,6 @@ sources:
   track: release/2.29/master
   track-tags: false
   ref: glibc-2.29-22-g95d66fecaabbc92ab53027e808f0fc1929c9f21a
+- kind: patch
+  path: patches/glibc/optimize-audit.patch
+
