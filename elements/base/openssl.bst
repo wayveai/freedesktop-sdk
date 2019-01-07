@@ -8,11 +8,14 @@ depends:
 
 variables:
   openssl-target: linux-%{arch}
+  arch-conf: ''
   (?):
   - target_arch == "i686":
       openssl-target: linux-generic32
   - target_arch == "arm":
       openssl-target: linux-generic32
+  - target_arch == "x86_64" or target_arch == "aarch64":
+      arch-conf: enable-ec_nistp_64_gcc_128
 
 config:
   configure-commands:
@@ -25,7 +28,8 @@ config:
         reldir=.
     fi
 
-    ${reldir}/Configure %{openssl-target} \
+    ${reldir}/Configure %{arch-conf} \
+      %{openssl-target} \
       --prefix=%{prefix} \
       --libdir=%{lib} \
       --openssldir=%{sysconfdir}/ssl \
