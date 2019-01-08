@@ -17,16 +17,20 @@ depends:
 variables:
   builddir: ''
   openssl-target: linux-%{arch}
+  arch-conf: ''
   (?):
   - target_arch == "i686":
       openssl-target: linux-generic32
   - target_arch == "arm":
       openssl-target: linux-generic32
+  - target_arch == "x86_64" or target_arch == "aarch64":
+      arch-conf: enable-ec_nistp_64_gcc_128
 
 config:
   configure-commands:
   - |
-    ./Configure %{openssl-target} \
+    ./Configure %{arch-conf} \
+      %{openssl-target} \
       --prefix=%{prefix} \
       --libdir=%{lib} \
       --openssldir=%{sysconfdir}/ssl \
@@ -34,7 +38,8 @@ config:
       --with-krb5-flavor=MIT \
       --with-krb5-dir=/usr \
       shared \
-      threads
+      threads \
+      "-Wa,--noexecstack $CFLAGS $LDFLAGS"
 
   install-commands:
   - |
