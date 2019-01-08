@@ -1,5 +1,32 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.24:
+    * vala: Update to 0.42.4
+    * tzdata: Upgrade to 2018i
+    * librsvg: Upgrade to v2.44.11
+    * curl: Update to 7.63
+    * tar: Update to 1.31
+    * gzip: Update to 1.10
+    * diffutils: Update to 3.7
+    * harfbuzz: Update to 2.3.0
+    * cmake: Update to 3.13.2 (#559)
+    * e2fsprogs: Update to 1.44.5 (#558)
+    * strace: Update to 4.26 (#556)
+    * sqlite: compile with SQLITE_SECURE_DELETE option (#561)
+    * Uniformize OpenCL icd director (#562)
+    * dictionaries: Update to libreoffice-6.1.4.1 (#519)
+    * Python 3 standard library bytecode fixup (#554)
+    * gobject-introspection: Update to 1.58.3 (#557)
+    * glib: Update 2.58.2 (#557)
+    * llvm: Update to 7.0.1
+    * binutils: Update to 3.31.1
+    * python: bump to 3.7.1 (#507)
+    * perl: bump to 5.28.1
+    * meson: Update to 0.49.0 (#551)
+    * valgrind: Update to 3.14.0 (#550
+    * gcab: Bump to v1.2
+    * Several hardening flags fixes
+
 freedesktop-sdk-18.08.23:
     * gobject-introspection: Bump to 1.58.2
     * Add /etc/mtab -> /proc/self/mounts (#523)
