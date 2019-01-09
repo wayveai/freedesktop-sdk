@@ -33,6 +33,7 @@ public:
         - '%{libdir}/libcups.so'
 
 sources:
-- kind: tar
-  url: github:apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
-  ref: 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4
+- kind: git_tag
+  url: github:apple/cups.git
+  track: master
+  ref: v2.2.8-0-g4ebeb20c50145190312c9897efa26ed5b58b3bc5
