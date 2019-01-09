@@ -7,7 +7,7 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
   BST_SHA: '10abe77fe8d77385d86f225b503d9185f4ef7f3a' #  1.2.3
-  BST_EXTERNAL_SHA: '0.7.1-0-g4004fabce15af0dc789ef5f192d643a24b1f7320'
+  BST_EXTERNAL_SHA: '0.8.0-0-g762ea216b751bf89ac15350e1cb98542963bbf33'
   RUNTIME_VERSION: '18.08'
 
   # Docker Images
