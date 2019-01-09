@@ -13,8 +13,7 @@ depends:
 
 variables:
   meson-local: |
-    -Dlibproxy_support=true \
-    -Dca_certificates_path=%{ca_path}
+    -Dlibproxy_support=true
 
 sources:
 - kind: git_tag
