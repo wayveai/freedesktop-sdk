@@ -106,3 +106,5 @@ sources:
   directory: tools/compiler-rt
 - kind: patch
   path: patches/llvm-clang-ignore-fstack-clash-protection.patch
+- kind: patch
+  path: patches/llvm6-clang-ignore-fcf-protection.patch

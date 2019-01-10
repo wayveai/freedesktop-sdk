@@ -1,0 +1,25 @@
+
+Index: tools/clang/include/clang/Driver/Options.td
+===================================================================
+--- a/tools/clang/include/clang/Driver/Options.td
++++ b/tools/clang/include/clang/Driver/Options.td
+@@ -2705,6 +2705,7 @@
+ defm spec_constr_count : BooleanFFlag<"spec-constr-count">, Group<clang_ignored_f_Group>;
+ defm stack_check : BooleanFFlag<"stack-check">, Group<clang_ignored_f_Group>;
+ defm stack_clash_protection : BooleanFFlag<"stack-clash-protection">, Group<clang_ignored_f_Group>;
++defm cf_protection : BooleanFFlag<"cf-protection">, Group<clang_ignored_f_Group>;
+ defm strength_reduce :
+     BooleanFFlag<"strength-reduce">, Group<clang_ignored_gcc_optimization_f_Group>;
+ defm tls_model : BooleanFFlag<"tls-model">, Group<clang_ignored_f_Group>;
+Index: test/Driver/clang_f_opts.c
+===================================================================
+--- a/tools/clang/test/Driver/clang_f_opts.c
++++ b/tools/clang/test/Driver/clang_f_opts.c
+@@ -284,6 +284,7 @@
+ // RUN:     -fno-implement-inlines -fimplement-inlines                        \
+ // RUN:     -fstack-check                                                     \
+ // RUN:     -fstack-clash-protection                                          \
++// RUN:     -fcf-protection                                                   \
+ // RUN:     -fforce-addr                                                      \
+ // RUN:     -malign-functions=100                                             \
+ // RUN:     -malign-loops=100                                                 \
