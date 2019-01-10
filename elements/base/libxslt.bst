@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: gnome:libxslt
   track: master
-  ref: v1.1.32-0-g8307b072adb86c8064897f4c5e12e5ae142f3bff
+  ref: v1.1.33-0-gf1eb717f04d9cc297cc5e58e94b81ac96f47e741
