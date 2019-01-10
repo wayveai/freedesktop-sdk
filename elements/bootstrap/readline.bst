@@ -30,7 +30,7 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:readline/readline-7.0.tar.gz
-  ref: 750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334
+  url: ftp_gnu_org:readline/readline-8.0.tar.gz
+  ref: e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461
 - kind: patch
   path: patches/readline/readline-disable-rpath.patch
