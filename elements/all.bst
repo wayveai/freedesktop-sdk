@@ -32,6 +32,8 @@ depends:
   type: build
 - filename: flatpak-images/rust.bst
   type: build
+- filename: flatpak-images/vulkaninfo.bst
+  type: build
 
 config:
   arch: '%{gcc_arch}'
