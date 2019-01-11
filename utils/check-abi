@@ -96,10 +96,8 @@ def sanitize_path(name):
     return name.replace('/', '-')
 
 
-def is_shared_lib(path):
-    out = subprocess.check_output(['file', '--mime-type', path], encoding='utf-8').strip()
-
-    return out.endswith(': application/x-sharedlib')
+def get_mimetype(path):
+    return subprocess.check_output(['file', '--mime-type', '--brief', path], encoding='utf-8').strip()
 
 
 def get_current_revision():
@@ -183,7 +181,8 @@ def get_libraries(tree):
 
             seen.add(realpath)
 
-            if not is_shared_lib(realpath):
+            if get_mimetype(realpath).startswith('text/'):
+                # This is probably a GNU ld script, but not a C library anyway
                 continue
 
             lib_key = get_library_key(realpath)
