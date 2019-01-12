@@ -17,7 +17,8 @@ variables:
     --disable-systemd \
     --enable-threads \
     --enable-gnutls \
-    localedir=/usr/share/locale
+    localedir=/usr/share/locale \
+    DSOFLAGS="$CFLAGS $LDFLAGS"
 
 config:
   install-commands:
