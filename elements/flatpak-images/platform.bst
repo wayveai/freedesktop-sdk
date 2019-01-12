@@ -72,5 +72,3 @@ depends:
   type: build
 - filename: platform-integration.bst
   type: build
-- filename: prefix-etc-platform.bst
-  type: build
