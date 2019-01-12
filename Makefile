@@ -25,8 +25,7 @@ export: clean-runtime
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
-	BRANCHES=$(find repo/refs/heads/ -type f | sed s,repo/refs/heads/,,) \
-	    flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO) $${BRANCHES}
+	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO)
 
 	rm -rf $(CHECKOUT_ROOT)
 
