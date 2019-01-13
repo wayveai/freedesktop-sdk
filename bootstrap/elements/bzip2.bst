@@ -23,9 +23,9 @@ depends:
 config:
   build-commands:
   - |
-    make -f Makefile-libbz2_so CC="%{triplet}-gcc" CFLAGS="-fpic -fPIC -Wall -Winline $CFLAGS -D_FILE_OFFSET_BITS=64 $LDFLAGS"
+    make -f Makefile-libbz2_so CC="%{triplet}-gcc $CFLAGS $LDFLAGS"
   - |
-    make bzip2recover CC="%{triplet}-gcc" AR="%{triplet}-ar" RANLIB="%{triplet}-ranlib" CFLAGS="-Wall -Winline $CFLAGS -D_FILE_OFFSET_BITS=64" LDFLAGS="$LDFLAGS"
+    make bzip2recover CC="%{triplet}-gcc $CFLAGS $LDFLAGS" AR="%{triplet}-ar" RANLIB="%{triplet}-ranlib"
 
   install-commands:
   - |
