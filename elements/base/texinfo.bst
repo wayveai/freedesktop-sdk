@@ -5,6 +5,11 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/perl.bst
 
+variables:
+  conf-local: |
+    PERL_EXT_CFLAGS="$CFLAGS" \
+    PERL_EXT_LDFLAGS="$LDFLAGS"
+
 public:
   bst:
     integration-commands:
