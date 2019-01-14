@@ -6,6 +6,7 @@ depends:
 
 variables:
   pip: pip3
+  fix-pyc-timestamps: "true"
 
 sources:
 - kind: git_tag
