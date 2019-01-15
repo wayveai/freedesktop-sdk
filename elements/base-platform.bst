@@ -78,3 +78,4 @@ depends:
 - filename: base/which.bst
 - filename: base/xz.bst
 - filename: base/zip.bst
+- filename: base/shared-library-guard.bst
