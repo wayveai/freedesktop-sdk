@@ -14,7 +14,7 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DBUILD_VKJSON=OFF \
     -DBUILD_WSI_MIR_SUPPORT=OFF \
-    -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{libdir} \
+    -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{sysconfdir} \
     -DBUILD_TESTS=OFF \
     -DBUILD_WSI_XCB_SUPPORT=On \
     -DBUILD_WSI_XLIB_SUPPORT=On \
@@ -33,3 +33,5 @@ sources:
 - kind: tar
   url: github:KhronosGroup/Vulkan-Loader/archive/v1.1.96.tar.gz
   ref: 3f210eaa8bd1f3c57fc0a413aaa18f671c43d130a0ce60479ede23a9d1314f86
+- kind: patch
+  path: patches/vulkan-libdir-path.patch
