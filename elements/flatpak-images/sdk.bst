@@ -87,5 +87,3 @@ depends:
   type: build
 - filename: sdk-integration.bst
   type: build
-- filename: prefix-etc-sdk.bst
-  type: build
