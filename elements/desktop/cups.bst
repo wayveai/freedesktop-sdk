@@ -37,4 +37,4 @@ sources:
 - kind: git_tag
   url: github:apple/cups.git
   track: master
-  ref: v2.2.10-0-g25b2338346ef3abbb93ea88476887cba7b2b86f8
+  ref: v2.2.8-0-g4ebeb20c50145190312c9897efa26ed5b58b3bc5
