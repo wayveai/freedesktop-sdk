@@ -75,6 +75,7 @@ depends:
 - filename: desktop/orc.bst
 - filename: desktop/os-release.bst
 - filename: desktop/pango.bst
+- filename: desktop/pciutils.bst
 - filename: desktop/pixman.bst
 - filename: desktop/libpulse.bst
 - filename: desktop/sdl2-image.bst
