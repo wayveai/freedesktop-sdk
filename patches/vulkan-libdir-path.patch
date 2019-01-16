@@ -1,36 +1,53 @@
-diff -ur vulkan.old/CMakeLists.txt vulkan/CMakeLists.txt
---- vulkan.old/CMakeLists.txt	2018-04-20 00:07:56.000000000 +0200
-+++ vulkan/CMakeLists.txt	2018-09-28 14:56:49.997050699 +0200
-@@ -397,6 +397,8 @@
+diff -ur Vulkan-Loader-1.1.96.old/CMakeLists.txt Vulkan-Loader-1.1.96.patch/CMakeLists.txt
+--- Vulkan-Loader-1.1.96.old/CMakeLists.txt	2018-12-18 19:02:44.000000000 +0100
++++ Vulkan-Loader-1.1.96.patch/CMakeLists.txt	2018-12-26 14:48:58.488971652 +0100
+@@ -192,6 +192,13 @@
      if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
          add_definitions(-DEXTRASYSCONFDIR="/etc")
      endif()
 +
-+    add_definitions(-DLIBDIR="${CMAKE_INSTALL_FULL_LIBDIR}")
++    # NOTE: freedesktop search paths
++    # appropriate drivers
++    add_definitions(-DVULKAN_LIB_DIR_GL="${CMAKE_INSTALL_FULL_LIBDIR}/GL")
++    # opensource drivers
++    add_definitions(-DVULKAN_LIB_DIR="${CMAKE_INSTALL_FULL_LIBDIR}")
++
  endif()
  
- if(UNIX)
-diff -ur vulkan.old/loader/loader.c vulkan/loader/loader.c
---- vulkan.old/loader/loader.c	2018-04-20 00:07:56.000000000 +0200
-+++ vulkan/loader/loader.c	2018-09-28 14:47:29.454562860 +0200
-@@ -3093,6 +3093,7 @@
+ # uninstall target
+diff -ur Vulkan-Loader-1.1.96.old/loader/loader.c Vulkan-Loader-1.1.96.patch/loader/loader.c
+--- Vulkan-Loader-1.1.96.old/loader/loader.c	2018-12-18 19:02:44.000000000 +0100
++++ Vulkan-Loader-1.1.96.patch/loader/loader.c	2018-12-26 14:55:31.097947954 +0100
+@@ -3589,6 +3589,15 @@
  #if defined(EXTRASYSCONFDIR)
-         loc_size += strlen(EXTRASYSCONFDIR) + rel_size + 1;
+             search_path_size += DetermineDataFilePathSize(EXTRASYSCONFDIR, rel_size);
  #endif
-+        loc_size += strlen(LIBDIR) + rel_size + 1;
- #if defined(__APPLE__)
-         // For bundle path
-         loc_size += MAXPATHLEN;
-@@ -3187,7 +3188,11 @@
-             }
-         }
- 
--        --loc_write;
-+        memcpy(loc_write, LIBDIR, strlen(LIBDIR));
-+        loc_write += strlen(LIBDIR);
-+        memcpy(loc_write, relative_location, rel_size);
-+        loc_write += rel_size;
++/*freedesktop  appropriate drivers */
++#if defined(VULKAN_LIB_DIR_GL)
++            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR_GL, rel_size);
++#endif
++/* freedesktop opensource drivers */
++#if defined(VULKAN_LIB_DIR)
++            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR, rel_size);
++#endif
 +
- #else
-         memcpy(loc_write, location, strlen(location));
-         loc_write += strlen(location);
+             if (is_directory_list) {
+                 search_path_size += DetermineDataFilePathSize(xdgdatahome, rel_size);
+                 search_path_size += DetermineDataFilePathSize(home_root, rel_size);
+@@ -3637,6 +3646,15 @@
+ #if defined(EXTRASYSCONFDIR)
+             CopyDataFilePath(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
+ #endif
++/*freedesktop  appropriate drivers */
++#if defined(VULKAN_LIB_DIR_GL)
++            CopyDataFilePath(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
++#endif
++/* freedesktop opensource drivers */
++#if defined(VULKAN_LIB_DIR)
++            CopyDataFilePath(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
++#endif
++
+             CopyDataFilePath(xdgdatadirs, relative_location, rel_size, &cur_path_ptr);
+             if (is_directory_list) {
+                 CopyDataFilePath(xdgdatahome, relative_location, rel_size, &cur_path_ptr);
+
