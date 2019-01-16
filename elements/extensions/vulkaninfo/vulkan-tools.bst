@@ -24,6 +24,6 @@ config:
       mv  %{install-root}/usr %{install-root}/app
 
 sources:
-- kind: tar
-  url: github:KhronosGroup/Vulkan-Tools/archive/v1.1.96.tar.gz
-  ref: 18c173b2f58fadccc53c7636cf1f6eb3dc46579643ef2d23fd9c6106dd06db18
+- kind: git_tag
+  url: github:KhronosGroup/Vulkan-Tools
+  ref: v1.1.97-0-gff56a741b1cce8ae20ff6276f51100e668e9c4f5
