@@ -10,6 +10,13 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DSPIRV_WERROR=Off
 
+config:
+  install-commands:
+    (>):
+      - |
+        mkdir --parents %{install-root}%{includedir}/spirv/unified1
+        install -m 644 ./external/SPIRV-Headers/include/spirv/unified1/*.h* %{install-root}%{includedir}/spirv/unified1
+
 public:
   bst:
     split-rules:
@@ -25,13 +32,12 @@ public:
           - '%{bindir}/spirv-val'
 
 sources:
-- kind: tar
-  url: github:KhronosGroup/SPIRV-Tools/archive/v2018.6.tar.gz
-  ref: e7fccd5e1e134a4ce09a25475ca52c5a8a57085b07e0bbaa39aff20d36911d66
+- kind: git_tag
+  url: github:KhronosGroup/SPIRV-Tools
+  ref: v2019.1-0-g2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3
   # SPIRV-Headers should be in the same reference like spirv-headers.bst.
   # Only full git from headers make spirv-tools happy.
-  # did't try to sync headers and "touch a reference into the subfolder"
-- kind: git
+- kind: git_tag
   url: github:KhronosGroup/SPIRV-Headers
-  ref: 4618b86e9e4b027a22040732dfee35e399cd2c47
+  ref: 8bea0a266ac9b718aa0818d9e3a47c0b77c2cb23
   directory: external/SPIRV-Headers
