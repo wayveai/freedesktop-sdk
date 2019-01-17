@@ -4,7 +4,7 @@ freedesktop-sdk-18.08.26:
     * glib: backport fix for GTK file dialog regression (#594)
     * flatpak-xdg-utils: Update to 1.0 release
     * Fix OpenCL support for several vendors (#591)
-    * vulkan: upgrade to 1.1.92i (#544)
+    * vulkan: upgrade to 1.1.96 (#544)
     * python: Upgrade to 3.7.2
     * Make builds more reproducible disabling python hash randomization during build (#592)
     * Several fixes to build elements with correct hardening flags
