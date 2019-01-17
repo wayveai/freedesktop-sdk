@@ -8,6 +8,8 @@ depends:
 - filename: base/gzip.bst
   type: build
 
+# -Wno-error=sign-conversion is needed to suppress fatal warnings when building
+# cups from git: https://github.com/apple/cups/issues/5483#issuecomment-455227747
 variables:
   builddir: ''
   conf-local: |
@@ -18,6 +20,7 @@ variables:
     --enable-threads \
     --enable-gnutls \
     localedir=/usr/share/locale \
+    CFLAGS="-Wno-error=sign-conversion $CFLAGS" \
     DSOFLAGS="$CFLAGS $LDFLAGS"
 
 config:
@@ -37,4 +40,4 @@ sources:
 - kind: git_tag
   url: github:apple/cups.git
   track: master
-  ref: v2.2.8-0-g4ebeb20c50145190312c9897efa26ed5b58b3bc5
+  ref: v2.2.10-0-g25b2338346ef3abbb93ea88476887cba7b2b86f8
