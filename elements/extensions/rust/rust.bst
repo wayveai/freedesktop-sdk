@@ -68,7 +68,6 @@ config:
     [rust]
     debuginfo = true
     debuginfo-only-std = %{debuginfo-only-std}
-    use-jemalloc = true
     rpath = false
     default-linker = "/usr/bin/gcc"
     [target.%{rust-target}]
@@ -116,8 +115,8 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.31.0-src.tar.gz
-  ref: 9ad54dc0baf1db5fc6a79d54e71c439c82aff85cd96778978456f2958211ef06
+  url: https://static.rust-lang.org/dist/rustc-1.32.0-src.tar.gz
+  ref: 4c594c7712a0e7e8eae6526c464bf6ea1d82f77b4f61717c3fc28fb27ba2224a
 - kind: patch
   path: patches/rust-codegen-libdir.patch
 - kind: patch
