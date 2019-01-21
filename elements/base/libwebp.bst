@@ -32,9 +32,9 @@ public:
         - '%{libdir}/libwebpmux.so'
         - '%{libdir}/libwebp.so'
   cpe:
-    version: '1.0.0'
+    version: '1.0.2'
 
 sources:
 - kind: git_tag
   url: https://chromium.googlesource.com/webm/libwebp
-  ref: v1.0.0-0-g698b8844e38a0c5ca50bb20f866e71291bfc3b36
+  ref: v1.0.2-0-g2b98df90cb75cfc1cf4505a59a7b25499fa10887
