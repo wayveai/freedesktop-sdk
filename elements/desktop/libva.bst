@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -8,12 +8,12 @@ depends:
 - filename: desktop/xorg-lib-xfixes.bst
 - filename: desktop/wayland-protocols.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 
 variables:
-  conf-local: |
-    --with-drivers-path="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
+  meson-local: |
+    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
 
 public:
   bst:
