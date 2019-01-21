@@ -29,6 +29,7 @@ public:
         - '%{libdir}/libva-wayland.so'
 
 sources:
-- kind: tar
-  url: github:intel/libva/releases/download/2.1.0/libva-2.1.0.tar.bz2
-  ref: f3fa953a11d3210c3a4ee79031abdbe0863d5ce13d9b3f93f315f1eec60a4b0f
+- kind: git_tag
+  url: github:intel/libva
+  track: master
+  ref: 2.1.0-0-g417b0184d4a767721e9b0a5f1597907707f545cf
