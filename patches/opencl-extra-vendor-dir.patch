@@ -35,8 +35,18 @@ diff -ur opencl.old/Makefile.am opencl/Makefile.am
  libOpenCL_la_LDFLAGS = -version-info 1:0:0 $(PTHREAD_CFLAGS)
 diff -ur opencl.old/ocl_icd_loader.c opencl/ocl_icd_loader.c
 --- opencl.old/ocl_icd_loader.c	2019-01-14 11:00:33.285977281 +0100
-+++ opencl/ocl_icd_loader.c	2019-01-14 13:47:32.244062655 +0100
-@@ -580,16 +580,23 @@
++++ opencl/ocl_icd_loader.c	2019-01-21 20:10:39.993533849 +0100
+@@ -240,8 +240,7 @@
+   RETURN(num_icds);
+ }
+ 
+-static inline unsigned int _open_drivers(DIR *dir, const char* dir_path) {
+-  unsigned int num_icds = 0;
++static inline unsigned int _open_drivers(DIR *dir, const char* dir_path, unsigned int num_icds) {
+   struct dirent *ent;
+   while( (ent=readdir(dir)) != NULL ){
+     if(! _string_end_with_icd(ent->d_name)) {
+@@ -580,16 +579,23 @@
    cl_uint num_icds = 0;
    int is_dir = 0;
    DIR *dir = NULL;
@@ -60,7 +70,7 @@ diff -ur opencl.old/ocl_icd_loader.c opencl/ocl_icd_loader.c
      debug(D_DUMP, "OCL_ICD_VENDORS empty or not defined, using vendors path '%s'", dir_path);
      is_dir=1;
    }
-@@ -620,6 +627,20 @@
+@@ -620,6 +626,20 @@
      }
  
      num_icds = _find_num_icds(dir);
@@ -81,13 +91,25 @@ diff -ur opencl.old/ocl_icd_loader.c opencl/ocl_icd_loader.c
      if(num_icds == 0) {
        goto abort;
      }
-@@ -644,6 +665,9 @@
+@@ -643,7 +663,10 @@
+       num_icds = _load_icd(0, dir_path);
      }
    } else {
-     num_icds = _open_drivers(dir, dir_path);
+-    num_icds = _open_drivers(dir, dir_path);
++    num_icds = _open_drivers(dir, dir_path, 0);
 +    if ((dir_path_2 != NULL) && (dir_2 != NULL)) {
-+      num_icds += _open_drivers(dir_2, dir_path_2);
++      num_icds = _open_drivers(dir_2, dir_path_2, num_icds);
 +    }
    }
    if(num_icds == 0) {
      goto abort;
+@@ -672,6 +695,9 @@
+   if (dir != NULL){
+     closedir(dir);
+   }
++  if (dir_2 != NULL){
++    closedir(dir_2);
++  }
+   return;
+ }
+ 
