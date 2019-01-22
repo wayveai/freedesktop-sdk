@@ -15,8 +15,6 @@ config:
   install-commands:
     - |
       make SHARED=yes PREFIX="%{prefix}" SBINDIR="%{prefix}/bin" SHAREDIR="%{prefix}/share/hwdata" MANDIR="%{prefix}/share/man" LIBDIR="%{libdir}" DESTDIR="%{install-root}" install install-lib
-      mkdir  %{install-root}/usr/sbin
-      mv %{install-root}/usr/bin/update-pciids %{install-root}/usr/sbin/
 
 public:
   bst:
