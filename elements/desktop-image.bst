@@ -31,3 +31,5 @@ depends:
   type: build
 - filename: debug-app-link.bst
   type: build
+- filename: sdk-manifest.bst
+  type: build
