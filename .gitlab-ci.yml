@@ -108,6 +108,7 @@ check_update_elements:
   only:
     - schedules
 
+
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
