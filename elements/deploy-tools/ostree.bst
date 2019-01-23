@@ -20,7 +20,7 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree
   track: master
-  ref: v2018.9-0-gf3eba6bcec39c163eb831c02c148ffa483292906
+  ref: v2019.1-0-g13bcc49603b54f117c44e25dc2b457b9f25d9dc0
   submodules:
     libglnx:
       checkout: true
