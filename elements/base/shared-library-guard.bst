@@ -5,15 +5,11 @@ depends:
   - filename: base/buildsystem-meson.bst
     type: build
 
-config:
-  install-commands:
-    (>):
-    - |
-      mkdir -p "%{install-root}%{sysconfdir}"
-      ln -s /app/etc/freedesktop-sdk.ld.so.blockedlist "%{install-root}%{sysconfdir}/freedesktop-sdk.ld.so.blockedlist"
+variables:
+  meson-local: |
+     -Dshared_library_guard_config='"/app/etc/freedesktop-sdk.ld.so.blockedlist"'
 
-    
 sources:
   - kind: git_tag
     url: https://gitlab.com/freedesktop-sdk/shared-library-guard.git
-    ref: v19.01.1-0-g6140fa6652e419f0be362e9b455068bd2a1e13d0
+    ref: v19.01.2-0-g891372b97a13ae31c5b962ae2fd7087ceabb0996
