@@ -7,7 +7,7 @@ depends:
 
 variables:
   meson-local: |
-     -Dshared_library_guard_config='"/app/etc/freedesktop-sdk.ld.so.blockedlist"'
+     -Dshared_library_guard_config='"/app/etc/freedesktop.ld.so.blockedlist"'
 
 sources:
   - kind: git_tag
