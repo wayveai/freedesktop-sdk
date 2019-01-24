@@ -18,6 +18,11 @@ variables:
     libclangFrontendTool.a \
     libclangLex.a \
     libclangParse.a \
+    libclangRewrite.a \
+    libclangRewriteFrontend.a \
+    libclangStaticAnalyzerCheckers.a \
+    libclangStaticAnalyzerCore.a \
+    libclangStaticAnalyzerFrontend.a \
     libclangSema.a \
     libclangSerialization.a
 
