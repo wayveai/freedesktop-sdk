@@ -254,3 +254,29 @@ publish_arm:
     - armhf
   variables:
     ARCH: arm
+
+cve_report:
+  stage: publish
+  image: $DOCKER_BST_AMD64
+  cache:
+    key: cve
+    paths:
+      - "${XDG_CACHE_HOME}/cve"
+  tags:
+    - x86_64
+  script:
+    - pip3 install --user lxml
+    - mkdir -p "${XDG_CACHE_HOME}/cve"
+    - cd "${XDG_CACHE_HOME}/cve"
+    - python3 "${CI_PROJECT_DIR}/utils/update-local-cve-database.py"
+    - ${BST} -o target_arch "x86_64" build sdk-manifest.bst platform-manifest.bst
+    - mkdir -p "${CI_PROJECT_DIR}/sdk-manifest"
+    - mkdir -p "${CI_PROJECT_DIR}/platform-manifest"
+    - ${BST} -o target_arch "x86_64" checkout sdk-manifest.bst "${CI_PROJECT_DIR}/sdk-manifest"
+    - ${BST} -o target_arch "x86_64" checkout platform-manifest.bst "${CI_PROJECT_DIR}/platform-manifest"
+    - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
+    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
+    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
+  artifacts:
+    paths:
+      - "${CI_PROJECT_DIR}/cve-reports"
