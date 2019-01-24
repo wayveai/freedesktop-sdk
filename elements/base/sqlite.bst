@@ -15,6 +15,10 @@ public:
         (>):
         - '%{libdir}/libsqlite3.so'
 
+  cpe:
+    vendor: 'sqlite'
+    version: '3.26.0'
+
 sources:
 - kind: tar
   url: https://sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
