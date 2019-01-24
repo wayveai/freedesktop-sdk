@@ -25,6 +25,10 @@ config:
   - |
     make -f unix/Makefile BINDIR="%{install-root}%{bindir}" MANDIR="%{install-root}%{datadir}/man/man1" install
 
+public:
+  vendor: 'info-zip'
+  version: '6.0'
+
 sources:
 - kind: tar
   url: https://downloads.sourceforge.net/infozip/unzip60.tar.gz

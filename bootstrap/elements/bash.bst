@@ -50,6 +50,11 @@ config:
   - |
     %{delete_libtool_files}
 
+public:
+  cpe:
+    vendor: 'gnu'
+    version: '4.4.19'
+
 sources:
 - kind: git_tag
   url: savannah:bash.git
