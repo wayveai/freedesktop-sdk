@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -8,12 +8,12 @@ depends:
 - filename: desktop/xorg-lib-xfixes.bst
 - filename: desktop/wayland-protocols.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 
 variables:
-  conf-local: |
-    --with-drivers-path="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
+  meson-local: |
+    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
 
 public:
   bst:
@@ -29,6 +29,7 @@ public:
         - '%{libdir}/libva-wayland.so'
 
 sources:
-- kind: tar
-  url: github:intel/libva/releases/download/2.1.0/libva-2.1.0.tar.bz2
-  ref: f3fa953a11d3210c3a4ee79031abdbe0863d5ce13d9b3f93f315f1eec60a4b0f
+- kind: git_tag
+  url: github:intel/libva
+  track: master
+  ref: 2.3.0-0-g3695f8b0c66e7fdf22918c80dc62dab4c15052cb
