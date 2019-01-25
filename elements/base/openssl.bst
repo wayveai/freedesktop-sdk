@@ -60,6 +60,10 @@ public:
         - '%{libdir}/libcrypto.so'
         - '%{prefix}/ssl/misc/*'
 
+  cpe:
+    vendor: 'openssl'
+    version: '1.1.1'
+
 sources:
 - kind: git_tag
   url: github:openssl/openssl

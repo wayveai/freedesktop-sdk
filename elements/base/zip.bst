@@ -14,6 +14,10 @@ config:
     install -m 755 -D -t "%{install-root}%{bindir}" zip zipcloak zipnote zipsplit
     install -m 644 -D -t "%{install-root}%{datadir}/man/man1" man/zip.1 man/zipcloak.1 man/zipnote.1 man/zipsplit.1
 
+public:
+  vendor: 'info-zip'
+  version: '3.0'
+
 sources:
 - kind: tar
   url: https://downloads.sourceforge.net/infozip/zip30.tar.gz
