@@ -19,7 +19,7 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
-- filename: vm/linux-vm-boot/systemd.bst
+- filename: desktop/systemd-base.bst
   type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
