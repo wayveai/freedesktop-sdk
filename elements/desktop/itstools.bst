@@ -14,6 +14,4 @@ sources:
 - kind: git_tag
   url: github:itstool/itstool.git
   track: master
-  ref: 2.0.4-0-g890f35998ba7f86bdc58227142309b8ecc618c10
-- kind: patch
-  path: patches/itstool-Be-more-careful-about-libxml2-memory-management.patch
+  ref: 2.0.5-0-g39000db89b4d376af34fd4499743ac0fa5d7cd90
