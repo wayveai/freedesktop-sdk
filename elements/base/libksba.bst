@@ -3,6 +3,8 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: base/libgpg-error.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -12,6 +14,7 @@ public:
         - '%{libdir}/libksba.so'
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2
-  ref: 41444fd7a6ff73a79ad9728f985e71c9ba8cd3e5e53358e70d5f066d35c1a340
+- kind: git_tag
+  url: gnupg:libksba.git
+  track: master
+  ref: libksba-1.3.5-0-g25cc42cf61a56e01f1bd72883e452f691dda8309
