@@ -6,8 +6,11 @@ depends:
 - filename: base/libassuan.bst
 - filename: base/libksba.bst
 - filename: base/npth.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.12.tar.bz2
-  ref: db030f8b4c98640e91300d36d516f1f4f8fe09514a94ea9fc7411ee1a34082cb
+- kind: git_tag
+  url: gnupg:gnupg.git
+  track: master
+  ref: gnupg-2.2.12-0-g7d8f4ee7cf56eda988acdc909160cbac71bff18a
