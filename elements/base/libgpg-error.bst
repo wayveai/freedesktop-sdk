@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -11,6 +13,7 @@ public:
         - '%{libdir}/libgpg-error.so'
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.32.tar.bz2
-  ref: c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca
+- kind: git_tag
+  url: gnupg:libgpg-error.git
+  track: master
+  ref: libgpg-error-1.34-0-g8bc75741cadf95e2fac64891cf402cde891afe64
