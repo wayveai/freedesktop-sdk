@@ -3,6 +3,8 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: base/libgpg-error.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -12,6 +14,7 @@ public:
         - '%{libdir}/libassuan.so'
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.1.tar.bz2
-  ref: 47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
+- kind: git_tag
+  url: gnupg:libassuan.git
+  track: master
+  ref: libassuan-2.5.2-0-g86e1d17de081081f9302ca58cc2e07ecde3172f6
