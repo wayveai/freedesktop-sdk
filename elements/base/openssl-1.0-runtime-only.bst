@@ -4,6 +4,12 @@ depends:
 - filename: base/openssl-1.0.bst
   type: build
 
+public:
+  cpe:
+    version: 1.0.2q
+    vendor: openssl
+    product: openssl
+
 config:
   include:
   - runtime

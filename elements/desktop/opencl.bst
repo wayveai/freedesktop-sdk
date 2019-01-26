@@ -23,9 +23,9 @@ public:
         - '%{libdir}/libOpenCL.so'
 
 sources:
-- kind: git
+- kind: git_tag
   url: github:OCL-dev/ocl-icd
   track: v2.2.12
-  ref: af79aebe4649f30dbd711c1bf6fc661eac6e5f01
+  ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
 - kind: patch
   path: patches/opencl-extra-vendor-dir.patch
