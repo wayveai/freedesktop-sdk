@@ -16,5 +16,5 @@ variables:
 
 sources:
 - kind: tar
-  url: ftp://ftp.astron.com/pub/file/file-5.33.tar.gz
-  ref: 1c52c8c3d271cd898d5511c36a68059cda94036111ab293f01f83c3525b737c6
+  url: ftp://ftp.astron.com/pub/file/file-5.35.tar.gz
+  ref: 30c45e817440779be7aac523a905b123cba2a6ed0bf4f5439e1e99ba940b5546
