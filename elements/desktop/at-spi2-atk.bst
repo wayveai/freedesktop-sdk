@@ -16,6 +16,10 @@ public:
         (>):
         - '%{libdir}/libatk-bridge-2.0.so'
 
+  cpe:
+    version: '2.30.0'
+    vendor: 'gnome'
+
 sources:
 - kind: git_tag
   url: gnome:at-spi2-atk

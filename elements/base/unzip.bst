@@ -26,8 +26,9 @@ config:
     make -f unix/Makefile BINDIR="%{install-root}%{bindir}" MANDIR="%{install-root}%{datadir}/man/man1" install
 
 public:
-  vendor: 'info-zip'
-  version: '6.0'
+  cpe:
+    vendor: 'info-zip'
+    version: '6.0'
 
 sources:
 - kind: tar
