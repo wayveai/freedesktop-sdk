@@ -7,6 +7,8 @@ depends:
   type: runtime
 - filename: base/libgpg-error.bst
   type: runtime
+- filename: desktop/dbus.bst
+  type: runtime
 
 config:
   exclude:
