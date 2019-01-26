@@ -16,7 +16,6 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/util-linux.bst
 - filename: base/xz.bst
-- filename: desktop/dbus.bst
 
 variables:
   meson-local: |
