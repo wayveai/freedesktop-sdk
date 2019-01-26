@@ -35,6 +35,23 @@ public:
     product: 'systemd'
     version: '240'
 
+  bst:
+    split-rules:
+      libsystemd:
+        - '%{libdir}'
+        - '%{libdir}/libsystemd*.so*'
+        - '%{libdir}/pkgconfig'
+        - '%{libdir}/pkgconfig/libsystemd.pc'
+        - '%{datadir}/pkgconfig'
+        - '%{datadir}/pkgconfig/systemd.pc'
+        - '%{includedir}'
+        - '%{includedir}/systemd'
+        - '%{includedir}/systemd/**'
+        - '%{debugdir}%{libdir}'
+        - '%{debugdir}%{libdir}/libsystemd*.so*'
+        - '%{sourcedir}'
+        - '%{sourcedir}/**'
+
 sources:
 - kind: git_tag
   url: github:systemd/systemd-stable.git
