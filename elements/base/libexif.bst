@@ -14,6 +14,10 @@ public:
         (>):
         - '%{libdir}/libexif.so'
 
+  cpe:
+    version: '0.6.21'
+    vendor: 'curtis_galloway'
+
 sources:
 - kind: git_tag
   url: github:libexif/libexif
