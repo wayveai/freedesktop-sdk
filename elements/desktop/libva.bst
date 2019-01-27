@@ -32,4 +32,4 @@ sources:
 - kind: git_tag
   url: github:intel/libva
   track: master
-  ref: 2.3.0-0-g3695f8b0c66e7fdf22918c80dc62dab4c15052cb
+  ref: 2.4.0-0-g25b33076849e68bebae87771fb482c5ab929e18b
