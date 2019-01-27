@@ -1,14 +1,14 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 
 variables:
-  conf-local: |
-    LIBVA_DRIVERS_PATH="%{libdir}/dri/intel-vaapi-driver"
+  meson-local: |
+    -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
 
 sources:
 - kind: git_tag
