@@ -1,16 +1,21 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
 
 variables:
-  conf-local: |
-    LIBVA_DRIVERS_PATH="%{libdir}/dri/intel-vaapi-driver"
+  meson-local: |
+    -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
 
 sources:
-- kind: tar
-  url: github:intel/intel-vaapi-driver/releases/download/2.2.0/intel-vaapi-driver-2.2.0.tar.bz2
-  ref: e8a5f54694eb76aad42653b591030b8a53b1513144c09a80defb3d8d8c875c18
+- kind: git_tag
+  url: github:intel/intel-vaapi-driver
+  track: master
+  ref: 2.3.0-0-gce593cf433d62f46a87bec73485ae1c968010ae6
+- kind: patch
+  path: patches/intel-vaapi-driver-check-the-interface-from-libva-first.patch
+- kind: patch
+  path: patches/intel-vaapi-driver-properly-check-if-wayland-can-be-used.patch
