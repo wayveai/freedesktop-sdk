@@ -26,20 +26,17 @@ variables:
     -Daudit=false \
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
-    -Dsystem-gid-max=999
+    -Dsystem-gid-max=999 \
+    -Dopenssl=false
 
 public:
   cpe:
     vendor: freedesktop
-    version: '239'
+    version: '240'
 
 sources:
 - kind: git_tag
-  url: github:systemd/systemd.git
-  track: master
-  ref: v239-0-gde7436b02badc82200dc127ff190b8155769b8e7
-  # We enable various kernel configurations required for systemd
-  # in vm/bsp-generic/linux.bst. When bumping the systemd version
-  # please check the systemd README for any necessary changes
-- kind: patch
-  path: patches/0001-meson-rename-Ddebug-to-Ddebug-extra.patch
+  url: github:systemd/systemd-stable.git
+  track: v240-stable
+  track-tags: false
+  ref: v240-34-gf02b5472c6f0c41e5dc8dc2c84590866baf937ff
