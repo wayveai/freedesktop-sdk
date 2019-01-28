@@ -8,10 +8,13 @@ depends:
 - filename: base/libffi.bst
 - filename: base/gdbm.bst
 
+# Set '--with-compress-debug-sections=no' because of
+# https://bugs.ruby-lang.org/issues/12934
 variables:
   conf-local: |
     --enable-pthread \
-    --enable-ipv6
+    --enable-ipv6 \
+    --with-compress-debug-sections=no
 
 sources:
 - kind: tar
