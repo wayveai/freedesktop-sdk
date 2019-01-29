@@ -21,6 +21,6 @@ variables:
     -DGLSLANG_INSTALL_DIR=%{prefix}
 
 sources:
-- kind: tar
-  url: github:KhronosGroup/Vulkan-ValidationLayers/archive/v1.1.96.tar.gz
-  ref: 89aefb8f5e3f77f1cff9b23165fb8d4f7a718742b0dea698d93b20e3df112047
+- kind: git_tag
+  url: github:KhronosGroup/Vulkan-ValidationLayers
+  ref: v1.1.97-0-g9a4ae980ab4c69d2ae99f13a2c8ea2a5d102af93

@@ -30,8 +30,8 @@ public:
         - '%{libdir}/libvulkan.so'
 
 sources:
-- kind: tar
-  url: github:KhronosGroup/Vulkan-Loader/archive/v1.1.96.tar.gz
-  ref: 3f210eaa8bd1f3c57fc0a413aaa18f671c43d130a0ce60479ede23a9d1314f86
+- kind: git_tag
+  url: github:KhronosGroup/Vulkan-Loader
+  ref: v1.1.97-0-g5aa64df4a913388e896abf6567548ec6712084bb
 - kind: patch
   path: patches/vulkan-libdir-path.patch
