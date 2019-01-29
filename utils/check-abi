@@ -139,6 +139,10 @@ def checkout_tree(element, revision):
 
     return checkout_dir
 
+def get_bst_key(element, revision):
+    with checkout_git_revision(revision):
+        out = subprocess.check_output(['bst', 'show', '--deps', 'none', element])
+        return out.split()[1]
 
 def get_soname(path):
     out = subprocess.check_output(['objdump', '-x', path], encoding='utf-8', stderr=subprocess.STDOUT).strip()
@@ -251,6 +255,13 @@ if __name__ == '__main__':
     sanity_check()
 
     args = get_parser().parse_args()
+
+    old_key = get_bst_key(args.element, args.old)
+    new_key = get_bst_key(args.element, args.new)
+
+    if old_key == new_key:
+        print(format_title(f'There is no change between {args.old} and {args.new}', level=2), flush=True)
+        sys.exit(0)
 
     old_sdk = checkout_tree(args.element, args.old)
     new_sdk = checkout_tree(args.element, args.new)
