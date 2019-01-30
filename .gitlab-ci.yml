@@ -127,13 +127,15 @@ check_update_elements:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
 
+    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
+    - make ARCH=${ARCH} export
+    - make ARCH=${ARCH} test-apps
+
     - |
       REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
       ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
 
-    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - make ARCH=${ARCH} export
-    - make ARCH=${ARCH} test-apps
+
   artifacts:
     when: always
     paths:
