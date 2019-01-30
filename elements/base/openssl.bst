@@ -62,10 +62,10 @@ public:
 
   cpe:
     vendor: 'openssl'
-    version: '1.1.1'
+    version: '1.1.1a'
 
 sources:
 - kind: git_tag
   url: github:openssl/openssl
-  track: master
-  ref: OpenSSL_1_1_1-0-g1708e3e85b4a86bae26860aa5d2913fc8eff6086
+  track: OpenSSL_1_1_1-stable
+  ref: OpenSSL_1_1_1a-0-gd1c28d791a7391a8dc101713cd8646df96491d03
