@@ -16,5 +16,5 @@ variables:
 
 sources:
 - kind: tar
-  url: sourceware_pub:elfutils/0.173/elfutils-0.173.tar.bz2
-  ref: b76d8c133f68dad46250f5c223482c8299d454a69430d9aa5c19123345a000ff
+  url: sourceware_pub:elfutils/0.175/elfutils-0.175.tar.bz2
+  ref: f7ef925541ee32c6d15ae5cb27da5f119e01a5ccdbe9fe57bf836730d7b7a65b
