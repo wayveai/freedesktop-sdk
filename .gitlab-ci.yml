@@ -12,10 +12,8 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_BST_AMD64: "${DOCKER_REGISTRY}/amd64/bst:8a3f23d00b21604d78364384a36ad4369832d24c"
-  DOCKER_BST_AARCH64: "${DOCKER_REGISTRY}/aarch64/bst:8a3f23d00b21604d78364384a36ad4369832d24c"
-  DOCKER_QEMU_AMD64: "${DOCKER_REGISTRY}/amd64/qemu:8a3f23d00b21604d78364384a36ad4369832d24c"
-  DOCKER_QEMU_AARCH64: "${DOCKER_REGISTRY}/aarch64/qemu:8a3f23d00b21604d78364384a36ad4369832d24c"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:e132e7bf9180b30c6ad0f4b057442cc2f2a0aa86"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:e132e7bf9180b30c6ad0f4b057442cc2f2a0aa86"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -98,7 +96,7 @@ before_script:
 
 
 check_update_elements:
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   stage: update
   tags:
     - x86_64
@@ -132,7 +130,7 @@ check_update_elements:
   <<: *gitlab_cache_pull
 
 app_x86_64:
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -140,7 +138,7 @@ app_x86_64:
     ARCH: x86_64
 
 app_i686:
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
@@ -148,7 +146,7 @@ app_i686:
     ARCH: i686
 
 app_aarch64:
-  image: $DOCKER_BST_AARCH64
+  image: $DOCKER_AARCH64
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -156,7 +154,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: $DOCKER_BST_AARCH64
+  image: $DOCKER_AARCH64
   <<: *flatpak_definition
   tags:
     - armhf
@@ -180,7 +178,7 @@ app_arm:
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
-  image: $DOCKER_QEMU_AMD64
+  image: $DOCKER_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -190,7 +188,7 @@ minimal_vm_image_x86_64:
     DIALOG: minimal
 
 minimal_systemd_vm_image_x86_64:
-  image: $DOCKER_QEMU_AMD64
+  image: $DOCKER_AMD64
   tags:
     - x86_64
   <<: *vm_image
@@ -224,7 +222,7 @@ minimal_systemd_vm_image_x86_64:
   <<: *gitlab_cache_pull_push
 
 publish_x86_64:
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -232,7 +230,7 @@ publish_x86_64:
     ARCH: x86_64
 
 publish_i686:
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -240,7 +238,7 @@ publish_i686:
     ARCH: i686
 
 publish_aarch64:
-  image: $DOCKER_BST_AARCH64
+  image: $DOCKER_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -248,7 +246,7 @@ publish_aarch64:
     ARCH: aarch64
 
 publish_arm:
-  image: $DOCKER_BST_AARCH64
+  image: $DOCKER_AARCH64
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
@@ -257,7 +255,7 @@ publish_arm:
 
 cve_report:
   stage: publish
-  image: $DOCKER_BST_AMD64
+  image: $DOCKER_AMD64
   cache:
     key: cve
     paths:
