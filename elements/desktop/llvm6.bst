@@ -72,6 +72,9 @@ config:
       rm -f lib*.a
       mv tmp/* "%{install-root}%{libdir}"
       rm -rf tmp
+    - |
+      cd "%{install-root}%{libdir}"
+      sed -i '/APPEND _IMPORT_CHECK_TARGETS LLVM.*/ d' cmake/llvm/LLVMExports*.cmake
 
 public:
   bst:
