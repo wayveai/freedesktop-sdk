@@ -66,13 +66,27 @@ before_script:
         echo "projects:" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
+        if [ -f /cache-certificate/server.crt ]; then
+            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
+            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
+            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
+            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
+            echo "      push: true" >> ~/.config/buildstream.conf
+        fi
+        echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
+        if [ -f /cache-certificate/server.crt ]; then
+            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
+            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
+            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
+            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
+            echo "      push: true" >> ~/.config/buildstream.conf
+        fi
+        echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
