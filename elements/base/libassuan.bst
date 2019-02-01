@@ -5,6 +5,17 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/buildsystem-autotools.bst
   type: build
+- filename: base/texinfo.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode
+
+config:
+  install-commands:
+    (>):
+    - rm "%{install-root}/usr/share/info/dir"
 
 public:
   bst:

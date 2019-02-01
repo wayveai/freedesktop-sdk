@@ -4,6 +4,15 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
+- filename: base/gettext.bst
+  type: build
+- filename: base/texinfo.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode \
+    --disable-doc
 
 public:
   bst:
