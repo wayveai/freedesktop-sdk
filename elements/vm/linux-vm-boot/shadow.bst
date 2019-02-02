@@ -7,6 +7,14 @@ variables:
   conf-local: |
     --without-selinux
 
+config:
+  install-commands:
+  - |
+    cd %{builddir}
+    %{make-install} ubindir="%{bindir}" usbindir="%{sbindir}"
+  - |
+    %{delete_libtool_files}
+
 public:
   bst:
     overlap-whitelist:
