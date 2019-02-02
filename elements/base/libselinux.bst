@@ -14,6 +14,7 @@ environment:
   USE_PCRE2: y
   LIBDIR: '%{libdir}'
   SHLIBDIR: '%{libdir}'
+  SBINDIR: '%{sbindir}'
 
 config:
   configure-commands: []
