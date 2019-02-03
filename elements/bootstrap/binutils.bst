@@ -69,11 +69,4 @@ public:
       - /**
 
   cpe:
-    version: 2.31.1
-    patches:
-    - CVE-2018-17358
-    - CVE-2018-17359   # same fix as CVE-2018-17358
-    - CVE-2018-17360
-    - CVE-2018-20623
-    - CVE-2018-20651
-    - CVE-2018-20671
+    version: 2.32
