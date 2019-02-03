@@ -21,6 +21,7 @@ import os
 import shutil
 import subprocess
 import sys
+import re
 
 from contextlib import contextmanager
 from fnmatch import fnmatch
@@ -256,6 +257,15 @@ if __name__ == '__main__':
 
     args = get_parser().parse_args()
 
+    patterns = ["[skip abi]", "[abi skip]"]
+    commit = os.environ.get("CI_COMMIT_MESSAGE", "")
+
+    for pattern in patterns:
+        if re.search(re.escape(pattern), commit):
+            print(format_title(f'ABI check skipped by commit pattern {pattern}', level=2),
+                   flush=True)
+            sys.exit(0)
+    
     old_key = get_bst_key(args.element, args.old)
     new_key = get_bst_key(args.element, args.new)
 
