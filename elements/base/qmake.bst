@@ -53,5 +53,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtbase-everywhere-src-5.11.2.tar.xz
-  ref: 6381e7c3468d5a1dcfe3683b29eeced192faa0f8a32434fec071a59b8bcd0107
+  url: https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qtbase-everywhere-src-5.12.1.tar.xz
+  ref: 533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049
