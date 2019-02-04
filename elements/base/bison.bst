@@ -17,5 +17,5 @@ config:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:bison/bison-3.3.1.tar.gz
-  ref: 41d5451f854a446f09c4b7e75e1b0201349de7ce140905ac8a4c97efeacfe66b
+  url: ftp_gnu_org:bison/bison-3.3.2.tar.gz
+  ref: 0fda1d034185397430eb7b0c9e140fb37e02fbfc53b90252fa5575e382b6dbd1
