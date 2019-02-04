@@ -1,5 +1,58 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.27:
+    * extra-cmake-modules: Upgrade to 5.54
+    * qmake: upgrade to 5.12.1 
+    * bison: upgrade to 3.3.1 
+    * iso-codes: Bump to version 4.2 (#616)
+    * Apply libsndfile upstream fixes for multiple CVEs
+    * openssl: Upgrade to 1.1.1a
+    * Apply available upstream CVE fixes for binutils
+    * libgpg-error: bump to 1.34 
+    * libgcrypt: bump to 1.8.4
+    * libassuan: bump to 2.5.2
+    * nss: update to 3.42.1
+    * jq: Update to 1.6
+    * glib: update to 2.58.3
+    * util-linux: update to 2.33.1
+    * elfutils: update to 0.175 (#613)
+    * systemd: Update to 240 (#619)
+    * file: update to 5.35 
+    * libtiff: update to 4.0.10 (#478)
+    * gnutls: update to 3.6.6
+    * libva: update to 2.4.0
+    * vulkan: Upgrade to 1.1.97 (#596)
+    * Apply patches to fix several glibc CVE's 
+    * itstools: Bump to 2.0.5 (#601)
+    * intel-vaapi-driver: update to 2.3.0
+    * xorg-lib-x11: update to 1.6.7
+    * vala: Upgrade to 0.42.5 (#610)
+    * libdrm: Bump to 2.4.97 (#609)
+    * Generate report with CVEs as part of the CI (#212)
+    * Add glibc audit library to prevent libraries from loading
+    * Fix llvm 6 staticAnalizer
+    * libva: Upgrade to 2.3.0
+    * p11-kit: Upgrade to 0.23.15
+    * meson: Upgrade to 0.49.1
+    * gtk3: Upgrade to 3.24.4 (#602)
+    * ostree: Upgrade to v2019.1 (#603)
+    * Add automatic manifest file generation (#376)
+    * cmake: Bump to v3.13.4 (#604)
+    * gnupg: update to 2.2.12
+    * ruby: update to 2.5.3
+    * pciutils has been added (#584)
+    * Fix opencl loader patch not to overwrite loaded opencl drivers (#606)
+    * librsvg: Update to 2.44.12
+    * libwebp: Update to 1.0.2
+    * nss: update to 3.41
+    * shared-mime-info: Update to 1.12
+    * rust: Update to 1.32.0
+    * pango: add patch to fix gobject in pkg-config
+    * gdb: Separate python printers into devel (#590)
+    * pango: upgrade to 1.43 (#566)
+    * cups: upgrade to 2.2.10
+    * mesa: upgrade to 18.3.2 (#597)
+
 freedesktop-sdk-18.08.26:
     * glib: backport fix for GTK file dialog regression (#594)
     * flatpak-xdg-utils: Update to 1.0 release
