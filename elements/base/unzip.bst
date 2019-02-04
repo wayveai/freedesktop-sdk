@@ -29,8 +29,27 @@ public:
   cpe:
     vendor: 'info-zip'
     version: '6.0'
+    patches:
+      - CVE-2014-9636
+      - CVE-2014-9913
+      - CVE-2015-7696
+      - CVE-2015-7697
+      - CVE-2016-9844
+      - CVE-2018-18384
 
 sources:
 - kind: tar
   url: https://downloads.sourceforge.net/infozip/unzip60.tar.gz
   ref: 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+- kind: patch
+  path: patches/unzip/CVE-2014-9636.patch
+- kind: patch
+  path: patches/unzip/CVE-2014-9913.patch
+- kind: patch
+  path: patches/unzip/CVE-2015-7696.patch
+- kind: patch
+  path: patches/unzip/CVE-2015-7697.patch
+- kind: patch
+  path: patches/unzip/CVE-2016-9844.patch
+- kind: patch
+  path: patches/unzip/CVE-2018-18384.patch
