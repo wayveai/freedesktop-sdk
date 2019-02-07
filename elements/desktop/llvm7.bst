@@ -112,4 +112,4 @@ sources:
   ref: 782edfc119ee172f169c91dd79f2c964fb6b248bd9b73523149030ed505bbe18
   directory: tools/compiler-rt
 - kind: patch
-  path: patches/llvm-clang-ignore-fstack-clash-protection.patch
+  path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch

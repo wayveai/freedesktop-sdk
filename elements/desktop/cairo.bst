@@ -52,4 +52,4 @@ sources:
   track: master
   ref: 1.16.0-0-g3ad43122b21a3299dd729dc8462d6b8f7f01142d
 - kind: patch
-  path: patches/cairo-CVE-2018-19876.patch
+  path: patches/cairo/cairo-CVE-2018-19876.patch

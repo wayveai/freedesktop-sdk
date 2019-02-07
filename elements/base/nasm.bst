@@ -21,4 +21,4 @@ sources:
   url: https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
   ref: 812ecfb0dcbc5bd409aaa8f61c7de94c5b8752a7b00c632883d15b2ed6452573
 - kind: patch
-  path: patches/nasm-disable-werror-attributes.patch
+  path: patches/nasm/nasm-disable-werror-attributes.patch

@@ -30,4 +30,4 @@ sources:
       checkout: True
       url: github:publicsuffix/list
 - kind: patch
-  path: patches/libpsl-Use-the-detected-PYTHON-version.patch
+  path: patches/libpsl/libpsl-Use-the-detected-PYTHON-version.patch
