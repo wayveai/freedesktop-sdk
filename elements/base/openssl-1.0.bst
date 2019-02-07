@@ -70,4 +70,4 @@ sources:
   ref: OpenSSL_1_0_2q-0-g5707219a6aae8052cb98aa361d115be01b8fd894
 - kind: patch
     # Updates need to update this script if there are new symbols.
-  path: patches/openssl-version-script.patch
+  path: patches/openssl/openssl-version-script.patch

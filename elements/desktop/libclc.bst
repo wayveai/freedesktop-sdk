@@ -32,4 +32,4 @@ sources:
   url: https://llvm.org/git/libclc
   ref: e6e24bf34143a3d4c225376efe7eef69ead9ac7b # No git describe, no tags...
 - kind: patch
-  path: patches/libclc-force-configure-to-use-python3.patch
+  path: patches/libclc/libclc-force-configure-to-use-python3.patch

@@ -26,4 +26,4 @@ sources:
   track: master
   ref: VALGRIND_3_14_0-0-g3a3000290b4af0e8ef9880293c54659a6819ba78
 - kind: patch
-  path: patches/valgrind-arm-hot_cpu.patch
+  path: patches/valgrind/valgrind-arm-hot_cpu.patch

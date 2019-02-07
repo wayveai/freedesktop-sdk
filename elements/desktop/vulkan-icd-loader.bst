@@ -34,4 +34,4 @@ sources:
   url: github:KhronosGroup/Vulkan-Loader
   ref: v1.1.97-0-g5aa64df4a913388e896abf6567548ec6712084bb
 - kind: patch
-  path: patches/vulkan-libdir-path.patch
+  path: patches/vulkan/vulkan-libdir-path.patch

@@ -65,6 +65,6 @@ sources:
   url: http://ftp.rpm.org/releases/rpm-4.14.x/rpm-4.14.1.tar.bz2
   ref: 43f40e2ccc3ca65bd3238f8c9f8399d4957be0878c2e83cba2746d2d0d96793b
 - kind: patch
-  path: patches/debugedit-disable-berkdb-check.patch
+  path: patches/debugedit/debugedit-disable-berkdb-check.patch
 - kind: patch
-  path: patches/debugedit-disable-md2.patch
+  path: patches/debugedit/debugedit-disable-md2.patch

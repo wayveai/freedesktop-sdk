@@ -32,12 +32,12 @@ sources:
       checkout: True
       url: freedesktop:gstreamer/common
 - kind: patch
-  path: patches/gst-libav-stop-caching-codecs.patch
+  path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
 - kind: patch
-  path: patches/gst-libav-disable-1.15-api.patch
+  path: patches/gstreamer-libav/gst-libav-disable-1.15-api.patch
 - kind: patch
-  path: patches/gst-libav-drop-1.15-dependency.patch
+  path: patches/gstreamer-libav/gst-libav-drop-1.15-dependency.patch
 - kind: patch
-  path: patches/gst-libav-avmux-Place-pva-case-after-generic-case.patch
+  path: patches/gstreamer-libav/gst-libav-avmux-Place-pva-case-after-generic-case.patch
 - kind: patch
-  path: patches/gst-libav-decoders-fix-draining.patch
+  path: patches/gstreamer-libav/gst-libav-decoders-fix-draining.patch
