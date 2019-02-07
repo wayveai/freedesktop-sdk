@@ -118,6 +118,6 @@ sources:
   url: https://static.rust-lang.org/dist/rustc-1.32.0-src.tar.gz
   ref: 4c594c7712a0e7e8eae6526c464bf6ea1d82f77b4f61717c3fc28fb27ba2224a
 - kind: patch
-  path: patches/rust-codegen-libdir.patch
+  path: patches/rust/rust-codegen-libdir.patch
 - kind: patch
-  path: patches/rust-cannonicalize-install.patch
+  path: patches/rust/rust-cannonicalize-install.patch

@@ -29,4 +29,4 @@ sources:
   track: dconf-0.30
   ref: 0.30.1-0-g6eba98fd6fb39aed73836d5468a516c2ed1a2cb8
 - kind: patch
-  path: patches/dconf-override.patch
+  path: patches/dconf/dconf-override.patch
