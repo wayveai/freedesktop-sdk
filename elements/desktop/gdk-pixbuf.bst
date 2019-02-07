@@ -20,6 +20,7 @@ variables:
     -Dx11=false
     -Djasper=false
     -Dbuiltin_loaders=png,jpeg
+    -Dinstalled_tests=false
 
 public:
   bst:

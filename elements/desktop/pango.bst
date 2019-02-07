@@ -28,6 +28,13 @@ variables:
    -Denable_docs=false \
    -Dgir=true
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm -rf "%{install-root}%{libexecdir}/installed-tests"
+      rm -rf "%{install-root}%{datadir}/installed-tests"
+
 sources:
 - kind: git_tag
   url: gnome:pango
