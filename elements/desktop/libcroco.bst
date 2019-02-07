@@ -15,10 +15,12 @@ public:
         (>):
         - '%{libdir}/libcroco-0.6.so'
   cpe:
-    version: '0.6.12'
+    patches:
+      - 'CVE-2017-7960'
+      - 'CVE-2017-7961'
 
 sources:
 - kind: git_tag
   url: gnome:libcroco
   track: master
-  ref: 0.6.12-0-g0d0162098ac6630113da9e66620ab29459352dd6
+  ref: 0.6.12-4-g9ad72875e9f08e4c519ef63d44cdbd94aa9504f7
