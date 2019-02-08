@@ -39,10 +39,10 @@ public:
         (>):
         - '%{libdir}/libvpx.so'
   cpe:
-    version: '1.7.0'
+    version: '1.8.0'
 
 sources:
 - kind: git_tag
   url: https://chromium.googlesource.com/webm/libvpx
-  track: mandarinduck
-  ref: v1.7.0-0-gf80be22a1099b2a431c2796f529bb261064ec6b4
+  track: northernshoveler
+  ref: v1.8.0-0-gb85ac11737430a7f600ac4efb643d4833afd7428
