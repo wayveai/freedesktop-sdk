@@ -28,7 +28,9 @@ variables:
     --disable-lirc \
     --disable-bluez4 \
     --disable-bluez5 \
-    --disable-systemd
+    --disable-systemd-daemon \
+    --disable-systemd-login \
+    --disable-systemd-journal
 
 config:
   configure-commands:
