@@ -8,6 +8,7 @@ depends:
 - filename: desktop/gtk-doc.bst
 - filename: desktop/itstools.bst
 - filename: desktop/jq.bst
+- filename: desktop/libva-utils.bst
 - filename: desktop/mercurial.bst
 - filename: desktop/wayland-protocols.bst
 - filename: desktop/xorg-proto-xcb.bst
