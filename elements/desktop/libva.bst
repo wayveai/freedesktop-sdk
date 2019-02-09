@@ -12,7 +12,10 @@ depends:
 
 variables:
   meson-local: |
-    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver"
+    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver" \
+    -Dwith_glx=no \
+    -Dwith_wayland=yes \
+    -Dwith_x11=yes
 
 public:
   bst:
@@ -23,8 +26,6 @@ public:
         - '%{libdir}/libva-tpi.so'
         - '%{libdir}/libva-x11.so'
         - '%{libdir}/libva-drm.so'
-        - '%{libdir}/libva-egl.so'
-        - '%{libdir}/libva-glx.so'
         - '%{libdir}/libva-wayland.so'
 
 sources:
