@@ -21,8 +21,8 @@ variables:
   conf-args: |
     --prefix="%{prefix}" \
     --libdir="%{libdir}" \
-    --extra-cflags="${CFLAGS}" \
-    --extra-cxxflags="${CXXFLAGS}" \
+    --enable-pic \
+    --enable-optimizations \
     --target="%{vpxtarget}" \
     --disable-static \
     --enable-shared \
@@ -30,7 +30,6 @@ variables:
     --enable-vp9 \
     --enable-libs \
     --disable-install-docs \
-    --disable-optimizations \
     --as=nasm
 
 public:
