@@ -23,7 +23,8 @@ variables:
   cmake-local: |
     -DAOM_TARGET_CPU="${aom_target}" \
     -DENABLE_DOCS=NO \
-    -DENABLE_NASM=YES
+    -DENABLE_NASM=YES \
+    -DENABLE_NEON=NO
 
 sources:
 - kind: git_tag
