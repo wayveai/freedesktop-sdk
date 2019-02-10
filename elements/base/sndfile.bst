@@ -20,12 +20,23 @@ public:
     - CVE-2017-14634
     - CVE-2017-6892
     - CVE-2017-8361
-    - CVE-2017-8362 # Same CVE-2017-8361
+    - CVE-2017-8362
+    - CVE-2017-8363
+    - CVE-2017-8365 # Same fix as CVE-2017-8361
+    - CVE-2017-17456 # Same fix as CVE-2018-19661
+    - CVE-2017-17457 # Same fix as CVE-2018-19661
     - CVE-2018-13139
     - CVE-2018-19432 # Same fix as CVE-2018-13139
     - CVE-2018-19661
     - CVE-2018-19662 # Same fix as CVE-2018-19661
     - CVE-2018-19758
+
+# CVE-2017-14245 and CVE-2017-14246 are supposedly fixed by the same patch as
+# CVE-2018-19661:
+# https://github.com/erikd/libsndfile/issues/317#issuecomment-449717715
+#
+# CVE-2018-13419 is being disputed:
+# https://github.com/erikd/libsndfile/issues/398
 
 variables:
   conf-local: |
@@ -43,6 +54,10 @@ sources:
   path: patches/sndfile/CVE-2017-6892.patch
 - kind: patch
   path: patches/sndfile/CVE-2017-8361.patch
+- kind: patch
+  path: patches/sndfile/CVE-2017-8362.patch
+- kind: patch
+  path: patches/sndfile/CVE-2017-8363.patch
 - kind: patch
   path: patches/sndfile/CVE-2018-13139.patch
 - kind: patch
