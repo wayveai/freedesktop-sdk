@@ -9,6 +9,7 @@ depends:
 - filename: desktop/openal.bst
 - filename: desktop/libpulse.bst
 - filename: desktop/sdl2.bst
+- filename: base/aom.bst
 - filename: base/buildsystem-autotools.bst
   type: build
 - filename: base/gnutls.bst
@@ -38,6 +39,7 @@ variables:
     --disable-ffprobe \
     --disable-everything \
     --enable-gnutls \
+    --enable-libaom \
     --enable-libfdk-aac \
     --enable-libmp3lame \
     --enable-libfontconfig \
@@ -55,7 +57,7 @@ variables:
     --enable-encoder=ac3,mp2,libmp3lame,libfdk_aac \
     --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
     --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
-    --enable-decoder=theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
+    --enable-decoder=libaom_av1,theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
     --enable-decoder=rawvideo,png,gif \
     --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac,aac,ac3 \
     --enable-demuxer=ogg,matroska,wav,mp3,gif,flac,aac,ac3,m4a \
