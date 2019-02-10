@@ -29,6 +29,9 @@ public:
         (>):
         - '%{libdir}/libcurl.so'
 
+  cpe:
+    version: '7.64.0'
+
 sources:
 - kind: git_tag
   url: github:curl/curl.git
