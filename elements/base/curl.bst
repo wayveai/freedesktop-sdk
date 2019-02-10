@@ -30,6 +30,7 @@ public:
         - '%{libdir}/libcurl.so'
 
 sources:
-- kind: tar
-  url: github:curl/curl/releases/download/curl-7_63_0/curl-7.63.0.tar.xz
-  ref: 9600234c794bfb8a0d3f138e9294d60a20e7a5f10e35ece8cf518e2112d968c4
+- kind: git_tag
+  url: github:curl/curl.git
+  track: master
+  ref: curl-7_64_0-0-gf3294d9d86e6a7915a967efff2842089b8b0d071
