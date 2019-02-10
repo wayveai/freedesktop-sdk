@@ -2,11 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/wayland-protocols.bst
-  type: build
 - filename: desktop/atk.bst
 - filename: desktop/at-spi2-atk.bst
-- filename: desktop/pango.bst
 - filename: desktop/cairo.bst
 - filename: desktop/dconf.bst
   type: runtime
@@ -15,13 +12,16 @@ depends:
   type: build
 - filename: desktop/gsettings-desktop-schemas.bst
 - filename: desktop/hicolor-icon-theme.bst
-- filename: desktop/xorg-lib-xinerama.bst
-- filename: desktop/xorg-lib-xi.bst
+- filename: desktop/libepoxy.bst
+- filename: desktop/libxkbcommon.bst
+- filename: desktop/mesa.bst
+- filename: desktop/pango.bst
+- filename: desktop/wayland.bst
+- filename: desktop/wayland-protocols.bst
 - filename: desktop/xorg-lib-xcomposite.bst
 - filename: desktop/xorg-lib-xdamage.bst
-- filename: desktop/libxkbcommon.bst
-- filename: desktop/libepoxy.bst
-- filename: desktop/mesa.bst
+- filename: desktop/xorg-lib-xinerama.bst
+- filename: desktop/xorg-lib-xi.bst
 - filename: base/buildsystem-autotools.bst
   type: build
 - filename: base/gettext.bst
