@@ -2,9 +2,9 @@ kind: import
 description: Import the base freedesktop SDK
 sources:
 - kind: ostree
-  url: https://sdk.gnome.org/repo/
+  url: flathub:repo/
   # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
-  #gpg-key: keys/gnome-sdk.gpg
+  #gpg-key: keys/flathub.gpg
   (?):
   - bootstrap_build_arch == "x86_64":
       track: runtime/org.freedesktop.BaseSdk/x86_64/1.6
