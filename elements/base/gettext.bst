@@ -29,3 +29,5 @@ sources:
   path: patches/gettext/gettext-reproducible.patch
 - kind: patch
   path: patches/gettext/gettext-0.19.8.1-CVE-2018-18751.patch
+- kind: patch
+  path: patches/gettext/gettext-0.19.8-its-segfault.patch
