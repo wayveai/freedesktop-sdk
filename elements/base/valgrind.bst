@@ -20,6 +20,10 @@ config:
     - |
       autoreconf -ivf
 
+public:
+  cpe:
+    version: '3.14.0'
+
 sources:
 - kind: git_tag
   url: https://repo.or.cz/valgrind.git
