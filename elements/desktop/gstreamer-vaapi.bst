@@ -6,7 +6,6 @@ depends:
   type: build
 - filename: desktop/gstreamer.bst
 - filename: desktop/gstreamer-plugins-bad.bst
-- filename: desktop/gtk3.bst
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
 - filename: desktop/mesa.bst
@@ -29,8 +28,7 @@ variables:
     --enable-glx \
     --enable-drm \
     --enable-wayland \
-    --enable-x11 \
-    --with-gtk
+    --enable-x11
 
 sources:
 - kind: git_tag
