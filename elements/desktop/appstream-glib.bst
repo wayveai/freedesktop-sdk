@@ -7,8 +7,6 @@ depends:
 - filename: desktop/gdk-pixbuf.bst
 - filename: desktop/gcab.bst
 - filename: desktop/gtk3.bst
-- filename: desktop/wayland-protocols.bst
-  type: build
 - filename: desktop/gobject-introspection.bst
   type: build
 - filename: base/buildsystem-meson.bst
