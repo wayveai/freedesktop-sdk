@@ -30,14 +30,17 @@ variables:
       ffmpeg-arch: x86
 
   audio-encoders: |
-    ac3,flac,libfdk_aac,libmp3lame,%{extra-aud-enc}
+    ac3,flac,libfdk_aac,mp2,libmp3lame,pcm_alaw,pcm_mulaw,\
+    pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
+    pcm_u8,libvorbis%{extra-aud-enc}
 
   audio-decoders: |
-    ac3,flac,mp2,mp3,m4a,pcm_alaw,pcm_mulaw,\
+    ac3,flac,libfdk_aac,mp2,mp3,m4a,pcm_alaw,pcm_mulaw,\
     pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
     pcm_u8,vorbis,%{extra-aud-dec}
 
-  video-encoders: '%{extra-vid-enc}'
+  video-encoders: |
+    libaom_av1,rawvideo,theora,%{extra-vid-enc}
 
   video-decoders: |
     libaom_av1,libdav1d,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
@@ -47,7 +50,8 @@ variables:
 
   hwaccels: '%{extra-hwaccels}'
 
-  muxers: '%{extra-muxers}'
+  muxers: |
+    ac3,flac,gif,matroska,mp3,ogg,wav,%{extra-muxers}
 
   demuxers: |
     aac,ac3,flac,gif,matroska,mp3,m4a,ogg,wav,%{extra-demuxers}
