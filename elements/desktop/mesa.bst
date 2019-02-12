@@ -15,6 +15,7 @@ depends:
 - filename: desktop/xorg-lib-xrandr.bst
 - filename: desktop/xorg-lib-xshmfence.bst
 - filename: desktop/xorg-lib-xxf86vm.bst
+- filename: desktop/wayland.bst
 - filename: desktop/wayland-protocols.bst
   type: build
 - filename: desktop/libglvnd.bst

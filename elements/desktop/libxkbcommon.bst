@@ -2,7 +2,9 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
+- filename: desktop/wayland.bst
 - filename: desktop/wayland-protocols.bst
+  type: build
 - filename: desktop/xorg-data-xkeyboard-config.bst
 - filename: base/buildsystem-meson.bst
   type: build
