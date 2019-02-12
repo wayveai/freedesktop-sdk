@@ -5,9 +5,10 @@ description: ffmpeg shipped in the ffmpeg-full extension, has more codecs enable
 - elements/include/ffmpeg.yml
 
 variables:
-  extra-aud-dec: dca,eac3,mlp,truehd
-  extra-vid-enc: h263,h264
-  extra-vid-dec: hevc,h263,h264,mpeg4
+  extra-aud-enc: wmav1,wmav2
+  extra-aud-dec: dca,eac3,mlp,truehd,wmav1,wmav2
+  extra-vid-enc: h263,h264,wmv1,wmv2
+  extra-vid-dec: hevc,h263,h264,mpeg4,wmv1,wmv2
   extra-hwaccels: h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau
   extra-parsers: hevc,h264,dca,mpeg4video
   extra-demuxers: avi,h264,mov,m4v,m4a
