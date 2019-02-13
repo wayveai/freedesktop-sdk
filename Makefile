@@ -54,6 +54,10 @@ manifest:
 	bst checkout platform-manifest.bst platform-manifest/
 	bst checkout sdk-manifest.bst sdk-manifest/
 
+markdown-manifest: manifest
+	python3 utils/jsontomd.py platform-manifest/usr/manifest.json
+	python3 utils/jsontomd.py sdk-manifest/usr/manifest.json
+
 test-apps: $(REPO)
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
 	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable}}//$(BRANCH)
@@ -78,4 +82,4 @@ clean-runtime:
 clean: clean-repo clean-runtime
 
 
-.PHONY: build check-dev-files clean clean-repo clean-runtime export test-apps
+.PHONY: build check-dev-files clean clean-repo clean-runtime export test-apps manifest markdown-manifest
