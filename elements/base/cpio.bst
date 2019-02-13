@@ -6,8 +6,13 @@ depends:
 
 variables:
   conf-local: |
-    --with-rmt="%{libexecdir}/rmt" \
-    --mandir=%{prefix}/share/runtime/docs/man
+    --with-rmt="%{libexecdir}/rmt"
+
+config:
+  install-commands:
+    (>):
+    # man8 is empty and this causes issue with compose element.
+    - rm -rf "%{install-root}%{mandir}/man8"
 
 sources:
 - kind: tar
