@@ -5,20 +5,21 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 
-config:
-  configure-commands:
-    (<):
-    - |
-      autoreconf -ivf
+# We have to build in the source dir otherwise some perl scripts will fail
+variables:
+  builddir: ''
 
+# Default install target requires manpages exist but we can't build them due to
+# missing 'asciidoc' dependency
+config:
   install-commands:
   - |
-    cd "%{builddir}"
-    make -j1 INSTALLROOT="%{install-root}" install
+    install -m 755 -D -t "%{install-root}%{bindir}" nasm ndisasm
 
 sources:
-- kind: tar
-  url: https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
-  ref: 812ecfb0dcbc5bd409aaa8f61c7de94c5b8752a7b00c632883d15b2ed6452573
+- kind: git_tag
+  url: https://repo.or.cz/nasm.git
+  track: master
+  ref:  nasm-2.14.02-0-ga73b8be6f0f9e307e3c6131011a30f2fd5b00877
 - kind: patch
   path: patches/nasm/nasm-disable-werror-attributes.patch
