@@ -1,5 +1,27 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.28:
+    * nasm: update to 2.14.02
+    * pixman: Update to 0.38
+    * libtiff: fix CVE-2019-6128
+    * meson: Bump to 0.49.2
+    * gtk3: Bump to 3.24.5
+    * sndfile: fix remaining CVE
+    * gettext: patch to mitigate CVE-2018-18751
+    * Add libva-utils
+    * Enable AV1 codec support (#631)
+    * Apply CVE fixes to wavepack
+    * libva: Fix driver path in pkgconfig file
+    * libvpx: enable optimizations
+    * libvpx: enable optimizations
+    * bison: update to 3.3.2
+    * elfutils.bst: fix multiple CVE
+    * unzip: fix multiple CVE
+    * bzip2: fix CVE-2016-3189
+    * Add mitigation patch for cve-2017-7960 in libcroco
+    * linux-headers: update to 4.14.96
+    * Apply ncurses upstream fix for CVE-2018-10754
+
 freedesktop-sdk-18.08.27:
     * extra-cmake-modules: Upgrade to 5.54
     * qmake: upgrade to 5.12.1 
