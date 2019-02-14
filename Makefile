@@ -32,29 +32,38 @@ export: clean-runtime
 
 check-dev-files:
 	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
-	
+
 	mkdir -p $(CHECKOUT_ROOT)
 	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-	
+
 	set -e; if [ -s found_dev_files.txt ]; then \
 	  echo "Found development files:" 1>&2; \
 	  cat found_dev_files.txt 1>&2; \
 	  false; \
 	fi
 
+manifest:
+	rm -rf sdk-manifest/
+	rm -rf platform-manifest/
+
+	bst --colors $(ARCH_OPTS) build platform-manifest.bst
+	bst --colors $(ARCH_OPTS) build sdk-manifest.bst
+
+	bst checkout platform-manifest.bst platform-manifest/
+	bst checkout sdk-manifest.bst sdk-manifest/
 
 test-apps: $(REPO)
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
 	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable}}//$(BRANCH)
-	
+
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Hello.json
 	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Hello.json hello.sh
-	
+
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.gnu.hello.json
 	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.gnu.hello.json hello
-	
+
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Rust.Hello.json
 	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Rust.Hello.json hello
 
