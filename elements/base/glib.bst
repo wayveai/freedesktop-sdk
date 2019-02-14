@@ -51,3 +51,5 @@ sources:
   url: gnome:glib
   track: glib-2-58
   ref: 2.58.3-0-gf2d1128ffae0de87680e411fb62ccfccafed6b1c
+- kind: patch
+  path: patches/glib/glib-trash.patch
