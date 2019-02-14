@@ -48,7 +48,7 @@ variables:
     ass,ffv1,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
 
   image-formats: |
-    gif,png,webp,%{extra-image-formats}
+    gif,png,tiff,webp,%{extra-image-formats}
 
   hwaccels: '%{extra-hwaccels}'
 
