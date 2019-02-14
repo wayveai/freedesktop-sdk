@@ -96,6 +96,7 @@ variables:
     --enable-encoder=%{video-encoders} \
     --enable-decoder=%{audio-decoders} \
     --enable-decoder=%{video-decoders} \
+    --enable-encoder=%{image-formats} \
     --enable-decoder=%{image-formats} \
     --enable-hwaccel=%{hwaccels} \
     --enable-parser=%{parsers} \
