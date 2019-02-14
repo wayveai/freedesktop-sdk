@@ -8,6 +8,13 @@ depends:
 
 (@): target.yml
 
+config:
+  install-commands:
+    (>):
+    # Remove empty directory triggering BuildStream #647
+    - |
+      rm -rf "%{install-root}%{mandir}/man5"
+
 public:
   bst:
     split-rules:
