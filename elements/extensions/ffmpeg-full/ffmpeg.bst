@@ -6,7 +6,7 @@ description: ffmpeg shipped in the ffmpeg-full extension, has more codecs enable
 
 variables:
   extra-aud-enc: wmav1,wmav2
-  extra-aud-dec: ape,dca,eac3,mlp,truehd,wmav1,wmav2
+  extra-aud-dec: ape,dca,eac3,mlp,tak,truehd,wmav1,wmav2
   extra-vid-enc: h263,h264,wmv1,wmv2
   extra-vid-dec: hevc,h263,h264,mpeg4,wmv1,wmv2
   extra-hwaccels: h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau
