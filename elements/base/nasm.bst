@@ -4,17 +4,26 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
+- filename: base/asciidoc.bst
+  type: build
+- filename: base/groff.bst
+  type: build
+- filename: base/xmlto.bst
+  type: build
+- filename: base/docbook-xml.bst
+  type: build
+- filename: base/docbook-xsl.bst
+  type: build
+- filename: base/libxslt.bst
+  type: build
 
-# We have to build in the source dir otherwise some perl scripts will fail
 variables:
   builddir: ''
 
-# Default install target requires manpages exist but we can't build them due to
-# missing 'asciidoc' dependency
 config:
-  install-commands:
-  - |
-    install -m 755 -D -t "%{install-root}%{bindir}" nasm ndisasm
+  build-commands:
+    (>):
+    - make manpages
 
 sources:
 - kind: git_tag
