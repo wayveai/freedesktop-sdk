@@ -118,8 +118,13 @@ check_update_elements:
   script:
     - ${BST} track --deps all all.bst
     - git diff
+    - make markdown-manifest
   only:
     - schedules
+  artifacts:
+    paths:
+      - "${CI_PROJECT_DIR}/platform-manifest/usr/"
+      - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
 
 
 .flatpak_template: &flatpak_definition
