@@ -19,6 +19,7 @@ depends:
 - filename: components/libtheora.bst
 - filename: components/libvorbis.bst
 - filename: components/libvpx.bst
+- filename: components/opus.bst
 - filename: components/nasm.bst
   type: build
 
