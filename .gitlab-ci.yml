@@ -290,7 +290,7 @@ publish_arm:
     - make ARCH=${ARCH} export
 
     - git clone https://github.com/flatpak/flat-manager.git
-    - export BUILD_ID=$(flat-manager/flat-manager-client create http://repo-test.flathub.org/ stable)
+    - export BUILD_ID=$(flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable)
     - flat-manager/flat-manager-client push --commit $BUILD_ID repo
   artifacts:
     when: always
