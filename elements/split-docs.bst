@@ -11,6 +11,10 @@ public:
     - |
       move_doc() {
         if [ -d "%{datadir}/${1}" ]; then
+          if [ -e "%{datadir}/runtime/docs/${2}" ]; then
+            echo "%{datadir}/runtime/docs/${2} already exists" 1>&2
+            exit 1
+          fi
           mkdir -p "%{datadir}/runtime/docs/$(dirname "${2}")"
           mv "%{datadir}/${1}" "%{datadir}/runtime/docs/${2}"
           ln -s "%{datadir}/runtime/docs/${2}" "%{datadir}/${1}"
