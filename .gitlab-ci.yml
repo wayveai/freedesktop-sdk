@@ -289,6 +289,28 @@ publish_arm:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} export
 
+    - for ref in $(ostree --repo=repo refs --list); do
+        case "${ref}" in
+          app/org.freedesktop.GlxInfo/*/18.08)
+          runtime/org.freedesktop.GlxInfo.Sources/*/18.08)
+          runtime/org.freedesktop.Platform.Compat.*/*/18.08)
+          runtime/org.freedesktop.Platform.Locale.*/*/18.08)
+          runtime/org.freedesktop.Platform.VAAPI.Intel/*/18.08)
+          runtime/org.freedesktop.Platform.html5-codecs/*/18.08)
+          runtime/org.freedesktop.Platform/*/18.08)
+          runtime/org.freedesktop.Sdk/*/18.08)
+          runtime/org.freedesktop.Sdk.Debug/*/18.08)
+          runtime/org.freedesktop.Sdk.Docs/*/18.08)
+          runtime/org.freedesktop.Sdk.Locale/*/18.08)
+          runtime/org.freedesktop.Sdk.Extension.rust-stable/*/18.08)
+            echo "Keeping ${ref}"
+          ;;
+          */*/*/*)
+            echo "Deleting ${ref}"
+            ostree --repo=repo refs --delete "${ref}"
+          ;;
+        esac
+      done
     - git clone https://github.com/flatpak/flat-manager.git
     - export BUILD_ID=$(flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable)
     - flat-manager/flat-manager-client push --commit $BUILD_ID repo
