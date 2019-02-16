@@ -19,9 +19,10 @@ config:
   install-commands:
     (>):
     - |
-      mv "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf.example" "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf"
+      install -m 0644 -D ./pulse/99-pulseaudio-default.conf.example "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf"
 
 sources:
-- kind: tar
-  url: ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.6.tar.bz2
-  ref: 6f1d31ebe3b1fa1cc8dade60b7bed1cb2583ac998167002d350dc0a5e3e40c13
+- kind: git_tag
+  url: github:alsa-project/alsa-plugins.git
+  track: master
+  ref: v1.1.8-0-ge0e8031ab2675beb05aab5c82442ae7bc7a00545
