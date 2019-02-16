@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 - filename: base/python3.bst
   type: build
 
@@ -22,6 +24,7 @@ public:
         - '%{libdir}/libasound.so'
 
 sources:
-- kind: tar
-  url: ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.1.6.tar.bz2
-  ref: 5f2cd274b272cae0d0d111e8a9e363f08783329157e8dd68b3de0c096de6d724
+- kind: git_tag
+  url: github:alsa-project/alsa-lib.git
+  track: master
+  ref: v1.1.8-0-gef7b098deb2652cea2659936c96cfe3229c0a782
