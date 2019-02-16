@@ -322,7 +322,7 @@ finish_publish:
           app/org.freedesktop.GlxInfo/*/18.08) ;&
           runtime/org.freedesktop.GlxInfo.Sources/*/18.08) ;&
           runtime/org.freedesktop.Platform.Compat.*/*/18.08) ;&
-          runtime/org.freedesktop.Platform.Locale.*/*/18.08) ;&
+          runtime/org.freedesktop.Platform.Locale/*/18.08) ;&
           runtime/org.freedesktop.Platform.VAAPI.Intel/*/18.08) ;&
           runtime/org.freedesktop.Platform.html5-codecs/*/18.08) ;&
           runtime/org.freedesktop.Platform/*/18.08) ;&
