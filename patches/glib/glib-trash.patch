@@ -1,0 +1,295 @@
+commit bca4ff7c5ed665898e41af6e2411a1a0a14a34d5
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Thu Aug 23 04:24:42 2018 +0000
+
+    Support the trash portal
+    
+    When we are in a sandbox, try to trash files via a portal.
+    It works.
+
+diff --git a/docs/reference/gio/meson.build b/docs/reference/gio/meson.build
+index 20bdeaf97..b95ed3dde 100644
+--- a/docs/reference/gio/meson.build
++++ b/docs/reference/gio/meson.build
+@@ -75,6 +75,7 @@ if get_option('gtk_doc')
+     'gsocks5proxy.h',
+     'gsubprocesslauncher-private.h',
+     'gthreadedresolver.h',
++    'gtrashportal.h',
+     'gunionvolumemonitor.h',
+     'gunixmount.h',
+     'gunixresolver.h',
+diff --git a/gio/glocalfile.c b/gio/glocalfile.c
+index 064755981..62f30b561 100644
+--- a/gio/glocalfile.c
++++ b/gio/glocalfile.c
+@@ -66,6 +66,8 @@
+ #include "glibintl.h"
+ #ifdef G_OS_UNIX
+ #include "glib-unix.h"
++#include "gportalsupport.h"
++#include "gtrashportal.h"
+ #endif
+ 
+ #include "glib-private.h"
+@@ -1950,6 +1952,9 @@ g_local_file_trash (GFile         *file,
+   GVfs *vfs;
+   int errsv;
+ 
++  if (glib_should_use_portal ())
++    return g_trash_portal_trash_file (file, error);
++
+   if (g_lstat (local->filename, &file_stat) != 0)
+     {
+       errsv = errno;
+diff --git a/gio/gtrashportal.c b/gio/gtrashportal.c
+new file mode 100644
+index 000000000..a1e82102b
+--- /dev/null
++++ b/gio/gtrashportal.c
+@@ -0,0 +1,123 @@
++/* GIO - GLib Input, Output and Streaming Library
++ *
++ * Copyright 2018, Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "config.h"
++
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <errno.h>
++#include <string.h>
++
++#include "gtrashportal.h"
++#include "xdp-dbus.h"
++#include "gstdio.h"
++
++#ifdef G_OS_UNIX
++#include "gunixfdlist.h"
++#endif
++
++#ifndef O_CLOEXEC
++#define O_CLOEXEC 0
++#else
++#define HAVE_O_CLOEXEC 1
++#endif
++
++static GXdpTrash *
++ensure_trash_portal (void)
++{
++  static GXdpTrash *trash = NULL;
++
++  if (g_once_init_enter (&trash))
++    {
++      GDBusConnection *connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
++      GXdpTrash *proxy = NULL;
++
++      if (connection != NULL)
++        {
++          proxy = gxdp_trash_proxy_new_sync (connection, 0,
++                                             "org.freedesktop.portal.Desktop",
++                                             "/org/freedesktop/portal/desktop",
++                                             NULL, NULL);
++          g_object_unref (connection);
++        }
++
++      g_once_init_leave (&trash, proxy);
++    }
++
++  return trash;
++}
++
++gboolean
++g_trash_portal_trash_file (GFile   *file,
++                           GError **error)
++{
++  char *path = NULL;
++  GUnixFDList *fd_list = NULL;
++  int fd, fd_in, errsv;
++  gboolean ret = FALSE;
++  GXdpTrash *proxy;
++  
++  proxy = ensure_trash_portal ();
++  if (proxy == NULL)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_INITIALIZED,
++                   "Trash portal is not available");
++      goto out;
++    }
++
++  path = g_file_get_path (file);
++
++  fd = g_open (path, O_RDWR | O_CLOEXEC);
++  if (fd == -1 && (errno == EACCES || errno == EISDIR))
++    /* If we don't have write access, fall back to read-only */
++    fd = g_open (path, O_CLOEXEC | O_RDONLY);
++
++  errsv = errno;
++
++  if (fd == -1)
++    {
++      g_set_error (error, G_IO_ERROR, g_io_error_from_errno (errsv),
++                   "Failed to open %s", path);
++      goto out;
++    }
++
++#ifndef HAVE_O_CLOEXEC
++  fcntl (fd, F_SETFD, FD_CLOEXEC);
++#endif
++
++  fd_list = g_unix_fd_list_new ();
++  fd_in = g_unix_fd_list_append (fd_list, fd, error);
++  g_close (fd, NULL);
++
++  if (fd_in == -1)
++    goto out;
++
++  ret = gxdp_trash_call_trash_file_sync (proxy,
++                                         g_variant_new_handle (fd_in),
++                                         fd_list,
++                                         NULL,
++                                         NULL,
++                                         NULL,
++                                         error);
++
++ out:
++  g_clear_object (&fd_list);
++  g_free (path);
++
++  return ret;
++}
+diff --git a/gio/gtrashportal.h b/gio/gtrashportal.h
+new file mode 100644
+index 000000000..a53de8a6f
+--- /dev/null
++++ b/gio/gtrashportal.h
+@@ -0,0 +1,31 @@
++/* GIO - GLib Input, Output and Streaming Library
++ *
++ * Copyright 2018 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef __G_TRASH_PORTAL_H__
++
++#include <glib.h>
++#include <gio/gio.h>
++
++G_BEGIN_DECLS
++
++gboolean g_trash_portal_trash_file (GFile   *file,
++                                    GError **error);
++
++G_END_DECLS
++
++#endif
+diff --git a/gio/meson.build b/gio/meson.build
+index 47aa0b48d..d7f4f3f31 100644
+--- a/gio/meson.build
++++ b/gio/meson.build
+@@ -238,7 +238,8 @@ subdir('gdbus-2.0/codegen')
+ xdp_dbus_generated = custom_target('xdp-dbus',
+     input : ['org.freedesktop.portal.Documents.xml',
+              'org.freedesktop.portal.OpenURI.xml',
+-             'org.freedesktop.portal.ProxyResolver.xml'],
++             'org.freedesktop.portal.ProxyResolver.xml',
++             'org.freedesktop.portal.Trash.xml'],
+     output : ['xdp-dbus.h', 'xdp-dbus.c'],
+     depend_files : gdbus_codegen_built_files,
+     command : [python, gdbus_codegen,
+@@ -254,6 +255,8 @@ xdp_dbus_generated = custom_target('xdp-dbus',
+                              'org.gtk.GDBus.C.UnixFD', 'true',
+                '--annotate', 'org.freedesktop.portal.OpenURI.OpenFile()',
+                              'org.gtk.GDBus.C.UnixFD', 'true',
++               '--annotate', 'org.freedesktop.portal.Trash.TrashFile()',
++                             'org.gtk.GDBus.C.UnixFD', 'true',
+                '@INPUT@'])
+ 
+ # Generate gdbus-generated.{c,h}
+@@ -392,6 +395,7 @@ if host_system != 'windows'
+     'gopenuriportal.c',
+     'gnetworkmonitorportal.c',
+     'gproxyresolverportal.c',
++    'gtrashportal.c',
+     'gportalsupport.c',
+     'gportalnotificationbackend.c'),
+     xdp_dbus_generated
+diff --git a/gio/org.freedesktop.portal.Trash.xml b/gio/org.freedesktop.portal.Trash.xml
+new file mode 100644
+index 000000000..6142f3d2c
+--- /dev/null
++++ b/gio/org.freedesktop.portal.Trash.xml
+@@ -0,0 +1,48 @@
++<?xml version="1.0"?>
++<!--
++ Copyright (C) 2016 Red Hat, Inc.
++
++ This library is free software; you can redistribute it and/or
++ modify it under the terms of the GNU Lesser General Public
++ License as published by the Free Software Foundation; either
++ version 2 of the License, or (at your option) any later version.
++
++ This library is distributed in the hope that it will be useful,
++ but WITHOUT ANY WARRANTY; without even the implied warranty of
++ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ Lesser General Public License for more details.
++
++ You should have received a copy of the GNU Lesser General Public
++ License along with this library. If not, see <http://www.gnu.org/licenses/>.
++
++ Author: Matthias Clasen <mclasen@redhat.com>
++-->
++
++<node name="/" xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
++  <!--
++      org.freedesktop.portal.Trash:
++      @short_description: Portal for trashing files
++
++      This simple interface lets sandboxed applications send files to
++      the trashcan.
++
++      This documentation describes version 1 of this interface.
++  -->
++  <interface name="org.freedesktop.portal.Trash">
++    <!--
++        TrashFile:
++	@fd: file descriptor for the file to trash
++        @result: the result. 0 if trashing failed, 1 if trashing succeeded, other values may be returned in the future
++
++        Sends a file to the trashcan. Applications are allowed to
++        trash a file if they can open it in r/w mode.
++    -->
++    <method name="TrashFile">
++      <annotation name="org.gtk.GDBus.C.UnixFD" value="true"/>
++      <arg type="h" name="fd" direction="in"/>
++      <arg type="u" name="result" direction="out"/>
++    </method>
++
++    <property name="version" type="u" access="read"/>
++  </interface>
++</node>
