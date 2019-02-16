@@ -2,22 +2,10 @@ kind: autotools
 description: zlib
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
+- filename: zlib-build-deps.bst
   type: build
 - filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
@@ -27,15 +15,6 @@ variables:
     --sharedlibdir=%{libdir} \
     --libdir=%{libdir}
 
-config:
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
-
 environment:
   CHOST: '%{triplet}'
 
@@ -44,7 +23,7 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{sysroot}%{libdir}/libz.so'
+        - '%{libdir}/libz.so'
 
 sources:
 - kind: git_tag

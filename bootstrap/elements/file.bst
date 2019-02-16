@@ -1,42 +1,26 @@
 kind: autotools
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: file-stage1.bst
+- filename: file-build-deps.bst
   type: build
 - filename: zlib.bst
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
 config:
   install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-  - |
-    %{delete_libtool_files}
+    (>):
+    # Remove empty directory triggering BuildStream #647
+    - |
+      rm -rf "%{install-root}%{mandir}/man5"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{sysroot}%{libdir}/libmagic.so'
+        - '%{libdir}/libmagic.so'
 
 sources:
 - kind: tar

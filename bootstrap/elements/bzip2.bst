@@ -1,22 +1,11 @@
 kind: manual
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
+- filename: bzip2-build-deps.bst
   type: build
 - filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
+
 
 (@): target.yml
 
@@ -29,29 +18,29 @@ config:
 
   install-commands:
   - |
-    install -D -m 755 libbz2.so.1.0.6 --target-directory %{install-root}%{sysroot}%{libdir}
-    ln -s libbz2.so.1.0.6 %{install-root}%{sysroot}%{libdir}/libbz2.so.1.0
-    ln -s libbz2.so.1.0.6 %{install-root}%{sysroot}%{libdir}/libbz2.so
-    install -D -m 755 bzip2-shared %{install-root}%{sysroot}%{bindir}/bzip2
-    ln -s bzip2 %{install-root}%{sysroot}%{bindir}/bzcat
-    ln -s bzip2 %{install-root}%{sysroot}%{bindir}/bunzip2
-    install -D -m 755 bzip2recover --target-directory %{install-root}%{sysroot}%{bindir}
-    install -D -m 755 bzmore --target-directory %{install-root}%{sysroot}%{bindir}
-    ln -s bzmore %{install-root}%{sysroot}%{bindir}/bzfless
-    install -D -m 755 bzgrep --target-directory %{install-root}%{sysroot}%{bindir}
-    ln -s bzgrep %{install-root}%{sysroot}%{bindir}/bzegrep
-    ln -s bzgrep %{install-root}%{sysroot}%{bindir}/bzfgrep
-    install -D -m 755 bzdiff --target-directory %{install-root}%{sysroot}%{bindir}
-    ln -s bzdiff %{install-root}%{sysroot}%{bindir}/bzcmp
-    install -D -m 755 bzlib.h --target-directory %{install-root}%{sysroot}%{includedir}
-    install -D -m 755 bzgrep.1 bzmore.1 bzdiff.1 --target-directory %{install-root}%{sysroot}%{mandir}/man1
+    install -D -m 755 libbz2.so.1.0.6 --target-directory %{install-root}%{libdir}
+    ln -s libbz2.so.1.0.6 %{install-root}%{libdir}/libbz2.so.1.0
+    ln -s libbz2.so.1.0.6 %{install-root}%{libdir}/libbz2.so
+    install -D -m 755 bzip2-shared %{install-root}%{bindir}/bzip2
+    ln -s bzip2 %{install-root}%{bindir}/bzcat
+    ln -s bzip2 %{install-root}%{bindir}/bunzip2
+    install -D -m 755 bzip2recover --target-directory %{install-root}%{bindir}
+    install -D -m 755 bzmore --target-directory %{install-root}%{bindir}
+    ln -s bzmore %{install-root}%{bindir}/bzfless
+    install -D -m 755 bzgrep --target-directory %{install-root}%{bindir}
+    ln -s bzgrep %{install-root}%{bindir}/bzegrep
+    ln -s bzgrep %{install-root}%{bindir}/bzfgrep
+    install -D -m 755 bzdiff --target-directory %{install-root}%{bindir}
+    ln -s bzdiff %{install-root}%{bindir}/bzcmp
+    install -D -m 755 bzlib.h --target-directory %{install-root}%{includedir}
+    install -D -m 755 bzgrep.1 bzmore.1 bzdiff.1 --target-directory %{install-root}%{mandir}/man1
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{sysroot}%{libdir}/libbz2.so'
+        - '%{libdir}/libbz2.so'
 
   cpe:
     patches:

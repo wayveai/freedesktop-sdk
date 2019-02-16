@@ -2,26 +2,10 @@ kind: autotools
 description: GNU Bash
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: ncurses.bst
+- filename: bash-build-deps.bst
   type: build
 - filename: readline.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
@@ -30,7 +14,7 @@ variables:
   # because termcap is detected
   conf-local: |
     --with-curses \
-    --with-installed-readline="/readline-separate-install%{prefix}" \
+    --with-installed-readline="%{sysroot}%{prefix}" \
     --enable-job-control \
     --without-bash-malloc \
     ac_cv_rl_version=7.0 \
@@ -39,16 +23,21 @@ variables:
     bash_cv_termcap_lib=libtinfo
 
 config:
+  build-commands:
+    (<):
+    # The current build tries to build "build" binaries with "host"
+    # include directories. So it does not find the right headers.
+    # Those tools are source code generators. We build them first
+    # disabling that some include directories.
+    - |
+      cd "%{builddir}"
+      make RL_INCLUDEDIR=/non-existant mksyntax bashversion mksignames recho zecho printenv xcase
+      make RL_INCLUDEDIR=/non-existant -C builtins mkbuiltins psize.aux
+
   install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    ln -s bash "%{install-root}%{sysroot}%{bindir}/sh"
-
-  - |
-    %{delete_libtool_files}
+    (>):
+    - |
+      ln -s bash "%{install-root}%{bindir}/sh"
 
 public:
   cpe:

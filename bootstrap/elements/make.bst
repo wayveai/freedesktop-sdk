@@ -2,22 +2,10 @@ kind: autotools
 description: GNU make
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
+- filename: make-build-deps.bst
   type: build
 - filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
 
@@ -26,14 +14,6 @@ config:
     (<):
     - |
       autoreconf -fvi
-
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
 
 sources:
 - kind: tar

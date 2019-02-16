@@ -17,7 +17,7 @@ public:
           fi
           mkdir -p "%{datadir}/runtime/docs/$(dirname "${2}")"
           mv "%{datadir}/${1}" "%{datadir}/runtime/docs/${2}"
-          ln -s "%{datadir}/runtime/docs/${2}" "%{datadir}/${1}"
+          ln -s "$(realpath -m --relative-to="%{datadir}" "%{datadir}/runtime/docs/${2}")" "%{datadir}/${1}"
         fi
       }
       move_doc man man

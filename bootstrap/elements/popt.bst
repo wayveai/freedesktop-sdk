@@ -1,42 +1,19 @@
 kind: autotools
 
 depends:
-- filename: dependencies/base-sdk.bst
-  type: build
-- filename: gnu-config.bst
+- filename: popt-build-deps.bst
   type: build
 - filename: file.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
-- filename: debugedit-host.bst
-  type: build
+  type: runtime
 
 (@): target.yml
-
-config:
-  install-commands:
-  - |
-    cd "%{builddir}"
-    %{cross-install}
-
-  - |
-    %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{sysroot}%{libdir}/libpopt.so'
+        - '%{libdir}/libpopt.so'
 
 sources:
 - kind: tar

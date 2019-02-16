@@ -3,6 +3,7 @@ description: GNU config scripts
 
 depends:
 - filename: dependencies/base-sdk.bst
+  type: build
 
 sources:
 - kind: git_tag
@@ -13,15 +14,16 @@ sources:
 config:
   install-commands:
   - |
-    install -d "%{install-root}%{sysroot}%{datadir}/gnu-config"
+    install -d "%{install-root}%{datadir}/gnu-config"
   - |
-    install -m 0644 config.guess config.sub "%{install-root}%{sysroot}%{datadir}/gnu-config"
+    install -m 0644 config.guess config.sub "%{install-root}%{datadir}/gnu-config"
   - |
-    install -m 0644 config.sub "%{install-root}%{sysroot}%{datadir}/gnu-config"
+    install -m 0644 config.sub "%{install-root}%{datadir}/gnu-config"
 
 public:
   bst:
     split-rules:
+      runtime: []
       devel:
         (>):
         - '**'

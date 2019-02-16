@@ -18,8 +18,7 @@ variables:
 
 config:
   install-commands:
-  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}"
-    headers_install
+  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{prefix}" headers_install
 
 sources:
 - kind: tar
