@@ -22,7 +22,9 @@ stages:
   - update
   - flatpak
   - vm
+  - prepare-publish
   - publish
+  - finish-publish
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -283,6 +285,32 @@ publish_arm:
   variables:
     ARCH: arm
 
+prepare_publish:
+  image: $DOCKER_AMD64
+  stage: prepare-publish
+  tags:
+    - x86_64
+  script:
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable >publish_build.txt
+  artifacts:
+    paths:
+      - publish_build.txt
+  only:
+    - tags
+
+finish_publish:
+  image: $DOCKER_AMD64
+  stage: finish-publish
+  tags:
+    - x86_64
+  script:
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
+    - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
+  only:
+    - tags
+
 .flathub_publish_template:
   stage: publish
   script:
@@ -312,8 +340,7 @@ publish_arm:
         esac
       done
     - git clone https://github.com/flatpak/flat-manager.git
-    - export BUILD_ID=$(flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable)
-    - flat-manager/flat-manager-client push --commit $BUILD_ID repo
+    - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
   artifacts:
     when: always
     paths:
