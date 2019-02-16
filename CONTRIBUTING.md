@@ -120,7 +120,7 @@ Once your MR is open it will be reviewed before merging. Once it passes our CI a
 Congratulations, you are now a freedesktop-sdk contributor!
 
 ## Testing locally
-If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.0, so ensure you use this version too.
+If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too.
 
 We also use some plugins from the [bst-external](https://gitlab.com/BuildStream/bst-external) repository. To install these run the following commands:
 ```
