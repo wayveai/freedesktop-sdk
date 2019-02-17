@@ -319,18 +319,8 @@ finish_publish:
 
     - for ref in $(ostree --repo=repo refs --list); do
         case "${ref}" in
-          app/org.freedesktop.GlxInfo/*/18.08) ;&
-          runtime/org.freedesktop.GlxInfo.Sources/*/18.08) ;&
-          runtime/org.freedesktop.Platform.Compat.*/*/18.08) ;&
-          runtime/org.freedesktop.Platform.Locale/*/18.08) ;&
-          runtime/org.freedesktop.Platform.VAAPI.Intel/*/18.08) ;&
-          runtime/org.freedesktop.Platform.html5-codecs/*/18.08) ;&
-          runtime/org.freedesktop.Platform/*/18.08) ;&
-          runtime/org.freedesktop.Sdk/*/18.08) ;&
-          runtime/org.freedesktop.Sdk.Debug/*/18.08) ;&
-          runtime/org.freedesktop.Sdk.Docs/*/18.08) ;&
-          runtime/org.freedesktop.Sdk.Locale/*/18.08) ;&
-          runtime/org.freedesktop.Sdk.Extension.rust-stable/*/18.08)
+          */org.freedesktop.Sdk*/*/18.08) ;&
+          */org.freedesktop.Platform*/*/18.08) ;&
             echo "Keeping ${ref}"
           ;;
           */*/*/*)
