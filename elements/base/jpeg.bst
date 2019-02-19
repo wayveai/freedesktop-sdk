@@ -25,3 +25,5 @@ sources:
 - kind: git
   url: github:libjpeg-turbo/libjpeg-turbo.git
   ref: 2.0.0-3-g2260b66e1671038a362dca4a204c28d72b8f7e4e
+- kind: patch
+  path: patches/jpeg/no-rpath.patch
