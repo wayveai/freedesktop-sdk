@@ -10,6 +10,12 @@ CHECKOUT_ROOT=runtimes
 
 ARCH_OPTS=-o target_arch $(ARCH)
 
+ifeq ($(ARCH),arm)
+ABI=gnueabi
+else
+ABI=gnu
+endif
+
 all: build
 
 build:
@@ -43,6 +49,13 @@ check-dev-files:
 	  cat found_dev_files.txt 1>&2; \
 	  false; \
 	fi
+
+check-rpath:
+	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
+	mkdir -p $(CHECKOUT_ROOT)
+	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
 manifest:
 	rm -rf sdk-manifest/
@@ -82,4 +95,5 @@ clean-runtime:
 clean: clean-repo clean-runtime
 
 
-.PHONY: build check-dev-files clean clean-repo clean-runtime export test-apps manifest markdown-manifest
+.PHONY: build check-dev-files clean clean-repo clean-runtime export \
+        test-apps manifest markdown-manifest check-rpath
