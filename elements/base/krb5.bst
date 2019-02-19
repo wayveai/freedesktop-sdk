@@ -38,6 +38,10 @@ config:
     cd "%{builddir}"
     ../src/%{configure} --with-system-et --with-system-ss
 
+variables:
+  conf-local: |
+    --disable-rpath
+
 sources:
 - kind: tar
   url: https://kerberos.org/dist/krb5/1.16/krb5-1.16.2.tar.gz
