@@ -120,14 +120,8 @@ check_update_elements:
   script:
     - ${BST} track --deps all all.bst
     - git diff
-    - make markdown-manifest
   only:
     - schedules
-  artifacts:
-    paths:
-      - "${CI_PROJECT_DIR}/platform-manifest/usr/"
-      - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
-
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
@@ -395,9 +389,12 @@ cve_report:
     - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
     - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
     - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
+    - make markdown-manifest
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"
+      - "${CI_PROJECT_DIR}/platform-manifest/usr/"
+      - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
   only:
     - master
     - '18.08'
