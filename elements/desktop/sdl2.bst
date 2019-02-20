@@ -29,7 +29,8 @@ variables:
     --disable-sndio \
     --disable-libudev \
     --enable-video-wayland \
-    --enable-wayland-shared=no
+    --enable-wayland-shared=no \
+    --disable-rpath
 
 public:
   bst:
