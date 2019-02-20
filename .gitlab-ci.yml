@@ -5,7 +5,6 @@ variables:
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
-  BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
   BST_SHA: 'c270d09a5bb473a3a7f2f7243440a306b792bc89' #  1.2.4
   BST_EXTERNAL_SHA: '0.9.0-0-g63a19e8068bd777bd9cd59b1a9442f9749ea5a85'
   RUNTIME_VERSION: '18.08'
@@ -222,75 +221,32 @@ minimal_systemd_vm_image_x86_64:
     TYPE: minimal-systemd
     DIALOG: root-login
 
-.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
-  stage: publish
-  script:
-    - make ARCH=${ARCH} build
-    - make ARCH=${ARCH} export
-
-    # Trust the host key of the release server.
-    - ssh-keyscan "${BST_RELEASES_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
-
-    - BRANCHES=$(find repo/refs/heads/ -type f | sed s,repo/refs/heads/,,)
-
-    - rsync -a repo/ releases@${BST_RELEASES_SERVER_ADDRESS}:incoming/repo-${CI_JOB_ID}
-    - ssh releases@${BST_RELEASES_SERVER_ADDRESS} import-commits -c /etc/releases-config.json incoming/repo-${CI_JOB_ID} ${BRANCHES}
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
-    - '18.08'
-  except:
-    - schedules
-  <<: *gitlab_cache_pull_push
-
-publish_x86_64:
-  image: $DOCKER_AMD64
-  <<: *flatpak_runtimes_publish
-  tags:
-    - x86_64
-    - cache_x86_64
-  variables:
-    ARCH: x86_64
-
-publish_i686:
-  image: $DOCKER_AMD64
-  <<: *flatpak_runtimes_publish
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
-
-publish_aarch64:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_runtimes_publish
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
-
-publish_arm:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_runtimes_publish
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
-
-prepare_publish:
+.prepare_publish_template:
   image: $DOCKER_AMD64
   stage: prepare-publish
   tags:
     - x86_64
   script:
     - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable >publish_build.txt
+    - flat-manager/flat-manager-client create $RELEASES_SERVER_ADDRESS stable > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
+
+prepare_publish_releases:
+  extends: .prepare_publish_template
+  variables:
+    RELEASES_SERVER_ADDRESS: https://cache.sdk.freedesktop.org/
+    REPO_TOKEN: $RELEASES_REPO_TOKEN
+  only:
+    - master
+    - '18.08'
+
+prepare_publish_flathub:
+  extends: .prepare_publish_template
+  variables:
+    RELEASES_SERVER_ADDRESS: https://repo-test.flathub.org/
+    REPO_TOKEN: $FLATHUB_REPO_TOKEN
   only:
     - tags
 
@@ -306,6 +262,8 @@ finish_publish:
     - flat-manager/flat-manager-client purge $(cat publish_build.txt)
   only:
     - tags
+    - master
+    - '18.08'
 
 finish_publish_failed:
   image: $DOCKER_AMD64
@@ -317,9 +275,11 @@ finish_publish_failed:
     - flat-manager/flat-manager-client purge $(cat publish_build.txt)
   only:
     - tags
+    - master
+    - '18.08'
   when: on_failure
 
-.flathub_publish_template:
+.flatpak_publish_template:
   stage: publish
   script:
     - make ARCH=${ARCH} build
@@ -347,9 +307,11 @@ finish_publish_failed:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
     - tags
+    - master
+    - '18.08'
 
-flathub_publish_x86_64:
-  extends: .flathub_publish_template
+publish_x86_64:
+  extends: .flatpak_publish_template
   image: $DOCKER_AMD64
   tags:
     - x86_64
@@ -357,8 +319,8 @@ flathub_publish_x86_64:
   variables:
     ARCH: x86_64
 
-flathub_publish_i686:
-  extends: .flathub_publish_template
+publish_i686:
+  extends: .flatpak_publish_template
   image: $DOCKER_AMD64
   tags:
     - x86_64
@@ -366,16 +328,16 @@ flathub_publish_i686:
   variables:
     ARCH: i686
 
-flathub_publish_aarch64:
-  extends: .flathub_publish_template
+publish_aarch64:
+  extends: .flatpak_publish_template
   image: $DOCKER_AARCH64
   tags:
     - aarch64
   variables:
     ARCH: aarch64
 
-flathub_publish_arm:
-  extends: .flathub_publish_template
+publish_arm:
+  extends: .flatpak_publish_template
   image: $DOCKER_AARCH64
   tags:
     - armhf
