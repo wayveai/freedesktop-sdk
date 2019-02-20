@@ -113,3 +113,5 @@ sources:
   directory: tools/compiler-rt
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
+- kind: patch
+  path: patches/llvm/llvm7-no-rpath.patch

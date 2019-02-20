@@ -1,0 +1,12 @@
+diff -u -r llvm7.old/cmake/modules/AddLLVM.cmake llvm7/cmake/modules/AddLLVM.cmake
+--- llvm7.old/cmake/modules/AddLLVM.cmake	2019-02-20 13:05:46.625863076 +0100
++++ llvm7/cmake/modules/AddLLVM.cmake	2019-02-20 13:07:56.756632497 +0100
+@@ -1635,7 +1635,7 @@
+     set(_install_name_dir INSTALL_NAME_DIR "@rpath")
+     set(_install_rpath "@loader_path/../lib" ${extra_libdir})
+   elseif(UNIX)
+-    set(_install_rpath "\$ORIGIN/../lib${LLVM_LIBDIR_SUFFIX}" ${extra_libdir})
++    set(_install_rpath ${extra_libdir})
+     if(${CMAKE_SYSTEM_NAME} MATCHES "(FreeBSD|DragonFly)")
+       set_property(TARGET ${name} APPEND_STRING PROPERTY
+                    LINK_FLAGS " -Wl,-z,origin ")
