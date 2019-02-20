@@ -31,7 +31,8 @@ variables:
 
 public:
   cpe:
-    vendor: freedesktop
+    vendor: 'freedesktop'
+    product: 'systemd'
     version: '240'
 
 sources:
