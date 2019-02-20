@@ -49,3 +49,5 @@ sources:
   path: patches/elfutils/CVE-2019-7149.patch
 - kind: patch
   path: patches/elfutils/CVE-2019-7150.patch
+- kind: patch
+  path: patches/elfutils/no-rpath.patch
