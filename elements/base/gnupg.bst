@@ -21,6 +21,6 @@ sources:
 - kind: git_tag
   url: gnupg:gnupg.git
   track: master
-  ref: gnupg-2.2.12-0-g7d8f4ee7cf56eda988acdc909160cbac71bff18a
+  ref: gnupg-2.2.13-0-g7922e2dd1c7eee48a8a2cf4799827942489ddd0f
 - kind: patch
   path: patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch
