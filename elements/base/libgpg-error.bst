@@ -25,4 +25,4 @@ sources:
 - kind: git_tag
   url: gnupg:libgpg-error.git
   track: master
-  ref: libgpg-error-1.34-0-g8bc75741cadf95e2fac64891cf402cde891afe64
+  ref: libgpg-error-1.35-0-g2421afddf6ae5a245e6dd1a59779bd26bf225253
