@@ -15,6 +15,7 @@ public:
 config:
   exclude:
     - extra
+    - static
 
 depends:
 - filename: desktop.bst
