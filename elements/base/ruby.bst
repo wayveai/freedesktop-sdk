@@ -14,7 +14,8 @@ variables:
   conf-local: |
     --enable-pthread \
     --enable-ipv6 \
-    --with-compress-debug-sections=no
+    --with-compress-debug-sections=no \
+    --disable-rpath
 
 sources:
 - kind: tar

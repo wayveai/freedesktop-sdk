@@ -1,0 +1,12 @@
+diff -ur jpeg.old/CMakeLists.txt jpeg/CMakeLists.txt
+--- jpeg.old/CMakeLists.txt	2019-02-19 17:28:39.208331245 +0100
++++ jpeg/CMakeLists.txt	2019-02-19 17:28:49.760223866 +0100
+@@ -109,7 +109,7 @@
+ 
+ include(cmakescripts/GNUInstallDirs.cmake)
+ 
+-set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR})
++#set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR})
+ 
+ macro(report_directory var)
+   if(CMAKE_INSTALL_${var} STREQUAL CMAKE_INSTALL_FULL_${var})

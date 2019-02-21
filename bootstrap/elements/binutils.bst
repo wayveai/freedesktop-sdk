@@ -21,7 +21,8 @@ variables:
     --enable-gold \
     --enable-ld=default \
     --enable-shared \
-    --enable-plugins
+    --enable-plugins \
+    host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
 environment:
   LEXLIB: ' '

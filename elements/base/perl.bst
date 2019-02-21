@@ -41,3 +41,5 @@ sources:
   ref: v5.28.1-0-g63afdf6c0f65af480aa5bb9ccba9f46dae52f6fc
 - kind: local
   path: files/perl/config.over
+- kind: patch
+  path: patches/perl/no-rpath-libpath.patch

@@ -1,0 +1,24 @@
+diff -u -r elfutils.old/libdw/Makefile.am elfutils/libdw/Makefile.am
+--- elfutils.old/libdw/Makefile.am	2019-02-20 12:54:32.024228734 +0100
++++ elfutils/libdw/Makefile.am	2019-02-20 12:57:55.978307676 +0100
+@@ -115,7 +115,7 @@
+ # not fly in a setuid executable that links in libdw.
+ 	$(AM_V_CCLD)$(LINK) $(dso_LDFLAGS) -o $@ \
+ 		-Wl,--soname,$@.$(VERSION) \
+-		-Wl,--enable-new-dtags,-rpath,$(pkglibdir) \
++		-Wl,--enable-new-dtags \
+ 		-Wl,--version-script,$<,--no-undefined \
+ 		-Wl,--whole-archive $(libdw_so_LIBS) -Wl,--no-whole-archive \
+ 		$(libdw_so_LDLIBS)
+diff -u -r elfutils.old/libebl/eblopenbackend.c elfutils/libebl/eblopenbackend.c
+--- elfutils.old/libebl/eblopenbackend.c	2019-02-20 12:54:32.040228584 +0100
++++ elfutils/libebl/eblopenbackend.c	2019-02-20 12:54:38.508167731 +0100
+@@ -316,7 +316,7 @@
+ #ifndef LIBEBL_SUBDIR
+ # define LIBEBL_SUBDIR PACKAGE
+ #endif
+-#define ORIGINDIR "$ORIGIN/../$LIB/" LIBEBL_SUBDIR "/"
++#define ORIGINDIR "$ORIGIN/" LIBEBL_SUBDIR "/"
+ 
+ 	/* Give it a try.  At least the machine type matches.  First
+            try to load the module.  */

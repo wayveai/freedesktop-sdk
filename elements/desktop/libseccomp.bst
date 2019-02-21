@@ -5,6 +5,10 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 
+variables:
+  conf-local: |
+    --disable-rpath
+
 public:
   bst:
     split-rules:
@@ -19,3 +23,5 @@ sources:
   url: github:seccomp/libseccomp/
   track: master
   ref: v2.3.3-0-g74b190e1aa05f07da0c61fb9a30dbc9c18ce2c9d
+- kind: patch
+  path: patches/libseccomp/no-static.patch

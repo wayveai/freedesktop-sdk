@@ -7,6 +7,10 @@ depends:
 - filename: base/gettext.bst
   type: build
 
+variables:
+  conf-local: |
+    --enable-dynamic-frontends
+
 config:
   configure-commands:
     (<):
