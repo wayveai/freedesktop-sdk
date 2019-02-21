@@ -16,7 +16,6 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/util-linux.bst
 - filename: base/xz.bst
-- filename: desktop/dbus.bst
 
 variables:
   meson-local: |
@@ -31,8 +30,26 @@ variables:
 
 public:
   cpe:
-    vendor: freedesktop
+    vendor: 'freedesktop'
+    product: 'systemd'
     version: '240'
+
+  bst:
+    split-rules:
+      libsystemd:
+        - '%{libdir}'
+        - '%{libdir}/libsystemd*.so*'
+        - '%{libdir}/pkgconfig'
+        - '%{libdir}/pkgconfig/libsystemd.pc'
+        - '%{datadir}/pkgconfig'
+        - '%{datadir}/pkgconfig/systemd.pc'
+        - '%{includedir}'
+        - '%{includedir}/systemd'
+        - '%{includedir}/systemd/**'
+        - '%{debugdir}%{libdir}'
+        - '%{debugdir}%{libdir}/libsystemd*.so*'
+        - '%{sourcedir}'
+        - '%{sourcedir}/**'
 
 sources:
 - kind: git_tag

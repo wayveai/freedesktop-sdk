@@ -60,6 +60,7 @@ depends:
 - filename: desktop/librsvg.bst
 - filename: desktop/libseccomp.bst
 - filename: desktop/libsoup.bst
+- filename: desktop/libsystemd.bst
 - filename: desktop/libthai.bst
 - filename: desktop/libva-vdpau-driver.bst
 - filename: desktop/libva.bst
