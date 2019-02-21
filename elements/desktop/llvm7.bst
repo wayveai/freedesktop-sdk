@@ -11,6 +11,8 @@ config:
   - devel
   - doc
   include-orphans: False
+  exclude: 
+  - static
 
 public:
   bst:

@@ -6,5 +6,6 @@ depends:
 config:
   exclude:
   - devel
+  - static
   - doc
   include-orphans: True

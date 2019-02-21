@@ -102,6 +102,9 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
+      
+      static:
+        - '%{libdir}/*.a'
 
 sources:
 - kind: tar

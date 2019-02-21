@@ -9,6 +9,7 @@ config:
   exclude:
   - devel
   - extra
+  - static
 
 public:
   bst:
