@@ -9,25 +9,6 @@ depends:
 variables:
   debug_flags: "-g1"
 
-  clang-libs: |
-    libclangAnalysis.a \
-    libclangAST.a \
-    libclangBasic.a \
-    libclangCodeGen.a \
-    libclangDriver.a \
-    libclangEdit.a \
-    libclangFrontend.a \
-    libclangFrontendTool.a \
-    libclangLex.a \
-    libclangParse.a \
-    libclangRewrite.a \
-    libclangRewriteFrontend.a \
-    libclangStaticAnalyzerCheckers.a \
-    libclangStaticAnalyzerCore.a \
-    libclangStaticAnalyzerFrontend.a \
-    libclangSema.a \
-    libclangSerialization.a
-
   (?):
   - target_arch == "i686":
       targets: X86;AMDGPU;NVPTX
@@ -70,12 +51,7 @@ config:
   install-commands:
     (>):
     - |
-      cd "%{install-root}%{libdir}"
-      mkdir tmp
-      mv %{clang-libs} tmp
-      rm -f lib*.a
-      mv tmp/* "%{install-root}%{libdir}"
-      rm -rf tmp
+      rm -f "%{install-root}%{libdir}/"*.a
     - |
       cd "%{install-root}%{libdir}"
       sed -i '/APPEND _IMPORT_CHECK_TARGETS LLVM.*/ d' cmake/llvm/LLVMExports*.cmake
