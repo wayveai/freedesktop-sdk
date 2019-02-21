@@ -315,7 +315,7 @@ finish_publish:
     - for ref in $(ostree --repo=repo refs --list); do
         case "${ref}" in
           */org.freedesktop.Sdk*/*/18.08) ;&
-          */org.freedesktop.Platform*/*/18.08) ;&
+          */org.freedesktop.Platform*/*/18.08)
             echo "Keeping ${ref}"
           ;;
           */*/*/*)
