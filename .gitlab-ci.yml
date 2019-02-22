@@ -303,6 +303,7 @@ finish_publish:
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
     - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
+    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
   only:
     - tags
 
