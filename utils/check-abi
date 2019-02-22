@@ -22,6 +22,7 @@ import shutil
 import subprocess
 import sys
 import re
+import filecmp
 
 from contextlib import contextmanager
 from fnmatch import fnmatch
@@ -159,11 +160,7 @@ def get_library_key(path):
     if soname is None:
         return os.path.basename(path)
 
-    # Some libraries share a soname. For example all the libvdpau_* from mesa
-    # all have soname='libvdpau_gallium.so'. This should help disambiguate them
-    basename = os.path.basename(path).rsplit('.so', 1)[0]
-
-    return f'{soname}:{basename}'
+    return f'{soname}'
 
 
 def get_libraries(tree):
@@ -191,11 +188,15 @@ def get_libraries(tree):
                 continue
 
             lib_key = get_library_key(realpath)
+            rel_path = os.path.relpath(realpath, start=tree)
 
             if lib_key in libs:
-                raise NotImplementedError(f'How did this happen? We had more than one {lib_key} library')
+                if not filecmp.cmp(os.path.join(tree, libs[lib_key]),
+                                   realpath):
+                    raise Exception(f'{libs[lib_key]} and {rel_path} libraries have the same SONAME but not the same content.')
 
-            libs[lib_key] = os.path.relpath(realpath, start=tree)
+            else:
+                libs[lib_key] = rel_path
 
     return libs
 
