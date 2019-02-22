@@ -306,6 +306,18 @@ finish_publish:
   only:
     - tags
 
+finish_publish_failed:
+  image: $DOCKER_AMD64
+  stage: finish-publish
+  tags:
+    - x86_64
+  script:
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+  only:
+    - tags
+  when: on_failure
+
 .flathub_publish_template:
   stage: publish
   script:
