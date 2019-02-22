@@ -324,7 +324,8 @@ finish_publish_failed:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} export
 
-    - for ref in $(ostree --repo=repo refs --list); do
+    - |
+      for ref in $(ostree --repo=repo refs --list); do
         case "${ref}" in
           */org.freedesktop.Sdk*/*/18.08) ;&
           */org.freedesktop.Platform*/*/18.08)
@@ -336,6 +337,7 @@ finish_publish_failed:
           ;;
         esac
       done
+    - flatpak build-update-repo --generate-deltas --prune
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
   artifacts:
