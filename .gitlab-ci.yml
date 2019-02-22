@@ -338,7 +338,7 @@ finish_publish_failed:
           ;;
         esac
       done
-    - flatpak build-update-repo --generate-deltas --prune
+    - flatpak build-update-repo --generate-static-deltas --prune repo
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
   artifacts:
