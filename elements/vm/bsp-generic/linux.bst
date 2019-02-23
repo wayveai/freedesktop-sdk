@@ -78,6 +78,13 @@ config:
     scripts/config -e NET_NS
     scripts/config -e USER_NS
 
+    # Required for 9p support
+    scripts/config -e NET_9P
+    scripts/config -e NET_9P_VIRTIO
+    scripts/config -e 9P_FS
+    scripts/config -e 9P_FS_POSIX_ACL
+    scripts/config -e VIRTIO_PCI
+
     # Strongly Recommended
     scripts/config -e IPV6
     scripts/config -e AUTOFS4_FS
