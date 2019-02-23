@@ -27,9 +27,6 @@ config:
   input: vm/desktop-vm.bst
 
   filesystem-tree-setup-commands:
-    (<):
-    - mkdir -p %{build-root}/dev
-    - mkdir -p %{build-root}/proc
     (>):
     - systemd-firstboot --root %{build-root} --root-password root --locale en_US.UTF-8
       --timezone UTC
