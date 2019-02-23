@@ -27,11 +27,6 @@ config:
   base: vm/deploy-tools.bst
   input: vm/minimal-vm.bst
 
-  filesystem-tree-setup-commands:
-    (<):
-    - mkdir -p %{build-root}/dev
-    - mkdir -p %{build-root}/proc
-
   final-commands:
     (>):
     - |

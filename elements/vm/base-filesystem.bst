@@ -15,8 +15,6 @@ depends:
 
 config:
   commands:
-  # Note that we avoid /dev and /proc here because BuildStream treats
-  # these specially. They need to be created at image creation time.
   - |
     mkdir %{install-root}/boot
     mkdir %{install-root}/etc
@@ -28,3 +26,5 @@ config:
     mkdir %{install-root}/opt
     mkdir %{install-root}/sys
     mkdir %{install-root}/tmp
+    mkdir %{install-root}/dev
+    mkdir %{install-root}/proc
