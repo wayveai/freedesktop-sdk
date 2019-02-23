@@ -48,16 +48,16 @@ variables:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
-  ref: 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
+  url: ftp_gnu_org:gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+  ref: 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
 - kind: tar
   url: ftp_gnu_org:gmp/gmp-6.1.2.tar.xz
   directory: gmp
   ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
 - kind: tar
-  url: ftp_gnu_org:mpfr/mpfr-4.0.1.tar.xz
+  url: ftp_gnu_org:mpfr/mpfr-4.0.2.tar.xz
   directory: mpfr
-  ref: 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e
+  ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
 - kind: tar
   url: ftp_gnu_org:mpc/mpc-1.1.0.tar.gz
   directory: mpc
