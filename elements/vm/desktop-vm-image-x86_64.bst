@@ -26,14 +26,6 @@ config:
   base: vm/deploy-tools.bst
   input: vm/desktop-vm.bst
 
-  filesystem-tree-setup-commands:
-    (>):
-    - systemd-firstboot --root %{build-root} --root-password root --locale en_US.UTF-8
-      --timezone UTC
-    # systemd-firstboot generates /etc/shadow with no permission,
-    # so generating the image fails
-    - chmod 400 %{build-root}/etc/shadow
-
   final-commands:
     (>):
     - |
