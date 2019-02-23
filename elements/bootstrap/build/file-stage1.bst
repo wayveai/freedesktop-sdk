@@ -14,7 +14,13 @@ variables:
   prefix: '%{tools}'
   lib: lib
 
+config:
+  configure-commands:
+    (<):
+      - autoreconf -ivf
+
 sources:
-- kind: tar
-  url: ftp://ftp.astron.com/pub/file/file-5.35.tar.gz
-  ref: 30c45e817440779be7aac523a905b123cba2a6ed0bf4f5439e1e99ba940b5546
+- kind: git_tag
+  url: github:file/file
+  track: master
+  ref: FILE5_36-0-gf3a4b9ada3ca99e62c62b9aa78eee4935a8094fe
