@@ -12,8 +12,10 @@ depends:
 
 sources:
 - kind: tar
-  url: https://www.kernel.org/pub/linux/utils/boot/syslinux/6.xx/syslinux-6.03.tar.xz
-  ref: 26d3986d2bea109d5dc0e4f8c4822a459276cf021125e8c9f23c3cca5d8c850e
+  url: https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.xz
+  ref: 3f6d50a57f3ed47d8234fd0ab4492634eb7c9aaf7dd902f33d3ac33564fd631d
+- kind: patch
+  path: patches/syslinux/extlinux-fix-missing header.patch
 
 config:
   build-commands:
