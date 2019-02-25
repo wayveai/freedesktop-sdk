@@ -11,8 +11,8 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:f22a2fdd1f2c3ca0c5154e9263f884db5e48fad3"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:f22a2fdd1f2c3ca0c5154e9263f884db5e48fad3"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:087a6159febf5e3375efdaee300adb3b09f6f69e"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:087a6159febf5e3375efdaee300adb3b09f6f69e"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -206,6 +206,63 @@ app_arm:
   variables:
     ARCH: arm
 
+.vm_imageless_template: &vm_imageless
+  stage: vm
+  script:
+    - make build-vm
+    - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  except:
+    - master
+    - '18.08'
+    - tags
+  <<: *gitlab_cache_pull
+
+minimal_systemd_vm_x86_64:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  <<: *vm_imageless
+  variables:
+    ARCH: x86_64
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+
+minimal_systemd_vm_i686:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_i686
+  <<: *vm_imageless
+  variables:
+    ARCH: i686
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+
+minimal_systemd_vm_aarch64:
+  image: $DOCKER_AARCH64
+  tags:
+    - aarch64
+  <<: *vm_imageless
+  variables:
+    ARCH: aarch64
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+  when: manual # skip aarch64 VM tests by default for now; the runner is too slow
+
+minimal_systemd_vm_arm:
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  <<: *vm_imageless
+  variables:
+    ARCH: arm
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
 
 .vm_image_template: &vm_image
   stage: vm
