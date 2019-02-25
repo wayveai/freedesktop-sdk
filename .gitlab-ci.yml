@@ -394,23 +394,37 @@ cve_report:
     - cache_x86_64
   script:
     - pip3 install --user lxml
+
+    - make manifest
+
     - mkdir -p "${XDG_CACHE_HOME}/cve"
     - cd "${XDG_CACHE_HOME}/cve"
     - python3 "${CI_PROJECT_DIR}/utils/update-local-cve-database.py"
-    - ${BST} -o target_arch "x86_64" build sdk-manifest.bst platform-manifest.bst
-    - mkdir -p "${CI_PROJECT_DIR}/sdk-manifest"
-    - mkdir -p "${CI_PROJECT_DIR}/platform-manifest"
-    - ${BST} -o target_arch "x86_64" checkout sdk-manifest.bst "${CI_PROJECT_DIR}/sdk-manifest"
-    - ${BST} -o target_arch "x86_64" checkout platform-manifest.bst "${CI_PROJECT_DIR}/platform-manifest"
+
     - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
     - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
     - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
-    - make markdown-manifest
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"
+  only:
+    - master
+    - '18.08'
+
+markdown_manifest:
+  stage: publish
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  script:
+    - make markdown-manifest
+  artifacts:
+    paths:
       - "${CI_PROJECT_DIR}/platform-manifest/usr/"
       - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
   only:
     - master
     - '18.08'
+  except:
+    - schedules
