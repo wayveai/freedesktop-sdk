@@ -245,7 +245,7 @@ prepare_publish_releases:
 prepare_publish_flathub:
   extends: .prepare_publish_template
   variables:
-    RELEASES_SERVER_ADDRESS: https://repo-test.flathub.org/
+    RELEASES_SERVER_ADDRESS: https://hub.flathub.org/
     REPO_TOKEN: $FLATHUB_REPO_TOKEN
   only:
     - tags
