@@ -24,8 +24,15 @@ variables:
   - target_arch != "aarch64" and target_arch != "i686":
       kernel_arch: '%{arch}'
 
+environment:
+  ARCH: '%{kernel_arch}'
+
 config:
   configure-commands:
+  - |
+    # Generate the default kernel config for the target architecture
+    make defconfig
+
   - |
     # Modify the kernel config for additional features
 
@@ -102,7 +109,7 @@ config:
 
   build-commands:
   - |
-    make ARCH="%{kernel_arch}" $MAKEFLAGS
+    make
 
   install-commands:
   - |
@@ -125,5 +132,3 @@ sources:
 - kind: tar
   url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.26.tar.xz
   ref: bec45f66c94739596f2bbc35e89de7a2cbd407cf63b537970b52ab117db747fc
-- kind: local
-  path: files/kernel/.config
