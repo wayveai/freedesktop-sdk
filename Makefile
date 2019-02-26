@@ -10,6 +10,11 @@ REPO=repo
 CHECKOUT_ROOT=runtimes
 
 ARCH_OPTS=-o target_arch $(ARCH)
+TARBALLS=            \
+	sdk          \
+	platform
+TAR_ELEMENTS=$(addprefix tarballs/,$(addsuffix .bst,$(TARBALLS)))
+TAR_CHECKOUT_ROOT=tarballs
 
 ifeq ($(ARCH),arm)
 ABI=gnueabi
@@ -26,6 +31,9 @@ build:
 	             flatpak-release.bst \
 	             public-stacks/buildsystems.bst
 
+build-tar:
+	bst --colors $(ARCH_OPTS) build tarballs/all.bst
+
 export: clean-runtime
 	$(BST) build flatpak-release.bst
 
@@ -39,6 +47,15 @@ export: clean-runtime
 	rm -rf $(CHECKOUT_ROOT)
 
 $(REPO): export
+
+export-tar:
+	bst --colors $(ARCH_OPTS) build $(TAR_ELEMENTS)
+
+	mkdir -p $(TAR_CHECKOUT_ROOT)
+	set -e; for tarball in $(TARBALLS); do \
+		dir="$(ARCH)-$${tarball}"; \
+		bst --colors $(ARCH_OPTS) checkout --hardlinks "tarballs/$${tarball}.bst" "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
+	done
 
 check-dev-files:
 	$(BST) build desktop-platform-image.bst
@@ -109,4 +126,5 @@ clean: clean-repo clean-runtime clean-test
 
 
 .PHONY: build check-dev-files clean clean-test clean-repo clean-runtime \
-        export test-apps manifest markdown-manifest check-rpath
+        export test-apps manifest markdown-manifest check-rpath \
+	build-tar export-tar
