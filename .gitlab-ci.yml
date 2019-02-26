@@ -221,33 +221,29 @@ minimal_systemd_vm_image_x86_64:
     TYPE: minimal-systemd
     DIALOG: root-login
 
-.prepare_publish_template:
+prepare_publish:
   image: $DOCKER_AMD64
   stage: prepare-publish
   tags:
     - x86_64
   script:
+    - |
+      if [ -n $CI_COMMIT_TAG ]; then
+        export REPO_TOKEN=$FLATHUB_REPO_TOKEN
+        export RELEASES_SERVER_ADDRESS=https://hub.flathub.org/
+      else
+        export REPO_TOKEN=$RELEASES_REPO_TOKEN
+        export RELEASES_SERVER_ADDRESS=https://cache.sdk.freedesktop.org/
+      fi
+
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client create $RELEASES_SERVER_ADDRESS stable > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
-
-prepare_publish_releases:
-  extends: .prepare_publish_template
-  variables:
-    RELEASES_SERVER_ADDRESS: https://cache.sdk.freedesktop.org/
-    REPO_TOKEN: $RELEASES_REPO_TOKEN
   only:
     - master
     - '18.08'
-
-prepare_publish_flathub:
-  extends: .prepare_publish_template
-  variables:
-    RELEASES_SERVER_ADDRESS: https://hub.flathub.org/
-    REPO_TOKEN: $FLATHUB_REPO_TOKEN
-  only:
     - tags
 
 finish_publish:
@@ -256,6 +252,13 @@ finish_publish:
   tags:
     - x86_64
   script:
+    - |
+      if [ -n $CI_COMMIT_TAG ]; then
+        export REPO_TOKEN=$FLATHUB_REPO_TOKEN
+      else
+        export REPO_TOKEN=$RELEASES_REPO_TOKEN
+      fi
+
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
     - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
@@ -271,6 +274,13 @@ finish_publish_failed:
   tags:
     - x86_64
   script:
+    - |
+      if [ -n $CI_COMMIT_TAG ]; then
+        export REPO_TOKEN=$FLATHUB_REPO_TOKEN
+      else
+        export REPO_TOKEN=$RELEASES_REPO_TOKEN
+      fi
+
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client purge $(cat publish_build.txt)
   only:
@@ -284,6 +294,13 @@ finish_publish_failed:
   script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} export
+
+    - |
+      if [ -n CI_COMMIT_TAG ]; then
+        export REPO_TOKEN=$FLATHUB_REPO_TOKEN
+      else
+        export REPO_TOKEN=$RELEASES_REPO_TOKEN
+      fi
 
     - |
       for ref in $(ostree --repo=repo refs --list); do
