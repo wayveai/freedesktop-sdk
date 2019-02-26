@@ -124,7 +124,7 @@ Once your MR is open it will be reviewed before merging. Once it passes our CI a
 Congratulations, you are now a freedesktop-sdk contributor!
 
 ## Testing locally
-If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too.
+If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too. The Makefile can be used to produce freedesktop-sdk as both a flatpak repo and tarballs, using the commands outlined in the table below.
 
 We also use some plugins from the [bst-external](https://gitlab.com/BuildStream/bst-external) repository. To install these run the following commands:
 ```
@@ -134,7 +134,7 @@ pip3 install --user -e ./bst-external
 
 Additionally Makefile uses some utilities from [flatpak](https://flatpak.org/setup) and flatpak-builder, and will be required for testing fully.
 
-We currently use version 0.5 of bst-external, but you can reasonably assume that we are using the latest commit of master in this repository.
+We currently use version 0.9.0 of bst-external, but you can reasonably assume that we are using the latest commit of master in this repository.
 
 After making your changes you can use the Makefile to test. Ensure you are in the root `freedesktop-sdk/` directory, where the Makefile is located. You can use the Makefile to:
 
@@ -147,6 +147,8 @@ After making your changes you can use the Makefile to test. Ensure you are in th
 | Remove runtime repo (from make export) | `make clean-repo`      |
 | Remove checked out runtimes            | `make clean-runtime`   |
 | Both the above at once                 | `make clean`           |
+| Build tarballs of the Project          | `make build-tar`       |
+| Export tarballs of the Project         | `make export-tar`      |
 
 **NOTE:** You must run `make export` *before* running `make test-apps`
 
