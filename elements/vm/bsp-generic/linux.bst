@@ -16,6 +16,7 @@ depends:
   type: build
 
 variables:
+  bootdir: /boot
   (?):
   - target_arch == "aarch64":
       kernel_arch: arm64
@@ -113,8 +114,8 @@ config:
 
   install-commands:
   - |
-    mkdir -p "%{install-root}"/boot
-    make INSTALL_PATH="%{install-root}"/boot install
+    install -Dm644 $(make -s image_name) '%{install-root}%{bootdir}/vmlinuz'
+    install -Dm644 System.map '%{install-root}%{bootdir}/System.map'
     make INSTALL_MOD_PATH="%{install-root}" modules_install
 
 public:
@@ -127,6 +128,11 @@ public:
           depmod -a "$version";
         done
       fi
+
+    split-rules:
+      devel:
+        (>):
+        - '%{bootdir}/System.map'
 
 sources:
 - kind: tar
