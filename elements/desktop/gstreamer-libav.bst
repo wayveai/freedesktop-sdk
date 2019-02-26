@@ -26,7 +26,7 @@ sources:
   url: freedesktop:gstreamer/gst-libav
   track: master
   # Snapshot used by debian so we can use their patches
-  ref: 1.14.0-54-gdb8235024523a0375443f36eb5fec627386452d5
+  ref: 1.15.1-0-g240cb809a97d3e636460ef839d6e2db23fe6565e
   submodules:
     common:
       checkout: True
@@ -38,6 +38,6 @@ sources:
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-drop-1.15-dependency.patch
 - kind: patch
-  path: patches/gstreamer-libav/gst-libav-avmux-Place-pva-case-after-generic-case.patch
+  path: patches/gstreamer-libav/gst-libav-Revert-incompatible-commit.patch
 - kind: patch
-  path: patches/gstreamer-libav/gst-libav-decoders-fix-draining.patch
+  path: patches/gstreamer-libav/gst-libav-plugin-dependencies.patch
