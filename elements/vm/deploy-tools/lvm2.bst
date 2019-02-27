@@ -2,6 +2,7 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
+- vm/bsp-generic/libaio.bst
 
 sources:
 - kind: git_tag
