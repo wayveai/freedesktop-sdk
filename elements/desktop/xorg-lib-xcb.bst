@@ -57,7 +57,7 @@ config:
 
 sources:
 - kind: tar
-  url: https://xcb.freedesktop.org/dist/libxcb-1.13.tar.bz2
-  ref: 188c8752193c50ff2dbe89db4554c63df2e26a2e47b0fa415a70918b5b851daa
+  url: https://xcb.freedesktop.org/dist/libxcb-1.13.1.tar.bz2
+  ref: a89fb7af7a11f43d2ce84a844a4b38df688c092bf4b67683aef179cdf2a647c4
 - kind: patch
   path: patches/xorg-lib-xcb/xorg-lib-xcb-pthread-stub.patch
