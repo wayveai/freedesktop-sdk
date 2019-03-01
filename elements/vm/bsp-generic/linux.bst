@@ -58,6 +58,10 @@ config:
     # udev will fail to work with legacy sysfs
     scripts/config -d SYSFS_DEPRECATED
 
+    # Boot is very slow with systemd when legacy PTYs are present
+    scripts/config -d LEGACY_PTYS
+    scripts/config -d LEGACY_PTY_COUNT
+
     # Legacy hotplug confuses udev
     scripts/config --set-str UEVENT_HELPER_PATH ""
 
