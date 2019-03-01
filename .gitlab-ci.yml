@@ -297,6 +297,7 @@ finish_publish_failed:
 
 .flatpak_publish_template:
   stage: publish
+  retry: 2
   script:
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} export
