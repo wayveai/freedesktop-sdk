@@ -47,6 +47,10 @@ config:
         ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
       fi
 
+    # ldconfig shows a warning if /etc/ld.so.conf doesn't exist
+    - |
+      touch '%{install-root}%{sysconfdir}/ld.so.conf'
+
 (@): elements/bootstrap/target.yml
 
 variables:
