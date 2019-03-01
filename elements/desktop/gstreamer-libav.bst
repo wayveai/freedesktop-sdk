@@ -25,8 +25,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav
   track: master
-  # Snapshot used by debian so we can use their patches
-  ref: 1.15.1-0-g240cb809a97d3e636460ef839d6e2db23fe6565e
+  ref: 1.15.2-0-gc693e62a4464a74bace095344e355c4409d850d9
   submodules:
     common:
       checkout: True
