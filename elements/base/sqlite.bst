@@ -6,7 +6,12 @@ depends:
 variables:
   conf-local: |
     --enable-fts5 \
-    CFLAGS="${CFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_SECURE_DELETE=1"
+    CFLAGS="${CFLAGS} \
+    -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+    -DSQLITE_SECURE_DELETE=1 \
+    -DSQLITE_ENABLE_FTS3=1 \
+    -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 \
+    -DSQLITE_ENABLE_DBSTAT_VTAB=1"
 
 public:
   bst:
@@ -17,9 +22,9 @@ public:
 
   cpe:
     vendor: 'sqlite'
-    version: '3.26.0'
+    version: '3.27.2'
 
 sources:
 - kind: tar
-  url: https://sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
-  ref: 5daa6a3fb7d1e8c767cd59c4ded8da6e4b00c61d3b466d0685e35c4dd6d7bf5d
+  url: https://sqlite.org/2019/sqlite-autoconf-3270200.tar.gz
+  ref: 50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
