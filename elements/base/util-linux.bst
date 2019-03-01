@@ -43,4 +43,4 @@ sources:
 - kind: git_tag
   url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
   track: stable/v2.33
-  ref: v2.33.1-0-g16140f802e29d05b43f694be039cceddad1b2c4a
+  ref: v2.33.1-0-g539fb3c722d2cc867fa547276d01e977b07a38fa
