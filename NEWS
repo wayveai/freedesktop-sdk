@@ -13,7 +13,6 @@ freedesktop-sdk-18.08.28:
     * Apply CVE fixes to wavepack
     * libva: Fix driver path in pkgconfig file
     * libvpx: enable optimizations
-    * libvpx: enable optimizations
     * bison: update to 3.3.2
     * elfutils.bst: fix multiple CVE
     * unzip: fix multiple CVE
@@ -21,6 +20,26 @@ freedesktop-sdk-18.08.28:
     * Add mitigation patch for cve-2017-7960 in libcroco
     * linux-headers: update to 4.14.96
     * Apply ncurses upstream fix for CVE-2018-10754
+    * Re-include man pages
+    * glib: fix moving to trash from flatpak apps
+    * alsa: update to 1.1.8
+    * ffmpeg: update to 4.1.1
+    * libunwind: update to 1.3.1
+    * add mesa patch for fullscreen totem (#655)
+    * update gnupg to 2.2.13
+    * update libassuan to 2.5.3
+    * update libgpg-error to 1.35
+    * fix RPATH (#407, #430)
+    * add libsystemd to the flatpak runtimes
+    * file: update to 5.36
+    * do not use sysroot in artifacts
+    * merge bootstrap into the main project
+    * libpng: patch cve-2019-7317
+    * tar: update to 1.32
+    * xorg-lib-xcb: update to 1.31.1
+    * update lvm2 to v2.02.138 and syslinux to 6.04-pre1
+    * git: update to 2.21.0
+
 
 freedesktop-sdk-18.08.27:
     * extra-cmake-modules: Upgrade to 5.54
