@@ -23,6 +23,10 @@ public:
     version: '241'
 
   bst:
+    integration-commands:
+    - |
+      systemd-hwdb --usr update
+
     split-rules:
       devel:
         (>):
