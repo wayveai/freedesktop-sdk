@@ -67,7 +67,7 @@ sources:
 - kind: git_tag
   url: github:openssl/openssl
   track: OpenSSL_1_0_2-stable
-  ref: OpenSSL_1_0_2q-0-g5707219a6aae8052cb98aa361d115be01b8fd894
+  ref: OpenSSL_1_0_2r-0-gb34cf4eb616446a1ee7bd0db0a625edf25047342
 - kind: patch
     # Updates need to update this script if there are new symbols.
   path: patches/openssl/openssl-version-script.patch
