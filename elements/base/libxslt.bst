@@ -14,7 +14,7 @@ public:
         - '%{libdir}/libxslt.so'
         - '%{libdir}/libexslt.so'
   cpe:
-    version: '1.1.32'
+    version: '1.1.33'
 
 sources:
 - kind: git_tag
