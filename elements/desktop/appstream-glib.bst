@@ -6,7 +6,6 @@ depends:
 - filename: desktop/json-glib.bst
 - filename: desktop/gdk-pixbuf.bst
 - filename: desktop/gcab.bst
-- filename: desktop/gtk3.bst
 - filename: desktop/gobject-introspection.bst
   type: build
 - filename: base/buildsystem-meson.bst
@@ -36,10 +35,12 @@ public:
       devel:
         (>):
         - '%{libdir}/libappstream-glib.so'
-        - '%{libdir}/libappstream-builder.so'
+
+  cpe:
+    version: '0.7.15'
 
 sources:
 - kind: git_tag
   url: github:hughsie/appstream-glib
   track: master
-  ref: appstream_glib_0_7_14-0-g75a7af1d8870bb0fcf216e788b273a4c41e99cec
+  ref: appstream_glib_0_7_15-0-g0ab28ff96b74eb72ffe3c3a53026aee82cf31782
