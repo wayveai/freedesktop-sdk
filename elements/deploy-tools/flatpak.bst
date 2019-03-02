@@ -29,8 +29,8 @@ variables:
 sources:
 - kind: git_tag
   url: github:flatpak/flatpak
-  track: flatpak-1.0.x
-  ref: 1.0.6-0-g38b5560c66a5b28287df964b6a61d928ec163ed2
+  track: flatpak-1.2.x
+  ref: 1.2.3-0-g428c7bf8566d1cdb9f5eafccde1a19a41aeab144
   submodules:
     libglnx:
       checkout: True
