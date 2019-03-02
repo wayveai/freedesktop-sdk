@@ -14,6 +14,7 @@ depends:
   type: build
 - filename: base/gzip.bst
   type: build
+- filename: vm/linux-vm-boot/kmod.bst
 
 variables:
   bootdir: /boot
@@ -116,18 +117,18 @@ config:
   - |
     install -Dm644 $(make -s image_name) '%{install-root}%{bootdir}/vmlinuz'
     install -Dm644 System.map '%{install-root}%{bootdir}/System.map'
-    make INSTALL_MOD_PATH="%{install-root}" modules_install
+    make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install
+
+    rm %{install-root}%{indep-libdir}/modules/*/{source,build}
 
 public:
   bst:
     integration-commands:
     - |
-      if type depmod &> /dev/null; then
-        cd /usr/lib/modules
-        for version in *; do
-          depmod -a "$version";
-        done
-      fi
+      cd '%{indep-libdir}/modules'
+      for version in *; do
+        depmod -b '%{prefix}' -a "$version";
+      done
 
     split-rules:
       devel:
