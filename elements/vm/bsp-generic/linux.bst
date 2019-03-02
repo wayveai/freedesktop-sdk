@@ -121,6 +121,13 @@ config:
 
     rm %{install-root}%{indep-libdir}/modules/*/{source,build}
 
+  (?):
+  - target_arch in ["aarch64", "arm"]:
+      install-commands:
+        (>):
+        - |
+          make INSTALL_DTBS_PATH='%{install-root}%{bootdir}/dtbs' dtbs_install
+
 public:
   bst:
     integration-commands:
