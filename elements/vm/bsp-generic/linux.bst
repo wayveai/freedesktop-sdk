@@ -118,7 +118,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.18.tar.xz
-  ref: 5ffdc068f9bf768b7cd5a8a2271d1370c2326e967848b13e21dfdbb1ef0ff3f1
+  url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.26.tar.xz
+  ref: bec45f66c94739596f2bbc35e89de7a2cbd407cf63b537970b52ab117db747fc
 - kind: local
   path: files/kernel/.config

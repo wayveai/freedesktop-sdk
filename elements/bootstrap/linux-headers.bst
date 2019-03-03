@@ -22,8 +22,8 @@ config:
 
 sources:
 - kind: tar
-  url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.96.tar.xz
-  ref: 110daeae1a416b7e0ec8dce5e86d67552deeb4567f696c3869389be239f0ecb5
+  url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.26.tar.xz
+  ref: bec45f66c94739596f2bbc35e89de7a2cbd407cf63b537970b52ab117db747fc
 
 public:
   bst:
