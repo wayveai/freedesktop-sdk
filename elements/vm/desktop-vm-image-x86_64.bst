@@ -37,6 +37,6 @@ config:
     - |
       cat > %{install-root}/run-in-qemu.sh << EOF
       #!/bin/sh
-      qemu-system-x86_64 -drive file=sda.img,format=raw -nographic -m 1g
+      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -nographic -m 1g
       EOF
       chmod +x %{install-root}/run-in-qemu.sh
