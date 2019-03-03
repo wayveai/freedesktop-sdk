@@ -17,11 +17,10 @@ variables:
   # This is the smallest boot partition I managed to make.
   boot-size: 38912K
 
-  rootfs-size: 10G
+  rootfs-size: 6G
   sector-size: 512
-  swap-size: 40K
 
-  kernel-args: root=/dev/sda2 rootfstype=ext4 init=/bin/sh console=ttyS0
+  kernel-args: root=/dev/sda2 rootfstype=ext4 init=/usr/lib/systemd/systemd console=ttyS0
 
 config:
   base: vm/deploy-tools.bst
@@ -31,12 +30,18 @@ config:
     (<):
     - mkdir -p %{build-root}/dev
     - mkdir -p %{build-root}/proc
+    (>):
+    - systemd-firstboot --root %{build-root} --root-password root --locale en_US.UTF-8
+      --timezone UTC
+    # systemd-firstboot generates /etc/shadow with no permission,
+    # so generating the image fails
+    - chmod 400 %{build-root}/etc/shadow
 
   final-commands:
     (>):
     - |
       cat > %{install-root}/run-in-qemu.sh << EOF
       #!/bin/sh
-      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -nographic -m 1g
+      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -m 2g -vga virtio -display sdl,gl=on
       EOF
       chmod +x %{install-root}/run-in-qemu.sh
