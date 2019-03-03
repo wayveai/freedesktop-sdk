@@ -41,5 +41,5 @@ config:
 
 sources:
 - kind: tar
-  url: https://www.openssl.org/source/openssl-1.0.2m.tar.gz
-  ref: 8c6ff15ec6b319b50788f42c7abc2890c08ba5a1cdcd3810eb9092deada37b0f
+  url: https://www.openssl.org/source/openssl-1.0.2r.tar.gz
+  ref: ae51d08bba8a83958e894946f15303ff894d75c2b8bbd44a852b64e3fe11d0d6
