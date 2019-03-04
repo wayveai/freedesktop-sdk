@@ -4,6 +4,8 @@ description: GNU C Library
 depends:
 - filename: bootstrap/glibc-build-deps.bst
   type: build
+- filename: bootstrap/symlinks.bst
+  type: runtime
 - filename: bootstrap/linux-headers.bst
   type: runtime
 
@@ -40,7 +42,10 @@ config:
       done
 
       rm -r "${sourcedir}"
-      ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
+
+      if [ "${rtlddir}" != '/lib' ]; then
+        ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
+      fi
 
 (@): elements/bootstrap/target.yml
 
