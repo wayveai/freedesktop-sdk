@@ -67,5 +67,5 @@ config:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
-  ref: 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
+  url: ftp_gnu_org:gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+  ref: 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
