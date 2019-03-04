@@ -7,9 +7,9 @@ depends:
 - filename: desktop/gtk3.bst
 - filename: desktop/wayland-protocols.bst
   type: build
-- filename: base/intltool.bst
-  type: build
 - filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gettext.bst
   type: build
 - filename: base/iso-codes.bst
   type: build
@@ -54,5 +54,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:ibus/ibus/releases/download/1.5.19/ibus-1.5.19.tar.gz
-  ref: 4b66c798dab093f0fa738e5c10688d395a463287d13678c208a81051af5d2429
+  url: github:ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
+  ref: 4cf1e5ca4b067a3bed3cdfa658d49ac597d817b2de627a1095214565f862d034
