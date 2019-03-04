@@ -3,13 +3,13 @@
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
-    "command": "hello.sh",
+    "command": "hello",
     "modules": [
         {
             "name": "hello",
             "buildsystem": "simple",
             "build-commands": [
-                "install -D hello.sh /app/bin/hello.sh"
+                "install -D hello.sh /app/bin/hello"
             ],
             "sources": [
                 {
