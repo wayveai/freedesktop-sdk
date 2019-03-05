@@ -8,10 +8,13 @@ variables:
   prefix: /app
   lib: lib
 
-  make-args: |
-    GLEW_DEST="%{install-root}%{prefix}" \
-    GLEW_PREFIX="%{prefix}" \
+  make-args: >-
+    GLEW_DEST="%{install-root}%{prefix}"
+    GLEW_PREFIX="%{prefix}"
     LIBDIR="%{install-root}%{libdir}"
+    CFLAGS.EXTRA="${CFLAGS} -fPIC"
+    LDFLAGS.EXTRA="${LDFLAGS}"
+    STRIP=""
 
 config:
   configure-commands: []

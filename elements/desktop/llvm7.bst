@@ -10,8 +10,7 @@ config:
   include:
   - devel
   - doc
-  include-orphans: False
-  exclude: 
+  exclude:
   - static
 
 public:

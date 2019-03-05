@@ -8,6 +8,7 @@ depends:
 
 variables:
   debug_flags: "-g1"
+  optimize-debug: "false"
 
   (?):
   - target_arch == "i686":

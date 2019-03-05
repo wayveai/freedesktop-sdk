@@ -5,7 +5,7 @@ depends:
   type: build
 - filename: bootstrap/build/gcc-stage2.bst
   type: build
-- filename: bootstrap/build/debugedit-build.bst
+- filename: bootstrap/build/debug-utils.bst
   type: build
 - filename: bootstrap/build/ncurses-stage1.bst
   type: build
@@ -21,8 +21,6 @@ config:
   - element: bootstrap/gnu-config.bst
     destination: "/"
   - element: bootstrap/build/gcc-stage2.bst
-    destination: "/"
-  - element: bootstrap/build/debugedit-build.bst
     destination: "/"
   - element: bootstrap/build/ncurses-stage1.bst
     destination: "/"
