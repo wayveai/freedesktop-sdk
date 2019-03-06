@@ -17,6 +17,7 @@ public:
         - '%{libdir}/vdpau/libvdpau_*.so'
 
 sources:
-- kind: tar
-  url: https://people.freedesktop.org/~aplattner/vdpau/libvdpau-1.1.1.tar.bz2
-  ref: 857a01932609225b9a3a5bf222b85e39b55c08787d0ad427dbd9ec033d58d736
+- kind: git_tag
+  url: freedesktop:vdpau/libvdpau
+  track: master
+  ref: libvdpau-1.2-0-geac1393480bc7c2209d4984819951cb9dc1e03d0
