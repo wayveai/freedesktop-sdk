@@ -10,3 +10,6 @@ __pycache__
 # Ignore local testing
 repo/
 runtimes/
+.flatpak-builder/
+app/
+runtime/
