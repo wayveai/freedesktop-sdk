@@ -171,7 +171,6 @@ populate_source_cache:
     - master
     - '18.08'
     - tags
-    - 'coldtom/reproducible-ci'
   <<: *gitlab_cache_pull
 
 app_x86_64:
@@ -221,7 +220,6 @@ app_arm:
     - master
     - '18.08'
     - tags
-    - 'coldtom/reproducible-ci'
   <<: *gitlab_cache_pull
 
 minimal_systemd_vm_x86_64:
@@ -484,13 +482,13 @@ markdown_manifest:
 .reproducible_template: &reproducible
   stage: reproducible
   script:
-    - ./utils/test-reproducibility.sh bootstrap/build/binutils-stage1.bst
-    - echo $?
+    - ./utils/test-reproducibility.sh all.bst
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
+      - ${CI_PROJECT_DIR}/results.cache
+  only:
     - schedules
   <<: *gitlab_cache_pull
 
