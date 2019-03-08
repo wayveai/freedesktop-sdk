@@ -58,7 +58,9 @@ DIALOGS = {
         'root',
         'sh',
         'uname -a',
-        'Linux'
+        'Linux',
+        'systemctl poweroff',
+        'Power down'
     ],
     'root-login':
     [
@@ -68,7 +70,9 @@ DIALOGS = {
         'root',
         'sh',
         'uname -a',
-        'Linux'
+        'Linux',
+        'systemctl poweroff',
+        'Power down'
     ]
 }
 
