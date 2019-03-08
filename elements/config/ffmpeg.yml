@@ -97,5 +97,5 @@ config:
 sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
-  track: master
+  track: release/4.1
   ref: n4.1.1-0-g74700e50bf7444930bfc12935bd3e17cd5f766c1
