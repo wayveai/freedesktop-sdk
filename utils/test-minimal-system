@@ -23,6 +23,8 @@ import locale
 import logging
 import sys
 import time
+import os
+import signal
 
 
 QEMU = 'qemu-system-x86_64'
@@ -125,7 +127,8 @@ async def run_qemu_test(sda, dialog):
 
     logging.debug("Starting process: %s", command)
     process = await asyncio.create_subprocess_exec(
-        *command, stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE)
+        *command, stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
+        start_new_session=True)
 
     success = False
     try:
@@ -140,10 +143,15 @@ async def run_qemu_test(sda, dialog):
         print("Test successful")
         success = True
     except asyncio.CancelledError:
-        # Move straight to process.kill()
+        # Move straight to killing the process group
         pass
     finally:
-        process.kill()
+        try:
+            os.killpg(os.getpgid(process.pid), signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+
+    await process.communicate()
     await process.wait()
     return success
 
