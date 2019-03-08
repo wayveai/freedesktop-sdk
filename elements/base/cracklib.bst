@@ -4,7 +4,7 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
-- filename: base/intltool.bst
+- filename: base/gettext.bst
   type: build
 - filename: base/python3.bst
   type: build
@@ -58,4 +58,4 @@ sources:
 - kind: git_tag
   url: github:cracklib/cracklib.git
   track: master
-  ref: v2.9.6-0-g1dd5ca2114c0dd478b17e68e38d2c9f7094552cc
+  ref: v2.9.7-0-gf83934cf3cced0c9600c7d81332f4169f122a2cf
