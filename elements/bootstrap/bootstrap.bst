@@ -7,7 +7,6 @@ depends:
 - filename: bootstrap/bzip2.bst
 - filename: bootstrap/binutils.bst
 - filename: bootstrap/coreutils.bst
-- filename: bootstrap/cross-installation-links.bst
 - filename: bootstrap/debugedit.bst
 - filename: bootstrap/diffutils.bst
 - filename: bootstrap/elfutils.bst
@@ -25,5 +24,6 @@ depends:
 - filename: bootstrap/procps.bst
 - filename: bootstrap/readline.bst
 - filename: bootstrap/sed.bst
+- filename: bootstrap/symlinks.bst
 - filename: bootstrap/utf-locale.bst
 - filename: bootstrap/zlib.bst
