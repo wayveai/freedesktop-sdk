@@ -17,4 +17,3 @@ depends:
 config:
   exclude:
   - debug
-  - devel
