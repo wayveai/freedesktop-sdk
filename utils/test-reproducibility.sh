@@ -6,7 +6,7 @@
 #
 # Example of use:
 #
-#   ./tests/test-reproducibility.sh all.bst
+#   ./tests/test-reproducibility.sh flatpak-release.bst
 #
 # Extra parameters are passed to bst. The results.cache will be a cache of all
 # results to not have to re-test already tested artifacts.
