@@ -128,7 +128,7 @@ check_update_elements:
     - x86_64
     - cache_x86_64
   script:
-    - ${BST} track --deps all all.bst
+    - ${BST} track --deps all flatpak-release.bst
     - git diff
   only:
     - schedules
