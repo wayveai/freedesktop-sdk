@@ -66,6 +66,7 @@ config:
     mandir = "%{mandir}"
     docdir = "%{datadir}/doc/rust"
     [rust]
+    channel = "stable"
     debuginfo = true
     debuginfo-only-std = %{debuginfo-only-std}
     rpath = false
