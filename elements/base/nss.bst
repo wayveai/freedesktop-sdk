@@ -54,19 +54,32 @@ config:
     install -m 644 -D -t "%{install-root}/%{includedir}/nss" public/nss/*
 
   - |
-    sed -f - nss.pc.in <<EOF >nss.pc
+    NSPR_VERSION="$(/usr/bin/nspr-config --version)"
+    NSS_VERSION="$(grep NSS_VERSION dist/public/nss/nss.h | sed -e 's/[^"]*"//' -e 's/".*//' -e 's/ .*//')"
+    MOD_MAJOR_VERSION="$(echo "${NSS_VERSION}" | cut -d. -f1)"
+    MOD_MINOR_VERSION="$(echo "${NSS_VERSION}" | cut -d. -f2)"
+    MOD_PATCH_VERSION="$(echo "${NSS_VERSION}" | cut -d. -f3)"
+
+    for f in nss/pkg/pkg-config/*.in; do
+      sed -f - "${f}" <<EOF >"$(basename "${f}" .in)"
+    s,%,@,g
     s,@prefix@,%{prefix},g
     s,@exec_prefix@,%{exec_prefix},g
     s,@libdir@,%{libdir},g
     s,@includedir@,%{includedir}/nss,g
-    s,@version@,3.42.1,g
-    s,@nspr_version@,4.20,g
+    s,@NSS_VERSION@,${NSS_VERSION},g
+    s,@NSPR_VERSION@,${NSPR_VERSION},g
+    s,@MOD_MAJOR_VERSION@,${MOD_MAJOR_VERSION},g
+    s,@MOD_MINOR_VERSION@,${MOD_MINOR_VERSION},g
+    s,@MOD_PATCH_VERSION@,${MOD_PATCH_VERSION},g
     EOF
+    done
     install -m 644 -D -t "%{install-root}/%{libdir}/pkgconfig" nss.pc
+    install -m 755 -D -t "%{install-root}/%{bindir}" nss-config
 
 sources:
 - kind: tar
   url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_42_1_RTM/src/nss-3.42.1.tar.gz
   ref: 087db37d38fd49dfd584dd2a8b5baa7fc88de7c9bd97c0c2d5be4abcafc61fc6
-- kind: local
-  path: files/nss.pc.in
+- kind: patch
+  path: patches/nss/pkg-config-libdir.patch
