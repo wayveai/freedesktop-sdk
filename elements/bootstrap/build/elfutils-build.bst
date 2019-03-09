@@ -16,11 +16,5 @@ variables:
 
 sources:
 - kind: tar
-  url: sourceware_pub:elfutils/0.175/elfutils-0.175.tar.bz2
-  ref: f7ef925541ee32c6d15ae5cb27da5f119e01a5ccdbe9fe57bf836730d7b7a65b
-- kind: patch
-  path: patches/elfutils/CVE-2019-7146.patch
-- kind: patch
-  path: patches/elfutils/CVE-2019-7149.patch
-- kind: patch
-  path: patches/elfutils/CVE-2019-7150.patch
+  url: sourceware_pub:elfutils/0.176/elfutils-0.176.tar.bz2
+  ref: eb5747c371b0af0f71e86215a5ebb88728533c3a104a43d4231963f308cd1023
