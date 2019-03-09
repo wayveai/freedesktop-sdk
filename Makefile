@@ -22,9 +22,7 @@ BST=bst --colors $(ARCH_OPTS)
 all: build
 
 build:
-	$(BST) build flatpak-release.bst
-	$(BST) build public-stacks/buildsystems.bst
-
+	$(BST) build flatpak-release.bst public-stacks/buildsystems.bst
 
 export: clean-runtime
 	$(BST) build flatpak-release.bst
