@@ -63,6 +63,6 @@ public:
 
 sources:
 - kind: git_tag
-  track: master
-  url: https://github.com/python/cpython.git
+  track: 3.7
+  url: github:python/cpython.git
   ref: v3.7.2-0-g9a3ffc0492d1310ead9ce8f5ee678c26b20a338d

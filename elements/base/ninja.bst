@@ -16,5 +16,5 @@ config:
 sources:
 - kind: git_tag
   url: github:ninja-build/ninja.git
-  track: master
+  track: release
   ref: v1.9.0-0-gb25c08bda4949192c69cea4cee057887341a2ffc
