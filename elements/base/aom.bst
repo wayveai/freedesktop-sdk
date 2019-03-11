@@ -20,11 +20,19 @@ variables:
   - target_arch == "aarch64":
       aom_target: arm64
 
-  cmake-local: |
-    -DAOM_TARGET_CPU="${aom_target}" \
-    -DENABLE_DOCS=NO \
-    -DENABLE_NASM=YES \
+  cmake-local: >-
+    -DAOM_TARGET_CPU="${aom_target}"
+    -DENABLE_DOCS=NO
+    -DENABLE_NASM=YES
     -DENABLE_NEON=NO
+    -DBUILD_SHARED_LIBS=YES
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - "%{libdir}/libaom.so"
 
 sources:
 - kind: git_tag
