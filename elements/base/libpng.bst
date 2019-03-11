@@ -18,9 +18,10 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://git.code.sf.net/p/libpng/code
+  url: github:glennrp/libpng
   track: libpng16
   ref: v1.6.36-0-geddf9023206dc40974c26f589ee2ad63a4227a1e
 - kind: patch
   path: patches/libpng/cve-2019-7317.patch
-
+- kind: patch
+  path: patches/libpng/libpng-1.6.36-apng.patch
