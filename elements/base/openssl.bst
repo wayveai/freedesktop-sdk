@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: base/perl.bst
+  type: build
 - filename: base/buildsystem-autotools.bst
   type: build
 
