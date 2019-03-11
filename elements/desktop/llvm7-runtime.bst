@@ -1,6 +1,6 @@
 kind: filter
 depends:
-- filename: desktop/llvm7.bst
+- filename: desktop/llvm7-base.bst
   type: build
 
 config:
