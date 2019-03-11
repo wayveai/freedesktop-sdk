@@ -1,7 +1,7 @@
 diff -ur coreutils-8.28.old/Makefile.in coreutils-8.28/Makefile.in
 --- coreutils-8.28.old/Makefile.in	2017-09-02 04:25:09.000000000 +0200
 +++ coreutils-8.28/Makefile.in	2017-10-24 22:10:01.722272411 +0200
-@@ -14755,117 +14755,6 @@
+@@ -15186,118 +15186,6 @@
  distclean-local:
  	test x$(srcdir) = x$(builddir) || rm -f $(ALL_MANS)
  
@@ -15,6 +15,7 @@ diff -ur coreutils-8.28.old/Makefile.in coreutils-8.28/Makefile.in
 -@SINGLE_BINARY_FALSE@man/base32.1:    src/base32$(EXEEXT)
 -@SINGLE_BINARY_FALSE@man/base64.1:    src/base64$(EXEEXT)
 -@SINGLE_BINARY_FALSE@man/basename.1:  src/basename$(EXEEXT)
+-@SINGLE_BINARY_FALSE@man/basenc.1:    src/basenc$(EXEEXT)
 -@SINGLE_BINARY_FALSE@man/cat.1:       src/cat$(EXEEXT)
 -@SINGLE_BINARY_FALSE@man/chcon.1:     src/chcon$(EXEEXT)
 -@SINGLE_BINARY_FALSE@man/chgrp.1:     src/chgrp$(EXEEXT)
