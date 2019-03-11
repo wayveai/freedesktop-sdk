@@ -12,7 +12,7 @@ variables:
 sources:
 - kind: git_tag
   url: github:mesonbuild/meson.git
-  track: 0.49
-  ref: 0.49.2-0-g237e2e7243e14101e99d66e047037e400118992d
+  track: 0.50
+  ref: 0.50.1-0-g2e1fca02a5a59b355dd13ff8127a906b508bde18
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
