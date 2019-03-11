@@ -19,8 +19,6 @@ config:
 depends:
 - filename: desktop.bst
   type: build
-- filename: base/man-db-generate.bst
-  type: build
 - filename: split-locales.bst
   type: build
 - filename: split-docs.bst
