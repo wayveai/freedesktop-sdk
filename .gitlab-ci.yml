@@ -238,6 +238,7 @@ desktop_vm_image_x86_64:
     - x86_64
     - cache_x86_64
   <<: *vm_image
+  allow_failure: true
   variables:
     ARCH: x86_64
     TYPE: desktop
