@@ -4,12 +4,16 @@ description: GNU libtool
 depends:
 - filename: bootstrap-import.bst
 - filename: base/m4.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/*'
+        - '%{datadir}/libtool'
+        - '%{datadir}/libtool/**'
         - '%{libdir}/libltdl.so'
 
 sources:
