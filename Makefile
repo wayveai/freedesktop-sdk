@@ -22,15 +22,13 @@ BST=bst --colors $(ARCH_OPTS)
 all: build
 
 build:
-	$(BST) build all.bst
-	$(BST) build public-stacks/buildsystems.bst
-
+	$(BST) build flatpak-release.bst public-stacks/buildsystems.bst
 
 export: clean-runtime
-	$(BST) build all.bst
+	$(BST) build flatpak-release.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	$(BST) checkout --hardlinks "all.bst" $(CHECKOUT_ROOT)
+	$(BST) checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
