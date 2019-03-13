@@ -232,7 +232,7 @@ minimal_systemd_vm_image_x86_64:
     TYPE: minimal-systemd
     DIALOG: root-login
 
-desktop_vm_image_x86_64:
+.desktop_vm_image_x86_64:
   image: $DOCKER_AMD64
   tags:
     - x86_64
