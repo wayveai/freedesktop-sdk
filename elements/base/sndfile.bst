@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
+  type: build
 - filename: base/libflac.bst
 - filename: base/libogg.bst
 - filename: base/libvorbis.bst

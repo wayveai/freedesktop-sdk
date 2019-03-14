@@ -7,8 +7,10 @@ depends:
 - filename: base/cracklib.bst
 - filename: base/curl.bst
 - filename: base/cyrus-sasl.bst
+- filename: base/e2fsprogs.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
+- filename: base/gdbm.bst
 - filename: base/gettext.bst
 - filename: base/giflib.bst
 - filename: base/glib.bst

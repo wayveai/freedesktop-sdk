@@ -7,6 +7,7 @@ depends:
 - filename: base/help2man.bst
   type: build
 - filename: base/m4.bst
+  type: build
 - filename: base/buildsystem-autotools.bst
   type: build
 - filename: base/gettext.bst
@@ -32,6 +33,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/*'
         - '%{libdir}/libfl.so'
 
 sources:

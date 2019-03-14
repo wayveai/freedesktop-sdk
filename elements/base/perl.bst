@@ -27,13 +27,6 @@ config:
   - |
     make -j1 DESTDIR="%{install-root}" install
 
-public:
-  bst:
-    split-rules:
-      devel:
-        (>):
-        - '**'
-
 sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720

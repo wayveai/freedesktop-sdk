@@ -8,6 +8,8 @@ depends:
   type: build
 - filename: base/git-minimal.bst
   type: build
+- filename: base/perl.bst
+  type: build
 
 variables:
   (?):

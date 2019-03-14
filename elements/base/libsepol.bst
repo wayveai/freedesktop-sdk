@@ -4,6 +4,8 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/flex.bst
   type: build
+- filename: base/m4.bst
+  type: build
 
 variables:
   builddir: ''
