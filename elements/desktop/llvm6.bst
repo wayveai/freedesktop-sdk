@@ -7,6 +7,8 @@ depends:
   type: build
 
 variables:
+  debug_flags: "-g1"
+
   clang-libs: |
     libclangAnalysis.a \
     libclangAST.a \
@@ -60,7 +62,9 @@ variables:
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
-    -DLLVM_TARGETS_TO_BUILD="%{targets}"
+    -DLLVM_TARGETS_TO_BUILD="%{targets}" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG" \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
 
 config:
   install-commands:
@@ -86,7 +90,7 @@ public:
         - '%{libdir}/libLLVM-6.0.1.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/LLVMgold.so'
-        - '%{libdir}/libLTO.so'
+        - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'
         - '%{libdir}/BugpointPasses.so'
         - '%{libdir}/clang'
