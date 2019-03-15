@@ -19,7 +19,7 @@ config:
   install-commands:
     (>):
     - |
-      install -m 0644 -D ./pulse/99-pulseaudio-default.conf.example "%{install-root}%{datadir}/alsa/alsa.conf.d/99-pulseaudio-default.conf"
+      mv "%{install-root}%{sysconfdir}/alsa/conf.d/99-pulseaudio-default.conf.example" "%{install-root}%{sysconfdir}/alsa/conf.d/99-pulseaudio-default.conf"
 
 sources:
 - kind: git_tag
