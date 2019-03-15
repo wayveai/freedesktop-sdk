@@ -12,8 +12,8 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:087a6159febf5e3375efdaee300adb3b09f6f69e"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:087a6159febf5e3375efdaee300adb3b09f6f69e"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:4b4d4d89200533bbf9a7c86d5a009550ec14c4f4"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:4b4d4d89200533bbf9a7c86d5a009550ec14c4f4"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -26,6 +26,7 @@ stages:
   - prepare-publish
   - publish
   - finish-publish
+  - publish-snap
   - reproducible
 
 before_script:
@@ -118,6 +119,26 @@ before_script:
         export RELEASE_CHANNEL=stable
     fi
 
+  - |
+    if [ -n "$CI_COMMIT_TAG" ] && [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
+        export SNAP_RELEASE=stable
+        export SNAP_GRADE=stable
+    elif [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
+        export SNAP_RELEASE=edge
+        export SNAP_GRADE=devel
+    else
+        export SNAP_GRADE=devel
+    fi
+
+  - |
+    # This variable is only available on protected branch for which
+    # only we want to set the version in the snap.
+    if [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
+      cat >version.yml <<EOF
+    variables:
+      runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
+    EOF
+    fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
@@ -172,6 +193,7 @@ populate_source_cache:
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} test-apps
 
+    - git checkout -- version.yml
     - |
       if [ "${STABLE_ABI}" != "false" ]; then
         REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
@@ -534,6 +556,11 @@ reproducible_x86_64:
   stage: snap
   script:
     - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} export-snap
+    - python3 utils/parse-review.py snap/platform.snap
+    - python3 utils/parse-review.py snap/glxinfo.snap
+    - python3 utils/parse-review.py snap/vulkaninfo.snap
+    - python3 utils/parse-review.py snap/clinfo.snap
+
   artifacts:
     when: always
     paths:
@@ -569,6 +596,77 @@ snap_arm:
 snap_aarch64:
   image: $DOCKER_AARCH64
   <<: *snap_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
+.snap_publish_template:
+  stage: publish-snap
+  script:
+    - |
+      [ -n "${SNAPCRAFT_LOGIN_FILE}" ]
+    - |
+      [ -n "${SNAP_RELEASE}" ]
+
+    - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} export-snap
+
+    - mkdir -p ".snapcraft/"
+    - echo "${SNAPCRAFT_LOGIN_FILE}" | base64 --decode --ignore-garbage > ".snapcraft/snapcraft.cfg"
+
+    - |
+      push() {
+        if ! snapcraft push "${1}" --release "${SNAP_RELEASE}" 2>&1 | tee output.log; then
+          cmp -s <(tail -n2 output.log) - <<EOF
+      The store was unable to accept this snap.
+        - (NEEDS REVIEW) type 'base' not allowed
+      EOF
+        fi
+      }
+      push snap/platform.snap
+      push snap/glxinfo.snap
+      push snap/vulkaninfo.snap
+      push snap/clinfo.snap
+
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  only:
+    - tags
+    - master
+  except:
+    - schedules
+
+publish_snap_x86_64:
+  extends: .snap_publish_template
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  variables:
+    ARCH: x86_64
+
+publish_snap_i686:
+  extends: .snap_publish_template
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_i686
+  variables:
+    ARCH: i686
+
+publish_snap_arm:
+  extends: .snap_publish_template
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
+publish_snap_aarch64:
+  extends: .snap_publish_template
+  image: $DOCKER_AARCH64
   tags:
     - aarch64
   variables:
