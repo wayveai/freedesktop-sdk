@@ -4,6 +4,8 @@ description: GNU C Library
 depends:
 - filename: bootstrap/glibc-build-deps.bst
   type: build
+- filename: bootstrap/symlinks.bst
+  type: runtime
 - filename: bootstrap/linux-headers.bst
   type: runtime
 
@@ -12,6 +14,7 @@ config:
   - |
     mkdir "%{builddir}"
     cd "%{builddir}"
+
     echo slibdir=%{multiarch_libdir} >configparms
     echo gconvdir=%{multiarch_libdir}/gconv >>configparms
     echo rootsbindir=%{sbindir} >>configparms
@@ -20,27 +23,33 @@ config:
 
   install-commands:
     (>):
-    # Move /lib* links into the prefix.
+    # Move the dynamic linker into the prefix
     - |
-      root="%{install-root}"
-      for i in lib lib32 lib64; do
-        libdir="${root}/${i}"
-        targetdir="${root}%{prefix}/${i}"
-        if [ -d "${libdir}" ]; then
-          for f in "${libdir}"/*; do
-            if [ -h "$f" ]; then
-              [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
-              targetpath="${targetdir}/$(basename "$f")"
-              sourcepath="${libdir}/$(readlink "$f")"
-              relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
-              ln -s "${relsourcepath}" "${targetpath}"
-              rm "$f"
-            fi
-          done
-          rm -r "${libdir}"
-          ln -s "$(realpath "${targetdir}" --relative-to="${root}")" "${libdir}"
+      rtlddir=$(echo '@libc_cv_rtlddir@' | %{builddir}/config.status --file=-)
+      sourcedir="%{install-root}${rtlddir}"
+      targetdir="%{install-root}%{prefix}${rtlddir}"
+
+      for f in "${sourcedir}"/*; do
+        if [ -h "$f" ]; then
+          [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
+          targetpath="${targetdir}/$(basename "$f")"
+          sourcepath="${sourcedir}/$(readlink "$f")"
+          relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
+
+          ln -s "${relsourcepath}" "${targetpath}"
+          rm "$f"
         fi
       done
+
+      rm -r "${sourcedir}"
+
+      if [ "${rtlddir}" != '/lib' ]; then
+        ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
+      fi
+
+    # ldconfig shows a warning if /etc/ld.so.conf doesn't exist
+    - |
+      touch '%{install-root}%{sysconfdir}/ld.so.conf'
 
 (@): elements/bootstrap/target.yml
 
