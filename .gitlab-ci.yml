@@ -133,6 +133,20 @@ check_update_elements:
   only:
     - schedules
 
+check_update_elements:
+  image: $DOCKER_AMD64
+  stage: update
+  tags:
+    - x86_64
+  script:
+    - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+  <<: *gitlab_cache_pull_push
+  only:
+    - schedules
+
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
