@@ -79,12 +79,28 @@ DIALOGS = {
 }
 
 
+def build_qemu_image_command(args):
+    return [QEMU, '-drive', 'file=%s,format=raw' % args.sda, '-nographic'] + QEMU_EXTRA_ARGS
+
+
+def build_command(args):
+    return args.command.split()
+
+
 def argument_parser():
     parser = argparse.ArgumentParser(
         description="Test that a minimal-system VM image works as expected")
-    parser.add_argument("sda", help="Path to disk image file")
     parser.add_argument('--dialog', dest='dialog', default='root-login',
                         help='dialog to follow (valid values {}, default: root-login)'.format(DIALOGS.keys()))
+
+    subparsers = parser.add_subparsers()
+    image_parser = subparsers.add_parser('image')
+    image_parser.set_defaults(get_command=build_qemu_image_command)
+    image_parser.add_argument("sda", help="Path to disk image file")
+
+    command_parser = subparsers.add_parser('command')
+    command_parser.set_defaults(get_command=build_command)
+    command_parser.add_argument("command", help="Command to run")
 
     return parser
 
@@ -121,8 +137,7 @@ async def await_line(stream, marker):
                 continue
 
 
-async def run_qemu_test(sda, dialog):
-    command = [QEMU, '-drive', 'file=%s,format=raw' % sda, '-nographic'] + QEMU_EXTRA_ARGS
+async def run_test(command, dialog):
     dialog = DIALOGS[dialog]
 
     logging.debug("Starting process: %s", command)
@@ -165,8 +180,10 @@ def fail_timeout(qemu_task):
 def main():
     args = argument_parser().parse_args()
 
+    command = args.get_command(args)
+
     loop = asyncio.get_event_loop()
-    qemu_task = loop.create_task(run_qemu_test(args.sda, args.dialog))
+    qemu_task = loop.create_task(run_test(command, args.dialog))
     loop.call_later(FAILURE_TIMEOUT, fail_timeout, qemu_task)
     loop.run_until_complete(qemu_task)
     loop.close()
