@@ -21,6 +21,12 @@ public:
     patches:
       - 'CVE-2018-19591'
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm -r "%{install-root}%{libexecdir}/getconf"
+
 sources:
 - kind: git_tag
   url: sourceware:glibc.git

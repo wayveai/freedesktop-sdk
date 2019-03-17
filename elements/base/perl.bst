@@ -27,6 +27,10 @@ config:
   - |
     make -j1 DESTDIR="%{install-root}" install
 
+  - |
+    rm -r "%{install-root}%{bindir}/perl"
+    ln -s perl5.28.1 "%{install-root}%{bindir}/perl"
+
 sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
