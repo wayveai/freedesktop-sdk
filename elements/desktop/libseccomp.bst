@@ -16,12 +16,12 @@ public:
         (>):
         - '%{libdir}/libseccomp.so'
   cpe:
-    version: '2.3.3'
+    version: '2.4.0'
 
 sources:
 - kind: git_tag
   url: github:seccomp/libseccomp/
-  track: release-2.3
-  ref: v2.3.3-0-g74b190e1aa05f07da0c61fb9a30dbc9c18ce2c9d
+  track: release-2.4
+  ref: v2.4.0-0-g4d64011741375bb1a4ba7d71905ca37b97885083
 - kind: patch
   path: patches/libseccomp/no-static.patch
