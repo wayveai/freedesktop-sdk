@@ -35,6 +35,7 @@ public:
         - '%{bindir}/*'
   cpe:
     product: network_security_services
+    version: '3.43'
 
 config:
   build-commands:
@@ -78,8 +79,10 @@ config:
     install -m 755 -D -t "%{install-root}/%{bindir}" nss-config
 
 sources:
-- kind: tar
-  url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_42_1_RTM/src/nss-3.42.1.tar.gz
-  ref: 087db37d38fd49dfd584dd2a8b5baa7fc88de7c9bd97c0c2d5be4abcafc61fc6
+- kind: git_tag
+  url: github:nss-dev/nss.git
+  track: NSS_3_43_BRANCH
+  ref: NSS_3_43_RTM-0-gac64f9e605a05a8e64708c6556b4e8b2646e73bf
+  directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
