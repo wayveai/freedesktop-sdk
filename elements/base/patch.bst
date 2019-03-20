@@ -7,6 +7,12 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 
+public:
+  cpe:
+    patches:
+    - CVE-2018-6951
+    - CVE-2018-6952
+    - CVE-2018-1000156
 
 sources:
 - kind: git_tag
@@ -17,3 +23,9 @@ sources:
     gnulib:
       checkout: True
       url: savannah:gnulib
+- kind: patch
+  path: patches/patch/CVE-2018-6951.patch
+- kind: patch
+  path: patches/patch/CVE-2018-6952.patch
+- kind: patch
+  path: patches/patch/CVE-2018-1000156.patch
