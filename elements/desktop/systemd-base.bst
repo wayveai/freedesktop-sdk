@@ -32,7 +32,7 @@ public:
   cpe:
     vendor: 'freedesktop'
     product: 'systemd'
-    version: '240'
+    version: '241'
 
   bst:
     split-rules:
@@ -54,6 +54,6 @@ public:
 sources:
 - kind: git_tag
   url: github:systemd/systemd-stable.git
-  track: v240-stable
+  track: v241-stable
   track-tags: false
-  ref: v240-34-gf02b5472c6f0c41e5dc8dc2c84590866baf937ff
+  ref: v241-9-gc1f8ff8d0de7e303b8004b02a0a47d4cc103a7f8
