@@ -19,7 +19,7 @@ with open('sources.yml', 'wb') as sources:
             continue
         source = package['source']
         hash = metadata['checksum {} {} ({})'.format(name, version, source)]
-        lines = ['  - kind: crate',
-                 '    url: https://static.crates.io/crates/{name}/{name}-{version}.crate'.format(name = name, version = version),
-                 '    ref: {}'.format(hash)]
+        lines = ['- kind: crate',
+                 '  url: https://static.crates.io/crates/{name}/{name}-{version}.crate'.format(name = name, version = version),
+                 '  ref: {}'.format(hash)]
         sources.write(('\n'.join(lines) + '\n').encode('ascii'))
