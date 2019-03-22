@@ -274,10 +274,8 @@ minimal_systemd_vm_arm:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
-    - master
-    - '18.08'
-    - tags
+  only:
+    - schedules
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
