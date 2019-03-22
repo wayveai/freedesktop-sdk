@@ -11,6 +11,12 @@ variables:
   cmake-local: |
     -DCMAKE_INSTALL_LIBDIR="%{libdir}"
 
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:

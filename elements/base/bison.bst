@@ -15,6 +15,10 @@ config:
     - |
       rm "%{install-root}%{infodir}/dir"
 
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
+
 sources:
 - kind: tar
   url: ftp_gnu_org:bison/bison-3.3.2.tar.gz

@@ -113,6 +113,9 @@ config:
         esac
       done
 
+    - |
+      find "%{install-root}" -name "lib*.a" -not -name "libgcc.a" -not -name "libgcc_eh.a"  -exec rm {} ";"
+
 public:
   bst:
     split-rules:

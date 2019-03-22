@@ -39,6 +39,9 @@ config:
         ln -s e2fsck "%{install-root}%{bindir}/fsck.${ext}"
       done
 
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:
