@@ -4,6 +4,8 @@ depends:
 - filename: bootstrap-import.bst
 - filename: desktop/llvm7.bst
   type: build
+- filename: desktop/llvm7-static.bst
+  type: build
 - filename: base/python3.bst
   type: build
 

@@ -1,11 +1,12 @@
 kind: filter
+
 depends:
 - filename: desktop/llvm7-base.bst
   type: build
+- filename: desktop/llvm7-runtime.bst
+  type: runtime
 
 config:
-  exclude:
-  - devel
+  include:
   - static
-  - doc
-  include-orphans: True
+  include-orphans: False

@@ -11,20 +11,6 @@ depends:
 variables:
   debug_flags: "-g1"
 
-  clang-libs: |
-    libclangAnalysis.a \
-    libclangAST.a \
-    libclangBasic.a \
-    libclangCodeGen.a \
-    libclangDriver.a \
-    libclangEdit.a \
-    libclangFrontend.a \
-    libclangFrontendTool.a \
-    libclangLex.a \
-    libclangParse.a \
-    libclangSema.a \
-    libclangSerialization.a
-
   (?):
   - target_arch == "i686":
       targets: X86;AMDGPU;NVPTX
@@ -63,17 +49,6 @@ variables:
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG" \
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
 
-config:
-  install-commands:
-    (>):
-    - |
-      cd "%{install-root}%{libdir}"
-      mkdir tmp
-      mv %{clang-libs} tmp
-      rm -f lib*.a
-      mv tmp/* "%{install-root}%{libdir}"
-      rm -rf tmp
-
 public:
   bst:
     split-rules:
@@ -102,6 +77,9 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
+      
+      static:
+        - '%{libdir}/*.a'
 
 sources:
 - kind: tar
