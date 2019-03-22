@@ -21,6 +21,11 @@ config:
     - |
       autoreconf -ivf
 
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   cpe:
     version: '3.14.0'

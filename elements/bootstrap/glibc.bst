@@ -54,6 +54,9 @@ config:
     - |
       touch '%{install-root}%{sysconfdir}/ld.so.conf'
 
+    - |
+      find "%{install-root}" -name "lib*.a" -not -name "lib*_nonshared.a" -exec rm {} ";"
+
 (@): elements/bootstrap/target.yml
 
 variables:

@@ -20,6 +20,11 @@ config:
     - |
       autoreconf -f -v -i
 
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:

@@ -32,6 +32,12 @@ variables:
     --enable-wayland-shared=no \
     --disable-rpath
 
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:
