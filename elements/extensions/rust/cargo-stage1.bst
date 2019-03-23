@@ -16,14 +16,14 @@ sources:
 - kind: tar
   (?):
   - target_arch == "x86_64":
-      url: https://static.rust-lang.org/dist/cargo-0.31.0-x86_64-unknown-linux-gnu.tar.gz
-      ref: bfbabba9a2c1717fe1ce68469ce2de7b4b94e44e6a165d50b77de7bf7515bdb6
+      url: https://static.rust-lang.org/dist/cargo-0.33.0-x86_64-unknown-linux-gnu.tar.gz
+      ref: 9dd7f79a0ab882ed7c892731514a4aed6435f7bc8a20381a8346b471c8a14209
   - target_arch == "i686":
-      url: https://static.rust-lang.org/dist/cargo-0.31.0-i686-unknown-linux-gnu.tar.gz
-      ref: 681caeb35516535896f555110923b5dbfd9d79b668a808d01c4cee88534c1ba4
+      url: https://static.rust-lang.org/dist/cargo-0.33.0-i686-unknown-linux-gnu.tar.gz
+      ref: 163f46bd84ba6348dfe1ac3c10bc4730059f321791d2a7d4d4704fe8ddf8a755
   - target_arch == "aarch64":
-      url: https://static.rust-lang.org/dist/cargo-0.31.0-aarch64-unknown-linux-gnu.tar.gz
-      ref: fc7b102942e6fdb32b9cb077513bb50186834bef4c947ff0b011c552cd639f8e
+      url: https://static.rust-lang.org/dist/cargo-0.33.0-aarch64-unknown-linux-gnu.tar.gz
+      ref: 92438fb49b4f4c434826fc3d07368c9df114bac2294daf2a3109c63d5e86038a
   - target_arch == "arm":
-      url: https://static.rust-lang.org/dist/cargo-0.31.0-armv7-unknown-linux-gnueabihf.tar.gz
-      ref: 55dd38a6ca4528e18f6e546d4c4cdd12d3af6d3413ac68233cb64272fe93724e
+      url: https://static.rust-lang.org/dist/cargo-0.33.0-armv7-unknown-linux-gnueabihf.tar.gz
+      ref: d3fd97909f0c649e4c7d63bcdf368f54838400ed4dbd46862e66aca7b39aa85a
