@@ -122,11 +122,10 @@ before_script:
 
 
 check_update_elements:
-  image: $DOCKER_AMD64
+  image: $DOCKER_AARCH64
   stage: update
   tags:
-    - x86_64
-    - cache_x86_64
+    - check_update
   script:
     - ${BST} track --deps all flatpak-release.bst
     - git diff
