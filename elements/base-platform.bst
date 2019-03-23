@@ -67,6 +67,8 @@ depends:
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
 - filename: base/python3.bst
+- filename: base/python3-pip.bst
+- filename: base/python3-setuptools.bst
 - filename: base/python3-six.bst
 - filename: base/python3-usercustomize.bst
 - filename: base/tar.bst
