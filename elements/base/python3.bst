@@ -15,7 +15,7 @@ depends:
 variables:
   conf-local: |
     --enable-shared \
-    --with-ensurepip=yes \
+    --without-ensurepip \
     --with-system-expat \
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \
