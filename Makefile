@@ -1,13 +1,17 @@
 SHELL=/bin/bash
 BRANCH=18.08
-ARCH=$(shell uname -m | sed "s/^i.86$$/i686/")
+ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
+QEMU_ARCH=i386
 else
 FLATPAK_ARCH=$(ARCH)
+QEMU_ARCH=$(ARCH)
 endif
 REPO=repo
 CHECKOUT_ROOT=runtimes
+VM_CHECKOUT_ROOT=checkout/$(ARCH)
+VM_ARTIFACT?=vm/minimal-systemd-vm.bst
 
 ARCH_OPTS=-o target_arch $(ARCH)
 TARBALLS=            \
@@ -23,6 +27,7 @@ ABI=gnu
 endif
 
 BST=bst --colors $(ARCH_OPTS)
+QEMU=fakeroot qemu-system-$(QEMU_ARCH)
 
 all: build
 
@@ -56,6 +61,52 @@ export-tar:
 		dir="$(ARCH)-$${tarball}"; \
 		bst --colors $(ARCH_OPTS) checkout --hardlinks "tarballs/$${tarball}.bst" "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
 	done
+
+clean-vm:
+	rm -rf $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+
+$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT):
+	$(BST) build $(VM_ARTIFACT)
+	$(BST) checkout --hardlinks $(VM_ARTIFACT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+
+build-vm: clean-vm $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+
+QEMU_COMMON_ARGS= \
+	-smp 4 \
+	-m 256 \
+	-nographic \
+	-kernel $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)/boot/vmlinuz \
+	-initrd $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)/boot/initramfs.gz \
+	-virtfs local,id=root9p,path=$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT),security_model=none,mount_tag=root9p
+
+QEMU_X86_COMMON_ARGS= \
+	$(QEMU_COMMON_ARGS) \
+	-enable-kvm \
+	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
+
+QEMU_ARM_COMMON_ARGS= \
+	$(QEMU_COMMON_ARGS) \
+	-machine type=virt \
+	-cpu max \
+	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyAMA0'
+
+QEMU_AARCH64_ARGS= \
+	$(QEMU_ARM_COMMON_ARGS)
+
+QEMU_ARM_ARGS= \
+	$(QEMU_ARM_COMMON_ARGS) \
+	-machine highmem=off
+
+run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+ifeq ($(ARCH),x86_64)
+	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+else ifeq ($(ARCH),i686)
+	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+else ifeq ($(ARCH),aarch64)
+	$(QEMU) $(QEMU_AARCH64_ARGS)
+else ifeq ($(ARCH),arm)
+	$(QEMU) $(QEMU_ARM_ARGS)
+endif
 
 check-dev-files:
 	$(BST) build desktop-platform-image.bst
@@ -122,9 +173,9 @@ clean-test:
 	rm -rf .flatpak-builder/
 	rm -rf runtime/
 
-clean: clean-repo clean-runtime clean-test
+clean: clean-repo clean-runtime clean-test clean-vm
 
-
-.PHONY: build check-dev-files clean clean-test clean-repo clean-runtime \
-        export test-apps manifest markdown-manifest check-rpath \
-	build-tar export-tar
+.PHONY: \
+	build check-dev-files clean clean-test clean-repo clean-runtime \
+	export test-apps manifest markdown-manifest check-rpath \
+	build-tar export-tar clean-vm build-vm run-vm

@@ -14,6 +14,12 @@ variables:
     --runstatedir=/run \
     --with-system-socket=/run/dbus/system_bus_socket
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm -rf %{install-root}%{localstatedir}/run
+
 public:
   bst:
     split-rules:
