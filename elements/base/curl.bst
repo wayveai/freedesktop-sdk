@@ -21,7 +21,10 @@ variables:
     --with-ssl \
     --with-nss \
     --with-gssapi \
-    --enable-debug
+    --enable-debug \
+    --enable-optimize \
+    --disable-warnings \
+    --disable-curldebug
 
 public:
   bst:
