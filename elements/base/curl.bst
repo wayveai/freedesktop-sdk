@@ -20,7 +20,8 @@ variables:
     --with-gnutls \
     --with-ssl \
     --with-nss \
-    --with-gssapi
+    --with-gssapi \
+    --enable-debug
 
 public:
   bst:

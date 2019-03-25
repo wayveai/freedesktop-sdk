@@ -7,9 +7,10 @@ depends:
   type: build
 - filename: bootstrap/build/debug-utils.bst
   type: build
-- filename: bootstrap/build/coreutils-manpages.bst
+
+- filename: bootstrap/glibc.bst
   type: build
-- filename: bootstrap/acl.bst
+- filename: bootstrap/elfutils.bst
   type: build
 
 variables:
@@ -23,8 +24,8 @@ config:
     destination: "/"
   - element: bootstrap/build/debug-utils.bst
     destination: "/"
-  - element: bootstrap/build/coreutils-manpages.bst
-    destination: "/"
 
-  - element: bootstrap/acl.bst
+  - element: bootstrap/glibc.bst
+    destination: "%{sysroot}"
+  - element: bootstrap/elfutils.bst
     destination: "%{sysroot}"

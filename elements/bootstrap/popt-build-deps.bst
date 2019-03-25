@@ -5,7 +5,7 @@ depends:
   type: build
 - filename: bootstrap/build/gcc-stage2.bst
   type: build
-- filename: bootstrap/build/debugedit-build.bst
+- filename: bootstrap/build/debug-utils.bst
   type: build
 
 - filename: bootstrap/file.bst
@@ -20,7 +20,7 @@ config:
     destination: "/"
   - element: bootstrap/build/gcc-stage2.bst
     destination: "/"
-  - element: bootstrap/build/debugedit-build.bst
+  - element: bootstrap/build/debug-utils.bst
     destination: "/"
 
   - element: bootstrap/file.bst
