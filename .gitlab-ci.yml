@@ -133,10 +133,10 @@ check_update_elements:
     - schedules
 
 populate_source_cache:
-  image: $DOCKER_AMD64
+  image: $DOCKER_AARCH64
   stage: update
   tags:
-    - x86_64
+    - check_update
   script:
     - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
     - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
