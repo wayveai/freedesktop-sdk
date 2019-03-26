@@ -57,6 +57,9 @@ config:
     rm -rf %{install-root}%{indep-libdir}/python2.7/*/tests
 
   - |
+    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
+  - |
     %{fix-pyc-timestamps}
 
 sources:

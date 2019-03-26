@@ -14,6 +14,9 @@ config:
   - |
     make -j1 prefix="%{prefix}" lib="lib/%{gcc_triplet}" SBINDIR="%{sbindir}" DESTDIR="%{install-root}" RAISE_SETFCAP=no install
 
+  - |
+    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:

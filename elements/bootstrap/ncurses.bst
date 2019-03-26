@@ -64,6 +64,9 @@ config:
     cd ncursesw-build && %{make-install}
 
   - |
+    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
+  - |
     %{delete_libtool_files}
 
 public:

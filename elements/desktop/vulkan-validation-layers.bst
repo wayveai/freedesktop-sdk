@@ -22,6 +22,12 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DGLSLANG_INSTALL_DIR=%{prefix}
 
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-ValidationLayers

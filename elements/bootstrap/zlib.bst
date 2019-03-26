@@ -18,6 +18,12 @@ variables:
 environment:
   CHOST: '%{triplet}'
 
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:

@@ -50,6 +50,9 @@ config:
     rm "%{install-root}%{bindir}/python3.7m"
     ln -s python3.7 "%{install-root}%{bindir}/python3.7m"
 
+  - |
+    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:
