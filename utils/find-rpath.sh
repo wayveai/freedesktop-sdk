@@ -156,7 +156,8 @@ check_rpath() {
     return 0
 }
 
-find "${2}" -type f '(' -perm -111 -o -name '*.so*' ')' \
+find "${2}" -type f -not -name '*.debug' \
+          '(' -perm -111 -o -name '*.so*' ')' \
           -print0 | (found_error=no; while read -r -d $'\0' file; do
 
     read -n4 hdr <"${file}" || continue
