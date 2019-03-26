@@ -132,7 +132,7 @@ check_update_elements:
   only:
     - schedules
 
-check_update_elements:
+populate_source_cache:
   image: $DOCKER_AMD64
   stage: update
   tags:
