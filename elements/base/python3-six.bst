@@ -3,6 +3,7 @@ kind: pip
 depends:
 - filename: bootstrap-import.bst
 - filename: base/python3.bst
+- filename: base/python3-pip.bst
 
 variables:
   pip: pip3
