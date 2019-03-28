@@ -4,7 +4,8 @@ depends:
 - filename: desktop/freetype.bst
 - filename: desktop/libfdk-aac.bst
 - filename: desktop/lame.bst
-- filename: desktop/mesa.bst
+- filename: desktop/libva.bst
+- filename: desktop/libvdpau.bst
 - filename: desktop/mpg123.bst
 - filename: desktop/openal.bst
 - filename: desktop/libpulse.bst
