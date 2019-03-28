@@ -31,6 +31,6 @@ config:
     - |
       cat > %{install-root}/run-in-qemu.sh << EOF
       #!/bin/sh
-      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -m 2G -vga virtio -display sdl,gl=on
+      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -m 2G -vga virtio -display sdl,gl=on -usb -usbdevice tablet
       EOF
       chmod +x %{install-root}/run-in-qemu.sh
