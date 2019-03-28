@@ -1,5 +1,46 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.29:
+    * weston: Enable the demos
+    * xorg-lib-xkbfile: Bump to 1.1.0
+    * Update pip and setuptools (#337)
+    * Optimize debug file size with dwz (#693)
+    * Allow running VMsi in the CI without creating root filesystem images
+    * Generate sysroots of freedesktop-sdk (#114)
+    * Update cargo to 0.34
+    * LLVM: Stop shipping static libraries
+    * systemd-base: update to 241, multiple CVE fixed
+    * patch: fix multiple CVE
+    * nss: update to 3.43
+    * vala: Update to 44.1
+    * texinfo: update to 6.6
+    * libseccomp: update to 2.4.0
+    * alsa-plugins: Fix path for a configuration file (#694)
+    * python2: update to 2.7.16
+    * pkg-config: update to 1.6.0
+    * Remove mandb generation from Flatpak images (#690)
+    * Fix AArch64 and ARM kernel images and allow loading kernel modules
+    * Remove linked files to binaries and replace them with symbolic links (#569)
+    * Fix llvm7 split: Now only contains the SDK part and depends on the runtime
+    * coreutils: update to 8.31
+    * libpng: Add support for animated PNGs
+    * cracklib: update to 2.9.7
+    * elfutils: update to 0.176, fix several CVE
+    * Add weston and dependencies to desktop-vm
+    * ibus: Update to 1.5.20
+    * linux: Add DRM driver for 3D acceleration in qemu
+    * mesa: update to 18.3.5
+    * appstream-glib: update to 0.7.15
+    * libvdpau: update to 1.2
+    * rust: update to 1.33.0
+    * openssl: update to 1.1.1b
+    * Update to glibc 2.28
+    * gcc: update to 8.3.0
+    * openssl-1.0: update to 1.0.2r
+    * ninja: update to 1.9
+    * gst-libav: Update to 1.15.2, to avoid using a arbitrary git snapshot
+    * sqlite: update to 3.27.2
+
 freedesktop-sdk-18.08.28:
     * nasm: update to 2.14.02
     * pixman: Update to 0.38
