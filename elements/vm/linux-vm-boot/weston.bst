@@ -21,7 +21,8 @@ depends:
 
 variables:
   conf-local: |
-    --disable-setuid-install
+    --disable-setuid-install \
+    --enable-demo-clients-install
 
 sources:
   - kind: git_tag
