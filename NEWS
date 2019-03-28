@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.29.1:
+    * Fix symlinks for 32-bit compat multi-arch
+
 freedesktop-sdk-18.08.29:
     * weston: Enable the demos
     * xorg-lib-xkbfile: Bump to 1.1.0
