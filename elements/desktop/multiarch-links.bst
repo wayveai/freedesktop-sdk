@@ -28,9 +28,11 @@ public:
     - ('86' in target_arch and target_arch != "x86_64"):
         integration-commands:
         - |
+          test %{gcc_triplet} = i386-linux-gnu
           test -f /usr/lib/i386-linux-gnu/%{ld_so}
 
     - ('arm' in target_arch):
         integration-commands:
         - |
+          test %{gcc_triplet} = arm-linux-gnueabihf
           test -f /usr/lib/arm-linux-gnueabihf/%{ld_so}
