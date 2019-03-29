@@ -22,7 +22,7 @@ public:
         - |
           test -f %{libdir}/%{ld_so}
           mkdir -p /usr/lib
-          ln -sf arm-linux-gnu/%{ld_so} /usr/lib/ld-linux-armhf.so.3
+          ln -sf arm-linux-gnueabihf/%{ld_so} /usr/lib/ld-linux-armhf.so.3
           ln -sf /app/lib/arm-linux-gnueabihf /usr/lib/arm-linux-gnueabihf
 
     - ('86' in target_arch and target_arch != "x86_64"):
