@@ -114,7 +114,7 @@ config:
       done
 
     - |
-      find "%{install-root}" -name "lib*.a" -not -name "libgcc.a" -not -name "libgcc_eh.a" -not -name "libstdc++.a"  -exec rm {} ";"
+      find "%{install-root}" -name "lib*.a" -not -name "libgcc.a" -not -name "libgcc_eh.a" -not -name "libstdc++.a" -not -name "libstdc++fs.a"  -exec rm {} ";"
 
 public:
   bst:
