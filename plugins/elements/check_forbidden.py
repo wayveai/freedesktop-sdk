@@ -14,7 +14,7 @@ class CheckForbiddenElement(Element):
         pass
 
     def get_unique_key(self):
-        return {}
+        return {'forbidden': sorted(list(self.forbidden))}
 
     def configure_sandbox(self, sandbox):
         pass
