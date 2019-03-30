@@ -20,7 +20,6 @@ variables:
 stages:
   - update
   - flatpak
-  - vm
   - prepare-publish
   - publish
   - finish-publish
@@ -193,46 +192,6 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
-
-
-.vm_image_template: &vm_image
-  stage: vm
-  script:
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
-    - master
-    - '18.08'
-    - tags
-    - 'extensions-18.08.28'
-  <<: *gitlab_cache_pull
-
-minimal_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
-  variables:
-    ARCH: x86_64
-    TYPE: minimal
-    DIALOG: minimal
-
-minimal_systemd_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
-  variables:
-    ARCH: x86_64
-    TYPE: minimal-systemd
-    DIALOG: root-login
 
 prepare_publish:
   image: $DOCKER_AMD64
