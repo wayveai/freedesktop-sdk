@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.29.2:
+    * Put back the static stdc++ library for applications that still use it.
+
 freedesktop-sdk-18.08.29.1:
     * Fix symlinks for 32-bit compat multi-arch
 
