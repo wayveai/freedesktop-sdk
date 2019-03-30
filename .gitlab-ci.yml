@@ -20,7 +20,6 @@ variables:
 stages:
   - update
   - flatpak
-  - vm
   - prepare-publish
   - publish
   - finish-publish
@@ -137,17 +136,9 @@ check_update_elements:
   stage: flatpak
   script:
     - make ARCH=${ARCH} build
-    - make ARCH=${ARCH} check-dev-files
-    - make ARCH=${ARCH} check-rpath
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
-    - make ARCH=${ARCH} test-apps
-
-    - |
-      REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
-      ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
-
 
   artifacts:
     when: always
@@ -157,6 +148,7 @@ check_update_elements:
     - master
     - '18.08'
     - tags
+    - 'extensions-18.08.28'
   <<: *gitlab_cache_pull
 
 app_x86_64:
@@ -193,45 +185,6 @@ app_arm:
   variables:
     ARCH: arm
 
-
-.vm_image_template: &vm_image
-  stage: vm
-  script:
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
-    - master
-    - '18.08'
-    - tags
-  <<: *gitlab_cache_pull
-
-minimal_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
-  variables:
-    ARCH: x86_64
-    TYPE: minimal
-    DIALOG: minimal
-
-minimal_systemd_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
-  variables:
-    ARCH: x86_64
-    TYPE: minimal-systemd
-    DIALOG: root-login
-
 prepare_publish:
   image: $DOCKER_AMD64
   stage: prepare-publish
@@ -247,6 +200,7 @@ prepare_publish:
     - master
     - '18.08'
     - tags
+    - 'extensions-18.08.28'
   except:
     - schedules
 
@@ -264,6 +218,7 @@ finish_publish:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
 
@@ -279,6 +234,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
   when: on_failure
@@ -314,6 +270,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
 
