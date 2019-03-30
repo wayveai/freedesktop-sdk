@@ -136,8 +136,6 @@ check_update_elements:
   stage: flatpak
   script:
     - make ARCH=${ARCH} build
-    - make ARCH=${ARCH} check-dev-files
-    - make ARCH=${ARCH} check-rpath
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
