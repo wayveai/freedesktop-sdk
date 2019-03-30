@@ -33,11 +33,12 @@ class CheckForbiddenElement(Element):
         return bad
 
     def stage(self, sandbox):
+        pass
+
+    def assemble(self, sandbox):
         traversed = set()
         if self._find_bad_dependencies(self, traversed):
             raise ElementError("Some elements were forbidden")
-
-    def assemble(self, sandbox):
         return os.sep
 
 def setup():
