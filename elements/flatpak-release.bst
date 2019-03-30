@@ -20,10 +20,6 @@ depends:
   type: build
 - filename: flatpak-images/platform-arch-libs-debug.bst
   type: build
-- filename: flatpak-images/platform-vaapi.bst
-  type: build
-- filename: flatpak-images/platform-html5.bst
-  type: build
 - filename: flatpak-images/clinfo.bst
   type: build
 - filename: flatpak-images/glxinfo.bst
