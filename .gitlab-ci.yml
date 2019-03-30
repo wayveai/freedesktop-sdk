@@ -157,6 +157,7 @@ check_update_elements:
     - master
     - '18.08'
     - tags
+    - 'extensions-18.08.28'
   <<: *gitlab_cache_pull
 
 app_x86_64:
@@ -208,6 +209,7 @@ app_arm:
     - master
     - '18.08'
     - tags
+    - 'extensions-18.08.28'
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
@@ -247,6 +249,7 @@ prepare_publish:
     - master
     - '18.08'
     - tags
+    - 'extensions-18.08.28'
   except:
     - schedules
 
@@ -264,6 +267,7 @@ finish_publish:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
 
@@ -279,6 +283,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
   when: on_failure
@@ -314,6 +319,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - 'extensions-18.08.28'
   except:
     - schedules
 
