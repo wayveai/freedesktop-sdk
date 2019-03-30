@@ -141,7 +141,6 @@ check_update_elements:
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make ARCH=${ARCH} export
-    - make ARCH=${ARCH} test-apps
 
     - |
       REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
