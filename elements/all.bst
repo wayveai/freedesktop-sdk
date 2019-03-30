@@ -8,3 +8,8 @@ depends:
   type: build
 - filename: flatpak-images/platform-html5.bst
   type: build
+
+config:
+  arch: '%{gcc_arch}'
+  environment:
+  - deploy-tools/flatpak.bst
