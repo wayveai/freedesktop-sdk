@@ -39,6 +39,7 @@ fi
 target=$1 && shift
 bst="bst $@"
 tmp=
+reproducible=0
 
 trap clean_tmp EXIT INT TERM
 
@@ -53,6 +54,9 @@ ${bst} fetch --deps all "${target}"
 print_task "Building elements"
 ${bst} build --all "${target}"
 
+# Hack around bash subshelling pipe to while
+shopt -s lastpipe
+
 ${bst} show --deps all "${target}" \
     --format '%{name},%{full-key},%{state}' \
     2>/dev/null | while IFS=, read -r name ref state; do
@@ -66,6 +70,7 @@ ${bst} show --deps all "${target}" \
              ;;
          false)
              echo "${name} ${ref} is not reproducible"
+             reproducible=1
              continue
              ;;
          failed)
@@ -78,7 +83,7 @@ ${bst} show --deps all "${target}" \
 
     tmp=$(mktemp -td reproducible.XXXXXXXXXX)
 
-    if ! ${bst} checkout "${name}" "${tmp}/a"; then
+    if ! ${bst} checkout --no-integrate "${name}" "${tmp}/a"; then
         echo "${name}:${ref}:failed" >> results.cache
         continue
     fi
@@ -90,7 +95,7 @@ ${bst} show --deps all "${target}" \
     # instead of wrapping the command with unshare.
     unshare --net ${bst} build "${name}"
 
-    ${bst} checkout "${name}" "${tmp}/b"
+    ${bst} checkout --no-integrate "${name}" "${tmp}/b"
 
     if diff -r --no-dereference "${tmp}/a/" "${tmp}/b/"; then
         echo -e "${name} ${ref} is reproducible\n"
@@ -98,9 +103,17 @@ ${bst} show --deps all "${target}" \
     else
         echo -e "${name} ${ref} is not reproducible\n"
         result=false
+        reproducible=1
     fi
 
     echo "${name}:${ref}:${result}" >> results.cache
 
     rm -rf "${tmp}"
+
+    # Hack around bash subshelling pipe to while
+    reproducible=$reproducible
 done
+
+if [ "$reproducible" -eq 1 ] ; then
+    exit 3
+fi
