@@ -6,6 +6,8 @@ depends:
   type: build
 - filename: base/nspr.bst
 - filename: base/sqlite.bst
+- filename: base/p11-kit.bst
+- filename: base/pkg-config.bst
 
 variables:
   arch-conf: ''
@@ -43,15 +45,22 @@ config:
     cd nss
     make -j1 %{make-args}
 
+  - |
+    gcc ${CFLAGS} ${LDFLAGS} -Wall load-p11-kit-trust.c -shared $(pkg-config --libs --cflags p11-kit-1) -o load-p11-kit-trust.so
+
   install-commands:
   - |
     cd dist
-    mkdir -p "%{install-root}/%{libdir}/"
     for lib in */lib/lib*.so*; do
-      cp -L "${lib}" "%{install-root}/%{libdir}/"
+      case "${lib}" in
+        */libnssckbi.so)
+        ;;
+        *)
+          install -Dm644 -t "%{install-root}%{libdir}/" "${lib}"
+        ;;
+      esac
     done
-    mkdir -p "%{install-root}/%{bindir}/"
-    cp -L */bin/* "%{install-root}/%{bindir}/"
+    install -Dm755 -t "%{install-root}/%{bindir}/" */bin/*
     install -m 644 -D -t "%{install-root}/%{includedir}/nss" public/nss/*
 
   - |
@@ -78,6 +87,10 @@ config:
     install -m 644 -D -t "%{install-root}/%{libdir}/pkgconfig" nss.pc
     install -m 755 -D -t "%{install-root}/%{bindir}" nss-config
 
+  - |
+    install -Dm644 -t "%{install-root}%{libdir}/" load-p11-kit-trust.so
+    ln -s load-p11-kit-trust.so "%{install-root}%{libdir}/libnssckbi.so"
+
 sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
@@ -86,3 +99,5 @@ sources:
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
+- kind: local
+  path: files/nss/load-p11-kit-trust.c
