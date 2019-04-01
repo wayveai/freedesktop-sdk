@@ -1,15 +1,16 @@
 kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/buildsystem-meson.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-meson.bst
+  type: build
 
 variables:
   meson-local: |
-     -Dshared_library_guard_config=/app/etc/freedesktop.ld.so.blockedlist
+    -Dshared_library_guard_config=/app/etc/freedesktop.ld.so.blockedlist
 
 sources:
-  - kind: git_tag
-    url: https://gitlab.com/freedesktop-sdk/shared-library-guard.git
-    ref: v19.01.3-0-g3317d2ed52f4cd9c48a98dc26e86046270d19ad0
+- kind: git_tag
+  track: master
+  url: https://gitlab.com/freedesktop-sdk/shared-library-guard.git
+  ref: v19.04.1-0-gd0d7c745be1ba5462ff1bbe4695fb4bad480ac8d
