@@ -38,6 +38,7 @@ public:
         - '%{libdir}/libgraphite2.so'
 
 sources:
-- kind: tar
-  url: https://sourceforge.net/projects/silgraphite/files/graphite2/graphite2-1.3.11.tgz
-  ref: bab92ed1844d6538e7e5bda76f6ac9aaf633e38b683983b942c78c8ce063ad7c
+- kind: git_tag
+  url: github:silnrsi/graphite
+  track: master
+  ref: 1.3.11-0-gec0bb4b5f3915867bd33a04459e4a3ff0f3ebb9e
