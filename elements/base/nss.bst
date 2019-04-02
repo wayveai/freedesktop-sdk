@@ -8,6 +8,7 @@ depends:
 - filename: base/sqlite.bst
 - filename: base/p11-kit.bst
 - filename: base/pkg-config.bst
+  type: build
 
 variables:
   arch-conf: ''
