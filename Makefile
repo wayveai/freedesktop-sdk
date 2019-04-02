@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-BRANCH=18.08
+BRANCH=19.08
 ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
