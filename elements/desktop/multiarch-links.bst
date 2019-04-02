@@ -1,38 +1,31 @@
 kind: stack
 
+variables:
+  (?):
+  - (target_arch == "i686" or target_arch ==  "x86_64"):
+      compat_arch: i386-linux-gnu
+      entrypoint: ld-linux.so.2
+
+  - (target_arch == "aarch64" or target_arch == "arm"):
+      compat_arch: arm-linux-gnueabihf
+      entrypoint: ld-linux-armhf.so.3
+
 depends:
 - filename: bootstrap-import.bst
-
-variables:
-  ld_so: ld-2.28.so
 
 public:
   bst:
     (?):
-    - target_arch == "x86_64":
+    - (target_arch == "x86_64" or target_arch == "aarch64"):
         integration-commands:
         - |
-          test -f %{libdir}/%{ld_so}
           mkdir -p /usr/lib
-          ln -sf i386-linux-gnu/%{ld_so} /usr/lib/ld-linux.so.2
-          ln -sf /app/lib/i386-linux-gnu /usr/lib/i386-linux-gnu
+          ln -sf %{compat_arch}/%{entrypoint} /usr/lib/%{entrypoint}
+          ln -sf /app/lib/%{compat_arch} /usr/lib/%{compat_arch}
 
-    - target_arch == "aarch64":
+    - (target_arch == "i686" or target_arch == "arm"):
         integration-commands:
         - |
-          test -f %{libdir}/%{ld_so}
-          mkdir -p /usr/lib
-          ln -sf arm-linux-gnueabihf/%{ld_so} /usr/lib/ld-linux-armhf.so.3
-          ln -sf /app/lib/arm-linux-gnueabihf /usr/lib/arm-linux-gnueabihf
+          test %{gcc_triplet} = %{compat_arch}
+          ln -srL %{indep-libdir}/%{entrypoint} %{libdir}/%{entrypoint}
 
-    - ('86' in target_arch and target_arch != "x86_64"):
-        integration-commands:
-        - |
-          test %{gcc_triplet} = i386-linux-gnu
-          test -f /usr/lib/i386-linux-gnu/%{ld_so}
-
-    - ('arm' in target_arch):
-        integration-commands:
-        - |
-          test %{gcc_triplet} = arm-linux-gnueabihf
-          test -f /usr/lib/arm-linux-gnueabihf/%{ld_so}
