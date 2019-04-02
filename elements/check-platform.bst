@@ -2,9 +2,9 @@ kind: check_forbidden
 
 depends:
 - filename: desktop-platform.bst
-  type: runtime
+  type: build
 - filename: base-platform.bst
-  type: runtime
+  type: build
 
 config:
   forbidden:

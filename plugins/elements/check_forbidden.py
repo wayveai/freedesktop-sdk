@@ -37,8 +37,9 @@ class CheckForbiddenElement(Element):
 
     def assemble(self, sandbox):
         traversed = set()
-        if self._find_bad_dependencies(self, traversed):
-            raise ElementError("Some elements were forbidden")
+        for dep in self.dependencies(Scope.BUILD, recurse=False):
+            if self._find_bad_dependencies(dep, traversed):
+                raise ElementError("Some elements were forbidden")
         return os.sep
 
 def setup():
