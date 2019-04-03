@@ -71,6 +71,7 @@ depends:
 - filename: base/python3-setuptools.bst
 - filename: base/python3-six.bst
 - filename: base/python3-usercustomize.bst
+- filename: base/python3-sitecustomize.bst
 - filename: base/tar.bst
 - filename: base/sndfile.bst
 - filename: base/sqlite.bst
