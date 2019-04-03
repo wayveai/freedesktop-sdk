@@ -1,45 +1,31 @@
 kind: autotools
 
 depends:
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/ruby.bst
-    type: build
-  - filename: base/libtool.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/ruby.bst
+  type: build
 
 variables:
+  # custom-vendor dir is %{libdir}/OpenCL/vendors so that it works
+  # with multiarch.
   conf-local: |
-       --enable-custom-vendordir \
-       --disable-update-database
-
-config:
-  install-commands:
-    (>):
-      - |
-        mkdir -p "%{install-root}%{indep-libdir}/GL/OpenCL/vendors"
-
-      - |
-        mkdir -p "%{install-root}%{sysconfdir}"
-
-      - |
-        ln -s "$(realpath -m --relative-to="%{sysconfdir}" "%{indep-libdir}/GL/OpenCL")" "%{install-root}%{sysconfdir}/OpenCL"
+    --enable-custom-vendordir="%{libdir}/OpenCL/vendors" \
+    --disable-update-database \
+    --with-extra-vendordir="%{libdir}/GL/OpenCL/vendors"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libOpenCL.so"
+        - '%{libdir}/libOpenCL.so'
 
 sources:
-  - kind: tar
-    url: https://github.com/OCL-dev/ocl-icd/archive/v2.2.12.tar.gz
-    ref: 17500e5788304eef5b52dbe784cec197bdae64e05eecf38317840d2d05484272
-  - kind: local
-    directory: khronos-headers/CL/
-    path: files/opencl/cl.hpp
-  - kind: local
-    directory: khronos-headers/CL/
-    path: files/opencl/c12.hpp
+- kind: git_tag
+  url: github:OCL-dev/ocl-icd
+  track: v2.2.12
+  ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
+- kind: patch
+  path: patches/opencl/opencl-extra-vendor-dir.patch

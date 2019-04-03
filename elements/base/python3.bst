@@ -2,67 +2,73 @@ kind: autotools
 description: Python 3
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/expat.bst
-  - filename: base/libffi.bst
-  - filename: base/gdbm.bst
-  - filename: base/openssl.bst
-  - filename: base/sqlite.bst
-  - filename: base/xz.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/expat.bst
+- filename: base/libffi.bst
+- filename: base/gdbm.bst
+- filename: base/openssl.bst
+- filename: base/sqlite.bst
+- filename: base/xz.bst
 
 variables:
   conf-local: |
     --enable-shared \
-    --with-ensurepip=yes \
+    --without-ensurepip \
     --with-system-expat \
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \
-    --with-dbmliborder=gdbm \
-    LDFLAGS="-L%{libdir}"
+    --with-dbmliborder=gdbm
 
 config:
   install-commands:
-    - |
-      if [ -n "%{builddir}" ]; then
-      cd %{builddir}
-      fi
-      %{make-install} DESTSHARED=/usr/lib/python3.7/lib-dynload
+  - |
+    if [ -n "%{builddir}" ]; then
+    cd %{builddir}
+    fi
+    %{make-install} DESTSHARED=/usr/lib/python3.7/lib-dynload
 
-    - |
-      rm -rf %{install-root}%{bindir}/idle*
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/idlelib
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/tkinter
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/turtle*
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/__pycache__/turtle.*
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/test
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/*/test
-    - |
-      rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
+  - |
+    rm -rf %{install-root}%{bindir}/idle*
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/idlelib
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/tkinter
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/turtle*
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/__pycache__/turtle.*
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/test
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/*/test
+  - |
+    rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
 
-    - |
-      %{fix-pyc-timestamps}
+  - |
+    rm "%{install-root}%{bindir}/python3.7m"
+    ln -s python3.7 "%{install-root}%{bindir}/python3.7m"
+
+  - |
+    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/2to3*"
-          - "%{libdir}/libpython3.7m.so"
-          - "%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}"
-          - "%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**"
-          - "%{indep-libdir}/python3.7/lib2to3"
-          - "%{indep-libdir}/python3.7/lib2to3/**"
+        - '%{bindir}/2to3*'
+        - '%{libdir}/libpython3.7m.so'
+        - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}'
+        - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'
+        - '%{indep-libdir}/python3.7/lib2to3'
+        - '%{indep-libdir}/python3.7/lib2to3/**'
+  cpe:
+    product: python
 
 sources:
-  - kind: tar
-    url: https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
-    ref: 0382996d1ee6aafe59763426cf0139ffebe36984474d0ec4126dd1c40a8b3549
+- kind: git_tag
+  track: 3.7
+  url: github:python/cpython.git
+  ref: v3.7.2-0-g9a3ffc0492d1310ead9ce8f5ee678c26b20a338d

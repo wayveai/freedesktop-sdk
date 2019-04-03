@@ -1,30 +1,32 @@
-kind: autotools
+kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/mesa.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: desktop/xorg-util-macros.bst
-    type: build
-  - filename: base/python3.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/mesa.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/python3.bst
+  type: build
+
+variables:
+  meson-local: >
+    -Ddocs=false
+    -Dglx=yes
+    -Degl=yes
+    -Dx11=true
+    -Dtests=false
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libepoxy.so"
+        - '%{libdir}/libepoxy.so'
+  cpe:
+    version: '1.5.3'
 
 sources:
-  - kind: git
-    url: https://github.com/anholt/libepoxy/
-    track: 1.5.2
-    ref: 707f50e680ab4f1861b1e54ca6e2907aaca56c12 # 1.5.2
+- kind: git_tag
+  url: github:anholt/libepoxy/
+  track: master
+  ref: 1.5.3-0-g16b1481e00084682d5ae5d38178e3e418976dfae

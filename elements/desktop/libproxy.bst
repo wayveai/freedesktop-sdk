@@ -1,18 +1,15 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-cmake.bst
+  type: build
 
 variables:
   cmake-local: |
     -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \
     -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
-    -DCMAKE_INSTALL_PREFIX:PATH=%{prefix} \
     -DINCLUDE_INSTALL_DIR:PATH=%{includedir} \
     -DLIB_INSTALL_DIR:PATH=%{libdir} \
     -DSYSCONF_INSTALL_DIR:PATH=/etc \
@@ -27,10 +24,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libproxy.so"
+        - '%{libdir}/libproxy.so'
 
 sources:
-  - kind: git
-    url: https://github.com/libproxy/libproxy/
-    track: 0.4.15
-    ref: 5924d4223e2b7238607749d977c0a878fe33cdbc # 0.4.15
+- kind: git_tag
+  url: github:libproxy/libproxy/
+  track: master
+  ref: 0.4.15-0-g5924d4223e2b7238607749d977c0a878fe33cdbc

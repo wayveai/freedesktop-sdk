@@ -2,33 +2,38 @@ kind: autotools
 description: Tool to help find memory-management problems in programs
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/gdb.bst
-  - filename: base/perl.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gdb.bst
+- filename: base/perl.bst
+  type: build
 
-environment:
+variables:
   # valgrind does not like stack protector flags
-  CPPFLAGS: "-O2"
-  CFLAGS: "-O2 -g"
-  CXXFLAGS: "-O2 -g"
-  LDFLAGS: "-Wl,-z,relro,-z,now"
+  target_common_flags: >-
+    %{common_flags} -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS
+    -fexceptions -grecord-gcc-switches
 
 config:
   configure-commands:
     (<):
-      - |
-        autoreconf -ivf
+    - |
+      autoreconf -ivf
+
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+
+public:
+  cpe:
+    version: '3.14.0'
 
 sources:
-  - kind: tar
-    url: https://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
-    ref: d76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b
-  - kind: patch
-    path: patches/valgrind-arm-hot_cpu.patch
+- kind: git_tag
+  url: https://repo.or.cz/valgrind.git
+  track: master
+  ref: VALGRIND_3_14_0-0-g3a3000290b4af0e8ef9880293c54659a6819ba78
+- kind: patch
+  path: patches/valgrind/valgrind-arm-hot_cpu.patch

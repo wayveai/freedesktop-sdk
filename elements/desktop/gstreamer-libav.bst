@@ -1,34 +1,42 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/orc.bst
-  - filename: desktop/gstreamer.bst
-  - filename: desktop/gstreamer-plugins-base.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/autoconf-archive.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/orc.bst
+- filename: desktop/gstreamer.bst
+- filename: desktop/gstreamer-plugins-base.bst
+- filename: desktop/ffmpeg.bst
+  type: build
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/which.bst
+  type: build
+- filename: base/nasm.bst
+  type: build
 
 variables:
   conf-local: |
     --with-system-libav
 
+environment:
+  GST_CFLAGS: -DTRIPLET=\"%{gcc_triplet}\"
+
 sources:
-  - kind: git
-    url: freedesktop:gstreamer/gst-libav
-    track: 1.14
-    ref: 8886a016fce625e1c25a4902be4021196a6784a2 #  1.14.2
-    submodules:
-      common:
-        url: freedesktop:gstreamer/common
-      gst-libs/ext/libav:
-        url: https://git.ffmpeg.org/ffmpeg.git
-      gst-libs/ext/gas-preprocessor:
-        url: git://git.libav.org/gas-preprocessor.git
+- kind: git_tag
+  url: freedesktop:gstreamer/gst-libav
+  track: master
+  ref: 1.15.2-0-gc693e62a4464a74bace095344e355c4409d850d9
+  submodules:
+    common:
+      checkout: True
+      url: freedesktop:gstreamer/common
+- kind: patch
+  path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
+- kind: patch
+  path: patches/gstreamer-libav/gst-libav-disable-1.15-api.patch
+- kind: patch
+  path: patches/gstreamer-libav/gst-libav-drop-1.15-dependency.patch
+- kind: patch
+  path: patches/gstreamer-libav/gst-libav-Revert-incompatible-commit.patch
+- kind: patch
+  path: patches/gstreamer-libav/gst-libav-plugin-dependencies.patch

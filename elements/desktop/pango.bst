@@ -1,28 +1,44 @@
-kind: autotools
+kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/cairo.bst
-  - filename: desktop/harfbuzz.bst
-  - filename: desktop/fontconfig.bst
-  - filename: desktop/gobject-introspection.bst
-  - filename: desktop/gtk-doc.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: desktop/fribidi.bst
+- filename: bootstrap-import.bst
+- filename: desktop/cairo.bst
+- filename: desktop/harfbuzz.bst
+- filename: desktop/fontconfig.bst
+- filename: desktop/gobject-introspection.bst
+  type: build
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/which.bst
+  type: build
+- filename: desktop/fribidi.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libpango-1.0.so"
-          - "%{libdir}/libpangoft2-1.0.so"
-          - "%{libdir}/libpangocairo-1.0.so"
+        - '%{libdir}/libpango-1.0.so'
+        - '%{libdir}/libpangoft2-1.0.so'
+        - '%{libdir}/libpangocairo-1.0.so'
+
+# Those are the defaults which we explicitly match.
+variables:
+  meson-local: |
+   -Denable_docs=false \
+   -Dgir=true
+
+config:
+  install-commands:
+    (>):
+    - |
+      rm -rf "%{install-root}%{libexecdir}/installed-tests"
+      rm -rf "%{install-root}%{datadir}/installed-tests"
 
 sources:
-  - kind: tar
-    url: https://ftp.gnome.org/pub/gnome/sources/pango/1.42/pango-1.42.2.tar.xz
-    ref: b1e416b4d40416ef6c8224cf146492b86848703264ba88f792290992cf3ca1e2
-
+- kind: git_tag
+  url: gnome:pango
+  track: master
+  ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
+- kind: patch
+  path: patches/pango/pango-Make-gobject-2.0-a-non-private-requirement.patch

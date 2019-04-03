@@ -1,17 +1,19 @@
-kind: autotools
+kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-    type: build
+- filename: bootstrap-import.bst
+  type: build
+- filename: base/buildsystem-meson.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libpixman-1.so"
+        - '%{libdir}/libpixman-1.so'
 
 sources:
-  - kind: tar
-    url: https://www.x.org/archive/individual/lib/pixman-0.34.0.tar.bz2
-    ref: 39ba3438f3d17c464b0cb8be006dacbca0ab5aee97ebde69fec7ecdbf85794a0
+- kind: git
+  url: freedesktop:pixman/pixman
+  ref: pixman-0.38.0-0-g5d2cf8fc2149b9b632aafcde59734a7ea74f2b92

@@ -1,23 +1,19 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libogg.so"
+        - '%{libdir}/libogg.so'
 
 sources:
-  - kind: git
-    url: https://github.com/xiph/ogg
-    track: v1.3.3
-    ref: 4380566a44b8d5e85ad511c9c17eb04197863ec5 # 1.3.3
+- kind: git_tag
+  url: github:xiph/ogg
+  track: master
+  ref: v1.3.3-0-g4380566a44b8d5e85ad511c9c17eb04197863ec5

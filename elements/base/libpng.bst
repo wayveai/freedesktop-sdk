@@ -1,17 +1,27 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libpng.so"
-          - "%{libdir}/libpng16.so"
+        - '%{libdir}/libpng.so'
+        - '%{libdir}/libpng16.so'
+  cpe:
+    patches:
+    - CVE-2019-7317
 
 sources:
-  - kind: tar
-    url: https://ftp-osl.osuosl.org/pub/libpng/src/libpng16/libpng-1.6.34.tar.gz
-    ref: 574623a4901a9969080ab4a2df9437026c8a87150dfd5c235e28c94b212964a7
+- kind: git_tag
+  url: github:glennrp/libpng
+  track: libpng16
+  ref: v1.6.36-0-geddf9023206dc40974c26f589ee2ad63a4227a1e
+- kind: patch
+  path: patches/libpng/cve-2019-7317.patch
+- kind: patch
+  path: patches/libpng/libpng-1.6.36-apng.patch

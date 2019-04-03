@@ -27,16 +27,11 @@ config:
   base: vm/deploy-tools.bst
   input: vm/minimal-vm.bst
 
-  filesystem-tree-setup-commands:
-    (<):
-    - mkdir -p %{build-root}/dev
-    - mkdir -p %{build-root}/proc
-
   final-commands:
     (>):
     - |
       cat > %{install-root}/run-in-qemu.sh << EOF
       #!/bin/sh
-      qemu-system-x86_64 -drive file=sda.img,format=raw -nographic -m 256
+      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -nographic -m 256
       EOF
       chmod +x %{install-root}/run-in-qemu.sh

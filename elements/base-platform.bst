@@ -1,12 +1,16 @@
 kind: stack
+description: Stack of components in base-platform
 
 depends:
+- filename: mtab.bst
 - filename: base/ca-certificates.bst
 - filename: base/cracklib.bst
 - filename: base/curl.bst
 - filename: base/cyrus-sasl.bst
+- filename: base/e2fsprogs.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
+- filename: base/gdbm.bst
 - filename: base/gettext.bst
 - filename: base/giflib.bst
 - filename: base/glib.bst
@@ -15,6 +19,7 @@ depends:
 - filename: base/gnutls.bst
 - filename: base/gzip.bst
 - filename: base/gpgme.bst
+- filename: base/iana-config.bst
 - filename: base/icu.bst
 - filename: base/iso-codes.bst
 - filename: base/jpeg.bst
@@ -34,9 +39,11 @@ depends:
 - filename: base/libogg.bst
 - filename: base/libpng.bst
 - filename: base/libsamplerate.bst
+- filename: base/libselinux.bst
 - filename: base/libtasn1.bst
 - filename: base/libtheora.bst
 - filename: base/libtiff.bst
+- filename: base/libtirpc.bst
 - filename: base/libtool.bst
 - filename: base/libunistring.bst
 - filename: base/libvorbis.bst
@@ -52,11 +59,16 @@ depends:
 - filename: base/npth.bst
 - filename: base/nspr.bst
 - filename: base/nss.bst
+- filename: base/nsswitch-config.bst
 - filename: base/openssl.bst
+- filename: base/openssl-1.0-runtime-only.bst
+- filename: base/opus.bst
 - filename: base/p11-kit.bst
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
 - filename: base/python3.bst
+- filename: base/python3-pip.bst
+- filename: base/python3-setuptools.bst
 - filename: base/python3-six.bst
 - filename: base/python3-usercustomize.bst
 - filename: base/tar.bst
@@ -70,3 +82,4 @@ depends:
 - filename: base/which.bst
 - filename: base/xz.bst
 - filename: base/zip.bst
+- filename: base/shared-library-guard.bst

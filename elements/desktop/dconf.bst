@@ -1,32 +1,32 @@
 kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: desktop/vala.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: desktop/vala.bst
+  type: build
+- filename: desktop/dbus.bst
+  type: build
 
 variables:
-  conf-local: |
-      --disable-static \
-      --disable-man
+  meson-local: >
+    -Dbash_completion=false
+    -Dman=false
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libdconf.so"
+        - '%{libdir}/libdconf.so'
+  cpe:
+    version: '0.30.1'
 
 sources:
-  - kind: git
-    url: https://gitlab.gnome.org/GNOME/dconf
-    track: master
-    ref: fd884c24cf7d9631836c106ed4a895f18d707120 #  0.28.0
-  - kind: patch
-    path: patches/dconf-override.patch
+- kind: git_tag
+  url: gnome:dconf
+  track: dconf-0.30
+  ref: 0.30.1-0-g6eba98fd6fb39aed73836d5468a516c2ed1a2cb8
+- kind: patch
+  path: patches/dconf/dconf-override.patch

@@ -2,11 +2,11 @@ kind: autotools
 description: GNU debugger
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/texinfo.bst
-    type: build
-  - filename: base/perl.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/texinfo.bst
+  type: build
+- filename: base/perl.bst
+  type: build
 
 variables:
   conf-link-args: |
@@ -21,16 +21,23 @@ variables:
     --disable-install-libiberty \
     --with-separate-debug-dir="%{debugdir}"
 
+public:
+  bst:
+    split-rules:
+      devel:
+      - '%{libdir}/libstdc++.so.*-gdb.py'
+      - '%{datadir}/gcc-*/python/**'
+
 config:
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
-        rm -f "%{install-root}%{infodir}/bfd.info"
-        rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/bfd.mo
-        rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/opcodes.mo
+    - |
+      rm "%{install-root}%{infodir}/dir"
+      rm -f "%{install-root}%{infodir}/bfd.info"
+      rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/bfd.mo
+      rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/opcodes.mo
 
 sources:
-  - kind: tar
-    url: https://ftp.gnu.org/gnu/gdb/gdb-8.1.tar.xz
-    ref: af61a0263858e69c5dce51eab26662ff3d2ad9aa68da9583e8143b5426be4b34
+- kind: tar
+  url: ftp_gnu_org:gdb/gdb-8.2.tar.xz
+  ref: c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39

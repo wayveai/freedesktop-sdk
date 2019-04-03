@@ -1,4 +1,5 @@
 kind: stack
+description: Stack of elements in the freedesktop runtime
 
 depends:
 - filename: base-platform.bst
@@ -16,14 +17,16 @@ depends:
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst
 - filename: desktop/emoji-one-font.bst
+- filename: desktop/fcitx.bst
 - filename: desktop/ffmpeg.bst
+- filename: desktop/fftw.bst
 - filename: desktop/flatpak-xdg-utils.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst
 - filename: desktop/fribidi.bst
 - filename: desktop/gcab.bst
 - filename: desktop/gdk-pixbuf.bst
-- filename: desktop/geoclue2.bst
+- filename: desktop/geoclue.bst
 - filename: desktop/glib-networking.bst
 - filename: desktop/gnu-free-fonts.bst
 - filename: desktop/gobject-introspection.bst
@@ -35,6 +38,8 @@ depends:
 - filename: desktop/gstreamer-plugins-good.bst
 - filename: desktop/gstreamer-plugins-ugly.bst
 - filename: desktop/gstreamer.bst
+- filename: desktop/gstreamer-libav.bst
+- filename: desktop/gstreamer-vaapi.bst
 - filename: desktop/gtk3.bst
 - filename: desktop/harfbuzz.bst
 - filename: desktop/hicolor-icon-theme.bst
@@ -42,6 +47,8 @@ depends:
 - filename: desktop/hyphen.bst
 - filename: desktop/ibus.bst
 - filename: desktop/json-glib.bst
+- filename: desktop/lame.bst
+- filename: desktop/libclc.bst
 - filename: desktop/libcroco.bst
 - filename: desktop/libdatrie.bst
 - filename: desktop/libdrm.bst
@@ -49,9 +56,11 @@ depends:
 - filename: desktop/liberation-fonts.bst
 - filename: desktop/libglvnd.bst
 - filename: desktop/libproxy.bst
+- filename: desktop/libpsl.bst
 - filename: desktop/librsvg.bst
 - filename: desktop/libseccomp.bst
 - filename: desktop/libsoup.bst
+- filename: desktop/libsystemd.bst
 - filename: desktop/libthai.bst
 - filename: desktop/libva-vdpau-driver.bst
 - filename: desktop/libva.bst
@@ -67,6 +76,7 @@ depends:
 - filename: desktop/orc.bst
 - filename: desktop/os-release.bst
 - filename: desktop/pango.bst
+- filename: desktop/pciutils.bst
 - filename: desktop/pixman.bst
 - filename: desktop/libpulse.bst
 - filename: desktop/sdl2-image.bst

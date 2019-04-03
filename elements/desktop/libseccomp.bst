@@ -1,23 +1,27 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+
+variables:
+  conf-local: |
+    --disable-rpath
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libseccomp.so"
+        - '%{libdir}/libseccomp.so'
+  cpe:
+    version: '2.4.0'
 
 sources:
-  - kind: git
-    url: https://github.com/seccomp/libseccomp/
-    track: v2.3.3
-    ref: 74b190e1aa05f07da0c61fb9a30dbc9c18ce2c9d  # 2.3.3
+- kind: git_tag
+  url: github:seccomp/libseccomp/
+  track: release-2.4
+  ref: v2.4.0-0-g4d64011741375bb1a4ba7d71905ca37b97885083
+- kind: patch
+  path: patches/libseccomp/no-static.patch

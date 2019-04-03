@@ -1,0 +1,19 @@
+diff -u -r mesa.old/bin/install_megadrivers.py mesa/bin/install_megadrivers.py
+--- mesa.old/bin/install_megadrivers.py	2019-02-20 13:44:40.947455314 +0100
++++ mesa/bin/install_megadrivers.py	2019-02-20 18:12:15.174171532 +0100
+@@ -25,6 +25,7 @@
+ import argparse
+ import os
+ import shutil
++from mesonbuild.scripts import depfixer
+ 
+ 
+ def main():
+@@ -46,6 +47,7 @@
+             os.unlink(to)
+         os.makedirs(to)
+     shutil.copy(args.megadriver, master)
++    depfixer.fix_rpath(master, '', master, None)
+ 
+     for driver in args.drivers:
+         abs_driver = os.path.join(to, driver)

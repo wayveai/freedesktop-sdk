@@ -1,8 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libogg.bst
+- filename: bootstrap-import.bst
+- filename: base/libogg.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+
 
 variables:
   conf-local: |
@@ -14,9 +17,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libspeex.so"
+        - '%{libdir}/libspeex.so'
 
 sources:
-  - kind: tar
-    url: https://downloads.xiph.org/releases/speex/speex-1.2.0.tar.gz
-    ref: eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094
+- kind: git_tag
+  url: https://git.xiph.org/speex.git
+  track: master
+  ref: Speex-1.2.0-0-g7fc5f8b88519a2aafdf4b6a5c31ef3d54b560d68

@@ -1,12 +1,15 @@
 kind: autotools
 
 depends:
-- bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz
-  ref: e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173
+- kind: git_tag
+  url: github:dosfstools/dosfstools.git
+  track: master
+  ref: v4.1-0-g820c2f90726db0468e0a684a5dc500fbde66466f
 
 config:
   install-commands:

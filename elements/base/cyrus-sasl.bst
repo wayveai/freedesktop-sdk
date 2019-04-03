@@ -1,16 +1,14 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/automake.bst
-    type: build
-  - filename: base/gdbm.bst
-  - filename: base/groff.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/sqlite.bst
-  - filename: base/openssl.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gdbm.bst
+- filename: base/groff.bst
+  type: build
+- filename: base/sqlite.bst
+- filename: base/openssl.bst
 
 variables:
   conf-local: |
@@ -23,30 +21,30 @@ variables:
     --without-opie \
     --without-des
 
+  builddir: ""
+
 config:
   build-commands:
-    - |
-      cd "%{builddir}"
-      %{make} sasldir="%{libdir}/sasl2"
+  - |
+    %{make} sasldir="%{libdir}/sasl2"
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{make-install} sasldir="%{libdir}/sasl2"
+  - |
+    %{make-install} sasldir="%{libdir}/sasl2"
 
-    - |
-      %{delete_libtool_files}
+  - |
+    %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/sasl2/lib*.la"
-          - "%{libdir}/sasl2/lib*.so"
-          - "%{libdir}/libsasl2.so"
+        - '%{libdir}/sasl2/lib*.la'
+        - '%{libdir}/sasl2/lib*.so'
+        - '%{libdir}/libsasl2.so'
 
 sources:
-  - kind: git
-    url: https://github.com/cyrusimap/cyrus-sasl.git
-    ref: 3f420d388d88e720ceb9f8bc53a590395c761f03 # 2.1.27-rc7
+- kind: git_tag
+  url: github:cyrusimap/cyrus-sasl.git
+  ref: cyrus-sasl-2.1.27-0-g09612adcda44fb1cfbbd704c46ab9112f01c2adb

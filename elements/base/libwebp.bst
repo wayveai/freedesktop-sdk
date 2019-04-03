@@ -1,17 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libpng.bst
-  - filename: base/jpeg.bst
-  - filename: base/giflib.bst
-  - filename: base/libtiff.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/libpng.bst
+- filename: base/jpeg.bst
+- filename: base/giflib.bst
+- filename: base/libtiff.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 variables:
   conf-local: |
@@ -31,12 +27,14 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libwebpdecoder.so"
-          - "%{libdir}/libwebpdemux.so"
-          - "%{libdir}/libwebpmux.so"
-          - "%{libdir}/libwebp.so"
+        - '%{libdir}/libwebpdecoder.so'
+        - '%{libdir}/libwebpdemux.so'
+        - '%{libdir}/libwebpmux.so'
+        - '%{libdir}/libwebp.so'
+  cpe:
+    version: '1.0.2'
 
 sources:
-  - kind: git
-    url: https://chromium.googlesource.com/webm/libwebp
-    ref: 698b8844e38a0c5ca50bb20f866e71291bfc3b36  # 1.0.0
+- kind: git_tag
+  url: https://chromium.googlesource.com/webm/libwebp
+  ref: v1.0.2-0-g2b98df90cb75cfc1cf4505a59a7b25499fa10887

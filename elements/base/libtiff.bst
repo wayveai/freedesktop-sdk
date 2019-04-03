@@ -1,18 +1,26 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libtiff.so"
-          - "%{libdir}/libtiffxx.so"
+        - '%{libdir}/libtiff.so'
+        - '%{libdir}/libtiffxx.so'
+
+  cpe:
+    patches:
+    - CVE-2019-6128
 
 sources:
-  - kind: git
-    url: https://gitlab.com/libtiff/libtiff.git
-    ref: 020bd2fd3b4235b2175dafa9633d2b191c50e7cd #v4-0-9
-    track: Release-v4-0-9
+- kind: git_tag
+  url: https://gitlab.com/libtiff/libtiff.git
+  track: master
+  ref: v4.0.10-0-gb8eac98dd0849c3f888518ce5cecc020f8b2991c
+- kind: patch
+  path: patches/libtiff/CVE-2019-6128.patch

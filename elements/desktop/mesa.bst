@@ -1,97 +1,131 @@
 kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/llvm6.bst
-  - filename: desktop/libdrm.bst
-  - filename: desktop/libva.bst
-  - filename: desktop/xorg-lib-xdamage.bst
-  - filename: desktop/xorg-lib-xfixes.bst
-  - filename: desktop/xorg-lib-xshmfence.bst
-  - filename: desktop/xorg-lib-xxf86vm.bst
-  - filename: desktop/wayland-protocols.bst
-    type: build
-  - filename: desktop/libglvnd.bst
-  - filename: desktop/libvdpau.bst
-  - filename: base/bison.bst
-    type: build
-  - filename: base/flex.bst
-    type: build
-  - filename: base/meson.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/python2.bst
-    type: build
-  - filename: base/python2-mako.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/llvm7.bst
+  type: build
+- filename: desktop/llvm7-static.bst
+  type: build
+- filename: desktop/llvm7-runtime.bst
+  type: runtime
+- filename: desktop/libdrm.bst
+- filename: desktop/libva.bst
+- filename: desktop/libclc.bst
+- filename: desktop/opencl.bst
+- filename: desktop/xorg-lib-xdamage.bst
+- filename: desktop/xorg-lib-xfixes.bst
+- filename: desktop/xorg-lib-xrandr.bst
+- filename: desktop/xorg-lib-xshmfence.bst
+- filename: desktop/xorg-lib-xxf86vm.bst
+- filename: desktop/wayland.bst
+- filename: desktop/wayland-protocols.bst
+  type: build
+- filename: desktop/libglvnd.bst
+- filename: desktop/libvdpau.bst
+- filename: base/bison.bst
+  type: build
+- filename: base/flex.bst
+  type: build
+- filename: base/libunwind.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/python3.bst
+  type: build
+- filename: base/python3-mako.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
 
 variables:
   (?):
-    - target_arch == "i586" or target_arch == "x86_64":
-        gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi,virgl"
-        dri_drivers: "nouveau,r100,r200,i915,i965"
-        vulkan_drivers: "intel,amd"
-    - target_arch == "arm" or target_arch == "aarch64":
-        gallium_drivers: "pl111,vc4,freedreno,etnaviv,imx,nouveau,tegra,virgl,swrast"
-        dri_drivers: ""
-        vulkan_drivers: ""
+  - target_arch == "i686" or target_arch == "x86_64":
+      gallium_drivers: nouveau,r600,r300,radeonsi,svga,swrast,virgl
+      dri_drivers: i915,i965,nouveau,r100,r200
+      vulkan_drivers: amd,intel
+      enable_libunwind: 'true'
+  - target_arch == "arm" or target_arch == "aarch64":
+      gallium_drivers: etnaviv,freedreno,imx,nouveau,pl111,swrast,tegra,virgl,vc4
+      dri_drivers: ''
+      vulkan_drivers: ''
+      enable_libunwind: 'false'
+
+  optimize-debug: "false"
 
   meson-local: |
-    -Dglvnd=true \
-    -Dselinux=false \
-    -Dosmesa=none \
+    -Db_ndebug=true \
+    -Ddri3=true \
+    -Ddri-drivers=%{dri_drivers} \
     -Degl=true \
-    -Dgles1=false \
-    -Dgles2=true \
+    -Dgallium-drivers=%{gallium_drivers} \
+    -Dgallium-nine=true \
     -Dgallium-omx=disabled \
-    -Dgallium-vdpau=true \
+    -Dgallium-opencl=icd \
     -Dgallium-va=true \
+    -Dgallium-vdpau=true \
     -Dgallium-xa=true \
     -Dgallium-xvmc=false \
-    -Dplatforms=x11,drm,surfaceless,wayland \
-    -Dshared-glapi=true \
     -Dgbm=true \
-    -Dgallium-opencl=disabled \
+    -Dgles1=false \
+    -Dgles2=true \
+    -Dglvnd=true \
     -Dglx=auto \
-    -Dtexture-float=true \
+    -Dlibunwind=%{enable_libunwind} \
     -Dllvm=true \
-    -Ddri3=true \
-    -Dgallium-drivers=%{gallium_drivers} \
-    -Ddri-drivers=%{dri_drivers} \
-    -Dvulkan-drivers=%{vulkan_drivers}
+    -Dlmsensors=false \
+    -Dosmesa=gallium \
+    -Dplatforms=x11,drm,surfaceless,wayland \
+    -Dselinux=false \
+    -Dshared-glapi=true \
+    -Dvalgrind=false \
+    -Dvulkan-drivers=%{vulkan_drivers} \
+    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
+    -Dxlib-lease=true
 
 config:
   install-commands:
     (>):
-      - |
-        ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
-        ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
-        rm -f "%{install-root}%{libdir}"/libGLESv2*
-        rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
-        rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
-        # Those files are provided by desktop/wayland.bst
-        rm -f "%{install-root}%{libdir}"/libwayland-egl.so*
-        rm -f "%{install-root}%{libdir}"/pkgconfig/wayland-egl.pc
+    - |
+      mkdir -p "%{install-root}%{libdir}"
+      mv "%{install-root}%{sysconfdir}/OpenCL" "%{install-root}%{libdir}/"
+      ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
+      ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
+      rm -f "%{install-root}%{libdir}"/libGLESv2*
+      rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
+      rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+      rm -f "%{install-root}%{libdir}/libglapi.so"
+
+    - |
+      for dir in vdpau dri; do
+        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
+          soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
+          if [ -L "${file}" ]; then
+            continue
+          fi
+          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
+            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
+          else
+            rm "${file}"
+          fi
+          ln -s "${soname}" "${file}"
+        done
+      done
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libgbm.so"
-          - "%{libdir}/libglapi.so"
-          - "%{libdir}/libwayland-egl.so"
-          - "%{libdir}/libxatracker.so"
-          - "%{libdir}/vdpau/libvdpau_*.so"
+        - '%{libdir}/libgbm.so'
+        - '%{libdir}/libglapi.so'
+        - '%{libdir}/libOSMesa.so'
+        - '%{libdir}/libwayland-egl.so'
+        - '%{libdir}/libxatracker.so'
+        - '%{libdir}/libMesaOpenCL.so'
 
 sources:
-  - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-18.1.5.tar.xz
-    ref: 69dbe6f1a6660386f5beb85d4fcf003ee23023ed7b9a603de84e9a37e8d98dea
-  - kind: patch
-    path: patches/mesa-glvnd-fix-gl-dot-pc.patch
-  - kind: patch
-    path: patches/mesa-Fix-linkage-against-shared-glapi.patch
+- kind: git_tag
+  url: freedesktop:mesa/mesa.git
+  track: 18.3
+  ref: mesa-18.3.5-0-g022708cb40a997e796f95d011a0e6c64a7333fe0
+- kind: patch
+  path: patches/mesa/fix-driver-rpath.patch

@@ -1,0 +1,6 @@
+variables:
+  host-triplet: '%{triplet}'
+  build-triplet: '%{guessed-triplet}'
+
+environment:
+  PATH: "%{tools}/bin:/bin"

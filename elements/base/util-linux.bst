@@ -2,7 +2,15 @@ kind: autotools
 description: util-linux
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/bison.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
+- filename: base/git-minimal.bst
+  type: build
 
 variables:
   conf-local: |
@@ -17,21 +25,22 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libfdisk.so"
-          - "%{libdir}/libblkid.so"
-          - "%{libdir}/libsmartcols.so"
-          - "%{libdir}/libmount.so"
-          - "%{libdir}/libuuid.so"
+        - '%{libdir}/libfdisk.so'
+        - '%{libdir}/libblkid.so'
+        - '%{libdir}/libsmartcols.so'
+        - '%{libdir}/libmount.so'
+        - '%{libdir}/libuuid.so'
 
 config:
   install-commands:
     (>):
-      - |
-        install -d -m0755 "%{install-root}%{bindir}"
-        mv "%{install-root}%{prefix}/sbin"/* "%{install-root}%{bindir}/"
-        rm -rf "%{install-root}%{prefix}/sbin"
+    - |
+      install -d -m0755 "%{install-root}%{bindir}"
+      mv "%{install-root}%{prefix}/sbin"/* "%{install-root}%{bindir}/"
+      rm -rf "%{install-root}%{prefix}/sbin"
 
 sources:
-  - kind: tar
-    url: https://www.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.1.tar.xz
-    ref: 86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2
+- kind: git_tag
+  url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+  track: stable/v2.33
+  ref: v2.33.1-0-g539fb3c722d2cc867fa547276d01e977b07a38fa

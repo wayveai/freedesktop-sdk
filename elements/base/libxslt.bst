@@ -1,26 +1,23 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libxml2.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/libxml2.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libxslt.so"
-          - "%{libdir}/libexslt.so"
+        - '%{libdir}/libxslt.so'
+        - '%{libdir}/libexslt.so'
+  cpe:
+    version: '1.1.33'
 
 sources:
-  - kind: git
-    url: https://gitlab.gnome.org/GNOME/libxslt
-    ref: 8307b072adb86c8064897f4c5e12e5ae142f3bff  # 1.1.32
+- kind: git_tag
+  url: gnome:libxslt
+  track: master
+  ref: v1.1.33-0-gf1eb717f04d9cc297cc5e58e94b81ac96f47e741

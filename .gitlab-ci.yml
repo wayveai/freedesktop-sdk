@@ -1,36 +1,49 @@
-image: buildstream/buildstream-fedora:master-108-bd2b3d8d
-
 variables:
   # Store everything under the /builds directory. This is a separate Docker
   # volume. Note that GitLab CI will only cache stuff inside the build
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
-  BST_CACHE_SERVER_ADDRESS: 'testcache.codethink.co.uk'
-  BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
-  RUNTIME_VERSION: 'unstable'
+  BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
+  BST_SHA: '1.2.5-0-g5e638aa386238c5f5562e8b0562127d28f722252'
+  BST_EXTERNAL_SHA: '0.12.0-0-g88e6516c21361b434d378569b69b015038cd56ee'
+  RUNTIME_VERSION: '19.08'
+  STABLE_ABI: 'false'
+
+  # Docker Images
+  DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:087a6159febf5e3375efdaee300adb3b09f6f69e"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:087a6159febf5e3375efdaee300adb3b09f6f69e"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
 
 stages:
+  - update
   - flatpak
   - vm
-  - publish_x86_64
-  - publish_i586
-  - publish_aarch64
-  - publish_arm
+  - prepare-publish
+  - publish
+  - finish-publish
+  - reproducible
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='0c57cdda9ee98c9601b2944958338a02dfefcbb8' #  1.1.5
   - git clone https://gitlab.com/BuildStream/buildstream.git
-  - git -C buildstream checkout $BST_SHA
+  - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
-  - export BST_EXTERNAL_SHA='1622d57dfbde94f6cee84e1d8dfd430c86040251' #  0.3.1
   - git clone https://gitlab.com/BuildStream/bst-external.git
-  - git -C bst-external checkout $BST_EXTERNAL_SHA
+  - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
   - pip3 install --user ./bst-external
+
+  # Configure Buildstream
+  - mkdir -p ~/.config
+  - |
+    cat > ~/.config/buildstream.conf << EOF
+    # Get a lot of output in case of errors
+    logging:
+      error-lines: 80
+    EOF
 
   # Create ~/.ssh for storing keys
   - mkdir -p ~/.ssh
@@ -38,9 +51,7 @@ before_script:
   # Private key stored as a protected variable that allows pushing to
   # cache.sdk.freedesktop.org
   - |
-    if [ -z "$freedesktop_ostree_cache_private_key" ]; then
-        echo >&2 "Private key for cache.sdk.freedesktop.org is not available."
-    else
+    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
         echo "$freedesktop_ostree_cache_private_key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
@@ -48,35 +59,64 @@ before_script:
 
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
- 
-  # Private SSL keys/certs for psuhing to the CAS server
-  - |
-    if [ -z "$GITLAB_CAS_PUSH_CERT" ]; then
-       echo >&2 "Private CAS cert not found"
-    else
-       echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-       echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
-    fi
 
-  # If we can push, then enable push and pull for freedesktop-sdk artifact cache
-  # (default config is pull only)
+  # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
-        mkdir -p ~/.config
-        echo "projects:" > ~/.config/buildstream.conf
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
+        echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
+        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
+
+        echo "projects:" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
+        if [ -f /cache-certificate/server.crt ]; then
+            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
+            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
+            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
+            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
+            echo "      push: true" >> ~/.config/buildstream.conf
+        fi
+        echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
         echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
+        if [ -f /cache-certificate/server.crt ]; then
+            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
+            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
+            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
+            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
+            echo "      push: true" >> ~/.config/buildstream.conf
+        fi
+        echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
     fi
+
+  # flat-manager tokens to upload the releases
+  - |
+    if [ -n "$CI_COMMIT_TAG" ] && [ -n "$FLATHUB_REPO_TOKEN" ]; then
+        export REPO_TOKEN=$FLATHUB_REPO_TOKEN
+        export RELEASES_SERVER_ADDRESS=https://hub.flathub.org/
+        case "${CI_COMMIT_TAG}" in
+          *beta*)
+            export RELEASE_CHANNEL=beta
+            ;;
+          *)
+            export RELEASE_CHANNEL=stable
+            # Check we have enabled stable ABI before we do any stable release
+            [ "${STABLE_ABI}" = "true" ]
+            ;;
+        esac
+    elif [ -n "$RELEASES_REPO_TOKEN" ]; then
+        export REPO_TOKEN=$RELEASES_REPO_TOKEN
+        export RELEASES_SERVER_ADDRESS=https://cache.sdk.freedesktop.org/
+        # We always use "stable" here. This is all beta on this server.
+        export RELEASE_CHANNEL=stable
+    fi
+
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
@@ -95,75 +135,79 @@ before_script:
 
 
 
+check_update_elements:
+  image: $DOCKER_AARCH64
+  stage: update
+  tags:
+    - check_update
+  script:
+    - ${BST} track --deps all flatpak-release.bst
+    - git diff
+  only:
+    - schedules
+
+populate_source_cache:
+  image: $DOCKER_AARCH64
+  stage: update
+  tags:
+    - check_update
+  script:
+    - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+    - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+  <<: *gitlab_cache_pull_push
+  only:
+    - schedules
+
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
-    - ${BST}  -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
-    - utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
-    - |
-      if [ -s found_so_files.txt ]; then
-        echo "Found development .so files:" 1>&2
-        cat found_so_files.txt 1>&2
-        false
-      fi
+    - make ARCH=${ARCH} build
+    - make ARCH=${ARCH} check-dev-files
+    - make ARCH=${ARCH} check-rpath
 
-    # Do not run basic flatpak app on i586, see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues/279
-    - if [ "${ARCH}" = "i586" ]; then
-        exit 0;
-      fi
-
-    - echo "Export runtimes to a ostree repo"
-    - mkdir runtimes
-    - |
-      for runtime in sdk platform; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
-      done
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
-    - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/sdk "${RUNTIME_VERSION}";
-    - flatpak build-export --arch=${ARCH} --files=files repo/ runtimes/platform "${RUNTIME_VERSION}";
+    - make ARCH=${ARCH} export
+    - make ARCH=${ARCH} test-apps
 
-    - echo "Locally install generated flatpak runtimes"
-    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//"${RUNTIME_VERSION}"
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//"${RUNTIME_VERSION}"
+    - |
+      if [ "${STABLE_ABI}" != "false" ]; then
+        REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
+        ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
+      fi
 
-    - echo "Build basic flatpak application  (script)"
-    - flatpak-builder --arch="${ARCH}" build_folder_hello tests/org.flatpak.Hello.json
-    - echo "Build basic flatpak application (C binary)"
-    - flatpak-builder --arch="${ARCH}" build_folder_gnu_hello tests/org.gnu.hello.json
 
-    - echo "Run basic flatpak application (script)"
-    - flatpak-builder --arch="${ARCH}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
-    - echo "Run basic flatpak application (C binary)"
-    - flatpak-builder --arch="${ARCH}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+    - '18.08'
+    - tags
   <<: *gitlab_cache_pull
 
 app_x86_64:
+  image: $DOCKER_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
+    - cache_x86_64
   variables:
     ARCH: x86_64
 
-app_i586:
+app_i686:
+  image: $DOCKER_AMD64
   <<: *flatpak_definition
   tags:
     - x86_64
+    - cache_i686
   variables:
-    ARCH: i586
+    ARCH: i686
 
 app_aarch64:
-  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
+  image: $DOCKER_AARCH64
   <<: *flatpak_definition
   tags:
     - aarch64
@@ -171,32 +215,90 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
+  image: $DOCKER_AARCH64
   <<: *flatpak_definition
   tags:
     - armhf
   variables:
     ARCH: arm
 
-
-.vm_image_template: &vm_image
+.vm_imageless_template: &vm_imageless
   stage: vm
   script:
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - dnf install -y qemu-system-x86
-    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
+    - make build-vm
+    - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
     - master
+    - '18.08'
+    - tags
+  <<: *gitlab_cache_pull
+
+minimal_systemd_vm_x86_64:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  <<: *vm_imageless
+  variables:
+    ARCH: x86_64
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+
+minimal_systemd_vm_i686:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_i686
+  <<: *vm_imageless
+  variables:
+    ARCH: i686
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+
+minimal_systemd_vm_aarch64:
+  image: $DOCKER_AARCH64
+  tags:
+    - aarch64
+  <<: *vm_imageless
+  variables:
+    ARCH: aarch64
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+  when: manual # skip aarch64 VM tests by default for now; the runner is too slow
+
+minimal_systemd_vm_arm:
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  <<: *vm_imageless
+  variables:
+    ARCH: arm
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+
+.vm_image_template: &vm_image
+  stage: vm
+  script:
+    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+    - utils/test-minimal-system --dialog "${DIALOG}" image vm/sda.img
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  only:
+    - schedules
   <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
+  image: $DOCKER_AMD64
   tags:
     - x86_64
+    - cache_x86_64
   <<: *vm_image
   variables:
     ARCH: x86_64
@@ -204,110 +306,234 @@ minimal_vm_image_x86_64:
     DIALOG: minimal
 
 minimal_systemd_vm_image_x86_64:
+  image: $DOCKER_AMD64
   tags:
     - x86_64
+    - cache_x86_64
   <<: *vm_image
   variables:
     ARCH: x86_64
     TYPE: minimal-systemd
     DIALOG: root-login
 
-.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
+.desktop_vm_image_x86_64:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  <<: *vm_image
+  allow_failure: true
+  variables:
+    ARCH: x86_64
+    TYPE: desktop
+    DIALOG: root-login
+
+prepare_publish:
+  image: $DOCKER_AMD64
+  stage: prepare-publish
+  tags:
+    - x86_64
   script:
-    - |
-      dnf install -y gpg
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client create $RELEASES_SERVER_ADDRESS "${RELEASE_CHANNEL}" > publish_build.txt
+  artifacts:
+    paths:
+      - publish_build.txt
+  only:
+    - master
+    - '18.08'
+    - tags
+  except:
+    - schedules
+
+finish_publish:
+  image: $DOCKER_AMD64
+  stage: finish-publish
+  tags:
+    - x86_64
+  script:
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
+    - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
+    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+  only:
+    - tags
+    - master
+    - '18.08'
+  except:
+    - schedules
+
+finish_publish_failed:
+  image: $DOCKER_AMD64
+  stage: finish-publish
+  tags:
+    - x86_64
+  script:
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+  only:
+    - tags
+    - master
+    - '18.08'
+  except:
+    - schedules
+  when: on_failure
+
+.flatpak_publish_template:
+  stage: publish
+  retry: 2
+  script:
+    - make ARCH=${ARCH} build
+    - make ARCH=${ARCH} export
 
     - |
-      [ -n "${FREEDESKTOP_GPG_PRIV}" ]
-
-    - |
-      echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
-
-    - ${BST} -o target_arch "${ARCH}" fetch all.bst
-    - ${BST} -o target_arch "${ARCH}" build all.bst
-    - flatpakarch="${ARCH/i586/i386}"
-    - mkdir runtimes
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        bst -o target_arch "${ARCH}" checkout --hardlinks "${runtime}.bst" "runtimes/${runtime}";
-      done
-    - echo "Clone the releases OSTree repo locally"
-    - ostree init --repo=releases --mode=archive-z2
-    - ostree remote add --repo=releases origin "https://${BST_RELEASES_SERVER_ADDRESS}/releases/" --no-gpg-verify
-    - ostree pull --repo=releases origin --mirror
-
-    - echo "Use flatpak to export the runtimes to a ostree repo"
-    - dnf install -y flatpak --enablerepo=updates-testing
-    - echo "Commit the binaries to the correct branch"
-    - |
-      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug},-vaapi} glxinfo{,-debug} basesdk{,-debug,-locale} baseplatform{,-locale} rust; do
-        if [ "${runtime}" = "platform-vaapi" ]; then
-           if [ "${ARCH}" = "aarch64" ] || [ "${ARCH}" = "arm" ]; then
-             continue
-           fi
-        fi
-        flatpak build-export --gpg-sign="${FREEDESKTOP_GPG_ID}" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" "${RUNTIME_VERSION}"
-      done
-    - |
-      case "${ARCH}" in
-        "i586")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/x86_64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/x86_64/"${RUNTIME_VERSION}"
+      for ref in $(ostree --repo=repo refs --list); do
+        case "${ref}" in
+          */org.freedesktop.Sdk*/*/*) ;&
+          */org.freedesktop.Platform*/*/*)
+            echo "Keeping ${ref}"
           ;;
-        "arm")
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}"/aarch64/"${RUNTIME_VERSION}"
-          flatpak build-commit-from --gpg-sign="${FREEDESKTOP_GPG_ID}" --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/"${RUNTIME_VERSION}" releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/"${RUNTIME_VERSION}"
+          */*/*/*)
+            echo "Deleting ${ref}"
+            ostree --repo=repo refs --delete "${ref}"
           ;;
-      esac
-    - echo "Push to the releases ostree repo"
-    - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
-    - git clone https://github.com/ssssam/ostree-push.git
-    - git -C ostree-push/ checkout "${OSTREE_PUSH_SHA}"
-    # Trust the host key of the release server.
-    - ssh-keyscan "${BST_RELEASES_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
-    - ostree-push/ostree-push --repo=releases ssh://releases@"${BST_RELEASES_SERVER_ADDRESS}"
+        esac
+      done
+    - flatpak build-update-repo --generate-static-deltas --prune repo
+    - git clone https://github.com/flatpak/flat-manager.git
+    - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
+    - tags
     - master
-  <<: *gitlab_cache_pull_push
+    - '18.08'
+  except:
+    - schedules
 
 publish_x86_64:
-  stage: publish_x86_64
-  <<: *flatpak_runtimes_publish
+  extends: .flatpak_publish_template
+  image: $DOCKER_AMD64
   tags:
     - x86_64
+    - cache_x86_64
   variables:
     ARCH: x86_64
 
-publish_i586:
-  stage: publish_i586
-  <<: *flatpak_runtimes_publish
+publish_i686:
+  extends: .flatpak_publish_template
+  image: $DOCKER_AMD64
   tags:
     - x86_64
+    - cache_i686
   variables:
-    ARCH: i586
+    ARCH: i686
 
 publish_aarch64:
-  stage: publish_aarch64
-  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
-  <<: *flatpak_runtimes_publish
+  extends: .flatpak_publish_template
+  image: $DOCKER_AARCH64
   tags:
     - aarch64
   variables:
     ARCH: aarch64
 
 publish_arm:
-  stage: publish_arm
-  image: buildstream/buildstream-fedora:aarch64-master-108-be163e8d
-  <<: *flatpak_runtimes_publish
+  extends: .flatpak_publish_template
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
+cve_report:
+  stage: publish
+  image: $DOCKER_AMD64
+  cache:
+    key: cve
+    paths:
+      - "${XDG_CACHE_HOME}/cve"
+  tags:
+    - x86_64
+    - cache_x86_64
+  script:
+    - pip3 install --user lxml
+
+    - make manifest
+
+    - mkdir -p "${XDG_CACHE_HOME}/cve"
+    - cd "${XDG_CACHE_HOME}/cve"
+    - python3 "${CI_PROJECT_DIR}/utils/update-local-cve-database.py"
+
+    - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
+    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
+    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
+  artifacts:
+    paths:
+      - "${CI_PROJECT_DIR}/cve-reports"
+  only:
+    - master
+    - '18.08'
+
+markdown_manifest:
+  stage: publish
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_x86_64
+  script:
+    - make markdown-manifest
+  artifacts:
+    paths:
+      - "${CI_PROJECT_DIR}/platform-manifest/usr/"
+      - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
+  only:
+    - master
+    - '18.08'
+  except:
+    - schedules
+
+.reproducible_template: &reproducible
+  stage: reproducible
+  script:
+    - ./utils/test-reproducibility.sh flatpak-release.bst
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+      - ${CI_PROJECT_DIR}/results.cache
+  only:
+    - schedules
+  <<: *gitlab_cache_pull
+
+reproducible_x86_64:
+  image: $DOCKER_AMD64
+  <<: *reproducible
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+reproducible_i686:
+  image: $DOCKER_AMD64
+  <<: *reproducible
+  tags:
+    - x86_64
+  variables:
+    ARCH: i686
+
+reproducible_aarch64:
+  image: $DOCKER_AARCH64
+  <<: *reproducible
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
+reproducible_arm:
+  image: $DOCKER_AARCH64
+  <<: *reproducible
   tags:
     - armhf
   variables:

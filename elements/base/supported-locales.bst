@@ -1,20 +1,21 @@
 kind: manual
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 config:
   build-commands:
-    - |
-      make -f supported-locales.mk SUPPORTED
+  - |
+    make -f supported-locales.mk SUPPORTED
 
   install-commands:
-    - |
-      install -D -m0644 SUPPORTED "%{install-root}%{datadir}/i18n/SUPPORTED"
+  - |
+    install -D -m0644 SUPPORTED "%{install-root}%{datadir}/i18n/SUPPORTED"
 
 sources:
-- kind: tar
-  url: https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
-  ref: 5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72
+- kind: git_tag
+  url: sourceware:glibc.git
+  track: release/2.28/master
+  ref: glibc-2.28-60-g4d7af7815af5217db6e8fde6032ddf4f6b2a4420
 - kind: local
   path: files/supported-locales.mk

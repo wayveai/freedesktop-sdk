@@ -1,16 +1,28 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
+- filename: base/texinfo.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode \
+    --disable-doc
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libgpg-error.so"
+        - '%{libdir}/libgpg-error.so'
 
 sources:
-  - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.32.tar.bz2
-    ref: c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca
+- kind: git_tag
+  url: gnupg:libgpg-error.git
+  track: master
+  ref: gpgrt-1.35-0-g2421afddf6ae5a245e6dd1a59779bd26bf225253

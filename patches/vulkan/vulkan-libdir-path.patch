@@ -1,0 +1,53 @@
+diff -ur Vulkan-Loader-1.1.96.old/CMakeLists.txt Vulkan-Loader-1.1.96.patch/CMakeLists.txt
+--- Vulkan-Loader-1.1.96.old/CMakeLists.txt	2018-12-18 19:02:44.000000000 +0100
++++ Vulkan-Loader-1.1.96.patch/CMakeLists.txt	2018-12-26 14:48:58.488971652 +0100
+@@ -192,6 +192,13 @@
+     if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
+         add_definitions(-DEXTRASYSCONFDIR="/etc")
+     endif()
++
++    # NOTE: freedesktop search paths
++    # appropriate drivers
++    add_definitions(-DVULKAN_LIB_DIR_GL="${CMAKE_INSTALL_FULL_LIBDIR}/GL")
++    # opensource drivers
++    add_definitions(-DVULKAN_LIB_DIR="${CMAKE_INSTALL_FULL_LIBDIR}")
++
+ endif()
+ 
+ # uninstall target
+diff -ur Vulkan-Loader-1.1.96.old/loader/loader.c Vulkan-Loader-1.1.96.patch/loader/loader.c
+--- Vulkan-Loader-1.1.96.old/loader/loader.c	2018-12-18 19:02:44.000000000 +0100
++++ Vulkan-Loader-1.1.96.patch/loader/loader.c	2018-12-26 14:55:31.097947954 +0100
+@@ -3589,6 +3589,15 @@
+ #if defined(EXTRASYSCONFDIR)
+             search_path_size += DetermineDataFilePathSize(EXTRASYSCONFDIR, rel_size);
+ #endif
++/*freedesktop  appropriate drivers */
++#if defined(VULKAN_LIB_DIR_GL)
++            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR_GL, rel_size);
++#endif
++/* freedesktop opensource drivers */
++#if defined(VULKAN_LIB_DIR)
++            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR, rel_size);
++#endif
++
+             if (is_directory_list) {
+                 search_path_size += DetermineDataFilePathSize(xdgdatahome, rel_size);
+                 search_path_size += DetermineDataFilePathSize(home_root, rel_size);
+@@ -3637,6 +3646,15 @@
+ #if defined(EXTRASYSCONFDIR)
+             CopyDataFilePath(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
+ #endif
++/*freedesktop  appropriate drivers */
++#if defined(VULKAN_LIB_DIR_GL)
++            CopyDataFilePath(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
++#endif
++/* freedesktop opensource drivers */
++#if defined(VULKAN_LIB_DIR)
++            CopyDataFilePath(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
++#endif
++
+             CopyDataFilePath(xdgdatadirs, relative_location, rel_size, &cur_path_ptr);
+             if (is_directory_list) {
+                 CopyDataFilePath(xdgdatahome, relative_location, rel_size, &cur_path_ptr);
+

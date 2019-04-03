@@ -1,17 +1,24 @@
 kind: compose
+description: |
+  Composes dependencies into the image to be exported
+  This is the point where devel split rules are implemented,
+  and we define docs and local split rules.
 
 public:
   bst:
     split-rules:
       docs:
-        - "%{datadir}/runtime/docs/**"
+      - '%{datadir}/runtime/docs/**'
       locale:
-        - "%{datadir}/runtime/locale/**"
+      - '%{datadir}/runtime/locale/**'
+
+config:
+  exclude:
+    - extra
+    - static
 
 depends:
 - filename: desktop.bst
-  type: build
-- filename: base/man-db-generate.bst
   type: build
 - filename: split-locales.bst
   type: build
@@ -22,4 +29,6 @@ depends:
 - filename: multiarch-debugdir.bst
   type: build
 - filename: debug-app-link.bst
+  type: build
+- filename: sdk-manifest.bst
   type: build

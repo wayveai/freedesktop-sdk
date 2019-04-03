@@ -1,38 +1,43 @@
-kind: autotools
+kind: meson
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/shared-mime-info.bst
-  - filename: desktop/gobject-introspection.bst
-  - filename: base/libtiff.bst
-  - filename: base/libpng.bst
-  - filename: base/jpeg.bst
-  - filename: desktop/gtk-doc.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/shared-mime-info.bst
+- filename: desktop/gobject-introspection.bst
+  type: build
+- filename: base/libtiff.bst
+- filename: base/libpng.bst
+- filename: base/jpeg.bst
+- filename: desktop/gtk-doc.bst
+  type: build
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
 
 variables:
-  conf-local: |
-    --without-x11 \
-    --without-libjasper \
-    --with-included-loaders=png,jpeg
+  meson-local: >
+    -Dx11=false
+    -Djasper=false
+    -Dbuiltin_loaders=png,jpeg
+    -Dinstalled_tests=false
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/gdk-pixbuf-csource"
-          - "%{bindir}/gdk-pixbuf-pixdata"
-          - "%{bindir}/gdk-pixbuf-thumbnailer"
-          - "%{libdir}/libgdk_pixbuf-2.0.so"
+        - '%{bindir}/gdk-pixbuf-csource'
+        - '%{bindir}/gdk-pixbuf-pixdata'
+        - '%{bindir}/gdk-pixbuf-thumbnailer'
+        - '%{libdir}/libgdk_pixbuf-2.0.so'
 
     integration-commands:
-      - |
-        gdk-pixbuf-query-loaders --update-cache
+    - |
+      gdk-pixbuf-query-loaders --update-cache
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.12.tar.xz
-    ref: fff85cf48223ab60e3c3c8318e2087131b590fd6f1737e42cb3759a3b427a334
+- kind: git_tag
+  url: gnome:gdk-pixbuf
+  track: master
+  ref: 2.38.0-0-g0b1eab312e77701c20b07fb8e38119009f8b34c3

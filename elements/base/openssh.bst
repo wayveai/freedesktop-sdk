@@ -1,20 +1,29 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/openssl.bst
-  - filename: base/autoconf.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/openssl.bst
 
 variables:
   conf-local: |
     --with-mantype=man
 
+public:
+  bst:
+    split-rules:
+      extra:
+      - "%{bindir}/sshd"
+      - "%{sysconfdir}/sshd_config"
+      - "%{libexecdir}/sftp-server"
+      - "%{mandir}/man5/sshd_config.5"
+      - "%{mandir}/man8/sftp-server.8"
+      - "%{mandir}/man8/sshd.8"
+  cpe:
+    version: '7.7p1'
+
 sources:
-  - kind: git
-    url: https://github.com/openssh/openssh-portable
-    ref: a0349a1cc4a18967ad1dbff5389bcdf9da098814  # 7.7p1
+- kind: git_tag
+  url: github:openssh/openssh-portable
+  ref: V_7_9_P1-0-gaede1c34243a6f7feae2fb2cb686ade5f9be6f3d

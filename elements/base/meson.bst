@@ -1,13 +1,18 @@
-kind: distutils
+kind: pip
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/python3.bst
+- filename: bootstrap-import.bst
+- filename: base/python3.bst
+- filename: base/python3-pip.bst
+
+variables:
+  pip: pip3
+  fix-pyc-timestamps: "true"
 
 sources:
-  - kind: git
-    url: https://github.com/mesonbuild/meson.git
-    track: master
-    ref: 2495c38ac12a11141bcc0c49357049c83aa918e5 #  0.47.1
-  - kind: patch
-    path: patches/meson-no-lib64.patch
+- kind: git_tag
+  url: github:mesonbuild/meson.git
+  track: 0.49
+  ref: 0.49.2-0-g237e2e7243e14101e99d66e047037e400118992d
+- kind: patch
+  path: patches/meson/meson-no-lib64.patch

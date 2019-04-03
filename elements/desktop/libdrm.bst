@@ -1,28 +1,29 @@
-kind: autotools
+kind: meson
 description: libdrm
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-pciaccess.bst
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/buildsystem-meson.bst
+  type: build
+- filename: desktop/xorg-lib-pciaccess.bst
 
 variables:
-  conf-local: |
-    --enable-etnaviv-experimental-api \
-    --enable-tegra-experimental-api \
-    --disable-udev
+  meson-local: |
+    -Detnaviv=true \
+    -Dtegra=true \
+    -Dudev=false
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libdrm_*.so"
-          - "%{libdir}/libdrm.so"
-          - "%{libdir}/libkms.so"
+        - '%{libdir}/libdrm_*.so'
+        - '%{libdir}/libdrm.so'
+        - '%{libdir}/libkms.so'
 
 sources:
-  - kind: tar
-    url: https://dri.freedesktop.org/libdrm/libdrm-2.4.92.tar.bz2
-    ref: e9e48fdb4de139dc4d9880aa1473158a16ff6aff63d14341367bd30a51ff39fa
+- kind: git_tag
+  url: freedesktop:mesa/drm.git
+  track: master
+  ref: libdrm-2.4.97-0-gb7a7a90336fbb19efb3f91f92b5d964b0dfb7ec2

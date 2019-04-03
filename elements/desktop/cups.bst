@@ -1,13 +1,15 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/gnutls.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/gzip.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/gnutls.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gzip.bst
+  type: build
 
+# -Wno-error=sign-conversion is needed to suppress fatal warnings when building
+# cups from git: https://github.com/apple/cups/issues/5483#issuecomment-455227747
 variables:
   builddir: ''
   conf-local: |
@@ -17,22 +19,25 @@ variables:
     --disable-systemd \
     --enable-threads \
     --enable-gnutls \
-    localedir=/usr/share/locale
+    localedir=/usr/share/locale \
+    CFLAGS="-Wno-error=sign-conversion $CFLAGS" \
+    DSOFLAGS="$CFLAGS $LDFLAGS"
 
 config:
   install-commands:
-    - |
-      make -j1 DSTROOT="%{install-root}" install
+  - |
+    make -j1 DSTROOT="%{install-root}" install
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/cups-config"
-          - "%{libdir}/libcups.so"
+        - '%{bindir}/cups-config'
+        - '%{libdir}/libcups.so'
 
 sources:
-  - kind: tar
-    url: https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
-    ref: 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4
+- kind: git_tag
+  url: github:apple/cups.git
+  track: branch-2.2
+  ref: v2.2.10-0-g25b2338346ef3abbb93ea88476887cba7b2b86f8

@@ -1,0 +1,462 @@
+Freedesktop-SDK
+
+freedesktop-sdk-18.08.29.2:
+    * Put back the static stdc++ library for applications that still use it.
+
+freedesktop-sdk-18.08.29.1:
+    * Fix symlinks for 32-bit compat multi-arch
+
+freedesktop-sdk-18.08.29:
+    * weston: Enable the demos
+    * xorg-lib-xkbfile: Bump to 1.1.0
+    * Update pip and setuptools (#337)
+    * Optimize debug file size with dwz (#693)
+    * Allow running VMsi in the CI without creating root filesystem images
+    * Generate sysroots of freedesktop-sdk (#114)
+    * Update cargo to 0.34
+    * LLVM: Stop shipping static libraries
+    * systemd-base: update to 241, multiple CVE fixed
+    * patch: fix multiple CVE
+    * nss: update to 3.43
+    * vala: Update to 44.1
+    * texinfo: update to 6.6
+    * libseccomp: update to 2.4.0
+    * alsa-plugins: Fix path for a configuration file (#694)
+    * python2: update to 2.7.16
+    * pkg-config: update to 1.6.0
+    * Remove mandb generation from Flatpak images (#690)
+    * Fix AArch64 and ARM kernel images and allow loading kernel modules
+    * Remove linked files to binaries and replace them with symbolic links (#569)
+    * Fix llvm7 split: Now only contains the SDK part and depends on the runtime
+    * coreutils: update to 8.31
+    * libpng: Add support for animated PNGs
+    * cracklib: update to 2.9.7
+    * elfutils: update to 0.176, fix several CVE
+    * Add weston and dependencies to desktop-vm
+    * ibus: Update to 1.5.20
+    * linux: Add DRM driver for 3D acceleration in qemu
+    * mesa: update to 18.3.5
+    * appstream-glib: update to 0.7.15
+    * libvdpau: update to 1.2
+    * rust: update to 1.33.0
+    * openssl: update to 1.1.1b
+    * Update to glibc 2.28
+    * gcc: update to 8.3.0
+    * openssl-1.0: update to 1.0.2r
+    * ninja: update to 1.9
+    * gst-libav: Update to 1.15.2, to avoid using a arbitrary git snapshot
+    * sqlite: update to 3.27.2
+
+freedesktop-sdk-18.08.28:
+    * nasm: update to 2.14.02
+    * pixman: Update to 0.38
+    * libtiff: fix CVE-2019-6128
+    * meson: Bump to 0.49.2
+    * gtk3: Bump to 3.24.5
+    * sndfile: fix remaining CVE
+    * gettext: patch to mitigate CVE-2018-18751
+    * Add libva-utils
+    * Enable AV1 codec support (#631)
+    * Apply CVE fixes to wavepack
+    * libva: Fix driver path in pkgconfig file
+    * libvpx: enable optimizations
+    * bison: update to 3.3.2
+    * elfutils.bst: fix multiple CVE
+    * unzip: fix multiple CVE
+    * bzip2: fix CVE-2016-3189
+    * Add mitigation patch for cve-2017-7960 in libcroco
+    * linux-headers: update to 4.14.96
+    * Apply ncurses upstream fix for CVE-2018-10754
+    * Re-include man pages
+    * glib: fix moving to trash from flatpak apps
+    * alsa: update to 1.1.8
+    * ffmpeg: update to 4.1.1
+    * libunwind: update to 1.3.1
+    * add mesa patch for fullscreen totem (#655)
+    * update gnupg to 2.2.13
+    * update libassuan to 2.5.3
+    * update libgpg-error to 1.35
+    * fix RPATH (#407, #430)
+    * add libsystemd to the flatpak runtimes
+    * file: update to 5.36
+    * do not use sysroot in artifacts
+    * merge bootstrap into the main project
+    * libpng: patch cve-2019-7317
+    * tar: update to 1.32
+    * xorg-lib-xcb: update to 1.31.1
+    * update lvm2 to v2.02.138 and syslinux to 6.04-pre1
+    * git: update to 2.21.0
+
+
+freedesktop-sdk-18.08.27:
+    * extra-cmake-modules: Upgrade to 5.54
+    * qmake: upgrade to 5.12.1 
+    * bison: upgrade to 3.3.1 
+    * iso-codes: Bump to version 4.2 (#616)
+    * Apply libsndfile upstream fixes for multiple CVEs
+    * openssl: Upgrade to 1.1.1a
+    * Apply available upstream CVE fixes for binutils
+    * libgpg-error: bump to 1.34 
+    * libgcrypt: bump to 1.8.4
+    * libassuan: bump to 2.5.2
+    * nss: update to 3.42.1
+    * jq: Update to 1.6
+    * glib: update to 2.58.3
+    * util-linux: update to 2.33.1
+    * elfutils: update to 0.175 (#613)
+    * systemd: Update to 240 (#619)
+    * file: update to 5.35 
+    * libtiff: update to 4.0.10 (#478)
+    * gnutls: update to 3.6.6
+    * libva: update to 2.4.0
+    * vulkan: Upgrade to 1.1.97 (#596)
+    * Apply patches to fix several glibc CVE's 
+    * itstools: Bump to 2.0.5 (#601)
+    * intel-vaapi-driver: update to 2.3.0
+    * xorg-lib-x11: update to 1.6.7
+    * vala: Upgrade to 0.42.5 (#610)
+    * libdrm: Bump to 2.4.97 (#609)
+    * Generate report with CVEs as part of the CI (#212)
+    * Add glibc audit library to prevent libraries from loading
+    * Fix llvm 6 staticAnalizer
+    * libva: Upgrade to 2.3.0
+    * p11-kit: Upgrade to 0.23.15
+    * meson: Upgrade to 0.49.1
+    * gtk3: Upgrade to 3.24.4 (#602)
+    * ostree: Upgrade to v2019.1 (#603)
+    * Add automatic manifest file generation (#376)
+    * cmake: Bump to v3.13.4 (#604)
+    * gnupg: update to 2.2.12
+    * ruby: update to 2.5.3
+    * pciutils has been added (#584)
+    * Fix opencl loader patch not to overwrite loaded opencl drivers (#606)
+    * librsvg: Update to 2.44.12
+    * libwebp: Update to 1.0.2
+    * nss: update to 3.41
+    * shared-mime-info: Update to 1.12
+    * rust: Update to 1.32.0
+    * pango: add patch to fix gobject in pkg-config
+    * gdb: Separate python printers into devel (#590)
+    * pango: upgrade to 1.43 (#566)
+    * cups: upgrade to 2.2.10
+    * mesa: upgrade to 18.3.2 (#597)
+
+freedesktop-sdk-18.08.26:
+    * glib: backport fix for GTK file dialog regression (#594)
+    * flatpak-xdg-utils: Update to 1.0 release
+    * Fix OpenCL support for several vendors (#591)
+    * vulkan: upgrade to 1.1.96 (#544)
+    * python: Upgrade to 3.7.2
+    * Make builds more reproducible disabling python hash randomization during build (#592)
+    * Several fixes to build elements with correct hardening flags
+    * libxml2: Update to v2.9.9 (#573)
+
+freedestkop-sdk-18.08.25:
+    * libxslt: Upgrade to v1.1.33 (#572)
+    * Fix clang6 compiler (ignore -fcf-protection flag)
+    * Fix problem with ca-certificates (#577)
+    * geoclue: Upgrade to 2.5.2 (#583)
+
+freedesktop-sdk-18.08.24:
+    * vala: Update to 0.42.4
+    * tzdata: Upgrade to 2018i
+    * librsvg: Upgrade to v2.44.11
+    * curl: Update to 7.63
+    * tar: Update to 1.31
+    * gzip: Update to 1.10
+    * diffutils: Update to 3.7
+    * harfbuzz: Update to 2.3.0
+    * cmake: Update to 3.13.2 (#559)
+    * e2fsprogs: Update to 1.44.5 (#558)
+    * strace: Update to 4.26 (#556)
+    * sqlite: compile with SQLITE_SECURE_DELETE option (#561)
+    * Uniformize OpenCL icd director (#562)
+    * dictionaries: Update to libreoffice-6.1.4.1 (#519)
+    * Python 3 standard library bytecode fixup (#554)
+    * gobject-introspection: Update to 1.58.3 (#557)
+    * glib: Update 2.58.2 (#557)
+    * llvm: Update to 7.0.1
+    * binutils: Update to 3.31.1
+    * python: bump to 3.7.1 (#507)
+    * perl: bump to 5.28.1
+    * meson: Update to 0.49.0 (#551)
+    * valgrind: Update to 3.14.0 (#550
+    * gcab: Bump to v1.2
+    * Several hardening flags fixes
+
+freedesktop-sdk-18.08.23:
+    * gobject-introspection: Bump to 1.58.2
+    * Add /etc/mtab -> /proc/self/mounts (#523)
+    * gtk3.bst: Bump to 3.24.2 (#534)
+    * Fix /var for flatpak images
+    * Apply security patch for cairo (#542)
+    * libarchive: Update to 3.3.3 (#541)
+    * git: Update to 2.20.1 (#537)
+    * kerberos: Update to 1.16.2 (#525)
+    * libpng: Update to 1.6.36 (#501)
+    * cmake: Update to v3.13.1 (#503)
+
+freedesktop-sdk-18.08.22:
+    * gnutls: Update to 3.6.5 (#502)
+    * nettle: Update to 3.4.1
+    * sqlite: Update to 3.26.0 (#532)
+    * Stop using /usr/etc and /usr/var (#439, #526)
+    * at-spi2-core: Explicitly disable X11 backend
+    * librsvg: Update to 2.44.10
+    * mesa: enable osmesa (#500)
+    * rust: Update to Rust 2018
+    * mesa: Update mesa to 18.3.1 (#168, #529)
+    * gperf: Update to 3.1 (#479)
+    * Include cpio in the SDK (#467)
+    * Fix gtk theme (#497)
+    * Others bugs fixed: #494, #382, #496
+
+freedesktop-sdk-18.08.21:
+    * mesa: Update to 18.2.6
+    * mesa: Set NDEBUG
+    * libcap: bump to 2.26
+    * Build mesa, rust and libclc against llvm7
+    * openssl: Bump version to 1.0.2q (#477)
+    * Fix Intel's VAAPI extension (#463)
+    * Enable webp plugin in gstreamer-plugins-bad (#370)
+    * Add gstreamer-vaapi (#485)
+    * cmake: Bump to v3.13.0
+    * Add source mirrors to sourceware repos (#470)
+    * findutils, m4, gzip: Fix build against glibc 2.28
+    * gobject-introspection: Bump to 1.58.1
+    * Bump strate to latest release (#481)
+    * Build flags refactoring for the bootstrap subproject
+
+freedesktop-sdk-18.08.20:
+    * gstreamer-plugins-good: Enable gdkpixbuf and gtk plugins
+    * Add missing dependencies of SDL2_image (#469)
+    * mesa: Update to 18.2.5
+    * html5-codecs: Install ffmpeg to the right place (#466 and #430)
+    * gnutls: Update to gnutls_3_6_4
+    * unzip: install 'zipgrep' tool (#465)
+    * cmake: update to 3.12.4
+    * meson: update to latest
+    * libglvnd and libpsl: make it depend on python3
+    * ffmpeg: Update to n4.1
+    * rust: Update to 1.30.1
+
+freedesktop-sdk-18.08.19:
+    * qmake: Update to 5.11.2
+    * sdl2: make dependencies on ibus and fcitx build only
+    * Fix branch version on GL extension point
+    * Bump SDL2 libraries to 2.0.9 (#451)
+    * fontconfig: Update to 2.13.1
+    * gst-libav: Use debian patches to unstable version (#324)
+    * Use new "ref:" format in several elements
+    * jpeg: Update to 2.0.0 (#428)
+    * pcre2: Enable JIT support (#456)
+    * mesa: Update to 18.2.4
+    * gst-libav: Stop caching html5 ffmpeg codecs (#430)
+    * libdrm: Update to 2.4.96
+    * libxkbcommon: Update to xkbcommon-0.8.2
+    * libepoxy: Update to 1.5.3
+    * gstreamer-plugins-ugly: Update to 1.14.4
+    * appstream-glib: Update to appstream_glib_0_7_14
+    * strace: Update to v4.24
+    * libpng: Update to v1.6.35
+    * iso-codes: Update to iso-codes-4.1
+    * e2fsprogs: Update to v1.44.4
+    * ibus: Update to 1.5.19
+    * harfbuzz: Update to 2.0.2
+    * zenity: Upgrade to 3.30.0
+    * librsvg: Upgrade to 2.44.8
+    * libsoup: Upgrade to 2.64.2
+    * glib-networking: Upgrade to 2.58.0
+    * json-glib: Upgrade to 1.4.4
+    * gtk3: Upgrade to 3.24.1
+    * dconf: Upgrade to 0.30.1
+    * pango: Use a Git tag instead of a tarball
+    * gsettings-desktop-schemas: Upgrade to 3.28.1
+    * at-spi2-atk: Upgrade to 2.30.0
+    * atk: Upgrade to 2.30.0
+    * gdk-pixbuf: Upgrade to 2.38.0
+    * gcab: Upgrade to 1.1
+    * vala: Upgrade to 0.42.2
+    * gobject-introspection: Upgrade to 1.58.0
+    * at-spi2-core: Upgrade to 2.30.0
+    * glib: Upgrade to 2.58.1
+    * mesa.bst: Build with OpenCL support (#333)
+
+freedesktop-sdk-18.08.18:
+    * Fix readline linkage with ncurses
+    * Harden glibc build
+    * Fix SIGFPE crash in libva-vdpau-driver
+    * mesa: Update 18.2.3
+    * Use `git describe` output for the `ref:`
+    * openssh: place servers in a separate domain instead remove them
+    * Remove unneded patch in mesa
+    * Add fftw
+
+freedesktop-sdk-18.08.17:
+    * mesa: revert back to 18.2.2 as the update to 18.2.3 was incorrectly done
+
+freedesktop-sdk-18.08.16:
+    * rust: update to 1.30.0
+    * For 32 bit x86, build targetting i686
+
+freedesktop-sdk-18.08.15:
+    * gstreamer components: update to 1.14.4
+    * Add some flag optimizations for x86_64
+    * cairo: Update to 1.16
+    * openssh: Update to 7.9p1 (#405)
+    * opus: Update to 1.3
+    * Add common compiler flags for hardening (#317)
+    * mesa: Update to 18.2.3
+    * Fix useles RPATH generated by libtool (#404)
+    * meson: Update to 0.48.1
+    * geoclue: Update to 2.5.1
+    * Build libsdnfile with ogg/vorbis/flac support (#406)
+
+freedesktop-sdk-18.08.14:
+    * Several improvements in the ABI check (#402,#403)
+    * git: update to 2.19.1
+    * cmake: Apply missing nolib64 patch (#418)
+    * mesa: Update to 18.2.2
+    * bash: Update to 4.4 patch 19
+    * librsvg: Update to 2.44.7
+    * Add vim as dev-tools
+    * mesa: Enable gallium-nine (#409)
+    * Add buildsystem-*.bst stack elements for autotools,meson,cmake...
+    * appstream-glib: Update to 0.7.13
+    * meson: Update to 0.48.0
+    * mesa: Enable xlib lease; needed for VR
+
+freedesktop-sdk-18.08.13:
+    * Move vulkan icd.d files to libdir to support multiarch applications (#398)
+    * librsvg: Upgrade to 2.44.6
+    * libtirpc: Move to the Platform
+    * Add CONTRIBUTING.md (#283)
+    * libglvnd: Upgrade to 1.1.0 (#401)
+
+freedesktop-sdk-18.08.12:
+    * Fix "unkown version" build issue with opus (#397)
+    * mesa: Upgrade to 18.2.1
+    * Add 18.08 to the org.freedesktop.Platform.GL extension "versions"
+    * Properly link readline against ncurses (#386)
+    * nss: Upgrade to 3.39
+    * nspr: Upgrade to 4.2
+    * librsvg: Upgrade to 2.44.3
+    * Enable static libraries in GCC: this allow users to build static C++ applications.
+    * Other issues fixed: #392
+
+freedesktop-sdk-18.08.11:
+    * Fix openssl ABI break
+
+freedesktop-sdk-18.08.10:
+    * Fix mesa shader caching (#349)
+    * Improve error output for mesa, gstreamer
+    * openssh: Remove the server parts
+    * ca-certificates: Update to 20180409
+    * openssl: Update to 1.1.1 (we have kept OpenSSL 1.0) (#164)
+    * git: Update to 2.19.0
+    * curl: Update to 7.61.1
+    * openssh: Update to 7.8p1
+    * openssl: Update to 1.0.2p
+    * Use URL aliases for Freedesktop projects
+    * gstreamer: enable instrospection
+    * More gstreamer plugins: sndfile, openal, curl, vulkan, rsvg, flac, mpg123, xvimagesink
+    * gstreamer: Fix wayland and opengl plugins
+    * Make GST_PLUGIN_SYSTEM_PATH respect mutli-arch
+    * gstreamer-plugins-good: Build wavpack plugin
+    * Install Python modules with pip
+    * Remove python3-mako: not used at all (This shouldn't break apps, as it is only included in the Sdk, not in the Platform.)
+    * Move several components to meson
+    * Don't install Intel VAAPI driver on ARM systems
+    * Fix the icon cache generation
+    * Fix Icon theme not present (#365)
+    * Fix use of the max-jobs variable (#377)
+
+freedesktop-sdk-18.08.9:
+    * Add several gstreamer plugins: opus, pango, cairo, pulseaudio, ogg, theora, vorbis, wayland, soup, opengl (#367, #368, #369)
+    * librsvg: Generate the Vala api (#374)
+    * gtk-doc: Upgrade to 1.29
+    * gdb: Upgrade to 8.2
+    * libdrm: Upgrade to 2.4.94
+    * Check for leftover pkgconfig files
+    * mesa: Update to 18.1.8
+    * gpgme: Correctly split debug symbols (#373)
+    * Several CI fixes
+    * Add ABI checks in the CI (#108)
+
+freedesktop-sdk-18.08.8:
+    * Add the missing build deps on GObject Introspection (#358)
+    * Use new stable BuildStream 1.2.0
+    * Add nsswitch.conf (#345)
+    * Add libtirpc to the SDK (#354)
+    * popt: Install the pkgconfig file in the right place
+    * sdl2-mixer: Enable support for various audio formats (#351))
+    * librsvg: Update to 2.44.2 (#353)
+    * pkg-config.bst: Update to 1.5.3
+    * Other issues fixed: #141
+
+freedesktop-sdk-18.08.7:
+    * geoclue: Update to 2.4.12
+    * Make gobject-introspection a build-only dependency
+    * Beef up the Makefile so it can be used to build locally, and get the CI to use it (#295)
+    * pango: Update to 1.42.4 (#346)
+    * Make OpenSSL ABI compatible with other distributions (#329)
+    * Upstream collect-integration plugin (#341)
+    * meson: Update to 0.47.2
+    * librsvg: Update to 2.44.1 (#344, #336)
+    * Other issues fixed: #195, #338
+
+freedesktop-sdk-18.08.6:
+    * mesa: Update to 18.1.7 (#339)
+    * Configure fcitx properly (#323)
+    * Add /etc/protocols and /etc/services (#331)
+    * Several CI fixes
+    * Other issues fixed: #279, #301, #331, #332, #335
+
+freedesktop-sdk-18.08.5:
+    * Fix html5-codecs build (#326)
+    * Make fontconfig cache files deterministic
+    * vaapi-intel: Fix the ref of the extended runtime
+    * Build gold plugin with llvm (#321)
+
+freedesktop-sdk-18.08.4:
+    * Add samplerate and fcitx support to SDL (#327)
+    * Add libselinux (#325)
+    * Expose fcitx in the SDK (#323)
+    * gst-libav detects now changes to libavcodec (#234, #306)
+
+freedesktop-sdk-18.08.3:
+    * Fix error entering the shell disabling internall malloc bash implementation (#320)
+    * Some python2 cleanup
+    * Add support to network portal v2 (#318)
+
+freedesktop-sdk-18.08.2:
+    * Add html5 codecs extension (#174, #213)
+    * Fix no audio problems with SDL (#313)
+    * mesa: Update to 18.1.6
+    * wayland-protocols: Update to 1.16
+    * Fix symbol stripping (#296)
+    * Other issues fixed: #293, #312, #316
+
+freedesktop-sdk-18.08.1:
+    * Add LAME to the SDK (#277)
+    * Fix SDL2 compilation against wayland
+    * Fix compilation of KDE runtime (qtbase) (#311)
+    * Fix broken font symlinks
+    * Fix nvidia's vulkan drivers (#315)
+    * Other issues fixed: #285, #303, #304, #305, #308
+
+freedesktop-sdk-18.08.0:
+    * Moved to an independent repo at https://gitlab.com/freedesktop-sdk/freedesktop-sdk/
+    * Use gitlab-ci capabilities to continuously and transparently build for i386, x86_64, armv7 and aarch64
+    * Switched to a time-based naming convention (year.month)
+    * Use a unique tool (buildstream) to build the whole project. This means:
+        * No need to use 2 different tools / metadata (Yocto + flatpak-builder)
+        * org.freedesktop.BaseSdk and org.freedesktop.BasePlatform are not needed anymore;
+          use org.freedesktop.Sdk and org.freedesktop.Platform directly instead
+    * Library directories now follow multiarch convention in order to avoid problems with RUNPATHs and multi-architecture applications.
+    * .Compat32 extension has been renamed to .Compat.i386 and only contains the multiarch library directory.
+    * Python 2 is not in .Platform, only in .Sdk; intention is to remove it completely in the next release
+    * Changed pkg-config to pkg-conf
+    * All the components have been updated to their latest stable versions:
+       https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/Release-Contents
+    * Established branching and release model: https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release

@@ -1,17 +1,27 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libgpg-error.bst
+- filename: bootstrap-import.bst
+- filename: base/libgpg-error.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/texinfo.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode \
+    --disable-doc
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libgcrypt.so"
+        - '%{libdir}/libgcrypt.so'
 
 sources:
-  - kind: tar
-    url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.3.tar.bz2
-    ref: 66ec90be036747602f2b48f98312361a9180c97c68a690a5f376fa0f67d0af7c
+- kind: git_tag
+  url: gnupg:libgcrypt.git
+  track: LIBGCRYPT-1.8-BRANCH
+  ref: libgcrypt-1.8.4-0-g93775172713c00c363187b5d6a88895b04ac7c8e
