@@ -25,7 +25,13 @@ variables:
     --with-png=yes \
     --with-harfbuzz=yes
 
+config:
+  configure-commands:
+    (<):
+      - ./autogen.sh
+
 sources:
-- kind: tar
-  url: https://download.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.bz2
-  ref: db8d87ea720ea9d5edc5388fc7a0497bb11ba9fe972245e0f7f4c7e8b1e1e84d
+- kind: git_tag
+  url: savannah:freetype/freetype2.git
+  track: master
+  ref: VER-2-9-1-0-g86bc8a95056c97a810986434a3f268cbe67f2902
