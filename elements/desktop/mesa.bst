@@ -6,8 +6,7 @@ depends:
   type: build
 - filename: desktop/llvm7-static.bst
   type: build
-- filename: desktop/llvm7-runtime.bst
-  type: runtime
+- filename: desktop/llvm7.bst
 - filename: desktop/libdrm.bst
 - filename: desktop/libva.bst
 - filename: desktop/libclc.bst

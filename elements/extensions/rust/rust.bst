@@ -10,9 +10,6 @@ depends:
 - filename: base/python3.bst
   type: build
 - filename: desktop/llvm7.bst
-  type: build
-- filename: desktop/llvm7-runtime.bst
-  type: runtime
 - filename: base/libxml2.bst
 
 variables:
