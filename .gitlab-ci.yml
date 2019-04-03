@@ -156,7 +156,6 @@ populate_source_cache:
     - make ARCH=${ARCH} check-rpath
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - make ARCH=${ARCH} export
     - make ARCH=${ARCH} test-apps
 
     - |
