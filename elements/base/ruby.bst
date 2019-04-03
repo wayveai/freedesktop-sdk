@@ -4,7 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
-- filename: base/openssl.bst
 - filename: base/libffi.bst
 - filename: base/gdbm.bst
 

@@ -11,6 +11,8 @@ depends:
   type: runtime
 - filename: bootstrap/file.bst
   type: runtime
+- filename: bootstrap/openssl.bst
+  type: runtime
 
 (@): elements/bootstrap/target.yml
 

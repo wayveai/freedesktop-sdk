@@ -8,7 +8,7 @@ depends:
 - filename: bootstrap/build/debug-utils.bst
   type: build
 
-- filename: bootstrap/openssl-static.bst
+- filename: bootstrap/openssl.bst
   type: build
 - filename: bootstrap/popt.bst
   type: build
@@ -31,7 +31,7 @@ config:
   - element: bootstrap/build/debug-utils.bst
     destination: "/"
 
-  - element: bootstrap/openssl-static.bst
+  - element: bootstrap/openssl.bst
     destination: "%{sysroot}"
   - element: bootstrap/popt.bst
     destination: "%{sysroot}"

@@ -8,8 +8,6 @@ depends:
   type: build
 - filename: base/flex.bst
   type: build
-- filename: base/openssl.bst
-  type: build
 - filename: base/bc.bst
   type: build
 - filename: base/gzip.bst

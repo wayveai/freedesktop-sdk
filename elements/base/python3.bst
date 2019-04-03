@@ -8,7 +8,6 @@ depends:
 - filename: base/expat.bst
 - filename: base/libffi.bst
 - filename: base/gdbm.bst
-- filename: base/openssl.bst
 - filename: base/sqlite.bst
 - filename: base/xz.bst
 
