@@ -151,6 +151,7 @@ populate_source_cache:
   stage: flatpak
   script:
     - make ARCH=${ARCH} build
+    - test ${ARCH} != "aarch64" && make build-vm
     - make ARCH=${ARCH} check-dev-files
     - make ARCH=${ARCH} check-rpath
 
