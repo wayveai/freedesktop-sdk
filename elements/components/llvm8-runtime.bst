@@ -1,6 +1,6 @@
 kind: filter
 depends:
-- filename: components/llvm7-base.bst
+- filename: components/llvm8-base.bst
   type: build
 
 config:

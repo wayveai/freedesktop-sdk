@@ -1,9 +1,9 @@
 kind: filter
 
 depends:
-- filename: components/llvm7-base.bst
+- filename: components/llvm8-base.bst
   type: build
-- filename: components/llvm7-runtime.bst
+- filename: components/llvm8-runtime.bst
   type: runtime
 
 config:
@@ -24,13 +24,14 @@ public:
         - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-7.0.1.so'
+        - '%{libdir}/libLLVM-8.0.0.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so'
         - '%{libdir}/libclang.so'
         - '%{libdir}/BugpointPasses.so'
+        - '%{libdir}/libOptRemarks.so'
         - '%{libdir}/clang'
         - '%{libdir}/clang/**'
         - '%{datadir}/clang'

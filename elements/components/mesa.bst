@@ -2,11 +2,11 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/llvm7.bst
+- filename: components/llvm8.bst
   type: build
-- filename: components/llvm7-static.bst
+- filename: components/llvm8-static.bst
   type: build
-- filename: components/llvm7.bst
+- filename: components/llvm8.bst
 - filename: components/libdrm.bst
 - filename: components/libva.bst
 - filename: components/libclc.bst

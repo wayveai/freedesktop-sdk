@@ -9,7 +9,7 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: components/llvm7.bst
+- filename: components/llvm8.bst
 - filename: components/libxml2.bst
 
 variables:

@@ -1,7 +1,8 @@
-diff -u -r llvm7.old/cmake/modules/AddLLVM.cmake llvm7/cmake/modules/AddLLVM.cmake
---- llvm7.old/cmake/modules/AddLLVM.cmake	2019-02-20 13:05:46.625863076 +0100
-+++ llvm7/cmake/modules/AddLLVM.cmake	2019-02-20 13:07:56.756632497 +0100
-@@ -1635,7 +1635,7 @@
+diff --git a/llvm/cmake/modules/AddLLVM.cmake b/llvm/cmake/modules/AddLLVM.cmake
+index 0df6845aaa7..c73be702b93 100644
+--- a/llvm/cmake/modules/AddLLVM.cmake
++++ b/llvm/cmake/modules/AddLLVM.cmake
+@@ -1671,7 +1671,7 @@ function(llvm_setup_rpath name)
      set(_install_name_dir INSTALL_NAME_DIR "@rpath")
      set(_install_rpath "@loader_path/../lib" ${extra_libdir})
    elseif(UNIX)

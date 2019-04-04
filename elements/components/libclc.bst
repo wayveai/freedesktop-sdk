@@ -2,36 +2,37 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/llvm7.bst
+- filename: components/llvm8.bst
   type: build
-- filename: components/llvm7-static.bst
+- filename: components/llvm8-static.bst
   type: build
 - filename: components/python3.bst
   type: build
 
 config:
   configure-commands:
-    - |
-      ./configure.py \
-      --prefix=%{prefix} \
-      --pkgconfigdir=%{libdir}/pkgconfig \
-      --with-cxx-compiler=%{bindir}/g++
+  - |
+    cd libclc
+    ./configure.py \
+    --prefix=%{prefix} \
+    --pkgconfigdir=%{libdir}/pkgconfig \
+    --with-cxx-compiler=%{bindir}/g++
 
   build-commands:
-    - |
-      make
+  - |
+    cd libclc
+    make
 
   install-commands:
-    - |
-      make -j1 DESTDIR="%{install-root}" install
+  - |
+    cd libclc
+    make -j1 DESTDIR="%{install-root}" install
 
 sources:
-  # libclc uses an svn repo, and the git seems to only be a mirror.
-  # We want to use an svn plugin.
-  # This is a specific commit in master, where the copyright was updated to 
-  # 2018, I could see nothing else remotely release-like.
-- kind: git 
-  url: https://llvm.org/git/libclc
-  ref: e6e24bf34143a3d4c225376efe7eef69ead9ac7b # No git describe, no tags...
+- kind: git_tag
+  track: release/8.x
+  url: github:llvm/llvm-project.git
+  ref: llvmorg-8.0.0-0-gd2298e74235598f15594fe2c99bbac870a507c59
 - kind: patch
+  directory: libclc
   path: patches/libclc/libclc-force-configure-to-use-python3.patch
