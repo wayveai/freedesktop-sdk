@@ -3,7 +3,7 @@ kind: autotools
 depends:
 - filename: components/xorg-lib-xi.bst
   type: build
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
   type: build
 - filename: components/freetype.bst
   type: build

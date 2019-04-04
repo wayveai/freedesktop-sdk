@@ -6,7 +6,6 @@ depends:
   type: build
 - filename: components/glslang.bst
   type: build
-- filename: components/mesa.bst
 - filename: components/spirv-tools.bst
   type: build
 - filename: components/wayland.bst

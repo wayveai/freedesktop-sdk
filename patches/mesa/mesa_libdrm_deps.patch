@@ -1,0 +1,23 @@
+diff -ur mesa.old/src/loader/meson.build mesa/src/loader/meson.build
+--- mesa.old/src/loader/meson.build	2019-04-08 12:13:17.568919114 +0200
++++ mesa/src/loader/meson.build	2019-04-08 12:20:01.748895814 +0200
+@@ -43,6 +43,6 @@
+             '-DDEFAULT_DRIVER_DIR="@0@"'.format(dri_search_path),
+ ],
+   include_directories : [inc_include, inc_src, inc_util],
+-  dependencies : [dep_libdrm, dep_thread],
++  dependencies : [dep_libdrm, dep_thread, dep_libdrm_nouveau],
+   build_by_default : false,
+ )
+diff -ur mesa.old/src/mesa/drivers/dri/i965/meson.build mesa/src/mesa/drivers/dri/i965/meson.build
+--- mesa.old/src/mesa/drivers/dri/i965/meson.build	2019-04-08 12:13:17.580918994 +0200
++++ mesa/src/mesa/drivers/dri/i965/meson.build	2019-04-08 12:20:01.748895814 +0200
+@@ -143,7 +143,7 @@
+       c_vis_args, no_override_init_args, c_sse2_args,
+       '-DGEN_VERSIONx10=@0@'.format(v),
+     ],
+-    dependencies : [dep_libdrm, idep_nir_headers],
++    dependencies : [dep_libdrm, dep_libdrm_intel, idep_nir_headers],
+   )
+ endforeach
+ 

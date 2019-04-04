@@ -3,7 +3,7 @@ kind: autotools
 depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
   type: build
 
 variables:

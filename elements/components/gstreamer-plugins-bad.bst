@@ -13,7 +13,6 @@ depends:
 - filename: components/libfdk-aac.bst
 - filename: components/libglvnd.bst
 - filename: components/librsvg.bst
-- filename: components/mesa.bst
 - filename: components/openal.bst
 - filename: components/vulkan.bst
 - filename: components/wayland.bst
@@ -37,7 +36,8 @@ variables:
     --enable-orc \
     --enable-wayland \
     --disable-vdpau \
-    --enable-ladspa
+    --enable-ladspa \
+    --enable-gl
 
 public:
   bst:

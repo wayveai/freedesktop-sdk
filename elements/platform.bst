@@ -148,7 +148,7 @@ depends:
 - filename: components/libvdpau.bst
 - filename: components/libxkbcommon.bst
 - filename: components/llvm8.bst
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
 - filename: components/mpg123.bst
 - filename: components/multiarch-links.bst
 - filename: components/mythes.bst

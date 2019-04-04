@@ -12,7 +12,7 @@ depends:
   type: build
 - filename: components/libpulse.bst
 - filename: components/libxkbcommon.bst
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst
   type: build

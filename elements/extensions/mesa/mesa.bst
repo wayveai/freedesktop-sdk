@@ -6,7 +6,8 @@ depends:
   type: build
 - filename: components/llvm8-static.bst
   type: build
-- filename: components/llvm8.bst
+- filename: components/llvm8-runtime.bst
+  type: runtime
 - filename: components/libdrm.bst
 - filename: components/libva.bst
 - filename: components/libclc.bst
@@ -35,7 +36,14 @@ depends:
 - filename: components/gettext.bst
   type: build
 
+environment:
+  PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+
 variables:
+  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
+  lib: "lib"
+  debugdir: "/usr/lib/debug"
+
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: nouveau,r600,r300,radeonsi,svga,swrast,virgl
@@ -119,8 +127,5 @@ public:
         - '%{libdir}/libxatracker.so'
         - '%{libdir}/libMesaOpenCL.so'
 
-sources:
-- kind: git_tag
-  url: freedesktop:mesa/mesa.git
-  track: 19.0
-  ref: mesa-19.0.2-0-g2964ee3ad05c4b3d1407aeaa28e2058fe93e1659
+(@):
+- elements/extensions/mesa/mesa-source.yml

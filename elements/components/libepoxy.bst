@@ -2,7 +2,8 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
+- filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/python3.bst
