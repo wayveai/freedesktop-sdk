@@ -85,7 +85,6 @@ depends:
 - filename: desktop/sdl2-ttf.bst
 - filename: desktop/sdl2.bst
 - filename: desktop/shared-mime-info.bst
-- filename: desktop/sound-theme-freedesktop.bst
 - filename: desktop/vulkan.bst
 - filename: desktop/wayland.bst
 - filename: desktop/xcb-util-cursor.bst
