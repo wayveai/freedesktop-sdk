@@ -8,7 +8,6 @@ depends:
 - filename: base/groff.bst
   type: build
 - filename: base/sqlite.bst
-- filename: base/openssl.bst
 
 variables:
   conf-local: |

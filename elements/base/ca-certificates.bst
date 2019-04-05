@@ -2,7 +2,6 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/openssl.bst
 - filename: base/python3.bst
   type: build
 

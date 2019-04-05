@@ -6,7 +6,6 @@ depends:
 - filename: extensions/rust/cargo-stage1.bst
   type: build
 - filename: extensions/rust/rust.bst
-- filename: base/openssl.bst
 - filename: base/buildsystem-cmake.bst
   type: build
 - filename: base/perl.bst

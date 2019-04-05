@@ -6,7 +6,6 @@ depends:
 - filename: base/python3.bst
 - filename: base/gnupg.bst
 - filename: base/curl.bst
-- filename: base/openssl.bst
 - filename: base/pcre2.bst
 - filename: base/expat.bst
 - filename: base/libffi.bst

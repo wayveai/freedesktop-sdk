@@ -5,7 +5,6 @@ depends:
 - filename: base/buildsystem-autotools.bst
   type: build
 - filename: base/gnutls.bst
-- filename: base/openssl.bst
 - filename: base/krb5.bst
 - filename: base/nss.bst
 
