@@ -33,6 +33,7 @@ depends:
 - filename: base/python2.bst
 - filename: base/python2-docutils.bst
 - filename: base/python2-usercustomize.bst
+- filename: base/python2-sitecustomize.bst
 - filename: base/openssh.bst
 - filename: base/patch.bst
 - filename: base/pkg-config.bst
