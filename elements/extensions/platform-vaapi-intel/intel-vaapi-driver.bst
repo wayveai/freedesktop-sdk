@@ -5,6 +5,11 @@ depends:
 - filename: components/libva.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
+- filename: extensions/mesa/libdrm.bst
+  type: build
+
+environment:
+  PKG_CONFIG_PATH: "/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig:"
 
 variables:
   meson-local: |

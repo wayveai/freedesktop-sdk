@@ -9,16 +9,43 @@ depends:
 
 variables:
   meson-local: |
-    -Detnaviv=true \
-    -Dtegra=true \
+    -Dintel=false \
+    -Dradeon=false \
+    -Damdgpu=false \
+    -Dnouveau=false \
+    -Dvmwgfx=false \
+    -Domap=false \
+    -Dexynos=false \
+    -Dfreedreno=false \
+    -Dtegra=false \
+    -Dvc4=false \
+    -Detnaviv=false \
     -Dudev=false
+
+config:
+  install-commands:
+    (>):
+    - |
+      for f in "%{install-root}%{includedir}"/libdrm/*; do
+        case "${f}" in
+          */drm.h) ;&
+          */drm_*.h)
+            ;;
+          */*_drm.h)
+            rm "${f}"
+            ;;
+          *)
+            echo "Not sure what to do with ${f}" 1>&2
+            false
+            ;;
+        esac
+      done
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{libdir}/libdrm_*.so'
         - '%{libdir}/libdrm.so'
         - '%{libdir}/libkms.so'
 

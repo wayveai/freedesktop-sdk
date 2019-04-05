@@ -9,6 +9,7 @@ depends:
 - filename: components/llvm8-runtime.bst
   type: runtime
 - filename: components/libdrm.bst
+- filename: extensions/mesa/libdrm.bst
 - filename: components/libva.bst
 - filename: components/libclc.bst
 - filename: components/opencl.bst
