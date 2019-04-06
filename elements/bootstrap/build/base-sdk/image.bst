@@ -4,7 +4,7 @@ sources:
 - kind: ostree
   url: flathub:repo/
   # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
-  #gpg-key: keys/flathub.gpg
+  #gpg-key: files/keys/flathub.gpg
   (?):
   - bootstrap_build_arch == "x86_64":
       track: runtime/org.freedesktop.BaseSdk/x86_64/1.6
