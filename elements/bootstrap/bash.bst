@@ -17,7 +17,7 @@ variables:
     --with-installed-readline="%{sysroot}%{prefix}" \
     --enable-job-control \
     --without-bash-malloc \
-    ac_cv_rl_version=7.0 \
+    ac_cv_rl_version=8.0 \
     bash_cv_getcwd_malloc=yes \
     bash_cv_job_control_missing=present \
     bash_cv_termcap_lib=libtinfo
@@ -42,10 +42,10 @@ config:
 public:
   cpe:
     vendor: 'gnu'
-    version: '4.4.19'
+    version: '5.0.0'
 
 sources:
 - kind: git_tag
   url: savannah:bash.git
   track: master
-  ref: bash-4.4-19-gb0776d8c49ab4310fa056ce1033985996c5b9807
+  ref: bash-5.0-0-gd233b485e83c3a784b803fb894280773f16f2deb
