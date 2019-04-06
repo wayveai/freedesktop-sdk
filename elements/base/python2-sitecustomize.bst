@@ -13,4 +13,4 @@ config:
 
 sources:
 - kind: local
-  path: files/python3-sitecustomize.py
+  path: files/python2-sitecustomize.py
