@@ -1,15 +1,15 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
 - filename: desktop/gobject-introspection.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: base/buildsystem-meson.bst
   type: build
-- filename: base/intltool.bst
+- filename: base/gettext.bst
   type: build
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/sources/gsettings-desktop-schemas/3.28/gsettings-desktop-schemas-3.28.1.tar.xz
-  ref: f88ea6849ffe897c51cfeca5e45c3890010c82c58be2aee18b01349648e5502f
+  url: https://download.gnome.org/sources/gsettings-desktop-schemas/3.32/gsettings-desktop-schemas-3.32.0.tar.xz
+  ref: 2d59b4b3a548859dfae46314ee4666787a00d5c82db382e97df7aa9d0e310a35
