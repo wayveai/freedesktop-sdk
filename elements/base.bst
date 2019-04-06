@@ -30,9 +30,6 @@ depends:
 - filename: base/ninja.bst
 - filename: base/perl.bst
 - filename: base/perl-xml-parser.bst
-- filename: base/python2.bst
-- filename: base/python2-docutils.bst
-- filename: base/python2-usercustomize.bst
 - filename: base/openssh.bst
 - filename: base/patch.bst
 - filename: base/pkg-config.bst
