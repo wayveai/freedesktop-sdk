@@ -7,12 +7,22 @@ depends:
   type: build
 - filename: base/perl.bst
   type: build
+- filename: base/flex.bst
+  type: build
+- filename: base/bison.bst
+  type: build
 
 variables:
   conf-link-args: |
     --enable-shared
 
   conf-local: |
+    --disable-binutils \
+    --disable-ld \
+    --disable-gold \
+    --disable-gas \
+    --disable-sim \
+    --disable-gprof \
     --without-zlib \
     --with-system-zlib \
     --disable-readline \
@@ -38,6 +48,7 @@ config:
       rm -f "%{install-root}%{datadir}"/locale/*/LC_MESSAGES/opcodes.mo
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:gdb/gdb-8.2.tar.xz
-  ref: c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39
+- kind: git_tag
+  url: sourceware:binutils-gdb.git
+  track: gdb-8.2-branch
+  ref: gdb-8.2.1-release-0-g15146ff7370d5abad01dbecfacb0bf0e66a93cd6
