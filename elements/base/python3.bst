@@ -71,4 +71,4 @@ sources:
 - kind: git_tag
   track: 3.7
   url: github:python/cpython.git
-  ref: v3.7.2-0-g9a3ffc0492d1310ead9ce8f5ee678c26b20a338d
+  ref: v3.7.3-0-gef4ec6ed12d6c6200a85068f60483723298b6ff4
