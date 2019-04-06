@@ -12,5 +12,5 @@ variables:
 sources:
 - kind: git_tag
   track: master
-  url: https://gitlab.com/freedesktop-sdk/shared-library-guard.git
+  url: gitlab:freedesktop-sdk/shared-library-guard.git
   ref: v19.04.1-0-gd0d7c745be1ba5462ff1bbe4695fb4bad480ac8d
