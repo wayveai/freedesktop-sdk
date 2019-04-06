@@ -4,8 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: extensions/rust/rust.bst
   type: build
-- filename: extensions/rust/cargo.bst
-  type: build
 - filename: components/vala.bst
   type: build
 - filename: components/gdk-pixbuf.bst
