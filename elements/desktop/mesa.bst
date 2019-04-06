@@ -126,6 +126,4 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: 18.3
-  ref: mesa-18.3.5-0-g022708cb40a997e796f95d011a0e6c64a7333fe0
-- kind: patch
-  path: patches/mesa/fix-driver-rpath.patch
+  ref: mesa-18.3.6-0-g11049bcff86da8013a4f63bd68daf637e3af22f3
