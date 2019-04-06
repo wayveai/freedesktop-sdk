@@ -47,6 +47,7 @@ config:
     target = ["%{rust-target}"]
     cargo = "/usr/bin/cargo"
     rustc = "/usr/bin/rustc"
+    docs = true
     submodules = false
     python = "/usr/bin/python3"
     locked-deps = true
@@ -63,9 +64,11 @@ config:
     mandir = "%{mandir}"
     docdir = "%{datadir}/doc/rust"
     [rust]
+    optimize = true
     channel = "stable"
     debuginfo = true
     debuginfo-only-std = %{debuginfo-only-std}
+    backtrace = true
     rpath = false
     default-linker = "/usr/bin/gcc"
     [target.%{rust-target}]
