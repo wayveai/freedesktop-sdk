@@ -9,5 +9,3 @@ variables:
 depends:
 - filename: extensions/rust/rust.bst
   type: build
-- filename: extensions/rust/cargo.bst
-  type: build

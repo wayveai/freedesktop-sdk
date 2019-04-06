@@ -56,6 +56,8 @@ config:
     locked-deps = true
     vendor = true
     verbose = 2
+    extended = true
+    tools = ["cargo", "rls", "clippy", "rustfmt", "analysis", "src"]
     [install]
     prefix = "%{prefix}"
     sysconfdir = "%{sysconfdir}"
@@ -71,6 +73,7 @@ config:
     channel = "stable"
     debuginfo = true
     debuginfo-only-std = %{debuginfo-only-std}
+    debuginfo-tools = true
     backtrace = true
     rpath = false
     default-linker = "/usr/bin/gcc"
