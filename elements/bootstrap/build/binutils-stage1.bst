@@ -39,6 +39,9 @@ config:
         done
       done
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: sourceware_pub:binutils/releases/binutils-2.31.1.tar.xz

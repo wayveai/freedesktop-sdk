@@ -27,6 +27,11 @@ config:
       mkdir -p "%{builddir}/man"
       cp /coreutils-manpages/man1/* "%{builddir}/man/"
 
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:coreutils/coreutils-8.31.tar.xz

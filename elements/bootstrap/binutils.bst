@@ -44,6 +44,9 @@ config:
         done
       done
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 environment:
   LEXLIB: ' '
 

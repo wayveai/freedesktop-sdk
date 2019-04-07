@@ -9,6 +9,12 @@ depends:
 
 (@): elements/bootstrap/target.yml
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:findutils/findutils-4.6.0.tar.gz

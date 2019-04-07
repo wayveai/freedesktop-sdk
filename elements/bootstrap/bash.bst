@@ -39,6 +39,9 @@ config:
     - |
       ln -s bash "%{install-root}%{bindir}/sh"
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 public:
   cpe:
     vendor: 'gnu'

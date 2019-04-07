@@ -27,6 +27,9 @@ config:
     - |
       rm -r "%{install-root}%{libexecdir}/getconf"
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: git_tag
   url: sourceware:glibc.git

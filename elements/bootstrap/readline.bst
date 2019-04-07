@@ -20,6 +20,11 @@ config:
     cd "%{builddir}"
     %{make} SHLIB_LIBS="-Wl,--push-state,--no-as-needed -lncurses -Wl,--pop-state"
 
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 public:
   bst:
     split-rules:

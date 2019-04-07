@@ -9,6 +9,12 @@ depends:
 
 (@): elements/bootstrap/target.yml
 
+config:
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:sed/sed-4.5.tar.xz
