@@ -35,6 +35,8 @@ depends:
   type: build
 - filename: vm/systemd-firstboot-integration.bst
   type: build
+- filename: vm/mesa-default.bst
+  type: build
 
 config:
   include:

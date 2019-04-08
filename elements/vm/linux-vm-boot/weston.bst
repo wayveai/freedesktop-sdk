@@ -9,7 +9,6 @@ depends:
   - filename: components/linux-pam.bst
   - filename: components/cairo.bst
   - filename: components/libdrm.bst
-  - filename: components/mesa.bst
   - filename: components/wayland.bst
   - filename: components/wayland-protocols.bst
     type: build
@@ -18,6 +17,7 @@ depends:
   - filename: components/xorg-lib-xcursor.bst
   - filename: vm/linux-vm-boot/mtdev.bst
   - filename: vm/linux-vm-boot/libinput.bst
+  - filename: vm/mesa-default.bst
 
 variables:
   conf-local: |
