@@ -63,6 +63,7 @@ depends:
 - filename: components/nss.bst
 - filename: components/nsswitch-config.bst
 - filename: components/opus.bst
+- filename: components/osmesa.bst
 - filename: components/p11-kit.bst
 - filename: components/pcre2.bst
 - filename: components/pcre.bst

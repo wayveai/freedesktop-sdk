@@ -78,7 +78,7 @@ variables:
     -Dlibunwind=%{enable_libunwind} \
     -Dllvm=true \
     -Dlmsensors=false \
-    -Dosmesa=gallium \
+    -Dosmesa=none \
     -Dplatforms=x11,drm,surfaceless,wayland \
     -Dselinux=false \
     -Dshared-glapi=true \
@@ -123,7 +123,6 @@ public:
         (>):
         - '%{libdir}/libgbm.so'
         - '%{libdir}/libglapi.so'
-        - '%{libdir}/libOSMesa.so'
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
         - '%{libdir}/libMesaOpenCL.so'
