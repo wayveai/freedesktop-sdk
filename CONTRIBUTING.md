@@ -16,7 +16,8 @@ In order to contribute your first patch, you will need to follow these steps:
 
 Additionally you can [test your changes](#testing-locally) locally using our Makefile
 
-You can ask questions or contact us over at #freedesktop-sdk on [Freenode](https://webchat.freenode.net/), or our [mailing list](https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk).
+## Help & Contact
+If this guide does not answer your questions, or you encounter any problems you can contact us over at #freedesktop-sdk on [Freenode](https://webchat.freenode.net/), or our [mailing list](https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk).
 
 Let's go through each step in more detail:
 ## Create a gitlab account
