@@ -8,6 +8,10 @@ depends:
 
 (@): elements/bootstrap/target.yml
 
+variables:
+  conf-local: |
+   --disable-libseccomp
+
 config:
   configure-commands:
     (<):
