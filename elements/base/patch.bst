@@ -6,6 +6,8 @@ depends:
   type: build
 - filename: base/buildsystem-autotools.bst
   type: build
+- filename: base/git-minimal.bst
+  type: build
 
 public:
   cpe:
