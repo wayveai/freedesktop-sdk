@@ -372,18 +372,32 @@ finish_publish_failed:
     - make ARCH=${ARCH} export
 
     - |
-      for ref in $(ostree --repo=repo refs --list); do
-        case "${ref}" in
-          */org.freedesktop.Sdk*/*/18.08) ;&
-          */org.freedesktop.Platform*/*/18.08)
-            echo "Keeping ${ref}"
+      case "$RELEASES_SERVER_ADDRESS" in
+        https://hub.flathub.org/)
+          for ref in $(ostree --repo=repo refs --list); do
+            case "${ref}" in
+              */org.freedesktop.Sdk.Minimal/*/18.08)
+                echo "Deleting ${ref}"
+                ostree --repo=repo refs --delete "${ref}"
+                ;;
+              */org.freedesktop.Sdk*/*/18.08) ;&
+              */org.freedesktop.Platform*/*/18.08)
+                echo "Keeping ${ref}"
+                ;;
+              */*/*/*)
+                echo "Deleting ${ref}"
+                ostree --repo=repo refs --delete "${ref}"
+                ;;
+            esac
+          done
           ;;
-          */*/*/*)
-            echo "Deleting ${ref}"
-            ostree --repo=repo refs --delete "${ref}"
+        https://cache.sdk.freedesktop.org/)
           ;;
-        esac
-      done
+        *)
+          false
+          ;;
+      esac
+
     - flatpak build-update-repo --generate-static-deltas --prune repo
     - git clone https://github.com/flatpak/flat-manager.git
     - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
