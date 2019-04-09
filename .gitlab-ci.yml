@@ -376,6 +376,10 @@ finish_publish_failed:
         https://hub.flathub.org/)
           for ref in $(ostree --repo=repo refs --list); do
             case "${ref}" in
+              */org.freedesktop.Sdk.Minimal/*/18.08)
+                echo "Deleting ${ref}"
+                ostree --repo=repo refs --delete "${ref}"
+                ;;
               */org.freedesktop.Sdk*/*/18.08) ;&
               */org.freedesktop.Platform*/*/18.08)
                 echo "Keeping ${ref}"

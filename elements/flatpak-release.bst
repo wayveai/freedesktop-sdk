@@ -34,6 +34,8 @@ depends:
   type: build
 - filename: flatpak-images/vulkaninfo.bst
   type: build
+- filename: flatpak-images/minimal.bst
+  type: build
 
 config:
   arch: '%{gcc_arch}'
