@@ -17,5 +17,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://downloads.sourceforge.net/hunspell/hunspell-1.3.3.tar.gz
+  url: sourceforge_download:hunspell/hunspell-1.3.3.tar.gz
   ref: a7b2c0de0e2ce17426821dc1ac8eb115029959b3ada9d80a81739fa19373246c
