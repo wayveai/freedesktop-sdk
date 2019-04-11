@@ -83,7 +83,7 @@ Currently we provide the following runtimes:
 Additionally we provide the following extensions to our platform:
 * org.freedesktop.Platform.Locale
 * org.freedesktop.Platform.VAAPI.Intel (Intel only)
-* org.freedesktop.Platform.html5-codecs
+* org.freedesktop.Platform.ffmpeg-html5
 * org.freedesktop.Platform.Compat.{architecture}
 
 And the following extensions to the SDK:

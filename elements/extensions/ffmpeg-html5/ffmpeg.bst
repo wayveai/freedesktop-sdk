@@ -1,5 +1,5 @@
 kind: manual
-description: ffmpeg shipped in the html5-codec extension, has html5 codecs enabled
+description: ffmpeg shipped in the ffmpeg-html5 extension, has html5 codecs enabled
 
 (@):
 - elements/config/ffmpeg.yml
