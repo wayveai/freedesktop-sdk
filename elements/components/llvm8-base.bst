@@ -86,6 +86,7 @@ public:
         - '%{datadir}/scan-view/**'
       static:
       - '%{libdir}/*.a'
+      - '%{libdir}/**/*.a'
 
 sources:
 - kind: git_tag
