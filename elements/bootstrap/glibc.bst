@@ -23,6 +23,13 @@ config:
 
   install-commands:
     (>):
+    - install -dDm755 "%{install-root}%{includedir}/%{gcc_triplet}"
+    - |
+      for i in bits gnu sys fpu_control.h a.out.h ieee754.h; do
+         mv "%{install-root}%{includedir}/${i}" \
+            "%{install-root}%{includedir}/%{gcc_triplet}/"
+      done
+
     - |
       rm -r "%{install-root}%{libexecdir}/getconf"
 
@@ -81,7 +88,7 @@ variables:
 
   conf-local: |
     CFLAGS="$CFLAGS" \
-    --with-headers=%{sysroot}%{includedir} \
+    --with-headers=%{sysroot}%{includedir}/%{gcc_triplet}:%{sysroot}%{includedir} \
     --enable-stackguard-randomization \
     --enable-stack-protector=strong \
     --enable-bind-now \

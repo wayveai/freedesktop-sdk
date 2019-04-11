@@ -6,6 +6,18 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}"
+      mv "%{install-root}%{includedir}/libunwind.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+      for h in "%{install-root}%{includedir}/"libunwind-{x86,arm,aarch64,x86_64}.h; do
+        if [ -e "${h}" ]; then
+           mv "${h}" "%{install-root}%{includedir}/%{gcc_triplet}/"
+        fi
+      done
+
 public:
   bst:
     split-rules:

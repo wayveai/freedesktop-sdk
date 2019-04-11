@@ -56,6 +56,15 @@ variables:
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG"
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/llvm"
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/clang"
+      mv "%{install-root}%{includedir}/llvm/Config" "%{install-root}%{includedir}/%{gcc_triplet}/llvm/"
+      mv "%{install-root}%{includedir}/clang/Config" "%{install-root}%{includedir}/%{gcc_triplet}/clang/"
+
 public:
   bst:
     split-rules:

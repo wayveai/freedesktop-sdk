@@ -26,6 +26,10 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/valgrind"
+      mv "%{install-root}%{includedir}/valgrind/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/valgrind/"
+
 public:
   cpe:
     version: '3.14.0'

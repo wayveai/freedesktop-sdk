@@ -8,6 +8,7 @@ depends:
   type: build
 
 variables:
+  includedir: "%{prefix}/include/%{gcc_triplet}"
   conf-local: |
     --enable-maintainer-mode \
     --disable-doc
@@ -17,6 +18,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{prefix}/include'
         - '%{libdir}/libgpg-error.so'
 
 sources:

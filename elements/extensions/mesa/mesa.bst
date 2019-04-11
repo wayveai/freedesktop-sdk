@@ -116,6 +116,12 @@ config:
         done
       done
 
+    - |
+      if [ -f "%{install-root}%{includedir}/vulkan/vulkan_intel.h" ]; then
+        mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/vulkan"
+        mv "%{install-root}%{includedir}/vulkan/vulkan_intel.h" "%{install-root}%{includedir}/%{gcc_triplet}/vulkan/"
+      fi
+
 public:
   bst:
     split-rules:

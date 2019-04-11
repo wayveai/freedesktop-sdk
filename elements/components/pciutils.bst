@@ -16,6 +16,10 @@ config:
     - |
       make SHARED=yes PREFIX="%{prefix}" SBINDIR="%{prefix}/bin" SHAREDIR="%{prefix}/share/hwdata" MANDIR="%{prefix}/share/man" LIBDIR="%{libdir}" DESTDIR="%{install-root}" install install-lib
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/pci"
+      mv "%{install-root}%{includedir}/pci/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/pci/"
+
 public:
   bst:
     split-rules:

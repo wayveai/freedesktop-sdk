@@ -6,6 +6,13 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/libxslt"
+      mv "%{install-root}%{includedir}/libxslt/xsltconfig.h" "%{install-root}%{includedir}/%{gcc_triplet}/libxslt/"
+
 public:
   bst:
     split-rules:

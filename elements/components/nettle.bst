@@ -12,6 +12,14 @@ variables:
   # /bin/sh: line 1: ./desdata: Text file busy
   notparallel: true
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/nettle"
+      mv "%{install-root}%{includedir}/nettle/nettle-stdint.h" "%{install-root}%{prefix}/include/%{gcc_triplet}/nettle/"
+      sed -i 's,"nettle-stdint.h",<nettle/nettle-stdint.h>,' "%{install-root}%{includedir}/nettle/"*
+
 public:
   bst:
     split-rules:

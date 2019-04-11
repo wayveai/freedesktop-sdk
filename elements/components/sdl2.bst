@@ -38,6 +38,12 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/SDL2"
+      mv "%{install-root}%{includedir}/SDL2/SDL_config.h" "%{install-root}%{includedir}/%{gcc_triplet}/SDL2/"
+      sed -i 's,^\(Cflags:.*\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{libdir}/pkgconfig/sdl2.pc"
+      sed -i 's,\(-I%{includedir}/SDL2\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{bindir}/sdl2-config"
+
 public:
   bst:
     split-rules:
