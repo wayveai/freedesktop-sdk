@@ -6,6 +6,8 @@ depends:
 - filename: flatpak-images/sdk-debug.bst
 - filename: flatpak-images/sdk-docs.bst
 - filename: flatpak-images/sdk-locale.bst
+- filename: flatpak-images/sdk-arch-libs.bst
+- filename: flatpak-images/sdk-arch-libs-debug.bst
 - filename: flatpak-images/platform.bst
 - filename: flatpak-images/platform-locale.bst
 - filename: flatpak-images/platform-arch-libs.bst

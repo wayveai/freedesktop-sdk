@@ -22,6 +22,8 @@ public:
 depends:
 - filename: platform.bst
   type: build
+- filename: multiarch-platform.bst
+  type: build
 - filename: split-locales.bst
   type: build
 - filename: split-docs.bst

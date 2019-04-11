@@ -83,6 +83,42 @@ config:
       no-autodownload: 'true'
       download-if: have-intel-gpu
 
+    (?):
+    - target_arch in ["x86_64", "aarch64"]:
+        Extension org.freedesktop.Sdk.Compat.arm:
+          directory: 'lib/arm-linux-gnueabihf'
+          autodelete: 'true'
+          no-autodownload: 'true'
+          add-ld-path: '.'
+
+        Extension org.freedesktop.Sdk.Compat.arm.Debug:
+          directory: 'lib/arm-linux-gnueabihf'
+          autodelete: 'true'
+          no-autodownload: 'true'
+
+    - target_arch == "x86_64":
+        Extension org.freedesktop.Sdk.Compat.i386:
+          directory: 'lib/i386-linux-gnu'
+          autodelete: 'true'
+          no-autodownload: 'true'
+          add-ld-path: '.'
+
+        Extension org.freedesktop.Sdk.Compat.i386.Debug:
+          directory: 'lib/debug/usr/lib/i386-linux-gnu'
+          autodelete: 'true'
+          no-autodownload: 'true'
+
+        Extension org.freedesktop.Sdk.Compat.aarch64:
+          directory: 'lib/aarch64-linux-gnu'
+          autodelete: 'true'
+          no-autodownload: 'true'
+          add-ld-path: '.'
+
+        Extension org.freedesktop.Sdk.Compat.aarch64.Debug:
+          directory: "lib/debug/usr/lib/aarch64-linux-gnu"
+          autodelete: 'true'
+          no-autodownload: 'true'
+
 depends:
 - filename: sdk-image.bst
   type: build

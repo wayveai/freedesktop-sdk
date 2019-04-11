@@ -20,13 +20,13 @@ config:
 depends:
 - filename: sdk.bst
   type: build
+- filename: multiarch-sdk.bst
+  type: build
 - filename: split-locales.bst
   type: build
 - filename: split-docs.bst
   type: build
 - filename: flatpak-builder-configuration.bst
-  type: build
-- filename: multiarch-debugdir.bst
   type: build
 - filename: debug-app-link.bst
   type: build
