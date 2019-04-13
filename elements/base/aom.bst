@@ -40,6 +40,6 @@ sources:
 - kind: git_tag
   url: https://aomedia.googlesource.com/aom
   track: master
-  ref: v1.0.0-0-gd14c5bb4f336ef1842046089849dee4a301fbbf0
+  ref: v1.0.0-errata1-0-gadd4b15580e410c00c927ee366fa65545045a5d9
 - kind: patch
   path: patches/aom/0001-Add-support-for-GNUInstallDirs.patch
