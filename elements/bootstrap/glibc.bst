@@ -57,6 +57,9 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -not -name "lib*_nonshared.a" -exec rm {} ";"
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 (@): elements/bootstrap/target.yml
 
 variables:

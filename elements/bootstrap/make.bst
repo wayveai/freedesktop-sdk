@@ -15,6 +15,11 @@ config:
     - |
       autoreconf -fvi
 
+  install-commands:
+    (>):
+      - |
+        rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:make/make-4.2.1.tar.bz2

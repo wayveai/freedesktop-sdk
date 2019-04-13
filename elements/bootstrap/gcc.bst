@@ -116,6 +116,9 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -not -name "libgcc.a" -not -name "libgcc_eh.a" -not -name "libstdc++.a" -not -name "libstdc++fs.a"  -exec rm {} ";"
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 public:
   bst:
     split-rules:

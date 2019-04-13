@@ -70,6 +70,9 @@ config:
         esac
       done
 
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: tar
   url: ftp_gnu_org:gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
