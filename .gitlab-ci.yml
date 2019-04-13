@@ -511,7 +511,7 @@ markdown_manifest:
 .reproducible_template: &reproducible
   stage: reproducible
   script:
-    - ./utils/test-reproducibility.sh flatpak-release.bst
+    - ./utils/test-reproducibility.sh reproducible-test.bst
   artifacts:
     when: always
     paths:
