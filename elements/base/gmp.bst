@@ -5,12 +5,17 @@ depends:
 - filename: base/m4.bst
   type: build
 
+variables:
+  conf-local: |
+    --enable-cxx
+
 public:
   bst:
     split-rules:
       devel:
         (>):
         - '%{libdir}/libgmp.so'
+        - '%{libdir}/libgmpxx.so'
 
 sources:
 - kind: tar
