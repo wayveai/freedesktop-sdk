@@ -15,8 +15,9 @@ config:
     mkdir "%{builddir}"
     cd "%{builddir}"
 
-    echo slibdir=%{multiarch_libdir} >configparms
-    echo gconvdir=%{multiarch_libdir}/gconv >>configparms
+    echo slibdir=%{libdir} >configparms
+    echo complocaledir=%{indep-libdir}/locale >>configparms
+    echo gconvdir=%{libdir}/gconv >>configparms
     echo rootsbindir=%{sbindir} >>configparms
     echo sbindir=%{sbindir} >>configparms
     ../%{configure}
@@ -70,9 +71,6 @@ config:
 (@): elements/bootstrap/target.yml
 
 variables:
-  multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
-  lib: lib
-
   # -D_FORTIFY_SOURCE=2 breaks building glibc
   target_common_flags: '%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong
     -grecord-gcc-switches'
