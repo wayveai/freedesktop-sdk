@@ -26,7 +26,7 @@ config:
     - |
       rm -r "%{install-root}%{libexecdir}/getconf"
 
-    # Move the dynamic linker into the prefix
+# Move the dynamic linker into the prefix
     - |
       rtlddir=$(echo '@libc_cv_rtlddir@' | %{builddir}/config.status --file=-)
       sourcedir="%{install-root}${rtlddir}"
@@ -50,7 +50,7 @@ config:
         ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
       fi
 
-    # ldconfig shows a warning if /etc/ld.so.conf doesn't exist
+# ldconfig shows a warning if /etc/ld.so.conf doesn't exist
     - |
       touch '%{install-root}%{sysconfdir}/ld.so.conf'
 
@@ -67,16 +67,17 @@ variables:
   lib: lib
 
   # -D_FORTIFY_SOURCE=2 breaks building glibc
-  target_common_flags: "%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches"
+  target_common_flags: '%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong
+    -grecord-gcc-switches'
   arch_options: ''
   (?):
-    - target_arch == "i686" or target_arch == "x86_64":
-        arch_options: "--enable-static-pie --enable-cet"
-    - target_arch == "aarch64":
-        arch_options: "--enable-static-pie"
-    - target_arch == "arm":
+  - target_arch == "i686" or target_arch == "x86_64":
+      arch_options: --enable-static-pie --enable-cet
+  - target_arch == "aarch64":
+      arch_options: --enable-static-pie
+  - target_arch == "arm":
     # --enable-static-pie breaks arm build
-        arch_options: ""
+      arch_options: ''
 
   conf-local: |
     CFLAGS="$CFLAGS" \
@@ -114,7 +115,7 @@ public:
 
   cpe:
     patches:
-      - 'CVE-2018-19591'
+    - CVE-2018-19591
 
 sources:
 - kind: git_tag

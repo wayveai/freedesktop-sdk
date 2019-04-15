@@ -18,8 +18,8 @@ variables:
     --disable-werror
 
 public:
-    patches:
-      - 'CVE-2018-19591'
+  patches:
+  - CVE-2018-19591
 
 config:
   install-commands:
