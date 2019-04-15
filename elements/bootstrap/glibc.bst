@@ -121,5 +121,3 @@ sources:
   url: sourceware:glibc.git
   track: release/2.28/master
   ref: glibc-2.28-60-g4d7af7815af5217db6e8fde6032ddf4f6b2a4420
-- kind: patch
-  path: patches/glibc/0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
