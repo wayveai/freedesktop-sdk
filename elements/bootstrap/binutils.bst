@@ -22,6 +22,10 @@ variables:
     --enable-ld=default \
     --enable-shared \
     --enable-plugins \
+    --disable-gdb \
+    --disable-sim \
+    --disable-readline \
+    --disable-libdecnumber \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
 config:
@@ -51,9 +55,10 @@ environment:
   LEXLIB: ' '
 
 sources:
-- kind: tar
-  url: sourceware_pub:binutils/releases/binutils-2.31.1.tar.xz
-  ref: 5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86
+- kind: git_tag
+  url: sourceware:binutils-gdb.git
+  track: binutils-2_31-branch
+  ref: binutils-2_31_1-0-g0860693812fff944ab0602e72b762a4a2078da5b
 - kind: patch
   path: patches/binutils/CVE-2018-17358.patch
 - kind: patch
@@ -73,6 +78,7 @@ public:
       - /**
 
   cpe:
+    version: '2.31.1'
     patches:
       - CVE-2018-17358
       - CVE-2018-17359 # same fix as CVE-2018-17358
