@@ -4,33 +4,7 @@ description: Generates a flatpak repository with all flatpak image elements
 depends:
 - filename: deploy-tools/flatpak.bst
   type: build
-- filename: flatpak-images/sdk.bst
-  type: build
-- filename: flatpak-images/sdk-debug.bst
-  type: build
-- filename: flatpak-images/sdk-docs.bst
-  type: build
-- filename: flatpak-images/sdk-locale.bst
-  type: build
-- filename: flatpak-images/platform.bst
-  type: build
-- filename: flatpak-images/platform-locale.bst
-  type: build
-- filename: flatpak-images/platform-arch-libs.bst
-  type: build
-- filename: flatpak-images/platform-arch-libs-debug.bst
-  type: build
-- filename: flatpak-images/clinfo.bst
-  type: build
-- filename: flatpak-images/glxinfo.bst
-  type: build
-- filename: flatpak-images/glxinfo-debug.bst
-  type: build
-- filename: flatpak-images/rust.bst
-  type: build
-- filename: flatpak-images/vulkaninfo.bst
-  type: build
-- filename: flatpak-images/minimal.bst
+- filename: flatpak-release-deps.bst
   type: build
 
 config:
