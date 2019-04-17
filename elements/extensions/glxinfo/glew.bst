@@ -1,7 +1,7 @@
 kind: autotools
 
 depends:
-- filename: desktop/mesa.bst
+- filename: components/mesa.bst
   type: build
 
 variables:

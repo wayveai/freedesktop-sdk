@@ -3,19 +3,19 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/buildsystem-autotools.bst
+  - filename: public-stacks/buildsystem-autotools.bst
     type: build
-  - filename: base/libunwind.bst
-  - filename: base/linux-pam.bst
-  - filename: desktop/cairo.bst
-  - filename: desktop/libdrm.bst
-  - filename: desktop/mesa.bst
-  - filename: desktop/wayland.bst
-  - filename: desktop/wayland-protocols.bst
+  - filename: components/libunwind.bst
+  - filename: components/linux-pam.bst
+  - filename: components/cairo.bst
+  - filename: components/libdrm.bst
+  - filename: components/mesa.bst
+  - filename: components/wayland.bst
+  - filename: components/wayland-protocols.bst
     type: build
-  - filename: desktop/systemd.bst
-  - filename: desktop/xorg-lib-xcb.bst
-  - filename: desktop/xorg-lib-xcursor.bst
+  - filename: components/systemd.bst
+  - filename: components/xorg-lib-xcb.bst
+  - filename: components/xorg-lib-xcursor.bst
   - filename: vm/linux-vm-boot/mtdev.bst
   - filename: vm/linux-vm-boot/libinput.bst
 

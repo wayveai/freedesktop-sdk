@@ -1,23 +1,23 @@
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/fontconfig.bst
-- filename: desktop/freetype.bst
-- filename: desktop/libfdk-aac.bst
-- filename: desktop/lame.bst
-- filename: desktop/libva.bst
-- filename: desktop/libvdpau.bst
-- filename: desktop/mpg123.bst
-- filename: desktop/openal.bst
-- filename: desktop/libpulse.bst
-- filename: desktop/sdl2.bst
-- filename: base/aom.bst
-- filename: base/buildsystem-autotools.bst
+- filename: components/fontconfig.bst
+- filename: components/freetype.bst
+- filename: components/libfdk-aac.bst
+- filename: components/lame.bst
+- filename: components/libva.bst
+- filename: components/libvdpau.bst
+- filename: components/mpg123.bst
+- filename: components/openal.bst
+- filename: components/libpulse.bst
+- filename: components/sdl2.bst
+- filename: components/aom.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: base/gnutls.bst
-- filename: base/speex.bst
-- filename: base/libtheora.bst
-- filename: base/libvorbis.bst
-- filename: base/nasm.bst
+- filename: components/gnutls.bst
+- filename: components/speex.bst
+- filename: components/libtheora.bst
+- filename: components/libvorbis.bst
+- filename: components/nasm.bst
   type: build
 
 variables:

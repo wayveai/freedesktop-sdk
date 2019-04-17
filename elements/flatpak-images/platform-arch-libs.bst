@@ -13,5 +13,5 @@ config:
       ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
 
 depends:
-- filename: desktop-platform-image.bst
+- filename: platform-image.bst
   type: build

@@ -6,5 +6,5 @@ config:
   script-path: '%{libexecdir}/freedesktop-post.sh'
 
 depends:
-- filename: desktop-platform.bst
+- filename: platform.bst
   type: build

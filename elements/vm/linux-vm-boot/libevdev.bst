@@ -3,9 +3,9 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/buildsystem-autotools.bst
+  - filename: public-stacks/buildsystem-autotools.bst
     type: build
-  - filename: base/python3.bst
+  - filename: components/python3.bst
     type: build
 
 sources:

@@ -1,0 +1,26 @@
+kind: autotools
+
+depends:
+- filename: bootstrap-import.bst
+- filename: components/libgcrypt.bst
+- filename: components/libassuan.bst
+- filename: components/libksba.bst
+- filename: components/npth.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/gettext.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode \
+    --disable-doc \
+    --disable-all-tests
+
+sources:
+- kind: git_tag
+  url: gnupg:gnupg.git
+  track: STABLE-BRANCH-2-2
+  ref: gnupg-2.2.13-0-g7922e2dd1c7eee48a8a2cf4799827942489ddd0f
+- kind: patch
+  path: patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch

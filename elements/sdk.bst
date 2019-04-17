@@ -1,0 +1,48 @@
+kind: stack
+description: Stack of components in freedesktop SDK
+
+depends:
+- filename: platform.bst           # Note that every element in platform is also included
+- filename: components/autoconf-archive.bst
+- filename: components/autoconf.bst
+- filename: components/automake.bst
+- filename: components/bc.bst
+- filename: components/bison.bst
+- filename: components/ccache.bst
+- filename: components/cmake.bst
+- filename: components/cpio.bst
+- filename: components/docbook-xml.bst
+- filename: components/docbook-xsl.bst
+- filename: components/ed.bst
+- filename: components/gdb.bst
+- filename: components/git.bst
+- filename: components/gperf.bst
+- filename: components/groff.bst
+- filename: components/help2man.bst
+- filename: components/intltool.bst
+- filename: components/libpipeline.bst
+- filename: components/m4.bst
+- filename: components/man-db.bst
+- filename: components/man-pages-posix.bst
+- filename: components/man-pages.bst
+- filename: components/meson.bst
+- filename: components/nasm.bst
+- filename: components/ninja.bst
+- filename: components/perl.bst
+- filename: components/perl-xml-parser.bst
+- filename: components/openssh.bst
+- filename: components/patch.bst
+- filename: components/pkg-config.bst
+- filename: components/ruby.bst
+- filename: components/strace.bst
+- filename: components/texinfo.bst
+- filename: components/valgrind.bst
+- filename: components/desktop-file-utils.bst
+- filename: components/gtk-doc.bst
+- filename: components/itstools.bst
+- filename: components/jq.bst
+- filename: components/libva-utils.bst
+- filename: components/wayland-protocols.bst
+- filename: components/xorg-proto-xcb.bst
+- filename: components/xorg-proto-xorgproto.bst
+- filename: components/xorg-util-macros.bst

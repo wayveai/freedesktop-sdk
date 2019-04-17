@@ -110,10 +110,10 @@ else ifeq ($(ARCH),arm)
 endif
 
 check-dev-files:
-	$(BST) build desktop-platform-image.bst
+	$(BST) build platform-image.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
@@ -124,9 +124,9 @@ check-dev-files:
 	fi
 
 check-rpath:
-	$(BST) build desktop-platform-image.bst
+	$(BST) build platform-image.bst
 	mkdir -p $(CHECKOUT_ROOT)
-	$(BST) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	$(BST) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 

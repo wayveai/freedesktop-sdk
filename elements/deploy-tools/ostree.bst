@@ -2,16 +2,16 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: base/which.bst
+- filename: components/which.bst
   type: build
-- filename: base/git-minimal.bst
+- filename: components/git-minimal.bst
   type: build
-- filename: base/gpgme.bst
-- filename: base/glib.bst
-- filename: base/bison.bst
-- filename: base/e2fsprogs.bst
+- filename: components/gpgme.bst
+- filename: components/glib.bst
+- filename: components/bison.bst
+- filename: components/e2fsprogs.bst
 
 variables:
   conf-local: --disable-rofiles-fuse

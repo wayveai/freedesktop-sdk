@@ -1,0 +1,19 @@
+kind: meson
+
+depends:
+- filename: bootstrap-import.bst
+- filename: components/libva.bst
+- filename: public-stacks/buildsystem-meson.bst
+  type: build
+
+variables:
+  meson-local: |
+    -Ddrm=true \
+    -Dwayland=true \
+    -Dx11=true
+
+sources:
+- kind: git_tag
+  url: github:intel/libva-utils
+  track: v2.4-branch
+  ref: 2.4.0-0-gbb6a0bd6fe5c3f151ffc4c0d09c81a1ef9479b63

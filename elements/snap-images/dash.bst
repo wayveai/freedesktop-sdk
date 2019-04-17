@@ -5,7 +5,7 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
 
 sources:

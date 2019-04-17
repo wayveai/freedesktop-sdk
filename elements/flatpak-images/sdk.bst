@@ -84,7 +84,7 @@ config:
       download-if: have-intel-gpu
 
 depends:
-- filename: desktop-image.bst
+- filename: sdk-image.bst
   type: build
 - filename: sdk-integration.bst
   type: build

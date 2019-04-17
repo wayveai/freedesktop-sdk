@@ -1,7 +1,7 @@
 kind: tar_element
 
 depends:
-- filename: desktop-image.bst
+- filename: sdk-image.bst
   type: build
 
 config:

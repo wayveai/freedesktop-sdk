@@ -4,13 +4,13 @@ description: Linux kernel configured for use in virtual machines.
 depends:
 - filename: bootstrap-import.bst
   type: build
-- filename: base/bison.bst
+- filename: components/bison.bst
   type: build
-- filename: base/flex.bst
+- filename: components/flex.bst
   type: build
-- filename: base/bc.bst
+- filename: components/bc.bst
   type: build
-- filename: base/gzip.bst
+- filename: components/gzip.bst
   type: build
 - filename: vm/linux-vm-boot/kmod.bst
 

@@ -2,15 +2,15 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: base/docbook-xsl.bst
+- filename: components/docbook-xsl.bst
   type: build
-- filename: base/docbook-xml.bst
+- filename: components/docbook-xml.bst
   type: build
-- filename: base/libxslt.bst
+- filename: components/libxslt.bst
   type: build
-- filename: base/xz.bst
+- filename: components/xz.bst
 
 variables:
   conf-local:
