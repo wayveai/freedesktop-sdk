@@ -513,3 +513,31 @@ reproducible_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+  when: manual
+
+reproducible_i686:
+  image: $DOCKER_AMD64
+  <<: *reproducible
+  tags:
+    - x86_64
+  variables:
+    ARCH: i686
+  when: manual
+
+reproducible_aarch64:
+  image: $DOCKER_AARCH64
+  <<: *reproducible
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+  when: manual
+
+reproducible_arm:
+  image: $DOCKER_AARCH64
+  <<: *reproducible
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+  when: manual
