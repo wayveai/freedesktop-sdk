@@ -26,6 +26,8 @@ variables:
     --disable-sim \
     --disable-readline \
     --disable-libdecnumber \
+    --enable-relro=yes \
+    --enable-lto \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
 config:
