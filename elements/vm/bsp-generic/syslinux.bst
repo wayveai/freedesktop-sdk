@@ -3,11 +3,11 @@ kind: manual
 depends:
 - filename: bootstrap-import.bst
   type: build
-- filename: base/perl.bst
+- filename: components/perl.bst
   type: build
-- filename: base/nasm.bst
+- filename: components/nasm.bst
   type: build
-- filename: base/util-linux.bst
+- filename: components/util-linux.bst
   type: build
 
 sources:

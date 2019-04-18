@@ -69,7 +69,7 @@ config:
       autodelete: 'false'
 
 depends:
-- filename: desktop-platform-image.bst
+- filename: platform-image.bst
   type: build
 - filename: platform-integration.bst
   type: build

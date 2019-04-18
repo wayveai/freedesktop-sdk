@@ -13,15 +13,15 @@ depends:
   type: build
 - filename: bootstrap-import.bst
   type: build
-- filename: base/util-linux.bst
+- filename: components/util-linux.bst
   type: build
-- filename: base/tzdata.bst
+- filename: components/tzdata.bst
   type: build
 - filename: vm/bsp-generic.bst
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
-- filename: desktop/systemd.bst
+- filename: components/systemd.bst
   type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build

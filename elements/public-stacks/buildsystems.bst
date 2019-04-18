@@ -1,17 +1,17 @@
 kind: compose
 
 depends:
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: base/buildsystem-cmake.bst
+- filename: public-stacks/buildsystem-cmake.bst
   type: build
-- filename: base/buildsystem-meson.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
-- filename: base/python3.bst
+- filename: components/python3.bst
   type: build
-- filename: base/perl.bst
+- filename: components/perl.bst
   type: build
-- filename: base/qmake.bst
+- filename: components/qmake.bst
   type: build
 
 config:

@@ -1,9 +1,9 @@
 kind: autotools
 
 depends:
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: desktop/mesa.bst
+- filename: components/mesa.bst
   type: build
 
 variables:

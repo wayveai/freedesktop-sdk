@@ -2,26 +2,26 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: base/which.bst
+- filename: components/which.bst
   type: build
-- filename: base/git-minimal.bst
+- filename: components/git-minimal.bst
   type: build
-- filename: base/gettext.bst
+- filename: components/gettext.bst
   type: build
-- filename: base/gpgme.bst
-- filename: desktop/gobject-introspection.bst
+- filename: components/gpgme.bst
+- filename: components/gobject-introspection.bst
   type: build
-- filename: base/libcap.bst
-- filename: base/libarchive.bst
-- filename: base/libxml2.bst
-- filename: desktop/libsoup.bst
-- filename: desktop/xorg-lib-xau.bst
+- filename: components/libcap.bst
+- filename: components/libarchive.bst
+- filename: components/libxml2.bst
+- filename: components/libsoup.bst
+- filename: components/xorg-lib-xau.bst
 - filename: deploy-tools/ostree.bst
-- filename: desktop/json-glib.bst
-- filename: desktop/appstream-glib.bst
-- filename: desktop/libseccomp.bst
+- filename: components/json-glib.bst
+- filename: components/appstream-glib.bst
+- filename: components/libseccomp.bst
 
 variables:
   conf-local: --disable-system-helper --disable-documentation

@@ -2,7 +2,7 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/opencl.bst
+- filename: components/opencl.bst
 - filename: extensions/clinfo/khronos-headers.bst
   type: build
 

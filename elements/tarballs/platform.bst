@@ -1,7 +1,7 @@
 kind: tar_element
 
 depends:
-- filename: desktop-platform-image.bst
+- filename: platform-image.bst
   type: build
 
 config:

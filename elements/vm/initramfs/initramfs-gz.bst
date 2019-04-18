@@ -9,9 +9,9 @@ description: |
 depends:
 - filename: bootstrap-import.bst
   type: build
-- filename: base/cpio.bst
+- filename: components/cpio.bst
   type: build
-- filename: base/gzip.bst
+- filename: components/gzip.bst
   type: build
 - filename: vm/initramfs/initramfs.bst
   type: build
@@ -23,9 +23,9 @@ config:
   layout:
   - element: bootstrap-import.bst
     destination: /
-  - element: base/cpio.bst
+  - element: components/cpio.bst
     destination: /
-  - element: base/gzip.bst
+  - element: components/gzip.bst
     destination: /
   - element: vm/initramfs/initramfs.bst
     destination: '%{build-root}'

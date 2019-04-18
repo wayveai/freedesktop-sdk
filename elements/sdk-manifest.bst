@@ -1,7 +1,7 @@
 kind: collect_manifest
 
 depends:
-  - filename: desktop.bst
+  - filename: sdk.bst
     type: build
 
 config:

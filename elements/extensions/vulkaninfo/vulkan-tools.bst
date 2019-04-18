@@ -2,11 +2,11 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
-- filename: desktop/vulkan.bst
-- filename: desktop/xorg-lib-x11.bst
-- filename: desktop/xorg-lib-xrandr.bst
-- filename: desktop/wayland.bst
-- filename: base/buildsystem-cmake.bst
+- filename: components/vulkan.bst
+- filename: components/xorg-lib-x11.bst
+- filename: components/xorg-lib-xrandr.bst
+- filename: components/wayland.bst
+- filename: public-stacks/buildsystem-cmake.bst
   type: build
 
 variables:

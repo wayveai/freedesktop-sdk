@@ -5,12 +5,12 @@ depends:
   type: build
 - filename: extensions/rust/rust-stage1.bst
   type: build
-- filename: base/buildsystem-cmake.bst
+- filename: public-stacks/buildsystem-cmake.bst
   type: build
-- filename: base/python3.bst
+- filename: components/python3.bst
   type: build
-- filename: desktop/llvm7.bst
-- filename: base/libxml2.bst
+- filename: components/llvm7.bst
+- filename: components/libxml2.bst
 
 variables:
   prefix: /usr/lib/sdk/rust

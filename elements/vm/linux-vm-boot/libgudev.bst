@@ -3,12 +3,12 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/buildsystem-autotools.bst
+  - filename: public-stacks/buildsystem-autotools.bst
     type: build
-  - filename: base/glib.bst
-  - filename: base/util-linux.bst
-  - filename: desktop/systemd.bst
-  - filename: desktop/gtk-doc.bst
+  - filename: components/glib.bst
+  - filename: components/util-linux.bst
+  - filename: components/systemd.bst
+  - filename: components/gtk-doc.bst
     type: build
 
 # umockdev depends on vala and is recursively dependent on libgudev.

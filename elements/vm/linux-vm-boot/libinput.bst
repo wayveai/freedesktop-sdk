@@ -3,12 +3,12 @@ kind: meson
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/buildsystem-meson.bst
+  - filename: public-stacks/buildsystem-meson.bst
     type: build
-  - filename: base/jpeg.bst
-  - filename: base/libpng.bst
-  - filename: desktop/gtk3.bst
-  - filename: desktop/systemd.bst
+  - filename: components/jpeg.bst
+  - filename: components/libpng.bst
+  - filename: components/gtk3.bst
+  - filename: components/systemd.bst
   - filename: vm/linux-vm-boot/mtdev.bst
   - filename: vm/linux-vm-boot/libevdev.bst
   - filename: vm/linux-vm-boot/libwacom.bst

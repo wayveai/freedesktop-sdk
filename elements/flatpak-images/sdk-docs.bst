@@ -11,5 +11,5 @@ config:
       ref: runtime/org.freedesktop.Sdk/%{gcc_arch}/%{branch}
 
 depends:
-- filename: desktop-image.bst
+- filename: sdk-image.bst
   type: build

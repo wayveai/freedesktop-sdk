@@ -3,10 +3,10 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
     type: build
-  - filename: base/buildsystem-autotools.bst
+  - filename: public-stacks/buildsystem-autotools.bst
     type: build
-  - filename: base/glib.bst
-  - filename: desktop/systemd.bst
+  - filename: components/glib.bst
+  - filename: components/systemd.bst
   - filename: vm/linux-vm-boot/libgudev.bst
 
 sources:

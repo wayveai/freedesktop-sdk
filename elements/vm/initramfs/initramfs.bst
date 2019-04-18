@@ -6,7 +6,7 @@ depends:
   type: build
 - filename: bootstrap-import.bst
   type: build
-- filename: base/util-linux.bst
+- filename: components/util-linux.bst
   type: build
 - filename: vm/initramfs/initramfs-scripts.bst
   type: build

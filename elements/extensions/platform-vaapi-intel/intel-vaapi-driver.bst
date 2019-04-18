@@ -1,9 +1,9 @@
 kind: meson
 
 depends:
-- filename: desktop/libdrm.bst
-- filename: desktop/libva.bst
-- filename: base/buildsystem-meson.bst
+- filename: components/libdrm.bst
+- filename: components/libva.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 
 variables:

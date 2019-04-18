@@ -1,13 +1,13 @@
 kind: autotools
 
 depends:
-- filename: desktop/xorg-lib-xi.bst
+- filename: components/xorg-lib-xi.bst
   type: build
-- filename: desktop/mesa.bst
+- filename: components/mesa.bst
   type: build
-- filename: desktop/freetype.bst
+- filename: components/freetype.bst
   type: build
-- filename: base/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: extensions/glxinfo/glu.bst
 - filename: extensions/glxinfo/glew.bst

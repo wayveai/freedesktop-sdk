@@ -1,0 +1,74 @@
+kind: autotools
+
+depends:
+- filename: bootstrap-import.bst
+- filename: components/atk.bst
+- filename: components/at-spi2-atk.bst
+- filename: components/cairo.bst
+- filename: components/dconf.bst
+  type: runtime
+- filename: components/gdk-pixbuf.bst
+- filename: components/gobject-introspection.bst
+  type: build
+- filename: components/gsettings-desktop-schemas.bst
+- filename: components/hicolor-icon-theme.bst
+- filename: components/libepoxy.bst
+- filename: components/libxkbcommon.bst
+- filename: components/mesa.bst
+- filename: components/pango.bst
+- filename: components/wayland.bst
+- filename: components/wayland-protocols.bst
+- filename: components/xorg-lib-xcomposite.bst
+- filename: components/xorg-lib-xdamage.bst
+- filename: components/xorg-lib-xinerama.bst
+- filename: components/xorg-lib-xi.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/gettext.bst
+  type: build
+- filename: components/perl.bst
+  type: build
+- filename: components/which.bst
+  type: build
+- filename: components/gtk-doc.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-xkb \
+    --enable-xinerama \
+    --enable-xrandr \
+    --enable-xfixes \
+    --enable-xcomposite \
+    --enable-xdamage \
+    --enable-x11-backend \
+    --enable-wayland-backend
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{bindir}/gtk3-*'
+        - '%{bindir}/gtk-builder-tool'
+        - '%{bindir}/gtk-encode-symbolic-svg'
+        - '%{libdir}/libgdk-3.so'
+        - '%{libdir}/libgtk-3.so'
+        - '%{libdir}/libgailutil-3.so'
+        - '%{datadir}/share/icons'
+        - '%{datadir}/share/icons/**'
+
+    integration-commands:
+    - |
+      gtk-query-immodules-3.0 --update-cache
+
+    - |
+      gtk-update-icon-cache %{datadir}/icons/hicolor
+  cpe:
+    product: gtk+
+
+sources:
+- kind: git_tag
+  url: gnome:gtk
+  track: gtk-3-24
+  ref: 3.24.5-0-gbf60bf15de4afd426304f9f42618eb95a92c2605

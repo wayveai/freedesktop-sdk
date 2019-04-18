@@ -3,7 +3,7 @@ kind: manual
 description: Extract the library headers from the desktop Sdk.
 
 depends:
-- filename: desktop-image.bst
+- filename: sdk-image.bst
   type: build
 
 config:
