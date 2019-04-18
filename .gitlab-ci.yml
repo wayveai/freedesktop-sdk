@@ -630,6 +630,7 @@ publish_snap_x86_64:
     - cache_x86_64
   variables:
     ARCH: x86_64
+  when: manual
 
 publish_snap_i686:
   extends: .snap_publish_template
@@ -639,6 +640,7 @@ publish_snap_i686:
     - cache_i686
   variables:
     ARCH: i686
+  when: manual
 
 publish_snap_arm:
   extends: .snap_publish_template
@@ -647,6 +649,7 @@ publish_snap_arm:
     - armhf
   variables:
     ARCH: arm
+  when: manual
 
 publish_snap_aarch64:
   extends: .snap_publish_template
@@ -655,3 +658,4 @@ publish_snap_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+  when: manual
