@@ -7,7 +7,7 @@ depends:
   type: build
 - filename: components/gstreamer.bst
 - filename: components/gstreamer-plugins-base.bst
-- filename: components/ladspa-h.bst
+- filename: components/ladspa-sdk.bst
 - filename: components/libdrm.bst
 - filename: components/libfdk-aac.bst
 - filename: components/libglvnd.bst

@@ -24,6 +24,7 @@ depends:
 - filename: components/iso-codes.bst
 - filename: components/jpeg.bst
 - filename: components/krb5.bst
+- filename: components/ladspa-sdk.bst
 - filename: components/lcms.bst
 - filename: components/less.bst
 - filename: components/libarchive.bst
