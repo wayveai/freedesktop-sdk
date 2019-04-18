@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/orc.bst
+- filename: components/frei0r.bst
 - filename: components/gobject-introspection.bst
   type: build
 - filename: components/gstreamer.bst
