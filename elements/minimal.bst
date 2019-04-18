@@ -10,3 +10,4 @@ depends:
 - base/gzip.bst # Needed by glibc-stage1-bst
 - base/openssl.bst # Needed by debugedit-build.bst
 - base/texinfo.bst # Needed by make.bst
+- base/flex.bst # Needed by binutils-stage1-bst
