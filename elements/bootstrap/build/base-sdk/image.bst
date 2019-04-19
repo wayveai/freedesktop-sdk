@@ -8,16 +8,16 @@ sources:
   (?):
   - bootstrap_build_arch == "x86_64":
       track: runtime/org.freedesktop.Sdk.Minimal/x86_64/18.08
-      ref: f93e26d861f241f0fa910d2793a147e0eed08c69f8caf1bb5eb59615b4c3bfc7
+      ref: 68048fcee095ccb10c13d5b6f96aa269a37427699d5f81d94f083b1b2ec68caa
   - bootstrap_build_arch == "i686":
       track: runtime/org.freedesktop.Sdk.Minimal/i386/18.08
-      ref: 54bbf7d46357ae61e86454b61a0b0d07be6849440f089c1d69011cc62d1666e5
+      ref: a07d06139071bfe3ec7e5a2deacb670e9378e48156be5243ef98edc05a119a9a
   - bootstrap_build_arch == "aarch64":
       track: runtime/org.freedesktop.Sdk.Minimal/aarch64/18.08
-      ref: 17ce7e3c4b9c4598a637c9682b34be1676375245c04ee6e3bf7e9031777ef2f8
+      ref: b428a91240419a10b3cace22aafa967b8090112e106d1455959d5865c62a321d
   - bootstrap_build_arch == "arm":
       track: runtime/org.freedesktop.Sdk.Minimal/arm/18.08
-      ref: c802b6bd8765f2b0798f986ddccb6f45ba468f0f7f521ded5effa7d3fb429c3b
+      ref: 76f4812b707bf4b6c68a610befecde841a214bf86e8c3637f3cfb4b96057bd37
 
 config:
   source: files
