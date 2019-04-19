@@ -11,7 +11,6 @@ depends:
 - filename: components/libfdk-aac.bst
 - filename: components/libglvnd.bst
 - filename: components/librsvg.bst
-- filename: components/libvdpau.bst
 - filename: components/mesa.bst
 - filename: components/openal.bst
 - filename: components/vulkan.bst
@@ -34,7 +33,8 @@ variables:
     --enable-experimental \
     --enable-introspection \
     --enable-orc \
-    --enable-wayland
+    --enable-wayland \
+    --disable-vdpau
 
 public:
   bst:
