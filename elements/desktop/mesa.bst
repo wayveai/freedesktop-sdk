@@ -49,8 +49,6 @@ variables:
       vulkan_drivers: ''
       enable_libunwind: 'false'
 
-  optimize-debug: "false"
-
   meson-local: |
     -Db_ndebug=true \
     -Ddri3=true \
