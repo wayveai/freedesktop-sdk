@@ -46,7 +46,7 @@ public:
         - '%{includedir}'
         - '%{includedir}/systemd'
         - '%{includedir}/systemd/**'
-        - '%{debugdir}/dwz/%{element-name}/debug'
+        - '%{debugdir}%{libdir}'
         - '%{debugdir}%{libdir}/libsystemd*.so*'
         - '%{sourcedir}'
         - '%{sourcedir}/**'
