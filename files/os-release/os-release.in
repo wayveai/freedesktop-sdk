@@ -1,6 +1,6 @@
 NAME=Freedesktop.org
-VERSION="@@SDK_BRANCH@@ (Flatpak runtime)"
-VERSION_ID=@@SDK_BRANCH@@
+VERSION="@@RUNTIME_VERSION@@ (Flatpak runtime)"
+VERSION_ID=@@RUNTIME_VERSION@@
 ID=org.freedesktop.Platform
-PRETTY_NAME="Freedesktop.org @@SDK_BRANCH@@ (Flatpak runtime)"
+PRETTY_NAME="Freedesktop.org @@RUNTIME_VERSION@@ (Flatpak runtime)"
 BUG_REPORT_URL=https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues

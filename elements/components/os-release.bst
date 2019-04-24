@@ -1,5 +1,8 @@
 kind: manual
 
+(@):
+- version.yml
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/appstream-glib.bst
@@ -9,7 +12,7 @@ config:
   build-commands:
   - |
     for i in *.in; do
-      sed "s/@@SDK_BRANCH@@/%{branch}/g" "${i}" >"$(basename "${i}" .in)"
+      sed "s/@@RUNTIME_VERSION@@/%{runtime-version}/g" "${i}" >"$(basename "${i}" .in)"
     done
 
   install-commands:
