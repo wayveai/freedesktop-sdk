@@ -6,7 +6,7 @@
   <name>Freedesktop.org Application Platform</name>
   <summary>Shared libraries</summary>
   <releases>
-    <release version="@@SDK_BRANCH@@"/>
+    <release version="@@RUNTIME_VERSION@@"/>
   </releases>
   <description>
     <p>
