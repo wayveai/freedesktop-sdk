@@ -11,8 +11,21 @@ depends:
   type: build
 
 variables:
+  pamconfdir: "%{sysconfdir}/pam.d"
   conf-local: |
     --includedir="%{includedir}/security"
+
+config:
+  install-commands:
+    (>):
+    - mkdir -p %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/other %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/system-auth %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/password-auth %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/fingerprint-auth %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/smartcard-auth %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/config-util %{install-root}%{pamconfdir}
+    - install -m 644 linux-pam-config/postlogin %{install-root}%{pamconfdir}
 
 public:
   bst:
@@ -27,3 +40,6 @@ sources:
 - kind: tar
   url: github:linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz
   ref: eff47a4ecd833fbf18de9686632a70ee8d0794b79aecb217ebd0ce11db4cd0db
+- kind: local
+  path: files/linux-pam-config
+  directory: linux-pam-config
