@@ -353,6 +353,11 @@ finish_publish:
     - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
     - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
     - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+    - make manifest
+  artifacts:
+     paths:
+      - "${CI_PROJECT_DIR}/platform-manifest/usr/"
+      - "${CI_PROJECT_DIR}/sdk-manifest/usr/"
   only:
     - tags
     - master
