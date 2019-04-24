@@ -9,11 +9,14 @@ variables:
     INSTALL_INCLUDE_DIR=%{install-root}%{includedir} \
     INSTALL_BINARY_DIR=%{install-root}%{bindir}
 
+  make: |
+    make PREFIX="%{prefix}" CFLAGS="-I. ${CFLAGS} ${LDFLAGS} -DDEFAULT_LADSPA_PATH=%{install-root}%{libdir}/ladspa"
+
 config:
   build-commands:
     - |
       cd src
-      %{make}
+      %{make} targets
 
   install-commands:
     - |
