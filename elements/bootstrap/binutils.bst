@@ -9,7 +9,9 @@ depends:
 - filename: bootstrap/zlib.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@):
+- elements/bootstrap/target.yml
+- elements/bootstrap/binutils-source.yml
 
 # '-fno-exceptions' nullifies '-fexceptions' which breaks build on arm.
 # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/jobs/110741993
@@ -58,22 +60,6 @@ config:
 
 environment:
   LEXLIB: ' '
-
-sources:
-- kind: git_tag
-  url: sourceware:binutils-gdb.git
-  track: binutils-2_31-branch
-  ref: binutils-2_31_1-0-g0860693812fff944ab0602e72b762a4a2078da5b
-- kind: patch
-  path: patches/binutils/CVE-2018-17358.patch
-- kind: patch
-  path: patches/binutils/CVE-2018-17360.patch
-- kind: patch
-  path: patches/binutils/CVE-2018-20623.patch
-- kind: patch
-  path: patches/binutils/CVE-2018-20651.patch
-- kind: patch
-  path: patches/binutils/CVE-2018-20671.patch
 
 public:
   bst:
