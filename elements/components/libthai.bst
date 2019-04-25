@@ -3,6 +3,8 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/libdatrie.bst
+- filename: components/git-minimal.bst
+  type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
@@ -14,6 +16,7 @@ public:
         - '%{libdir}/libthai.so'
 
 sources:
-- kind: tar
-  url: https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.27.tar.xz
-  ref: 1659fa1b7b1d6562102d7feb8c8c3fd94bb2dc5761ed7dbaae4f300e1c03eff6
+- kind: git_tag
+  url: github:tlwg/libthai.git
+  track: master
+  ref: v0.1.28-0-g3db9d05dc9316e38feb531bee52787dee0aa198d
