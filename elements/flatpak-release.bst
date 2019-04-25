@@ -8,6 +8,8 @@ depends:
   type: build
 - filename: flatpak-images/mesa.bst
   type: build
+- filename: flatpak-images/cross-toolchains.bst
+  type: build
 
 config:
   arch: '%{gcc_arch}'

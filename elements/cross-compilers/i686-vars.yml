@@ -1,0 +1,7 @@
+(@):
+- elements/cross-compilers/common-vars.yml
+
+variables:
+  cross_gcc_arch: "i386"
+  cross_arch: "i686"
+  cross_abi: "gnu"
