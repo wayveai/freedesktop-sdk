@@ -6,3 +6,4 @@ depends:
 
 config:
   filename: freedesktop-sdk-%{arch}
+  compression: xz
