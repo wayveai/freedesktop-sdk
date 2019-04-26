@@ -3,8 +3,11 @@
   <id>org.freedesktop.Sdk</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <name>Freedesktop.org Software Development Kit version @@SDK_BRANCH@@</name>
-  <summary>Tools and headers for developing applications using the freedesktop.org application platform</summary>
+  <name>Freedesktop SDK</name>
+  <summary>Tools and headers for developing applications</summary>
+  <releases>
+    <release version="@@RUNTIME_VERSION@@"/>
+  </releases>
   <description>
     <p>
       The Freedesktop Sdk is the development runtime that you can use to produce applications using
@@ -12,6 +15,6 @@
       as build and debugging tools and headers for the libraries.
     </p>
   </description>
-  <url type="homepage">https://www.freedesktop.org/</url>
+  <url type="homepage">https://freedesktop-sdk.gitlab.io</url>
 </component>
 
