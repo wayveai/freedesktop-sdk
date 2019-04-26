@@ -5,6 +5,8 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
+- filename: components/m4.bst
+  type: build
 - filename: components/appstream-glib.bst
   type: build
 
@@ -12,7 +14,7 @@ config:
   build-commands:
   - |
     for i in *.in; do
-      sed "s/@@RUNTIME_VERSION@@/%{runtime-version}/g" "${i}"|sed "s/@@RUNTIME_VERSION_DATE@@/%{runtime-version-date}/g" >"$(basename "${i}" .in)"
+      m4 -D__RUNTIME_VERSION__=%{runtime-version} -D__RUNTIME_VERSION_DATE__=%{runtime-version-date} "${i}" >"$(basename "${i}" .in)"
     done
 
   install-commands:
