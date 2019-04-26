@@ -6,7 +6,7 @@
   <name>Freedesktop SDK</name>
   <summary>Tools and headers for developing applications</summary>
   <releases>
-    <release version="@@RUNTIME_VERSION@@"/>
+    <release version="@@RUNTIME_VERSION@@" date="@@RUNTIME_VERSION_DATE@@"/>
   </releases>
   <description>
     <p>
