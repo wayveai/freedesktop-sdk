@@ -458,6 +458,19 @@ finish_publish_failed:
   except:
     - schedules
 
+.publish_tar_template:
+  stage: publish
+  script:
+    - make export-tar
+  artifacts:
+    when: on_success
+    paths:
+      - ${CI_PROJECT_DIR}/tarballs
+  only:
+    - tags
+  except:
+    - schedules
+
 publish_x86_64:
   extends: .flatpak_publish_template
   image: $DOCKER_AMD64
@@ -486,6 +499,38 @@ publish_aarch64:
 
 publish_arm:
   extends: .flatpak_publish_template
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
+publish_x86_64_tar:
+  extends: .publish_tar_template
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+  variables:
+    ARCH: x86_64
+
+publish_i686_tar:
+  extends: .publish_tar_template
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+  variables:
+    ARCH: i686
+
+publish_aarch64_tar:
+  extends: .publish_tar_template
+  image: $DOCKER_AARCH64
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
+publish_arm_tar:
+  extends: .publish_tar_template
   image: $DOCKER_AARCH64
   tags:
     - armhf
