@@ -12,7 +12,7 @@ config:
   build-commands:
   - |
     for i in *.in; do
-      sed "s/@@RUNTIME_VERSION@@/%{runtime-version}/g" "${i}" >"$(basename "${i}" .in)"
+      sed "s/@@RUNTIME_VERSION@@/%{runtime-version}/g" "${i}"|sed "s/@@RUNTIME_VERSION_DATE@@/%{runtime-version-date}/g" >"$(basename "${i}" .in)"
     done
 
   install-commands:

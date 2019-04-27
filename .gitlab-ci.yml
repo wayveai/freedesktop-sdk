@@ -107,9 +107,11 @@ before_script:
 
   - |
     if [ -n "$GENERATE_VERSION" ]; then
+      timestamp=$(git describe | git rev-parse |xargs git log -1 --format="%at")
       cat >version.yml <<EOF
     variables:
       runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
+      runtime-version-date: $(date -d @$timestamp -Idate)
     EOF
     fi
 
