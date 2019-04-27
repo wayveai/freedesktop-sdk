@@ -39,6 +39,7 @@ depends:
 - filename: components/libksba.bst
 - filename: components/libidn2.bst
 - filename: components/libogg.bst
+- filename: components/libnice.bst
 - filename: components/libpng.bst
 - filename: components/libsamplerate.bst
 - filename: components/libselinux.bst

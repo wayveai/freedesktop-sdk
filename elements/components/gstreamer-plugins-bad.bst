@@ -12,6 +12,7 @@ depends:
 - filename: components/libdrm.bst
 - filename: components/libfdk-aac.bst
 - filename: components/libglvnd.bst
+- filename: components/libnice.bst
 - filename: components/librsvg.bst
 - filename: components/openal.bst
 - filename: components/vulkan.bst
