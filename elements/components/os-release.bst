@@ -1,7 +1,7 @@
 kind: manual
 
 (@):
-- version.yml
+- flatpak-version.yml
 
 depends:
 - filename: bootstrap-import.bst

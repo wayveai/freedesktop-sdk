@@ -1,7 +1,7 @@
 kind: snap_image
 
 (@):
-- version.yml
+- snap-version.yml
 
 config:
   directory: "/"
