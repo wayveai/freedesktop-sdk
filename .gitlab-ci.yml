@@ -134,10 +134,8 @@ before_script:
     fi
 
   - |
-    # This variable is only available on protected branch for which
-    # only we want to set the version in the snap.
     if [ -n "$GENERATE_VERSION" ]; then
-      timestamp=$(git describe | git rev-parse |xargs git log -1 --format="%at")
+      timestamp=$(git log -1 --format="%at" ${CI_COMMIT_SHA1})
       cat >version.yml <<EOF
     variables:
       runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
