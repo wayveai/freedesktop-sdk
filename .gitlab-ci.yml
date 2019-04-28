@@ -102,7 +102,7 @@ before_script:
     if [ -n "$CI_COMMIT_TAG" ] && [ -n "$FLATHUB_REPO_TOKEN" ]; then
         export REPO_TOKEN=$FLATHUB_REPO_TOKEN
         export RELEASES_SERVER_ADDRESS=https://hub.flathub.org/
-        export GENERATE_VERSION=1
+        ./utils/generate-version flatpak-version.yml
         case "${CI_COMMIT_TAG}" in
           *beta*)
             export RELEASE_CHANNEL=beta
@@ -124,23 +124,13 @@ before_script:
     if [ -n "$CI_COMMIT_TAG" ] && [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
         export SNAP_RELEASE=stable
         export SNAP_GRADE=stable
-        export GENERATE_VERSION=1
+        ./utils/generate-version version.yml
     elif [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
         export SNAP_RELEASE=edge
         export SNAP_GRADE=devel
-        export GENERATE_VERSION=1
+        ./utils/generate-version version.yml
     else
         export SNAP_GRADE=devel
-    fi
-
-  - |
-    if [ -n "$GENERATE_VERSION" ]; then
-      timestamp=$(git log -1 --format="%at" ${CI_COMMIT_SHA1})
-      cat >version.yml <<EOF
-    variables:
-      runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
-      runtime-version-date: $(date -d @$timestamp -Idate)
-    EOF
     fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
