@@ -115,10 +115,13 @@ public:
 
   cpe:
     patches:
+    - CVE-2016-10739
     - CVE-2018-19591
+    - CVE-2019-6488
 
 sources:
 - kind: git_tag
   url: sourceware:glibc.git
   track: release/2.28/master
-  ref: glibc-2.28-60-g4d7af7815af5217db6e8fde6032ddf4f6b2a4420
+  track-tags: false
+  ref: glibc-2.28-98-g5cbb73004b635e762e20b447c2d93c307cb40f41
