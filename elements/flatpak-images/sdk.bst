@@ -87,3 +87,5 @@ depends:
   type: build
 - filename: sdk-integration.bst
   type: build
+- filename: linker-debuginfo.bst
+  type: build
