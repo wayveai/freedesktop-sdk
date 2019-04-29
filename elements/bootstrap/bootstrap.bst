@@ -9,6 +9,7 @@ depends:
 - filename: bootstrap/coreutils.bst
 - filename: bootstrap/debugedit.bst
 - filename: bootstrap/diffutils.bst
+- filename: bootstrap/dwz.bst
 - filename: bootstrap/elfutils.bst
 - filename: bootstrap/file.bst
 - filename: bootstrap/findutils.bst
