@@ -1,10 +1,10 @@
 Source: https://reviews.llvm.org/D42593
 
-Index: tools/clang/include/clang/Driver/Options.td
-===================================================================
---- a/tools/clang/include/clang/Driver/Options.td
-+++ b/tools/clang/include/clang/Driver/Options.td
-@@ -2705,6 +2705,7 @@
+diff --git a/clang/include/clang/Driver/Options.td b/clang/include/clang/Driver/Options.td
+index d02d9744d78..9481e2bb075 100644
+--- a/clang/include/clang/Driver/Options.td
++++ b/clang/include/clang/Driver/Options.td
+@@ -3047,6 +3047,7 @@ defm single_precision_constant : BooleanFFlag<"single-precision-constant">,
      Group<clang_ignored_gcc_optimization_f_Group>;
  defm spec_constr_count : BooleanFFlag<"spec-constr-count">, Group<clang_ignored_f_Group>;
  defm stack_check : BooleanFFlag<"stack-check">, Group<clang_ignored_f_Group>;
@@ -12,11 +12,11 @@ Index: tools/clang/include/clang/Driver/Options.td
  defm strength_reduce :
      BooleanFFlag<"strength-reduce">, Group<clang_ignored_gcc_optimization_f_Group>;
  defm tls_model : BooleanFFlag<"tls-model">, Group<clang_ignored_f_Group>;
-Index: test/Driver/clang_f_opts.c
-===================================================================
---- a/tools/clang/test/Driver/clang_f_opts.c
-+++ b/tools/clang/test/Driver/clang_f_opts.c
-@@ -284,6 +284,7 @@
+diff --git a/clang/test/Driver/clang_f_opts.c b/clang/test/Driver/clang_f_opts.c
+index 866b368beac..3bfefa5de28 100644
+--- a/clang/test/Driver/clang_f_opts.c
++++ b/clang/test/Driver/clang_f_opts.c
+@@ -291,6 +291,7 @@
  // RUN:     -ffriend-injection                                                \
  // RUN:     -fno-implement-inlines -fimplement-inlines                        \
  // RUN:     -fstack-check                                                     \

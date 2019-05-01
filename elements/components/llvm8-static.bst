@@ -1,9 +1,9 @@
 kind: filter
 
 depends:
-- filename: components/llvm7-base.bst
+- filename: components/llvm8-base.bst
   type: build
-- filename: components/llvm7-runtime.bst
+- filename: components/llvm8-runtime.bst
   type: runtime
 
 config:

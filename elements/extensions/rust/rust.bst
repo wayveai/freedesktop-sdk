@@ -9,7 +9,7 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: components/llvm7.bst
+- filename: components/llvm8.bst
 - filename: components/libxml2.bst
 
 variables:
@@ -113,8 +113,8 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.33.0-src.tar.gz
-  ref: 5a01a8d7e65126f6079042831385e77485fa5c014bf217e9f3e4aff36a485d94
+  url: https://static.rust-lang.org/dist/rustc-1.34.1-src.tar.gz
+  ref: b0c785264d17e1dac4598627c248a2d5e07dd39b6666d1881fcfc8e2cf4c40a7
 - kind: patch
   path: patches/rust/rust-codegen-libdir.patch
 - kind: patch

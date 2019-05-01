@@ -1,0 +1,13 @@
+diff -ur llvm8.old/compiler-rt/lib/tsan/dd/dd_interceptors.cc llvm8/compiler-rt/lib/tsan/dd/dd_interceptors.cc
+--- llvm8.old/compiler-rt/lib/tsan/dd/dd_interceptors.cc	2019-04-29 20:28:29.582653303 +0200
++++ llvm8/compiler-rt/lib/tsan/dd/dd_interceptors.cc	2019-04-30 16:04:43.313473368 +0200
+@@ -7,6 +7,9 @@
+ //
+ //===----------------------------------------------------------------------===//
+ 
++#undef _FORTIFY_SOURCE
++#define _FORTIFY_SOURCE 0
++
+ #include "dd_rtl.h"
+ #include "interception/interception.h"
+ #include "sanitizer_common/sanitizer_procmaps.h"
