@@ -30,6 +30,7 @@ from fnmatch import fnmatch
 
 HERE = os.path.dirname(__file__)
 ABI_SUPPRESSION_FILE = os.path.join(os.path.dirname(__file__), 'abidiff-suppressions.ini')
+os.environ['LIBABIGAIL_DEFAULT_USER_SUPPRESSION_FILE'] = ABI_SUPPRESSION_FILE
 
 
 class AbiCheckResult:
@@ -211,7 +212,6 @@ def compare_abi(old_library, old_debug_dir, old_include_dir, new_library, new_de
     result = subprocess.run([
             'abidiff',
             '--headers-dir1', old_include_dir, '--headers-dir2', new_include_dir,
-            '--suppressions', ABI_SUPPRESSION_FILE,
             '--debug-info-dir1', old_debug_dir, '--debug-info-dir2', new_debug_dir,
             old_library, new_library,
         ] + options, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
