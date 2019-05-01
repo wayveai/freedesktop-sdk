@@ -8,20 +8,16 @@ depends:
 - filename: components/supported-locales.bst
   type: build
 
+environment:
+  MAXJOBS: "%{max-jobs}"
+
+environment-nocache:
+- MAXJOBS  
+
 config:
   commands:
   - |
-    [ -d /tmp/usr/lib/locale ] || mkdir -p /tmp/usr/lib/locale
     mkdir -p %{install-root}/usr/lib/locale
 
-    while read name encoding; do
-      case "${name}" in
-        en_US.UTF-8)
-          continue
-          ;;
-      esac
-      command="localedef --prefix=/tmp --no-archive -i ${name%%.*} -f ${encoding} ${name}"
-      echo "Generating ${name}"
-      ${command}
-    done <%{datadir}/i18n/SUPPORTED
-    mv /tmp/usr/lib/locale/* %{install-root}/usr/lib/locale/
+    grep -v "en_US.UTF-8" %{datadir}/i18n/SUPPORTED | xargs -P $MAXJOBS -n 2 bash -c 'echo "Generating ${0}"; \
+    localedef --prefix=%{install-root} --no-archive -i ${0%%.*} -f ${1} ${0}'
