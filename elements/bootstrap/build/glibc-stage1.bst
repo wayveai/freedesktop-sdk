@@ -6,7 +6,9 @@ depends:
 - filename: bootstrap/gnu-config.bst
   type: build
 
-(@): elements/bootstrap/build.yml
+(@):
+- elements/bootstrap/build.yml
+- elements/bootstrap/glibc-source.yml
 
 variables:
   prefix: /glibc
@@ -25,10 +27,3 @@ config:
 
     - |
       rm "%{install-root}%{infodir}/dir"
-
-sources:
-- kind: git_tag
-  url: sourceware:glibc.git
-  track: release/2.28/master
-  track-tags: false
-  ref: glibc-2.28-98-g5cbb73004b635e762e20b447c2d93c307cb40f41
