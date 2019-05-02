@@ -6,18 +6,13 @@ depends:
 - filename: bootstrap/gnu-config.bst
   type: build
 
-(@): elements/bootstrap/build.yml
+(@):
+- elements/bootstrap/build.yml
+- elements/bootstrap/gcc-arch-opts.yml
 
 variables:
   prefix: '%{tools}'
   lib: lib
-  (?):
-  - target_arch == "arm":
-      conf-extra: |
-        --with-mode=thumb \
-        --with-fpu=vfpv3-d16 \
-        --with-arch=armv7-a \
-        --with-float=hard
 
   conf-local: |
     --target=%{triplet} \
