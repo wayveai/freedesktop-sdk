@@ -7,9 +7,10 @@ depends:
   type: runtime
 - filename: components/libgpg-error.bst
   type: runtime
+- filename: components/linux-pam.bst
+  type: runtime
 - filename: components/dbus.bst
   type: runtime
-
 config:
   exclude:
   - libsystemd
