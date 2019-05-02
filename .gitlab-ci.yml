@@ -191,8 +191,7 @@ populate_source_cache:
     - git checkout -- snap-version.yml
     - |
       if [ "${STABLE_ABI}" != "false" ]; then
-        REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
-        ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
+        make check-abi ARCH=${ARCH} RUNTIME_VERSION="${RUNTIME_VERSION}"
       fi
 
     - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} export-snap

@@ -45,6 +45,10 @@ def get_parser():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
+        '--bst-opts', default='',
+        help='options for bst')
+
+    parser.add_argument(
         '--old', default='18.08',
         help='the previous revision, considered the reference')
     parser.add_argument(
@@ -129,22 +133,22 @@ def bst(args):
     subprocess.check_call(cmd, encoding='utf-8')
 
 
-def checkout_tree(element, revision):
+def checkout_tree(element, revision, opts):
     os.makedirs('runtimes', exist_ok=True)
     element_name = os.path.splitext(os.path.basename(element))[0]
     checkout_dir = os.path.join('runtimes', sanitize_path(f'{element_name}-{revision}'))
     print(format_title(f'Building and checking out {element} on {revision}', level=1), end='\n\n', flush=True)
 
     with checkout_git_revision(revision):
-        bst(['build', element])
-        bst(['checkout', '--hardlinks', element, checkout_dir])
+        bst([o for o in opts.split(' ') if o] + ['build', element])
+        bst([o for o in opts.split(' ') if o] + ['checkout', '--hardlinks', element, checkout_dir])
         print(flush=True)
 
     return checkout_dir
 
-def get_bst_key(element, revision):
+def get_bst_key(element, revision, opts):
     with checkout_git_revision(revision):
-        out = subprocess.check_output(['bst', 'show', '--deps', 'none', element])
+        out = subprocess.check_output(['bst'] + [o for o in opts.split(' ') if o] + ['show', '--deps', 'none', element])
         return out.split()[1]
 
 def get_soname(path):
@@ -289,15 +293,15 @@ if __name__ == '__main__':
     if re.search(re.escape('[abi break forward]'), commit):
         forward_compatible = False
 
-    old_key = get_bst_key(args.element, args.old)
-    new_key = get_bst_key(args.element, args.new)
+    old_key = get_bst_key(args.element, args.old, args.bst_opts)
+    new_key = get_bst_key(args.element, args.new, args.bst_opts)
 
     if old_key == new_key:
         print(format_title(f'There is no change between {args.old} and {args.new}', level=2), flush=True)
         sys.exit(0)
 
-    old_sdk = checkout_tree(args.element, args.old)
-    new_sdk = checkout_tree(args.element, args.new)
+    old_sdk = checkout_tree(args.element, args.old, args.bst_opts)
+    new_sdk = checkout_tree(args.element, args.new, args.bst_opts)
     abi_compatible = compare_tree_abis(old_sdk, new_sdk, forward_compatible)
 
     if abi_compatible:

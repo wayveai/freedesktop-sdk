@@ -12,6 +12,7 @@ REPO=repo
 CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT?=vm/minimal-systemd-vm.bst
+RUNTIME_VERSION=master
 
 SNAP_GRADE=devel
 ARCH_OPTS=-o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
@@ -39,6 +40,10 @@ build:
 
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
+
+check-abi:
+	REFERENCE=$$(git merge-base $(RUNTIME_VERSION) HEAD) && \
+	./utils/check-abi --bst-opts="${ARCH_OPTS}" --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
 	$(BST) build flatpak-release.bst deploy-tools/flatpak.bst
