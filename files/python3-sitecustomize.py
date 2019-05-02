@@ -2,10 +2,15 @@ import sys
 import site
 import os
 
-site.USER_BASE = os.environ.get("PYTHONUSERBASE", "/var/data/python")
 old_user_site = os.path.abspath(site.USER_SITE)
-old_index = sys.path.index(old_user_site)
-sys.path.remove(old_user_site)
-site.USER_SITE = None
+try:
+    old_index = sys.path.index(old_user_site)
+except ValueError:
+    # Unknon what causes this but let's not do anything if this happens
+    pass
+else:
+    site.USER_BASE = os.environ.get("PYTHONUSERBASE", "/var/data/python")
+    sys.path.remove(old_user_site)
+    site.USER_SITE = None
 
-sys.path.insert(old_index, site.getusersitepackages())
+    sys.path.insert(old_index, site.getusersitepackages())
