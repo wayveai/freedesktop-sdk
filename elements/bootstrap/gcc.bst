@@ -47,6 +47,10 @@ environment:
         CFLAGS_FOR_BUILD:  "%{build_flags_aarch64}"
         CXXFLAGS_FOR_BUILD: "%{build_flags_aarch64}"
         LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
+    - bootstrap_build_arch == "powerpc64le":
+        CFLAGS_FOR_BUILD:  "%{build_flags_powerpc64le}"
+        CXXFLAGS_FOR_BUILD: "%{build_flags_powerpc64le}"
+        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
 
 variables:
   # gcc installs correctly libraries in the multiarch library

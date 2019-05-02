@@ -41,6 +41,11 @@ build:
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
 
+bootstrap:
+	$(BST) build bootstrap/export-bootstrap.bst
+	[ -d bootstrap/ ] || mkdir -p bootstrap/
+	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
+
 check-abi:
 	REFERENCE=$$(git merge-base $(RUNTIME_VERSION) HEAD) && \
 	./utils/check-abi --bst-opts="${ARCH_OPTS}" --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
@@ -200,4 +205,4 @@ export-docker:
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker
+	export-oci export-docker bootstrap

@@ -20,3 +20,7 @@ environment:
         CFLAGS:  "%{build_flags_aarch64}"
         CXXFLAGS: "%{build_flags_aarch64}"
         LDFLAGS:  "%{ldflags_defaults}"
+    - bootstrap_build_arch == "powerpc64le":
+        CFLAGS:  "%{build_flags_powerpc64le}"
+        CXXFLAGS: "%{build_flags_powerpc64le}"
+        LDFLAGS:  "%{ldflags_defaults}"

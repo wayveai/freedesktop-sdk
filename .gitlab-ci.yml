@@ -19,6 +19,7 @@ variables:
   BST: bst --colors
 
 stages:
+  - bootstrap
   - update
   - flatpak
   - snap
@@ -243,6 +244,30 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
+
+.bootstrap_template: &bootstrap_definition
+  stage: bootstrap
+  script:
+    - make ARCH=${ARCH} bootstrap
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+      - bootstrap/${ARCH}
+  except:
+    - master
+    - '18.08'
+    - tags
+  <<: *gitlab_cache_pull
+
+bootstrap_powerpc64le:
+  image: $DOCKER_AMD64
+  <<: *bootstrap_definition
+  tags:
+    - x86_64
+    - cache_x86_64 # Keep the same cache. Does not matter which one.
+  variables:
+    ARCH: powerpc64le
 
 .vm_imageless_template: &vm_imageless
   stage: vm
