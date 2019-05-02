@@ -2,9 +2,11 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: components/linux-pam.bst
 
 variables:
   conf-local: |
+    --with-pam \
     --without-selinux
 
 config:
