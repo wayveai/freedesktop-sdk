@@ -201,11 +201,15 @@ populate_source_cache:
         make check-abi ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} RUNTIME_VERSION="${RUNTIME_VERSION}"
       fi
 
-    - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} export-snap
-    - python3 utils/parse-review.py snap/platform.snap
-    - python3 utils/parse-review.py snap/glxinfo.snap
-    - python3 utils/parse-review.py snap/vulkaninfo.snap
-    - python3 utils/parse-review.py snap/clinfo.snap
+    - |
+      set -e
+      if [ "${ARCH}" != powerpc64le ]; then
+        make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} export-snap
+        python3 utils/parse-review.py snap/platform.snap
+        python3 utils/parse-review.py snap/glxinfo.snap
+        python3 utils/parse-review.py snap/vulkaninfo.snap
+        python3 utils/parse-review.py snap/clinfo.snap
+      fi
 
   artifacts:
     when: always
