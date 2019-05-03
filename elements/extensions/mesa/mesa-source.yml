@@ -1,0 +1,7 @@
+sources:
+- kind: git_tag
+  url: freedesktop:mesa/mesa.git
+  track: 19.0
+  ref: mesa-19.0.2-0-g2964ee3ad05c4b3d1407aeaa28e2058fe93e1659
+- kind: patch
+  path: patches/mesa/mesa_libdrm_deps.patch

@@ -8,7 +8,6 @@ depends:
 - filename: components/gstreamer-plugins-bad.bst
 - filename: components/libdrm.bst
 - filename: components/libva.bst
-- filename: components/mesa.bst
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst
   type: build

@@ -14,7 +14,6 @@ depends:
 - filename: components/hicolor-icon-theme.bst
 - filename: components/libepoxy.bst
 - filename: components/libxkbcommon.bst
-- filename: components/mesa.bst
 - filename: components/pango.bst
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst

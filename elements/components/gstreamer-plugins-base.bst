@@ -6,7 +6,6 @@ depends:
   type: build
 - filename: components/orc.bst
 - filename: components/gstreamer.bst
-- filename: components/mesa.bst
 - filename: components/pango.bst
 - filename: components/xorg-lib-xv.bst
 - filename: public-stacks/buildsystem-autotools.bst
@@ -21,7 +20,7 @@ depends:
 - filename: components/opus.bst
 - filename: components/which.bst
   type: build
-
+- filename: components/mesa-headers.bst
 
 variables:
   conf-local: |
@@ -32,7 +31,12 @@ variables:
     --enable-orc \
     --enable-pango \
     --enable-theora \
-    --enable-vorbis
+    --enable-vorbis \
+    --enable-opengl \
+    --enable-gles2 \
+    --enable-egl \
+    --enable-glx \
+    --enable-gl
 
 public:
   bst:

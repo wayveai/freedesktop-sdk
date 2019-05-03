@@ -3,7 +3,7 @@ kind: cmake
 depends:
 - filename: components/xorg-lib-xi.bst
   type: build
-- filename: components/mesa.bst
+- filename: components/mesa-headers.bst
   type: build
 - filename: extensions/glxinfo/glu.bst
 - filename: public-stacks/buildsystem-cmake.bst
