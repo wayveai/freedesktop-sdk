@@ -137,14 +137,14 @@ before_script:
 # This saves us fetching them on every build
 .gitlab_cache_template_pull: &gitlab_cache_pull
   cache:
-    key: bst
+    key: "${RUNTIME_VERSION}-sources"
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
     policy: pull
 
 .gitlab_cache_template_pull_push: &gitlab_cache_pull_push
   cache:
-    key: bst
+    key: "${RUNTIME_VERSION}-sources"
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
