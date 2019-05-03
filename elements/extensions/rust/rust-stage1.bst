@@ -34,3 +34,7 @@ sources:
   - target_arch == "arm":
       url: https://static.rust-lang.org/dist/rust-1.34.2-armv7-unknown-linux-gnueabihf.tar.xz
       ref: 6dd2af2714845af693149ec6d5ab7c59311bfa40119a9f030580d26f61ae595a
+  - target_arch == "powerpc64le":
+      # 1.34 does not work
+      url: https://static.rust-lang.org/dist/rust-1.35.0-powerpc64le-unknown-linux-gnu.tar.xz
+      ref: 4cd0f4556e28aa43ccbb29f501200f2fd3877220340b840a69c806af5ff3ac33

@@ -54,6 +54,11 @@ variables:
       dri_drivers: ''
       vulkan_drivers: ''
       enable_libunwind: 'false'
+  - target_arch == "powerpc64le":
+      gallium_drivers: r600,r300,radeonsi,swrast,virgl
+      dri_drivers: r100,r200
+      vulkan_drivers: amd
+      enable_libunwind: 'false'
 
   optimize-debug: "false"
 

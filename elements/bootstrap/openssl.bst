@@ -21,7 +21,7 @@ variables:
       openssl-target: linux-generic32
   - target_arch == "powerpc64le":
       openssl-target: linux-ppc64le
-  - target_arch == "x86_64" or target_arch == "aarch64":
+  - target_arch in ["x86_64", "aarch64", "powerpc64le"]:
       arch-conf: enable-ec_nistp_64_gcc_128
 
 config:
