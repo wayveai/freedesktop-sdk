@@ -9,6 +9,9 @@ depends:
 - filename: bootstrap/glibc.bst
   type: runtime
 
+(@):
+- elements/bootstrap/gcc-arch-opts.yml
+
 environment:
   PATH: "%{tools}/bin:/bin"
   CFLAGS: ''
@@ -52,13 +55,6 @@ environment:
 variables:
   host-triplet: '%{triplet}'
   build-triplet: '%{guessed-triplet}'
-  (?):
-  - target_arch == "arm":
-      conf-extra: |
-        --with-mode=thumb \
-        --with-fpu=vfpv3-d16 \
-        --with-arch=armv7-a \
-        --with-float=hard
 
   # gcc installs correctly libraries in the multiarch library
   # directory, but needs to be provided /usr/lib for --libdir.
