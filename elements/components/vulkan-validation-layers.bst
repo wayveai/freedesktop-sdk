@@ -15,6 +15,8 @@ depends:
 - filename: components/xorg-lib-xrandr.bst
 
 variables:
+  optimize-debug: "false"
+
   cmake-local: |
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DGLSLANG_INSTALL_DIR=%{prefix}

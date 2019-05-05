@@ -17,6 +17,7 @@ variables:
     cmake -B%{build-dir} -Hllvm -G"%{generator}" %{cmake-args}
 
   debug_flags: "-g1"
+  optimize-debug: "false"
 
   (?):
   - target_arch == "i686":
