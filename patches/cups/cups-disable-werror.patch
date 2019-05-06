@@ -1,0 +1,30 @@
+diff -ur cups.old/config-scripts/cups-compiler.m4 cups/config-scripts/cups-compiler.m4
+--- cups.old/config-scripts/cups-compiler.m4	2019-05-03 22:26:54.038171383 +0200
++++ cups/config-scripts/cups-compiler.m4	2019-05-03 22:27:20.709905026 +0200
+@@ -166,11 +166,6 @@
+ 				OPTIM="$OPTIM -Wno-format-truncation -Wno-tautological-compare"
+ 				;;
+ 		esac
+-
+-		# Additional warning options for development testing...
+-		if test -d .git; then
+-			OPTIM="-Werror $OPTIM"
+-		fi
+ 	fi
+ 
+ 	case "$host_os_name" in
+diff -ur cups.old/configure cups/configure
+--- cups.old/configure	2019-05-03 22:26:54.086170904 +0200
++++ cups/configure	2019-05-03 22:27:32.993782394 +0200
+@@ -7024,11 +7024,6 @@
+ 				OPTIM="$OPTIM -Wno-format-truncation -Wno-tautological-compare"
+ 				;;
+ 		esac
+-
+-		# Additional warning options for development testing...
+-		if test -d .git; then
+-			OPTIM="-Werror $OPTIM"
+-		fi
+ 	fi
+ 
+ 	case "$host_os_name" in

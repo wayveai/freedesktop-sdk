@@ -20,7 +20,6 @@ variables:
     --enable-threads \
     --enable-gnutls \
     localedir=/usr/share/locale \
-    CFLAGS="-Wno-error=sign-conversion $CFLAGS" \
     DSOFLAGS="$CFLAGS $LDFLAGS"
 
 config:
@@ -40,4 +39,6 @@ sources:
 - kind: git_tag
   url: github:apple/cups.git
   track: branch-2.2
-  ref: v2.2.10-0-g25b2338346ef3abbb93ea88476887cba7b2b86f8
+  ref: v2.2.11-0-ge4a0aa86c96b5ddda3770c46709f4dee9a59071f
+- kind: patch
+  path: patches/cups/cups-disable-werror.patch

@@ -156,8 +156,8 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
-  ref: 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
+  url: ftp_gnu_org:gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
+  ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
 - kind: tar
   url: ftp_gnu_org:gmp/gmp-6.1.2.tar.xz
   directory: gmp
