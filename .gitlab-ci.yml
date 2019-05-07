@@ -33,6 +33,22 @@ before_script:
   - export PATH=~/.local/bin:${PATH}
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
+  - |
+    git -C buildstream apply - << EOF
+    diff --git a/buildstream/_project.py b/buildstream/_project.py
+    index 4a3c075e..c4204ed7 100644
+    --- a/buildstream/_project.py
+    +++ b/buildstream/_project.py
+    @@ -588,7 +588,7 @@ class Project():
+             # Based on some testing (mainly on AWS), maximum effective
+             # max-jobs value seems to be around 8-10 if we have enough cores
+             # users should set values based on workload and build infrastructure
+    -        output.base_variables['max-jobs'] = str(min(len(os.sched_getaffinity(0)), 8))
+    +        output.base_variables['max-jobs'] = str(len(os.sched_getaffinity(0)))
+     
+             # Export options into variables, if that was requested
+             output.options.export_variables(output.base_variables)
+    EOF
   - pip3 install --user buildstream/
   - git clone https://gitlab.com/BuildStream/bst-external.git
   - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
