@@ -11,6 +11,7 @@ depends:
   type: build
 - filename: components/bison.bst
   type: build
+- filename: components/python3.bst
 
 variables:
   conf-link-args: |
@@ -25,6 +26,7 @@ variables:
     --disable-gprof \
     --without-zlib \
     --with-system-zlib \
+    --with-python=/usr/bin/python3 \
     --disable-readline \
     --with-system-readline \
     --disable-install-libbfd \
