@@ -27,7 +27,9 @@ depends:
   type: build
 - filename: vm/systemd-firstboot-integration.bst
   type: build
-
+- filename: vm/journald-config.bst
+  type: build  
+  
 config:
   include:
   - runtime
