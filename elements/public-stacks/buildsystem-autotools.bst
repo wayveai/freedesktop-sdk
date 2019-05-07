@@ -7,3 +7,4 @@ depends:
 - filename: components/gettext.bst
 - filename: components/libtool.bst
 - filename: components/pkg-config.bst
+- filename: components/which.bst
