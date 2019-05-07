@@ -53,7 +53,6 @@ depends:
 - filename: components/libwebp.bst
 - filename: components/libxml2.bst
 - filename: components/libxslt.bst
-- filename: components/linux-pam.bst
 - filename: components/locales.bst
 - filename: components/lzip.bst
 - filename: components/nano.bst

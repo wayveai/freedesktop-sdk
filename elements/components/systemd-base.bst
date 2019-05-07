@@ -16,6 +16,7 @@ depends:
 - filename: components/libgpg-error.bst
 - filename: components/util-linux.bst
 - filename: components/xz.bst
+- filename: components/linux-pam.bst
 
 variables:
   meson-local: |
@@ -26,7 +27,8 @@ variables:
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999 \
-    -Dopenssl=false
+    -Dopenssl=false \
+    -Dpam=true
 
 public:
   cpe:
