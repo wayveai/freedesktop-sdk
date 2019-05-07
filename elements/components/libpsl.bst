@@ -10,8 +10,6 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: components/which.bst
-  type: build
 
 public:
   bst:

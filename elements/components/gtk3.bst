@@ -25,8 +25,6 @@ depends:
   type: build
 - filename: components/perl.bst
   type: build
-- filename: components/which.bst
-  type: build
 - filename: components/gtk-doc.bst
   type: build
 

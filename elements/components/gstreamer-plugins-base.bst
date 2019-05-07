@@ -16,8 +16,6 @@ depends:
 - filename: components/libtheora.bst
 - filename: components/libvorbis.bst
 - filename: components/opus.bst
-- filename: components/which.bst
-  type: build
 - filename: components/mesa-headers.bst
 
 variables:

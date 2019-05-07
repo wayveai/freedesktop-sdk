@@ -18,8 +18,6 @@ depends:
   type: build
 - filename: components/libflac.bst
 - filename: components/wavpack.bst
-- filename: components/which.bst
-  type: build
 
 variables:
   conf-local: |

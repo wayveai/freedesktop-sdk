@@ -9,8 +9,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/which.bst
-  type: build
 - filename: components/nasm.bst
   type: build
 

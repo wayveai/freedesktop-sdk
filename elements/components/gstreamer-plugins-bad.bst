@@ -23,8 +23,6 @@ depends:
 - filename: components/curl.bst
 - filename: components/libwebp.bst
 - filename: components/sndfile.bst
-- filename: components/which.bst
-  type: build
 
 
 variables:

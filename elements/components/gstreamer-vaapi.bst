@@ -14,8 +14,6 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/which.bst
-  type: build
 
 
 variables:
