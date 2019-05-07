@@ -10,8 +10,6 @@ depends:
 - filename: components/xorg-lib-xv.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/git-minimal.bst
   type: build
 - filename: components/libogg.bst

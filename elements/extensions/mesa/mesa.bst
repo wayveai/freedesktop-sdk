@@ -34,8 +34,6 @@ depends:
   type: build
 - filename: components/python3-mako.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"

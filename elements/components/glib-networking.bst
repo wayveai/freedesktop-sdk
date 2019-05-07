@@ -7,7 +7,6 @@ depends:
 - filename: components/gnutls.bst
 - filename: components/gsettings-desktop-schemas.bst
 - filename: components/ca-certificates.bst
-- filename: components/gettext.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 

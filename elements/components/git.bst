@@ -9,8 +9,6 @@ depends:
 - filename: components/pcre2.bst
 - filename: components/expat.bst
 - filename: components/libffi.bst
-- filename: components/gettext.bst
-  type: build
 - filename: components/tar.bst
   type: build
 - filename: public-stacks/buildsystem-autotools.bst

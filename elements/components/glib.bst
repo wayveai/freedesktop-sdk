@@ -4,8 +4,6 @@ description: Glib
 depends:
 - filename: bootstrap-import.bst
 - filename: components/libffi.bst
-- filename: components/gettext.bst
-  type: build
 - filename: components/util-linux.bst
 - filename: components/pcre.bst
 - filename: components/python3.bst

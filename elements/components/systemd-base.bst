@@ -5,8 +5,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/gperf.bst
   type: build
 - filename: components/m4.bst

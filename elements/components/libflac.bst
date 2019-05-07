@@ -5,8 +5,6 @@ depends:
 - filename: components/libogg.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 
 variables:
   conf-local: |

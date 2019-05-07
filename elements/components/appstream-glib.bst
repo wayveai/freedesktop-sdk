@@ -12,8 +12,6 @@ depends:
   type: build
 - filename: components/gperf.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/libarchive.bst
 
 variables:

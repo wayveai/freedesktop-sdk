@@ -5,8 +5,6 @@ depends:
 - filename: components/glib.bst
 - filename: components/gobject-introspection.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/git.bst
