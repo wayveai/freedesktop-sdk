@@ -7,6 +7,7 @@ depends:
   type: build
 - filename: base/perl.bst
   type: build
+- filename: base/python3.bst
 
 variables:
   conf-link-args: |
@@ -15,6 +16,7 @@ variables:
   conf-local: |
     --without-zlib \
     --with-system-zlib \
+    --with-python=/usr/bin/python3 \
     --disable-readline \
     --with-system-readline \
     --disable-install-libbfd \
