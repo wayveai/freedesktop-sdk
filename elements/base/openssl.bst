@@ -70,3 +70,5 @@ sources:
   url: github:openssl/openssl
   track: OpenSSL_1_1_1-stable
   ref: OpenSSL_1_1_1b-0-g50eaac9f3337667259de725451f201e784599687
+- kind: patch
+  path: patches/openssl/Fix-for-BIO_get_mem_ptr-and-related-regressions.patch
