@@ -21,7 +21,8 @@ variables:
     --disable-sim \
     --disable-readline \
     --disable-libdecnumber \
-    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib"
+    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib" \
+    --with-system-zlib
 
 config:
   install-commands:

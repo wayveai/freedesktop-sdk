@@ -6,6 +6,8 @@ depends:
   type: build
 - filename: bootstrap/glibc.bst
   type: runtime
+- filename: bootstrap/zlib.bst
+  type: runtime
 
 (@): elements/bootstrap/target.yml
 
@@ -28,6 +30,7 @@ variables:
     --disable-libdecnumber \
     --enable-relro=yes \
     --enable-lto \
+    --with-system-zlib \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
 config:
