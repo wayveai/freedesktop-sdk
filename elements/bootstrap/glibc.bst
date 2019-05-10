@@ -80,9 +80,9 @@ variables:
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       arch_options: --enable-static-pie --enable-cet
-  - target_arch == "aarch64" or target_arch == "powerpc64le":
+  - target_arch == "aarch64":
       arch_options: --enable-static-pie
-  - target_arch == "arm":
+  - target_arch == "arm" or target_arch == "powerpc64le":
     # --enable-static-pie breaks arm build
       arch_options: ''
 
