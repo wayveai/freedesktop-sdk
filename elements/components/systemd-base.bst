@@ -37,19 +37,19 @@ public:
   bst:
     split-rules:
       libsystemd:
-        - '%{libdir}'
-        - '%{libdir}/libsystemd*.so*'
-        - '%{libdir}/pkgconfig'
-        - '%{libdir}/pkgconfig/libsystemd.pc'
-        - '%{datadir}/pkgconfig'
-        - '%{datadir}/pkgconfig/systemd.pc'
-        - '%{includedir}'
-        - '%{includedir}/systemd'
-        - '%{includedir}/systemd/**'
-        - '%{debugdir}/dwz/%{element-name}/debug'
-        - '%{debugdir}%{libdir}/libsystemd*.so*'
-        - '%{sourcedir}'
-        - '%{sourcedir}/**'
+      - '%{libdir}'
+      - '%{libdir}/libsystemd*.so*'
+      - '%{libdir}/pkgconfig'
+      - '%{libdir}/pkgconfig/libsystemd.pc'
+      - '%{datadir}/pkgconfig'
+      - '%{datadir}/pkgconfig/systemd.pc'
+      - '%{includedir}'
+      - '%{includedir}/systemd'
+      - '%{includedir}/systemd/**'
+      - '%{debugdir}/dwz/%{element-name}/debug'
+      - '%{debugdir}%{libdir}/libsystemd*.so*'
+      - '%{sourcedir}'
+      - '%{sourcedir}/**'
 
 sources:
 - kind: git_tag
