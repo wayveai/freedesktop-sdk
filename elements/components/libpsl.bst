@@ -25,7 +25,7 @@ sources:
   ref: libpsl-0.20.2-0-gb7f5c1414db2ead6f15737ab79fbc336a539ea16
   submodules:
     list:
-      checkout: True
+      checkout: true
       url: github:publicsuffix/list
 - kind: patch
   path: patches/libpsl/libpsl-Use-the-detected-PYTHON-version.patch

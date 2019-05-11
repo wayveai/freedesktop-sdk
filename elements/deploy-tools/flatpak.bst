@@ -31,11 +31,11 @@ sources:
   ref: 1.2.3-0-g428c7bf8566d1cdb9f5eafccde1a19a41aeab144
   submodules:
     libglnx:
-      checkout: True
+      checkout: true
       url: gnome:libglnx.git
     bubblewrap:
-      checkout: True
+      checkout: true
       url: github:projectatomic/bubblewrap.git
     dbus-proxy:
-      checkout: True
+      checkout: true
       url: github:flatpak/xdg-dbus-proxy.git

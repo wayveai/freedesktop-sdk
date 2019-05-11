@@ -23,7 +23,7 @@ sources:
   ref: v2.7.6-0-g40b387de08653a1e46872b8ac1a6a14b9b94feb3
   submodules:
     gnulib:
-      checkout: True
+      checkout: true
       url: savannah:gnulib
 - kind: patch
   path: patches/patch/CVE-2018-6951.patch
