@@ -22,11 +22,11 @@ variables:
   - target_arch == "aarch64":
       aom_target: arm64
 
-  cmake-local: >-
-    -DAOM_TARGET_CPU="${aom_target}"
-    -DENABLE_DOCS=NO
-    -DENABLE_NASM=YES
-    -DENABLE_NEON=NO
+  cmake-local: |
+    -DAOM_TARGET_CPU="${aom_target}" \
+    -DENABLE_DOCS=NO \
+    -DENABLE_NASM=YES \
+    -DENABLE_NEON=NO \
     -DBUILD_SHARED_LIBS=YES
 
 public:

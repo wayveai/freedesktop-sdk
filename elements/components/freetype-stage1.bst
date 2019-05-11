@@ -17,7 +17,7 @@ variables:
 config:
   configure-commands:
     (<):
-      - ./autogen.sh
+    - ./autogen.sh
 
 sources:
 - kind: git_tag
