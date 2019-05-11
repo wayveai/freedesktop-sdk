@@ -11,8 +11,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/which.bst
-  type: build
 
 variables:
   conf-local: |

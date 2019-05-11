@@ -7,8 +7,6 @@ depends:
   type: build
 - filename: components/flex.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 
 variables:
   pamconfdir: "%{sysconfdir}/pam.d"

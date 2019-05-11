@@ -4,8 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/libtasn1.bst
 - filename: components/libunistring.bst
 - filename: components/libidn2.bst

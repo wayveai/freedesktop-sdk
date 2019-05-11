@@ -8,8 +8,6 @@ depends:
 - filename: components/python3.bst
   type: build
 - filename: components/libsystemd.bst
-- filename: components/which.bst
-  type: build
 
 variables:
   conf-local: |

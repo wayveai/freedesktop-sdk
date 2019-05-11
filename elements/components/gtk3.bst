@@ -23,11 +23,7 @@ depends:
 - filename: components/xorg-lib-xi.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/perl.bst
-  type: build
-- filename: components/which.bst
   type: build
 - filename: components/gtk-doc.bst
   type: build

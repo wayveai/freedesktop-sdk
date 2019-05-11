@@ -4,8 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/gobject-introspection.bst
   type: build
 

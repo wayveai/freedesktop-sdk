@@ -3,19 +3,11 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/itstools.bst
-- filename: components/autoconf.bst
-  type: build
-- filename: components/automake.bst
-  type: build
 - filename: components/docbook-xml.bst
 - filename: components/docbook-xsl.bst
-- filename: components/gettext.bst
-  type: build
 - filename: components/pkg-config.bst   # gtk-doc uses pkg-config during runtime.
-- filename: components/libtool.bst
-  type: build
 - filename: components/python3.bst
-- filename: components/which.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
 
 sources:

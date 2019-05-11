@@ -4,8 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/which.bst
-  type: build
 - filename: components/git-minimal.bst
   type: build
 - filename: components/gpgme.bst

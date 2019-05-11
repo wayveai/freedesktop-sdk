@@ -6,8 +6,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 
 sources:
 - kind: tar

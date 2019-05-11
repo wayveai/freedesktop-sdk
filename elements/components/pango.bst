@@ -9,8 +9,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
-- filename: components/which.bst
-  type: build
 - filename: components/fribidi.bst
 
 public:

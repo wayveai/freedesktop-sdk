@@ -7,8 +7,6 @@ depends:
   type: build
 - filename: components/bison.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/git-minimal.bst
   type: build
 

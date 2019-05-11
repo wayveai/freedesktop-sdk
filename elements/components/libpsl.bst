@@ -6,13 +6,9 @@ depends:
   type: build
 - filename: components/libidn2.bst
 - filename: components/libunistring.bst
-- filename: components/gettext.bst
-  type: build
 - filename: components/git.bst
   type: build
 - filename: components/python3.bst
-  type: build
-- filename: components/which.bst
   type: build
 
 public:

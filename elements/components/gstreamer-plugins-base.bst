@@ -10,16 +10,12 @@ depends:
 - filename: components/xorg-lib-xv.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/git-minimal.bst
   type: build
 - filename: components/libogg.bst
 - filename: components/libtheora.bst
 - filename: components/libvorbis.bst
 - filename: components/opus.bst
-- filename: components/which.bst
-  type: build
 - filename: components/mesa-headers.bst
 
 variables:

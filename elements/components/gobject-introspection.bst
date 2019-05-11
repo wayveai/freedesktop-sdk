@@ -10,8 +10,6 @@ depends:
   type: build
 - filename: components/bison.bst
   type: build
-- filename: components/which.bst
-  type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 

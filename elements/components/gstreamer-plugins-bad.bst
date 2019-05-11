@@ -21,12 +21,8 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: components/curl.bst
-- filename: components/gettext.bst
-  type: build
 - filename: components/libwebp.bst
 - filename: components/sndfile.bst
-- filename: components/which.bst
-  type: build
 
 
 variables:

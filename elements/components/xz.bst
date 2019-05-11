@@ -2,8 +2,6 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/gettext.bst
-  type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 

@@ -9,8 +9,6 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/gettext.bst
-  type: build
 - filename: components/iso-codes.bst
   type: build
 
