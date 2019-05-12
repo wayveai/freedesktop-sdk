@@ -172,6 +172,7 @@ check_update_elements:
   tags:
     - check_update
   script:
+    - git checkout -- snap-version.yml
     - ${BST} track --deps all flatpak-release.bst
     - git diff
   only:
