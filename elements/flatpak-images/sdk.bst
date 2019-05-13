@@ -27,7 +27,7 @@ config:
       no-autodownload: "true"
       autodelete: "false"
       add-ld-path: "lib"
-      merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors"
+      merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri"
       download-if: "active-gl-driver"
       enable-if: "active-gl-driver"
 
