@@ -13,10 +13,10 @@ REPO=repo
 CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT?=vm/minimal-systemd-vm.bst
-IMPORT_BOOTSTRAP=false
-RUNTIME_VERSION=master
+IMPORT_BOOTSTRAP?=false
+RUNTIME_VERSION?=master
 
-SNAP_GRADE=devel
+SNAP_GRADE?=devel
 ARCH_OPTS=-o bootstrap_build_arch $(BOOTSTRAP_ARCH) -o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
 ifeq ($(IMPORT_BOOTSTRAP),true)
 ARCH_OPTS+= -o import_bootstrap true

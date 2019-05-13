@@ -187,24 +187,24 @@ populate_source_cache:
         mv "bootstrap/${ARCH}" bootstrap/current
       fi
 
-    - make ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} build
+    - make build
     - test ${ARCH} != "aarch64" && make build-vm
-    - make ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} check-dev-files check-rpath
-    - make ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} clean-platform
+    - make check-dev-files check-rpath
+    - make clean-platform
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - make ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} test-apps
+    - make test-apps
 
     - git checkout -- snap-version.yml
     - |
       if [ "${STABLE_ABI}" != "false" ]; then
-        make check-abi ARCH=${ARCH} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} RUNTIME_VERSION="${RUNTIME_VERSION}"
+        make check-abi
       fi
 
     - |
       set -e
       if [ "${ARCH}" != powerpc64le ]; then
-        make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} IMPORT_BOOTSTRAP=${IMPORT_BOOTSTRAP:-false} export-snap
+        make export-snap
         python3 utils/parse-review.py snap/platform.snap
         python3 utils/parse-review.py snap/glxinfo.snap
         python3 utils/parse-review.py snap/vulkaninfo.snap
@@ -267,7 +267,7 @@ app_powerpc64le:
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
   script:
-    - make ARCH=${ARCH} bootstrap
+    - make bootstrap
   artifacts:
     when: always
     paths:
@@ -454,8 +454,8 @@ finish_publish_failed:
   stage: publish
   retry: 2
   script:
-    - make ARCH=${ARCH} build
-    - make ARCH=${ARCH} export
+    - make build
+    - make export
 
     - |
       case "$RELEASES_SERVER_ADDRESS" in
@@ -681,7 +681,7 @@ reproducible_arm:
     - |
       [ -n "${SNAP_RELEASE}" ]
 
-    - make ARCH=${ARCH} SNAP_GRADE=${SNAP_GRADE} export-snap
+    - make export-snap
 
     - mkdir -p ".snapcraft/"
     - echo "${SNAPCRAFT_LOGIN_FILE}" | base64 --decode --ignore-garbage > ".snapcraft/snapcraft.cfg"
