@@ -8,15 +8,21 @@ depends:
 - filename: components/libtirpc.bst
 - filename: components/krb5.bst
   type: build
+- filename: components/libdrm.bst
+- filename: extensions/mesa/gbm.bst
 - filename: components/libepoxy.bst
 - filename: components/pixman.bst
 - filename: components/xorg-lib-xkbfile.bst
 - filename: components/xorg-lib-xfont2.bst
 - filename: components/xorg-lib-xdmcp.bst
+- filename: components/xorg-lib-xshmfence.bst
 - filename: components/xorg-app-xkbcomp.bst
 - filename: components/xorg-font-util.bst
+- filename: components/xorg-proto-xorgproto.bst
+  type: build
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst
+  type: build
 - filename: components/systemd.bst
 
 variables:
@@ -26,6 +32,9 @@ variables:
     -Dxwin=false \
     -Dglamor=true \
     -Dxwayland=true
+
+environment:
+  PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig'
 
 sources:
 - kind: tar
