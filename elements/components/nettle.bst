@@ -6,6 +6,11 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+variables:
+  # Work around race condition in makefiles. The following error
+  # message sometimes happen:
+  # /bin/sh: line 1: ./desdata: Text file busy
+  notparallel: true
 
 public:
   bst:
