@@ -5,6 +5,9 @@ BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/"
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 QEMU_ARCH=i386
+else ifeq ($(ARCH),powerpc64le)
+FLATPAK_ARCH=$(ARCH)
+QEMU_ARCH=ppc64
 else
 FLATPAK_ARCH=$(ARCH)
 QEMU_ARCH=$(ARCH)
@@ -113,6 +116,11 @@ QEMU_ARM_ARGS= \
 	$(QEMU_ARM_COMMON_ARGS) \
 	-machine highmem=off
 
+QEMU_POWERPC64LE_ARGS= \
+	$(QEMU_COMMON_ARGS) \
+	-machine pseries \
+	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
+
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
 ifeq ($(ARCH),x86_64)
 	$(QEMU) $(QEMU_X86_COMMON_ARGS)
@@ -122,6 +130,8 @@ else ifeq ($(ARCH),aarch64)
 	$(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
 	$(QEMU) $(QEMU_ARM_ARGS)
+else ifeq ($(ARCH),powerpc64le)
+	$(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 
 $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements

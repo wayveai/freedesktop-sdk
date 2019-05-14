@@ -12,9 +12,9 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:2118fc65ba325b02be6327bb469de5357449a11d"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:2118fc65ba325b02be6327bb469de5357449a11d"
-  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:2118fc65ba325b02be6327bb469de5357449a11d"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:c2b4d47fc38f3f3caf90351c221969e26a418af1"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:c2b4d47fc38f3f3caf90351c221969e26a418af1"
+  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:c2b4d47fc38f3f3caf90351c221969e26a418af1"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -291,6 +291,10 @@ bootstrap_powerpc64le:
 .vm_imageless_template: &vm_imageless
   stage: vm
   script:
+    - |
+      if [ "${IMPORT_BOOTSTRAP}" = true ]; then
+        mv "bootstrap/${ARCH}" bootstrap/current
+      fi
     - make build-vm
     - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
   artifacts:
@@ -345,6 +349,19 @@ minimal_systemd_vm_arm:
     ARCH: arm
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+
+minimal_systemd_vm_powerpc64le:
+  # FIXME: We should find out why this fails to boot.
+  allow_failure: true
+  image: $DOCKER_POWERPC64LE
+  tags:
+    - ppc64le
+  <<: *vm_imageless
+  variables:
+    ARCH: powerpc64le
+    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    DIALOG: root-login
+    IMPORT_BOOTSTRAP: 'true'
 
 .vm_image_template: &vm_image
   stage: vm
