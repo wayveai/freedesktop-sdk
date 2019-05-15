@@ -5,6 +5,13 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}"
+      mv "%{install-root}%{includedir}/tiffconf.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+
 public:
   bst:
     split-rules:

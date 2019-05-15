@@ -53,6 +53,11 @@ config:
   - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
+  - |
+    mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/python3.7m"
+    mv "%{install-root}%{includedir}/python3.7m/pyconfig.h" "%{install-root}%{includedir}/%{gcc_triplet}/python3.7m/"
+    sed -i 's,"pyconfig.h",<python3.7m/pyconfig.h>,' "%{install-root}%{includedir}/python3.7m/"*.h
+
 public:
   bst:
     split-rules:

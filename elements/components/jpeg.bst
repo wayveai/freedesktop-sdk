@@ -17,6 +17,10 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/"
+      mv "%{install-root}%{includedir}/jconfig.h" "%{install-root}%{prefix}/include/%{gcc_triplet}/"
+
 public:
   bst:
     split-rules:

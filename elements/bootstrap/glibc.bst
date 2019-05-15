@@ -15,14 +15,22 @@ config:
     mkdir "%{builddir}"
     cd "%{builddir}"
 
-    echo slibdir=%{multiarch_libdir} >configparms
-    echo gconvdir=%{multiarch_libdir}/gconv >>configparms
+    echo slibdir=%{libdir} >configparms
+    echo complocaledir=%{indep-libdir}/locale >>configparms
+    echo gconvdir=%{libdir}/gconv >>configparms
     echo rootsbindir=%{sbindir} >>configparms
     echo sbindir=%{sbindir} >>configparms
     ../%{configure}
 
   install-commands:
     (>):
+    - install -dDm755 "%{install-root}%{includedir}/%{gcc_triplet}"
+    - |
+      for i in bits gnu sys fpu_control.h a.out.h ieee754.h; do
+         mv "%{install-root}%{includedir}/${i}" \
+            "%{install-root}%{includedir}/%{gcc_triplet}/"
+      done
+
     - |
       rm -r "%{install-root}%{libexecdir}/getconf"
 
@@ -63,9 +71,6 @@ config:
 (@): elements/bootstrap/target.yml
 
 variables:
-  multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
-  lib: lib
-
   # -D_FORTIFY_SOURCE=2 breaks building glibc
   target_common_flags: '%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong
     -grecord-gcc-switches'
@@ -81,7 +86,7 @@ variables:
 
   conf-local: |
     CFLAGS="$CFLAGS" \
-    --with-headers=%{sysroot}%{includedir} \
+    --with-headers=%{sysroot}%{includedir}/%{gcc_triplet}:%{sysroot}%{includedir} \
     --enable-stackguard-randomization \
     --enable-stack-protector=strong \
     --enable-bind-now \

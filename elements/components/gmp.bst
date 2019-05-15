@@ -9,6 +9,13 @@ variables:
   conf-local: |
     --enable-cxx
 
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/"
+      mv "%{install-root}%{includedir}/gmp.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+
 public:
   bst:
     split-rules:

@@ -35,6 +35,10 @@ config:
     (>):
     - rm "%{install-root}/usr/share/info/dir"
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}"
+      mv "%{install-root}%{includedir}/gpgme.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+
 sources:
 - kind: git_tag
   url: gnupg:gpgme.git

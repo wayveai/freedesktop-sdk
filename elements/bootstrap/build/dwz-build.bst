@@ -5,6 +5,8 @@ kind: manual
 depends:
 - filename: bootstrap/build/base-sdk.bst
   type: build
+- filename: bootstrap/gnu-config.bst
+  type: build
 
 variables:
   make-args: >-

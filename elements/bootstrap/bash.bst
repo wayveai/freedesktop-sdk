@@ -42,6 +42,11 @@ config:
     - |
       rm "%{install-root}%{infodir}/dir"
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/bash"
+      mv "%{install-root}%{includedir}/bash/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/bash/"
+      mv "%{install-root}%{includedir}/bash/signames.h" "%{install-root}%{includedir}/%{gcc_triplet}/bash/"
+
 public:
   cpe:
     vendor: 'gnu'

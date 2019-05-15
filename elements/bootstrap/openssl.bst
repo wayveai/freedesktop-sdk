@@ -55,6 +55,10 @@ config:
         fi
       done
 
+    - |
+      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/openssl"
+      mv "%{install-root}%{includedir}/openssl/opensslconf.h" "%{install-root}%{includedir}/%{gcc_triplet}/openssl/"
+
 public:
   bst:
     split-rules:

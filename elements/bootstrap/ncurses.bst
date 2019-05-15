@@ -64,6 +64,11 @@ config:
     cd ncursesw-build && %{make-install}
 
   - |
+    mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}"
+    mv "%{install-root}%{includedir}/curses.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+    mv "%{install-root}%{includedir}/ncurses.h" "%{install-root}%{includedir}/%{gcc_triplet}/"
+
+  - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
   - |
