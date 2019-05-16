@@ -15,6 +15,7 @@ config:
     - debug
     - docs
     - locale
+    - devel
 
   metadata:
     Runtime:

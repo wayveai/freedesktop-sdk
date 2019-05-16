@@ -84,6 +84,19 @@ config:
     EOF
     install -Dm644 glesv2.pc "%{install-root}%{libdir}/pkgconfig/glesv2.pc"
 
+  - |
+    cat <<\EOF >dri.pc
+    prefix=%{prefix}
+    libdir=%{libdir}
+
+    dridriverdir=%{libdir}/GL/dri
+
+    Name: dri
+    Description: Direct Rendering Infrastructure
+    Version: %{version}
+    EOF
+    install -Dm644 dri.pc "%{install-root}%{libdir}/pkgconfig/dri.pc"
+
 public:
   bst:
     split-rules:
