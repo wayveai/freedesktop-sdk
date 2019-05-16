@@ -1,0 +1,34 @@
+variables:
+  conf-link-args: |
+    --enable-shared \
+    --enable-static
+
+  conf-local: >-
+    --target="%{cross_triplet}"
+    --enable-multiarch
+    --disable-multilib
+    --disable-bootstrap
+    --disable-nls
+    --enable-languages=c,c++,fortran
+    --enable-default-pie
+    --enable-default-ssp
+    --without-isl
+    --enable-deterministic-archives
+    --enable-linker-build-id
+    host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}:%{libdir}"'
+    target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}:%{libdir}"'
+    %{conf-extra}
+
+config:
+  install-commands:
+    (>):
+    - |
+      rm "%{install-root}%{bindir}/%{cross_triplet}-c++"
+      ln -s "%{cross_triplet}-g++" "%{install-root}%{bindir}/%{cross_triplet}-c++"
+
+    - |
+      rm "%{install-root}%{bindir}/%{cross_triplet}-gcc"
+      ln -s "%{cross_triplet}-gcc-$(cat gcc/BASE-VER)" "%{install-root}%{bindir}/%{cross_triplet}-gcc"
+
+    - |
+      rm -f "%{install-root}%{bindir}/%{cross_triplet}-%{cross_triplet}-"*
