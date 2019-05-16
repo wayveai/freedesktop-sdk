@@ -18,14 +18,14 @@ sources:
 - kind: tar
   (?):
   - target_arch == "x86_64":
-      url: https://static.rust-lang.org/dist/rust-1.32.0-x86_64-unknown-linux-gnu.tar.gz
-      ref: e024698320d76b74daf0e6e71be3681a1e7923122e3ebd03673fcac3ecc23810
+      url: https://static.rust-lang.org/dist/rust-1.33.0-x86_64-unknown-linux-gnu.tar.gz
+      ref: 6623168b9ee9de79deb0d9274c577d741ea92003768660aca184e04fe774393f
   - target_arch == "i686":
-      url: https://static.rust-lang.org/dist/rust-1.32.0-i686-unknown-linux-gnu.tar.gz
-      ref: 4ce3a6a656669fa86606074b43fadeac7465ef48394249407e21106ed714c8db
+      url: https://static.rust-lang.org/dist/rust-1.33.0-i686-unknown-linux-gnu.tar.gz
+      ref: c379203687d98e60623aa88c4df4992dd5a9548bc30674b9fc8e671a979e9f3a
   - target_arch == "aarch64":
-      url: https://static.rust-lang.org/dist/rust-1.32.0-aarch64-unknown-linux-gnu.tar.gz
-      ref: 60def40961728212da4b3a9767d5a2ddb748400e150a5f8a6d5aa0e1b8ba1cee
+      url: https://static.rust-lang.org/dist/rust-1.33.0-aarch64-unknown-linux-gnu.tar.gz
+      ref: a308044e4076b62f637313ea803fa0a8f340b0f1b53136856f2c43afcabe5387
   - target_arch == "arm":
-      url: https://static.rust-lang.org/dist/rust-1.32.0-armv7-unknown-linux-gnueabihf.tar.gz
-      ref: d7b69f60689d2905d8d3c2829b0f1cd0f86265a255ff88ea0deb601aebac6428
+      url: https://static.rust-lang.org/dist/rust-1.33.0-armv7-unknown-linux-gnueabihf.tar.gz
+      ref: f6f0ec0a98d922c4bfd79703bc9e9eef439ba347453f33608a87cd63c47e7245
