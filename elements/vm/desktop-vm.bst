@@ -29,6 +29,8 @@ depends:
   type: build
 - filename: components/systemd.bst
   type: build
+- filename: components/xorg-server.bst
+  type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
 - filename: vm/linux-vm-boot/weston.bst
