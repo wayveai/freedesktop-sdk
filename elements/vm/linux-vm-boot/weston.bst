@@ -17,12 +17,15 @@ depends:
   - filename: components/xorg-lib-xcursor.bst
   - filename: vm/linux-vm-boot/mtdev.bst
   - filename: vm/linux-vm-boot/libinput.bst
-  - filename: vm/mesa-default.bst
+  - filename: extensions/mesa/gbm.bst
 
 variables:
   conf-local: |
     --disable-setuid-install \
     --enable-demo-clients-install
+
+environment:
+  PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig'
 
 sources:
   - kind: git_tag
