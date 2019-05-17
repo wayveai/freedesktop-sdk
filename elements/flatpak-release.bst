@@ -39,6 +39,7 @@ depends:
 
 config:
   arch: '%{gcc_arch}'
+  repo-mode: bare-user-only
   environment:
   - deploy-tools/flatpak.bst
   (?):
