@@ -12,7 +12,8 @@ depends:
 variables:
   conf-local: |
     --enable-asm \
-    --enable-tls
+    --enable-tls \
+    CFLAGS="$CFLAGS -UDEFAULT_EGL_VENDOR_CONFIG_DIRS -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\\\"%{libdir}/GL/glvnd/egl_vendor.d\\\""
 
 public:
   bst:
