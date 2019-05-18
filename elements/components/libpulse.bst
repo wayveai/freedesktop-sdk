@@ -15,6 +15,7 @@ depends:
 - filename: components/xorg-lib-ice.bst
 - filename: components/xorg-lib-sm.bst
 - filename: components/xorg-lib-xtst.bst
+- filename: components/webrtc-audio-processing.bst
 
 variables:
   conf-local: |

@@ -24,6 +24,7 @@ depends:
 - filename: components/curl.bst
 - filename: components/libwebp.bst
 - filename: components/sndfile.bst
+- filename: components/webrtc-audio-processing.bst
 
 
 variables:

@@ -168,6 +168,7 @@ depends:
 - filename: components/shared-mime-info.bst
 - filename: components/vulkan.bst
 - filename: components/wayland.bst
+- filename: components/webrtc-audio-processing.bst 
 - filename: components/xcb-util-cursor.bst
 - filename: components/xcb-util-image.bst
 - filename: components/xcb-util-keysyms.bst
