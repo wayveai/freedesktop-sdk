@@ -6,7 +6,17 @@ config:
     target_arch: "i686"
 
 sources:
-- kind: git
-  url: https://gitlab.com/freedesktop-sdk/freedesktop-sdk.git
-  track: master
-  ref: c909327f14c64d631ffaa02f36422eb929adc1c3
+- kind: local
+  path: project.conf
+- kind: local
+  path: elements
+  directory: elements
+- kind: local
+  path: files
+  directory: files
+- kind: local
+  path: patches
+  directory: patches
+- kind: local
+  path: plugins
+  directory: plugins
