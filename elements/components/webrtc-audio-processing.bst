@@ -20,7 +20,10 @@ public:
         - "%{libdir}/libwebrtc_audio_processing.so"
 
 sources: 
-- kind: git_tag
-  url: freedesktop:pulseaudio/webrtc-audio-processing.git
-  track: master
-  ref: v0.3.1-0-ge882a5442ac22c93648e12837248d651d18b9247
+- kind: git
+# Make this a reference back to the original repository when
+# https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/merge_requests/3
+# is merged.
+  url: freedesktop:lle-bout/webrtc-audio-processing.git
+  track: add-ppc-family-support
+  ref: 0aa8dd7496c5a91615e50f88e062ee0c89266d27
