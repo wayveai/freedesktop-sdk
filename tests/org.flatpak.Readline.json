@@ -9,7 +9,7 @@
             "name": "readline",
             "buildsystem": "simple",
             "build-commands": [
-                "g++ -o readline -g -O2 readline.cc -lreadline",
+                "g++ -static-libstdc++ -o readline -g -O2 readline.cc -lreadline",
                 "install -D readline /app/bin/readline"
             ],
             "sources": [
