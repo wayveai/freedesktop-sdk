@@ -5,6 +5,8 @@ sources:
   url: freedesktop-sdk:releases/
   # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
   #gpg-key: keys/freedesktop-sdk.gpg
+  #
+  # FIXME: Change to org.freedesktop.Sdk.PreBootstrap when available
   (?):
   - bootstrap_build_arch == "x86_64":
       track: runtime/org.freedesktop.Sdk.Minimal/x86_64/18.08
