@@ -19,6 +19,6 @@ depends:
 - filename: flatpak-images/glxinfo-debug.bst
 - filename: flatpak-images/rust.bst
 - filename: flatpak-images/vulkaninfo.bst
-- filename: flatpak-images/minimal.bst
+- filename: flatpak-images/pre-bootstrap.bst
 - filename: flatpak-images/mesa.bst
 - filename: flatpak-images/cross-toolchains.bst
