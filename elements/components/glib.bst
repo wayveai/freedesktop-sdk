@@ -9,11 +9,14 @@ depends:
 - filename: components/python3.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
+- filename: components/gtk-doc.bst
+  type: build
 
 variables:
   meson-local: >
     -Dinternal_pcre=false
     -Dselinux=false
+    -Dgtk_doc=true
 
 public:
   bst:
