@@ -26,6 +26,7 @@ public:
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-8.0.0.so'
         - '%{libdir}/libLLVM.so'
+        - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so'
