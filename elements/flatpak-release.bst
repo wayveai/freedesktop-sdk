@@ -34,7 +34,7 @@ depends:
   type: build
 - filename: flatpak-images/vulkaninfo.bst
   type: build
-- filename: flatpak-images/minimal.bst
+- filename: flatpak-images/pre-bootstrap.bst
   type: build
 
 config:
