@@ -158,6 +158,7 @@ depends:
 - filename: components/os-release.bst
 - filename: components/pango.bst
 - filename: components/pciutils.bst
+- filename: components/pipewire.bst
 - filename: components/pixman.bst
 - filename: components/libpulse.bst
 - filename: components/sdl2-image.bst
