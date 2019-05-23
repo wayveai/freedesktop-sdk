@@ -9,17 +9,17 @@ sources:
   # FIXME: Change to org.freedesktop.Sdk.PreBootstrap when available
   (?):
   - bootstrap_build_arch == "x86_64":
-      track: runtime/org.freedesktop.Sdk.Minimal/x86_64/18.08
-      ref: 68048fcee095ccb10c13d5b6f96aa269a37427699d5f81d94f083b1b2ec68caa
+      track: runtime/org.freedesktop.Sdk.PreBootstrap/x86_64/18.08
+      ref: ab90a8b25cf86946487e46efd19c80dd6a7ef84e0bd362db1cb41a6240049f74
   - bootstrap_build_arch == "i686":
-      track: runtime/org.freedesktop.Sdk.Minimal/i386/18.08
-      ref: a07d06139071bfe3ec7e5a2deacb670e9378e48156be5243ef98edc05a119a9a
+      track: runtime/org.freedesktop.Sdk.PreBootstrap/i386/18.08
+      ref: 46794c577a0431196fd0ee29bfc4316713af5c267dfa3d64054cfffe7d9fdce7
   - bootstrap_build_arch == "aarch64":
-      track: runtime/org.freedesktop.Sdk.Minimal/aarch64/18.08
-      ref: b428a91240419a10b3cace22aafa967b8090112e106d1455959d5865c62a321d
+      track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/18.08
+      ref: 68f05bde7a9d49a5d32c935b2830e4da96fdaf75d09bf04c870eaaf3b27e3cfb
   - bootstrap_build_arch == "arm":
-      track: runtime/org.freedesktop.Sdk.Minimal/arm/18.08
-      ref: 76f4812b707bf4b6c68a610befecde841a214bf86e8c3637f3cfb4b96057bd37
+      track: runtime/org.freedesktop.Sdk.PreBootstrap/arm/18.08
+      ref: 01e711759ba27a6c282de03eb453e1230cbddbdcf24bc21798a38ce217d6bd8e
 
 config:
   source: files
