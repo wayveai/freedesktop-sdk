@@ -40,7 +40,6 @@ environment:
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  datadir: "%{prefix}"
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
