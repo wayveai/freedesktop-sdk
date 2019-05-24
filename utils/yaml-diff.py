@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-import yaml
+from ruamel import yaml
 import contextlib
 import tempfile
 import subprocess
@@ -17,8 +17,8 @@ def diff(path, old, new):
 
 with contextlib.ExitStack() as stack:
     try:
-        old_data = yaml.load(stack.enter_context(open(old_file, 'r')))
-        new_data = yaml.load(stack.enter_context(open(new_file, 'r')))
+        old_data = yaml.load(stack.enter_context(open(old_file, 'r')), Loader=yaml.Loader)
+        new_data = yaml.load(stack.enter_context(open(new_file, 'r')), Loader=yaml.Loader)
     except:
         diff(path, old_file, new_file)
     else:
