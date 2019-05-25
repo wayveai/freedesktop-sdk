@@ -8,12 +8,9 @@ depends:
   type: build
 
 variables:
-  # custom-vendor dir is %{libdir}/OpenCL/vendors so that it works
-  # with multiarch.
   conf-local: |
-    --enable-custom-vendordir="%{libdir}/OpenCL/vendors" \
+    --enable-custom-vendordir="%{libdir}/GL/OpenCL/vendors" \
     --disable-update-database \
-    --with-extra-vendordir="%{libdir}/GL/OpenCL/vendors"
 
 public:
   bst:
@@ -27,5 +24,3 @@ sources:
   url: github:OCL-dev/ocl-icd
   track: v2.2.12
   ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
-- kind: patch
-  path: patches/opencl/opencl-extra-vendor-dir.patch
