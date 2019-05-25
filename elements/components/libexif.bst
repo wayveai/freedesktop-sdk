@@ -21,3 +21,5 @@ sources:
   url: github:libexif/libexif
   track: master
   ref: libexif-0_6_21-release-0-g9ab318d93b274df204c195c9a729f778401a8d8f
+  match:
+  - libexif-*
