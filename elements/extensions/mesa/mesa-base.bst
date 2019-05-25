@@ -40,7 +40,6 @@ environment:
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  datadir: "%{prefix}"
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
@@ -122,6 +121,11 @@ config:
         mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/vulkan"
         mv "%{install-root}%{includedir}/vulkan/vulkan_intel.h" "%{install-root}%{includedir}/%{gcc_triplet}/vulkan/"
       fi
+
+    - |
+      ln -sr '%{install-root}%{datadir}/glvnd' '%{install-root}%{prefix}/glvnd'
+      ln -sr '%{install-root}%{libdir}/vulkan' '%{install-root}%{prefix}/vulkan'
+      ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
 
 public:
   bst:
