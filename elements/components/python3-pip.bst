@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: github:pypa/pip.git
   track: master
-  ref: 19.0.3-0-ga8de4eb49a45035aefd9a122b6d1d67915663d5f
+  ref: 19.1.1-0-g58c93acd4fa7073fbf145a6a7debfff960da0448
