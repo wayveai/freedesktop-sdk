@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -19,7 +19,7 @@ depends:
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst
   type: build
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/curl.bst
 - filename: components/libwebp.bst

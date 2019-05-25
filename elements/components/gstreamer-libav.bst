@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -7,17 +7,14 @@ depends:
 - filename: components/gstreamer-plugins-base.bst
 - filename: components/ffmpeg.bst
   type: build
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/nasm.bst
   type: build
 
 variables:
-  conf-local: |
-    --with-system-libav
-
-environment:
-  GST_CFLAGS: -DTRIPLET=\"%{gcc_triplet}\"
+  meson-local: |
+    '-Dc_args=-DTRIPLET=\"%{gcc_triplet}\"'
 
 sources:
 - kind: git_tag

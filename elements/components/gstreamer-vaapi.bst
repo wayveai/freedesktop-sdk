@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -12,7 +12,7 @@ depends:
 - filename: components/wayland-protocols.bst
   type: build
 - filename: components/xorg-lib-x11.bst
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 
 
