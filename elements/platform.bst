@@ -84,7 +84,6 @@ depends:
 - filename: components/which.bst
 - filename: components/xz.bst
 - filename: components/zip.bst
-- filename: components/shared-library-guard.bst
 - filename: components/alsa-lib.bst
 - filename: components/alsa-plugins.bst
 - filename: components/appstream-glib.bst
