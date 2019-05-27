@@ -27,5 +27,5 @@ public:
         integration-commands:
         - |
           test %{gcc_triplet} = %{compat_arch}
-          ln -srL %{indep-libdir}/%{entrypoint} %{libdir}/%{entrypoint}
+          ln -srLf %{indep-libdir}/%{entrypoint} %{libdir}/%{entrypoint}
 
