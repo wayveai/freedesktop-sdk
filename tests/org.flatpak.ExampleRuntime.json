@@ -1,0 +1,29 @@
+{
+    "id": "org.flatpak.ExampleRuntime.Sdk",
+    "sdk": "org.freedesktop.Sdk",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "branch": "eternal-beta",
+    "build-runtime": true,
+    "id-platform": "org.flatpak.ExampleRuntime.Platform",
+    "sdk-extensions": ["org.freedesktop.Sdk.Debug", "org.freedesktop.Sdk.Locale", "org.freedesktop.Sdk.Docs"],
+    "platform-extensions": ["org.freedesktop.Platform.Locale"],
+    "inherit-extensions": [
+        "org.freedesktop.Platform.GL",
+        "org.freedesktop.Platform.Timezones",
+        "org.freedesktop.Platform.GStreamer",
+        "org.freedesktop.Platform.Icontheme",
+        "org.freedesktop.Platform.VAAPI.Intel",
+        "org.freedesktop.Platform.ffmpeg-html5",
+        "org.gtk.Gtk3theme"
+    ],
+    "inherit-sdk-extensions": [
+        "org.freedesktop.Sdk.Extension"
+    ],
+    "finish-args": [
+        "--sdk=org.flatpak.ExampleRuntime.Sdk//eternal-beta",
+        "--runtime=org.flatpak.ExampleRuntime.Platform//eternal-beta"
+    ],
+    "cleanup-commands": [ "/usr/libexec/freedesktop-post.sh" ],
+    "cleanup-platform-commands": [ "/usr/libexec/freedesktop-post.sh" ]
+}
