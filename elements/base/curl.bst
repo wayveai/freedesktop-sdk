@@ -34,10 +34,10 @@ public:
         - '%{libdir}/libcurl.so'
 
   cpe:
-    version: '7.64.1'
+    version: '7.65.0'
 
 sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
-  ref: curl-7_64_1-0-g521bbbe29928f9bc1c61306df612e856d45cbe5a
+  ref: curl-7_65_0-0-g885ce31401b6789c959131754b1e5ae518964072
