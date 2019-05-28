@@ -30,7 +30,9 @@ sources:
 - kind: git_tag
   url: github:flatpak/flatpak
   track: flatpak-1.2.x
-  ref: 1.2.3-0-g428c7bf8566d1cdb9f5eafccde1a19a41aeab144
+  match:
+  - 1.[02468]*
+  ref: 1.2.4-0-g2bfa0060b089a20de5fbf18d018f8f1b108d2480
   submodules:
     libglnx:
       checkout: True
