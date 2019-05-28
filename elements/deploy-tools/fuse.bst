@@ -9,6 +9,9 @@ variables:
   autogen: |
     ./makeconf.sh
 
+environment:
+  MOUNT_FUSE_PATH: '%{sbindir}'
+
 sources:
 - kind: git_tag
   url: github:libfuse/libfuse
