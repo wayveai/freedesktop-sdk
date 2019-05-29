@@ -19,6 +19,7 @@ depends:
 - filename: desktop/libsoup.bst
 - filename: desktop/xorg-lib-xau.bst
 - filename: deploy-tools/ostree.bst
+- filename: deploy-tools/fuse.bst
 - filename: desktop/json-glib.bst
 - filename: desktop/appstream-glib.bst
 - filename: desktop/libseccomp.bst
@@ -29,10 +30,12 @@ variables:
 sources:
 - kind: git_tag
   url: github:flatpak/flatpak
-  track: flatpak-1.2.x
+  track: master
+  track-extra:
+  - flatpak-1.4.x
   match:
   - 1.[02468]*
-  ref: 1.2.4-0-g2bfa0060b089a20de5fbf18d018f8f1b108d2480
+  ref: 1.4.0-0-g170b0e2b8efa5ead04a3ee1c97893336ea4912e7
   submodules:
     libglnx:
       checkout: True

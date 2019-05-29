@@ -47,7 +47,7 @@ export: clean-runtime
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
-	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO)
+	$(BST) shell --mount $(REPO) /mnt/$(REPO) --mount $(CHECKOUT_ROOT) /mnt/$(CHECKOUT_ROOT) deploy-tools/flatpak.bst -- flatpak build-commit-from --src-repo=/mnt/$(CHECKOUT_ROOT) /mnt/$(REPO)
 
 	rm -rf $(CHECKOUT_ROOT)
 

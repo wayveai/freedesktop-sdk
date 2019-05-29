@@ -12,6 +12,7 @@ depends:
 - filename: base/glib.bst
 - filename: base/bison.bst
 - filename: base/e2fsprogs.bst
+- filename: desktop/libsoup.bst
 
 variables:
   conf-local: --disable-rofiles-fuse
