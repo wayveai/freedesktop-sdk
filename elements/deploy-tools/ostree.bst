@@ -10,6 +10,7 @@ depends:
 - filename: components/glib.bst
 - filename: components/bison.bst
 - filename: components/e2fsprogs.bst
+- filename: components/libsoup.bst
 
 variables:
   conf-local: --disable-rofiles-fuse
