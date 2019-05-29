@@ -13,6 +13,7 @@ depends:
 - filename: desktop/gstreamer.bst
 - filename: desktop/gstreamer-plugins-base.bst
 - filename: desktop/gobject-introspection.bst
+- filename: base/libvpx.bst
   type: build
 - filename: base/buildsystem-autotools.bst
   type: build
