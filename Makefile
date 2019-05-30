@@ -40,7 +40,7 @@ build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
 
 export: clean-runtime
-	$(BST) build flatpak-release.bst
+	$(BST) build flatpak-release.bst deploy-tools/flatpak.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
 	$(BST) checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
