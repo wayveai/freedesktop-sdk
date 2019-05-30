@@ -11,3 +11,4 @@ depends:
 - base/openssl.bst # Needed by debugedit-build.bst
 - base/texinfo.bst # Needed by make.bst
 - base/flex.bst # Needed by binutils-stage1-bst
+- base/python3.bst # Neededs by glibc
