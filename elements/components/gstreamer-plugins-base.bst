@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -8,7 +8,7 @@ depends:
 - filename: components/gstreamer.bst
 - filename: components/pango.bst
 - filename: components/xorg-lib-xv.bst
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/git-minimal.bst
   type: build
@@ -55,9 +55,14 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-base
-  track: '1.14'
-  ref: 1.14.4-0-g384ff7d0268c71e76f7328a9ca6dfe96e4a3ab23
+  track: '1.16'
+  ref: 1.16.0-0-ge0f8f635a96a3639be4d519fcf234b619bb74ca6
   submodules:
     common:
       checkout: true
       url: freedesktop:gstreamer/common
+- kind: git_tag
+  url: freedesktop:gstreamer/meson-ports/gl-headers.git
+  directory: subprojects/gl-headers
+  track: master
+  ref: 5c8c7c0d3ca1f0b783272dac0b95e09414e49bc8

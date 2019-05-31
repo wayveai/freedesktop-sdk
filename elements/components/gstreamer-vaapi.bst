@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -12,7 +12,7 @@ depends:
 - filename: components/wayland-protocols.bst
   type: build
 - filename: components/xorg-lib-x11.bst
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 
 
@@ -28,8 +28,8 @@ variables:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer-vaapi
-  track: '1.14'
-  ref: 1.14.4-0-g8b1b1f44bda266830f2f28adbb95720f3bc3433f
+  track: '1.16'
+  ref: 1.16.0-0-g2c3480796a6673c638f5b12c7bdf5c0f191120fd
   submodules:
     common:
       checkout: true
