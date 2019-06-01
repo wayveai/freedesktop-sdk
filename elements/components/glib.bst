@@ -13,9 +13,9 @@ depends:
   type: build
 
 variables:
-  meson-local: >
+  meson-local: >-
     -Dinternal_pcre=false
-    -Dselinux=false
+    -Dselinux=disabled
     -Dgtk_doc=true
 
 public:
@@ -50,9 +50,11 @@ public:
 sources:
 - kind: git_tag
   url: gnome:glib
-  track: glib-2-58
-  ref: 2.58.3-0-gf2d1128ffae0de87680e411fb62ccfccafed6b1c
+  track: master
+  track-extra:
+  - glib-2-60
+  match:
+  - 2.*[02468].*
+  ref: 2.60.3-0-g0f6191d02a8e1ca7b08ffe0ccc4def88855baeae
 - kind: patch
-  path: patches/glib/glib-trash.patch
-- kind: patch
-  path: patches/glib/CVE-2019-12450.patch  
+  path: patches/glib/CVE-2019-12450.patch
