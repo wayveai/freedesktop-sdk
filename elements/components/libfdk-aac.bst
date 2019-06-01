@@ -15,5 +15,5 @@ public:
 sources:
 - kind: git_tag
   url: git://people.freedesktop.org/~wtay/fdk-aac
-  track: stripped2
-  ref: ba7ffc9dd95b73b2b5f465f127609aa4235f6800
+  track: fedora
+  ref: 455feca42c8e1576fbc836f5b613295847a670ed
