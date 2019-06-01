@@ -39,5 +39,3 @@ sources:
     common:
       checkout: True
       url: freedesktop:gstreamer/common
-- kind: patch
-  path: patches/gstreamer-vaapi/disable-gallium-driver.patch
