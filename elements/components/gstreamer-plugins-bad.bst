@@ -38,7 +38,7 @@ variables:
     -Dgl=enabled
     -Dhls=enabled
     -Dintrospection=enabled
-    -Dladspa=enabled
+    -Dladspa=disabled
     -Dopenal=enabled
     -Dopus=enabled
     -Dorc=enabled
