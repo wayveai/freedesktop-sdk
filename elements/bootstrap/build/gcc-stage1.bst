@@ -11,6 +11,10 @@ depends:
 - elements/bootstrap/gcc-source.yml
 
 environment:
+  CFLAGS: ''
+  CXXFLAGS: ''
+  LDFLAGS: ''
+
   (?):
     - target_arch == "x86_64":
         CFLAGS_FOR_TARGET:  "%{target_flags_x86_64}"
