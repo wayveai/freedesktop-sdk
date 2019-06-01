@@ -3,10 +3,13 @@ kind: meson
 depends:
 - filename: bootstrap-import.bst
 - filename: components/cairo.bst
+- filename: components/jpeg.bst
 - filename: components/orc.bst
 - filename: components/lame.bst
+- filename: components/libpng.bst
 - filename: components/libpulse.bst
 - filename: components/libsoup.bst
+- filename: components/libvpx.bst
 - filename: components/mpg123.bst
 - filename: components/gtk3.bst
 - filename: components/gdk-pixbuf.bst
@@ -17,18 +20,28 @@ depends:
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/libflac.bst
+- filename: components/speex.bst
 - filename: components/wavpack.bst
 
 variables:
-  conf-local: |
-    --enable-cairo \
-    --enable-experimental \
-    --enable-introspection \
-    --enable-lame \
-    --enable-soup \
-    --enable-orc \
-    --enable-pulse \
-    --with-default-visualizer=autoaudiosink
+  meson-local: >-
+    -Dbz2=enabled
+    -Dcairo=enabled
+    -Dflac=enabled
+    -Dgdk-pixbuf=enabled
+    -Dgtk3=enabled
+    -Dintrospection=enabled
+    -Djpeg=enabled
+    -Dlame=enabled
+    -Dmpg123=enabled
+    -Dorc=enabled
+    -Dpackage-origin="freedesktop-sdk"
+    -Dpng=enabled
+    -Dpulse=enabled
+    -Dsoup=enabled
+    -Dspeex=enabled
+    -Dvpx=enabled
+    -Dwavpack=enabled
 
 sources:
 - kind: git_tag
