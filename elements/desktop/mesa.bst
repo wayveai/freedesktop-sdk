@@ -60,7 +60,7 @@ variables:
     -Dgallium-opencl=icd \
     -Dgallium-va=false \
     -Dgallium-vdpau=true \
-    -Dgallium-xa=true \
+    -Dgallium-xa=false \
     -Dgallium-xvmc=false \
     -Dgbm=true \
     -Dgles1=false \
@@ -117,7 +117,6 @@ public:
         - '%{libdir}/libglapi.so'
         - '%{libdir}/libOSMesa.so'
         - '%{libdir}/libwayland-egl.so'
-        - '%{libdir}/libxatracker.so'
         - '%{libdir}/libMesaOpenCL.so'
 
 sources:
