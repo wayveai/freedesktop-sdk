@@ -17,13 +17,13 @@ depends:
 
 
 variables:
-  conf-local: |
-    --enable-encoders \
-    --enable-egl \
-    --enable-glx \
-    --enable-drm \
-    --enable-wayland \
-    --enable-x11
+  meson-local: >-
+    -Dwith_drm=yes
+    -Dwith_encoders=yes
+    -Dwith_egl=yes
+    -Dwith_glx=yes
+    -Dwith_wayland=yes
+    -Dwith_x11=yes
 
 sources:
 - kind: git_tag

@@ -19,20 +19,18 @@ depends:
 - filename: components/mesa-headers.bst
 
 variables:
-  conf-local: |
-    --enable-experimental \
-    --enable-introspection \
-    --enable-ogg \
-    --enable-opus \
-    --enable-orc \
-    --enable-pango \
-    --enable-theora \
-    --enable-vorbis \
-    --enable-opengl \
-    --enable-gles2 \
-    --enable-egl \
-    --enable-glx \
-    --enable-gl
+  meson-local: >-
+    -Dgl=enabled
+    -Dgl_api=opengl,gles2
+    -Dgl_platform=egl,glx
+    -Dintrospection=enabled
+    -Dogg=enabled
+    -Dopus=enabled
+    -Dorc=enabled
+    -Dpackage-origin="freedesktop-sdk"
+    -Dpango=enabled
+    -Dtheora=enabled
+    -Dvorbis=enabled
 
 public:
   bst:

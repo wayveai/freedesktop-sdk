@@ -2,6 +2,7 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
+- filename: components/aom.bst
 - filename: components/orc.bst
 - filename: components/frei0r.bst
 - filename: components/gobject-introspection.bst
@@ -28,14 +29,26 @@ depends:
 
 
 variables:
-  conf-local: |
-    --enable-experimental \
-    --enable-introspection \
-    --enable-orc \
-    --enable-wayland \
-    --disable-vdpau \
-    --enable-ladspa \
-    --enable-gl
+  meson-local: >-
+    -Daom=enabled
+    -Dbz2=enabled
+    -Dcurl=enabled
+    -Dfdkaac=enabled
+    -Dfrei0r=enabled
+    -Dgl=enabled
+    -Dhls=enabled
+    -Dintrospection=enabled
+    -Dladspa=disabled
+    -Dopenal=enabled
+    -Dopus=enabled
+    -Dorc=enabled
+    -Dpackage-origin="freedesktop-sdk"
+    -Drsvg=enabled
+    -Dsndfile=enabled
+    -Dvdpau=disabled
+    -Dvulkan=enabled
+    -Dwayland=enabled
+    -Dwebp=enabled
 
 public:
   bst:

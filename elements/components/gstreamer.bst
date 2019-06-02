@@ -14,8 +14,12 @@ depends:
   type: build
 
 variables:
-  meson-local: |
-    -Ddisable_examples=true
+  meson-local: >-
+    -Dexamples=disabled
+    -Dintrospection=enabled
+    -Dlibunwind=enabled
+    -Dlibdw=enabled
+    -Dpackage-origin="freedesktop-sdk"
 
 public:
   bst:
