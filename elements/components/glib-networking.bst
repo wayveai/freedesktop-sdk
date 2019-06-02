@@ -12,10 +12,14 @@ depends:
 
 variables:
   meson-local: |
-    -Dlibproxy_support=true
+    -Dlibproxy=enabled
 
 sources:
 - kind: git_tag
   url: gnome:glib-networking
   track: master
-  ref: 2.58.0-0-gbd8ef31a4ca4552a10b8fe7897662a2b235f6e6f
+  track-extra:
+  - glib-2-60
+  match:
+  - 2.*[02468].*
+  ref: 2.60.2-0-g87da1042389f0feef2ceac44687eb6a2f685dfa7
