@@ -63,12 +63,10 @@ public:
 
   cpe:
     vendor: 'openssl'
-    version: '1.1.1b'
+    version: '1.1.1c'
 
 sources:
 - kind: git_tag
   url: github:openssl/openssl
   track: OpenSSL_1_1_1-stable
-  ref: OpenSSL_1_1_1b-0-g50eaac9f3337667259de725451f201e784599687
-- kind: patch
-  path: patches/openssl/Fix-for-BIO_get_mem_ptr-and-related-regressions.patch
+  ref: OpenSSL_1_1_1c-0-g97ace46e11dba4c4c2b7cb67140b6ec152cfaaf4
