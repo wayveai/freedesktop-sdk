@@ -17,7 +17,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: freedesktop-old:libreoffice/dictionaries.git
+  url: https://git.libreoffice.org/dictionaries.git
   track: master
   ref: libreoffice-6.1.4.1-0-g65a6c5b70d5235d13a4956ce29dd00dd4386edd9
 - kind: local
