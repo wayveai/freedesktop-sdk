@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.32:
+    * Apply patch to glib for CVE-2019-12450
+    * Update fdk-aac to a non-broken version
+    * openssl: Update to 1.1.1c (CVE-2019-1543)
+    * mesa: disable building currently broken gallium VAAPI driver
+    * ffmpeg: Update to n4.1.3 (CVE-2019-11339)
+    * Add libvpx dependency to gstreamer-plugins-good
+    * Fixes to make KDE runtime build again
+    * Fix ID in /etc/os-release so the runtime is recognized correctly (for example, in steam)
+
+freedesktop-sdk-18.08.31.1:
+    * Only CI fixes. Should be same as freedesktop-sdk-18.08.31
+
 freedesktop-sdk-18.08.31:
     * Fix Python3 pip (python-sitecustomize)
     * gstreamer-vaapi: disable gallium driver to avoid problems with AMD cards
