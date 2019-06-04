@@ -25,7 +25,7 @@ depends:
   type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
-- filename: vm/systemd-firstboot-integration.bst
+- filename: vm/boot-integration.bst
   type: build
 - filename: vm/journald-config.bst
   type: build  

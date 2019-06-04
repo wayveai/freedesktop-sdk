@@ -37,7 +37,7 @@ depends:
   type: build
 - filename: vm/linux-vm-boot/weston.bst
   type: build
-- filename: vm/systemd-firstboot-integration.bst
+- filename: vm/boot-integration.bst
   type: build
 - filename: vm/mesa-default.bst
   type: build
