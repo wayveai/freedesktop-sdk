@@ -124,6 +124,12 @@ Once your MR is open it will be reviewed before merging. Once it passes our CI a
 
 Congratulations, you are now a freedesktop-sdk contributor!
 
+*NOTE*
+MRs can be in "review" for a maximum of 6 months, after this time limit, if the MR is not
+blocked or frozen for a future release, a maintainer will message to check if anything is
+blocking the MR or if any assistance is needed, if there is no response or it is deemed to be no
+longer required, then the MR will be *closed*.
+
 ## Testing locally
 If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too. The Makefile can be used to produce freedesktop-sdk as both a flatpak repo and tarballs, using the commands outlined in the table below.
 
