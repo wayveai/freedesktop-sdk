@@ -19,7 +19,6 @@ depends:
 - filename: components/gperf.bst
 - filename: components/groff.bst
 - filename: components/help2man.bst
-- filename: components/intltool.bst
 - filename: components/libpipeline.bst
 - filename: components/m4.bst
 - filename: components/man-db.bst

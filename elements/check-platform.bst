@@ -29,7 +29,6 @@ config:
   - components/gperf.bst
   - components/groff.bst
   - components/help2man.bst
-  - components/intltool.bst
   - components/libpipeline.bst
   - components/m4.bst
   - components/man-db.bst
