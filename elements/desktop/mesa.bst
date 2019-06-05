@@ -44,7 +44,7 @@ variables:
       vulkan_drivers: amd,intel
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
-      gallium_drivers: etnaviv,freedreno,imx,nouveau,pl111,swrast,tegra,virgl,vc4
+      gallium_drivers: etnaviv,freedreno,kmsro,nouveau,swrast,tegra,virgl,vc4
       dri_drivers: ''
       vulkan_drivers: ''
       enable_libunwind: 'false'
@@ -122,5 +122,5 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: 18.3
-  ref: mesa-18.3.6-0-g11049bcff86da8013a4f63bd68daf637e3af22f3
+  track: 19.0
+  ref: mesa-19.0.6-0-g095d22b2cb6778983e4fabccae18f0a6048791e6
