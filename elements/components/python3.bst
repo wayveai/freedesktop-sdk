@@ -19,7 +19,8 @@ variables:
     --with-system-ffi \
     --enable-loadable-sqlite-extensions \
     --with-dbmliborder=gdbm \
-    --with-lto
+    --with-lto \
+    --with-conf-includedir="%{includedir}/%{gcc_triplet}"
 
 config:
   install-commands:
@@ -53,11 +54,6 @@ config:
   - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
-  - |
-    mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/python3.7m"
-    mv "%{install-root}%{includedir}/python3.7m/pyconfig.h" "%{install-root}%{includedir}/%{gcc_triplet}/python3.7m/"
-    sed -i 's,"pyconfig.h",<python3.7m/pyconfig.h>,' "%{install-root}%{includedir}/python3.7m/"*.h
-
 public:
   bst:
     split-rules:
@@ -77,3 +73,5 @@ sources:
   track: 3.7
   url: github:python/cpython.git
   ref: v3.7.3-0-gef4ec6ed12d6c6200a85068f60483723298b6ff4
+- kind: patch
+  path: patches/python3/python3-multiarch-include.patch

@@ -9,8 +9,9 @@ depends:
   type: build
 
 variables:
-  conf-local: |
+  conf-local: >-
     --with-python=%{bindir}/python3
+    CPPFLAGS="$(pkg-config --cflags-only-I python3)"
 
 config:
   install-commands:
