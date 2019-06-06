@@ -38,7 +38,7 @@ variables:
     -Dgl=enabled
     -Dhls=enabled
     -Dintrospection=enabled
-    -Dladspa=disabled
+    -Dladspa=enabled
     -Dopenal=enabled
     -Dopus=enabled
     -Dorc=enabled
@@ -81,3 +81,5 @@ sources:
     common:
       checkout: true
       url: freedesktop:gstreamer/common
+- kind: patch
+  path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
