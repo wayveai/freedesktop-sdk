@@ -15,6 +15,13 @@ depends:
 variables:
   conf-local: --disable-rofiles-fuse
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - "%{libdir}/libostree.so"
+
 sources:
 - kind: git_tag
   url: github:ostreedev/ostree
