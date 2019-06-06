@@ -11,9 +11,18 @@ depends:
 - filename: components/bison.bst
 - filename: components/e2fsprogs.bst
 - filename: components/libsoup.bst
+- filename: components/gobject-introspection.bst
+  type: build
 
 variables:
   conf-local: --disable-rofiles-fuse
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - "%{libdir}/libostree.so"
 
 sources:
 - kind: git_tag
