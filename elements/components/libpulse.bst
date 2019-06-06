@@ -4,13 +4,15 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/glib.bst
-- filename: components/intltool.bst
+- filename: components/git-minimal.bst
   type: build
+- filename: components/glib.bst
 - filename: components/sndfile.bst
 - filename: components/speexdsp.bst
 - filename: components/dbus.bst
 - filename: components/fftw.bst
+- filename: components/perl-xml-parser.bst
+  type: build
 - filename: components/xorg-lib-xcb.bst
 - filename: components/xorg-lib-ice.bst
 - filename: components/xorg-lib-sm.bst
@@ -37,7 +39,7 @@ config:
   configure-commands:
     (<):
     - |
-      AUTOPOINT='intltoolize --automake --copy' autoreconf -fvi
+      autoreconf -fvi
 
   install-commands:
     (>):
@@ -59,6 +61,13 @@ public:
         - '%{libdir}/libpulse-mainloop-glib.so'
 
 sources:
-- kind: tar
-  url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.gz
-  ref: 67d1531576231e98d24bc307e980237bdca5142bda8920af89e6e6e887cb90ec
+- kind: git_tag
+  url: freedesktop:pulseaudio/pulseaudio
+  track: master
+  track-extra:
+  - stable-12.x
+  exclude:
+  - v*.99.*
+  ref: v12.2-0-gee910cf6daa5120ab534eb2e6c573d94b9b182e7
+- kind: patch
+  path: patches/libpulse/pulseaudio-Use-upstream-gettext-instead-intltool.patch
