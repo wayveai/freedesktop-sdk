@@ -183,7 +183,16 @@ export-snap:
 	bst --colors $(ARCH_OPTS) build "snap-images/images.bst"
 	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
 
+export-oci:
+	bst --colors $(ARCH_OPTS) build "oci/platform-oci.bst"
+	bst --colors $(ARCH_OPTS) checkout "oci/platform-oci.bst" --tar platform-oci.tar
+
+export-docker:
+	bst --colors $(ARCH_OPTS) build "oci/platform-docker.bst"
+	bst --colors $(ARCH_OPTS) checkout "oci/platform-docker.bst" --tar platform-docker.tar
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
-	build-tar export-tar clean-vm build-vm run-vm export-snap
+	build-tar export-tar clean-vm build-vm run-vm export-snap \
+	export-oci export-docker
