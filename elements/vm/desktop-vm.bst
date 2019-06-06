@@ -33,6 +33,8 @@ depends:
   type: build
 - filename: components/pipewire-daemon.bst
   type: build
+- filename: components/pwquality.bst
+  type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
 - filename: vm/linux-vm-boot/weston.bst
