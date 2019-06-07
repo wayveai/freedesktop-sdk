@@ -23,6 +23,8 @@ depends:
   type: build
 - filename: components/systemd.bst
   type: build
+- filename: components/pwquality.bst
+  type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
 - filename: vm/boot-integration.bst
