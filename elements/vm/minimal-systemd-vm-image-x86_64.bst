@@ -27,6 +27,23 @@ config:
   base: vm/deploy-tools.bst
   input: vm/minimal-systemd-vm.bst
 
+  filesystem-tree-setup-commands:
+    (>):
+    - |
+      # Set some setuid/setgid binaries, since BuildStream still does not
+      # support persisting these attributes in the artifacts, we need to
+      # do it at the last minute when creating the image.
+      chmod 4755 %{build-root}/usr/bin/su
+      chmod 4755 %{build-root}/usr/bin/passwd
+      chmod 4755 %{build-root}/usr/bin/gpasswd
+      chmod 4755 %{build-root}/usr/bin/chsh
+      chmod 4755 %{build-root}/usr/bin/chfn
+      chmod 4755 %{build-root}/usr/bin/newgrp
+      chmod 4755 %{build-root}/usr/bin/mount
+      chmod 4755 %{build-root}/usr/bin/umount
+      chmod 2755 %{build-root}/usr/bin/expiry
+      chmod 2755 %{build-root}/usr/bin/chage
+
   final-commands:
     (>):
     - |
