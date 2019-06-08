@@ -2,12 +2,12 @@
 # see elements/extensions/mesa/mesa-source.yml
 
 variables:
-  version: 19.0.5
+  version: 19.0.6
 
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '19.0'
-  ref: mesa-19.0.5-0-g9e3d9c4e13fa1a87e01893ef06730ea1ec2475b5
+  ref: mesa-19.0.6-0-g095d22b2cb6778983e4fabccae18f0a6048791e6
 - kind: patch
   path: patches/mesa/mesa-glapi-arm.patch
