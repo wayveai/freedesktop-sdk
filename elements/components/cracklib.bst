@@ -10,7 +10,11 @@ depends:
   type: build
 
 variables:
-  conf-local: --with-python PYTHON=/usr/bin/python3 am_cv_python_version=3.7m
+  conf-local: >-
+    --with-python
+    PYTHON=/usr/bin/python3
+    am_cv_python_version=3.7m
+    CPPFLAGS="-I%{includedir}/%{gcc_triplet}/python3.7m"
 
 config:
   configure-commands:
