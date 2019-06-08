@@ -15,6 +15,7 @@ variables:
     --enable-lto
     --with-lib-path="/usr/lib/%{cross_gcc_triplet}"
     --with-system-zlib
+    --with-sysroot=/
 
 config:
   install-commands:
