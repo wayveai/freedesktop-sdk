@@ -11,7 +11,6 @@ config:
   - components/itstools.bst
   - components/jq.bst
   - components/libva-utils.bst
-  - components/mercurial.bst
   - components/xorg-util-macros.bst
   - components/autoconf-archive.bst
   - components/autoconf.bst
