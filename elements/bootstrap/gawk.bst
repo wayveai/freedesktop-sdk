@@ -14,7 +14,7 @@ config:
     (>):
     - |
       rm "%{install-root}%{bindir}/gawk"
-      ln -s gawk-4.2.1 "%{install-root}%{bindir}/gawk"
+      ln -s gawk-5.0.0 "%{install-root}%{bindir}/gawk"
 
     - |
       rm "%{install-root}%{infodir}/dir"
@@ -22,4 +22,5 @@ config:
 sources:
 - kind: git_tag
   url: savannah:gawk.git
-  ref: gawk-4.2.1-0-gbd8a8ad0c258d2db31e420eec81932cf15bf9702
+  track: master
+  ref: gawk-5.0.0-0-gb4e4ba4663f3be1dbecf0699eb702786fda5eca7
