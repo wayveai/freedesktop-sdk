@@ -20,7 +20,7 @@ config:
 
     Extension org.freedesktop.Platform.GL:
       # 1.4 is for Nvidia drivers
-      versions: "19.08;1.4"
+      versions: "%{branch};1.4"
       version: "1.4"
       directory: "%{lib}/GL"
       subdirectories: "true"
