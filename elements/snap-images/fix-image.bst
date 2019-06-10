@@ -20,7 +20,8 @@ config:
       for dir in snap tmp writeable dev etc home root           \
                  proc sys run lib media                         \
                  var/snap var/lib/snapd var/tmp var/log         \
-                 lib/modules usr/src usr/lib/snapd
+                 lib/modules usr/src usr/lib/snapd              \
+                 mnt var/lib/extrausers
       do
         mkdir -p "%{install-root}/${dir}"
       done
