@@ -51,6 +51,10 @@ public:
         - '%{libdir}/libcom_err.so'
         - '%{libdir}/libe2p.so'
         - '%{libdir}/libext2fs.so'
+      extra:
+        - '%{bindir}/*'
+      runtime:
+        - '%{bindir}/*'
 
 sources:
 - kind: git_tag
