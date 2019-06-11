@@ -3,23 +3,10 @@ kind: manual
 depends:
 - filename: bootstrap-import.bst
 
-variables:
-  target: linux_noasm
-  (?):
-  - target_arch == "i686":
-      target: linux_asm
-
 config:
-  configure-commands:
-  - |
-    rm -rf bzip2
-
-  - |
-    sh ./unix/configure
-
   build-commands:
   - |
-    make -f unix/Makefile LOCAL_UNZIP="${CFLAGS}" LFLAGS1="${LDFLAGS}" D_USE_BZ2="-DUSE_BZIP2" L_BZ2="-lbz2" %{target}
+    make -f unix/Makefile LOCAL_UNZIP="${CFLAGS} -DNO_LCHMOD" LFLAGS2="${LDFLAGS}" generic_gcc
 
   install-commands:
   - |
@@ -57,3 +44,7 @@ sources:
   path: patches/unzip/CVE-2016-9844.patch
 - kind: patch
   path: patches/unzip/CVE-2018-18384.patch
+- kind: patch
+  path: patches/unzip/unzip-6.0-bzip2-configure.patch
+- kind: patch
+  path: patches/unzip/unzip-6.0-configure.patch
