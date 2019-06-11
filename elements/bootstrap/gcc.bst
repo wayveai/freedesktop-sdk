@@ -18,8 +18,31 @@ environment:
   CFLAGS: ''
   CXXFLAGS: ''
   LDFLAGS: ''
-
+  CC_FOR_TARGET: '%{tools}/bin/%{triplet}-gcc'
+  CXX_FOR_TARGET: '%{tools}/bin/%{triplet}-g++'
+  AR_FOR_TARGET: '%{tools}/%{triplet}/bin/ar'
+  AS_FOR_TARGET: '%{tools}/%{triplet}/bin/as'
+  LD_FOR_TARGET: '%{tools}/%{triplet}/bin/ld'
+  NM_FOR_TARGET: '%{tools}/%{triplet}/bin/nm'
+  RANLIB_FOR_TARGET: '%{tools}/%{triplet}/bin/ranlib'
   (?):
+    - bootstrap_build_arch == target_arch:
+        CC: '%{bindir}/gcc'
+        CXX: '%{bindir}/g++'
+        AR: '%{bindir}/ar'
+        AS: '%{bindir}/as'
+        LD: '%{bindir}/ld'
+        NM: '%{bindir}/nm'
+        RANLIB: '%{bindir}/ranlib'
+    - bootstrap_build_arch != target_arch:
+        CC_FOR_BUILD: '%{bindir}/gcc'
+        CXX_FOR_BUILD: '%{bindir}/g++'
+        AR_FOR_BUILD: '%{bindir}/ar'
+        AS_FOR_BUILD: '%{bindir}/as'
+        LD_FOR_BUILD: '%{bindir}/ld'
+        NM_FOR_BUILD: '%{bindir}/nm'
+        RANLIB_FOR_BUILD: '%{bindir}/ranlib'
+
     - target_arch == "x86_64":
         CFLAGS_FOR_TARGET:  "%{target_flags_x86_64}"
         CXXFLAGS_FOR_TARGET: "%{target_flags_x86_64}"

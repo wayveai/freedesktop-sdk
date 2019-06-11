@@ -119,9 +119,3 @@ public:
         - '%{libdir}/libutil.so'
         - '%{libdir}/libnss_compat.so'
         - '%{libdir}/libm.so'
-
-  cpe:
-    patches:
-    - CVE-2016-10739
-    - CVE-2018-19591
-    - CVE-2019-6488
