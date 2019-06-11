@@ -12,20 +12,25 @@ config:
       --destdir="%{install-root}" \
       --disable-ldconfig
 
+variables:
+# Disable debug handling in stage1 which is unnecessary and can cause
+# failures during dwz optimizations.
+  strip-binaries: "true"
+
 # Use the previous version of the compiler to bootstrap the new one.
 # That's how upstream recommends doing it.
 sources:
 - kind: tar
   (?):
   - target_arch == "x86_64":
-      url: https://static.rust-lang.org/dist/rust-1.33.0-x86_64-unknown-linux-gnu.tar.gz
-      ref: 6623168b9ee9de79deb0d9274c577d741ea92003768660aca184e04fe774393f
+      url: https://static.rust-lang.org/dist/rust-1.34.2-x86_64-unknown-linux-gnu.tar.xz
+      ref: 14545777668491286bfc1ce001c1fc0f118c6529fe98e7311ce0931bffa9e915
   - target_arch == "i686":
-      url: https://static.rust-lang.org/dist/rust-1.33.0-i686-unknown-linux-gnu.tar.gz
-      ref: c379203687d98e60623aa88c4df4992dd5a9548bc30674b9fc8e671a979e9f3a
+      url: https://static.rust-lang.org/dist/rust-1.34.2-i686-unknown-linux-gnu.tar.xz
+      ref: df96118e91e1c57c1a2eda9f8de3653dd5f0de8971b4ba675adb39d7a7f89f78
   - target_arch == "aarch64":
-      url: https://static.rust-lang.org/dist/rust-1.33.0-aarch64-unknown-linux-gnu.tar.gz
-      ref: a308044e4076b62f637313ea803fa0a8f340b0f1b53136856f2c43afcabe5387
+      url: https://static.rust-lang.org/dist/rust-1.34.2-aarch64-unknown-linux-gnu.tar.xz
+      ref: 39946b4f00839fb5713a7a18e9eede6db0082db45dbce1e58c4c2b35c64b5177
   - target_arch == "arm":
-      url: https://static.rust-lang.org/dist/rust-1.33.0-armv7-unknown-linux-gnueabihf.tar.gz
-      ref: f6f0ec0a98d922c4bfd79703bc9e9eef439ba347453f33608a87cd63c47e7245
+      url: https://static.rust-lang.org/dist/rust-1.34.2-armv7-unknown-linux-gnueabihf.tar.xz
+      ref: 6dd2af2714845af693149ec6d5ab7c59311bfa40119a9f030580d26f61ae595a
