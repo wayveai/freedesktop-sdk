@@ -38,7 +38,7 @@ public:
         - '%{bindir}/*'
   cpe:
     product: network_security_services
-    version: '3.43'
+    version: '3.44'
 
 config:
   build-commands:
@@ -95,8 +95,8 @@ config:
 sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
-  track: NSS_3_43_BRANCH
-  ref: NSS_3_43_RTM-0-gac64f9e605a05a8e64708c6556b4e8b2646e73bf
+  track: NSS_3_44_BRANCH
+  ref: NSS_3_44_RTM-0-gc599c3d1745605e41f347a9157d75856986f5c33
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
