@@ -2,7 +2,9 @@ kind: compose
 
 config:
   exclude:
-    - devel
+  - devel
+  - extra
+  - static
 
 depends:
 - filename: platform.bst
