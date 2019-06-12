@@ -96,6 +96,10 @@ sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
   track: NSS_3_44_BRANCH
+  track-extra:
+  - master
+  match:
+  - 'NSS_*_RTM'
   ref: NSS_3_44_RTM-0-gc599c3d1745605e41f347a9157d75856986f5c33
   directory: nss
 - kind: patch
