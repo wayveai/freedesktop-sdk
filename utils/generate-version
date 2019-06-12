@@ -2,6 +2,6 @@
 timestamp=$(git log -1 --format="%at" ${CI_COMMIT_SHA1})
 cat >$1 <<EOF
 variables:
-    runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')
+    runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
     runtime-version-date: $(date -d @$timestamp -Idate)
 EOF
