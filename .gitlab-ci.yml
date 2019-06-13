@@ -647,7 +647,7 @@ reproducible_arm:
       push() {
         if ! snapcraft push "${1}" --release "${SNAP_RELEASE}" 2>&1 | tee output.log; then
           cmp -s <(tail -n2 output.log) - <<EOF
-      The store was unable to accept this snap.
+      Please check the errors and some hints below:
         - (NEEDS REVIEW) type 'base' not allowed
       EOF
         fi
