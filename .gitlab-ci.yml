@@ -652,10 +652,13 @@ reproducible_arm:
       EOF
         fi
       }
-      push snap/platform.snap
-      push snap/glxinfo.snap
-      push snap/vulkaninfo.snap
-      push snap/clinfo.snap
+      failed=false
+      for snap in platform glxinfo vulkaninfo clinfo; do
+        if ! push "snap/${snap}.snap"; then
+          failed=true
+        fi
+      done
+      [ "${failed}" == false ]
 
   artifacts:
     when: always
