@@ -6,8 +6,6 @@ depends:
   type: build
 - filename: components/nettle.bst
 - filename: components/libtirpc.bst
-- filename: components/krb5.bst
-  type: build
 - filename: components/libdrm.bst
 - filename: extensions/mesa/gbm.bst
 - filename: components/libepoxy.bst
