@@ -5,6 +5,7 @@ config:
   - devel
   - extra
   - static
+  - vm-only
 
 depends:
 - filename: platform.bst

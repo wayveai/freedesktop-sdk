@@ -33,17 +33,9 @@ public:
         - '%{libdir}/libpam.so'
         - '%{libdir}/libpam_misc.so'
         - '%{libdir}/libpamc.so'
-      extra:
+      vm-only:
         # Most of this is only useful for VM.
         # We keep only libraries for dependencies.
-        - '%{sysconfdir}'
-        - '%{sysconfdir}/**'
-        - '%{bindir}'
-        - '%{bindir}/**'
-        - '%{datadir}'
-        - '%{datadir}/**'
-      runtime:
-        # Force them to be in the VM.
         - '%{sysconfdir}'
         - '%{sysconfdir}/**'
         - '%{bindir}'

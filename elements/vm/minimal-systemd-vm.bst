@@ -36,3 +36,6 @@ config:
   include:
   - runtime
   - locale
+  - vm-only
+  exclude:
+  - devel

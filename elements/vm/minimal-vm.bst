@@ -23,3 +23,6 @@ depends:
 config:
   include:
   - runtime
+  - vm-only
+  exclude:
+  - devel
