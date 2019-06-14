@@ -45,7 +45,6 @@ depends:
 - filename: components/libtasn1.bst
 - filename: components/libtheora.bst
 - filename: components/libtiff.bst
-- filename: components/libtirpc.bst
 - filename: components/libtool.bst
 - filename: components/libunistring.bst
 - filename: components/libvorbis.bst
