@@ -1,8 +1,8 @@
-kind: meson
+kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
+- filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: components/nettle.bst
 - filename: components/libtirpc.bst
@@ -26,15 +26,16 @@ depends:
 - filename: components/systemd.bst
 
 variables:
-  meson-local: |
-    -Dxvfb=false \
-    -Dxnest=false \
-    -Dxwin=false \
-    -Dglamor=true \
-    -Dxwayland=true
+  conf-local: |
+    --disable-xvfb \
+    --disable-xnest \
+    --disable-xwin \
+    --enable-glamor \
+    --enable-xwayland
 
 environment:
-  PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig'
+  PKG_CONFIG_PATH: "%{libdir}/GL/default/lib/pkgconfig"
+  CPPFLAGS: "-I%{libdir}/GL/default/include"
 
 sources:
 - kind: tar
