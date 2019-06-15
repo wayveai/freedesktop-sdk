@@ -11,3 +11,4 @@ config:
   - docs
   - extra
   - static
+  - vm-only

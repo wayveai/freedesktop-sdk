@@ -16,6 +16,7 @@ config:
   exclude:
     - extra
     - static
+    - vm-only
 
 depends:
 - filename: sdk.bst

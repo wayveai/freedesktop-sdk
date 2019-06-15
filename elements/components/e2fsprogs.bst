@@ -51,9 +51,7 @@ public:
         - '%{libdir}/libcom_err.so'
         - '%{libdir}/libe2p.so'
         - '%{libdir}/libext2fs.so'
-      extra:
-        - '%{bindir}/*'
-      runtime:
+      vm-only:
         - '%{bindir}/*'
 
 sources:

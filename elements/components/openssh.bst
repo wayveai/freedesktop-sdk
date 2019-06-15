@@ -12,7 +12,7 @@ variables:
 public:
   bst:
     split-rules:
-      extra:
+      vm-only:
       - "%{bindir}/sshd"
       - "%{sysconfdir}/sshd_config"
       - "%{libexecdir}/sftp-server"

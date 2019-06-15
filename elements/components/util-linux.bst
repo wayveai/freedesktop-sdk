@@ -29,6 +29,42 @@ public:
         - '%{libdir}/libmount.so'
         - '%{libdir}/libuuid.so'
 
+      vm-linux:
+      - '%{bindir}/mkfs*'
+      - '%{bindir}/fsck*'
+      - '%{bindir}/mkswap'
+      - '%{bindir}/swapon'
+      - '%{bindir}/swapoff'
+      - '%{bindir}/mount'
+      - '%{bindir}/umount'
+      - '%{bindir}/pivot_root'
+      - '%{bindir}/switch_root'
+
+      - '%{bindir}/nologin'
+
+      - '%{bindir}/sulogin'
+      - '%{bindir}/agetty'
+
+      - '%{bindir}/sfdisk'
+      - '%{bindir}/fdisk'
+      - '%{bindir}/cfdisk'
+      - '%{bindir}/partx'
+      - '%{bindir}/addpart'
+      - '%{bindir}/delpart'
+      - '%{bindir}/resizepart'
+
+      - '%{bindir}/blkdiscard'
+      - '%{bindir}/blkzone'
+      - '%{bindir}/wipefs'
+      - '%{bindir}/fstrim'
+      - '%{bindir}/fsfreeze'
+      - '%{bindir}/losetup'
+      - '%{bindir}/raw'
+
+      - '%{bindir}/dmesg'
+
+      - '%{libdir}/libfdisk.so*'
+
 config:
   install-commands:
     (>):
