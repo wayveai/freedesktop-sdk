@@ -2,8 +2,10 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/krb5.bst
-  type: build
+
+variables:
+  conf-local: >-
+    --disable-gssapi
 
 public:
   bst:

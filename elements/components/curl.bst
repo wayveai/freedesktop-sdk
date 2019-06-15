@@ -5,7 +5,6 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: components/gnutls.bst
-- filename: components/krb5.bst
 - filename: components/nss.bst
 
 # Curl must be configured --with-ca-bundle in order to find the

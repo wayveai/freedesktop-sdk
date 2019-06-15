@@ -24,7 +24,6 @@ depends:
 - filename: components/icu.bst
 - filename: components/iso-codes.bst
 - filename: components/jpeg.bst
-- filename: components/krb5.bst
 - filename: components/ladspa-sdk.bst
 - filename: components/lcms.bst
 - filename: components/less.bst
@@ -46,7 +45,6 @@ depends:
 - filename: components/libtasn1.bst
 - filename: components/libtheora.bst
 - filename: components/libtiff.bst
-- filename: components/libtirpc.bst
 - filename: components/libtool.bst
 - filename: components/libunistring.bst
 - filename: components/libvorbis.bst
