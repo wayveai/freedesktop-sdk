@@ -229,6 +229,7 @@ app_x86_64:
     - cache_x86_64
   variables:
     ARCH: x86_64
+  dependencies: []
 
 app_i686:
   image: $DOCKER_AMD64
@@ -238,6 +239,7 @@ app_i686:
     - cache_i686
   variables:
     ARCH: i686
+  dependencies: []
 
 app_aarch64:
   image: $DOCKER_AARCH64
@@ -246,6 +248,7 @@ app_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+  dependencies: []
 
 app_arm:
   image: $DOCKER_AARCH64
@@ -254,6 +257,7 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
+  dependencies: []
 
 app_powerpc64le:
   image: $DOCKER_POWERPC64LE
@@ -263,6 +267,9 @@ app_powerpc64le:
   variables:
     ARCH: powerpc64le
     IMPORT_BOOTSTRAP: 'true'
+  when: manual
+  dependencies:
+  - bootstrap_powerpc64le
 
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
@@ -287,6 +294,7 @@ bootstrap_powerpc64le:
     - cache_x86_64 # Keep the same cache. Does not matter which one.
   variables:
     ARCH: powerpc64le
+  when: manual
 
 .vm_imageless_template: &vm_imageless
   stage: vm
@@ -362,6 +370,7 @@ minimal_systemd_vm_powerpc64le:
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
     IMPORT_BOOTSTRAP: 'true'
+  when: manual
 
 .vm_image_template: &vm_image
   stage: vm
