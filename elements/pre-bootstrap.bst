@@ -8,7 +8,6 @@ depends:
 - components/bison.bst
 - components/tar.bst
 - components/gzip.bst # Needed by glibc-stage1-bst
-- bootstrap/openssl.bst # Needed by debugedit-build.bst
 - components/texinfo.bst # Needed by make.bst
 - components/flex.bst # Needed by binutils-stage1-bst
 - components/python3.bst # Neededs by glibc

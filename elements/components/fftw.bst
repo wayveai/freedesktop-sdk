@@ -13,6 +13,10 @@ variables:
         arch_options: "--enable-sse2 --enable-avx"
     - target_arch == "aarch64":
         arch_options: "--enable-neon"
+    - target_arch == "powerpc64le":
+        arch_options: "--enable-vsx"
+        # Remember to add --enable-altivec when we will build the single
+        # precision libraries.
 
   conf-local: |
     %{common_options} \

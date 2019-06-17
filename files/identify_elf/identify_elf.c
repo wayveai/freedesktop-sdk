@@ -42,6 +42,14 @@ int main(int argc, char* argv[]) {
     printf("x86_64-unknown-linux-gnu\n");
     break ;
   }
+  case EM_PPC64: {
+    if (header->e_ident[EI_DATA] == ELFDATA2MSB) {
+      printf("powerpc64-unknown-linux-gnu\n");
+    } else {
+      printf("powerpc64le-unknown-linux-gnu\n");
+    }
+    break ;
+  }
   default:
     fprintf(stderr, "Unknown architecture\n");
     goto fail;

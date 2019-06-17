@@ -6,7 +6,7 @@ depends:
 variables:
   arch-conf: ''
   (?):
-  - target_arch == "x86_64" or target_arch == "aarch64":
+  - target_arch in ["x86_64", "aarch64", "powerpc64le"]:
       arch-conf: |
         --enable-64bit
   conf-local: '%{arch-conf}'

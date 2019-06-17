@@ -17,6 +17,8 @@ variables:
       vpxtarget: armv7-linux-gcc
   - target_arch == "aarch64":
       vpxtarget: arm64-linux-gcc
+  - target_arch == "powerpc64le":
+      vpxtarget: ppc64le-linux-gcc
 
   conf-args: |
     --prefix="%{prefix}" \

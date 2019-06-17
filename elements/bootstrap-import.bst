@@ -1,4 +1,9 @@
 kind: stack
 
-depends:
-- filename: bootstrap/bootstrap.bst
+(?):
+- import_bootstrap:
+    depends:
+    - filename: bootstrap/import-bootstrap.bst
+- not import_bootstrap:
+    depends:
+    - filename: bootstrap/bootstrap.bst

@@ -1,9 +1,13 @@
 SHELL=/bin/bash
 BRANCH=19.08
-ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
+ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
+BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 QEMU_ARCH=i386
+else ifeq ($(ARCH),powerpc64le)
+FLATPAK_ARCH=$(ARCH)
+QEMU_ARCH=ppc64
 else
 FLATPAK_ARCH=$(ARCH)
 QEMU_ARCH=$(ARCH)
@@ -12,9 +16,14 @@ REPO=repo
 CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT?=vm/minimal-systemd-vm.bst
+IMPORT_BOOTSTRAP?=false
+RUNTIME_VERSION?=master
 
-SNAP_GRADE=devel
-ARCH_OPTS=-o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
+SNAP_GRADE?=devel
+ARCH_OPTS=-o bootstrap_build_arch $(BOOTSTRAP_ARCH) -o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
+ifeq ($(IMPORT_BOOTSTRAP),true)
+ARCH_OPTS+= -o import_bootstrap true
+endif
 TARBALLS=            \
 	sdk          \
 	platform
@@ -39,6 +48,15 @@ build:
 
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
+
+bootstrap:
+	$(BST) build bootstrap/export-bootstrap.bst
+	[ -d bootstrap/ ] || mkdir -p bootstrap/
+	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
+
+check-abi:
+	REFERENCE=$$(git merge-base $(RUNTIME_VERSION) HEAD) && \
+	./utils/check-abi --bst-opts="${ARCH_OPTS}" --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
 	$(BST) build flatpak-release.bst deploy-tools/flatpak.bst
@@ -98,6 +116,11 @@ QEMU_ARM_ARGS= \
 	$(QEMU_ARM_COMMON_ARGS) \
 	-machine highmem=off
 
+QEMU_POWERPC64LE_ARGS= \
+	$(QEMU_COMMON_ARGS) \
+	-machine pseries \
+	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
+
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
 ifeq ($(ARCH),x86_64)
 	$(QEMU) $(QEMU_X86_COMMON_ARGS)
@@ -107,6 +130,8 @@ else ifeq ($(ARCH),aarch64)
 	$(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
 	$(QEMU) $(QEMU_ARM_ARGS)
+else ifeq ($(ARCH),powerpc64le)
+	$(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 
 $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
@@ -195,4 +220,4 @@ export-docker:
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker
+	export-oci export-docker bootstrap
