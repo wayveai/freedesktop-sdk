@@ -6,12 +6,12 @@ depends:
 - filename: bootstrap/gnu-config.bst
   type: build
 
-environment:
-  CFLAGS: ''
-  CXXFLAGS: ''
-  LDFLAGS: ''
+(@):
+- elements/bootstrap/build.yml
 
+environment:
   (?):
+    (>):
     - target_arch == "x86_64":
         CFLAGS_FOR_TARGET:  "%{target_flags_x86_64}"
         CXXFLAGS_FOR_TARGET: "%{target_flags_x86_64}"
@@ -28,26 +28,8 @@ environment:
         CFLAGS_FOR_TARGET:  "%{target_flags_aarch64}"
         CXXFLAGS_FOR_TARGET: "%{target_flags_aarch64}"
         LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "x86_64":
-        CFLAGS_FOR_BUILD:  "%{build_flags_x86_64}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_x86_64}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "i686":
-        CFLAGS_FOR_BUILD: "%{build_flags_i686}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_i686}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "arm":
-        CFLAGS_FOR_BUILD:  "%{build_flags_arm}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_arm}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "aarch64":
-        CFLAGS_FOR_BUILD:  "%{build_flags_aarch64}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_aarch64}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
 
 variables:
-  build-triplet: '%{guessed-triplet}'
-  host-triplet: '%{guessed-triplet}'
   prefix: '%{tools}'
   lib: lib
   (?):
@@ -130,3 +112,5 @@ sources:
   ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
 - kind: patch
   path: patches/gcc/gcc-multiarch-os-dir.patch
+- kind: patch
+  path: patches/gcc/gcc-do-not-override-for-build-variables.patch
