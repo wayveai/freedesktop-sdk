@@ -122,5 +122,5 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: 19.0
-  ref: mesa-19.0.6-0-g095d22b2cb6778983e4fabccae18f0a6048791e6
+  track: 19.1
+  ref: mesa-19.1.1-0-g22eddd8b9d4d905237494c9841e65e4c073ab514
