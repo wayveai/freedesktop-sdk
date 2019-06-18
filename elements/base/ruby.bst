@@ -19,7 +19,7 @@ variables:
 
 sources:
 - kind: tar
-  url: https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz
-  ref: 9828d03852c37c20fa333a0264f2490f07338576734d910ee3fd538c9520846c
+  url: https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.5.tar.gz
+  ref: 28a945fdf340e6ba04fc890b98648342e3cccfd6d223a48f3810572f11b2514c
 - kind: patch
   path: patches/ruby/ruby-reproducible.patch
