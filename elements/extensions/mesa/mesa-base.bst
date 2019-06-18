@@ -45,12 +45,12 @@ variables:
 
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
-      gallium_drivers: nouveau,r600,r300,radeonsi,svga,swrast,virgl
+      gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl
       dri_drivers: i915,i965,nouveau,r100,r200
       vulkan_drivers: amd,intel
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
-      gallium_drivers: etnaviv,freedreno,kmsro,nouveau,swrast,tegra,virgl,v3d,vc4
+      gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4
       dri_drivers: ''
       vulkan_drivers: ''
       enable_libunwind: 'false'
