@@ -20,9 +20,11 @@ public:
       - "%{mandir}/man8/sftp-server.8"
       - "%{mandir}/man8/sshd.8"
   cpe:
-    version: '7.7p1'
+    vendor: 'openbsd'
+    version: '8.0'
 
 sources:
 - kind: git_tag
-  url: github:openssh/openssh-portable
-  ref: V_7_9_P1-0-gaede1c34243a6f7feae2fb2cb686ade5f9be6f3d
+  url: github:openssh/openssh-portable.git
+  track: master
+  ref: V_8_0_P1-0-gfd0fa130ecf06d7d092932adcd5d77f1549bfc8d
