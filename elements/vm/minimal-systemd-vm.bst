@@ -30,8 +30,10 @@ depends:
 - filename: vm/boot-integration.bst
   type: build
 - filename: vm/journald-config.bst
-  type: build  
-  
+  type: build
+- filename: components/sudo.bst
+  type: build
+
 config:
   include:
   - runtime

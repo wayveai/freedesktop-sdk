@@ -43,6 +43,7 @@ config:
       chmod 4755 %{build-root}/usr/bin/umount
       chmod 2755 %{build-root}/usr/bin/expiry
       chmod 2755 %{build-root}/usr/bin/chage
+      chmod 4755 %{build-root}/usr/bin/sudo
 
   final-commands:
     (>):
