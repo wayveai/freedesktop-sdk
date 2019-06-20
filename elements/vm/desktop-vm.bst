@@ -43,6 +43,8 @@ depends:
   type: build
 - filename: vm/mesa-default.bst
   type: build
+- filename: components/sudo.bst
+  type: build
 
 config:
   include:

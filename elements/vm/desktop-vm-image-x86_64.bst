@@ -43,6 +43,7 @@ config:
       chmod 2755 %{build-root}/usr/bin/expiry
       chmod 2755 %{build-root}/usr/bin/chage
       chmod 2755 %{build-root}/usr/bin/ssh-agent
+      chmod 4755 %{build-root}/usr/bin/sudo
 
   final-commands:
     (>):
