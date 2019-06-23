@@ -12,6 +12,10 @@ variables:
         --with-cpu=pentium4
         --with-tune=generic
         --with-fpmath=sse
+  - target_arch == "powerpc64le":
+      conf-extra: >-
+        --with-cpu=power8
+        --with-tune=power8
   - target_arch == "x86-64":
       conf-extra: >-
         --with-tune=generic
