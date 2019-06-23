@@ -571,6 +571,16 @@ publish_arm:
   variables:
     ARCH: arm
 
+publish_powerpc64le:
+  extends: .flatpak_publish_template
+  image: $DOCKER_POWERPC64LE
+  tags:
+    - ppc64le
+  variables:
+    ARCH: powerpc64le
+  dependencies:
+    - app_powerpc64le
+
 publish_x86_64_tar:
   extends: .publish_tar_template
   image: $DOCKER_AMD64
@@ -605,6 +615,17 @@ publish_arm_tar:
     - armhf
   variables:
     ARCH: arm
+  when: manual
+
+publish_powerpc64le_tar:
+  extends: .publish_tar_template
+  image: $DOCKER_POWERPC64LE
+  tags:
+    - ppc64le
+  variables:
+    ARCH: powerpc64le
+  dependencies:
+    - app_powerpc64le
   when: manual
 
 cve_report:
