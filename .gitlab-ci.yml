@@ -578,6 +578,7 @@ publish_x86_64_tar:
     - x86_64
   variables:
     ARCH: x86_64
+  when: manual
 
 publish_i686_tar:
   extends: .publish_tar_template
@@ -586,6 +587,7 @@ publish_i686_tar:
     - x86_64
   variables:
     ARCH: i686
+  when: manual
 
 publish_aarch64_tar:
   extends: .publish_tar_template
@@ -594,6 +596,7 @@ publish_aarch64_tar:
     - aarch64
   variables:
     ARCH: aarch64
+  when: manual
 
 publish_arm_tar:
   extends: .publish_tar_template
@@ -602,6 +605,7 @@ publish_arm_tar:
     - armhf
   variables:
     ARCH: arm
+  when: manual
 
 cve_report:
   stage: publish
