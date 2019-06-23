@@ -66,4 +66,4 @@ sources:
 - kind: git_tag
   url: gnome:gtk
   track: gtk-3-24
-  ref: 3.24.5-0-gbf60bf15de4afd426304f9f42618eb95a92c2605
+  ref: 3.24.9-0-gfee3a3066c019239035b9f8560d11bb4d5725b0c

@@ -43,4 +43,4 @@ sources:
 - kind: git_tag
   url: gnupg:gpgme.git
   track: master
-  ref: gpgme-1.11.1-0-g2e9a14912fb906c17017553ccd0941d172e095ff
+  ref: gpgme-1.13.1-0-gea11c2a13cd44caf0bab395bd5132bf232318ad8

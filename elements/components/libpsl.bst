@@ -22,7 +22,7 @@ sources:
 - kind: git_tag
   url: github:rockdaboot/libpsl
   track: master
-  ref: libpsl-0.20.2-0-gb7f5c1414db2ead6f15737ab79fbc336a539ea16
+  ref: libpsl-0.21.0-0-g1eaf1803591d6327987029621e121cade7193720
   submodules:
     list:
       checkout: true

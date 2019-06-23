@@ -23,4 +23,4 @@ sources:
 - kind: git_tag
   url: gnome:atk
   track: master
-  ref: ATK_2_30_0-0-g90ed6bd964b8a2b93c7cf3ea018483e437913785
+  ref: ATK_2_33_3-0-g57af1951823d6e855e2e37bb345070913449653d

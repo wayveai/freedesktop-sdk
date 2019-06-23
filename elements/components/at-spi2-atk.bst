@@ -17,11 +17,11 @@ public:
         - '%{libdir}/libatk-bridge-2.0.so'
 
   cpe:
-    version: '2.30.0'
+    version: '2.33.2'
     vendor: 'gnome'
 
 sources:
 - kind: git_tag
   url: gnome:at-spi2-atk
   track: master
-  ref: AT_SPI2_ATK_2_30_0-0-g8cce3d9fa7eabfb484d9515767a80bfaca2ed8e9
+  ref: AT_SPI2_ATK_2_33_2-0-gf38fed479a6b9ae3df5bef71a609b6e8accfd84e

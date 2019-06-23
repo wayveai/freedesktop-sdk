@@ -12,4 +12,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xorg/proto/xorgproto
   track: master
-  ref: xorgproto-2018.4-0-gbac7b0b421115448516da4b6214f07851dc7cdeb
+  ref: xorgproto-2019.1-0-ge0bba743ae7c549c58f92677b239ec7878548228
