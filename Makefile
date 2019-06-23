@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-BRANCH=19.08
+BRANCH=19.08beta
 ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
 BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
 ifeq ($(ARCH),i686)
