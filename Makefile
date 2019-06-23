@@ -6,7 +6,7 @@ ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 QEMU_ARCH=i386
 else ifeq ($(ARCH),powerpc64le)
-FLATPAK_ARCH=$(ARCH)
+FLATPAK_ARCH=ppc64le
 QEMU_ARCH=ppc64
 else
 FLATPAK_ARCH=$(ARCH)

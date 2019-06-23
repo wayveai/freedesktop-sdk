@@ -9,8 +9,8 @@ config:
   metadata:
     Application:
       name: org.freedesktop.ClInfo
-      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
       command: clinfo
 
     Context:

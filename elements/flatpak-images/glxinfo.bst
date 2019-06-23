@@ -12,8 +12,8 @@ config:
   metadata:
     Application:
       name: org.freedesktop.GlxInfo
-      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
       command: glxinfo
 
     Context:

@@ -7,10 +7,10 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.Platform.Compat.%{gcc_arch}
+      name: org.freedesktop.Platform.Compat.%{flatpak_arch}
 
     ExtensionOf:
-      ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
+      ref: runtime/org.freedesktop.Platform/%{flatpak_arch}/%{branch}
 
 depends:
 - filename: platform-image.bst
