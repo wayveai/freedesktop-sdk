@@ -20,3 +20,6 @@ sources:
 - kind: local
   path: plugins
   directory: plugins
+- kind: local
+  path: include
+  directory: include
