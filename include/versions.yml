@@ -1,5 +1,5 @@
-variables:
-  freedesktop-sdk-flatpak-branch: '19.08beta'
-  branch: '%{freedesktop-sdk-flatpak-branch}'
-  freedesktop-sdk-snap-branch: '1908'
-  snap-branch: '%{freedesktop-sdk-snap-branch}'
+# Versioning information related to our releases
+# is maintained here.
+#
+freedesktop-sdk-flatpak-branch: '19.08beta'
+freedesktop-sdk-snap-branch: '1908'
