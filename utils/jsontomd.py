@@ -27,4 +27,6 @@ with open(args.json.name.replace('json', 'md'), 'w+') as md_file:
                     md_file.write('  - {} \n'.format(source['url']))
                 if 'sha256' in source:
                     md_file.write('  - {} \n'.format(source['sha256']))
+                if 'commit' in source:
+                    md_file.write('  - {} \n'.format(source['commit']))
         md_file.write('\n')
