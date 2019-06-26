@@ -24,13 +24,13 @@ public:
         - '%{libdir}/libicutu.so'
         - '%{libdir}/libicuuc.so'
   cpe:
-    version: '64.1'
+    version: '64.2'
     product: international_components_for_unicode
 
 sources:
 - kind: git_tag
   url: github:unicode-org/icu
   track: maint/maint-64
-  ref: release-64-1-0-g2f2aec5f91cffe49b7526d9b0d18a9acbdd0cc89
+  ref: release-64-2-0-ge2d85306162d3a0691b070b4f0a73e4012433444
 - kind: patch
   path: patches/icu/icu-fix-shared-linking.patch

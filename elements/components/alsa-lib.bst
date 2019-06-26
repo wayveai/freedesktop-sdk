@@ -27,4 +27,4 @@ sources:
 - kind: git_tag
   url: github:alsa-project/alsa-lib.git
   track: master
-  ref: v1.1.8-0-gef7b098deb2652cea2659936c96cfe3229c0a782
+  ref: v1.1.9-0-g9122992a91334cd188203deba54cc077a91cd475

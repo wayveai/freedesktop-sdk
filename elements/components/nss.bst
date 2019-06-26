@@ -38,7 +38,7 @@ public:
         - '%{bindir}/*'
   cpe:
     product: network_security_services
-    version: '3.44'
+    version: '3.44.1'
 
 config:
   build-commands:
@@ -100,7 +100,7 @@ sources:
   - master
   match:
   - 'NSS_*_RTM'
-  ref: NSS_3_44_RTM-0-gc599c3d1745605e41f347a9157d75856986f5c33
+  ref: NSS_3_44_1_RTM-0-gbac5ecd0251c6a014b717ec1402c077187f2114d
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch

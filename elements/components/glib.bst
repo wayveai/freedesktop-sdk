@@ -43,10 +43,6 @@ public:
     - |
       glib-compile-schemas %{datadir}/glib-2.0/schemas
 
-  cpe:
-    patches:
-    - CVE-2019-12450
-
 sources:
 - kind: git_tag
   url: gnome:glib
@@ -55,6 +51,4 @@ sources:
   - glib-2-60
   match:
   - 2.*[02468].*
-  ref: 2.60.3-0-g0f6191d02a8e1ca7b08ffe0ccc4def88855baeae
-- kind: patch
-  path: patches/glib/CVE-2019-12450.patch
+  ref: 2.60.4-0-g6672d0cbed1f2bc87ca27ab69290900ff838224e

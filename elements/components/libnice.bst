@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: freedesktop:libnice/libnice.git
   track: master
-  ref: 0.1.15-0-ge25c3e5113c7b7002a78bcca2ecf058bbf7de6d4
+  ref: 0.1.16-0-g5969b34e3acd9150506ed8d9d109c73665858f3e
