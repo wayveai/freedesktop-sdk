@@ -10,8 +10,8 @@ config:
   metadata:
     Runtime:
       name: org.freedesktop.Sdk.PreBootstrap
-      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
 
 depends:
 - filename: pre-bootstrap.bst

@@ -8,7 +8,7 @@ config:
       name: org.freedesktop.Platform.Locale
 
     ExtensionOf:
-      ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
+      ref: runtime/org.freedesktop.Platform/%{flatpak_arch}/%{branch}
 
 depends:
 - filename: platform-image.bst

@@ -19,8 +19,8 @@ config:
   metadata:
     Runtime:
       name: org.freedesktop.Sdk.Extension.rust-stable
-      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
 
     ExtensionOf:
-      ref: runtime/org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      ref: runtime/org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
