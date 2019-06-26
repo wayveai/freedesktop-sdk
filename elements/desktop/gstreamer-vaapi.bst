@@ -34,8 +34,8 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer-vaapi
   track: '1.14'
-  ref: 1.14.4-0-g8b1b1f44bda266830f2f28adbb95720f3bc3433f
+  ref: 1.14.5-0-gfb69a2efd26ff719765203fd634db4c4361db30a
   submodules:
     common:
-      checkout: True
+      checkout: true
       url: freedesktop:gstreamer/common
