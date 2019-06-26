@@ -8,22 +8,40 @@ depends:
 variables:
   install-root: /buildstream-install
 
+  # Note: /app is only for flatpak application compatibility
+  # so that applications can bind themselves to the path
+  # The rest comes from Snap.
+  required-dirs: >-
+    /dev
+    /etc
+    /home
+    /root
+    /proc
+    /sys
+    /tmp
+    /var/snap
+    /var/lib/snapd
+    /var/tmp
+    /run
+    /usr/src
+    /var/log
+    /media
+    /usr/lib/snapd
+    /lib/modules
+    /mnt
+    /app
+
 config:
   layout:
     - element: bootstrap-import.bst
       destination: /
     - element: snap-images/snap-image.bst
       destination: "%{install-root}"
-
   commands:
     - |
-      for dir in snap tmp writeable dev etc home root           \
-                 proc sys run lib media                         \
-                 var/snap var/lib/snapd var/tmp var/log         \
-                 lib/modules usr/src usr/lib/snapd              \
-                 mnt var/lib/extrausers
+      for dir in %{required-dirs}
       do
-        mkdir -p "%{install-root}/${dir}"
+        mkdir -p "%{install-root}${dir}"
       done
 
     - |
