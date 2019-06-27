@@ -17,4 +17,4 @@ config:
     - oci/layers/platform.bst
     comment: "Import platform layer from Freedesktop SDK"
     tags:
-    - freedesktop-sdk/platform:latest
+    - freedesktopsdk/platform:latest

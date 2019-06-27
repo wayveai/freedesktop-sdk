@@ -29,6 +29,7 @@ stages:
   - publish
   - finish-publish
   - publish-snap
+  - publish-docker
   - reproducible
 
 before_script:
@@ -138,6 +139,20 @@ before_script:
         ./utils/generate-version snap-version.yml
     else
         export SNAP_GRADE=devel
+    fi
+
+  - |
+    if [ -n "$CI_COMMIT_TAG" ]; then
+        case "${CI_COMMIT_TAG}" in
+            *beta*)
+                export DOCKER_VERSION="${RUNTIME_VERSION}-beta"
+                ;;
+            *)
+                export DOCKER_VERSION="${RUNTIME_VERSION}"
+                ;;
+        esac
+    else
+        export DOCKER_VERSION="${RUNTIME_VERSION}-devel"
     fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
@@ -801,4 +816,89 @@ publish_snap_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+  when: manual
+
+.docker_publish_template:
+  stage: publish-docker
+  script:
+  - |
+    [ -n "${DOCKER_HUB_USER}" ]
+  - |
+    [ -n "${DOCKER_HUB_PASSWORD}" ]
+  - |
+    [ -n "${DOCKER_HUB_ADDRESS}" ]
+
+  - make export-docker
+  # Unfortunately BuildStream adds ./ prefix in file names and podman
+  # does not accept it.
+  - mkdir tar-extract
+  - |
+    (cd tar-extract && tar xf ../platform-docker.tar)
+  - |
+    (cd tar-extract && tar cf ../fixed.tar *)
+
+  - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}" "${DOCKER_HUB_ADDRESS}"
+
+  - podman load --storage-driver=vfs -i fixed.tar
+  - podman tag freedesktopsdk/platform:latest freedesktopsdk/platform:${DOCKER_VERSION}
+  - podman push freedesktopsdk/platform:${DOCKER_VERSION} docker://docker.io/freedesktopsdk/platform:${DOCKER_VERSION}
+
+  artifacts:
+    when: always
+    paths:
+    - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  only:
+  - tags
+  - master
+  except:
+  - schedules
+
+publish_docker_x86_64:
+  extends: .docker_publish_template
+  image: $DOCKER_AMD64
+  tags:
+  - x86_64
+  - cache_x86_64
+  variables:
+    ARCH: x86_64
+  dependencies: []
+
+publish_docker_i686:
+  extends: .docker_publish_template
+  image: $DOCKER_AMD64
+  tags:
+  - x86_64
+  - cache_i686
+  variables:
+    ARCH: i686
+  dependencies: []
+
+publish_docker_aarch64:
+  extends: .docker_publish_template
+  image: $DOCKER_AARCH64
+  tags:
+  - aarch64
+  variables:
+    ARCH: aarch64
+  dependencies: []
+
+publish_docker_arm:
+  extends: .docker_publish_template
+  image: $DOCKER_AARCH64
+  tags:
+  - armhf
+  variables:
+    ARCH: aarch64
+  dependencies: []
+
+publish_docker_ppc64le:
+  extends: .docker_publish_template
+  image: $DOCKER_POWERPC64LE
+  tags:
+  - ppc64le
+  variables:
+    ARCH: powerpc64le
+    IMPORT_BOOTSTRAP: 'true'
+  dependencies:
+  - bootstrap_powerpc64le
   when: manual
