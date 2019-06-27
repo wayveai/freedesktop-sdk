@@ -630,7 +630,7 @@ publish_powerpc64le_tar:
   when: manual
 
 cve_report:
-  stage: publish
+  stage: finish-publish
   image: $DOCKER_AMD64
   cache:
     key: cve
@@ -659,7 +659,7 @@ cve_report:
     - '18.08'
 
 markdown_manifest:
-  stage: publish
+  stage: finish-publish
   image: $DOCKER_AMD64
   tags:
     - x86_64
