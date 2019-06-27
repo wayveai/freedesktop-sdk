@@ -577,6 +577,8 @@ publish_powerpc64le:
     - ppc64le
   variables:
     ARCH: powerpc64le
+  when:
+    manual
   dependencies:
     - bootstrap_powerpc64le
 
