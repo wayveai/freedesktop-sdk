@@ -560,7 +560,6 @@ publish_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
-    IMPORT_BOOTSTRAP: 'true'
 
 publish_arm:
   extends: .flatpak_publish_template
@@ -577,6 +576,7 @@ publish_powerpc64le:
     - ppc64le
   variables:
     ARCH: powerpc64le
+    IMPORT_BOOTSTRAP: 'true'
   when:
     manual
   dependencies:
