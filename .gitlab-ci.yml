@@ -39,6 +39,10 @@ before_script:
   - git clone https://gitlab.com/BuildStream/bst-external.git
   - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
   - pip3 install --user ./bst-external
+  - |
+    if [ "${IMPORT_BOOTSTRAP}" = true ]; then
+      mv "bootstrap/${ARCH}" bootstrap/current
+    fi
 
   # Configure Buildstream
   - mkdir -p ~/.config
@@ -182,11 +186,6 @@ populate_source_cache:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - |
-      if [ "${IMPORT_BOOTSTRAP}" = true ]; then
-        mv "bootstrap/${ARCH}" bootstrap/current
-      fi
-
     - make build
     - test ${ARCH} != "aarch64" && make build-vm
     - make check-dev-files check-rpath
@@ -281,7 +280,6 @@ app_powerpc64le:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - bootstrap/${ARCH}
   except:
-    - master
     - '18.08'
     - tags
   <<: *gitlab_cache_pull
@@ -562,6 +560,7 @@ publish_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+    IMPORT_BOOTSTRAP: 'true'
 
 publish_arm:
   extends: .flatpak_publish_template
@@ -579,7 +578,7 @@ publish_powerpc64le:
   variables:
     ARCH: powerpc64le
   dependencies:
-    - app_powerpc64le
+    - bootstrap_powerpc64le
 
 publish_x86_64_tar:
   extends: .publish_tar_template
