@@ -34,7 +34,7 @@ Our goals, some of which are already achieved:
 *   Improve maintainability, using a single metadata format instead of several
     different ones. We use [BuildStream](https://gitlab.com/BuildStream/buildstream)
     for this.
-*   Support multiple architectures out of the box. (armv7, aarch64, i386, and x86_64)
+*   Support multiple architectures out of the box. (ppc64le, armv7, aarch64, i386, and x86_64)
 *   Long term maintenance of the SDK, with improved automation to do so,
     including tests for ABI stability.
 *   Define formal release cycles.
