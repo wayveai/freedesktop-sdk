@@ -18,7 +18,7 @@ config:
 
   - |
     install -m 0644 -p "config/30-0-%{fontname}.conf" "%{confdir}/conf.avail/30-0-%{fontname}.conf"; \
-    ln -s "../conf.avail/30-0-%{fontname}.conf" "%{confdir}/conf.d/30-0-%{fontname}.conf}"
+    ln -s "../conf.avail/30-0-%{fontname}.conf" "%{confdir}/conf.d/30-0-%{fontname}.conf"
 
 sources:
 - kind: tar
