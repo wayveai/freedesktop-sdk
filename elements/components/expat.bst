@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
 
 public:
   bst:
@@ -10,7 +12,22 @@ public:
         (>):
         - '%{libdir}/libexpat.so'
 
+  cpe:
+    version: 2.2.7
+
+config:
+  configure-commands:
+  - |
+    cd expat
+    %{autogen}
+
+  - |
+    mkdir %{builddir}
+    cd %{builddir}
+    ../expat/%{configure}
+
 sources:
-- kind: tar
-  url: github:libexpat/libexpat/releases/download/R_2_2_5/expat-2.2.5.tar.bz2
-  ref: d9dc32efba7e74f788fcc4f212a43216fc37cf5f23f4c2339664d473353aedf6
+- kind: git_tag
+  url: github:libexpat/libexpat.git
+  track: master
+  ref: R_2_2_7-0-gd3b78b42a2dcdea98e22625cfff67a49d47e6025
