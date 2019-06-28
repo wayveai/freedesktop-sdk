@@ -66,3 +66,5 @@ sources:
     common:
       checkout: True
       url: freedesktop:gstreamer/common
+- kind: patch
+  path: patches/gstreamer-plugins-bad/remove_mode_2_1.patch
