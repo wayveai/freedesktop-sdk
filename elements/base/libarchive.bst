@@ -1,5 +1,5 @@
 kind: autotools
-description: Multi-format archive and compression library
+description: Glib
 
 depends:
 - filename: bootstrap-import.bst
@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: github:libarchive/libarchive.git
   track: master
-  ref: v3.4.0-0-g614110e76d9dbb9ed3e159a71cbd75fa3b23efe3
+  ref: v3.3.3-0-g5fe69dd018745a88eecf1f7db40daf12d26f7ed0
