@@ -29,13 +29,8 @@ variables:
     -Dopenssl=false
 
 public:
-  cpe:
-    vendor: 'freedesktop'
-    product: 'systemd'
-    version: '241'
-    patches:
-    - CVE-2019-3843
-    - CVE-2019-3844
+# cpe metadata should be written in
+# elements/desktop/libsystemd.bst
 
   bst:
     split-rules:

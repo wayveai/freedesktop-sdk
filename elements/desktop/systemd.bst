@@ -17,10 +17,8 @@ config:
   include-orphans: True
 
 public:
-  cpe:
-    vendor: 'freedesktop'
-    product: 'systemd'
-    version: '241'
+# cpe metadata should be written in
+# elements/desktop/libsystemd.bst
 
   bst:
     integration-commands:
