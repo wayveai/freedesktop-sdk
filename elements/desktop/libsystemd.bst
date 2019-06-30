@@ -23,6 +23,9 @@ public:
     vendor: 'freedesktop'
     product: 'systemd'
     version: '241'
+    patches:
+    - CVE-2019-3843
+    - CVE-2019-3844
 
   bst:
     split-rules:
