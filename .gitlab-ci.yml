@@ -281,7 +281,7 @@ app_powerpc64le:
   variables:
     ARCH: powerpc64le
     IMPORT_BOOTSTRAP: 'true'
-  when: manual
+  allow_failure: true
   dependencies:
   - bootstrap_powerpc64le
 
@@ -307,7 +307,7 @@ bootstrap_powerpc64le:
     - cache_x86_64 # Keep the same cache. Does not matter which one.
   variables:
     ARCH: powerpc64le
-  when: manual
+  allow_failure: true
 
 .vm_imageless_template: &vm_imageless
   stage: vm
@@ -592,8 +592,7 @@ publish_powerpc64le:
   variables:
     ARCH: powerpc64le
     IMPORT_BOOTSTRAP: 'true'
-  when:
-    manual
+  allow_failure: true
   dependencies:
     - bootstrap_powerpc64le
 
