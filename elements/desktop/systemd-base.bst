@@ -33,6 +33,9 @@ public:
     vendor: 'freedesktop'
     product: 'systemd'
     version: '241'
+    patches:
+    - CVE-2019-3843
+    - CVE-2019-3844
 
   bst:
     split-rules:
@@ -56,4 +59,4 @@ sources:
   url: github:systemd/systemd-stable.git
   track: v241-stable
   track-tags: false
-  ref: v241-9-gc1f8ff8d0de7e303b8004b02a0a47d4cc103a7f8
+  ref: v241-116-g9ef65cb6b2de877dde1a6dadbe8e7056179fc3c5
