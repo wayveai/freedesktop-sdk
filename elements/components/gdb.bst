@@ -52,5 +52,5 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: gdb-8.2-branch
-  ref: gdb-8.2.1-release-0-g15146ff7370d5abad01dbecfacb0bf0e66a93cd6
+  track: gdb-8.3-branch
+  ref: gdb-8.3-release-0-g9b407598397ef8429cbf866a02745768082e49a6
