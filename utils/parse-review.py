@@ -11,7 +11,7 @@ import subprocess
 
 has_error = False
 
-p = subprocess.Popen(["review-tools.snap-review", "--json", sys.argv[1]],
+p = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
                      universal_newlines=True,
                      stdout=subprocess.PIPE)
 output, _ = p.communicate()
