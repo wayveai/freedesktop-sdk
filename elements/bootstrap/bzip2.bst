@@ -18,9 +18,9 @@ config:
 
   install-commands:
   - |
-    install -D -m 755 libbz2.so.1.0.6 --target-directory %{install-root}%{libdir}
-    ln -s libbz2.so.1.0.6 %{install-root}%{libdir}/libbz2.so.1.0
-    ln -s libbz2.so.1.0.6 %{install-root}%{libdir}/libbz2.so
+    install -D -m 755 libbz2.so.1.0.7 --target-directory %{install-root}%{libdir}
+    ln -s libbz2.so.1.0.7 %{install-root}%{libdir}/libbz2.so.1.0
+    ln -s libbz2.so.1.0.7 %{install-root}%{libdir}/libbz2.so
     install -D -m 755 bzip2-shared %{install-root}%{bindir}/bzip2
     ln -s bzip2 %{install-root}%{bindir}/bzcat
     ln -s bzip2 %{install-root}%{bindir}/bunzip2
@@ -42,13 +42,8 @@ public:
         (>):
         - '%{libdir}/libbz2.so'
 
-  cpe:
-    patches:
-      - CVE-2016-3189
-
 sources:
-- kind: tar
-  url: https://download.gnome.org/teams/releng/tarballs-needing-help/bzip2/bzip2-1.0.6.tar.gz
-  ref: a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd
-- kind: patch
-  path: patches/bzip2/CVE-2016-3189.patch
+- kind: git_tag
+  url: sourceware:bzip2.git
+  track: master
+  ref: bzip2-1.0.7-0-gf319b98aade2a337c74b9a3b48c6daffb7809cda
