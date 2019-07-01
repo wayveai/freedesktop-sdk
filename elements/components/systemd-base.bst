@@ -29,10 +29,8 @@ variables:
     -Dpam=true
 
 public:
-  cpe:
-    vendor: 'freedesktop'
-    product: 'systemd'
-    version: '242'
+# cpe metadata should be written in
+# elements/components/libsystemd.bst
 
   bst:
     split-rules:
