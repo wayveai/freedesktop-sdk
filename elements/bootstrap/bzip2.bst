@@ -18,9 +18,10 @@ config:
 
   install-commands:
   - |
-    install -D -m 755 libbz2.so.1.0.7 --target-directory %{install-root}%{libdir}
-    ln -s libbz2.so.1.0.7 %{install-root}%{libdir}/libbz2.so.1.0
-    ln -s libbz2.so.1.0.7 %{install-root}%{libdir}/libbz2.so
+    full_name="$(readlink libbz2.so.1)"
+    install -D -m 755 "${full_name}" --target-directory %{install-root}%{libdir}
+    ln -s "${full_name}" %{install-root}%{libdir}/libbz2.so.1
+    ln -s "${full_name}" %{install-root}%{libdir}/libbz2.so
     install -D -m 755 bzip2-shared %{install-root}%{bindir}/bzip2
     ln -s bzip2 %{install-root}%{bindir}/bzcat
     ln -s bzip2 %{install-root}%{bindir}/bunzip2
@@ -47,3 +48,5 @@ sources:
   url: sourceware:bzip2.git
   track: master
   ref: bzip2-1.0.7-0-gf319b98aade2a337c74b9a3b48c6daffb7809cda
+- kind: patch
+  path: patches/bzip2/soname.patch
