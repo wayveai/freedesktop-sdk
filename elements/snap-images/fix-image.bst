@@ -29,6 +29,7 @@ variables:
     /usr/lib/snapd
     /lib/modules
     /mnt
+    /usr/local/share/fonts
     /app
 
 config:
