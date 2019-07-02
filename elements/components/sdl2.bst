@@ -44,6 +44,11 @@ config:
       sed -i 's,^\(Cflags:.*\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{libdir}/pkgconfig/sdl2.pc"
       sed -i 's,\(-I%{includedir}/SDL2\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{bindir}/sdl2-config"
 
+    - |
+      cat >>%{install-root}%{libdir}/cmake/SDL2/sdl2-config.cmake <<EOF
+      list(APPEND SDL2_INCLUDE_DIRS "%{includedir}/%{gcc_triplet}/SDL2")
+      EOF
+
 public:
   bst:
     split-rules:
