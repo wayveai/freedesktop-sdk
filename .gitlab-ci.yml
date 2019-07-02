@@ -593,8 +593,6 @@ publish_powerpc64le:
     ARCH: powerpc64le
     IMPORT_BOOTSTRAP: 'true'
   allow_failure: true
-  dependencies:
-    - bootstrap_powerpc64le
 
 publish_x86_64_tar:
   extends: .publish_tar_template
