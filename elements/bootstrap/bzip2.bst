@@ -45,6 +45,7 @@ public:
   cpe:
     patches:
       - CVE-2016-3189
+      - CVE-2019-12900
 
 sources:
 - kind: tar
@@ -52,3 +53,5 @@ sources:
   ref: a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd
 - kind: patch
   path: patches/bzip2/CVE-2016-3189.patch
+- kind: patch
+  path: patches/bzip2/CVE-2019-12900.patch
