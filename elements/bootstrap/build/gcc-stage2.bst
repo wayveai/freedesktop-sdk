@@ -111,3 +111,5 @@ sources:
   path: patches/gcc/gcc-multiarch-os-dir.patch
 - kind: patch
   path: patches/gcc/gcc-do-not-override-for-build-variables.patch
+- kind: patch
+  path: patches/gcc/gcc-build-cxxflags.patch
