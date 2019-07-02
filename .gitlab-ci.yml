@@ -30,6 +30,7 @@ stages:
   - finish-publish
   - publish-snap
   - publish-docker
+  - publish-docker-finish
   - reproducible
 
 before_script:
@@ -832,10 +833,17 @@ publish_snap_aarch64:
   - podman load --storage-driver=vfs -i fixed.tar
   - podman push freedesktopsdk/platform:latest docker://docker.io/freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION}
 
+  - |
+    mkdir -p docker-pushed-digests/
+    podman image inspect freedesktopsdk/platform:latest \
+      | python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["RepoDigests"][0])' \
+      >docker-pushed-digests/platform-${ARCH}.txt
+
   artifacts:
     when: always
     paths:
     - ${CI_PROJECT_DIR}/cache/buildstream/logs
+    - docker-pushed-digests
   only:
   - tags
   - master
@@ -887,4 +895,38 @@ publish_docker_ppc64le:
   - ppc64le
   variables:
     ARCH: powerpc64le
-  when: manual
+  allow_failure: true
+
+publish_docker_finish:
+  image: docker
+  services:
+  - docker:dind
+  stage: publish-docker-finish
+  allow_failure: true
+  script:
+  - |
+    cat >>"${HOME}/.docker/config.json"
+    {
+        "experimental": "enabled"
+    }
+    EOF
+
+  - docker login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
+
+  - |
+    docker create freedesktopsdk/platform:${DOCKER_VERSION} \
+                  $(cat docker-pushed-digests/platform-*.txt)
+
+  - docker push freedesktopsdk/platform:${DOCKER_VERSION}
+
+  only:
+  - tags
+  - master
+  tags:
+  - armhf
+  dependencies:
+  - publish_docker_ppc64le
+  - publish_docker_arm
+  - publish_docker_aarch64
+  - publish_docker_x86_64
+  - publish_docker_i686
