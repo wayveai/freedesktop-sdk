@@ -16,6 +16,12 @@ description: Import the base freedesktop SDK
       url: freedesktop-sdk:releases/
       track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/18.08
       ref: fe384a513a8e7a8e699a1f040c87fc689ec9226d13c73bcfc0dad84c48b5d1a3
+- bootstrap_build_arch == "powerpc64le":
+    sources:
+    - kind: ostree
+      url: freedesktop-sdk:releases/
+      track: runtime/org.freedesktop.Sdk.PreBootstrap/ppc64le/19.08beta
+      ref: 0d203a3c86d480c899b29b851e616a27b23d2ca467821ca45393b6e0ddd19095
 
 config:
   source: files
