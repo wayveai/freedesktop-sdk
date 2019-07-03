@@ -296,6 +296,16 @@ app_powerpc64le:
     - tags
   <<: *gitlab_cache_pull
 
+bootstrap_powerpc64le:
+  image: $DOCKER_AMD64
+  <<: *bootstrap_definition
+  tags:
+    - x86_64
+    - cache_x86_64 # Keep the same cache. Does not matter which one.
+  variables:
+    ARCH: powerpc64le
+  when: manual
+
 .vm_imageless_template: &vm_imageless
   stage: vm
   script:
