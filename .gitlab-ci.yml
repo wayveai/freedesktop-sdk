@@ -55,11 +55,12 @@ before_script:
     EOF
 
   - |
-    if [ -n "$(echo \"${CI_RUNNER_TAGS}\" | grep few-fetchers)" ]; then
-    cat >> ./.config/buildstream.conf << EOF
+    if [ -n "$(echo ${CI_RUNNER_TAGS} | grep few-fetchers)" ]; then
+    cat >> ~/.config/buildstream.conf << EOF
     scheduler:
       fetchers: 5
     EOF
+    fi
 
   # Create ~/.ssh for storing keys
   - mkdir -p ~/.ssh
