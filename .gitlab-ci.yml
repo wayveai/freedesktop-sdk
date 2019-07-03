@@ -485,6 +485,10 @@ finish_publish_failed:
     - |
       case "$RELEASES_SERVER_ADDRESS" in
         https://hub.flathub.org/)
+          if [ "${ARCH}" = powerpc64le ]; then
+            echo "ppc64le not published to Flathub yet"
+            exit 1
+          fi
           for ref in $(ostree --repo=repo refs --list); do
             case "${ref}" in
               */org.freedesktop.Sdk.Minimal/*/*)
