@@ -15,6 +15,7 @@ depends:
 
 environment:
   (?):
+    (>):
     - target_arch == "x86_64":
         CFLAGS_FOR_TARGET:  "%{target_flags_x86_64}"
         CXXFLAGS_FOR_TARGET: "%{target_flags_x86_64}"
