@@ -55,11 +55,12 @@ before_script:
     EOF
 
   - |
-    if [ -n "$(echo \"${CI_RUNNER_TAGS}\" | grep few-fetchers)" ]; then
-    cat >> ./.config/buildstream.conf << EOF
+    if [ -n "$(echo ${CI_RUNNER_TAGS} | grep few-fetchers)" ]; then
+    cat >> ~/.config/buildstream.conf << EOF
     scheduler:
       fetchers: 5
     EOF
+    fi
 
   # Create ~/.ssh for storing keys
   - mkdir -p ~/.ssh
@@ -306,10 +307,6 @@ app_powerpc64le:
 .vm_imageless_template: &vm_imageless
   stage: vm
   script:
-    - |
-      if [ "${IMPORT_BOOTSTRAP}" = true ]; then
-        mv "bootstrap/${ARCH}" bootstrap/current
-      fi
     - make build-vm
     - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
   artifacts:
@@ -890,5 +887,4 @@ publish_docker_ppc64le:
   - ppc64le
   variables:
     ARCH: powerpc64le
-    IMPORT_BOOTSTRAP: 'true'
   when: manual
