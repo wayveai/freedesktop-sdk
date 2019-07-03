@@ -116,3 +116,5 @@ sources:
   path: patches/gcc/gcc-do-not-override-for-build-variables.patch
 - kind: patch
   path: patches/gcc/gcc-build-cxxflags.patch
+- kind: patch
+  path: patches/gcc/gcc-do-not-override-for-build-variables-2.patch
