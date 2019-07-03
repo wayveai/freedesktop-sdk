@@ -20,3 +20,5 @@ sources:
   path: patches/gcc/gcc-multiarch-no-cross-structure.patch
 - kind: patch
   path: patches/gcc/gcc-do-not-override-for-build-variables.patch
+- kind: patch
+  path: patches/gcc/gcc-do-not-override-for-build-variables-2.patch
