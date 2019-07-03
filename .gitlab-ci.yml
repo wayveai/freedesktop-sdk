@@ -836,8 +836,7 @@ publish_snap_aarch64:
   - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}" "${DOCKER_HUB_ADDRESS}"
 
   - podman load --storage-driver=vfs -i fixed.tar
-  - podman tag freedesktopsdk/platform:latest freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION}
-  - podman push freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION} docker://docker.io/freedesktopsdk/platform:${DOCKER_VERSION}
+  - podman push freedesktopsdk/platform:latest docker://docker.io/freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION}
 
   artifacts:
     when: always
