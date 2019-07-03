@@ -44,7 +44,8 @@ all: build
 build:
 	$(BST) build check-platform.bst \
 	             flatpak-release.bst \
-	             public-stacks/buildsystems.bst
+	             public-stacks/buildsystems.bst \
+	             mesa-aco-repo.bst
 
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
@@ -217,8 +218,24 @@ export-docker:
 	bst --colors $(ARCH_OPTS) build "oci/platform-docker.bst"
 	bst --colors $(ARCH_OPTS) checkout "oci/platform-docker.bst" --tar platform-docker.tar
 
+track-mesa-aco:
+	$(BST) track extensions/mesa-aco/mesa-base.bst
+
+export-mesa-aco: clean-runtime
+	$(BST) build mesa-aco-repo.bst
+
+	mkdir -p $(CHECKOUT_ROOT)
+	$(BST) checkout --hardlinks mesa-aco-repo.bst $(CHECKOUT_ROOT)
+
+	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
+
+	$(BST) shell --mount $(REPO) /mnt/$(REPO) --mount $(CHECKOUT_ROOT) /mnt/$(CHECKOUT_ROOT) public-stacks/flatpak-publish-tools.bst -- flatpak build-commit-from --src-repo=/mnt/$(CHECKOUT_ROOT) /mnt/$(REPO)
+
+	rm -rf $(CHECKOUT_ROOT)
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker bootstrap
+	export-oci export-docker bootstrap \
+	track-mesa-aco export-mesa-aco
