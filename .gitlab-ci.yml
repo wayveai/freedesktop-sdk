@@ -496,7 +496,7 @@ finish_publish_failed:
           fi
           for ref in $(ostree --repo=repo refs --list); do
             case "${ref}" in
-              */org.freedesktop.Sdk.Minimal/*/*) ;&
+              */org.freedesktop.Sdk.PreBootstrap/*/*) ;&
               */org.freedesktop.Platform.GL32.mesa-aco/*/*) ;&
               */org.freedesktop.Platform.GL.mesa-aco/*/*)
                 echo "Deleting ${ref}"
