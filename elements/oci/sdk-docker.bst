@@ -5,6 +5,8 @@ depends:
   type: build
 - filename: oci/layers/sdk.bst
   type: build
+- filename: linker-debuginfo.bst
+  type: build
 
 config:
   mode: docker
@@ -15,6 +17,7 @@ config:
       element: oci/platform-oci.bst
     layer:
     - oci/layers/sdk.bst
+    - linker-debuginfo.bst
     comment: "Import SDK layer from Freedesktop SDK"
     tags:
     - freedesktopsdk/sdk:latest

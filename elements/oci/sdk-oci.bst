@@ -5,6 +5,8 @@ depends:
   type: build
 - filename: oci/layers/sdk.bst
   type: build
+- filename: linker-debuginfo.bst
+  type: build
 
 config:
   mode: oci
@@ -15,4 +17,5 @@ config:
       element: oci/platform-oci.bst
     layer:
     - oci/layers/sdk.bst
+    - linker-debuginfo.bst
     comment: "Import sdk layer from Freedesktop SDK"
