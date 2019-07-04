@@ -217,8 +217,12 @@ export-docker:
 	bst --colors $(ARCH_OPTS) build "oci/platform-docker.bst"
 	bst --colors $(ARCH_OPTS) checkout "oci/platform-docker.bst" --tar platform-docker.tar
 
+track-mesa-aco:
+	$(BST) track extensions/mesa-aco/mesa-base.bst
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker bootstrap
+	export-oci export-docker bootstrap \
+	track-mesa-aco
