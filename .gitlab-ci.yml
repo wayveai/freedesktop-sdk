@@ -836,10 +836,10 @@ publish_snap_aarch64:
   - podman push freedesktopsdk/platform:latest docker://docker.io/freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION}
 
   - |
-    mkdir -p docker-pushed-digests/
+    mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
     podman image inspect freedesktopsdk/platform:latest \
       | python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["RepoDigests"][0])' \
-      >docker-pushed-digests/platform-${ARCH}.txt
+      >"docker-pushed-digests/${DOCKER_VERSION}/platform-${ARCH}.txt"
 
   artifacts:
     when: always
@@ -905,6 +905,7 @@ publish_docker_finish:
   - docker:dind
   stage: publish-docker-finish
   allow_failure: true
+  before_script: []
   script:
   - |
     cat >>"${HOME}/.docker/config.json"
@@ -916,10 +917,12 @@ publish_docker_finish:
   - docker login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
 
   - |
-    docker create freedesktopsdk/platform:${DOCKER_VERSION} \
-                  $(cat docker-pushed-digests/platform-*.txt)
-
-  - docker push freedesktopsdk/platform:${DOCKER_VERSION}
+    for dir in docker-pushed-digests/*; do
+      DOCKER_VERSION="$(basename "${dir}")"
+      docker create freedesktopsdk/platform:${DOCKER_VERSION} \
+                  $(cat "${dir}"/platform-*.txt)
+      docker push freedesktopsdk/platform:${DOCKER_VERSION}
+    done
 
   only:
   - tags
