@@ -824,22 +824,22 @@ publish_snap_aarch64:
   - make export-docker
   # Unfortunately BuildStream adds ./ prefix in file names and podman
   # does not accept it.
-  - mkdir tar-extract
-  - |
-    (cd tar-extract && tar xf ../platform-docker.tar)
-  - |
-    (cd tar-extract && tar cf ../fixed.tar *)
 
   - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}" "${DOCKER_HUB_ADDRESS}"
 
-  - podman load --storage-driver=vfs -i fixed.tar
-  - podman push freedesktopsdk/platform:latest docker://docker.io/freedesktopsdk/platform-${ARCH}:${DOCKER_VERSION}
-
   - |
-    mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
-    podman image inspect freedesktopsdk/platform:latest \
-      | python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["RepoDigests"][0])' \
-      >"docker-pushed-digests/${DOCKER_VERSION}/platform-${ARCH}.txt"
+    set -eu
+    for name in platform sdk debug; do
+      mkdir -p ${name}-tar-extract
+      (cd ${name}-tar-extract && tar xf ../${name}-docker.tar)
+      (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar *)
+      podman load --storage-driver=vfs -i ${name}-fixed.tar
+      podman push freedesktopsdk/${name}:latest docker://docker.io/freedesktopsdk/${name}-${ARCH}:${DOCKER_VERSION}
+      mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
+      podman image inspect freedesktopsdk/${name}:latest \
+        | python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["RepoDigests"][0])' \
+        >"docker-pushed-digests/${DOCKER_VERSION}/${name}-${ARCH}.txt"
+    done
 
   artifacts:
     when: always
@@ -917,11 +917,14 @@ publish_docker_finish:
   - docker login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
 
   - |
-    for dir in docker-pushed-digests/*; do
-      DOCKER_VERSION="$(basename "${dir}")"
-      docker create freedesktopsdk/platform:${DOCKER_VERSION} \
-                  $(cat "${dir}"/platform-*.txt)
-      docker push freedesktopsdk/platform:${DOCKER_VERSION}
+    set -eu
+    for name in platform sdk debug; do
+      for dir in docker-pushed-digests/*; do
+        DOCKER_VERSION="$(basename "${dir}")"
+        docker create freedesktopsdk/${name}:${DOCKER_VERSION} \
+                      $(cat "${dir}"/${name}-*.txt)
+        docker push freedesktopsdk/${name}:${DOCKER_VERSION}
+      done
     done
 
   only:

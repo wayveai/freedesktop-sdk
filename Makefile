@@ -210,12 +210,20 @@ export-snap:
 	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
 
 export-oci:
-	bst --colors $(ARCH_OPTS) build "oci/platform-oci.bst"
-	bst --colors $(ARCH_OPTS) checkout "oci/platform-oci.bst" --tar platform-oci.tar
+	bst --colors $(ARCH_OPTS) build oci/platform-oci.bst \
+	                                oci/sdk-oci.bst \
+	                                oci/debug-oci.bst
+	for name in platform sdk debug; do
+	  bst --colors $(ARCH_OPTS) checkout oci/${name}-oci.bst --tar ${name}-oci.tar
+	done
 
 export-docker:
-	bst --colors $(ARCH_OPTS) build "oci/platform-docker.bst"
-	bst --colors $(ARCH_OPTS) checkout "oci/platform-docker.bst" --tar platform-docker.tar
+	bst --colors $(ARCH_OPTS) build oci/platform-docker.bst \
+	                                oci/sdk-docker.bst \
+	                                oci/debug-docker.bst
+	for name in platform sdk debug; do
+	  bst --colors $(ARCH_OPTS) checkout oci/${name}-docker.bst --tar ${name}-docker.tar
+	done
 
 track-mesa-aco:
 	$(BST) track extensions/mesa-aco/mesa-base.bst
