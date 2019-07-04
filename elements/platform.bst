@@ -7,6 +7,7 @@ depends:
 - filename: components/cracklib.bst
 - filename: components/curl.bst
 - filename: components/cyrus-sasl.bst
+- filename: components/dummy-gbm.bst
 - filename: components/e2fsprogs.bst
 - filename: components/expat.bst
 - filename: components/flex.bst
