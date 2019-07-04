@@ -1,7 +1,7 @@
 kind: oci
 
 depends:
-- filename: oci/bootstrap-oci.bst
+- filename: oci/sdk-oci.bst
   type: build
 - filename: oci/layers/debug.bst
   type: build
@@ -12,7 +12,7 @@ config:
   - os: linux
     architecture: "%{go-arch}"
     parent:
-      element: oci/platform-oci.bst
+      element: oci/sdk-oci.bst
     layer:
     - oci/layers/debug.bst
     comment: "Import debug layer from Freedesktop SDK"

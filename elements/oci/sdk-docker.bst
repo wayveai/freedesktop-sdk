@@ -1,7 +1,7 @@
 kind: oci
 
 depends:
-- filename: oci/bootstrap-oci.bst
+- filename: oci/platform-oci.bst
   type: build
 - filename: oci/layers/sdk.bst
   type: build
