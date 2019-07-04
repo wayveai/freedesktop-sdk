@@ -1,0 +1,11 @@
+diff -ur gcc.old/Makefile.in gcc/Makefile.in
+--- gcc.old/Makefile.in	2019-07-02 23:10:58.184151052 +0200
++++ gcc/Makefile.in	2019-07-02 23:11:42.807775060 +0200
+@@ -168,6 +168,7 @@
+ # built for the build system to override those in BASE_FLAGS_TO_PASS.
+ EXTRA_BUILD_FLAGS = \
+ 	CFLAGS="$(CFLAGS_FOR_BUILD)" \
++	CXXFLAGS="$(CXXFLAGS_FOR_BUILD)" \
+ 	LDFLAGS="$(LDFLAGS_FOR_BUILD)"
+ 
+ # This is the list of directories to built for the host system.
