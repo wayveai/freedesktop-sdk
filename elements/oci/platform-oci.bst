@@ -8,6 +8,7 @@ depends:
 
 config:
   mode: oci
+  gzip: False
   images:
   - os: linux
     architecture: "%{go-arch}"
