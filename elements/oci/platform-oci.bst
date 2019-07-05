@@ -6,6 +6,10 @@ depends:
 - filename: oci/layers/platform.bst
   type: build
 
+# For build time optimization
+- filename: oci/layers/bootstrap.bst
+  type: build
+
 config:
   mode: oci
   gzip: False

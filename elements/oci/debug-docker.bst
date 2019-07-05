@@ -6,6 +6,12 @@ depends:
 - filename: oci/layers/debug.bst
   type: build
 
+# For build time optimization
+- filename: oci/layers/sdk.bst
+  type: build
+- filename: linker-debuginfo.bst
+  type: build
+
 config:
   mode: docker
   images:

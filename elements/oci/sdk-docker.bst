@@ -8,6 +8,10 @@ depends:
 - filename: integration/linker-debuginfo.bst
   type: build
 
+# For build time optimization
+- filename: oci/layers/platform.bst
+  type: build
+
 config:
   mode: docker
   images:
