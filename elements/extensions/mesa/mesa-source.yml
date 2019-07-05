@@ -1,7 +1,10 @@
+# This is for drivers. For the components/mesa-headers.bst,
+# see elements/components/mesa.yml
+
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '19.1'
-  ref: mesa-19.1.0-0-g1517811f4f75cd628dd7122d63092f3954a81a7d
+  ref: mesa-19.1.1-0-g22eddd8b9d4d905237494c9841e65e4c073ab514
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
