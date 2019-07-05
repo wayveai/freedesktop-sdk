@@ -1,5 +1,23 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.33:
+    * mesa: Re-enable gallium VAAPI driver
+    * gcc: Enable missing optimization (#784)
+    * openssh: Update to 8.0p1 (CVE-2019-6109 to CVE-2019-6111, CVE-2018-20685)
+    * bzip2: Apply security fix (CVE-2019-12900)
+    * systemd: Apply security fix (CVE-2019-3843, CVE-2019-3844)
+    * libvorbis: Apply security fix (CVE-2018-10392, CVE-2018-10393)
+    * expat: Apply security fix (CVE-2018-20843)
+    * sqlite: Apply security fix (CVE-2019-8457)
+    * libarchive: Apply security fixes (CVE-2018-1000877 to CVE-2018-1000880)
+    * libarchive: Apply security fixes (CVE-2019-1000019, CVE-2019-1000020)
+    * gdb: Update to 8.2.1 to fix instability (#813)
+    * Add missing /usr/lib/debug/app symlink
+    * ruby: Update to 2.5.5 which fixes "Can't find gem bundler" issue (#807)
+    * unzip: Add support for zip64 (#804)
+    * mesa: Update to 19.1.1
+    * curl: Update to 7.65.1 (CVE-2019-5435, CVE-2019-5436)
+
 freedesktop-sdk-18.08.32:
     * Apply patch to glib for CVE-2019-12450
     * Update fdk-aac to a non-broken version
