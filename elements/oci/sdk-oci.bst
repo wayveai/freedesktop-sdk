@@ -1,13 +1,16 @@
 kind: oci
 
 depends:
-- filename: oci/bootstrap-oci.bst
+- filename: oci/platform-oci.bst
   type: build
 - filename: oci/layers/sdk.bst
+  type: build
+- filename: linker-debuginfo.bst
   type: build
 
 config:
   mode: oci
+  gzip: False
   images:
   - os: linux
     architecture: "%{go-arch}"
@@ -15,4 +18,5 @@ config:
       element: oci/platform-oci.bst
     layer:
     - oci/layers/sdk.bst
+    - linker-debuginfo.bst
     comment: "Import sdk layer from Freedesktop SDK"

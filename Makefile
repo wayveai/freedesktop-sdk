@@ -44,7 +44,13 @@ all: build
 build:
 	$(BST) build check-platform.bst \
 	             flatpak-release.bst \
-	             public-stacks/buildsystems.bst
+	             public-stacks/buildsystems.bst \
+		     oci/platform-oci.bst \
+	             oci/sdk-oci.bst \
+		     oci/debug-oci.bst \
+		     oci/platform-docker.bst \
+	             oci/sdk-docker.bst \
+		     oci/debug-docker.bst
 
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
@@ -210,19 +216,21 @@ export-snap:
 	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
 
 export-oci:
-	bst --colors $(ARCH_OPTS) build oci/platform-oci.bst \
-	                                oci/sdk-oci.bst \
-	                                oci/debug-oci.bst
-	for name in platform sdk debug; do
-	  bst --colors $(ARCH_OPTS) checkout oci/${name}-oci.bst --tar ${name}-oci.tar
+	$(BST) build oci/platform-oci.bst \
+	             oci/sdk-oci.bst \
+	             oci/debug-oci.bst
+	set -e; \
+	for name in platform sdk debug; do \
+	  $(BST) checkout "oci/$${name}-oci.bst" --tar "$${name}-oci.tar"; \
 	done
 
 export-docker:
-	bst --colors $(ARCH_OPTS) build oci/platform-docker.bst \
-	                                oci/sdk-docker.bst \
-	                                oci/debug-docker.bst
-	for name in platform sdk debug; do
-	  bst --colors $(ARCH_OPTS) checkout oci/${name}-docker.bst --tar ${name}-docker.tar
+	$(BST) build oci/platform-docker.bst \
+	             oci/sdk-docker.bst \
+	             oci/debug-docker.bst
+	set -e; \
+	for name in platform sdk debug; do \
+	  $(BST) checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
 	done
 
 track-mesa-aco:
