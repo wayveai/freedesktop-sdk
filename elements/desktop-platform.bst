@@ -54,6 +54,7 @@ depends:
 - filename: desktop/libdrm.bst
 - filename: desktop/libepoxy.bst
 - filename: desktop/liberation-fonts.bst
+- filename: desktop/libfdk-aac-old.bst
 - filename: desktop/libglvnd.bst
 - filename: desktop/libproxy.bst
 - filename: desktop/libpsl.bst

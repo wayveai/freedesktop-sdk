@@ -9,6 +9,7 @@ depends:
 - filename: desktop/gstreamer-plugins-base.bst
 - filename: desktop/libdrm.bst
 - filename: desktop/libfdk-aac.bst
+  type: build
 - filename: desktop/libglvnd.bst
 - filename: desktop/librsvg.bst
 - filename: desktop/libvdpau.bst
@@ -68,3 +69,7 @@ sources:
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-plugins-bad/remove_mode_2_1.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/fdkaacdec-wav-channel-mapping.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/fdkaacenc-fix-draining.patch

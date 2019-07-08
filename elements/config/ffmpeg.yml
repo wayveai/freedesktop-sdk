@@ -3,6 +3,7 @@ depends:
 - filename: desktop/fontconfig.bst
 - filename: desktop/freetype.bst
 - filename: desktop/libfdk-aac.bst
+  type: build
 - filename: desktop/lame.bst
 - filename: desktop/libva.bst
 - filename: desktop/libvdpau.bst

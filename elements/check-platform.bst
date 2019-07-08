@@ -8,6 +8,7 @@ depends:
 
 config:
   forbidden:
+  - desktop/libfdk-aac.bst
   - desktop/desktop-file-utils.bst
   - desktop/gtk-doc.bst
   - desktop/itstools.bst
