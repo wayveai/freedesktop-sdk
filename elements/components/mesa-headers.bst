@@ -89,7 +89,7 @@ config:
     prefix=%{prefix}
     libdir=%{libdir}
 
-    dridriverdir=%{libdir}/GL/dri
+    dridriverdir=%{libdir}/GL/lib/dri
 
     Name: dri
     Description: Direct Rendering Infrastructure
