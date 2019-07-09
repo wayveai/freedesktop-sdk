@@ -19,7 +19,7 @@ public:
         (>):
         - '%{libdir}/libgcab-1.0.so'
   cpe:
-    version: '1.0'
+    version: '1.2'
 
 variables:
   meson-local: -Ddocs=false
