@@ -17,6 +17,11 @@ public:
         - '%{bindir}/freetype-config'
         - '%{libdir}/libfreetype.so'
 
+  cpe:
+    version: '2.10.0'
+    product: 'freetype2'
+    vendor: 'freetype'
+
 variables:
   conf-local: |
     --enable-freetype-config \
