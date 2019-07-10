@@ -34,6 +34,9 @@ variables:
     EGL/eglextchromium.h
     EGL/eglmesaext.h
     EGL/eglplatform.h
+    d3dadapter/present.h
+    d3dadapter/d3dadapter9.h
+    d3dadapter/drm.h
 
 config:
   install-commands:
@@ -96,6 +99,21 @@ config:
     Version: %{version}
     EOF
     install -Dm644 dri.pc "%{install-root}%{libdir}/pkgconfig/dri.pc"
+
+  - |
+    cat <<\EOF >d3d.pc
+    prefix=%{prefix}
+    includedir=${prefix}/include
+
+    moduledir=%{libdir}/GL/lib/d3d
+
+    Name: d3d
+    Description: Native D3D driver modules
+    Version: 1.0.0
+    Requires.private: libdrm >=  2.4.98
+    Cflags: -I${includedir}
+    EOF
+    install -Dm644 d3d.pc "%{install-root}%{libdir}/pkgconfig/d3d.pc"
 
 public:
   bst:
