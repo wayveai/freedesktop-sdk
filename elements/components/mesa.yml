@@ -4,6 +4,11 @@
 variables:
   version: 19.1.2
 
+public:
+  cpe:
+    product: mesa
+    vendor: mesa3d
+
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git

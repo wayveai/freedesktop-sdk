@@ -1,6 +1,11 @@
 # This is for drivers. For the components/mesa-headers.bst,
 # see elements/components/mesa.yml
 
+public:
+  cpe:
+    product: mesa
+    vendor: mesa3d
+
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
