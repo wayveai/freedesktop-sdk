@@ -141,6 +141,7 @@ public:
         - '%{libdir}/libglapi.so'
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libMesaOpenCL.so'
+        - '%{libdir}/d3d/d3dadapter9.so'
       gbm:
         - '%{includedir}/gbm.h'
         - '%{libdir}/libgbm.so*'
