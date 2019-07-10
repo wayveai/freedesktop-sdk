@@ -1,61 +1,153 @@
-kind: filter
+kind: meson
 
 depends:
-- filename: extensions/mesa-aco/mesa-base.bst
-  type: build
-
 - filename: bootstrap-import.bst
+- filename: components/llvm8.bst
+  type: build
+- filename: components/llvm8-static.bst
+  type: build
+- filename: components/llvm8-runtime.bst
   type: runtime
 - filename: components/libdrm.bst
-  type: runtime
 - filename: extensions/mesa-aco/libdrm.bst
-  type: runtime
 - filename: components/libva.bst
-  type: runtime
 - filename: components/libclc.bst
-  type: runtime
 - filename: components/opencl.bst
-  type: runtime
 - filename: components/xorg-lib-xdamage.bst
-  type: runtime
 - filename: components/xorg-lib-xfixes.bst
-  type: runtime
 - filename: components/xorg-lib-xrandr.bst
-  type: runtime
 - filename: components/xorg-lib-xshmfence.bst
-  type: runtime
 - filename: components/xorg-lib-xxf86vm.bst
-  type: runtime
 - filename: components/wayland.bst
-  type: runtime
+- filename: components/wayland-protocols.bst
+  type: build
 - filename: components/libglvnd.bst
-  type: runtime
 - filename: components/libvdpau.bst
-  type: runtime
+- filename: components/bison.bst
+  type: build
+- filename: components/flex.bst
+  type: build
 - filename: components/libunwind.bst
-  type: runtime
+- filename: public-stacks/buildsystem-meson.bst
+  type: build
+- filename: components/python3.bst
+  type: build
+- filename: components/python3-mako.bst
+  type: build
 
-  # gbm is required by EGL backends
-- filename: extensions/mesa-aco/gbm.bst
-  type: runtime
-
-config:
-  exclude:
-  - gbm
-  include-orphans: True
+environment:
+  PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-aco"
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
+  (?):
+  - target_arch == "i686" or target_arch == "x86_64":
+      gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl
+      dri_drivers: i915,i965,nouveau,r100,r200
+      vulkan_drivers: amd,intel
+      enable_libunwind: 'true'
+  - target_arch == "arm" or target_arch == "aarch64":
+      gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4
+      dri_drivers: ''
+      vulkan_drivers: ''
+      enable_libunwind: 'false'
+  - target_arch == "powerpc64le":
+      gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
+      dri_drivers: r100,r200,nouveau
+      vulkan_drivers: amd
+      enable_libunwind: 'false'
+
+  optimize-debug: "false"
+
+  meson-local: |
+    -Db_ndebug=true \
+    -Ddri3=true \
+    -Ddri-drivers=%{dri_drivers} \
+    -Degl=true \
+    -Dgallium-drivers=%{gallium_drivers} \
+    -Dgallium-nine=true \
+    -Dgallium-omx=disabled \
+    -Dgallium-opencl=icd \
+    -Dgallium-va=true \
+    -Dgallium-vdpau=true \
+    -Dgallium-xa=false \
+    -Dgallium-xvmc=false \
+    -Dgbm=true \
+    -Dgles1=false \
+    -Dgles2=true \
+    -Dglvnd=true \
+    -Dglx=auto \
+    -Dlibunwind=%{enable_libunwind} \
+    -Dllvm=true \
+    -Dlmsensors=false \
+    -Dosmesa=none \
+    -Dplatforms=x11,drm,surfaceless,wayland \
+    -Dselinux=false \
+    -Dshared-glapi=true \
+    -Dvalgrind=false \
+    -Dvulkan-drivers=%{vulkan_drivers} \
+    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
+    -Dxlib-lease=true
+
+config:
+  install-commands:
+    (>):
+    - |
+      mkdir -p "%{install-root}%{libdir}"
+      mv "%{install-root}%{sysconfdir}/OpenCL" "%{install-root}%{libdir}/"
+      ln -s libEGL_mesa.so.0 %{install-root}%{libdir}/libEGL_indirect.so.0
+      ln -s libGLX_mesa.so.0 %{install-root}%{libdir}/libGLX_indirect.so.0
+      rm -f "%{install-root}%{libdir}"/libGLESv2*
+      rm -f "%{install-root}%{libdir}/libGLX_mesa.so"
+      rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
+      rm -f "%{install-root}%{libdir}/libglapi.so"
+
+    - |
+      for dir in vdpau dri; do
+        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
+          soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
+          if [ -L "${file}" ]; then
+            continue
+          fi
+          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
+            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
+          else
+            rm "${file}"
+          fi
+          ln -s "${soname}" "${file}"
+        done
+      done
+
+    - |
+      if [ -f "%{install-root}%{includedir}/vulkan/vulkan_intel.h" ]; then
+        mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/vulkan"
+        mv "%{install-root}%{includedir}/vulkan/vulkan_intel.h" "%{install-root}%{includedir}/%{gcc_triplet}/vulkan/"
+      fi
+
+    - |
+      ln -sr '%{install-root}%{datadir}/glvnd' '%{install-root}%{prefix}/glvnd'
+      ln -sr '%{install-root}%{libdir}/vulkan' '%{install-root}%{prefix}/vulkan'
+      ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
+
 public:
   bst:
     split-rules:
       devel:
         (>):
+        - '%{libdir}/libgbm.so'
         - '%{libdir}/libglapi.so'
         - '%{libdir}/libwayland-egl.so'
-        - '%{libdir}/libxatracker.so'
         - '%{libdir}/libMesaOpenCL.so'
         - '%{libdir}/d3d/d3dadapter9.so'
+
+sources:
+- kind: git_tag
+  url: github:daniel-schuermann/mesa.git
+  track: master
+  track-tags: false
+  ref: 17.3-branchpoint-16578-geebe7f88564043f62c8228bb700a6fb2b08c8f93
+- kind: patch
+  path: patches/mesa/mesa_libdrm_deps.patch

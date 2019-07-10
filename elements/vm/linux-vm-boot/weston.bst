@@ -17,7 +17,7 @@ depends:
   - filename: components/xorg-lib-xcursor.bst
   - filename: vm/linux-vm-boot/mtdev.bst
   - filename: vm/linux-vm-boot/libinput.bst
-  - filename: extensions/mesa/gbm.bst
+  - filename: components/dummy-gbm.bst
 
 variables:
   conf-local: |
