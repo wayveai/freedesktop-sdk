@@ -108,6 +108,28 @@ config:
         done
       done
 
+    # For some reason Mesa does not install glesv2.pc. But it is not
+    # installed by libglvnd either. If the following test fails, then
+    # it was fixed and you need to remove the 3 following commands.
+    - |
+      ! [ -f "%{install-root}%{libdir}/pkgconfig/glesv2.pc" ]
+
+    - |
+      cat <<EOF >glesv2.pc
+      prefix=%{prefix}
+      libdir=%{libdir}
+      includedir=%{includedir}
+
+      Name: glesv2
+      Description: Mesa OpenGL ES 2.0 library
+      Version: 19.1.1
+      Libs: -lGLESv2
+      Cflags: -I${includedir}
+      EOF
+
+    - |
+      install -Dm644 glesv2.pc "%{install-root}%{libdir}/pkgconfig/glesv2.pc"
+
 public:
   bst:
     split-rules:
