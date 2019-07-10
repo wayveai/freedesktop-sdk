@@ -880,6 +880,7 @@ publish_docker_finish:
   allow_failure: true
   before_script: []
   script:
+  - mkdir -p "${HOME}/.docker"
   - |
     cat >>"${HOME}/.docker/config.json"
     {
