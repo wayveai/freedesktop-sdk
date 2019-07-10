@@ -172,10 +172,38 @@ populate_source_cache:
   tags:
     - check_update
   script:
-    - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+    - |
+      set -eu
+
+      echo "Initial size:"
+      du -sh "${XDG_CACHE_HOME}/buildstream/sources"
+
+      configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'powerpc64le:powerpc64le')
+
+      fetch() {
+        for c in "${configs[@]}"; do
+          ${BST} --on-error continue -o target_arch "${c/*:/}" -o bootstrap_build_arch "${c/:*/}" fetch --deps all flatpak-release.bst || true
+        done
+      }
+
+      fetch
+
+      echo "After fetching:"
+      du -sh "${XDG_CACHE_HOME}/buildstream/sources"
+
+      # The limit is 5Gb, but we limit to 4Gb
+      if [ $(du -bs "${XDG_CACHE_HOME}/buildstream/sources" | cut -f1) -gt $((4*1024*1024*1024)) ]; then
+        echo "Cache takes more than 4Gb, we clear it and re-download."
+
+        rm -rf "${XDG_CACHE_HOME}/buildstream/sources"
+        mkdir -p "${XDG_CACHE_HOME}/buildstream/sources"
+
+        fetch
+
+        echo "After fetching a second time:"
+        du -sh "${XDG_CACHE_HOME}/buildstream/sources"
+      fi
+
   <<: *gitlab_cache_pull_push
   only:
     - schedules
