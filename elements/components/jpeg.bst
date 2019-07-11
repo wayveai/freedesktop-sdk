@@ -32,8 +32,9 @@ public:
     product: libjpeg-turbo
 
 sources:
-- kind: git
+- kind: git_tag
   url: github:libjpeg-turbo/libjpeg-turbo.git
+  track: master
   ref: 2.0.0-3-g2260b66e1671038a362dca4a204c28d72b8f7e4e
 - kind: patch
   path: patches/jpeg/no-rpath.patch
