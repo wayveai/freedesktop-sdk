@@ -108,6 +108,28 @@ config:
         done
       done
 
+    # For some reason Mesa does not install glesv2.pc. But it is not
+    # installed by libglvnd either. If the following test fails, then
+    # it was fixed and you need to remove the 3 following commands.
+    - |
+      ! [ -f "%{install-root}%{libdir}/pkgconfig/glesv2.pc" ]
+
+    - |
+      cat <<EOF >glesv2.pc
+      prefix=%{prefix}
+      libdir=%{libdir}
+      includedir=%{includedir}
+
+      Name: glesv2
+      Description: Mesa OpenGL ES 2.0 library
+      Version: 19.1.2
+      Libs: -lGLESv2
+      Cflags: -I${includedir}
+      EOF
+
+    - |
+      install -Dm644 glesv2.pc "%{install-root}%{libdir}/pkgconfig/glesv2.pc"
+
 public:
   bst:
     split-rules:
@@ -122,5 +144,5 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: 19.1
-  ref: mesa-19.1.1-0-g22eddd8b9d4d905237494c9841e65e4c073ab514
+  track: '19.1'
+  ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
