@@ -12,4 +12,7 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Headers
-  ref: v1.1.97-0-gc200cb25db0f47364d3318d92c1d8e9dfff2fef1
+  track: master
+  match:
+  - sdk-*
+  ref: v1.1.108-0-g097a1045098213919fd56442f52c716fc78eeb27

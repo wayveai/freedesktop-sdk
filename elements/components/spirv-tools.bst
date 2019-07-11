@@ -10,34 +10,39 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DSPIRV_WERROR=Off
 
+  optimize-debug: "false"
+
 config:
   install-commands:
     (>):
-      - |
-        mkdir --parents %{install-root}%{includedir}/spirv/unified1
-        install -m 644 ./external/SPIRV-Headers/include/spirv/unified1/*.h* %{install-root}%{includedir}/spirv/unified1
+    - |
+      mkdir --parents %{install-root}%{includedir}/spirv/unified1
+      install -m 644 ./external/SPIRV-Headers/include/spirv/unified1/*.h* %{install-root}%{includedir}/spirv/unified1
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - '%{bindir}/spirv-as'
-          - '%{bindir}/spirv-cfg'
-          - '%{bindir}/spriv-dis'
-          - '%{bindir}/spirv-lesspipe.sh'
-          - '%{bindir}/spirv-link'
-          - '%{bindir}/spirv-opt'
-          - '%{bindir}/spirv-stats'
-          - '%{bindir}/spirv-val'
+        - '%{bindir}/spirv-as'
+        - '%{bindir}/spirv-cfg'
+        - '%{bindir}/spriv-dis'
+        - '%{bindir}/spirv-lesspipe.sh'
+        - '%{bindir}/spirv-link'
+        - '%{bindir}/spirv-opt'
+        - '%{bindir}/spirv-stats'
+        - '%{bindir}/spirv-val'
 
 sources:
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Tools
-  ref: v2019.1-0-g2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3
-  # SPIRV-Headers should be in the same reference like spirv-headers.bst.
-  # Only full git from headers make spirv-tools happy.
+  ref: v2019.3-0-gce19e217bc82e1dbd631b6a555b1874432f3a05f
+  track: master
+  exclude:
+  - master-tot
+  - untagged-*
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Headers
-  ref: 8bea0a266ac9b718aa0818d9e3a47c0b77c2cb23
+  ref: 1.4.1-0-gc4f8f65792d4bf2657ca751904c511bbcf2ac77b
+  track: master
   directory: external/SPIRV-Headers
