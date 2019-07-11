@@ -96,7 +96,7 @@ We also provide org.freedesktop.GlxInfo and org.freedesktop.GlxInfo.Debug as fla
 
 ## Structure
 
-Current directory structure is the usual of a builstream project with the
+Current directory structure is the usual of a buildstream project with the
 exception of the `bootstrap/` folder which contains a buildstream subproject
 with a set of instructions to bootstrap a minimal sysroot, used to build all
 the Flatpak runtimes defined in the `elements/` folder.
@@ -127,4 +127,4 @@ groups, and we would like to take a moment to thank them.
     which allows us to ensure we do not break apps, and tirelessly works with
     us on fixing any bug we encounter;
 *   [Codethink](https://www.codethink.co.uk/), for assigning some of their
-    engineers's time to this project;
+    engineers' time to this project;
