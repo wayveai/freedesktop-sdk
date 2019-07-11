@@ -58,3 +58,4 @@ public:
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
         - '%{libdir}/libMesaOpenCL.so'
+        - '%{libdir}/d3d/d3dadapter9.so'
