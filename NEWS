@@ -1,5 +1,59 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.1:
+
+    * glslang: Update to 7.11.3214
+    * spriv-tools: Update to 2019.3
+    * vulkan-headers: Update to 1.1.108
+    * vulkan-validation-layers: Update to 1.1.108
+    * vulkan-tools: Update to 1.1.108
+    * libpipeline: Update to 1.5.1
+    * mesa-headers: Provide d3d headers and pkgconfig file in SDK
+    * mesa: Update to 19.1.2
+    * libdrm: Update to 2.4.99 (also in mesa extension)
+    * glib: Update to 2.60.5
+    * mesa-headers: Fix dri path in dri.pc.
+    * tzdata: Update to 2019b
+    * ca-certificates: Update to 20190110
+    * rust: Update to 1.36.0
+    * mesa extension: Update to 19.1.1
+    * Provide dummy gbm library w/o backend for linking purpose (#821)
+    * sdl2: Fix exported cmake configuration file
+    * bzip2: Update to 1.0.7 and use standard SONAME.
+    * gdb: Update to 8.3
+    * expat: Update to 2.2.7
+    * libvorbis: Apply upstream patches for CVE-2018-10392 and CVE-2018-10393
+    * google-crosextra-caladea: Fixed a file name.
+    * Add support for PowerPC 64 LE (>= POWER8)
+    * fdk-aac: Update to stripped4 branch (#806)
+    * git: Update to 2.22.0
+    * xorg-proto-xorgproto: Update to 2019.1
+    * util-linux: Update to 2.33.2
+    * strace: Update to 5.1
+    * nss: Update to 3.44.1
+    * nasm: Update to 2.14.02
+    * meson: Update to 0.51.0
+    * libxkbcommon: Update to 0.8.4
+    * libva: Update to 2.4.1
+    * libpsl: Update to 0.21.0
+    * libpng: Update to 1.6.37
+    * libnice: Update to 0.1.16
+    * itstools: Update to 2.0.6
+    * icu: Update to 64.2
+    * gpgme: Update to 3.24.9
+    * geoclue: Update to 2.60.3
+    * freetype: Update to 2.10.0
+    * dbus: Update to 1.45.2
+    * cmake: Update to 3.14.5
+    * atk: Update to 2.33.3
+    * at-spi2-{atk,core}: Update to 2.33.2
+    * alsa-lib, alsa-plugins: Update to 1.1.9
+    * gnu-config: Update to f83dbaa1468
+    * glibc: Update to 2.29 patch 25 (34fb5f61d3c)
+    * gawk: Update to 5.0.1
+    * file: Update to 5.37
+    * gst-plugins-bad: Reenable ladspa
+
 freedesktop-sdk-19.08beta.0:
     * openssh: update to 8.0
     * systemd: update to 242
