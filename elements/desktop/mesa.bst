@@ -115,7 +115,7 @@ config:
       ! [ -f "%{install-root}%{libdir}/pkgconfig/glesv2.pc" ]
 
     - |
-      cat <<EOF >glesv2.pc
+      cat <<\EOF >glesv2.pc
       prefix=%{prefix}
       libdir=%{libdir}
       includedir=%{includedir}
