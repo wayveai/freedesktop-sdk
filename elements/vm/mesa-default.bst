@@ -6,8 +6,6 @@ depends:
 
 - filename: extensions/mesa/mesa.bst
   type: runtime
-- filename: extensions/mesa/gbm.bst
-  type: runtime
 
 config:
   install-commands:

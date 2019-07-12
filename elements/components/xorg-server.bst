@@ -7,7 +7,7 @@ depends:
 - filename: components/nettle.bst
 - filename: components/libtirpc.bst
 - filename: components/libdrm.bst
-- filename: extensions/mesa/gbm.bst
+- filename: components/dummy-gbm.bst
 - filename: components/libepoxy.bst
 - filename: components/pixman.bst
 - filename: components/xorg-lib-xkbfile.bst
