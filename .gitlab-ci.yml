@@ -932,6 +932,8 @@ publish_docker_finish:
   only:
   - tags
   - master
+  except:
+  - schedules
   tags:
   - armhf
   dependencies:
