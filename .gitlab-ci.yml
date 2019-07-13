@@ -923,7 +923,10 @@ publish_docker_finish:
     for name in platform sdk debug; do
       for dir in docker-pushed-digests/*; do
         DOCKER_VERSION="$(basename "${dir}")"
-        docker create freedesktopsdk/${name}:${DOCKER_VERSION} \
+        for img in $(cat "${dir}"/${name}-*.txt); do
+          docker pull "${img}"
+        done
+        docker manifest create freedesktopsdk/${name}:${DOCKER_VERSION} \
                       $(cat "${dir}"/${name}-*.txt)
         docker push freedesktopsdk/${name}:${DOCKER_VERSION}
       done
