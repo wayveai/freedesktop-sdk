@@ -1,5 +1,9 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.1.1:
+
+    * fix the dummy gbm library, it wasn't being included in the runtimes
+
 freedesktop-sdk-19.08beta.1:
 
     * glslang: Update to 7.11.3214
