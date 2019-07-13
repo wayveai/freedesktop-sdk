@@ -59,8 +59,9 @@ public:
 
 config:
   install-commands:
-  - |
-    rm -rf "%{install-root}%{datadir}"
+    (>):
+    - |
+      rm -rf "%{install-root}%{datadir}"
 
 sources:
   (>):
