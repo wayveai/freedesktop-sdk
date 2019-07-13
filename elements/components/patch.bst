@@ -24,7 +24,7 @@ sources:
   submodules:
     gnulib:
       checkout: true
-      url: savannah:gnulib
+      url: savannah:gnulib.git
 - kind: patch
   path: patches/patch/CVE-2018-6951.patch
 - kind: patch
