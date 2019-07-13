@@ -1,5 +1,10 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.34:
+    * gstreamer-plugins-bad: apply upstream patches for AAC
+    * mesa: provide glesv2 pkg-config that was accidentally removed
+    * mesa: update to 19.1.2
+
 freedesktop-sdk-18.08.33:
     * mesa: Re-enable gallium VAAPI driver
     * gcc: Enable missing optimization (#784)
