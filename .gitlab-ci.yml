@@ -906,6 +906,9 @@ publish_docker_finish:
   - docker:dind
   stage: publish-docker-finish
   allow_failure: true
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
   before_script: []
   script:
   - mkdir -p "${HOME}/.docker"
