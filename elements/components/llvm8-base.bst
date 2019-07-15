@@ -104,6 +104,8 @@ public:
 sources:
 - kind: git_tag
   track: release/8.x
+  exclude:
+  - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
   ref: llvmorg-8.0.0-0-gd2298e74235598f15594fe2c99bbac870a507c59
 - kind: patch
