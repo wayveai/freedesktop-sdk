@@ -18,7 +18,7 @@ public:
         - '%{libdir}/libfreetype.so'
 
   cpe:
-    version: '2.10.0'
+    version: '2.10.1'
     product: 'freetype2'
     vendor: 'freetype'
 
@@ -39,4 +39,4 @@ sources:
 - kind: git_tag
   url: savannah:freetype/freetype2.git
   track: master
-  ref: VER-2-10-0-0-gfbbcf50367403a6316a013b51690071198962920
+  ref: VER-2-10-1-0-g8cf046c38d4c6ada76ba070562beff0d5041f795
