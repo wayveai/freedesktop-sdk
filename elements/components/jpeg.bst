@@ -9,14 +9,13 @@ depends:
 
 variables:
   cmake-local: |
-    -DCMAKE_INSTALL_LIBDIR="%{libdir}"
+    -DCMAKE_INSTALL_LIBDIR="%{libdir}" \
+    -DCMAKE_SKIP_RPATH:BOOL=YES \
+    -DENABLE_STATIC:BOOL=NO
 
 config:
   install-commands:
     (>):
-    - |
-      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
-
     - |
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/"
       mv "%{install-root}%{includedir}/jconfig.h" "%{install-root}%{prefix}/include/%{gcc_triplet}/"
@@ -35,6 +34,4 @@ sources:
 - kind: git_tag
   url: github:libjpeg-turbo/libjpeg-turbo.git
   track: master
-  ref: 2.0.0-3-g2260b66e1671038a362dca4a204c28d72b8f7e4e
-- kind: patch
-  path: patches/jpeg/no-rpath.patch
+  ref: 2.0.2-0-ga4aa30d9a080bbc50421285049e4379dcaf8a669
