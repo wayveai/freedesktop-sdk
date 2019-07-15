@@ -42,12 +42,15 @@ public:
   cpe:
     patches:
     - 'CVE-2018-19876'
-    version: '1.16.0'
 
 sources:
 - kind: git_tag
   url: freedesktop:cairo/cairo
   track: master
+  track-extra:
+  - 1.16
+  match:
+  - 1.*[02468].*
   ref: 1.16.0-0-g3ad43122b21a3299dd729dc8462d6b8f7f01142d
 - kind: patch
   path: patches/cairo/cairo-CVE-2018-19876.patch
