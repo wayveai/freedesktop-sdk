@@ -28,4 +28,4 @@ sources:
   track: master
   track-tags: false
   directory: gnulib
-  ref: v0.1-2751-gb417a9c02359cd1e9ed215e0896b36dd383fc47f
+  ref: v0.1-2782-gd60d9c02609016e91ad349fad6fb46ee2472e768

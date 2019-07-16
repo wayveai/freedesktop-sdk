@@ -70,8 +70,10 @@ public:
 
 sources:
 - kind: git_tag
-  track: 3.7
+  track: '3.7'
+  exclude:
+  - v*rc*
   url: github:python/cpython.git
-  ref: v3.7.3-0-gef4ec6ed12d6c6200a85068f60483723298b6ff4
+  ref: v3.7.4-0-ge09359112e250268eca209355abeb17abf822486
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch

@@ -119,3 +119,8 @@ public:
         - '%{libdir}/libutil.so'
         - '%{libdir}/libnss_compat.so'
         - '%{libdir}/libm.so'
+  cpe:
+    patches:
+    - CVE-2018-20796 # Same fix as CVE-2019-9169
+    - CVE-2019-7309
+    - CVE-2019-9169
