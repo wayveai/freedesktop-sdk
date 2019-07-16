@@ -28,6 +28,9 @@ environment:
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig'
 
 sources:
-  - kind: git_tag
-    url: freedesktop:wayland/weston.git
-    ref: 5.0.0-0-g030e7d40fe18869880fc72ce9ae3cbeca6f49600
+- kind: git_tag
+  track: master
+  track-extra:
+  - 6.0
+  url: freedesktop:wayland/weston.git
+  ref: 5.0.0-0-g030e7d40fe18869880fc72ce9ae3cbeca6f49600
