@@ -34,7 +34,9 @@ config:
 sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
-  track: maint-5.28
+  track: blead
+  track-extra:
+  - maint-5.28
   match:
   - v5.*[02468].*
   exclude:
