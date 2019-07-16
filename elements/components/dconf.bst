@@ -20,13 +20,15 @@ public:
       devel:
         (>):
         - '%{libdir}/libdconf.so'
-  cpe:
-    version: '0.30.1'
 
 sources:
 - kind: git_tag
-  url: gnome:dconf
-  track: dconf-0.30
-  ref: 0.30.1-0-g6eba98fd6fb39aed73836d5468a516c2ed1a2cb8
+  url: gnome:dconf.git
+  track: master
+  track-extra:
+  - dconf-0.32
+  match:
+  - 0.[0-9][02468].*
+  ref: 0.32.0-0-g7419a726a2dbaca7781cec4eeb65bd1334a523d7
 - kind: patch
   path: patches/dconf/dconf-override.patch
