@@ -19,3 +19,5 @@ sources:
   path: patches/libva-vdpau-driver/libva-vdpau-driver-0.7.4-fix_type.patch
 - kind: patch
   path: patches/libva-vdpau-driver/libva-vdpau-sigfpe-crash.patch
+- kind: patch
+  path: patches/libva-vdpau-driver/libva-vdpau-driver-0.7.4-include-linux-videodev2.h.patch
