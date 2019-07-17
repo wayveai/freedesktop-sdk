@@ -28,6 +28,10 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:libsoup
-  track: gnome-3-30
-  ref: 2.64.2-0-gb25faf59f1bb782e95be94f70a98a369846d1524
+  url: gnome:libsoup.git
+  track: master
+  track-extra:
+  - gnome-3-32
+  match:
+  - 2.[0-9][02468].*
+  ref: 2.66.2-0-gdcb4ef51405109766b7f49b1408f98295bd9351f

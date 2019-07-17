@@ -9,6 +9,7 @@ depends:
     type: build
 
 sources:
-  - kind: git_tag
-    url: freedesktop:libevdev/libevdev.git
-    ref: libevdev-1.6.0-0-gf293c11fecd2d786f7742cb6768863d498b9d31b
+- kind: git_tag
+  url: freedesktop:libevdev/libevdev.git
+  track: master
+  ref: libevdev-1.7.0-0-g1300c237924e85fb6cb5f078849e2da28f393978

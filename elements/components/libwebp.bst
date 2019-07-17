@@ -31,10 +31,9 @@ public:
         - '%{libdir}/libwebpdemux.so'
         - '%{libdir}/libwebpmux.so'
         - '%{libdir}/libwebp.so'
-  cpe:
-    version: '1.0.2'
 
 sources:
 - kind: git_tag
   url: https://chromium.googlesource.com/webm/libwebp
-  ref: v1.0.2-0-g2b98df90cb75cfc1cf4505a59a7b25499fa10887
+  track: master
+  ref: v1.0.3-0-g0fe1a89dbf1930fc2554dbe76adad5d962054ead

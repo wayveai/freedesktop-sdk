@@ -1,8 +1,8 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 
 public:
@@ -13,11 +13,10 @@ public:
         - '%{bindir}/orc'
         - '%{libdir}/liborc-0.4.so'
         - '%{libdir}/liborc-test-0.4.so'
-  cpe:
-    version: '0.4.28'
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/orc
-  ref: orc-0.4.28-0-g31cb4bfc51de81b5c2569abdcff830b83c74499c
+  url: freedesktop:gstreamer/orc.git
+  track: master
+  ref: 0.4.29-0-g3d3889025bdbd9ca54565edfb3936c5a29316cff
 

@@ -10,6 +10,7 @@ depends:
   - filename: vm/linux-vm-boot/libgudev.bst
 
 sources:
-  - kind: git_tag
-    url: github:linuxwacom/libwacom.git
-    ref: libwacom-0.32-0-g131dab3d3cbe0fe2309be1a0815cf331049e8b6c
+- kind: git_tag
+  url: github:linuxwacom/libwacom.git
+  track: master
+  ref: libwacom-0.33-0-g87cc710e21a6220e267dd08936bbec2932aa3658

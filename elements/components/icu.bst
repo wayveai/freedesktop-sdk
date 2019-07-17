@@ -30,7 +30,11 @@ public:
 sources:
 - kind: git_tag
   url: github:unicode-org/icu
-  track: maint/maint-64
+  track: master
+  track-extra:
+  - maint/maint-64
+  exclude:
+  - release-*-rc
   ref: release-64-2-0-ge2d85306162d3a0691b070b4f0a73e4012433444
 - kind: patch
   path: patches/icu/icu-fix-shared-linking.patch
