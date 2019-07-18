@@ -12,14 +12,6 @@ variables:
   # /bin/sh: line 1: ./desdata: Text file busy
   notparallel: true
 
-config:
-  install-commands:
-    (>):
-    - |
-      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/nettle"
-      mv "%{install-root}%{includedir}/nettle/nettle-stdint.h" "%{install-root}%{prefix}/include/%{gcc_triplet}/nettle/"
-      sed -i 's,"nettle-stdint.h",<nettle/nettle-stdint.h>,' "%{install-root}%{includedir}/nettle/"*
-
 public:
   bst:
     split-rules:
@@ -32,4 +24,6 @@ sources:
 - kind: git_tag
   url: nettle:nettle.git
   track: master
-  ref: nettle_3.4.1_release_20181204-0-g4fc52f4de99b2d471ead06e4a5086b9b15b6dee3
+  exclude:
+  - nettle_*rc*
+  ref: nettle_3.5.1_release_20190627-0-gee5d62898cf070f08beedc410a8d7c418588bd95

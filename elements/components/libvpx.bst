@@ -40,11 +40,9 @@ public:
       devel:
         (>):
         - '%{libdir}/libvpx.so'
-  cpe:
-    version: '1.8.0'
 
 sources:
 - kind: git_tag
   url: https://chromium.googlesource.com/webm/libvpx
-  track: northernshoveler
-  ref: v1.8.0-0-gb85ac11737430a7f600ac4efb643d4833afd7428
+  track: master
+  ref: v1.8.1-0-g8ae686757b708cd8df1d10c71586aff5355cfe1e
