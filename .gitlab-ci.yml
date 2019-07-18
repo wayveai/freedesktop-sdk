@@ -291,6 +291,7 @@ app_powerpc64le:
   variables:
     ARCH: powerpc64le
   allow_failure: true
+  dependencies: []
 
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
@@ -331,6 +332,7 @@ minimal_systemd_vm_x86_64:
     ARCH: x86_64
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 minimal_systemd_vm_i686:
   image: $DOCKER_AMD64
@@ -342,6 +344,7 @@ minimal_systemd_vm_i686:
     ARCH: i686
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 minimal_systemd_vm_aarch64:
   image: $DOCKER_AARCH64
@@ -352,6 +355,7 @@ minimal_systemd_vm_aarch64:
     ARCH: aarch64
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
 minimal_systemd_vm_arm:
@@ -363,6 +367,7 @@ minimal_systemd_vm_arm:
     ARCH: arm
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 minimal_systemd_vm_powerpc64le:
   # FIXME: We should find out why this fails to boot.
@@ -375,6 +380,7 @@ minimal_systemd_vm_powerpc64le:
     ARCH: powerpc64le
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
   when: manual
 
 .vm_image_template: &vm_image
@@ -401,6 +407,7 @@ minimal_vm_image_x86_64:
     ARCH: x86_64
     TYPE: minimal
     DIALOG: minimal
+  dependencies: []
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -412,6 +419,7 @@ minimal_systemd_vm_image_x86_64:
     ARCH: x86_64
     TYPE: minimal-systemd
     DIALOG: root-login
+  dependencies: []
 
 .desktop_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -598,6 +606,7 @@ publish_x86_64_tar:
     - x86_64
   variables:
     ARCH: x86_64
+  dependencies: []
   when: manual
 
 publish_i686_tar:
@@ -607,6 +616,7 @@ publish_i686_tar:
     - x86_64
   variables:
     ARCH: i686
+  dependencies: []
   when: manual
 
 publish_aarch64_tar:
@@ -616,6 +626,7 @@ publish_aarch64_tar:
     - aarch64
   variables:
     ARCH: aarch64
+  dependencies: []
   when: manual
 
 publish_arm_tar:
@@ -625,6 +636,7 @@ publish_arm_tar:
     - armhf
   variables:
     ARCH: arm
+  dependencies: []
   when: manual
 
 publish_powerpc64le_tar:
@@ -634,8 +646,7 @@ publish_powerpc64le_tar:
     - ppc64le
   variables:
     ARCH: powerpc64le
-  dependencies:
-    - app_powerpc64le
+  dependencies: []
   when: manual
 
 cve_report:
