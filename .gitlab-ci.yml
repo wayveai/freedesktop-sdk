@@ -5,14 +5,12 @@ variables:
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
-  BST_SHA: '1.2.7-0-g08d1694545d1d62295c7beba1fea65a21b93a723'
-  BST_EXTERNAL_SHA: '0.15.0-0-g4915bda740e628f35d55d60d27523492c0ee7be7'
   RUNTIME_VERSION: '18.08'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:087a6159febf5e3375efdaee300adb3b09f6f69e"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:087a6159febf5e3375efdaee300adb3b09f6f69e"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:afcbedafb011375eb9b84c89ad4ee1c791207cdb"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:afcbedafb011375eb9b84c89ad4ee1c791207cdb"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -28,12 +26,6 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - git clone https://gitlab.com/BuildStream/buildstream.git
-  - git -C buildstream checkout "${BST_SHA}"
-  - pip3 install --user buildstream/
-  - git clone https://gitlab.com/BuildStream/bst-external.git
-  - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
-  - pip3 install --user ./bst-external
 
   # Configure Buildstream
   - mkdir -p ~/.config
@@ -43,18 +35,6 @@ before_script:
     logging:
       error-lines: 80
     EOF
-
-  # Create ~/.ssh for storing keys
-  - mkdir -p ~/.ssh
-
-  # Private key stored as a protected variable that allows pushing to
-  # cache.sdk.freedesktop.org
-  - |
-    if [ -n "$freedesktop_ostree_cache_private_key" ]; then
-        echo "$freedesktop_ostree_cache_private_key" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
-    fi
 
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
@@ -331,8 +311,7 @@ prepare_publish:
   tags:
     - x86_64
   script:
-    - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client create $RELEASES_SERVER_ADDRESS stable > publish_build.txt
+    - flat-manager-client create $RELEASES_SERVER_ADDRESS stable > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
@@ -349,10 +328,9 @@ finish_publish:
   tags:
     - x86_64
   script:
-    - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client commit --wait $(cat publish_build.txt)
-    - flat-manager/flat-manager-client publish --wait $(cat publish_build.txt)
-    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+    - flat-manager-client commit --wait $(cat publish_build.txt)
+    - flat-manager-client publish --wait $(cat publish_build.txt)
+    - flat-manager-client purge $(cat publish_build.txt)
     - make manifest
   artifacts:
      paths:
@@ -371,8 +349,7 @@ finish_publish_failed:
   tags:
     - x86_64
   script:
-    - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client purge $(cat publish_build.txt)
+    - flat-manager-client purge $(cat publish_build.txt)
   only:
     - tags
     - master
@@ -416,8 +393,7 @@ finish_publish_failed:
       esac
 
     - flatpak build-update-repo --generate-static-deltas --prune repo
-    - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client push $(cat publish_build.txt) repo
+    - flat-manager-client push $(cat publish_build.txt) repo
   artifacts:
     when: always
     paths:
@@ -523,8 +499,6 @@ cve_report:
     - x86_64
     - cache_x86_64
   script:
-    - pip3 install --user lxml
-
     - make manifest
 
     - mkdir -p "${XDG_CACHE_HOME}/cve"
