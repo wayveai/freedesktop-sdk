@@ -12,10 +12,10 @@ depends:
 config:
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:grep/grep-3.1.tar.xz
-  ref: db625c7ab3bb3ee757b3926a5cfa8d9e1c3991ad24707a83dde8a5ef2bf7a07e
+  url: ftp_gnu_org:grep/grep-3.3.tar.xz
+  ref: b960541c499619efd6afe1fa795402e4733c8e11ebf9fafccc0bb4bccdc5b514
