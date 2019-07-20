@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xext.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,7 @@ public:
         - '%{libdir}/libXss.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXScrnSaver-1.2.3.tar.bz2
-  ref: f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxscrnsaver.git
+  track: master
+  ref: libXScrnSaver-1.2.3-0-g96fffcd9dcaf2ba37ec56aa798677de9ad58ae81

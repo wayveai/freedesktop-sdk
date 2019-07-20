@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xext.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -18,6 +20,7 @@ public:
     product: libxf86vm
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXxf86vm-1.1.4.tar.bz2
-  ref: afee27f93c5f31c0ad582852c0fb36d50e4de7cd585fcf655e278a633d85cd57
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxxf86vm.git
+  track: master
+  ref: libXxf86vm-1.1.4-0-g92d18649e92566ccc3abeba244adabda249cce1b

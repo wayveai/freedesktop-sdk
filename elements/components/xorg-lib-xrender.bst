@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -17,6 +19,7 @@ public:
     product: libxrender
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXrender-0.9.10.tar.bz2
-  ref: c06d5979f86e64cabbde57c223938db0b939dff49fdb5a793a1d3d0396650949
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxrender.git
+  track: master
+  ref: libXrender-0.9.10-0-g845716f8f14963d338e5a8d5d2424baafc90fb30

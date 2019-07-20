@@ -9,6 +9,8 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -21,6 +23,7 @@ public:
     product: libx11
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libX11-1.6.7.tar.bz2
-  ref: 910e9e30efba4ad3672ca277741c2728aebffa7bc526f04dcfa74df2e52a1348
+- kind: git_tag
+  url: freedesktop:xorg/lib/libx11.git
+  track: master
+  ref: libX11-1.6.8-0-g57f0d421a1320090d3a4948181fe228d86cc8977

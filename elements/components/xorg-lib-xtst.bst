@@ -8,6 +8,8 @@ depends:
 - filename: components/xorg-lib-xi.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -19,6 +21,7 @@ public:
     product: libxtst
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXtst-1.2.3.tar.bz2
-  ref: 4655498a1b8e844e3d6f21f3b2c4e2b571effb5fd83199d428a6ba7ea4bf5204
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxtst.git
+  track: master
+  ref: libXtst-1.2.3-0-g9f5621a410f18149d4c76b02daa7f1a98b4a2c16

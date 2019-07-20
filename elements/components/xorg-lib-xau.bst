@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-proto-xorgproto.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -15,6 +17,7 @@ public:
         - '%{libdir}/libXau.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXau-1.0.8.tar.bz2
-  ref: fdd477320aeb5cdd67272838722d6b7d544887dfe7de46e1e7cc0c27c2bea4f2
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxau.git
+  track: master
+  ref: libXau-1.0.9-0-gd9443b2c57b512cfb250b35707378654d86c7dea

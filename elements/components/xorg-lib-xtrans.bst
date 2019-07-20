@@ -3,8 +3,13 @@ description: X.org lib xtrans
 
 depends:
 - filename: bootstrap-import.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/xtrans-1.3.5.tar.bz2
-  ref: adbd3b36932ce4c062cd10f57d78a156ba98d618bdb6f50664da327502bc8301
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxtrans.git
+  track: master
+  ref: xtrans-1.4.0-0-gc4262efc9688e495261d8b23a12f956ab38e006f

@@ -3,6 +3,10 @@ description: X.org lib pciaccess
 
 depends:
 - filename: bootstrap-import.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -12,6 +16,7 @@ public:
         - '%{libdir}/libpciaccess.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libpciaccess-0.14.tar.bz2
-  ref: 3df543e12afd41fea8eac817e48cbfde5aed8817b81670a4e9e493bb2f5bf2a4
+- kind: git_tag
+  url: freedesktop:xorg/lib/libpciaccess.git
+  track: master
+  ref: libpciaccess-0.16-0-gfbd1f0fe79ba25b72635f8e36a6c33d7e0ca19f6

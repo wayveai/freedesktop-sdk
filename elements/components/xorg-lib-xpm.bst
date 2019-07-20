@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -15,6 +17,7 @@ public:
         - '%{libdir}/libXpm.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXpm-3.5.12.tar.bz2
-  ref: fd6a6de3da48de8d1bb738ab6be4ad67f7cb0986c39bd3f7d51dd24f7854bdec
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxpm.git
+  track: master
+  ref: libXpm-3.5.12-0-g1fab5e81fd761f628fb68d22934615536dbd0220

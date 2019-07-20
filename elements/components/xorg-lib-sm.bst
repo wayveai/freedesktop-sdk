@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xtrans.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,7 @@ public:
         - '%{libdir}/libSM.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libSM-1.2.2.tar.bz2
-  ref: 0baca8c9f5d934450a70896c4ad38d06475521255ca63b717a6510fdb6e287bd
+- kind: git_tag
+  url: freedesktop:xorg/lib/libsm.git
+  track: master
+  ref: libSM-1.2.3-0-ga52c79544fcd6b5e2242b9122dfaa34be07aebb2

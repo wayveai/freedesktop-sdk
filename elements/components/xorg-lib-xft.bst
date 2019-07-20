@@ -19,6 +19,7 @@ public:
         - '%{libdir}/libXft.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXft-2.3.2.tar.bz2
-  ref: f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxft.git
+  track: master
+  ref: libXft-2.3.3-0-ga266847d3c17dcdfcac719a1aa970ad54f4b545a

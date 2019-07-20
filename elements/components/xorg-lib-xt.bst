@@ -8,6 +8,8 @@ depends:
 - filename: components/xorg-lib-ice.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -19,6 +21,7 @@ public:
     product: libxt
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXt-1.1.5.tar.bz2
-  ref: 46eeb6be780211fdd98c5109286618f6707712235fdd19df4ce1e6954f349f1a
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxt.git
+  track: master
+  ref: libXt-1.2.0-0-g93ffd50ccf04d02fc94565d8ee831c7b63d6d71a

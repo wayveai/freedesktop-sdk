@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-lib-xrender.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -17,6 +19,7 @@ public:
     product: libxrandr
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXrandr-1.5.1.tar.bz2
-  ref: 1ff9e7fa0e4adea912b16a5f0cfa7c1d35b0dcda0e216831f7715c8a3abcf51a
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxrandr.git
+  track: master
+  ref: libXrandr-1.5.2-0-g55dcda4518eda8ae03ef25ea29d3c994ad71eb0a

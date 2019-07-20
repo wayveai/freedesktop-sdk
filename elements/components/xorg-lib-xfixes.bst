@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -17,6 +19,7 @@ public:
     product: libxfixes
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXfixes-5.0.3.tar.bz2
-  ref: de1cd33aff226e08cefd0e6759341c2c8e8c9faf8ce9ac6ec38d43e287b22ad6
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxfixes.git
+  track: master
+  ref: libXfixes-5.0.3-0-g84df9cb81cc31bbed27ba241a23ae04f61da57db

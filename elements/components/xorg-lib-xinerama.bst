@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xext.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -18,6 +20,7 @@ public:
     product: libxinerama
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2
-  ref: 0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxinerama.git
+  track: master
+  ref: libXinerama-1.1.4-0-gc3ab2361f13154921df2992f9eacc1ea1b3f946b
