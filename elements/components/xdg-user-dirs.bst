@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
 
 variables:
   conf-link-args: ''
@@ -20,6 +22,7 @@ config:
     %{make-install} SUBDIRS=po
 
 sources:
-- kind: tar
-  url: https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.17.tar.gz
-  ref: 2a07052823788e8614925c5a19ef5b968d8db734fdee656699ea4f97d132418c
+- kind: git_tag
+  url: freedesktop:xdg/xdg-user-dirs.git
+  track: master
+  ref: 0.17-0-gec015cdd345dec8025948533e7a6f18680e7f70c

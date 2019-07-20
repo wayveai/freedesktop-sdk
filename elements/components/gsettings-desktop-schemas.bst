@@ -8,6 +8,9 @@ depends:
   type: build
 
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/gsettings-desktop-schemas/3.32/gsettings-desktop-schemas-3.32.0.tar.xz
-  ref: 2d59b4b3a548859dfae46314ee4666787a00d5c82db382e97df7aa9d0e310a35
+- kind: git_tag
+  url: gnome:gsettings-desktop-schemas.git
+  track: master
+  exclude:
+  - '*.*[13579].*'
+  ref: 3.32.0-0-gabcca599dcd57ebc1fb487122dc931d4af2e9d41

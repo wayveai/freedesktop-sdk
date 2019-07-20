@@ -21,6 +21,11 @@ public:
     product: little_cms_color_engine
 
 sources:
-- kind: tar
-  url: sourceforge_download:lcms/lcms2-2.9.tar.gz
-  ref: 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
+- kind: git_tag
+  url: github:mm2/Little-CMS.git
+  track: master
+  match:
+  - lcms2.*
+  exclude:
+  - lcms2.*rc*
+  ref: lcms2.9-0-g29b019fd8726da70f162c7ce193440fe1ec4236f

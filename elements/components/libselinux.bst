@@ -18,11 +18,16 @@ environment:
 
 config:
   configure-commands: []
+  build-commands:
+  - |
+    cd libselinux && %{make}
 
   install-commands:
-    (>):
-    - |
-      rm "%{install-root}/%{libdir}/libselinux.a"
+  - |
+    cd libselinux && %{make-install}
+
+  - |
+    rm "%{install-root}/%{libdir}/libselinux.a"
 
 public:
   bst:
@@ -32,6 +37,11 @@ public:
         - '%{libdir}/libselinux.so'
 
 sources:
-- kind: tar
-  url: github:SELinuxProject/selinux/releases/download/20180524/libselinux-2.8.tar.gz
-  ref: 31db96ec7643ce10912b3c3f98506a08a9116dcfe151855fd349c3fda96187e1
+- kind: git_tag
+  url: github:SELinuxProject/selinux.git
+  track: master
+  match:
+  - libselinux-*
+  exclude:
+  - '*rc*'
+  ref: libselinux-2.9-0-g891cfee44f7af80ea87c10991058f9d5b66ae96e

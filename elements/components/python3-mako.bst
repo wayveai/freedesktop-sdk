@@ -9,7 +9,12 @@ variables:
   pip: pip3
   fix-pyc-timestamps: "true"
 
+public:
+  cpe:
+    version: '1.0.13'
+
 sources:
-- kind: tar
-  url: https://files.pythonhosted.org/packages/eb/f3/67579bb486517c0d49547f9697e36582cd19dafb5df9e687ed8e22de57fa/Mako-1.0.7.tar.gz
-  ref: 4e02fde57bd4abb5ec400181e4c314f56ac3e49ba4fb8b0d50bba18cb27d25ae
+- kind: git_tag
+  url: github:sqlalchemy/mako.git
+  track: master
+  ref: rel_1_0_13-0-g5b3a4a4aa981790935e60b99ef6f1ca07fdb302f
