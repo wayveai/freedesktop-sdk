@@ -12,10 +12,10 @@ depends:
 config:
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:sed/sed-4.5.tar.xz
-  ref: 7aad73c8839c2bdadca9476f884d2953cdace9567ecd0d90f9959f229d146b40
+  url: ftp_gnu_org:sed/sed-4.7.tar.xz
+  ref: 2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a

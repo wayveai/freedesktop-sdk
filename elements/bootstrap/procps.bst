@@ -16,6 +16,8 @@ variables:
     ac_cv_func_malloc_0_nonnull=yes \
     ac_cv_func_realloc_0_nonnull=yes
 
+  builddir: ''
+
 public:
   bst:
     split-rules:
@@ -24,6 +26,9 @@ public:
         - '%{libdir}/libprocps.so'
 
 sources:
-- kind: tar
-  url: sourceforge_download:procps-ng/procps-ng-3.3.12.tar.xz
-  ref: 6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4
+- kind: git_tag
+  url: gitlab:procps-ng/procps.git
+  track: master
+  exclude:
+  - '*rc*'
+  ref: v3.3.15-0-g7bb949bcba13c107fa0f45d2d0298b1ad6b6d6cc

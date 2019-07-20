@@ -8,7 +8,9 @@ depends:
 - filename: bootstrap/build/file-stage1.bst
 - filename: bootstrap/build/elfutils-build.bst
 
-(@): elements/bootstrap/build.yml
+(@):
+- elements/bootstrap/build.yml
+- elements/bootstrap/debugedit-source.yml
 
 variables:
   builddir: ''
@@ -59,12 +61,3 @@ config:
 
   - |
     %{delete_libtool_files}
-
-sources:
-- kind: tar
-  url: http://ftp.rpm.org/releases/rpm-4.14.x/rpm-4.14.1.tar.bz2
-  ref: 43f40e2ccc3ca65bd3238f8c9f8399d4957be0878c2e83cba2746d2d0d96793b
-- kind: patch
-  path: patches/debugedit/debugedit-disable-berkdb-check.patch
-- kind: patch
-  path: patches/debugedit/debugedit-disable-md2.patch
