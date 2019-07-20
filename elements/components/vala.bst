@@ -15,5 +15,7 @@ variables:
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/sources/vala/0.44/vala-0.44.1.tar.xz
-  ref: 96a8c1415c6484d7d6b837ae263af7c50465c7423bfc8eea5046f3eadfa42fe2
+  # Note for updates: Stable minor versions are even.
+  # See https://wiki.gnome.org/Projects/Vala for last version
+  url: https://download.gnome.org/sources/vala/0.44/vala-0.44.6.tar.xz
+  ref: ab9f1756af7460aa1e39c9a7388f5492a4252a3cd9c76b02f2033f1dedcd793a

@@ -26,6 +26,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.26.tar.xz
-  ref: b630b7c484271b3ba867680d6a14b10a86cfa67247a14631b14c06731d5a458b
-
+  url: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.27.tar.xz
+  ref: dac1792d0118bee6aae6ba7fb93ff1602c6a9bda812fd63916eee1435b9c486a

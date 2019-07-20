@@ -7,9 +7,9 @@ depends:
 public:
   cpe:
     vendor: 'gnu'
-    version: '487'
+    version: '530'
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:less/less-487.tar.gz
-  ref: f3dc8455cb0b2b66e0c6b816c00197a71bf6d1787078adeee0bcf2aea4b12706
+  url: ftp_gnu_org:less/less-530.tar.gz
+  ref: 503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2

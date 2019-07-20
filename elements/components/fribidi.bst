@@ -12,5 +12,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:fribidi/fribidi/releases/download/v1.0.4/fribidi-1.0.4.tar.bz2
-  ref: 94bdfe553e004d8bd095b109e182682311dd511740d5083326d1582f1df237be
+  url: github:fribidi/fribidi/releases/download/v1.0.5/fribidi-1.0.5.tar.bz2
+  ref: 6a64f2a687f5c4f203a46fa659f43dd43d1f8b845df8d723107e8a7e6158e4ce
