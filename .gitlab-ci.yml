@@ -66,7 +66,7 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ "${DISABLE_CACHE_PUSH:+set}" != set ] && [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
         echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
         echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
 
@@ -78,12 +78,20 @@ before_script:
             echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
             echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
             echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
-            echo "      push: true" >> ~/.config/buildstream.conf
+            if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+              echo "      push: true" >> ~/.config/buildstream.conf
+            else
+              echo "      push: true" >> ~/.config/buildstream.conf
+            fi
         fi
         echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-        echo "      push: true" >> ~/.config/buildstream.conf
+        if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+          echo "      push: true" >> ~/.config/buildstream.conf
+        else
+          echo "      push: true" >> ~/.config/buildstream.conf
+        fi
     fi
 
   # flat-manager tokens to upload the releases
