@@ -25,7 +25,7 @@ sources:
   ref: v3.1-0-g165bba235b2e3289967e505411500e08151f63e9
 - kind: git_tag
   url: savannah:gnulib.git
-  track: master
+  track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
   track-tags: false
   directory: gnulib
-  ref: v0.1-2782-gd60d9c02609016e91ad349fad6fb46ee2472e768
+  ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936

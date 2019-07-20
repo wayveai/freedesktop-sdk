@@ -22,7 +22,7 @@ sources:
   ref: 1.5.1-0-ga399d471273820b1a8eb3ecf2d91254011445c2a
 - kind: git_tag
   url: savannah:gnulib.git
-  track: master
+  track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
   track-tags: false
   directory: gnulib
-  ref: v0.1-2782-gd60d9c02609016e91ad349fad6fb46ee2472e768
+  ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936

@@ -29,19 +29,19 @@ config:
 
   - |
     rm -r "%{install-root}%{bindir}/perl"
-    ln -s perl5.28.2 "%{install-root}%{bindir}/perl"
+    ln -s perl5.30.0 "%{install-root}%{bindir}/perl"
 
 sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
   track: blead
   track-extra:
-  - maint-5.28
+  - maint-5.30
   match:
   - v5.*[02468].*
   exclude:
   - v*-RC*
-  ref: v5.28.2-0-gc763da0e1c4ed5f24d490617b5a28c81fb69f6c4
+  ref: v5.30.0-0-g44523d1ffde5f23de2e13216cdbac46357631904
 - kind: local
   path: files/perl/config.over
 - kind: patch
