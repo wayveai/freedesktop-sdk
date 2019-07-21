@@ -13,7 +13,7 @@ public:
       update-desktop-database
 
 sources:
-- kind: tar
-  url: https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.23.tar.xz
-  ref: 6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385
-
+- kind: git_tag
+  url: freedesktop:xdg/desktop-file-utils.git
+  track: master
+  ref: 0.23-0-g56f879e9564b28886565115ea7528ec13db97759

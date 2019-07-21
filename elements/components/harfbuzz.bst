@@ -27,6 +27,7 @@ public:
         - '%{libdir}/libharfbuzz.so'
 
 sources:
-- kind: tar
-  url: https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.3.0.tar.bz2
-  ref: 3b314db655a41d19481e18312465fa25fca6f63382217f08062f126059f96764
+- kind: git_tag
+  url: github:harfbuzz/harfbuzz.git
+  track: master
+  ref: 2.5.3-0-gb14e413fae8f14b75c5956e9b38e413c878ded0c

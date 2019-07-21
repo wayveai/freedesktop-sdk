@@ -2,10 +2,23 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/gperf.bst
+  type: build
+- filename: components/docbook-xml.bst
+  type: build
+- filename: components/docbook-xsl.bst
+  type: build
+- filename: components/asciidoc.bst
+  type: build
+- filename: components/libxslt.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://www.samba.org/ftp/ccache/ccache-3.4.2.tar.xz
-  ref: 18a8b14367d63d3d37fb6c33cba60e1b7fcd7a63d608df97c9771ae0d234fee2
-- kind: patch
-  path: patches/ccache/ccache-toctou-fix.patch
+- kind: git_tag
+  url: github:ccache/ccache.git
+  track: master
+  track-extra:
+  - 3.7-maint
+  ref: v3.7.2-0-g41ce399ce1a33fd7211754e77fb4a5ddcb1d9eea

@@ -13,6 +13,7 @@ variables:
   notparallel: true
 
 sources:
-- kind: tar
-  url: freedesktop:xdg/shared-mime-info/uploads/80c7f1afbcad2769f38aeb9ba6317a51/shared-mime-info-1.12.tar.xz
-  ref: 18b2f0fe07ed0d6f81951a5fd5ece44de9c8aeb4dc5bb20d4f595f6cc6bd403e
+- kind: git_tag
+  url: freedesktop:xdg/shared-mime-info.git
+  track: master
+  ref: Release-1-12-0-g41a9a684249cd47aef4d65f81180ee69aa358d71

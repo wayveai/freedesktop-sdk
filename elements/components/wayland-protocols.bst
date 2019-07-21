@@ -3,8 +3,11 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/wayland.bst
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://wayland.freedesktop.org/releases/wayland-protocols-1.16.tar.xz
-  ref: 6b1485951fdcd36a960c870c46f28b03a3e5121fb46246916333ed07f78c98c5
+- kind: git_tag
+  url: freedesktop:wayland/wayland-protocols.git
+  track: master
+  ref: 1.17-0-g9132fc867dfdfc6def59e348f083982a6bbde953

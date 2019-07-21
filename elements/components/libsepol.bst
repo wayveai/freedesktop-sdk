@@ -6,9 +6,11 @@ depends:
   type: build
 - filename: components/m4.bst
   type: build
+- filename: components/pcre2.bst
 
 variables:
   builddir: ''
+  notparallel: true
 
 environment:
   USE_PCRE2: y
@@ -17,11 +19,16 @@ environment:
 
 config:
   configure-commands: []
+  build-commands:
+  - |
+    cd libsepol && %{make}
 
   install-commands:
-    (>):
-    - |
-      rm "%{install-root}/%{libdir}/libsepol.a"
+  - |
+    cd libsepol && %{make-install}
+
+  - |
+    rm "%{install-root}/%{libdir}/libsepol.a"
 
 public:
   bst:
@@ -31,6 +38,11 @@ public:
         - '%{libdir}/libsepol.so'
 
 sources:
-- kind: tar
-  url: github:SELinuxProject/selinux/releases/download/20180524/libsepol-2.8.tar.gz
-  ref: 3ad6916a8352bef0bad49acc8037a5f5b48c56f94e4cb4e1959ca475fa9d24d6
+- kind: git_tag
+  url: github:SELinuxProject/selinux.git
+  track: master
+  match:
+  - libsepol-*
+  exclude:
+  - '*rc*'
+  ref: libsepol-2.9-0-g891cfee44f7af80ea87c10991058f9d5b66ae96e
