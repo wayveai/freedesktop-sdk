@@ -8,6 +8,8 @@ depends:
 - filename: components/xorg-lib-xfixes.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 variables:
   conf-local: |
@@ -23,6 +25,7 @@ public:
     product: libxi
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXi-1.7.9.tar.bz2
-  ref: c2e6b8ff84f9448386c1b5510a5cf5a16d788f76db018194dacdc200180faf45
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxi.git
+  track: master
+  ref: libXi-1.7.10-0-ge05da79a98775edb91ffe3de3b413f156bc4d6e7

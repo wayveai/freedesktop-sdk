@@ -5,8 +5,13 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/python3.bst
   type: build
+- filename: public-stacks/buildsystem-autotools.bst
+  type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://xcb.freedesktop.org/dist/xcb-proto-1.13.tar.bz2
-  ref: 7b98721e669be80284e9bbfeab02d2d0d54cd11172b72271e47a2fe875e2bde1
+- kind: git_tag
+  url: freedesktop:xorg/proto/xcbproto.git
+  track: master
+  ref: xcb-proto-1.13-0-g94228cde97d9aecfda04a8e699d462ba2b89e3a0

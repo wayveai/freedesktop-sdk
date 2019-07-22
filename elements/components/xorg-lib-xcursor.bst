@@ -8,6 +8,8 @@ depends:
 - filename: components/xorg-lib-xfixes.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 variables:
   conf-local: |
@@ -23,6 +25,7 @@ public:
     product: libxcursor
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.bz2
-  ref: 294e670dd37cd23995e69aae626629d4a2dfe5708851bbc13d032401b7a3df6b
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxcursor.git
+  track: master
+  ref: libXcursor-1.2.0-0-gb84b5d100f193fda0630c4d6fa889cd3e05ca033

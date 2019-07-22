@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xfixes.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,7 @@ public:
         - '%{libdir}/libXcomposite.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXcomposite-0.4.4.tar.bz2
-  ref: ede250cd207d8bee4a338265c3007d7a68d5aca791b6ac41af18e9a2aeb34178
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxcomposite.git
+  track: master
+  ref: libXcomposite-0.4.5-0-gfd7d02cc014ac9bf5bb7e68b66102ea36a76a59a

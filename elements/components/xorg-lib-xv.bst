@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xext.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -18,6 +20,7 @@ public:
     product: libxv
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXv-1.0.11.tar.bz2
-  ref: d26c13eac99ac4504c532e8e76a1c8e4bd526471eb8a0a4ff2a88db60cb0b088
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxv.git
+  track: master
+  ref: libXv-1.0.11-0-gef2a282876acc2316d338f8b66344ad5a2947057

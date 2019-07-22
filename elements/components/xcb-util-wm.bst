@@ -6,6 +6,11 @@ depends:
 - filename: components/xorg-lib-xcb.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
+
+variables:
+  autogen: autoreconf -fvi
 
 public:
   bst:
@@ -16,6 +21,11 @@ public:
         - '%{libdir}/libxcb-icccm.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/xcb/xcb-util-wm-0.4.1.tar.bz2
-  ref: 28bf8179640eaa89276d2b0f1ce4285103d136be6c98262b6151aaee1d3c2a3f
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxcb-wm.git
+  track: master
+  ref: 0.4.1-0-g24eb17df2e1245885e72c9d4bbb0a0f69f0700f2
+  submodules:
+    m4:
+      url: freedesktop:xorg/util/xcb-util-m4.git
+      checkout: True

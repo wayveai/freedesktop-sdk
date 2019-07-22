@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-proto-xorgproto.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -15,6 +17,7 @@ public:
         - '%{libdir}/libxshmfence.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libxshmfence-1.3.tar.bz2
-  ref: b884300d26a14961a076fbebc762a39831cb75f92bed5ccf9836345b459220c7
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxshmfence.git
+  track: master
+  ref: libxshmfence-1.3-0-gf38b2e73071ba516127f8f5ae47f48df58dc9d53

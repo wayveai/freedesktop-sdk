@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,7 @@ public:
         - '%{libdir}/libXdamage.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXdamage-1.1.4.tar.bz2
-  ref: 7c3fe7c657e83547f4822bfde30a90d84524efb56365448768409b77f05355ad
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxdamage.git
+  track: master
+  ref: libXdamage-1.1.5-0-g977b04cd69738806e0b48fcf5c725763d065f06d

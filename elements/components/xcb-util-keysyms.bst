@@ -6,6 +6,11 @@ depends:
 - filename: components/xorg-lib-xcb.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
+
+variables:
+  autogen: autoreconf -fvi
 
 public:
   bst:
@@ -15,6 +20,11 @@ public:
         - '%{libdir}/libxcb-keysyms.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/xcb/xcb-util-keysyms-0.4.0.tar.bz2
-  ref: 0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxcb-keysyms.git
+  track: master
+  ref: 0.4.0-0-g0e51ee5570a6a80bdf98770b975dfe8a57f4eeb1
+  submodules:
+    m4:
+      url: freedesktop:xorg/util/xcb-util-m4.git
+      checkout: True

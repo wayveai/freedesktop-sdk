@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-lib-x11.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -17,6 +19,7 @@ public:
     product: libxext
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXext-1.3.3.tar.bz2
-  ref: b518d4d332231f313371fdefac59e3776f4f0823bcb23cf7c7305bfb57b16e35
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxext.git
+  track: master
+  ref: libXext-1.3.4-0-gebb167f34a3514783966775fb12573c4ed209625

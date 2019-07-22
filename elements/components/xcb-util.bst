@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xcb.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,11 @@ public:
         - '%{libdir}/libxcb-util.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/xcb/xcb-util-0.4.0.tar.bz2
-  ref: 46e49469cb3b594af1d33176cd7565def2be3fa8be4371d62271fabb5eae50e9
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxcb-util.git
+  track: master
+  ref: 0.4.0-0-gacf790d7752f36e450d476ad79807d4012ec863b
+  submodules:
+    m4:
+      url: freedesktop:xorg/util/xcb-util-m4.git
+      checkout: True

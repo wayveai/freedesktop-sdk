@@ -6,6 +6,8 @@ depends:
 - filename: components/xorg-proto-xorgproto.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -15,6 +17,7 @@ public:
         - '%{libdir}/libXdmcp.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXdmcp-1.1.2.tar.bz2
-  ref: 81fe09867918fff258296e1e1e159f0dc639cb30d201c53519f25ab73af4e4e2
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxdmcp.git
+  track: master
+  ref: libXdmcp-1.1.3-0-g618b3ba5f826d930df2ca6a6a0ce212fa75cef42

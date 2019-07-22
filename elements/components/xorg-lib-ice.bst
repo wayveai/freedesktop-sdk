@@ -7,6 +7,8 @@ depends:
 - filename: components/xorg-lib-xtrans.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 
 public:
   bst:
@@ -16,6 +18,7 @@ public:
         - '%{libdir}/libICE.so'
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libICE-1.0.9.tar.bz2
-  ref: 8f7032f2c1c64352b5423f6b48a8ebdc339cc63064af34d66a6c9aa79759e202
+- kind: git_tag
+  url: freedesktop:xorg/lib/libice.git
+  track: master
+  ref: libICE-1.0.10-0-g8e6a14c63d6b73cde87cb331439f2a4d19cba5b9

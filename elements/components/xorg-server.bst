@@ -18,6 +18,8 @@ depends:
 - filename: components/xorg-font-util.bst
 - filename: components/xorg-proto-xorgproto.bst
   type: build
+- filename: components/xorg-util-macros.bst
+  type: build
 - filename: components/wayland.bst
 - filename: components/wayland-protocols.bst
   type: build
@@ -36,6 +38,13 @@ environment:
   CPPFLAGS: "-I%{libdir}/GL/default/include"
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/xserver/xorg-server-1.20.4.tar.gz
-  ref: a6447de89eca3e22eeead682b325d902779569534ad83388c9e16611d72baaf3
+- kind: git_tag
+  url: freedesktop:xorg/xserver.git
+  track: master
+  track-extra:
+  - server-1.20-branch
+  match:
+  - xorg-server-*
+  exclude:
+  - xorg-server-*.99.*
+  ref: xorg-server-1.20.5-0-gfbbdd5613122f0f7d74471f240c28e4c3b796065

@@ -6,8 +6,11 @@ depends:
   type: build
 - filename: components/freetype.bst
 - filename: components/xorg-lib-fontenc.bst
+- filename: components/xorg-util-macros.bst
+  type: build
 
 sources:
-- kind: tar
-  url: https://www.x.org/archive/individual/lib/libXfont2-2.0.3.tar.gz
-  ref: a4b761a37528353a2b83dba364d7c1fd6aef2d554a1a019815f24f7f8866890e
+- kind: git_tag
+  url: freedesktop:xorg/lib/libxfont.git
+  track: master
+  ref: libXfont2-2.0.3-0-gcdb2f990348c3bd1407022f7e0e5fcba552d539f
