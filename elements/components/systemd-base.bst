@@ -54,4 +54,4 @@ sources:
   url: github:systemd/systemd-stable.git
   track: v242-stable
   track-tags: false
-  ref: v242-32-g572385e13566f9ca442ee3b46742159b905b4712
+  ref: v242-85-g07f0549ffe3413f0e78b656dd34d64681cbd8f00
