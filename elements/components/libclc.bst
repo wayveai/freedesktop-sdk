@@ -34,7 +34,7 @@ sources:
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-8.0.0-0-gd2298e74235598f15594fe2c99bbac870a507c59
+  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
 - kind: patch
   directory: libclc
   path: patches/libclc/libclc-force-configure-to-use-python3.patch
