@@ -16,5 +16,6 @@ sources:
 - kind: git_tag
   url: savannah:gnulib.git
   track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+  track-tags: False
   directory: gnulib
   ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
