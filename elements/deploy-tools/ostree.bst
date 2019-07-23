@@ -13,9 +13,7 @@ depends:
 - filename: components/libsoup.bst
 - filename: components/gobject-introspection.bst
   type: build
-
-variables:
-  conf-local: --disable-rofiles-fuse
+- filename: deploy-tools/fuse.bst
 
 public:
   bst:
