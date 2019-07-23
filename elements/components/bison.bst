@@ -8,6 +8,8 @@ depends:
   type: build
 - filename: components/m4.bst
 - filename: components/perl.bst
+- filename: components/flex.bst
+  type: build
 
 config:
   install-commands:
@@ -18,8 +20,7 @@ config:
     - |
       find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
-
 sources:
 - kind: tar
-  url: ftp_gnu_org:bison/bison-3.3.2.tar.gz
-  ref: 0fda1d034185397430eb7b0c9e140fb37e02fbfc53b90252fa5575e382b6dbd1
+  url: ftp_gnu_org:bison/bison-3.4.1.tar.gz
+  ref: 7007fc89c216fbfaff5525359b02a7e5b612694df5168c74673f67055f015095

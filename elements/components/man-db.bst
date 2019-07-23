@@ -10,6 +10,8 @@ depends:
 - filename: components/gzip.bst
 - filename: components/xz.bst
 - filename: components/lzip.bst
+- filename: components/flex.bst
+  type: build
 
 variables:
   conf-local: |
@@ -17,5 +19,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://download-mirror.savannah.gnu.org/releases/man-db/man-db-2.8.3.tar.xz
-  ref: 5932a1ca366e1ec61a3ece1a3afa0e92f2fdc125b61d236f20cc6ff9d80cc4ac
+  url: https://download-mirror.savannah.gnu.org/releases/man-db/man-db-2.8.5.tar.xz
+  ref: b64d52747534f1fe873b2876eb7f01319985309d5d7da319d2bc52ba1e73f6c1
