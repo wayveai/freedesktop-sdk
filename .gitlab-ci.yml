@@ -10,9 +10,9 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:afcbedafb011375eb9b84c89ad4ee1c791207cdb"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:afcbedafb011375eb9b84c89ad4ee1c791207cdb"
-  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:afcbedafb011375eb9b84c89ad4ee1c791207cdb"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:71e6a256ab6f28b5ccbf402de687dc39733577a1"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:71e6a256ab6f28b5ccbf402de687dc39733577a1"
+  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:71e6a256ab6f28b5ccbf402de687dc39733577a1"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
