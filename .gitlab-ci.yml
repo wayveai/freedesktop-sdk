@@ -212,7 +212,6 @@ app_arm:
     - master
     - '18.08'
     - tags
-  <<: *gitlab_cache_pull
 
 minimal_systemd_vm_x86_64:
   image: $DOCKER_AMD64
@@ -269,7 +268,6 @@ minimal_systemd_vm_arm:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
     - schedules
-  <<: *gitlab_cache_pull
 
 minimal_vm_image_x86_64:
   image: $DOCKER_AMD64
