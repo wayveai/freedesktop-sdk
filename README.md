@@ -43,6 +43,11 @@ Our goals, some of which are already achieved:
 *   Maintain a neutral baseline which can be consumed by Flatpak, GNOME, KDE
     and any other interested project.
 
+The Freedesktop SDK project is not an endorsement of a particular platform or
+selection of technologies by the Freedesktop organization.
+The SDK aims to support a common interoperable platform for projects such as
+GNOME, KDE and Flatpak by providing integration and validation of a shared
+set of dependencies.
 
 ## Usage
 
