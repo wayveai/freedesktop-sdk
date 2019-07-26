@@ -17,7 +17,6 @@ config:
       GI_TYPELIB_PATH: /app/lib/girepository-1.0
       GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:%{libdir}/gstreamer-1.0
       XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/share
-      LIBVA_DRIVER_NAME: ""
 
     Extension org.freedesktop.Platform.GL:
       # 1.4 is for Nvidia drivers
@@ -62,6 +61,7 @@ config:
       directory: '%{lib}/dri/intel-vaapi-driver'
       autodelete: 'false'
       no-autodownload: 'true'
+      add-ld-path: lib
       download-if: have-intel-gpu
 
     Extension org.freedesktop.Platform.ffmpeg-html5:

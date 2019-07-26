@@ -1,0 +1,12 @@
+diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+index 9253b2d6..d2cdb34e 100755
+--- a/media_driver/cmake/linux/media_compile_flags_linux.cmake
++++ b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+@@ -32,7 +32,6 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -Wno-overflow
+     -Wno-parentheses
+     -Wno-delete-incomplete
+-    -Werror=implicit-function-declaration
+     -Werror=address
+     -Werror=format-security
+     -Werror=non-virtual-dtor
