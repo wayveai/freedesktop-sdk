@@ -14,4 +14,4 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/glu.git
   track: master
-  ref: glu-9.0.0-0-g030651b64854b84a01ebebad9af188e7644c541a
+  ref: glu-9.0.1-0-gdd4e18eb7557a31a3c8318d6612801329877c745
