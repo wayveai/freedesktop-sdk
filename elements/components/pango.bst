@@ -23,20 +23,12 @@ public:
 # Those are the defaults which we explicitly match.
 variables:
   meson-local: |
-   -Denable_docs=false \
-   -Dgir=true
-
-config:
-  install-commands:
-    (>):
-    - |
-      rm -rf "%{install-root}%{libexecdir}/installed-tests"
-      rm -rf "%{install-root}%{datadir}/installed-tests"
+   -Dgtk_doc=false \
+   -Dintrospection=true \
+   -Dinstall-tests=false
 
 sources:
 - kind: git_tag
   url: gnome:pango
   track: master
-  ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
-- kind: patch
-  path: patches/pango/pango-Make-gobject-2.0-a-non-private-requirement.patch
+  ref: 1.44.0-0-g9a79369d764b0274b6cd7ffb43391d9de0ad3832
