@@ -12,8 +12,6 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/glslang
-  ref: 7.11.3214-0-gc11e3156af2297f89a23c8db3f5e2323733ee556
-  track: master
-  exclude:
-  - untagged-*
-  - master-tot
+  ref: 333d1c95792692205472c457d7bec915a94c8000
+# We hardcode known-good commit from vulkan-validation-layers.bst tag
+# https://github.com/KhronosGroup/Vulkan-ValidationLayers/blob/sdk-1.1.114.0/scripts/known_good.json#L9
