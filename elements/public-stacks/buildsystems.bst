@@ -11,8 +11,6 @@ depends:
   type: build
 - filename: components/perl.bst
   type: build
-- filename: components/qmake.bst
-  type: build
 
 config:
   exclude:
