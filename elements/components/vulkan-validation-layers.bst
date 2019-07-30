@@ -31,9 +31,11 @@ config:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-ValidationLayers
-  ref: sdk-1.1.108.0-0-g6ba13e86b4ca89c3b7baea4b9a8fe95bf38bb093
+  ref: sdk-1.1.114.0-0-g20b52a923c80e533e8fa7ee0d0ce8dceade16fa1
   track: master
   track-extra:
-  - sdk-1.1.108
+  - sdk-1.1.114
   match:
   - sdk-*
+# glslang.bst and spirv-tools.bst have to be updated alongside new major vulkan
+# releases. See their manifests for specific instructions.

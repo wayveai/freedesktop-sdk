@@ -32,7 +32,7 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Loader
-  ref: sdk-1.1.108.0-0-gecb0b1e69fb2f4d3cae262e6da24c170ce62ae13
+  ref: sdk-1.1.114.0-0-gab2bcb97c78a3a086c3d09327de4fb47060a2bbf
   track: master
   match:
   - sdk-*
