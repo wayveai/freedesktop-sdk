@@ -3,7 +3,7 @@ kind: filter
 depends:
 - filename: components/systemd-base.bst
   type: build
-- filename: components/libsystemd.bst
+- filename: components/systemd-libs.bst
   type: runtime
 - filename: components/libgpg-error.bst
   type: runtime
@@ -13,13 +13,13 @@ depends:
   type: runtime
 config:
   exclude:
-  - libsystemd
+  - systemd-libs
 
   include-orphans: True
 
 public:
 # cpe metadata should be written in
-# elements/components/libsystemd.bst
+# elements/components/systemd-libs.bst
 
   bst:
     integration-commands:
@@ -27,10 +27,6 @@ public:
       systemd-hwdb --usr update
 
     split-rules:
-      devel:
-        (>):
-        - '%{libdir}/libudev.so'
-
       runtime:
         (>):
         - '%{indep-libdir}/environment.d/**'

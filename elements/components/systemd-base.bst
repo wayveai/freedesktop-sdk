@@ -30,22 +30,26 @@ variables:
 
 public:
 # cpe metadata should be written in
-# elements/components/libsystemd.bst
+# elements/components/systemd-libs.bst
 
   bst:
     split-rules:
-      libsystemd:
+      systemd-libs:
       - '%{libdir}'
       - '%{libdir}/libsystemd*.so*'
+      - '%{libdir}/libudev*.so*'
       - '%{libdir}/pkgconfig'
       - '%{libdir}/pkgconfig/libsystemd.pc'
+      - '%{libdir}/pkgconfig/libudev.pc'
       - '%{datadir}/pkgconfig'
       - '%{datadir}/pkgconfig/systemd.pc'
       - '%{includedir}'
+      - '%{includedir}/libudev.h'
       - '%{includedir}/systemd'
       - '%{includedir}/systemd/**'
       - '%{debugdir}/dwz/%{element-name}/debug'
       - '%{debugdir}%{libdir}/libsystemd*.so*'
+      - '%{debugdir}%{libdir}/libudev*.so*'
       - '%{sourcedir}'
       - '%{sourcedir}/**'
 

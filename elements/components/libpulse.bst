@@ -33,7 +33,8 @@ variables:
     --disable-bluez5 \
     --disable-systemd-daemon \
     --disable-systemd-login \
-    --disable-systemd-journal
+    --disable-systemd-journal \
+    --disable-udev
 
 config:
   configure-commands:

@@ -16,7 +16,7 @@ depends:
 
 config:
   include:
-  - libsystemd
+  - systemd-libs
 
 public:
   cpe:
@@ -29,3 +29,4 @@ public:
       devel:
         (>):
         - '%{libdir}/libsystemd.so'
+        - '%{libdir}/libudev.so'

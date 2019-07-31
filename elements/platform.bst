@@ -140,7 +140,7 @@ depends:
 - filename: components/librsvg.bst
 - filename: components/libseccomp.bst
 - filename: components/libsoup.bst
-- filename: components/libsystemd.bst
+- filename: components/systemd-libs.bst
 - filename: components/libthai.bst
 - filename: components/libva-vdpau-driver.bst
 - filename: components/libva.bst

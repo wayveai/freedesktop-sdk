@@ -15,7 +15,7 @@ depends:
   type: runtime
 - filename: components/ffmpeg.bst
   type: runtime
-- filename: components/libsystemd.bst
+- filename: components/systemd-libs.bst
   type: runtime
 
 config:

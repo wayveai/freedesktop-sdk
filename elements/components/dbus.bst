@@ -7,7 +7,7 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: components/libsystemd.bst
+- filename: components/systemd-libs.bst
 
 variables:
   conf-local: |
