@@ -9,7 +9,7 @@ depends:
 - filename: components/ffmpeg.bst
 - filename: components/systemd.bst
   type: build
-- filename: components/libsystemd.bst
+- filename: components/systemd-libs.bst
   type: runtime
 - filename: components/gtk-doc.bst
   type: build
