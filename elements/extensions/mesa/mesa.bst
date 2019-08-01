@@ -2,6 +2,7 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
+- filename: components/glslang.bst
 - filename: components/llvm8.bst
   type: build
 - filename: components/llvm8-static.bst
@@ -88,6 +89,7 @@ variables:
     -Dselinux=false \
     -Dshared-glapi=true \
     -Dvalgrind=false \
+    -Dvulkan-overlay-layer=true \
     -Dvulkan-drivers=%{vulkan_drivers} \
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
     -Dxlib-lease=true
