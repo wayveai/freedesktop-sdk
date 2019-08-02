@@ -11,6 +11,7 @@ depends:
 - filename: components/p11-kit.bst
 
 variables:
+  builddir: ''
   conf-local: |
     --disable-doc \
     --with-default-trust-store-pkcs11="pkcs11:"
@@ -25,5 +26,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.8.tar.xz
-  ref: aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83
+  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.9.tar.xz
+  ref: 4331fca55817ecdd74450b908a6c29b4f05bb24dd13144c6284aa34d872e1fcb
