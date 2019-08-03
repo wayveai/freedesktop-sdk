@@ -11,10 +11,10 @@ variables:
 
 public:
   cpe:
-    version: '1.0.14'
+    version: '1.1.0'
 
 sources:
 - kind: git_tag
   url: github:sqlalchemy/mako.git
   track: master
-  ref: rel_1_0_14-0-g0398aaf0f15cdbc70f0914eac130afe81257d76d
+  ref: rel_1_1_0-0-gb6f3ae9ee9bfe3bebdb330b1c5adf9cfcd1be128
