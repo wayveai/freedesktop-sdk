@@ -40,7 +40,6 @@ depends:
 - filename: components/gtk-doc.bst
 - filename: components/itstools.bst
 - filename: components/jq.bst
-- filename: components/libva-utils.bst
 - filename: components/wayland-protocols.bst
 - filename: components/xorg-proto-xcb.bst
 - filename: components/xorg-proto-xorgproto.bst

@@ -7,6 +7,7 @@ depends:
   type: build
 
 variables:
+  prefix: /app
   meson-local: |
     -Ddrm=true \
     -Dwayland=true \
