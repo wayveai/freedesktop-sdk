@@ -29,7 +29,7 @@ config:
     confinement: strict
     grade: "%{snap_grade}"
     apps:
-      clinfo:
+      vulkaninfo:
         command: vulkaninfo-wrapper
         plugs:
           - x11
