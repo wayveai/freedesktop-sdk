@@ -21,11 +21,15 @@ public:
         - '%{libdir}/libatspi.so'
 
   cpe:
-    version: '2.33.2'
+    version: '2.32.1'
     vendor: 'gnome'
 
 sources:
 - kind: git_tag
   url: gnome:at-spi2-core
   track: master
-  ref: AT_SPI2_CORE_2_33_2-0-g5604b79d72179708b218ddaaf226fc38614ca4a9
+  track-extra:
+  - gnome-3-32
+  match:
+  - AT_SPI2_CORE_*_*[02468]_*
+  ref: AT_SPI2_CORE_2_32_1-0-g89001a86a037cfabf27e912b902929b5daeb3c55
