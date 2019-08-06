@@ -82,7 +82,7 @@ public:
         - '%{libdir}/libavformat.so'
         - '%{libdir}/libswresample.so'
   cpe:
-    version: '4.1.4'
+    version: '4.2'
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
@@ -98,5 +98,5 @@ config:
 sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
-  track: release/4.1
-  ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a
+  track: release/4.2
+  ref: n4.2-0-g75384bc464411fb2291105dca84b8bc411188350
