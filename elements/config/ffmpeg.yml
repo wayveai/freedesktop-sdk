@@ -1,5 +1,6 @@
 depends:
 - filename: bootstrap-import.bst
+- filename: components/dav1d.bst
 - filename: components/fontconfig.bst
 - filename: components/freetype.bst
 - filename: components/libfdk-aac.bst
@@ -41,6 +42,7 @@ variables:
     --disable-everything \
     --enable-gnutls \
     --enable-libaom \
+    --enable-libdav1d \
     --enable-libfdk-aac \
     --enable-libmp3lame \
     --enable-libfontconfig \
@@ -58,7 +60,7 @@ variables:
     --enable-encoder=ac3,mp2,libmp3lame,libfdk_aac \
     --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
     --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
-    --enable-decoder=libaom_av1,theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
+    --enable-decoder=libaom_av1,libdav1d,theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
     --enable-decoder=rawvideo,png,gif \
     --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac,aac,ac3 \
     --enable-demuxer=ogg,matroska,wav,mp3,gif,flac,aac,ac3,m4a \
@@ -82,7 +84,7 @@ public:
         - '%{libdir}/libavformat.so'
         - '%{libdir}/libswresample.so'
   cpe:
-    version: '4.1.4'
+    version: '4.2'
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
@@ -98,5 +100,5 @@ config:
 sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
-  track: release/4.1
-  ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a
+  track: release/4.2
+  ref: n4.2-0-g75384bc464411fb2291105dca84b8bc411188350
