@@ -1,0 +1,35 @@
+# Environment variables for the build
+
+(?):
+  - target_arch == "x86_64":
+      CFLAGS:  "%{target_flags_x86_64}"
+      CXXFLAGS: "%{target_flags_x86_64}"
+      LDFLAGS:  "%{ldflags_defaults}"
+  - target_arch == "i686":
+      CFLAGS: "%{target_flags_i686}"
+      CXXFLAGS: "%{target_flags_i686}"
+      LDFLAGS:  "%{ldflags_defaults}"
+  - target_arch == "arm":
+      CFLAGS:  "%{target_flags_arm}"
+      CXXFLAGS: "%{target_flags_arm}"
+      LDFLAGS:  "%{ldflags_defaults}"
+  - target_arch == "aarch64":
+      CFLAGS:  "%{target_flags_aarch64}"
+      CXXFLAGS: "%{target_flags_aarch64}"
+      LDFLAGS:  "%{ldflags_defaults}"
+  - target_arch == "powerpc64le":
+      CFLAGS:  "%{target_flags_powerpc64le}"
+      CXXFLAGS: "%{target_flags_powerpc64le}"
+      LDFLAGS:  "%{ldflags_defaults}"
+LC_ALL: en_US.UTF-8
+PYTHON: "%{bindir}/python3"
+
+# Python documentation "Hash randomization is intended to provide
+# protection against a denial-of-service caused by carefully-chosen
+# inputs that exploit the worst case performance of a dict
+# construction, O(n^2) complexity. See
+# http://www.ocert.org/advisories/ocert-2011-003.html for details."
+# The attack case isn't relevant for code compilation and this breaks
+# reproducible pycs. Setting seed to 0 is the canonical way to disable
+# hash randomization
+PYTHONHASHSEED: 0
