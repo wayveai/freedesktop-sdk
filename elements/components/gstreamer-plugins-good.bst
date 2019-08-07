@@ -52,3 +52,5 @@ sources:
     common:
       checkout: true
       url: freedesktop:gstreamer/common
+- kind: patch
+  path: patches/gstreamer-plugins-good/glibc230fix.patch
