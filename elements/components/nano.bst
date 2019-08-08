@@ -8,6 +8,11 @@ depends:
 - filename: components/texinfo.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - rm "%{install-root}/usr/share/info/dir"
+
 sources:
 - kind: git_tag
   url: savannah:nano.git
