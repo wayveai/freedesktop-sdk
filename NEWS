@@ -1,5 +1,30 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.3:
+    * ffmpeg: Enable support for libdav1d
+    * ffmpeg: Upgrade to 4.2
+    * glibc: update to 2.30
+    * atk/at-spi2: downgrade to 2.32.*
+    * vala: update to 0.44.7
+    * mesa: Enable vulkan-overlay-layer
+    * man-pages: update to 5.02
+    * python3-mako: update to 1.1.0
+    * gnutls: update to 3.6.9
+    * Add libudev
+    * cmake: update to 3.15.1
+    * vulkan: update to sdk-1.1.114
+    * Updates to mesa ACO
+    * Remove qmake from the project
+    * pango: update to 1.44.3
+    * glu: update to 9.0.1
+    * wayland-protocols: update to 1.18
+    * python3-pip: update to 19.2.1
+    * glib: update to 2.60.6
+    * desktop-file-utils: update to 0.24
+    * sdl2: update to 2.0.10
+    * libtasn1: update to 4.14
+    * gettext: Update to 0.20.1
+
 freedesktop-sdk-19.08beta.2:
 
     * Prevent LIBVA_DRIVER_NAME leaking from host (#828)
