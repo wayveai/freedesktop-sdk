@@ -11,7 +11,10 @@ depends:
 - filename: components/p11-kit.bst
 
 variables:
+
+# FIXME: This can be removed for 3.6.10
   builddir: ''
+
   conf-local: |
     --disable-doc \
     --with-default-trust-store-pkcs11="pkcs11:"
