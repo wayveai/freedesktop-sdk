@@ -66,7 +66,7 @@ config:
 
     Extension org.freedesktop.Platform.ffmpeg-html5:
       directory: '%{lib}/ffmpeg'
-      add-ld-path: lib
+      add-ld-path: "."
       autodelete: 'false'
 
 depends:
