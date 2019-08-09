@@ -29,6 +29,35 @@ variables:
   - target_arch == "i686":
       ffmpeg-arch: x86
 
+  audio-encoders: |
+    ac3,flac,libfdk_aac,libmp3lame,%{extra-aud-enc}
+
+  audio-decoders: |
+    ac3,flac,mp2,mp3,m4a,pcm_alaw,pcm_mulaw,\
+    pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
+    pcm_u8,vorbis,%{extra-aud-dec}
+
+  video-encoders: '%{extra-vid-enc}'
+
+  video-decoders: |
+    libaom_av1,libdav1d,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
+
+  image-formats: |
+    gif,png,webp,%{extra-image-formats}
+
+  hwaccels: '%{extra-hwaccels}'
+
+  muxers: '%{extra-muxers}'
+
+  demuxers: |
+    aac,ac3,flac,gif,matroska,mp3,m4a,ogg,wav,%{extra-demuxers}
+
+  parsers: |
+    aac,ac3,flac,mpegaudio,opus,vp3,vp8,vorbis,%{extra-parsers}
+
+  filters: |
+    crop,scale,%{extra-filters}
+
   conf-local: |
     --prefix="%{ffmpeg-prefix}" \
     --libdir="%{ffmpeg-libdir}" \
@@ -57,18 +86,31 @@ variables:
     --enable-openal \
     --enable-opengl \
     --enable-sdl2 \
-    --enable-encoder=ac3,mp2,libmp3lame,libfdk_aac \
-    --enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw \
-    --enable-decoder=pcm_u8,pcm_s16le,pcm_s24le,pcm_f32le \
-    --enable-decoder=libaom_av1,libdav1d,theora,vorbis,vp8,vp9,mp2,mp3,flac,webp,ac3,libfdk_aac \
-    --enable-decoder=rawvideo,png,gif \
-    --enable-parser=opus,vp3,vorbis,vp8,mpegaudio,flac,aac,ac3 \
-    --enable-demuxer=ogg,matroska,wav,mp3,gif,flac,aac,ac3,m4a \
-    --enable-filter=crop,scale \
+    --enable-encoder=%{audio-encoders} \
+    --enable-encoder=%{video-encoders} \
+    --enable-decoder=%{audio-decoders} \
+    --enable-decoder=%{video-decoders} \
+    --enable-decoder=%{image-formats} \
+    --enable-hwaccel=%{hwaccels} \
+    --enable-parser=%{parsers} \
+    --enable-muxer=%{muxers} \
+    --enable-demuxer=%{demuxers} \
+    --enable-filter=%{filters} \
     --enable-protocol=file \
     --arch="%{ffmpeg-arch}"
 
   conf-extra: ''
+
+  extra-aud-enc: ''
+  extra-aud-dec: ''
+  extra-vid-enc: ''
+  extra-vid-dec: ''
+  extra-image-formats: ''
+  extra-hwaccels: ''
+  extra-muxers: ''
+  extra-demuxers: ''
+  extra-parsers: ''
+  extra-filters: ''
 
 public:
   bst:
