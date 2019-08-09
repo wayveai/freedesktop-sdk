@@ -190,6 +190,29 @@ test-apps: $(REPO)
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.ExampleRuntime.json
 
+test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime
+test-codecs: $(REPO)
+	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk}//$(BRANCH)
+
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.no-exts.json
+
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.ffmpeg-full.json
+
+	# Expect html5 codecs
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.no-exts
+	flatpak run test.codecs.no-exts
+
+	# Expect full codecs
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.ffmpeg-full
+	flatpak run test.codecs.ffmpeg-full
+
+	# Expect default codecs
+	flatpak uninstall -y org.freedesktop.Platform.ffmpeg-html5
+	flatpak run test.codecs.no-exts
+
+	flatpak uninstall -y --all
+
 clean-repo:
 	rm -rf $(REPO)
 
@@ -235,5 +258,5 @@ track-mesa-aco:
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker bootstrap \
+	export-oci export-docker bootstrap test-codecs \
 	track-mesa-aco

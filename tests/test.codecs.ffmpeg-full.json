@@ -1,0 +1,30 @@
+{
+  "app-id": "test.codecs.ffmpeg-full",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "19.08beta",
+  "sdk": "org.freedesktop.Sdk",
+  "add-extensions": {
+    "org.freedesktop.Platform.ffmpeg-full": {
+      "directory": "lib/ffmpeg",
+      "version": "19.08beta",
+      "add-ld-path": "."
+    }
+  },
+  "command": "codec-list.sh",
+  "modules": [
+    {
+      "name": "codec-list",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/lib/ffmpeg",
+        "install -D codec-list.sh /app/bin/codec-list.sh"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "codec-list.sh"
+        }
+      ]
+    }
+  ]
+}
