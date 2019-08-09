@@ -42,7 +42,7 @@ QEMU=fakeroot qemu-system-$(QEMU_ARCH)
 all: build
 
 build:
-	$(BST) build check-platform.bst \
+	$(BST) build tests/check-platform.bst \
 	             flatpak-release.bst \
 	             public-stacks/buildsystems.bst \
 	             oci/layers/{bootstrap,debug,platform,sdk}.bst
@@ -158,11 +158,11 @@ manifest:
 	rm -rf sdk-manifest/
 	rm -rf platform-manifest/
 
-	$(BST) build platform-manifest.bst
-	$(BST) build sdk-manifest.bst
+	$(BST) build manifests/platform-manifest.bst
+	$(BST) build manifests/sdk-manifest.bst
 
-	$(BST) checkout platform-manifest.bst platform-manifest/
-	$(BST) checkout sdk-manifest.bst sdk-manifest/
+	$(BST) checkout manifests/platform-manifest.bst platform-manifest/
+	$(BST) checkout manifests/sdk-manifest.bst sdk-manifest/
 
 markdown-manifest: manifest
 	python3 utils/jsontomd.py platform-manifest/usr/manifest.json

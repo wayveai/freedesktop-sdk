@@ -35,4 +35,4 @@ config:
       find "%{install-root}" -type f -name perllocal.pod -delete
 
 (@):
-- elements/config/git.yml
+- elements/include/git.yml

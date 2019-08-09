@@ -22,11 +22,11 @@ public:
 depends:
 - filename: platform.bst
   type: build
-- filename: multiarch-platform.bst
+- filename: multiarch/multiarch-platform.bst
   type: build
-- filename: split-locales.bst
+- filename: integration/split-locales.bst
   type: build
-- filename: split-docs.bst
+- filename: integration/split-docs.bst
   type: build
-- filename: platform-manifest.bst
+- filename: manifests/platform-manifest.bst
   type: build

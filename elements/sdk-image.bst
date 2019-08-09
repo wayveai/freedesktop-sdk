@@ -21,15 +21,15 @@ config:
 depends:
 - filename: sdk.bst
   type: build
-- filename: multiarch-sdk.bst
+- filename: multiarch/multiarch-sdk.bst
   type: build
-- filename: split-locales.bst
+- filename: integration/split-locales.bst
   type: build
-- filename: split-docs.bst
+- filename: integration/split-docs.bst
   type: build
-- filename: flatpak-builder-configuration.bst
+- filename: integration/flatpak-builder-configuration.bst
   type: build
-- filename: debug-app-link.bst
+- filename: integration/debug-app-link.bst
   type: build
-- filename: sdk-manifest.bst
+- filename: manifests/sdk-manifest.bst
   type: build

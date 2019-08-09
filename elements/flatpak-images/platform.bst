@@ -72,5 +72,5 @@ config:
 depends:
 - filename: platform-image.bst
   type: build
-- filename: platform-integration.bst
+- filename: integration/platform-integration.bst
   type: build

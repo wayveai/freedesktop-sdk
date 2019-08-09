@@ -1,9 +1,0 @@
-variables:
-  (?):
-  - (target_arch == "i686" or target_arch ==  "x86_64"):
-      compat_arch: i386-linux-gnu
-      entrypoint: ld-linux.so.2
-
-  - (target_arch == "aarch64" or target_arch == "arm"):
-      compat_arch: arm-linux-gnueabihf
-      entrypoint: ld-linux-armhf.so.3

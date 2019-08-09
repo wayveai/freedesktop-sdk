@@ -2,7 +2,7 @@ kind: stack
 
 depends:
 - filename: bootstrap-import.bst
-- filename: multiarch-platform-arches.bst
+- filename: multiarch/multiarch-platform-arches.bst
 
 variables:
   arches: ''
