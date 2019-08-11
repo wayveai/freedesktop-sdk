@@ -152,6 +152,6 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '19.1'
-  ref: mesa-19.1.3-0-g09a1b2bdbab20635888b3b226bd1e9a8e31a75ec
+  ref: mesa-19.1.4-0-gb84ffa028d09c1bba1add468fd68886ee243d428
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
