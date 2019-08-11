@@ -89,6 +89,7 @@ public:
   cpe:
     patches:
       - CVE-2018-10754
+      - CVE-2018-19211 # Duplicate of CVE-2018-10754
 
 sources:
 - kind: tar
