@@ -40,3 +40,5 @@ sources:
     gnulib:
       checkout: true
       url: savannah:gnulib.git
+- kind: patch
+  path: patches/libtasn1/ldflags.patch
