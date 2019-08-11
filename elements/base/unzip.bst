@@ -27,6 +27,7 @@ public:
       - CVE-2015-7697
       - CVE-2016-9844
       - CVE-2018-18384
+      - CVE-2019-13232
 
 sources:
 - kind: tar
@@ -44,6 +45,12 @@ sources:
   path: patches/unzip/CVE-2016-9844.patch
 - kind: patch
   path: patches/unzip/CVE-2018-18384.patch
+- kind: patch
+  path: patches/unzip/0001-CVE-2019-13232-fix-bug-in-undefer-input.patch
+- kind: patch
+  path: patches/unzip/0002-CVE-2019-13232-zip-bomb-with-overlapped-entries.patch
+- kind: patch
+  path: patches/unzip/0003-CVE-2019-13232-Do-not-raise-a-zip-bomb-alert-for-a-misplaced-centra.patch
 - kind: patch
   path: patches/unzip/unzip-6.0-bzip2-configure.patch
 - kind: patch
