@@ -1,5 +1,11 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.4:
+    * gettext: Add patch to fix build issues downstream
+    * cmake.bst: update to 3.15.2
+    * mesa: update to 19.1.4
+    * docbook-xsl: Bump to 1.79.2
+
 freedesktop-sdk-19.08beta.3:
     * ffmpeg: Enable support for libdav1d
     * ffmpeg: Upgrade to 4.2
