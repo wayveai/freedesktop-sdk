@@ -1,0 +1,72 @@
+# Project-wide configuration of autotools elements
+
+variables:
+  conf-deterministic: |
+    --enable-deterministic-archives
+  conf-link-args: |
+    --enable-shared \
+    --disable-static
+  conf-host: |
+    --host=%{host-triplet}
+  conf-build: |
+    --build=%{build-triplet}
+  conf-libtool-force-dlsearch: |
+    lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"
+
+  remove_libtool_modules: "true"
+  remove_libtool_libraries: "true"
+  delete_libtool_files: |
+    find "%{install-root}" -name "*.la" -print0 | while read -d '' -r file; do
+    if grep '^shouldnotlink=yes$' "${file}" &>/dev/null; then
+      if %{remove_libtool_modules}; then
+        echo "Removing ${file}."
+        rm "${file}"
+      else
+        echo "Not removing ${file}."
+      fi
+    else
+      if %{remove_libtool_libraries}; then
+        echo "Removing ${file}."
+        rm "${file}"
+      else
+        echo "Not removing ${file}."
+      fi
+    fi
+    done
+  conf-global: |
+      %{conf-deterministic} \
+      %{conf-link-args} \
+      %{conf-build} \
+      %{conf-host} \
+      %{conf-libtool-force-dlsearch}
+  conf-cmd: configure
+
+config:
+  configure-commands:
+  - |
+    %{autogen}
+    if [ -n "%{builddir}" ]; then
+      mkdir %{builddir}
+      cd %{builddir}
+      reldir=..
+    else
+      reldir=.
+    fi
+    ${reldir}/%{configure}
+
+  build-commands:
+  - |
+    if [ -n "%{builddir}" ]; then
+      cd %{builddir}
+    fi
+    %{make}
+
+  install-commands:
+  - |
+    if [ -n "%{builddir}" ]; then
+      cd %{builddir}
+    fi
+    %{make-install}
+
+  - |
+    %{delete_libtool_files}

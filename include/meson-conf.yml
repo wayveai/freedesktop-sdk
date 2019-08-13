@@ -1,0 +1,7 @@
+# Project-wide configuration of meson elements
+
+variables:
+  meson-global: |
+    --buildtype=plain
+  ninja: |
+    ninja -v -j ${NINJAJOBS} -C %{build-dir}

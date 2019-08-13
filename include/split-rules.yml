@@ -1,0 +1,20 @@
+# Split rule domains
+
+devel:
+  - "%{includedir}"
+  - "%{includedir}/**"
+  - "%{libdir}/pkgconfig"
+  - "%{libdir}/pkgconfig/**"
+  - "%{datadir}/pkgconfig"
+  - "%{datadir}/pkgconfig/**"
+  - "%{datadir}/aclocal"
+  - "%{datadir}/aclocal/**"
+  - "%{prefix}/lib/cmake"
+  - "%{prefix}/lib/cmake/**"
+  - "%{libdir}/cmake"
+  - "%{libdir}/cmake/**"
+  - "%{prefix}/lib/*.a"
+  - "%{libdir}/*.a"
+
+debug:
+  - "%{debugdir}/**"

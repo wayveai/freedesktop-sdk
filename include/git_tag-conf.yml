@@ -1,0 +1,5 @@
+# Project-wide configuration of the git_tag source
+
+config:
+  checkout-submodules: False
+  track-tags: True

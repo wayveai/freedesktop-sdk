@@ -1,0 +1,37 @@
+# Definition of BuildStream options
+
+bootstrap_build_arch:
+  type: arch
+  description: Architecture
+  variable: bootstrap_build_arch
+  values:
+    - arm
+    - aarch64
+    - i686
+    - x86_64
+    - powerpc64le
+
+target_arch:
+  type: arch
+  description: Architecture
+  variable: arch
+  values:
+    - arm
+    - aarch64
+    - i686
+    - x86_64
+    - powerpc64le
+
+snap_grade:
+  type: enum
+  description: Snap grade level (devel or stable)
+  variable: snap_grade
+  default: devel
+  values:
+    - devel
+    - stable
+
+import_bootstrap:
+  type: bool
+  description: Whether to import external bootstrap
+  default: false
