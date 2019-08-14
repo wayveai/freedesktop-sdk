@@ -9,7 +9,6 @@ depends:
 
 variables:
   cmake-local: |
-    -DCMAKE_INSTALL_LIBDIR="%{libdir}" \
     -DCMAKE_SKIP_RPATH:BOOL=YES \
     -DENABLE_STATIC:BOOL=NO
 
