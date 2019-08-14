@@ -1,4 +1,6 @@
 # Definition of BuildStream options
+# WARNINGS: This file cannot be junctioned. If you want to use this, copy
+# it over to your project
 
 bootstrap_build_arch:
   type: arch
