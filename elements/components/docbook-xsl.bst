@@ -18,10 +18,9 @@ config:
 
     install -v -m755 -d "%{install-root}%{data}"
 
-    cp -v -R VERSION assembly common eclipse epub epub3 extensions fo        \
-             highlighting html htmlhelp images javahelp lib manpages params  \
-             profiling roundtrip slides template tests tools webhelp website \
-             xhtml xhtml-1_1 xhtml5                                          \
+    cp -v -R VERSION assembly common eclipse epub epub3 fo highlighting  \
+             html htmlhelp images javahelp lib manpages params profiling \
+             roundtrip slides template tests webhelp website xhtml*      \
         "%{install-root}%{data}"
 
     ln -s VERSION "%{install-root}%{data}/VERSION.xsl"
