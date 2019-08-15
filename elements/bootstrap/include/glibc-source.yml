@@ -6,4 +6,5 @@ sources:
   ref: glibc-2.30-1-gbe9a328c93834648e0bec106a1f86357d1a8c7e1
 - kind: patch
   path: patches/glibc/optimize-audit.patch
-
+- kind: patch
+  path: patches/glibc/locale-C.diff

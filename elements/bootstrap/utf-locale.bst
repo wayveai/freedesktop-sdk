@@ -13,6 +13,7 @@ config:
 
   - |
     /glibc/bin/localedef --prefix=${PWD} --no-archive -i en_US -f UTF-8 en_US.UTF-8
+    /glibc/bin/localedef --prefix=${PWD} --no-archive -i C -f UTF-8 C.UTF-8
 
   install-commands:
   - |
