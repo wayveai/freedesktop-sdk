@@ -28,6 +28,10 @@ public:
     - CVE-2018-10540 # same as CVE-2018-10538
     - CVE-2018-19840
     - CVE-2018-19841
+    - CVE-2019-11498
+    - CVE-2019-1010315
+    - CVE-2019-1010317
+    - CVE-2019-1010319
 
 sources:
 - kind: git_tag
@@ -48,3 +52,15 @@ sources:
   path: patches/wavpack/CVE-2018-19840.patch
 - kind: patch
   path: patches/wavpack/CVE-2018-19841.patch
+- kind: patch
+  path: patches/wavpack/issue-41-make-sure-DFF-chunk-does-not-have-negative-.patch
+- kind: patch
+  path: patches/wavpack/issue-43-catch-zero-channel-count-in-DSF-and-DSDIFF-.patch
+- kind: patch
+  path: patches/wavpack/CVE-2019-1010315.patch
+- kind: patch
+  path: patches/wavpack/CVE-2019-1010317.patch
+- kind: patch
+  path: patches/wavpack/CVE-2019-1010319.patch
+- kind: patch
+  path: patches/wavpack/CVE-2019-11498.patch
