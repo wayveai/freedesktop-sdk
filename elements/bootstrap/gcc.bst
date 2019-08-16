@@ -29,28 +29,9 @@ environment:
   LD_FOR_BUILD: '%{bindir}/ld'
   NM_FOR_BUILD: '%{bindir}/nm'
   RANLIB_FOR_BUILD: '%{bindir}/ranlib'
-
-  (?):
-    - bootstrap_build_arch == "x86_64":
-        CFLAGS_FOR_BUILD:  "%{build_flags_x86_64}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_x86_64}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "i686":
-        CFLAGS_FOR_BUILD: "%{build_flags_i686}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_i686}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "arm":
-        CFLAGS_FOR_BUILD:  "%{build_flags_arm}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_arm}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "aarch64":
-        CFLAGS_FOR_BUILD:  "%{build_flags_aarch64}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_aarch64}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
-    - bootstrap_build_arch == "powerpc64le":
-        CFLAGS_FOR_BUILD:  "%{build_flags_powerpc64le}"
-        CXXFLAGS_FOR_BUILD: "%{build_flags_powerpc64le}"
-        LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
+  CFLAGS_FOR_BUILD:  "%{build_flags}"
+  CXXFLAGS_FOR_BUILD: "%{build_flags}"
+  LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
 
 variables:
   # gcc installs correctly libraries in the multiarch library
