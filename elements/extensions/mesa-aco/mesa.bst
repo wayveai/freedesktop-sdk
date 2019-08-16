@@ -150,6 +150,6 @@ sources:
   url: github:daniel-schuermann/mesa.git
   track: master
   track-tags: false
-  ref: 17.3-branchpoint-17778-g5c6077221dd0718f09c12fc1b1a6f65595416288
+  ref: 17.3-branchpoint-18649-ga0a7fa7531b75759c74011ca5bde8e49c1f8e151
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
