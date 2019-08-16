@@ -12,11 +12,35 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/autopoint'
+        - '%{bindir}/envsubst'
+        - '%{bindir}/gettextize'
+        - '%{bindir}/gettext.sh'
+        - '%{bindir}/msgattrib'
+        - '%{bindir}/msgcat'
+        - '%{bindir}/msgcmp'
+        - '%{bindir}/msgcomm'
+        - '%{bindir}/msgconv'
+        - '%{bindir}/msgen'
+        - '%{bindir}/msgexec'
+        - '%{bindir}/msgfilter'
+        - '%{bindir}/msgfmt'
+        - '%{bindir}/msggrep'
+        - '%{bindir}/msginit'
+        - '%{bindir}/msgmerge'
+        - '%{bindir}/msgunfmt'
+        - '%{bindir}/msguniq'
+        - '%{bindir}/ngettext'
+        - '%{bindir}/recode-sr-latin'
+        - '%{bindir}/xgettext'
+        - '%{libdir}/gettext/*'
         - '%{libdir}/libgettextsrc.so'
         - '%{libdir}/libgettextlib.so'
         - '%{libdir}/libgettextpo.so'
         - '%{libdir}/libasprintf.so'
         - '%{libdir}/libtextstyle.so'
+        - '%{datadir}/gettext*'
+        - '%{datadir}/gettext*/*'
 
 sources:
 - kind: tar
