@@ -10,6 +10,8 @@ depends:
   type: build
 - filename: snap-images/vulkaninfo.bst
   type: build
+- filename: snap-images/vainfo.bst
+  type: build
 - filename: snap-images/clinfo.bst
   type: build
 - filename: snap-images/glxinfo.bst
@@ -26,6 +28,8 @@ config:
     destination: '/images/platform'
   - element: snap-images/vulkaninfo.bst
     destination: '/images/vulkaninfo'
+  - element: snap-images/vainfo.bst
+    destination: '/images/vainfo'
   - element: snap-images/clinfo.bst
     destination: '/images/clinfo'
   - element: snap-images/glxinfo.bst
@@ -34,7 +38,7 @@ config:
   commands:
   - |
     mkdir -p "%{install-root}"
-    for name in platform vulkaninfo clinfo glxinfo; do
+    for name in platform vulkaninfo vainfo clinfo glxinfo; do
       mksquashfs "/images/${name}" "%{install-root}/${name}.snap" \
         -root-owned -noappend -comp xz -no-xattrs -no-fragments
     done

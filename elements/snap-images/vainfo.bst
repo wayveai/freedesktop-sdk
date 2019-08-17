@@ -14,13 +14,13 @@ config:
     - devel
 
   metadata:
-    name: "freedesktop-sdk-vulkaninfo-%{snap-branch}"
+    name: "freedesktop-sdk-vainfo-%{snap-branch}"
     version: "%{runtime-version}"
-    summary: "vulkaninfo for Freedesktop SDK %{branch}"
+    summary: "vainfo for Freedesktop SDK %{branch}"
     description: >-
-      vulkaninfo provides information on available Vulkan
-      devices. This is targeted to run on Freedesktop SDK runtime.
-      This application is meant for troubleshooting issues with Vulkan
+      vainfo provides information from VA-API drivers
+      This is targeted to run on Freedesktop SDK runtime.
+      This application is meant for troubleshooting issues with VA-API
       when using Freedesktop SDK runtime.
     type: app
     base: "freedesktop-sdk-runtime-%{snap-branch}"
@@ -29,15 +29,15 @@ config:
     confinement: strict
     grade: "%{snap_grade}"
     apps:
-      vulkaninfo:
-        command: vulkaninfo-wrapper
+      vainfo:
+        command: vainfo-wrapper
         plugs:
           - x11
           - opengl
           - wayland
 
 depends:
-  - filename: extensions/vulkaninfo/vulkan-tools.bst
+  - filename: extensions/vainfo/libva-utils.bst
     type: build
-  - filename: snap-images/vulkaninfo-wrapper.bst
+  - filename: snap-images/vainfo-wrapper.bst
     type: build
