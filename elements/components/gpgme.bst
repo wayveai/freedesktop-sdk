@@ -8,7 +8,7 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/git.bst
+- filename: components/git-minimal.bst
   type: build
 - filename: components/texinfo.bst
   type: build
