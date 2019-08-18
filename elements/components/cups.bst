@@ -8,8 +8,6 @@ depends:
 - filename: components/gzip.bst
   type: build
 
-# -Wno-error=sign-conversion is needed to suppress fatal warnings when building
-# cups from git: https://github.com/apple/cups/issues/5483#issuecomment-455227747
 variables:
   builddir: ''
   conf-local: |
@@ -39,6 +37,8 @@ sources:
 - kind: git_tag
   url: github:apple/cups.git
   track: branch-2.2
-  ref: v2.2.11-0-ge4a0aa86c96b5ddda3770c46709f4dee9a59071f
+  track-extra:
+  - v2.2.12
+  ref: v2.2.12-0-gc8cb6400e317633f66cdc87884915d54710b53a0
 - kind: patch
   path: patches/cups/cups-disable-werror.patch
