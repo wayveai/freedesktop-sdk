@@ -33,11 +33,11 @@ variables:
       fi
     fi
     done
-  conf-global: |
-      %{conf-deterministic} \
-      %{conf-link-args} \
-      %{conf-build} \
-      %{conf-host} \
+  conf-global: >-
+      %{conf-deterministic}
+      %{conf-link-args}
+      %{conf-build}
+      %{conf-host}
       %{conf-libtool-force-dlsearch}
   conf-cmd: configure
 
