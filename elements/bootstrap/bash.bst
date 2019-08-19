@@ -50,10 +50,10 @@ config:
 public:
   cpe:
     vendor: 'gnu'
-    version: '5.0.0'
 
 sources:
 - kind: git_tag
   url: savannah:bash.git
   track: master
-  ref: bash-5.0-0-gd233b485e83c3a784b803fb894280773f16f2deb
+  track-tags: false
+  ref: bash-5.0-9-g9f597fd10993313262cab400bf3c46ffb3f6fd1e

@@ -14,11 +14,11 @@ diff -u -r elfutils.old/libebl/eblopenbackend.c elfutils/libebl/eblopenbackend.c
 --- elfutils.old/libebl/eblopenbackend.c	2019-02-20 12:54:32.040228584 +0100
 +++ elfutils/libebl/eblopenbackend.c	2019-02-20 12:54:38.508167731 +0100
 @@ -316,7 +316,7 @@
- #ifndef LIBEBL_SUBDIR
- # define LIBEBL_SUBDIR PACKAGE
- #endif
--#define ORIGINDIR "$ORIGIN/../$LIB/" LIBEBL_SUBDIR "/"
-+#define ORIGINDIR "$ORIGIN/" LIBEBL_SUBDIR "/"
+    It might also work for shared libraries when installed in
+    ${prefix}/lib/ or ${prefix}/lib64/, but not for multiarch
+    library installs like ${prefix}/lib/i386-linux-gnu/  */
+-#define BINORIGINDIR "$ORIGIN/../$LIB/" LIBEBL_SUBDIR "/"
++#define BINORIGINDIR "$ORIGIN/" LIBEBL_SUBDIR "/"
  
- 	/* Give it a try.  At least the machine type matches.  First
-            try to load the module.  */
+ /* This works if libebl has been linked into a shared library,
+    just look in the subdir.  */
