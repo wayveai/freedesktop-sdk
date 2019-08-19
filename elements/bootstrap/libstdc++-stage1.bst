@@ -13,12 +13,7 @@ depends:
 
 variables:
   # Does not compile with -D_FORTIFY_SOURCE=2
-  target_common_flags: >-
-    %{common_flags}
-    -Wp,-D_GLIBCXX_ASSERTIONS
-    -fexceptions
-    -fstack-protector-strong
-    -grecord-gcc-switches
+  target_flags_fortify_source: ''
 
   lib: lib
 

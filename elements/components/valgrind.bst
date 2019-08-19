@@ -10,10 +10,8 @@ depends:
   type: build
 
 variables:
-  # valgrind does not like stack protector flags
-  target_common_flags: >-
-    %{common_flags} -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS
-    -fexceptions -grecord-gcc-switches
+  # valgrind does not like the strong stack protector flag
+  target_flags_stack_protector_strong: ''
 
 config:
   configure-commands:

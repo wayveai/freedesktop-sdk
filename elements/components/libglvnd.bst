@@ -10,10 +10,10 @@ depends:
   type: build
 
 variables:
+  local_flags: "-UDEFAULT_EGL_VENDOR_CONFIG_DIRS -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\\\"%{libdir}/GL/glvnd/egl_vendor.d\\\""
   conf-local: |
     --enable-asm \
-    --enable-tls \
-    CFLAGS="$CFLAGS -UDEFAULT_EGL_VENDOR_CONFIG_DIRS -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\\\"%{libdir}/GL/glvnd/egl_vendor.d\\\""
+    --enable-tls
 
 public:
   bst:

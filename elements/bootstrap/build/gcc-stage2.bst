@@ -14,24 +14,9 @@ depends:
 - elements/bootstrap/build.yml
 
 environment:
-  (?):
-    (>):
-    - target_arch == "x86_64":
-        CFLAGS_FOR_TARGET:  "%{target_flags_x86_64}"
-        CXXFLAGS_FOR_TARGET: "%{target_flags_x86_64}"
-        LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
-    - target_arch == "i686":
-        CFLAGS_FOR_TARGET: "%{target_flags_i686}"
-        CXXFLAGS_FOR_TARGET: "%{target_flags_i686}"
-        LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
-    - target_arch == "arm":
-        CFLAGS_FOR_TARGET:  "%{target_flags_arm}"
-        CXXFLAGS_FOR_TARGET: "%{target_flags_arm}"
-        LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
-    - target_arch == "aarch64":
-        CFLAGS_FOR_TARGET:  "%{target_flags_aarch64}"
-        CXXFLAGS_FOR_TARGET: "%{target_flags_aarch64}"
-        LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
+  CFLAGS_FOR_TARGET:  "%{target_flags}"
+  CXXFLAGS_FOR_TARGET: "%{target_flags}"
+  LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
 
 variables:
   conf-link-args: |

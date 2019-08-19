@@ -74,8 +74,7 @@ config:
 
 variables:
   # -D_FORTIFY_SOURCE=2 breaks building glibc
-  target_common_flags: '%{common_flags} -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong
-    -grecord-gcc-switches'
+  target_flags_fortify_source: ''
   arch_options: ''
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
