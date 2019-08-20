@@ -5,6 +5,12 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-meson.bst
   type: build
+- filename: components/libpng.bst
+  type: build
+
+variables:
+  meson-local: >-
+    -Dauto_features=auto
 
 public:
   bst:
