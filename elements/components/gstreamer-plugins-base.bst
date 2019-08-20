@@ -16,21 +16,32 @@ depends:
 - filename: components/libtheora.bst
 - filename: components/libvorbis.bst
 - filename: components/opus.bst
+- filename: components/gdk-pixbuf.bst
+- filename: components/gtk3.bst
 - filename: components/mesa-headers.bst
+- filename: components/iso-codes.bst
+- filename: components/alsa-lib.bst
+- filename: components/sdl2.bst
+- filename: components/gtk-doc.bst
+  type: build
 
 variables:
+  (?):
+  - target_arch == "i686" or target_arch == "arm":
+      gl-api: opengl
+  - target_arch != "i686" and target_arch != "arm":
+      gl-api: opengl,gles2
+
   meson-local: >-
-    -Dgl=enabled
-    -Dgl_api=opengl,gles2
+    -Dgl_api=%{gl-api}
     -Dgl_platform=egl,glx
     -Dintrospection=enabled
-    -Dogg=enabled
-    -Dopus=enabled
-    -Dorc=enabled
     -Dpackage-origin="freedesktop-sdk"
-    -Dpango=enabled
-    -Dtheora=enabled
-    -Dvorbis=enabled
+    -Dcdparanoia=disabled
+    -Dgl-graphene=disabled
+    -Dlibvisual=disabled
+    -Dtremor=disabled
+    -Dexamples=disabled
 
 public:
   bst:
@@ -49,6 +60,12 @@ public:
         - '%{libdir}/libgstaudio-1.0.so'
         - '%{libdir}/libgstpbutils-1.0.so'
         - '%{libdir}/libgstgl-1.0.so'
+
+config:
+  install-commands:
+    (>):
+    - rm %{install-root}%{includedir}/GL/glext.h
+    - rm %{install-root}%{includedir}/KHR/khrplatform.h
 
 sources:
 - kind: git_tag
