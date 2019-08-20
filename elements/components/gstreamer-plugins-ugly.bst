@@ -10,6 +10,7 @@ depends:
 
 variables:
   meson-local: >-
+    -Dauto_features=disabled
     -Dorc=enabled
     -Dpackage-origin="freedesktop-sdk"
 
