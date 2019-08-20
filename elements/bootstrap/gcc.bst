@@ -10,9 +10,9 @@ depends:
   type: runtime
 
 (@):
-- elements/bootstrap/gcc-arch-opts.yml
-- elements/bootstrap/gcc-source.yml
-- elements/bootstrap/target.yml
+- elements/bootstrap/include/gcc-arch-opts.yml
+- elements/bootstrap/include/gcc-source.yml
+- elements/bootstrap/include/target.yml
 
 environment:
   CC: '%{tools}/bin/%{triplet}-gcc'

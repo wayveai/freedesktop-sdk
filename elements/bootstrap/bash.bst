@@ -7,7 +7,7 @@ depends:
 - filename: bootstrap/readline.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 variables:
   # bash_cv_termcap_lib is for working around undetected of libtinfo

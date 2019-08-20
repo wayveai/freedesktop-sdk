@@ -7,7 +7,7 @@ depends:
 - filename: bootstrap/glibc.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 config:
   install-commands:

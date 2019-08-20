@@ -13,7 +13,7 @@ config:
     install -D -m0644 SUPPORTED "%{install-root}%{datadir}/i18n/SUPPORTED"
 
 (@):
-- elements/bootstrap/glibc-source.yml
+- elements/bootstrap/include/glibc-source.yml
 
 sources:
   (>):

@@ -7,8 +7,8 @@ depends:
   type: build
 
 (@):
-- elements/bootstrap/build.yml
-- elements/bootstrap/binutils-source.yml
+- elements/bootstrap/include/build.yml
+- elements/bootstrap/include/binutils-source.yml
 
 variables:
   lib: lib

@@ -9,8 +9,8 @@ depends:
 - filename: bootstrap/build/elfutils-build.bst
 
 (@):
-- elements/bootstrap/build.yml
-- elements/bootstrap/debugedit-source.yml
+- elements/bootstrap/include/build.yml
+- elements/bootstrap/include/debugedit-source.yml
 
 variables:
   builddir: ''

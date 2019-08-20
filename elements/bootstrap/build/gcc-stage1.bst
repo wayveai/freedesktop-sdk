@@ -7,9 +7,9 @@ depends:
   type: build
 
 (@):
-- elements/bootstrap/gcc-arch-opts.yml
-- elements/bootstrap/gcc-source.yml
-- elements/bootstrap/build.yml
+- elements/bootstrap/include/gcc-arch-opts.yml
+- elements/bootstrap/include/gcc-source.yml
+- elements/bootstrap/include/build.yml
 
 environment:
   CFLAGS_FOR_TARGET:  "%{target_flags}"

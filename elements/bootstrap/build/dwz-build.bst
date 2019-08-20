@@ -1,6 +1,6 @@
 kind: manual
 
-(@): elements/bootstrap/build.yml
+(@): elements/bootstrap/include/build.yml
 
 depends:
 - filename: bootstrap/build/base-sdk.bst

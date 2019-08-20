@@ -10,8 +10,8 @@ depends:
   type: runtime
 
 (@):
-- elements/bootstrap/target.yml
-- elements/bootstrap/binutils-source.yml
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/binutils-source.yml
 
 variables:
   # Disable '-fexceptions' which breaks build on arm.

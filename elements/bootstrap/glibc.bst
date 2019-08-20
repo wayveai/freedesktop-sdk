@@ -69,8 +69,8 @@ config:
       rm "%{install-root}%{infodir}/dir"
 
 (@):
-- elements/bootstrap/target.yml
-- elements/bootstrap/glibc-source.yml
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/glibc-source.yml
 
 variables:
   # -D_FORTIFY_SOURCE=2 breaks building glibc

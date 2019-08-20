@@ -6,7 +6,7 @@ depends:
 - filename: bootstrap/ncurses.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 variables:
   # Behavior of malloc cannot be tested when cross-compiling so
