@@ -41,6 +41,7 @@ depends:
 - filename: components/itstools.bst
 - filename: components/jq.bst
 - filename: components/wayland-protocols.bst
+- filename: components/xdg-portal-interfaces.bst
 - filename: components/xorg-proto-xcb.bst
 - filename: components/xorg-proto-xorgproto.bst
 - filename: components/xorg-util-macros.bst
