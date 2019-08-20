@@ -15,8 +15,8 @@ depends:
   type: runtime
 
 (@):
-- elements/bootstrap/target.yml
-- elements/bootstrap/debugedit-source.yml
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/debugedit-source.yml
 
 variables:
   builddir: ''

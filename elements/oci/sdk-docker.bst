@@ -5,7 +5,7 @@ depends:
   type: build
 - filename: oci/layers/sdk.bst
   type: build
-- filename: linker-debuginfo.bst
+- filename: integration/linker-debuginfo.bst
   type: build
 
 config:

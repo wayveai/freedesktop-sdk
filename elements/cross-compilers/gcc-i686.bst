@@ -10,7 +10,7 @@ depends:
   type: build
 
 (@):
-- elements/bootstrap/gcc-source.yml
+- elements/bootstrap/include/gcc-source.yml
 - elements/cross-compilers/i686-vars.yml
 - elements/cross-compilers/gcc-common.yml
 

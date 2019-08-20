@@ -6,7 +6,7 @@ depends:
 - filename: bootstrap/file.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 public:
   bst:

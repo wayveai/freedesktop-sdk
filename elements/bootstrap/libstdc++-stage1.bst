@@ -8,8 +8,8 @@ depends:
   type: runtime
 
 (@):
-- elements/bootstrap/gcc-source.yml
-- elements/bootstrap/target.yml
+- elements/bootstrap/include/gcc-source.yml
+- elements/bootstrap/include/target.yml
 
 variables:
   # Does not compile with -D_FORTIFY_SOURCE=2

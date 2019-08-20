@@ -123,7 +123,7 @@ config:
 depends:
 - filename: sdk-image.bst
   type: build
-- filename: sdk-integration.bst
+- filename: integration/sdk-integration.bst
   type: build
-- filename: linker-debuginfo.bst
+- filename: integration/linker-debuginfo.bst
   type: build

@@ -5,7 +5,7 @@ depends:
 - filename: bootstrap/build/base-sdk.bst
   type: build
 
-(@): elements/bootstrap/build.yml
+(@): elements/bootstrap/include/build.yml
 
 variables:
   (?):

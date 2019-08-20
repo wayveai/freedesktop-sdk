@@ -8,7 +8,7 @@ depends:
 - filename: bootstrap/bzip2.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 variables:
   conf-local: |

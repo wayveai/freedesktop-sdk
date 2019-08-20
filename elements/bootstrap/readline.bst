@@ -7,7 +7,7 @@ depends:
 - filename: bootstrap/ncurses.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 variables:
   conf-local: |

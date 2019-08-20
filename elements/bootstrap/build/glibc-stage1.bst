@@ -7,8 +7,8 @@ depends:
   type: build
 
 (@):
-- elements/bootstrap/build.yml
-- elements/bootstrap/glibc-source.yml
+- elements/bootstrap/include/build.yml
+- elements/bootstrap/include/glibc-source.yml
 
 variables:
   prefix: /glibc

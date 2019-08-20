@@ -6,7 +6,7 @@ depends:
 - filename: bootstrap/zlib.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 variables:
   conf-local: |

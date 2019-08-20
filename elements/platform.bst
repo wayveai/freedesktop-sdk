@@ -2,7 +2,6 @@ kind: stack
 description: Stack of elements in the freedesktop runtime
 
 depends:
-- filename: mtab.bst
 - filename: components/ca-certificates.bst
 - filename: components/cracklib.bst
 - filename: components/curl.bst
@@ -204,3 +203,4 @@ depends:
 - filename: components/xorg-lib-xv.bst
 - filename: components/xorg-lib-xxf86vm.bst
 - filename: components/zenity.bst
+- filename: integration/mtab.bst

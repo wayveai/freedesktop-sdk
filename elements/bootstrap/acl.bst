@@ -15,7 +15,7 @@ public:
         - '%{libdir}/libacl.so'
         - '%{libexecdir}/libacl.so'
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 config:
   configure-commands:

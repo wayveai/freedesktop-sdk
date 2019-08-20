@@ -7,7 +7,7 @@ depends:
 - filename: bootstrap/gnu-config.bst
   type: build
 
-(@): elements/bootstrap/build.yml
+(@): elements/bootstrap/include/build.yml
 
 variables:
   prefix: '%{tools}'

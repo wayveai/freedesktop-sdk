@@ -7,7 +7,7 @@ depends:
 - filename: bootstrap/acl.bst
   type: runtime
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 environment:
   FORCE_UNSAFE_CONFIGURE: "1"

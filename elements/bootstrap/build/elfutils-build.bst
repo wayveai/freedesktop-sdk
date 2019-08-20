@@ -8,7 +8,7 @@ depends:
 - filename: bootstrap/build/tools-lib-path.bst
   type: runtime
 
-(@): elements/bootstrap/build.yml
+(@): elements/bootstrap/include/build.yml
 
 variables:
   prefix: '%{tools}'

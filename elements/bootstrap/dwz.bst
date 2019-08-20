@@ -1,6 +1,6 @@
 kind: manual
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 depends:
 - filename: bootstrap/dwz-build-deps.bst

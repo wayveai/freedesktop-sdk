@@ -12,5 +12,5 @@ depends:
 
 (@):
 - elements/cross-compilers/i686-vars.yml
-- elements/bootstrap/binutils-source.yml
+- elements/bootstrap/include/binutils-source.yml
 - elements/cross-compilers/binutils-common.yml

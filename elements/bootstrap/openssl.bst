@@ -4,7 +4,7 @@ depends:
 - filename: bootstrap/openssl-build-deps.bst
   type: build
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 environment:
   CC: '%{triplet}-gcc'

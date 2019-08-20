@@ -7,7 +7,7 @@ depends:
   type: runtime
 
 
-(@): elements/bootstrap/target.yml
+(@): elements/bootstrap/include/target.yml
 
 config:
   build-commands:
