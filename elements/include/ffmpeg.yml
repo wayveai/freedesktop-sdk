@@ -56,7 +56,7 @@ variables:
     ac3,ass,flac,gif,matroska,mp3,ogg,wav,%{extra-muxers}
 
   demuxers: |
-    aac,ac3,ass,flac,gif,matroska,mp3,m4a,ogg,wav,%{extra-demuxers}
+    aac,ac3,ass,flac,gif,matroska,mp3,ogg,wav,%{extra-demuxers}
 
   parsers: |
     aac,ac3,flac,mpegaudio,opus,vp3,vp8,vorbis,%{extra-parsers}

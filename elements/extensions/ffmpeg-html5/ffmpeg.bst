@@ -8,7 +8,7 @@ variables:
   extra-vid-enc: h263,h264
   extra-hwaccels: h264_vaapi,h264_vdpau
   extra-parsers: h264
-  extra-demuxers: h264,mov
+  extra-demuxers: h264,mov,m4v
 
   ffmpeg-prefix: '%{libdir}/ffmpeg'
   ffmpeg-libdir: '%{ffmpeg-prefix}/lib'
