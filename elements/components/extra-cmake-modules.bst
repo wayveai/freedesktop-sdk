@@ -7,7 +7,10 @@ depends:
 
 variables:
   cmake-local: |
-    -DBUILD_TESTING:BOOL=OFF
+    -DBUILD_TESTING:BOOL=OFF \
+    -DBUILD_HTML_DOCS:BOOL=OFF \
+    -DBUILD_MAN_DOCS:BOOL=OFF \
+    -DBUILD_QTHELP_DOCS:BOOL=OFF
 
 sources:
 - kind: tar
