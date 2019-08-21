@@ -7,12 +7,8 @@ depends:
 
 variables:
   cmake-local: |
-    -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \
-    -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG \
     -DINCLUDE_INSTALL_DIR:PATH=%{includedir} \
     -DLIB_INSTALL_DIR:PATH=%{libdir} \
-    -DSYSCONF_INSTALL_DIR:PATH=/etc \
-    -DSHARE_INSTALL_PREFIX:PATH=%{datadir} \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DMODULE_INSTALL_DIR=%{libdir}/libproxy/0.4.11/modules \
     -DWITH_PERL=OFF \

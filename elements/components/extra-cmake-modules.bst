@@ -7,8 +7,7 @@ depends:
 
 variables:
   cmake-local: |
-    -DENABLE_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DBUILD_TESTING:BOOL=OFF
 
 sources:
 - kind: tar
