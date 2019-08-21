@@ -5,8 +5,6 @@ depends:
 - filename: components/glslang.bst
 - filename: components/llvm.bst
   type: build
-- filename: components/llvm-static.bst
-  type: build
 - filename: components/llvm-runtime.bst
   type: runtime
 - filename: components/libdrm.bst

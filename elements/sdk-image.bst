@@ -15,7 +15,7 @@ public:
 config:
   exclude:
     - extra
-    - static
+    - static-blocklist
     - vm-only
 
 depends:
