@@ -7,12 +7,13 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   RUNTIME_VERSION: '19.08'
   STABLE_ABI: 'false'
+  IMAGE_ID: 'a12453fe83ee8ab60e2f92ec6aa151a3a588f11b'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:c145b9de3c81f0bbf92bcb9fbeb3eb108224d5e6"
-  DOCKER_AARCH64: "${DOCKER_REGISTRY}/aarch64:c145b9de3c81f0bbf92bcb9fbeb3eb108224d5e6"
-  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:c145b9de3c81f0bbf92bcb9fbeb3eb108224d5e6"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/amd64:${IMAGE_ID}"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/arm64:${IMAGE_ID}"
+  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/ppc64le:${IMAGE_ID}"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
