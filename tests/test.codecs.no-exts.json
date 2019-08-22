@@ -1,0 +1,22 @@
+{
+  "app-id": "test.codecs.no-exts",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "19.08beta",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "codec-list.sh",
+  "modules": [
+    {
+      "name": "codec-list",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D codec-list.sh /app/bin/codec-list.sh"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "codec-list.sh"
+        }
+      ]
+    }
+  ]
+}
