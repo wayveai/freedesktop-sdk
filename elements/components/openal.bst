@@ -9,7 +9,6 @@ depends:
 variables:
   cmake-local: |
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR:PATH=%{lib} \
     -DALSOFT_EXAMPLES=NO
 
 public:

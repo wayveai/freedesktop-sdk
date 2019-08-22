@@ -13,3 +13,5 @@ sources:
   ref: v1.6.1-0-ge107f0549c59e02c664088471edb2318cebb19b7
 - kind: patch
   path: patches/frei0r/frei0r-Stop-hardcoding-pkgconfig-location.patch
+- kind: patch
+  path: patches/frei0r/frei0r-Stop-hardcoding-libdir-location.patch
