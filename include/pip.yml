@@ -1,0 +1,8 @@
+variables:
+  pip: pip3
+  fix-pyc-timestamps: "true"
+
+config:
+  install-commands:
+    - |
+      %{pip} install --no-build-isolation --no-deps --root=%{install-root} --prefix=%{prefix} .
