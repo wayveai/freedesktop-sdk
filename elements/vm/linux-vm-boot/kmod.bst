@@ -13,7 +13,7 @@ depends:
 - filename: components/xz.bst
 
 variables:
-  conf-local:
+  conf-local: |
     --with-rootlibdir=%{indep-libdir} \
     --with-xz \
     --with-zlib \
