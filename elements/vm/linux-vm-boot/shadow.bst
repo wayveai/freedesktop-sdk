@@ -6,7 +6,7 @@ depends:
 
 variables:
   conf-local: |
-    --with-pam \
+    --with-libpam \
     --without-selinux
 
 config:

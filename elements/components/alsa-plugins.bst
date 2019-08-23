@@ -12,7 +12,7 @@ variables:
     --disable-jack \
     --enable-pulseaudio \
     --disable-samplerate \
-    --disable-avcodec \
+    --disable-libav \
     --with-speex=no
 
 config:

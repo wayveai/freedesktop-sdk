@@ -3,13 +3,13 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/libogg.bst
+- filename: components/speexdsp.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
 
 variables:
   conf-local: |
-    --with-speexdsp \
     --enable-binaries
 
 public:
