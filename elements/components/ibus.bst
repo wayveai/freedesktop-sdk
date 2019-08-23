@@ -50,5 +50,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
-  ref: 4cf1e5ca4b067a3bed3cdfa658d49ac597d817b2de627a1095214565f862d034
+  url: github:ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz
+  ref: adc1e5e620d6a89a49306f022b50561f2c05218dec13d0c9b136dc8b6568a2b9
