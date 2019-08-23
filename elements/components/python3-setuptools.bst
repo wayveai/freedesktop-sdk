@@ -4,9 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/python3.bst
 
-variables:
-  python: python3
-
 config:
   configure-commands:
     (<):
