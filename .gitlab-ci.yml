@@ -672,6 +672,7 @@ cve_report:
   only:
     - master
     - '18.08'
+  dependencies: []
 
 markdown_manifest:
   stage: finish-publish
@@ -690,6 +691,7 @@ markdown_manifest:
     - '18.08'
   except:
     - schedules
+  dependencies: []
 
 .reproducible_template: &reproducible
   stage: reproducible
