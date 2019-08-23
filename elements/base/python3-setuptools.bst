@@ -6,6 +6,7 @@ depends:
 
 variables:
   python: python3
+  fix-pyc-timestamps: "true"
 
 config:
   configure-commands:
