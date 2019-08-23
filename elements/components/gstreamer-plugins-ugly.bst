@@ -11,6 +11,11 @@ depends:
 variables:
   meson-local: >-
     -Dauto_features=disabled
+    -Dasfdemux=enabled
+    -Ddvdlpcmdec=enabled
+    -Ddvdsub=enabled
+    -Drealmedia=enabled
+    -Dxingmux=enabled
     -Dorc=enabled
     -Dpackage-origin="freedesktop-sdk"
 
