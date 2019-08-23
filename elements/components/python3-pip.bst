@@ -5,9 +5,6 @@ depends:
 - filename: components/python3.bst
 - filename: components/python3-setuptools.bst
 
-variables:
-  python: python3
-
 config:
   install-commands:
     (>):
