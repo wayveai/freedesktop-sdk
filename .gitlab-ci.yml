@@ -492,7 +492,6 @@ finish_publish_failed:
   stage: publish
   retry: 2
   script:
-    - make build
     - make export
 
     - |
