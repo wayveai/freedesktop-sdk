@@ -4,6 +4,12 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-meson.bst
   type: build
+- filename: components/gtk-doc.bst
+  type: build
+
+variables:
+  meson-local: >-
+    -Dorc-test=disabled
 
 public:
   bst:
@@ -12,7 +18,12 @@ public:
         (>):
         - '%{bindir}/orc'
         - '%{libdir}/liborc-0.4.so'
-        - '%{libdir}/liborc-test-0.4.so'
+
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
 sources:
 - kind: git_tag
