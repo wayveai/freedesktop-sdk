@@ -173,6 +173,7 @@ app_x86_64:
     - cache_x86_64
   variables:
     ARCH: x86_64
+  dependencies: []
 
 app_i686:
   image: $DOCKER_AMD64
@@ -182,6 +183,7 @@ app_i686:
     - cache_i686
   variables:
     ARCH: i686
+  dependencies: []
 
 app_aarch64:
   image: $DOCKER_AARCH64
@@ -190,6 +192,7 @@ app_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+  dependencies: []
 
 app_arm:
   image: $DOCKER_AARCH64
@@ -198,6 +201,7 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
+  dependencies: []
 
 .vm_imageless_template: &vm_imageless
   stage: vm
@@ -223,6 +227,7 @@ minimal_systemd_vm_x86_64:
     ARCH: x86_64
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 minimal_systemd_vm_i686:
   image: $DOCKER_AMD64
@@ -234,6 +239,7 @@ minimal_systemd_vm_i686:
     ARCH: i686
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 minimal_systemd_vm_aarch64:
   image: $DOCKER_AARCH64
@@ -245,6 +251,7 @@ minimal_systemd_vm_aarch64:
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
+  dependencies: []
 
 minimal_systemd_vm_arm:
   image: $DOCKER_AARCH64
@@ -255,6 +262,7 @@ minimal_systemd_vm_arm:
     ARCH: arm
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
+  dependencies: []
 
 .vm_image_template: &vm_image
   stage: vm
@@ -279,6 +287,7 @@ minimal_vm_image_x86_64:
     ARCH: x86_64
     TYPE: minimal
     DIALOG: minimal
+  dependencies: []
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -290,6 +299,7 @@ minimal_systemd_vm_image_x86_64:
     ARCH: x86_64
     TYPE: minimal-systemd
     DIALOG: root-login
+  dependencies: []
 
 .desktop_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -302,6 +312,7 @@ minimal_systemd_vm_image_x86_64:
     ARCH: x86_64
     TYPE: desktop
     DIALOG: root-login
+  dependencies: []
 
 prepare_publish:
   image: $DOCKER_AMD64
@@ -340,6 +351,8 @@ finish_publish:
     - '18.08'
   except:
     - schedules
+  dependencies:
+    - prepare_publish
 
 finish_publish_failed:
   image: $DOCKER_AMD64
@@ -355,6 +368,8 @@ finish_publish_failed:
   except:
     - schedules
   when: on_failure
+  dependencies:
+    - prepare_publish
 
 .flatpak_publish_template:
   stage: publish
@@ -424,6 +439,8 @@ publish_x86_64:
     - cache_x86_64
   variables:
     ARCH: x86_64
+  dependencies:
+    - prepare_publish
 
 publish_i686:
   extends: .flatpak_publish_template
@@ -441,6 +458,8 @@ publish_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+  dependencies:
+    - prepare_publish
 
 publish_arm:
   extends: .flatpak_publish_template
@@ -449,6 +468,8 @@ publish_arm:
     - armhf
   variables:
     ARCH: arm
+  dependencies:
+    - prepare_publish
 
 publish_x86_64_tar:
   extends: .publish_tar_template
@@ -512,6 +533,7 @@ cve_report:
   only:
     - master
     - '18.08'
+  dependencies: []
 
 markdown_manifest:
   stage: finish-publish
@@ -530,6 +552,7 @@ markdown_manifest:
     - '18.08'
   except:
     - schedules
+  dependencies: []
 
 .reproducible_template: &reproducible
   stage: reproducible
