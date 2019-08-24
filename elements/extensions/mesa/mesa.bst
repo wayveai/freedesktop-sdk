@@ -3,11 +3,11 @@ kind: meson
 depends:
 - filename: bootstrap-import.bst
 - filename: components/glslang.bst
-- filename: components/llvm8.bst
+- filename: components/llvm.bst
   type: build
-- filename: components/llvm8-static.bst
+- filename: components/llvm-static.bst
   type: build
-- filename: components/llvm8-runtime.bst
+- filename: components/llvm-runtime.bst
   type: runtime
 - filename: components/libdrm.bst
 - filename: extensions/mesa/libdrm.bst
