@@ -11,7 +11,6 @@ depends:
 
 variables:
   conf-local: |
-    --disable-experimental \
     --disable-wic \
     --enable-jpeg \
     --enable-png \
