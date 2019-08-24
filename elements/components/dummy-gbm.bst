@@ -37,8 +37,6 @@ variables:
     -Dplatforms=""
     -Dtools=""
     -Ddri3=false
-    -Ddri2=false
-    -Ddri=false
     -Degl=false
     -Dgbm=true
     -Dgles1=false
