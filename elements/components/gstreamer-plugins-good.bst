@@ -25,7 +25,6 @@ depends:
 
 variables:
   meson-local: >-
-    -Dintrospection=enabled
     -Dpackage-origin="freedesktop-sdk"
     -Dv4l2-libv4l2=disabled
     -Dv4l2-gudev=disabled

@@ -22,7 +22,7 @@ variables:
   meson-local: >-
     -Ddocs=false
     -Dman=false
-    -Dgsteamer=true
+    -Dgstreamer=enabled
     -Dsystemd=true
 
 
