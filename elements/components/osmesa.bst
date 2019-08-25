@@ -4,7 +4,7 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/python3-mako.bst
   type: build
-- filename: components/llvm8.bst
+- filename: components/llvm.bst
   type: build
 - filename: components/bison.bst
   type: build
