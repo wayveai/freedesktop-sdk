@@ -87,17 +87,26 @@ Currently we provide the following runtimes:
 
 Additionally we provide the following extensions to our platform:
 * org.freedesktop.Platform.Locale
-* org.freedesktop.Platform.VAAPI.Intel (Intel only)
-* org.freedesktop.Platform.ffmpeg-html5
+* org.freedesktop.Platform.VAAPI.Intel{,.i386} (Intel only)
+* org.freedesktop.Platform.ffmpeg-{html5,full}
 * org.freedesktop.Platform.Compat.{architecture}
+* org.freedesktop.Platform.Compat.{architecture}.debug
+* org.freedesktop.Platform.GL{,32}.default
+* org.freedesktop.Platform.GL{,32}.mesa-aco
 
 And the following extensions to the SDK:
 * org.freedesktop.Sdk.Locale
 * org.freedesktop.Sdk.Docs
 * org.freedesktop.Sdk.Debug
 * org.freedesktop.Sdk.Extension.rust-stable
+* org.freedesktop.Sdk.Extension.toolchain-{architecture}
 
-We also provide org.freedesktop.GlxInfo and org.freedesktop.GlxInfo.Debug as flatpak applications.
+We also provide following flatpak applications useful for testing GPU:
+* org.freedesktop.ClInfo
+* org.freedesktop.GlxInfo
+* org.freedesktop.GlxInfo.Debug
+* org.freedesktop.VaInfo
+* org.freedesktop.VulkanInfo
 
 ## Structure
 
