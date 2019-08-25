@@ -23,6 +23,9 @@ public:
         - '%{libdir}/libicutest.so'
         - '%{libdir}/libicutu.so'
         - '%{libdir}/libicuuc.so'
+        - '%{libdir}/icu'
+        - '%{libdir}/icu/**'
+
   cpe:
     version: '64.2'
     product: international_components_for_unicode

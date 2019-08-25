@@ -31,6 +31,9 @@ public:
       devel:
         (>):
         - '%{libdir}/libdbus-1.so'
+        - '%{libdir}/dbus-1.0/include'
+        - '%{libdir}/dbus-1.0/include/**'
+
   cpe:
     product: d-bus
 

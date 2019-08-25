@@ -60,6 +60,8 @@ public:
         - '%{libdir}/libgstaudio-1.0.so'
         - '%{libdir}/libgstpbutils-1.0.so'
         - '%{libdir}/libgstgl-1.0.so'
+        - '%{libdir}/gstreamer-1.0/include'
+        - '%{libdir}/gstreamer-1.0/include/**'
 
 config:
   install-commands:
