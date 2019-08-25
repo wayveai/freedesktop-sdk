@@ -25,23 +25,20 @@ depends:
 
 variables:
   meson-local: >-
-    -Dbz2=enabled
-    -Dcairo=enabled
-    -Dflac=enabled
-    -Dgdk-pixbuf=enabled
-    -Dgtk3=enabled
     -Dintrospection=enabled
-    -Djpeg=enabled
-    -Dlame=enabled
-    -Dmpg123=enabled
-    -Dorc=enabled
     -Dpackage-origin="freedesktop-sdk"
-    -Dpng=enabled
-    -Dpulse=enabled
-    -Dsoup=enabled
-    -Dspeex=enabled
-    -Dvpx=enabled
-    -Dwavpack=enabled
+    -Dv4l2-libv4l2=disabled
+    -Dv4l2-gudev=disabled
+    -Daalib=disabled
+    -Djack=disabled
+    -Dlibcaca=disabled
+    -Ddv=disabled
+    -Ddv1394=disabled
+    -Dqt5=disabled
+    -Dshout2=disabled
+    -Dtaglib=disabled
+    -Dtwolame=disabled
+    -Dexamples=disabled
 
 sources:
 - kind: git_tag

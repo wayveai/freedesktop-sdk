@@ -8,6 +8,10 @@ depends:
 - filename: components/gnutls.bst
 - filename: components/gstreamer.bst
   type: build
+- filename: components/gobject-introspection.bst
+  type: build
+- filename: components/gtk-doc.bst
+  type: build
 
 public:
   bst:
@@ -15,6 +19,11 @@ public:
       devel:
         (>):
         - '%{libdir}/libnice.so'
+
+variables:
+  meson-local: >-
+    -Dgupnp=disabled
+    -Dexamples=disabled
 
 sources:
 - kind: git_tag

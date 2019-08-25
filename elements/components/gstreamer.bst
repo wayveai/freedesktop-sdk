@@ -12,13 +12,18 @@ depends:
   type: build
 - filename: components/bison.bst
   type: build
+- filename: components/gtk-doc.bst
+  type: build
 
 variables:
   meson-local: >-
     -Dexamples=disabled
+    -Dbenchmarks=disabled
     -Dintrospection=enabled
     -Dlibunwind=enabled
     -Dlibdw=enabled
+    -Ddbghelp=disabled
+    -Dbash-completion=disabled
     -Dpackage-origin="freedesktop-sdk"
 
 public:

@@ -1,7 +1,8 @@
 # Project-wide configuration of meson elements
 
 variables:
-  meson-global: |
+  meson-global: >-
     --buildtype=plain
+    -Dauto_features=enabled
   ninja: |
     ninja -v -j ${NINJAJOBS} -C %{build-dir}

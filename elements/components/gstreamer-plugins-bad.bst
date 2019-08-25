@@ -30,6 +30,7 @@ depends:
 
 variables:
   meson-local: >-
+    -Dauto_features=auto
     -Daom=enabled
     -Dbz2=enabled
     -Dcurl=enabled
@@ -83,3 +84,5 @@ sources:
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/gst-plugins-bad-wayland-Define-libdrm_dep-in-meson.build.patch

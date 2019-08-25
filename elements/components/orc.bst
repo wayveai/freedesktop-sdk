@@ -10,6 +10,9 @@ depends:
 variables:
   meson-local: >-
     -Dorc-test=disabled
+    -Dexamples=disabled
+    -Dbenchmarks=disabled
+    -Dtests=disabled
 
 public:
   bst:
