@@ -18,6 +18,8 @@ variables:
   # Generic variable for invoking buildstream
   BST: bst --colors
 
+  GIT_SUBMODULE_STRATEGY: "recursive"
+
 stages:
   - bootstrap
   - update
