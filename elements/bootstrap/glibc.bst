@@ -63,9 +63,6 @@ config:
       touch '%{install-root}%{sysconfdir}/ld.so.conf'
 
     - |
-      find "%{install-root}" -name "lib*.a" -not -name "lib*_nonshared.a" -exec rm {} ";"
-
-    - |
       rm "%{install-root}%{infodir}/dir"
 
 (@):
@@ -118,3 +115,25 @@ public:
         - '%{libdir}/libutil.so'
         - '%{libdir}/libnss_compat.so'
         - '%{libdir}/libm.so'
+
+      static-blocklist:
+        (=):
+        - '%{libdir}/libanl.a'
+        - '%{libdir}/libBrokenLocale.a'
+        - '%{libdir}/libc.a'
+        - '%{libdir}/libcrypt.a'
+        - '%{libdir}/libdl.a'
+        - '%{libdir}/libg.a'
+        - '%{libdir}/libm-2.30.a'
+        - '%{libdir}/libm.a'
+        - '%{libdir}/libmcheck.a'
+        - '%{libdir}/libmvec.a'
+        - '%{libdir}/libpthread.a'
+        - '%{libdir}/libresolv.a'
+        - '%{libdir}/librt.a'
+        - '%{libdir}/libutil.a'
+
+      # Not actually used, included for completeness
+      static-allowlist:
+        - '%{libdir}/libc_nonshared.a'
+        - '%{libdir}/libmvec_nonshared.a'

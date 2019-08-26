@@ -10,8 +10,6 @@ config:
   include:
   - devel
   - doc
-  exclude:
-  - static
 
 public:
   bst:

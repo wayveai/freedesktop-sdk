@@ -88,9 +88,6 @@ config:
       done
 
     - |
-      find "%{install-root}" -name "lib*.a" -not -name "libgcc.a" -not -name "libgcc_eh.a" -not -name "libstdc++.a" -not -name "libstdc++fs.a"  -exec rm {} ";"
-
-    - |
       rm "%{install-root}%{infodir}/dir"
 
 public:
@@ -131,3 +128,24 @@ public:
         - '%{multiarch_libdir}/libgfortran.so'
         - '%{multiarch_libdir}/libcc1.so'
         - '%{multiarch_libdir}/libgcc_s.so'
+
+      static-blocklist:
+        (=):
+        - '%{multiarch_libdir}/libasan.a'
+        - '%{multiarch_libdir}/libatomic.a'
+        - '%{multiarch_libdir}/libgfortran.a'
+        - '%{multiarch_libdir}/libgomp.a'
+        - '%{multiarch_libdir}/libitm.a'
+        - '%{multiarch_libdir}/liblsan.a'
+        - '%{multiarch_libdir}/libquadmath.a'
+        - '%{multiarch_libdir}/libssp.a'
+        - '%{multiarch_libdir}/libsupc++.a'
+        - '%{multiarch_libdir}/libtsan.a'
+        - '%{multiarch_libdir}/libubsan.a'
+        - '%{multiarch_libdir}/libstdc++fs.a'
+        - '%{multiarch_libdir}/libssp_nonshared.a'
+
+      # Not actually used, included for completeness
+      static-allowlist:
+        - '%{multiarch_libdir}/libstdc++.a'
+        - '%{indep-libdir}/gcc/**/*.a'

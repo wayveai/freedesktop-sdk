@@ -97,9 +97,10 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
-      static:
-      - '%{libdir}/*.a'
-      - '%{libdir}/**/*.a'
+
+      static-blocklist:
+        (>):
+        - '%{libdir}/**/*.a.syms'
 
 sources:
 - kind: git_tag

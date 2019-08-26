@@ -6,6 +6,6 @@ depends:
 config:
   exclude:
   - devel
-  - static
+  - static-blocklist
   - doc
   include-orphans: True
