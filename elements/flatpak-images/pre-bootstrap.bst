@@ -6,6 +6,7 @@ config:
   - debug
   - docs
   - locale
+  - static-blocklist
 
   metadata:
     Runtime:
