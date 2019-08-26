@@ -17,6 +17,11 @@ variables:
   conf-local: |
     --disable-cache-owner
 
+public:
+  bst:
+    split-rules:
+      (@): include/exclude-systemd.yml
+
 sources:
 - kind: tar
   url: https://download-mirror.savannah.gnu.org/releases/man-db/man-db-2.8.5.tar.xz

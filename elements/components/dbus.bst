@@ -33,6 +33,8 @@ public:
         - '%{libdir}/libdbus-1.so'
         - '%{libdir}/dbus-1.0/include'
         - '%{libdir}/dbus-1.0/include/**'
+      (@): include/exclude-systemd.yml
+
 
   cpe:
     product: d-bus
