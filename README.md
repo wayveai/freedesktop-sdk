@@ -118,6 +118,12 @@ the Flatpak runtimes defined in the `elements/` folder.
 The `plugins/` directory contains our custom Buildstream
 [plugins](https://buildstream.gitlab.io/buildstream/pluginindex.html#plugins)
 
+## Extending the runtime
+Freedesktop SDK aims to be an agnostic, minimal runtime, so we ship a small subset of dependencies.
+
+However, if you would like to use Freedesktop SDK for your own use case, we do support users "extending"
+the runtime. There are multiple ways to do this, we provide many ways to consume the runtime, such as ostree checkouts, Docker(OCI) container images and tarballs. Along side this as we use BuildStream to build the runtime, we also support the concept of "junctioning" the project, which is documented in this [guide](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/Using%20freedesktop-sdk#buildstream-projects).
+
 
 ## Contributing
 
