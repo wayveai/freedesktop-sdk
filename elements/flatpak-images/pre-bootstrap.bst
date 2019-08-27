@@ -7,6 +7,7 @@ config:
   - docs
   - locale
   - static-blocklist
+  - vm-only
 
   metadata:
     Runtime:
