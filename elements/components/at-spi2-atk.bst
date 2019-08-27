@@ -9,6 +9,13 @@ depends:
 - filename: components/libxml2.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - |
+      # It contains useless at-spi2-atk.desktop file
+      rm -rf "%{install-root}%{libdir}/gnome-settings-daemon-3.0"
+
 public:
   bst:
     split-rules:

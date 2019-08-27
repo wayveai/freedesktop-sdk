@@ -38,6 +38,8 @@ public:
         - '%{libdir}/libgobject-2.0.so'
         - '%{libdir}/libgio-2.0.so'
         - '%{libdir}/libgthread-2.0.so'
+        - '%{libdir}/glib-2.0/include'
+        - '%{libdir}/glib-2.0/include/**'
 
     integration-commands:
     - |

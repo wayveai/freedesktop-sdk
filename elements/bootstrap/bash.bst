@@ -48,6 +48,13 @@ config:
       mv "%{install-root}%{includedir}/bash/signames.h" "%{install-root}%{includedir}/%{gcc_triplet}/bash/"
 
 public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/bash/loadables.h'
+        - '%{libdir}/bash/Makefile.inc'
+
   cpe:
     vendor: 'gnu'
 

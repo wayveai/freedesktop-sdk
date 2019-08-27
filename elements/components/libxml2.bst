@@ -25,6 +25,7 @@ public:
       devel:
         (>):
         - '%{libdir}/libxml2.so'
+        - '%{libdir}/xml2Conf.sh'
 
 sources:
 - kind: git_tag

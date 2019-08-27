@@ -20,6 +20,8 @@ public:
         (>):
         - '%{libdir}/libxslt.so'
         - '%{libdir}/libexslt.so'
+        - '%{libdir}/xsltConf.sh'
+
   cpe:
     patches:
     - CVE-2019-11068
