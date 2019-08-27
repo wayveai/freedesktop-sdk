@@ -112,6 +112,7 @@ public:
         - '%{libdir}/gcc'
         - '%{libdir}/gcc/**'
         - '%{multiarch_libdir}/lib*.a'
+        - '%{multiarch_libdir}/lib*_preinit.o'
         - '%{multiarch_libdir}/liblsan.so'
         - '%{multiarch_libdir}/libstdc++.so'
         - '%{multiarch_libdir}/libgomp.so'
