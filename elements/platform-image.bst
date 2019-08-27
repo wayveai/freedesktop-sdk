@@ -10,6 +10,7 @@ config:
   - devel
   - extra
   - static
+  - vm-only
 
 public:
   bst:
