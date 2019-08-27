@@ -132,6 +132,9 @@ public:
         - '%{libdir}/libavfilter.so'
         - '%{libdir}/libavformat.so'
         - '%{libdir}/libswresample.so'
+        - '%{datadir}/ffmpeg/examples'
+        - '%{datadir}/ffmpeg/examples/**'
+
   cpe:
     version: '4.2'
 
