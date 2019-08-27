@@ -4,7 +4,6 @@ config:
   exclude:
   - devel
   - extra
-  - static
   - vm-only
 
 depends:

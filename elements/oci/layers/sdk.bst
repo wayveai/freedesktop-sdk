@@ -9,5 +9,5 @@ config:
   - debug
   - docs
   - extra
-  - static
+  - static-blocklist
   - vm-only

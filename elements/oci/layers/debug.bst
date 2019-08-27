@@ -8,5 +8,5 @@ config:
   exclude:
   - docs
   - extra
-  - static
+  - static-blocklist
   - vm-only

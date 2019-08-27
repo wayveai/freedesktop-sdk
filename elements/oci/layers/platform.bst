@@ -10,5 +10,4 @@ config:
   - devel
   - docs
   - extra
-  - static
   - vm-only
