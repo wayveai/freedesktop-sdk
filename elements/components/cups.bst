@@ -32,6 +32,8 @@ public:
         (>):
         - '%{bindir}/cups-config'
         - '%{libdir}/libcups.so'
+        - '%{datadir}/cups'
+        - '%{datadir}/cups/**'
 
 sources:
 - kind: git_tag
