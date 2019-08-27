@@ -15,7 +15,6 @@ devel:
   - "%{libdir}/cmake/**"
   - "%{prefix}/lib/*.a"
   - "%{libdir}/*.a"
-  - "%{libdir}/*.spec"
 
 debug:
   - "%{debugdir}/**"

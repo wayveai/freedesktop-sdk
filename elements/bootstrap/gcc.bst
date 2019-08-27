@@ -128,6 +128,7 @@ public:
         - '%{multiarch_libdir}/libgfortran.so'
         - '%{multiarch_libdir}/libcc1.so'
         - '%{multiarch_libdir}/libgcc_s.so'
+        - '%{multiarch_libdir}/lib*.spec'
 
       static-blocklist:
         (=):
