@@ -39,8 +39,14 @@ public:
         - '%{libdir}/libgettextpo.so'
         - '%{libdir}/libasprintf.so'
         - '%{libdir}/libtextstyle.so'
-        - '%{datadir}/gettext*'
-        - '%{datadir}/gettext*/*'
+        - '%{libdir}/preloadable_libintl.so'
+        - '%{datadir}/gettext/projects'
+        - '%{datadir}/gettext/projects/**'
+        - '%{datadir}/gettext/archive.dir.tar.bz2'
+        - '%{datadir}/gettext/config.rpath'
+        - '%{datadir}/gettext/gettext.h'
+        - '%{datadir}/gettext/javaversion.class'
+        - '%{datadir}/gettext/msgunfmt.tcl'
 
 sources:
 - kind: tar

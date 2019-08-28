@@ -13,13 +13,21 @@ depends:
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 
+variables:
+  conf-local: >-
+    -Dgtk_doc=true
+
 public:
   bst:
     split-rules:
       devel:
         (>):
         - '%{libdir}/gobject-introspection/giscanner'
-        - '%{datadir}/gobject-introspection/giscanner'
+        - '%{libdir}/gobject-introspection/giscanner/**'
+        - '%{datadir}/gir-1.0'
+        - '%{datadir}/gir-1.0/**'
+        - '%{datadir}/gobject-introspection-1.0'
+        - '%{datadir}/gobject-introspection-1.0/**'
         - '%{bindir}/g-ir-*'
         - '%{libdir}/libgirepository-1.0.so'
 

@@ -26,3 +26,10 @@ find "$1" -type f -name "*.pc"
 # an element incorrectly modifies its split-rules (e.g !502)
 
 find "${1}/usr/include"
+find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.h"
+
+# This scans for miscellaneous development files spread all over the runtime
+
+find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.o"
+find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.c"
+find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.spec"
