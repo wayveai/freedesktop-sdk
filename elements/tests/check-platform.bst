@@ -37,7 +37,6 @@ config:
   - components/ninja.bst
   - components/perl.bst
   - components/perl-xml-parser.bst
-  - components/openssh.bst
   - components/patch.bst
   - components/pkg-config.bst
   - components/ruby.bst

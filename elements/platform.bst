@@ -151,6 +151,7 @@ depends:
 - filename: components/mythes.bst
 - filename: components/openal.bst
 - filename: components/opencl.bst
+- filename: components/openssh.bst
 - filename: components/orc.bst
 - filename: components/os-release.bst
 - filename: components/pango.bst
