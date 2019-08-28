@@ -57,7 +57,7 @@ bootstrap:
 
 check-abi:
 	REFERENCE=$$(git merge-base $(RUNTIME_VERSION) HEAD) && \
-	./utils/check-abi --bst-opts="${ARCH_OPTS}" --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
+	./utils/buildstream-abi-checker/check-abi --bst-opts="${ARCH_OPTS}" --suppressions=utils/abidiff-suppressions.ini --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
 	$(BST) build flatpak-release.bst public-stacks/flatpak-publish-tools.bst
