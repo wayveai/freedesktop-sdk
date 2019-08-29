@@ -20,6 +20,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libproxy.so'
+        - '%{datadir}/cmake'
+        - '%{datadir}/cmake/**'
 
 sources:
 - kind: git_tag
