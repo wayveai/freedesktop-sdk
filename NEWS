@@ -1,5 +1,67 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.5:
+    * nss: update to 3.46.0
+    * nspr: update to 4.22
+    * sdl2 and python3: Add dummy headers to redirect to arch-dependent ones
+    * ruby: update to 2.6.4
+    * cups: update to 2.3.0
+    * Stop publishing native i686 flatpak runtimes
+    * xorg-server.bst: Fix compilation with armv7
+    * Remove cmake files from Platform
+    * nano: update to 4.4
+    * meson: update to 0.51.2
+    * libvdpau: update to 1.3 and use meson
+    * glibc: update to 2.30-2
+    * Add openssl and openssh to the Platform
+    * Fix xserver compilation on armv7
+    * abi: Use the external ABI checker
+    * General cleanup on the flatpak Platform
+    * Document how to consume/extend the runtime
+    * Remove static libraries when image created
+    * Meson: Pass -Dauto_features=enabled by default
+    * llvm: remove versioning on bst files
+    * mesa: update to 19.1.5
+    * shadow: update to 4.7
+    * ibus: update to 1.5.21
+    * ostree: update to 2019.3
+    * rust: update to 1.37
+    * Fix passing build options on several components
+    * Fix bytecode for setuptools and pip
+    * Fixes to several cmake build files
+    * Add an ffmpeg full codecs extension (#599)
+    * Add Intel Media driver in vaapi-intel extension
+    * Add C.UTF-8 locale
+    * Cleanup top-level elements directory
+    * Add portal interface descriptions to SDK
+    * binutils: fix multiple CVE
+    * Refactor how cflags and ldflags are declared
+    * cups: update to 2.2.12
+    * elfutils: update to 0.177
+    * librsvg: update to 2.44.14
+    * bash: update to 5.0 patch 9
+    * ccache: update to 3.7.3
+    * harfbuzz: update to 2.6.1
+    * pango: update to 1.44.5
+    * python3-setuptools: update to 41.2.0
+    * Update mesa ACO
+    * fontconfig: Add forward support for 2.14 hashes
+    * git: Bump to v2.23
+    * python3-pip: bump to 19.2.3
+    * Make vainfo as standalone app
+    * gettext: Move tools to devel
+    * cmake elements: Set libdir path properly
+    * gcc: Update to 9.2
+    * Simplify project.conf with includes
+    * wavpack: fix multiple CVE
+    * lcms: fix CVE-2018-16435
+    * libtiff: fix multiple CVE
+    * ncurses: mark CVE-2018-19211 as fixed
+    * unzip: fix CVE-2019-13232
+    * libxslt: fix multiple CVE
+    * sndfile: fix CVE-2019-3832
+    * patch: fix multiple CVE
+
 freedesktop-sdk-19.08beta.4:
     * gettext: Add patch to fix build issues downstream
     * cmake.bst: update to 3.15.2
