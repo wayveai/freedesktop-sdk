@@ -66,7 +66,7 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{bindir}/*'
+        - '%{bindir}/c_rehash'
         - '%{libdir}/libssl.so'
         - '%{libdir}/libcrypto.so'
         - '%{prefix}/ssl/misc/*'

@@ -29,7 +29,6 @@ depends:
 - filename: components/ninja.bst
 - filename: components/perl.bst
 - filename: components/perl-xml-parser.bst
-- filename: components/openssh.bst
 - filename: components/patch.bst
 - filename: components/pkg-config.bst
 - filename: components/ruby.bst
