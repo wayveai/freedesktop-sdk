@@ -33,3 +33,4 @@ find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/ru
 find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.o"
 find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.c"
 find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.spec"
+find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.cmake"
