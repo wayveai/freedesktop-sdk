@@ -54,6 +54,23 @@ config:
   - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
+  - |
+    cat <<EOF >"%{install-root}%{includedir}/python3.7m/pyconfig.h"
+    #if defined(__x86_64__)
+    # include "x86_64-linux-gnu/python3.7m/pyconfig.h"
+    #elif defined(__i386__)
+    # include "i386-linux-gnu/python3.7m/pyconfig.h"
+    #elif defined(__aarch64__)
+    # include "aarch64-linux-gnu/python3.7m/pyconfig.h"
+    #elif defined(__arm__)
+    # include "arm-linux-gnueabihf/python3.7m/pyconfig.h"
+    #elif defined(__powerpc64__)
+    # include "powerpc64le-linux-gnu/python3.7m/pyconfig.h"
+    #else
+    # error "Unknown cross-compiler"
+    #endif
+    EOF
+
 public:
   bst:
     split-rules:
