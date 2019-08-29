@@ -20,7 +20,7 @@ config:
     (>):
     - |
       install -d -m755 "%{install-root}%{libdir}"
-      for pattern in '*.so' '*.so.*' 'pkgconfig'; do
+      for pattern in '*.so' '*.so.*' 'pkgconfig' 'graphite2'; do
         mv "%{install-root}%{prefix}/lib"/${pattern} "%{install-root}%{libdir}"
       done
       rm "%{install-root}%{prefix}/lib"/*.la
@@ -31,9 +31,12 @@ public:
       devel:
         (>):
         - '%{libdir}/libgraphite2.so'
+        - '%{libdir}/graphite2/*.cmake'
 
 sources:
 - kind: git_tag
   url: github:silnrsi/graphite
   track: master
   ref: 1.3.13-0-gb45f9b271214b95f3b42e5c9863eae4b0bfb7fd7
+- kind: patch
+  path: patches/graphite2/graphite2-1.2.0-cmakepath.patch
