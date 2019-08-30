@@ -31,10 +31,13 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/fcitx4-config'
         - '%{libdir}/libfcitx-core.so'
         - '%{libdir}/libfcitx-gclient.so'
         - '%{libdir}/libfcitx-config.so'
         - '%{libdir}/libfcitx-utils.so'
+        - '%{datadir}/cmake'
+        - '%{datadir}/cmake/**'
 
 sources:
 - kind: git_tag
