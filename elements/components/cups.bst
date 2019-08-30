@@ -32,15 +32,14 @@ public:
         (>):
         - '%{bindir}/cups-config'
         - '%{libdir}/libcups.so'
+        - '%{libdir}/libcupsimage.so'
         - '%{datadir}/cups'
         - '%{datadir}/cups/**'
 
 sources:
 - kind: git_tag
   url: github:apple/cups.git
-  track: branch-2.2
-  track-extra:
-  - v2.2.12
-  ref: v2.2.12-0-gc8cb6400e317633f66cdc87884915d54710b53a0
+  track: master
+  ref: v2.3.0-0-gee6be9cd7e863abf36b9b131fc379d967414aa2e
 - kind: patch
   path: patches/cups/cups-disable-werror.patch
