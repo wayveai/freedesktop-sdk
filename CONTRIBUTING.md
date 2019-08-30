@@ -46,9 +46,11 @@ There are also many GUI git interfaces, such as integration with IDEs and github
 [//]: # (If someone knows a better way to do this please tell me)
 Make sure you're within the `freedesktop-sdk` directory and use the command
 ```
-git checkout 18.08
+git checkout master
 ```
-to make sure you're branching from the current release branch (we develop and bug fix on this branch too). Now run
+to make sure you're branching from the current development branch. If you are
+targeting a specific release of freedesktop-sdk then you simply need to replace
+master with the relevant release branch, for example `18.08`. Now run
 ```
 git checkout -b my-branch-name
 ```
@@ -131,38 +133,50 @@ blocking the MR or if any assistance is needed, if there is no response or it is
 longer required, then the MR will be *closed*.
 
 ## Testing locally
-If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too. The Makefile can be used to produce freedesktop-sdk as both a flatpak repo and tarballs, using the commands outlined in the table below.
+If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use the latest stable version of BuildStream, so ensure you use this version too (otherwise you may not hit our cache server, and have to build everything from scratch). At time of writing, we use BuildStream 1.2.8. The Makefile can be used to produce freedesktop-sdk as both a flatpak repo and tarballs, using the commands outlined in the table below.
 
 We also use some plugins from the [bst-external](https://gitlab.com/BuildStream/bst-external) repository. To install these run the following commands:
 ```
 git clone https://gitlab.com/BuildStream/bst-external
 pip3 install --user -e ./bst-external
 ```
-
-Additionally Makefile uses some utilities from [flatpak](https://flatpak.org/setup) and flatpak-builder, and will be required for testing fully.
-
-We currently use version 0.9.0 of bst-external, but you can reasonably assume that we are using the latest commit of master in this repository.
+Again, we use the latest stable version of bst-external, which is usually the
+latest release.
 
 After making your changes you can use the Makefile to test. Ensure you are in the root `freedesktop-sdk/` directory, where the Makefile is located. You can use the Makefile to:
 
-| Action                                 | Command                |
-| -------------------------------------- | ---------------------- |
-| Build the Project                      | `make build`           |
-| Export the runtimes to a repo          | `make export`          |
-| Check no dev files in Platform         | `make check-dev-files` |
-| Test basic applications                | `make test-apps`       |
-| Remove runtime repo (from make export) | `make clean-repo`      |
-| Remove checked out runtimes            | `make clean-runtime`   |
-| Both the above at once                 | `make clean`           |
-| Build tarballs of the Project          | `make build-tar`       |
-| Export tarballs of the Project         | `make export-tar`      |
+The Makefile provides several targets that can be used to test or distribute
+freedesktop-sdk. The table below outlines them and their uses.
+
+| Action                                            | Command                  |
+| ------------------------------------------------- | ------------------------ |
+| Build the Project                                 | `make build`             |
+| Build tarballs of freedesktop-sdk                 | `make build-tar`         |
+| Build VM images of freedesktop-sdk                | `make build-vm`          |
+| Build and checkout the bootstrap                  | `make bootstrap`         |
+| Build and checkout as a flatpak repo              | `make export`            |
+| Build and export snap images                      | `make export-snap`       |
+| Build and export tarballs of freedesktop-sdk      | `make export-tar`        |
+| Build and export OCI images of freedeskto-sdk     | `make export-oci`        |
+| Build and export docker images of freedesktop-sdk | `make export-docker`     |
+| Build and run VM images of freedesktop-sdk        | `make run-vm`            |
+| Build and export manifests for platform and sdk   | `make manifest`          |
+| Convert manifests to human-readable format        | `make markdown-manifest` |
+| Check for dev files in the Platform               | `make check-dev-files`   |
+| Check for components using rpath                  | `make check-rpath`       |
+| Test some basic apps                              | `make test-apps`         |
+| Test the codec extensions behave as intended      | `make test-codecs`       |
+| Track the mesa-aco extension                      | `make track-mesa-aco`    |
 
 **NOTE:** You must run `make export` *before* running `make test-apps`
 
-There are additionally several variables a user can define to customise the build:
+There are additionally several variables a user can define to customise the
+build, below is a selection of the more useful ones, as most are just building
+up from the other variables or used in CI:
 
 | Variable        | Effect                                                                          | Default Value |
 | --------------- | ------------------------------------------------------------------------------- | ------------- |
 | ARCH            | Export as flatpak with architecture ARCH                                        | system arch   |
+| BRANCH          | Name of the flatpak branch                                                      | git branch    |
 | REPO            | The local flatpak repo to export to                                             | "repo/"       |
 | CHECKOUT_ROOT   | The location to checkout runtimes from bst checkout                             | "runtimes/"   |
