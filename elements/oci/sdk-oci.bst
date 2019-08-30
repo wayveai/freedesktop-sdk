@@ -22,5 +22,5 @@ config:
       element: oci/platform-oci.bst
     layer:
     - oci/layers/sdk.bst
-    - linker-debuginfo.bst
+    - integration/linker-debuginfo.bst
     comment: "Import sdk layer from Freedesktop SDK"
