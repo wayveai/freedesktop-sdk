@@ -40,13 +40,31 @@ config:
 
     - |
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/SDL2"
-      mv "%{install-root}%{includedir}/SDL2/SDL_config.h" "%{install-root}%{includedir}/%{gcc_triplet}/SDL2/"
-      sed -i 's,^\(Cflags:.*\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{libdir}/pkgconfig/sdl2.pc"
-      sed -i 's,\(-I%{includedir}/SDL2\),\1 -I%{includedir}/%{gcc_triplet}/SDL2,' "%{install-root}%{bindir}/sdl2-config"
+      mv "%{install-root}%{includedir}/SDL2/SDL_config.h" "%{install-root}%{includedir}/%{gcc_triplet}/SDL2/SDL_config.h"
+      sed -i 's,\(# *include *\)"\(SDL_[^"]*\)",\1<SDL2/\2>,' "%{install-root}%{includedir}/%{gcc_triplet}/SDL2/SDL_config.h"
+      sed -i 's,^\(Cflags:.*\),-I%{includedir}/%{gcc_triplet}/SDL2 \1,' "%{install-root}%{libdir}/pkgconfig/sdl2.pc"
+      sed -i 's,\(-I%{includedir}/SDL2\),-I%{includedir}/%{gcc_triplet}/SDL2 \1,' "%{install-root}%{bindir}/sdl2-config"
 
     - |
       cat >>%{install-root}%{libdir}/cmake/SDL2/sdl2-config.cmake <<EOF
-      list(APPEND SDL2_INCLUDE_DIRS "%{includedir}/%{gcc_triplet}/SDL2")
+      list(INSERT SDL2_INCLUDE_DIRS 0 "%{includedir}/%{gcc_triplet}/SDL2")
+      EOF
+
+    - |
+      cat <<EOF >"%{install-root}%{includedir}/SDL2/SDL_config.h"
+      #if defined(__x86_64__)
+      # include "x86_64-linux-gnu/SDL2/SDL_config.h"
+      #elif defined(__i386__)
+      # include "i386-linux-gnu/SDL2/SDL_config.h"
+      #elif defined(__aarch64__)
+      # include "aarch64-linux-gnu/SDL2/SDL_config.h"
+      #elif defined(__arm__)
+      # include "arm-linux-gnueabihf/SDL2/SDL_config.h"
+      #elif defined(__powerpc64__)
+      # include "powerpc64le-linux-gnu/SDL2/SDL_config.h"
+      #else
+      # error "Unknown cross-compiler"
+      #endif
       EOF
 
 public:
