@@ -17,9 +17,9 @@ depends:
   type: build
 - filename: components/man-db-generate.bst
   type: build
-- filename: split-locales.bst
+- filename: integration/split-locales.bst
   type: build
-- filename: split-docs.bst
+- filename: integration/split-docs.bst
   type: build
 - filename: components/tzdata.bst
   type: build
