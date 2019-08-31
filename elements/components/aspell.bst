@@ -17,6 +17,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/pspell-config'
         - '%{libdir}/libaspell.so'
         - '%{libdir}/libpspell.so'
 

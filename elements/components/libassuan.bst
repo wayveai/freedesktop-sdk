@@ -22,6 +22,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/libassuan-config'
         - '%{libdir}/libassuan.so'
 
 sources:

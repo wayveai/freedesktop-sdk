@@ -79,6 +79,8 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/ncurses6-config'
+        - '%{bindir}/ncursesw6-config'
         - '%{libdir}/libtinfo.so'
         - '%{libdir}/libtinfow.so'
         - '%{libdir}/libformw.so'

@@ -13,6 +13,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/pcre-config'
         - '%{libdir}/libpcre.so'
         - '%{libdir}/libpcrecpp.so'
         - '%{libdir}/libpcreposix.so'
