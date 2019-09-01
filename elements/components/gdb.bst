@@ -54,5 +54,8 @@ sources:
   url: sourceware:binutils-gdb.git
   track: gdb-8.3-branch
   ref: gdb-8.3-release-0-g9b407598397ef8429cbf866a02745768082e49a6
+# Both patches are included in upstream 8.4. Remove when upgrading.
 - kind: patch
   path: patches/gdb/gdb-do-not-emit-escape-sequences-to-log-file.patch
+- kind: patch
+  path: patches/gdb/gdb-fix-crash-in-cp_print_value_fields.patch
