@@ -13,6 +13,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/croco-0.6-config'
         - '%{libdir}/libcroco-0.6.so'
 
 sources:

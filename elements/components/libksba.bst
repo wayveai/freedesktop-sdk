@@ -24,6 +24,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/ksba-config'
         - '%{libdir}/libksba.so'
 
 sources:

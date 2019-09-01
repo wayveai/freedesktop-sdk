@@ -18,6 +18,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/xslt-config'
         - '%{libdir}/libxslt.so'
         - '%{libdir}/libexslt.so'
         - '%{libdir}/xsltConf.sh'

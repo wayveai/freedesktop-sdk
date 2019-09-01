@@ -21,6 +21,7 @@ done
 # element installs them in the wrong directory (e.g !488)
 
 find "$1" -type f -name "*.pc"
+find "${1}/usr/bin" -type f -name "*-config"
 
 # This scans for C/C++ library headers left in the platform. This happens when
 # an element incorrectly modifies its split-rules (e.g !502)

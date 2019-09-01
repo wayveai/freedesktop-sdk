@@ -17,6 +17,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/icu-config'
         - '%{libdir}/libicudata.so'
         - '%{libdir}/libicui18n.so'
         - '%{libdir}/libicuio.so'

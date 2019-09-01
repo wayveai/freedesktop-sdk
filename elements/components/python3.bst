@@ -77,6 +77,9 @@ public:
       devel:
         (>):
         - '%{bindir}/2to3*'
+        - '%{bindir}/python3-config'
+        - '%{bindir}/python3.7-config'
+        - '%{bindir}/python3.7m-config'
         - '%{libdir}/libpython3.7m.so'
         - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}'
         - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'

@@ -10,6 +10,8 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/libpng-config'
+        - '%{bindir}/libpng16-config'
         - '%{libdir}/libpng.so'
         - '%{libdir}/libpng16.so'
 

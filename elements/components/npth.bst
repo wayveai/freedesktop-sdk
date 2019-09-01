@@ -14,6 +14,7 @@ public:
       devel:
         (>):
         - '%{prefix}/include'
+        - '%{bindir}/npth-config'
         - '%{libdir}/libnpth.so'
 
 sources:

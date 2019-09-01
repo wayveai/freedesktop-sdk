@@ -29,6 +29,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/curl-config'
         - '%{libdir}/libcurl.so'
 
   cpe:

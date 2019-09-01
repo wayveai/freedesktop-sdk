@@ -19,6 +19,8 @@ public:
       devel:
         (>):
         - '%{prefix}/include'
+        - '%{bindir}/gpg-error-config'
+        - '%{bindir}/gpgrt-config'
         - '%{libdir}/libgpg-error.so'
 
 sources:

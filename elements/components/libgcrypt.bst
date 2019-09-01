@@ -18,6 +18,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/libgcrypt-config'
         - '%{libdir}/libgcrypt.so'
 
 sources:

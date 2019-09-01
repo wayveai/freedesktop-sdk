@@ -24,6 +24,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/xml2-config'
         - '%{libdir}/libxml2.so'
         - '%{libdir}/xml2Conf.sh'
 

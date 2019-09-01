@@ -27,6 +27,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/gpgme-config'
         - '%{libdir}/libgpgme.so'
         - '%{libdir}/libgpgmepp.so'
 
