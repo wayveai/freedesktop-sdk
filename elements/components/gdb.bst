@@ -54,3 +54,5 @@ sources:
   url: sourceware:binutils-gdb.git
   track: gdb-8.3-branch
   ref: gdb-8.3-release-0-g9b407598397ef8429cbf866a02745768082e49a6
+- kind: patch
+  path: patches/gdb/gdb-do-not-emit-escape-sequences-to-log-file.patch
