@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.35:
+    * fontconfig: Add forward support for 2.14 hashes 
+    * binutils: fix multiple CVE
+    * lcms.bst: fix CVE-2018-16435
+    * libxslt: fix multiple CVE
+    * wavpack: fix multiple CVE
+    * libtiff: fix multiple CVE
+    * unzip: fix CVE-2019-13232
+    * sndfile: fix CVE-2019-3832
+    * patch: fix multiple CVE
+    * mesa: update to 19.1.5
+    * vala: update to 0.44.6
+
 freedesktop-sdk-18.08.34:
     * gstreamer-plugins-bad: apply upstream patches for AAC
     * mesa: provide glesv2 pkg-config that was accidentally removed
