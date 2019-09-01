@@ -34,8 +34,8 @@ config:
       copy-refs:
       - src: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}/%{flatpak_arch}/%{branch}
         dest: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}/aarch64/%{branch}
-      - src: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}/%{flatpak_arch}/%{branch}
-        dest: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}/aarch64/%{branch}
+      - src: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}.Debug/%{flatpak_arch}/%{branch}
+        dest: runtime/org.freedesktop.Platform.Compat.%{flatpak_arch}.Debug/aarch64/%{branch}
       - src: runtime/org.freedesktop.Platform.GL.default/%{flatpak_arch}/%{branch}
         dest: runtime/org.freedesktop.Platform.GL32.default/aarch64/%{branch}
       - src: runtime/org.freedesktop.Sdk.Compat.%{flatpak_arch}/%{flatpak_arch}/%{branch}
