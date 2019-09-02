@@ -23,7 +23,7 @@ depends:
   type: build
 
 (@):
-- elements/components/mesa.yml
+- elements/include/mesa.yml
 
 environment:
   PKG_CONFIG_PATH: ":%{libdir}/GL/default/lib/pkgconfig"
