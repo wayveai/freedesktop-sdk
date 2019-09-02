@@ -28,11 +28,11 @@ config:
 
 sources:
 - kind: git_tag
-  track: release/8.x
-  exclude:
-  - llvmorg-*-rc*
+  track: release/9.x
+  #exclude:
+  #- llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
+  ref: llvmorg-9.0.0-rc3-0-gbb081fe66dbc9e298d6882ebc414c28ae96844ec
 - kind: patch
   directory: libclc
   path: patches/libclc/libclc-force-configure-to-use-python3.patch
