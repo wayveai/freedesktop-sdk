@@ -69,6 +69,11 @@ config:
       add-ld-path: "."
       autodelete: 'false'
 
+    Extension org.freedesktop.Platform.openh264:
+      directory: '%{lib}/openh264'
+      add-ld-path: extra
+      autodelete: 'false'
+
 depends:
 - filename: platform-image.bst
   type: build
