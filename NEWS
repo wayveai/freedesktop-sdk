@@ -1,5 +1,13 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.6:
+    * Add extension point for OpenH264 (#815)
+    * llvm: update to 9
+    * libogg.bst: update to 1.3.4 and use cmake
+    * libgcrypt.bst: update to 1.8.5
+    * bash.bst: update to 5.0-11
+    * Remove pkg-configs from Platform
+
 freedesktop-sdk-19.08beta.5:
     * nss: update to 3.46.0
     * nspr: update to 4.22
