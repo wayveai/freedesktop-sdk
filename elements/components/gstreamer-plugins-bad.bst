@@ -26,6 +26,7 @@ depends:
 - filename: components/libwebp.bst
 - filename: components/sndfile.bst
 - filename: components/webrtc-audio-processing.bst
+- filename: components/noopenh264.bst
 
 
 variables:
@@ -50,6 +51,7 @@ variables:
     -Dvulkan=enabled
     -Dwayland=enabled
     -Dwebp=enabled
+    -Dopenh264=enabled
 
 public:
   bst:
@@ -86,3 +88,5 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-wayland-Define-libdrm_dep-in-meson.build.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/gst-plugins-bad-fix-openh264-build.patch
