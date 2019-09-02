@@ -15,3 +15,5 @@ config:
 depends:
 - filename: platform-image.bst
   type: build
+- filename: integration/compat-gl-dir.bst
+  type: build
