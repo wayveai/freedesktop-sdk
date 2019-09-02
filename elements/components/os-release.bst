@@ -31,13 +31,6 @@ config:
     appstream-compose --basename=org.freedesktop.Platform --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Platform
     appstream-compose --basename=org.freedesktop.Sdk --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Sdk
 
-  - |
-    mkdir -p "%{install-root}%{datadir}/runtime/share/themes"
-    mkdir -p "%{install-root}%{datadir}/runtime/share/icons"
-
-  - |
-    mkdir -p "%{install-root}%{libdir}/GL"
-
 sources:
 - kind: local
   path: files/os-release
