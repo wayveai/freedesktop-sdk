@@ -15,12 +15,16 @@ config:
     - |
       mv "%{install-root}%{extlibdir}/pkgconfig/" "%{install-root}%{libdir}"
 
+    - |
+      cp -P %{install-root}%{extlibdir}/libopenh264.so* %{install-root}%{libdir}
+
 public:
   bst:
     split-rules:
       devel:
         (>):
         - '%{extlibdir}/libopenh264.so'
+        - '%{libdir}/libopenh264.so'
 
 sources:
 - kind: git_tag
