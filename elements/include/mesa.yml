@@ -1,5 +1,5 @@
 # This is for components/mesa-headers.bst. For the drivers,
-# see elements/extensions/mesa/mesa-source.yml
+# see elements/extensions/mesa/mesa.bst
 
 variables:
   version: 19.1.5

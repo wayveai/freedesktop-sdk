@@ -7,7 +7,7 @@ depends:
   type: runtime
 
 (@):
-  - elements/components/mesa.yml
+- elements/include/mesa.yml
 
 variables:
   headers: >-
