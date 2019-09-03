@@ -1,5 +1,12 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08beta.7:
+    * Fix H264 support (#858)
+    * Re-add missing libLLVM-9.so to .Platform
+    * Update mesa ACO extension
+    * ffmpeg: Add support fot mp4 container (#856)
+    * Fix gdb crashes (#842, #853)
+
 freedesktop-sdk-19.08beta.6:
     * Add extension point for OpenH264 (#815)
     * llvm: update to 9
