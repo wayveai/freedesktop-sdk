@@ -7,7 +7,7 @@ depends:
   type: build
 - filename: components/glib.bst
 - filename: components/util-linux.bst
-- filename: components/systemd.bst
+- filename: components/systemd-libs.bst
 - filename: components/gtk-doc.bst
   type: build
 
