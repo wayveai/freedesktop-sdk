@@ -35,7 +35,11 @@ environment:
 sources:
 - kind: git_tag
   url: gnome:librsvg.git
-  track: librsvg-2.44
+  track: master
+  track-extra:
+  - librsvg-2.44
+  exclude:
+  - '*.*[13579].*'
   ref: 2.44.15-0-gbc786f6fbbe7b63a24e7eb499efb2f23c47ab5c2
 - kind: cargo
   ref:
