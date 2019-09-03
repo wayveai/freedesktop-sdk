@@ -20,7 +20,7 @@ public:
         - '%{debugdir}%{libdir}/LLVMgold.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-*.so'
+        - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
