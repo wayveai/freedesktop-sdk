@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08:
+    * Infrastructure changes for final release
+
 freedesktop-sdk-19.08beta.9:
     * Fix gallium vaapi driver path (#865)
     * Remove gstreamer-vaapi (See discussion at #864)
