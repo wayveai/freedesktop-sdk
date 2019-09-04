@@ -1,6 +1,12 @@
 Freedesktop-SDK
 
 freedesktop-sdk-19.08beta.7:
+    * fontconfig: update to 2.13.92
+    * Set all the project includes/ to a private area
+    * pango: update to 1.44.6
+    * librsvg: update to 2.44.15
+
+freedesktop-sdk-19.08beta.7:
     * Fix H264 support (#858)
     * Re-add missing libLLVM-9.so to .Platform
     * Update mesa ACO extension
