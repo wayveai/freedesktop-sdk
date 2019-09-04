@@ -20,7 +20,7 @@ variables:
 public:
   bst:
     split-rules:
-      (@): include/exclude-systemd.yml
+      (@): include/_private/exclude-systemd.yml
 
 sources:
 - kind: tar
