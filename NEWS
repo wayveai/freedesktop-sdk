@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.36:
+    * fontconfig: Revert add forward support for 2.14 hashes
+
 freedesktop-sdk-18.08.35:
     * fontconfig: Add forward support for 2.14 hashes 
     * binutils: fix multiple CVE
