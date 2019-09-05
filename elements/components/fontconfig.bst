@@ -43,7 +43,3 @@ sources:
   ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
 - kind: local
   path: files/fontconfig-flatpak.conf
-- kind: patch
-  path: patches/fontconfig/01-rework-flatpak-support.patch
-- kind: patch
-  path: patches/fontconfig/02-fix-endianness.patch
