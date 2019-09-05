@@ -88,7 +88,7 @@ Currently we provide the following runtimes:
 Additionally we provide the following extensions to our platform:
 * org.freedesktop.Platform.Locale
 * org.freedesktop.Platform.VAAPI.Intel{,.i386} (Intel only)
-* org.freedesktop.Platform.ffmpeg-{html5,full}
+* org.freedesktop.Platform.ffmpeg-full
 * org.freedesktop.Platform.Compat.{architecture}
 * org.freedesktop.Platform.Compat.{architecture}.debug
 * org.freedesktop.Platform.GL{,32}.default
@@ -107,6 +107,23 @@ We also provide following flatpak applications useful for testing GPU:
 * org.freedesktop.GlxInfo.Debug
 * org.freedesktop.VaInfo
 * org.freedesktop.VulkanInfo
+
+## HTML5 Codecs
+
+For the 18.08 release cycle we provided a runtime extension containing the
+codecs required to play H.264 encoded video, however things are changing for the
+19.08 release. The `ffmpeg-html5` extension is now deprecated, and cannot be
+relied upon, so it's not longer safe to assume a user has H.264 support.
+
+We intend to provide an `openh264` extension, which will provide a royalty free
+H.264 codec. However, this extension will only be available for flatpak version
+1.4.2 or later. This is (at present) packaged in very few distros.
+
+The main takeaway is this: **if you need to use H.264 codecs, include the
+ffmpeg-full extension with your app**.
+
+For an example of this, see `tests/test.codecs.ffmpeg-full.json`, which is a
+flatpak manifest for an app using the full codecs.
 
 ## Structure
 

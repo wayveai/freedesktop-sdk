@@ -64,11 +64,6 @@ config:
       add-ld-path: lib
       download-if: have-intel-gpu
 
-    Extension org.freedesktop.Platform.ffmpeg-html5:
-      directory: '%{lib}/ffmpeg'
-      add-ld-path: "."
-      autodelete: 'false'
-
     Extension org.freedesktop.Platform.openh264:
       directory: '%{lib}/openh264'
       add-ld-path: extra

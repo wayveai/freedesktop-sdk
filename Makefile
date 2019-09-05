@@ -199,16 +199,11 @@ test-codecs: $(REPO)
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.ffmpeg-full.json
 
-	# Expect html5 codecs
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.no-exts
-	flatpak run test.codecs.no-exts
-
 	# Expect full codecs
 	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.ffmpeg-full
 	flatpak run test.codecs.ffmpeg-full
 
 	# Expect default codecs
-	flatpak uninstall -y org.freedesktop.Platform.ffmpeg-html5
 	flatpak run test.codecs.no-exts
 
 	flatpak uninstall -y --all
