@@ -14,7 +14,6 @@ depends:
 - filename: flatpak-images/platform-arch-libs-debug.bst
 - filename: flatpak-images/platform-vaapi.bst
 - filename: flatpak-images/platform-ffmpeg-full.bst
-- filename: flatpak-images/platform-ffmpeg-html5.bst
 - filename: flatpak-images/clinfo.bst
 - filename: flatpak-images/glxinfo.bst
 - filename: flatpak-images/glxinfo-debug.bst
