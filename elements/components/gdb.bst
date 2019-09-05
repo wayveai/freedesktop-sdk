@@ -33,13 +33,6 @@ variables:
     --disable-install-libiberty \
     --with-separate-debug-dir="%{debugdir}"
 
-public:
-  bst:
-    split-rules:
-      devel:
-      - '%{libdir}/libstdc++.so.*-gdb.py'
-      - '%{datadir}/gcc-*/python/**'
-
 config:
   install-commands:
     (>):
