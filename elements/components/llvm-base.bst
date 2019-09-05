@@ -73,17 +73,20 @@ public:
       devel:
         (>):
         - '%{debugdir}%{bindir}/**'
+        - '%{debugdir}%{libdir}/LLVMHello.so.debug'
         - '%{debugdir}%{libdir}/LLVMgold.so.debug'
+        - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-*.so'
+        - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
+        - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'
-        - '%{libdir}/libclang-cpp.so'
-        - '%{libdir}/libRemarks.so'
+        - '%{libdir}/BugpointPasses.so'
+        - '%{libdir}/libOptRemarks.so'
         - '%{libdir}/clang'
         - '%{libdir}/clang/**'
         - '%{datadir}/clang'
@@ -101,11 +104,11 @@ public:
 
 sources:
 - kind: git_tag
-  track: release/9.x
-  #exclude:
-  #- llvmorg-*-rc*
+  track: release/8.x
+  exclude:
+  - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-9.0.0-rc3-0-gbb081fe66dbc9e298d6882ebc414c28ae96844ec
+  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
@@ -113,4 +116,4 @@ sources:
 - kind: patch
   path: patches/llvm/llvm-fix-tsan-build.patch
 - kind: patch
-  path: patches/llvm/llvm9-shared-tablegen.patch
+  path: patches/llvm/llvm-shared-tablegen.patch
