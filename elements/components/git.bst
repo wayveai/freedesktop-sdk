@@ -13,6 +13,8 @@ depends:
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
+- filename: components/ca-certificates.bst
+  type: runtime
 
 
 variables:
