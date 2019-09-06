@@ -119,7 +119,6 @@ depends:
 - filename: components/gstreamer-plugins-ugly.bst
 - filename: components/gstreamer.bst
 - filename: components/gstreamer-libav.bst
-- filename: components/gstreamer-vaapi.bst
 - filename: components/gtk3.bst
 - filename: components/harfbuzz.bst
 - filename: components/hicolor-icon-theme.bst
