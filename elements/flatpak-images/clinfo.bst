@@ -5,7 +5,10 @@ variables:
 
 config:
   directory: "%{prefix}"
-  
+  exclude:
+    - debug
+    - devel
+
   metadata:
     Application:
       name: org.freedesktop.ClInfo
