@@ -9,7 +9,8 @@ config:
   exclude:
   - devel
   - extra
-  - static
+  - static-blocklist
+  - static-allowlist
   - vm-only
 
 public:
