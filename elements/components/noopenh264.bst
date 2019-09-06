@@ -18,6 +18,9 @@ config:
     - |
       cp -P %{install-root}%{extlibdir}/libopenh264.so* %{install-root}%{libdir}
 
+    - |
+      rm %{install-root}%{extlibdir}/libopenh264.a
+
 public:
   bst:
     split-rules:
