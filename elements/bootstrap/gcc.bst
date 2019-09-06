@@ -90,6 +90,10 @@ config:
     - |
       rm "%{install-root}%{infodir}/dir"
 
+    - |
+      mkdir -p "%{install-root}%{datadir}/gdb/auto-load%{multiarch_libdir}"
+      mv -f %{install-root}%{multiarch_libdir}/libstdc++.so.*-gdb.py "%{install-root}%{datadir}/gdb/auto-load%{multiarch_libdir}/"
+
 public:
   bst:
     split-rules:
@@ -107,6 +111,10 @@ public:
         - '%{datadir}/info/**'
         - '%{datadir}/locale'
         - '%{datadir}/locale/**'
+        - '%{datadir}/gcc-*/python'
+        - '%{datadir}/gcc-*/python/**'
+        - '%{datadir}/gdb'
+        - '%{datadir}/gdb/**'
         - '%{indep-libdir}/gcc'
         - '%{indep-libdir}/gcc/**'
         - '%{libdir}/gcc'
