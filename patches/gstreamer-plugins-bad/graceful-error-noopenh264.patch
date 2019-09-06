@@ -1,0 +1,16 @@
+diff -ur gstreamer-plugins-bad.old/ext/openh264/gstopenh264dec.cpp gstreamer-plugins-bad/ext/openh264/gstopenh264dec.cpp
+--- gstreamer-plugins-bad.old/ext/openh264/gstopenh264dec.cpp	2019-09-06 15:28:47.700177589 +0200
++++ gstreamer-plugins-bad/ext/openh264/gstopenh264dec.cpp	2019-09-06 15:34:34.724925743 +0200
+@@ -159,7 +159,11 @@
+     WelsDestroyDecoder (openh264dec->decoder);
+     openh264dec->decoder = NULL;
+   }
+-  WelsCreateDecoder (&(openh264dec->decoder));
++
++  if (WelsCreateDecoder (&(openh264dec->decoder)) != 0) {
++    GST_DEBUG_OBJECT (openh264dec, "openh264dec_start, cannot create decoder");
++    return 0;
++  }
+ 
+ #ifndef GST_DISABLE_GST_DEBUG
+   {

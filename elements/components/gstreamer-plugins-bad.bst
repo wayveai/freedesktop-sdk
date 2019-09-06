@@ -90,3 +90,5 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-wayland-Define-libdrm_dep-in-meson.build.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-fix-openh264-build.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
