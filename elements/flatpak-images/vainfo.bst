@@ -1,10 +1,14 @@
 kind: flatpak_image
 
 variables:
+  lib: lib
   prefix: /app
 
 config:
-  directory: "%{prefix}"
+  directory: '%{prefix}'
+  exclude:
+  - debug
+  - devel
 
   metadata:
     Application:
@@ -18,6 +22,11 @@ config:
       sockets: "x11;wayland;"
       devices: "dri;"
 
+    Extension org.freedesktop.VaInfo.Debug:
+      directory: lib/debug
+      autodelete: 'true'
+      no-autodownload: 'true'
+
 depends:
-  - filename: extensions/vainfo/libva-utils.bst
-    type: build
+- filename: extensions/vainfo/libva-utils.bst
+  type: build

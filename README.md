@@ -106,6 +106,7 @@ We also provide following flatpak applications useful for testing GPU:
 * org.freedesktop.GlxInfo
 * org.freedesktop.GlxInfo.Debug
 * org.freedesktop.VaInfo
+* org.freedesktop.VaInfo.Debug
 * org.freedesktop.VulkanInfo
 
 ## HTML5 Codecs

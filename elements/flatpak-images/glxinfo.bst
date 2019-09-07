@@ -8,6 +8,7 @@ config:
   directory: '%{prefix}'
   exclude:
   - debug
+  - devel
 
   metadata:
     Application:
