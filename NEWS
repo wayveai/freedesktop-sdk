@@ -1,6 +1,16 @@
 Freedesktop-SDK
 
-freedesktop-sdk-19.08beta.7:
+freedesktop-sdk-19.08beta.9:
+    * Fix gallium vaapi driver path (#865)
+    * Remove gstreamer-vaapi (See discussion at #864)
+    * Revert LLVM9 upgrade
+    * Gracefully handle failed creation of openh264 decoder (#863)
+    * gcc: fix libcxx python pretty printers location (#861, #590)
+    * Remove ffmpeg-html5 extension: Use ffmpeg-full or the future
+      openh264 extension if you only need H264 support
+    * fontconfig.bst: Use 2.13.1-flatpak-lts version
+
+freedesktop-sdk-19.08beta.8:
     * fontconfig: update to 2.13.92
     * Set all the project includes/ to a private area
     * pango: update to 1.44.6
