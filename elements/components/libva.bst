@@ -12,7 +12,7 @@ depends:
 
 variables:
   meson-local: |
-    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver" \
+    -Ddriverdir="%{libdir}/dri:%{libdir}/dri/intel-vaapi-driver:%{libdir}/GL/lib/dri" \
     -Dwith_glx=no \
     -Dwith_wayland=yes \
     -Dwith_x11=yes
