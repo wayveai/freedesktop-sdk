@@ -52,6 +52,7 @@ config:
     Extension org.freedesktop.Platform.GStreamer:
       directory: lib/extensions/gstreamer-1.0
       subdirectories: 'true'
+      no-autodownload: 'true'
 
     Extension org.freedesktop.Platform.Icontheme:
       directory: share/runtime/share/icons
