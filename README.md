@@ -56,20 +56,20 @@ applications.
 
 We recommend you install releases from [Flathub](https://flathub.org).
 
-The current set of commands to run your application with 18.08 are:
+The current set of commands to run your application with 19.08 are:
 
 1.  Install the new runtimes:
 
     ```
     $ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    $ flatpak install flathub org.freedesktop.Sdk//18.08
-    $ flatpak install flathub org.freedesktop.Platform//18.08
+    $ flatpak install flathub org.freedesktop.Sdk//19.08
+    $ flatpak install flathub org.freedesktop.Platform//19.08
     ```
 
 2.  Set your app manifest:
 
     ```
-    "runtime-version": "18.08"
+    "runtime-version": "19.08"
     ```
 
 3. Build and run your flatpak app as usual:
@@ -145,7 +145,7 @@ the runtime. There are multiple ways to do this, we provide many ways to consume
 
 ## Contributing
 
-For a guide to contributing, please see our [CONTRIBUTING](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/blob/18.08/CONTRIBUTING.md) file.
+For a guide to contributing, please see our [CONTRIBUTING](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/blob/19.08/CONTRIBUTING.md) file.
 
 ## Acknowledgements
 
