@@ -17,6 +17,7 @@ depends:
 environment:
   CC: '%{tools}/bin/%{triplet}-gcc'
   CXX: '%{tools}/bin/%{triplet}-g++'
+  GFORTRAN_FOR_TARGET: '%{tools}/bin/%{triplet}-gfortran'
   AR: '%{tools}/%{triplet}/bin/ar'
   AS: '%{tools}/%{triplet}/bin/as'
   LD: '%{tools}/%{triplet}/bin/ld'
