@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+bzip2 -d libopenh264.so.bz2
+mv libopenh264.so libopenh264.so.2.0.0
+ldconfig $(pwd)

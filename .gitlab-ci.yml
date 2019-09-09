@@ -520,6 +520,7 @@ finish_publish_failed:
               */org.freedesktop.Sdk.PreBootstrap/*/*) ;&
               */org.freedesktop.Platform.GL32.mesa-aco/*/*) ;&
               */org.freedesktop.Platform.GL.mesa-aco/*/*) ;&
+              */org.freedesktop.Platform.openh264/*/*) ;&
               */*/i386/*)
                 echo "Deleting ${ref}"
                 ostree --repo=repo refs --delete "${ref}"
