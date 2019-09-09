@@ -10,6 +10,7 @@ depends:
 - filename: components/gzip.bst
 - filename: components/xz.bst
 - filename: components/lzip.bst
+- filename: components/util-linux.bst
 - filename: components/flex.bst
   type: build
 
