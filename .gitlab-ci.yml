@@ -239,6 +239,7 @@ populate_source_cache:
         python3 utils/parse-review.py snap/glxinfo.snap
         python3 utils/parse-review.py snap/vulkaninfo.snap
         python3 utils/parse-review.py snap/clinfo.snap
+        python3 utils/parse-review.py snap/vainfo.snap
       fi
 
   artifacts:
@@ -792,7 +793,7 @@ reproducible_arm:
         fi
       }
       failed=false
-      for snap in platform glxinfo vulkaninfo clinfo; do
+      for snap in platform glxinfo vulkaninfo clinfo vainfo; do
         if ! push "snap/${snap}.snap"; then
           failed=true
         fi
