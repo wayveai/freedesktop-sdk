@@ -16,6 +16,7 @@ depends:
 - filename: components/ed.bst
 - filename: components/gdb.bst
 - filename: components/git.bst
+- filename: components/glslang.bst
 - filename: components/gperf.bst
 - filename: components/groff.bst
 - filename: components/help2man.bst
@@ -32,6 +33,7 @@ depends:
 - filename: components/patch.bst
 - filename: components/pkg-config.bst
 - filename: components/ruby.bst
+- filename: components/spirv-tools.bst
 - filename: components/strace.bst
 - filename: components/texinfo.bst
 - filename: components/valgrind.bst
