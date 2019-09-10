@@ -249,6 +249,7 @@ populate_source_cache:
   except:
     - master
     - '18.08'
+    - '19.08'
     - tags
   <<: *gitlab_cache_pull
 
@@ -311,6 +312,7 @@ app_powerpc64le:
       - bootstrap/${ARCH}
   except:
     - '18.08'
+    - '19.08'
     - tags
   <<: *gitlab_cache_pull
 
@@ -326,6 +328,7 @@ app_powerpc64le:
   except:
     - master
     - '18.08'
+    - '19.08'
     - tags
 
 minimal_systemd_vm_x86_64:
@@ -452,6 +455,7 @@ prepare_publish:
   only:
     - master
     - '18.08'
+    - '19.08'
     - tags
   except:
     - schedules
@@ -474,6 +478,7 @@ finish_publish:
     - tags
     - master
     - '18.08'
+    - '19.08'
   except:
     - schedules
   dependencies:
@@ -490,6 +495,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - '19.08'
   except:
     - schedules
   when: on_failure
@@ -546,6 +552,7 @@ finish_publish_failed:
     - tags
     - master
     - '18.08'
+    - '19.08'
   except:
     - schedules
 
@@ -691,6 +698,7 @@ cve_report:
   only:
     - master
     - '18.08'
+    - '19.08'
   dependencies: []
 
 markdown_manifest:
@@ -708,6 +716,7 @@ markdown_manifest:
   only:
     - master
     - '18.08'
+    - '19.08'
   except:
     - schedules
   dependencies: []
