@@ -56,7 +56,7 @@ bootstrap:
 	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
 
 check-abi:
-	REFERENCE=$$(git merge-base $(RUNTIME_VERSION) HEAD) && \
+	REFERENCE=$$(git merge-base origin/$(RUNTIME_VERSION) HEAD) && \
 	./utils/buildstream-abi-checker/check-abi --bst-opts="${ARCH_OPTS}" --suppressions=utils/abidiff-suppressions.ini --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
