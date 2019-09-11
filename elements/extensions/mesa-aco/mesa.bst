@@ -129,7 +129,9 @@ config:
 
     - |
       ln -sr '%{install-root}%{datadir}/glvnd' '%{install-root}%{prefix}/glvnd'
-      ln -sr '%{install-root}%{libdir}/vulkan' '%{install-root}%{prefix}/vulkan'
+      mkdir -p '%{install-root}%{prefix}/vulkan'
+      ln -sr '%{install-root}%{libdir}/vulkan/icd.d' '%{install-root}%{prefix}/vulkan/icd.d'
+      ln -sr '%{install-root}%{datadir}/vulkan/explicit_layer.d' '%{install-root}%{prefix}/vulkan/explicit_layer.d'
       ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
 
 public:
