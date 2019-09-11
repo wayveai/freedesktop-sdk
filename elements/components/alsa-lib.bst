@@ -16,6 +16,33 @@ variables:
     --with-pythonincludes=-I/usr/include/python3 \
     --with-pcm-plugins="hw ioplug extplug"
 
+  local-config-replacement: |
+    {
+      @func concat
+      strings [
+        {
+          @func getenv
+          vars [ XDG_CONFIG_HOME ]
+          default "~/.config"
+        }
+        "/asound.conf"
+      ]
+    }
+
+config:
+  install-commands:
+    (>):
+    - |
+      cat >local-config-replacement <<\EOF
+      %{local-config-replacement}
+      EOF
+      sed '\|"~/.asoundrc"|{
+        x
+        r local-config-replacement
+      }' \
+        "%{install-root}%{datadir}/alsa/alsa.conf" \
+        >"%{install-root}%{datadir}/alsa/alsa-flatpak.conf"
+
 public:
   bst:
     split-rules:
