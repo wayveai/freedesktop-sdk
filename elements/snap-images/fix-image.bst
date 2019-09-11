@@ -31,6 +31,7 @@ variables:
     /mnt
     /usr/local/share/fonts
     /app
+    /snap
 
 config:
   layout:
