@@ -3,6 +3,7 @@ kind: cmake
 depends:
 - filename: bootstrap-import.bst
 - filename: components/vulkan.bst
+- filename: components/glslang.bst
 - filename: components/xorg-lib-x11.bst
 - filename: components/xorg-lib-xrandr.bst
 - filename: components/wayland.bst
@@ -12,7 +13,7 @@ depends:
 variables:
   cmake-local: |
     -DCMAKE_SKIP_RPATH:BOOL=yes \
-    -DBUILD_CUBE=OFF \
+    -DBUILD_CUBE=ON \
     -DBUILD_WSI_XCB_SUPPORT=On \
     -DBUILD_WSI_XLIB_SUPPORT=On \
     -DBUILD_WSI_WAYLAND_SUPPORT=On
