@@ -8,3 +8,5 @@ sources:
   path: patches/glibc/optimize-audit.patch
 - kind: patch
   path: patches/glibc/locale-C.diff
+- kind: patch
+  path: patches/glibc/fix-dl-dst-lib.patch
