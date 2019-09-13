@@ -9,7 +9,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: '1a534a96f9144ca8ee87cee1fef97faa7c396533'
+  DOCKER_IMAGE_ID: '1f2c3158693b2dd28a77983c203f802fe5121de8'
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst14/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst14/arm64:${DOCKER_IMAGE_ID}"
 
@@ -424,10 +424,11 @@ finish_publish_failed:
   stage: publish
   script:
     - make export-tar
-  artifacts:
-    when: on_success
-    paths:
-      - ${CI_PROJECT_DIR}/tarballs
+    - |
+      aws --endpoint-url ${AWS_ENDPOINT} \
+          s3 cp --recursive --acl public-read \
+                "${CI_PROJECT_DIR}/tarballs" \
+                "s3://freedesktop-sdk-tarballs/$(git describe)"
   only:
     - tags
   except:
