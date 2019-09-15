@@ -56,6 +56,6 @@ public:
 sources:
 - kind: git_tag
   url: github:systemd/systemd-stable.git
-  track: v242-stable
+  track: v243-stable
   track-tags: false
-  ref: v242-85-g07f0549ffe3413f0e78b656dd34d64681cbd8f00
+  ref: v243-0-gefb536d0cbe2e58f80e501d19999928c75e08f6a
