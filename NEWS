@@ -1,6 +1,16 @@
 Freedesktop-SDK
 
-freedesktop-sdk-19.08:
+freedesktop-sdk-19.08.01:
+    * openssl: Update to 1.1.1d
+    * Add an openh264 extension
+    * ffmpeg: Update to n4.2.1
+    * Fix Mesa's Vulkan overlay layer (#862)
+    * mesa: Update to 19.1.6
+    * Fix sdl2's pkgconfig (#875)
+    * Fix fortran compiler (#684)
+    * Do not autodownload gstreamer extensions
+
+freedesktop-sdk-19.08.0:
     * Infrastructure changes for final release
 
 freedesktop-sdk-19.08beta.9:
