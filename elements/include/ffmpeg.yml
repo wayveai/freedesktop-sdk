@@ -138,7 +138,7 @@ public:
         - '%{datadir}/ffmpeg/examples/**'
 
   cpe:
-    version: '4.2'
+    version: '4.2.1'
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
@@ -155,4 +155,4 @@ sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.2
-  ref: n4.2-0-g75384bc464411fb2291105dca84b8bc411188350
+  ref: n4.2.1-0-g1529dfb73a5157dcb8762051ec4c8d8341762478
