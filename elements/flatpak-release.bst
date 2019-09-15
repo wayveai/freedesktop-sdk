@@ -29,6 +29,8 @@ config:
         dest: runtime/org.freedesktop.Platform.VAAPI.Intel.%{flatpak_arch}/x86_64/%{branch}
       - src: runtime/org.freedesktop.Platform.GL.mesa-aco/%{flatpak_arch}/%{branch}
         dest: runtime/org.freedesktop.Platform.GL32.mesa-aco/x86_64/%{branch}
+      - src: runtime/org.freedesktop.Platform.ffmpeg-full/%{flatpak_arch}/%{branch}
+        dest: untime/org.freedesktop.Platform.ffmpeg-full.%{flatpak_arch}/x86_64/%{branch}
 
   - target_arch == 'arm':
       copy-refs:
