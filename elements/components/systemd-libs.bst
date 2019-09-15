@@ -22,7 +22,7 @@ public:
   cpe:
     vendor: 'freedesktop'
     product: 'systemd'
-    version: '242'
+    version: '243'
 
   bst:
     split-rules:
