@@ -29,7 +29,7 @@ config:
 
   - |
     rm -r "%{install-root}%{bindir}/perl"
-    ln -s perl5.28.1 "%{install-root}%{bindir}/perl"
+    ln -s perl5.28.2 "%{install-root}%{bindir}/perl"
 
 sources:
 - kind: git_tag
@@ -37,7 +37,7 @@ sources:
   track: maint-5.28
   match:
   - v5.*[02468].*
-  ref: v5.28.1-0-g63afdf6c0f65af480aa5bb9ccba9f46dae52f6fc
+  ref: v5.28.2-0-gc763da0e1c4ed5f24d490617b5a28c81fb69f6c4
 - kind: local
   path: files/perl/config.over
 - kind: patch
