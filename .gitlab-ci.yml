@@ -182,7 +182,11 @@ populate_source_cache:
       set -eu
 
       echo "Initial size:"
-      du -sh "${XDG_CACHE_HOME}/buildstream/sources"
+      if [ -d "${XDG_CACHE_HOME}/buildstream/sources" ]; then
+        du -sh "${XDG_CACHE_HOME}/buildstream/sources"
+      else
+        echo "Non existent."
+      fi
 
       configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'powerpc64le:powerpc64le')
 
