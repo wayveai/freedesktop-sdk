@@ -16,6 +16,8 @@ variables:
   # Generic variable for invoking buildstream
   BST: bst --colors
 
+  GIT_SUBMODULE_STRATEGY: "recursive"
+
 stages:
   - update
   - flatpak
@@ -153,8 +155,7 @@ populate_source_cache:
 
     - |
       REFERENCE=$(git merge-base origin/${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
-      ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
-
+      ./utils/buildstream-abi-checker/check-abi --bst-opts="-o target_arch ${ARCH}" --suppressions=utils/abidiff-suppressions.ini --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
 
   artifacts:
     when: always
