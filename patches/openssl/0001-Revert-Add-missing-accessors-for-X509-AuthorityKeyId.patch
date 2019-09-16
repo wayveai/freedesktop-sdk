@@ -1,0 +1,102 @@
+From 443c0a68cac2a5f2b2394b51ef905913b4c2fdb8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Javier=20Jard=C3=B3n?= <jjardon@gnome.org>
+Date: Sun, 15 Sep 2019 11:22:39 +0100
+Subject: [PATCH] Revert "Add missing accessors for X509
+ AuthorityKeyIdentifier"
+
+This reverts commit 74b9ce2d84a5feb36e391fc179fef16a058665e2.
+---
+ crypto/x509v3/v3_purp.c               | 14 --------------
+ doc/man3/X509_get_extension_flags.pod | 12 ------------
+ include/openssl/x509v3.h              |  2 --
+ util/libcrypto.num                    |  2 --
+ 4 files changed, 30 deletions(-)
+
+diff --git a/crypto/x509v3/v3_purp.c b/crypto/x509v3/v3_purp.c
+index 2f06289d19..720b6fe890 100644
+--- a/crypto/x509v3/v3_purp.c
++++ b/crypto/x509v3/v3_purp.c
+@@ -871,20 +871,6 @@ const ASN1_OCTET_STRING *X509_get0_authority_key_id(X509 *x)
+     return (x->akid != NULL ? x->akid->keyid : NULL);
+ }
+ 
+-const GENERAL_NAMES *X509_get0_authority_issuer(X509 *x)
+-{
+-    /* Call for side-effect of computing hash and caching extensions */
+-    X509_check_purpose(x, -1, -1);
+-    return (x->akid != NULL ? x->akid->issuer : NULL);
+-}
+-
+-const ASN1_INTEGER *X509_get0_authority_serial(X509 *x)
+-{
+-    /* Call for side-effect of computing hash and caching extensions */
+-    X509_check_purpose(x, -1, -1);
+-    return (x->akid != NULL ? x->akid->serial : NULL);
+-}
+-
+ long X509_get_pathlen(X509 *x)
+ {
+     /* Called for side effect of caching extensions */
+diff --git a/doc/man3/X509_get_extension_flags.pod b/doc/man3/X509_get_extension_flags.pod
+index 2dfe2ef372..01e7c807ec 100644
+--- a/doc/man3/X509_get_extension_flags.pod
++++ b/doc/man3/X509_get_extension_flags.pod
+@@ -4,8 +4,6 @@
+ 
+ X509_get0_subject_key_id,
+ X509_get0_authority_key_id,
+-X509_get0_authority_issuer,
+-X509_get0_authority_serial,
+ X509_get_pathlen,
+ X509_get_extension_flags,
+ X509_get_key_usage,
+@@ -24,8 +22,6 @@ X509_get_proxy_pathlen - retrieve certificate extension data
+  uint32_t X509_get_extended_key_usage(X509 *x);
+  const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);
+  const ASN1_OCTET_STRING *X509_get0_authority_key_id(X509 *x);
+- const GENERAL_NAMES *X509_get0_authority_issuer(X509 *x);
+- const ASN1_INTEGER *X509_get0_authority_serial(X509 *x);
+  void X509_set_proxy_flag(X509 *x);
+  void X509_set_proxy_pathlen(int l);
+  long X509_get_proxy_pathlen(X509 *x);
+@@ -119,14 +115,6 @@ X509_get0_authority_key_id() returns an internal pointer to the authority key
+ identifier of B<x> as an B<ASN1_OCTET_STRING> or B<NULL> if the extension
+ is not present or cannot be parsed.
+ 
+-X509_get0_authority_issuer() returns an internal pointer to the authority
+-certificate issuer of B<x> as a stack of B<GENERAL_NAME> structures or
+-B<NULL> if the extension is not present or cannot be parsed.
+-
+-X509_get0_authority_serial() returns an internal pointer to the authority
+-certificate serial number of B<x> as an B<ASN1_INTEGER> or B<NULL> if the
+-extension is not present or cannot be parsed.
+-
+ X509_set_proxy_flag() marks the certificate with the B<EXFLAG_PROXY> flag.
+ This is for the users who need to mark non-RFC3820 proxy certificates as
+ such, as OpenSSL only detects RFC3820 compliant ones.
+diff --git a/include/openssl/x509v3.h b/include/openssl/x509v3.h
+index 6c6eca38a5..9ea20275ac 100644
+--- a/include/openssl/x509v3.h
++++ b/include/openssl/x509v3.h
+@@ -661,8 +661,6 @@ uint32_t X509_get_key_usage(X509 *x);
+ uint32_t X509_get_extended_key_usage(X509 *x);
+ const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);
+ const ASN1_OCTET_STRING *X509_get0_authority_key_id(X509 *x);
+-const GENERAL_NAMES *X509_get0_authority_issuer(X509 *x);
+-const ASN1_INTEGER *X509_get0_authority_serial(X509 *x);
+ 
+ int X509_PURPOSE_get_count(void);
+ X509_PURPOSE *X509_PURPOSE_get0(int idx);
+diff --git a/util/libcrypto.num b/util/libcrypto.num
+index bf8b803c4c..474f9f950d 100644
+--- a/util/libcrypto.num
++++ b/util/libcrypto.num
+@@ -4580,5 +4580,3 @@ EVP_PKEY_meth_get_digest_custom         4533	1_1_1	EXIST::FUNCTION:
+ OPENSSL_INIT_set_config_filename        4534	1_1_1b	EXIST::FUNCTION:STDIO
+ OPENSSL_INIT_set_config_file_flags      4535	1_1_1b	EXIST::FUNCTION:STDIO
+ EVP_PKEY_get0_engine                    4536	1_1_1c	EXIST::FUNCTION:ENGINE
+-X509_get0_authority_serial              4537	1_1_1d	EXIST::FUNCTION:
+-X509_get0_authority_issuer              4538	1_1_1d	EXIST::FUNCTION:
+-- 
+2.23.0
+
