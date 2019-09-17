@@ -2,4 +2,9 @@ kind: import
 sources:
   - kind: local
     path: files/snap/vulkaninfo-wrapper
-    directory: app
+
+public:
+  bst:
+    split-rules:
+      app:
+      - /vulkaninfo-wrapper
