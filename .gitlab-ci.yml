@@ -7,7 +7,7 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   RUNTIME_VERSION: '20.08'
   STABLE_ABI: 'false'
-  IMAGE_ID: '16c77002cb55091b66df200a4453ab98c76e9b76'
+  IMAGE_ID: '1f2c3158693b2dd28a77983c203f802fe5121de8'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
@@ -564,10 +564,11 @@ finish_publish_failed:
   stage: publish
   script:
     - make export-tar
-  artifacts:
-    when: on_success
-    paths:
-      - ${CI_PROJECT_DIR}/tarballs
+    - |
+      aws --endpoint-url ${AWS_ENDPOINT} \
+          s3 cp --recursive --acl public-read \
+                "${CI_PROJECT_DIR}/tarballs" \
+                "s3://freedesktop-sdk-tarballs/$(git describe)"
   only:
     - tags
   except:
