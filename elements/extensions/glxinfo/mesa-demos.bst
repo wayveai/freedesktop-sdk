@@ -1,5 +1,7 @@
 kind: autotools
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: components/xorg-lib-xi.bst
   type: build
@@ -14,14 +16,9 @@ depends:
 - filename: extensions/glxinfo/freeglut.bst
 
 variables:
-  prefix: /app
-  lib: lib
   builddir: ''
   conf-local: |
     --enable-osmesa=no
-
-environment:
-  PKG_CONFIG_PATH: '/app/lib/pkgconfig:'
 
 sources:
 - kind: git_tag

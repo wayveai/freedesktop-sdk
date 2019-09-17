@@ -1,0 +1,11 @@
+# This file should be included by element that should reside in
+# Flatpak applications.
+# It sets /app as the prefix
+
+variables:
+  prefix: /app
+  lib: lib
+  debugdir: /usr/lib/debug
+
+environment:
+  PKG_CONFIG_PATH: '/app/lib/pkgconfig:'

@@ -1,5 +1,7 @@
 kind: meson
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/libva.bst
@@ -7,7 +9,6 @@ depends:
   type: build
 
 variables:
-  prefix: /app
   meson-local: |
     -Ddrm=true \
     -Dwayland=true \

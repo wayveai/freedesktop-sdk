@@ -1,13 +1,12 @@
 kind: autotools
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: components/mesa-headers.bst
   type: build
 
 variables:
-  prefix: /app
-  lib: lib
-
   make-args: >-
     GLEW_DEST="%{install-root}%{prefix}"
     GLEW_PREFIX="%{prefix}"
