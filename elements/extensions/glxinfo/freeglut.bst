@@ -1,5 +1,7 @@
 kind: cmake
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: components/xorg-lib-xi.bst
   type: build
@@ -10,9 +12,6 @@ depends:
   type: build
 
 variables:
-  lib: lib
-  prefix: /app
-
   cmake-local: |
     -DFREEGLUT_BUILD_DEMOS:BOOL=OFF \
     -DCMAKE_C_FLAGS="${CFLAGS} -I/app/include"

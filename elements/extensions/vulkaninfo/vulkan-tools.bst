@@ -1,5 +1,7 @@
 kind: cmake
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/vulkan.bst
@@ -17,12 +19,6 @@ variables:
     -DBUILD_WSI_XCB_SUPPORT=On \
     -DBUILD_WSI_XLIB_SUPPORT=On \
     -DBUILD_WSI_WAYLAND_SUPPORT=On
-
-config:
-  install-commands:
-    (>):
-    - |
-      mv  %{install-root}/usr %{install-root}/app
 
 sources:
 - kind: git_tag
