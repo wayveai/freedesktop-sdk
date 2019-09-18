@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: https://git.xiph.org/opus.git
   track: master
-  ref: v1.3-0-g83d5155f151ca47c9d6274ded1a7481f746b9a43
+  ref: v1.3.1-0-ge85ed7726db5d677c9c0677298ea0cb9c65bdd23

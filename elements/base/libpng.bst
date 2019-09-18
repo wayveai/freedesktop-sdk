@@ -12,16 +12,11 @@ public:
         (>):
         - '%{libdir}/libpng.so'
         - '%{libdir}/libpng16.so'
-  cpe:
-    patches:
-    - CVE-2019-7317
 
 sources:
 - kind: git_tag
   url: github:glennrp/libpng
   track: libpng16
-  ref: v1.6.36-0-geddf9023206dc40974c26f589ee2ad63a4227a1e
+  ref: v1.6.37-0-ga40189cf881e9f0db80511c382292a5604c3c3d1
 - kind: patch
-  path: patches/libpng/cve-2019-7317.patch
-- kind: patch
-  path: patches/libpng/libpng-1.6.36-apng.patch
+  path: patches/libpng/libpng-1.6.37-apng.patch

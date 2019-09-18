@@ -23,11 +23,9 @@ public:
         (>):
         - '%{libdir}/libxkbcommon.so'
         - '%{libdir}/libxkbcommon-x11.so'
-  cpe:
-    version: '0.8.2'
 
 sources:
 - kind: git_tag
   url: github:xkbcommon/libxkbcommon.git
   track: master
-  ref: xkbcommon-0.8.2-0-gf8134c8503c9868d65ee6e06b211ec2eaff3f60d
+  ref: xkbcommon-0.8.4-0-gd40b368b2f4c4cd130f63ac41e4a9d53b684c712
