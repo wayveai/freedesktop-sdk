@@ -16,7 +16,7 @@ index 2a88230..bfd19a1 100644
    gst_ffmpeg_cfg_init ();
  
 +  gst_plugin_add_dependency_simple (plugin, NULL,
-+      "/app/lib/ffmpeg:/usr/lib/" TRIPLET ":/usr/local/lib:/usr/lib/" TRIPLET "/ffmpeg",
++      "/app/lib/" TRIPLET "/ffmpeg:/app/lib/ffmpeg:/usr/lib/" TRIPLET ":/usr/local/lib:/usr/lib/" TRIPLET "/ffmpeg",
 +      "libavcodec.so.58,"
 +      "libavformat.so.58,"
 +      "libswscale.so.5",
