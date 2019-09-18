@@ -7,11 +7,13 @@ class SnapImageElement(Element):
 
     def configure(self, node):
         self.node_validate(node, [
-            'directory', 'include', 'exclude', 'metadata'
+            'directory', 'include', 'exclude', 'metadata',
+            'include-orphans'
         ])
         self.directory = self.node_subst_member(node, 'directory')
         self.include = self.node_get_member(node, list, 'include')
         self.exclude = self.node_get_member(node, list, 'exclude')
+        self.include_orphans = self.node_get_member(node, bool, 'include-orphans')
         self.metadata = self._clean_meta_data(node.get('metadata'))
 
     def _clean_meta_data(self, node):
@@ -41,6 +43,7 @@ class SnapImageElement(Element):
         key['directory'] = self.directory
         key['include'] = sorted(self.include)
         key['exclude'] = sorted(self.exclude)
+        key['include-orphans'] = self.include_orphans
         key['metadata'] = self.metadata
         key['version'] = 7
         return key
@@ -64,7 +67,8 @@ class SnapImageElement(Element):
             self.stage_dependency_artifacts(sandbox,
                                             Scope.BUILD,
                                             include=self.include,
-                                            exclude=self.exclude)
+                                            exclude=self.exclude,
+                                            orphans=self.include_orphans)
 
             os.makedirs(metadir, exist_ok=True)
 
