@@ -1,0 +1,20 @@
+# This file should be included by element that should reside in
+# Flatpak applications.
+# It sets /app as the prefix
+
+variables:
+  prefix: /app
+  lib: lib
+  debugdir: /usr/lib/debug
+
+environment:
+  PKG_CONFIG_PATH: '/app/lib/pkgconfig:'
+
+public:
+  bst:
+    split-rules:
+      # This is used for snap images to be able to remove non-app
+      # runtime files in the image.
+      app:
+        - "/app"
+        - "/app/**"
