@@ -8,11 +8,10 @@ depends:
 - filename: public-stacks/buildsystem-cmake.bst
   type: build
 
-environment:
-  # Work-around issue building compiler-rt with multiarch
-  LD_LIBRARY_PATH: '%{build-root}/%{build-dir}/lib/%{gcc_triplet}'
-
 variables:
+  prefix: /usr/lib/sdk/rust
+  lib: lib
+  debugdir: /usr/lib/debug
   cmake: |
     cmake -B%{build-dir} -Hllvm -G"%{generator}" %{cmake-args}
 
@@ -21,24 +20,23 @@ variables:
 
   (?):
   - target_arch == "i686":
-      targets: X86;AMDGPU;NVPTX
+      targets: X86
   - target_arch == "x86_64":
-      targets: X86;AMDGPU;NVPTX
+      targets: X86
   - target_arch == "arm":
       targets: ARM
   - target_arch == "aarch64":
       targets: AArch64
   - target_arch == "powerpc64le":
-      targets: PowerPC;AMDGPU
+      targets: PowerPC
 
   cmake-local: >-
-    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt'
+    -DLLVM_ENABLE_PROJECTS=''
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF
     -DBUILD_SHARED_LIBS:BOOL=OFF
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON
     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    -DLLVM_LIBDIR_SUFFIX="/%{gcc_triplet}"
     -DLLVM_ENABLE_LIBCXX:BOOL=OFF
     -DLLVM_ENABLE_ZLIB:BOOL=ON
     -DLLVM_ENABLE_FFI:BOOL=ON
@@ -51,7 +49,7 @@ variables:
     -DLLVM_ENABLE_DOXYGEN:BOOL=OFF
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON
     -DLLVM_BINUTILS_INCDIR=%{includedir}
-    -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include
+    -DFFI_INCLUDE_DIR=/usr/lib/%{gcc_triplet}/libffi-3.2.1/include
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet}
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
@@ -62,10 +60,10 @@ config:
   install-commands:
     (>):
     - |
-      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/llvm"
-      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/clang"
-      mv "%{install-root}%{includedir}/llvm/Config" "%{install-root}%{includedir}/%{gcc_triplet}/llvm/"
-      mv "%{install-root}%{includedir}/clang/Config" "%{install-root}%{includedir}/%{gcc_triplet}/clang/"
+      find "%{install-root}%{libdir}" -name "*.a.syms" -exec rm {} ";"
+
+    - |
+      find "%{install-root}%{libdir}" -name "*.a" -exec rm {} ";"
 
 public:
   bst:
@@ -73,17 +71,20 @@ public:
       devel:
         (>):
         - '%{debugdir}%{bindir}/**'
+        - '%{debugdir}%{libdir}/LLVMHello.so.debug'
         - '%{debugdir}%{libdir}/LLVMgold.so.debug'
+        - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
+        - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'
-        - '%{libdir}/libclang-cpp.so'
-        - '%{libdir}/libRemarks.so'
+        - '%{libdir}/BugpointPasses.so'
+        - '%{libdir}/libOptRemarks.so'
         - '%{libdir}/clang'
         - '%{libdir}/clang/**'
         - '%{datadir}/clang'
@@ -95,8 +96,18 @@ public:
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
 
-      static-blocklist:
-        (>):
-        - '%{libdir}/**/*.a.syms'
-
-(@): elements/include/llvm.yml
+sources:
+- kind: git_tag
+  track: release/8.x
+  exclude:
+  - llvmorg-*-rc*
+  url: github:llvm/llvm-project.git
+  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
+- kind: patch
+  path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
+- kind: patch
+  path: patches/llvm/llvm-no-rpath.patch
+- kind: patch
+  path: patches/llvm/llvm-fix-tsan-build.patch
+- kind: patch
+  path: patches/llvm/llvm-shared-tablegen.patch

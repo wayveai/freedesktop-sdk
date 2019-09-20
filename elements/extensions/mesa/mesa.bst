@@ -155,3 +155,6 @@ sources:
   ref: mesa-19.1.7-0-gf632aac9385cfe02f5bfe762d93e60b5b46f2c77
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
+- kind: patch
+  path: patches/mesa/mesa-llvm9.patch
+
