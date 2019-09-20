@@ -34,9 +34,16 @@ public:
 
   cpe:
     version: '7.65.3'
+    patches:
+    - CVE-2019-5481
+    - CVE-2019-5482
 
 sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
   ref: curl-7_65_3-0-gaa73eb47bc8583070734696b25b34ad54c2c1f5e
+- kind: patch
+  path: patches/curl/security-read_data-fix-bad-realloc.patch
+- kind: patch
+  path: patches/curl/tftp-Alloc-maximum-blksize-and-use-default-unless-OA.patch
