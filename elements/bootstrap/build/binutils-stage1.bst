@@ -65,3 +65,5 @@ sources:
   path: patches/binutils/binutils-CVE-2019-9075.patch
 - kind: patch
   path: patches/binutils/binutils-CVE-2019-9077.patch
+- kind: patch
+  path: patches/binutils/binutils-CVE-2018-1000876.patch
