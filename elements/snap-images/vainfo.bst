@@ -8,10 +8,13 @@ variables:
   prefix: /app
 
 config:
-  directory: "%{prefix}"
+  directory: "/"
+  include:
+    - app
   exclude:
     - debug
     - devel
+  include-orphans: False
 
   metadata:
     name: "freedesktop-sdk-vainfo-%{snap-branch}"
@@ -35,6 +38,9 @@ config:
           - x11
           - opengl
           - wayland
+    layout:
+      /app:
+        bind: $SNAP/app
 
 depends:
   - filename: extensions/vainfo/libva-utils.bst

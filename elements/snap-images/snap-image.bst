@@ -9,5 +9,7 @@ config:
 depends:
 - filename: platform.bst
   type: build
+- filename: vm/mesa-default.bst
+  type: build
 - filename: snap-images/dash.bst
   type: build

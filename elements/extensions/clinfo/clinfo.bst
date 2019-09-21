@@ -1,5 +1,7 @@
 kind: manual
 
+(@): elements/extensions/include/app.yml
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/opencl.bst
@@ -10,7 +12,7 @@ config:
   build-commands:
     - make
   install-commands:
-    - make -j1 PREFIX=%{install-root}/app install
+    - make -j1 PREFIX=%{install-root}%{prefix} install
 
 sources:
 - kind: git_tag
