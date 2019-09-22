@@ -1,7 +1,15 @@
-kind: autotools
+kind: manual
 
 depends:
 - filename: bootstrap-import.bst
+
+variables:
+  config: >-
+    PREFIX="%{prefix}"
+    LIBDIR="%{libdir}"
+    BINDIR="%{bindir}"
+    INCDIR="%{includedir}"
+    MANDIR="%{mandir}"
 
 public:
   bst:
@@ -10,7 +18,19 @@ public:
         (>):
         - '%{libdir}/libgif.so'
 
+config:
+  build-commands:
+  - |
+    make %{config}
+
+  install-commands:
+  - |
+    make install %{config} DESTDIR="%{install-root}"
+
+  - |
+    rm "%{install-root}%{libdir}/libgif.a"
+
 sources:
 - kind: tar
-  url: sourceforge_download:giflib/giflib-5.1.4.tar.bz2
-  ref: df27ec3ff24671f80b29e6ab1c4971059c14ac3db95406884fc26574631ba8d5
+  url: sourceforge_download:giflib/giflib-5.2.1.tar.gz
+  ref: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd
