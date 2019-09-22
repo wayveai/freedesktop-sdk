@@ -19,3 +19,5 @@ sources:
   path: patches/binutils/binutils-CVE-2019-14444.patch
 - kind: patch
   path: patches/binutils/binutils-CVE-2019-1010204.patch
+- kind: patch
+  path: patches/binutils/binutils-CVE-2019-12972.patch
