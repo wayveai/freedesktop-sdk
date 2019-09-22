@@ -34,8 +34,7 @@ sources:
   ref: sdk-1.1.114.0-0-g20b52a923c80e533e8fa7ee0d0ce8dceade16fa1
   track: master
   track-extra:
+  - sdk-1.1.121
   - sdk-1.1.114
   match:
   - sdk-*
-# glslang.bst and spirv-tools.bst have to be updated alongside new major vulkan
-# releases. See their manifests for specific instructions.
