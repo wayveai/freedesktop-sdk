@@ -87,6 +87,8 @@ public:
         - '%{indep-libdir}/python3.7/lib2to3/**'
   cpe:
     product: python
+    patches:
+    - CVE-2019-16056
 
 sources:
 - kind: git_tag
@@ -97,3 +99,5 @@ sources:
   ref: v3.7.4-0-ge09359112e250268eca209355abeb17abf822486
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch
+- kind: patch
+  path: patches/python3/CVE-2019-16056.patch
