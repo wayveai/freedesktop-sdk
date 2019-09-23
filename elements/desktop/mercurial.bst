@@ -9,5 +9,5 @@ depends:
 
 sources:
 - kind: tar
-  url: https://www.mercurial-scm.org/release/mercurial-4.6.2.tar.gz
-  ref: 1cd04ea0200b3cfad7dfd8f149aca6ac8ac2209c423c27258cf4a1ded8e366af
+  url: https://www.mercurial-scm.org/release/mercurial-4.9.1.tar.gz
+  ref: 1bdd21bb87d1e05fb5cd395d488d0e0cc2f2f90ce0fd248e31a03595da5ccb47
