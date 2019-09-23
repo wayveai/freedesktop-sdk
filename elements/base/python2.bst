@@ -32,6 +32,7 @@ public:
     product: python
     patches:
     - CVE-2019-9948
+    - CVE-2018-20852
 
 config:
   install-commands:
@@ -72,3 +73,5 @@ sources:
   path: patches/python2/bpo-35907-CVE-2019-9948-urllib-rejects-local_file-sc.patch
 - kind: patch
   path: patches/python2/bpo-35907-Complete-test_urllib.test_local_file_open-.patch
+- kind: patch
+  path: patches/python2/bpo-35121-prefix-dot-in-domain-for-proper-subdom.patch
