@@ -1,0 +1,47 @@
+From 942c31dffbe886ff02e25a319cc3891220b8c641 Mon Sep 17 00:00:00 2001
+From: Victor Stinner <vstinner@redhat.com>
+Date: Wed, 22 May 2019 23:28:03 +0200
+Subject: [PATCH 2/2] bpo-35907: Complete test_urllib.test_local_file_open()
+ (GH-13506)
+
+Test also URLopener().open(), URLopener().retrieve(), and
+DummyURLopener().retrieve().
+---
+ Lib/test/test_urllib.py                                           | 6 +++++-
+ Misc/NEWS.d/next/Library/2019-02-13-17-21-10.bpo-35907.ckk2zg.rst | 4 +++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Lib/test/test_urllib.py b/Lib/test/test_urllib.py
+index ae1f6c0b29..22b0874a92 100644
+--- a/Lib/test/test_urllib.py
++++ b/Lib/test/test_urllib.py
+@@ -1049,12 +1049,16 @@ class URLopener_Tests(unittest.TestCase):
+             "//c:|windows%/:=&?~#+!$,;'@()*[]|/path/")
+ 
+     def test_local_file_open(self):
++        # bpo-35907, CVE-2019-9948: urllib must reject local_file:// scheme
+         class DummyURLopener(urllib.URLopener):
+             def open_local_file(self, url):
+                 return url
+         for url in ('local_file://example', 'local-file://example'):
+-            self.assertRaises(IOError, DummyURLopener().open, url)
+             self.assertRaises(IOError, urllib.urlopen, url)
++            self.assertRaises(IOError, urllib.URLopener().open, url)
++            self.assertRaises(IOError, urllib.URLopener().retrieve, url)
++            self.assertRaises(IOError, DummyURLopener().open, url)
++            self.assertRaises(IOError, DummyURLopener().retrieve, url)
+ 
+ # Just commented them out.
+ # Can't really tell why keep failing in windows and sparc.
+diff --git a/Misc/NEWS.d/next/Library/2019-02-13-17-21-10.bpo-35907.ckk2zg.rst b/Misc/NEWS.d/next/Library/2019-02-13-17-21-10.bpo-35907.ckk2zg.rst
+index bb187d8d65..6a448ce626 100644
+--- a/Misc/NEWS.d/next/Library/2019-02-13-17-21-10.bpo-35907.ckk2zg.rst
++++ b/Misc/NEWS.d/next/Library/2019-02-13-17-21-10.bpo-35907.ckk2zg.rst
+@@ -1 +1,3 @@
+-CVE-2019-9948: Avoid file reading as disallowing the unnecessary URL scheme in urllib.urlopen
++CVE-2019-9948: Avoid file reading as disallowing the unnecessary URL scheme in
++:func:`urllib.urlopen`, :meth:`urllib.URLopener.open` and
++:meth:`urllib.URLopener.retrieve`.
+-- 
+2.11.0
+
