@@ -22,7 +22,7 @@ config:
       name: org.freedesktop.Platform.openh264
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
-      required-flatpak: 1.4.2
+      required-flatpak: 1.4.2;1.2.5;1.0.9;
 
     ExtensionOf:
       ref: runtime/org.freedesktop.Platform/%{flatpak_arch}/%{branch}
