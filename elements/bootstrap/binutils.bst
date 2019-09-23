@@ -73,6 +73,8 @@ sources:
   path: patches/binutils/binutils-CVE-2019-9075.patch
 - kind: patch
   path: patches/binutils/binutils-CVE-2019-9077.patch
+- kind: patch
+  path: patches/binutils/binutils-CVE-2018-1000876.patch
 
 public:
   bst:
@@ -90,6 +92,7 @@ public:
       - CVE-2018-20651
       - CVE-2018-20671
       - CVE-2018-20002
+      - CVE-2018-1000876
       - CVE-2019-9071
       - CVE-2019-9073
       - CVE-2019-9074
