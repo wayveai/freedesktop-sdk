@@ -35,6 +35,8 @@ public:
     - CVE-2018-20852
     - CVE-2019-16056
     - CVE-2019-9636
+    - CVE-2019-9740
+    - CVE-2019-9947 # Same fix as CVE-2019-9740
 
 config:
   install-commands:
@@ -89,3 +91,5 @@ sources:
   path: patches/python2/bpo-36742-Corrects-fix-to-handle-decomposition-in-us.patch
 - kind: patch
   path: patches/python2/bpo-36742-Fix-urlparse.urlsplit-error-message-fo.patch
+- kind: patch
+  path: patches/python2/bpo-30458-Disallow-control-chars-in-http-URLs-GH-127.patch
