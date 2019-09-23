@@ -38,3 +38,5 @@ sources:
   path: patches/libtiff/CVE-2018-12900_CVE-2019-7663.patch
 - kind: patch
   path: patches/libtiff/CVE-2019-14973.patch
+- kind: patch
+  path: patches/libtiff/CVE-2019-14973-fix-abi.patch
