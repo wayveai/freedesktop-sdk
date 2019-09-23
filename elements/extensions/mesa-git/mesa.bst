@@ -8,7 +8,7 @@ depends:
 - filename: components/llvm-runtime.bst
   type: runtime
 - filename: components/libdrm.bst
-- filename: extensions/mesa-aco/libdrm.bst
+- filename: extensions/mesa-git/libdrm.bst
 - filename: components/libva.bst
 - filename: components/libclc.bst
 - filename: components/opencl.bst
@@ -38,7 +38,7 @@ environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
 
 variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-aco"
+  prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-git"
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
@@ -147,9 +147,9 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:daniel-schuermann/mesa.git
+  url: freedesktop:mesa/mesa.git
   track: master
   track-tags: false
-  ref: 17.3-branchpoint-18611-gb738bf069172ba08a087735061570ade4415041a
+  ref: 19.2-branchpoint-1013-g0c6ca0a647851f20967c1c161532ed799cde0368
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch

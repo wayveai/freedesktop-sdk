@@ -246,12 +246,13 @@ export-docker:
 	  $(BST) checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
 	done
 
-track-mesa-aco:
-	$(BST) track extensions/mesa-aco/mesa-base.bst
+track-mesa-git:
+	$(BST) track extensions/mesa-git/libdrm.bst
+	$(BST) track extensions/mesa-git/mesa.bst
 
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
 	export-oci export-docker bootstrap test-codecs \
-	track-mesa-aco
+	track-mesa-git

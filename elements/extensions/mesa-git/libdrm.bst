@@ -9,7 +9,7 @@ depends:
 - filename: components/libdrm.bst
 
 variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-aco"
+  prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-git"
   lib: "lib"
   debugdir: "/usr/lib/debug"
 
@@ -31,6 +31,7 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/drm.git
   track: master
-  ref: libdrm-2.4.99-0-gb2103fa3257daa6acfdc6f4d4d8565abebaec4a8
+  track-tags: false
+  ref: libdrm-2.4.99-23-g0c427545cd931490c760d51cc3c50be75615b26d
 - kind: patch
   path: patches/libdrm/libdrm_disable_libdrm.patch
