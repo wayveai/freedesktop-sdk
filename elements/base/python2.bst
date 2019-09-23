@@ -33,6 +33,7 @@ public:
     patches:
     - CVE-2019-9948
     - CVE-2018-20852
+    - CVE-2019-16056
 
 config:
   install-commands:
@@ -75,3 +76,5 @@ sources:
   path: patches/python2/bpo-35907-Complete-test_urllib.test_local_file_open-.patch
 - kind: patch
   path: patches/python2/bpo-35121-prefix-dot-in-domain-for-proper-subdom.patch
+- kind: patch
+  path: patches/python2/bpo-34155-Dont-parse-domains-containing-GH-13079.patch
