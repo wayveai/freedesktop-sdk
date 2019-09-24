@@ -76,7 +76,7 @@ sources:
   ref: 1.16.0-0-ge0f8f635a96a3639be4d519fcf234b619bb74ca6
   submodules:
     common:
-      checkout: true
+      checkout: false
       url: freedesktop:gstreamer/common
 - kind: git_tag
   url: freedesktop:gstreamer/meson-ports/gl-headers.git

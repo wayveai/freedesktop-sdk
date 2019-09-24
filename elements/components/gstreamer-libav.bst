@@ -23,7 +23,7 @@ sources:
   ref: 1.16.0-0-gd6c61e69b36eaa144a5ef8fdac73a8162f072509
   submodules:
     common:
-      checkout: true
+      checkout: false
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch

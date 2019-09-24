@@ -26,5 +26,5 @@ sources:
   ref: 1.16.0-0-g6cbac8d09f7866827381a9d0554b7a61d45b41b5
   submodules:
     common:
-      checkout: true
+      checkout: false
       url: freedesktop:gstreamer/common

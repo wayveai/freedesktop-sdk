@@ -46,7 +46,7 @@ sources:
   ref: 1.16.0-0-g646dc1ef9b92841e235d10a8262882b6e7d97422
   submodules:
     common:
-      checkout: true
+      checkout: false
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-plugins-good/glibc230fix.patch
