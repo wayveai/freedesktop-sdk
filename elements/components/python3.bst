@@ -85,6 +85,8 @@ public:
         - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'
         - '%{indep-libdir}/python3.7/lib2to3'
         - '%{indep-libdir}/python3.7/lib2to3/**'
+    integration-commands:
+    - command -v python || ln -s python3 %{bindir}/python
   cpe:
     product: python
     patches:
