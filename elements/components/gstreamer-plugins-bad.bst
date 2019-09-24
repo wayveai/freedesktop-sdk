@@ -79,16 +79,12 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-bad
   track: '1.16'
-  ref: 1.16.0-0-g5fde70bb63a1cbf6f734fb2429e74ffb53126217
+  ref: 1.16.1-0-gc3c54aad2d45fb246a9b9e8a5e05488c15c27173
   submodules:
     common:
       checkout: false
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/gst-plugins-bad-wayland-Define-libdrm_dep-in-meson.build.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/gst-plugins-bad-fix-openh264-build.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
