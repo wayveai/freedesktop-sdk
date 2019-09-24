@@ -6,7 +6,7 @@ depends:
 
 public:
   cpe:
-    version: 1.0.2r
+    version: 1.0.2t
     vendor: openssl
     product: openssl
 
