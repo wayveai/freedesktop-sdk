@@ -1,4 +1,4 @@
-kind: manual
+kind: stack
 description: |
   Moves all localisation data into a separate root directory, 
   this is so we can use this as a mountpoint for the Locale
@@ -6,6 +6,7 @@ description: |
 
 depends:
 - filename: bootstrap-import.bst
+  type: runtime
 
 public:
   bst:
