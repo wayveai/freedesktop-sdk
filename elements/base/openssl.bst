@@ -63,10 +63,12 @@ public:
 
   cpe:
     vendor: 'openssl'
-    version: '1.1.1c'
+    version: '1.1.1d'
 
 sources:
 - kind: git_tag
   url: github:openssl/openssl
   track: OpenSSL_1_1_1-stable
-  ref: OpenSSL_1_1_1c-0-g97ace46e11dba4c4c2b7cb67140b6ec152cfaaf4
+  ref: OpenSSL_1_1_1d-0-g894da2fb7ed5d314ee5c2fc9fd2d9b8b74111596
+- kind: patch
+  path: patches/openssl/Revert-Add-missing-accessors-for-X509-AuthorityKeyId.patch
