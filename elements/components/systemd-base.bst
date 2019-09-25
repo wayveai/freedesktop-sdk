@@ -59,3 +59,7 @@ sources:
   track: v242-stable
   track-tags: false
   ref: v242-85-g07f0549ffe3413f0e78b656dd34d64681cbd8f00
+- kind: patch
+  path: patches/systemd/001-CVE-2018-20839.patch
+- kind: patch
+  path: patches/systemd/002-CVE-2018-20839.patch
