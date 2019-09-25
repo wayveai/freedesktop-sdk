@@ -20,10 +20,10 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav
   track: '1.16'
-  ref: 1.16.0-0-gd6c61e69b36eaa144a5ef8fdac73a8162f072509
+  ref: 1.16.1-0-gfe08c26641592f058b6fa0da9a1f86fc0b24cb0c
   submodules:
     common:
-      checkout: true
+      checkout: false
       url: freedesktop:gstreamer/common
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
