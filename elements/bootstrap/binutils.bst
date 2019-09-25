@@ -73,6 +73,7 @@ public:
     patches:
     - CVE-2018-1000876 # 2.32 tag already contains the fix https://sourceware.org/bugzilla/show_bug.cgi?id=23994#c2
     - CVE-2019-9071
+    - CVE-2019-9070 # Same as CVE-2019-9071
     - CVE-2019-9073
     - CVE-2019-9074
     - CVE-2019-9075
