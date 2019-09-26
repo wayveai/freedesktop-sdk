@@ -41,4 +41,4 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer
   track: '1.16'
-  ref: 1.16.0-0-g89c221a6972513f629c969f5485f37e77ccfa6e1
+  ref: 1.16.1-0-gde0a7c4bc89a3df7424b808c893ca243629bebef
