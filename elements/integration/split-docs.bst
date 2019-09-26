@@ -5,6 +5,10 @@ description: |
   the Docs extension of the SDK, and not ship the docs in the
   actual SDK
 
+depends:
+- filename: bootstrap-import.bst
+  type: runtime
+
 public:
   bst:
     integration-commands:
