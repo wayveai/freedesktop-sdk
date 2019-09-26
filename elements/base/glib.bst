@@ -49,6 +49,7 @@ public:
   cpe:
     patches:
     - CVE-2019-12450
+    - CVE-2019-13012
 
 sources:
 - kind: git_tag
@@ -59,3 +60,5 @@ sources:
   path: patches/glib/glib-trash.patch
 - kind: patch
   path: patches/glib/CVE-2019-12450.patch
+- kind: patch
+  path: patches/glib/CVE-2019-13012.patch
