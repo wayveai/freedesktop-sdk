@@ -23,8 +23,12 @@ public:
   cpe:
     vendor: 'sqlite'
     version: '3.29.0'
+    patches:
+    - CVE-2019-16168
 
 sources:
 - kind: tar
   url: https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz
   ref: 8e7c1e2950b5b04c5944a981cb31fffbf9d2ddda939d536838ebc854481afd5b
+- kind: patch
+  path: patches/sqlite/CVE-2019-16168.patch
