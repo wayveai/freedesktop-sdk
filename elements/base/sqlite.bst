@@ -25,6 +25,8 @@ public:
     version: '3.27.2'
     patches:
     - CVE-2019-8457
+    - CVE-2019-9936
+    - CVE-2019-9937
 
 sources:
 - kind: tar
@@ -32,3 +34,7 @@ sources:
   ref: 50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
 - kind: patch
   path: patches/sqlite/CVE-2019-8457.patch
+- kind: patch
+  path: patches/sqlite/CVE-2019-9937.patch
+- kind: patch
+  path: patches/sqlite/CVE-2019-9936.patch
