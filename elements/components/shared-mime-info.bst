@@ -9,17 +9,8 @@ depends:
 - filename: components/itstools.bst
   type: build
 
-config:
-  build-commands:
-    (<):
-    - |
-      make -C "%{builddir}" shared-mime-info.pot
-      cp "%{builddir}/shared-mime-info.pot" .
-
 sources:
 - kind: git_tag
   url: freedesktop:xdg/shared-mime-info.git
   track: master
-  ref: Release-1-12-0-g41a9a684249cd47aef4d65f81180ee69aa358d71
-- kind: patch
-  path: patches/shared-mime-info/shared-mime-info-gettext.patch
+  ref: Release-1-14-0-g66ae46cbaf40579a4686b9793dc19b731bbbc85e
