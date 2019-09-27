@@ -6,8 +6,8 @@ Look [here](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release) fo
 This document outlines the basic guidelines before contributing to freedesktop-sdk. If you want to contribute to this project please follow the steps below.
 
 In order to contribute your first patch, you will need to follow these steps:
-1. [Create a gitlab account](#create-a-gitlab-account)
-2. [Clone our gitlab repo](#clone-our-gitlab-repo)
+1. [Create a GitLab account](#create-a-gitlab-account)
+2. [Clone our GitLab repo](#clone-our-gitlab-repo)
 3. [Make a local branch](#make-a-local-branch)
 4. [Make your changes in the branch](#make-your-changes-in-the-branch)
 5. [Request developer access to the freedesktop-sdk repo](#request-developer-access-to-the-freedesktop-sdk-repo)
@@ -20,15 +20,15 @@ Additionally you can [test your changes](#testing-locally) locally using our Mak
 If this guide does not answer your questions, or you encounter any problems you can contact us over at #freedesktop-sdk on [Freenode](https://webchat.freenode.net/), or our [mailing list](https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk).
 
 Let's go through each step in more detail:
-## Create a gitlab account
+## Create a GitLab account
 Simply click "sign in/register" in the top right corner and fill in the form.
 
-## Clone our gitlab repo
+## Clone our GitLab repo
 Open a terminal and type:
 ```
 git clone https://gitlab.com/freedesktop-sdk/freedesktop-sdk
 ```
-If you have an SSH key associated with your gitlab account you can alternatively type
+If you have an SSH key associated with your GitLab account you can alternatively type
 ```
 git clone git@gitlab.com:freedesktop-sdk/freedesktop-sdk
 ```
@@ -40,7 +40,7 @@ git config user.name "MY_NAME"
 git config user.email "MY_EMAIL@example.com"
 ```
 
-There are also many GUI git interfaces, such as integration with IDEs and github's UI, however running through all of these alternative methods would be a mammoth task. Feel free to add instructions for your personal preferred git workflow.
+There are also many GUI git interfaces, such as integration with IDEs and GitHub's UI, however running through all of these alternative methods would be a mammoth task. Feel free to add instructions for your personal preferred git workflow.
 
 ## Make a local branch
 [//]: # (If someone knows a better way to do this please tell me)
@@ -54,7 +54,7 @@ master with the relevant release branch, for example `19.08`. Now run
 ```
 git checkout -b my-branch-name
 ```
-Your branch should be named something suitable for the changes you will be making. We also usually include our gitlab username in the branch name as `username/suitable-branch-name`
+Your branch should be named something suitable for the changes you will be making. We also usually include our GitLab username in the branch name as `username/suitable-branch-name`
 
 ## Make your changes in the branch
 Create the necessary changes to fix your bug/add your feature.
@@ -103,7 +103,7 @@ source please use `git_tag` rather than `git`.
 
 
 ## Request developer access to the freedesktop-sdk repo
-Go to our gitlab [project page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk) and click the "Request Developer Access" button near the top of the page. One of the maintainers will review your request. Developer access allows you to push directly to our repo, enabling a simpler "push and merge request" workflow instead of using the github "fork and pull request" workflow.
+Go to our GitLab [project page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk) and click the "Request Developer Access" button near the top of the page. One of the maintainers will review your request. Developer access allows you to push directly to our repo, enabling a simpler "push and merge request" workflow instead of using the GitHub "fork and pull request" workflow.
 This has the added benefit of allowing you to use our CI, which is equipped with runners for aarch64, armv7, i686 and x86_64 architectures.
 
 ## Push your changes to the remote
@@ -121,7 +121,7 @@ git rebase origin/19.08
 while your branch is checked out. This may require you to force-push your branch, to do this add the `-f` switch to the git push command.
 
 ## Open a merge request
-Navigate to the [New Merge Request Page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/merge_requests/new) on our gitlab, add your branch as the source branch and 19.08 as the target branch.
+Navigate to the [New Merge Request Page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/merge_requests/new) on our GitLab, add your branch as the source branch and 19.08 as the target branch.
 Once your MR is open it will be reviewed before merging. Once it passes our CI and any discussions are resolved, it will be assigned to our merge bot, which will continually rebase onto the latest commit in 19.08 until it merges your branch.
 
 Congratulations, you are now a freedesktop-sdk contributor!
