@@ -245,16 +245,20 @@ populate_source_cache:
         python3 utils/parse-review.py snap/clinfo.snap
         python3 utils/parse-review.py snap/vainfo.snap
       fi
-
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
-    - master
-    - '18.08'
-    - '19.08'
-    - tags
+    refs:
+      - master
+      - '18.08'
+      - '19.08'
+      - tags
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
   <<: *gitlab_cache_pull
 
 app_x86_64:
@@ -315,9 +319,14 @@ app_powerpc64le:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - bootstrap/${ARCH}
   except:
-    - '18.08'
-    - '19.08'
-    - tags
+    refs:
+      - '18.08'
+      - '19.08'
+      - tags
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
   <<: *gitlab_cache_pull
 
 .vm_imageless_template: &vm_imageless
@@ -330,10 +339,15 @@ app_powerpc64le:
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   except:
-    - master
-    - '18.08'
-    - '19.08'
-    - tags
+    refs:
+      - master
+      - '18.08'
+      - '19.08'
+      - tags
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
 
 minimal_systemd_vm_x86_64:
   image: $DOCKER_AMD64
@@ -457,12 +471,18 @@ prepare_publish:
     paths:
       - publish_build.txt
   only:
-    - master
-    - '18.08'
-    - '19.08'
-    - tags
+    refs:
+      - master
+      - '18.08'
+      - '19.08'
+      - tags
   except:
-    - schedules
+    refs:
+      - schedules
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
 
 finish_publish:
   image: $DOCKER_AMD64
@@ -484,7 +504,12 @@ finish_publish:
     - '18.08'
     - '19.08'
   except:
-    - schedules
+    refs:
+      - schedules
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
   dependencies:
     - prepare_publish
 
@@ -501,7 +526,12 @@ finish_publish_failed:
     - '18.08'
     - '19.08'
   except:
+    refs:
     - schedules
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
   when: on_failure
   dependencies:
     - prepare_publish
@@ -558,7 +588,12 @@ finish_publish_failed:
     - '18.08'
     - '19.08'
   except:
-    - schedules
+    refs:
+      - schedules
+    changes:
+      - "*.md"
+      - LICENSE
+      - NEWS
 
 .publish_tar_template:
   stage: publish
