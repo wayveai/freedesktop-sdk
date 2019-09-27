@@ -1,5 +1,22 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.02:
+
+    * e2fsprogs: Update to 1.45.4
+    * gstreamer: Update to 1.16.1
+    * shared-mime-info: Update to 1.14
+    * systemd: Fix CVE-2018-20839
+    * giflib: Fix CVE-2019-15133
+    * binutils: Fix CVE-2019-12972
+    * libtiff: Fix CVE-2019-14973
+    * sqlite: Fix CVE-2019-16168
+    * openh264 extension: Allow Flatpak 1.2.5 and 1.0.9
+    * python3: Fix CVE-2019-16056
+    * Update mesa ACO extension
+    * mesa: Update to 19.2 in SDK and extension
+    * curl: Fix CVE-2019-5481 and CVE-2019-5482
+    * gstreamer-plugins-bad: Gracefully handle noopenh264 (#885)
+
 freedesktop-sdk-19.08.01:
     * openssl: Update to 1.1.1d
     * Add an openh264 extension
