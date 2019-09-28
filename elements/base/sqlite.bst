@@ -27,6 +27,7 @@ public:
     - CVE-2019-8457
     - CVE-2019-9936
     - CVE-2019-9937
+    - CVE-2019-16168
 
 sources:
 - kind: tar
@@ -38,3 +39,5 @@ sources:
   path: patches/sqlite/CVE-2019-9937.patch
 - kind: patch
   path: patches/sqlite/CVE-2019-9936.patch
+- kind: patch
+  path: patches/sqlite/CVE-2019-16168.patch
