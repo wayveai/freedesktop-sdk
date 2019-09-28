@@ -10,6 +10,8 @@ depends:
 - filename: components/gdbm.bst
 - filename: components/sqlite.bst
 - filename: components/xz.bst
+- filename: components/bluez-headers.bst
+  type: build
 
 variables:
   conf-local: |
