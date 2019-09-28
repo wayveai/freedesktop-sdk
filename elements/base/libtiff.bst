@@ -18,6 +18,7 @@ public:
     - CVE-2018-12900
     - CVE-2019-6128
     - CVE-2019-7663 # Same fix as CVE-2018-12900
+    - CVE-2019-14973
 
 sources:
 - kind: git_tag
@@ -28,3 +29,7 @@ sources:
   path: patches/libtiff/CVE-2019-6128.patch
 - kind: patch
   path: patches/libtiff/CVE-2018-12900_CVE-2019-7663.patch
+- kind: patch
+  path: patches/libtiff/CVE-2019-14973.patch
+- kind: patch
+  path: patches/libtiff/CVE-2019-14973-fix-abi.patch
