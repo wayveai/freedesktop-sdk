@@ -24,11 +24,11 @@ variables:
 
 config:
   build-commands:
-    (<):
     # The current build tries to build "build" binaries with "host"
     # include directories. So it does not find the right headers.
     # Those tools are source code generators. We build them first
     # disabling that some include directories.
+    (<):
     - |
       cd "%{builddir}"
       make RL_INCLUDEDIR=/non-existant mksyntax bashversion mksignames recho zecho printenv xcase
