@@ -24,7 +24,7 @@ public:
         - '%{libdir}/libatk-bridge-2.0.so'
 
   cpe:
-    version: '2.32.0'
+    version: '2.34.0'
     vendor: 'gnome'
 
 sources:
@@ -35,4 +35,4 @@ sources:
   - gnome-3-32
   match:
   - AT_SPI2_ATK_*_*[02468]_*
-  ref: AT_SPI2_ATK_2_32_0-0-ga0f11abb143a1cc04e04e0b7156f67009f7b2392
+  ref: AT_SPI2_ATK_2_34_0-0-g15ad5b3aab208c97352187e2408d7b3752504230

@@ -22,7 +22,7 @@ public:
       (@): include/_private/exclude-systemd.yml
 
   cpe:
-    version: '2.32.1'
+    version: '2.34.0'
     vendor: 'gnome'
 
 sources:
@@ -33,4 +33,4 @@ sources:
   - gnome-3-32
   match:
   - AT_SPI2_CORE_*_*[02468]_*
-  ref: AT_SPI2_CORE_2_32_1-0-g89001a86a037cfabf27e912b902929b5daeb3c55
+  ref: AT_SPI2_CORE_2_34_0-0-g6da122f1e8d6b02dda0f368610ab72fc3d1720cf
