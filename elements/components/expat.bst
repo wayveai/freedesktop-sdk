@@ -13,7 +13,7 @@ public:
         - '%{libdir}/libexpat.so'
 
   cpe:
-    version: 2.2.7
+    version: 2.2.9
 
 config:
   configure-commands:
@@ -30,4 +30,4 @@ sources:
 - kind: git_tag
   url: github:libexpat/libexpat.git
   track: master
-  ref: R_2_2_7-0-gd3b78b42a2dcdea98e22625cfff67a49d47e6025
+  ref: R_2_2_9-0-ga7bc26b69768f7fb24f0c7976fae24b157b85b13
