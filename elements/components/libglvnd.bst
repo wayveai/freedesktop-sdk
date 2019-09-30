@@ -10,10 +10,21 @@ depends:
   type: build
 
 variables:
-  local_flags: "-UDEFAULT_EGL_VENDOR_CONFIG_DIRS -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\\\"%{libdir}/GL/glvnd/egl_vendor.d\\\""
+  local_flags: >-
+    -UDEFAULT_EGL_VENDOR_CONFIG_DIRS
+    -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\"%{libdir}/GL/glvnd/egl_vendor.d\"
+
   conf-local: |
     --enable-asm \
     --enable-tls
+
+config:
+  install-commands:
+    (>):
+    - |
+      rm -r "%{install-root}%{includedir}/GLES"
+      rm "%{install-root}%{libdir}/pkgconfig/glesv1_cm.pc"
+      rm "%{install-root}%{libdir}"/libGLESv1_CM.so*
 
 public:
   bst:
@@ -21,7 +32,6 @@ public:
       devel:
         (>):
         - '%{libdir}/libGLdispatch.so'
-        - '%{libdir}/libGLESv1_CM.so'
         - '%{libdir}/libOpenGL.so'
         - '%{libdir}/libEGL.so'
         - '%{libdir}/libGL.so'
@@ -32,4 +42,4 @@ sources:
 - kind: git_tag
   url: github:NVIDIA/libglvnd.git
   track: master
-  ref: v1.1.1-0-gbc9990b7bede44899627354d0c356f48950f4ad1
+  ref: v1.2.0-0-g062a42ea55a9452bfcfe6268348a82edbea7542c
