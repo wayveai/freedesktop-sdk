@@ -26,4 +26,4 @@ sources:
   - 'intel-gmmlib-*'
   exclude:
   - 'intel-gmmlib-*.pre*'
-  ref: intel-gmmlib-19.2.3-0-ge834bcd677382fbebb7749ccbd678d86a82bffd3
+  ref: intel-gmmlib-19.3.2-0-gbda1dcff730bd503062421c17fe51a9a107538b9
