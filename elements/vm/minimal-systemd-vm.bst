@@ -31,6 +31,8 @@ depends:
   type: build
 - filename: vm/journald-config.bst
   type: build
+- filename: vm/systemd-networkd-config.bst
+  type: build
 - filename: components/sudo.bst
   type: build
 
