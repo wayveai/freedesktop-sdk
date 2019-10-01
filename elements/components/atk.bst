@@ -17,14 +17,14 @@ public:
         - '%{libdir}/libatk-1.0.so'
 
   cpe:
-    version: '2.32.0'
+    version: '2.34.1'
 
 sources:
 - kind: git_tag
   url: gnome:atk
   track: master
   track-extra:
-  - gnome-3-32
+  - gnome-3-34
   match:
   - ATK_*_*[02468]_*
-  ref: ATK_2_32_0-0-gfd6a6599bdae09ac0436e7b7225214429c176a19
+  ref: ATK_2_34_1-0-g633bde11f93ee971ba8902c6fadbc29c121f71af
