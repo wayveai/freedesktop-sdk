@@ -11,6 +11,8 @@ depends:
   type: runtime
 - filename: components/dbus.bst
   type: runtime
+- filename: components/kmod.bst
+  type: runtime
 config:
   exclude:
   - systemd-libs
