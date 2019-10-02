@@ -10,7 +10,7 @@ depends:
 config:
   install-commands:
   - |
-    DESTDIR="%{install-root}" ./install-dicts.py */dictionaries.xcu
+    DESTDIR="%{install-root}" ./install_dicts.py */dictionaries.xcu
 
   - |
     ln -s hunspell "%{install-root}%{datadir}/myspell"
@@ -21,6 +21,6 @@ sources:
   track: libreoffice-6.2.5.2
   ref: libreoffice-6.2.5.2-0-g78a4eb197bca11e88a2319fce860658bd757715a
 - kind: local
-  path: files/dictionaries/install-dicts.py
+  path: files/dictionaries/install_dicts.py
 - kind: local
   path: files/dictionaries/th_gen_idx.pl

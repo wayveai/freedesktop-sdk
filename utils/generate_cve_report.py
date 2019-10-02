@@ -3,7 +3,7 @@
 Usage:
   python3 generate-cve-report.py path/to/manifest.json output.html
 
-This requires you to run update-local-cve-database.py first in the
+This requires you to run update_local_cve_database.py first in the
 same current directory.
 """
 
@@ -14,8 +14,8 @@ import os
 import urllib.request
 import urllib.error
 
-conn = sqlite3.connect('data-2.db')
-c = conn.cursor()
+connection = sqlite3.connect('data-2.db')
+cursor = connection.cursor()
 
 api = os.environ.get("CI_API_V4_URL")
 project_id = os.environ.get("CI_PROJECT_ID")
@@ -34,10 +34,10 @@ def get_entries(entry_char, entry_type, cveid):
 def get_issues_and_mrs(cveid):
     if not api or not project_id:
         return
-    for name, url in get_entries('!', 'merge_requests', cveid):
-        yield name, url
-    for name, url in get_entries('#', 'issues', cveid):
-        yield name, url
+    for entry_name, url in get_entries('!', 'merge_requests', cveid):
+        yield entry_name, url
+    for entry_name, url in get_entries('#', 'issues', cveid):
+        yield entry_name, url
 
 with open(sys.argv[1], 'rb') as f:
     manifest = json.load(f)
@@ -61,30 +61,30 @@ with open(sys.argv[2], 'w') as out:
             continue
 
         if vendor:
-            c.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
+            cursor.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
                              WHERE cve.id=product_vuln.cve_id
                                AND product_vuln.name=?
                                AND product_vuln.version=?
                                AND product_vuln.vendor=?""",
-                      (product, version, vendor))
+                           (product, version, vendor))
         else:
-            c.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
+            cursor.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
                              WHERE cve.id=product_vuln.cve_id
                                AND product_vuln.name=?
                                AND product_vuln.version=?""",
-                      (product, version))
+                           (product, version))
         while True:
-            row = c.fetchone()
+            row = cursor.fetchone()
             if row is None:
                 break
             if row[0] in patches or row[0] in ignored:
                 continue
             entries.append((row[0], name, version, row[1], row[2]))
 
-    def by_score(entry, ):
-        ID, name, version, summary, score = entry
+    def by_score(entry, ): # TODO why the empty 2nd args?
+        entry_score = entry[4]
         try:
-            return float(score)
+            return float(entry_score)
         except ValueError:
             return float("inf")
 

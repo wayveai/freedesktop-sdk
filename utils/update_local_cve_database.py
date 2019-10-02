@@ -14,10 +14,8 @@ remote database we have the latest version of the files.
 """
 
 import gzip
-import sys
 import sqlite3
 import datetime
-import itertools
 import urllib.request
 import urllib.parse
 from contextlib import contextmanager, ExitStack
@@ -83,21 +81,20 @@ class UrlOpenTimeout:
             except TimeoutError:
                 self._timeout = max(int(self._timeout/2), self._min)
                 raise
-            except urllib.error.URLError as e:
-                if isinstance(e.reason, socket.timeout):
+            except urllib.error.URLError as exception:
+                if isinstance(exception.reason, socket.timeout):
                     self._timeout = max(int(self._timeout/2), self._min)
                     raise TimeoutError()
-                else:
-                    raise
+                raise
             finally:
                 signal.alarm(0)
 
             yield resp
 
-def update_year(c, year, url_timeout):
-    url = 'https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-{}.json.gz'.format(year)
-    c.execute("SELECT etag FROM etags WHERE year=?", (year,))
-    row = c.fetchone()
+def update_year(cursor, updated_year, url_timeout):
+    url = 'https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-{}.json.gz'.format(updated_year)
+    cursor.execute("SELECT etag FROM etags WHERE year=?", (updated_year,))
+    row = cursor.fetchone()
     if row is not None:
         etag = row[0]
     else:
@@ -114,14 +111,14 @@ def update_year(c, year, url_timeout):
             new_etag = resp.getheader('ETag')
             assert new_etag is not None
             if new_etag is not None:
-                c.execute("INSERT OR REPLACE INTO etags (year, etag) VALUES (?, ?)", (year, new_etag))
-            with open('nvdcve-1.1-{}.json.gz'.format(year), 'wb') as f:
+                cursor.execute("INSERT OR REPLACE INTO etags (year, etag) VALUES (?, ?)", (year, new_etag))
+            with open('nvdcve-1.1-{}.json.gz'.format(year), 'wb') as file:
                 while True:
                     buf = resp.read(4096)
                     if not buf:
-                        print("Downloaded {}".format(f.name))
+                        print("Downloaded {}".format(file.name))
                         break
-                    f.write(buf)
+                    file.write(buf)
     except TimeoutError:
         if etag is None:
             raise
@@ -131,23 +128,24 @@ def update_year(c, year, url_timeout):
             raise
         print("Cached {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
 
-    with gzip.open('nvdcve-1.1-{}.json.gz'.format(year)) as f:
-        tree = json.load(f)
+    with gzip.open('nvdcve-1.1-{}.json.gz'.format(year)) as file:
+        tree = json.load(file)
         for cve_id, summary, score in extract_vulns(tree):
-            c.execute("INSERT OR REPLACE INTO cve (id, summary, score) VALUES (?, ?, ?)", (cve_id, summary, score))
+            cursor.execute("INSERT OR REPLACE INTO cve (id, summary, score) VALUES (?, ?, ?)", (cve_id, summary, score))
 
         for cve_id, vendor, name, version in extract_product_vulns(tree):
-            c.execute("INSERT OR REPLACE INTO product_vuln (cve_id, name, vendor, version) VALUES (?, ?, ?, ?)", (cve_id, name, vendor, version))
+            cursor.execute("INSERT OR REPLACE INTO product_vuln (cve_id, name, vendor, version) VALUES (?, ?, ?, ?)", (cve_id, name, vendor, version))
 
 if __name__ == '__main__':
-    conn = sqlite3.connect('data-2.db')
-    c = conn.cursor()
+    # TODO do other connections need closing
+    connection = sqlite3.connect('data-2.db')
+    cursor = connection.cursor()
     try:
-        ensure_tables(c)
+        ensure_tables(cursor)
         url_timeout = UrlOpenTimeout()
         for year in range(2002, datetime.datetime.now().year + 1):
-            update_year(c, str(year), url_timeout)
-        update_year(c, 'Modified', url_timeout)
-        conn.commit()
+            update_year(cursor, str(year), url_timeout)
+        update_year(cursor, 'Modified', url_timeout)
+        connection.commit()
     finally:
-        conn.close()
+        connection.close()
