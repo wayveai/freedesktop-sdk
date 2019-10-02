@@ -14,6 +14,17 @@ depends:
 - filename: components/gobject-introspection.bst
   type: build
 - filename: components/fuse.bst
+- filename: components/systemd.bst
+- filename: components/libarchive.bst
+- filename: components/avahi.bst
+
+variables:
+  conf-local: >-
+    --with-dracut
+    --with-libsystemd
+    --with-systemd
+    --with-libarchive
+    --with-avahi
 
 public:
   bst:
