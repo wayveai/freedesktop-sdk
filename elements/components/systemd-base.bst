@@ -15,6 +15,7 @@ depends:
 - filename: components/util-linux.bst
 - filename: components/xz.bst
 - filename: components/linux-pam.bst
+- filename: components/kmod.bst
 
 variables:
   meson-local: |
