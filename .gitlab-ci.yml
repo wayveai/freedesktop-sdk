@@ -21,6 +21,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: "recursive"
 
 stages:
+  - linter
   - bootstrap
   - update
   - flatpak
@@ -158,7 +159,17 @@ before_script:
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
-
+pylint:
+  image: $DOCKER_AMD64
+  stage: linter
+  tags:
+    - x86_64
+    - cache_x86_64
+  variables:
+    ARCH: x86_64
+  allow_failure: true
+  script:
+    - find . -iname "*.py" | xargs pylint
 
 check_update_elements:
   image: $DOCKER_AARCH64
