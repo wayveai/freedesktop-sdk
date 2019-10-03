@@ -3,10 +3,7 @@ kind: meson
 depends:
 - filename: bootstrap-import.bst
 - filename: components/glslang.bst
-- filename: components/llvm.bst
-  type: build
-- filename: components/llvm-runtime.bst
-  type: runtime
+- filename: extensions/mesa/llvm9.bst
 - filename: components/libdrm.bst
 - filename: extensions/mesa/libdrm.bst
 - filename: components/libva.bst
@@ -36,6 +33,7 @@ depends:
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+  PATH: "%{bindir}:/usr/bin"
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"

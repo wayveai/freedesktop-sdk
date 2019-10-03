@@ -3,9 +3,9 @@ kind: meson
 depends:
 - filename: bootstrap-import.bst
 - filename: components/glslang.bst
-- filename: components/llvm.bst
+- filename: extensions/mesa/llvm9.bst
   type: build
-- filename: components/llvm-runtime.bst
+- filename: extensions/mesa-aco/llvm9-runtime.bst
   type: runtime
 - filename: components/libdrm.bst
 - filename: extensions/mesa-aco/libdrm.bst
@@ -36,6 +36,7 @@ depends:
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+  PATH: "/usr/lib/%{gcc_triplet}/GL/default/bin:/usr/bin"
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/mesa-aco"
