@@ -14,7 +14,6 @@ depends:
 
 variables:
   conf-local: |
-    --with-rootlibdir=%{indep-libdir} \
     --with-xz \
     --with-zlib \
     --enable-tools
