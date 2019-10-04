@@ -1,5 +1,14 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.03:
+
+    * mesa extensions: Use LLVM 9.0.0.
+    * tzdata: Update to 2019c
+    * expat: Update to 2.2.9
+    * intel-vaapi-driver: Update gmmlib to 19.3.2.
+    * ffmpeg-full extension: Add support for some Windows Media decoders.
+    * python3: Add bluetooth support.
+
 freedesktop-sdk-19.08.02:
 
     * e2fsprogs: Update to 1.45.4
