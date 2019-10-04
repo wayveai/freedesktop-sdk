@@ -29,7 +29,7 @@ public:
         - '%{libdir}/libverto.so'
   cpe:
     product: kerberos
-    version: '5-1.16.1'
+    version: '5-1.16.2'
   patches:
   - CVE-2018-20217
 
