@@ -84,6 +84,8 @@ public:
         - '%{libdir}/libswresample.so'
   cpe:
     version: '4.1.3'
+  patches:
+  - CVE-2019-13390
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
@@ -101,3 +103,5 @@ sources:
   url: ffmpeg:ffmpeg.git
   track: release/4.1
   ref: n4.1.3-0-g4154f8967820ca734a77ce91bb590cd77649dee8
+- kind: patch
+  path: patches/ffmpeg/CVE-2019-13390.patch
