@@ -12,7 +12,7 @@ depends:
   type: build
 - filename: components/gzip.bst
   type: build
-- filename: components/kmod.bst
+- filename: vm/linux-vm-boot/kmod.bst
 
 variables:
   bootdir: /boot
