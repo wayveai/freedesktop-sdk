@@ -20,6 +20,6 @@ sources:
   track: master
   exclude:
   - v*-rc*
-  ref: v3.15.3-0-g26a0e200e5f4abe8268235c9fdb23a2612a1b3b1
+  ref: v3.15.4-0-g6fb747a01c27a2226fe4cbf77bc19e6d21286f81
 - kind: patch
   path: patches/cmake/cmake-nolib64.patch
