@@ -43,3 +43,15 @@ sources:
   ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
 - kind: local
   path: files/fontconfig-flatpak.conf
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-001.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-002.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-003.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-004.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-005.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-006.patch
