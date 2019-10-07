@@ -16,7 +16,8 @@ depends:
 
 variables:
   conf-local: |
-    --disable-cache-owner
+    --disable-cache-owner \
+    --with-systemdsystemunitdir=%{prefix}/lib/systemd
 
 public:
   bst:
