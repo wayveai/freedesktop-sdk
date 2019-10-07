@@ -14,4 +14,6 @@ sources:
 - kind: git_tag
   url: gnome:gtk-doc
   track: master
+  match:
+  - 'GTK_DOC_1_29*'
   ref: GTK_DOC_1_29-0-g7db567e83fe5d2d0659560c6dfb25ee27b338140
