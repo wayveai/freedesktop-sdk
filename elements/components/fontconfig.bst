@@ -31,15 +31,25 @@ public:
         touch -d @0 "%{datadir}/fonts" /usr/share/fonts/*
         fc-cache -rs
       fi
-  cpe:
-    version: '2.13.1'
 
 sources:
 - kind: git_tag
-  url: freedesktop:tagoh/fontconfig
-  track: 2.13.1-flatpak-lts
+  url: freedesktop:fontconfig/fontconfig
+  track: master
   exclude:
   - 2.*.9*
-  ref: 2.13.0-71-gdfcb376366b5bab3e42844cdfb6d8c27e9e0fcfe
+  ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
 - kind: local
   path: files/fontconfig-flatpak.conf
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-001.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-002.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-003.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-004.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-005.patch
+- kind: patch
+  path: patches/fontconfig/new-cache-ids-006.patch
