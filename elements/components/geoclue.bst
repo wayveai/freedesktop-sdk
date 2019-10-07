@@ -41,4 +41,4 @@ sources:
 - kind: git_tag
   url: freedesktop:geoclue/geoclue.git
   track: master
-  ref: 2.5.3-0-gabc2c2dc734e93448e1b5fdd68e8e9b1808cc65b
+  ref: 2.5.5-0-g9519d67c7a9a0e97a75115f9ff99d4fb0bb81b21
