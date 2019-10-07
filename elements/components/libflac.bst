@@ -23,4 +23,4 @@ sources:
 - kind: git_tag
   url: https://git.xiph.org/flac.git
   track: master
-  ref: 1.3.2-0-gac39d3719f16dfb6e08d2fbde8ccaf34a266c81d
+  ref: 1.3.3-0-gf764434a39e8a8715d5871bb263189e5a7298280
