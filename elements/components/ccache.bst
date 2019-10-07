@@ -21,4 +21,4 @@ sources:
   track: master
   track-extra:
   - 3.7-maint
-  ref: v3.7.3-0-gfc69e8243743a2ed9305ff58c00e4fb23cb55237
+  ref: v3.7.4-0-gfbdb291fbf0fc749ed44fc510ff023c8030359ff
