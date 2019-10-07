@@ -30,12 +30,12 @@ config:
 
 public:
   cpe:
-    version: '3.14.0'
+    version: '3.15.0'
 
 sources:
 - kind: git_tag
   url: https://repo.or.cz/valgrind.git
   track: master
-  ref: VALGRIND_3_14_0-0-g3a3000290b4af0e8ef9880293c54659a6819ba78
+  ref: VALGRIND_3_15_0-0-g608cb11914e5f23d0fc12c61dad29c5c7952a1de
 - kind: patch
   path: patches/valgrind/valgrind-arm-hot_cpu.patch
