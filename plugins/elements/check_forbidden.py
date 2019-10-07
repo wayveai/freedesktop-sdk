@@ -22,14 +22,14 @@ class CheckForbiddenElement(Element):
     def _find_bad_dependencies(self, elt, traversed):
         if elt in traversed:
             return False
+        if elt.name in self.forbidden:
+            return True
         traversed.add(elt)
         bad = False
         for dep in elt.dependencies(Scope.RUN, recurse=False):
             if self._find_bad_dependencies(dep, traversed):
                 self.warn('{} depends on {}'.format(elt, dep))
                 bad = True
-        if elt.name in self.forbidden:
-            bad = True
         return bad
 
     def stage(self, sandbox):
