@@ -1,5 +1,34 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.37:
+
+    * fontconfig: Add forward support for 2.14 hashes
+    * krb5: Apply fix for CVE-2018-20217
+    * ffmpeg: Apply fix for CVE-2019-13390
+    * glib: Apply fix for CVE-2019-13012
+    * libtiff: Apply fix for CVE-2019-14973
+    * giflib: Apply fix for CVE-2019-15133
+    * python3: Apply fix for CVE-2019-16056
+    * sqlite: Apply fixes for CVE-2019-9936, CVE-2019-9937, CVE-2019-16168
+    * openssl1.1: Update to 1.1.1d and apply multiple security fixes
+    * openssl1.0: Update to 1.0.2t and apply multiple security fixes
+    * python2: Apply multiple security fixes
+    * mercurial: Update to 4.9.1
+    * binutils: Apply fix for CVE-2018-1000876
+    * curl: Apply fix for CVE-2019-5481 and CVE-2019-5482
+    * pango: Apply fix for CVE-2019-1010238
+    * gnupg: Update to 2.2.17
+    * libgpg-error: Update to 1.36
+    * libpng: Update to 1.6.37
+    * opus: Update to 1.3.1
+    * perl: Update to 5.28.2
+    * util-linux: Update to 2.33.2
+    * alsa-plugins: Update to 1.1.9
+    * cups: Update to 2.2.11
+    * graphite2: Update to 1.3.13
+    * itstool: Update to 2.0.6
+    * libxkbcommon: Update to 0.8.4
+
 freedesktop-sdk-18.08.36:
     * fontconfig: Revert add forward support for 2.14 hashes
 
