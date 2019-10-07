@@ -17,10 +17,10 @@ sources:
 - kind: git_tag
   url: savannah:nano.git
   track: master
-  ref: v4.4-0-g7d9ad31cd96cd414d76031d027ee1e194a599858
+  ref: v4.5-0-g72b13adeff680332cdbf4964373e72aa496d7fea
 - kind: git_tag
   url: savannah:gnulib.git
   track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
-  track-tags: False
+  track-tags: false
   directory: gnulib
   ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
