@@ -35,10 +35,10 @@ public:
         - '%{libdir}/libappstream-glib.so'
 
   cpe:
-    version: '0.7.15'
+    version: '0.7.16'
 
 sources:
 - kind: git_tag
   url: github:hughsie/appstream-glib
   track: master
-  ref: appstream_glib_0_7_15-0-g0ab28ff96b74eb72ffe3c3a53026aee82cf31782
+  ref: appstream_glib_0_7_16-0-g230e2da082d9754858330c3e262a9d44f816def1

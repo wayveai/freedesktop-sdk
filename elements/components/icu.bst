@@ -28,7 +28,7 @@ public:
         - '%{libdir}/icu/**'
 
   cpe:
-    version: '64.2'
+    version: '65.1'
     product: international_components_for_unicode
 
 sources:
@@ -39,6 +39,6 @@ sources:
   - maint/maint-64
   exclude:
   - release-*-rc
-  ref: release-64-2-0-ge2d85306162d3a0691b070b4f0a73e4012433444
+  ref: release-65-1-0-gfd123bf023882f07bfacf51c39111be2f946d8f8
 - kind: patch
   path: patches/icu/icu-fix-shared-linking.patch
