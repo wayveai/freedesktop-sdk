@@ -33,5 +33,5 @@ sources:
   track-extra:
   - gnome-3-32
   match:
-  - 2.[0-9][02468].*
-  ref: 2.66.2-0-gdcb4ef51405109766b7f49b1408f98295bd9351f
+  - 2.66.*
+  ref: 2.66.3-0-gd3df90ae55f9a6abdc6325ab39b12b46e52ed714
