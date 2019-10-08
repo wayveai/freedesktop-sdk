@@ -14,17 +14,22 @@ variables:
     -UDEFAULT_EGL_VENDOR_CONFIG_DIRS
     -DDEFAULT_EGL_VENDOR_CONFIG_DIRS=\"%{libdir}/GL/glvnd/egl_vendor.d\"
 
-  conf-local: |
-    --enable-asm \
+  conf-local: >-
+    --enable-asm
     --enable-tls
+    --disable-headers
 
 config:
   install-commands:
     (>):
     - |
-      rm -r "%{install-root}%{includedir}/GLES"
-      rm "%{install-root}%{libdir}/pkgconfig/glesv1_cm.pc"
       rm "%{install-root}%{libdir}"/libGLESv1_CM.so*
+
+    - |
+      rm "%{install-root}%{libdir}/pkgconfig"/gl.pc
+      rm "%{install-root}%{libdir}/pkgconfig"/egl.pc
+      rm "%{install-root}%{libdir}/pkgconfig"/glesv2.pc
+      rm "%{install-root}%{libdir}/pkgconfig"/glesv1_cm.pc
 
 public:
   bst:
