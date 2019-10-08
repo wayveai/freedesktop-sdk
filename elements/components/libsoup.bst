@@ -12,11 +12,13 @@ depends:
 - filename: components/libpsl.bst
 - filename: components/python3.bst
   type: build
+- filename: components/brotli.bst
 
 variables:
   meson-local: >
-    -Dgssapi=false
-    -Dvapi=false
+    -Dgssapi=disabled
+    -Dvapi=disabled
+    -Dntlm=disabled
 
 public:
   bst:
@@ -34,4 +36,4 @@ sources:
   - gnome-3-32
   match:
   - 2.[0-9][02468].*
-  ref: 2.66.2-0-gdcb4ef51405109766b7f49b1408f98295bd9351f
+  ref: 2.68.1-0-g15a3d17bdefebede9262933752a897cf51976a05
