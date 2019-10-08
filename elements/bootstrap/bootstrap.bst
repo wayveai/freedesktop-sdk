@@ -23,6 +23,7 @@ depends:
 - filename: bootstrap/make.bst
 - filename: bootstrap/ncurses.bst
 - filename: bootstrap/openssl.bst
+- filename: bootstrap/pcre.bst
 - filename: bootstrap/popt.bst
 - filename: bootstrap/procps.bst
 - filename: bootstrap/readline.bst

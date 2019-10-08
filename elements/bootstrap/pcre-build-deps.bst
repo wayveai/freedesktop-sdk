@@ -10,8 +10,6 @@ depends:
 
 - filename: bootstrap/glibc.bst
   type: build
-- filename: bootstrap/pcre.bst
-  type: build
 
 variables:
   install-root: "/"
@@ -26,6 +24,4 @@ config:
     destination: "/"
 
   - element: bootstrap/glibc.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/pcre.bst
     destination: "%{sysroot}"

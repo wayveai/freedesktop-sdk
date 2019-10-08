@@ -2,10 +2,15 @@ kind: autotools
 description: pcre
 
 depends:
-- filename: bootstrap-import.bst
+- filename: bootstrap/pcre-build-deps.bst
+  type: build
+- filename: bootstrap/glibc.bst
+  type: runtime
+
+(@): elements/bootstrap/include/target.yml
 
 variables:
-  conf-local: |
+  conf-local: >-
     --enable-unicode-properties
 
 public:

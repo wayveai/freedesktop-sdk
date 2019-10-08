@@ -6,8 +6,14 @@ depends:
   type: build
 - filename: bootstrap/glibc.bst
   type: runtime
+- filename: bootstrap/pcre.bst
+  type: runtime
 
 (@): elements/bootstrap/include/target.yml
+
+variables:
+  conf-local: >-
+    --enable-perl-regexp
 
 config:
   install-commands:
