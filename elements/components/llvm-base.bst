@@ -102,6 +102,9 @@ public:
         (>):
         - '%{libdir}/**/*.a.syms'
 
+  cpe:
+    product: llvm
+
 sources:
 - kind: git_tag
   track: release/8.x

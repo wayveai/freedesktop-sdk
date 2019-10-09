@@ -17,6 +17,8 @@ depends:
   type: runtime
 - filename: components/systemd-libs.bst
   type: runtime
+- filename: components/pipewire-manifest.bst
+  type: runtime
 
 config:
   exclude:

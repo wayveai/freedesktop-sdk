@@ -39,6 +39,9 @@ public:
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
 
+  cpe:
+    product: pipewire
+
 sources:
 - kind: git_tag
   url: github:PipeWire/pipewire.git
