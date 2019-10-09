@@ -13,7 +13,7 @@ public:
         - '%{libdir}/libexpat.so'
 
   cpe:
-    version: 2.2.9
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 config:
   configure-commands:

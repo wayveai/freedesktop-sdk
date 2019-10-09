@@ -137,9 +137,6 @@ public:
         - '%{datadir}/ffmpeg/examples'
         - '%{datadir}/ffmpeg/examples/**'
 
-  cpe:
-    version: '4.2.1'
-
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
   configure-commands:

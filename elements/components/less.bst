@@ -7,7 +7,7 @@ depends:
 public:
   cpe:
     vendor: 'gnu'
-    version: '530'
+    version-match: '\d+'
 
 sources:
 - kind: tar

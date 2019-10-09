@@ -35,7 +35,7 @@ public:
         - '%{libdir}/libappstream-glib.so'
 
   cpe:
-    version: '0.7.15'
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 sources:
 - kind: git_tag
