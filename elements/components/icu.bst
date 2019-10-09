@@ -28,7 +28,7 @@ public:
         - '%{libdir}/icu/**'
 
   cpe:
-    version: '65.1'
+    version-match: '(\d+)-(\d+)'
     product: international_components_for_unicode
 
 sources:

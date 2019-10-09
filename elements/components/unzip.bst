@@ -19,7 +19,7 @@ config:
 public:
   cpe:
     vendor: 'info-zip'
-    version: '6.0'
+    version-match: 'unzip(\d)(\d).tar.gz'
     patches:
       - CVE-2014-9636
       - CVE-2014-9913

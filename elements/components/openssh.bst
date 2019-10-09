@@ -21,7 +21,8 @@ public:
       - "%{mandir}/man8/sshd.8"
   cpe:
     vendor: 'openbsd'
-    version: '8.0'
+    # We ignore the patch version because this is set in a different component in CPE
+    version-match: '(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

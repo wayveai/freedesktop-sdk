@@ -19,11 +19,6 @@ config:
   - systemd-libs
 
 public:
-  cpe:
-    vendor: 'freedesktop'
-    product: 'systemd'
-    version: '243'
-
   bst:
     split-rules:
       devel:

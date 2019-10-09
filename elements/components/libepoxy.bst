@@ -23,8 +23,6 @@ public:
       devel:
         (>):
         - '%{libdir}/libepoxy.so'
-  cpe:
-    version: '1.5.3'
 
 sources:
 - kind: git_tag

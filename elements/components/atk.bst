@@ -17,7 +17,7 @@ public:
         - '%{libdir}/libatk-1.0.so'
 
   cpe:
-    version: '2.34.1'
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

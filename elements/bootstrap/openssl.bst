@@ -73,7 +73,7 @@ public:
 
   cpe:
     vendor: 'openssl'
-    version: '1.1.1d'
+    version-match: '(\d+)_(\d+)_(\d+(?:[a-z])?)'
 
 sources:
 - kind: git_tag

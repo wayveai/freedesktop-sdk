@@ -17,7 +17,7 @@ config:
 public:
   cpe:
     vendor: 'info-zip'
-    version: '3.0'
+    version-match: 'zip(\d)(\d).tar.gz'
 
 sources:
 - kind: tar

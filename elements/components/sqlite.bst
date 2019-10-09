@@ -22,7 +22,7 @@ public:
 
   cpe:
     vendor: 'sqlite'
-    version: '3.29.0'
+    version-match: '(\d)(\d\d)0(\d)00'
     patches:
     - CVE-2019-16168
 
