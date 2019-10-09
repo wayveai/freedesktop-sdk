@@ -32,6 +32,7 @@ sources:
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Tools
   track: stable
-  ref: v2019.4-0-gd65513e92c3fc2832248ce4a4b4343c6220caffc
+  track-tags: false
+  ref: v2019.4-31-g9b3cc3e05337358d0bd9fec1b7a51e3cbf55312b
   # When updating, please also track spriv-headers.bst. You have
   # to manually enable tracking spriv-headers.bst.
