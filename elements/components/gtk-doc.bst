@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/itstools.bst
+- filename: components/itstool.bst
 - filename: components/docbook-xml.bst
 - filename: components/docbook-xsl.bst
 - filename: components/pkg-config.bst   # gtk-doc uses pkg-config during runtime.

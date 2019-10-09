@@ -39,7 +39,7 @@ depends:
 - filename: components/valgrind.bst
 - filename: components/desktop-file-utils.bst
 - filename: components/gtk-doc.bst
-- filename: components/itstools.bst
+- filename: components/itstool.bst
 - filename: components/jq.bst
 - filename: components/wayland-protocols.bst
 - filename: components/xdg-portal-interfaces.bst

@@ -8,7 +8,7 @@ config:
   forbidden:
   - components/desktop-file-utils.bst
   - components/gtk-doc.bst
-  - components/itstools.bst
+  - components/itstool.bst
   - components/jq.bst
   - components/xorg-util-macros.bst
   - components/autoconf-archive.bst

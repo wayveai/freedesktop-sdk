@@ -6,7 +6,7 @@ depends:
   type: build
 - filename: components/libxml2.bst
 - filename: components/glib.bst
-- filename: components/itstools.bst
+- filename: components/itstool.bst
   type: build
 
 sources:

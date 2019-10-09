@@ -3,7 +3,7 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/gtk3.bst
-- filename: components/itstools.bst
+- filename: components/itstool.bst
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
