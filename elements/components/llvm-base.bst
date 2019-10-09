@@ -99,4 +99,7 @@ public:
         (>):
         - '%{libdir}/**/*.a.syms'
 
+  cpe:
+    product: llvm
+
 (@): elements/include/llvm.yml

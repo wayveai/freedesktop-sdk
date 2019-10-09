@@ -13,6 +13,8 @@ depends:
   type: runtime
 - filename: components/kmod.bst
   type: runtime
+- filename: components/systemd-manifest.bst
+  type: runtime
 config:
   exclude:
   - systemd-libs
@@ -20,9 +22,6 @@ config:
   include-orphans: True
 
 public:
-# cpe metadata should be written in
-# elements/components/systemd-libs.bst
-
   bst:
     integration-commands:
     - |
