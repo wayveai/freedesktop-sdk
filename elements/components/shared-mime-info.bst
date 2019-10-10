@@ -13,4 +13,6 @@ sources:
 - kind: git_tag
   url: freedesktop:xdg/shared-mime-info.git
   track: master
+  track-extra:
+  - Release-1-14
   ref: Release-1-14-0-g66ae46cbaf40579a4686b9793dc19b731bbbc85e
