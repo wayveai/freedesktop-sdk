@@ -122,7 +122,7 @@ config:
 
       Name: glesv2
       Description: Mesa OpenGL ES 2.0 library
-      Version: 19.1.5
+      Version: 19.1.7
       Libs: -lGLESv2
       Cflags: -I${includedir}
       EOF
@@ -145,4 +145,4 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '19.1'
-  ref: mesa-19.1.5-0-ga384fe0cebf1fcd6671c51c749fcc981e01b5505
+  ref: mesa-19.1.7-0-gf632aac9385cfe02f5bfe762d93e60b5b46f2c77
