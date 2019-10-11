@@ -151,6 +151,6 @@ sources:
   url: gitlab:freedesktop-sdk/mirrors/mesa-aco.git
   track: master
   track-tags: false
-  ref: 17.3-branchpoint-18979-g6c3bad5214b230ccfc99a459ee46f2130b19eede
+  ref: 17.3-branchpoint-18981-g1b2cbc98c39ddb9ed46fbaaf69cc8eb204d431d5
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
