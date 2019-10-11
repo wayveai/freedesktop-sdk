@@ -5,6 +5,8 @@ depends:
   type: build
 - filename: components/libglvnd.bst
   type: runtime
+- filename: components/git-minimal.bst
+  type: build
 
 (@):
 - elements/include/mesa.yml
@@ -41,54 +43,56 @@ variables:
 config:
   install-commands:
   - |
+
+  - |
     for header in %{headers}; do
       install -Dm644 "include/${header}" "%{install-root}%{includedir}/${header}"
     done
 
   - |
-    cat <<\EOF >gl.pc
+    sed "s/@VERSION@/$(git describe | sed 's/^mesa-//')/g" <<\EOF >gl.pc
     prefix=%{prefix}
     libdir=%{libdir}
     includedir=%{includedir}
 
     Name: gl
     Description: Mesa OpenGL Library
-    Version: %{version}
+    Version: @VERSION@
     Libs: -lGL
     Cflags: -I${includedir}
     EOF
     install -Dm644 gl.pc "%{install-root}%{libdir}/pkgconfig/gl.pc"
 
   - |
-    cat <<\EOF >egl.pc
+    sed "s/@VERSION@/$(git describe | sed 's/^mesa-//')/g" <<\EOF >egl.pc
     prefix=%{prefix}
     libdir=%{libdir}
     includedir=%{includedir}
 
     Name: egl
     Description: Mesa EGL library
-    Version: %{version}
+    Version: @VERSION@
     Libs: -lEGL
     Cflags: -I${includedir}
     EOF
     install -Dm644 egl.pc "%{install-root}%{libdir}/pkgconfig/egl.pc"
 
   - |
-    cat <<\EOF >glesv2.pc
+    sed "s/@VERSION@/$(git describe | sed 's/^mesa-//')/g" <<\EOF >glesv2.pc
     prefix=%{prefix}
     libdir=%{libdir}
     includedir=%{includedir}
 
     Name: glesv2
     Description: Mesa OpenGL ES 2.0 library
-    Version: %{version}
+    Version: @VERSION@
     Libs: -lGLESv2
     Cflags: -I${includedir}
     EOF
     install -Dm644 glesv2.pc "%{install-root}%{libdir}/pkgconfig/glesv2.pc"
 
   - |
-    cat <<\EOF >dri.pc
+    sed "s/@VERSION@/$(git describe | sed 's/^mesa-//')/g" <<\EOF >dri.pc
     prefix=%{prefix}
     libdir=%{libdir}
 
@@ -96,7 +100,7 @@ config:
 
     Name: dri
     Description: Direct Rendering Infrastructure
-    Version: %{version}
+    Version: @VERSION@
     EOF
     install -Dm644 dri.pc "%{install-root}%{libdir}/pkgconfig/dri.pc"
 
