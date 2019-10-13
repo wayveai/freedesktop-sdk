@@ -69,7 +69,6 @@ public:
       - /**
 
   cpe:
-    version: 2.32
     patches:
     - CVE-2018-1000876 # 2.32 tag already contains the fix https://sourceware.org/bugzilla/show_bug.cgi?id=23994#c2
     - CVE-2019-9071

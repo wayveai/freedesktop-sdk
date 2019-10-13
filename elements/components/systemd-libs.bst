@@ -13,17 +13,14 @@ depends:
   type: runtime
 - filename: components/xz.bst
   type: runtime
+- filename: components/systemd-manifest.bst
+  type: runtime
 
 config:
   include:
   - systemd-libs
 
 public:
-  cpe:
-    vendor: 'freedesktop'
-    product: 'systemd'
-    version: '243'
-
   bst:
     split-rules:
       devel:

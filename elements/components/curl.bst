@@ -33,7 +33,7 @@ public:
         - '%{libdir}/libcurl.so'
 
   cpe:
-    version: '7.66.0'
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

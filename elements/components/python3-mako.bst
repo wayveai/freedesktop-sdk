@@ -7,7 +7,7 @@ depends:
 
 public:
   cpe:
-    version: '1.1.0'
+    version-match: '(\d+)_(\d*)_(\d*)'
 
 sources:
 - kind: git_tag

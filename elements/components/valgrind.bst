@@ -30,7 +30,7 @@ config:
 
 public:
   cpe:
-    version: '3.15.0'
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

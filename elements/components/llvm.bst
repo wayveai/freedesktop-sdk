@@ -5,6 +5,8 @@ depends:
   type: build
 - filename: components/llvm-runtime.bst
   type: runtime
+- filename: components/llvm-manifest.bst
+  type: runtime
 
 config:
   include:
