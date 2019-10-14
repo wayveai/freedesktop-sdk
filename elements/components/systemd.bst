@@ -15,6 +15,8 @@ depends:
   type: runtime
 - filename: components/systemd-manifest.bst
   type: runtime
+- filename: components/gnu-efi-maybe.bst
+  type: runtime
 config:
   exclude:
   - systemd-libs

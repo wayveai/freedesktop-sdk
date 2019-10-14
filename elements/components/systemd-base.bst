@@ -16,18 +16,26 @@ depends:
 - filename: components/xz.bst
 - filename: components/linux-pam.bst
 - filename: components/kmod.bst
+- filename: components/gnu-efi-maybe.bst
 
 variables:
-  meson-local: |
-    -Drootprefix=%{prefix} \
-    -Drootlibdir=%{libdir} \
-    -Dsysvinit-path=%{sysconfdir}/init.d \
-    -Daudit=false \
-    -Dseccomp=false \
-    -Dsystem-uid-max=999 \
-    -Dsystem-gid-max=999 \
-    -Dopenssl=false \
+  efi: 'false'
+  (?):
+  - target_arch in ["x86_64", "i686", "arm", "aarch64"]:
+      efi: 'true'
+  meson-local: >-
+    -Drootprefix=%{prefix}
+    -Drootlibdir=%{libdir}
+    -Dsysvinit-path=%{sysconfdir}/init.d
+    -Daudit=false
+    -Dseccomp=false
+    -Dsystem-uid-max=999
+    -Dsystem-gid-max=999
+    -Dopenssl=false
     -Dpam=true
+    -Dgnu-efi=%{efi}
+    -Defi=%{efi}
+    -Dfirstboot=true
 
 public:
   cpe:
@@ -68,3 +76,5 @@ sources:
   path: patches/systemd/001-CVE-2018-20839.patch
 - kind: patch
   path: patches/systemd/002-CVE-2018-20839.patch
+- kind: patch
+  path: patches/systemd/gnu-efi-includes.patch
