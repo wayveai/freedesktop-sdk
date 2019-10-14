@@ -5,28 +5,20 @@ depends:
 - filename: components/linux-pam.bst
 
 variables:
-  conf-local: |
-    --with-libpam \
+  conf-local: >-
+    --with-libpam
     --without-selinux
+
+  make-install: make -j1 install DESTDIR="%{install-root}" ubindir="%{bindir}" usbindir="%{sbindir}"
 
 config:
   install-commands:
-  - |
-    cd %{builddir}
-    %{make-install} ubindir="%{bindir}" usbindir="%{sbindir}"
-  - |
-    %{delete_libtool_files}
-  - |
-    # remove pam_selinux and pam_console from the config
-    # as we don't build them
-    sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
-    sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
-
-
-public:
-  bst:
-    overlap-whitelist:
-    - '**'
+    (>):
+    - |
+      # remove pam_selinux and pam_console from the config
+      # as we don't build them
+      sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
+      sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
 
 sources:
 - kind: tar
