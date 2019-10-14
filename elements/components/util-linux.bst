@@ -20,6 +20,14 @@ variables:
     --enable-usrdir-path
 
 public:
+  initial-script:
+    script: |
+      #!/bin/bash
+      sysroot="${1}"
+      for i in mount umount; do
+        chmod 4755 "${sysroot}%{bindir}/${i}"
+      done
+
   bst:
     split-rules:
       devel:
