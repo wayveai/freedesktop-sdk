@@ -23,9 +23,9 @@ public:
 # Those are the defaults which we explicitly match.
 variables:
   meson-local: |
-   -Dgtk_doc=false \
-   -Dintrospection=true \
-   -Dinstall-tests=false
+    -Dgtk_doc=false \
+    -Dintrospection=true \
+    -Dinstall-tests=false
 
 sources:
 - kind: git_tag
@@ -33,4 +33,4 @@ sources:
   track: master
   track-extra:
   - 1.44.6
-  ref: 1.44.6-0-gee65d75feca3e128c951fdfbf9a61619e2a5239e
+  ref: 1.44.6-2-0-g512663d4ed441dba3de66cd2b4928b717835f72a
