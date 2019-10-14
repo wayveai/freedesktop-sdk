@@ -13,9 +13,9 @@ environment:
   FORCE_UNSAFE_CONFIGURE: "1"
 
 variables:
-  conf-local: |
-    --enable-install-program=hostname,arch \
-    --enable-no-install-program=kill,uptime \
+  conf-local: >-
+    --enable-install-program=hostname,arch
+    --enable-no-install-program=kill,uptime,groups
     --enable-acl
 
   make-install: make -j1 install DESTDIR="%{install-root}" INSTALL=install
