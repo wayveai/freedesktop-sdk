@@ -14,7 +14,7 @@ environment:
 
 variables:
   conf-local: |
-    --enable-install-program=hostname \
+    --enable-install-program=hostname,arch \
     --enable-no-install-program=kill,uptime \
     --enable-acl
 
