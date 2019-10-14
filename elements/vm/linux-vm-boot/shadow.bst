@@ -20,6 +20,18 @@ config:
       sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
       sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
 
+public:
+  initial-script:
+    script: |
+      #!/bin/bash
+      sysroot="${1}"
+      for i in su passwd gpasswd chsh chfn newgrp; do
+        chmod 4755 "${sysroot}%{bindir}/${i}"
+      done
+      for i in expiry chage; do
+        chmod 4755 "${sysroot}%{bindir}/${i}"
+      done
+
 sources:
 - kind: tar
   url: github:shadow-maint/shadow/releases/download/4.7/shadow-4.7.tar.xz
