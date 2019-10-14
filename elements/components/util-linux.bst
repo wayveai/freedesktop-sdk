@@ -11,11 +11,12 @@ depends:
   type: build
 
 variables:
-  conf-local: |
-    --without-python \
-    --disable-wall \
-    --disable-makeinstall-chown \
-    --disable-kill \
+  conf-local: >-
+    --without-python
+    --disable-wall
+    --disable-makeinstall-chown
+    --disable-kill
+    --disable-nologin
     --enable-usrdir-path
 
 public:
@@ -39,8 +40,6 @@ public:
       - '%{bindir}/umount'
       - '%{bindir}/pivot_root'
       - '%{bindir}/switch_root'
-
-      - '%{bindir}/nologin'
 
       - '%{bindir}/sulogin'
       - '%{bindir}/agetty'
