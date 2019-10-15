@@ -29,7 +29,7 @@ public:
         - '%{libdir}/libtasn1.so'
 
   cpe:
-    version: '4.14'
+    version-match: 'libtasn1_(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

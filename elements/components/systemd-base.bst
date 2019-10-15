@@ -30,8 +30,12 @@ variables:
     -Dpam=true
 
 public:
-# cpe metadata should be written in
-# elements/components/systemd-libs.bst
+  cpe:
+    vendor: 'freedesktop'
+    product: 'systemd'
+    version-match: '\d+'
+    patches:
+    - CVE-2018-20839
 
   bst:
     split-rules:

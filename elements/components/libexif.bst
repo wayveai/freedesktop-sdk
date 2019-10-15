@@ -13,7 +13,7 @@ public:
         - '%{libdir}/libexif.so'
 
   cpe:
-    version: '0.6.21'
+    version-match: '(\d+)_(\d+)_(\d+)'
     vendor: 'curtis_galloway'
 
 sources:

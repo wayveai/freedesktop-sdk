@@ -33,7 +33,7 @@ public:
         - '%{libdir}/libcurl.so'
 
   cpe:
-    version: '7.65.3'
+    version-match: '(\d+)_(\d+)_(\d+)'
     patches:
     - CVE-2019-5481
     - CVE-2019-5482

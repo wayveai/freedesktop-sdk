@@ -24,7 +24,7 @@ public:
         - '%{libdir}/libatk-bridge-2.0.so'
 
   cpe:
-    version: '2.32.0'
+    version-match: '(\d+)_(\d+)_(\d+)'
     vendor: 'gnome'
 
 sources:

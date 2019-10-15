@@ -38,7 +38,7 @@ public:
         - '%{bindir}/*'
   cpe:
     product: network_security_services
-    version: '3.46.1'
+    version-match: '(\d+)_(\d+)_(\d+)'
 
 config:
   build-commands:

@@ -31,7 +31,7 @@ public:
         - '%{libdir}/libmagic.so'
 
   cpe:
-    version: '5.37'
+    version-match: '(\d+)_(\d+)'
 
 sources:
 - kind: git_tag

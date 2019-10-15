@@ -22,7 +22,7 @@ public:
       (@): include/_private/exclude-systemd.yml
 
   cpe:
-    version: '2.32.1'
+    version-match: '(\d+)_(\d+)_(\d+)'
     vendor: 'gnome'
 
 sources:
