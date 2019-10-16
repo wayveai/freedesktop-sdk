@@ -16,18 +16,26 @@ depends:
 - filename: components/xz.bst
 - filename: components/linux-pam.bst
 - filename: components/kmod.bst
+- filename: components/gnu-efi-maybe.bst
 
 variables:
-  meson-local: |
-    -Drootprefix=%{prefix} \
-    -Drootlibdir=%{libdir} \
-    -Dsysvinit-path=%{sysconfdir}/init.d \
-    -Daudit=false \
-    -Dseccomp=false \
-    -Dsystem-uid-max=999 \
-    -Dsystem-gid-max=999 \
-    -Dopenssl=false \
+  efi: 'false'
+  (?):
+  - target_arch in ["x86_64", "i686", "arm", "aarch64"]:
+      efi: 'true'
+  meson-local: >-
+    -Drootprefix=%{prefix}
+    -Drootlibdir=%{libdir}
+    -Dsysvinit-path=%{sysconfdir}/init.d
+    -Daudit=false
+    -Dseccomp=false
+    -Dsystem-uid-max=999
+    -Dsystem-gid-max=999
+    -Dopenssl=false
     -Dpam=true
+    -Dgnu-efi=%{efi}
+    -Defi=%{efi}
+    -Dfirstboot=true
 
 public:
   cpe:
@@ -59,6 +67,10 @@ public:
 sources:
 - kind: git_tag
   url: github:systemd/systemd-stable.git
-  track: v243-stable
+  track: master
+  track-extra:
+  - v243-stable
   track-tags: false
-  ref: v243-0-gefb536d0cbe2e58f80e501d19999928c75e08f6a
+  ref: v243-51-gfab6f010ac6c3bc93a10868de722d7c8c3622eb9
+- kind: patch
+  path: patches/systemd/gnu-efi-includes.patch

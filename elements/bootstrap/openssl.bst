@@ -61,6 +61,9 @@ config:
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/openssl"
       mv "%{install-root}%{includedir}/openssl/opensslconf.h" "%{install-root}%{includedir}/%{gcc_triplet}/openssl/"
 
+    - |
+      rm "%{install-root}%{datadir}/man/man1/passwd.1"
+
 public:
   bst:
     split-rules:

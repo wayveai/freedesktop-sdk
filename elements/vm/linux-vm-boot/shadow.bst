@@ -5,28 +5,32 @@ depends:
 - filename: components/linux-pam.bst
 
 variables:
-  conf-local: |
-    --with-libpam \
+  conf-local: >-
+    --with-libpam
     --without-selinux
+
+  make-install: make -j1 install DESTDIR="%{install-root}" ubindir="%{bindir}" usbindir="%{sbindir}"
 
 config:
   install-commands:
-  - |
-    cd %{builddir}
-    %{make-install} ubindir="%{bindir}" usbindir="%{sbindir}"
-  - |
-    %{delete_libtool_files}
-  - |
-    # remove pam_selinux and pam_console from the config
-    # as we don't build them
-    sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
-    sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
-
+    (>):
+    - |
+      # remove pam_selinux and pam_console from the config
+      # as we don't build them
+      sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
+      sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
 
 public:
-  bst:
-    overlap-whitelist:
-    - '**'
+  initial-script:
+    script: |
+      #!/bin/bash
+      sysroot="${1}"
+      for i in su passwd gpasswd chsh chfn newgrp; do
+        chmod 4755 "${sysroot}%{bindir}/${i}"
+      done
+      for i in expiry chage; do
+        chmod 4755 "${sysroot}%{bindir}/${i}"
+      done
 
 sources:
 - kind: tar
