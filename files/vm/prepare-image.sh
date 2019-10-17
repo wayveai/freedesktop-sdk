@@ -15,6 +15,10 @@ while [ $# -gt 1 ]; do
     param="$1"
     shift
     case "${param}" in
+        --rootpasswd)
+            rootpasswd="$1"
+            shift
+            ;;
         --sysroot)
             sysroot="$1"
             shift
@@ -77,16 +81,18 @@ root:x:0:
 EOF
 
 for i in $(ls "${initial_scripts}"/*); do
+    echo "Running $(basename "${i}")" 1>&2
     "${i}" "${sysroot}"
 done
 
 echo "Running systemd-firstboot" 1>&2
-systemd-firstboot --root "${sysroot}" --root-password root --locale en_US.UTF-8 --timezone UTC
+systemd-firstboot --root "${sysroot}" ${rootpasswd:+--root-password ${rootpasswd}} --locale en_US.UTF-8 --timezone UTC
 
 echo "Running systemctl preset-all" 1>&2
 systemctl --root "${sysroot}" preset-all
 
 echo "Fix rights for /etc/shadow" 1>&2
+touch "${sysroot}/etc/shadow"
 chmod 0400 "${sysroot}/etc/shadow"
 
 echo "Creating /etc/fstab" 1>&2
