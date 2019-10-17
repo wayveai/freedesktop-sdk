@@ -34,8 +34,8 @@ config:
     destination: '/'
 
   commands:
-  - |
-    prepare-image.sh --sysroot / --seed "%{uuidnamespace}" \
+  - prepare-image.sh --sysroot / --rootpasswd root \
+                     --seed "%{uuidnamespace}" \
                      --rootsource /dev/gpt-auto-root >/tmp/vars
 
   - dbus-uuidgen >/etc/machine-id
