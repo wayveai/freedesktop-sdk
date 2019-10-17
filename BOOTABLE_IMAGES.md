@@ -94,3 +94,16 @@ All this process is done automatically with:
 * `make ostree-server` to start a OSTree server.
 * `make update-ostree` to create a new commit.
 * `make run-ostree-vm` to run the a virtual machine.
+
+## Desktop
+
+`vm/desktop/efi.bst` provides and EFI boot, all the Freedesktop SDK
+libraries as well the following services:
+
+* Pulseaudio
+* Flatpak
+* Plymouth with EFI bgrt theme, the standard vendor logo + OS logo.
+* Weston on Wayland
+* XWayland
+
+It boots directly to Weston as user.
