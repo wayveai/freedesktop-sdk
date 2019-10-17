@@ -1,0 +1,11 @@
+[Unit]
+Description=Create weston user
+ConditionFirstBoot=yes
+
+[Service]
+Type=oneshot
+ExecStart=useradd -m weston-user
+ExecStart=usermod -a -G wheel weston-user
+
+[Install]
+WantedBy=multi-user.target
