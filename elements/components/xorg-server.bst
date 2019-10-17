@@ -33,10 +33,6 @@ variables:
     --enable-glamor \
     --enable-xwayland
 
-environment:
-  PKG_CONFIG_PATH: "%{libdir}/GL/default/lib/pkgconfig"
-  CPPFLAGS: "-I%{libdir}/GL/default/include"
-
 sources:
 - kind: git_tag
   url: freedesktop:xorg/xserver.git
