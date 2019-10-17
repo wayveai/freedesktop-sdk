@@ -9,14 +9,11 @@ variables:
 config:
   install-commands:
   - |
-    mkdir -p "%{networkd-config}"
-    install -m 644 -t "%{networkd-config}" 20-wired.network
-
-public:
-  bst:
-    integration-commands:
-    - /usr/bin/systemctl enable systemd-networkd
+    install -Dm 644 -t "%{networkd-config}" 20-wired.network
+    install -Dm 644 \
+        -t "%{install-root}%{indep-libdir}/systemd/system-preset" \
+        networkd.preset
 
 sources:
 - kind: local
-  path: files/systemd-networkd/20-wired.network
+  path: files/systemd-networkd
