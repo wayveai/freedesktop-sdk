@@ -34,7 +34,9 @@ config:
     destination: '/'
 
   commands:
-  - prepare-image.sh --sysroot / --seed "%{uuidnamespace}" >/tmp/vars
+  - |
+    prepare-image.sh --sysroot / --seed "%{uuidnamespace}" \
+                     --rootsource /dev/gpt-auto-root >/tmp/vars
 
   - dbus-uuidgen >/etc/machine-id
   - SYSTEMD_RELAX_ESP_CHECKS=1 bootctl --path='/boot' --no-variables install
