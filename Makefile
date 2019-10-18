@@ -15,7 +15,8 @@ endif
 REPO=repo
 CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
-VM_ARTIFACT?=vm/minimal-systemd-vm.bst
+VM_ARTIFACT_ROOT?=vm/minimal/virt.bst
+VM_ARTIFACT_BOOT?=vm/boot/virt.bst
 IMPORT_BOOTSTRAP?=false
 RUNTIME_VERSION?=master
 
@@ -83,32 +84,36 @@ export-tar:
 	done
 
 clean-vm:
-	rm -rf $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+	rm -rf $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
+	rm -rf $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)
 
-$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT):
-	$(BST) build $(VM_ARTIFACT)
-	$(BST) checkout --hardlinks $(VM_ARTIFACT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT):
+	$(BST) build $(VM_ARTIFACT_ROOT)
+	$(BST) checkout --hardlinks $(VM_ARTIFACT_ROOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
+$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT):
+	$(BST) build $(VM_ARTIFACT_BOOT)
+	$(BST) checkout --hardlinks $(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)
 
-build-vm: clean-vm $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+build-vm: clean-vm $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)
 
 QEMU_COMMON_ARGS= \
 	-smp 4 \
 	-m 256 \
 	-nographic \
-	-kernel $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)/boot/vmlinuz \
-	-initrd $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)/boot/initramfs.gz \
-	-virtfs local,id=root9p,path=$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT),security_model=none,mount_tag=root9p
+	-kernel $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)/vmlinuz \
+	-initrd $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)/initramfs.gz \
+	-virtfs local,id=virtfs,path=$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT),security_model=none,mount_tag=virtfs
 
 QEMU_X86_COMMON_ARGS= \
 	$(QEMU_COMMON_ARGS) \
 	-enable-kvm \
-	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
+	-append 'root=virtfs rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap console=ttyS0'
 
 QEMU_ARM_COMMON_ARGS= \
 	$(QEMU_COMMON_ARGS) \
 	-machine type=virt \
 	-cpu max \
-	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyAMA0'
+	-append 'root=virtfs rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyAMA0'
 
 QEMU_AARCH64_ARGS= \
 	$(QEMU_ARM_COMMON_ARGS)
@@ -120,9 +125,9 @@ QEMU_ARM_ARGS= \
 QEMU_POWERPC64LE_ARGS= \
 	$(QEMU_COMMON_ARGS) \
 	-machine pseries \
-	-append 'root=root9p rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
+	-append 'root=virtfs rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
 
-run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
 ifeq ($(ARCH),x86_64)
 	$(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),i686)

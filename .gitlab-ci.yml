@@ -339,7 +339,8 @@ minimal_systemd_vm_x86_64:
   <<: *vm_imageless
   variables:
     ARCH: x86_64
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -351,7 +352,8 @@ minimal_systemd_vm_i686:
   <<: *vm_imageless
   variables:
     ARCH: i686
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -362,7 +364,8 @@ minimal_systemd_vm_aarch64:
   <<: *vm_imageless
   variables:
     ARCH: aarch64
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
@@ -374,7 +377,8 @@ minimal_systemd_vm_arm:
   <<: *vm_imageless
   variables:
     ARCH: arm
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -387,7 +391,8 @@ minimal_systemd_vm_powerpc64le:
   <<: *vm_imageless
   variables:
     ARCH: powerpc64le
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
   when: manual
