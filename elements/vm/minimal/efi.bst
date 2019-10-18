@@ -2,9 +2,9 @@ kind: script
 
 build-depends:
 - vm/deploy-tools.bst
-- vm/efi-partition.bst
-- vm/minimal-efi-filesystem.bst
-- vm/minimal-efi-initial-scripts.bst
+- vm/boot/efi.bst
+- vm/minimal/filesystem.bst
+- vm/minimal/initial-scripts.bst
 - vm/prepare-image.bst
 
 
@@ -29,11 +29,11 @@ config:
     destination: '/tmp'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
-  - element: 'vm/efi-partition.bst'
+  - element: 'vm/boot/efi.bst'
     destination: '/efi'
-  - element: 'vm/minimal-efi-filesystem.bst'
+  - element: 'vm/minimal/filesystem.bst'
     destination: '/sysroot'
-  - element: 'vm/minimal-efi-initial-scripts.bst'
+  - element: 'vm/minimal/initial-scripts.bst'
     destination: '/'
 
   commands:
