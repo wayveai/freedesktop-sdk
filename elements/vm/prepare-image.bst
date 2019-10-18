@@ -1,7 +1,11 @@
 kind: manual
 
-build-depends:
+depends:
 - bootstrap-import.bst
+
+runtime-depends:
+- components/systemd.bst
+- components/tzdata.bst
 
 config:
   install-commands:
