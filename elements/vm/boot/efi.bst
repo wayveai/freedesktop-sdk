@@ -1,8 +1,8 @@
 kind: script
 
 build-depends:
-- vm/efi-partition-deps.bst
-- vm/efi-partition-initial-scripts.bst
+- vm/boot/efi/deps.bst
+- vm/boot/efi/initial-scripts.bst
 - vm/prepare-image.bst
 
 variables:
@@ -19,9 +19,9 @@ config:
     destination: '/var/tmp'
   - element: ''
     destination: '/boot'
-  - element: vm/efi-partition-deps.bst
+  - element: vm/boot/efi/deps.bst
     destination: '/'
-  - element: vm/efi-partition-initial-scripts.bst
+  - element: vm/boot/efi/initial-scripts.bst
     destination: '/'
   - element: vm/prepare-image.bst
     destination: '/'
