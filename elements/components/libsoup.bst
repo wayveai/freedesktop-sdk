@@ -36,4 +36,4 @@ sources:
   - gnome-3-32
   match:
   - 2.[0-9][02468].*
-  ref: 2.68.1-0-g15a3d17bdefebede9262933752a897cf51976a05
+  ref: 2.68.2-0-g5b2cf0eab0386322ed3f25d9b671c00dfbb93471

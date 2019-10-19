@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
   track: master
-  ref: man-pages-5.02-0-g157de0be214a12253232569d62b42f3ccba6f878
+  ref: man-pages-5.04-0-g3bbd3971573072e25476e96bda7cd98bac974835
