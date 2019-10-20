@@ -1,0 +1,35 @@
+From ad96c4987cb2b23a9314a0a01fea8153843de8ef Mon Sep 17 00:00:00 2001
+From: Samuel Pitoiset <samuel.pitoiset@gmail.com>
+Date: Tue, 8 Oct 2019 10:30:03 +0200
+Subject: [PATCH] drirc: enable vk_x11_override_min_image_count for DOOM
+
+DOOM fails to handle more images than expected when the adaptative
+sync mode is enabled.
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/issues/1902
+Cc: 19.2 <mesa-stable@lists.freedesktop.org>
+Signed-off-by: Samuel Pitoiset <samuel.pitoiset@gmail.com>
+Reviewed-by: Bas Nieuwenhuizen <bas@basnieuwenhuizen.nl>
+---
+ src/util/00-mesa-defaults.conf | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/util/00-mesa-defaults.conf b/src/util/00-mesa-defaults.conf
+index 0af33ed35aa..94a33480b12 100644
+--- a/src/util/00-mesa-defaults.conf
++++ b/src/util/00-mesa-defaults.conf
+@@ -478,6 +478,11 @@ TODO: document the other workarounds.
+         <engine engine_name_match="UnrealEngine4.*" engine_versions="0:23">
+             <option name="vk_x11_strict_image_count" value="true" />
+         </engine>
++
++        <!-- DOOM crashes at startup without this workaround if the adaptative sync mode is enabled. -->
++        <application name="DOOM" executable="DOOMx64vk.exe">
++            <option name="vk_x11_strict_image_count" value="true" />
++        </application>
+     </device>
+     <!-- vmwgfx doesn't like full buffer swaps and can't sync to vertical retraces.-->
+     <device driver="vmwgfx">
+-- 
+2.22.0
+
