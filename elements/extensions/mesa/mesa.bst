@@ -153,3 +153,5 @@ sources:
   ref: mesa-19.2.1-0-g877417918f6086baf1dd53a03b7808820e800ced
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
+- kind: patch
+  path: patches/mesa/drirc-doom-min-image-count.patch
