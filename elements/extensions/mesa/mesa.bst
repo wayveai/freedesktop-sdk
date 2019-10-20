@@ -157,4 +157,5 @@ sources:
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch
   path: patches/mesa/mesa-llvm9.patch
-
+- kind: patch
+  path: patches/mesa/drirc-doom-min-image-count.patch
