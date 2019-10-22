@@ -15,6 +15,8 @@ depends:
   type: runtime
 - filename: components/systemd-manifest.bst
   type: runtime
+- filename: components/lz4.bst
+  type: runtime
 
 config:
   include:
