@@ -12,6 +12,7 @@ depends:
 - filename: components/libcap.bst
 - filename: components/libgcrypt.bst
 - filename: components/libgpg-error.bst
+- filename: components/lz4.bst
 - filename: components/util-linux.bst
 - filename: components/xz.bst
 - filename: components/linux-pam.bst
@@ -36,6 +37,10 @@ variables:
     -Dgnu-efi=%{efi}
     -Defi=%{efi}
     -Dfirstboot=true
+    -Dzlib=true
+    -Dbzip2=true
+    -Dxz=true
+    -Dlz4=true
 
 public:
   cpe:

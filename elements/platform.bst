@@ -53,6 +53,7 @@ depends:
 - filename: components/libxml2.bst
 - filename: components/libxslt.bst
 - filename: components/locales.bst
+- filename: components/lz4.bst
 - filename: components/lzip.bst
 - filename: components/nano.bst
 - filename: components/nettle.bst
