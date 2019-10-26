@@ -223,8 +223,8 @@ populate_source_cache:
   script:
     - make build
     - test ${ARCH} != "aarch64" && make build-vm
-    - make check-dev-files check-rpath
-    - make clean-platform
+    - make check-static-libraries check-dev-files check-rpath
+    - make clean-platform clean-sdk
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make test-apps
