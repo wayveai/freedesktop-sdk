@@ -7,7 +7,7 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   RUNTIME_VERSION: '20.08'
   STABLE_ABI: 'false'
-  IMAGE_ID: 'cca808b194baa7c8bfa17ec646616be15af3b47a'
+  IMAGE_ID: '79c3f5dec59f95e34e16b0a9307a9d56b382e093'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
