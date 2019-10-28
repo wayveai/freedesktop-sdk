@@ -11,3 +11,6 @@ runtime-depends:
 - vm/linux-vm-boot/shadow.bst
 - components/tzdata.bst
 - vm/base-filesystem.bst
+- vm/config/journald.bst
+- vm/config/networkd.bst
+- vm/config/resolved.bst

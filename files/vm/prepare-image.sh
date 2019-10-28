@@ -2,9 +2,14 @@
 
 set -eu
 
-sysroot=/
+sysroot=
+noboot=
+efipath=/efi
 initial_scripts=/etc/fdsdk/initial_scripts
 uuidnamespace="$(uuidgen -r)"
+rootfstype="ext4"
+rootfsopts="errors=remount-ro,relatime"
+root_source=
 
 while [ $# -gt 1 ]; do
     param="$1"
@@ -22,6 +27,25 @@ while [ $# -gt 1 ]; do
             uuidnamespace="$1"
             shift
             ;;
+	--efipath)
+	    efipath="$1"
+	    shift
+	    ;;
+	--noboot)
+	    noboot="1"
+	    ;;
+	--rootsource)
+	    root_source="$1"
+	    shift
+	    ;;
+	--rootfstype)
+	    rootfstype="$1"
+	    shift
+	    ;;
+	--rootfsopts)
+	    rootfsopts="$1"
+	    shift
+	    ;;
     esac
 done
 
@@ -67,10 +91,19 @@ uuid_root="$(uuidgen -s --namespace "${uuidnamespace}" --name root)"
 id_efi="$(uuidgen -s --namespace "${uuidnamespace}" --name efi | tr a-f A-F | sed 's/^\(........\).*/\1/')"
 uuid_efi="$(echo "${id_efi}" | sed 's/^\(....\)\(....\)$/\1-\2/')"
 
+if [ -z "${root_source}" ]; then
+    root_source="UUID=${uuid_root}"
+fi
+
 cat >"${sysroot}/etc/fstab" <<EOF
-UUID=${uuid_root} / ext4 errors=remount-ro,relatime 0 1
-UUID=${uuid_efi} /efi vfat umask=0077 0 1
+${root_source} / ${rootfstype} ${rootfsopts} 0 1
 EOF
+
+if [ -z "${noboot}" ]; then
+    cat >>"${sysroot}/etc/fstab" <<EOF
+UUID=${uuid_efi} ${efipath} vfat umask=0077 0 1
+EOF
+fi
 
 echo "uuid_root='${uuid_root}'"
 echo "id_efi='${id_efi}'"

@@ -1,7 +1,7 @@
 kind: compose
 
 build-depends:
-- vm/minimal-efi-deps.bst
+- vm/minimal/deps.bst
 
 config:
   exclude:
