@@ -34,4 +34,4 @@ sources:
   - gnome-3-32
   match:
   - 2.66.*
-  ref: 2.66.3-0-gd3df90ae55f9a6abdc6325ab39b12b46e52ed714
+  ref: 2.66.4-0-gbdcf906745379df9d490bb214374512b84d5e8da
