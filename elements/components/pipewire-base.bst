@@ -1,20 +1,20 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/alsa-lib.bst
-- filename: components/dbus.bst
-- filename: components/sdl2.bst
-- filename: components/ffmpeg.bst
-- filename: components/systemd.bst
-  type: build
-- filename: components/systemd-libs.bst
-  type: runtime
-- filename: components/gtk-doc.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+# This element is not be used directly. Use either:
+#  - components/pipewire.bst
+#  - components/pipewire-daemon.bst
+
+build-depends:
+- bootstrap-import.bst
+- components/gstreamer-plugins-base.bst
+- components/alsa-lib.bst
+- components/dbus.bst
+- components/sdl2.bst
+- components/ffmpeg.bst
+- components/systemd.bst
+- components/systemd-libs.bst
+- components/gtk-doc.bst
+- public-stacks/buildsystem-meson.bst
 
 variables:
   # Docs depend on doxygen
@@ -25,13 +25,9 @@ variables:
     -Dgstreamer=enabled
     -Dsystemd=true
 
-
 public:
   bst:
     split-rules:
-      devel:
-        (>):
-        - '%{libdir}/libpipewire-*.so'
       daemon:
       - '%{sysconfdir}'
       - '%{sysconfdir}/**'
