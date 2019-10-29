@@ -1,23 +1,23 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/gperf.bst
-  type: build
-- filename: components/m4.bst
-  type: build
-- filename: components/libcap.bst
-- filename: components/libgcrypt.bst
-- filename: components/libgpg-error.bst
-- filename: components/lz4.bst
-- filename: components/util-linux.bst
-- filename: components/xz.bst
-- filename: components/linux-pam.bst
-- filename: components/kmod.bst
-- filename: components/gnu-efi-maybe.bst
+# This element is not be used directly. Use either:
+#  - components/systemd.bst
+#  - components/systemd-libs.bst
+
+build-depends:
+- bootstrap-import.bst
+- public-stacks/buildsystem-meson.bst
+- components/gperf.bst
+- components/m4.bst
+- components/libcap.bst
+- components/libgcrypt.bst
+- components/libgpg-error.bst
+- components/lz4.bst
+- components/util-linux.bst
+- components/xz.bst
+- components/linux-pam.bst
+- components/kmod.bst
+- components/gnu-efi-maybe.bst
 
 variables:
   efi: 'false'

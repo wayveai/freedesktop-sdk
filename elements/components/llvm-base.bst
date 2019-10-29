@@ -1,12 +1,13 @@
 kind: cmake
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: components/libffi.bst
-  type: build
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+# This element is not be used directly. Use either:
+#  - components/llvm.bst
+#  - components/llvm-runtime.bst
+
+build-depends:
+- bootstrap-import.bst
+- components/libffi.bst
+- public-stacks/buildsystem-cmake.bst
 
 environment:
   # Work-around issue building compiler-rt with multiarch
