@@ -15,8 +15,8 @@ depends:
   - filename: components/systemd.bst
   - filename: components/xorg-lib-xcb.bst
   - filename: components/xorg-lib-xcursor.bst
-  - filename: vm/linux-vm-boot/mtdev.bst
-  - filename: vm/linux-vm-boot/libinput.bst
+  - filename: components/mtdev.bst
+  - filename: components/libinput.bst
   - filename: components/dummy-gbm.bst
 
 variables:
