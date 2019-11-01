@@ -8,7 +8,7 @@ runtime-depends:
 - components/dbus.bst
 - components/dracut.bst
 - components/os-release.bst
-- vm/linux-vm-boot/shadow.bst
+- components/shadow.bst
 - components/tzdata.bst
 - components/pkg-config.bst
 - components/gzip.bst
