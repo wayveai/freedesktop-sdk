@@ -16,8 +16,8 @@ depends:
 - filename: components/libxml2.bst
 - filename: components/libsoup.bst
 - filename: components/xorg-lib-xau.bst
-- filename: deploy-tools/ostree.bst
-- filename: deploy-tools/fuse.bst
+- filename: components/ostree.bst
+- filename: components/fuse.bst
 - filename: components/json-glib.bst
 - filename: components/appstream-glib.bst
 - filename: components/libseccomp.bst

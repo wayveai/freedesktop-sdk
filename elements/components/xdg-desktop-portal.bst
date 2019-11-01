@@ -4,7 +4,7 @@ depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: deploy-tools/flatpak.bst
+- filename: components/flatpak.bst
   type: build
 - filename: components/glib.bst
   type: build

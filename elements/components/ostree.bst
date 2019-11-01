@@ -13,7 +13,7 @@ depends:
 - filename: components/libsoup.bst
 - filename: components/gobject-introspection.bst
   type: build
-- filename: deploy-tools/fuse.bst
+- filename: components/fuse.bst
 
 public:
   bst:
