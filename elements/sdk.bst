@@ -33,6 +33,7 @@ depends:
 - filename: components/patch.bst
 - filename: components/pkg-config.bst
 - filename: components/python3-pip.bst
+- filename: components/python3-wheel.bst
 - filename: components/ruby.bst
 - filename: components/spirv-tools.bst
 - filename: components/strace.bst

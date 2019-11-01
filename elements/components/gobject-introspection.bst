@@ -4,6 +4,8 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/glib.bst
 - filename: components/python3.bst
+- filename: components/python3-mako.bst
+- filename: components/python3-markdown.bst
 - filename: components/gtk-doc.bst
   type: build
 - filename: components/flex.bst
@@ -14,8 +16,9 @@ depends:
   type: build
 
 variables:
-  conf-local: >-
+  meson-local: >-
     -Dgtk_doc=true
+    -Ddoctool=true
 
 public:
   bst:
