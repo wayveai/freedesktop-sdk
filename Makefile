@@ -38,7 +38,7 @@ ABI=gnu
 endif
 
 BST=bst --colors $(ARCH_OPTS)
-QEMU=fakeroot qemu-system-$(QEMU_ARCH)
+QEMU=qemu-system-$(QEMU_ARCH)
 
 all: build
 
@@ -129,15 +129,15 @@ QEMU_POWERPC64LE_ARGS= \
 
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
 ifeq ($(ARCH),x86_64)
-	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),i686)
-	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),aarch64)
-	$(QEMU) $(QEMU_AARCH64_ARGS)
+	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
-	$(QEMU) $(QEMU_ARM_ARGS)
+	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
 else ifeq ($(ARCH),powerpc64le)
-	$(QEMU) $(QEMU_POWERPC64LE_ARGS)
+	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 
 $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
