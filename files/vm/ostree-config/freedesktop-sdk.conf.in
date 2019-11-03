@@ -1,0 +1,4 @@
+[remote "FreedesktopSDK"]
+url=OSTREE_REMOTE_URL
+gpg-verify=true
+gpgkeypath=/etc/pki/ostree/fdsdk.gpg

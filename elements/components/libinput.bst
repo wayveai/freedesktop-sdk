@@ -9,9 +9,9 @@ depends:
   - filename: components/libpng.bst
   - filename: components/gtk3.bst
   - filename: components/systemd.bst
-  - filename: vm/linux-vm-boot/mtdev.bst
-  - filename: vm/linux-vm-boot/libevdev.bst
-  - filename: vm/linux-vm-boot/libwacom.bst
+  - filename: components/mtdev.bst
+  - filename: components/libevdev.bst
+  - filename: components/libwacom.bst
 
 # documentation depends on doxygen
 variables:

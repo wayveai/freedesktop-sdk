@@ -1,0 +1,36 @@
+diff --git a/libeos-updater-flatpak-installer/tests/Makefile.am b/libeos-updater-flatpak-installer/tests/Makefile.am
+index e664ac0..5244f10 100644
+--- a/libeos-updater-flatpak-installer/tests/Makefile.am
++++ b/libeos-updater-flatpak-installer/tests/Makefile.am
+@@ -42,7 +42,6 @@ LDADD = \
+ 	$(NULL)
+ 
+ @VALGRIND_CHECK_RULES@
+-@CODE_COVERAGE_RULES@
+ CODE_COVERAGE_DIRECTORY = $(top_builddir)/libeos-updater-flatpak-installer
+ CODE_COVERAGE_IGNORE_PATTERN = \
+ 	"*-autocleanups.h" \
+diff --git a/libeos-updater-util/tests/Makefile.am b/libeos-updater-util/tests/Makefile.am
+index 8799f65..e4786a3 100644
+--- a/libeos-updater-util/tests/Makefile.am
++++ b/libeos-updater-util/tests/Makefile.am
+@@ -40,7 +40,6 @@ LDADD = \
+ 	$(NULL)
+ 
+ @VALGRIND_CHECK_RULES@
+-@CODE_COVERAGE_RULES@
+ CODE_COVERAGE_DIRECTORY = $(top_builddir)/libeos-updater-util
+ CODE_COVERAGE_IGNORE_PATTERN = \
+ 	"*-autocleanups.h" \
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 0dbbc18..334064b 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -20,7 +20,6 @@ installed_testdir = $(libexecdir)/installed-tests/eos-updater-@EU_API_VERSION@
+ installed_test_metadir = $(datadir)/installed-tests/eos-updater-@EU_API_VERSION@
+ 
+ @VALGRIND_CHECK_RULES@
+-@CODE_COVERAGE_RULES@
+ CODE_COVERAGE_IGNORE_PATTERN = \
+ 	eos-updater/dbus.c \
+ 	"*-autocleanups.h" \

@@ -13,7 +13,18 @@ depends:
 - filename: components/libsoup.bst
 - filename: components/gobject-introspection.bst
   type: build
-- filename: deploy-tools/fuse.bst
+- filename: components/fuse.bst
+- filename: components/systemd.bst
+- filename: components/libarchive.bst
+- filename: components/avahi.bst
+
+variables:
+  conf-local: >-
+    --with-dracut
+    --with-libsystemd
+    --with-systemd
+    --with-libarchive
+    --with-avahi
 
 public:
   bst:
@@ -26,7 +37,7 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree
   track: master
-  ref: v2019.4-0-g9d39e7d91e8497987cad69a3fbed5c5fc91eebdc
+  ref: v2019.5-0-g980ca07b03b3aa7e0012729dd6c84b0878775d93
   submodules:
     libglnx:
       checkout: true
@@ -34,3 +45,5 @@ sources:
     bsdiff:
       checkout: true
       url: github:mendsley/bsdiff
+- kind: patch
+  path: patches/ostree/no-boot-symlink.patch

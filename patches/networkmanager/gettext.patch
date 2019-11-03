@@ -1,0 +1,446 @@
+commit 0b35d805ecfdacb87901b8b21f2277b83b6df191
+Author: Martin Blanchard <tchaik@gmx.com>
+Date:   Sat Mar 16 10:51:12 2019 +0000
+
+    build: stop relying on intltool for i18n
+    
+    Recent gettext version can extract and merge back strings from and to
+    various file formats, no need for intltool anymore.
+    
+    https://wiki.gnome.org/Initiatives/GnomeGoals/GettextMigration
+    
+    https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues/133
+
+diff --git a/.travis.yml b/.travis.yml
+index 97b1338f9..fb1456cca 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -11,7 +11,6 @@ addons:
+     - autoconf
+     - libtool
+     - pkg-config
+-    - intltool
+     - libdbus-1-dev
+     - libiw-dev
+     - libglib2.0-dev
+diff --git a/Makefile.am b/Makefile.am
+index e86dbcd70..2ed1e7246 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -173,8 +173,6 @@ endif
+ 
+ dist: $(dist_configure_check) $(dist_dependencies)
+ 
+-DISTCLEANFILES += intltool-extract intltool-merge intltool-update
+-
+ ###############################################################################
+ 
+ polkit_policydir = $(datadir)/polkit-1/actions
+@@ -182,9 +180,12 @@ polkit_policydir = $(datadir)/polkit-1/actions
+ dist_polkit_policy_in_in_files = \
+ 	data/org.freedesktop.NetworkManager.policy.in.in
+ 
+-polkit_policy_DATA = $(dist_polkit_policy_in_in_files:.policy.in.in=.policy)
++dist_polkit_policy_in_files = $(dist_polkit_policy_in_in_files:.policy.in.in=.policy.in)
++
++polkit_policy_DATA = $(dist_polkit_policy_in_files:.policy.in=.policy)
+ 
+-@INTLTOOL_POLICY_RULE@
++$(polkit_policy_DATA): $(dist_polkit_policy_in_files)
++	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
+ 
+ DISTCLEANFILES += $(polkit_policy_DATA)
+ 
+@@ -4690,9 +4691,6 @@ TESTS += $(check_programs)
+ EXTRA_DIST += \
+ 	CONTRIBUTING \
+ 	NetworkManager.pc.in \
+-	intltool-extract.in \
+-	intltool-merge.in \
+-	intltool-update.in \
+ 	linker-script-binary.ver \
+ 	linker-script-devices.ver \
+ 	linker-script-settings.ver \
+diff --git a/autogen.sh b/autogen.sh
+index 9bb029488..da3422bbc 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -22,9 +22,9 @@ PKG_NAME=NetworkManager
+ 
+ cd $srcdir
+ 
+-gtkdocize
+-autopoint --force
+-AUTOPOINT='intltoolize --automake --copy' autoreconf --force --install --verbose
++aclocal --install || exit 1
++gtkdocize --copy || exit 1
++autoreconf --verbose --force --install || exit 1
+ 
+ cd $olddir
+ if test -z "$NOCONFIGURE"; then
+diff --git a/configure.ac b/configure.ac
+index f866cc885..358c8f5b3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -106,10 +106,8 @@ AC_CHECK_DECLS([getrandom],
+ dnl
+ dnl translation support
+ dnl
+-IT_PROG_INTLTOOL([0.40.0])
+-
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.17])
++AM_GNU_GETTEXT_VERSION([0.19.8])
+ 
+ GETTEXT_PACKAGE=NetworkManager
+ AC_SUBST(GETTEXT_PACKAGE)
+diff --git a/contrib/fedora/REQUIRED_PACKAGES b/contrib/fedora/REQUIRED_PACKAGES
+index 9928cf000..49e7aa1cb 100755
+--- a/contrib/fedora/REQUIRED_PACKAGES
++++ b/contrib/fedora/REQUIRED_PACKAGES
+@@ -38,7 +38,6 @@ install \
+     gnutls-devel \
+     gobject-introspection-devel \
+     gtk-doc \
+-    intltool \
+     iptables \
+     jansson-devel \
+     libcurl-devel \
+diff --git a/contrib/fedora/rpm/NetworkManager.spec b/contrib/fedora/rpm/NetworkManager.spec
+index 39252c101..9760c01b0 100644
+--- a/contrib/fedora/rpm/NetworkManager.spec
++++ b/contrib/fedora/rpm/NetworkManager.spec
+@@ -179,7 +179,6 @@ BuildRequires: meson
+ BuildRequires: automake
+ BuildRequires: autoconf
+ %endif
+-BuildRequires: intltool
+ BuildRequires: gettext-devel
+ 
+ BuildRequires: dbus-devel >= %{dbus_version}
+@@ -597,7 +596,6 @@ by nm-connection-editor and nm-applet in a non-graphical environment.
+ gtkdocize
+ %endif
+ autoreconf --install --force
+-intltoolize --automake --copy --force
+ %configure \
+ 	--disable-silent-rules \
+ 	--disable-static \
+diff --git a/data/meson.build b/data/meson.build
+index f496bf013..81b5a6a91 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -68,11 +68,11 @@ if enable_polkit
+     configuration: data_conf,
+   )
+ 
+-  custom_target(
++  i18n.merge_file(
+     policy,
+     input: policy_in,
+     output: policy,
+-    command: intltool_xml_cmd,
++    po_dir: po_dir,
+     install: true,
+     install_dir: polkit_dir,
+   )
+diff --git a/data/org.freedesktop.NetworkManager.policy.in.in b/data/org.freedesktop.NetworkManager.policy.in.in
+index 8b6ea5155..13214569e 100644
+--- a/data/org.freedesktop.NetworkManager.policy.in.in
++++ b/data/org.freedesktop.NetworkManager.policy.in.in
+@@ -10,8 +10,8 @@
+   <icon_name>nm-icon</icon_name>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-network">
+-    <_description>Enable or disable system networking</_description>
+-    <_message>System policy prevents enabling or disabling system networking</_message>
++    <description>Enable or disable system networking</description>
++    <message>System policy prevents enabling or disabling system networking</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -19,8 +19,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.reload">
+-    <_description>Reload NetworkManager configuration</_description>
+-    <_message>System policy prevents reloading NetworkManager</_message>
++    <description>Reload NetworkManager configuration</description>
++    <message>System policy prevents reloading NetworkManager</message>
+     <defaults>
+       <allow_any>auth_admin_keep</allow_any>
+       <allow_inactive>auth_admin_keep</allow_inactive>
+@@ -29,8 +29,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.sleep-wake">
+-    <_description>Put NetworkManager to sleep or wake it up (should only be used by system power management)</_description>
+-    <_message>System policy prevents putting NetworkManager to sleep or waking it up</_message>
++    <description>Put NetworkManager to sleep or wake it up (should only be used by system power management)</description>
++    <message>System policy prevents putting NetworkManager to sleep or waking it up</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>no</allow_active>
+@@ -38,8 +38,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-wifi">
+-    <_description>Enable or disable Wi-Fi devices</_description>
+-    <_message>System policy prevents enabling or disabling Wi-Fi devices</_message>
++    <description>Enable or disable Wi-Fi devices</description>
++    <message>System policy prevents enabling or disabling Wi-Fi devices</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -47,8 +47,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-wwan">
+-    <_description>Enable or disable mobile broadband devices</_description>
+-    <_message>System policy prevents enabling or disabling mobile broadband devices</_message>
++    <description>Enable or disable mobile broadband devices</description>
++    <message>System policy prevents enabling or disabling mobile broadband devices</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -56,8 +56,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-wimax">
+-    <_description>Enable or disable WiMAX mobile broadband devices</_description>
+-    <_message>System policy prevents enabling or disabling WiMAX mobile broadband devices</_message>
++    <description>Enable or disable WiMAX mobile broadband devices</description>
++    <message>System policy prevents enabling or disabling WiMAX mobile broadband devices</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -65,8 +65,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.network-control">
+-    <_description>Allow control of network connections</_description>
+-    <_message>System policy prevents control of network connections</_message>
++    <description>Allow control of network connections</description>
++    <message>System policy prevents control of network connections</message>
+     <defaults>
+       <allow_any>auth_admin</allow_any>
+       <allow_inactive>yes</allow_inactive>
+@@ -75,8 +75,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.wifi.scan">
+-    <_description>Allow control of Wi-Fi scans</_description>
+-    <_message>System policy prevents Wi-Fi scans</_message>
++    <description>Allow control of Wi-Fi scans</description>
++    <message>System policy prevents Wi-Fi scans</message>
+     <defaults>
+       <allow_any>auth_admin</allow_any>
+       <allow_inactive>yes</allow_inactive>
+@@ -85,8 +85,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.wifi.share.protected">
+-    <_description>Connection sharing via a protected Wi-Fi network</_description>
+-    <_message>System policy prevents sharing connections via a protected Wi-Fi network</_message>
++    <description>Connection sharing via a protected Wi-Fi network</description>
++    <message>System policy prevents sharing connections via a protected Wi-Fi network</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -94,8 +94,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.wifi.share.open">
+-    <_description>Connection sharing via an open Wi-Fi network</_description>
+-    <_message>System policy prevents sharing connections via an open Wi-Fi network</_message>
++    <description>Connection sharing via an open Wi-Fi network</description>
++    <message>System policy prevents sharing connections via an open Wi-Fi network</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -103,8 +103,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.settings.modify.own">
+-    <_description>Modify personal network connections</_description>
+-    <_message>System policy prevents modification of personal network settings</_message>
++    <description>Modify personal network connections</description>
++    <message>System policy prevents modification of personal network settings</message>
+     <defaults>
+       <allow_any>auth_self_keep</allow_any>
+       <allow_inactive>yes</allow_inactive>
+@@ -113,8 +113,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.settings.modify.system">
+-    <_description>Modify network connections for all users</_description>
+-    <_message>System policy prevents modification of network settings for all users</_message>
++    <description>Modify network connections for all users</description>
++    <message>System policy prevents modification of network settings for all users</message>
+     <defaults>
+       <allow_any>auth_admin_keep</allow_any>
+       <allow_inactive>@NM_MODIFY_SYSTEM_POLICY@</allow_inactive>
+@@ -123,8 +123,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.settings.modify.hostname">
+-    <_description>Modify persistent system hostname</_description>
+-    <_message>System policy prevents modification of the persistent system hostname</_message>
++    <description>Modify persistent system hostname</description>
++    <message>System policy prevents modification of the persistent system hostname</message>
+     <defaults>
+       <allow_any>auth_admin_keep</allow_any>
+       <allow_inactive>auth_admin_keep</allow_inactive>
+@@ -133,8 +133,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.settings.modify.global-dns">
+-    <_description>Modify persistent global DNS configuration</_description>
+-    <_message>System policy prevents modification of the persistent global DNS configuration</_message>
++    <description>Modify persistent global DNS configuration</description>
++    <message>System policy prevents modification of the persistent global DNS configuration</message>
+     <defaults>
+       <allow_any>auth_admin_keep</allow_any>
+       <allow_inactive>auth_admin_keep</allow_inactive>
+@@ -143,8 +143,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.checkpoint-rollback">
+-    <_description>Perform a checkpoint or rollback of interfaces configuration</_description>
+-    <_message>System policy prevents the creation of a checkpoint or its rollback</_message>
++    <description>Perform a checkpoint or rollback of interfaces configuration</description>
++    <message>System policy prevents the creation of a checkpoint or its rollback</message>
+     <defaults>
+       <allow_any>auth_admin_keep</allow_any>
+       <allow_inactive>auth_admin_keep</allow_inactive>
+@@ -153,8 +153,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-statistics">
+-    <_description>Enable or disable device statistics</_description>
+-    <_message>System policy prevents enabling or disabling device statistics</_message>
++    <description>Enable or disable device statistics</description>
++    <message>System policy prevents enabling or disabling device statistics</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+@@ -162,8 +162,8 @@
+   </action>
+ 
+   <action id="org.freedesktop.NetworkManager.enable-disable-connectivity-check">
+-    <_description>Enable or disable connectivity checking</_description>
+-    <_message>System policy prevents enabling or disabling connectivity checking</_message>
++    <description>Enable or disable connectivity checking</description>
++    <message>System policy prevents enabling or disabling connectivity checking</message>
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>yes</allow_active>
+diff --git a/meson.build b/meson.build
+index 8804af51c..79349f337 100644
+--- a/meson.build
++++ b/meson.build
+@@ -788,11 +788,6 @@ pkg = import('pkgconfig')
+ 
+ po_dir = join_paths(meson.source_root(), 'po')
+ 
+-intltool_merge = find_program('intltool-merge')
+-intltool_cache = join_paths(po_dir, '.intltool-merge-cache')
+-intltool_desktop_cmd = [intltool_merge, '-d', '-u', '-c', intltool_cache, po_dir, '@INPUT@', '@OUTPUT@']
+-intltool_xml_cmd = [intltool_merge, '-x', '-u', '-c', intltool_cache, po_dir, '@INPUT@', '@OUTPUT@']
+-
+ perl = find_program('perl')
+ xsltproc = find_program('xsltproc')
+ 
+diff --git a/po/Makevars b/po/Makevars
+new file mode 100644
+index 000000000..b858b6db7
+--- /dev/null
++++ b/po/Makevars
+@@ -0,0 +1,78 @@
++# Makefile variables for PO directory in any package using GNU gettext.
++
++# Usually the message domain is the same as the package name.
++DOMAIN = $(PACKAGE)
++
++# These two variables depend on the location of this directory.
++subdir = po
++top_builddir = ..
++
++# These options get passed to xgettext.
++XGETTEXT_OPTIONS = --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments
++
++# This is the copyright holder that gets inserted into the header of the
++# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
++# package.  (Note that the msgstr strings, extracted from the package's
++# sources, belong to the copyright holder of the package.)  Translators are
++# expected to transfer the copyright for their translations to this person
++# or entity, or to disclaim their copyright.  The empty string stands for
++# the public domain; in this case the translators are expected to disclaim
++# their copyright.
++COPYRIGHT_HOLDER = The NetworkManager Authors.
++
++# This tells whether or not to prepend "GNU " prefix to the package
++# name that gets inserted into the header of the $(DOMAIN).pot file.
++# Possible values are "yes", "no", or empty.  If it is empty, try to
++# detect it automatically by scanning the files in $(top_srcdir) for
++# "GNU packagename" string.
++PACKAGE_GNU = no
++
++# This is the email address or URL to which the translators shall report
++# bugs in the untranslated strings:
++# - Strings which are not entire sentences, see the maintainer guidelines
++#   in the GNU gettext documentation, section 'Preparing Strings'.
++# - Strings which use unclear terms or require additional context to be
++#   understood.
++# - Strings which make invalid assumptions about notation of date, time or
++#   money.
++# - Pluralisation problems.
++# - Incorrect English spelling.
++# - Incorrect formatting.
++# It can be your email address, or a mailing list address where translators
++# can write to without being subscribed, or the URL of a web page through
++# which the translators can contact you.
++MSGID_BUGS_ADDRESS = https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues
++
++# This is the list of locale categories, beyond LC_MESSAGES, for which the
++# message catalogs shall be used.  It is usually empty.
++EXTRA_LOCALE_CATEGORIES =
++
++# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
++# context.  Possible values are "yes" and "no".  Set this to yes if the
++# package uses functions taking also a message context, like pgettext(), or
++# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
++USE_MSGCTXT = yes
++
++# These options get passed to msgmerge.
++# Useful options are in particular:
++#   --previous            to keep previous msgids of translated messages,
++#   --quiet               to reduce the verbosity.
++MSGMERGE_OPTIONS =
++
++# These options get passed to msginit.
++# If you want to disable line wrapping when writing PO files, add
++# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
++# MSGINIT_OPTIONS.
++MSGINIT_OPTIONS =
++
++# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
++# has changed.  Possible values are "yes" and "no".  Set this to no if
++# the POT file is checked in the repository and the version control
++# program ignores timestamps.
++PO_DEPENDS_ON_POT = no
++
++# This tells whether or not to forcibly update $(DOMAIN).pot and
++# regenerate PO files on "make dist".  Possible values are "yes" and
++# "no".  Set this to no if the POT file and PO files are maintained
++# externally.
++DIST_DEPENDS_ON_UPDATE_PO = no
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index fdae23ee3..23113724c 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1,4 +1,3 @@
+-[encoding: UTF-8]
+ # List of source files containing translatable strings.
+ # Please keep this file sorted alphabetically.
+ clients/cli/agent.c

@@ -7,7 +7,7 @@ depends:
     type: build
   - filename: components/glib.bst
   - filename: components/systemd.bst
-  - filename: vm/linux-vm-boot/libgudev.bst
+  - filename: components/libgudev.bst
 
 sources:
 - kind: git_tag

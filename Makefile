@@ -38,7 +38,7 @@ ABI=gnu
 endif
 
 BST=bst --colors $(ARCH_OPTS)
-QEMU=fakeroot qemu-system-$(QEMU_ARCH)
+QEMU=qemu-system-$(QEMU_ARCH)
 
 all: build
 
@@ -129,15 +129,15 @@ QEMU_POWERPC64LE_ARGS= \
 
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
 ifeq ($(ARCH),x86_64)
-	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),i686)
-	$(QEMU) $(QEMU_X86_COMMON_ARGS)
+	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),aarch64)
-	$(QEMU) $(QEMU_AARCH64_ARGS)
+	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
-	$(QEMU) $(QEMU_ARM_ARGS)
+	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
 else ifeq ($(ARCH),powerpc64le)
-	$(QEMU) $(QEMU_POWERPC64LE_ARGS)
+	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 
 $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
@@ -268,9 +268,90 @@ track-mesa-git:
 	$(BST) track extensions/mesa-git/libdrm.bst
 	$(BST) track extensions/mesa-git/mesa.bst
 
+define OSTREE_GPG_CONFIG
+Key-Type: DSA
+Key-Length: 1024
+Subkey-Type: ELG-E
+Subkey-Length: 1024
+Name-Real: OSTree Freedesktop SDK TEST
+Expire-Date: 0
+%no-protection
+%commit
+%echo finished
+endef
+
+export OSTREE_GPG_CONFIG
+ostree-gpg:
+	rm -rf ostree-gpg.tmp
+	mkdir ostree-gpg.tmp
+	chmod 0700 ostree-gpg.tmp
+	echo "$${OSTREE_GPG_CONFIG}" >ostree-gpg.tmp/key-config
+	gpg --batch --homedir=ostree-gpg.tmp --generate-key ostree-gpg.tmp/key-config
+	gpg --homedir=ostree-gpg.tmp -k --with-colons | sed '/^fpr:/q;d' | cut -d: -f10 >ostree-gpg.tmp/default-id
+	mv ostree-gpg.tmp ostree-gpg
+
+files/vm/ostree-config/fdsdk.gpg: ostree-gpg
+	gpg --homedir=ostree-gpg --export --armor >"$@"
+
+LOCAL_ADDRESS=$(shell ip route get 1.1.1.1 | cut -d" " -f7)
+OSTREE_BRANCH=freedesktop-sdk-$(BRANCH)-$(ARCH)
+
+ostree-config.yml:
+	echo 'ostree-remote-url: "http://$(LOCAL_ADDRESS):8000/"' >"$@.tmp"
+	echo 'ostree-branch: "$(OSTREE_BRANCH)"' >>"$@.tmp"
+	mv "$@.tmp" "$@"
+
+update-ostree: ostree-gpg ostree-config.yml files/vm/ostree-config/fdsdk.gpg
+	env BST="$(BST)" utils/update-repo.sh		\
+	  --gpg-homedir=ostree-gpg			\
+	  --gpg-sign=$$(cat ostree-gpg/default-id)	\
+	  --collection-id=org.freedesktop.Sdk		\
+	  ostree-repo vm/minimal-ostree/repo.bst	\
+	  $(OSTREE_BRANCH)
+
+ostree-repo:
+	$(MAKE) update-ostree
+
+ostree-serve: ostree-repo
+	python3 -m http.server 8000 --directory ostree-repo
+
+$(CHECKOUT_ROOT)/ostree-vm-$(ARCH): files/vm/ostree-config/fdsdk.gpg ostree-config.yml ostree-repo
+	$(BST) track vm/minimal-ostree/image.bst
+	$(BST) build vm/minimal-ostree/image.bst
+	$(BST) checkout vm/minimal-ostree/image.bst "$@"
+
+ifeq ($(ARCH),i686)
+OVMF_CODE=/usr/share/qemu/edk2-i386-code.fd
+OVMF_VARS=/usr/share/qemu/edk2-i386-vars.fd
+else ifeq ($(ARCH),x86_64)
+OVMF_CODE=/usr/share/qemu/edk2-x86_64-code.fd
+OVMF_VARS=/usr/share/qemu/edk2-i386-vars.fd
+else ifeq ($(ARCH),aarch64)
+OVMF_CODE=/usr/share/qemu/edk2-aarch64-code.fd
+OVMF_VARS=/usr/share/qemu/edk2-arm-vars.fd
+else ifeq ($(ARCH),arm)
+OVMF_CODE=/usr/share/qemu/edk2-arm-code.fd
+OVMF_VARS=/usr/share/qemu/edk2-arm-vars.fd
+endif
+
+efi_vars.fd: $(OVMF_VARS)
+	cp "$<" "$@"
+
+QEMU_EFI_ARGS=								 \
+	-enable-kvm -m 2G						 \
+	-drive if=pflash,format=raw,unit=0,file=$(OVMF_CODE),readonly=on \
+	-drive if=pflash,format=raw,unit=1,file=efi_vars.fd		 \
+	-nographic							 \
+	-netdev user,id=net1 -device e1000,netdev=net1
+
+run-ostree-vm: $(CHECKOUT_ROOT)/ostree-vm-$(ARCH) efi_vars.fd
+	$(QEMU)							\
+	    $(QEMU_EFI_ARGS)					\
+	    -drive file=$</disk.img,format=raw,media=disk
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
 	export-oci export-docker bootstrap test-codecs \
-	track-mesa-git
+	track-mesa-git update-ostree ostree-serve run-ostree-vm
