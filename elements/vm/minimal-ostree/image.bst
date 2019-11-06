@@ -7,15 +7,14 @@ build-depends:
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
   (?):
-    # fdisk GUID mapping
   - target_arch == "x86_64":
-      linux-root: '24'   # 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
+      linux-root: 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
   - target_arch == "i686":
-      linux-root: '22'   # 44479540-F297-41B2-9AF7-D131D5F0458A
+      linux-root: 44479540-F297-41B2-9AF7-D131D5F0458A
   - target_arch == "arm":
-      linux-root: '23'   # 69DAD710-2CE4-4E3C-B16C-21A1D49ABED3
+      linux-root: 69DAD710-2CE4-4E3C-B16C-21A1D49ABED3
   - target_arch == "aarch64":
-      linux-root: '25'   # B921B045-1DF0-41C3-AF44-4C6F280D3FAE
+      linux-root: B921B045-1DF0-41C3-AF44-4C6F280D3FAE
 
   (@):
   - ostree-config.yml
@@ -55,52 +54,46 @@ config:
   - |
     cp -r "%{sysroot}"/ostree/boot.1/freedesktop-sdk/*/*/boot/EFI/ "%{sysroot}/boot/"
 
-  - mkdir -p "%{build-root}/temp-images"
-  - truncate -s 100M "%{build-root}/temp-images/efi.img"
   - |
-    mkfs.fat -F32 -n EFI "%{build-root}/temp-images/efi.img"
-  - mcopy -s -i "%{build-root}/temp-images/efi.img" "%{sysroot}"/boot/* ::/
+    mkdir -p genimage
 
   - |
-    rm -rf "%{sysroot}"/boot/*
-
-  - truncate -s 1G "%{build-root}/temp-images/root.img"
-  - |
-    mkfs.ext4 -L root -d "%{sysroot}" "%{build-root}/temp-images/root.img"
-
-  - |
-    efisize=$(($(stat -c "%s" "%{build-root}/temp-images/efi.img")/512))
-    rootsize=$(($(stat -c "%s" "%{build-root}/temp-images/root.img")/512))
-    truncate -s $(((2048+${efisize}+${rootsize}+34)*512)) '%{install-root}/disk.img'
-    startefi=2048
-    endefi=$((2048+${efisize}-1))
-    startroot=$((2048+${efisize}))
-    endroot=$((2048+${efisize}+${rootsize}-1))
-    sed 's/ *#.*//' <<EOF | fdisk '%{install-root}/disk.img'
-    g            # Switch to GPT
-    n            # Create
-    1            #    partition 1
-    ${startefi}  #    start sector
-    ${endefi}    #    end sector
-    n            # Create
-    2            #    partition 2
-    ${startroot} #    start sector
-    ${endroot}   #    end sector
-    t            # Change type
-    1            #    partition 1
-    1            #    EFI system C12A7328-F81F-11D2-BA4B-00A0C93EC93B
-    t            # Change type
-    2            #    partition 2
-    %{linux-root}#    Linux root (x86-64) 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
-    p            # Print for log
-    w            # Write changes
+    cat >genimage/genimage.cfg <<EOF
+    image efi.img {
+        vfat {
+            extraargs = "-F32 -n EFI"
+        }
+        mountpoint = "/boot"
+        size = 100M
+    }
+    image root.img {
+        ext4  {
+            label = "root"
+        }
+        size = 1G
+    }
+    image disk.img {
+        hdimage {
+            align = 1M
+            gpt = true
+        }
+        partition efi {
+            image = "efi.img"
+            partition-type-uuid = "U"
+        }
+        partition root {
+            image = "root.img"
+            partition-type-uuid = "%{linux-root}"
+        }
+    }
     EOF
-    dd if="%{build-root}/temp-images/efi.img" \
-       of='%{install-root}/disk.img' bs=512 \
-       seek="${startefi}" conv=notrunc
-    dd if="%{build-root}/temp-images/root.img" \
-       of='%{install-root}/disk.img' bs=512 \
-       seek="${startroot}" conv=notrunc
+
+  - |
+    cd genimage
+    genimage --rootpath "%{sysroot}"
+
+  - |
+    install -Dm644 -t "%{install-root}" genimage/images/disk.img
 
 sources:
 - kind: ostree_mirror
@@ -108,3 +101,6 @@ sources:
   path: ostree-repo
   match: 'freedesktop-sdk-*'
   directory: source-repo
+  ref:
+  - ref: freedesktop-sdk-20.08beta-x86_64
+    checksum: 0a8eca3dfafae7cf0a1ea6485948f58152762110bd13dba36d22d9ce10d17ad4
