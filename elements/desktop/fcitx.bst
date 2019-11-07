@@ -12,6 +12,7 @@ variables:
   cmake-local: |
     -DLIB_INSTALL_DIR=%{libdir} \
     -DSYSCONFDIR=%{sysconfdir} \
+    -DENABLE_XKB=Off \
     -DENABLE_QT=Off \
     -DENABLE_PINYIN=Off \
     -DENABLE_TABLE=Off \
@@ -38,6 +39,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.com/fcitx/fcitx.git
+  url: github:fcitx/fcitx.git
   track: master
-  ref: 4.2.9.6-0-g6fdfaa072cf634d81d4cbb5ecb288c3a63411151
+  ref: 4.2.9.7-0-gdea395993910ca629410d262ea46573e92886d82
