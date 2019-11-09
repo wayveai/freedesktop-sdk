@@ -6,7 +6,6 @@ build-depends:
 runtime-depends:
 - bootstrap-import.bst
 - components/glib.bst
-- components/gtk3.bst
 - components/systemd.bst
 
 - components/libdaemon.bst

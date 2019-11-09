@@ -5,6 +5,7 @@ build-depends:
 
 runtime-depends:
 - components/avahi.bst
+- components/gtk3.bst
 
 config:
   include:
