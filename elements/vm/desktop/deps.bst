@@ -1,0 +1,29 @@
+kind: stack
+
+runtime-depends:
+- bootstrap-import.bst
+- components/util-linux.bst
+- components/linux.bst
+- components/systemd.bst
+- components/dbus.bst
+- components/dracut.bst
+- components/os-release.bst
+- components/shadow.bst
+- components/tzdata.bst
+- vm/base-filesystem.bst
+- vm/mesa-default.bst
+- components/weston.bst
+- components/xorg-server.bst
+- components/plymouth.bst
+- platform.bst
+- components/pwquality.bst
+- components/sudo.bst
+- components/flatpak.bst
+- components/pulseaudio.bst
+- vm/config/flathub.bst
+- vm/config/pulseaudio.bst
+- vm/config/weston.bst
+- vm/config/sudo.bst
+- vm/config/networkd.bst
+- vm/config/resolved.bst
+- vm/config/journald.bst

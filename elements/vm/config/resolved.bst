@@ -4,21 +4,21 @@ depends:
 - filename: components/systemd.bst
 
 variables:
-  resolved-config: "%{install-root}/etc/systemd/"
+  resolved-config: "%{install-root}%{sysconfdir}/systemd/"
 
 config:
   install-commands:
   - |
-    mkdir -p "%{resolved-config}"
-    install -m 644 -t "%{resolved-config}" resolved.conf
+    install -Dm 644 -t "%{resolved-config}" resolved.conf
+    install -Dm 644 \
+        -t "%{install-root}%{indep-libdir}/systemd/system-preset" \
+        resolved.preset
 
 public:
   bst:
-    integration-commands:
-    - /usr/bin/systemctl enable systemd-resolved
     overlap-whitelist:
     - etc/systemd/resolved.conf
 
 sources:
 - kind: local
-  path: files/systemd-resolved/resolved.conf
+  path: files/systemd-resolved
