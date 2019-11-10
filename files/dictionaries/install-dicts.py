@@ -61,7 +61,7 @@ def handle_file(filename):
             continue
 
         install_root = os.environ.get('DESTDIR', '')
-        full_dest = "/usr/share/runtime/locale/" + lang + "/" + dest + "/"
+        full_dest = "/usr/share/locale/" + lang + "/" + dest + "/"
         symlink_dest = "/usr/share/" + dest + "/"
         os.makedirs(install_root + full_dest, exist_ok = True)
         os.makedirs(install_root + symlink_dest, exist_ok = True)
