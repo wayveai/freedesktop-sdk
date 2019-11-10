@@ -1,7 +1,12 @@
 Freedesktop-SDK
 
-freedesktop-sdk-18.08.37:
+freedesktop-sdk-18.08.38:
+    * flatpak-xdg-utils: Update to 1.0.1
+    * mesa: Update to 19.1.7
+    * fcitx: Update to 4.2.9.7 to fix support for flatpak > 1.0 (#728)
+    * Fixed os-release.in
 
+freedesktop-sdk-18.08.37:
     * fontconfig: Add forward support for 2.14 hashes
     * krb5: Apply fix for CVE-2018-20217
     * ffmpeg: Apply fix for CVE-2019-13390
