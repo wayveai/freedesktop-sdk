@@ -418,7 +418,7 @@ minimal_systemd_vm_image_x86_64:
   <<: *vm_image
   variables:
     ARCH: x86_64
-    TYPE: minimal-systemd
+    TYPE: minimal
     DIALOG: root-login
   dependencies: []
 
