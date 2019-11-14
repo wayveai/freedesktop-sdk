@@ -2,6 +2,8 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: components/tcl.bst
+  type: build
 
 variables:
   conf-local: |
@@ -13,6 +15,12 @@ variables:
     -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 \
     -DSQLITE_ENABLE_DBSTAT_VTAB=1"
 
+config:
+  configure-commands:
+    (>):
+    - sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' bst_build_dir/libtool
+    - sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' bst_build_dir/libtool
+
 public:
   bst:
     split-rules:
@@ -22,13 +30,9 @@ public:
 
   cpe:
     vendor: 'sqlite'
-    version-match: '(\d)(\d\d)0(\d)00'
-    patches:
-    - CVE-2019-16168
 
 sources:
-- kind: tar
-  url: https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz
-  ref: 8e7c1e2950b5b04c5944a981cb31fffbf9d2ddda939d536838ebc854481afd5b
-- kind: patch
-  path: patches/sqlite/CVE-2019-16168.patch
+- kind: git_tag
+  url: github:sqlite/sqlite
+  track: master
+  ref: version-3.30.0-0-g228a52d973c5eae8557adfc5da3b5b1ebcffdbec
