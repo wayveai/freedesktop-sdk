@@ -167,7 +167,7 @@ check_update_elements:
     - check_update
   script:
     - git checkout -- snap-version.yml
-    - ${BST} track --deps all flatpak-release.bst
+    - ${BST} track --deps all track-elements.bst
     - git -c diff.external=utils/yaml-diff.py diff
   only:
     - schedules
