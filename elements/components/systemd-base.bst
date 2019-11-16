@@ -79,3 +79,5 @@ sources:
   ref: v243-51-gfab6f010ac6c3bc93a10868de722d7c8c3622eb9
 - kind: patch
   path: patches/systemd/gnu-efi-includes.patch
+- kind: patch
+  path: patches/systemd/revert-sysuser-locked.patch
