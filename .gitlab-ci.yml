@@ -121,7 +121,7 @@ check_update_elements:
   tags:
     - check_update
   script:
-    - ${BST} track --deps all flatpak-release.bst
+    - ${BST} track --deps all track-elements.bst
     - git diff
   only:
     - schedules
