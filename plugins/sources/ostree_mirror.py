@@ -49,7 +49,10 @@ class OSTreeMirrorSource(Source):
         return [self.original_url, sorted(self.ref, key=lambda x: x['ref'])]
 
     def load_ref(self, node):
-        self.ref = self.node_get_member(node, str, 'ref', None)
+        self.ref = self.node_get_member(node, list, 'ref', None)
+        if self.ref is not None:
+            for r in self.ref:
+                self.node_validate(r, ['ref', 'checksum'])
 
     def get_ref(self):
         return self.ref
