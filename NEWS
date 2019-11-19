@@ -1,7 +1,23 @@
 Freedesktop-SDK
 
-freedesktop-sdk-19.08.03:
+freedesktop-sdk-19.08.04:
+    * Update flatpak-xdg-utils component to 1.0.1
+    * Import fcitx 4.2.9.7 to support new flatpak
+    * Update to shared-mime-info 1.15
+    * Get Vala from gnome GitLab (and bootstrap it)
+    * Backport drirc changes to make DOOM not crash
+    * mesa: Update to 19.2.1
+    * /etc/os-release: Add missing line break at end of file
+    * nss: Update to 3.46.1
+    * noopenh264: Update to 3.6.4
+    * iso-codes: Update to 4.4
+    * harfbuzz: Update to 2.6.2
+    * jpeg: Update to 2.0.3
+    * Add kmod as a dependency of systemd
+    * mesa-aco: Use mirror and track latest version
+    * libsoup: Update to 2.66.3
 
+freedesktop-sdk-19.08.03:
     * mesa extensions: Use LLVM 9.0.0.
     * tzdata: Update to 2019c
     * expat: Update to 2.2.9
@@ -10,7 +26,6 @@ freedesktop-sdk-19.08.03:
     * python3: Add bluetooth support.
 
 freedesktop-sdk-19.08.02:
-
     * e2fsprogs: Update to 1.45.4
     * gstreamer: Update to 1.16.1
     * shared-mime-info: Update to 1.14
