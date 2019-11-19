@@ -92,7 +92,7 @@ Additionally we provide the following extensions to our platform:
 * org.freedesktop.Platform.Compat.{architecture}
 * org.freedesktop.Platform.Compat.{architecture}.debug
 * org.freedesktop.Platform.GL{,32}.default
-* org.freedesktop.Platform.GL{,32}.mesa-aco
+* org.freedesktop.Platform.GL{,32}.mesa-git
 
 And the following extensions to the SDK:
 * org.freedesktop.Sdk.Locale
