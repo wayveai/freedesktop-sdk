@@ -11,6 +11,7 @@ depends:
 - filename: components/ccache.bst
 - filename: components/cmake.bst
 - filename: components/cpio.bst
+- filename: components/cython.bst
 - filename: components/docbook-xml.bst
 - filename: components/docbook-xsl.bst
 - filename: components/ed.bst
