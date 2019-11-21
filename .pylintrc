@@ -62,7 +62,6 @@ confidence=
 # --disable=W".
 disable=arguments-differ,
         attribute-defined-outside-init,
-        deprecated-method,
         fixme,
         invalid-name,
         line-too-long,
