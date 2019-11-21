@@ -23,6 +23,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:atk
+  url: gnome:atk.git
   track: master
   ref: ATK_2_30_0-0-g90ed6bd964b8a2b93c7cf3ea018483e437913785

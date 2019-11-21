@@ -41,7 +41,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: gnome:pango
+  url: gnome:pango.git
   track: master
   ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
 - kind: patch

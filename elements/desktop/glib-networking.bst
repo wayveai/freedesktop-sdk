@@ -17,6 +17,6 @@ variables:
 
 sources:
 - kind: git_tag
-  url: gnome:glib-networking
+  url: gnome:glib-networking.git
   track: master
   ref: 2.58.0-0-gbd8ef31a4ca4552a10b8fe7897662a2b235f6e6f

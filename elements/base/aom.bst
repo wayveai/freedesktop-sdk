@@ -38,7 +38,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://aomedia.googlesource.com/aom
+  url: aom:aom.git
   track: master
   ref: v1.0.0-0-gd14c5bb4f336ef1842046089849dee4a301fbbf0
 - kind: patch

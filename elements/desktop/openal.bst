@@ -28,5 +28,5 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:kcat/openal-soft
+  url: github:kcat/openal-soft.git
   ref: openal-soft-1.18.2-0-gce6076091bac3c00cd10803916e8911495580bd0

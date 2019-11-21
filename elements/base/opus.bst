@@ -16,6 +16,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://git.xiph.org/opus.git
+  url: xiph:opus.git
   track: master
   ref: v1.3.1-0-ge85ed7726db5d677c9c0677298ea0cb9c65bdd23

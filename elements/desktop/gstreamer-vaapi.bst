@@ -32,12 +32,12 @@ variables:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gstreamer-vaapi
+  url: freedesktop:gstreamer/gstreamer-vaapi.git
   track: '1.14'
   ref: 1.14.4-0-g8b1b1f44bda266830f2f28adbb95720f3bc3433f
   submodules:
     common:
       checkout: True
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-vaapi/disable-gallium-driver.patch

@@ -65,7 +65,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:openssl/openssl
+  url: github:openssl/openssl.git
   track: OpenSSL_1_0_2-stable
   ref: OpenSSL_1_0_2t-0-gcd7c7fc20b9feeb900632389401f514ac6b82f16
 - kind: patch

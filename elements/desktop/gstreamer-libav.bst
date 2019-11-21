@@ -23,13 +23,13 @@ environment:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gst-libav
+  url: freedesktop:gstreamer/gst-libav.git
   track: master
   ref: 1.15.2-0-gc693e62a4464a74bace095344e355c4409d850d9
   submodules:
     common:
       checkout: True
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
 - kind: patch

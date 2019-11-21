@@ -33,6 +33,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/madler/zlib.git
+  url: github:madler/zlib.git
   track: master
   ref: v1.2.11-0-gcacf7f1d4e3d44d871b605da3b647f07d718623f

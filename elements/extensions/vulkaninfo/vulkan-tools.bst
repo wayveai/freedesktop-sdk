@@ -25,5 +25,5 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/Vulkan-Tools
+  url: github:KhronosGroup/Vulkan-Tools.git
   ref: v1.1.97-0-gff56a741b1cce8ae20ff6276f51100e668e9c4f5

@@ -23,6 +23,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:libffi/libffi
+  url: github:libffi/libffi.git
   track: master
   ref: v3.2.1-0-g20562ac0427c3578250d04c6e34fb0127d4551cf

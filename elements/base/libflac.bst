@@ -23,6 +23,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://git.xiph.org/flac.git
+  url: xiph:flac.git
   track: master
   ref: 1.3.2-0-gac39d3719f16dfb6e08d2fbde8ccaf34a266c81d

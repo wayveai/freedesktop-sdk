@@ -43,6 +43,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://chromium.googlesource.com/webm/libvpx
+  url: chromium:webm/libvpx.git
   track: mandarinduck
   ref: v1.7.0-0-gf80be22a1099b2a431c2796f529bb261064ec6b4

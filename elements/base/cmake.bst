@@ -16,7 +16,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.kitware.com/cmake/cmake
+  url: kitware:cmake.git
   track: master
   ref: v3.13.4-0-g30c3effa89ceda247cd2ff29b5d3f4da8c7a8ff6
 - kind: patch

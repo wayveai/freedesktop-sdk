@@ -22,7 +22,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:xiph/vorbis
+  url: github:xiph/vorbis.git
   ref: v1.3.6-0-gd22c3ab5f633460abc2532feee60ca0892134cbf
 - kind: patch
   path: patches/libvorbis/CVE-2018-10392.patch

@@ -38,6 +38,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:gdk-pixbuf
+  url: gnome:gdk-pixbuf.git
   track: master
   ref: 2.38.0-0-g0b1eab312e77701c20b07fb8e38119009f8b34c3

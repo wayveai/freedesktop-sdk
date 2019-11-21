@@ -22,12 +22,12 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:rockdaboot/libpsl
+  url: github:rockdaboot/libpsl.git
   track: master
   ref: libpsl-0.20.2-0-gb7f5c1414db2ead6f15737ab79fbc336a539ea16
   submodules:
     list:
       checkout: True
-      url: github:publicsuffix/list
+      url: github:publicsuffix/list.git
 - kind: patch
   path: patches/libpsl/libpsl-Use-the-detected-PYTHON-version.patch
