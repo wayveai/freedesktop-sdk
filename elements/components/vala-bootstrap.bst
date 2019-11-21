@@ -23,9 +23,7 @@ config:
 
 sources:
 - kind: git_tag
-  # Note for updates: Stable minor versions are even.
-  # See https://wiki.gnome.org/Projects/Vala for last version
-  url: https://gitlab.gnome.org/Archive/vala-bootstrap
+  url: gnome_archive:vala-bootstrap.git
   track: master
   track-tags: False
   ref: b2beeaccdf2307ced172646c2ada9765e1747b28

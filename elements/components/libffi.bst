@@ -25,7 +25,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:libffi/libffi
+  url: github:libffi/libffi.git
   track: master
   exclude:
   - v*-rc*

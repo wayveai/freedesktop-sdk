@@ -36,7 +36,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:gdk-pixbuf
+  url: gnome:gdk-pixbuf.git
   track: master
   match:
   - 2.*[02468].*

@@ -21,7 +21,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:glib-networking
+  url: gnome:glib-networking.git
   track: master
   track-extra:
   - glib-2-60

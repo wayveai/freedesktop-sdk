@@ -30,5 +30,5 @@ public:
 sources:
 - kind: git_tag
   track: master
-  url: https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git
+  url: kernel:utils/pciutils/pciutils.git
   ref: v3.6.2-0-ge3832c8fc3efe41aff853d16cab488d38c3ac13f

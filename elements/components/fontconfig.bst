@@ -36,7 +36,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:tagoh/fontconfig
+  url: freedesktop:tagoh/fontconfig.git
   track: 2.13.1-flatpak-lts
   exclude:
   - 2.*.9*

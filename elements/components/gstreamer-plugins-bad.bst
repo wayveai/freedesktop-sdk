@@ -77,13 +77,13 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-bad
+  url: freedesktop:gstreamer/gst-plugins-bad.git
   track: '1.16'
   ref: 1.16.1-0-gc3c54aad2d45fb246a9b9e8a5e05488c15c27173
   submodules:
     common:
       checkout: false
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch

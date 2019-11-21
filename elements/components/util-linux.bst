@@ -82,7 +82,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+  url: kernel:utils/util-linux/util-linux.git
   track: master
   exclude:
   - v*-rc*

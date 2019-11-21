@@ -45,7 +45,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:cairo/cairo
+  url: freedesktop:cairo/cairo.git
   track: master
   track-extra:
   - 1.16

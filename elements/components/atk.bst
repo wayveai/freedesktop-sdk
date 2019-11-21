@@ -21,7 +21,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:atk
+  url: gnome:atk.git
   track: master
   track-extra:
   - gnome-3-32

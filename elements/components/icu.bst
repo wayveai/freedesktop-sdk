@@ -33,7 +33,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:unicode-org/icu
+  url: github:unicode-org/icu.git
   track: master
   track-extra:
   - maint/maint-64

@@ -10,6 +10,6 @@ depends:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/utils/dash/dash.git
+  url: kernel:utils/dash/dash.git
   track: master
   ref: v0.5.10.2-0-g0e6a3d20816365821fa9ff8f8c6d7bdf915ee3c8

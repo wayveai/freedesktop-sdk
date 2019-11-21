@@ -35,7 +35,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/SPIRV-Tools
+  url: github:KhronosGroup/SPIRV-Tools.git
   ref: aa9e8f538041db3055ea443080e0ccc315fa114f
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Headers

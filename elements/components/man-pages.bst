@@ -11,6 +11,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
+  url: kernel:docs/man-pages/man-pages.git
   track: master
   ref: man-pages-5.02-0-g157de0be214a12253232569d62b42f3ccba6f878
