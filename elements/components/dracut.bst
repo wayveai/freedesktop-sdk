@@ -21,6 +21,6 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/boot/dracut/dracut.git
+  url: kernel:boot/dracut/dracut.git
   track: master
   ref: 049-0-g225e4b94cbdb702cf512490dcd2ad9ca5f5b22c1

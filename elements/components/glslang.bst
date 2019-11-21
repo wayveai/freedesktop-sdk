@@ -11,7 +11,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/glslang
+  url: github:KhronosGroup/glslang.git
   track: master
   match:
   - '*.*.*'

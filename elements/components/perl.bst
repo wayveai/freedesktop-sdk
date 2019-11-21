@@ -33,7 +33,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
+  url: github:perl/perl5.git
   track: blead
   track-extra:
   - maint-5.30

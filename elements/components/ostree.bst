@@ -35,7 +35,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:ostreedev/ostree
+  url: github:ostreedev/ostree.git
   track: master
   ref: v2019.5-0-g980ca07b03b3aa7e0012729dd6c84b0878775d93
   submodules:
@@ -44,6 +44,6 @@ sources:
       url: gnome:libglnx.git
     bsdiff:
       checkout: true
-      url: github:mendsley/bsdiff
+      url: github:mendsley/bsdiff.git
 - kind: patch
   path: patches/ostree/no-boot-symlink.patch

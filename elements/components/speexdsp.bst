@@ -22,7 +22,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://git.xiph.org/speexdsp.git
+  url: xiph:speexdsp.git
   track: master
   match:
   - SpeexDSP-*

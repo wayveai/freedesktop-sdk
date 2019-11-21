@@ -28,6 +28,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+  url: kernel:utils/kernel/kmod/kmod.git
   track: master
   ref: v26-0-g58133a96c894c043e48c74ddf0bfe8db90bac62f

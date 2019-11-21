@@ -14,6 +14,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: git://people.freedesktop.org/~wtay/fdk-aac
+  url: freedesktop_people:fdk-aac.git
   track: stripped4
   ref: 0fc0e0e0b89de3becd5f099eae725f13eeecc0d1

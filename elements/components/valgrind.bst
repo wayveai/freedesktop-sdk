@@ -34,7 +34,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://repo.or.cz/valgrind.git
+  url: repo_or_cz:valgrind.git
   track: master
   ref: VALGRIND_3_15_0-0-g608cb11914e5f23d0fc12c61dad29c5c7952a1de
 - kind: patch

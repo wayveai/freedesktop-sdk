@@ -22,7 +22,7 @@ variables:
 sources:
 - kind: git_tag
   # See https://wiki.gnome.org/Projects/Vala for last version
-  url: gnome:vala
+  url: gnome:vala.git
   track: master
   track-extra:
   - '0.46'

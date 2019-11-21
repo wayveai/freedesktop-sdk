@@ -33,6 +33,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:sqlite/sqlite
+  url: github:sqlite/sqlite.git
   track: master
   ref: version-3.30.0-0-g228a52d973c5eae8557adfc5da3b5b1ebcffdbec

@@ -27,7 +27,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: github:flatpak/flatpak
+  url: github:flatpak/flatpak.git
   track: master
   track-extra:
   - flatpak-1.4.x

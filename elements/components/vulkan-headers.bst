@@ -7,7 +7,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/Vulkan-Headers
+  url: github:KhronosGroup/Vulkan-Headers.git
   track: master
   match:
   - sdk-*

@@ -34,7 +34,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:fontconfig/fontconfig
+  url: freedesktop:fontconfig/fontconfig.git
   track: master
   exclude:
   - 2.*.9*

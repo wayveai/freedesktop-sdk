@@ -17,6 +17,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:gtk-doc
+  url: gnome:gtk-doc.git
   track: master
   ref: GTK_DOC_1_32-0-g7fce5688c973fca10951bfdbeab9acca034aa095

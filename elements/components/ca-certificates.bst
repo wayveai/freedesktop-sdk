@@ -35,7 +35,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://salsa.debian.org/debian/ca-certificates.git
+  url: debian_salsa:debian/ca-certificates.git
   track: master
   ref: debian/20190110-0-gc28799b138b044c963d24c4a69659b6e5486e3be
 - kind: patch

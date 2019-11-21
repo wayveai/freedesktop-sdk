@@ -21,6 +21,6 @@ variables:
 
 sources:
 - kind: git_tag
-  url: freedesktop:libinput/libinput
+  url: freedesktop:libinput/libinput.git
   track: master
   ref: 1.14.1-0-g7a12e460c07f070cb71e55e875e8156c924a4fd3
