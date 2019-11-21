@@ -339,7 +339,8 @@ minimal_systemd_vm_x86_64:
   <<: *vm_imageless
   variables:
     ARCH: x86_64
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -351,7 +352,8 @@ minimal_systemd_vm_i686:
   <<: *vm_imageless
   variables:
     ARCH: i686
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -362,7 +364,8 @@ minimal_systemd_vm_aarch64:
   <<: *vm_imageless
   variables:
     ARCH: aarch64
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
@@ -374,7 +377,8 @@ minimal_systemd_vm_arm:
   <<: *vm_imageless
   variables:
     ARCH: arm
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
@@ -387,7 +391,8 @@ minimal_systemd_vm_powerpc64le:
   <<: *vm_imageless
   variables:
     ARCH: powerpc64le
-    VM_ARTIFACT: vm/minimal-systemd-vm.bst
+    VM_ARTIFACT_BOOT: vm/boot/virt.bst
+    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
   when: manual
@@ -395,27 +400,15 @@ minimal_systemd_vm_powerpc64le:
 .vm_image_template: &vm_image
   stage: vm
   script:
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - utils/test-minimal-system --dialog "${DIALOG}" image vm/sda.img
+    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/bios.bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"/bios.bst ./vm
+    - utils/test-minimal-system --dialog "${DIALOG}" image vm/disk.img
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
     - schedules
-
-minimal_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
-  variables:
-    ARCH: x86_64
-    TYPE: minimal
-    DIALOG: minimal
-  dependencies: []
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -429,16 +422,32 @@ minimal_systemd_vm_image_x86_64:
     DIALOG: root-login
   dependencies: []
 
-desktop_vm_image_x86_64:
+.vm_efi_image_template: &vm_efi_image
+  stage: vm
+  script:
+    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/efi.bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"/efi.bst ./vm
+    - EFI_CODE="-drive if=pflash,format=raw,unit=0,file=/usr/share/qemu/edk2-x86_64-code.fd,readonly=on"
+    - cp /usr/share/qemu/edk2-i386-vars.fd .
+    - EFI_VARS="-drive if=pflash,format=raw,unit=1,file=${PWD}/edk2-i386-vars.fd"
+    - DISK="-drive file=vm/disk.img,format=raw,media=disk"
+    - QEMU="qemu-system-${ARCH} -enable-kvm -m 2G -nographic ${EFI_CODE} ${EFI_VARS} ${DISK}"
+    - utils/test-minimal-system --dialog "${DIALOG}" command "${QEMU}"
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+
+minimal_efi_vm_image_x86_64:
   image: $DOCKER_AMD64
   tags:
     - x86_64
     - cache_x86_64
-  <<: *vm_image
+  <<: *vm_efi_image
   allow_failure: true
   variables:
     ARCH: x86_64
-    TYPE: desktop
+    TYPE: minimal
     DIALOG: root-login
   dependencies: []
 

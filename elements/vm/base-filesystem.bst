@@ -17,6 +17,7 @@ config:
   commands:
   - |
     mkdir %{install-root}/boot
+    mkdir %{install-root}/efi
     mkdir %{install-root}/etc
     mkdir %{install-root}/home
     mkdir %{install-root}/media
