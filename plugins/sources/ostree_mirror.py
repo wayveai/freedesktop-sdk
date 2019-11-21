@@ -1,13 +1,13 @@
 import os
-import shutil
+import fnmatch
+
 import gi
+from gi.repository import OSTree, Gio, GLib
+from buildstream import Source, Consistency
+from buildstream import utils
+
 gi.require_version('OSTree', '1.0')
 gi.require_version('Gio', '2.0')
-from gi.repository import OSTree, Gio, GLib
-from buildstream import Source, SourceError, Consistency
-from buildstream import utils
-import collections
-import fnmatch
 
 class OSTreeMirrorSource(Source):
 
@@ -65,9 +65,9 @@ class OSTreeMirrorSource(Source):
                        OSTree.RepoPullFlags.MIRROR,
                        None, None)
 
-        found, refs = self.repo.remote_list_refs('origin')
+        refs = self.repo.remote_list_refs('origin')[1]
         kept_refs = []
-        for ref, checksum in sorted(refs.items(), key = lambda x: x[0]):
+        for ref, checksum in sorted(refs.items(), key=lambda x: x[0]):
             if not self.match or fnmatch.fnmatch(ref, self.match):
                 kept_refs.append({'ref': ref, 'checksum': checksum})
 

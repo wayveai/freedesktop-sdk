@@ -11,22 +11,22 @@ import subprocess
 
 has_error = False
 
-p = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
-                     universal_newlines=True,
-                     stdout=subprocess.PIPE)
-output, _ = p.communicate()
+child_process = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
+                                 universal_newlines=True,
+                                 stdout=subprocess.PIPE)
+output, _ = child_process.communicate()
 
-if p.returncode == 1:
-    sys.stderr.write('review-tools.snap-review crashed\n'.format(p.returncode))
+if child_process.returncode == 1:
+    # TODO {} before or after \n
+    sys.stderr.write('review-tools.snap-review crashed\n{}'.format(child_process.returncode))
     sys.exit(1)
-elif p.returncode == 0:
-    sys.stderr.write('No error found\n'.format(p.returncode))
-    pass
-elif p.returncode in [2, 3]:
-    sys.stderr.write('Some issues found. Processing...\n'.format(p.returncode))
-    pass
+elif child_process.returncode == 0:
+    sys.stderr.write('No error found\n{}'.format(child_process.returncode))
+elif child_process.returncode in [2, 3]:
+    # TODO {} before or after \n
+    sys.stderr.write('Some issues found. Processing...\n{}'.format(child_process.returncode))
 else:
-    sys.stderr.write('Unknown return code {}\n'.format(p.returncode))
+    sys.stderr.write('Unknown return code {}\n'.format(child_process.returncode))
     sys.exit(1)
 
 data = json.loads(output)

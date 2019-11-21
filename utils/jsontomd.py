@@ -11,7 +11,7 @@ import json
 parser = argparse.ArgumentParser(description='Process input file')
 
 parser.add_argument('json', type=argparse.FileType('r'),
-                   help='A json file to convert to Markdown')
+                    help='A json file to convert to Markdown')
 
 args = parser.parse_args()
 

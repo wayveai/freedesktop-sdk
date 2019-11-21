@@ -1,7 +1,7 @@
-from ruamel import yaml
-import os
-from buildstream import Element, ElementError, Scope
 import collections
+import os
+from ruamel import yaml
+from buildstream import Element, ElementError, Scope
 
 class SnapImageElement(Element):
 
@@ -72,8 +72,8 @@ class SnapImageElement(Element):
 
             os.makedirs(metadir, exist_ok=True)
 
-            with open(metadata, 'w') as f:
-                yaml.dump(self.metadata, f)
+            with open(metadata, 'w') as file:
+                yaml.dump(self.metadata, file)
 
 
         return os.path.join(os.sep, reldirectory)

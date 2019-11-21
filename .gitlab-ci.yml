@@ -21,6 +21,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: "recursive"
 
 stages:
+  - linter
   - bootstrap
   - update
   - flatpak
@@ -158,7 +159,17 @@ before_script:
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
-
+pylint:
+  image: $DOCKER_AMD64
+  stage: linter
+  tags:
+    - x86_64
+    - cache_x86_64
+  variables:
+    ARCH: x86_64
+  allow_failure: true
+  script:
+    - find . -iname "*.py" | xargs pylint
 
 check_update_elements:
   image: $DOCKER_AARCH64
@@ -168,7 +179,7 @@ check_update_elements:
   script:
     - git checkout -- snap-version.yml
     - ${BST} track --deps all track-elements.bst
-    - git -c diff.external=utils/yaml-diff.py diff
+    - git -c diff.external=utils/yaml_diff.py diff
   only:
     - schedules
 
@@ -239,11 +250,11 @@ populate_source_cache:
       set -e
       if [ "${ARCH}" != powerpc64le ]; then
         make export-snap
-        python3 utils/parse-review.py snap/platform.snap
-        python3 utils/parse-review.py snap/glxinfo.snap
-        python3 utils/parse-review.py snap/vulkaninfo.snap
-        python3 utils/parse-review.py snap/clinfo.snap
-        python3 utils/parse-review.py snap/vainfo.snap
+        python3 utils/parse_review.py snap/platform.snap
+        python3 utils/parse_review.py snap/glxinfo.snap
+        python3 utils/parse_review.py snap/vulkaninfo.snap
+        python3 utils/parse_review.py snap/clinfo.snap
+        python3 utils/parse_review.py snap/vainfo.snap
       fi
 
   artifacts:
@@ -701,11 +712,11 @@ cve_report:
 
     - mkdir -p "${XDG_CACHE_HOME}/cve"
     - cd "${XDG_CACHE_HOME}/cve"
-    - python3 "${CI_PROJECT_DIR}/utils/update-local-cve-database.py"
+    - python3 "${CI_PROJECT_DIR}/utils/update_local_cve_database.py"
 
     - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
-    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
-    - python3 "${CI_PROJECT_DIR}/utils/generate-cve-report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
+    - python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
+    - python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"

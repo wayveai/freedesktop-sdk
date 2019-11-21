@@ -42,6 +42,7 @@ with open('protocols', 'w') as out:
     with open('protocol-numbers-1.csv', 'r') as f:
         reader = csv.reader(f)
         next(reader)
+        # TODO check if PORTS is same as above
         ports = {}
         for row in reader:
             number, keyword, description = tuple(row[:3])

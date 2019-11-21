@@ -5,19 +5,19 @@ import argparse
 import sys
 import os
 
-describe_text = """
+DESCRIBE_TEXT = """
 A short program that searches a target directory for static library files (specifically, any file that ends with ".a"). The first argument should be a target directory. The second argument should be an "allow_list", listing filenames that are acceptable in the output.
 Exits with exit(1) if it finds any .a files that aren't in the allow list.
 """
 
 #read arguments with argparse
-parser = argparse.ArgumentParser(description = describe_text)
+parser = argparse.ArgumentParser(description=DESCRIBE_TEXT)
 parser.add_argument('target_dir')
 parser.add_argument('allow_list_filename')
-parser.add_argument("-v", "--verbose", 
-        help="Verbose mode: Display all static libraries found, and the allow_list", 
-        action="store_true"
-        )
+parser.add_argument("-v", "--verbose",
+                    help="Verbose mode: Display all static libraries found, and the allow_list",
+                    action="store_true"
+                    )
 args = parser.parse_args()
 
 #initialise variables
@@ -34,11 +34,11 @@ allow_list = set(line for line in allow_list if line and not line.startswith("#"
 #walk the file directory
 for root, dirs, files in os.walk(args.target_dir):
     for name in files:
-        if (name.endswith(".a")):
+        if name.endswith(".a"):
             if args.verbose:
-                all_identified_static_libraries.append(os.path.join(root,name))
+                all_identified_static_libraries.append(os.path.join(root, name))
             if name not in allow_list:
-                complain_list.append(os.path.join(root,name))
+                complain_list.append(os.path.join(root, name))
 
 #Output
 if args.verbose:
