@@ -17,17 +17,17 @@ THES_DEST = "mythes"
 
 def parse_props(elem, origin):
     props = {}
-    for prop in elem.getchildren():
+    for prop in elem:
         prop_name = get_name(prop)
         prop_type = get_type(prop)
         res = None
         if prop_type == "xs:string":
             res = ""
-            for i in prop.getchildren()[0].itertext():
+            for i in list(prop)[0].itertext():
                 res = res + i.replace("%origin%", origin)
         elif prop_type == "oor:string-list":
             res = []
-            for i in prop.getchildren()[0].itertext():
+            for i in list(prop)[0].itertext():
                 res = res + i.replace("%origin%", origin).split()
         else:
             print("Unknown type %s" % prop_type)
@@ -38,7 +38,7 @@ def handle_file(filename):
     tree = ET.parse(filename)
     lang = os.path.basename(os.path.dirname(filename)).split("_")[0]
     root = tree.getroot()
-    dicts = root.getchildren()[0].getchildren()[0].getchildren()
+    dicts = list(list(root)[0])[0]
     for element in dicts:
         name = get_name(element)
         props = parse_props(element, os.path.dirname(filename))
