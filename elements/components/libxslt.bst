@@ -33,7 +33,7 @@ sources:
 - kind: git_tag
   url: gnome:libxslt.git
   track: master
-  ref: v1.1.33-0-gf1eb717f04d9cc297cc5e58e94b81ac96f47e741
+  ref: v1.1.34-0-g3653123f992db24cec417d12600f4c67388025e3
 - kind: patch
   path: patches/libxslt/CVE-2019-11068.patch
 - kind: patch
