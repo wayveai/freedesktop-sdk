@@ -1,13 +1,14 @@
-# Aliases for urls used in BuildStream elements
+### Aliases for urls used in BuildStream elements
+#
+#
+#Git source aliases
 aom: https://aomedia.googlesource.com/
 chromium: https://chromium.googlesource.com/
 debian_salsa: https://salsa.debian.org/
 ffmpeg: https://git.ffmpeg.org/
 flathub: https://flathub.org/
 freedesktop_people: git://people.freedesktop.org/~wtay/
-freedesktop-sdk: https://cache.sdk.freedesktop.org/
 freedesktop: https://gitlab.freedesktop.org/
-ftp_gnu_org: https://ftp.gnu.org/gnu/
 github: https://github.com/
 gitlab: https://gitlab.com/
 gnome_archive: https://gitlab.gnome.org/Archive/
@@ -22,13 +23,17 @@ nettle: https://git.lysator.liu.se/nettle/
 pagure: https://pagure.io/
 repo_or_cz: https://repo.or.cz/
 savannah: https://git.savannah.gnu.org/git/
-sourceforge_download: https://downloads.sourceforge.net/
-sourceforge: https://sourceforge.net/
-sourceware_pub: https://sourceware.org/pub/
 sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
 videolan: https://code.videolan.org/videolan/
 xiph: https://git.xiph.org/
 #
-# github_files is an alias for the same url as github, but doesn't use the same mirror
+#
+#Other Aliases
+#(github_files is an alias for the same url as github, but doesn't use the same mirror)
+freedesktop-sdk: https://cache.sdk.freedesktop.org/
+ftp_gnu_org: https://ftp.gnu.org/gnu/
 github_files: https://github.com/
+sourceforge_download: https://downloads.sourceforge.net/
+sourceforge: https://sourceforge.net/
+sourceware_pub: https://sourceware.org/pub/
