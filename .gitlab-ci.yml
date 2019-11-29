@@ -21,7 +21,6 @@ variables:
   GIT_SUBMODULE_STRATEGY: "recursive"
 
 stages:
-  - linter
   - bootstrap
   - update
   - flatpak
@@ -161,7 +160,7 @@ before_script:
 
 pylint:
   image: $DOCKER_AMD64
-  stage: linter
+  stage: flatpak
   tags:
     - x86_64
     - cache_x86_64
