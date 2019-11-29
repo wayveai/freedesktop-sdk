@@ -29,3 +29,6 @@ sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
 videolan: https://code.videolan.org/videolan/
 xiph: https://git.xiph.org/
+#
+# github_files is an alias for the same url as github, but doesn't use the same mirror
+github_files: https://github.com/

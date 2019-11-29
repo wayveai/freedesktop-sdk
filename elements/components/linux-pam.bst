@@ -45,7 +45,7 @@ public:
 
 sources:
 - kind: tar
-  url: github:linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz
+  url: github_files:linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz
   ref: eff47a4ecd833fbf18de9686632a70ee8d0794b79aecb217ebd0ce11db4cd0db
 - kind: local
   path: files/linux-pam-config
