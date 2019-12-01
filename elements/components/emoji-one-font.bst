@@ -12,5 +12,5 @@ config:
 sources:
   # Last free version, do not update!
 - kind: remote
-  url: github:emojione/emojione/raw/693a9705f60efd566e40a5c9ec00ca306c9bcbd0/extras/fonts/emojione-android.ttf
+  url: github_files:emojione/emojione/raw/693a9705f60efd566e40a5c9ec00ca306c9bcbd0/extras/fonts/emojione-android.ttf
   ref: 6b43a1425844274c6fab96a6e3dad3a903d6f541c43bcbb665a8e09c775aa66d

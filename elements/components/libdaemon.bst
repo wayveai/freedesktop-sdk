@@ -7,6 +7,6 @@ depends:
 
 sources:
 - kind: git_tag
-  url: git://git.0pointer.de/libdaemon
+  url: libdaemon:libdaemon.git
   track: master
   ref: v0.14-0-g9fcc28e0e8f84968d1fb8b6d544a42efb13803ec

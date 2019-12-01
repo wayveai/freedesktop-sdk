@@ -20,6 +20,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.code.sf.net/p/gnu-efi/code
+  url: gnu-efi:code.git
   track: master
   ref: 3.0.10-0-g9b14e7dab0abf0ef062db60666b677b33e10c627

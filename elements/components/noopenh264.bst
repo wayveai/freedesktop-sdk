@@ -31,7 +31,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:endlessm/noopenh264
+  url: github:endlessm/noopenh264.git
   track: master
   ref: Release_3.6.4-0-g73438577f0c9c228118e72437803e6426fa87ba2
 - kind: patch

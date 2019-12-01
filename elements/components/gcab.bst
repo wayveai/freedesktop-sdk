@@ -24,6 +24,6 @@ variables:
 
 sources:
 - kind: git_tag
-  url: gnome:gcab
+  url: gnome:gcab.git
   track: master
   ref: v1.3-0-g8ed3cfb07293bab3e075b800b86bf5accedbc635

@@ -15,7 +15,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://git.tukaani.org/xz.git
+  url: tukaani:xz.git
   track: master
   track-extra:
   - v5.2

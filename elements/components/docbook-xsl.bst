@@ -46,7 +46,7 @@ public:
 
 sources:
 - kind: tar
-  url: github:docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-1.79.2.tar.gz
+  url: github_files:docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-1.79.2.tar.gz
   ref: 966188d7c05fc76eaca115a55893e643dd01a3486f6368733c9ad974fcee7a26
 - kind: patch
   strip-level: 2

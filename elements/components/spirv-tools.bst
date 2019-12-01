@@ -30,7 +30,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/SPIRV-Tools
+  url: github:KhronosGroup/SPIRV-Tools.git
   track: stable
   track-tags: false
   ref: v2019.4-31-g9b3cc3e05337358d0bd9fec1b7a51e3cbf55312b

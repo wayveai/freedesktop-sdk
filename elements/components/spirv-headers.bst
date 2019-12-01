@@ -7,7 +7,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/SPIRV-Headers
+  url: github:KhronosGroup/SPIRV-Headers.git
   # There is no release that can build released tools. So we do not track
   # releases. Tracking is disabled to not warn us for every commit in
   # master.

@@ -16,7 +16,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.kitware.com/cmake/cmake
+  url: kitware:cmake.git
   track: master
   exclude:
   - v*-rc*

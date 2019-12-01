@@ -17,7 +17,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: github:intel/intel-vaapi-driver
+  url: github:intel/intel-vaapi-driver.git
   track: master
   ref: 2.3.0-0-gce593cf433d62f46a87bec73485ae1c968010ae6
 - kind: patch
