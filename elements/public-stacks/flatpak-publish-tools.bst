@@ -1,7 +1,7 @@
 kind: compose
 
 depends:
-- filename: deploy-tools/flatpak.bst
+- filename: components/flatpak.bst
   type: build
 
 config:
