@@ -1,0 +1,34 @@
+commit 84151442ee12f0002e468cdfaa9a5b1370392f5b
+Author: Carlos Garnacho <carlosg@gnome.org>
+Date:   Tue Oct 8 17:46:38 2019 +0200
+
+    gdk: Fix wl_output accounting on tablet devices
+    
+    The code managing this accounting mixed seat and tablet output lists,
+    can't bode well. Fixes invalid reads on list elements, as there are
+    dangling pointers.
+    
+    Closes: https://gitlab.gnome.org/GNOME/gtk/issues/2157
+
+diff --git a/gdk/wayland/gdkdevice-wayland.c b/gdk/wayland/gdkdevice-wayland.c
+index 0d06141ff2..84254a2481 100644
+--- a/gdk/wayland/gdkdevice-wayland.c
++++ b/gdk/wayland/gdkdevice-wayland.c
+@@ -4615,7 +4615,7 @@ pointer_surface_enter (void              *data,
+   if (tablet)
+     {
+       tablet->pointer_info.pointer_surface_outputs =
+-        g_slist_append (seat->pointer_info.pointer_surface_outputs, output);
++        g_slist_append (tablet->pointer_info.pointer_surface_outputs, output);
+     }
+   else
+     {
+@@ -4644,7 +4644,7 @@ pointer_surface_leave (void              *data,
+   if (tablet)
+     {
+       tablet->pointer_info.pointer_surface_outputs =
+-        g_slist_remove (seat->pointer_info.pointer_surface_outputs, output);
++        g_slist_remove (tablet->pointer_info.pointer_surface_outputs, output);
+     }
+   else
+     {
