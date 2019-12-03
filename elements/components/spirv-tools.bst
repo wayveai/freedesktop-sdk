@@ -38,7 +38,7 @@ sources:
   url: github:KhronosGroup/SPIRV-Tools.git
   ref: aa9e8f538041db3055ea443080e0ccc315fa114f
 - kind: git_tag
-  url: github:KhronosGroup/SPIRV-Headers
+  url: github:KhronosGroup/SPIRV-Headers.git
   ref: 45c2cc37276d69e5b257507d97fd90d2a5684ccc
   directory: external/SPIRV-Headers
 # We hardcode known-good commits from glslang.bst commit
