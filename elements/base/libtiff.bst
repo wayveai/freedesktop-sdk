@@ -22,7 +22,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://gitlab.com/libtiff/libtiff.git
+  url: gitlab:libtiff/libtiff.git
   track: master
   ref: v4.0.10-0-gb8eac98dd0849c3f888518ce5cecc020f8b2991c
 - kind: patch

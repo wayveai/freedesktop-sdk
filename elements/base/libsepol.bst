@@ -32,5 +32,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:SELinuxProject/selinux/releases/download/20180524/libsepol-2.8.tar.gz
+  url: github_files:SELinuxProject/selinux/releases/download/20180524/libsepol-2.8.tar.gz
   ref: 3ad6916a8352bef0bad49acc8037a5f5b48c56f94e4cb4e1959ca475fa9d24d6

@@ -41,6 +41,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+  url: kernel:utils/util-linux/util-linux.git
   track: stable/v2.33
   ref: v2.33.2-0-gdf9f1b2ee5bc90fc6f3b0089d2859df1b18f2c74
