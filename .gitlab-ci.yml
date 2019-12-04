@@ -480,6 +480,11 @@ minimal_systemd_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 minimal_efi_vm_image_x86_64:
   image: $DOCKER_AMD64
