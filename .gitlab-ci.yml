@@ -204,6 +204,7 @@ populate_source_cache:
         for c in "${configs[@]}"; do
           ${BST} --on-error continue -o target_arch "${c/*:/}" -o bootstrap_build_arch "${c/:*/}" fetch --deps all flatpak-release.bst || true
         done
+        rm -rf "${XDG_CACHE_HOME}/buildstream/sources/git_tag"
       }
 
       fetch
