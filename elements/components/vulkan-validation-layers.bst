@@ -30,7 +30,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/Vulkan-ValidationLayers
+  url: github:KhronosGroup/Vulkan-ValidationLayers.git
   ref: sdk-1.1.114.0-0-g20b52a923c80e533e8fa7ee0d0ce8dceade16fa1
   track: master
   track-extra:

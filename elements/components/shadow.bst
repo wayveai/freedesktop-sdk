@@ -34,5 +34,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:shadow-maint/shadow/releases/download/4.7/shadow-4.7.tar.xz
+  url: github_files:shadow-maint/shadow/releases/download/4.7/shadow-4.7.tar.xz
   ref: e5e196a4a7e3b228c812f3163d368be3e932e6eaa4e616677a148d9ec921e16c

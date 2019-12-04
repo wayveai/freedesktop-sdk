@@ -29,7 +29,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: gnome:pango
+  url: gnome:pango.git
   track: master
   track-extra:
   - 1.44.6

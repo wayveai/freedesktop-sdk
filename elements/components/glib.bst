@@ -47,7 +47,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:glib
+  url: gnome:glib.git
   track: master
   track-extra:
   - glib-2-60

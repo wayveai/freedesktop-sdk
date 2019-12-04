@@ -27,7 +27,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://repo.or.cz/nasm.git
+  url: repo_or_cz:nasm.git
   track: master
   exclude:
   - nasm-*rc*

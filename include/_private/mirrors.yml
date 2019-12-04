@@ -6,17 +6,55 @@ mirrors:
   aliases:
     ftp_gnu_org:
     - https://mirrors.kernel.org/gnu/
-- name: github_mirrors
+
+- name: gitlab_dot_com_freedesktop__sdk_mirrors
   aliases:
-    perl5:
-    - https://github.com/Perl/perl5.git
+    aom:
+    - https://gitlab.com/freedesktop-sdk/mirrors/aom/
+    chromium:
+    - https://gitlab.com/freedesktop-sdk/mirrors/chromium/
+    debian_salsa:
+    - https://gitlab.com/freedesktop-sdk/mirrors/debian_salsa/
     ffmpeg:
-    - https://github.com/FFmpeg/
-- name: freedesktop_sdk_mirrors
-  aliases:
-    sourceware:
-    - https://gitlab.com/freedesktop-sdk/mirrors/
-- name: nettle_mirrors
-  aliases:
+    - https://gitlab.com/freedesktop-sdk/mirrors/ffmpeg/
+    freedesktop_people:
+    - https://gitlab.com/freedesktop-sdk/mirrors/freedesktop_people/
+    freedesktop:
+    - https://gitlab.com/freedesktop-sdk/mirrors/freedesktop/
+    github:
+    - https://gitlab.com/freedesktop-sdk/mirrors/github/
+    gitlab:
+    - https://gitlab.com/freedesktop-sdk/mirrors/gitlab/
+    gnome_archive:
+    - https://gitlab.com/freedesktop-sdk/mirrors/gnome_archive/
+    gnome:
+    - https://gitlab.com/freedesktop-sdk/mirrors/gnome/
+    gnu-efi:
+    - https://gitlab.com/freedesktop-sdk/mirrors/gnu-efi/
+    gnupg:
+    - https://gitlab.com/freedesktop-sdk/mirrors/gnupg/
+    kitware:
+    - https://gitlab.com/freedesktop-sdk/mirrors/kitware/
+    kernel:
+    - https://gitlab.com/freedesktop-sdk/mirrors/kernel/
+    libdaemon:
+    - https://gitlab.com/freedesktop-sdk/mirrors/libdaemon/
+    libreoffice:
+    - https://gitlab.com/freedesktop-sdk/mirrors/libreoffice/
     nettle:
-    - https://gitlab.com/gnutls/
+    - https://gitlab.com/freedesktop-sdk/mirrors/nettle/
+    pagure:
+    - https://gitlab.com/freedesktop-sdk/mirrors/pagure/
+    repo_or_cz:
+    - https://gitlab.com/freedesktop-sdk/mirrors/repo_or_cz/
+    savannah:
+    - https://gitlab.com/freedesktop-sdk/mirrors/savannah/
+    sourceware:
+    - https://gitlab.com/freedesktop-sdk/mirrors/sourceware/
+    tukaani:
+    - https://gitlab.com/freedesktop-sdk/mirrors/tukaani/
+    videolan:
+    - https://gitlab.com/freedesktop-sdk/mirrors/videolan/
+    xiph:
+    - https://gitlab.com/freedesktop-sdk/mirrors/xiph/
+

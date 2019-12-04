@@ -27,7 +27,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:at-spi2-core
+  url: gnome:at-spi2-core.git
   track: master
   track-extra:
   - gnome-3-32

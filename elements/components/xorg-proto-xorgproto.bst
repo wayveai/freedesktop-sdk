@@ -10,6 +10,6 @@ depends:
 
 sources:
 - kind: git_tag
-  url: freedesktop:xorg/proto/xorgproto
+  url: freedesktop:xorg/proto/xorgproto.git
   track: master
   ref: xorgproto-2019.1-0-ge0bba743ae7c549c58f92677b239ec7878548228

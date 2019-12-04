@@ -24,7 +24,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:ostreedev/ostree
+  url: github:ostreedev/ostree.git
   track: master
   ref: v2019.4-0-g9d39e7d91e8497987cad69a3fbed5c5fc91eebdc
   submodules:
@@ -33,4 +33,4 @@ sources:
       url: gnome:libglnx.git
     bsdiff:
       checkout: true
-      url: github:mendsley/bsdiff
+      url: github:mendsley/bsdiff.git

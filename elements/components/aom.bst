@@ -40,7 +40,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://aomedia.googlesource.com/aom
+  url: aom:aom.git
   track: master
   track-extra:
   - av1-normative

@@ -63,7 +63,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:pulseaudio/pulseaudio
+  url: freedesktop:pulseaudio/pulseaudio.git
   track: master
   track-extra:
   - stable-12.x

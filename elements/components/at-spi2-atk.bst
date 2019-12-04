@@ -29,7 +29,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:at-spi2-atk
+  url: gnome:at-spi2-atk.git
   track: master
   track-extra:
   - gnome-3-32

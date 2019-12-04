@@ -33,6 +33,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://chromium.googlesource.com/webm/libwebp
+  url: chromium:webm/libwebp.git
   track: master
   ref: v1.0.3-0-g0fe1a89dbf1930fc2554dbe76adad5d962054ead

@@ -71,13 +71,13 @@ config:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-base
+  url: freedesktop:gstreamer/gst-plugins-base.git
   track: '1.16'
   ref: 1.16.1-0-ga88627c237456a048977c1360729dfeb39155419
   submodules:
     common:
       checkout: false
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git
 - kind: git_tag
   url: freedesktop:gstreamer/meson-ports/gl-headers.git
   directory: subprojects/gl-headers

@@ -12,7 +12,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: gnome:gtk-doc
+  url: gnome:gtk-doc.git
   track: master
   match:
   - 'GTK_DOC_1_29*'
