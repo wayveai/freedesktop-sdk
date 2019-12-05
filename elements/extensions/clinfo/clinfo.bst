@@ -14,6 +14,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:Oblomov/clinfo
+  url: github:Oblomov/clinfo.git
   track: master
   ref: 2.2.18.04.06-0-g59d0daf898e48d76ccbb788acbba258fa0a8ba7c

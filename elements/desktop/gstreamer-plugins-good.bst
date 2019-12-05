@@ -35,10 +35,10 @@ variables:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-good
+  url: freedesktop:gstreamer/gst-plugins-good.git
   track: '1.14'
   ref: 1.14.4-0-gd88d1b0e43b140587f35c7c9bf390fae051e427d
   submodules:
     common:
       checkout: True
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git

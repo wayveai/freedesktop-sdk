@@ -30,6 +30,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gstreamer
+  url: freedesktop:gstreamer/gstreamer.git
   track: '1.14'
   ref: 1.14.4-0-g3c586dec930c5c253da0cf49e3f3846243f0ecf5

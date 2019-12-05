@@ -24,6 +24,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:json-glib
+  url: gnome:json-glib.git
   track: json-glib-1-4
   ref: 1.4.4-0-g700a8bc414991d35ff3f79607547d4beedac8629

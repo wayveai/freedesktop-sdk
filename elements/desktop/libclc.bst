@@ -31,7 +31,7 @@ sources:
   # This is a specific commit in master, where the copyright was updated to 
   # 2018, I could see nothing else remotely release-like.
 - kind: git 
-  url: https://llvm.org/git/libclc
+  url: llvm:libclc
   ref: e6e24bf34143a3d4c225376efe7eef69ead9ac7b # No git describe, no tags...
 - kind: patch
   path: patches/libclc/libclc-force-configure-to-use-python3.patch

@@ -60,13 +60,13 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-bad
+  url: freedesktop:gstreamer/gst-plugins-bad.git
   track: '1.14'
   ref: 1.14.4-0-g566e4ecc223b18fce8bd932f5e4885f41f746dd4
   submodules:
     common:
       checkout: True
-      url: freedesktop:gstreamer/common
+      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-plugins-bad/remove_mode_2_1.patch
 - kind: patch

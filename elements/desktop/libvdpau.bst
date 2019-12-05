@@ -18,6 +18,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:vdpau/libvdpau
+  url: freedesktop:vdpau/libvdpau.git
   track: master
   ref: libvdpau-1.2-0-geac1393480bc7c2209d4984819951cb9dc1e03d0

@@ -28,5 +28,5 @@ config:
 
 sources:
 - kind: git_tag
-  url: github:KhronosGroup/Vulkan-ValidationLayers
+  url: github:KhronosGroup/Vulkan-ValidationLayers.git
   ref: v1.1.97-0-g9a4ae980ab4c69d2ae99f13a2c8ea2a5d102af93

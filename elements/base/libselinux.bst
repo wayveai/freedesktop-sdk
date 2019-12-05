@@ -33,5 +33,5 @@ public:
 
 sources:
 - kind: tar
-  url: github:SELinuxProject/selinux/releases/download/20180524/libselinux-2.8.tar.gz
+  url: github_files:SELinuxProject/selinux/releases/download/20180524/libselinux-2.8.tar.gz
   ref: 31db96ec7643ce10912b3c3f98506a08a9116dcfe151855fd349c3fda96187e1

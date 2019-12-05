@@ -16,5 +16,5 @@ config:
 
 sources:
 - kind: tar
-  url: github:stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
+  url: github_files:stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
   ref: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72

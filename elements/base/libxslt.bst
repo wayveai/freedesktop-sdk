@@ -21,7 +21,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:libxslt
+  url: gnome:libxslt.git
   track: master
   ref: v1.1.33-0-gf1eb717f04d9cc297cc5e58e94b81ac96f47e741
 - kind: patch

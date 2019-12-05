@@ -24,7 +24,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:OCL-dev/ocl-icd
+  url: github:OCL-dev/ocl-icd.git
   track: v2.2.12
   ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
 - kind: patch

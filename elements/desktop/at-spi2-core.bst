@@ -26,6 +26,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: gnome:at-spi2-core
+  url: gnome:at-spi2-core.git
   track: master
   ref: AT_SPI2_CORE_2_30_0-0-g2f3b23bb626e91aa321f06374ff66a709c323430

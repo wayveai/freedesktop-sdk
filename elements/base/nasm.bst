@@ -27,7 +27,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://repo.or.cz/nasm.git
+  url: repo_or_cz:nasm.git
   track: master
   ref:  nasm-2.14.02-0-ga73b8be6f0f9e307e3c6131011a30f2fd5b00877
 - kind: patch
