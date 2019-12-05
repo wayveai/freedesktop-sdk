@@ -54,7 +54,7 @@ variables:
   hwaccels: '%{extra-hwaccels}'
 
   muxers: |
-    ac3,ass,flac,gif,matroska,mp3,mpegvideo,ogg,wav,%{extra-muxers}
+    ac3,ass,flac,gif,matroska,mp3,mpegvideo,ogg,opus,wav,%{extra-muxers}
 
   demuxers: |
     aac,ac3,ass,flac,gif,matroska,mov,mp3,mpegvideo,ogg,wav,%{extra-demuxers}
