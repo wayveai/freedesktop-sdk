@@ -20,5 +20,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://github.com/p11-glue/p11-kit/releases/download/0.23.16.1/p11-kit-0.23.16.1.tar.gz
+  url: tar_https:github.com/p11-glue/p11-kit/releases/download/0.23.16.1/p11-kit-0.23.16.1.tar.gz
   ref: 4b34e92ae36fa493e0d94366c767f06d5f9951e3d8581d10fd935d738db1574d
