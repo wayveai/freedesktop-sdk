@@ -1,5 +1,15 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.05:
+
+    * ffmpeg: Add muxer for opus (#925)
+    * gtk3: Fix tablet input issues (#923)
+    * gst-plugins-bad: Fix videos on twitter.com (#924)
+    * Add /run/host/user-share to XDG_DATA_DIRS
+    * util-linux: Remove nologin
+    * openssl: Remove passwd man page
+    * coreutils: Add arch, remove groups
+
 freedesktop-sdk-19.08.04:
     * Update flatpak-xdg-utils component to 1.0.1
     * Import fcitx 4.2.9.7 to support new flatpak
