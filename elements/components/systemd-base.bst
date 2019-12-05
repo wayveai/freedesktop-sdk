@@ -57,8 +57,6 @@ public:
       - '%{libdir}/pkgconfig'
       - '%{libdir}/pkgconfig/libsystemd.pc'
       - '%{libdir}/pkgconfig/libudev.pc'
-      - '%{datadir}/pkgconfig'
-      - '%{datadir}/pkgconfig/systemd.pc'
       - '%{includedir}'
       - '%{includedir}/libudev.h'
       - '%{includedir}/systemd'

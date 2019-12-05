@@ -25,6 +25,8 @@ depends:
 - filename: components/xorg-lib-xcb.bst
 - filename: components/xorg-lib-xtst.bst
 - filename: components/gtk3.bst
+- filename: components/systemd.bst
+  type: build
 
 variables:
   meson-local: >-
