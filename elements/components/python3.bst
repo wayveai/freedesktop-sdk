@@ -30,44 +30,40 @@ config:
     if [ -n "%{builddir}" ]; then
     cd %{builddir}
     fi
-    %{make-install} DESTSHARED=/usr/lib/python3.7/lib-dynload
+    %{make-install} DESTSHARED=/usr/lib/python3.8/lib-dynload
 
   - |
     rm -rf %{install-root}%{bindir}/idle*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/idlelib
+    rm -rf %{install-root}%{indep-libdir}/python3.8/idlelib
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/tkinter
+    rm -rf %{install-root}%{indep-libdir}/python3.8/tkinter
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/turtle*
+    rm -rf %{install-root}%{indep-libdir}/python3.8/turtle*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/__pycache__/turtle.*
+    rm -rf %{install-root}%{indep-libdir}/python3.8/__pycache__/turtle.*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/test
+    rm -rf %{install-root}%{indep-libdir}/python3.8/test
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/*/test
+    rm -rf %{install-root}%{indep-libdir}/python3.8/*/test
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/*/tests
-
-  - |
-    rm "%{install-root}%{bindir}/python3.7m"
-    ln -s python3.7 "%{install-root}%{bindir}/python3.7m"
+    rm -rf %{install-root}%{indep-libdir}/python3.8/*/tests
 
   - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
   - |
-    cat <<EOF >"%{install-root}%{includedir}/python3.7m/pyconfig.h"
+    cat <<EOF >"%{install-root}%{includedir}/python3.8/pyconfig.h"
     #if defined(__x86_64__)
-    # include "x86_64-linux-gnu/python3.7m/pyconfig.h"
+    # include "x86_64-linux-gnu/python3.8/pyconfig.h"
     #elif defined(__i386__)
-    # include "i386-linux-gnu/python3.7m/pyconfig.h"
+    # include "i386-linux-gnu/python3.8/pyconfig.h"
     #elif defined(__aarch64__)
-    # include "aarch64-linux-gnu/python3.7m/pyconfig.h"
+    # include "aarch64-linux-gnu/python3.8/pyconfig.h"
     #elif defined(__arm__)
-    # include "arm-linux-gnueabihf/python3.7m/pyconfig.h"
+    # include "arm-linux-gnueabihf/python3.8/pyconfig.h"
     #elif defined(__powerpc64__)
-    # include "powerpc64le-linux-gnu/python3.7m/pyconfig.h"
+    # include "powerpc64le-linux-gnu/python3.8/pyconfig.h"
     #else
     # error "Unknown cross-compiler"
     #endif
@@ -80,13 +76,12 @@ public:
         (>):
         - '%{bindir}/2to3*'
         - '%{bindir}/python3-config'
-        - '%{bindir}/python3.7-config'
-        - '%{bindir}/python3.7m-config'
-        - '%{libdir}/libpython3.7m.so'
-        - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}'
-        - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'
-        - '%{indep-libdir}/python3.7/lib2to3'
-        - '%{indep-libdir}/python3.7/lib2to3/**'
+        - '%{bindir}/python3.8-config'
+        - '%{libdir}/libpython3.8.so'
+        - '%{indep-libdir}/python3.8/config-3.8-%{gcc_triplet}'
+        - '%{indep-libdir}/python3.8/config-3.8-%{gcc_triplet}/**'
+        - '%{indep-libdir}/python3.8/lib2to3'
+        - '%{indep-libdir}/python3.8/lib2to3/**'
     integration-commands:
     - command -v python || ln -s python3 %{bindir}/python
   cpe:
@@ -96,12 +91,10 @@ public:
 
 sources:
 - kind: git_tag
-  track: '3.7'
+  track: '3.8'
   exclude:
   - v*rc*
   url: github:python/cpython.git
-  ref: v3.7.4-0-ge09359112e250268eca209355abeb17abf822486
+  ref: v3.8.0-0-gfa919fdf2583bdfead1df00e842f24f30b2a34bf
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch
-- kind: patch
-  path: patches/python3/CVE-2019-16056.patch

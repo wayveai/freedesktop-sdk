@@ -13,8 +13,8 @@ variables:
   conf-local: >-
     --with-python
     PYTHON=/usr/bin/python3
-    am_cv_python_version=3.7m
-    CPPFLAGS="-I%{includedir}/%{gcc_triplet}/python3.7m"
+    am_cv_python_version=3.8
+    CPPFLAGS="-I%{includedir}/python3.8 -I%{includedir}/%{gcc_triplet}/python3.8"
 
 config:
   configure-commands:
