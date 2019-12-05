@@ -1,0 +1,62 @@
+commit e955fd5af8569a157e508c4151a305a7b1bb857c
+Author: Carlos Garnacho <carlosg@gnome.org>
+Date:   Tue Oct 8 17:50:48 2019 +0200
+
+    gdk: Avoid poking possibly freed memory
+    
+    The event may end up freed after delivery, ensure to keep the data we need
+    in order to emit the matching emulated crossed event matching a proximity
+    event.
+    
+    Closes: https://gitlab.gnome.org/GNOME/gtk/issues/2157
+
+diff --git a/gdk/wayland/gdkdevice-wayland.c b/gdk/wayland/gdkdevice-wayland.c
+index 84254a2481..c154260296 100644
+--- a/gdk/wayland/gdkdevice-wayland.c
++++ b/gdk/wayland/gdkdevice-wayland.c
+@@ -3467,6 +3467,8 @@ static void
+ gdk_wayland_tablet_flush_frame_event (GdkWaylandTabletData *tablet,
+                                       guint32               time)
+ {
++  GdkEventType event_type;
++  GdkWindow *window;
+   GdkEvent *event;
+ 
+   event = tablet->pointer_info.frame.event;
+@@ -3475,7 +3477,10 @@ gdk_wayland_tablet_flush_frame_event (GdkWaylandTabletData *tablet,
+   if (!event)
+     return;
+ 
+-  switch (event->type)
++  event_type = event->type;
++  window = g_object_ref (gdk_event_get_window (event));
++
++  switch (event_type)
+     {
+     case GDK_MOTION_NOTIFY:
+       event->motion.time = time;
+@@ -3503,18 +3508,20 @@ gdk_wayland_tablet_flush_frame_event (GdkWaylandTabletData *tablet,
+       return;
+     }
+ 
+-  if (event->type == GDK_PROXIMITY_OUT)
+-    emulate_crossing (event->proximity.window, NULL,
++  if (event_type == GDK_PROXIMITY_OUT)
++    emulate_crossing (window, NULL,
+                       tablet->master, GDK_LEAVE_NOTIFY,
+                       GDK_CROSSING_NORMAL, time);
+ 
+   _gdk_wayland_display_deliver_event (gdk_seat_get_display (tablet->seat),
+                                       event);
+ 
+-  if (event->type == GDK_PROXIMITY_IN)
+-    emulate_crossing (event->proximity.window, NULL,
++  if (event_type == GDK_PROXIMITY_IN)
++    emulate_crossing (window, NULL,
+                       tablet->master, GDK_ENTER_NOTIFY,
+                       GDK_CROSSING_NORMAL, time);
++
++  g_object_unref (window);
+ }
+ 
+ static GdkEvent *

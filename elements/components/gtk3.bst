@@ -67,3 +67,7 @@ sources:
   url: gnome:gtk.git
   track: gtk-3-24
   ref: 3.24.10-0-g3642629767ec54c4079f7d90a9ea780a225bfe5e
+- kind: patch
+  path: patches/gtk3/invalid-tablet-input-1.patch
+- kind: patch
+  path: patches/gtk3/invalid-tablet-input-2.patch
