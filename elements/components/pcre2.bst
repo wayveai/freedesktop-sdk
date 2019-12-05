@@ -19,5 +19,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://ftp.pcre.org/pub/pcre/pcre2-10.33.tar.bz2
+  url: tar_https:ftp.pcre.org/pub/pcre/pcre2-10.33.tar.bz2
   ref: 35514dff0ccdf02b55bd2e9fa586a1b9d01f62332c3356e379eabb75f789d8aa

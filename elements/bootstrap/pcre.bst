@@ -25,5 +25,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.bz2
+  url: tar_https:ftp.pcre.org/pub/pcre/pcre-8.43.tar.bz2
   ref: 91e762520003013834ac1adb4a938d53b22a216341c061b0cf05603b290faf6b
