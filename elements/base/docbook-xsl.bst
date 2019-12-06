@@ -44,7 +44,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://downloads.sourceforge.net/docbook/docbook-xsl-1.79.1.tar.bz2
+  url: sourceforge_download:docbook/docbook-xsl-1.79.1.tar.bz2
   ref: 725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968
 - kind: patch
   strip-level: 2

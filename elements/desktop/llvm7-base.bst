@@ -83,14 +83,14 @@ public:
 
 sources:
 - kind: tar
-  url: https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
+  url: tar_https:releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
   ref: a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
 - kind: tar
-  url: https://releases.llvm.org/7.0.1/cfe-7.0.1.src.tar.xz
+  url: tar_https:releases.llvm.org/7.0.1/cfe-7.0.1.src.tar.xz
   ref: a45b62dde5d7d5fdcdfa876b0af92f164d434b06e9e89b5d0b1cbc65dfe3f418
   directory: tools/clang
 - kind: tar
-  url: https://releases.llvm.org/7.0.1/compiler-rt-7.0.1.src.tar.xz
+  url: tar_https:releases.llvm.org/7.0.1/compiler-rt-7.0.1.src.tar.xz
   ref: 782edfc119ee172f169c91dd79f2c964fb6b248bd9b73523149030ed505bbe18
   directory: tools/compiler-rt
 - kind: patch

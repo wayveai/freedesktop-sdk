@@ -59,5 +59,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.gz
+  url: tar_https:freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.gz
   ref: 67d1531576231e98d24bc307e980237bdca5142bda8920af89e6e6e887cb90ec

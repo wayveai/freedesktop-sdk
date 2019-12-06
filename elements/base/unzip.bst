@@ -31,7 +31,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://downloads.sourceforge.net/infozip/unzip60.tar.gz
+  url: sourceforge_download:infozip/unzip60.tar.gz
   ref: 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
 - kind: patch
   path: patches/unzip/CVE-2014-9636.patch

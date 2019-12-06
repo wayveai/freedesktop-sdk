@@ -25,5 +25,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://download.sourceforge.net/procps-ng/procps-ng-3.3.12.tar.xz
+  url: tar_https:download.sourceforge.net/procps-ng/procps-ng-3.3.12.tar.xz
   ref: 6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4

@@ -71,7 +71,7 @@ config:
 
 sources:
 - kind: tar
-  url: https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tar.xz
+  url: tar_https:www.python.org/ftp/python/2.7.16/Python-2.7.16.tar.xz
   ref: f222ef602647eecb6853681156d32de4450a2c39f4de93bd5b20235f2e660ed7
 - kind: patch
   path: patches/python2/bpo-35907-CVE-2019-9948-urllib-rejects-local_file-sc.patch

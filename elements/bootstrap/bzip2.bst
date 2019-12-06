@@ -49,7 +49,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/teams/releng/tarballs-needing-help/bzip2/bzip2-1.0.6.tar.gz
+  url: tar_https:download.gnome.org/teams/releng/tarballs-needing-help/bzip2/bzip2-1.0.6.tar.gz
   ref: a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd
 - kind: patch
   path: patches/bzip2/CVE-2016-3189.patch

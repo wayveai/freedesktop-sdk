@@ -19,6 +19,6 @@ config:
 
 sources:
 - kind: tar
-  url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
+  url: tar_https:cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
   ref: 1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216
 

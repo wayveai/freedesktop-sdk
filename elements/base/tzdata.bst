@@ -35,10 +35,10 @@ config:
 
 sources:
 - kind: tar
-  url: https://data.iana.org/time-zones/releases/tzdata2018i.tar.gz
+  url: tar_https:data.iana.org/time-zones/releases/tzdata2018i.tar.gz
   ref: 82c45ef84ca3bc01d0a4a397ba8adeb8f7f199c6550740587c6ac5a7108c00d9
   base-dir: ''
 - kind: tar
-  url: https://data.iana.org/time-zones/releases/tzcode2018i.tar.gz
+  url: tar_https:data.iana.org/time-zones/releases/tzcode2018i.tar.gz
   ref: aaacdb876ca6fb9d58e244b462cbc7578a496b1b10994381b4b32b9f2ded32dc
   base-dir: ''

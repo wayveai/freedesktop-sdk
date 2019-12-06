@@ -17,5 +17,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/lib/libXdamage-1.1.4.tar.bz2
+  url: tar_https:www.x.org/archive/individual/lib/libXdamage-1.1.4.tar.bz2
   ref: 7c3fe7c657e83547f4822bfde30a90d84524efb56365448768409b77f05355ad
