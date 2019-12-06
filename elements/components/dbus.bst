@@ -1,13 +1,14 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/expat.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/python3.bst
-  type: build
-- filename: components/systemd-libs.bst
+- bootstrap-import.bst
+- components/expat.bst
+- components/systemd-libs.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/python3.bst
+- components/systemd.bst
 
 variables:
   conf-local: |
