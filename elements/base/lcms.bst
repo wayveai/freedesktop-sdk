@@ -24,7 +24,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://download.sourceforge.net/lcms/lcms2-2.9.tar.gz
+  url: tar_https:download.sourceforge.net/lcms/lcms2-2.9.tar.gz
   ref: 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
 - kind: patch
   path: patches/lcms/CVE-2018-16435.patch

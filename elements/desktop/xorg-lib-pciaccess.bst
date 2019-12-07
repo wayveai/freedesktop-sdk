@@ -13,5 +13,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/lib/libpciaccess-0.14.tar.bz2
+  url: tar_https:www.x.org/archive/individual/lib/libpciaccess-0.14.tar.bz2
   ref: 3df543e12afd41fea8eac817e48cbfde5aed8817b81670a4e9e493bb2f5bf2a4

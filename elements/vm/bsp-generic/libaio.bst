@@ -13,5 +13,5 @@ config:
 
 sources:
 - kind: tar
-  url: https://releases.pagure.org/libaio/libaio-0.3.111.tar.gz
+  url: pagure_releases:libaio/libaio-0.3.111.tar.gz
   ref: 62cf871ad8fd09eb3418f00aca7a7d449299b8e1de31c65f28bf6a2ef1fa502a

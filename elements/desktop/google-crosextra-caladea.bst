@@ -22,7 +22,7 @@ config:
 
 sources:
 - kind: tar
-  url: https://gsdview.appspot.com/chromeos-localmirror/distfiles/crosextrafonts-20130214.tar.gz
+  url: tar_https:gsdview.appspot.com/chromeos-localmirror/distfiles/crosextrafonts-20130214.tar.gz
   ref: c48d1c2fd613c9c06c959c34da7b8388059e2408d2bb19845dc3ed35f76e4d09
 - kind: local
   path: files/font-conf/google-crosextra-caladea

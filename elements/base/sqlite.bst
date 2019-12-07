@@ -31,7 +31,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://sqlite.org/2019/sqlite-autoconf-3270200.tar.gz
+  url: tar_https:sqlite.org/2019/sqlite-autoconf-3270200.tar.gz
   ref: 50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
 - kind: patch
   path: patches/sqlite/CVE-2019-8457.patch

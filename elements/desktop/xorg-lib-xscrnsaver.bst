@@ -17,5 +17,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/lib/libXScrnSaver-1.2.3.tar.bz2
+  url: tar_https:www.x.org/archive/individual/lib/libXScrnSaver-1.2.3.tar.bz2
   ref: f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8

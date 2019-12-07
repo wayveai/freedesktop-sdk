@@ -29,5 +29,5 @@ config:
 
 sources:
 - kind: tar
-  url: https://sourceforge.net/projects/glew/files/glew/2.1.0/glew-2.1.0.tgz
+  url: sourceforge:projects/glew/files/glew/2.1.0/glew-2.1.0.tgz
   ref: 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95

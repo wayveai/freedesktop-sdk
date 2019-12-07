@@ -24,5 +24,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz
+  url: libsdl:SDL_image/release/SDL2_image-2.0.4.tar.gz
   ref: e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac

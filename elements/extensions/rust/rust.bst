@@ -122,7 +122,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.34.2-src.tar.gz
+  url: tar_https:static.rust-lang.org/dist/rustc-1.34.2-src.tar.gz
   ref: c69a4a85a1c464368597df8878cb9e1121aae93e215616d45ad7d23af3052f56
 - kind: patch
   path: patches/rust/rust-codegen-libdir.patch

@@ -24,5 +24,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.bz2
+  url: tar_https:www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.bz2
   ref: 294e670dd37cd23995e69aae626629d4a2dfe5708851bbc13d032401b7a3df6b

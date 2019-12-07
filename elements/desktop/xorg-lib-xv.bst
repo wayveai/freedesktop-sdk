@@ -19,5 +19,5 @@ public:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/lib/libXv-1.0.11.tar.bz2
+  url: tar_https:www.x.org/archive/individual/lib/libXv-1.0.11.tar.bz2
   ref: d26c13eac99ac4504c532e8e76a1c8e4bd526471eb8a0a4ff2a88db60cb0b088
