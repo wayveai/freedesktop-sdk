@@ -1,7 +1,194 @@
-diff -ur -x .git python3.old/configure python3/configure
---- python3.old/configure	2019-08-29 12:27:39.777320734 +0200
-+++ python3/configure	2019-08-29 12:28:18.824948055 +0200
-@@ -623,6 +623,7 @@
+diff --git a/Include/Python.h b/Include/Python.h
+index d6e5b139ac..3c359dc118 100644
+--- a/Include/Python.h
++++ b/Include/Python.h
+@@ -5,7 +5,7 @@
+ /* Include nearly all Python header files */
+ 
+ #include "patchlevel.h"
+-#include "pyconfig.h"
++#include <pyconfig.h>
+ #include "pymacconfig.h"
+ 
+ #include <limits.h>
+diff --git a/Include/internal/pycore_atomic.h b/Include/internal/pycore_atomic.h
+index 336bc3fec2..eac35ff9a5 100644
+--- a/Include/internal/pycore_atomic.h
++++ b/Include/internal/pycore_atomic.h
+@@ -10,7 +10,7 @@ extern "C" {
+ 
+ #include "dynamic_annotations.h"
+ 
+-#include "pyconfig.h"
++#include <pyconfig.h>
+ 
+ #if defined(HAVE_STD_ATOMIC)
+ #include <stdatomic.h>
+diff --git a/Include/pymath.h b/Include/pymath.h
+index 6cf69f98ac..1340eff265 100644
+--- a/Include/pymath.h
++++ b/Include/pymath.h
+@@ -1,7 +1,7 @@
+ #ifndef Py_PYMATH_H
+ #define Py_PYMATH_H
+ 
+-#include "pyconfig.h" /* include for defines */
++#include <pyconfig.h> /* include for defines */
+ 
+ /**************************************************************************
+ Symbols and macros to supply platform-independent interfaces to mathematical
+diff --git a/Include/pyport.h b/Include/pyport.h
+index 71f5794ded..a9a6df9c99 100644
+--- a/Include/pyport.h
++++ b/Include/pyport.h
+@@ -1,7 +1,7 @@
+ #ifndef Py_PYPORT_H
+ #define Py_PYPORT_H
+ 
+-#include "pyconfig.h" /* include for defines */
++#include <pyconfig.h> /* include for defines */
+ 
+ #include <inttypes.h>
+ 
+diff --git a/Include/pytime.h b/Include/pytime.h
+index bdda1da2e6..e67ecdb078 100644
+--- a/Include/pytime.h
++++ b/Include/pytime.h
+@@ -2,7 +2,7 @@
+ #ifndef Py_PYTIME_H
+ #define Py_PYTIME_H
+ 
+-#include "pyconfig.h" /* include for defines */
++#include <pyconfig.h> /* include for defines */
+ #include "object.h"
+ 
+ /**************************************************************************
+diff --git a/Lib/distutils/sysconfig.py b/Lib/distutils/sysconfig.py
+index b51629eb94..e90af79625 100644
+--- a/Lib/distutils/sysconfig.py
++++ b/Lib/distutils/sysconfig.py
+@@ -111,6 +111,8 @@ def get_python_inc(plat_specific=0, prefix=None):
+                 incdir = os.path.join(get_config_var('srcdir'), 'Include')
+                 return os.path.normpath(incdir)
+         python_dir = 'python' + get_python_version() + build_flags
++        if plat_specific and prefix == get_config_var('prefix'):
++            return os.path.join(get_config_var('CONFINCLUDEDIR'), python_dir)
+         return os.path.join(prefix, "include", python_dir)
+     elif os.name == "nt":
+         if python_build:
+diff --git a/Lib/sysconfig.py b/Lib/sysconfig.py
+index b9e2fafbc0..046ae53e33 100644
+--- a/Lib/sysconfig.py
++++ b/Lib/sysconfig.py
+@@ -27,7 +27,7 @@ _INSTALL_SCHEMES = {
+         'include':
+             '{installed_base}/include/python{py_version_short}{abiflags}',
+         'platinclude':
+-            '{installed_platbase}/include/python{py_version_short}{abiflags}',
++            '{CONFINCLUDEDIR}/python{py_version_short}{abiflags}',
+         'scripts': '{base}/bin',
+         'data': '{base}',
+         },
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 502317aa0c..584c706b60 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -142,7 +142,7 @@ BINDIR=		@bindir@
+ LIBDIR=		@libdir@
+ MANDIR=		@mandir@
+ INCLUDEDIR=	@includedir@
+-CONFINCLUDEDIR=	$(exec_prefix)/include
++CONFINCLUDEDIR=	@CONFINCLUDEDIR@
+ SCRIPTDIR=	$(prefix)/lib
+ ABIFLAGS=	@ABIFLAGS@
+ 
+@@ -1492,7 +1492,8 @@ libinstall:	build_all $(srcdir)/Modules/xxmodule.c
+ python-config: $(srcdir)/Misc/python-config.in Misc/python-config.sh
+ 	@ # Substitution happens here, as the completely-expanded BINDIR
+ 	@ # is not available in configure
+-	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in >python-config.py
++	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in | \
++          sed -e "s,@PLATINCLUDE@,$(CONFINCLUDEDIR)/python$(VERSION)$(ABIFLAGS)," >python-config.py
+ 	@ # Replace makefile compat. variable references with shell script compat. ones; $(VAR) -> ${VAR}
+ 	LC_ALL=C sed -e 's,\$$(\([A-Za-z0-9_]*\)),\$$\{\1\},g' < Misc/python-config.sh >python-config
+ 	@ # On Darwin, always use the python version of the script, the shell
+diff --git a/Misc/python-config.in b/Misc/python-config.in
+index 727c4a8682..dd870c69bc 100644
+--- a/Misc/python-config.in
++++ b/Misc/python-config.in
+@@ -41,8 +41,8 @@ for opt in opt_flags:
+         print(sysconfig.get_config_var('exec_prefix'))
+ 
+     elif opt in ('--includes', '--cflags'):
+-        flags = ['-I' + sysconfig.get_path('include'),
+-                 '-I' + sysconfig.get_path('platinclude')]
++        flags = ['-I' + sysconfig.get_path('platinclude'),
++                 '-I' + sysconfig.get_path('include')]
+         if opt == '--cflags':
+             flags.extend(getvar('CFLAGS').split())
+         print(' '.join(flags))
+diff --git a/Misc/python-config.sh.in b/Misc/python-config.sh.in
+index 2602fe24c0..1862a204ec 100644
+--- a/Misc/python-config.sh.in
++++ b/Misc/python-config.sh.in
+@@ -34,6 +34,7 @@ prefix="@prefix@"
+ exec_prefix="@exec_prefix@"
+ exec_prefix_real=${prefix_real}
+ includedir=$(echo "@includedir@" | sed "s#$prefix#$prefix_real#")
++confincludedir=$(echo "@CONFINCLUDEDIR@" | sed "s#$exec_prefix#$exec_prefix_real#")
+ libdir=$(echo "@libdir@" | sed "s#$prefix#$prefix_real#")
+ CFLAGS=$(echo "@CFLAGS@" | sed "s#$prefix#$prefix_real#")
+ VERSION="@VERSION@"
+@@ -53,7 +54,7 @@ LIBPL=$(echo "@LIBPL@" | sed "s#$prefix#$prefix_real#")
+ SO="@EXT_SUFFIX@"
+ PYTHONFRAMEWORK="@PYTHONFRAMEWORK@"
+ INCDIR="-I$includedir/python${VERSION}${ABIFLAGS}"
+-PLATINCDIR="-I$includedir/python${VERSION}${ABIFLAGS}"
++PLATINCDIR="-I$confincludedir/python${VERSION}${ABIFLAGS}"
+ PY_EMBED=0
+ 
+ # Scan for --help or unknown argument.
+@@ -88,10 +89,10 @@ do
+             echo "$exec_prefix_real"
+         ;;
+         --includes)
+-            echo "$INCDIR $PLATINCDIR"
++            echo "$PLATINCDIR $INCDIR"
+         ;;
+         --cflags)
+-            echo "$INCDIR $PLATINCDIR $BASECFLAGS $CFLAGS $OPT"
++            echo "$PLATINCDIR $INCDIR $BASECFLAGS $CFLAGS $OPT"
+         ;;
+         --libs)
+             echo "$LIBS"
+diff --git a/Misc/python.pc.in b/Misc/python.pc.in
+index 87e04decc2..f6a58a2023 100644
+--- a/Misc/python.pc.in
++++ b/Misc/python.pc.in
+@@ -10,4 +10,4 @@ Requires:
+ Version: @VERSION@
+ Libs.private: @LIBS@
+ Libs:
+-Cflags: -I${includedir}/python@VERSION@@ABIFLAGS@
++Cflags: -I@CONFINCLUDEDIR@/python@VERSION@@ABIFLAGS@ -I${includedir}/python@VERSION@@ABIFLAGS@
+diff --git a/Modules/_decimal/libmpdec/mpdecimal.h b/Modules/_decimal/libmpdec/mpdecimal.h
+index a67dd9bc12..f627273f6f 100644
+--- a/Modules/_decimal/libmpdec/mpdecimal.h
++++ b/Modules/_decimal/libmpdec/mpdecimal.h
+@@ -40,7 +40,7 @@ extern "C" {
+ 
+ 
+ #ifndef _MSC_VER
+-  #include "pyconfig.h"
++  #include <pyconfig.h>
+ #endif
+ 
+ #include <stdio.h>
+diff --git a/configure b/configure
+index 2a933cdbeb..39f44370d9 100755
+--- a/configure
++++ b/configure
+@@ -623,6 +623,7 @@ ac_includes_default="\
  #endif"
  
  ac_subst_vars='LTLIBOBJS
@@ -9,7 +196,7 @@ diff -ur -x .git python3.old/configure python3/configure
  OPENSSL_LDFLAGS
  OPENSSL_LIBS
  OPENSSL_INCLUDES
-@@ -845,6 +846,7 @@
+@@ -843,6 +844,7 @@ with_computed_gotos
  with_ensurepip
  with_openssl
  with_ssl_default_suites
@@ -17,7 +204,7 @@ diff -ur -x .git python3.old/configure python3/configure
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1549,6 +1551,8 @@
+@@ -1557,6 +1559,8 @@ Optional Packages:
                            Python's preferred selection (default), openssl:
                            leave OpenSSL's defaults untouched, STRING: use a
                            custom string, PROTOCOL_SSLv2 ignores the setting
@@ -26,7 +213,7 @@ diff -ur -x .git python3.old/configure python3/configure
  
  Some influential environment variables:
    MACHDEP     name for machine-dependent library files
-@@ -17366,6 +17370,16 @@
+@@ -17357,6 +17361,16 @@ fi
  
  
  
@@ -41,12 +228,13 @@ diff -ur -x .git python3.old/configure python3/configure
 +
 +
  # generate output files
- ac_config_files="$ac_config_files Makefile.pre Misc/python.pc Misc/python-config.sh"
+ ac_config_files="$ac_config_files Makefile.pre Misc/python.pc Misc/python-embed.pc Misc/python-config.sh"
  
-diff -ur -x .git python3.old/configure.ac python3/configure.ac
---- python3.old/configure.ac	2019-08-29 12:27:39.777320734 +0200
-+++ python3/configure.ac	2019-08-29 12:28:18.824948055 +0200
-@@ -5684,6 +5684,13 @@
+diff --git a/configure.ac b/configure.ac
+index a189d42c2c..c1740c2c8a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5622,6 +5622,13 @@ AC_MSG_RESULT(python)
  AC_DEFINE(PY_SSL_DEFAULT_CIPHERS, 1)
  ])
  
@@ -59,166 +247,4 @@ diff -ur -x .git python3.old/configure.ac python3/configure.ac
 +AC_SUBST(CONFINCLUDEDIR)
  
  # generate output files
- AC_CONFIG_FILES(Makefile.pre Misc/python.pc Misc/python-config.sh)
-diff -ur -x .git python3.old/Include/pyatomic.h python3/Include/pyatomic.h
---- python3.old/Include/pyatomic.h	2019-08-29 12:27:39.405324290 +0200
-+++ python3/Include/pyatomic.h	2019-08-29 12:28:18.824948055 +0200
-@@ -4,7 +4,7 @@
- 
- #include "dynamic_annotations.h"
- 
--#include "pyconfig.h"
-+#include <pyconfig.h>
- 
- #if defined(HAVE_STD_ATOMIC)
- #include <stdatomic.h>
-diff -ur -x .git python3.old/Include/pymath.h python3/Include/pymath.h
---- python3.old/Include/pymath.h	2019-08-29 12:27:39.409324251 +0200
-+++ python3/Include/pymath.h	2019-08-29 12:28:18.824948055 +0200
-@@ -1,7 +1,7 @@
- #ifndef Py_PYMATH_H
- #define Py_PYMATH_H
- 
--#include "pyconfig.h" /* include for defines */
-+#include <pyconfig.h> /* include for defines */
- 
- /**************************************************************************
- Symbols and macros to supply platform-independent interfaces to mathematical
-diff -ur -x .git python3.old/Include/pyport.h python3/Include/pyport.h
---- python3.old/Include/pyport.h	2019-08-29 12:27:39.409324251 +0200
-+++ python3/Include/pyport.h	2019-08-29 12:28:18.824948055 +0200
-@@ -1,7 +1,7 @@
- #ifndef Py_PYPORT_H
- #define Py_PYPORT_H
- 
--#include "pyconfig.h" /* include for defines */
-+#include <pyconfig.h> /* include for defines */
- 
- #include <inttypes.h>
- 
-diff -ur -x .git python3.old/Include/Python.h python3/Include/Python.h
---- python3.old/Include/Python.h	2019-08-29 12:27:39.401324328 +0200
-+++ python3/Include/Python.h	2019-08-29 12:28:18.824948055 +0200
-@@ -5,7 +5,7 @@
- /* Include nearly all Python header files */
- 
- #include "patchlevel.h"
--#include "pyconfig.h"
-+#include <pyconfig.h>
- #include "pymacconfig.h"
- 
- #include <limits.h>
-diff -ur -x .git python3.old/Include/pytime.h python3/Include/pytime.h
---- python3.old/Include/pytime.h	2019-08-29 12:27:39.409324251 +0200
-+++ python3/Include/pytime.h	2019-08-29 12:28:18.824948055 +0200
-@@ -2,7 +2,7 @@
- #ifndef Py_PYTIME_H
- #define Py_PYTIME_H
- 
--#include "pyconfig.h" /* include for defines */
-+#include <pyconfig.h> /* include for defines */
- #include "object.h"
- 
- /**************************************************************************
-diff -ur -x .git python3.old/Lib/distutils/sysconfig.py python3/Lib/distutils/sysconfig.py
---- python3.old/Lib/distutils/sysconfig.py	2019-08-29 12:27:39.437323984 +0200
-+++ python3/Lib/distutils/sysconfig.py	2019-08-29 12:28:18.824948055 +0200
-@@ -112,6 +112,8 @@
-                 incdir = os.path.join(get_config_var('srcdir'), 'Include')
-                 return os.path.normpath(incdir)
-         python_dir = 'python' + get_python_version() + build_flags
-+        if plat_specific and prefix == get_config_var('prefix'):
-+            return os.path.join(get_config_var('CONFINCLUDEDIR'), python_dir)
-         return os.path.join(prefix, "include", python_dir)
-     elif os.name == "nt":
-         if python_build:
-diff -ur -x .git python3.old/Lib/sysconfig.py python3/Lib/sysconfig.py
---- python3.old/Lib/sysconfig.py	2019-08-29 12:27:39.497323411 +0200
-+++ python3/Lib/sysconfig.py	2019-08-29 12:28:18.824948055 +0200
-@@ -27,7 +27,7 @@
-         'include':
-             '{installed_base}/include/python{py_version_short}{abiflags}',
-         'platinclude':
--            '{installed_platbase}/include/python{py_version_short}{abiflags}',
-+            '{CONFINCLUDEDIR}/python{py_version_short}{abiflags}',
-         'scripts': '{base}/bin',
-         'data': '{base}',
-         },
-diff -ur -x .git python3.old/Makefile.pre.in python3/Makefile.pre.in
---- python3.old/Makefile.pre.in	2019-08-29 12:27:39.625322187 +0200
-+++ python3/Makefile.pre.in	2019-08-29 12:28:18.824948055 +0200
-@@ -143,7 +143,7 @@
- LIBDIR=		@libdir@
- MANDIR=		@mandir@
- INCLUDEDIR=	@includedir@
--CONFINCLUDEDIR=	$(exec_prefix)/include
-+CONFINCLUDEDIR=	@CONFINCLUDEDIR@
- SCRIPTDIR=	$(prefix)/lib
- ABIFLAGS=	@ABIFLAGS@
- 
-@@ -1430,7 +1430,8 @@
- python-config: $(srcdir)/Misc/python-config.in Misc/python-config.sh
- 	@ # Substitution happens here, as the completely-expanded BINDIR
- 	@ # is not available in configure
--	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in >python-config.py
-+	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in | \
-+          sed -e "s,@PLATINCLUDE@,$(CONFINCLUDEDIR)/python$(VERSION)$(ABIFLAGS)," >python-config.py
- 	@ # Replace makefile compat. variable references with shell script compat. ones; $(VAR) -> ${VAR}
- 	LC_ALL=C sed -e 's,\$$(\([A-Za-z0-9_]*\)),\$$\{\1\},g' < Misc/python-config.sh >python-config
- 	@ # On Darwin, always use the python version of the script, the shell
-diff -ur -x .git python3.old/Misc/python-config.in python3/Misc/python-config.in
---- python3.old/Misc/python-config.in	2019-08-29 12:27:39.637322072 +0200
-+++ python3/Misc/python-config.in	2019-08-29 12:35:12.353054196 +0200
-@@ -40,8 +40,8 @@
-         print(sysconfig.get_config_var('exec_prefix'))
- 
-     elif opt in ('--includes', '--cflags'):
--        flags = ['-I' + sysconfig.get_path('include'),
--                 '-I' + sysconfig.get_path('platinclude')]
-+        flags = ['-I' + sysconfig.get_path('platinclude'),
-+                 '-I' + sysconfig.get_path('include')]
-         if opt == '--cflags':
-             flags.extend(getvar('CFLAGS').split())
-         print(' '.join(flags))
-diff -ur -x .git python3.old/Misc/python-config.sh.in python3/Misc/python-config.sh.in
---- python3.old/Misc/python-config.sh.in	2019-08-29 12:27:39.637322072 +0200
-+++ python3/Misc/python-config.sh.in	2019-08-29 12:29:16.192402465 +0200
-@@ -34,6 +34,7 @@
- exec_prefix="@exec_prefix@"
- exec_prefix_real=${prefix_real}
- includedir=$(echo "@includedir@" | sed "s#$prefix#$prefix_real#")
-+confincludedir=$(echo "@CONFINCLUDEDIR@" | sed "s#$exec_prefix#$exec_prefix_real#")
- libdir=$(echo "@libdir@" | sed "s#$prefix#$prefix_real#")
- CFLAGS=$(echo "@CFLAGS@" | sed "s#$prefix#$prefix_real#")
- VERSION="@VERSION@"
-@@ -52,7 +53,7 @@
- SO="@EXT_SUFFIX@"
- PYTHONFRAMEWORK="@PYTHONFRAMEWORK@"
- INCDIR="-I$includedir/python${VERSION}${ABIFLAGS}"
--PLATINCDIR="-I$includedir/python${VERSION}${ABIFLAGS}"
-+PLATINCDIR="-I$confincludedir/python${VERSION}${ABIFLAGS}"
- 
- # Scan for --help or unknown argument.
- for ARG in $*
-@@ -79,10 +80,10 @@
-             echo "$exec_prefix_real"
-         ;;
-         --includes)
--            echo "$INCDIR $PLATINCDIR"
-+            echo "$PLATINCDIR $INCDIR"
-         ;;
-         --cflags)
--            echo "$INCDIR $PLATINCDIR $BASECFLAGS $CFLAGS $OPT"
-+            echo "$PLATINCDIR $INCDIR $BASECFLAGS $CFLAGS $OPT"
-         ;;
-         --libs)
-             echo "$LIBS"
-diff -ur -x .git python3.old/Misc/python.pc.in python3/Misc/python.pc.in
---- python3.old/Misc/python.pc.in	2019-08-29 12:27:39.637322072 +0200
-+++ python3/Misc/python.pc.in	2019-08-29 12:28:48.512665443 +0200
-@@ -10,4 +10,4 @@
- Version: @VERSION@
- Libs.private: @LIBS@
- Libs: -L${libdir} -lpython@VERSION@@ABIFLAGS@
--Cflags: -I${includedir}/python@VERSION@@ABIFLAGS@
-+Cflags: -I@CONFINCLUDEDIR@/python@VERSION@@ABIFLAGS@ -I${includedir}/python@VERSION@@ABIFLAGS@
+ AC_CONFIG_FILES(Makefile.pre Misc/python.pc Misc/python-embed.pc Misc/python-config.sh)
