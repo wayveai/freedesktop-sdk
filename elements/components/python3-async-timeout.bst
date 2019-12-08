@@ -11,4 +11,6 @@ sources:
 - kind: git_tag
   url: github:aio-libs/async-timeout.git
   track: master
-  ref: v4.0.0a2-0-gdc9c1e746ddd4f89677ea04d159b009bf1dc8b56
+  exclude:
+  - '*a*'
+  ref: v3.0.1-0-g992fd174a5282258228b74127914f4b8135bf30a
