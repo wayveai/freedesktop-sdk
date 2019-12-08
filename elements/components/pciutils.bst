@@ -20,6 +20,22 @@ config:
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/pci"
       mv "%{install-root}%{includedir}/pci/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/pci/"
 
+    - |
+      cat <<EOF >"%{install-root}%{includedir}/pci/config.h"
+      #if defined(__x86_64__)
+      # include "x86_64-linux-gnu/pci/config.h"
+      #elif defined(__i386__)
+      # include "i386-linux-gnu/pci/config.h"
+      #elif defined(__aarch64__)
+      # include "aarch64-linux-gnu/pci/config.h"
+      #elif defined(__arm__)
+      # include "arm-linux-gnueabihf/pci/config.h"
+      #elif defined(__powerpc64__)
+      # include "powerpc64le-linux-gnu/pci/config.h"
+      #else
+      # error "Unknown cross-compiler"
+      #endif
+
 public:
   bst:
     split-rules:
