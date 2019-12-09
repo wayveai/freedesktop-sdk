@@ -34,6 +34,12 @@ xiph: https://git.xiph.org/
 freedesktop-sdk: https://cache.sdk.freedesktop.org/
 ftp_gnu_org: https://ftp.gnu.org/gnu/
 github_files: https://github.com/
+libsdl: https://www.libsdl.org/projects/
+oasis_open_xml: https://www.oasis-open.org/docbook/xml/
+pagure_releases: https://releases.pagure.org/
 sourceforge_download: https://downloads.sourceforge.net/
 sourceforge: https://sourceforge.net/
 sourceware_pub: https://sourceware.org/pub/
+#Gereric aliases (because mirroring requires some sort of alias)
+tar_http: http://
+tar_https: https://
