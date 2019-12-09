@@ -43,7 +43,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-good.git
   track: '1.16'
-  ref: 1.16.1-0-gd7d290b64c1282398f3265522a33e093b7233310
+  ref: 1.16.2-0-gce0723527aa37d5f4d19ef8021c0b2eb8f83b08d
   submodules:
     common:
       checkout: false
