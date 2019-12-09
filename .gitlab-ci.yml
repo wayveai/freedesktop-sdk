@@ -166,8 +166,6 @@ check_update_elements:
 
     - make build
     - test ${ARCH} != "aarch64" && make build-vm
-    - make check-dev-files check-rpath
-    - make clean-platform
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make test-apps
