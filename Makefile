@@ -140,18 +140,11 @@ else ifeq ($(ARCH),powerpc64le)
 	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 
-$(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
-	$(MAKE) clean-platform
-	$(BST) build platform-image.bst
-
-	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-
 check-dev-files:
 	$(BST) build tests/check-dev-files.bst
 
-check-rpath: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+check-rpath:
+	$(BST) build tests/check-rpath.bst
 
 check-static-libraries:
 	$(BST) build tests/check-static-libraries.bst
@@ -213,9 +206,6 @@ test-codecs: $(REPO)
 clean-repo:
 	rm -rf $(REPO)
 
-clean-platform:
-	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-
 clean-runtime:
 	rm -rf $(CHECKOUT_ROOT)
 
@@ -224,7 +214,7 @@ clean-test:
 	rm -rf .flatpak-builder/
 	rm -rf runtime/
 
-clean: clean-repo clean-runtime clean-test clean-vm clean-platform
+clean: clean-repo clean-runtime clean-test clean-vm
 
 export-snap:
 	bst --colors $(ARCH_OPTS) build "snap-images/images.bst"
