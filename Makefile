@@ -147,14 +147,8 @@ $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
 	mkdir -p $(CHECKOUT_ROOT)
 	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
-check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
-
-	set -e; if [ -s found_dev_files.txt ]; then \
-	  echo "Found development files:" 1>&2; \
-	  cat found_dev_files.txt 1>&2; \
-	  false; \
-	fi
+check-dev-files:
+	$(BST) build tests/check-dev-files.bst
 
 check-rpath: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image

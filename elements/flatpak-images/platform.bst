@@ -72,8 +72,7 @@ config:
       add-ld-path: extra
       autodelete: 'false'
 
-depends:
-- filename: platform-image.bst
-  type: build
-- filename: integration/platform-integration.bst
-  type: build
+build-depends:
+- platform-image.bst
+- integration/platform-integration.bst
+- tests/check-dev-files.bst
