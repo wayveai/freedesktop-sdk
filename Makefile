@@ -147,13 +147,6 @@ $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
 	mkdir -p $(CHECKOUT_ROOT)
 	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
-$(CHECKOUT_ROOT)/$(ARCH)-desktop-sdk-image: elements
-	$(MAKE) clean-sdk
-	$(BST) build sdk-image.bst
-
-	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks sdk-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-sdk-image
-
 check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
 
@@ -166,8 +159,8 @@ check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 check-rpath: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
-check-static-libraries: $(CHECKOUT_ROOT)/$(ARCH)-desktop-sdk-image
-	python3 utils/check-static-libraries.py $(CHECKOUT_ROOT)/$(ARCH)-desktop-sdk-image ./utils/static_libraries_allow_list 
+check-static-libraries:
+	$(BST) build tests/check-static-libraries.bst
 
 manifest:
 	rm -rf sdk-manifest/
@@ -228,9 +221,6 @@ clean-repo:
 
 clean-platform:
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
-
-clean-sdk:
-	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-sdk-image
 
 clean-runtime:
 	rm -rf $(CHECKOUT_ROOT)
