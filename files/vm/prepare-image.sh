@@ -27,6 +27,10 @@ while [ $# -gt 1 ]; do
             uuidnamespace="$1"
             shift
             ;;
+	--efisource)
+	    efi_source="$1"
+	    shift
+	    ;;
 	--efipath)
 	    efipath="$1"
 	    shift
@@ -101,7 +105,7 @@ EOF
 
 if [ -z "${noboot}" ]; then
     cat >>"${sysroot}/etc/fstab" <<EOF
-UUID=${uuid_efi} ${efipath} vfat umask=0077 0 1
+${efi_source:-UUID=${uuid_efi}} ${efipath} vfat umask=0077 0 1
 EOF
 fi
 
