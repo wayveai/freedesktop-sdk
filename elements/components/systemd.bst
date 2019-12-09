@@ -9,8 +9,6 @@ depends:
   type: runtime
 - filename: components/linux-pam.bst
   type: runtime
-- filename: components/dbus.bst
-  type: runtime
 - filename: components/kmod.bst
   type: runtime
 - filename: components/systemd-manifest.bst
