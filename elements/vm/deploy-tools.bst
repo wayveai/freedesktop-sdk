@@ -9,3 +9,5 @@ depends:
 - components/syslinux.bst
 - components/tzdata.bst
 - vm/prepare-image.bst
+- components/genimage.bst
+- integration/mtab.bst
