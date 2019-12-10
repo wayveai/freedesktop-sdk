@@ -79,7 +79,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-bad.git
   track: '1.16'
-  ref: 1.16.1-0-gc3c54aad2d45fb246a9b9e8a5e05488c15c27173
+  ref: 1.16.2-0-ga6f26408f74a60d02ce6b4f0daee392ce847055f
   submodules:
     common:
       checkout: false
@@ -88,5 +88,3 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/tsdemux-handle-continuity-mismatch.patch
