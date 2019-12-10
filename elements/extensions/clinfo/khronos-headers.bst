@@ -11,5 +11,5 @@ config:
 
 sources:
 - kind: git
-  url: github:KhronosGroup/OpenCL-Headers
+  url: github:KhronosGroup/OpenCL-Headers.git
   ref: 40c5d226c7c0706f0176884e9b94b3886679c983

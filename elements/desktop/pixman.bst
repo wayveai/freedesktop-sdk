@@ -15,5 +15,5 @@ public:
 
 sources:
 - kind: git
-  url: freedesktop:pixman/pixman
+  url: freedesktop:pixman/pixman.git
   ref: pixman-0.38.0-0-g5d2cf8fc2149b9b632aafcde59734a7ea74f2b92
