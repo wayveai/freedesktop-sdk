@@ -954,7 +954,7 @@ publish_docker_finish:
 
   - |
     set -eu
-    for name in platform sdk debug; do
+    for name in platform sdk debug flatpak; do
       for dir in docker-pushed-digests/*; do
         DOCKER_VERSION="$(basename "${dir}")"
         docker manifest create freedesktopsdk/${name}:${DOCKER_VERSION} \
