@@ -143,23 +143,6 @@ before_script:
         export DOCKER_VERSION="${RUNTIME_VERSION}-devel"
     fi
 
-# Store all the downloaded git and ostree repos in the distributed cache.
-# This saves us fetching them on every build
-.gitlab_cache_template_pull: &gitlab_cache_pull
-  cache:
-    key: "${RUNTIME_VERSION}-sources"
-    paths:
-      - "${XDG_CACHE_HOME}/buildstream/sources/"
-    policy: pull
-
-.gitlab_cache_template_pull_push: &gitlab_cache_pull_push
-  cache:
-    key: "${RUNTIME_VERSION}-sources"
-    paths:
-      - "${XDG_CACHE_HOME}/buildstream/sources/"
-
-
-
 check_update_elements:
   image: $DOCKER_AARCH64
   stage: update
@@ -169,48 +152,6 @@ check_update_elements:
     - git checkout -- snap-version.yml
     - ${BST} track --deps all track-elements.bst
     - git -c diff.external=utils/yaml-diff.py diff
-  only:
-    - schedules
-
-populate_source_cache:
-  image: $DOCKER_AARCH64
-  stage: update
-  tags:
-    - check_update
-  script:
-    - |
-      set -eu
-
-      echo "Initial size:"
-      du -sh "${XDG_CACHE_HOME}/buildstream/sources"
-
-      configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'powerpc64le:powerpc64le')
-
-      fetch() {
-        for c in "${configs[@]}"; do
-          ${BST} --on-error continue -o target_arch "${c/*:/}" -o bootstrap_build_arch "${c/:*/}" fetch --deps all flatpak-release.bst || true
-        done
-      }
-
-      fetch
-
-      echo "After fetching:"
-      du -sh "${XDG_CACHE_HOME}/buildstream/sources"
-
-      # The limit is 5Gb, but we limit to 4Gb
-      if [ $(du -bs "${XDG_CACHE_HOME}/buildstream/sources" | cut -f1) -gt $((4*1024*1024*1024)) ]; then
-        echo "Cache takes more than 4Gb, we clear it and re-download."
-
-        rm -rf "${XDG_CACHE_HOME}/buildstream/sources"
-        mkdir -p "${XDG_CACHE_HOME}/buildstream/sources"
-
-        fetch
-
-        echo "After fetching a second time:"
-        du -sh "${XDG_CACHE_HOME}/buildstream/sources"
-      fi
-
-  <<: *gitlab_cache_pull_push
   only:
     - schedules
 
@@ -257,7 +198,6 @@ populate_source_cache:
     - '18.08'
     - '19.08'
     - tags
-  <<: *gitlab_cache_pull
 
 app_x86_64:
   image: $DOCKER_AMD64
@@ -342,7 +282,6 @@ app_powerpc64le:
     - '18.08'
     - '19.08'
     - tags
-  <<: *gitlab_cache_pull
 
 .vm_imageless_template: &vm_imageless
   stage: vm
@@ -773,7 +712,6 @@ markdown_manifest:
       - ${CI_PROJECT_DIR}/results.cache
   only:
     - schedules
-  <<: *gitlab_cache_pull
 
 reproducible_x86_64:
   image: $DOCKER_AMD64
