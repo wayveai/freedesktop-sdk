@@ -19,7 +19,7 @@ config:
 
 sources:
 - kind: tar
-  url: https://releases.pagure.org/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz
+  url: pagure_releases:liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz
   ref: 7890278a6cd17873c57d9cd785c2d230d9abdea837e96516019c5885dd271504
   directory: fonts
 - kind: local

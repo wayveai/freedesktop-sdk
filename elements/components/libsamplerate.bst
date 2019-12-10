@@ -17,5 +17,5 @@ public:
 
 sources:
 - kind: tar
-  url: http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
+  url: tar_http:www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
   ref: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1

@@ -18,5 +18,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.4.tar.xz
+  url: tar_https:cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.4.tar.xz
   ref: df593cd4c017de19adf5d0154b8391bb057cef1b72ecdd4a8ee30d3235c65f09

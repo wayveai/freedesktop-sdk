@@ -33,5 +33,5 @@ public:
 
 sources:
   - kind: tar
-    url: http://www.fftw.org/fftw-3.3.8.tar.gz
+    url: tar_http:www.fftw.org/fftw-3.3.8.tar.gz
     ref: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303

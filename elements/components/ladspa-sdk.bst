@@ -25,5 +25,5 @@ config:
 
 sources:
 - kind: tar
-  url: http://www.ladspa.org/download/ladspa_sdk_1.15.tgz
+  url: tar_http:www.ladspa.org/download/ladspa_sdk_1.15.tgz
   ref: 4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded
