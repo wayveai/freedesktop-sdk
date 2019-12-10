@@ -98,23 +98,6 @@ before_script:
     EOF
     fi
 
-# Store all the downloaded git and ostree repos in the distributed cache.
-# This saves us fetching them on every build
-.gitlab_cache_template_pull: &gitlab_cache_pull
-  cache:
-    key: bst
-    paths:
-      - "${XDG_CACHE_HOME}/buildstream/sources/"
-    policy: pull
-
-.gitlab_cache_template_pull_push: &gitlab_cache_pull_push
-  cache:
-    key: bst
-    paths:
-      - "${XDG_CACHE_HOME}/buildstream/sources/"
-
-
-
 check_update_elements:
   image: $DOCKER_AARCH64
   stage: update
@@ -123,20 +106,6 @@ check_update_elements:
   script:
     - ${BST} track --deps all track-elements.bst
     - git diff
-  only:
-    - schedules
-
-populate_source_cache:
-  image: $DOCKER_AARCH64
-  stage: update
-  tags:
-    - check_update
-  script:
-    - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
-    - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
-  <<: *gitlab_cache_pull_push
   only:
     - schedules
 
@@ -165,7 +134,6 @@ populate_source_cache:
     - master
     - '18.08'
     - tags
-  <<: *gitlab_cache_pull
 
 app_x86_64:
   image: $DOCKER_AMD64
@@ -568,7 +536,6 @@ markdown_manifest:
       - ${CI_PROJECT_DIR}/results.cache
   only:
     - schedules
-  <<: *gitlab_cache_pull
 
 reproducible_x86_64:
   image: $DOCKER_AMD64
