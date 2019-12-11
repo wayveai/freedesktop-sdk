@@ -120,6 +120,9 @@ config:
     # Required for systemd-nspawn
     scripts/config -e DEVPTS_MULTIPLE_INSTANCES
 
+    # Sound with QEMU
+    scripts/config -e SND_HDA_GENERIC
+
   build-commands:
   - |
     make
