@@ -32,6 +32,7 @@ config:
       merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d"
       download-if: "active-gl-driver"
       enable-if: "active-gl-driver"
+      autoprune-unless: active-gl-driver
 
     Extension org.freedesktop.Sdk.Debug:
       directory: lib/debug
@@ -85,6 +86,7 @@ config:
       autodelete: 'false'
       no-autodownload: 'true'
       download-if: have-intel-gpu
+      autoprune-unless: have-intel-gpu
 
     (?):
     - target_arch in ["x86_64", "aarch64"]:

@@ -32,6 +32,7 @@ config:
       merge-dirs: "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d"
       download-if: "active-gl-driver"
       enable-if: "active-gl-driver"
+      autoprune-unless: active-gl-driver
 
     Extension org.freedesktop.Platform.Locale:
       directory: share/runtime/locale
@@ -66,6 +67,7 @@ config:
       no-autodownload: 'true'
       add-ld-path: lib
       download-if: have-intel-gpu
+      autoprune-unless: have-intel-gpu
 
     Extension org.freedesktop.Platform.openh264:
       directory: '%{lib}/openh264'
