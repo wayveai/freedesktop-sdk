@@ -152,10 +152,8 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '19.2'
-  ref: mesa-19.2.1-0-g877417918f6086baf1dd53a03b7808820e800ced
+  ref: mesa-19.2.7-0-g65d255cd1e12eb95d5116eacd3de9d913c96388a
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch
   path: patches/mesa/mesa-llvm9.patch
-- kind: patch
-  path: patches/mesa/drirc-doom-min-image-count.patch
