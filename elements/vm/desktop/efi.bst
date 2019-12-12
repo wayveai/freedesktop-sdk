@@ -2,11 +2,10 @@ kind: script
 
 build-depends:
 - vm/deploy-tools.bst
-- vm/boot/efi.bst
-- vm/minimal/filesystem.bst
-- vm/minimal/initial-scripts.bst
+- vm/boot/efi-plymouth.bst
+- vm/desktop/filesystem.bst
+- vm/desktop/initial-scripts.bst
 - vm/prepare-image.bst
-
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
@@ -28,19 +27,15 @@ config:
     destination: '/tmp'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
-  - element: 'vm/boot/efi.bst'
+  - element: 'vm/boot/efi-plymouth.bst'
     destination: '/sysroot/efi'
-  - element: 'vm/minimal/filesystem.bst'
+  - element: 'vm/desktop/filesystem.bst'
     destination: '/sysroot'
-  - element: 'vm/minimal/initial-scripts.bst'
+  - element: 'vm/desktop/initial-scripts.bst'
     destination: '/'
 
   commands:
-  - |
-    prepare-image.sh \
-       --sysroot /sysroot \
-       --seed "%{uuidnamespace}" \
-       --rootpasswd "root" >/tmp/vars
+  - prepare-image.sh --sysroot /sysroot --seed "%{uuidnamespace}" >/tmp/vars
 
   - |
     . /tmp/vars
@@ -57,7 +52,7 @@ config:
             label = "root"
             extraargs = "-U ${uuid_root}"
         }
-        size = 1G
+        size = 10G
     }
     image disk.img {
         hdimage {

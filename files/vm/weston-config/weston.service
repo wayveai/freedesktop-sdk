@@ -1,0 +1,32 @@
+# From https://gitlab.freedesktop.org/wayland/weston/merge_requests/39
+
+[Unit]
+Description=Weston, a Wayland compositor, as a system service
+Alias=display-manager.service
+After=systemd-user-sessions.service
+After=plymouth-quit-wait.service
+Wants=dbus.socket
+After=dbus.socket
+After=session-c1.scope
+After=create-weston-user.service
+Before=graphical.target
+ConditionPathExists=/dev/tty0
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/weston
+WorkingDirectory=/home/weston-user
+TimeoutStartSec=60
+WatchdogSec=20
+User=weston-user
+PAMName=login
+TTYPath=/dev/tty7
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+StandardInput=tty-fail
+UtmpIdentifier=tty7
+UtmpMode=user
+
+[Install]
+WantedBy=graphical.target
