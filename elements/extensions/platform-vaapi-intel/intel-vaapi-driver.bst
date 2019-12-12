@@ -19,3 +19,5 @@ sources:
   path: patches/intel-vaapi-driver/intel-vaapi-driver-check-the-interface-from-libva-first.patch
 - kind: patch
   path: patches/intel-vaapi-driver/intel-vaapi-driver-properly-check-if-wayland-can-be-used.patch
+- kind: patch
+  path: patches/intel-vaapi-driver/intel-vaapi-driver-return-false-instead-of-assertion-failure.patch
