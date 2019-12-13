@@ -21,3 +21,12 @@ config:
 
     grep -v "en_US.UTF-8" %{datadir}/i18n/SUPPORTED | xargs -P $MAXJOBS -n 2 bash -c 'echo "Generating ${0}"; \
     localedef --prefix=%{install-root} --no-archive -i ${0%%.*} -f ${1} ${0}'
+
+
+public:
+  bst:
+    split-rules:
+      locale:
+        (>):
+        - "%{indep-libdir}/locale"
+        - "%{indep-libdir}/locale/**"
