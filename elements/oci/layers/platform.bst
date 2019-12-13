@@ -8,6 +8,7 @@ config:
   exclude:
   - debug
   - devel
-  - docs
+  - doc
+  - locale
   - extra
   - vm-only
