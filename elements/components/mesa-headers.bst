@@ -26,10 +26,8 @@ variables:
     GL/gl.h
     GL/glext.h
     GL/glcorearb.h
-    GL/gl_mangle.h
     GL/glx.h
     GL/glxext.h
-    GL/glx_mangle.h
     GL/internal/dri_interface.h
     EGL/egl.h
     EGL/eglext.h
