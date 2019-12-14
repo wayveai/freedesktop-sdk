@@ -6,7 +6,8 @@ depends:
 
 config:
   exclude:
-  - docs
+  - doc
+  - locale
   - extra
   - static-blocklist
   - vm-only

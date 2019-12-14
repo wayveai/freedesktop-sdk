@@ -8,7 +8,8 @@ build-depends:
 config:
   exclude:
   - debug
-  - docs
+  - doc
+  - locale
   - extra
   - static-blocklist
   - vm-only
