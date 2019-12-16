@@ -19,7 +19,4 @@ devel:
 debug:
   - "%{debugdir}/**"
 
-static-blocklist:
-  - "%{libdir}/*.a"
-  - "%{libdir}/**/*.a"
-  - "%{indep-libdir}/**/*.a"
+static-blocklist: []
