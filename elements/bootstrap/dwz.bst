@@ -27,6 +27,14 @@ config:
   - |
     make %{make-args} -j1 install DESTDIR="%{install-root}"
 
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - "/**"
+
 sources:
 - kind: git_tag
   track: master
