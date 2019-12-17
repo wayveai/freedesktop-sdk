@@ -18,7 +18,7 @@ depends:
 - filename: bootstrap/glibc.bst
 - filename: bootstrap/gnu-config.bst
 - filename: bootstrap/grep.bst
-- filename: bootstrap/identify-elf.bst
+- filename: bootstrap/stripper.bst
 - filename: bootstrap/linux-headers.bst
 - filename: bootstrap/make.bst
 - filename: bootstrap/ncurses.bst

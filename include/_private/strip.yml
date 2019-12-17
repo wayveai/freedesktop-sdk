@@ -1,108 +1,26 @@
 # Arguments for tooling and script used when stripping debug symbols
 
-tools: "" # Redefined in project.conf for bootstrap, but used in strip commands
-
-objcopy-link-args: --add-gnu-debuglink
-objcopy-extract-args: |
-
-  --only-keep-debug --compress-debug-sections
-
-strip-args: |
-
-  --remove-section=.comment --remove-section=.note --strip-unneeded --remove-section=.gnu_debugaltlink
-
 optimize-debug: "true"
 
+toolchain-prefixes: >-
+  %{tools}
+  /usr
+  %{prefix}
+
 strip-binaries: |
-  touch source-files
-  to_strip=()
-  first_found_target=""
-  multiple_targets=false
-  find "%{install-root}" -type f \
-    '(' -perm -111 -o -name '*.so*' \
-        -o -name '*.cmxs' -o -name '*.node' ')' \
-        -print0 >binaries
-  while read -r -d $'\0' file; do
-    read -n4 hdr <"${file}" || continue # check for elf header
-    if [ "$hdr" != "$(printf \\x7fELF)" ]; then
-      continue
-    fi
-    if [ -x "$(command -v identify-elf)" ]; then
-       target_triplet="$(identify-elf "${file}")"
-    else
-       target_triplet="%{host-triplet}"
-    fi
-    if [ -z "${first_found_target}" ]; then
-      first_found_target="${target_triplet}"
-    elif [ "${target_triplet}" != "${first_found_target}" ]; then
-      multiple_targets=true
-    fi
-    toolchain=""
-    for p in "%{tools}" "/usr" "%{prefix}"; do
-      if [ -x "${p}/${target_triplet}/bin/objdump" ]; then
-        toolchain="${p}/${target_triplet}/bin/"
-        break
-       fi
-    done
-    if "${toolchain}objdump" -j .gnu_debuglink -s "${file}" &>/dev/null; then
-      continue
-    fi
-    case "${file}" in
-      "%{install-root}%{debugdir}/"*)
-        continue
-        ;;
-      *)
-        ;;
-    esac
-    if [ "$(stat -c "%h" "${file}")" != "1" ]; then
-      echo "Stripping files with multiple links can be problematic for reproducibility." 1>&2
-      echo "File ${file} has multiple links" 1>&2
-      false
-    fi
-    if [ -x "$(command -v debugedit)" ]; then
-      debugedit -i --list-file=source-files.part --base-dir="%{build-root}" --dest-dir="%{sourcedir}/%{element-name}" "${file}"
-      cat source-files.part >>source-files
-    fi
-    to_strip+=("${file}:${toolchain}")
-  done <binaries
-  rm binaries
-  if [ "%{optimize-debug}" = "true" ] && \
-     [ "${#to_strip[@]}" -ge 1 ] && \
-     [ -x "$(command -v eu-elfcompress)" ] && \
-     [ -x "$(command -v dwz)" ]; then
-    for file in "${to_strip[@]}"; do
-      eu-elfcompress --type=none "${file/:*/}"
-    done
-    dwzdir="%{debugdir}/dwz/%{element-name}"
-    if [ "${#to_strip[@]}" -gt 1 ] && [ "${multiple_targets}" = false ]; then
-      mkdir -p "%{install-root}${dwzdir}"
-      dwz -m "%{install-root}${dwzdir}/debug" -M "${dwzdir}/debug" "${to_strip[@]/:*/}"
-    elif [ "${#to_strip[@]}" -eq 1 ]; then
-      dwz "${to_strip[@]/:*/}"
-    fi
+  OPTS=()
+  if ! "%{optimize-debug}"; then
+    OPTS+=("-n")
   fi
-  for file in "${to_strip[@]}"; do
-    toolchain="${file/*:/}"
-    file="${file/:*/}"
-    realpath="$(realpath -s --relative-to="%{install-root}" "${file}")"
-    debugfile="%{install-root}%{debugdir}/${realpath}.debug"
-    mkdir -p "$(dirname "$debugfile")"
-    "${toolchain}objcopy" %{objcopy-extract-args} "${file}" "$debugfile"
-    chmod 644 "$debugfile"
-    mode="$(stat -c 0%a "${file}")"
-    [ -w "${file}" ] || chmod +w "${file}"
-    "${toolchain}strip" %{strip-args} "${file}"
-    "${toolchain}objcopy" %{objcopy-link-args} "$debugfile" "${file}"
-    chmod "${mode}" "${file}"
-    eu-elfcompress "${file}"
+  for p in %{toolchain-prefixes}; do
+    OPTS+=("-t" "${p}")
   done
-  sort -zu  <source-files | while read -r -d $'\0' source; do
-    dst="%{install-root}%{sourcedir}/%{element-name}/${source}"
-    src="%{build-root}/${source}"
-    if [ -d "${src}" ]; then
-      install -m0755 -d "${dst}"
-      continue
-    fi
-    [ -f "${src}" ] || continue
-    install -m0644 -D "${src}" "${dst}"
-  done
+  if [ -x "$(command -v freedesktop-sdk-stripper)" ]; then
+    freedesktop-sdk-stripper \
+      "${OPTS[@]}" \
+      "%{build-root}" \
+      "%{sourcedir}/%{element-name}" \
+      "%{debugdir}/dwz/%{element-name}" \
+      "%{debugdir}" \
+      "%{install-root}"
+  fi
