@@ -4,6 +4,8 @@
 # is not the name of the symbolic link. Those files should not appear in
 # platform runtimes, only in SDKs.
 
+command -v objdump > /dev/null || { echo >&2 "objdump not found"; exit 1; }
+
 find "$1" -type l -name "lib*.so" -print0 |
 while IFS= read -r -d '' file; do
     dirname="$(dirname "${file}")"

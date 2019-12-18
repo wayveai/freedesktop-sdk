@@ -124,10 +124,8 @@ config:
           autodelete: 'true'
           no-autodownload: 'true'
 
-depends:
-- filename: sdk-image.bst
-  type: build
-- filename: integration/sdk-integration.bst
-  type: build
-- filename: integration/linker-debuginfo.bst
-  type: build
+build-depends:
+- sdk-image.bst
+- integration/sdk-integration.bst
+- integration/linker-debuginfo.bst
+- tests/check-static-libraries.bst
