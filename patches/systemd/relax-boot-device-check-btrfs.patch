@@ -1,0 +1,23 @@
+diff --git a/src/shared/bootspec.c b/src/shared/bootspec.c
+index b0c6e4885f..9392ac7e0e 100644
+--- a/src/shared/bootspec.c
++++ b/src/shared/bootspec.c
+@@ -1004,6 +1004,7 @@ static int verify_fsroot_dir(
+                 bool unprivileged_mode,
+                 dev_t *ret_dev) {
+ 
++        bool relax_checks;
+         struct stat st, st2;
+         const char *t2, *trigger;
+         int r;
+@@ -1022,7 +1023,9 @@ static int verify_fsroot_dir(
+                                       (unprivileged_mode && errno == EACCES) ? LOG_DEBUG : LOG_ERR, errno,
+                                       "Failed to determine block device node of \"%s\": %m", path);
+ 
+-        if (major(st.st_dev) == 0)
++        relax_checks = getenv_bool("SYSTEMD_RELAX_ESP_CHECKS") > 0;
++
++        if (!relax_checks && major(st.st_dev) == 0)
+                 return log_full_errno(searching ? LOG_DEBUG : LOG_ERR,
+                                       SYNTHETIC_ERRNO(searching ? EADDRNOTAVAIL : ENODEV),
+                                       "Block device node of \"%s\" is invalid.", path);

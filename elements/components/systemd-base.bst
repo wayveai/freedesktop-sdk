@@ -78,3 +78,5 @@ sources:
   path: patches/systemd/002-CVE-2018-20839.patch
 - kind: patch
   path: patches/systemd/gnu-efi-includes.patch
+- kind: patch
+  path: patches/systemd/relax-boot-device-check-btrfs.patch
