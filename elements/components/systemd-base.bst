@@ -79,3 +79,5 @@ sources:
   path: patches/systemd/gnu-efi-includes.patch
 - kind: patch
   path: patches/systemd/revert-sysuser-locked.patch
+- kind: patch
+  path: patches/systemd/relax-boot-device-check-btrfs.patch
