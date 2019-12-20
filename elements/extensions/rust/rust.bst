@@ -9,7 +9,10 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: extensions/rust/llvm8.bst
+- filename: components/llvm.bst
+  type: build
+- filename: components/llvm-runtime.bst
+  type: runtime
 - filename: components/libxml2.bst
 - filename: extensions/rust/ldconfig.bst
 
@@ -84,7 +87,7 @@ config:
     cxx = "/usr/bin/%{host-triplet}-g++"
     linker = "/usr/bin/%{host-triplet}-gcc"
     ar = "/usr/bin/%{host-triplet}-gcc-ar"
-    llvm-config = "%{bindir}/llvm-config"
+    llvm-config = "/usr/bin/llvm-config"
     EOF
 
   build-commands:
