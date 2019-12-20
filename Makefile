@@ -159,6 +159,9 @@ check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 check-rpath: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
+check-static-libraries:
+	$(BST) build tests/check-static-libraries.bst
+
 manifest:
 	rm -rf sdk-manifest/
 	rm -rf platform-manifest/
