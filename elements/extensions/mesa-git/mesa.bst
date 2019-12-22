@@ -4,9 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/glslang.bst
 - filename: components/llvm.bst
-  type: build
-- filename: components/llvm-runtime.bst
-  type: runtime
 - filename: components/libdrm.bst
 - filename: extensions/mesa-git/libdrm.bst
 - filename: components/libva.bst
