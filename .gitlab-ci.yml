@@ -151,7 +151,6 @@ pylint:
     - cache_x86_64
   variables:
     ARCH: x86_64
-  allow_failure: true
   script:
     - find . -iname "*.py" | xargs pylint
 
