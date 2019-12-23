@@ -1,5 +1,9 @@
 Freedesktop-SDK
 
+freedesktop-sdk-18.08.39:
+    * extensions/platform-vaapi-intel: Add patch to fix assertion failure when initializing driveri (#940)
+    * Add /run/host/user-share to XDG_DATA_DIRS
+
 freedesktop-sdk-18.08.38:
     * flatpak-xdg-utils: Update to 1.0.1
     * mesa: Update to 19.1.7
