@@ -1,0 +1,15 @@
+sources:
+- kind: git_tag
+  track: release/8.x
+  exclude:
+  - llvmorg-*-rc*
+  url: github:llvm/llvm-project.git
+  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
+- kind: patch
+  path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
+- kind: patch
+  path: patches/llvm/llvm-no-rpath.patch
+- kind: patch
+  path: patches/llvm/llvm-fix-tsan-build.patch
+- kind: patch
+  path: patches/llvm/llvm-shared-tablegen.patch
