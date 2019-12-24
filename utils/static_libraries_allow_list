@@ -21,4 +21,13 @@ libmvec_nonshared.a
 libstdc++.a
 # libstdc++.a is must for qtwebengine from kde runtime
 
+# Begin glslang static libraries
+libSPVRemapper.a
+libHLSL.a
+libSPIRV.a
+libOSDependent.a
+libOGLCompiler.a
+libglslang.a
+# End glslang static libraries
+
 # The script could portentially be extended to recognise globs, regular expressions, and/or partial directory paths. If you think this could be useful, please raise an issue on GitLab.

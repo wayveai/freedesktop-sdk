@@ -11,6 +11,7 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DSPIRV_WERROR=Off
     -DSPIRV-Headers_SOURCE_DIR=/usr
+    -DBUILD_SHARED_LIBS:BOOL=ON
 
   optimize-debug: "false"
 
