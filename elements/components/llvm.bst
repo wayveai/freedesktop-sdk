@@ -95,6 +95,9 @@ public:
       static-blocklist:
         (>):
         - '%{libdir}/**/*.a.syms'
+        - "%{libdir}/*.a"
+        - "%{libdir}/**/*.a"
+        - "%{indep-libdir}/**/*.a"
 
   cpe:
     product: llvm
