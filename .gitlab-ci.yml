@@ -300,7 +300,7 @@ app_powerpc64le:
   stage: vm
   script:
     - make build-vm
-    - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
+    - utils/test_minimal_system.py --dialog "${DIALOG}" command 'make run-vm'
   artifacts:
     when: always
     paths:
@@ -382,7 +382,7 @@ minimal_systemd_vm_powerpc64le:
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/bios.bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"/bios.bst ./vm
-    - utils/test-minimal-system --dialog "${DIALOG}" image vm/disk.img
+    - utils/test_minimal_system.py --dialog "${DIALOG}" image vm/disk.img
   artifacts:
     when: always
     paths:
@@ -412,7 +412,7 @@ minimal_systemd_vm_image_x86_64:
     - EFI_VARS="-drive if=pflash,format=raw,unit=1,file=${PWD}/edk2-i386-vars.fd"
     - DISK="-drive file=vm/disk.img,format=raw,media=disk"
     - QEMU="qemu-system-${ARCH} -enable-kvm -m 2G -nographic ${EFI_CODE} ${EFI_VARS} ${DISK}"
-    - utils/test-minimal-system --dialog "${DIALOG}" command "${QEMU}"
+    - utils/test_minimal_system.py --dialog "${DIALOG}" command "${QEMU}"
   artifacts:
     when: always
     paths:
