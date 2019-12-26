@@ -10,9 +10,6 @@ depends:
 - filename: components/python3.bst
   type: build
 - filename: components/llvm.bst
-  type: build
-- filename: components/llvm-runtime.bst
-  type: runtime
 - filename: components/libxml2.bst
 - filename: extensions/rust/ldconfig.bst
 
