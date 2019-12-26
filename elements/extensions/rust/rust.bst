@@ -9,7 +9,7 @@ depends:
   type: build
 - filename: components/python3.bst
   type: build
-- filename: extensions/rust/llvm8.bst
+- filename: components/llvm.bst
 - filename: components/libxml2.bst
 - filename: extensions/rust/ldconfig.bst
 
@@ -17,6 +17,7 @@ variables:
   prefix: /usr/lib/sdk/rust
   lib: lib
   debugdir: /usr/lib/debug
+  optimize-debug: "false"
 
   debuginfo-level: 2
   debuginfo-level-std: 0
@@ -83,7 +84,7 @@ config:
     cxx = "/usr/bin/%{host-triplet}-g++"
     linker = "/usr/bin/%{host-triplet}-gcc"
     ar = "/usr/bin/%{host-triplet}-gcc-ar"
-    llvm-config = "%{bindir}/llvm-config"
+    llvm-config = "/usr/bin/llvm-config"
     EOF
 
   build-commands:
@@ -123,9 +124,7 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rustc-1.37.0-src.tar.xz
-  ref: 10abffac50a729cf74cef6dd03193a2f4647541bd19ee9281be9e5b12ca8cdfd
-- kind: patch
-  path: patches/rust/rust-codegen-libdir.patch
+  url: tar_https:static.rust-lang.org/dist/rustc-1.40.0-src.tar.xz
+  ref: 6e2aa3a91697f4b225c6b394cbae6b97666f061dba491f666a5281698fe2aace
 - kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
