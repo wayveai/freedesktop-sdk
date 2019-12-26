@@ -14,15 +14,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-'''test-minimal-system: Boots a disk image in QEMU and tests that it works.'''
+"""test_minimal_system.py: Boots a disk image in QEMU and tests that it works."""
 
 import argparse
 import asyncio
 import asyncio.subprocess
-import locale
 import logging
 import sys
-import time
 import os
 import signal
 
@@ -30,8 +28,8 @@ import signal
 QEMU = 'qemu-system-x86_64'
 QEMU_EXTRA_ARGS = ['-m', '256']
 
-FAILURE_TIMEOUT = 300   # seconds
-BUFFER_SIZE = 80 # how many characters to read at once
+FAILURE_TIMEOUT = 300  # seconds
+BUFFER_SIZE = 80  # how many characters to read at once
 
 DIALOGS = {
     'minimal':
@@ -104,8 +102,9 @@ def argument_parser():
 
     return parser
 
+
 async def await_line(stream, marker):
-    '''Read from 'stream' until a line appears contains 'marker'.'''
+    """Read from 'stream' until a line appears contains 'marker'."""
     marker = marker.encode("utf-8")
     buf = b""
 
@@ -122,10 +121,11 @@ async def await_line(stream, marker):
                     break
         buf = lines[-1]
 
+
 async def run_test(command, dialog):
     dialog = DIALOGS[dialog]
 
-    logging.debug("Starting process: %s", command)
+    logging.debug("Starting process: {}", command)
     process = await asyncio.create_subprocess_exec(
         *command, stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
         start_new_session=True)
@@ -135,7 +135,7 @@ async def run_test(command, dialog):
         while dialog:
             prompt = await await_line(process.stdout, dialog.pop(0))
 
-            assert prompt is not None            
+            assert prompt is not None
             if dialog:
                 process.stdin.write(dialog.pop(0).encode('ascii') + b'\n')
 
@@ -174,8 +174,7 @@ def main():
 
     if qemu_task.result():
         return 0
-    else:
-        return 1
+    return 1
 
 
 result = main()
