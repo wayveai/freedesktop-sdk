@@ -66,13 +66,13 @@ DIALOGS = {
     ],
     'root-login':
     [
-        'localhost login',
+        'localhost login:',
         'root',
-        'Password',
+        'Password:',
         'root',
-        'sh',
+        '-bash-5.0#',
         'uname -a',
-        'Linux',
+        '-bash-5.0#',
         'systemctl poweroff',
         'Power down'
     ]
@@ -104,38 +104,23 @@ def argument_parser():
 
     return parser
 
-buf = b''
-
 async def await_line(stream, marker):
-    '''Read from 'stream' until a line appears that starts with 'marker'.'''
-    marker = marker
-    global buf
+    '''Read from 'stream' until a line appears contains 'marker'.'''
+    marker = marker.encode("utf-8")
+    buf = b""
 
     while not stream.at_eof():
-        buf += await stream.read(BUFFER_SIZE)
-
-        lineend = buf.find(b'\n')
-        if lineend >= 0:
-            line = buf[:lineend+1]
-            buf = buf[lineend+1:]
-
-            decoded_line = line.decode('unicode-escape')
-            sys.stdout.write(decoded_line)
-            if marker in decoded_line.strip():
-                logging.debug("Matched line with marker: %s", decoded_line)
-                return decoded_line
-        else:
-            try:
-                decoded_buf = buf.decode('unicode-escape')
-                if marker in decoded_buf.strip():
-                    logging.debug("Matched incomplete line with marker: %s", decoded_buf)
-                    sys.stdout.write(decoded_buf)
-                    buf = b''
-                    return decoded_buf
-            except UnicodeDecodeError:
-                # we read part of a unicode char
-                continue
-
+        chunk = await stream.read(BUFFER_SIZE)
+        sys.stdout.buffer.write(chunk)
+        buf += chunk
+        lines = buf.split(b'\n')
+        for line in lines:
+            if marker in line:
+                try:
+                    return line.decode("utf-8")
+                except UnicodeDecodeError:
+                    break
+        buf = lines[-1]
 
 async def run_test(command, dialog):
     dialog = DIALOGS[dialog]
@@ -149,9 +134,8 @@ async def run_test(command, dialog):
     try:
         while dialog:
             prompt = await await_line(process.stdout, dialog.pop(0))
-            print("Got:", prompt)
-            assert prompt != None
 
+            assert prompt is not None            
             if dialog:
                 process.stdin.write(dialog.pop(0).encode('ascii') + b'\n')
 
