@@ -1,0 +1,24 @@
+# This is the allow_list for the python script "check-static-libraries.py"
+# Check-static-libraries.py will look for any files that end in ".a", and report failure if it finds any that are not on the list below.
+
+# Format: files will only be recognised if you specify the full filename (no partial matches, no globs, no regular expressions)
+# Format: enter the basename only, not any part of the directory path.
+
+# Add the filenames below:
+
+libgcc.a
+libgcov.a
+libgcc_eh.a
+libcaf_single.a
+libc_nonshared.a
+
+libnldbl_nonshared.a
+#libnldbl_nonshared only seems to appear in app_powerpc64le
+
+libmvec_nonshared.a
+#libmvec_nonshared onlly seems to appear in app_x86_64
+
+libstdc++.a
+# libstdc++.a is must for qtwebengine from kde runtime
+
+# The script could portentially be extended to recognise globs, regular expressions, and/or partial directory paths. If you think this could be useful, please raise an issue on GitLab.

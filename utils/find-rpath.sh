@@ -46,6 +46,8 @@ else
     esac
 fi
 
+command -v objdump > /dev/null || { echo >&2 "objdump not found"; exit 1; }
+
 if [ "${bad_usage}" = yes ]; then
     cat 1>&2 <<EOF
 Bad command line.
