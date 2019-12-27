@@ -35,12 +35,10 @@ environment:
 sources:
 - kind: git_tag
   url: gnome:librsvg.git
-  track: master
-  track-extra:
-  - librsvg-2.44
+  track: librsvg-2.44
   exclude:
   - '*.*[13579].*'
-  ref: 2.44.15-0-gbc786f6fbbe7b63a24e7eb499efb2f23c47ab5c2
+  ref: 2.44.15-2-g696e4a6be2aeb00ea27945f94da066757431684d
 - kind: cargo
   ref:
   - name: aho-corasick
@@ -61,6 +59,9 @@ sources:
   - name: atty
     version: 0.2.11
     sha: 9a7d5b8723950951411ee34d271d99dddcc2035a16ab25310ea2c8cfd4369652
+  - name: autocfg
+    version: 0.1.6
+    sha: b671c8fb71b457dd4ae18c4ba1e59aa81793daacc361d82fcd410cef0d491875
   - name: backtrace
     version: 0.3.9
     sha: 89a47830402e9981c5c41223151efcced65a0510c13097c769cede7efb34782a
@@ -122,8 +123,8 @@ sources:
     version: 0.2.2
     sha: 2760899e32a1d58d5abb31129f8fae5de75220bc2176e77ff7c627ae45c918d9
   - name: cssparser
-    version: 0.24.0
-    sha: 495beddc39b1987b8e9f029354eccbd5ef88eb5f1cd24badb764dce338acf2e0
+    version: 0.25.9
+    sha: fbe18ca4efb9ba3716c6da66cc3d7e673bf59fa576353011f48c4cfddbdd740e
   - name: cssparser-macros
     version: 0.3.4
     sha: 72b64d0d64184a082f38028396875c08c8ee083481f6f16e6e0cf52c338bd785
@@ -233,8 +234,8 @@ sources:
     version: 0.2.1
     sha: 0f9dc261e2b62d7a622bf416ea3c5245cdd5d9a7fcc428c0d06804dfce1775b3
   - name: nalgebra
-    version: 0.16.4
-    sha: 919c4aac1a371e2b3650b56da3dce4c80662c03bf8d762695646215df964fc46
+    version: 0.16.14
+    sha: ccb86df349ecf5f549f6e12f6de4972cdd912d0bc290c1ca4d34d4b4b21a6f98
   - name: nodrop
     version: 0.1.12
     sha: 9a2228dca57108069a5262f2ed8bd2e82496d2e074a06d1ccc7ce1687b6ae0a2
@@ -289,6 +290,9 @@ sources:
   - name: proc-macro2
     version: 0.4.19
     sha: ffe022fb8c8bd254524b0b3305906c1921fa37a84a644e29079a9e62200c3901
+  - name: proc-macro2
+    version: 1.0.6
+    sha: 9c9e470a8dc4aeae2dee2f335e8f533e2d4b347e1434e5671afc49b054592f27
   - name: procedural-masquerade
     version: 0.1.6
     sha: 9a1574a51c3fd37b26d2c0032b649d08a7d51d4cca9c41bbc5bf7118fa4509d0
@@ -301,6 +305,9 @@ sources:
   - name: quote
     version: 0.6.8
     sha: dd636425967c33af890042c483632d33fa7a18f19ad1d7ea72e8998c6ef8dea5
+  - name: quote
+    version: 1.0.2
+    sha: 053a8c8bcc71fcce321828dc897a98ab9760bef03a4fc36693c231e5b3216cfe
   - name: rand
     version: 0.4.3
     sha: 8356f47b32624fef5b3301c1be97e5944ecdd595409cc5da11d05f211db6cfbd
@@ -385,6 +392,9 @@ sources:
   - name: syn
     version: 0.15.7
     sha: 455a6ec9b368f8c479b0ae5494d13b22dc00990d2f00d68c9dc6a2dc4f17f210
+  - name: syn
+    version: 1.0.5
+    sha: 66850e97125af79138385e9b88339cbcd037e3f28ceab8c5ad98e64f0f1f80bf
   - name: synom
     version: 0.11.3
     sha: a393066ed9010ebaed60b9eafa373d4b1baac186dd7e008555b0f702b51945b6
@@ -424,6 +434,9 @@ sources:
   - name: unicode-xid
     version: 0.1.0
     sha: fc72304796d0818e357ead4e000d19c9c174ab23dc11093ac919054d20a6a7fc
+  - name: unicode-xid
+    version: 0.2.0
+    sha: 826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c
   - name: unreachable
     version: 1.0.0
     sha: 382810877fe448991dfc7f0dd6e3ae5d58088fd0ea5e35189655f84e6814fa56
