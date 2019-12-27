@@ -34,9 +34,3 @@ sources:
   url: gnome:libxslt.git
   track: master
   ref: v1.1.34-0-g3653123f992db24cec417d12600f4c67388025e3
-- kind: patch
-  path: patches/libxslt/CVE-2019-11068.patch
-- kind: patch
-  path: patches/libxslt/CVE-2019-13117.patch
-- kind: patch
-  path: patches/libxslt/CVE-2019-13118.patch
