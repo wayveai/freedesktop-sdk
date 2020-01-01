@@ -64,6 +64,7 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
+    if [ "${CI_JOB_NAME}" != app_x86_64-no-cache ] && [ "${CI_JOB_NAME}" != app_arm-no-cache ]; then
     if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
         echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
         echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
@@ -90,6 +91,7 @@ before_script:
         else
           echo "      push: true" >> ~/.config/buildstream.conf
         fi
+    fi
     fi
 
   # flat-manager tokens to upload the releases
@@ -161,7 +163,6 @@ check_update_elements:
     - |
       if [ "${CI_JOB_NAME}" == app_x86_64-no-cache ] || [ "${CI_JOB_NAME}" == app_arm-no-cache ]; then
         sed -i '/artifacts:/,+1 d' project.conf
-        sed -i '/artifacts:/,+1 d' ~/.config/buildstream.conf
       fi
 
     - make build
