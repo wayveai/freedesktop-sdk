@@ -78,16 +78,12 @@ before_script:
             echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
             if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
               echo "      push: true" >> ~/.config/buildstream.conf
-            else
-              echo "      push: true" >> ~/.config/buildstream.conf
             fi
         fi
         echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-          echo "      push: true" >> ~/.config/buildstream.conf
-        else
           echo "      push: true" >> ~/.config/buildstream.conf
         fi
     fi
