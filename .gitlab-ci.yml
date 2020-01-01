@@ -443,7 +443,7 @@ prepare_publish:
   tags:
     - x86_64
   script:
-    - flat-manager-client create $RELEASES_SERVER_ADDRESS "${RELEASE_CHANNEL}" > publish_build.txt
+    - flat-manager-client create -v $RELEASES_SERVER_ADDRESS "${RELEASE_CHANNEL}" > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
@@ -461,9 +461,9 @@ finish_publish:
   tags:
     - x86_64
   script:
-    - flat-manager-client commit --wait $(cat publish_build.txt)
-    - flat-manager-client publish --wait $(cat publish_build.txt)
-    - flat-manager-client purge $(cat publish_build.txt)
+    - flat-manager-client commit -v --wait $(cat publish_build.txt)
+    - flat-manager-client publish -v --wait $(cat publish_build.txt)
+    - flat-manager-client purge -v $(cat publish_build.txt)
     - make manifest
   artifacts:
      paths:
