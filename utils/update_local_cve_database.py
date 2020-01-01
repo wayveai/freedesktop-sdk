@@ -124,9 +124,13 @@ def update_year(cursor, updated_year, url_timeout):
             raise
         print("Timeout, using cache for {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
     except urllib.error.HTTPError as error:
-        if error.code != 304:
+        if error.code == 304:
+            print("Cached {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
+        elif error.code == 404:
+            print("{} not found".format('nvdcve-1.1-{}.json.gz'.format(year)))
+            return
+        else:
             raise
-        print("Cached {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
 
     with gzip.open('nvdcve-1.1-{}.json.gz'.format(year)) as file:
         tree = json.load(file)
