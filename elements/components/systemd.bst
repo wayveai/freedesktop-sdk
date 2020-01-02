@@ -1,20 +1,20 @@
 kind: filter
 
-depends:
-- filename: components/systemd-base.bst
-  type: build
-- filename: components/systemd-libs.bst
-  type: runtime
-- filename: components/libgpg-error.bst
-  type: runtime
-- filename: components/linux-pam.bst
-  type: runtime
-- filename: components/kmod.bst
-  type: runtime
-- filename: components/systemd-manifest.bst
-  type: runtime
-- filename: components/gnu-efi-maybe.bst
-  type: runtime
+build-depends:
+- components/systemd-base.bst
+
+runtime-depends:
+- components/systemd-libs.bst
+- components/libgpg-error.bst
+- components/linux-pam.bst
+- components/kmod.bst
+- components/systemd-manifest.bst
+- components/gnu-efi-maybe.bst
+- components/tzdata.bst
+- components/shadow.bst
+- components/util-linux.bst
+- components/kbd.bst
+
 config:
   exclude:
   - systemd-libs
