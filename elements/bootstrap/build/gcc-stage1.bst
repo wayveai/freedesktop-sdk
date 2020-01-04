@@ -15,6 +15,7 @@ environment:
   CFLAGS_FOR_TARGET:  "%{target_flags}"
   CXXFLAGS_FOR_TARGET: "%{target_flags}"
   LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
+  PYTHON: python3
 
 variables:
   prefix: '%{tools}'
@@ -42,7 +43,7 @@ variables:
     --enable-default-pie \
     --enable-default-ssp \
     --enable-languages=c,c++ \
-    --without-isl \
+    --with-isl \
     --enable-deterministic-archives \
     --enable-linker-build-id \
     %{conf-extra}
