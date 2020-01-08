@@ -1,0 +1,2 @@
+variables:
+  bootstrapper-triplet: "%{bootstrap_build_arch}-unknown-linux-gnu"
