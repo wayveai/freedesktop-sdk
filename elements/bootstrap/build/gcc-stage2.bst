@@ -37,6 +37,7 @@ variables:
     --enable-default-pie \
     --enable-default-ssp \
     --with-isl \
+    --disable-libssp \
     --enable-deterministic-archives \
     --enable-linker-build-id \
     %{conf-extra}
