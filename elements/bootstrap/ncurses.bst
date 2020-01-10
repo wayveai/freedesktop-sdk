@@ -15,7 +15,7 @@ config:
     mkdir ncurses-build &&
     cd ncurses-build &&
     ../configure \
-    --build=%{guessed-triplet} \
+    --build=%{bootstrapper-triplet} \
     --host=%{triplet} \
     --disable-stripping \
     --libdir=%{libdir} \
@@ -34,7 +34,7 @@ config:
     mkdir ncursesw-build &&
     cd ncursesw-build &&
     ../configure \
-    --build=%{guessed-triplet} \
+    --build=%{bootstrapper-triplet} \
     --host=%{triplet} \
     --disable-stripping \
     --libdir=%{libdir} \

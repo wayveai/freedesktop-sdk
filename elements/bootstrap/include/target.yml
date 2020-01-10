@@ -1,6 +1,8 @@
+(@): elements/bootstrap/include/arch.yml
+
 variables:
   host-triplet: '%{triplet}'
-  build-triplet: '%{guessed-triplet}'
+  build-triplet: '%{bootstrapper-triplet}'
 
 environment:
   PATH: "%{tools}/bin:/bin"

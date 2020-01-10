@@ -1,7 +1,6 @@
 # Definition of variables related to machine architecture
 host-triplet: "%{triplet}"
 build-triplet: "%{triplet}"
-guessed-triplet: "$(sh /usr/share/gnu-config/config.guess)"
 gcc_triplet: "%{gcc_arch}-linux-%{abi}"
 triplet: "%{arch}-unknown-linux-%{abi}"
 gcc_arch: "%{arch}"
