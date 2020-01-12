@@ -22,4 +22,4 @@ sources:
 - kind: git_tag
   url: gnu-efi:code.git
   track: master
-  ref: 3.0.10-0-g9b14e7dab0abf0ef062db60666b677b33e10c627
+  ref: 3.0.11-0-g2ab1abfd26ea0a87a4fdf3d3c532544a65ae6954
