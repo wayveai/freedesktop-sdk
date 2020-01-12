@@ -40,6 +40,6 @@ sources:
 - kind: git_tag
   url: github:apple/cups.git
   track: master
-  ref: v2.3.0-0-gee6be9cd7e863abf36b9b131fc379d967414aa2e
+  ref: v2.3.1-0-ged181c24e4b130d2981785d44488bef8cfda5f6d
 - kind: patch
   path: patches/cups/cups-disable-werror.patch
