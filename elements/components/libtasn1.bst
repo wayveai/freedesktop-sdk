@@ -12,14 +12,20 @@ depends:
   type: build
 - filename: components/texinfo.bst
   type: build
+- filename: components/patch.bst
+  type: build
 
 variables:
   builddir: ''
+  # When using --disable-static, some useless rpaths appear
+  conf-link-args: >-
+    --enable-shared
 
 config:
   install-commands:
     (>):
     - rm "%{install-root}/usr/share/info/dir"
+    - rm "%{install-root}%{libdir}/libtasn1.a"
 
 public:
   bst:
@@ -35,10 +41,8 @@ sources:
 - kind: git_tag
   url: gitlab:gnutls/libtasn1.git
   track: master
-  ref: libtasn1_4_14-0-g56fc4f8cb8136aa4b18527af47e1eb4858e74af1
+  ref: libtasn1_4_15_0-0-g0dbc6a8fee4d23afab741c7e3d217d63dec49367
   submodules:
     gnulib:
       checkout: true
       url: savannah:gnulib.git
-- kind: patch
-  path: patches/libtasn1/ldflags.patch
