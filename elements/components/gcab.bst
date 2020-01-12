@@ -26,4 +26,4 @@ sources:
 - kind: git_tag
   url: gnome:gcab.git
   track: master
-  ref: v1.3-0-g8ed3cfb07293bab3e075b800b86bf5accedbc635
+  ref: v1.4-0-ge3f0c240eb1a1961f0ff61a83a2c7fafba95abb4
