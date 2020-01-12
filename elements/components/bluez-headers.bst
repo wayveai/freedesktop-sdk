@@ -12,4 +12,4 @@ sources:
 - kind: git_tag
   url: kernel:bluetooth/bluez.git
   track: master
-  ref: 5.51-0-g6de4bdb957cdc85d89851420ab06ca8e226f8d4e
+  ref: 5.52-0-ge002fd43636090ac246f80f5de6195055384dfed
