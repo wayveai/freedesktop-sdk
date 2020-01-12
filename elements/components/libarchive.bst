@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: github:libarchive/libarchive.git
   track: master
-  ref: v3.4.0-0-g614110e76d9dbb9ed3e159a71cbd75fa3b23efe3
+  ref: v3.4.1-0-gcce09646b566c61c2debff58a70da780b8457883
