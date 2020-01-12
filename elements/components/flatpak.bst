@@ -33,7 +33,7 @@ sources:
   - flatpak-1.4.x
   match:
   - 1.[02468]*
-  ref: 1.4.3-0-g0736b524bfd31a7ee5568b0e46c501e5236d2373
+  ref: 1.6.0-0-g722e20dfbba26c658c248110efa3f6897646d217
   submodules:
     libglnx:
       checkout: true
