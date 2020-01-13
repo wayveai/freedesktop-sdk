@@ -75,5 +75,7 @@ config:
   - |
     install -Dm644 -t "%{install-root}" /genimage/images/disk.img
 
+  - syslinux --install '%{install-root}/disk.img' --directory /syslinux --offset 1048576
+
   - |
     dd if=/usr/share/syslinux/mbr.bin of='%{install-root}/disk.img' bs=440 count=1 conv=notrunc
