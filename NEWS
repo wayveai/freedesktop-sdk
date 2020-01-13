@@ -1,5 +1,15 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.06:
+
+    * pciutils: Add multiarch dispatch header for config.h (#921)
+    * gstreamer: Update to 1.16.2
+    * Mark GL and Intel extensions with autoprune-unless
+    * platform-vaapi-intel: Fix assertion failure when initializing driver
+    * librsvg: Update to latest ref in 2.44 branch
+    * rust: Update to 1.40.0
+    * mesa: Update to 19.2.8
+
 freedesktop-sdk-19.08.05:
 
     * ffmpeg: Add muxer for opus (#925)
