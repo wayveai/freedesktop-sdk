@@ -23,6 +23,7 @@ import logging
 import sys
 import os
 import signal
+import subprocess
 
 
 QEMU = 'qemu-system-x86_64'
@@ -78,7 +79,15 @@ DIALOGS = {
 
 
 def build_qemu_image_command(args):
-    return [QEMU, '-drive', 'file=%s,format=raw' % args.sda, '-nographic'] + QEMU_EXTRA_ARGS
+    kvm_args = []
+    try:
+        out = subprocess.check_output([QEMU, '-accel', 'help'], encoding='ascii')
+        if 'kvm' in out.splitlines():
+            kvm_args = ['-enable-kvm']
+    except subprocess.CalledProcessError:
+        sys.stderr.write('Cannot query qemu for accelerator. Not using it.\n')
+
+    return [QEMU, '-drive', 'file=%s,format=raw' % args.sda, '-nographic'] + QEMU_EXTRA_ARGS + kvm_args
 
 
 def build_command(args):
