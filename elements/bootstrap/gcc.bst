@@ -33,6 +33,7 @@ environment:
   CFLAGS_FOR_BUILD:  "%{build_flags}"
   CXXFLAGS_FOR_BUILD: "%{build_flags}"
   LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
+  PYTHON: python3
 
 variables:
   # gcc installs correctly libraries in the multiarch library
@@ -49,7 +50,7 @@ variables:
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
-    --without-isl \
+    --with-isl \
     --enable-linker-build-id \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
     target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
@@ -57,6 +58,8 @@ variables:
 
   conf-link-args: |
     --enable-shared
+
+  optimize-debug: "false"
 
 config:
   install-commands:

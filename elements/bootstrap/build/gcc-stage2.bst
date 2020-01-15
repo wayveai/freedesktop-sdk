@@ -17,6 +17,7 @@ environment:
   CFLAGS_FOR_TARGET:  "%{target_flags}"
   CXXFLAGS_FOR_TARGET: "%{target_flags}"
   LDFLAGS_FOR_TARGET:  "%{ldflags_defaults}"
+  PYTHON: python3
 
 variables:
   conf-link-args: |
@@ -35,7 +36,7 @@ variables:
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
-    --without-isl \
+    --with-isl \
     --enable-deterministic-archives \
     --enable-linker-build-id \
     %{conf-extra}
