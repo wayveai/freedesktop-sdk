@@ -607,6 +607,7 @@ publish_powerpc64le:
     - prepare_publish
   except:
     - tags
+    - schedules
 
 publish_x86_64_tar:
   extends: .publish_tar_template
