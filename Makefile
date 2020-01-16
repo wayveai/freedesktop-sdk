@@ -46,7 +46,7 @@ build:
 	$(BST) build tests/check-platform.bst \
 	             flatpak-release.bst \
 	             public-stacks/buildsystems.bst \
-	             oci/layers/{bootstrap,debug,platform,sdk}.bst
+	             oci/layers/{bootstrap,debug,platform,sdk,flatpak}.bst
 
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
