@@ -57,6 +57,8 @@ public:
 
   cpe:
     vendor: 'gnu'
+    patches:
+    - CVE-2019-18276
 
 sources:
 - kind: git_tag
@@ -64,3 +66,5 @@ sources:
   track: master
   track-tags: false
   ref: bash-5.0-11-gd894cfd104086ddf68c286e67a5fb2e02eb43b7b
+- kind: patch
+  path: patches/bash/CVE-2019-18276.patch
