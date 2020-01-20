@@ -38,7 +38,8 @@ sources:
   track-extra:
   - maint/maint-64
   exclude:
-  - release-*-rc
+  - "release-*-rc"
+  - "*-preview"
   ref: release-65-1-0-gfd123bf023882f07bfacf51c39111be2f946d8f8
 - kind: patch
   path: patches/icu/icu-fix-shared-linking.patch
