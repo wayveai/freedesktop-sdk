@@ -24,7 +24,7 @@ sources:
   url: gnome:glib-networking.git
   track: master
   track-extra:
-  - glib-2-60
+  - glib-2-62
   match:
   - 2.*[02468].*
-  ref: 2.62.0-0-g99aaecc6bfef6118efcd1b39475a7f8ed831551c
+  ref: 2.62.3-0-gaa028cf86c71474cf0ecbf399241053e82ac4fb9
