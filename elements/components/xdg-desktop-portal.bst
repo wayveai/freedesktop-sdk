@@ -1,19 +1,16 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/flatpak.bst
-  type: build
-- filename: components/glib.bst
-  type: build
-- filename: components/fontconfig.bst
-  type: build
-- filename: components/pipewire.bst
-  type: build
-- filename: components/geoclue.bst
-  type: build
+- bootstrap-import.bst
+- components/libportal.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/flatpak.bst
+- components/glib.bst
+- components/fontconfig.bst
+- components/pipewire.bst
+- components/geoclue.bst
 
 public:
   bst:
@@ -27,4 +24,4 @@ sources:
 - kind: git_tag
   url: github:flatpak/xdg-desktop-portal.git
   track: master
-  ref: 1.5.0-0-gda4c2cd2de3761514d949908bc5a58ed24d4f99b
+  ref: 1.6.0-0-g28b93e213a83c78bb6d65d5a1a65c57d62957827
