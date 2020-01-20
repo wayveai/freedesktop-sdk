@@ -28,4 +28,7 @@ sources:
 - kind: git_tag
   url: github:tcltk/tcl.git
   track: master
-  ref: core-8-6-9-0-g54ea3ef1f5f651192316dace49ff9593fcbf6cf0
+  exclude:
+  - "*a*"
+  - "rc*"
+  ref: core-8-6-10-0-g35674d41c77c78cba3841eb6275e9cbe07f28140
