@@ -51,6 +51,7 @@ variables:
     --enable-default-pie \
     --enable-default-ssp \
     --with-isl \
+    --disable-libssp \
     --enable-linker-build-id \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
     target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
@@ -136,7 +137,6 @@ public:
         - '%{multiarch_libdir}/libmpxwrappers.so'
         - '%{multiarch_libdir}/libmpx.so'
         - '%{multiarch_libdir}/libcilkrts.so'
-        - '%{multiarch_libdir}/libssp.so'
         - '%{multiarch_libdir}/libasan.so'
         - '%{multiarch_libdir}/libgfortran.so'
         - '%{multiarch_libdir}/libcc1.so'
@@ -152,12 +152,10 @@ public:
         - '%{multiarch_libdir}/libitm.a'
         - '%{multiarch_libdir}/liblsan.a'
         - '%{multiarch_libdir}/libquadmath.a'
-        - '%{multiarch_libdir}/libssp.a'
         - '%{multiarch_libdir}/libsupc++.a'
         - '%{multiarch_libdir}/libtsan.a'
         - '%{multiarch_libdir}/libubsan.a'
         - '%{multiarch_libdir}/libstdc++fs.a'
-        - '%{multiarch_libdir}/libssp_nonshared.a'
 
       # Not actually used, included for completeness
       static-allowlist:
