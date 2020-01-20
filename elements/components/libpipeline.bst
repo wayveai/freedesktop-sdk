@@ -19,7 +19,7 @@ sources:
 - kind: git_tag
   url: savannah:libpipeline.git
   track: master
-  ref: 1.5.1-0-ga399d471273820b1a8eb3ecf2d91254011445c2a
+  ref: 1.5.2-0-g2d1f45eca4e878d8923ebe2caea670453b12ccc8
 - kind: git_tag
   url: savannah:gnulib.git
   track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
