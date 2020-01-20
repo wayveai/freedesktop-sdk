@@ -151,8 +151,11 @@ pylint:
     ARCH: x86_64
   script:
     - find . -iname "*.py" | xargs pylint
-  only:
-    - merge_requests
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 check_update_elements:
   image: $DOCKER_AARCH64
@@ -201,8 +204,11 @@ check_update_elements:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - merge_requests
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 app_x86_64:
   image: $DOCKER_AMD64
@@ -287,8 +293,10 @@ app_powerpc64le:
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - bootstrap/${ARCH}
-  only:
-    - merge_requests
+  except:
+    - '18.08'
+    - '19.08'
+    - tags
 
 .vm_imageless_template: &vm_imageless
   stage: vm
@@ -299,8 +307,11 @@ app_powerpc64le:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - merge_requests
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 minimal_systemd_vm_x86_64:
   image: $DOCKER_AMD64
@@ -378,8 +389,11 @@ minimal_systemd_vm_powerpc64le:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - merge_requets
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -408,8 +422,11 @@ minimal_systemd_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - merge_requests
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - tags
 
 minimal_efi_vm_image_x86_64:
   image: $DOCKER_AMD64
