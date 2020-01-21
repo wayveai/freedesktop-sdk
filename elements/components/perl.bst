@@ -28,8 +28,8 @@ config:
     make -j1 DESTDIR="%{install-root}" install
 
   - |
-    rm -r "%{install-root}%{bindir}/perl"
-    ln -s perl5.30.0 "%{install-root}%{bindir}/perl"
+    rm "%{install-root}%{bindir}/perl"
+    ln -sr "%{install-root}%{bindir}"/perl[0-9]* "%{install-root}%{bindir}/perl"
 
 sources:
 - kind: git_tag
