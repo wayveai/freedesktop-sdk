@@ -8,7 +8,9 @@ depends:
 - filename: bootstrap/build/tools-lib-path.bst
   type: runtime
 
-(@): elements/bootstrap/include/build.yml
+(@):
+- elements/bootstrap/include/build.yml
+- elements/bootstrap/include/file-source.yml
 
 variables:
   prefix: '%{tools}'
@@ -18,9 +20,3 @@ config:
   configure-commands:
     (<):
       - autoreconf -ivf
-
-sources:
-- kind: git_tag
-  url: github:file/file.git
-  track: master
-  ref: FILE5_37-0-ga0d5b0e4e9f97d74a9911e95cedd579852e25398
