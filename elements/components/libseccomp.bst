@@ -5,6 +5,9 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+variables:
+  builddir: ''
+
 public:
   bst:
     split-rules:
@@ -16,6 +19,6 @@ sources:
 - kind: git_tag
   url: github:seccomp/libseccomp.git
   track: release-2.4
-  ref: v2.4.1-0-gfb43972ea1aab24f2a70193fb7445c2674f594e3
+  ref: v2.4.2-0-g1b6cfd1fc0b7499a28c24299a93a80bd18619563
 - kind: patch
   path: patches/libseccomp/no-static.patch
