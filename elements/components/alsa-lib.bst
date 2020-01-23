@@ -8,6 +8,8 @@ depends:
   type: build
 
 variables:
+  builddir: ''
+
   conf-local: |
     --disable-aload \
     --disable-alisp \
@@ -49,9 +51,10 @@ public:
       devel:
         (>):
         - '%{libdir}/libasound.so'
+        - '%{libdir}/libatopology.so'
 
 sources:
 - kind: git_tag
   url: github:alsa-project/alsa-lib.git
   track: master
-  ref: v1.1.9-0-g9122992a91334cd188203deba54cc077a91cd475
+  ref: v1.2.1.2-0-g1c7e46d5d8bc3c213d7963056240b385f3d8727b
