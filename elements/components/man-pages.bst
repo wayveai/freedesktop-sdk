@@ -18,4 +18,6 @@ sources:
 - kind: git_tag
   url: kernel:docs/man-pages/man-pages.git
   track: master
-  ref: man-pages-5.04-0-g3bbd3971573072e25476e96bda7cd98bac974835
+  track-extra:
+  - man-pages-5.04
+  ref: man-pages-5.04-0-g0298af65794ee0c124ed933f285356ff0984c261
