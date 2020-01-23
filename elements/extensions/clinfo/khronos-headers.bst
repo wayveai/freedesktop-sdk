@@ -12,6 +12,8 @@ config:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/OpenCL-Headers.git
-  track: master
+  # No tags exist, track HEAD of the branch
   ref: 0d5f18c6e7196863bc1557a693f1509adfcee056
-# No tags exist, track HEAD of the branch
+  # Because we do not ship headers and they are just headers, we do
+  # not need to track it unless we require a newer version to build.
+  #track: master
