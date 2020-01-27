@@ -12,6 +12,7 @@ depends:
   type: build
 
 variables:
+  arch-options: ''
   (?):
   - target_arch == "x86_64":
       aom_target: x86_64
@@ -19,17 +20,19 @@ variables:
       aom_target: x86
   - target_arch == "arm":
       aom_target: arm
+      arch-options: >-
+        -DENABLE_NEON=NO
   - target_arch == "aarch64":
       aom_target: arm64
   - target_arch == "powerpc64le":
       aom_target: ppc
 
-  cmake-local: |
-    -DAOM_TARGET_CPU="${aom_target}" \
-    -DENABLE_DOCS=NO \
-    -DENABLE_NASM=YES \
-    -DENABLE_NEON=NO \
+  cmake-local: >-
+    -DAOM_TARGET_CPU="%{aom_target}"
+    -DENABLE_DOCS=NO
+    -DENABLE_NASM=YES
     -DBUILD_SHARED_LIBS=YES
+    %{arch-options}
 
 public:
   bst:
@@ -44,6 +47,4 @@ sources:
   track: master
   track-extra:
   - av1-normative
-  ref: v1.0.0-errata1-0-gadd4b15580e410c00c927ee366fa65545045a5d9
-- kind: patch
-  path: patches/aom/0001-Add-support-for-GNUInstallDirs.patch
+  ref: v1.0.0-errata1-avif-0-g4eb1e7795b9700d532af38a2d9489458a8038233
