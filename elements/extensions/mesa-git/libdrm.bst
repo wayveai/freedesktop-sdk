@@ -31,7 +31,10 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/drm.git
   track: master
-  track-tags: false
-  ref: libdrm-2.4.99-23-g0c427545cd931490c760d51cc3c50be75615b26d
+  # Currently backends from master are not compatible with the last
+  # release of libdrm. We need to wait for a release and an update
+  # of components/libdrm.bst before uncommenting the following.
+  #track-tags: false
+  ref: libdrm-2.4.100-0-g0190f49a139e7069d7cad6a6890832831da1aa8b
 - kind: patch
   path: patches/libdrm/libdrm_disable_libdrm.patch
