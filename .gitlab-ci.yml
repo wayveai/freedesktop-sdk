@@ -156,6 +156,7 @@ pylint:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 check_update_elements:
   image: $DOCKER_AARCH64
@@ -209,6 +210,7 @@ check_update_elements:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 app_x86_64:
   image: $DOCKER_AMD64
@@ -312,6 +314,7 @@ app_powerpc64le:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 minimal_systemd_vm_x86_64:
   image: $DOCKER_AMD64
@@ -395,6 +398,7 @@ minimal_systemd_vm_powerpc64le:
     - '19.08'
     - tags
   when: manual
+  interruptible: true
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -428,6 +432,7 @@ minimal_systemd_vm_image_x86_64:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 minimal_efi_vm_image_x86_64:
   image: $DOCKER_AMD64
