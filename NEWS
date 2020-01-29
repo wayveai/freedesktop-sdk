@@ -1,5 +1,14 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.07:
+
+    * alsa-lib: Ignore host configuration (#857)
+    * gcc: Enable graphite loop optimization (#943)
+    * libdrm: Update to 2.4.100.
+    * mesa: Update to 19.3.3
+    * libglvnd: Update to 1.3.0
+    * mesa-aco: Update to latest version
+
 freedesktop-sdk-19.08.06:
 
     * pciutils: Add multiarch dispatch header for config.h (#921)
