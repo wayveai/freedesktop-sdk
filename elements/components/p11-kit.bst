@@ -19,9 +19,6 @@ public:
         - '%{libdir}/libp11-kit.so'
 
 sources:
-- kind: git_tag
-  url: github:p11-glue/p11-kit.git
-  track: master
-  match:
-  - '0.23.*'
-  ref: 0.23.19-0-g69a420aaa70af5b89508b5140edb0ee4e166605b
+- kind: tar
+  url: tar_https:github.com/p11-glue/p11-kit/releases/download/0.23.16.1/p11-kit-0.23.16.1.tar.gz
+  ref: 4b34e92ae36fa493e0d94366c767f06d5f9951e3d8581d10fd935d738db1574d
