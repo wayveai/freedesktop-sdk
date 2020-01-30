@@ -34,6 +34,7 @@ public:
 sources:
 - kind: git_tag
   url: github:unicode-org/icu.git
+  use-lfs: false
   track: master
   track-extra:
   - maint/maint-64
