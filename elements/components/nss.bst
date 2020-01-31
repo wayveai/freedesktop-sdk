@@ -1,34 +1,41 @@
 kind: manual
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
-  type: build
-- filename: components/nspr.bst
-- filename: components/sqlite.bst
-- filename: components/p11-kit.bst
-- filename: components/pkg-config.bst
-  type: build
+- bootstrap-import.bst
+- components/nspr.bst
+- components/sqlite.bst
+- components/p11-kit.bst
+
+build-depends:
+- components/gyp.bst
+- components/pkg-config.bst
+- components/perl.bst
 
 variables:
-  arch-conf: ''
   (?):
-  - target_arch in ["x86_64", "aarch64", "powerpc64le"]:
-      arch-conf: |
-        USE_64=1
+  - target_arch == 'x86_64':
+      gyp-arch: x64
+  - target_arch == 'i686':
+      gyp-arch: ia32
+  - target_arch == 'arm':
+      gyp-arch: arm
+  - target_arch == 'aarch64':
+      gyp-arch: aarch64
+  - target_arch == 'powerpc64le':
+      gyp-arch: ppc64le
 
-  make-args: |
-    %{arch-conf} \
-    OS_TARGET=Linux \
-    OS_RELEASE=3.4 \
-    "OS_TEST=%{arch}" \
-    NSS_USE_SYSTEM_SQLITE=1 \
-    NSS_ENABLE_WERROR=0 \
-    NSS_DISABLE_GTESTS=1 \
-    BUILD_OPT=1 \
-    XCFLAGS="$CFLAGS" \
-    DSO_CFLAGS="-fPIC $CFLAGS" \
-    ZDEFS_FLAG="-Wl,-z,defs $LDFLAGS"
+  build-args: >-
+    --opt
+    --system-nspr
+    --system-sqlite
+    --disable-tests
+    --target=%{gyp-arch}
+
+environment:
+  MAXJOBS: "%{max-jobs}"
+
+environment-nocache:
+- MAXJOBS
 
 public:
   bst:
@@ -44,7 +51,7 @@ config:
   build-commands:
   - |
     cd nss
-    make -j1 %{make-args}
+    ./build.sh -j "${MAXJOBS}" -v %{build-args}
 
   - |
     gcc ${CFLAGS} ${LDFLAGS} -Wall load-p11-kit-trust.c -shared $(pkg-config --libs --cflags p11-kit-1) -o load-p11-kit-trust.so
@@ -52,17 +59,24 @@ config:
   install-commands:
   - |
     cd dist
-    for lib in */lib/lib*.so*; do
+    for lib in Release/lib/*; do
       case "${lib}" in
-        */libnssckbi.so)
+        *.a) ;;
+        */*.so.TOC) ;;
+        */libnssckbi.so) ;;
+
+        *.chk) ;&
+        *.so)
+          install -Dm644 -t "%{install-root}%{libdir}/" "${lib}"
         ;;
         *)
-          install -Dm644 -t "%{install-root}%{libdir}/" "${lib}"
+          echo "What to do with ${lib}?" 1>&2
+          exit 1
         ;;
       esac
     done
-    install -Dm755 -t "%{install-root}/%{bindir}/" */bin/*
-    install -m 644 -D -t "%{install-root}/%{includedir}/nss" public/nss/*
+    install -Dm755 -t "%{install-root}%{bindir}/" Release/bin/*
+    install -Dm644 -t "%{install-root}%{includedir}/nss/" public/nss/*.h
 
   - |
     NSPR_VERSION="$(/usr/bin/nspr-config --version)"
@@ -95,12 +109,12 @@ config:
 sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
-  track: NSS_3_46_BRANCH
+  track: master
   track-extra:
-  - master
+  - NSS_3_49_BRANCH
   match:
   - 'NSS_*_RTM'
-  ref: NSS_3_46_1_RTM-0-ga9f1b655f2c79076e018c365496eae8af5e3f922
+  ref: NSS_3_49_2_RTM-0-ge9eeb425e4d857afb21e2d046dc6c8711f53ef22
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
