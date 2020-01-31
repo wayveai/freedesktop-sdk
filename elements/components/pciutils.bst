@@ -9,32 +9,32 @@ depends:
 
 config:
   build-commands:
-    - |
-      make OPT="${CFLAGS}" ZLIB=no SHARED=yes SHAREDIR="%{prefix}/share/hwdata" all
+  - |
+    make OPT="${CFLAGS}" ZLIB=no SHARED=yes SHAREDIR="%{prefix}/share/hwdata" all
 
   install-commands:
-    - |
-      make SHARED=yes PREFIX="%{prefix}" SBINDIR="%{prefix}/bin" SHAREDIR="%{prefix}/share/hwdata" MANDIR="%{prefix}/share/man" LIBDIR="%{libdir}" DESTDIR="%{install-root}" install install-lib
+  - |
+    make SHARED=yes PREFIX="%{prefix}" SBINDIR="%{prefix}/bin" SHAREDIR="%{prefix}/share/hwdata" MANDIR="%{prefix}/share/man" LIBDIR="%{libdir}" DESTDIR="%{install-root}" install install-lib
 
-    - |
-      mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/pci"
-      mv "%{install-root}%{includedir}/pci/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/pci/"
+  - |
+    mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/pci"
+    mv "%{install-root}%{includedir}/pci/config.h" "%{install-root}%{includedir}/%{gcc_triplet}/pci/"
 
-    - |
-      cat <<EOF >"%{install-root}%{includedir}/pci/config.h"
-      #if defined(__x86_64__)
-      # include "x86_64-linux-gnu/pci/config.h"
-      #elif defined(__i386__)
-      # include "i386-linux-gnu/pci/config.h"
-      #elif defined(__aarch64__)
-      # include "aarch64-linux-gnu/pci/config.h"
-      #elif defined(__arm__)
-      # include "arm-linux-gnueabihf/pci/config.h"
-      #elif defined(__powerpc64__)
-      # include "powerpc64le-linux-gnu/pci/config.h"
-      #else
-      # error "Unknown cross-compiler"
-      #endif
+  - |
+    cat <<EOF >"%{install-root}%{includedir}/pci/config.h"
+    #if defined(__x86_64__)
+    # include "x86_64-linux-gnu/pci/config.h"
+    #elif defined(__i386__)
+    # include "i386-linux-gnu/pci/config.h"
+    #elif defined(__aarch64__)
+    # include "aarch64-linux-gnu/pci/config.h"
+    #elif defined(__arm__)
+    # include "arm-linux-gnueabihf/pci/config.h"
+    #elif defined(__powerpc64__)
+    # include "powerpc64le-linux-gnu/pci/config.h"
+    #else
+    # error "Unknown cross-compiler"
+    #endif
 
 public:
   bst:
@@ -47,4 +47,4 @@ sources:
 - kind: git_tag
   track: master
   url: kernel:utils/pciutils/pciutils.git
-  ref: v3.6.2-0-ge3832c8fc3efe41aff853d16cab488d38c3ac13f
+  ref: v3.6.3-0-gdacdaa94320df20f36a19279ae49f0cb61d51932
