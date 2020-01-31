@@ -156,6 +156,7 @@ pylint:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 check_update_elements:
   image: $DOCKER_AARCH64
@@ -209,6 +210,7 @@ check_update_elements:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 app_x86_64:
   image: $DOCKER_AMD64
@@ -312,6 +314,7 @@ app_powerpc64le:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 minimal_systemd_vm_x86_64:
   image: $DOCKER_AMD64
@@ -395,6 +398,7 @@ minimal_systemd_vm_powerpc64le:
     - '19.08'
     - tags
   when: manual
+  interruptible: true
 
 minimal_systemd_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -428,6 +432,7 @@ minimal_systemd_vm_image_x86_64:
     - '18.08'
     - '19.08'
     - tags
+  interruptible: true
 
 minimal_efi_vm_image_x86_64:
   image: $DOCKER_AMD64
@@ -443,7 +448,7 @@ minimal_efi_vm_image_x86_64:
   dependencies: []
   when: manual
 
-prepare_publish:
+.prepare_publish_template: &prepare_publish
   image: $DOCKER_AMD64
   stage: prepare-publish
   tags:
@@ -453,13 +458,25 @@ prepare_publish:
   artifacts:
     paths:
       - publish_build.txt
+  except:
+    - schedules
+
+prepare_publish_branch:
+  <<: *prepare_publish
   only:
     - master
     - '18.08'
     - '19.08'
+  # In order to allow Gitlab to cancel the pipeline when it becomes
+  # redundent in case of batch merges. We must delay the release pipeline.
+  # Once started, we should not stop it.
+  when: delayed
+  start_in: 15 minutes
+
+prepare_publish_release:
+  <<: *prepare_publish
+  only:
     - tags
-  except:
-    - schedules
 
 finish_publish:
   image: $DOCKER_AMD64
@@ -483,7 +500,8 @@ finish_publish:
   except:
     - schedules
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 finish_publish_failed:
   image: $DOCKER_AMD64
@@ -501,7 +519,8 @@ finish_publish_failed:
     - schedules
   when: on_failure
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 .flatpak_publish_template:
   stage: publish
@@ -580,7 +599,8 @@ publish_x86_64:
   variables:
     ARCH: x86_64
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 publish_i686:
   extends: .flatpak_publish_template
@@ -591,7 +611,8 @@ publish_i686:
   variables:
     ARCH: i686
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 publish_aarch64:
   extends: .flatpak_publish_template
@@ -601,7 +622,8 @@ publish_aarch64:
   variables:
     ARCH: aarch64
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 publish_arm:
   extends: .flatpak_publish_template
@@ -611,7 +633,8 @@ publish_arm:
   variables:
     ARCH: arm
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 publish_powerpc64le:
   extends: .flatpak_publish_template
@@ -622,7 +645,8 @@ publish_powerpc64le:
     ARCH: powerpc64le
   allow_failure: true
   dependencies:
-    - prepare_publish
+    - prepare_publish_branch
+    - prepare_publish_release
 
 publish_x86_64_tar:
   extends: .publish_tar_template
