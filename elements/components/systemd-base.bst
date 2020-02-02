@@ -72,12 +72,7 @@ sources:
   url: github:systemd/systemd-stable.git
   track: master
   track-extra:
-  - v243-stable
-  track-tags: false
-  ref: v243-51-gfab6f010ac6c3bc93a10868de722d7c8c3622eb9
-- kind: patch
-  path: patches/systemd/gnu-efi-includes.patch
-- kind: patch
-  path: patches/systemd/revert-sysuser-locked.patch
+  - v244-stable
+  ref: v244.1-0-g639dc9f4bfd2c09535bee079ae9bc7006b520a66
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
