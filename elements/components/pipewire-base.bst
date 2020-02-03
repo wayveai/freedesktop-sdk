@@ -42,4 +42,6 @@ sources:
 - kind: git_tag
   url: github:PipeWire/pipewire.git
   track: master
+  exclude:
+  - '*.*.9*'
   ref: 0.2.7-0-g14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
