@@ -1,11 +1,15 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libflac.bst
-- filename: components/libvorbis.bst
-- filename: components/mpg123.bst
-- filename: components/sdl2.bst
+- bootstrap-import.bst
+- components/libflac.bst
+- components/libvorbis.bst
+- components/mpg123.bst
+- components/sdl2.bst
+- components/opusfile.bst
 
 public:
   bst:
