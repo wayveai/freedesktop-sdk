@@ -1,12 +1,14 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/xorg-util-macros.bst
-  type: build
-- filename: components/xorg-app-xkbcomp.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/xorg-app-xkbcomp.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/xorg-util-macros.bst
+- components/libxslt.bst
+- components/python3.bst
 
 variables:
   conf-local: |
@@ -18,5 +20,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xkeyboard-config/xkeyboard-config.git
   track: master
-  ref: xkeyboard-config-2.28-0-g91ea2d369b06ce5ed1a414cc940bd4a99523a198
-
+  ref: xkeyboard-config-2.29-0-gd6ae091fd98fa9317c3bc313c4a025b9564e0ad8
