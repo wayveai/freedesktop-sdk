@@ -11,8 +11,10 @@ depends:
 - elements/bootstrap/include/file-source.yml
 
 variables:
-  conf-local: |
+  conf-local: >-
    --disable-libseccomp
+   --disable-xzlib
+   --disable-bzlib
 
 config:
   configure-commands:
