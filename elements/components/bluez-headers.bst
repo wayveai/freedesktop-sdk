@@ -1,4 +1,8 @@
 kind: manual
+description: |
+  This element provides just the headers required to build
+  Python. Because Bluez depends on Python, we cannot build Python without
+  this element. Full elements is `components/bluez.bst`.
 
 build-depends:
 - bootstrap-import.bst
@@ -8,8 +12,4 @@ config:
   - |
     install -D -m644 -t "%{install-root}%{includedir}/bluetooth" lib/*.h
 
-sources:
-- kind: git_tag
-  url: kernel:bluetooth/bluez.git
-  track: master
-  ref: 5.51-0-g6de4bdb957cdc85d89851420ab06ca8e226f8d4e
+(@): elements/include/bluez.yml
