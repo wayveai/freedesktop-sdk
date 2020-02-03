@@ -6,14 +6,18 @@ kind: meson
 
 build-depends:
 - bootstrap-import.bst
-- components/gstreamer-plugins-base.bst
 - components/alsa-lib.bst
+- components/bluez.bst
 - components/dbus.bst
-- components/sdl2.bst
 - components/ffmpeg.bst
-- components/systemd.bst
-- components/systemd-libs.bst
+- components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
+- components/jack.bst
+- components/sbc.bst
+- components/sdl2.bst
+- components/systemd-libs.bst
+- components/systemd.bst
+- components/vulkan.bst
 - public-stacks/buildsystem-meson.bst
 
 variables:
@@ -22,7 +26,7 @@ variables:
   meson-local: >-
     -Ddocs=false
     -Dman=false
-    -Dgstreamer=enabled
+    -Dgstreamer=true
     -Dsystemd=true
 
 public:
@@ -34,7 +38,19 @@ public:
       - '%{bindir}/pipewire'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
+      - '%{debugdir}%{bindir}/pipewire.debug'
 
+      jack:
+      - '%{libdir}/libjack-pw.so*'
+      - '%{debugdir}%{libdir}/libjack-pw.so*.debug'
+
+      pulse:
+      - '%{libdir}/libpulse-pw.so*'
+      - '%{libdir}/libpulse-simple-pw.so*'
+      - '%{libdir}/libpulse-mainloop-glib-pw.so*'
+      - '%{debugdir}%{libdir}/libpulse-pw.so*.debug'
+      - '%{debugdir}%{libdir}/libpulse-simple-pw.so*.debug'
+      - '%{debugdir}%{libdir}/libpulse-mainloop-glib-pw.so*.debug'
   cpe:
     product: pipewire
 
@@ -44,4 +60,4 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.2.7-0-g14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
+  ref: 0.3.1-0-g74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac
