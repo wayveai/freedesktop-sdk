@@ -16,3 +16,5 @@ sources:
 - kind: patch
   directory: libclc
   path: patches/libclc/libclc-force-configure-to-use-python3.patch
+- kind: patch
+  path: patches/llvm/compiler-rt-sanitizer-glibc-2.31.patch

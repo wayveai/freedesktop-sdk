@@ -124,7 +124,7 @@ public:
         - '%{libdir}/libcrypt.a'
         - '%{libdir}/libdl.a'
         - '%{libdir}/libg.a'
-        - '%{libdir}/libm-2.30.a'
+        - '%{libdir}/libm-*.a'
         - '%{libdir}/libm.a'
         - '%{libdir}/libmcheck.a'
         - '%{libdir}/libmvec.a'

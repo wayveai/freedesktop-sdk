@@ -26,3 +26,7 @@ sources:
   path: patches/gcc/gcc-do-not-override-for-build-variables.patch
 - kind: patch
   path: patches/gcc/gcc-do-not-override-for-build-variables-2.patch
+- kind: patch
+  path: patches/gcc/gcc-glibc-2.31-1.patch
+- kind: patch
+  path: patches/gcc/gcc-glibc-2.31-2.patch
