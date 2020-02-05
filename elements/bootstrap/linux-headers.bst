@@ -1,11 +1,13 @@
 kind: manual
 description: GNU linux headers stage 1
 
-depends:
-- filename: bootstrap/build/base-sdk.bst
-  type: build
+build-depends:
+- bootstrap/build/base-sdk.bst
+- bootstrap/build/rsync.bst
 
-(@): elements/bootstrap/include/build.yml
+(@):
+- elements/bootstrap/include/build.yml
+- elements/include/linux.yml
 
 variables:
   (?):
@@ -30,11 +32,6 @@ config:
        "%{install-root}%{includedir}/%{gcc_triplet}/linux/" || true
     mv "%{install-root}%{includedir}/linux/kvm_para.h" \
        "%{install-root}%{includedir}/%{gcc_triplet}/linux/" || true
-
-sources:
-- kind: tar
-  url: tar_https:cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.1.tar.xz
-  ref: 3581e84e9d63298a14c147f925cd496ebb25c5a08cf065ba63c54cdee6d86506
 
 public:
   bst:

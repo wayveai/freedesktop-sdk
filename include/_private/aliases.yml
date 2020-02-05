@@ -22,6 +22,7 @@ libreoffice: https://git.libreoffice.org/
 nettle: https://git.lysator.liu.se/nettle/
 pagure: https://pagure.io/
 repo_or_cz: https://repo.or.cz/
+samba: https://git.samba.org/
 savannah: https://git.savannah.gnu.org/git/
 sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
