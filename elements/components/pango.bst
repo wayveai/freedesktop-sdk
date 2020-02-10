@@ -32,5 +32,5 @@ sources:
   url: gnome:pango.git
   track: master
   track-extra:
-  - 1.44.6
-  ref: 1.44.6-0-gee65d75feca3e128c951fdfbf9a61619e2a5239e
+  - 1.44.7
+  ref: 1.44.7-0-g9f03d48261cb25e59ba029b194e70881d6ae8f37
