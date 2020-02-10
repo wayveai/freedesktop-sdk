@@ -124,7 +124,7 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rustc-1.40.0-src.tar.xz
-  ref: 6e2aa3a91697f4b225c6b394cbae6b97666f061dba491f666a5281698fe2aace
+  url: tar_https:static.rust-lang.org/dist/rustc-1.41.0-src.tar.xz
+  ref: 38d6742e5c4c98a835de5d6e12a209e442fb3078a03b2c01bab6ea7afb25be6f
 - kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
