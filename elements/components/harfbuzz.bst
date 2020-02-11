@@ -1,16 +1,16 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glib.bst
-- filename: components/icu.bst
-- filename: components/graphite2.bst
-- filename: components/freetype-stage1.bst
-  type: build
-- filename: components/gtk-doc.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/glib.bst
+- components/icu.bst
+- components/graphite2.bst
+
+build-depends:
+- components/freetype-stage1.bst
+- components/gtk-doc.bst
+- public-stacks/buildsystem-autotools.bst
+- components/gobject-introspection.bst
 
 variables:
   conf-local: |
