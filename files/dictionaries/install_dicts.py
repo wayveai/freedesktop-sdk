@@ -2,6 +2,7 @@
 import sys
 import xml.etree.ElementTree as ET
 import os
+import re
 import shutil
 import subprocess
 
@@ -92,7 +93,8 @@ def handle_file(filename):
                     full_dest_file = symlink_dest + basename
                 print(" copy %s to %s" % (file, install_root + full_dest_file))
                 shutil.copyfile(file, install_root + full_dest_file)
-                symlink = symlink_dest + prefix + loc.replace("-", "_")+suffix+ext
+                loc = re.sub("(?P<lang>.*)-(?P<country>[A-Z][A-Z])(?P<suffix>(?:-.*)?)", r"\g<lang>_\g<country>\g<suffix>", loc)
+                symlink = symlink_dest + prefix + loc+suffix+ext
                 if symlink != full_dest_file:
                     print(" symlink %s to %s" % (install_root + symlink, full_dest_file))
                     os.symlink(os.path.relpath(full_dest_file, os.path.dirname(symlink)), install_root + symlink)
