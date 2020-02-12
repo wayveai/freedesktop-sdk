@@ -36,14 +36,13 @@ def parse_props(elem, origin):
 
 def handle_file(filename):
     tree = ET.parse(filename)
-    lang = os.path.basename(os.path.dirname(filename)).split("_")[0]
     root = tree.getroot()
     dicts = list(list(root)[0])[0]
     for element in dicts:
         name = get_name(element)
         props = parse_props(element, os.path.dirname(filename))
         props_format = props['Format']
-        print("Installing %s dictionary %s for lang %s:" % (props_format, name, lang))
+        print("Installing %s dictionary %s:" % (props_format, name))
         if props_format == 'DICT_SPELL':
             dest = SPELL_DEST
             prefix = ""
@@ -61,9 +60,7 @@ def handle_file(filename):
             continue
 
         install_root = os.environ.get('DESTDIR', '')
-        full_dest = "/usr/share/locale/" + lang + "/" + dest + "/"
         symlink_dest = "/usr/share/" + dest + "/"
-        os.makedirs(install_root + full_dest, exist_ok=True)
         os.makedirs(install_root + symlink_dest, exist_ok=True)
 
         for file in props['Locations']:
@@ -82,13 +79,16 @@ def handle_file(filename):
                 continue
             ext = os.path.splitext(file)[1]
             basename = os.path.basename(file)
-            if lang != "en":
-                full_dest_file = full_dest + basename
-            else:
-                full_dest_file = symlink_dest + basename
-            print(" copy %s to %s" % (file, install_root + full_dest_file))
-            shutil.copyfile(file, install_root + full_dest_file)
             for loc in props['Locales']:
+                lang = loc.split('-')[0]
+                full_dest = "/usr/share/locale/" + lang + "/" + dest + "/"
+                if lang != "en":
+                    os.makedirs(install_root + full_dest, exist_ok=True)
+                    full_dest_file = full_dest + basename
+                else:
+                    full_dest_file = symlink_dest + basename
+                print(" copy %s to %s" % (file, install_root + full_dest_file))
+                shutil.copyfile(file, install_root + full_dest_file)
                 symlink = symlink_dest + prefix + loc.replace("-", "_")+suffix+ext
                 if symlink != full_dest_file:
                     print(" symlink %s to %s" % (install_root + symlink, full_dest_file))
