@@ -1,13 +1,15 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libgcrypt.bst
-- filename: components/libassuan.bst
-- filename: components/libksba.bst
-- filename: components/npth.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/libgcrypt.bst
+- components/libassuan.bst
+- components/libksba.bst
+- components/npth.bst
+- components/sqlite.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
 
 variables:
   conf-local: |
