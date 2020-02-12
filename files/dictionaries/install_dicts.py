@@ -40,7 +40,10 @@ def handle_file(filename):
     dicts = list(list(root)[0])[0]
     for element in dicts:
         name = get_name(element)
-        props = parse_props(element, os.path.dirname(filename))
+        origin = os.path.splitext(filename)[0]
+        if not os.path.isdir(origin):
+            origin = os.path.dirname(filename)
+        props = parse_props(element, origin)
         props_format = props['Format']
         print("Installing %s dictionary %s:" % (props_format, name))
         if props_format == 'DICT_SPELL':
