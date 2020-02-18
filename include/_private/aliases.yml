@@ -2,32 +2,30 @@
 #
 #
 #Git source aliases
-aom: https://aomedia.googlesource.com/
 chromium: https://chromium.googlesource.com/
 debian_salsa: https://salsa.debian.org/
 ffmpeg: https://git.ffmpeg.org/
-flathub: https://flathub.org/
 freedesktop_people: git://people.freedesktop.org/~wtay/
 freedesktop: https://gitlab.freedesktop.org/
 github: https://github.com/
 gitlab: https://gitlab.com/
-gnome_archive: https://gitlab.gnome.org/Archive/
 gnome: https://gitlab.gnome.org/GNOME/
 gnu-efi: https://git.code.sf.net/p/gnu-efi/
 gnupg: https://dev.gnupg.org/source/
 kitware: https://gitlab.kitware.com/cmake/
 kernel: https://git.kernel.org/pub/scm/
 libdaemon: git://git.0pointer.de/
-libreoffice: https://git.libreoffice.org/
 nettle: https://git.lysator.liu.se/nettle/
-pagure: https://pagure.io/
 repo_or_cz: https://repo.or.cz/
 samba: https://git.samba.org/
 savannah: https://git.savannah.gnu.org/git/
 sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
-videolan: https://code.videolan.org/videolan/
 xiph: https://git.xiph.org/
+#Gereric aliases (because mirroring requires some sort of alias)
+#Consider using one of these, rather than creating an overly-specific new alias for a single source
+git_https: https://
+# git_http: http://      #(Not currently used, uncomment if needed)
 #
 #
 #Other Aliases
@@ -42,5 +40,6 @@ sourceforge_download: https://downloads.sourceforge.net/
 sourceforge: https://sourceforge.net/
 sourceware_pub: https://sourceware.org/pub/
 #Gereric aliases (because mirroring requires some sort of alias)
+#Consider using one of these, rather than creating an overly-specific new alias for a single source
 tar_http: http://
 tar_https: https://

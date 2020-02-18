@@ -4,8 +4,6 @@
 mirrors:
 - name: gitlab_dot_com_freedesktop__sdk_mirrors
   aliases:
-    aom:
-    - https://gitlab.com/freedesktop-sdk/mirrors/aom/
     chromium:
     - https://gitlab.com/freedesktop-sdk/mirrors/chromium/
     debian_salsa:
@@ -20,8 +18,6 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/github/
     gitlab:
     - https://gitlab.com/freedesktop-sdk/mirrors/gitlab/
-    gnome_archive:
-    - https://gitlab.com/freedesktop-sdk/mirrors/gnome_archive/
     gnome:
     - https://gitlab.com/freedesktop-sdk/mirrors/gnome/
     gnu-efi:
@@ -34,24 +30,25 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/kernel/
     libdaemon:
     - https://gitlab.com/freedesktop-sdk/mirrors/libdaemon/
-    libreoffice:
-    - https://gitlab.com/freedesktop-sdk/mirrors/libreoffice/
     nettle:
     - https://gitlab.com/freedesktop-sdk/mirrors/nettle/
-    pagure:
-    - https://gitlab.com/freedesktop-sdk/mirrors/pagure/
     repo_or_cz:
     - https://gitlab.com/freedesktop-sdk/mirrors/repo_or_cz/
+    samba:
+    - https://gitlab.com/freedesktop-sdk/mirrors/samba/
     savannah:
     - https://gitlab.com/freedesktop-sdk/mirrors/savannah/
     sourceware:
     - https://gitlab.com/freedesktop-sdk/mirrors/sourceware/
     tukaani:
     - https://gitlab.com/freedesktop-sdk/mirrors/tukaani/
-    videolan:
-    - https://gitlab.com/freedesktop-sdk/mirrors/videolan/
     xiph:
     - https://gitlab.com/freedesktop-sdk/mirrors/xiph/
+    git_https:
+    - https://gitlab.com/freedesktop-sdk/mirrors/git_https/
+    # (Not currently used, uncomment if needed)
+    # git_http:
+    # - https://gitlab.com/freedesktop-sdk/mirrors/git_http/
 
 - name: freedesktop_tarball_mirror
   aliases:

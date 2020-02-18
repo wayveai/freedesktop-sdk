@@ -20,6 +20,6 @@ public:
 
 sources:
 - kind: git_tag
-  url: videolan:dav1d.git
+  url: git_https:code.videolan.org/videolan/dav1d.git
   track: master
   ref: 0.5.2-0-g39667c751d427e447cbe8be783cfecd296659e24
