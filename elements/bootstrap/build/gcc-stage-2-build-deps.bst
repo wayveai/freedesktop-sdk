@@ -8,8 +8,6 @@ depends:
 
 - filename: bootstrap/glibc.bst
   type: build
-- filename: bootstrap/libstdc++-stage1.bst
-  type: build
 
 variables:
   install-root: "/"
@@ -21,6 +19,4 @@ config:
   - element: bootstrap/gnu-config.bst
     destination: /
   - element: bootstrap/glibc.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/libstdc++-stage1.bst
     destination: "%{sysroot}"

@@ -3,9 +3,6 @@ depends:
 - filename: bootstrap/glibc.bst
   junction: cross-compilers/freedesktop-sdk-aarch64.bst
   type: build
-- filename: bootstrap/libstdc++-stage1.bst
-  junction: cross-compilers/freedesktop-sdk-aarch64.bst
-  type: build
 
 public:
   bst:
