@@ -15,8 +15,10 @@ build-depends:
 variables:
   conf-local: >-
     --with-distro=none
+    --disable-libevent
     --disable-qt3
     --disable-qt4
+    --disable-qt5
     --disable-gtk
     --enable-gtk3
     --disable-python
@@ -33,9 +35,7 @@ sources:
 - kind: git_tag
   url: github:lathiat/avahi.git
   track: master
-  ref: v0.7-0-g6242e5f0fe001b7de2ccaa9431db279b2ee76b83
-- kind: patch
-  path: patches/avahi/gettext.patch
+  ref: v0.8-0-gf060abee2807c943821d88839c013ce15db17b58
 - kind: local
   path: files/avahi/avahi.conf
   directory: freedesktop-sdk
