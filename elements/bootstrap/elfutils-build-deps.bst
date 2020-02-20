@@ -12,8 +12,6 @@ depends:
   type: build
 - filename: bootstrap/bzip2.bst
   type: build
-- filename: bootstrap/libstdc++-stage1.bst
-  type: build
 
 variables:
   install-root: "/"
@@ -30,6 +28,4 @@ config:
   - element: bootstrap/zlib.bst
     destination: "%{sysroot}"
   - element: bootstrap/bzip2.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/libstdc++-stage1.bst
     destination: "%{sysroot}"
