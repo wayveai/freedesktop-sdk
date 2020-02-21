@@ -49,6 +49,7 @@ public:
       libpulse:
       - '%{debugdir}/**'
       - '%{includedir}/**'
+      - '%{libdir}/cmake/**'
       - '%{libdir}/pkgconfig/**'
       - '%{libdir}/pulseaudio/lib*.so*'
       - '%{libdir}/lib*.so*'
