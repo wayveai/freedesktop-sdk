@@ -17,7 +17,7 @@ variables:
 
   # Auto Updater
   AUTO_UPDATER_URL: "https://gitlab.com/BuildStream/infrastructure/gitlab-merge-request-generator"
-  AUTO_UPDATER_BRANCH: "v0.0.5"
+  AUTO_UPDATER_BRANCH: "v0.0.6"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
