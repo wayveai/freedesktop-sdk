@@ -11,7 +11,7 @@ rootfstype="ext4"
 rootfsopts="errors=remount-ro,relatime"
 root_source=
 
-while [ $# -gt 1 ]; do
+while [ $# -gt 0 ]; do
     param="$1"
     shift
     case "${param}" in
