@@ -123,6 +123,12 @@ config:
     # Sound with QEMU
     scripts/config -e SND_HDA_GENERIC
 
+    # Required for live boot
+    scripts/config -e SQUASHFS
+    scripts/config -e SQUASHFS_ZLIB
+    scripts/config -e DM_SNAPSHOT
+    scripts/config -e OVERLAY_FS
+
   build-commands:
   - |
     make
