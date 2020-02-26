@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 # This scans for symbolic link .so libraries that have a SONAME which
 # is not the name of the symbolic link. Those files should not appear in
 # platform runtimes, only in SDKs.
