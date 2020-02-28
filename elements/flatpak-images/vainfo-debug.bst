@@ -9,7 +9,7 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.VaInfo.Debug
+      name: org.freedesktop.Platform.VaInfo.Debug
 
 depends:
 - filename: extensions/vainfo/libva-utils.bst

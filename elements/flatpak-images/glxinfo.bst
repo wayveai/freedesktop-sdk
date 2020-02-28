@@ -12,7 +12,7 @@ config:
 
   metadata:
     Application:
-      name: org.freedesktop.GlxInfo
+      name: org.freedesktop.Platform.GlxInfo
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
       command: glxinfo
@@ -22,7 +22,7 @@ config:
       sockets: x11;wayland;
       devices: dri;
 
-    Extension org.freedesktop.GlxInfo.Debug:
+    Extension org.freedesktop.Platform.GlxInfo.Debug:
       directory: lib/debug
       autodelete: 'true'
       no-autodownload: 'true'

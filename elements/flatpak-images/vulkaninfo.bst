@@ -11,7 +11,7 @@ config:
 
   metadata:
     Application:
-      name: org.freedesktop.VulkanInfo
+      name: org.freedesktop.Platform.VulkanInfo
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
       command: vulkaninfo

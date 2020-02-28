@@ -9,7 +9,7 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.GlxInfo.Debug
+      name: org.freedesktop.Platform.GlxInfo.Debug
 
 depends:
 - filename: extensions/glxinfo/mesa-demos.bst

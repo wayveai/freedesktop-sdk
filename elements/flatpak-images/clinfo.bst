@@ -11,7 +11,7 @@ config:
 
   metadata:
     Application:
-      name: org.freedesktop.ClInfo
+      name: org.freedesktop.Platform.ClInfo
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
       command: clinfo
