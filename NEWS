@@ -1,5 +1,17 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.08:
+
+    * pulseaudio: Add missing cmake configuration files (#973)
+    * wayland-protocols: Update to 1.20
+    * gnupg: Enable support for tofu trust model (#966)
+    * gdb: Update to 8.3.1
+    * openssh: Update to 8.1P1
+    * man-pages: Update to 5.04.0
+    * libsoup: Update to 2.66.4
+    * pango: Update to 1.44.7
+    * harfbuzz: Enable gobject introspection
+
 freedesktop-sdk-19.08.07:
 
     * alsa-lib: Ignore host configuration (#857)
