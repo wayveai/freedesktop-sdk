@@ -42,6 +42,7 @@ sources:
   - '*.*[13579].*'
   ref: 2.46.0-0-gb4aa8d277d30f4042797dc8b64c073b10f8bac4b
 - kind: cargo
+  url: crates:crates
   ref:
   - name: aho-corasick
     version: 0.7.6
