@@ -43,6 +43,4 @@ sources:
   - xorg-server-*
   exclude:
   - xorg-server-*.99.*
-  ref: xorg-server-1.20.5-0-gfbbdd5613122f0f7d74471f240c28e4c3b796065
-- kind: patch
-  path: patches/xorg-server/0001-compiler.h-Do-not-include-sys-io.h-on-ARM-with-glibc.patch
+  ref: xorg-server-1.20.7-0-g489f4191f3c881c6c8acce97ec612167a4ae0f33
