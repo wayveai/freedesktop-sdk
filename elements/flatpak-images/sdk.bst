@@ -74,6 +74,9 @@ config:
     Extension org.freedesktop.Platform.openh264:
       directory: '%{lib}/openh264'
       add-ld-path: extra
+      versions: '2.0beta;2.0'
+      version: '2.0'
+      autodelete: 'false'
 
     Extension org.freedesktop.Sdk.Extension:
       subdirectories: 'true'
