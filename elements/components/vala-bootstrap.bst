@@ -23,7 +23,7 @@ config:
 
 sources:
 - kind: git_tag
-  url: gnome_archive:vala-bootstrap.git
+  url: git_https:gitlab.gnome.org/Archive/vala-bootstrap.git
   track: master
   track-tags: False
   ref: b2beeaccdf2307ced172646c2ada9765e1747b28
