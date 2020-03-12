@@ -1,13 +1,12 @@
 kind: meson
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/vala.bst
-  type: build
-- filename: components/dbus.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/vala.bst
+- components/dbus.bst
 
 variables:
   meson-local: >
@@ -26,9 +25,9 @@ sources:
   url: gnome:dconf.git
   track: master
   track-extra:
-  - dconf-0.32
+  - dconf-0.36
   match:
   - 0.[0-9][02468].*
-  ref: 0.34.0-0-g22d49c42cc71435e1ece14a385286e1d414ff21b
+  ref: 0.36.0-0-gb11d5f1e18b1a57fde7e8d1a1c361d5bce0da564
 - kind: patch
   path: patches/dconf/dconf-override.patch
