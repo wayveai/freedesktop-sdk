@@ -47,7 +47,7 @@ variables:
     --enable-multiarch \
     --disable-bootstrap \
     --with-build-sysroot=%{sysroot} \
-    --enable-languages=c,c++,fortran \
+    --enable-languages=c,c++,fortran,objc,obj-c++ \
     --enable-default-pie \
     --enable-default-ssp \
     --with-isl \
@@ -142,6 +142,7 @@ public:
         - '%{multiarch_libdir}/libcc1.so'
         - '%{multiarch_libdir}/libgcc_s.so'
         - '%{multiarch_libdir}/lib*.spec'
+        - '%{multiarch_libdir}/libobjc.so'
 
       static-blocklist:
         (=):
@@ -156,6 +157,7 @@ public:
         - '%{multiarch_libdir}/libtsan.a'
         - '%{multiarch_libdir}/libubsan.a'
         - '%{multiarch_libdir}/libstdc++fs.a'
+        - '%{multiarch_libdir}/libobjc.a'
 
       # Not actually used, included for completeness
       static-allowlist:
