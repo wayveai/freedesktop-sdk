@@ -22,13 +22,13 @@ savannah: https://git.savannah.gnu.org/git/
 sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
 xiph: https://git.xiph.org/
-#Gereric aliases (because mirroring requires some sort of alias)
+#Generic aliases (because mirroring requires some sort of alias)
 #Consider using one of these, rather than creating an overly-specific new alias for a single source
 git_https: https://
 # git_http: http://      #(Not currently used, uncomment if needed)
 #
 #
-#Other Aliases
+#File Aliases (Single file sources, zip files, tar files, etc.)
 #(github_files is an alias for the same url as github, but doesn't use the same mirror)
 freedesktop-sdk: https://cache.sdk.freedesktop.org/
 ftp_gnu_org: https://ftp.gnu.org/gnu/
@@ -39,7 +39,11 @@ pagure_releases: https://releases.pagure.org/
 sourceforge_download: https://downloads.sourceforge.net/
 sourceforge: https://sourceforge.net/
 sourceware_pub: https://sourceware.org/pub/
-#Gereric aliases (because mirroring requires some sort of alias)
+#Generic aliases (because mirroring requires some sort of alias)
 #Consider using one of these, rather than creating an overly-specific new alias for a single source
 tar_http: http://
 tar_https: https://
+#
+#
+#Cargo Alias
+crates: https://static.crates.io/
