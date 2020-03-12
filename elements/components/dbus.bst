@@ -11,9 +11,10 @@ build-depends:
 - components/systemd.bst
 
 variables:
-  conf-local: |
-    runstatedir=/run \
+  conf-local: >-
+    runstatedir=/run
     --with-system-socket=/run/dbus/system_bus_socket
+    --enable-user-session
 
 config:
   install-commands:
