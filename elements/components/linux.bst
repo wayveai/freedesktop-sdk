@@ -129,6 +129,15 @@ config:
     scripts/config -e DM_SNAPSHOT
     scripts/config -e OVERLAY_FS
 
+    # Some useful drivers when runnig as virtual machine
+    scripts/config -m VIRTIO_BALLOON
+    scripts/config -m VIRTIO_INPUT
+    scripts/config -e VIRTIO_PMEM
+    scripts/config -e VIRTIO_NET
+    scripts/config -e VIRTIO_BLK
+    scripts/config -e SCSI_VIRTIO
+    scripts/config -e VIRTIO_IOMMU
+
   build-commands:
   - |
     make
