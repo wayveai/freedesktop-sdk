@@ -102,12 +102,12 @@ And the following extensions to the SDK:
 * org.freedesktop.Sdk.Extension.toolchain-{architecture}
 
 We also provide following flatpak applications useful for testing GPU:
-* org.freedesktop.ClInfo
-* org.freedesktop.GlxInfo
-* org.freedesktop.GlxInfo.Debug
-* org.freedesktop.VaInfo
-* org.freedesktop.VaInfo.Debug
-* org.freedesktop.VulkanInfo
+* org.freedesktop.Platform.ClInfo
+* org.freedesktop.Platform.GlxInfo
+* org.freedesktop.Platform.GlxInfo.Debug
+* org.freedesktop.Platform.VaInfo
+* org.freedesktop.Platform.VaInfo.Debug
+* org.freedesktop.Platform.VulkanInfo
 
 ## HTML5 Codecs
 
