@@ -16,6 +16,7 @@ depends:
   type: build
 
 variables:
+  libexecdir: "%{libdir}"
   meson-local: >-
     -Dexamples=disabled
     -Dbenchmarks=disabled
