@@ -1,28 +1,23 @@
 kind: filter
 
-depends:
-- filename: components/pipewire-base.bst
-  type: build
-- filename: bootstrap-import.bst
-  type: runtime
-- filename: components/gstreamer-plugins-base.bst
-  type: runtime
-- filename: components/alsa-lib.bst
-  type: runtime
-- filename: components/dbus.bst
-  type: runtime
-- filename: components/sdl2.bst
-  type: runtime
-- filename: components/ffmpeg.bst
-  type: runtime
-- filename: components/systemd-libs.bst
-  type: runtime
-- filename: components/pipewire-manifest.bst
-  type: runtime
+build-depends:
+- components/pipewire-base.bst
+
+runtime-depends:
+- bootstrap-import.bst
+- components/gstreamer-plugins-base.bst
+- components/alsa-lib.bst
+- components/dbus.bst
+- components/sdl2.bst
+- components/ffmpeg.bst
+- components/systemd-libs.bst
+- components/pipewire-manifest.bst
 
 config:
   exclude:
   - daemon
+  - jack
+  - pulse
   include-orphans: True
 
 public:

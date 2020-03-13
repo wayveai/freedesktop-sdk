@@ -37,3 +37,8 @@ import_bootstrap:
   type: bool
   description: Whether to import external bootstrap
   default: false
+
+pipewire:
+  type: bool
+  description: Use Pipewire instead of pulseaudio in Desktop image
+  default: false

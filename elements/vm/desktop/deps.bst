@@ -19,11 +19,21 @@ runtime-depends:
 - components/pwquality.bst
 - components/sudo.bst
 - components/flatpak.bst
-- components/pulseaudio.bst
 - vm/config/flathub.bst
-- vm/config/pulseaudio.bst
 - vm/config/weston.bst
 - vm/config/sudo.bst
 - vm/config/networkd.bst
 - vm/config/resolved.bst
 - vm/config/journald.bst
+
+(?):
+- not pipewire:
+    runtime-depends:
+      (>):
+      - vm/config/pulseaudio.bst
+      - vm/config/pipewire.bst
+- pipewire:
+    runtime-depends:
+      (>):
+      - vm/config/pipewire.bst
+      - components/pipewire-pulse.bst

@@ -32,11 +32,13 @@ environment:
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig:'
 
 # FIXME colord depends on intltool (polkit) and python2 (mozjs)
+# FIXME Does not build against Pipewire 0.3
 variables:
   meson-local: >-
     -Dbackend-rdp=false
     -Dcolor-management-colord=false
     -Dsimple-dmabuf-drm=intel,etnaviv
+    -Dpipewire=false
 
 sources:
 - kind: git_tag
