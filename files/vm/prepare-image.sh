@@ -91,6 +91,9 @@ systemd-firstboot --root "${sysroot}" ${rootpasswd:+--root-password ${rootpasswd
 echo "Running systemctl preset-all" 1>&2
 systemctl --root "${sysroot}" preset-all
 
+echo "Running systemctl preset-all for all users" 1>&2
+systemctl --root "${sysroot}" --global preset-all
+
 echo "Fix rights for /etc/shadow" 1>&2
 touch "${sysroot}/etc/shadow"
 chmod 0400 "${sysroot}/etc/shadow"
