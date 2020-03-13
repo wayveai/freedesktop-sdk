@@ -149,4 +149,4 @@ sources:
   track-tags: false
   ref: 19.3-branchpoint-2509-g951083768b351b0700bdcc02758670e505cce974
 - kind: patch
-  path: patches/mesa/mesa_libdrm_deps-git.patch
+  path: patches/mesa/mesa_libdrm_deps.patch
