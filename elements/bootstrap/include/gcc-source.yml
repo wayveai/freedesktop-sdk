@@ -15,9 +15,9 @@ sources:
   directory: mpc
   ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
 - kind: tar
-  url: tar_http:isl.gforge.inria.fr/isl-0.22.tar.xz
+  url: tar_http:isl.gforge.inria.fr/isl-0.22.1.tar.xz
   directory: isl
-  ref: 6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa
+  ref: 28658ce0f0bdb95b51fd2eb15df24211c53284f6ca2ac5e897acc3169e55b60f
 - kind: patch
   path: patches/gcc/gcc-multiarch-os-dir.patch
 - kind: patch
