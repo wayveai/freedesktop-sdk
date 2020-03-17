@@ -5,6 +5,8 @@ build-depends:
 
 runtime-depends:
 - components/libpulse.bst
+- components/bluez.bst
+- components/sbc.bst
 - components/alsa-lib.bst
 
 config:

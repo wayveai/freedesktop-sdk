@@ -1,24 +1,25 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/git-minimal.bst
+- components/perl-xml-parser.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/glib.bst
-- filename: components/sndfile.bst
-- filename: components/speexdsp.bst
-- filename: components/dbus.bst
-- filename: components/fftw.bst
-- filename: components/perl-xml-parser.bst
-  type: build
-- filename: components/xorg-lib-xcb.bst
-- filename: components/xorg-lib-ice.bst
-- filename: components/xorg-lib-sm.bst
-- filename: components/xorg-lib-xtst.bst
-- filename: components/webrtc-audio-processing.bst
-- filename: components/alsa-lib.bst
+- bootstrap-import.bst
+- components/glib.bst
+- components/sndfile.bst
+- components/speexdsp.bst
+- components/dbus.bst
+- components/fftw.bst
+- components/xorg-lib-xcb.bst
+- components/xorg-lib-ice.bst
+- components/xorg-lib-sm.bst
+- components/xorg-lib-xtst.bst
+- components/webrtc-audio-processing.bst
+- components/alsa-lib.bst
+- components/bluez.bst
+- components/sbc.bst
 
 variables:
   conf-local: |
@@ -31,7 +32,7 @@ variables:
     --disable-jack \
     --disable-lirc \
     --disable-bluez4 \
-    --disable-bluez5 \
+    --enable-bluez5 \
     --enable-systemd-daemon \
     --enable-systemd-login \
     --enable-systemd-journal \
