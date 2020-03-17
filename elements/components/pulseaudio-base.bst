@@ -18,6 +18,7 @@ depends:
 - filename: components/xorg-lib-sm.bst
 - filename: components/xorg-lib-xtst.bst
 - filename: components/webrtc-audio-processing.bst
+- filename: components/alsa-lib.bst
 
 variables:
   conf-local: |
@@ -34,7 +35,8 @@ variables:
     --enable-systemd-daemon \
     --enable-systemd-login \
     --enable-systemd-journal \
-    --enable-udev
+    --enable-udev \
+    --enable-alsa
 
 config:
   configure-commands:
