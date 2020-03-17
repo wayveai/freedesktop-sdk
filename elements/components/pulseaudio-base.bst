@@ -26,7 +26,7 @@ variables:
     --with-system-user=pulse \
     --with-system-group=pulse \
     --with-access-group=pulse-access \
-    --without-caps \
+    --with-caps \
     --disable-oss-output \
     --disable-jack \
     --disable-lirc \
