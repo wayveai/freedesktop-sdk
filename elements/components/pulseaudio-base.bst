@@ -1,38 +1,37 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/git-minimal.bst
+- components/m4.bst
+- components/perl-xml-parser.bst
+- components/systemd.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/alsa-lib.bst
-- filename: components/dbus.bst
-- filename: components/fftw.bst
-- filename: components/gdbm.bst
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/glib.bst
-- filename: components/libtool.bst
-- filename: components/m4.bst
-  type: build
-- filename: components/orc.bst
-- filename: components/perl-xml-parser.bst
-  type: build
-- filename: components/sndfile.bst
-- filename: components/speexdsp.bst
-- filename: components/webrtc-audio-processing.bst
-- filename: components/xorg-lib-ice.bst
-- filename: components/xorg-lib-sm.bst
-- filename: components/xorg-lib-xcb.bst
-- filename: components/xorg-lib-xtst.bst
-- filename: components/gtk3.bst
-- filename: components/systemd.bst
-  type: build
+- bootstrap-import.bst
+- components/alsa-lib.bst
+- components/dbus.bst
+- components/fftw.bst
+- components/gdbm.bst
+- components/glib.bst
+- components/libtool.bst
+- components/orc.bst
+- components/sndfile.bst
+- components/speexdsp.bst
+- components/webrtc-audio-processing.bst
+- components/xorg-lib-ice.bst
+- components/xorg-lib-sm.bst
+- components/xorg-lib-xcb.bst
+- components/xorg-lib-xtst.bst
+- components/gtk3.bst
+- components/bluez.bst
+- components/sbc.bst
 
 variables:
   meson-local: >-
     -Dasyncns=disabled
     -Davahi=disabled
-    -Dbluez5=false
+    -Dbluez5=true
     -Ddatabase=gdbm
     -Dfftw=disabled
     -Dgtk=enabled
