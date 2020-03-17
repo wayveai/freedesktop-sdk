@@ -19,6 +19,7 @@ runtime-depends:
 - components/pwquality.bst
 - components/sudo.bst
 - components/flatpak.bst
+- components/xdg-desktop-portal.bst
 - vm/config/flathub.bst
 - vm/config/weston.bst
 - vm/config/sudo.bst
