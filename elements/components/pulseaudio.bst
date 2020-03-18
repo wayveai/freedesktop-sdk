@@ -5,6 +5,7 @@ build-depends:
 
 runtime-depends:
 - components/libpulse.bst
+- components/alsa-lib.bst
 
 config:
   exclude:

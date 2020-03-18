@@ -1,0 +1,32 @@
+commit 79a8efb45cb8304967baa2e8c6d6156478ce19d9
+Author: Carlos Garnacho <carlosg@gnome.org>
+Date:   Sat Jun 22 14:33:59 2019 +0200
+
+    client-conf: Avoid loading X11 properties unless SSH_CONNECTION is set
+    
+    Reading properties from the X11 root window is meant to provide 1:1 results
+    with reading the configuration directly in the local case. This configuration
+    is essentially different only in remote cases.
+    
+    Add an extra check for the SSH_CONNECTION envvar, so we don't even need
+    opening a X11 display connection for IPC in the most usual case.
+
+diff --git a/src/pulse/client-conf-x11.c b/src/pulse/client-conf-x11.c
+index 60c645ee7..e0c985e80 100644
+--- a/src/pulse/client-conf-x11.c
++++ b/src/pulse/client-conf-x11.c
+@@ -43,6 +43,14 @@ int pa_client_conf_from_x11(pa_client_conf *c) {
+ 
+     pa_assert(c);
+ 
++    /* Local connections will have configuration and X root window
++     * properties match 1:1, these paths are only strictly necessary
++     * for remote clients, so check for SSH_CONNECTION to make sure
++     * this is a remote session with X forwarding.
++     */
++    if (!getenv("SSH_CONNECTION"))
++        goto finish;
++
+     if (!(dname = getenv("DISPLAY")))
+         goto finish;
+ 

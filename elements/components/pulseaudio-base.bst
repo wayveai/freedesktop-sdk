@@ -18,6 +18,7 @@ depends:
 - filename: components/xorg-lib-sm.bst
 - filename: components/xorg-lib-xtst.bst
 - filename: components/webrtc-audio-processing.bst
+- filename: components/alsa-lib.bst
 
 variables:
   conf-local: |
@@ -25,7 +26,7 @@ variables:
     --with-system-user=pulse \
     --with-system-group=pulse \
     --with-access-group=pulse-access \
-    --without-caps \
+    --with-caps \
     --disable-oss-output \
     --disable-jack \
     --disable-lirc \
@@ -34,7 +35,8 @@ variables:
     --enable-systemd-daemon \
     --enable-systemd-login \
     --enable-systemd-journal \
-    --enable-udev
+    --enable-udev \
+    --enable-alsa
 
 config:
   configure-commands:
@@ -75,3 +77,5 @@ sources:
   ref: v12.2-0-gee910cf6daa5120ab534eb2e6c573d94b9b182e7
 - kind: patch
   path: patches/libpulse/pulseaudio-Use-upstream-gettext-instead-intltool.patch
+- kind: patch
+  path: patches/pulseaudio/x11-config-only-ssh.patch
