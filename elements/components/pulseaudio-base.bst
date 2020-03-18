@@ -77,3 +77,5 @@ sources:
   ref: v12.2-0-gee910cf6daa5120ab534eb2e6c573d94b9b182e7
 - kind: patch
   path: patches/libpulse/pulseaudio-Use-upstream-gettext-instead-intltool.patch
+- kind: patch
+  path: patches/pulseaudio/x11-config-only-ssh.patch
