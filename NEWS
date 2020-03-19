@@ -1,5 +1,14 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.09:
+
+    * libpulse: Upstream patch to only use X11 config when using ssh
+    * meson: Update to 0.53.2
+    * mesa headers, osmesa, mesa extension: Update to 20.0.1
+    * gstreamer: Fix 32 bit compatibility (#983).
+    * openh264 extension: Use 2.0/2.0beta branches.
+    * bash: Fix CVE-2019-18276
+
 freedesktop-sdk-19.08.08:
 
     * pulseaudio: Add missing cmake configuration files (#973)
