@@ -128,7 +128,6 @@ depends:
 - filename: components/json-glib.bst
 - filename: components/lame.bst
 - filename: components/libclc.bst
-- filename: components/libcroco.bst
 - filename: components/libdatrie.bst
 - filename: components/libdrm.bst
 - filename: components/libepoxy.bst
