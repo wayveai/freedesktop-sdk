@@ -7,7 +7,16 @@ depends:
 
 build-depends:
 - public-stacks/buildsystem-cmake.bst
+- components/gobject-introspection.bst
 - components/perl.bst
+- components/vala.bst
+
+variables:
+  cmake-local: >-
+    -DGOBJECT_INTROSPECTION=ON
+    -DENABLE_GTK_DOC=OFF
+    -DICAL_GLIB=ON
+    -DICAL_GLIB_VAPI=ON
 
 sources:
 - kind: git_tag
