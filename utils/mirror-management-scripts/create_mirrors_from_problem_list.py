@@ -243,8 +243,16 @@ def push_tar_repo(tar_repo_dir, access_token, prompt_needed=True):
         if prompt_needed:
             if not PROCEED():
                 print_red("Changes not pushed to remote repo")
-        else:
-            git_command_with_askpass('git push origin master', tar_repo_dir, access_token)
+                return
+        push_command = "git push origin master"
+        print('>> "' + push_command + '"')
+        if git_command_with_askpass(push_command, tar_repo_dir, access_token) != 0:
+            # A non-zero return means the process failed
+            print_red(
+                "Problem with git push. ", "Something went wrong with the 'git push' operation."
+                + " You may need to navigate to the " + TAR_REPO_NAME + " repository and"
+                + " complete the operation manually."
+            )
 
 def git_command_with_askpass(command, repo_dir, access_token):
     '''To complete some subprocess calls with the repository we need to
