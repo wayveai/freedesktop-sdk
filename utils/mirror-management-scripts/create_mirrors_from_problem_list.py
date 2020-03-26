@@ -123,7 +123,7 @@ ACCESS_TOKEN_FILE_HELP = (
     "The path to a file containing a valid Gitlab access token which has API permissions."
     + " Defaults to '" + HELPTEXT_ACCESS_TOKEN_FILE + "'."
     + " The file should contain nothing except the access token, with no whitespace or newlines."
-    + " (For security reasons, make sure no one else has read access to this file)."
+    + " (For security reasons, make sure no one else has read-access to this file)."
 )
 ACCESS_TOKEN_HELP = (
     "Background: In order to create new mirrors, the script needs a valid Gitlab API access"
@@ -283,6 +283,8 @@ def get_access_token(access_token_file_name):
             return token_file.read().strip()
     else:
         print_green("\nPlease supply a Gitlab API access token.")
+        print("(If you run this script regularly, consider saving your access token to a file where"
+              + " the script can read it automatically. See help for more info.)")
         print(ACCESS_TOKEN_HELP)
         return input("Access Token: ")
 

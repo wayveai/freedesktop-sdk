@@ -44,21 +44,41 @@ Save the script and the json file to your computer, and run the script.
 
 When you run the script, it will look for the json file in the current working
 directory. (If you didn't save the json file to the current working directory,
-you can specify a different path using the -p option on the command line.)
+you can specify a different path using the -p option on the command line.) The
+script then iterates through the list, creating mirrors as needed. There will
+be a prompt before each mirror, displaying the relevant information and asking
+if you would like to proceed (prompts can be disabled from the command line with
+the '--automatic' option).
+
+For git repository mirrors, confirming the prompt will immediately create the
+mirror on the gitlab servers. For one-file sources (tarballs, crates etc.)
+confirming the prompt means that the source will be downloaded and commited
+locally. These commits are then all pushed to the remote server in a single
+batch at the end of the script.
+
+If you ask the script to create a mirror that already exists, it will report
+that the mirror exists, and will not try to recreate it or overwrite it. This
+means that there won't be any conflicts if two people both try to create the
+missing mirrors. Sometimes, the same source will be listed more than once in the
+json file (usually because it appears in more than one element). This also
+doesn't cause any errors or conflicts, the script simply creates the mirror
+once, and then reports that the mirror 'already exists', and does not try to
+create it a second time.
 
 For more information, see the documentation provided in the script. The script
 has a help option (`create_mirrors_from_problem_list.py -h`), and fairly
 detailed docstrings.
 
-After the new mirrors have been created, you can go back to Gitlab and re-run
-the original CI job (no need to create a new pipeline, just click on 're-run').
-The job will repeat the same checks, which should now pass.
+After the new mirrors have been created, and if you have the right permissions,
+you may wish to go back to Gitlab and re-run the original CI job. If so,
+there's no need to create a new pipeline, just click on 're-run' and the job
+will repeat the same checks, which should now pass.
 
 ### Requirements
 * Running the script
   - Requires the python gitlab library. (Can be installed with `pip install
     python-gitlab`)
-  - Requires an API access token (see script help for more detail)
+  - Requires a Gitlab API access token (see script help for more detail)
 * Creating download mirrors for git repos
   - Requires Maintainer status in the Gitlab project group
     (freedesktop-sdk/mirrors)
