@@ -1,10 +1,10 @@
 sources:
 - kind: git_tag
-  track: release/9.x
+  track: release/10.x
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-9.0.1-0-gc1a0a213378a458fbea1a5c77b315c7dce08fd05
+  ref: llvmorg-10.0.0-0-gd32170dbd5b0d54436537b6b75beaf44324e0c28
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
@@ -12,9 +12,4 @@ sources:
 - kind: patch
   path: patches/llvm/llvm-fix-tsan-build.patch
 - kind: patch
-  path: patches/llvm/llvm9-shared-tablegen.patch
-- kind: patch
-  directory: libclc
-  path: patches/libclc/libclc-force-configure-to-use-python3.patch
-- kind: patch
-  path: patches/llvm/compiler-rt-sanitizer-glibc-2.31.patch
+  path: patches/llvm/llvm-shared-tablegen.patch

@@ -1,7 +1,8 @@
-diff -ur llvm8.old/compiler-rt/lib/tsan/dd/dd_interceptors.cc llvm8/compiler-rt/lib/tsan/dd/dd_interceptors.cc
---- llvm8.old/compiler-rt/lib/tsan/dd/dd_interceptors.cc	2019-04-29 20:28:29.582653303 +0200
-+++ llvm8/compiler-rt/lib/tsan/dd/dd_interceptors.cc	2019-04-30 16:04:43.313473368 +0200
-@@ -7,6 +7,9 @@
+diff --git a/compiler-rt/lib/tsan/dd/dd_interceptors.cpp b/compiler-rt/lib/tsan/dd/dd_interceptors.cpp
+index 35a0beb1919..724ea47acaa 100644
+--- a/compiler-rt/lib/tsan/dd/dd_interceptors.cpp
++++ b/compiler-rt/lib/tsan/dd/dd_interceptors.cpp
+@@ -6,6 +6,9 @@
  //
  //===----------------------------------------------------------------------===//
  

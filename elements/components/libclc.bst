@@ -1,29 +1,13 @@
-kind: manual
+kind: cmake
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/llvm.bst
-  type: build
-- filename: components/python3.bst
-  type: build
+- bootstrap-import.bst
+- components/llvm.bst
 
-config:
-  configure-commands:
-  - |
-    cd libclc
-    ./configure.py \
-    --prefix=%{prefix} \
-    --pkgconfigdir=%{libdir}/pkgconfig \
-    --with-cxx-compiler=%{bindir}/g++
+build-depends:
+- public-stacks/buildsystem-cmake.bst
 
-  build-commands:
-  - |
-    cd libclc
-    make
-
-  install-commands:
-  - |
-    cd libclc
-    make -j1 DESTDIR="%{install-root}" install
+variables:
+  cmake: cmake "-B%{build-dir}" -Slibclc -G"%{generator}" %{cmake-args}
 
 (@): elements/include/llvm.yml
