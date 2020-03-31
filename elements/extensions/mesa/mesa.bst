@@ -33,6 +33,7 @@ depends:
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+  CXXFLAGS:  "%{target_flags} -std=gnu++17"
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"
