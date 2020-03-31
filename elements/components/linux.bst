@@ -138,6 +138,16 @@ config:
     scripts/config -e SCSI_VIRTIO
     scripts/config -e VIRTIO_IOMMU
 
+    scripts/config -e BLK_MQ_VIRTIO
+    scripts/config -m VIRTIO_CONSOLE
+    scripts/config -e HW_RANDOM_VIRTIO
+    scripts/config -m VIRTIO_MMIO
+    scripts/config -m CRYPTO_DEV_VIRTIO
+
+    # needed by spice-vdagent
+    scripts/config -m VIRTIO_VSOCKETS
+    scripts/config -m INPUT_UINPUT
+
   build-commands:
   - |
     make
