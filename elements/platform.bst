@@ -70,8 +70,8 @@ depends:
 - filename: components/python3.bst
 - filename: components/python3-setuptools.bst
 - filename: components/python3-six.bst
-- filename: components/python3_usercustomize.bst
-- filename: components/python3_sitecustomize.bst
+- filename: components/python3-usercustomize.bst
+- filename: components/python3-sitecustomize.bst
 - filename: components/tar.bst
 - filename: components/sndfile.bst
 - filename: components/sqlite.bst
