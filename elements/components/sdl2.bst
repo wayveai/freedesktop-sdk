@@ -77,5 +77,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:www.libsdl.org/release/SDL2-2.0.10.tar.gz
-  ref: b4656c13a1f0d0023ae2f4a9cf08ec92fffb464e0f24238337784159b8b91d57
+  url: tar_https:www.libsdl.org/release/SDL2-2.0.12.tar.gz
+  ref: 349268f695c02efbc9b9148a70b85e58cefbbf704abd3e91be654db7f1e2c863
