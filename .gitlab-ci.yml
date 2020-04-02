@@ -210,6 +210,7 @@ check_mirrors:
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
+  interruptible: true
   script:
     - |
       if [ "${CI_JOB_NAME}" == app_x86_64-no-cache ] || [ "${CI_JOB_NAME}" == app_arm-no-cache ]; then
