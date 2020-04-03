@@ -1,7 +1,8 @@
-diff -ur libdrm.old/amdgpu/meson.build libdrm/amdgpu/meson.build
---- libdrm.old/amdgpu/meson.build	2019-04-05 14:44:46.335431610 +0200
-+++ libdrm/amdgpu/meson.build	2019-04-05 16:17:55.481299890 +0200
-@@ -35,8 +35,7 @@
+diff --git a/amdgpu/meson.build b/amdgpu/meson.build
+index a1781f59..6f6d679d 100644
+--- a/amdgpu/meson.build
++++ b/amdgpu/meson.build
+@@ -35,8 +35,7 @@ libdrm_amdgpu = shared_library(
      '-DAMDGPU_ASIC_ID_TABLE="@0@"'.format(join_paths(datadir_amdgpu, 'amdgpu.ids')),
    ],
    include_directories : [inc_root, inc_drm],
@@ -11,7 +12,7 @@ diff -ur libdrm.old/amdgpu/meson.build libdrm/amdgpu/meson.build
    version : '1.0.0',
    install : true,
  )
-@@ -53,7 +52,8 @@
+@@ -53,7 +52,8 @@ pkg.generate(
  )
  
  ext_libdrm_amdgpu = declare_dependency(
@@ -21,10 +22,11 @@ diff -ur libdrm.old/amdgpu/meson.build libdrm/amdgpu/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/etnaviv/meson.build libdrm/etnaviv/meson.build
---- libdrm.old/etnaviv/meson.build	2019-04-05 14:44:46.339431571 +0200
-+++ libdrm/etnaviv/meson.build	2019-04-05 15:05:24.189698577 +0200
-@@ -29,9 +29,8 @@
+diff --git a/etnaviv/meson.build b/etnaviv/meson.build
+index 6040cf63..4ca28af7 100644
+--- a/etnaviv/meson.build
++++ b/etnaviv/meson.build
+@@ -29,9 +29,8 @@ libdrm_etnaviv = shared_library(
      config_file
    ],
    include_directories : [inc_root, inc_drm],
@@ -35,7 +37,7 @@ diff -ur libdrm.old/etnaviv/meson.build libdrm/etnaviv/meson.build
    version : '1.0.0',
    install : true,
  )
-@@ -48,7 +47,8 @@
+@@ -48,7 +47,8 @@ pkg.generate(
  )
  
  ext_libdrm_etnaviv = declare_dependency(
@@ -45,10 +47,11 @@ diff -ur libdrm.old/etnaviv/meson.build libdrm/etnaviv/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/exynos/meson.build libdrm/exynos/meson.build
---- libdrm.old/exynos/meson.build	2019-04-05 14:44:46.339431571 +0200
-+++ libdrm/exynos/meson.build	2019-04-05 16:15:02.706807834 +0200
-@@ -23,8 +23,7 @@
+diff --git a/exynos/meson.build b/exynos/meson.build
+index 40d66fc1..bd099ee3 100644
+--- a/exynos/meson.build
++++ b/exynos/meson.build
+@@ -23,8 +23,7 @@ libdrm_exynos = shared_library(
    [files('exynos_drm.c', 'exynos_fimg2d.c'), config_file],
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm],
@@ -58,7 +61,7 @@ diff -ur libdrm.old/exynos/meson.build libdrm/exynos/meson.build
    version : '1.0.0',
    install : true,
  )
-@@ -33,7 +32,8 @@
+@@ -33,7 +32,8 @@ install_headers('exynos_drmif.h', subdir : 'libdrm')
  install_headers('exynos_drm.h', 'exynos_fimg2d.h', subdir : 'exynos')
  
  ext_libdrm_exynos = declare_dependency(
@@ -68,10 +71,11 @@ diff -ur libdrm.old/exynos/meson.build libdrm/exynos/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/freedreno/meson.build libdrm/freedreno/meson.build
---- libdrm.old/freedreno/meson.build	2019-04-05 14:44:46.339431571 +0200
-+++ libdrm/freedreno/meson.build	2019-04-05 16:16:31.986031366 +0200
-@@ -44,14 +44,14 @@
+diff --git a/freedreno/meson.build b/freedreno/meson.build
+index 63b84fc9..23525de1 100644
+--- a/freedreno/meson.build
++++ b/freedreno/meson.build
+@@ -44,14 +44,14 @@ libdrm_freedreno = shared_library(
    [files_freedreno, config_file],
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm],
@@ -89,10 +93,11 @@ diff -ur libdrm.old/freedreno/meson.build libdrm/freedreno/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/intel/meson.build libdrm/intel/meson.build
---- libdrm.old/intel/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/intel/meson.build	2019-04-05 15:09:25.907689055 +0200
-@@ -28,15 +28,15 @@
+diff --git a/intel/meson.build b/intel/meson.build
+index 4d3f1ebd..cdc11772 100644
+--- a/intel/meson.build
++++ b/intel/meson.build
+@@ -28,15 +28,15 @@ libdrm_intel = shared_library(
      config_file,
    ],
    include_directories : [inc_root, inc_drm],
@@ -111,7 +116,7 @@ diff -ur libdrm.old/intel/meson.build libdrm/intel/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-@@ -58,7 +58,8 @@
+@@ -58,7 +58,8 @@ test_decode = executable(
    'test_decode',
    files('test_decode.c'),
    include_directories : [inc_root, inc_drm],
@@ -121,10 +126,11 @@ diff -ur libdrm.old/intel/meson.build libdrm/intel/meson.build
    c_args : libdrm_c_args,
  )
  
-diff -ur libdrm.old/libkms/meson.build libdrm/libkms/meson.build
---- libdrm.old/libkms/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/libkms/meson.build	2019-04-05 16:16:59.629789713 +0200
-@@ -46,13 +46,14 @@
+diff --git a/libkms/meson.build b/libkms/meson.build
+index 216be4df..3f1ea2e1 100644
+--- a/libkms/meson.build
++++ b/libkms/meson.build
+@@ -46,13 +46,14 @@ libkms = shared_library(
    [files_libkms, config_file],
    c_args : libdrm_c_args,
    include_directories : libkms_include,
@@ -141,10 +147,11 @@ diff -ur libdrm.old/libkms/meson.build libdrm/libkms/meson.build
    include_directories : [libkms_include],
  )
  
-diff -ur libdrm.old/meson.build libdrm/meson.build
---- libdrm.old/meson.build	2019-04-05 14:44:46.275432203 +0200
-+++ libdrm/meson.build	2019-04-05 15:03:19.134703066 +0200
-@@ -281,6 +281,7 @@
+diff --git a/meson.build b/meson.build
+index 0515866f..c463cfcf 100644
+--- a/meson.build
++++ b/meson.build
+@@ -290,6 +290,7 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
  inc_root = include_directories('.')
  inc_drm = include_directories('include/drm')
  
@@ -152,7 +159,7 @@ diff -ur libdrm.old/meson.build libdrm/meson.build
  libdrm = shared_library(
    'drm',
    [files(
-@@ -300,11 +301,22 @@
+@@ -319,11 +320,22 @@ ext_libdrm = declare_dependency(
    link_with : libdrm,
    include_directories : [inc_root, inc_drm],
  )
@@ -176,7 +183,7 @@ diff -ur libdrm.old/meson.build libdrm/meson.build
    'include/drm/mach64_drm.h', 'include/drm/mga_drm.h',
    'include/drm/msm_drm.h', 'include/drm/nouveau_drm.h',
    'include/drm/qxl_drm.h', 'include/drm/r128_drm.h',
-@@ -318,6 +330,7 @@
+@@ -337,6 +349,7 @@ if with_vmwgfx
    install_headers('include/drm/vmwgfx_drm.h', subdir : 'libdrm')
  endif
  
@@ -184,21 +191,23 @@ diff -ur libdrm.old/meson.build libdrm/meson.build
  pkg.generate(
    name : 'libdrm',
    libraries : libdrm,
-@@ -325,6 +338,7 @@
+@@ -344,6 +357,7 @@ pkg.generate(
    version : meson.project_version(),
    description : 'Userspace interface to kernel DRM services',
  )
 +endif
  
- env_test = environment()
- env_test.set('NM', find_program('nm').path())
-diff -ur libdrm.old/meson_options.txt libdrm/meson_options.txt
---- libdrm.old/meson_options.txt	2019-04-05 14:44:46.275432203 +0200
-+++ libdrm/meson_options.txt	2019-04-05 14:47:39.685721087 +0200
-@@ -19,6 +19,14 @@
+ if with_libkms
+   subdir('libkms')
+diff --git a/meson_options.txt b/meson_options.txt
+index 8af33f1c..d431f69f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -18,6 +18,14 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  # SOFTWARE.
  
- option(
++option(
 +  'libdrm',
 +  type : 'combo',
 +  value : 'true',
@@ -206,14 +215,14 @@ diff -ur libdrm.old/meson_options.txt libdrm/meson_options.txt
 +  description : 'Build libdrm library.',
 +)
 +
-+option(
+ option(
    'libkms',
    type : 'combo',
-   value : 'auto',
-diff -ur libdrm.old/nouveau/meson.build libdrm/nouveau/meson.build
---- libdrm.old/nouveau/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/nouveau/meson.build	2019-04-05 16:14:09.747265218 +0200
-@@ -24,14 +24,14 @@
+diff --git a/nouveau/meson.build b/nouveau/meson.build
+index 9bd58fca..55502361 100644
+--- a/nouveau/meson.build
++++ b/nouveau/meson.build
+@@ -24,14 +24,14 @@ libdrm_nouveau = shared_library(
    [files( 'nouveau.c', 'pushbuf.c', 'bufctx.c', 'abi16.c'), config_file],
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm],
@@ -231,10 +240,11 @@ diff -ur libdrm.old/nouveau/meson.build libdrm/nouveau/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/omap/meson.build libdrm/omap/meson.build
---- libdrm.old/omap/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/omap/meson.build	2019-04-05 16:15:35.930519635 +0200
-@@ -23,14 +23,14 @@
+diff --git a/omap/meson.build b/omap/meson.build
+index 53330b61..e8c67fd3 100644
+--- a/omap/meson.build
++++ b/omap/meson.build
+@@ -23,14 +23,14 @@ libdrm_omap = shared_library(
    [files('omap_drm.c'), config_file],
    include_directories : [inc_root, inc_drm],
    c_args : libdrm_c_args,
@@ -252,10 +262,11 @@ diff -ur libdrm.old/omap/meson.build libdrm/omap/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/radeon/meson.build libdrm/radeon/meson.build
---- libdrm.old/radeon/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/radeon/meson.build	2019-04-05 15:06:04.105372226 +0200
-@@ -30,14 +30,14 @@
+diff --git a/radeon/meson.build b/radeon/meson.build
+index ca128329..76aa274d 100644
+--- a/radeon/meson.build
++++ b/radeon/meson.build
+@@ -30,14 +30,14 @@ libdrm_radeon = shared_library(
    ],
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm],
@@ -273,10 +284,11 @@ diff -ur libdrm.old/radeon/meson.build libdrm/radeon/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/tegra/meson.build libdrm/tegra/meson.build
---- libdrm.old/tegra/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/tegra/meson.build	2019-04-05 16:17:47.125373300 +0200
-@@ -22,15 +22,15 @@
+diff --git a/tegra/meson.build b/tegra/meson.build
+index 88613b9c..b7537a39 100644
+--- a/tegra/meson.build
++++ b/tegra/meson.build
+@@ -22,15 +22,15 @@ libdrm_tegra = shared_library(
    'drm_tegra',
    [files('tegra.c'), config_file],
    include_directories : [inc_root, inc_drm],
@@ -295,12 +307,13 @@ diff -ur libdrm.old/tegra/meson.build libdrm/tegra/meson.build
    include_directories : [inc_drm, include_directories('.')],
  )
  
-diff -ur libdrm.old/tests/amdgpu/meson.build libdrm/tests/amdgpu/meson.build
---- libdrm.old/tests/amdgpu/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/tests/amdgpu/meson.build	2019-04-05 16:21:37.355336739 +0200
-@@ -26,9 +26,9 @@
+diff --git a/tests/amdgpu/meson.build b/tests/amdgpu/meson.build
+index 1726cb43..bbe94ccd 100644
+--- a/tests/amdgpu/meson.build
++++ b/tests/amdgpu/meson.build
+@@ -26,9 +26,9 @@ if dep_cunit.found()
        'vce_tests.c', 'uvd_enc_tests.c', 'vcn_tests.c', 'deadlock_tests.c',
-       'vm_tests.c',
+       'vm_tests.c', 'ras_tests.c', 'syncobj_tests.c',
      ),
 -    dependencies : [dep_cunit, dep_threads],
 +    dependencies : [dep_cunit, dep_threads, ext_libdrm],
@@ -310,10 +323,11 @@ diff -ur libdrm.old/tests/amdgpu/meson.build libdrm/tests/amdgpu/meson.build
      install : with_install_tests,
    )
  endif
-diff -ur libdrm.old/tests/etnaviv/meson.build libdrm/tests/etnaviv/meson.build
---- libdrm.old/tests/etnaviv/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/etnaviv/meson.build	2019-04-05 16:17:32.833498759 +0200
-@@ -24,7 +24,8 @@
+diff --git a/tests/etnaviv/meson.build b/tests/etnaviv/meson.build
+index 8b4a3cfb..51ecb471 100644
+--- a/tests/etnaviv/meson.build
++++ b/tests/etnaviv/meson.build
+@@ -24,7 +24,8 @@ etnaviv_2d_test = executable(
    'etnaviv_2d_test',
    files('etnaviv_2d_test.c', 'write_bmp.c'),
    include_directories : inc_etnaviv_tests,
@@ -323,7 +337,7 @@ diff -ur libdrm.old/tests/etnaviv/meson.build libdrm/tests/etnaviv/meson.build
    install : with_install_tests,
  )
  
-@@ -32,7 +33,8 @@
+@@ -32,7 +33,8 @@ etnaviv_cmd_stream_test = executable(
    'etnaviv_cmd_stream_test',
    files('etnaviv_cmd_stream_test.c'),
    include_directories : inc_etnaviv_tests,
@@ -333,7 +347,7 @@ diff -ur libdrm.old/tests/etnaviv/meson.build libdrm/tests/etnaviv/meson.build
    install : with_install_tests,
  )
  
-@@ -40,6 +42,7 @@
+@@ -40,6 +42,7 @@ etnaviv_bo_cache_test = executable(
    'etnaviv_bo_cache_test',
    files('etnaviv_bo_cache_test.c'),
    include_directories : inc_etnaviv_tests,
@@ -342,10 +356,11 @@ diff -ur libdrm.old/tests/etnaviv/meson.build libdrm/tests/etnaviv/meson.build
 +  dependencies : [ext_libdrm],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/exynos/meson.build libdrm/tests/exynos/meson.build
---- libdrm.old/tests/exynos/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/exynos/meson.build	2019-04-05 16:23:02.090581231 +0200
-@@ -27,8 +27,8 @@
+diff --git a/tests/exynos/meson.build b/tests/exynos/meson.build
+index 3a048e8a..57895598 100644
+--- a/tests/exynos/meson.build
++++ b/tests/exynos/meson.build
+@@ -27,8 +27,8 @@ if with_libkms
      c_args : libdrm_c_args,
      include_directories : [inc_root, inc_drm, inc_exynos,
                             include_directories('../../libkms')],
@@ -356,7 +371,7 @@ diff -ur libdrm.old/tests/exynos/meson.build libdrm/tests/exynos/meson.build
      install : with_install_tests,
    )
  endif
-@@ -38,8 +38,8 @@
+@@ -38,8 +38,8 @@ exynos_fimg2d_perf = executable(
    files('exynos_fimg2d_perf.c'),
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm, inc_exynos],
@@ -367,7 +382,7 @@ diff -ur libdrm.old/tests/exynos/meson.build libdrm/tests/exynos/meson.build
    install : with_install_tests,
  )
  
-@@ -48,7 +48,7 @@
+@@ -48,7 +48,7 @@ exynos_fimg2d_event = executable(
    files('exynos_fimg2d_event.c'),
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_drm, inc_exynos],
@@ -377,10 +392,11 @@ diff -ur libdrm.old/tests/exynos/meson.build libdrm/tests/exynos/meson.build
 +  dependencies : [dep_threads, ext_libdrm],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/kms/meson.build libdrm/tests/kms/meson.build
---- libdrm.old/tests/kms/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/kms/meson.build	2019-04-05 16:16:08.570235621 +0200
-@@ -26,7 +26,7 @@
+diff --git a/tests/kms/meson.build b/tests/kms/meson.build
+index 91371aa0..fd5aaa06 100644
+--- a/tests/kms/meson.build
++++ b/tests/kms/meson.build
+@@ -26,7 +26,7 @@ libkms_test = static_library(
      'libkms-test-plane.c', 'libkms-test-screen.c',
    ),
    include_directories : [inc_root, inc_tests, inc_drm],
@@ -389,10 +405,11 @@ diff -ur libdrm.old/tests/kms/meson.build libdrm/tests/kms/meson.build
    c_args : libdrm_c_args,
  )
  
-diff -ur libdrm.old/tests/kmstest/meson.build libdrm/tests/kmstest/meson.build
---- libdrm.old/tests/kmstest/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/kmstest/meson.build	2019-04-05 16:24:15.913920999 +0200
-@@ -25,6 +25,7 @@
+diff --git a/tests/kmstest/meson.build b/tests/kmstest/meson.build
+index 4fb870f9..5b9e7a08 100644
+--- a/tests/kmstest/meson.build
++++ b/tests/kmstest/meson.build
+@@ -25,6 +25,7 @@ kmstest = executable(
    include_directories : [
      inc_root, inc_tests, include_directories('../../libkms'), inc_drm,
    ],
@@ -401,10 +418,11 @@ diff -ur libdrm.old/tests/kmstest/meson.build libdrm/tests/kmstest/meson.build
 +  dependencies : [ext_libdrm],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/meson.build libdrm/tests/meson.build
---- libdrm.old/tests/meson.build	2019-04-05 14:44:46.343431531 +0200
-+++ libdrm/tests/meson.build	2019-04-05 16:20:28.727946527 +0200
-@@ -52,7 +52,7 @@
+diff --git a/tests/meson.build b/tests/meson.build
+index 5aab5a04..b8510830 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -52,7 +52,7 @@ drmsl = executable(
    'drmsl',
    files('drmsl.c'),
    include_directories : [inc_root, inc_drm],
@@ -413,7 +431,7 @@ diff -ur libdrm.old/tests/meson.build libdrm/tests/meson.build
    c_args : libdrm_c_args,
  )
  
-@@ -60,7 +60,7 @@
+@@ -60,7 +60,7 @@ hash = executable(
    'hash',
    files('hash.c'),
    include_directories : [inc_root, inc_drm],
@@ -422,16 +440,7 @@ diff -ur libdrm.old/tests/meson.build libdrm/tests/meson.build
    c_args : libdrm_c_args,
  )
  
-@@ -68,7 +68,7 @@
-   'random',
-   files('random.c'),
-   include_directories : [inc_root, inc_drm],
--  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   c_args : libdrm_c_args,
- )
- 
-@@ -76,7 +76,7 @@
+@@ -68,7 +68,7 @@ drmdevice = executable(
    'drmdevice',
    files('drmdevice.c'),
    include_directories : [inc_root, inc_drm],
@@ -440,10 +449,11 @@ diff -ur libdrm.old/tests/meson.build libdrm/tests/meson.build
    c_args : libdrm_c_args,
  )
  
-diff -ur libdrm.old/tests/modeprint/meson.build libdrm/tests/modeprint/meson.build
---- libdrm.old/tests/modeprint/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/modeprint/meson.build	2019-04-05 16:23:17.122446937 +0200
-@@ -23,7 +23,7 @@
+diff --git a/tests/modeprint/meson.build b/tests/modeprint/meson.build
+index 0801808a..067b18ab 100644
+--- a/tests/modeprint/meson.build
++++ b/tests/modeprint/meson.build
+@@ -23,7 +23,7 @@ modeprint = executable(
    files('modeprint.c'),
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_tests, inc_drm],
@@ -453,10 +463,11 @@ diff -ur libdrm.old/tests/modeprint/meson.build libdrm/tests/modeprint/meson.bui
 +  dependencies : [dep_threads, ext_libdrm],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/modetest/meson.build libdrm/tests/modetest/meson.build
---- libdrm.old/tests/modetest/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/modetest/meson.build	2019-04-05 16:23:40.258240098 +0200
-@@ -23,7 +23,7 @@
+diff --git a/tests/modetest/meson.build b/tests/modetest/meson.build
+index 23d84a1d..3b5039fa 100644
+--- a/tests/modetest/meson.build
++++ b/tests/modetest/meson.build
+@@ -23,7 +23,7 @@ modetest = executable(
    files('buffers.c', 'cursor.c', 'modetest.c'),
    c_args : [libdrm_c_args, '-Wno-pointer-arith'],
    include_directories : [inc_root, inc_tests, inc_drm],
@@ -466,9 +477,10 @@ diff -ur libdrm.old/tests/modetest/meson.build libdrm/tests/modetest/meson.build
 +  link_with : [libutil],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/nouveau/meson.build libdrm/tests/nouveau/meson.build
---- libdrm.old/tests/nouveau/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/nouveau/meson.build	2019-04-05 16:21:42.679289351 +0200
+diff --git a/tests/nouveau/meson.build b/tests/nouveau/meson.build
+index ca4d44f0..c64802c6 100644
+--- a/tests/nouveau/meson.build
++++ b/tests/nouveau/meson.build
 @@ -21,9 +21,9 @@
  threaded = executable(
    'threaded',
@@ -481,10 +493,11 @@ diff -ur libdrm.old/tests/nouveau/meson.build libdrm/tests/nouveau/meson.build
    c_args : libdrm_c_args,
  )
  
-diff -ur libdrm.old/tests/proptest/meson.build libdrm/tests/proptest/meson.build
---- libdrm.old/tests/proptest/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/proptest/meson.build	2019-04-05 16:23:55.758101431 +0200
-@@ -23,6 +23,7 @@
+diff --git a/tests/proptest/meson.build b/tests/proptest/meson.build
+index 9c87965a..b5a11a43 100644
+--- a/tests/proptest/meson.build
++++ b/tests/proptest/meson.build
+@@ -23,6 +23,7 @@ proptest = executable(
    files('proptest.c'),
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_tests, inc_drm],
@@ -493,10 +506,11 @@ diff -ur libdrm.old/tests/proptest/meson.build libdrm/tests/proptest/meson.build
 +  dependencies : [ext_libdrm],
    install : with_install_tests,
  )
-diff -ur libdrm.old/tests/radeon/meson.build libdrm/tests/radeon/meson.build
---- libdrm.old/tests/radeon/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/radeon/meson.build	2019-04-05 16:18:11.573158393 +0200
-@@ -22,6 +22,6 @@
+diff --git a/tests/radeon/meson.build b/tests/radeon/meson.build
+index bb345b73..33c3c68a 100644
+--- a/tests/radeon/meson.build
++++ b/tests/radeon/meson.build
+@@ -22,6 +22,6 @@ radeon_ttm = executable(
    'radeon_ttm',
    files('rbo.c', 'radeon_ttm.c'),
    include_directories : [inc_root, inc_drm],
@@ -504,10 +518,11 @@ diff -ur libdrm.old/tests/radeon/meson.build libdrm/tests/radeon/meson.build
 +  dependencies : [ext_libdrm],
    c_args : libdrm_c_args,
  )
-diff -ur libdrm.old/tests/tegra/meson.build libdrm/tests/tegra/meson.build
---- libdrm.old/tests/tegra/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/tegra/meson.build	2019-04-05 16:20:50.731751235 +0200
-@@ -23,5 +23,6 @@
+diff --git a/tests/tegra/meson.build b/tests/tegra/meson.build
+index 4f8c54f4..f1e4c30d 100644
+--- a/tests/tegra/meson.build
++++ b/tests/tegra/meson.build
+@@ -23,5 +23,6 @@ openclose = executable(
    files('openclose.c'),
    include_directories : [inc_root, inc_drm, include_directories('../../tegra')],
    c_args : libdrm_c_args,
@@ -515,10 +530,11 @@ diff -ur libdrm.old/tests/tegra/meson.build libdrm/tests/tegra/meson.build
 +  link_with : [libdrm_tegra],
 +  dependencies : [ext_libdrm],
  )
-diff -ur libdrm.old/tests/util/meson.build libdrm/tests/util/meson.build
---- libdrm.old/tests/util/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/util/meson.build	2019-04-05 16:15:55.338350859 +0200
-@@ -23,6 +23,6 @@
+diff --git a/tests/util/meson.build b/tests/util/meson.build
+index 7fa1a4b7..488cc6c9 100644
+--- a/tests/util/meson.build
++++ b/tests/util/meson.build
+@@ -23,6 +23,6 @@ libutil = static_library(
    'util',
    [files('format.c', 'kms.c', 'pattern.c'), config_file],
    include_directories : [inc_root, inc_drm],
@@ -526,10 +542,11 @@ diff -ur libdrm.old/tests/util/meson.build libdrm/tests/util/meson.build
 +  dependencies : [ext_libdrm],
    dependencies : dep_cairo
  )
-diff -ur libdrm.old/tests/vbltest/meson.build libdrm/tests/vbltest/meson.build
---- libdrm.old/tests/vbltest/meson.build	2019-04-05 14:44:46.347431492 +0200
-+++ libdrm/tests/vbltest/meson.build	2019-04-05 16:19:47.072315618 +0200
-@@ -23,6 +23,7 @@
+diff --git a/tests/vbltest/meson.build b/tests/vbltest/meson.build
+index 6339feba..e6305728 100644
+--- a/tests/vbltest/meson.build
++++ b/tests/vbltest/meson.build
+@@ -23,6 +23,7 @@ vbltest = executable(
    files('vbltest.c'),
    c_args : libdrm_c_args,
    include_directories : [inc_root, inc_tests, inc_drm],
