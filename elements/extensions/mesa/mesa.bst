@@ -150,6 +150,6 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '20.0'
-  ref: mesa-20.0.2-0-gfa6e67066b94c76985564909c05fdaf452537098
+  ref: mesa-20.0.4-0-gd3586b5291e1be729023d978601be5d4af4a01ff
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
