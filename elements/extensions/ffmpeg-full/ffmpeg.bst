@@ -8,7 +8,7 @@ variables:
   extra-aud-enc: wmav1,wmav2
   extra-aud-dec: ape,dca,eac3,mlp,tak,truehd,wmav1,wmav2,wmapro
   extra-vid-enc: h263,h264,wmv1,wmv2
-  extra-vid-dec: cinepak,flv,hevc,h263,h264,indeo2,indeo3,indeo4,indeo5,mpeg2video,mpeg4,msmpeg4,msmpeg4v1,msmpeg4v2,vp6,vp6a,vp6f,wmv1,wmv2,wmv3,wmv3image
+  extra-vid-dec: cinepak,flv,hevc,h263,h264,indeo2,indeo3,indeo4,indeo5,mpeg2video,mpeg4,msmpeg4,msmpeg4v1,msmpeg4v2,msmpeg4v3,vp6,vp6a,vp6f,wmv1,wmv2,wmv3,wmv3image
   extra-hwaccels: h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau
   extra-parsers: hevc,h264,dca
   extra-demuxers: avi,h264,m4v
