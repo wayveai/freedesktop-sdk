@@ -93,7 +93,6 @@ depends:
 - filename: components/cairo.bst
 - filename: components/cups.bst
 - filename: components/dbus.bst
-- filename: components/dconf.bst
 - filename: components/dejavu-fonts.bst
 - filename: components/dictionaries.bst
 - filename: components/emoji-one-font.bst
