@@ -5,8 +5,6 @@ depends:
 - filename: components/atk.bst
 - filename: components/at-spi2-atk.bst
 - filename: components/cairo.bst
-- filename: components/dconf.bst
-  type: runtime
 - filename: components/gdk-pixbuf.bst
 - filename: components/gobject-introspection.bst
   type: build
