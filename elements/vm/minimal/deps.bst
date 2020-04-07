@@ -4,6 +4,7 @@ runtime-depends:
 - bootstrap-import.bst
 - components/util-linux.bst
 - components/linux.bst
+- components/linux-firmware.bst
 - components/systemd.bst
 - components/dbus.bst
 - components/dracut.bst
