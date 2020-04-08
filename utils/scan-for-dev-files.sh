@@ -21,21 +21,23 @@ while IFS= read -r -d '' file; do
     fi
 done
 
-# This scans for pkgconfig files left in the platform. This happens when an
-# element installs them in the wrong directory (e.g !488)
+# "*.pc" and "usr/bin/*-config" scan for pkgconfig files left in the platform.
+# This happens when an element installs them in the wrong directory (e.g !488)
 
-find "$1" -type f -name "*.pc"
-find "${1}/usr/bin" -type f -name "*-config"
+# "*.h" and "${1}/usr/include" scan for C/C++ library headers left in the
+# platform. This happens when an element incorrectly modifies its split-rules
+# (e.g !502)
 
-# This scans for C/C++ library headers left in the platform. This happens when
-# an element incorrectly modifies its split-rules (e.g !502)
+# The rest scan for miscellaneous development files spread all over the runtime
 
-find "${1}/usr/include"
-find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.h"
-
-# This scans for miscellaneous development files spread all over the runtime
-
-find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.o"
-find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.c"
-find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.spec"
-find "$1" -not \( -path */usr/lib/debug/* -prune \) -not \( -path */usr/share/runtime/docs/doc/* -prune \) -name "*.cmake"
+find "$1" \
+	-not \( -path "${1}/usr/lib/debug" -prune \) \
+	-not \( -path "${1}/usr/share/runtime/docs/doc" -prune \) \
+        \( -path "${1}/usr/bin/*-config" \
+           -o -path "${1}/usr/include/*" \
+           -o -name "*.h" \
+           -o -name "*.pc" \
+           -o -name "*.o" \
+           -o -name "*.c" \
+           -o -name "*.spec" \
+	   -o -name "*.cmake" \)
