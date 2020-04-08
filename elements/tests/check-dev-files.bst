@@ -7,11 +7,11 @@ build-depends:
 config:
   commands:
   - |
-    %{bindir}/scan-for-dev-files.sh /sysroot | sort -u >found_dev_files.txt
+    %{bindir}/scan-for-dev-files.sh /sysroot > found_dev_files.txt
 
     set -e; if [ -s found_dev_files.txt ]; then
     echo "Found development files:" 1>&2
-    cat found_dev_files.txt 1>&2
+    sort -u found_dev_files.txt 1>&2
     false
     fi
 
