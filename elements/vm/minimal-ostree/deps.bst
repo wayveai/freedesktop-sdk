@@ -16,3 +16,5 @@ runtime-depends:
 - vm/boot/efi-ostree.bst
 - components/gnupg.bst
 - components/eos-updater.bst
+- components/linux-firmware.bst
+- components/wireless-regdb-bin.bst
