@@ -73,8 +73,8 @@ variables:
     --disable-static \
     --enable-optimizations \
     --enable-shared \
-    --disable-ffplay \
     --disable-everything \
+    --enable-ffplay \
     --enable-ffprobe \
     --enable-gnutls \
     --enable-libaom \
