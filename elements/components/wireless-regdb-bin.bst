@@ -5,7 +5,7 @@ depends:
 
 config:
   install-commands:
-  - install -Dm644 -t "%{install-root}%{indep-libdir}/firmware" regulatory.db regulatory.bin
+  - install -Dm644 -t "%{install-root}%{indep-libdir}/firmware" regulatory.{db,db.p7s,bin}
 
 sources:
 - kind: git_tag
