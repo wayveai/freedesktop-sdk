@@ -26,13 +26,11 @@ public:
 sources:
 - kind: git_tag
   url: github:intel/media-driver.git
-  track: intel-media-19.2
+  track: master
   track-extra:
-  - master
+  - intel-media-20.1
   match:
   - 'intel-media-*'
   exclude:
   - 'intel-media-*.pre*'
-  ref: intel-media-19.2.1-0-g9b648d81fb43f70c49304011371279713cb13ccc
-- kind: patch
-  path: patches/intel-media-driver/intel-media-driver-bad-werror.patch
+  ref: intel-media-20.1.1-0-g54492c0d175f298c8a2ef90955febeef30837792
