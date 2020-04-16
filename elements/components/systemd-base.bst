@@ -36,6 +36,7 @@ variables:
     -Dgnu-efi=%{efi}
     -Defi=%{efi}
     -Dfirstboot=true
+    -Ddefault-dnssec=no
 
 public:
   cpe:
