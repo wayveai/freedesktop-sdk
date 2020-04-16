@@ -41,6 +41,7 @@ variables:
     -Dbzip2=true
     -Dxz=true
     -Dlz4=true
+    -Ddefault-dnssec=no
 
 public:
   cpe:
