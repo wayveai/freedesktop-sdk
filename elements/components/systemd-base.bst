@@ -81,3 +81,6 @@ sources:
   path: patches/systemd/gnu-efi-includes.patch
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
+  # Fixed in 245. Fixes gnome-initial-setup wifi setup.
+- kind: patch
+  path: patches/systemd/fix-greeter-sessions.patch
