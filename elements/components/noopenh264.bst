@@ -33,8 +33,7 @@ sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
-  ref: Release_3.7.6-0-g73438577f0c9c228118e72437803e6426fa87ba2
+  track-tags: false
+  ref: Version_2.0.0-2-g7ccc8e60480656cf86cc7a811e2f44bdbcf66abe
 - kind: patch
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
-- kind: patch
-  path: patches/noopenh264/Update-to-openh264-2.0.0.patch
