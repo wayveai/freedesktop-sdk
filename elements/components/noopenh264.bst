@@ -1,9 +1,10 @@
 kind: meson
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 variables:
   extlibdir: "%{libdir}/openh264/extra"
@@ -20,6 +21,9 @@ config:
 
     - |
       rm %{install-root}%{extlibdir}/libopenh264.a
+
+    - |
+      ln -srL %{install-root}%{libdir}/libopenh264.so %{install-root}%{libdir}/libopenh264.so.5 
 
 public:
   bst:
@@ -39,3 +43,5 @@ sources:
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
 - kind: patch
   path: patches/noopenh264/0001-Update-headers-for-OpenH264-2.1.0.patch
+- kind: patch
+  path: patches/noopenh264/0001-Patch-soname-to-6.patch
