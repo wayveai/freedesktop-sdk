@@ -16,6 +16,4 @@ sources:
 - kind: git_tag
   url: github:pengutronix/genimage.git
   track: master
-  ref: v11-0-gdb1291b1c03c0b2fcaa80fadd74224ca2a5a1376
-- kind: patch
-  path: patches/genimage/use-mke2fs.patch
+  ref: v12-0-g2d223c273a150afe2937aa3ed7ee812e938d2db8

@@ -51,6 +51,7 @@ config:
         ext4  {
             label = "root"
             extraargs = "-U ${uuid_root}"
+            use-mke2fs = true
         }
         size = 10G
     }
