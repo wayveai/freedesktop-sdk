@@ -79,3 +79,5 @@ sources:
   path: patches/libpulse/pulseaudio-Use-upstream-gettext-instead-intltool.patch
 - kind: patch
   path: patches/pulseaudio/x11-config-only-ssh.patch
+- kind: patch
+  path: patches/pulseaudio/alsa-ucm.patch
