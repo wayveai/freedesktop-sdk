@@ -26,19 +26,20 @@ variables:
   prefix: '%{tools}'
   lib: lib
 
-  conf-local: |
-    --target=%{triplet} \
-    --enable-multiarch \
-    --disable-multilib \
-    --disable-bootstrap \
-    --disable-nls \
-    --with-sysroot=%{sysroot} \
-    --enable-languages=c,c++,fortran \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --with-isl \
-    --enable-deterministic-archives \
-    --enable-linker-build-id \
+  conf-local: >-
+    --target=%{triplet}
+    --enable-multiarch
+    --disable-multilib
+    --disable-bootstrap
+    --disable-nls
+    --with-sysroot=%{sysroot}
+    --enable-languages=c,c++,fortran
+    --enable-default-pie
+    --enable-default-ssp
+    --with-isl
+    --enable-deterministic-archives
+    --enable-linker-build-id
+    --disable-libstdcxx-filesystem-ts
     %{conf-extra}
 
   # strip-binaries fails when cross compiling because artifact
