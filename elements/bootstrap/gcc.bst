@@ -41,20 +41,21 @@ variables:
   lib: lib
   multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
 
-  conf-local: |
-    --target=%{triplet} \
-    --disable-multilib \
-    --enable-multiarch \
-    --disable-bootstrap \
-    --with-build-sysroot=%{sysroot} \
-    --enable-languages=c,c++,fortran,objc,obj-c++ \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --with-isl \
-    --disable-libssp \
-    --enable-linker-build-id \
-    host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
-    target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"' \
+  conf-local: >-
+    --target=%{triplet}
+    --disable-multilib
+    --enable-multiarch
+    --disable-bootstrap
+    --with-build-sysroot=%{sysroot}
+    --enable-languages=c,c++,fortran,objc,obj-c++
+    --enable-default-pie
+    --enable-default-ssp
+    --with-isl
+    --disable-libssp
+    --enable-linker-build-id
+    --disable-libstdcxx-filesystem-ts
+    host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
+    target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
     %{conf-extra}
 
   conf-link-args: |
@@ -156,7 +157,6 @@ public:
         - '%{multiarch_libdir}/libsupc++.a'
         - '%{multiarch_libdir}/libtsan.a'
         - '%{multiarch_libdir}/libubsan.a'
-        - '%{multiarch_libdir}/libstdc++fs.a'
         - '%{multiarch_libdir}/libobjc.a'
 
       # Not actually used, included for completeness
