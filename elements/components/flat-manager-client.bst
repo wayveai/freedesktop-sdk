@@ -5,7 +5,7 @@ depends:
 
 runtime-depends:
 - components/python3.bst
-- components/ostree.bst
+- components/ostree-gobject.bst
 - components/python3-requests.bst
 - components/python3-aiohttp.bst
 - components/python3-chardet.bst

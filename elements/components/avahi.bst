@@ -18,6 +18,7 @@ runtime-depends:
 config:
   exclude:
   - ui
+  - gobject
   include-orphans: True
 
 public:
@@ -29,4 +30,3 @@ public:
         - "%{libdir}/libavahi-common.so"
         - "%{libdir}/libavahi-core.so"
         - "%{libdir}/libavahi-glib.so"
-        - "%{libdir}/libavahi-gobject.so"
