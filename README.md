@@ -176,3 +176,7 @@ groups, and we would like to take a moment to thank them.
     us on fixing any bug we encounter;
 *   [Codethink](https://www.codethink.co.uk/), for assigning some of their
     engineers' time to this project;
+*   [OSU Open Source Lab](https://osuosl.org/) for the x86 runners
+*   [packet](https://www.packet.com/) for the aarch64 runners
+*   [Codethink](https://www.codethink.co.uk/) for another aarch64 runner and
+    another pieces of infra
