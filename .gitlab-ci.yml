@@ -536,6 +536,7 @@ finish_publish:
   stage: finish-publish
   tags:
     - x86_64
+    - cache_x86_64
   script:
     - flat-manager-client -v commit --wait $(cat publish_build.txt)
     - flat-manager-client -v publish --wait-update $(cat publish_build.txt)
