@@ -5,7 +5,6 @@ build-depends:
 
 runtime-depends:
 - bootstrap-import.bst
-- components/alsa-lib.bst
 - components/dbus.bst
 - components/fftw.bst
 - components/gdbm.bst
