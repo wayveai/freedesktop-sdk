@@ -42,3 +42,5 @@ sources:
   url: github:hughsie/appstream-glib.git
   track: master
   ref: appstream_glib_0_7_16-0-g230e2da082d9754858330c3e262a9d44f816def1
+- kind: patch
+  path: patches/appstream-glib/0001-Allow-timestamp-in-the-future-in-validate-relax.patch
