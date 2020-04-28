@@ -1,0 +1,38 @@
+diff -ur gcc.old/libstdc++-v3/acinclude.m4 gcc/libstdc++-v3/acinclude.m4
+--- gcc.old/libstdc++-v3/acinclude.m4	2020-03-12 12:07:24.000000000 +0100
++++ gcc/libstdc++-v3/acinclude.m4	2020-04-20 21:39:41.097603929 +0200
+@@ -4389,7 +4389,6 @@
+ dnl
+ AC_DEFUN([GLIBCXX_CHECK_FILESYSTEM_DEPS], [dnl
+ dnl
+-  if test $enable_libstdcxx_filesystem_ts = yes; then
+     AC_LANG_SAVE
+     AC_LANG_CPLUSPLUS
+     ac_save_CXXFLAGS="$CXXFLAGS"
+@@ -4608,7 +4607,6 @@
+ dnl
+     CXXFLAGS="$ac_save_CXXFLAGS"
+     AC_LANG_RESTORE
+-  fi
+ ])
+ 
+ dnl
+diff -ur gcc.old/libstdc++-v3/configure gcc/libstdc++-v3/configure
+--- gcc.old/libstdc++-v3/configure	2020-03-12 12:07:24.000000000 +0100
++++ gcc/libstdc++-v3/configure	2020-04-20 21:42:03.607039772 +0200
+@@ -80612,7 +80612,6 @@
+ $as_echo "$enable_libstdcxx_filesystem_ts" >&6; }
+ 
+ 
+-  if test $enable_libstdcxx_filesystem_ts = yes; then
+ 
+     ac_ext=cpp
+ ac_cpp='$CXXCPP $CPPFLAGS'
+@@ -81434,7 +81433,6 @@
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+-  fi
+ 
+ 
+ # For Networking TS.
