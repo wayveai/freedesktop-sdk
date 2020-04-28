@@ -8,7 +8,7 @@ build-depends:
 - components/pipewire-base.bst
 
 runtime-depends:
-- components/pipewire-daemon.bst
+- components/pipewire.bst
 
 config:
   include:
@@ -23,5 +23,5 @@ public:
         - '%{libdir}/libjack-pw.so'
 
     integration-commands:
-    - rm "%{libdir}"/libjack.so*
+    - rm -f "%{libdir}"/libjack.so*
     - ln -sf libjack-pw.so.0.3.1 "%{libdir}/libjack.so.0"
