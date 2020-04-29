@@ -18,7 +18,7 @@ runtime-depends:
 - components/xorg-server.bst
 - components/plymouth.bst
 - platform.bst
-- components/pwquality.bst
+- components/linux-pam-config.bst
 - components/sudo.bst
 - components/flatpak.bst
 - components/xdg-desktop-portal.bst

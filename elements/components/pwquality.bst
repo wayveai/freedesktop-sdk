@@ -1,14 +1,14 @@
 kind: autotools
 
-depends:
-- filename: bootstrap-import.bst
+build-depends:
 - filename: components/python3.bst
-  type: build
 - filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/linux-pam.bst
-- filename: components/cracklib.bst
-- filename: components/gzip.bst
+
+depends:
+- bootstrap-import.bst
+- components/cracklib.bst
+- components/gzip.bst
+- components/linux-pam-base.bst
 
 variables:
   builddir: ''
