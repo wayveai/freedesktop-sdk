@@ -25,8 +25,8 @@ sources:
   url: gnome:vala.git
   track: master
   track-extra:
-  - '0.46'
+  - '0.48'
   # Note for updates: Stable minor versions are even.
   match:
   - "*.*[02468].*"
-  ref: 0.46.5-0-g8213d9fb5dac9413a5ed24b1fade1806f039deab
+  ref: 0.48.4-0-g6bf52d0cdfdc42b214fbd189aa22e6dc159a4aaa
