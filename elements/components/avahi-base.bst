@@ -51,3 +51,13 @@ public:
       - "%{libdir}/pkgconfig/avahi-ui-gtk3.pc"
       - "%{debugdir}%{bindir}/bssh.debug"
       - "%{debugdir}%{libdir}/libavahi-ui-gtk3.so*.debug"
+      gobject:
+      - "%{includedir}/avahi-gobject"
+      - "%{includedir}/avahi-gobject/**"
+      - "%{libdir}/pkgconfig/avahi-gobject.pc"
+      - "%{libdir}/girepository-1.0"
+      - "%{libdir}/girepository-1.0/**"
+      - "%{libdir}/libavahi-gobject.so*"
+      - "%{datadir}/gir-1.0"
+      - "%{datadir}/gir-1.0/**"
+      - "%{debugdir}%{libdir}/libavahi-gobject.so*.debug"
