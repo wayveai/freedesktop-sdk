@@ -15,6 +15,9 @@ public:
         (>):
         - '%{libdir}/libpipeline.so'
 
+variables:
+  autogen: ./bootstrap --no-git --gnulib-srcdir=gnulib-src
+
 sources:
 - kind: git_tag
   url: savannah:libpipeline.git
@@ -22,7 +25,8 @@ sources:
   ref: 1.5.2-0-g2d1f45eca4e878d8923ebe2caea670453b12ccc8
 - kind: git_tag
   url: savannah:gnulib.git
-  track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+  # Track the exact commit from variable GNULIB_REVISION in bootstrap.conf
+  track: 34881aff4043847f2640d90cf9aa325cc3ad08d6
   track-tags: false
-  directory: gnulib
-  ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+  directory: gnulib-src
+  ref: v0.1-2382-g34881aff4043847f2640d90cf9aa325cc3ad08d6
