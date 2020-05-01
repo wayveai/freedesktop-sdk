@@ -31,25 +31,14 @@ environment:
   # FIXME, extract the required headers from libdrm that are needed
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig:'
 
-# FIXME colord depends on intltool (polkit) and python2 (mozjs)
-# FIXME Does not build against Pipewire 0.3
-variables:
-  (?):
-  - target_arch == "i686" or target_arch == "x86_64":
-       dmabuf-drm: intel
-  - target_arch == "arm" or target_arch == "aarch64":
-       dmabuf-drm: etnaviv,freedreno
-  - target_arch  == "powerpc64le":
-       dmabuf-drm: auto
-
+  # FIXME colord depends on intltool (polkit) and python2 (mozjs)
   meson-local: >-
     -Dbackend-rdp=false
     -Dcolor-management-colord=false
-    -Dsimple-dmabuf-drm=%{dmabuf-drm}
-    -Dpipewire=false
+    -Dpipewire=true
 
 sources:
 - kind: git_tag
   track: master
   url: freedesktop:wayland/weston.git
-  ref: 7.0.0-0-g3180fa8a123a000e715e8f5adf45727ccc88fd56
+  ref: 8.0.0-0-g33b06bdece396b285882160324ac894d1db7ecb0
