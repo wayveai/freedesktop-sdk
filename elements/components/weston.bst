@@ -34,10 +34,18 @@ environment:
 # FIXME colord depends on intltool (polkit) and python2 (mozjs)
 # FIXME Does not build against Pipewire 0.3
 variables:
+  (?):
+  - target_arch == "i686" or target_arch == "x86_64":
+       dmabuf-drm: intel
+  - target_arch == "arm" or target_arch == "aarch64":
+       dmabuf-drm: etnaviv,freedreno
+  - target_arch  == "powerpc64le":
+       dmabuf-drm: auto
+
   meson-local: >-
     -Dbackend-rdp=false
     -Dcolor-management-colord=false
-    -Dsimple-dmabuf-drm=intel,etnaviv
+    -Dsimple-dmabuf-drm=%{dmabuf-drm}
     -Dpipewire=false
 
 sources:
