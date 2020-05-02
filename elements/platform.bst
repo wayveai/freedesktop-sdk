@@ -62,6 +62,7 @@ depends:
 - filename: components/nspr.bst
 - filename: components/nss.bst
 - filename: components/nsswitch-config.bst
+- filename: components/openjpeg.bst
 - filename: components/opus.bst
 - filename: components/osmesa.bst
 - filename: components/p11-kit.bst
