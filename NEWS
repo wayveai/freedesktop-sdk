@@ -1,5 +1,19 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.10:
+
+    * appstream-glib: Backport patch allowing future timestamps in
+      validate-relax
+    * mesa: Update to 20.0.5
+    * git: Update to 2.26.2
+    * vala: Update to 0.44.11
+    * openssl: Fix CVE-2020-1967
+    * gcc: Remove unusable experimental filesystem header. Use c++17
+      instead.
+    * gnutls: Update to 3.6.13
+    * sdl2: Update to 2.0.12
+    * python: Swap usercustomize and sitecustomize
+
 freedesktop-sdk-19.08.09:
 
     * libpulse: Upstream patch to only use X11 config when using ssh
