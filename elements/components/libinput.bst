@@ -7,7 +7,6 @@ depends:
   type: build
 - filename: components/jpeg.bst
 - filename: components/libpng.bst
-- filename: components/gtk3.bst
 - filename: components/systemd.bst
 - filename: components/mtdev.bst
 - filename: components/libevdev.bst
@@ -15,8 +14,9 @@ depends:
 
 # documentation depends on doxygen
 variables:
-  meson-local: |
-    -Ddocumentation=false \
+  meson-local: >-
+    -Ddebug-gui=false
+    -Ddocumentation=false
     -Dtests=false
 
 sources:
