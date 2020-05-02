@@ -14,6 +14,15 @@ depends:
 - filename: components/openjpeg.bst
 - filename: bootstrap-import.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/libpoppler-cpp.so'
+        - '%{libdir}/libpoppler-glib.so'
+        - '%{libdir}/libpoppler.so'
+
 sources:
 - kind: git_tag
   url: freedesktop:poppler/poppler.git
