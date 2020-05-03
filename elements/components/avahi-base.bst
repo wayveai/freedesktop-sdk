@@ -3,6 +3,7 @@ kind: autotools
 build-depends:
 - bootstrap-import.bst
 - public-stacks/buildsystem-autotools.bst
+- components/dbus.bst
 - components/glib.bst
 - components/gtk3.bst
 - components/systemd.bst

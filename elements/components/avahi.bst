@@ -5,12 +5,11 @@ build-depends:
 
 runtime-depends:
 - bootstrap-import.bst
+- components/dbus.bst
 - components/glib.bst
 - components/systemd.bst
 
 - components/libdaemon.bst
-- components/pygobject.bst
-- components/python3-dbus.bst
 - components/xmltoman.bst
 
 - components/avahi-manifest.bst
