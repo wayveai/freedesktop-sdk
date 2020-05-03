@@ -18,14 +18,14 @@ build-depends:
 - components/systemd-libs.bst
 - components/systemd.bst
 - components/vulkan.bst
+- components/xmltoman.bst
 - public-stacks/buildsystem-meson.bst
 
 variables:
   # Docs depend on doxygen
-  # Man pages depend on xmltoman
   meson-local: >-
     -Ddocs=false
-    -Dman=false
+    -Dman=true
     -Dgstreamer=true
     -Dsystemd=true
 
