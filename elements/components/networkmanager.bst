@@ -1,31 +1,28 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
-- filename: components/util-linux.bst
-- filename: components/systemd.bst
-- filename: components/dbus.bst
-- filename: components/glib.bst
-- filename: components/gobject-introspection.bst
-- filename: components/libselinux.bst
-- filename: components/gnutls.bst
-- filename: components/nss.bst
-- filename: components/libpsl.bst
-- filename: components/curl.bst
-- filename: components/perl.bst
-  type: build
-- filename: components/libxslt.bst
-  type: build
+build-depends:
+- components/gobject-introspection.bst
+- components/libxslt.bst
+- components/perl.bst
+- components/pygobject.bst
+- public-stacks/buildsystem-meson.bst
 
-- filename: components/pygobject.bst
-- filename: components/libndp.bst
-- filename: components/audit.bst
-- filename: components/jansson.bst
-- filename: components/newt.bst
+depends:
+- bootstrap-import.bst
+- components/util-linux.bst
+- components/systemd.bst
+- components/dbus.bst
+- components/glib.bst
+- components/libselinux.bst
+- components/gnutls.bst
+- components/nss.bst
+- components/libpsl.bst
+- components/curl.bst
+- components/pygobject.bst
+- components/libndp.bst
+- components/audit.bst
+- components/jansson.bst
+- components/newt.bst
 
 variables:
   meson-local: >-
