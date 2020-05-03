@@ -1,9 +1,10 @@
 kind: meson
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 variables:
   extlibdir: "%{libdir}/openh264/extra"
@@ -21,6 +22,9 @@ config:
     - |
       rm %{install-root}%{extlibdir}/libopenh264.a
 
+    - |
+      ln -srL %{install-root}%{libdir}/libopenh264.so %{install-root}%{libdir}/libopenh264.so.5 
+
 public:
   bst:
     split-rules:
@@ -33,8 +37,11 @@ sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
-  ref: Release_3.7.6-0-g73438577f0c9c228118e72437803e6426fa87ba2
+  track-tags: false
+  ref: Version_2.0.0-2-g7ccc8e60480656cf86cc7a811e2f44bdbcf66abe
 - kind: patch
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
 - kind: patch
-  path: patches/noopenh264/Update-to-openh264-2.0.0.patch
+  path: patches/noopenh264/0001-Update-headers-for-OpenH264-2.1.0.patch
+- kind: patch
+  path: patches/noopenh264/0001-Patch-soname-to-6.patch
