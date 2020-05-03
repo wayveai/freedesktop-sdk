@@ -23,5 +23,5 @@ sources:
 - kind: git_tag
   # See https://wiki.gnome.org/Projects/Vala for last version
   url: gnome:vala.git
-  track: '0.44'
-  ref: 0.44.11-0-gf9f1f6ebc3f13cb20e48aa49bbc34395506181d4
+  track: '0.48'
+  ref: 0.48.4-0-g6bf52d0cdfdc42b214fbd189aa22e6dc159a4aaa
