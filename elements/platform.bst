@@ -68,7 +68,6 @@ depends:
 - filename: components/p11-kit.bst
 - filename: components/pcre2.bst
 - filename: components/procps.bst
-- filename: components/poppler.bst
 - filename: components/python3.bst
 - filename: components/python3-setuptools.bst
 - filename: components/python3-six.bst
