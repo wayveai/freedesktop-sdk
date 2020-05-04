@@ -66,8 +66,6 @@ sources:
 - kind: git_tag
   url: gnome:gtk.git
   track: gtk-3-24
-  ref: 3.24.10-0-g3642629767ec54c4079f7d90a9ea780a225bfe5e
+  ref: 3.24.20-0-gdb39ce2b1699acaf5d0ba160cf7cc68ccf6e16d6
 - kind: patch
-  path: patches/gtk3/invalid-tablet-input-1.patch
-- kind: patch
-  path: patches/gtk3/invalid-tablet-input-2.patch
+  path: patches/gtk3/0001-Revert-a11y-Include-window-management-buttons-in-hea.patch
