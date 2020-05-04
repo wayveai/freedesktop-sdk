@@ -1,19 +1,15 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/help2man.bst
+- components/tar.bst
+- components/texinfo.bst
+- components/gzip.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/texinfo.bst
-  type: build
-- filename: components/help2man.bst
-  type: build
-- filename: components/m4.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/tar.bst
-  type: build
-- filename: components/gzip.bst
-  type: build
+- bootstrap-import.bst
+- components/m4.bst
 
 config:
   configure-commands:
