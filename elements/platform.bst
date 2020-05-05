@@ -31,6 +31,7 @@ depends:
 - filename: components/libcap.bst
 - filename: components/libexif.bst
 - filename: components/libffi.bst
+- filename: components/libfl.bst
 - filename: components/libflac.bst
 - filename: components/libgcrypt.bst
 - filename: components/libgpg-error.bst
