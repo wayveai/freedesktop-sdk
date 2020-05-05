@@ -9,7 +9,6 @@ depends:
 - filename: components/dummy-gbm.bst
 - filename: components/e2fsprogs.bst
 - filename: components/expat.bst
-- filename: components/flex.bst
 - filename: components/frei0r.bst
 - filename: components/gdbm.bst
 - filename: components/gettext.bst
