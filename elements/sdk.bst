@@ -15,6 +15,7 @@ depends:
 - filename: components/docbook-xml.bst
 - filename: components/docbook-xsl.bst
 - filename: components/ed.bst
+- filename: components/flex.bst
 - filename: components/gdb.bst
 - filename: components/git.bst
 - filename: components/glslang.bst

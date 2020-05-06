@@ -5,9 +5,7 @@ build-depends:
 
 runtime-depends:
 - bootstrap-import.bst
-- components/m4.bst
-- components/libfl.bst
 
 config:
-  exclude:
+  include:
   - libfl
