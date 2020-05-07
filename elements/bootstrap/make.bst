@@ -17,14 +17,10 @@ config:
 
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:make/make-4.2.1.tar.bz2
-  ref: d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589
-- kind: patch
-  path: patches/make/make-glob_interface_version_2.patch
-- kind: patch
-  path: patches/make/make-lstat.patch
+  url: ftp_gnu_org:make/make-4.3.tar.lz
+  ref: de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82
