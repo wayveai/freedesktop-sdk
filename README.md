@@ -109,6 +109,14 @@ We also provide following flatpak applications useful for testing GPU:
 * org.freedesktop.Platform.VaInfo.Debug
 * org.freedesktop.Platform.VulkanInfo
 
+These applications and development versions of the runtime and SDK are hosted
+on are own flatpak remote:
+
+```
+    $ flatpak remote-add freedesktop-sdk https://cache.sdk.freedesktop.org/freedesktop-sdk.flatpakrepo
+    $ flatpak install org.freedesktop.Platform.VulkanInfo
+```
+
 ## HTML5 Codecs
 
 For the 18.08 release cycle we provided a runtime extension containing the
