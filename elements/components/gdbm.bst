@@ -1,5 +1,9 @@
 kind: autotools
 
+variables:
+  # gdbm 1.18.1 does not build with GCC 10 without -fcommon
+  local_flags: -fcommon
+
 depends:
 - filename: bootstrap-import.bst
 
