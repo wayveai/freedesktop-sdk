@@ -7,7 +7,9 @@ depends:
 - filename: bootstrap/glibc.bst
   type: runtime
 
-(@): elements/bootstrap/include/target.yml
+(@):
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/ncurses-sources.yml
 
 config:
   configure-commands:
@@ -92,15 +94,3 @@ public:
         - '%{libdir}/libncursesw.so'
         - '%{libdir}/libncurses.so'
         - '%{libdir}/libpanelw.so'
-
-  cpe:
-    patches:
-      - CVE-2018-10754
-      - CVE-2018-19211 # Duplicate of CVE-2018-10754
-
-sources:
-- kind: tar
-  url: ftp_gnu_org:ncurses/ncurses-6.1.tar.gz
-  ref: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
-- kind: patch
-  path: patches/ncurses/CVE-2018-10754.patch
