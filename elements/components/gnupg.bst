@@ -17,6 +17,8 @@ variables:
     --disable-doc \
     --disable-all-tests
 
+  local_flags: -Wno-unused-result  
+
 sources:
 - kind: git_tag
   url: gnupg:gnupg.git
