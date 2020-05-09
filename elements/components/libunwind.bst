@@ -1,5 +1,8 @@
 kind: autotools
 
+variables:
+  local_flags: -fcommon
+
 depends:
 - filename: bootstrap-import.bst
   type: build
