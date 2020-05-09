@@ -11,6 +11,7 @@ depends:
 variables:
   builddir: ''
   notparallel: true
+  local_flags: -fcommon
 
 environment:
   USE_PCRE2: y
