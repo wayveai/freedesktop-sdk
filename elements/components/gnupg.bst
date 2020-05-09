@@ -17,7 +17,7 @@ variables:
     --disable-doc \
     --disable-all-tests
 
-  local_flags: -Wno-unused-result  
+  local_flags: -Wno-unused-result -fcommon
 
 sources:
 - kind: git_tag
