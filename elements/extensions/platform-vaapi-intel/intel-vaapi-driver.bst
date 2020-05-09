@@ -12,8 +12,10 @@ environment:
   PKG_CONFIG_PATH: "/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig:"
 
 variables:
-  meson-local: |
+  meson-local: >-
     -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
+
+  local_flags: -fcommon
 
 sources:
 - kind: git_tag
