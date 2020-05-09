@@ -12,9 +12,11 @@ depends:
   type: build
 
 variables:
-  cmake-local: |
-    -DFREEGLUT_BUILD_DEMOS:BOOL=OFF \
+  cmake-local: >
+    -DFREEGLUT_BUILD_DEMOS:BOOL=OFF
     -DCMAKE_C_FLAGS="${CFLAGS} -I/app/include"
+
+  local_flags: -fcommon
 
 sources:
 - kind: tar
