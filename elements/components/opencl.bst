@@ -8,10 +8,12 @@ depends:
   type: build
 
 variables:
-  conf-local: |
-    --enable-custom-vendordir="%{libdir}/GL/OpenCL/vendors" \
-    --disable-update-database \
+  conf-local: >-
+    --enable-custom-vendordir="%{libdir}/GL/OpenCL/vendors"
+    --disable-update-database
 
+  local_flags: -fcommon
+  
 public:
   bst:
     split-rules:
