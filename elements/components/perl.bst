@@ -46,3 +46,5 @@ sources:
   path: files/perl/config.over
 - kind: patch
   path: patches/perl/no-rpath-libpath.patch
+- kind: patch
+  path: patches/perl/gcc-10-compat.patch
