@@ -5,8 +5,10 @@ depends:
 - filename: components/tar.bst
 
 variables:
-  conf-local: |
+  conf-local: >-
     --with-rmt="%{libexecdir}/rmt"
+
+  local_flags: -fcommon
 
 config:
   install-commands:
