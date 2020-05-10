@@ -40,4 +40,4 @@ runtime-depends:
     runtime-depends:
       (>):
       - vm/config/pipewire.bst
-      - components/pipewire-pulse.bst
+      - components/pipewire-libpulse.bst

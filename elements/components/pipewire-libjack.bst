@@ -12,7 +12,7 @@ runtime-depends:
 
 config:
   include:
-  - jack
+  - libjack
   include-orphans: False
 
 public:

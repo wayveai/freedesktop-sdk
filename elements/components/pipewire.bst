@@ -16,8 +16,8 @@ runtime-depends:
 config:
   exclude:
   - daemon
-  - jack
-  - pulse
+  - libjack
+  - libpulse
   include-orphans: True
 
 public:

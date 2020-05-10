@@ -5,7 +5,7 @@ depends:
 
 runtime-depends:
 - components/pipewire-daemon.bst
-- components/pipewire-jack.bst
+- components/pipewire-libjack.bst
 
 config:
   install-commands:
