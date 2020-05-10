@@ -24,6 +24,4 @@ sources:
 - kind: git_tag
   url: github:flatpak/xdg-desktop-portal.git
   track: master
-  ref: 1.6.0-0-g28b93e213a83c78bb6d65d5a1a65c57d62957827
-- kind: patch
-  path: patches/xdg-desktop-portal/pipewire-0.3.patch
+  ref: 1.7.2-0-g309a1fc0cf2fb32cceb91dbc666d20cf0a3202c2
