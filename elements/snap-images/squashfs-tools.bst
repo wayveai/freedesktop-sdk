@@ -24,6 +24,6 @@ sources:
   url: github:plougher/squashfs-tools.git
   track: master
   track-tags: false
-  ref: 6e242dc95485ada8d1d0b3dd9346c5243d4a517f
+  ref: fe2f5da4b0f8994169c53e84b7cb8a0feefc97b5
 - kind: patch
   path: patches/squashfs-tools/fix-includes.patch
