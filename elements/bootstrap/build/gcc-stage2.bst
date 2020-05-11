@@ -25,6 +25,13 @@ variables:
     --enable-static
   prefix: '%{tools}'
   lib: lib
+  autogen: |
+    autoreconf -fvi
+    for conf in */configure.ac; do
+      echo "$(dirname "${conf}")"
+      (cd "$(dirname "${conf}")" && autoreconf -I ../config -fvi)
+    done
+
 
   conf-local: >-
     --target=%{triplet}

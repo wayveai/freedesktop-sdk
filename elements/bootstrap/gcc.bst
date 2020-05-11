@@ -40,6 +40,12 @@ variables:
   # directory, but needs to be provided /usr/lib for --libdir.
   lib: lib
   multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
+  autogen: |
+    autoreconf -fvi
+    for conf in */configure.ac; do
+      echo "$(dirname "${conf}")"
+      (cd "$(dirname "${conf}")" && autoreconf -I ../config -fvi)
+    done
 
   conf-local: >-
     --target=%{triplet}

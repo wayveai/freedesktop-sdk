@@ -1,15 +1,3 @@
-diff -ur gcc.old/gcc/configure gcc/gcc/configure
---- gcc.old/gcc/configure	2019-04-12 14:41:08.710906034 +0200
-+++ gcc/gcc/configure	2019-04-12 16:42:38.334548171 +0200
-@@ -12243,7 +12243,7 @@
- SYSTEM_HEADER_DIR='$(NATIVE_SYSTEM_HEADER_DIR)'
- BUILD_SYSTEM_HEADER_DIR=$SYSTEM_HEADER_DIR
- 
--if test x$host != x$target || test "x$TARGET_SYSTEM_ROOT" != x ||
-+if (test x$host != x$target && test "x$enable_multiarch" = xno) || test "x$TARGET_SYSTEM_ROOT" != x ||
-    test x$build != x$host || test "x$with_build_sysroot" != x; then
-   if test "x$with_build_sysroot" != x; then
-     BUILD_SYSTEM_HEADER_DIR=$with_build_sysroot'$${sysroot_headers_suffix}$(NATIVE_SYSTEM_HEADER_DIR)'
 diff -ur gcc.old/gcc/configure.ac gcc/gcc/configure.ac
 --- gcc.old/gcc/configure.ac	2019-04-12 14:41:08.718905960 +0200
 +++ gcc/gcc/configure.ac	2019-04-12 14:44:57.300773435 +0200

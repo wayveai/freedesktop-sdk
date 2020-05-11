@@ -1,13 +1,13 @@
 kind: autotools
 
+build-depends:
+- bootstrap-import.bst
+- components/tar.bst
+- cross-compilers/standard-libs-i686.bst
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: components/tar.bst
-  type: build
-- filename: cross-compilers/binutils-i686.bst
-- filename: cross-compilers/standard-libs-i686.bst
-  type: build
+- cross-compilers/binutils-i686.bst
 
 (@):
 - elements/bootstrap/include/gcc-source.yml

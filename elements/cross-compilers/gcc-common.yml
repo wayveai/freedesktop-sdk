@@ -2,6 +2,12 @@ variables:
   conf-link-args: |
     --enable-shared \
     --enable-static
+  autogen: |
+    autoreconf -fvi
+    for conf in */configure.ac; do
+      echo "$(dirname "${conf}")"
+      (cd "$(dirname "${conf}")" && autoreconf -I ../config -fvi)
+    done
 
   conf-local: >-
     --target="%{cross_triplet}"
