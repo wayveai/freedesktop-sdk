@@ -152,6 +152,14 @@ config:
     scripts/config -m VIRTIO_VSOCKETS
     scripts/config -m INPUT_UINPUT
 
+    # For wireless networks
+    scripts/config -e WIRELESS
+    scripts/config -m CFG80211
+    scripts/config -e CFG80211_WEXT
+    scripts/config -e MAC80211
+    scripts/config -e NETDEVICES
+    scripts/config -e WLAN
+
   build-commands:
   - |
     make
