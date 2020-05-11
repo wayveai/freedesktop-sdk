@@ -19,6 +19,7 @@ variables:
     --enable-default-pie
     --enable-default-ssp
     --disable-libssp
+    --enable-cet
     --disable-libstdcxx-filesystem-ts
     --without-isl
     --enable-deterministic-archives

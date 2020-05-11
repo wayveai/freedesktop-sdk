@@ -60,6 +60,7 @@ variables:
     --disable-libssp
     --enable-linker-build-id
     --disable-libstdcxx-filesystem-ts
+    --enable-cet
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
     target_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
     %{conf-extra}
