@@ -39,3 +39,5 @@ sources:
   ref: VALGRIND_3_15_0-0-g608cb11914e5f23d0fc12c61dad29c5c7952a1de
 - kind: patch
   path: patches/valgrind/valgrind-arm-hot_cpu.patch
+- kind: patch
+  path: patches/valgrind/valgrind-gcc-libc-dependency-aarch64.patch
