@@ -53,9 +53,19 @@ config:
     scripts/config -e FHANDLE
 
     # Kernel crypto/hash API
-    scripts/config -e CRYPTO_USER_API_HASH
+    scripts/config -e CRYPTO_AES
+    scripts/config -e CRYPTO_ARC4
+    scripts/config -e CRYPTO_CBC
+    scripts/config -e CRYPTO_CMAC
+    scripts/config -e CRYPTO_DES
+    scripts/config -e CRYPTO_ECB
     scripts/config -e CRYPTO_HMAC
+    scripts/config -e CRYPTO_MD4
+    scripts/config -e CRYPTO_MD5
     scripts/config -e CRYPTO_SHA256
+    scripts/config -e CRYPTO_SHA512
+    scripts/config -e CRYPTO_USER_API_HASH
+    scripts/config -e CRYPTO_USER_API_SKCIPHER
 
     # udev will fail to work with legacy sysfs
     scripts/config -d SYSFS_DEPRECATED
