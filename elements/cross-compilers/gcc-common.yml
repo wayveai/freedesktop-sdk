@@ -18,6 +18,8 @@ variables:
     --enable-languages=c,c++,fortran
     --enable-default-pie
     --enable-default-ssp
+    --disable-libssp
+    --disable-libstdcxx-filesystem-ts
     --without-isl
     --enable-deterministic-archives
     --enable-linker-build-id
