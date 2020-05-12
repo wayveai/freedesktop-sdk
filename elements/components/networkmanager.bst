@@ -36,6 +36,9 @@ sources:
 - kind: git_tag
   url: freedesktop:NetworkManager/NetworkManager.git
   track: master
-  ref: 1.21.2-dev-0-ge28460819c0fb1022a153ab8336841f4aae913dd
+  exclude:
+  - "*-dev*"
+  - "*-rc*"
+  ref: 1.24.0-0-gea141ba8f8d1cf72e3bd752199c1076821fffdf9
 - kind: patch
   path: patches/networkmanager/gettext.patch
