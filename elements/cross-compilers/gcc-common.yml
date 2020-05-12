@@ -11,6 +11,7 @@ variables:
 
   conf-local: >-
     --target="%{cross_triplet}"
+    --with-sysroot=/
     --enable-multiarch
     --disable-multilib
     --disable-bootstrap
