@@ -26,6 +26,7 @@ depends:
 
 variables:
   meson-local: >-
+    -Diwd=true
     -Dpolkit=false
     -Dppp=false
     -Dmodem_manager=false
