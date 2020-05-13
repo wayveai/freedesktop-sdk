@@ -1,15 +1,15 @@
-diff -up cmake-3.7.2/Modules/GNUInstallDirs.cmake.orig cmake-3.7.2/Modules/GNUInstallDirs.cmake
---- cmake-3.7.2/Modules/GNUInstallDirs.cmake.orig	2017-01-13 15:05:41.000000000 +0100
-+++ cmake-3.7.2/Modules/GNUInstallDirs.cmake	2018-01-09 10:11:33.308481602 +0100
-@@ -210,9 +210,9 @@ if(NOT DEFINED CMAKE_INSTALL_LIBDIR OR (
-           "Please enable at least one language before including GNUInstallDirs.")
-       else()
-         if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
--          set(_LIBDIR_DEFAULT "lib64")
-+          set(_LIBDIR_DEFAULT "lib")
-           if(DEFINED _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX)
--            set(__LAST_LIBDIR_DEFAULT "lib64")
-+            set(__LAST_LIBDIR_DEFAULT "lib")
-           endif()
+diff -ur cmake-3.17.2/Modules/GNUInstallDirs.cmake cmake-3.17.2_new/Modules/GNUInstallDirs.cmake
+--- cmake-3.17.2/Modules/GNUInstallDirs.cmake	2020-04-28 16:23:06.000000000 +0200
++++ cmake-3.17.2_new/Modules/GNUInstallDirs.cmake	2020-05-14 00:50:02.921302429 +0200
+@@ -241,9 +241,9 @@
+       endif()
+     else() # not debian, rely on CMAKE_SIZEOF_VOID_P:
+       if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
+-        set(_LIBDIR_DEFAULT "lib64")
++        set(_LIBDIR_DEFAULT "lib")
+         if(DEFINED _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX)
+-          set(__LAST_LIBDIR_DEFAULT "lib64")
++          set(__LAST_LIBDIR_DEFAULT "lib")
          endif()
        endif()
+     endif()
