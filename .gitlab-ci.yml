@@ -15,10 +15,6 @@ variables:
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst14/arm64:${DOCKER_IMAGE_ID}"
   DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/bst14/ppc64le:${DOCKER_IMAGE_ID}"
 
-  # Auto Updater
-  AUTO_UPDATER_URL: "https://gitlab.com/BuildStream/infrastructure/gitlab-merge-request-generator"
-  AUTO_UPDATER_BRANCH: "v0.0.6"
-
   # Generic variable for invoking buildstream
   BST: bst --colors
 
@@ -180,8 +176,6 @@ check_update_elements:
   variables:
     GIT_SUBMODULE_STRATEGY: none
   script:
-    - git clone --depth 1 --branch $AUTO_UPDATER_BRANCH $AUTO_UPDATER_URL auto_updater
-    - cd auto_updater && python3 setup.py install && cd -
     - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@gitlab.com/freedesktop-sdk/freedesktop-sdk.git"
     - git checkout -- snap-version.yml
     - git config user.name "freedesktop_sdk_updater"
