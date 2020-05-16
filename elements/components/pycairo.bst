@@ -15,4 +15,4 @@ sources:
 - kind: git_tag
   url: github:pygobject/pycairo.git
   track: master
-  ref: v1.19.0-0-g9f486e88597056a61d76364f21b5a911f17e896a
+  ref: v1.19.1-0-g43e9c4a83d74a6771ac8f76bb3158f3dcd9af7d2
