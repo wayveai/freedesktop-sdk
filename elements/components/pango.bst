@@ -10,6 +10,7 @@ depends:
 - filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/fribidi.bst
+- filename: components/libthai.bst
 
 public:
   bst:
