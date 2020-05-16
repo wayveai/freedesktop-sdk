@@ -29,6 +29,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 1.17.0-0-ge091839dd08354289e501a47219e0c7a6472dff3
+  ref: 1.18.0-0-geb1339edd398b9f5328816931e585db4229aa132
 - kind: patch
   path: patches/wayland/wayland-cursor-xdg-dirs.patch
