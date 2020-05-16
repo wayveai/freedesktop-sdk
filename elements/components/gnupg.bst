@@ -23,6 +23,6 @@ sources:
 - kind: git_tag
   url: gnupg:gnupg.git
   track: STABLE-BRANCH-2-2
-  ref: gnupg-2.2.19-0-g1c841c8389fb9640762822395b988e0d1584c9ae
+  ref: gnupg-2.2.20-0-g5094bb08edd48087a5aa89494fc361f0ce4f34aa
 - kind: patch
   path: patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch
