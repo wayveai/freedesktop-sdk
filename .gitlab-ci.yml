@@ -10,7 +10,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: '97f80d4d4e7aeb16a746e838c38417500f25e61b'
+  DOCKER_IMAGE_ID: 'e60e2dccd1ac4e928d62472676762d8e3e4a1406'
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst14/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst14/arm64:${DOCKER_IMAGE_ID}"
   DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/bst14/ppc64le:${DOCKER_IMAGE_ID}"
@@ -173,10 +173,22 @@ check_update_elements:
   stage: update
   tags:
     - check_update
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
   script:
+    - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@gitlab.com/freedesktop-sdk/freedesktop-sdk.git"
     - git checkout -- snap-version.yml
-    - ${BST} track --deps all track-elements.bst
-    - git -c diff.external=utils/yaml_diff.py diff
+    - git config user.name "freedesktop_sdk_updater"
+    - git config user.email "freedesktop_sdk_updater@libreml.com"
+    - git branch master origin/master
+    - GITLAB_TOKEN=$FREEDESKTOP_API_KEY auto_updater --verbose
+      --nobuild
+      --overwrite
+      --push
+      --create_mr
+      --gitlab_project="freedesktop-sdk/freedesktop-sdk"
+      --max_merge_requests=10
+      track-elements.bst
   only:
     - schedules
 
