@@ -15,6 +15,12 @@ variables:
   meson-local: |
     -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
 
+config:
+  install-commands:
+    (>):
+    - |
+      ln -s iHD_drv_video.so %{install-root}%{libdir}/dri/intel-vaapi-driver/iris_drv_video.so
+
 sources:
 - kind: git_tag
   url: github:intel/intel-vaapi-driver.git
