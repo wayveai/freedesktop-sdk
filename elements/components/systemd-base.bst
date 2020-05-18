@@ -32,7 +32,7 @@ variables:
     -Dseccomp=false
     -Dsystem-uid-max=999
     -Dsystem-gid-max=999
-    -Dopenssl=false
+    -Dopenssl=true
     -Dpam=true
     -Dgnu-efi=%{efi}
     -Defi=%{efi}
@@ -42,6 +42,7 @@ variables:
     -Dxz=true
     -Dlz4=true
     -Ddefault-dnssec=no
+    -Drepart=true
 
 public:
   cpe:
