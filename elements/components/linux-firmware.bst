@@ -6,7 +6,7 @@ depends:
 config:
   install-commands:
   - |
-    make DESTDIR="%{install-root}" FIRMWAREDIR="%{install-root}%{prefix}/firmware" install
+    make DESTDIR="%{install-root}" FIRMWAREDIR="%{indep-libdir}/firmware" install
 
 sources:
 - kind: git_tag
