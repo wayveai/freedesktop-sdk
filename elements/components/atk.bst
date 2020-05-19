@@ -27,4 +27,4 @@ sources:
   - gnome-3-34
   match:
   - ATK_*_*[02468]_*
-  ref: ATK_2_34_1-0-g633bde11f93ee971ba8902c6fadbc29c121f71af
+  ref: ATK_2_36_0-0-gdbe95f6170ae1f4bb76c755506b4e3dd3990d5aa
