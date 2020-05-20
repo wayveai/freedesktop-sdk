@@ -10,7 +10,7 @@ sources:
   url: github:KhronosGroup/Vulkan-Headers.git
   track: master
   track-extra:
-  - sdk-1.2.131
+  - sdk-1.2.135
   match:
   - sdk-*
-  ref: sdk-1.2.131.1-0-gadf8cf70b2ab352eb8c3ca88b26424051a1ff21f
+  ref: sdk-1.2.135.0-0-gfb7f9c9bcd1d1544ea203a1f3d4253d0e90c5a90
