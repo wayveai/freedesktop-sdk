@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: github:openssh/openssh-portable.git
   track: master
-  ref: V_8_1_P1-0-gcdf1d0a9f5d18535e0a18ff34860e81a6d83aa5c
+  ref: V_8_2_P1-0-g8aa3455b16fddea4c0144a7c4a1edb10ec67dcc8
