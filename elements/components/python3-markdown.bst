@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: github:Python-Markdown/markdown.git
   track: master
-  ref: 3.1.1-0-g58b4d64db00ef50c090a9da4bc303c5e840c5c9f
+  ref: 3.2.2-0-g7df1ed30d98cdc1316ec8da150644d957f1c6303
