@@ -41,7 +41,7 @@ sources:
   - v5.*[02468].*
   exclude:
   - v*-RC*
-  ref: v5.30.1-0-g92dc8555fd2841214d65c8e754898f4079ec46bf
+  ref: v5.30.2-0-gceb5a43b9b27601fc60e97677b4ac903317ef392
 - kind: local
   path: files/perl/config.over
 - kind: patch
