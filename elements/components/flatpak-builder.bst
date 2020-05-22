@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - bootstrap-import.bst
 - components/flatpak.bst
+- components/curl.bst
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
