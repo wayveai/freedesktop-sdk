@@ -1,13 +1,19 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/gettext.bst
-  type: build
-- filename: components/flatpak.bst
-- filename: components/git.bst
+- bootstrap-import.bst
+- components/flatpak.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/gettext.bst
+
+runtime-depends:
+- components/git.bst
+- components/tar.bst
+- components/gzip.bst
+- components/xz.bst
+- components/zip.bst
 
 variables:
   conf-local: --disable-documentation
