@@ -3,6 +3,8 @@ kind: meson
 # This element is not be used directly. Use either:
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
+#  - components/pipewire-libjack.bst
+#  - components/pipewire-libpulse.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -40,11 +42,11 @@ public:
       - '%{indep-libdir}/systemd/**'
       - '%{debugdir}%{bindir}/pipewire.debug'
 
-      jack:
+      libjack:
       - '%{libdir}/libjack-pw.so*'
       - '%{debugdir}%{libdir}/libjack-pw.so*.debug'
 
-      pulse:
+      libpulse:
       - '%{libdir}/libpulse-pw.so*'
       - '%{libdir}/libpulse-simple-pw.so*'
       - '%{libdir}/libpulse-mainloop-glib-pw.so*'

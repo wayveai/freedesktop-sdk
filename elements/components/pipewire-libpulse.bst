@@ -12,7 +12,7 @@ runtime-depends:
 
 config:
   include:
-  - pulse
+  - libpulse
   include-orphans: False
 
 public:
