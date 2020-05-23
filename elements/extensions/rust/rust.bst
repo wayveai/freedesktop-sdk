@@ -128,3 +128,6 @@ sources:
   ref: eb0a103c67c4565403d9e6f84a1c708982a5e9e5b3c0d831e4d6f6451795d106
 - kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
+# Fix compatibility with LLVM 10. Drop this patch for Rust >= 1.44.
+- kind: patch
+  path: patches/llvm/rust-pr70163-prepare-for-llvm-10-upgrade.patch
