@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xorg/app/xkbcomp.git
   track: master
-  ref: xkbcomp-1.4.2-0-g2abe23d23d3755335c10ff573e4e1f93b682e9d9
+  ref: xkbcomp-1.4.3-0-gd373c9b434c603bf6a5eb442b6427992d23ef874
