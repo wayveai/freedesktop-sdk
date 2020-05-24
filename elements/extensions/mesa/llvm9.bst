@@ -98,7 +98,7 @@ sources:
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-9.0.0-0-g0399d5a9682b3cef71c653373e38890c63c4c365
+  ref: llvmorg-9.0.1-0-gc1a0a213378a458fbea1a5c77b315c7dce08fd05
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
