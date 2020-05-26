@@ -35,8 +35,5 @@ config:
     (<):
     - ./autogen.sh
 
-sources:
-- kind: git_tag
-  url: savannah:freetype/freetype2.git
-  track: master
-  ref: VER-2-10-1-0-g8cf046c38d4c6ada76ba070562beff0d5041f795
+(@):
+- elements/include/freetype.yml
