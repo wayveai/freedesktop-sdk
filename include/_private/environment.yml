@@ -3,7 +3,7 @@ CFLAGS:  "%{target_flags}"
 CXXFLAGS: "%{target_flags}"
 LDFLAGS:  "%{ldflags_defaults}"
 LC_ALL: en_US.UTF-8
-PYTHON: "%{bindir}/python3"
+PYTHON: "/usr/bin/python3"
 
 # Python documentation "Hash randomization is intended to provide
 # protection against a denial-of-service caused by carefully-chosen
