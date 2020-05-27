@@ -1,9 +1,13 @@
 kind: meson
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
+
+runtime-depends:
+- components/noopenh264-compat.bst
 
 variables:
   extlibdir: "%{libdir}/openh264/extra"
@@ -33,8 +37,7 @@ sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
-  ref: Release_3.6.4-0-g73438577f0c9c228118e72437803e6426fa87ba2
+  track-tags: false
+  ref: Version_2.1.1-2-ge3601c8968dca4fb825ee395f2aa366df51ef5d4
 - kind: patch
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
-- kind: patch
-  path: patches/noopenh264/Update-to-openh264-2.0.0.patch

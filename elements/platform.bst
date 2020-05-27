@@ -57,7 +57,6 @@ depends:
 - filename: components/nano.bst
 - filename: components/nettle.bst
 - filename: components/noopenh264.bst
-- filename: components/noopenh264-compat.bst
 - filename: components/npth.bst
 - filename: components/nspr.bst
 - filename: components/nss.bst
