@@ -1,33 +1,20 @@
-commit 0b35d805ecfdacb87901b8b21f2277b83b6df191
-Author: Martin Blanchard <tchaik@gmx.com>
-Date:   Sat Mar 16 10:51:12 2019 +0000
-
-    build: stop relying on intltool for i18n
-    
-    Recent gettext version can extract and merge back strings from and to
-    various file formats, no need for intltool anymore.
-    
-    https://wiki.gnome.org/Initiatives/GnomeGoals/GettextMigration
-    
-    https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues/133
-
 diff --git a/.travis.yml b/.travis.yml
-index 97b1338f9..fb1456cca 100644
+index 57e68af9a..3a047f0c5 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -11,7 +11,6 @@ addons:
-     - autoconf
-     - libtool
-     - pkg-config
+@@ -15,7 +15,6 @@ addons:
+     - dnsmasq
+     - gobject-introspection
+     - gtk-doc-tools
 -    - intltool
+     - iptables
+     - libcurl4-gnutls-dev
      - libdbus-1-dev
-     - libiw-dev
-     - libglib2.0-dev
 diff --git a/Makefile.am b/Makefile.am
-index e86dbcd70..2ed1e7246 100644
+index 35564aa5c..569ff43a7 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -173,8 +173,6 @@ endif
+@@ -155,8 +155,6 @@ endif
  
  dist: $(dist_configure_check) $(dist_dependencies)
  
@@ -35,8 +22,8 @@ index e86dbcd70..2ed1e7246 100644
 -
  ###############################################################################
  
- polkit_policydir = $(datadir)/polkit-1/actions
-@@ -182,9 +180,12 @@ polkit_policydir = $(datadir)/polkit-1/actions
+ install-data-hook-dirs:
+@@ -197,9 +195,12 @@ polkit_policydir = $(datadir)/polkit-1/actions
  dist_polkit_policy_in_in_files = \
  	data/org.freedesktop.NetworkManager.policy.in.in
  
@@ -51,9 +38,9 @@ index e86dbcd70..2ed1e7246 100644
  
  DISTCLEANFILES += $(polkit_policy_DATA)
  
-@@ -4690,9 +4691,6 @@ TESTS += $(check_programs)
- EXTRA_DIST += \
- 	CONTRIBUTING \
+@@ -5088,9 +5089,6 @@ EXTRA_DIST += \
+ 	COPYING.GFDL \
+ 	\
  	NetworkManager.pc.in \
 -	intltool-extract.in \
 -	intltool-merge.in \
@@ -79,10 +66,10 @@ index 9bb029488..da3422bbc 100755
  cd $olddir
  if test -z "$NOCONFIGURE"; then
 diff --git a/configure.ac b/configure.ac
-index f866cc885..358c8f5b3 100644
+index 245381885..67f6708ec 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -106,10 +106,8 @@ AC_CHECK_DECLS([getrandom],
+@@ -137,10 +137,8 @@ AC_CHECK_DECLS([getrandom],
  dnl
  dnl translation support
  dnl
@@ -95,10 +82,10 @@ index f866cc885..358c8f5b3 100644
  GETTEXT_PACKAGE=NetworkManager
  AC_SUBST(GETTEXT_PACKAGE)
 diff --git a/contrib/fedora/REQUIRED_PACKAGES b/contrib/fedora/REQUIRED_PACKAGES
-index 9928cf000..49e7aa1cb 100755
+index eb2404a17..25e049ec2 100755
 --- a/contrib/fedora/REQUIRED_PACKAGES
 +++ b/contrib/fedora/REQUIRED_PACKAGES
-@@ -38,7 +38,6 @@ install \
+@@ -54,7 +54,6 @@ install \
      gnutls-devel \
      gobject-introspection-devel \
      gtk-doc \
@@ -107,10 +94,10 @@ index 9928cf000..49e7aa1cb 100755
      jansson-devel \
      libcurl-devel \
 diff --git a/contrib/fedora/rpm/NetworkManager.spec b/contrib/fedora/rpm/NetworkManager.spec
-index 39252c101..9760c01b0 100644
+index 5717d9d20..1d8d4316f 100644
 --- a/contrib/fedora/rpm/NetworkManager.spec
 +++ b/contrib/fedora/rpm/NetworkManager.spec
-@@ -179,7 +179,6 @@ BuildRequires: meson
+@@ -180,7 +180,6 @@ BuildRequires: meson
  BuildRequires: automake
  BuildRequires: autoconf
  %endif
@@ -118,19 +105,19 @@ index 39252c101..9760c01b0 100644
  BuildRequires: gettext-devel
  
  BuildRequires: dbus-devel >= %{dbus_version}
-@@ -597,7 +596,6 @@ by nm-connection-editor and nm-applet in a non-graphical environment.
+@@ -625,7 +624,6 @@ This tool is still experimental.
  gtkdocize
  %endif
  autoreconf --install --force
 -intltoolize --automake --copy --force
  %configure \
+ 	--with-runstatedir=%{_rundir} \
  	--disable-silent-rules \
- 	--disable-static \
 diff --git a/data/meson.build b/data/meson.build
-index f496bf013..81b5a6a91 100644
+index de08c91c6..5364f70b6 100644
 --- a/data/meson.build
 +++ b/data/meson.build
-@@ -68,11 +68,11 @@ if enable_polkit
+@@ -58,11 +58,11 @@ if enable_polkit
      configuration: data_conf,
    )
  
@@ -138,11 +125,11 @@ index f496bf013..81b5a6a91 100644
 +  i18n.merge_file(
      policy,
      input: policy_in,
-     output: policy,
+     output: '@BASENAME@',
 -    command: intltool_xml_cmd,
 +    po_dir: po_dir,
      install: true,
-     install_dir: polkit_dir,
+     install_dir: polkit_gobject_policydir,
    )
 diff --git a/data/org.freedesktop.NetworkManager.policy.in.in b/data/org.freedesktop.NetworkManager.policy.in.in
 index 8b6ea5155..13214569e 100644
@@ -336,10 +323,10 @@ index 8b6ea5155..13214569e 100644
        <allow_inactive>no</allow_inactive>
        <allow_active>yes</allow_active>
 diff --git a/meson.build b/meson.build
-index 8804af51c..79349f337 100644
+index bb0bcd98f..5dfbded6d 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -788,11 +788,6 @@ pkg = import('pkgconfig')
+@@ -76,11 +76,6 @@ build_root = meson.current_build_dir()
  
  po_dir = join_paths(meson.source_root(), 'po')
  
@@ -348,95 +335,11 @@ index 8804af51c..79349f337 100644
 -intltool_desktop_cmd = [intltool_merge, '-d', '-u', '-c', intltool_cache, po_dir, '@INPUT@', '@OUTPUT@']
 -intltool_xml_cmd = [intltool_merge, '-x', '-u', '-c', intltool_cache, po_dir, '@INPUT@', '@OUTPUT@']
 -
- perl = find_program('perl')
- xsltproc = find_program('xsltproc')
+ top_inc = include_directories('.')
  
-diff --git a/po/Makevars b/po/Makevars
-new file mode 100644
-index 000000000..b858b6db7
---- /dev/null
-+++ b/po/Makevars
-@@ -0,0 +1,78 @@
-+# Makefile variables for PO directory in any package using GNU gettext.
-+
-+# Usually the message domain is the same as the package name.
-+DOMAIN = $(PACKAGE)
-+
-+# These two variables depend on the location of this directory.
-+subdir = po
-+top_builddir = ..
-+
-+# These options get passed to xgettext.
-+XGETTEXT_OPTIONS = --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments
-+
-+# This is the copyright holder that gets inserted into the header of the
-+# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
-+# package.  (Note that the msgstr strings, extracted from the package's
-+# sources, belong to the copyright holder of the package.)  Translators are
-+# expected to transfer the copyright for their translations to this person
-+# or entity, or to disclaim their copyright.  The empty string stands for
-+# the public domain; in this case the translators are expected to disclaim
-+# their copyright.
-+COPYRIGHT_HOLDER = The NetworkManager Authors.
-+
-+# This tells whether or not to prepend "GNU " prefix to the package
-+# name that gets inserted into the header of the $(DOMAIN).pot file.
-+# Possible values are "yes", "no", or empty.  If it is empty, try to
-+# detect it automatically by scanning the files in $(top_srcdir) for
-+# "GNU packagename" string.
-+PACKAGE_GNU = no
-+
-+# This is the email address or URL to which the translators shall report
-+# bugs in the untranslated strings:
-+# - Strings which are not entire sentences, see the maintainer guidelines
-+#   in the GNU gettext documentation, section 'Preparing Strings'.
-+# - Strings which use unclear terms or require additional context to be
-+#   understood.
-+# - Strings which make invalid assumptions about notation of date, time or
-+#   money.
-+# - Pluralisation problems.
-+# - Incorrect English spelling.
-+# - Incorrect formatting.
-+# It can be your email address, or a mailing list address where translators
-+# can write to without being subscribed, or the URL of a web page through
-+# which the translators can contact you.
-+MSGID_BUGS_ADDRESS = https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues
-+
-+# This is the list of locale categories, beyond LC_MESSAGES, for which the
-+# message catalogs shall be used.  It is usually empty.
-+EXTRA_LOCALE_CATEGORIES =
-+
-+# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
-+# context.  Possible values are "yes" and "no".  Set this to yes if the
-+# package uses functions taking also a message context, like pgettext(), or
-+# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
-+USE_MSGCTXT = yes
-+
-+# These options get passed to msgmerge.
-+# Useful options are in particular:
-+#   --previous            to keep previous msgids of translated messages,
-+#   --quiet               to reduce the verbosity.
-+MSGMERGE_OPTIONS =
-+
-+# These options get passed to msginit.
-+# If you want to disable line wrapping when writing PO files, add
-+# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
-+# MSGINIT_OPTIONS.
-+MSGINIT_OPTIONS =
-+
-+# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
-+# has changed.  Possible values are "yes" and "no".  Set this to no if
-+# the POT file is checked in the repository and the version control
-+# program ignores timestamps.
-+PO_DEPENDS_ON_POT = no
-+
-+# This tells whether or not to forcibly update $(DOMAIN).pot and
-+# regenerate PO files on "make dist".  Possible values are "yes" and
-+# "no".  Set this to no if the POT file and PO files are maintained
-+# externally.
-+DIST_DEPENDS_ON_UPDATE_PO = no
+ perl = find_program('perl')
 diff --git a/po/POTFILES.in b/po/POTFILES.in
-index fdae23ee3..23113724c 100644
+index 852901d8a..e687cf944 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -1,4 +1,3 @@
