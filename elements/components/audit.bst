@@ -12,6 +12,7 @@ variables:
     --without-golang
     --enable-systemd
     --disable-zos-remote
+  local_flags: -fcommon
 
 config:
   install-commands:

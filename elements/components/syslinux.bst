@@ -19,9 +19,9 @@ sources:
 
 config:
   build-commands:
-  - make installer
+  - make installer CC="gcc -fcommon"
   install-commands:
-  - make INSTALLROOT="%{install-root}" MANDIR="%{mandir}" SBINDIR="%{sbindir}" install
+  - make INSTALLROOT="%{install-root}" MANDIR="%{mandir}" SBINDIR="%{sbindir}" install CC="gcc -fcommon"
 
 public:
   bst:

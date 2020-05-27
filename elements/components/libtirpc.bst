@@ -6,6 +6,7 @@ depends:
 variables:
   conf-local: >-
     --disable-gssapi
+  local_flags: -fcommon
 
 public:
   bst:

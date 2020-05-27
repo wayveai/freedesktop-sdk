@@ -32,6 +32,7 @@ variables:
     --disable-xwin \
     --enable-glamor \
     --enable-xwayland
+  local_flags: -fcommon
 
 sources:
 - kind: git_tag
