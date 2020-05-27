@@ -31,11 +31,13 @@ environment:
   # FIXME, extract the required headers from libdrm that are needed
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig:'
 
+variables:
   # FIXME colord depends on intltool (polkit) and python2 (mozjs)
+  # FIXME Does not support pipewire 0.3
   meson-local: >-
     -Dbackend-rdp=false
     -Dcolor-management-colord=false
-    -Dpipewire=true
+    -Dpipewire=false
 
 sources:
 - kind: git_tag
