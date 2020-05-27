@@ -38,10 +38,6 @@ sources:
   url: github:endlessm/noopenh264.git
   track: master
   track-tags: false
-  ref: Version_2.0.0-2-g7ccc8e60480656cf86cc7a811e2f44bdbcf66abe
+  ref: Version_2.1.1-2-ge3601c8968dca4fb825ee395f2aa366df51ef5d4
 - kind: patch
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
-- kind: patch
-  path: patches/noopenh264/0001-Update-headers-for-OpenH264-2.1.0.patch
-- kind: patch
-  path: patches/noopenh264/0001-Patch-soname-to-6.patch
