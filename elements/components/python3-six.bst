@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: github:benjaminp/six.git
   track: master
-  ref: 1.14.0-0-g3a3db7510b33eb22c63ad94bc735a9032949249f
+  ref: 1.15.0-0-gc0be8815d13df45b6ae471c4c436cce8c192245d
