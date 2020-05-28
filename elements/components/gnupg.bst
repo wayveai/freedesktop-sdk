@@ -17,7 +17,7 @@ variables:
     --disable-doc \
     --disable-all-tests
 
-  local_flags: -Wno-unused-result -fcommon
+  local_flags: -fcommon
 
 sources:
 - kind: git_tag
@@ -26,3 +26,5 @@ sources:
   ref: gnupg-2.2.20-0-g5094bb08edd48087a5aa89494fc361f0ce4f34aa
 - kind: patch
   path: patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch
+- kind: patch
+  path: patches/gnupg/remove-Werror-from-configure.ac.patch
