@@ -37,6 +37,6 @@ sources:
 - kind: git_tag
   url: github:silnrsi/graphite.git
   track: master
-  ref: 1.3.13-0-gb45f9b271214b95f3b42e5c9863eae4b0bfb7fd7
+  ref: 1.3.14-0-g92f59dcc52f73ce747f1cdc831579ed2546884aa
 - kind: patch
   path: patches/graphite2/graphite2-1.2.0-cmakepath.patch
