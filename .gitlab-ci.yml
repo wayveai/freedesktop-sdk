@@ -461,7 +461,6 @@ minimal_systemd_vm_powerpc64le:
     - '18.08'
     - '19.08'
     - tags
-  when: manual
   interruptible: true
 
 minimal_systemd_vm_image_x86_64:
@@ -510,7 +509,6 @@ minimal_efi_vm_image_x86_64:
     TYPE: minimal
     DIALOG: root-login
   dependencies: []
-  when: manual
 
 .prepare_publish_template: &prepare_publish
   image: $DOCKER_AMD64
