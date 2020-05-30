@@ -10,4 +10,4 @@ sources:
 - kind: git_tag
   url: github:cython/cython.git
   track: 0.29.x
-  ref: 0.29.18-0-ga57de922bbcfaa44ca4e7580e69ec9f5b6b62ad4
+  ref: 0.29.19-0-g2c3a8c12b7c51f287a2a1475fb7d06eadde83baf
