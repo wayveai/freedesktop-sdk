@@ -152,4 +152,4 @@ sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.2
-  ref: n4.2.2-0-g192d1d34eb3668fa27f433e96036340e1e5077a0
+  ref: n4.2.3-0-gd3b963cc41824a3c5b2758ac896fb23e20a87875
