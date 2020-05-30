@@ -14,4 +14,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xorg/proto/xcbproto.git
   track: master
-  ref: xcb-proto-1.13-0-g94228cde97d9aecfda04a8e699d462ba2b89e3a0
+  ref: xcb-proto-1.14-0-g73d84bf39be7f3d8c90d7494bd4641456f2c8ef9
