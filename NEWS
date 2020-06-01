@@ -1,5 +1,14 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.11:
+
+    * gnutls: Handle AddTrust root cert expiration (#1047)
+    * llvm: Update to 9.0.1
+    * intel-vaapi-driver: Add iris symlink
+    * cmake: Update to 3.17.2
+    * gtk3: Update to 3.24.20
+    * vala: Update to 0.48.11 (current LTS)
+
 freedesktop-sdk-19.08.10:
 
     * appstream-glib: Backport patch allowing future timestamps in
