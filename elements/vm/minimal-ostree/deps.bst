@@ -13,6 +13,7 @@ runtime-depends:
 - vm/config/networkd.bst
 - vm/config/resolved.bst
 - vm/config/ostree.bst
+- vm/config/useradd-ostree.bst
 - vm/boot/efi-ostree.bst
 - components/gnupg.bst
 - components/eos-updater.bst

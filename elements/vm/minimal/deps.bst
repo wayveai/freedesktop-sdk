@@ -16,3 +16,4 @@ runtime-depends:
 - vm/config/journald.bst
 - vm/config/networkd.bst
 - vm/config/resolved.bst
+- vm/config/useradd-default.bst

@@ -46,24 +46,3 @@ config:
 sources:
 - kind: local
   path: files/vm/ostree-config
-
-public:
-  bst:
-    integration-commands:
-    # /etc/default/useradd is provided by freedesktop-sdk.bst's
-    # components/shadow.bst. In non OSTree configuration it should
-    # stay /home. So we have to adjust the value of HOME in OSTree
-    # configurations only.
-    #
-    # Even though we have a symlink /home -> var/home, we should not
-    # define home directory. The real root filesystem (which is
-    # /sysroot) is not mounted as recursive shared on OSTree.  When
-    # the home directory in /etc/passwd is defined to use the symlink,
-    # then mounts in home are mounted on this /sysroot instead of
-    # /var.  That means that the mount does not propagate in Flatpak
-    # applications. This breaks Flatpak Builder and BuildStream which
-    # require fuse mounts.
-    - |
-      if [ -f /etc/default/useradd ]; then
-        sed -i 's,HOME=/home,HOME=/var/home,' /etc/default/useradd
-      fi
