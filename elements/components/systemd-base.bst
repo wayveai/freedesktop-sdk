@@ -32,6 +32,7 @@ variables:
     -Dseccomp=false
     -Dsystem-uid-max=999
     -Dsystem-gid-max=999
+    -Dusers-gid=100
     -Dopenssl=true
     -Dpam=true
     -Dgnu-efi=%{efi}
