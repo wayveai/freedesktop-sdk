@@ -1,11 +1,12 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/perl.bst
+- components/texinfo.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
-  type: build
-- filename: components/texinfo.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   builddir: ''
@@ -28,8 +29,11 @@ config:
       rm "%{install-root}%{infodir}/dir"
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:aspell/aspell-0.60.6.1.tar.gz
-  ref: f52583a83a63633701c5f71db3dc40aab87b7f76b29723aeb27941eff42df6e1
-- kind: patch
-  path: patches/aspell/aspell-compile-fix.patch
+- kind: git_tag
+  url: savannah:aspell.git
+  track: master
+  track-extra:
+  - rel-0.60.8-branch
+  match:
+  - rel-*
+  ref: rel-0.60.8-0-gc96f9b06576cde08300c14f288727c754038fe3f
