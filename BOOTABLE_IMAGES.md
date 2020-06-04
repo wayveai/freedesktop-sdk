@@ -17,7 +17,7 @@ All the demo images have user `root` and password `root`.
 
 ### Using QEMU
 
-Here we remind of the of some useful parameters for QEMU. For for
+Here we remind you of some useful parameters for QEMU. For more
 advance usage, please refer to the (QEMU
 documentation](https://www.qemu.org/documentation/).
 
