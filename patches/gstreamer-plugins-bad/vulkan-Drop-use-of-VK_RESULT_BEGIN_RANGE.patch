@@ -23,15 +23,6 @@ diff --git a/ext/vulkan/vkerror.c b/ext/vulkan/vkerror.c
 index 3fec27e4d..c91589d9b 100644
 --- a/ext/vulkan/vkerror.c
 +++ b/ext/vulkan/vkerror.c
-@@ -27,7 +27,7 @@
- #include "vkerror.h"
-
- /* *INDENT-OFF* */
--static const struct
-+static const struct
- {
-   VkResult result;
-   const char *str;
 @@ -63,8 +63,6 @@ _vk_result_to_string (VkResult result)
 
    if (result >= 0)
