@@ -81,6 +81,7 @@ depends:
 - filename: components/tzdata.bst
 - filename: components/unzip.bst
 - filename: components/util-linux.bst
+- filename: components/wget.bst
 - filename: components/which.bst
 - filename: components/xz.bst
 - filename: components/zip.bst
