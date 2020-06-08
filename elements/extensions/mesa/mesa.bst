@@ -1,35 +1,33 @@
 kind: meson
 
+build-depends:
+- components/bison.bst
+- components/flex.bst
+- components/python3.bst
+- components/python3-mako.bst
+- components/vulkan.bst
+- components/wayland-protocols.bst
+- public-stacks/buildsystem-meson.bst
+
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glslang.bst
-- filename: components/llvm.bst
-- filename: components/libdrm.bst
-- filename: extensions/mesa/libdrm.bst
-- filename: components/libva.bst
-- filename: components/libclc.bst
-- filename: components/opencl.bst
-- filename: components/xorg-lib-xdamage.bst
-- filename: components/xorg-lib-xfixes.bst
-- filename: components/xorg-lib-xrandr.bst
-- filename: components/xorg-lib-xshmfence.bst
-- filename: components/xorg-lib-xxf86vm.bst
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: components/libglvnd.bst
-- filename: components/libvdpau.bst
-- filename: components/bison.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/libunwind.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/python3.bst
-  type: build
-- filename: components/python3-mako.bst
-  type: build
+- bootstrap-import.bst
+- components/glslang.bst
+- components/llvm.bst
+- components/libdrm.bst
+- components/libva.bst
+- components/libclc.bst
+- components/opencl.bst
+- components/xorg-lib-xdamage.bst
+- components/xorg-lib-xfixes.bst
+- components/xorg-lib-xrandr.bst
+- components/xorg-lib-xshmfence.bst
+- components/xorg-lib-xxf86vm.bst
+- components/wayland.bst
+- components/libglvnd.bst
+- components/libvdpau.bst
+- components/libunwind.bst
+- extensions/mesa/libdrm.bst
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
@@ -42,12 +40,12 @@ variables:
 
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
-      gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl
+      gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink
       dri_drivers: i915,i965,nouveau,r100,r200
       vulkan_drivers: amd,intel
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
-      gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4
+      gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4,zink
       dri_drivers: ''
       vulkan_drivers: freedreno
       enable_libunwind: 'false'
