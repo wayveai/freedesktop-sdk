@@ -88,3 +88,5 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
+- kind: patch
+  path: patches/gstreamer-plugins-bad/vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch
