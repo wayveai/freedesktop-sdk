@@ -15,16 +15,16 @@ depends:
 variables:
   builddir: ''
   prefix: '%{tools}'
-  conf-link-args: |
-    --disable-shared \
+  conf-link-args: >-
+    --disable-shared
     --disable-static
 
-  conf-local: |
-    --without-lua \
-    --with-external-db \
-    --with-crypto=openssl \
-    --without-archive \
-    CPPFLAGS="-I%{tools}/include ${CPPFLAGS}" \
+  conf-local: >-
+    --disable-bdb
+    --without-lua
+    --with-crypto=openssl
+    --without-archive
+    CPPFLAGS="-I%{tools}/include ${CPPFLAGS}"
     LDFLAGS="-L%{tools}/lib ${LDFLAGS}"
 
 config:

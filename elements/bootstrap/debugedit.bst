@@ -20,14 +20,14 @@ depends:
 
 variables:
   builddir: ''
-  conf-link-args: |
-    --disable-shared \
+  conf-link-args: >-
+    --disable-shared
     --disable-static
-  conf-local: |
-    --without-lua \
-    --with-crypto=openssl \
-    --without-archive \
-    --with-external-db
+  conf-local: >-
+    --disable-bdb
+    --without-lua
+    --with-crypto=openssl
+    --without-archive
 
   make-install: make -j1 install-rpmlibexecPROGRAMS DESTDIR="%{install-root}" rpmlibexec_PROGRAMS="debugedit" rpmlibexecdir="%{bindir}"
 
