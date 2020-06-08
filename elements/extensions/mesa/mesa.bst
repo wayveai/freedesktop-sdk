@@ -49,7 +49,7 @@ variables:
   - target_arch == "arm" or target_arch == "aarch64":
       gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4
       dri_drivers: ''
-      vulkan_drivers: ''
+      vulkan_drivers: freedreno
       enable_libunwind: 'false'
   - target_arch == "powerpc64le":
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
