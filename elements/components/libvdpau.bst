@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: freedesktop:vdpau/libvdpau.git
   track: master
-  ref: 1.3-0-gf57a9904c43ef5d726320c77baa91d0c38361ed4
+  ref: 1.4-0-gc3d1a9dbafdfe6144ff474d0d523dc01b068750f
