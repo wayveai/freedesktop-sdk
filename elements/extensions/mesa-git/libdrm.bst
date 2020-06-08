@@ -35,6 +35,6 @@ sources:
   # release of libdrm. We need to wait for a release and an update
   # of components/libdrm.bst before uncommenting the following.
   #track-tags: false
-  ref: libdrm-2.4.101-0-g27fa47a738b15464528a1c44d8cb0b2ab31d3cf7
+  ref: libdrm-2.4.102-0-gbb70ab82fd599b0a0db3d22354f05ae87fbc4515
 - kind: patch
   path: patches/libdrm/libdrm_disable_libdrm.patch

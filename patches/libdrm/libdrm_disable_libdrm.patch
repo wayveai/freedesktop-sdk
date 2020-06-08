@@ -148,10 +148,10 @@ index 216be4df..3f1ea2e1 100644
  )
  
 diff --git a/meson.build b/meson.build
-index 0515866f..c463cfcf 100644
+index 831c8836..ab4bef19 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -290,6 +290,7 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
+@@ -304,6 +304,7 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
  inc_root = include_directories('.')
  inc_drm = include_directories('include/drm')
  
@@ -159,7 +159,7 @@ index 0515866f..c463cfcf 100644
  libdrm = shared_library(
    'drm',
    [files(
-@@ -319,11 +320,22 @@ ext_libdrm = declare_dependency(
+@@ -333,11 +334,22 @@ ext_libdrm = declare_dependency(
    link_with : libdrm,
    include_directories : [inc_root, inc_drm],
  )
@@ -183,7 +183,7 @@ index 0515866f..c463cfcf 100644
    'include/drm/mach64_drm.h', 'include/drm/mga_drm.h',
    'include/drm/msm_drm.h', 'include/drm/nouveau_drm.h',
    'include/drm/qxl_drm.h', 'include/drm/r128_drm.h',
-@@ -337,6 +349,7 @@ if with_vmwgfx
+@@ -351,6 +363,7 @@ if with_vmwgfx
    install_headers('include/drm/vmwgfx_drm.h', subdir : 'libdrm')
  endif
  
@@ -191,7 +191,7 @@ index 0515866f..c463cfcf 100644
  pkg.generate(
    name : 'libdrm',
    libraries : libdrm,
-@@ -344,6 +357,7 @@ pkg.generate(
+@@ -358,6 +371,7 @@ pkg.generate(
    version : meson.project_version(),
    description : 'Userspace interface to kernel DRM services',
  )
@@ -308,15 +308,15 @@ index 88613b9c..b7537a39 100644
  )
  
 diff --git a/tests/amdgpu/meson.build b/tests/amdgpu/meson.build
-index 1726cb43..bbe94ccd 100644
+index 4dfa5c83..7c1935e3 100644
 --- a/tests/amdgpu/meson.build
 +++ b/tests/amdgpu/meson.build
 @@ -26,9 +26,9 @@ if dep_cunit.found()
        'vce_tests.c', 'uvd_enc_tests.c', 'vcn_tests.c', 'deadlock_tests.c',
        'vm_tests.c', 'ras_tests.c', 'syncobj_tests.c',
      ),
--    dependencies : [dep_cunit, dep_threads],
-+    dependencies : [dep_cunit, dep_threads, ext_libdrm],
+-    dependencies : [dep_cunit, dep_threads, dep_atomic_ops],
++    dependencies : [dep_cunit, dep_threads, dep_atomic_ops, ext_libdrm],
      include_directories : [inc_root, inc_drm, include_directories('../../amdgpu')],
 -    link_with : [libdrm, libdrm_amdgpu],
 +    link_with : [libdrm_amdgpu],
@@ -419,7 +419,7 @@ index 4fb870f9..5b9e7a08 100644
    install : with_install_tests,
  )
 diff --git a/tests/meson.build b/tests/meson.build
-index 5aab5a04..b8510830 100644
+index 196edbfa..50a07000 100644
 --- a/tests/meson.build
 +++ b/tests/meson.build
 @@ -52,7 +52,7 @@ drmsl = executable(
@@ -447,8 +447,8 @@ index 5aab5a04..b8510830 100644
 -  link_with : libdrm,
 +  dependencies : [ext_libdrm],
    c_args : libdrm_c_args,
+   install : with_install_tests,
  )
- 
 diff --git a/tests/modeprint/meson.build b/tests/modeprint/meson.build
 index 0801808a..067b18ab 100644
 --- a/tests/modeprint/meson.build
