@@ -44,6 +44,11 @@ public:
     - |
       glib-compile-schemas %{datadir}/glib-2.0/schemas
 
+    - |
+      if [ -d "%{libdir}/gio/modules" ]; then
+        gio-querymodules "%{libdir}/gio/modules"
+      fi
+
 sources:
 - kind: git_tag
   url: gnome:glib.git
