@@ -170,6 +170,11 @@ config:
     scripts/config -e NETDEVICES
     scripts/config -e WLAN
 
+    # Wifi hardware
+    scripts/config -m IWLWIFI
+    scripts/config -m IWLMVM
+    scripts/config -m IWLDVM
+
   build-commands:
   - |
     make
