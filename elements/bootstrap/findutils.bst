@@ -12,14 +12,10 @@ depends:
 config:
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:findutils/findutils-4.6.0.tar.gz
-  ref: ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d
-- kind: patch
-  path: patches/findutils/findutils-4.6.0-gnulib-fflush.patch
-- kind: patch
-  path: patches/findutils/findutils-4.6.0-gnulib-makedev.patch
+  url: ftp_gnu_org:findutils/findutils-4.7.0.tar.xz
+  ref: c5fefbdf9858f7e4feb86f036e1247a54c79fc2d8e4b7064d5aaa1f47dfa789a
