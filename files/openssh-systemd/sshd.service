@@ -1,0 +1,22 @@
+[Unit]
+Description=OpenSSH server
+After=network.target
+
+[Service]
+# Generate missing keys
+ExecStartPre=/usr/bin/ssh-keygen -A
+
+ExecStart=/usr/bin/sshd -D
+
+# Checks for configuration before reloading
+ExecReload=/usr/bin/sshd -t
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+# Do not kill current connections, otherwise we cannot restart from an
+# ssh session.
+KillMode=process
+
+Restart=on-faiure
+
+[Install]
+WantedBy=multi-user.target

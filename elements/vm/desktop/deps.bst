@@ -34,6 +34,7 @@ runtime-depends:
 - components/pinentry-ncurses.bst
 - components/pcsc-lite.bst
 - components/ccid.bst
+- components/openssh-systemd.bst
 
 (?):
 - not pipewire:

@@ -1,0 +1,3 @@
+# OpenSSH server is not requirements for desktop applications, users
+# should enable it manually.
+disable sshd.service
