@@ -175,6 +175,24 @@ config:
     scripts/config -m IWLMVM
     scripts/config -m IWLDVM
 
+    # Common DRM drivers
+    scripts/config -m DRM_NOUVEAU
+    scripts/config -m DRM_RADEON
+    scripts/config -m DRM_AMDGPU
+    scripts/config -e DRM_AMD_DC
+    scripts/config -e DRM_AMD_DC_DCN
+    scripts/config -e DRM_AMD_DC_HDCP
+    case "%{arch}" in
+      x86_64|i686)
+        scripts/config -m DRM_I915
+        scripts/config -m DRM_GMA500
+        scripts/config -m DRM_GMA600
+        scripts/config -m DRM_GMA3600
+        ;;
+      aarch64|arm)
+        ;;
+    esac
+
   build-commands:
   - |
     make
