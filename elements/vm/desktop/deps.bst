@@ -31,6 +31,9 @@ runtime-depends:
 - vm/config/useradd-default.bst
 - components/wpa-supplicant.bst
 - components/steam-devices.bst
+- components/pinentry-ncurses.bst
+- components/pcsc-lite.bst
+- components/ccid.bst
 
 (?):
 - not pipewire:
