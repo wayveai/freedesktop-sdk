@@ -30,6 +30,7 @@ runtime-depends:
 - vm/config/journald.bst
 - vm/config/useradd-default.bst
 - components/wpa-supplicant.bst
+- components/steam-devices.bst
 
 (?):
 - not pipewire:
