@@ -2,9 +2,12 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
+- components/texinfo.bst
 
 depends:
 - bootstrap-import.bst
+- components/libassuan.bst
+- components/libgpg-error.bst
 
 variables:
   conf-local: >-
@@ -12,8 +15,13 @@ variables:
     --disable-pinentry-qt
     --disable-pinentry-gtk2
     --disable-pinentry-gnome3
+    --disable-pinentry-fltk
 
 config:
+  build-commands:
+    (<):
+    - make -C "%{builddir}/doc" ../../doc/stamp-vti
+
   install-commands:
     (>):
     - rm "%{install-root}%{bindir}/pinentry"
