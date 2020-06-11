@@ -12,6 +12,7 @@ runtime-depends:
 - components/os-release.bst
 - components/shadow.bst
 - components/tzdata.bst
+- components/iproute2.bst
 - vm/base-filesystem.bst
 - vm/config/journald.bst
 - vm/config/networkd.bst

@@ -35,6 +35,7 @@ runtime-depends:
 - components/pcsc-lite.bst
 - components/ccid.bst
 - components/openssh-systemd.bst
+- components/iproute2.bst
 
 (?):
 - not pipewire:
