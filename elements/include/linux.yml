@@ -3,11 +3,7 @@ sources:
   url: kernel:linux/kernel/git/stable/linux.git
   track: master
   track-extra:
-  - linux-5.6.y
+  - linux-5.7.y
   exclude:
   - '*-rc*'
-  ref: v5.6.12-0-g7105222ab70da8940c1bfe069639756455bc7200
-- kind: patch
-  path: patches/linux/disallow-store-data-races.patch
-- kind: patch
-  path: patches/linux/boot-crash-gcc10-fix.patch
+  ref: v5.7.2-0-gc58091a3ea4c1fa8a71f38842c877fbd4c54b45d
