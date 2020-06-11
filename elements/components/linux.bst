@@ -193,6 +193,10 @@ config:
         ;;
     esac
 
+    # FUSE
+    scripts/config -m FUSE_FS
+    scripts/config -m CUSE
+
   build-commands:
   - |
     make
