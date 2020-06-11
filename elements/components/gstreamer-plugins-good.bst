@@ -48,3 +48,5 @@ sources:
     common:
       checkout: false
       url: freedesktop:gstreamer/common.git
+- kind: patch
+  path: patches/gstreamer-plugins-good/fix-qtmux.patch
