@@ -36,6 +36,7 @@ runtime-depends:
 - components/ccid.bst
 - components/openssh-systemd.bst
 - components/iproute2.bst
+- components/gamemode.bst
 
 (?):
 - not pipewire:
