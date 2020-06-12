@@ -7,7 +7,9 @@ depends:
 - filename: bootstrap/acl.bst
   type: runtime
 
-(@): elements/bootstrap/include/target.yml
+(@):
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/coreutils-source.yml
 
 environment:
   FORCE_UNSAFE_CONFIGURE: "1"
@@ -29,12 +31,10 @@ config:
 
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:coreutils/coreutils-8.31.tar.xz
-  ref: ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd
-- kind: patch
-  path: patches/coreutils/coreutils-no-man-deps.patch
+  (>):
+  - kind: patch
+    path: patches/coreutils/coreutils-no-man-deps.patch
