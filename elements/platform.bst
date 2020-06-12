@@ -84,6 +84,7 @@ depends:
 - filename: components/wget.bst
 - filename: components/which.bst
 - filename: components/xz.bst
+- filename: components/xz-docs.bst
 - filename: components/zip.bst
 - filename: components/alsa-lib.bst
 - filename: components/alsa-plugins.bst
