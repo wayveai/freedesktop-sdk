@@ -47,4 +47,4 @@ sources:
 - kind: git_tag
   track: master
   url: kernel:utils/pciutils/pciutils.git
-  ref: v3.6.3-0-gdacdaa94320df20f36a19279ae49f0cb61d51932
+  ref: v3.7.0-0-g864aecdea9c7db626856d8d452f6c784316a878c
