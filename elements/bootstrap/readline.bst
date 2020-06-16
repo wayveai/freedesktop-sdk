@@ -18,7 +18,7 @@ config:
   build-commands:
   - |
     cd "%{builddir}"
-    %{make} SHLIB_LIBS="-Wl,--push-state,--no-as-needed -lncurses -Wl,--pop-state"
+    %{make} SHLIB_LIBS="-Wl,--push-state,--no-as-needed -lncursesw -Wl,--pop-state"
 
   install-commands:
     (>):
