@@ -17,6 +17,7 @@ kitware: https://gitlab.kitware.com/cmake/
 kernel: https://git.kernel.org/pub/scm/
 libdaemon: git://git.0pointer.de/
 nettle: https://git.lysator.liu.se/nettle/
+pagure: https://pagure.io/
 repo_or_cz: https://repo.or.cz/
 samba: https://git.samba.org/
 savannah: https://git.savannah.gnu.org/git/

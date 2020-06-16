@@ -4,6 +4,16 @@ depends:
 - bootstrap-import.bst
 - components/libaio.bst
 
+variables:
+  conf-local: >-
+    --enable-dmeventd
+    --enable-cmdlib
+    --enable-pkgconfig
+    --with-confdir=%{sysconfdir}
+    --with-staticdir=%{sbindir}
+    --with-usrlibdir=%{libdir}
+    --with-usrsbindir=%{sbindir}
+
 sources:
 - kind: git_tag
   url: sourceware:lvm2.git
