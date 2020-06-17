@@ -261,6 +261,10 @@ config:
     scripts/config -m USB_GSPCA_XIRLINK_CIT
     scripts/config -m USB_GSPCA_ZC3XX
 
+    # NVME disks
+    scripts/config -m BLK_DEV_NVME
+    scripts/config -m NVME_HWMON
+
   build-commands:
   - |
     make
