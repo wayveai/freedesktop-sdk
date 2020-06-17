@@ -206,6 +206,61 @@ config:
     # Encrypted disks
     scripts/config -m DM_CRYPT
 
+    # USB audio
+    scripts/config -m SND_USB_AUDIO
+
+    # Common USB webcams
+    scripts/config -e MEDIA_SUPPORT
+    scripts/config -e MEDIA_USB_SUPPORT
+    scripts/config -e MEDIA_CAMERA_SUPPORT
+    scripts/config -m USB_VIDEO_CLASS
+    scripts/config -m USB_GSPCA_BENQ
+    scripts/config -m USB_GSPCA_CONEX
+    scripts/config -m USB_GSPCA_CPIA1
+    scripts/config -m USB_GSPCA_DTCS033
+    scripts/config -m USB_GSPCA_ETOMS
+    scripts/config -m USB_GSPCA_FINEPIX
+    scripts/config -m USB_GSPCA_JEILINJ
+    scripts/config -m USB_GSPCA_JL2005BCD
+    scripts/config -m USB_GSPCA_KINECT
+    scripts/config -m USB_GSPCA_KONICA
+    scripts/config -m USB_GSPCA_MARS
+    scripts/config -m USB_GSPCA_MR97310A
+    scripts/config -m USB_GSPCA_NW80X
+    scripts/config -m USB_GSPCA_OV519
+    scripts/config -m USB_GSPCA_OV534
+    scripts/config -m USB_GSPCA_OV534_9
+    scripts/config -m USB_GSPCA_PAC207
+    scripts/config -m USB_GSPCA_PAC7302
+    scripts/config -m USB_GSPCA_PAC7311
+    scripts/config -m USB_GSPCA_SE401
+    scripts/config -m USB_GSPCA_SN9C2028
+    scripts/config -m USB_GSPCA_SN9C20X
+    scripts/config -m USB_GSPCA_SONIXB
+    scripts/config -m USB_GSPCA_SONIXJ
+    scripts/config -m USB_GSPCA_SPCA500
+    scripts/config -m USB_GSPCA_SPCA501
+    scripts/config -m USB_GSPCA_SPCA505
+    scripts/config -m USB_GSPCA_SPCA506
+    scripts/config -m USB_GSPCA_SPCA508
+    scripts/config -m USB_GSPCA_SPCA561
+    scripts/config -m USB_GSPCA_SPCA1528
+    scripts/config -m USB_GSPCA_SQ905
+    scripts/config -m USB_GSPCA_SQ905C
+    scripts/config -m USB_GSPCA_SQ930X
+    scripts/config -m USB_GSPCA_STK014
+    scripts/config -m USB_GSPCA_STK1135
+    scripts/config -m USB_GSPCA_STV0680
+    scripts/config -m USB_GSPCA_SUNPLUS
+    scripts/config -m USB_GSPCA_T613
+    scripts/config -m USB_GSPCA_TOPRO
+    scripts/config -m USB_GSPCA_TOUPTEK
+    scripts/config -m USB_GSPCA_TV8532
+    scripts/config -m USB_GSPCA_VC032X
+    scripts/config -m USB_GSPCA_VICAM
+    scripts/config -m USB_GSPCA_XIRLINK_CIT
+    scripts/config -m USB_GSPCA_ZC3XX
+
   build-commands:
   - |
     make
