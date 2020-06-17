@@ -66,6 +66,7 @@ config:
     scripts/config -e CRYPTO_SHA512
     scripts/config -e CRYPTO_USER_API_HASH
     scripts/config -e CRYPTO_USER_API_SKCIPHER
+    scripts/config -e CRYPTO_XTS
 
     # udev will fail to work with legacy sysfs
     scripts/config -d SYSFS_DEPRECATED
@@ -201,6 +202,9 @@ config:
     scripts/config -e SCSI_LOWLEVEL
     scripts/config -m ISCSI_TCP
     scripts/config -m SCSI_ISCSI_ATTRS
+
+    # Encrypted disks
+    scripts/config -m DM_CRYPT
 
   build-commands:
   - |
