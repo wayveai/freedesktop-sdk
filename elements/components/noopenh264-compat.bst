@@ -6,9 +6,6 @@ depends:
 build-depends:
 - public-stacks/buildsystem-meson.bst
 
-runtime-depends:
-- components/noopenh264-compat.bst
-
 variables:
   extlibdir: "%{libdir}/openh264/extra"
   meson-local: "--libdir=%{extlibdir}"
@@ -25,19 +22,19 @@ config:
     - |
       rm %{install-root}%{extlibdir}/libopenh264.a
 
-public:
-  bst:
-    split-rules:
-      devel:
-        (>):
-        - '%{extlibdir}/libopenh264.so'
-        - '%{libdir}/libopenh264.so'
-
+    - |
+      rm %{install-root}%{libdir}/libopenh264.so
+      rm %{install-root}%{extlibdir}/libopenh264.so
+      rm -r %{install-root}%{includedir}
+      rm -r %{install-root}%{libdir}/pkgconfig
+      
 sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
   track-tags: false
-  ref: Version_2.1.1-2-ge3601c8968dca4fb825ee395f2aa366df51ef5d4
+  ref: Release_3.6.4-0-g73438577f0c9c228118e72437803e6426fa87ba2
 - kind: patch
   path: patches/noopenh264/make-version-same-as-actual-lib.patch
+- kind: patch
+  path: patches/noopenh264/Update-to-openh264-2.0.0.patch
