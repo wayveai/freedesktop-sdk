@@ -151,5 +151,5 @@ config:
 sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
-  track: release/4.2
-  ref: n4.2.3-0-gd3b963cc41824a3c5b2758ac896fb23e20a87875
+  track: release/4.3
+  ref: n4.3-0-g8e12af29d1a3f95c9e952d78354e3c8b1c0431a8
