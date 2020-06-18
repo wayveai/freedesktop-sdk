@@ -20,3 +20,4 @@ runtime-depends:
 - components/linux-firmware.bst
 - components/wireless-regdb-bin.bst
 - components/iproute2.bst
+- components/usbutils.bst

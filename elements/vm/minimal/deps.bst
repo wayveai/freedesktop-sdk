@@ -18,3 +18,4 @@ runtime-depends:
 - vm/config/networkd.bst
 - vm/config/resolved.bst
 - vm/config/useradd-default.bst
+- components/usbutils.bst

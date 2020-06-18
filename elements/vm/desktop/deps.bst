@@ -38,6 +38,7 @@ runtime-depends:
 - components/iproute2.bst
 - components/gamemode.bst
 - components/open-iscsi.bst
+- components/usbutils.bst
 
 (?):
 - not pipewire:
