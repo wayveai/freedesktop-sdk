@@ -16,7 +16,7 @@ variables:
     --disable-old-symbols \
     --with-pythonlibs="-lpthread -lm -ldl -lpython3" \
     --with-pythonincludes=-I/usr/include/python3 \
-    --with-pcm-plugins="hw ioplug extplug"
+    --with-pcm-plugins="hw ioplug extplug plug empty route hooks asym softvol"
 
   local-config-replacement: |
     {
