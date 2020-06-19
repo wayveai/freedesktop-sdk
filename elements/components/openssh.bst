@@ -1,13 +1,24 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/linux-pam.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
-  conf-local: |
+  # linux-pam provides /etc/pam.d/ssh, so this is the pam service name
+  conf-local: >-
     --with-mantype=man
+    --with-pam
+    --with-pam-service=ssh
+
+config:
+  install-commands:
+    (>):
+    - |
+      sed 's/#UsePAM.*/UsePAM yes/' -i "%{install-root}%{sysconfdir}/sshd_config"
 
 public:
   bst:
