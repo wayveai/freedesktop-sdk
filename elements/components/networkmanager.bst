@@ -4,7 +4,6 @@ build-depends:
 - components/gobject-introspection.bst
 - components/libxslt.bst
 - components/perl.bst
-- components/pygobject.bst
 - public-stacks/buildsystem-meson.bst
 
 depends:
