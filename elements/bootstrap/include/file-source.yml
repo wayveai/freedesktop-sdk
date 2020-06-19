@@ -6,4 +6,4 @@ sources:
 - kind: git_tag
   url: github:file/file.git
   track: master
-  ref: FILE5_38-0-gec41083645689a787cdd00cb3b5bf578aa79e46c
+  ref: FILE5_39-0-g87731415de945660b00f02207d8e9d986ef9b82e
