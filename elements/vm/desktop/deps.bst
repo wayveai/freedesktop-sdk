@@ -37,6 +37,7 @@ runtime-depends:
 - components/openssh-systemd.bst
 - components/iproute2.bst
 - components/gamemode.bst
+- components/open-iscsi.bst
 
 (?):
 - not pipewire:

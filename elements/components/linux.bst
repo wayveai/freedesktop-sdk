@@ -197,6 +197,11 @@ config:
     scripts/config -m FUSE_FS
     scripts/config -m CUSE
 
+    # iSCSI
+    scripts/config -e SCSI_LOWLEVEL
+    scripts/config -m ISCSI_TCP
+    scripts/config -m SCSI_ISCSI_ATTRS
+
   build-commands:
   - |
     make
