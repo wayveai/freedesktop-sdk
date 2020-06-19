@@ -21,9 +21,10 @@ depends:
 - filename: components/json-glib.bst
 - filename: components/appstream-glib.bst
 - filename: components/libseccomp.bst
+- filename: components/polkit.bst
 
 variables:
-  conf-local: --disable-system-helper --disable-documentation
+  conf-local: --disable-documentation
 
 sources:
 - kind: git_tag

@@ -41,6 +41,6 @@ sources:
   exclude:
   - "release-*-rc"
   - "*-preview"
-  ref: release-65-1-0-gfd123bf023882f07bfacf51c39111be2f946d8f8
+  ref: release-67-1-0-g125e29d54990e74845e1546851b5afa3efab06ce
 - kind: patch
   path: patches/icu/icu-fix-shared-linking.patch

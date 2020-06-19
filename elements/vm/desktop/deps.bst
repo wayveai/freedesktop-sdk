@@ -41,6 +41,7 @@ runtime-depends:
 - components/usbutils.bst
 - components/cups-daemon.bst
 - components/gnupg-systemd.bst
+- components/polkit.bst
 
 (?):
 - not pipewire:
