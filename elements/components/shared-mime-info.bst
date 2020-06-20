@@ -13,7 +13,7 @@ depends:
 public:
   bst:
     integration-commands:
-    - update-mime-database "%{datadir}/mime"
+    - PKGSYSTEM_ENABLE_FSYNC=0 update-mime-database "%{datadir}/mime"
 
 sources:
 - kind: git_tag
