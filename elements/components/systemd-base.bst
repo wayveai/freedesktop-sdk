@@ -18,6 +18,8 @@ build-depends:
 - components/linux-pam.bst
 - components/kmod.bst
 - components/gnu-efi-maybe.bst
+- components/libxslt.bst
+- components/docbook-xsl.bst
 
 variables:
   efi: 'false'
@@ -44,6 +46,8 @@ variables:
     -Dlz4=true
     -Ddefault-dnssec=no
     -Drepart=true
+    -Dman=true
+    -Dhtml=true
 
 public:
   cpe:
