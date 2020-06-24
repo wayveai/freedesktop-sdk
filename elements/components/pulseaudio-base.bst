@@ -41,6 +41,7 @@ variables:
     -Dsystemd=enabled
     -Dtests=false
     -Dudev=enabled
+    -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
   bst:
