@@ -25,7 +25,7 @@ config:
     rm -rf "%{install-root}/usr/sbin"
 
   - |
-    (cd "%{install-root}%{datadir}/ca-certificates"; find -name "*.crt") >"%{install-root}%{sysconfdir}/ca-certificates.conf"
+    (cd "%{install-root}%{datadir}/ca-certificates"; find -name "*.crt" | cut -c 3- ) >"%{install-root}%{sysconfdir}/ca-certificates.conf"
 
 public:
   bst:
