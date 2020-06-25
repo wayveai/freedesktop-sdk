@@ -40,6 +40,7 @@ runtime-depends:
 - components/open-iscsi.bst
 - components/usbutils.bst
 - components/cups-daemon.bst
+- components/gnupg-systemd.bst
 
 (?):
 - not pipewire:
