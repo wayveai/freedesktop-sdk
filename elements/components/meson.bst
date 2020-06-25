@@ -15,6 +15,6 @@ sources:
   track: master
   track-extra:
   - '0.53'
-  ref: 0.53.2-0-g156e066199bcc44523edec43b4f98a56a5de3a29
+  ref: 0.54.0-0-g15b0bd6e937a6676b818268378882c5a0a33a33b
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
