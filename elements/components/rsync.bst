@@ -9,6 +9,7 @@ build-depends:
 - components/git-minimal.bst
 
 variables:
+  builddir: ''
   conf-local: >-
     --without-included-zlib
     --disable-xxhash
