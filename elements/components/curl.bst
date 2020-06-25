@@ -39,4 +39,4 @@ sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
-  ref: curl-7_70_0-0-g53cdc2c963e33bc0cc1a51ad2df79396202e07f8
+  ref: curl-7_71_0-0-ge9db32a09af03f27e86d1251a9e68e9b7486d371
