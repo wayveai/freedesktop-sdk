@@ -7,6 +7,7 @@ debian_salsa: https://salsa.debian.org/
 ffmpeg: https://git.ffmpeg.org/
 freedesktop_people: git://people.freedesktop.org/~wtay/
 freedesktop: https://gitlab.freedesktop.org/
+ghostscript: https://git.ghostscript.com/
 github: https://github.com/
 gitlab: https://gitlab.com/
 gnome: https://gitlab.gnome.org/GNOME/

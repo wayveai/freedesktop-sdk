@@ -39,6 +39,7 @@ runtime-depends:
 - components/gamemode.bst
 - components/open-iscsi.bst
 - components/usbutils.bst
+- components/cups-daemon.bst
 
 (?):
 - not pipewire:
