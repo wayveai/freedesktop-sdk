@@ -175,6 +175,9 @@ config:
     scripts/config -m IWLWIFI
     scripts/config -m IWLMVM
     scripts/config -m IWLDVM
+    scripts/config -m RTW88
+    scripts/config -e RTW88_8822BE
+    scripts/config -e RTW88_8822CE
 
     # Common DRM drivers
     scripts/config -m DRM_NOUVEAU
