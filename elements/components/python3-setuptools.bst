@@ -19,4 +19,4 @@ sources:
 - kind: git_tag
   url: github:pypa/setuptools.git
   track: master
-  ref: v47.1.1-0-g6214d4d20a1c329f0b333abcdaaf7d242eed5e3f
+  ref: v47.3.1-0-g145a78cdc1afb4ce0c0208ae86a00708eb79d27b
