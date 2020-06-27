@@ -42,6 +42,7 @@ runtime-depends:
 - components/cups-daemon.bst
 - components/gnupg-systemd.bst
 - components/polkit.bst
+- components/dmidecode.bst
 
 (?):
 - not pipewire:
