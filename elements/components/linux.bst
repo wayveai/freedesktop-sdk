@@ -268,6 +268,12 @@ config:
     scripts/config -m BLK_DEV_NVME
     scripts/config -m NVME_HWMON
 
+    # Memory card readers
+    scripts/config -m MISC_RTSX_PCI
+    scripts/config -m MMC
+    scripts/config -m MMC_BLOCK
+    scripts/config -m MMC_REALTEK_PCI
+
   build-commands:
   - |
     make
