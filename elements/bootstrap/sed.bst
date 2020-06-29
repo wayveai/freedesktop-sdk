@@ -17,5 +17,5 @@ config:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:sed/sed-4.7.tar.xz
-  ref: 2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a
+  url: ftp_gnu_org:sed/sed-4.8.tar.xz
+  ref: f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633
