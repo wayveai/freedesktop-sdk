@@ -8,7 +8,7 @@ depends:
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
-- extensions/rust/rust.bst
+- components/rust.bst
 - components/vala.bst
 - components/gtk-doc.bst
 - components/gobject-introspection.bst
