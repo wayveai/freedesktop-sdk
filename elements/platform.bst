@@ -142,7 +142,6 @@ depends:
 - filename: components/libsoup.bst
 - filename: components/systemd-libs.bst
 - filename: components/libthai.bst
-- filename: components/libva-vdpau-driver.bst
 - filename: components/libva.bst
 - filename: components/libvdpau.bst
 - filename: components/libxkbcommon.bst
