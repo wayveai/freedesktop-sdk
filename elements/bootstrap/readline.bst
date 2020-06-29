@@ -22,8 +22,8 @@ config:
 
   install-commands:
     (>):
-      - |
-        rm "%{install-root}%{infodir}/dir"
+    - |
+      rm "%{install-root}%{infodir}/dir"
 
 public:
   bst:
@@ -34,8 +34,15 @@ public:
         - '%{libdir}/libhistory.so'
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:readline/readline-8.0.tar.gz
-  ref: e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461
+- kind: git_tag
+  url: savannah:readline.git
+  track: master
+  match:
+  - 'readline-*'
+  exclude:
+  - '*-alpha*'
+  - '*-beta*'
+  - '*-rc*'
+  ref: readline-8.0-0-g8e6ccd0373d77b86ed37a9a7d232ccfea3d6670c
 - kind: patch
   path: patches/readline/readline-disable-rpath.patch
