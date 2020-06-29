@@ -8,18 +8,17 @@ depends:
 - filename: bootstrap/bzip2.bst
   type: runtime
 
-(@): elements/bootstrap/include/target.yml
+(@):
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/elfutils-source.yml
 
 variables:
-  conf-local: |
+  conf-local: >-
+    utrace_cv_CC_m32=none
     --without-lzma
+    --disable-debuginfod
 
 config:
-  configure-commands:
-    (<):
-    - |
-      autoreconf -f -v -i
-
   install-commands:
     (>):
     - |
@@ -29,7 +28,7 @@ public:
   bst:
     split-rules:
       runtime:
-        - '%{libdir}/lib*.so.*'
+      - '%{libdir}/lib*.so.*'
 
       devel:
         (>):
@@ -37,10 +36,3 @@ public:
         - '%{libdir}/libasm.so'
         - '%{libdir}/libdw.so'
         - '%{libdir}/libelf.so'
-
-sources:
-- kind: tar
-  url: sourceware_pub:elfutils/0.177/elfutils-0.177.tar.bz2
-  ref: fa489deccbcae7d8c920f60d85906124c1989c591196d90e0fd668e3dc05042e
-- kind: patch
-  path: patches/elfutils/no-rpath.patch
