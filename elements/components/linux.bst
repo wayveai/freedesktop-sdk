@@ -274,6 +274,10 @@ config:
     scripts/config -m MMC_BLOCK
     scripts/config -m MMC_REALTEK_PCI
 
+    # Bluetooth
+    scripts/config -e BT
+    scripts/config -m BT_HCIBTUSB
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
