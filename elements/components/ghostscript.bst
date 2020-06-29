@@ -16,10 +16,10 @@ variables:
   conf-local: >-
     --with-drivers=ALL
 
-(?):
-- target_arch == "aarch64":
-    # May fail to build on some builders or run on some machines otherwise
-    local_flags: -DPNG_ARM_NEON_OPT=0
+  (?):
+  - target_arch == "aarch64":
+      # May fail to build on some builders or run on some machines otherwise
+      local_flags: -DPNG_ARM_NEON_OPT=0
 
 
 sources:
