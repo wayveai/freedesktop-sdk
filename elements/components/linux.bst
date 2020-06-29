@@ -1,4 +1,4 @@
-kind: manual
+kind: make
 description: Linux kernel configured for use in virtual machines.
 
 depends:
@@ -274,15 +274,11 @@ config:
     scripts/config -m MMC_BLOCK
     scripts/config -m MMC_REALTEK_PCI
 
-  build-commands:
-  - |
-    make
-
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
     install -Dm644 System.map '%{install-root}%{bootdir}/System.map'
-    make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install
+    make -j1 INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install
 
     rm %{install-root}%{indep-libdir}/modules/*/{source,build}
 
@@ -291,7 +287,7 @@ config:
       install-commands:
         (>):
         - |
-          make INSTALL_DTBS_PATH='%{install-root}%{bootdir}/dtbs' dtbs_install
+          make -j1 INSTALL_DTBS_PATH='%{install-root}%{bootdir}/dtbs' dtbs_install
 
 public:
   bst:
