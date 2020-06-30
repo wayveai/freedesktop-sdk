@@ -600,7 +600,7 @@ finish_publish_failed:
         https://hub.flathub.org/)
           if [ "${ARCH}" = powerpc64le ]; then
             echo "ppc64le not published to Flathub yet"
-            exit 1
+            DO_NOT_PUSH=1
           fi
           for ref in $(ostree --repo=repo refs --list); do
             case "${ref}" in
@@ -630,7 +630,10 @@ finish_publish_failed:
       esac
 
     - flatpak build-update-repo --generate-static-deltas --prune repo
-    - flat-manager-client push $(cat publish_build.txt) repo
+    - |
+      if [ "${DO_NOT_PUSH:+set}" != set ]; then
+        flat-manager-client push $(cat publish_build.txt) repo
+      fi
   artifacts:
     when: always
     paths:
