@@ -1,5 +1,292 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08beta.1:
+
+    * pango: Build with libthai support
+    * Move flex to SDK only. Leave only libfl in Platform.
+    * Move gobject introspection gir files to SDK only
+    * python: Swap usercustomize and sitecustomize
+    * gcc: Enable Objective C and Objective C++
+    * harfbuzz: Disable HB_LANGUAGE_INVALID in introspection
+    * dictionaries: Fix missing/broken Catalan and Norwegian dictionaries
+    * ffmpeg: Add MPEG-2, Intel Indeo, VP6, MS-MPEG DivX;), ape
+    * dwz: Move to to SDK
+    * Remove systemd.pc from SDK
+    * Add openjpeg
+    * Add cython
+    * Add lz4
+    * Add SPIRV tools and glslang to SDK
+    * python3-pip: Move to SDK only
+    * gobject-introspection: Add documentation tool
+    * itstool: Fix typo in element name
+    * grep: Enable perl regexp
+    * Remove mesa-aco extension now mesa extension supports it.
+    * python: Add /usr/bin/python symlink to python3
+    * glibc: Fix $LIB (#874)
+    * Add libjack drop-in replacement from pipewire
+    * Add cython, python3-pygments, python3-wheel
+    * Add libportal
+    * Add brotli
+    * Add lz4
+    * Add openjpeg
+    * Add wget
+    * Add opusfile
+    * Removed libcroco
+    * Removed cups
+    * Removed dconf
+    * linux-headers: Update to 5.7.3
+    * glibc: Update to 2.31
+    * ncurses: Update to 6.2
+    * binutils: Update to 2.34
+    * coreutils: Update to 8.32
+    * file: Update to 5.39
+    * openssl: Update to 1.1.1g
+    * debugedit: Update to 4.15.1
+    * findutils: Update to 4.7.0
+    * gawk: Update to 5.1.0
+    * gcc: Update to 10.1.0
+    * make: Update to 4.3
+    * perl: Update to 5.30.3
+    * pkg-config: Update to 1.7.3
+    * xz: Update to 5.2.5
+    * libxml2: Update to 2.9.10
+    * ccache: Update to 3.7.10
+    * cmake: Update to 3.17.3
+    * libffi: Update to 3.3
+    * sqlite: Update to 3.32.1
+    * python3: Update to 3.8.3
+    * util-linux: Update to 2.35
+    * glib: Update to 2.64.0
+    * help2man: Update to 1.47.15
+    * libtasn1: Update to 4.16
+    * nettle: Update to 3.6
+    * p11-kit: Update to 0.23.20
+    * nspr: Update to 4.24
+    * nss: Update to 3.49.2
+    * curl: Update to 7.71.0
+    * libgpg-error: Update to 1.38
+    * libksba: Update to 1.4.0
+    * gnupg: Update to 2.2.20
+    * ca-certificates: Update to 20200601
+    * git: Update to 2.27.0
+    * libxslt: Update to 1.1.34
+    * gtk-doc: Update to 1.32
+    * libpipeline: Update to 1.5.2
+    * python3-setuptools: Update to 47.1.1
+    * meson: Update to 0.54.0
+    * ninja: Update to 1.10.0
+    * perl-xml-parser: Update to 2.46
+    * strace: Update to 5.7
+    * valgrind: Update to 3.15.0
+    * wayland: Update to 1.18.0
+    * xorg-proto-xcb: Update to 1.14
+    * xorg-proto-xorgproto: Update to 2019.2
+    * aspell: Update to 0.60.8
+    * gettext: Update to 0.20.2
+    * libdrm: Update to 2.4.102
+    * e2fsprogs: Update to 1.45.6
+    * nano: Update to 4.9
+    * noopenh264: Update to 2.1.1
+    * xorg-lib-xcb: Update to 1.14
+    * xorg-lib-x11: Update to 1.6.9
+    * libglvnd: Update to 1.3.1
+    * mesa-headers: Update to 20.1.1
+    * osmesa: Update to 20.1.1
+    * alsa-lib: Update to 1.2.3
+    * python3-pip: Update to 20.1
+    * systemd-base: Update to 245
+    * dbus: Update to 1.12.18
+    * libflac: Update to 1.3.3
+    * orc: Update to 0.4.31
+    * alsa-plugins: Update to 1.2.2
+    * gcab: Update to 1.4
+    * jpeg: Update to 2.0.5
+    * libtiff: Update to 4.1.0
+    * shared-mime-info: Update to 2.0
+    * gdk-pixbuf: Update to 2.40.0
+    * libarchive: Update to 3.4.3
+    * gsettings-desktop-schemas: Update to 3.36.0
+    * glib-networking: Update to 2.62.3
+    * libsoup: Update to 2.70.0
+    * appstream-glib: Update to 0.7.17
+    * at-spi2-core: Update to 2.36.0
+    * python3-mako: Update to 1.1.3
+    * python3-markdown: Update to 3.2.2
+    * gobject-introspection: Update to 1.62.0
+    * atk: Update to 2.36.0
+    * at-spi2-atk: Update to 2.34.2
+    * graphite2: Update to 1.3.14
+    * icu: Update to 65.1
+    * harfbuzz: Update to 2.6.8
+    * freetype: Update to 2.10.2
+    * pixman: Update to 0.40.0
+    * libepoxy: Update to 1.5.4
+    * xorg-app-xkbcomp: Update to 1.4.3
+    * xorg-data-xkeyboard-config: Update to 2.30
+    * libxkbcommon: Update to 0.10.0
+    * pango: Update to 1.45.3
+    * frei0r: Update to 1.7.0
+    * giflib: Update to 5.2.1
+    * geoclue: Update to 2.5.5
+    * iso-codes: Update to 4.5.0
+    * lcms: Update to 2.10
+    * libexif: Update to 0.6.22
+    * libnice: Update to 0.1.17
+    * libsepol: Update to 3.0
+    * libselinux: Update to 3.0
+    * python3-six: Update to 1.15.0
+    * tzdata: Update to 2020a-0-g7aec41a1d9b57c581af086db5de5bf99b165c405
+    * libvpx: Update to 1.8.2
+    * dav1d: Update to 0.7.1
+    * libva: Update to 2.7.1
+    * libvdpau: Update to 1.4
+    * openal: Update to 1.20.1
+    * ffmpeg: Update to 4.3
+    * libwebp: Update to 1.1.0
+    * gstreamer-libav: Update to 1.16.2
+    * librsvg: Update to 2.48.7
+    * vulkan-headers: Update to 1.2.141
+    * vulkan-icd-loader: Update to 1.2.141
+    * vulkan-validation-layers: Update to 1.2.141
+    * wavpack: Update to 5.2.0
+    * libclc: Update to 10.0.0
+    * libseccomp: Update to 2.4.2
+    * llvm: Update to 10.0.0
+    * openssh: Update to 8.2
+    * pciutils: Update to 3.7.0
+    * pipewire: Update to 0.3.1
+    * xorg-lib-xpm: Update to 3.5.13
+    * pcre: Update to 8.44
+    * procps: Update to 3.3.16
+    * xdg-desktop-interfaces: Update to 1.7.2
+
+freedesktop-sdk-19.08.11:
+
+    * gnutls: Handle AddTrust root cert expiration (#1047)
+    * llvm: Update to 9.0.1
+    * intel-vaapi-driver: Add iris symlink
+    * cmake: Update to 3.17.2
+    * gtk3: Update to 3.24.20
+    * vala: Update to 0.48.11 (current LTS)
+
+freedesktop-sdk-19.08.10:
+
+    * appstream-glib: Backport patch allowing future timestamps in
+      validate-relax
+    * mesa: Update to 20.0.5
+    * git: Update to 2.26.2
+    * vala: Update to 0.44.11
+    * openssl: Fix CVE-2020-1967
+    * gcc: Remove unusable experimental filesystem header. Use c++17
+      instead.
+    * gnutls: Update to 3.6.13
+    * sdl2: Update to 2.0.12
+    * python: Swap usercustomize and sitecustomize
+
+freedesktop-sdk-19.08.09:
+
+    * libpulse: Upstream patch to only use X11 config when using ssh
+    * meson: Update to 0.53.2
+    * mesa headers, osmesa, mesa extension: Update to 20.0.1
+    * gstreamer: Fix 32 bit compatibility (#983).
+    * openh264 extension: Use 2.0/2.0beta branches.
+    * bash: Fix CVE-2019-18276
+
+freedesktop-sdk-19.08.08:
+
+    * pulseaudio: Add missing cmake configuration files (#973)
+    * wayland-protocols: Update to 1.20
+    * gnupg: Enable support for tofu trust model (#966)
+    * gdb: Update to 8.3.1
+    * openssh: Update to 8.1P1
+    * man-pages: Update to 5.04.0
+    * libsoup: Update to 2.66.4
+    * pango: Update to 1.44.7
+    * harfbuzz: Enable gobject introspection
+
+freedesktop-sdk-19.08.07:
+
+    * alsa-lib: Ignore host configuration (#857)
+    * gcc: Enable graphite loop optimization (#943)
+    * libdrm: Update to 2.4.100.
+    * mesa: Update to 19.3.3
+    * libglvnd: Update to 1.3.0
+    * mesa-aco: Update to latest version
+
+freedesktop-sdk-19.08.06:
+
+    * pciutils: Add multiarch dispatch header for config.h (#921)
+    * gstreamer: Update to 1.16.2
+    * Mark GL and Intel extensions with autoprune-unless
+    * platform-vaapi-intel: Fix assertion failure when initializing driver
+    * librsvg: Update to latest ref in 2.44 branch
+    * rust: Update to 1.40.0
+    * mesa: Update to 19.2.8
+
+freedesktop-sdk-19.08.05:
+
+    * ffmpeg: Add muxer for opus (#925)
+    * gtk3: Fix tablet input issues (#923)
+    * gst-plugins-bad: Fix videos on twitter.com (#924)
+    * Add /run/host/user-share to XDG_DATA_DIRS
+    * util-linux: Remove nologin
+    * openssl: Remove passwd man page
+    * coreutils: Add arch, remove groups
+
+freedesktop-sdk-19.08.04:
+    * Update flatpak-xdg-utils component to 1.0.1
+    * Import fcitx 4.2.9.7 to support new flatpak
+    * Update to shared-mime-info 1.15
+    * Get Vala from gnome GitLab (and bootstrap it)
+    * Backport drirc changes to make DOOM not crash
+    * mesa: Update to 19.2.1
+    * /etc/os-release: Add missing line break at end of file
+    * nss: Update to 3.46.1
+    * noopenh264: Update to 3.6.4
+    * iso-codes: Update to 4.4
+    * harfbuzz: Update to 2.6.2
+    * jpeg: Update to 2.0.3
+    * Add kmod as a dependency of systemd
+    * mesa-aco: Use mirror and track latest version
+    * libsoup: Update to 2.66.3
+
+freedesktop-sdk-19.08.03:
+    * mesa extensions: Use LLVM 9.0.0.
+    * tzdata: Update to 2019c
+    * expat: Update to 2.2.9
+    * intel-vaapi-driver: Update gmmlib to 19.3.2.
+    * ffmpeg-full extension: Add support for some Windows Media decoders.
+    * python3: Add bluetooth support.
+
+freedesktop-sdk-19.08.02:
+    * e2fsprogs: Update to 1.45.4
+    * gstreamer: Update to 1.16.1
+    * shared-mime-info: Update to 1.14
+    * systemd: Fix CVE-2018-20839
+    * giflib: Fix CVE-2019-15133
+    * binutils: Fix CVE-2019-12972
+    * libtiff: Fix CVE-2019-14973
+    * sqlite: Fix CVE-2019-16168
+    * openh264 extension: Allow Flatpak 1.2.5 and 1.0.9
+    * python3: Fix CVE-2019-16056
+    * Update mesa ACO extension
+    * mesa: Update to 19.2 in SDK and extension
+    * curl: Fix CVE-2019-5481 and CVE-2019-5482
+    * gstreamer-plugins-bad: Gracefully handle noopenh264 (#885)
+
+freedesktop-sdk-19.08.01:
+    * openssl: Update to 1.1.1d
+    * Add an openh264 extension
+    * ffmpeg: Update to n4.2.1
+    * Fix Mesa's Vulkan overlay layer (#862)
+    * mesa: Update to 19.1.6
+    * Fix sdl2's pkgconfig (#875)
+    * Fix fortran compiler (#684)
+    * Do not autodownload gstreamer extensions
+
+freedesktop-sdk-19.08.0:
+    * Infrastructure changes for final release
+
 freedesktop-sdk-19.08beta.9:
     * Fix gallium vaapi driver path (#865)
     * Remove gstreamer-vaapi (See discussion at #864)
