@@ -1,15 +1,22 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- components/python3.bst
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/python3.bst
-  type: build
+- bootstrap-import.bst
+
+variables:
+  # Docs depend on doxygen
+  meson-local: >-
+    -Dtests=disabled
+    -Ddocumentation=disabled
 
 sources:
 - kind: git_tag
   url: freedesktop:libevdev/libevdev.git
   track: master
-  ref: libevdev-1.8.0-0-g779749b22c0dd62cadf9e147c97c5a7675a92478
+  exclude:
+  - 'libevdev-*.*.9*'
+  ref: libevdev-1.9.0-0-g468760ba11438734912f793b1de00cb0f243497f
