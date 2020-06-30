@@ -16,4 +16,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xdg/desktop-file-utils.git
   track: master
-  ref: 0.24-0-g27d370de9ca5121550c343859455d0f1515e1ec5
+  ref: 0.26-0-g54cec012921e52eb66b6ee1a1f40f2e9c9849f7c
