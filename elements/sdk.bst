@@ -2,52 +2,53 @@ kind: stack
 description: Stack of components in freedesktop SDK
 
 depends:
-- filename: platform.bst           # Note that every element in platform is also included
-- filename: components/autoconf-archive.bst
-- filename: components/autoconf.bst
-- filename: components/automake.bst
-- filename: components/bc.bst
-- filename: components/bison.bst
-- filename: components/ccache.bst
-- filename: components/cmake.bst
-- filename: components/cpio.bst
-- filename: components/cython.bst
-- filename: components/docbook-xml.bst
-- filename: components/docbook-xsl.bst
-- filename: components/doxygen.bst
-- filename: components/ed.bst
-- filename: components/flex.bst
-- filename: components/gdb.bst
-- filename: components/git.bst
-- filename: components/glslang.bst
-- filename: components/gperf.bst
-- filename: components/groff.bst
-- filename: components/help2man.bst
-- filename: components/libpipeline.bst
-- filename: components/m4.bst
-- filename: components/man-db.bst
-- filename: components/man-pages-posix.bst
-- filename: components/man-pages.bst
-- filename: components/meson.bst
-- filename: components/nasm.bst
-- filename: components/ninja.bst
-- filename: components/perl.bst
-- filename: components/perl-xml-parser.bst
-- filename: components/patch.bst
-- filename: components/pkg-config.bst
-- filename: components/python3-pip.bst
-- filename: components/python3-wheel.bst
-- filename: components/ruby.bst
-- filename: components/spirv-tools.bst
-- filename: components/strace.bst
-- filename: components/texinfo.bst
-- filename: components/valgrind.bst
-- filename: components/desktop-file-utils.bst
-- filename: components/gtk-doc.bst
-- filename: components/itstool.bst
-- filename: components/jq.bst
-- filename: components/wayland-protocols.bst
-- filename: components/xdg-portal-interfaces.bst
-- filename: components/xorg-proto-xcb.bst
-- filename: components/xorg-proto-xorgproto.bst
-- filename: components/xorg-util-macros.bst
+- platform.bst           # Note that every element in platform is also included
+- components/autoconf-archive.bst
+- components/autoconf.bst
+- components/automake.bst
+- components/bc.bst
+- components/bison.bst
+- components/ccache.bst
+- components/cmake.bst
+- components/cpio.bst
+- components/cython.bst
+- components/docbook-xml.bst
+- components/docbook-xsl.bst
+- components/doxygen.bst
+- components/ed.bst
+- components/flex.bst
+- components/gdb.bst
+- components/git.bst
+- components/glslang.bst
+- components/gperf.bst
+- components/groff.bst
+- components/help2man.bst
+- components/libpipeline.bst
+- components/m4.bst
+- components/man-db.bst
+- components/man-pages-posix.bst
+- components/man-pages.bst
+- components/meson.bst
+- components/nasm.bst
+- components/ninja.bst
+- components/perl.bst
+- components/perl-xml-parser.bst
+- components/patch.bst
+- components/pkg-config.bst
+- components/perf.bst
+- components/python3-pip.bst
+- components/python3-wheel.bst
+- components/ruby.bst
+- components/spirv-tools.bst
+- components/strace.bst
+- components/texinfo.bst
+- components/valgrind.bst
+- components/desktop-file-utils.bst
+- components/gtk-doc.bst
+- components/itstool.bst
+- components/jq.bst
+- components/wayland-protocols.bst
+- components/xdg-portal-interfaces.bst
+- components/xorg-proto-xcb.bst
+- components/xorg-proto-xorgproto.bst
+- components/xorg-util-macros.bst

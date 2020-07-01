@@ -37,6 +37,7 @@ config:
   - components/meson.bst
   - components/nasm.bst
   - components/ninja.bst
+  - components/perf.bst
   - components/perl.bst
   - components/perl-xml-parser.bst
   - components/patch.bst
