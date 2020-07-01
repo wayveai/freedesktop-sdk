@@ -45,7 +45,3 @@ config:
       do
         mkdir -p "%{install-root}${dir}"
       done
-
-    - |
-      rm "%{install-root}/usr/bin/sh"
-      ln -s dash "%{install-root}/usr/bin/sh"
