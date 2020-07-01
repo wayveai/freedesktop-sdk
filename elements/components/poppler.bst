@@ -1,19 +1,19 @@
 kind: cmake
 
 build-depends:
-- filename: components/gobject-introspection.bst
-- filename: components/gtk-doc.bst
-- filename: public-stacks/buildsystem-cmake.bst
+- components/gobject-introspection.bst
+- components/gtk-doc.bst
+- public-stacks/buildsystem-cmake.bst
 
 depends:
-- filename: components/cairo.bst
-- filename: components/fontconfig.bst
-- filename: components/freetype.bst
-- filename: components/glib.bst
-- filename: components/jpeg.bst
-- filename: components/nss.bst
-- filename: components/openjpeg.bst
-- filename: bootstrap-import.bst
+- components/cairo.bst
+- components/fontconfig.bst
+- components/freetype.bst
+- components/glib.bst
+- components/jpeg.bst
+- components/lcms.bst
+- components/nss.bst
+- components/openjpeg.bst
 
 public:
   bst:
