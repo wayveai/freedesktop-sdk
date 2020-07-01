@@ -27,4 +27,5 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:poppler/poppler.git
-  ref: poppler-0.88.0-0-g448f8e9830cb0420728e844723770a8cfb3327c0
+  track: master
+  ref: poppler-0.89.0-0-g9d996ed8218c33f616856389f6e252c7596350e8
