@@ -14,6 +14,7 @@ depends:
 - filename: components/cython.bst
 - filename: components/docbook-xml.bst
 - filename: components/docbook-xsl.bst
+- filename: components/doxygen.bst
 - filename: components/ed.bst
 - filename: components/flex.bst
 - filename: components/gdb.bst

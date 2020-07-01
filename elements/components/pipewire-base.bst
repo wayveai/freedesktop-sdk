@@ -21,12 +21,12 @@ build-depends:
 - components/systemd.bst
 - components/vulkan.bst
 - components/xmltoman.bst
+- components/doxygen.bst
 - public-stacks/buildsystem-meson.bst
 
 variables:
-  # Docs depend on doxygen
   meson-local: >-
-    -Ddocs=false
+    -Ddocs=true
     -Dman=true
     -Dgstreamer=true
     -Dsystemd=true

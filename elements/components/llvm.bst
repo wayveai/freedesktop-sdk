@@ -3,6 +3,7 @@ kind: cmake
 build-depends:
 - bootstrap-import.bst
 - components/libffi.bst
+- components/doxygen.bst
 - public-stacks/buildsystem-cmake.bst
 
 environment:
@@ -45,7 +46,7 @@ variables:
     -DLLVM_INCLUDE_UTILS:BOOL=ON
     -DLLVM_INSTALL_UTILS:BOOL=ON
     -DLLVM_INCLUDE_DOCS:BOOL=OFF
-    -DLLVM_ENABLE_DOXYGEN:BOOL=OFF
+    -DLLVM_ENABLE_DOXYGEN:BOOL=ON
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON
     -DLLVM_BINUTILS_INCDIR=%{includedir}
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include

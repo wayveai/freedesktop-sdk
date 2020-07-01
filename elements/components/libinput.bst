@@ -1,22 +1,21 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/jpeg.bst
-- filename: components/libpng.bst
-- filename: components/systemd.bst
-- filename: components/mtdev.bst
-- filename: components/libevdev.bst
-- filename: components/libwacom.bst
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/doxygen.bst
 
-# documentation depends on doxygen
+depends:
+- components/jpeg.bst
+- components/libpng.bst
+- components/systemd.bst
+- components/mtdev.bst
+- components/libevdev.bst
+- components/libwacom.bst
+
 variables:
   meson-local: >-
     -Ddebug-gui=false
-    -Ddocumentation=false
+    -Ddocumentation=true
     -Dtests=false
 
 sources:
