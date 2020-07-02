@@ -2,9 +2,8 @@ kind: autotools
 
 (@): elements/extensions/include/app.yml
 
-depends:
-- filename: components/mesa-headers.bst
-  type: build
+build-depends:
+- components/mesa-headers.bst
 
 variables:
   make-args: >-
@@ -28,5 +27,5 @@ config:
 
 sources:
 - kind: tar
-  url: sourceforge:projects/glew/files/glew/2.1.0/glew-2.1.0.tgz
-  ref: 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
+  url: sourceforge:projects/glew/files/glew/2.2.0/glew-2.2.0.tgz
+  ref: d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1
