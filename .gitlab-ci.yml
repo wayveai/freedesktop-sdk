@@ -62,15 +62,6 @@ before_script:
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
 
-  - |
-    case "${CI_RUNNER_DESCRIPTION}" in
-       *.osuosl.org)
-         sed -i '/artifacts:/,+1 d' project.conf
-         DISABLE_REMOTE_CACHE=true
-         ;;
-    esac
-
-
   # Private SSL keys/certs for pushing to the CAS server
   - |
     if [ "${CI_JOB_NAME}" != app_x86_64-no-cache ] && [ "${CI_JOB_NAME}" != app_arm-no-cache ]; then
