@@ -29,6 +29,7 @@ variables:
     --system-nspr
     --system-sqlite
     --disable-tests
+    --enable-libpkix
     --target=%{gyp-arch}
 
 environment:
