@@ -1,22 +1,20 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/fcitx.bst
+- components/ibus.bst
+- components/wayland-protocols.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/libsamplerate.bst
-- filename: components/dbus.bst
-- filename: components/fcitx.bst
-  type: build
-- filename: components/ibus.bst
-  type: build
-- filename: components/libpulse.bst
-- filename: components/libxkbcommon.bst
-- filename: components/mesa-headers.bst
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: components/xorg-lib-x11.bst
+- bootstrap-import.bst
+- components/libsamplerate.bst
+- components/libdbus.bst
+- components/libpulse.bst
+- components/libxkbcommon.bst
+- components/mesa-headers.bst
+- components/wayland.bst
+- components/xorg-lib-x11.bst
 
 variables:
   conf-local: |

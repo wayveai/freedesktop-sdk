@@ -95,7 +95,7 @@ depends:
 - filename: components/atk.bst
 - filename: components/cairo.bst
 - filename: components/cups.bst
-- filename: components/dbus.bst
+- filename: components/libdbus.bst
 - filename: components/dejavu-fonts.bst
 - filename: components/dictionaries.bst
 - filename: components/emoji-one-font.bst
