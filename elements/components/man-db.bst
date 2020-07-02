@@ -26,5 +26,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:download-mirror.savannah.gnu.org/releases/man-db/man-db-2.8.5.tar.xz
-  ref: b64d52747534f1fe873b2876eb7f01319985309d5d7da319d2bc52ba1e73f6c1
+  url: tar_https:download-mirror.savannah.gnu.org/releases/man-db/man-db-2.9.3.tar.xz
+  ref: fa5aa11ab0692daf737e76947f45669225db310b2801a5911bceb7551c5597b8
