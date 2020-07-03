@@ -17,5 +17,5 @@ public:
 
 sources:
 - kind: tar
-  url: sourceforge:projects/libtirpc/files/libtirpc/1.1.4/libtirpc-1.1.4.tar.bz2
-  ref: 2ca529f02292e10c158562295a1ffd95d2ce8af97820e3534fe1b0e3aec7561d
+  url: sourceforge:projects/libtirpc/files/libtirpc/1.2.6/libtirpc-1.2.6.tar.bz2
+  ref: 4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc
