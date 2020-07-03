@@ -47,6 +47,7 @@ runtime-depends:
 - components/libblockdev.bst
 - components/libatasmart.bst
 # END
+- components/fwupd.bst
 
 (?):
 - not pipewire:
