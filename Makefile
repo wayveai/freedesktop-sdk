@@ -163,6 +163,11 @@ markdown-manifest: manifest
 	python3 utils/jsontomd.py platform-manifest/usr/manifest.json
 	python3 utils/jsontomd.py sdk-manifest/usr/manifest.json
 
+url-manifest:
+	rm -rf release-url-manifest/
+	$(BST) build manifests/release-url-manifest.bst
+	$(BST) checkout manifests/release-url-manifest.bst release-url-manifest/
+
 test-apps: export XDG_DATA_HOME=$(CURDIR)/runtime
 test-apps: $(REPO)
 	echo $(XDG_DATA_HOME)

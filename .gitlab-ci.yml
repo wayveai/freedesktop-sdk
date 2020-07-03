@@ -157,6 +157,44 @@ check_update_elements:
   only:
     - schedules
 
+check_mirrors:
+  image: $DOCKER_AARCH64
+  stage: update
+  tags:
+    - armhf
+  script:
+    - make url-manifest
+    - |
+      m_file="release-url-manifest/url-manifest-no-mirrors.json"
+      mir_aliases="include/_private/mirrors.yml"
+      i_file="utils/mirror-management-scripts/ignore_dict.json"
+      check_command="utils/mirror-management-scripts/check_mirrors.py --manifest_file $m_file --mirror_aliases_file $mir_aliases --ignore_file $i_file"
+
+      test_1_passes=true
+      $check_command --alias_test --mirror_defined_test --mirror_commit_test --output_file "mirror_problem_list.json" || test_1_passes=false
+      test_2_passes=true
+      if $check_command --existence_test --output_file "unmirrored_sources_list.json"; then 
+          true
+      else
+          cp utils/mirror-management-scripts/create_mirrors_from_problem_list.py ./
+          cp utils/mirror-management-scripts/README-Create-mirrors-script.md ./
+          echo "CI JOB FAILING DUE TO UNMIRRORED SOURCES"
+          echo "This usually means a new URL source has been added to the project"
+          echo "Someone with appropriate permissions needs to create download mirrors for the new source."
+          echo "Download the job artefacts for a README: with more information, a python script to create the mirrors, and json file with the list of new mirrors to create."
+          test_2_passes=false
+      fi
+      $test_1_passes && $test_2_passes
+
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/unmirrored_sources_list.json
+      - ${CI_PROJECT_DIR}/create_mirrors_from_problem_list.py
+      - ${CI_PROJECT_DIR}/README-Create-mirrors-script.md
+  only:
+    - schedules
+
 .flatpak_template: &flatpak_definition
   stage: flatpak
   interruptible: true
@@ -166,6 +204,8 @@ check_update_elements:
         sed -i '/artifacts:/,+1 d' project.conf
       fi
 
+    - make url-manifest
+    - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
     - make build
     - test ${ARCH} != "aarch64" && make build-vm
 
@@ -193,6 +233,7 @@ check_update_elements:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
+      - ${CI_PROJECT_DIR}/mirror_problem_list.json
   except:
     - master
     - '18.08'
