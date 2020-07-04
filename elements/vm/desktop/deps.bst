@@ -43,11 +43,8 @@ runtime-depends:
 - components/gnupg-systemd.bst
 - components/polkit.bst
 - components/dmidecode.bst
-# FIXME: These should be replaced by udisks when we have polkit
-- components/libblockdev.bst
-- components/libatasmart.bst
-# END
 - components/fwupd.bst
+- components/udisks.bst
 
 (?):
 - not pipewire:
