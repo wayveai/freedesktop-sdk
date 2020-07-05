@@ -8,9 +8,7 @@ runtime-depends:
 - components/sbc.bst
 - components/jack.bst
 - components/bluez.bst
-# TODO: Add dependency to rtkit.
-#  This however depens on polkit, which depends on mozjs, python2 and libintl.
-#  When polkit more sensible dependencies, rtkit should be used.
+- components/rtkit.bst
 
 config:
   include:

@@ -20,9 +20,11 @@ config:
   - components/pipewire-daemon.bst
   - components/plymouth.bst
   - components/pulseaudio.bst
+  - components/rtkit.bst
   - components/steam-devices.bst
   - components/sudo.bst
   - components/systemd.bst
+  - components/vim.bst
   - components/weston.bst
   - components/wireless-regdb-bin.bst
   - components/wpa-supplicant.bst

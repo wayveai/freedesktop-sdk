@@ -15,6 +15,7 @@ build-depends:
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
 - components/jack.bst
+- components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
 - components/systemd-libs.bst
