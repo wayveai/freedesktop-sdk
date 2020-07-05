@@ -1,42 +1,40 @@
 kind: meson
 
+build-depends:
+- bootstrap-import.bst
+- public-stacks/buildsystem-meson.bst
+- components/wayland-protocols.bst
+- extensions/mesa/libdrm.bst
+
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/libunwind.bst
-- filename: components/linux-pam.bst
-- filename: components/cairo.bst
-- filename: components/libdrm.bst
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: components/systemd.bst
-- filename: components/xorg-lib-xcb.bst
-- filename: components/xorg-lib-xcursor.bst
-- filename: components/mtdev.bst
-- filename: components/libinput.bst
-- filename: components/dummy-gbm.bst
-- filename: components/libwebp.bst
-- filename: components/libva.bst
-- filename: components/lcms.bst
-- filename: components/gstreamer.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/pipewire.bst
-- filename: extensions/mesa/libdrm.bst
-  type: build
+- components/libunwind.bst
+- components/linux-pam.bst
+- components/cairo.bst
+- components/colord.bst
+- components/libdrm.bst
+- components/wayland.bst
+- components/systemd.bst
+- components/xorg-lib-xcb.bst
+- components/xorg-lib-xcursor.bst
+- components/mtdev.bst
+- components/libinput.bst
+- components/dummy-gbm.bst
+- components/libwebp.bst
+- components/libva.bst
+- components/lcms.bst
+- components/gstreamer.bst
+- components/gstreamer-plugins-base.bst
+- components/pipewire.bst
 
 environment:
   # FIXME, extract the required headers from libdrm that are needed
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig:'
 
 variables:
-  # FIXME colord depends on intltool (polkit) and python2 (mozjs)
   # FIXME Does not support pipewire 0.3
   meson-local: >-
     -Dbackend-rdp=false
-    -Dcolor-management-colord=false
+    -Dcolor-management-colord=true
     -Dpipewire=false
 
 sources:
