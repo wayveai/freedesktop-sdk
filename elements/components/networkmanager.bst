@@ -22,11 +22,12 @@ depends:
 - components/audit.bst
 - components/jansson.bst
 - components/newt.bst
+- components/polkit.bst
 
 variables:
   meson-local: >-
     -Diwd=true
-    -Dpolkit=false
+    -Dpolkit=true
     -Dppp=false
     -Dmodem_manager=false
     -Dqt=false
