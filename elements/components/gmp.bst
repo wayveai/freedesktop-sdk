@@ -26,5 +26,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gmp/gmp-6.1.2.tar.xz
-  ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+  url: ftp_gnu_org:gmp/gmp-6.2.0.tar.xz
+  ref: 258e6cd51b3fbdfc185c716d55f82c08aff57df0c6fbd143cf6ed561267a1526
