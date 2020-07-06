@@ -25,6 +25,11 @@ public:
         - '%{libdir}/libcap.so'
 
 sources:
-- kind: tar
-  url: tar_https:www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.27.tar.xz
-  ref: dac1792d0118bee6aae6ba7fb93ff1602c6a9bda812fd63916eee1435b9c486a
+- kind: git_tag
+  url: kernel:libs/libcap/libcap.git
+  track: master
+  match:
+  - 'libcap-*'
+  exclude:
+  - 'libcap-korg-*'
+  ref: libcap-2.38-0-g19eebc5846cbf31c224dd353df8f595de2cdfea8
