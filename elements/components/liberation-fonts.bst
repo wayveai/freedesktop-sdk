@@ -19,8 +19,8 @@ config:
 
 sources:
 - kind: tar
-  url: pagure_releases:liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz
-  ref: 7890278a6cd17873c57d9cd785c2d230d9abdea837e96516019c5885dd271504
+  url: github:liberationfonts/liberation-fonts/files/4743886/liberation-fonts-ttf-2.1.1.tar.gz
+  ref: 8ee2c16fe0f055e60dd8375449aff72d25dd623b9cc6f24790ce9d2e91446fca
   directory: fonts
 - kind: local
   path: files/font-conf/liberation-fonts
