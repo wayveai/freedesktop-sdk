@@ -1,13 +1,23 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/libxslt.bst
+- components/docbook-xsl.bst
+- components/bison.bst
+- components/itstool.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/linux-pam.bst
+- bootstrap-import.bst
+- components/linux-pam.bst
 
 variables:
+  builddir: ''
+  autogen: autoreconf -fvi
   conf-local: >-
     --with-libpam
     --without-selinux
+    --enable-man
 
   make-install: make -j1 install DESTDIR="%{install-root}" ubindir="%{bindir}" usbindir="%{sbindir}"
 
@@ -35,6 +45,7 @@ public:
       done
 
 sources:
-- kind: tar
-  url: github_files:shadow-maint/shadow/releases/download/4.7/shadow-4.7.tar.xz
-  ref: e5e196a4a7e3b228c812f3163d368be3e932e6eaa4e616677a148d9ec921e16c
+- kind: git_tag
+  url: github:shadow-maint/shadow.git
+  track: master
+  ref: 4.8.1-0-g2cc7da6058152ec0cd338d4e15d29bd7124ae3d7
