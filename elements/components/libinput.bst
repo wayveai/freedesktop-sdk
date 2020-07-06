@@ -15,7 +15,7 @@ depends:
 variables:
   meson-local: >-
     -Ddebug-gui=false
-    -Ddocumentation=true
+    -Ddocumentation=false
     -Dtests=false
 
 sources:
