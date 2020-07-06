@@ -13,6 +13,9 @@ variables:
     -DBUILD_QTHELP_DOCS:BOOL=OFF
 
 sources:
-- kind: tar
-  url: tar_https:download.kde.org/stable/frameworks/5.60/extra-cmake-modules-5.60.0.tar.xz
-  ref: 2bd9da815de98d5908d3371815df963d305c828f90ba1a076f38543876690248
+- kind: git_tag
+  url: github:KDE/extra-cmake-modules.git
+  track: master
+  exclude:
+  - '*rc*'
+  ref: v5.71.0-0-g713ad358d1c816965fb05b2151df998258df0a17
