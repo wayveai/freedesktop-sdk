@@ -14,6 +14,7 @@ runtime-depends:
 - components/shadow.bst
 - components/util-linux.bst
 - components/kbd.bst
+- components/cryptsetup.bst
 
 config:
   exclude:

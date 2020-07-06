@@ -20,6 +20,7 @@ build-depends:
 - components/gnu-efi-maybe.bst
 - components/libxslt.bst
 - components/docbook-xsl.bst
+- components/cryptsetup.bst
 
 variables:
   efi: 'false'
@@ -48,6 +49,7 @@ variables:
     -Drepart=true
     -Dman=true
     -Dhtml=true
+    -Dlibcryptsetup=true
 
 public:
   cpe:
