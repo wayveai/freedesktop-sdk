@@ -17,7 +17,7 @@ while [ $# -gt 0 ]; do
 	    gpg_opts+=("$1")
 	    ;;
 	--gpg-*)
-	    gpg_opts+=("$1", "$2")
+	    gpg_opts+=("$1" "$2")
 	    shift
 	    ;;
 	--collection-id=*)
@@ -40,7 +40,7 @@ while [ $# -gt 0 ]; do
 	    exit 1
 	    ;;
 	-*)
-	    for ((i=1;$i < ${#1};++i)); do
+	    for ((i=1;i < ${#1};++i)); do
 		case "${1:i}" in
 		    h)
 			help
@@ -70,7 +70,7 @@ export OSTREE_REPO
 element="${main_opts[1]}"
 ref="${main_opts[2]}"
 
-checkout="$(mktemp --suffix="-update-repo" -d -p "$(dirname ${OSTREE_REPO})")"
+checkout="$(mktemp --suffix="-update-repo" -d -p "$(dirname "${OSTREE_REPO}")")"
 
 on_exit() {
     rm -rf "${checkout}"
@@ -80,8 +80,8 @@ trap on_exit EXIT
 ${BST:-bst} build "${element}"
 ${BST:-bst} checkout --hardlinks "${element}" "${checkout}"
 
-if ! [ -d ${OSTREE_REPO} ]; then
-    ostree init --repo=${OSTREE_REPO} --mode=archive
+if ! [ -d "${OSTREE_REPO}" ]; then
+    ostree init --repo="${OSTREE_REPO}" --mode=archive
 fi
 
 commit="$(ostree --repo="${checkout}/ostree/repo" rev-parse "${ref}")"
@@ -89,7 +89,7 @@ ostree pull-local "${checkout}/ostree/repo" "${commit}"
 
 prev_commit="$(ostree rev-parse "${ref}" 2>/dev/null || true)"
 
-ostree commit ${gpg_opts[*]} \
+ostree commit "${gpg_opts[*]}" \
        --branch="${ref}" --tree=ref="${commit}" --skip-if-unchanged
 
 new_commit="$(ostree rev-parse "${ref}")"
@@ -103,6 +103,6 @@ if [ "${new_commit}" != "${prev_commit}" ]; then
 
     ostree summary \
            ${collection_id:+--add-metadata=ostree.deploy-collection-id='"'"${collection_id}"'"'} \
-           ${gpg_opts[*]} \
+           "${gpg_opts[*]}" \
            --update
 fi
