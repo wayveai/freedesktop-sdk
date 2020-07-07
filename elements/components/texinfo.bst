@@ -27,5 +27,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:texinfo/texinfo-6.6.tar.xz
-  ref: 9bb9ca00da53f26a7e5725eee49689cd4a1e18d25d5b061ac8b2053018d93d66
+  url: ftp_gnu_org:texinfo/texinfo-6.7.tar.xz
+  ref: 988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa
