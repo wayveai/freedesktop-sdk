@@ -278,6 +278,24 @@ config:
     scripts/config -e BT
     scripts/config -m BT_HCIBTUSB
 
+    # Sound for HDA
+    scripts/config -m SND_HDA_INTEL
+    scripts/config -e SND_HDA_RECONFIG
+    scripts/config -e SND_HDA_INPUT_BEEP
+    scripts/config -e SND_HDA_PATCH_LOADER
+    scripts/config -m SND_HDA_CODEC_REALTEK
+    scripts/config -m SND_HDA_CODEC_ANALOG
+    scripts/config -m SND_HDA_CODEC_SIGMATEL
+    scripts/config -m SND_HDA_CODEC_VIA
+    scripts/config -m SND_HDA_CODEC_HDMI
+    scripts/config -m SND_HDA_CODEC_CIRRUS
+    scripts/config -m SND_HDA_CODEC_CONEXANT
+    scripts/config -m SND_HDA_CODEC_CA0110
+    scripts/config -m SND_HDA_CODEC_CA0132
+    scripts/config -e SND_HDA_CODEC_CA0132_DSP
+    scripts/config -m SND_HDA_CODEC_CMEDIA
+    scripts/config -m SND_HDA_CODEC_SI3054
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
