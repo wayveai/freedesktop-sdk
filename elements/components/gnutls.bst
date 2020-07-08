@@ -26,6 +26,9 @@ public:
         (>):
         - '%{libdir}/libgnutls.so'
         - '%{libdir}/libgnutlsxx.so'
+  cpe:
+    patches:
+    - CVE-2020-13777
 
 sources:
 - kind: tar
@@ -33,3 +36,5 @@ sources:
   ref: 32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38
 - kind: patch
   path: patches/gnutls/handle-addtrust-root-expiration.patch
+- kind: patch
+  path: patches/gnutls/CVE-2020-13777.patch
