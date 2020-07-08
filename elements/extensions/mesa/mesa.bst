@@ -59,35 +59,35 @@ variables:
 
   optimize-debug: "false"
 
-  meson-local: |
-    -Db_ndebug=true \
-    -Ddri3=true \
-    -Ddri-drivers=%{dri_drivers} \
-    -Degl=true \
-    -Dgallium-drivers=%{gallium_drivers} \
-    -Dgallium-nine=true \
-    -Dgallium-omx=disabled \
-    -Dgallium-opencl=icd \
-    -Dgallium-va=true \
-    -Dgallium-vdpau=true \
-    -Dgallium-xa=false \
-    -Dgallium-xvmc=false \
-    -Dgbm=true \
-    -Dgles1=false \
-    -Dgles2=true \
-    -Dglvnd=true \
-    -Dglx=auto \
-    -Dlibunwind=%{enable_libunwind} \
-    -Dllvm=true \
-    -Dlmsensors=false \
-    -Dosmesa=none \
-    -Dplatforms=x11,drm,surfaceless,wayland \
-    -Dselinux=false \
-    -Dshared-glapi=true \
-    -Dvalgrind=false \
-    -Dvulkan-overlay-layer=true \
-    -Dvulkan-drivers=%{vulkan_drivers} \
-    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
+  meson-local: >-
+    -Db_ndebug=true
+    -Ddri3=true
+    -Ddri-drivers=%{dri_drivers}
+    -Degl=true
+    -Dgallium-drivers=%{gallium_drivers}
+    -Dgallium-nine=true
+    -Dgallium-omx=disabled
+    -Dgallium-opencl=icd
+    -Dgallium-va=true
+    -Dgallium-vdpau=true
+    -Dgallium-xa=false
+    -Dgallium-xvmc=false
+    -Dgbm=true
+    -Dgles1=false
+    -Dgles2=true
+    -Dglvnd=true
+    -Dglx=auto
+    -Dlibunwind=%{enable_libunwind}
+    -Dllvm=true
+    -Dlmsensors=false
+    -Dosmesa=none
+    -Dplatforms=x11,drm,surfaceless,wayland
+    -Dselinux=false
+    -Dshared-glapi=true
+    -Dvalgrind=false
+    -Dvulkan-overlay-layer=true
+    -Dvulkan-drivers=%{vulkan_drivers}
+    -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=true
 
 config:
