@@ -1,5 +1,15 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.12:
+
+    * gnutls: Fix CVE-2020-13777
+    * Remove Rust SDK extension. Use the one from flathub instead. (#1020)
+    * Fix multiarch symlinks in `--devel` mode (#1056)
+    * gcc: Update to 9.3.0
+    * noopenh264: Add support for building against openh264 2.1
+    * mesa: Do not prefer iris drivers on older hardware
+    * mesa: Update to 20.1.2
+
 freedesktop-sdk-19.08.11:
 
     * gnutls: Handle AddTrust root cert expiration (#1047)
