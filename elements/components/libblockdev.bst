@@ -24,4 +24,6 @@ sources:
 - kind: git_tag
   url: github:storaged-project/libblockdev.git
   track: master
-  ref: 2.23-1-0-gf5d2458e9e52d8c55b609ae8cf46ef0673b4a02a
+  track-extra:
+  - 2.x-branch
+  ref: 2.24-1-0-gf5a4ba8bb298f8cbc435707d0b19b4b2ff836a8e
