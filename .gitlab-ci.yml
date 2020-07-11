@@ -52,7 +52,7 @@ before_script:
     EOF
 
   - |
-    if [ -n "$(echo ${CI_RUNNER_TAGS} | grep few-fetchers)" ]; then
+    if echo "${CI_RUNNER_TAGS}" | grep -q few-fetchers; then
     cat >> ~/.config/buildstream.conf << EOF
     scheduler:
       fetchers: 5
@@ -69,26 +69,28 @@ before_script:
         echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
         echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
 
-        echo "projects:" >> ~/.config/buildstream.conf
-        echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
-        echo "    artifacts:" >> ~/.config/buildstream.conf
-        if [ -f /cache-certificate/server.crt ]; then
-            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
-            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
+        {
+          echo "projects:"
+          echo "  freedesktop-sdk:"
+          echo "    artifacts:"
+          if [ -f /cache-certificate/server.crt ]; then
+            echo "    - url: https://local-cas-server:1102"
+            echo "      client-key: /etc/ssl/CAS/server.key"
+            echo "      client-cert: /etc/ssl/CAS/server.crt"
+            echo "      server-cert: /cache-certificate/server.crt"
             if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-              echo "      push: true" >> ~/.config/buildstream.conf
+              echo "      push: true"
             fi
-        fi
-        if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
-          echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
-          echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-          echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-          if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-             echo "      push: true" >> ~/.config/buildstream.conf
           fi
-        fi
+          if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
+            echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002"
+            echo "      client-key: /etc/ssl/CAS/server.key"
+            echo "      client-cert: /etc/ssl/CAS/server.crt"
+            if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+              echo "      push: true"
+            fi
+          fi
+        } >> ~/.config/buildstream.conf
       fi
     fi
 
@@ -151,7 +153,7 @@ pylint:
   variables:
     ARCH: x86_64
   script:
-    - find . -iname "*.py" | xargs pylint
+    - find . -iname "*.py" -exec pylint {} +
   except:
     - master
     - '18.08'
@@ -233,7 +235,7 @@ check_mirrors:
     - make url-manifest
     - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
     - make build
-    - test ${ARCH} != "aarch64" && make build-vm
+    - test "${ARCH}" != "aarch64" && make build-vm
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make test-apps
@@ -520,7 +522,7 @@ desktop_efi_vm_image_x86_64:
   tags:
     - x86_64
   script:
-    - flat-manager-client -v create $RELEASES_SERVER_ADDRESS "${RELEASE_CHANNEL}" > publish_build.txt
+    - flat-manager-client -v create "$RELEASES_SERVER_ADDRESS" "${RELEASE_CHANNEL}" > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
@@ -551,9 +553,9 @@ finish_publish:
     - x86_64
     - cache_x86_64
   script:
-    - flat-manager-client -v commit --wait $(cat publish_build.txt)
-    - flat-manager-client -v publish --wait-update $(cat publish_build.txt)
-    - flat-manager-client -v purge $(cat publish_build.txt)
+    - flat-manager-client -v commit --wait "$(cat publish_build.txt)"
+    - flat-manager-client -v publish --wait-update "$(cat publish_build.txt)"
+    - flat-manager-client -v purge "$(cat publish_build.txt)"
     - make manifest
   artifacts:
      paths:
@@ -576,7 +578,7 @@ finish_publish_failed:
   tags:
     - x86_64
   script:
-    - flat-manager-client purge $(cat publish_build.txt)
+    - flat-manager-client purge "$(cat publish_build.txt)"
   only:
     - tags
     - master
@@ -632,7 +634,7 @@ finish_publish_failed:
     - flatpak build-update-repo --generate-static-deltas --prune repo
     - |
       if [ "${DO_NOT_PUSH:+set}" != set ]; then
-        flat-manager-client push $(cat publish_build.txt) repo
+        flat-manager-client push "$(cat publish_build.txt)" repo
       fi
   artifacts:
     when: always
@@ -651,7 +653,7 @@ finish_publish_failed:
   script:
     - make export-tar
     - |
-      aws --endpoint-url ${AWS_ENDPOINT} \
+      aws --endpoint-url "${AWS_ENDPOINT}" \
           s3 cp --recursive --acl public-read \
                 "${CI_PROJECT_DIR}/tarballs" \
                 "s3://freedesktop-sdk-tarballs/$(git describe)"
@@ -964,11 +966,11 @@ publish_snap_aarch64:
     for name in platform sdk debug flatpak; do
       mkdir -p ${name}-tar-extract
       (cd ${name}-tar-extract && tar xf ../${name}-docker.tar)
-      (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar *)
+      (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar -- *)
       podman load --storage-driver=vfs -i ${name}-fixed.tar
-      podman push freedesktopsdk/${name}:latest docker://docker.io/freedesktopsdk/${name}:${DOCKER_VERSION}-${ARCH}
+      podman push freedesktopsdk/${name}:latest docker://docker.io/freedesktopsdk/${name}:"${DOCKER_VERSION}"-"${ARCH}"
       mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
-      digest="$(python3 utils/get_remote_digest.py freedesktopsdk/${name} ${DOCKER_VERSION}-${ARCH})"
+      digest="$(python3 utils/get_remote_digest.py freedesktopsdk/${name} "${DOCKER_VERSION}"-"${ARCH}")"
       echo "freedesktopsdk/${name}@${digest}" \
           >"docker-pushed-digests/${DOCKER_VERSION}/${name}-${ARCH}.txt"
     done
@@ -1061,9 +1063,9 @@ publish_docker_finish:
     for name in platform sdk debug flatpak; do
       for dir in docker-pushed-digests/*; do
         DOCKER_VERSION="$(basename "${dir}")"
-        docker manifest create freedesktopsdk/${name}:${DOCKER_VERSION} \
+        docker manifest create freedesktopsdk/${name}:"${DOCKER_VERSION}" \
                       $(cat "${dir}"/${name}-*.txt)
-        docker manifest push freedesktopsdk/${name}:${DOCKER_VERSION}
+        docker manifest push freedesktopsdk/${name}:"${DOCKER_VERSION}"
       done
     done
 

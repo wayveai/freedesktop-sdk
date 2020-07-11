@@ -80,7 +80,8 @@ cat <<EOF >"${sysroot}/etc/group"
 root:x:0:
 EOF
 
-for i in $(ls "${initial_scripts}"/*); do
+for i in "${initial_scripts}"/*; do
+    [[ -e "$i" ]] || break
     echo "Running $(basename "${i}")" 1>&2
     "${i}" "${sysroot}"
 done

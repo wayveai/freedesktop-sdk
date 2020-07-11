@@ -114,7 +114,7 @@ check_rpath() {
 	    needed_libs+=("${needed}")
 	done
 
-	rpath="$(objdump -x "${2}" | grep ${1} | sed "s/ *${1} *//")"
+	rpath="$(objdump -x "${2}" | grep "${1}" | sed "s/ *${1} *//")"
 	abspath="/$(realpath -m --no-symlinks --relative-to="${3}" "${2}")"
 	rpaths=()
 	IFS=:
@@ -162,7 +162,7 @@ find "${2}" -type f -not -name '*.debug' \
           '(' -perm -111 -o -name '*.so*' ')' \
           -print0 | (found_error=no; while read -r -d $'\0' file; do
 
-    read -n4 hdr <"${file}" || continue
+    read -rn4 hdr <"${file}" || continue
     if [ "$hdr" != "$(printf \\x7fELF)" ]; then
         continue
     fi
