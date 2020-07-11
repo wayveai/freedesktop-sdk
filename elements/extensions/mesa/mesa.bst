@@ -31,7 +31,7 @@ depends:
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
-  CXXFLAGS:  "%{target_flags} -std=gnu++17"
+  CXXFLAGS: "%{target_flags} -std=gnu++17"
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"
@@ -149,6 +149,6 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '20.1'
-  ref: mesa-20.1.2-0-g3e417e7cb663acc97ad9a2984df89b337ab6e580
+  ref: mesa-20.1.3-0-g663fa46287dc7c3c03b784ac2162ee5081083e3a
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
