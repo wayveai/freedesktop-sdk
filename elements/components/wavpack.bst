@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: github:dbry/WavPack.git
   track: master
-  ref: 5.2.0-0-ge158df5353b57ac7002d5cac4b3a040eba4c0c9f
+  ref: 5.3.0-0-g350b6d7737383029573ea2cce9bd94f1b6756bbd
