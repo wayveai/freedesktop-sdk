@@ -27,4 +27,4 @@ sources:
   - glib-2-62
   match:
   - 2.*[02468].*
-  ref: 2.62.3-0-gaa028cf86c71474cf0ecbf399241053e82ac4fb9
+  ref: 2.62.4-0-g6708b357c59d7655f10d7b69c194178c9ccc447f
