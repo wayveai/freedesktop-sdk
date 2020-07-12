@@ -20,5 +20,5 @@ variables:
 
 sources:
 - kind: tar
-  url: tar_https:prdownloads.sourceforge.net/freeglut/freeglut-3.0.0.tar.gz
-  ref: 2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2
+  url: tar_https:prdownloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
+  ref: d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68
