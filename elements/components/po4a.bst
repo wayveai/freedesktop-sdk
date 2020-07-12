@@ -1,14 +1,15 @@
 kind: manual
 
 build-depends:
-- filename: components/perl-build.bst
-- filename: components/gettext.bst
-- filename: components/libxslt.bst
-- filename: components/docbook-xsl.bst
+- components/perl-build.bst
+- components/gettext.bst
+- components/libxslt.bst
+- components/docbook-xsl.bst
+- components/perl-pod-parser.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
+- bootstrap-import.bst
+- components/perl.bst
 
 config:
   configure-commands:
