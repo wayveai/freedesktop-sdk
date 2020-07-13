@@ -22,7 +22,6 @@ depends:
 - filename: components/opus.bst
 - filename: components/nasm.bst
   type: build
-- filename: components/noopenh264.bst
 
 variables:
   ffmpeg-prefix: '%{prefix}'
@@ -43,10 +42,10 @@ variables:
     pcm_u8,tta,vorbis,wavpack,%{extra-aud-dec}
 
   video-encoders: |
-    ass,ffv1,libaom_av1,libopenh264,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
+    ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
 
   video-decoders: |
-    ass,ffv1,libaom_av1,libdav1d,libopenh264,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
+    ass,ffv1,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
 
   image-formats: |
     gif,png,tiff,webp,%{extra-image-formats}
@@ -83,7 +82,6 @@ variables:
     --enable-libmp3lame \
     --enable-libfontconfig \
     --enable-libfreetype \
-    --enable-libopenh264 \
     --enable-libopus \
     --enable-libpulse \
     --enable-libspeex \
