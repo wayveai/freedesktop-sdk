@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: sourceware:lvm2.git
   track: master
-  ref: v2_02_183-0-gf5ea02ffee3269a77e295d2b186ca81481f592d7
+  ref: v2_03_09-0-ge1c2b4126520f05a5d2d515121e89263ec45a2bf
