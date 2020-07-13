@@ -7,7 +7,7 @@ runtime-depends:
 - bootstrap-import.bst
 - components/gstreamer-plugins-base.bst
 - components/alsa-lib.bst
-- components/dbus.bst
+- components/libdbus.bst
 - components/sdl2.bst
 - components/ffmpeg.bst
 - components/systemd-libs.bst

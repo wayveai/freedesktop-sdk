@@ -1,13 +1,13 @@
 kind: pip
 
+build-depends:
+- components/python3-pip.bst
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: components/python3.bst
-- filename: components/python3-pip.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/dbus.bst
-- filename: components/glib.bst
+- components/python3.bst
+- components/libdbus.bst
+- components/glib.bst
 
 sources:
 - kind: tar

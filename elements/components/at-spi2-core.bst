@@ -1,13 +1,13 @@
 kind: meson
 
+build-depends:
+- components/gtk-doc.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/dbus.bst
-- filename: components/gtk-doc.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/glib.bst
+- bootstrap-import.bst
+- components/libdbus.bst
+- components/glib.bst
 
 variables:
   conf-local: |
