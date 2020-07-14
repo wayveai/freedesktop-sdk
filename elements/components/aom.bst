@@ -47,4 +47,4 @@ sources:
   track: master
   track-extra:
   - av1-normative
-  ref: v1.0.0-errata1-avif-0-g4eb1e7795b9700d532af38a2d9489458a8038233
+  ref: v2.0.0-0-gbb35ba9148543f22ba7d8642e4fbd29ae301f5dc
