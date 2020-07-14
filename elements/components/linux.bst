@@ -320,6 +320,12 @@ config:
       ;;
     esac
 
+    # USB Network interfaces
+    scripts/config -m USB_NET_DRIVERS
+    scripts/config -m USB_USBNET
+    scripts/config -m USB_NET_CDCETHER
+    scripts/config -m USB_NET_CDC_SUBSET
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
