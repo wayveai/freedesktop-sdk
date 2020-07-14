@@ -34,6 +34,12 @@ variables:
     -DBUILD_SHARED_LIBS=YES
     %{arch-options}
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm '%{install-root}%{libdir}/libaom.a'
+
 public:
   bst:
     split-rules:
