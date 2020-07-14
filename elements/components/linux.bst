@@ -312,6 +312,14 @@ config:
         ;;
     esac
 
+    # I2C/SMBus
+    case "%{arch}" in
+      x86_64|i686)
+        scripts/config -m I2C_PIIX4
+        scripts/config -m I2C_DESIGNWARE_PLATFORM
+      ;;
+    esac
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
