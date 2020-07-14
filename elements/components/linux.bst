@@ -296,6 +296,11 @@ config:
     scripts/config -m SND_HDA_CODEC_CMEDIA
     scripts/config -m SND_HDA_CODEC_SI3054
 
+    # HID drivers
+    scripts/config -m HID_MULTITOUCH
+    scripts/config -m HID_GENERIC
+    scripts/config -m I2C_HID
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
