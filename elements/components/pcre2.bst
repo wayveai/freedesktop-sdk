@@ -7,6 +7,9 @@ depends:
 variables:
   conf-local: |
     --enable-jit
+  (?):
+  - (target_arch == "x86_64" or target_arch == "i686"):
+      local_flags: -mshstk
 
 public:
   bst:
@@ -19,5 +22,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:ftp.pcre.org/pub/pcre/pcre2-10.33.tar.bz2
-  ref: 35514dff0ccdf02b55bd2e9fa586a1b9d01f62332c3356e379eabb75f789d8aa
+  url: tar_https:ftp.pcre.org/pub/pcre/pcre2-10.35.tar.bz2
+  ref: 9ccba8e02b0ce78046cdfb52e5c177f0f445e421059e43becca4359c669d4613
