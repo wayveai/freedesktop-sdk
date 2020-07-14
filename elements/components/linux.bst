@@ -301,6 +301,17 @@ config:
     scripts/config -m HID_GENERIC
     scripts/config -m I2C_HID
 
+    # CPU support
+    scripts/config -e PINCTRL
+    case "%{arch}" in
+      x86_64|i686)
+        # pinctrl_amd might not work as module if it is loaded to late
+        scripts/config -e PINCTRL_AMD
+        scripts/config -e AMD_IOMMU_V2
+        scripts/config -e X86_AMD_PLATFORM_DEVICE
+        ;;
+    esac
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
