@@ -124,10 +124,7 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rustc-1.43.1-src.tar.xz
-  ref: eb0a103c67c4565403d9e6f84a1c708982a5e9e5b3c0d831e4d6f6451795d106
+  url: tar_https:static.rust-lang.org/dist/rustc-1.44.1-src.tar.xz
+  ref: e0386295dd5f2c7842835a509e4c57989eec6c29f989a1c85478b0e06f9d38ea
 - kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
-# Fix compatibility with LLVM 10. Drop this patch for Rust >= 1.44.
-- kind: patch
-  path: patches/rust/rust-pr70163-prepare-for-llvm-10-upgrade.patch
