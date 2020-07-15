@@ -27,6 +27,11 @@ public:
         - '%{bindir}/xml2-config'
         - '%{libdir}/libxml2.so'
         - '%{libdir}/xml2Conf.sh'
+  cpe:
+    patches:
+      - CVE-2019-7595
+      - CVE-2019-20388
+
 
 sources:
 - kind: git_tag
@@ -37,3 +42,7 @@ sources:
   path: patches/libxml2/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
 - kind: patch
   path: patches/libxml2/libxml2-python3-unicode-errors.patch
+- kind: patch
+  path: patches/libxml2/CVE-2019-20388.patch
+- kind: patch
+  path: patches/libxml2/CVE-2019-7595.patch

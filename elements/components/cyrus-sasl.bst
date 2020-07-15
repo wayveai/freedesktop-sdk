@@ -42,9 +42,14 @@ public:
         - '%{libdir}/sasl2/lib*.la'
         - '%{libdir}/sasl2/lib*.so'
         - '%{libdir}/libsasl2.so'
+  cpe:
+    patches:
+    - CVE-2019-19906
 
 sources:
 - kind: git_tag
   url: github:cyrusimap/cyrus-sasl.git
   track: master
   ref: cyrus-sasl-2.1.27-0-g0189425cc210555c36383293c468df5da73acc48
+- kind: patch
+  path: patches/cyrus-sasl/CVE-2019-19906.patch
