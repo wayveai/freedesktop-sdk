@@ -29,6 +29,7 @@ public:
         - '%{libdir}/xml2Conf.sh'
   cpe:
     patches:
+      - CVE-2019-7595
       - CVE-2019-20388
 
 
@@ -43,3 +44,5 @@ sources:
   path: patches/libxml2/libxml2-python3-unicode-errors.patch
 - kind: patch
   path: patches/libxml2/CVE-2019-20388.patch
+- kind: patch
+  path: patches/libxml2/CVE-2019-7595.patch
