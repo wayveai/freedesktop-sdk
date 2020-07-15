@@ -1,32 +1,32 @@
 kind: meson
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/aom.bst
-- filename: components/orc.bst
-- filename: components/frei0r.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: components/gstreamer.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/ladspa-sdk.bst
-- filename: components/libdrm.bst
-- filename: components/libfdk-aac.bst
-- filename: components/libglvnd.bst
-- filename: components/libnice.bst
-- filename: components/librsvg.bst
-- filename: components/openal.bst
-- filename: components/vulkan.bst
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/curl.bst
-- filename: components/libwebp.bst
-- filename: components/sndfile.bst
-- filename: components/webrtc-audio-processing.bst
-- filename: components/noopenh264.bst
+- bootstrap-import.bst
+- components/aom.bst
+- components/orc.bst
+- components/frei0r.bst
+- components/gstreamer.bst
+- components/gstreamer-plugins-base.bst
+- components/ladspa-sdk.bst
+- components/libdrm.bst
+- components/libfdk-aac.bst
+- components/libglvnd.bst
+- components/libnice.bst
+- components/librsvg.bst
+- components/openal.bst
+- components/vulkan.bst
+- components/wayland.bst
+- components/curl.bst
+- components/libwebp.bst
+- components/sndfile.bst
+- components/webrtc-audio-processing.bst
+- components/noopenh264.bst
+- components/libsrtp2.bst
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/gobject-introspection.bst
+- components/wayland-protocols.bst
 
 
 variables:
@@ -52,6 +52,7 @@ variables:
     -Dwayland=enabled
     -Dwebp=enabled
     -Dopenh264=enabled
+    -Dsrtp=enabled
 
 public:
   bst:
