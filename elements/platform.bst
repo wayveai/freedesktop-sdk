@@ -166,6 +166,7 @@ depends:
 - filename: components/sdl2-ttf.bst
 - filename: components/sdl2.bst
 - filename: components/shared-mime-info.bst
+- filename: components/v4l-utils.bst
 - filename: components/vulkan.bst
 - filename: components/wayland.bst
 - filename: components/webrtc-audio-processing.bst 
