@@ -49,7 +49,8 @@ variables:
     %{extra-aud-dec}
 
   video-encoders: |
-    ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
+    ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,mjpeg_vaapi,rawvideo,\
+    theora,vp8_vaapi,%{extra-vid-enc}
 
   video-decoders: |
     ass,ffv1,mjpeg,mjpegb,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,\
@@ -58,7 +59,8 @@ variables:
   image-formats: |
     bmp,gif,jpegls,png,tiff,webp,%{extra-image-formats}
 
-  hwaccels: '%{extra-hwaccels}'
+  hwaccels: |
+    vp8_vaapi,mjpeg_vaapi,%{extra-hwaccels}
 
   muxers: |
     ac3,ass,flac,g722,gif,matroska,mp3,mpegvideo,rtp,ogg,opus,\
@@ -113,6 +115,8 @@ variables:
     --enable-zlib \
     --enable-libv4l2 \
     --enable-libxcb \
+    --enable-vdpau \
+    --enable-vaapi \
     --enable-encoder=%{audio-encoders} \
     --enable-encoder=%{video-encoders} \
     --enable-decoder=%{audio-decoders} \
