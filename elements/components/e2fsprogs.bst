@@ -53,9 +53,14 @@ public:
         - '%{libdir}/libext2fs.so'
       vm-only:
       - '%{bindir}/*'
+    cpe:
+      patches:
+      - CVE-2019-5188
 
 sources:
 - kind: git_tag
   url: kernel:fs/ext2/e2fsprogs.git
   track: master
   ref: v1.45.4-0-gc2a8499d5db0ad071d38b0ca369bbb5fb5929099
+- kind: patch
+  path: patches/e2fsprogs/CVE-2019-5188.patch

@@ -28,6 +28,7 @@ public:
     - CVE-2019-11068
     - CVE-2019-13117
     - CVE-2019-13118
+    - CVE-2019-18197
 
 sources:
 - kind: git_tag
@@ -40,3 +41,5 @@ sources:
   path: patches/libxslt/CVE-2019-13117.patch
 - kind: patch
   path: patches/libxslt/CVE-2019-13118.patch
+- kind: patch
+  path: patches/libxslt/CVE-2019-18197.patch
