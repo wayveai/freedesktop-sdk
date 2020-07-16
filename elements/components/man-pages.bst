@@ -20,4 +20,4 @@ sources:
   track: master
   track-extra:
   - man-pages-5.04
-  ref: man-pages-5.04-0-g0298af65794ee0c124ed933f285356ff0984c261
+  ref: man-pages-5.05-0-g512669dce14abe1ae60a86abb7cd3fa73874852a
