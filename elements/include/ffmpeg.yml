@@ -1,6 +1,13 @@
 build-depends:
+<<<<<<< HEAD
 - components/nasm.bst
 - public-stacks/buildsystem-autotools.bst
+=======
+- public-stacks/buildsystem-autotools.bst
+- components/nasm.bst
+
+
+>>>>>>> e7e1e231... ffmpeg: Enable webcam support
 
 depends:
 - bootstrap-import.bst
@@ -23,6 +30,8 @@ depends:
 - components/libvpx.bst
 - components/opus.bst
 - components/vulkan.bst
+- components/v4l-utils.bst
+- components/xorg-lib-xcb.bst
 
 variables:
   ffmpeg-prefix: '%{prefix}'
@@ -46,7 +55,7 @@ variables:
     ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
 
   video-decoders: |
-    ass,ffv1,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
+    ass,ffv1,mjpeg,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
 
   image-formats: |
     gif,png,tiff,webp,%{extra-image-formats}
@@ -57,13 +66,19 @@ variables:
     ac3,ass,flac,gif,matroska,mp3,mpegvideo,ogg,opus,wav,%{extra-muxers}
 
   demuxers: |
-    aac,ac3,ass,flac,gif,matroska,mov,mp3,mpegvideo,ogg,wav,%{extra-demuxers}
+    aac,ac3,ass,flac,gif,matroska,mjpeg,mov,mp3,mpegvideo,ogg,wav,%{extra-demuxers}
 
   parsers: |
-    aac,ac3,flac,mpegaudio,mpeg4video,opus,vp3,vp8,vorbis,%{extra-parsers}
+    aac,ac3,flac,mjpeg,mpegaudio,mpeg4video,opus,vp3,vp8,vorbis,%{extra-parsers}
 
   filters: |
     crop,scale,%{extra-filters}
+
+  indevs: |
+    v4l2,xcbgrab,%{extra-indevs}
+
+  protocols: |
+    file,%{extra-protocols}
 
   conf-local: |
     --prefix="%{ffmpeg-prefix}" \
@@ -94,6 +109,8 @@ variables:
     --enable-opengl \
     --enable-sdl2 \
     --enable-vulkan \
+    --enable-libv4l2 \
+    --enable-libxcb \
     --enable-encoder=%{audio-encoders} \
     --enable-encoder=%{video-encoders} \
     --enable-decoder=%{audio-decoders} \
@@ -105,7 +122,7 @@ variables:
     --enable-muxer=%{muxers} \
     --enable-demuxer=%{demuxers} \
     --enable-filter=%{filters} \
-    --enable-protocol=file \
+    --enable-protocol=%{protocols} \
     --arch="%{ffmpeg-arch}"
 
   conf-extra: ''
@@ -120,6 +137,8 @@ variables:
   extra-demuxers: ''
   extra-parsers: ''
   extra-filters: ''
+  extra-indevs: ''
+  extra-protocols: ''
 
 public:
   bst:
