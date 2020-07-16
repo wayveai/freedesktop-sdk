@@ -1,27 +1,28 @@
+build-depends:
+- components/nasm.bst
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/dav1d.bst
-- filename: components/fontconfig.bst
-- filename: components/freetype.bst
-- filename: components/libfdk-aac.bst
-- filename: components/lame.bst
-- filename: components/libva.bst
-- filename: components/libvdpau.bst
-- filename: components/mpg123.bst
-- filename: components/openal.bst
-- filename: components/libpulse.bst
-- filename: components/sdl2.bst
-- filename: components/aom.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/gnutls.bst
-- filename: components/speex.bst
-- filename: components/libtheora.bst
-- filename: components/libvorbis.bst
-- filename: components/libvpx.bst
-- filename: components/opus.bst
-- filename: components/nasm.bst
-  type: build
+- bootstrap-import.bst
+- components/dav1d.bst
+- components/fontconfig.bst
+- components/freetype.bst
+- components/libfdk-aac.bst
+- components/lame.bst
+- components/libva.bst
+- components/libvdpau.bst
+- components/mpg123.bst
+- components/openal.bst
+- components/libpulse.bst
+- components/sdl2.bst
+- components/aom.bst
+- components/gnutls.bst
+- components/speex.bst
+- components/libtheora.bst
+- components/libvorbis.bst
+- components/libvpx.bst
+- components/opus.bst
+- components/vulkan.bst
 
 variables:
   ffmpeg-prefix: '%{prefix}'
@@ -92,6 +93,7 @@ variables:
     --enable-openal \
     --enable-opengl \
     --enable-sdl2 \
+    --enable-vulkan \
     --enable-encoder=%{audio-encoders} \
     --enable-encoder=%{video-encoders} \
     --enable-decoder=%{audio-decoders} \
