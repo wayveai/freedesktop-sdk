@@ -115,13 +115,6 @@ public:
         - '%{libdir}/rustlib'
         - '%{libdir}/rustlib/**'
 
-    integration-commands:
-    - |
-      echo "%{libdir}" >>/etc/ld.so.conf
-
-    - |
-      ldconfig
-
 sources:
 - kind: tar
   url: tar_https:static.rust-lang.org/dist/rustc-1.44.1-src.tar.xz
