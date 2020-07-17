@@ -25,4 +25,4 @@ sources:
 - kind: git_tag
   url: gnupg:libgcrypt.git
   track: LIBGCRYPT-1.8-BRANCH
-  ref: libgcrypt-1.8.5-0-g56606331bc2a80536db9fc11ad53695126007298
+  ref: libgcrypt-1.8.6-0-gcfdc44bf08a32d37b144302bf1f7c4798b36762e
