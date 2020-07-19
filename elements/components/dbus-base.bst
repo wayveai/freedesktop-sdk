@@ -28,20 +28,20 @@ public:
   bst:
     split-rules:
       dbus-libs:
-        - '%{includedir}'
-        - '%{includedir}/**'
-        - '%{libdir}/dbus-1.0/include'
-        - '%{libdir}/dbus-1.0/include/**'
-        - '%{libdir}/libdbus-1.so*'
-        - '%{libdir}/pkgconfig'
-        - '%{libdir}/pkgconfig/**'
-        - '%{libdir}/cmake'
-        - '%{libdir}/cmake/**'
-        - '%{debugdir}%{libdir}/libdbus-1.so*'
-        - '%{debugdir}/dwz'
-        - '%{debugdir}/dwz/**'
-        - '%{sourcedir}'
-        - '%{sourcedir}/**'
+      - '%{includedir}'
+      - '%{includedir}/**'
+      - '%{libdir}/dbus-1.0/include'
+      - '%{libdir}/dbus-1.0/include/**'
+      - '%{libdir}/libdbus-1.so*'
+      - '%{libdir}/pkgconfig'
+      - '%{libdir}/pkgconfig/**'
+      - '%{libdir}/cmake'
+      - '%{libdir}/cmake/**'
+      - '%{debugdir}%{libdir}/libdbus-1.so*'
+      - '%{debugdir}/dwz'
+      - '%{debugdir}/dwz/**'
+      - '%{sourcedir}'
+      - '%{sourcedir}/**'
 
   cpe:
     product: d-bus
@@ -54,4 +54,4 @@ sources:
   - dbus-1.12
   match:
   - dbus-[0-9].*[02468].*[02468]
-  ref: dbus-1.12.18-0-ga0926ef86f413f18202ffa19cb1433b6ba00ac36
+  ref: dbus-1.12.20-0-gab88811768f750777d1a8b9d9ab12f13390bfd3a
