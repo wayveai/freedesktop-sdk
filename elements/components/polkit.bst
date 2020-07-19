@@ -45,7 +45,7 @@ sources:
   url: freedesktop:polkit/polkit.git
   track: master
   track-tags: false
-  ref: 0.116-20-g47890bf3596de03da0df511a089ee01b8800a68a
+  ref: 0.116-24-gcd96f833103484f1edfc7f388022bc23e8f0da6d
 - kind: patch
   path: patches/polkit/gettext.patch
 - kind: patch
