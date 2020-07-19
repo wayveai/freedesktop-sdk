@@ -54,6 +54,7 @@ config:
     cd build-dir && make -j1 install DESTDIR="%{install-root}"
 
   - rm -rf "%{install-root}%{bindir}"
+  - rm "%{install-root}%{libdir}/libjs_static.ajs"
 
 sources:
 - kind: tar
