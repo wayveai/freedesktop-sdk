@@ -60,12 +60,21 @@ struct script {
       return nullptr;
     }
     mapped_file m(fd);
-    auto header = static_cast<Elf32_Ehdr const*>(m.ptr(0));
+    auto mm_header = static_cast<Elf32_Ehdr const*>(m.ptr(0));
     std::string magic(ELFMAG);
-    if (magic.compare(0, SELFMAG, (char*)(header->e_ident), SELFMAG) != 0) {
+    if (magic.compare(0, SELFMAG, (char*)(mm_header->e_ident), SELFMAG) != 0) {
       return nullptr;
     }
-    auto arch = get_arch(header);
+
+    Elf32_Ehdr header;
+    if ( get_endianness(mm_header) == endianness::be ) {
+      header_be(mm_header, header);
+    }
+    else {
+      header_le(mm_header, header);
+    }
+
+    auto arch = get_arch(&header);
     if (has_debuglink(fd)) {
       return nullptr;
     }

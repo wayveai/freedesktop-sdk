@@ -42,6 +42,9 @@ std::string get_triplet(known_arch arch) {
   case known_arch::ppc64le:
     triplet = "powerpc64le-unknown-linux-gnu";
     break ;
+  case known_arch::ppc64:
+    triplet = "powerpc64-unknown-linux-gnu";
+    break ;
   case known_arch::riscv64:
     triplet = "riscv64-unknown-linux-gnu";
     break ;
