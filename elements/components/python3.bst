@@ -68,6 +68,10 @@ config:
     #endif
     EOF
 
+  - |
+    mkdir -p %{install-root}%{bindir}
+    ln -s %{bindir}/python3 %{install-root}%{bindir}/python
+
 public:
   bst:
     split-rules:
@@ -81,8 +85,6 @@ public:
         - '%{indep-libdir}/python3.8/config-3.8-%{gcc_triplet}/**'
         - '%{indep-libdir}/python3.8/lib2to3'
         - '%{indep-libdir}/python3.8/lib2to3/**'
-    integration-commands:
-    - command -v python || ln -s python3 %{bindir}/python
   cpe:
     product: python
     patches:
