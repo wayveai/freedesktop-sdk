@@ -9,10 +9,6 @@ depends:
 - components/json-c.bst
 - components/curl.bst
 
-variables:
-  config-local: >-
-    --disable-doxygen-doc
-
 sources:
 - kind: git_tag
   url: https://github.com/tpm2-software/tpm2-tss.git
