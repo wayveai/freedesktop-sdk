@@ -23,6 +23,6 @@ sources:
 - kind: git_tag
   url: github:xiph/vorbis.git
   track: master
-  ref: v1.3.6-0-gd22c3ab5f633460abc2532feee60ca0892134cbf
+  ref: v1.3.7-0-g0657aee69dec8508a0011f47f3b69d7538e9d262
 - kind: patch
   path: patches/libvorbis/CVE-2018-10392.patch
