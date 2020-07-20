@@ -27,5 +27,3 @@ sources:
     list:
       checkout: true
       url: github:publicsuffix/list.git
-- kind: patch
-  path: patches/libpsl/libpsl-Use-the-detected-PYTHON-version.patch
