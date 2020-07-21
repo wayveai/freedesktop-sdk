@@ -1,23 +1,23 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/flex.bst
+- components/systemd.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/less.bst
-- filename: components/groff.bst
-- filename: components/libpipeline.bst
-- filename: components/gzip.bst
-- filename: components/xz.bst
-- filename: components/lzip.bst
-- filename: components/util-linux.bst
-- filename: components/flex.bst
-  type: build
+- bootstrap-import.bst
+- components/less.bst
+- components/groff.bst
+- components/libpipeline.bst
+- components/gzip.bst
+- components/xz.bst
+- components/lzip.bst
+- components/util-linux.bst
 
 variables:
-  conf-local: |
-    --disable-cache-owner \
-    --with-systemdsystemunitdir=%{prefix}/lib/systemd
+  conf-local: >-
+    --disable-cache-owner
 
 public:
   bst:
