@@ -30,7 +30,7 @@ variables:
       targets: PowerPC;AMDGPU
 
   cmake-local: >-
-    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt'
+    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld'
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF
     -DBUILD_SHARED_LIBS:BOOL=OFF
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON
