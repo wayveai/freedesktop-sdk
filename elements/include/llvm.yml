@@ -4,7 +4,7 @@ sources:
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-10.0.0-0-gd32170dbd5b0d54436537b6b75beaf44324e0c28
+  ref: llvmorg-10.0.1-0-gef32c611aa214dea855364efd7ba451ec5ec3f74
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
