@@ -6,6 +6,11 @@ build-depends:
 runtime-depends:
 - components/xdg-desktop-portal-manifest.bst
 - components/xdg-portal-interfaces.bst
+- components/flatpak.bst
+- components/glib.bst
+- components/fontconfig.bst
+- components/pipewire-daemon.bst
+- components/geoclue.bst
 
 config:
   include-orphans: true
