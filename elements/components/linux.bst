@@ -325,6 +325,8 @@ config:
     scripts/config -m USB_USBNET
     scripts/config -m USB_NET_CDCETHER
     scripts/config -m USB_NET_CDC_SUBSET
+    scripts/config -m USB_RTL8150
+    scripts/config -m USB_RTL8152
 
   install-commands:
   - |
