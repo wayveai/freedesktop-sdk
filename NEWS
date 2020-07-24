@@ -1,5 +1,46 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08beta.4:
+
+    * spirv-headers: Update to 1.5.3-18
+    * spirv-tools: Update to v2020.4
+    * gnupg: Update to 2.2.21
+    * mesa: Update to 20.1.4
+    * ccache: Update to 3.7.11
+    * asciidoc: Update to 9.0.2
+    * llvm: Add lld
+    * bash: Update to 5.0-18
+    * glibc: Update to 2.31-49
+    * meson: Update to 0.55.0
+    * python3: Update to v3.8.5
+    * libpsl.bst: Update to 0.21.1
+    * libvorbis: Update to v1.3.7
+    * gpgme: Update to 1.14.0
+    * python3-setuptools: Update to v49.2.0
+    * libsepol: Update to 3.1
+    * libseccomp: to 2.4.3
+    * dbus: Update to 1.12.20
+    * cmake: Update to 3.18.0
+    * libgcrypt: Update to 1.8.6
+    * ffmpeg: Enable vulkan
+    * man-pages: Update to 5.05
+    * rust: Update to 1.44.1
+    * openssh: Apply patch for CVE-2020-12062
+    * cyrus-sasl: Apply patch for CVE-2019-19906
+    * libxml2: Apply patches for CVE-2019-20388, CVE-2019-7595
+    * extra-cmake-modules: Update to v5.72.0
+    * librsvg: Update to 2.48.8
+    * gst-plugins-bad: Enable SRTP
+    * Add libsrtp2
+    * ffmpeg: Update to 4.3.1
+    * aom: Update to 2.0.0
+    * Add perf to SDK
+    * alsa-lib: Update to 1.2.3.2
+    * libselinux: Update to 3.1
+    * python3-pygments: Update to 2.6.1
+    * ffmpeg-full: Remove openh264
+    * pcre2: Update to 10.35
+
 freedesktop-sdk-20.08beta.3:
 
     * xorg-proto-xorgproto: Update to 2020.1
