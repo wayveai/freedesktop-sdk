@@ -43,16 +43,12 @@ public:
       - '%{debugdir}%{bindir}/pipewire.debug'
 
       libjack:
-      - '%{libdir}/libjack-pw.so*'
-      - '%{debugdir}%{libdir}/libjack-pw.so*.debug'
+      - '%{libdir}/pipewire-0.3/jack/**'
+      - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
 
       libpulse:
-      - '%{libdir}/libpulse-pw.so*'
-      - '%{libdir}/libpulse-simple-pw.so*'
-      - '%{libdir}/libpulse-mainloop-glib-pw.so*'
-      - '%{debugdir}%{libdir}/libpulse-pw.so*.debug'
-      - '%{debugdir}%{libdir}/libpulse-simple-pw.so*.debug'
-      - '%{debugdir}%{libdir}/libpulse-mainloop-glib-pw.so*.debug'
+      - '%{libdir}/pipewire-0.3/pulse/**'
+      - '%{debugdir}%{libdir}/pipewire-0.3/pulse/**'
   cpe:
     product: pipewire
 
@@ -62,4 +58,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.1-0-g74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac
+  ref: 0.3.7-0-g0b3e9edaa2a155b6f1d1189a2dadbdb568c05ab1
+- kind: patch
+  path: patches/pipewire/remove-useless-rpaths.patch

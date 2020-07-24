@@ -1,0 +1,83 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index a63e9ce9..7a1b96c5 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -10,7 +10,6 @@ pipewire_module_access = shared_library('pipewire-module-access', [ 'module-acce
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -21,7 +20,6 @@ pipewire_module_profiler = shared_library('pipewire-module-profiler',
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -31,7 +29,6 @@ pipewire_module_rtkit = shared_library('pipewire-module-rtkit', [ 'module-rtkit.
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [dbus_dep, mathlib, dl_lib, pipewire_dep],
+ )
+ pipewire_module_portal = shared_library('pipewire-module-portal', [ 'module-portal.c' ],
+@@ -39,7 +36,6 @@ pipewire_module_portal = shared_library('pipewire-module-portal', [ 'module-port
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [dbus_dep, mathlib, dl_lib, pipewire_dep],
+ )
+ endif
+@@ -53,7 +49,6 @@ pipewire_module_client_node = shared_library('pipewire-module-client-device',
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -63,7 +58,6 @@ pipewire_module_link_factory = shared_library('pipewire-module-link-factory',
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -84,7 +78,6 @@ pipewire_module_protocol_native = shared_library('pipewire-module-protocol-nativ
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : pipewire_module_protocol_native_deps,
+ )
+ 
+@@ -116,7 +109,6 @@ pipewire_module_metadata = shared_library('pipewire-module-metadata',
+   link_with : pipewire_module_protocol_native,
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -141,7 +133,6 @@ pipewire_module_adapter = shared_library('pipewire-module-adapter',
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
+ )
+ 
+@@ -164,6 +155,5 @@ pipewire_module_session_manager = shared_library('pipewire-module-session-manage
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )

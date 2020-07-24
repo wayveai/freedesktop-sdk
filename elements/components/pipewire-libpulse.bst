@@ -20,14 +20,14 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{libdir}/libpulse-pw.so'
-        - '%{libdir}/libpulse-simple-pw.so'
-        - '%{libdir}/libpulse-mainloop-glib-pw.so'
+        - '%{libdir}/pipewire-0.3/pulse/libpulse.so'
+        - '%{libdir}/pipewire-0.3/pulse/libpulse-simple.so'
+        - '%{libdir}/pipewire-0.3/pulse/libpulse-mainloop-glib.so'
 
     integration-commands:
-    - rm "%{libdir}"/libpulse.so*
-    - rm "%{libdir}"/libpulse-simple.so*
-    - rm "%{libdir}"/libpulse-mainloop-glib.so*
-    - ln -sf libpulse-pw.so.0.3.1 "%{libdir}/libpulse.so.0"
-    - ln -sf libpulse-simple-pw.so.0.3.1 "%{libdir}/libpulse-simple.so.0"
-    - ln -sf libpulse-mainloop-glib-pw.so.0.3.1 "%{libdir}/libpulse-mainloop-glib.so.0"
+    - rm -f "%{libdir}/libpulse.so*"
+    - rm -f "%{libdir}/libpulse-simple.so*"
+    - rm -f "%{libdir}/libpulse-mainloop-glib.so*"
+    - ln -sf pipewire-0.3/pulse/libpulse.so.0 "%{libdir}/libpulse.so.0"
+    - ln -sf pipewire-0.3/pulse/libpulse-simple.so.0 "%{libdir}/libpulse-simple.so.0"
+    - ln -sf pipewire-0.3/pulse/libpulse-mainloop-glib.so.0 "%{libdir}/libpulse-mainloop-glib.so.0"
