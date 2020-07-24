@@ -1,0 +1,25 @@
+{
+    "app-id": "org.gnu.hello",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "20.08beta",
+    "sdk": "org.freedesktop.Sdk",
+    "build-options": {
+	"cflags": "-fuse-ld=lld",
+        "config-opts": [
+            "CC=clang"
+        ]
+    },
+    "command": "hello",
+    "modules": [
+        {
+            "name": "gnu-hello",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mirrors.kernel.org/gnu/hello/hello-2.10.tar.gz",
+                    "sha256": "31e066137a962676e89f69d1b65382de95a7ef7d914b8cb956f41ea72e0f516b"
+                }
+            ]
+        }
+    ]
+}
