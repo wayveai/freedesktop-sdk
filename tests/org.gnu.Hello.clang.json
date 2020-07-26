@@ -4,7 +4,7 @@
     "runtime-version": "20.08beta",
     "sdk": "org.freedesktop.Sdk",
     "build-options": {
-	"cflags": "-fuse-ld=lld",
+	"ldflags": "-fuse-ld=lld",
         "config-opts": [
             "CC=clang"
         ]
