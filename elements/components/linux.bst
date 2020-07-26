@@ -328,6 +328,9 @@ config:
     scripts/config -m USB_RTL8150
     scripts/config -m USB_RTL8152
 
+    # Required by podman
+    scripts/config -m TUN
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
