@@ -947,6 +947,7 @@ publish_snap_aarch64:
 
 .docker_publish_template:
   stage: publish-docker
+  retry: 2
   script:
   - |
     [ -n "${DOCKER_HUB_USER}" ]
