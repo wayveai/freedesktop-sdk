@@ -30,6 +30,6 @@ sources:
 - kind: git_tag
   url: github:harfbuzz/harfbuzz.git
   track: master
-  ref: 2.6.8-0-ge4203c14699cc0903a2b4611167a7b99532cfdb0
+  ref: 2.7.0-0-ga01c7a380b9a3351bc7056c816e1340b5374a6f8
 - kind: patch
   path: patches/harfbuzz/harfbuzz-disable-introspec-hb-language-invalid.patch
