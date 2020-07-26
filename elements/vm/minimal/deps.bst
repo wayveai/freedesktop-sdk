@@ -19,3 +19,4 @@ runtime-depends:
 - vm/config/resolved.bst
 - vm/config/useradd-default.bst
 - components/usbutils.bst
+- components/hosts.bst

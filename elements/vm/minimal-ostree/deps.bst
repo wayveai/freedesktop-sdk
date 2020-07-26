@@ -21,3 +21,4 @@ runtime-depends:
 - components/wireless-regdb-bin.bst
 - components/iproute2.bst
 - components/usbutils.bst
+- components/hosts.bst

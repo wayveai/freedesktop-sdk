@@ -46,6 +46,7 @@ runtime-depends:
 - components/fwupd.bst
 - components/udisks.bst
 - components/iio-sensor-proxy.bst
+- components/hosts.bst
 
 (?):
 - not pipewire:
