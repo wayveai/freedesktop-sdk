@@ -330,6 +330,12 @@ config:
 
     # Required by podman
     scripts/config -m TUN
+    scripts/config -e CGROUP_HUGETLB
+    scripts/config -e CGROUP_PIDS
+    scripts/config -e CPUSETS
+    scripts/config -e MEMCG
+    scripts/config -e CGROUP_SCHED
+    scripts/config -e BLK_CGROUP
 
   install-commands:
   - |
