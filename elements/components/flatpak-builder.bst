@@ -4,6 +4,7 @@ depends:
 - bootstrap-import.bst
 - components/flatpak.bst
 - components/curl.bst
+- components/libyaml.bst
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
