@@ -1,5 +1,16 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08beta.5:
+
+   * ffmpeg-full: Enable WAV/xWMA demuxers, more codecs
+   * ffmpeg: Enable webcam support, add more free codecs, additional hwaccels
+   * Add v4l-utils
+   * harfbuz: Update to 2.7.0
+   * gcc: Update to 10.2.0
+   * mesa: Update to 20.1.4
+   * libcap: Update to 2.40
+   * pipewire: Update to 0.3.7
+
 freedesktop-sdk-20.08beta.4:
 
     * spirv-headers: Update to 1.5.3-18
