@@ -337,6 +337,18 @@ config:
     scripts/config -e CGROUP_SCHED
     scripts/config -e BLK_CGROUP
 
+    # KVM
+    case "%{arch}" in
+      x86_64|i686)
+        scripts/config -m KVM
+        scripts/config -m KVM_INTEL
+        scripts/config -m KVM_AMD
+        ;;
+      aarch64)
+        scripts/config -m KVM
+        ;;
+    esac
+
   install-commands:
   - |
     install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
