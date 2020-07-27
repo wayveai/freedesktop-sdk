@@ -23,6 +23,8 @@ depends:
 - components/libvpx.bst
 - components/opus.bst
 - components/vulkan.bst
+- components/v4l-utils.bst
+- components/xorg-lib-xcb.bst
 
 variables:
   ffmpeg-prefix: '%{prefix}'
@@ -33,37 +35,53 @@ variables:
       ffmpeg-arch: x86
 
   audio-encoders: |
-    ac3,alac,flac,libfdk_aac,g723_1,mp2,libmp3lame,libopus,pcm_alaw,pcm_mulaw,\
+    ac3,alac,flac,libfdk_aac,g723_1,mp2,libmp3lame,libopus,libspeex,pcm_alaw,pcm_mulaw,\
     pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
     pcm_u8,tta,libvorbis,wavpack,%{extra-aud-enc}
 
   audio-decoders: |
-    ac3,alac,flac,g723_1,g729,libfdk_aac,libopus,mp2,mp3,m4a,pcm_alaw,pcm_mulaw,\
-    pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
-    pcm_u8,tta,vorbis,wavpack,%{extra-aud-dec}
+    adpcm_g722ac3,alac,flac,g723_1,g729,libfdk_aac,libopus,libspeex,\
+    mp2,mp3,m4a,pcm_alaw,pcm_mulaw,pcm_f16le,pcm_f24le,pcm_f32be,\
+    pcm_f32le,pcm_f64be,pcm_f64le,pcm_s16be,pcm_s16be_planar,pcm_s24be,\
+    pcm_s16le,pcm_s16le_planar,pcm_s24le,pcm_s24le_planar,pcm_s32le,\
+    pcm_s32le_planar,pcm_s64be,pcm_s64le,pcm_s8,pcm_s8_planar,\
+    pcm_u8,pcm_u24be,pcm_u24le,pcm_u32be,pcm_u32be,tta,vorbis,wavpack,\
+    %{extra-aud-dec}
 
   video-encoders: |
-    ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
+    ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,mjpeg_vaapi,rawvideo,\
+    theora,vp8_vaapi,%{extra-vid-enc}
 
   video-decoders: |
-    ass,ffv1,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
+    ass,ffv1,mjpeg,mjpegb,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,\
+    rawvideo,theora,vp8,vp9,%{extra-vid-dec}
 
   image-formats: |
-    gif,png,tiff,webp,%{extra-image-formats}
+    bmp,gif,jpegls,png,tiff,webp,%{extra-image-formats}
 
-  hwaccels: '%{extra-hwaccels}'
+  hwaccels: |
+    vp8_vaapi,mjpeg_vaapi,%{extra-hwaccels}
 
   muxers: |
-    ac3,ass,flac,gif,matroska,mp3,mpegvideo,ogg,opus,wav,%{extra-muxers}
+    ac3,ass,flac,g722,gif,matroska,mp3,mpegvideo,rtp,ogg,opus,\
+    pcm_s16be,pcm_s16le,wav,webm,%{extra-muxers}
 
   demuxers: |
-    aac,ac3,ass,flac,gif,matroska,mov,mp3,mpegvideo,ogg,wav,%{extra-demuxers}
+    aac,ac3,ass,flac,g722,gif,image_jpeg_pipe,image_png_pipe,\
+    image_webp_pipe,matroska,mjpeg,mov,mp3,mpegvideo,ogg,pcm_mulaw,\
+    pcm_alaw,pcm_s16be,pcm_s16le,rtp,wav,%{extra-demuxers}
 
   parsers: |
-    aac,ac3,flac,mpegaudio,mpeg4video,opus,vp3,vp8,vorbis,%{extra-parsers}
+    aac,ac3,flac,mjpeg,mpegaudio,mpeg4video,opus,vp3,vp8,vp9,vorbis,%{extra-parsers}
 
   filters: |
-    crop,scale,%{extra-filters}
+    crop,scale,overlay,amix,amerge,aresample,format,aformat,fps,transpose,pad,%{extra-filters}
+
+  indevs: |
+    v4l2,xcbgrab,%{extra-indevs}
+
+  protocols: |
+    crypto,file,pipe,rtp,srtp,rtsp,tcp,udp,unix,%{extra-protocols}
 
   conf-local: |
     --prefix="%{ffmpeg-prefix}" \
@@ -94,6 +112,11 @@ variables:
     --enable-opengl \
     --enable-sdl2 \
     --enable-vulkan \
+    --enable-zlib \
+    --enable-libv4l2 \
+    --enable-libxcb \
+    --enable-vdpau \
+    --enable-vaapi \
     --enable-encoder=%{audio-encoders} \
     --enable-encoder=%{video-encoders} \
     --enable-decoder=%{audio-decoders} \
@@ -105,7 +128,7 @@ variables:
     --enable-muxer=%{muxers} \
     --enable-demuxer=%{demuxers} \
     --enable-filter=%{filters} \
-    --enable-protocol=file \
+    --enable-protocol=%{protocols} \
     --arch="%{ffmpeg-arch}"
 
   conf-extra: ''
@@ -120,6 +143,8 @@ variables:
   extra-demuxers: ''
   extra-parsers: ''
   extra-filters: ''
+  extra-indevs: ''
+  extra-protocols: ''
 
 public:
   bst:

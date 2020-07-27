@@ -9,5 +9,6 @@ depends:
   - components/noopenh264.bst
 
 variables:
+  extra-vid-enc: libopenh264
   extra-vid-dec: libopenh264
   conf-extra: --enable-libopenh264

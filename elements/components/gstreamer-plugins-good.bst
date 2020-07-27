@@ -1,32 +1,33 @@
 kind: meson
 
+build-depends:
+- components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/cairo.bst
-- filename: components/jpeg.bst
-- filename: components/orc.bst
-- filename: components/lame.bst
-- filename: components/libpng.bst
-- filename: components/libpulse.bst
-- filename: components/libsoup.bst
-- filename: components/libvpx.bst
-- filename: components/mpg123.bst
-- filename: components/gtk3.bst
-- filename: components/gdk-pixbuf.bst
-- filename: components/gstreamer.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/libflac.bst
-- filename: components/speex.bst
-- filename: components/wavpack.bst
+- bootstrap-import.bst
+- components/cairo.bst
+- components/jpeg.bst
+- components/orc.bst
+- components/lame.bst
+- components/libpng.bst
+- components/libpulse.bst
+- components/libsoup.bst
+- components/libvpx.bst
+- components/mpg123.bst
+- components/gtk3.bst
+- components/gdk-pixbuf.bst
+- components/gstreamer.bst
+- components/gstreamer-plugins-base.bst
+- components/libflac.bst
+- components/speex.bst
+- components/wavpack.bst
+- components/v4l-utils.bst
 
 variables:
   meson-local: >-
     -Dpackage-origin="freedesktop-sdk"
-    -Dv4l2-libv4l2=disabled
+    -Dv4l2-libv4l2=enabled
     -Dv4l2-gudev=disabled
     -Daalib=disabled
     -Djack=disabled
