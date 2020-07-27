@@ -32,6 +32,9 @@ config:
 
     - rm "%{install-root}/etc/default/useradd"
 
+    - touch '%{install-root}%{sysconfdir}/subuid'
+    - touch '%{install-root}%{sysconfdir}/subgid'
+
 public:
   initial-script:
     script: |
