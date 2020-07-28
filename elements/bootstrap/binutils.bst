@@ -18,21 +18,18 @@ variables:
   # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/jobs/110741993
   # FIXME: what happens when we make it depend on gcc.bst? Does it it fix it?
   target_flags_exceptions: ''
-  conf-local: |
-    CFLAGS="${CFLAGS}" \
-    --disable-werror \
-    --with-lib-path="%{libdir}:%{indep-libdir}" \
-    --enable-gold \
-    --enable-ld=default \
-    --enable-shared \
-    --enable-plugins \
-    --disable-gdb \
-    --disable-sim \
-    --disable-readline \
-    --disable-libdecnumber \
-    --enable-relro=yes \
-    --enable-lto \
-    --with-system-zlib \
+  conf-local: >-
+    CFLAGS="${CFLAGS}"
+    --disable-werror
+    --with-lib-path="%{libdir}:%{indep-libdir}"
+    --enable-gold
+    --enable-ld=default
+    --enable-shared
+    --enable-plugins
+    --enable-relro=yes
+    --enable-lto
+    --with-system-zlib
+    %{disable-source}
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
 config:
