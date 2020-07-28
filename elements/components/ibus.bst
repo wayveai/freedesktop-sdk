@@ -39,7 +39,9 @@ config:
       rm -r "%{install-root}%{datadir}/dbus-1"
       rm -r "%{install-root}%{datadir}/icons"
       rm -r "%{install-root}%{datadir}/man"
-      rm -r "%{install-root}%{datadir}/ibus"
+      rm -r "%{install-root}%{datadir}/gettext"
+      rm -r "%{install-root}%{datadir}/locale"
+      rm -r "%{install-root}%{libexecdir}"
 
 public:
   bst:
