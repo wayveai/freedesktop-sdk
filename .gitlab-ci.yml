@@ -890,7 +890,7 @@ reproducible_arm:
         fi
       }
       failed=false
-      for snap in platform glxinfo vulkaninfo clinfo vainfo; do
+      for snap in platform sdk glxinfo vulkaninfo clinfo vainfo; do
         if ! push "snap/${snap}.snap"; then
           failed=true
         fi
