@@ -45,9 +45,6 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: gdb-8.3-branch
-  ref: gdb-8.3.1-release-0-gff51bf260c36157d13a6ca86969b6a64c7896d55
-# Patch is included in upstream 8.4. Remove when upgrading.
-- kind: patch
-  path: patches/gdb/gdb-do-not-emit-escape-sequences-to-log-file.patch
+  track: gdb-9-branch
+  ref: gdb-9.2-release-0-ge7fe0803b6427d3906e991bbb3b7fd2f0fd05e00
 
