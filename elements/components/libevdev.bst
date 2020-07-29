@@ -1,6 +1,7 @@
 kind: meson
 
 build-depends:
+- components/doxygen.bst
 - components/python3.bst
 - public-stacks/buildsystem-meson.bst
 
@@ -8,10 +9,9 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  # Docs depend on doxygen
   meson-local: >-
     -Dtests=disabled
-    -Ddocumentation=disabled
+    -Ddocumentation=enabled
 
 sources:
 - kind: git_tag
@@ -19,4 +19,4 @@ sources:
   track: master
   exclude:
   - 'libevdev-*.*.9*'
-  ref: libevdev-1.9.0-0-g468760ba11438734912f793b1de00cb0f243497f
+  ref: libevdev-1.9.1-0-gbcb79eed391d06fc4e75a39d19da91b41ff344ea
