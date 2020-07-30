@@ -31,6 +31,7 @@ variables:
     -Dman=true
     -Dgstreamer=true
     -Dsystemd=true
+    -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
   bst:
@@ -41,6 +42,7 @@ public:
       - '%{bindir}/pipewire'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
+      - '%{indep-libdir}/udev/**'
       - '%{debugdir}%{bindir}/pipewire.debug'
 
       libjack:
@@ -59,6 +61,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.7-0-g0b3e9edaa2a155b6f1d1189a2dadbdb568c05ab1
+  ref: 0.3.8-0-g229fad46914a32b621e88e53abd1270c62b0e158
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
