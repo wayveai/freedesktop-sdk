@@ -11,9 +11,9 @@ config:
     - locale
 
   metadata:
-    name: "freedesktop-sdk-runtime-%{snap-branch}"
+    name: "freedesktop-sdk-sdk-%{snap-branch}"
     version: "%{runtime-version}"
-    summary: "Freedesktop SDK %{snap-branch} runtime for snap"
+    summary: "Freedesktop SDK %{snap-branch} SDK for snap"
     description: >-
       The Freedesktop SDK project provides Platform and SDK runtimes
       for Flatpak apps and runtimes based on Freedesktop modules.  It
@@ -27,4 +27,4 @@ config:
     grade: "%{snap_grade}"
 
 build-depends:
-- snap-images/platform-fix-image.bst
+- snap-images/sdk-fix-image.bst

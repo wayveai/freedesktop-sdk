@@ -1,21 +1,15 @@
 kind: script
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: snap-images/squashfs-tools.bst
-  type: build
+build-depends:
+- bootstrap-import.bst
+- snap-images/squashfs-tools.bst
 
-- filename: snap-images/platform.bst
-  type: build
-- filename: snap-images/vulkaninfo.bst
-  type: build
-- filename: snap-images/vainfo.bst
-  type: build
-- filename: snap-images/clinfo.bst
-  type: build
-- filename: snap-images/glxinfo.bst
-  type: build
+- snap-images/platform.bst
+- snap-images/sdk.bst
+- snap-images/vulkaninfo.bst
+- snap-images/vainfo.bst
+- snap-images/clinfo.bst
+- snap-images/glxinfo.bst
 
 config:
   layout:
@@ -26,6 +20,8 @@ config:
 
   - element: snap-images/platform.bst
     destination: '/images/platform'
+  - element: snap-images/sdk.bst
+    destination: '/images/sdk'
   - element: snap-images/vulkaninfo.bst
     destination: '/images/vulkaninfo'
   - element: snap-images/vainfo.bst
@@ -38,7 +34,7 @@ config:
   commands:
   - |
     mkdir -p "%{install-root}"
-    for name in platform vulkaninfo vainfo clinfo glxinfo; do
+    for name in platform sdk vulkaninfo vainfo clinfo glxinfo; do
       mksquashfs "/images/${name}" "%{install-root}/${name}.snap" \
         -root-owned -noappend -comp xz -no-xattrs -no-fragments
     done
