@@ -22,5 +22,4 @@ depends:
 - filename: flatpak-images/vainfo-debug.bst
 - filename: flatpak-images/pre-bootstrap.bst
 - filename: flatpak-images/mesa.bst
-- filename: flatpak-images/mesa-aco-conditional.bst
 - filename: flatpak-images/cross-toolchains.bst

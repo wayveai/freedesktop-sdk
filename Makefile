@@ -242,9 +242,6 @@ export-docker:
 	  $(BST) checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
 	done
 
-track-mesa-aco:
-	$(BST) track extensions/mesa-aco/mesa-base.bst
-
 define OSTREE_GPG_CONFIG
 Key-Type: DSA
 Key-Length: 1024
