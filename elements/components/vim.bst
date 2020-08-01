@@ -10,4 +10,4 @@ sources:
 - kind: git_tag
   url: github:vim/vim.git
   track: master
-  ref: v8.2.1313-0-gb5ed266037dea49024e00c4e1f9c89f3a9ebaa60
+  ref: v8.2.1333-0-gaf8edbb8dc551aaf2105a4d77b3d8495da239ef0
