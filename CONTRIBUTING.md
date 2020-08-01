@@ -26,11 +26,11 @@ Simply click "sign in/register" in the top right corner and fill in the form.
 ## Clone our GitLab repo
 Open a terminal and type:
 ```
-git clone https://gitlab.com/freedesktop-sdk/freedesktop-sdk
+git clone https://gitlab.com/freedesktop-sdk/freedesktop-sdk.git
 ```
 If you have an SSH key associated with your GitLab account you can alternatively type
 ```
-git clone git@gitlab.com:freedesktop-sdk/freedesktop-sdk
+git clone git@gitlab.com:freedesktop-sdk/freedesktop-sdk.git
 ```
 to avoid having to type your password when pushing.
 
@@ -137,7 +137,7 @@ If you want to test your changes locally then you will need to first install [Bu
 
 We also use some plugins from the [bst-external](https://gitlab.com/BuildStream/bst-external) repository. To install these run the following commands:
 ```
-git clone https://gitlab.com/BuildStream/bst-external
+git clone https://gitlab.com/BuildStream/bst-external.git
 pip3 install --user -e ./bst-external
 ```
 Again, we use the latest stable version of bst-external, which is usually the
