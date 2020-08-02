@@ -13,7 +13,7 @@ variables:
   DOCKER_IMAGE_ID: 'f280b874c49cee3ce2e5f3c4af1495238e134e3c'
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst14/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst14/arm64:${DOCKER_IMAGE_ID}"
-  DOCKER_POWERPC64LE: "${DOCKER_REGISTRY}/bst14/ppc64le:${DOCKER_IMAGE_ID}"
+  DOCKER_PPC64LE: "${DOCKER_REGISTRY}/bst14/ppc64le:${DOCKER_IMAGE_ID}"
 
   # Generic variable for invoking buildstream
   BST: bst --colors
@@ -248,7 +248,7 @@ check_mirrors:
 
     - |
       set -e
-      if [ "${ARCH}" != powerpc64le ]; then
+      if [ "${ARCH}" != ppc64le ]; then
         make export-snap
         python3 utils/parse_review.py snap/platform.snap
         python3 utils/parse_review.py snap/glxinfo.snap
@@ -333,13 +333,13 @@ app_arm-no-cache:
   only:
     - schedules
 
-app_powerpc64le:
-  image: $DOCKER_POWERPC64LE
+app_ppc64le:
+  image: $DOCKER_PPC64LE
   <<: *flatpak_definition
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies: []
 
@@ -424,15 +424,15 @@ minimal_systemd_vm_arm:
     DIALOG: root-login
   dependencies: []
 
-minimal_systemd_vm_powerpc64le:
+minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
   allow_failure: true
-  image: $DOCKER_POWERPC64LE
+  image: $DOCKER_PPC64LE
   tags:
     - ppc64le
   <<: *vm_imageless
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -600,7 +600,7 @@ finish_publish_failed:
     - |
       case "$RELEASES_SERVER_ADDRESS" in
         https://hub.flathub.org/)
-          if [ "${ARCH}" = powerpc64le ]; then
+          if [ "${ARCH}" = ppc64le ]; then
             echo "ppc64le not published to Flathub yet"
             DO_NOT_PUSH=1
           fi
@@ -708,13 +708,13 @@ publish_arm:
     - prepare_publish_branch
     - prepare_publish_release
 
-publish_powerpc64le:
+publish_ppc64le:
   extends: .flatpak_publish_template
-  image: $DOCKER_POWERPC64LE
+  image: $DOCKER_PPC64LE
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies:
     - prepare_publish_branch
@@ -760,13 +760,13 @@ publish_arm_tar:
   dependencies: []
   when: manual
 
-publish_powerpc64le_tar:
+publish_ppc64le_tar:
   extends: .publish_tar_template
-  image: $DOCKER_POWERPC64LE
+  image: $DOCKER_PPC64LE
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   dependencies: []
   when: manual
 
@@ -1030,11 +1030,11 @@ publish_docker_arm:
 
 publish_docker_ppc64le:
   extends: .docker_publish_template
-  image: $DOCKER_POWERPC64LE
+  image: $DOCKER_PPC64LE
   tags:
   - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
 

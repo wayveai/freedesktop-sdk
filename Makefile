@@ -1,11 +1,11 @@
 SHELL=/bin/bash
 BRANCH=20.08beta
-ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
-BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
+ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
+BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 QEMU_ARCH=i386
-else ifeq ($(ARCH),powerpc64le)
+else ifeq ($(ARCH),ppc64le)
 FLATPAK_ARCH=ppc64le
 QEMU_ARCH=ppc64
 else
@@ -123,7 +123,7 @@ QEMU_ARM_ARGS= \
 	$(QEMU_ARM_COMMON_ARGS) \
 	-machine highmem=off
 
-QEMU_POWERPC64LE_ARGS= \
+QEMU_PPC64LE_ARGS= \
 	$(QEMU_COMMON_ARGS) \
 	-machine pseries \
 	-append 'root=virtfs rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
@@ -137,8 +137,8 @@ else ifeq ($(ARCH),aarch64)
 	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
 	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
-else ifeq ($(ARCH),powerpc64le)
-	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
+else ifeq ($(ARCH),ppc64le)
+	fakeroot $(QEMU) $(QEMU_PPC64LE_ARGS)
 endif
 
 check-dev-files:

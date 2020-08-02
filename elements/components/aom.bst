@@ -24,7 +24,7 @@ variables:
         -DENABLE_NEON=NO
   - target_arch == "aarch64":
       aom_target: arm64
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       aom_target: ppc
 
   cmake-local: >-

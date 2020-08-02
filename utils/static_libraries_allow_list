@@ -13,10 +13,10 @@ libcaf_single.a
 libc_nonshared.a
 
 libnldbl_nonshared.a
-#libnldbl_nonshared only seems to appear in app_powerpc64le
+#libnldbl_nonshared only seems to appear in app_ppc64le
 
 libmvec_nonshared.a
-#libmvec_nonshared onlly seems to appear in app_x86_64
+#libmvec_nonshared only seems to appear in app_x86_64
 
 libstdc++.a
 # libstdc++.a is must for qtwebengine from kde runtime
