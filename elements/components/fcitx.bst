@@ -44,4 +44,4 @@ sources:
 - kind: git_tag
   url: github:fcitx/fcitx.git
   track: master
-  ref: 4.2.9.7-0-gdea395993910ca629410d262ea46573e92886d82
+  ref: 4.2.9.8-0-geb54e2b244e93d695c83c1f3bdbe6ee83155058a
