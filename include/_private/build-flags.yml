@@ -22,7 +22,7 @@ build_x86_64_flags: ""
 build_i686_flags: ""
 build_aarch64_flags: ""
 build_arm_flags: ""
-build_powerpc64le_flags: ""
+build_ppc64le_flags: ""
 
 # The final composition of `build_flags` includes `build_arch_flags`
 # which can be one of the preset arch specific definitions above
@@ -64,7 +64,7 @@ target_x86_64_flags: "-fasynchronous-unwind-tables -fstack-clash-protection -fcf
 target_i686_flags: "-mstackrealign -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection"
 target_aarch64_flags: "-fasynchronous-unwind-tables -fstack-clash-protection"
 target_arm_flags: ""
-target_powerpc64le_flags: "-fasynchronous-unwind-tables -fstack-clash-protection"
+target_ppc64le_flags: "-fasynchronous-unwind-tables -fstack-clash-protection"
 
 # The final composition of `target_flags` includes `target_arch_flags`
 # which can be one of the preset arch specific definitions above

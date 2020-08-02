@@ -1,11 +1,11 @@
 SHELL=/bin/bash
 BRANCH=19.08
-ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
-BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
+ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
+BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
 QEMU_ARCH=i386
-else ifeq ($(ARCH),powerpc64le)
+else ifeq ($(ARCH),ppc64le)
 FLATPAK_ARCH=ppc64le
 QEMU_ARCH=ppc64
 else
@@ -136,7 +136,7 @@ else ifeq ($(ARCH),aarch64)
 	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
 	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
-else ifeq ($(ARCH),powerpc64le)
+else ifeq ($(ARCH),ppc64le)
 	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
 endif
 

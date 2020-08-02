@@ -34,6 +34,6 @@ sources:
   - target_arch == "arm":
       url: tar_https:static.rust-lang.org/dist/rust-1.39.0-armv7-unknown-linux-gnueabihf.tar.xz
       ref: d98a3cfaa427e7bba95a36cbe98cc2ded3ff5ee87242add1e0c393467c069756
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       url: tar_https:static.rust-lang.org/dist/rust-1.39.0-powerpc64le-unknown-linux-gnu.tar.xz
       ref: b5e9abf89cb4d04f5e03aae77ef6a3cddc32821b9cd833f4c32a335fbb46cf76
