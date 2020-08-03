@@ -34,9 +34,8 @@ go-arch: "%{arch}"
     go-arch: "arm64"
     target_arch_flags: "%{target_aarch64_flags}"
     build_arch_flags: "%{build_aarch64_flags}"
-- target_arch == "powerpc64le":
+- target_arch == "ppc64le":
     gcc_arch: "powerpc64le"
-    flatpak_arch: "ppc64le"
-    go-arch: "ppc64le"
-    target_arch_flags: "%{target_powerpc64le_flags}"
-    build_arch_flags: "%{build_powerpc64le_flags}"
+    triplet: "powerpc64le-unknown-linux-%{abi}"
+    target_arch_flags: "%{target_ppc64le_flags}"
+    build_arch_flags: "%{build_ppc64le_flags}"

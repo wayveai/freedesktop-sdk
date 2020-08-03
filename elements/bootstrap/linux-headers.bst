@@ -14,9 +14,9 @@ variables:
       kernel_arch: arm64
   - target_arch == "i686":
       kernel_arch: i386
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       kernel_arch: powerpc
-  - target_arch != "aarch64" and target_arch != "i686" and target_arch != "powerpc64le":
+  - target_arch != "aarch64" and target_arch != "i686" and target_arch != "ppc64le":
       kernel_arch: '%{arch}'
 
 config:

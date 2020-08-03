@@ -49,7 +49,7 @@ variables:
       dri_drivers: ''
       vulkan_drivers: freedreno
       enable_libunwind: 'false'
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
       dri_drivers: r100,r200,nouveau
       vulkan_drivers: amd

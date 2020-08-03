@@ -21,7 +21,7 @@ variables:
       gyp-arch: arm
   - target_arch == 'aarch64':
       gyp-arch: aarch64
-  - target_arch == 'powerpc64le':
+  - target_arch == 'ppc64le':
       gyp-arch: ppc64le
 
   build-args: >-

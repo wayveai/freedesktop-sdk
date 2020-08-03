@@ -26,7 +26,7 @@ variables:
       targets: ARM
   - target_arch == "aarch64":
       targets: AArch64
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       targets: PowerPC;AMDGPU
 
   cmake-local: >-

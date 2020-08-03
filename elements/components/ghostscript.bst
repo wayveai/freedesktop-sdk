@@ -20,7 +20,7 @@ variables:
   - target_arch == "aarch64":
       # May fail to build on some builders or run on some machines otherwise
       local_flags: -DPNG_ARM_NEON_OPT=0
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       # bundled libpng somehow fails to build because it cannot find some VSX-specific function
       # while it should find it, temporarily disabling VSX optimizations
       # See: https://gitlab.gnome.org/GNOME/gnome-build-meta/-/merge_requests/715#note_870364
