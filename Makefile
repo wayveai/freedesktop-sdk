@@ -45,6 +45,7 @@ all: build
 build:
 	$(BST) build tests/check-platform.bst \
 	             tests/check-sdk.bst \
+	             components.bst \
 	             flatpak-release.bst \
 	             public-stacks/buildsystems.bst \
 	             oci/layers/{bootstrap,debug,platform,sdk,flatpak}.bst
