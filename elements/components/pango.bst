@@ -32,4 +32,4 @@ sources:
 - kind: git_tag
   url: gnome:pango.git
   track: master
-  ref: 1.45.3-0-g39080c4d55784091e6d265b9a04975a28cbbec7f
+  ref: 1.45.4-0-gc750b3678f0ee855777e63174e38c6ea3e543756
