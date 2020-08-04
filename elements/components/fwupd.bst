@@ -27,7 +27,18 @@ depends:
 - components/pango.bst
 - components/pycairo.bst
 - components/python3-pil.bst
-- components/libsmbios.bst
+- components/libsmbios-maybe.bst
+- components/gnu-efi-maybe.bst
+
+variables:
+  (?):
+  - target_arch in ["arm", "aarch64"]:
+      meson-local: >-
+        -Dplugin_dell=false
+  - target_arch == "ppc64le":
+      meson-local: >-
+        -Dplugin_dell=false
+        -Dplugin_uefi=false
 
 sources:
 - kind: git_tag
