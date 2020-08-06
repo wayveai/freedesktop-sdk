@@ -1,5 +1,31 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08beta.6:
+
+   * ffmpeg-full: Fix name of the extension
+   * perf, linux-headers: Update to 5.7.13
+   * libcap: Update to 2.42
+   * python3-pip: Update to 20.2.1
+   * mesa: Update to 20.1.5
+   * glibc: Update to 2.31-54
+   * pango: Update to 1.45.4
+   * meson: Downgrade back to 0.54.3
+   * python3-setuptools: Update to 49.2.1
+   * nano: Update to 5.0
+   * gettext: Distribute non development binaries in Platform
+   * fcitx: Update to 4.2.9.8
+   * cmake: Update to 3.18.1
+   * xorg-lib-x11: Update to 1.6.10
+   * pipewire: Update to 0.3.9
+   * vala: Update to 0.48.8
+   * libevdev: Update to 1.9.1
+   * Remove mesa-git extension
+   * ibus: Remove useless files
+   * gdb: Update to 9.2
+   * vim: Update to 8.2.1359
+   * systemd: Update to 246
+   * git: Update to 2.28.0
+
 freedesktop-sdk-20.08beta.5:
 
    * ffmpeg-full: Enable WAV/xWMA demuxers, more codecs
