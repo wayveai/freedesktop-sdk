@@ -22,6 +22,8 @@ config:
     destination: "/"
   - element: bootstrap/build/gcc-stage2.bst
     destination: "/"
+  - element: bootstrap/build/debug-utils.bst
+    destination: "/"
   - element: bootstrap/build/ncurses-stage1.bst
     destination: "/"
 
