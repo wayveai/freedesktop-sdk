@@ -87,7 +87,10 @@ for i in "${initial_scripts}"/*; do
 done
 
 echo "Running systemd-firstboot" 1>&2
-systemd-firstboot --root "${sysroot}" ${rootpasswd:+--root-password ${rootpasswd}} --locale en_US.UTF-8 --timezone UTC
+systemd-firstboot --root "${sysroot}" --locale en_US.UTF-8 --timezone UTC
+if [ "${rootpasswd:+set}" = set ]; then
+  systemd-firstboot --root "${sysroot}" --force --root-password ${rootpasswd}
+fi
 
 echo "Running systemctl preset-all" 1>&2
 systemctl --root "${sysroot}" preset-all
