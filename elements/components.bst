@@ -105,6 +105,7 @@ depends:
 - components/gnupg.bst
 - components/gnutls.bst
 - components/go.bst
+- components/go-md2man.bst
 - components/gobject-introspection.bst
 - components/google-crosextra-caladea.bst
 - components/google-crosextra-carlito.bst
