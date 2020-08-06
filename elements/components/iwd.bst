@@ -13,9 +13,14 @@ build-depends:
 variables:
   conf-local: >-
     --enable-external-ell
+    --enable-wired
+    --enable-hwsim
+    --enable-tools
+    --enable-ofono
+    --enable-sim-hardcoded
 
 sources:
 - kind: git_tag
   url: kernel:network/wireless/iwd.git
   track: master
-  ref: 1.7-0-gef6084dcb4fe2e00327bb9c7b113ece204042c22
+  ref: 1.8-0-ga01754f56aacdc641c819f983c3c0ad374be77b2
