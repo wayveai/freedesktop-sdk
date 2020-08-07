@@ -1,29 +1,26 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/gobject-introspection.bst
+- components/gtk-doc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: components/orc.bst
-- filename: components/gstreamer.bst
-- filename: components/pango.bst
-- filename: components/xorg-lib-xv.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/libogg.bst
-- filename: components/libtheora.bst
-- filename: components/libvorbis.bst
-- filename: components/opus.bst
-- filename: components/gdk-pixbuf.bst
-- filename: components/gtk3.bst
-- filename: components/mesa-headers.bst
-- filename: components/iso-codes.bst
-- filename: components/alsa-lib.bst
-- filename: components/sdl2.bst
-- filename: components/gtk-doc.bst
-  type: build
+- bootstrap-import.bst
+- components/orc.bst
+- components/gstreamer.bst
+- components/pango.bst
+- components/xorg-lib-xv.bst
+- components/libogg.bst
+- components/libtheora.bst
+- components/libvorbis.bst
+- components/opus.bst
+- components/gdk-pixbuf.bst
+- components/gtk3.bst
+- components/mesa-headers.bst
+- components/iso-codes.bst
+- components/alsa-lib.bst
+- components/sdl2.bst
 
 variables:
   (?):

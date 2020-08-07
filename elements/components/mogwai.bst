@@ -1,16 +1,14 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/glib.bst
-- filename: components/systemd-libs.bst
-- filename: components/libsoup.bst
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
-- filename: components/networkmanager.bst
+depends:
+- bootstrap-import.bst
+- components/glib.bst
+- components/systemd-libs.bst
+- components/libsoup.bst
+- components/networkmanager.bst
 
 sources:
 - kind: git_tag
