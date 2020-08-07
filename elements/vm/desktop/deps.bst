@@ -47,6 +47,7 @@ runtime-depends:
 - components/udisks.bst
 - components/iio-sensor-proxy.bst
 - components/hosts.bst
+- components/iptables.bst
 
 (?):
 - not pipewire:

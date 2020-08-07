@@ -132,6 +132,7 @@ depends:
 - components/ibus.bst
 - components/icu.bst
 - components/iio-sensor-proxy.bst
+- components/iptables.bst
 - components/iproute2.bst
 - components/iputils.bst
 - components/iso-codes.bst
@@ -180,7 +181,9 @@ depends:
 - components/libinput.bst
 - components/libjcat.bst
 - components/libksba.bst
+- components/libmnl.bst
 - components/libndp.bst
+- components/libnftnl.bst
 - components/libnice.bst
 - components/libnl.bst
 - components/libogg.bst
