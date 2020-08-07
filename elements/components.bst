@@ -305,6 +305,7 @@ depends:
 - components/pkg-config.bst
 - components/plymouth.bst
 - components/po4a.bst
+- components/podman.bst
 - components/polkit.bst
 - components/poppler.bst
 - components/procps.bst

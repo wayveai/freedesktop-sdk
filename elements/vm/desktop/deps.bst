@@ -48,6 +48,7 @@ runtime-depends:
 - components/iio-sensor-proxy.bst
 - components/hosts.bst
 - components/iptables.bst
+- components/podman.bst
 
 (?):
 - not pipewire:
