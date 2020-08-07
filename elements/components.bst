@@ -205,6 +205,7 @@ depends:
 - components/libseccomp.bst
 - components/libselinux.bst
 - components/libsepol.bst
+- components/libslirp.bst
 - components/libsmbios-maybe.bst
 - components/libsoup.bst
 - components/libsrtp2.bst
