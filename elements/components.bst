@@ -351,6 +351,7 @@ depends:
 - components/shadow.bst
 - components/shared-mime-info.bst
 - components/slang.bst
+- components/slirp4netns.bst
 - components/sndfile.bst
 - components/speex.bst
 - components/speexdsp.bst
