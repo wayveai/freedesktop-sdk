@@ -31,6 +31,7 @@ depends:
 - components/ccid.bst
 - components/clean-xml-catalog.bst
 - components/cmake.bst
+- components/cni.bst
 - components/cpio.bst
 - components/cracklib.bst
 - components/cryptsetup.bst
