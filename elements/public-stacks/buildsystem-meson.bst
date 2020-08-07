@@ -1,7 +1,8 @@
 kind: stack
 
 depends:
-- filename: components/gettext.bst
-- filename: components/meson.bst
-- filename: components/ninja.bst
-- filename: components/pkg-config.bst
+- components/gettext.bst
+- components/git-minimal.bst
+- components/meson.bst
+- components/ninja.bst
+- components/pkg-config.bst
