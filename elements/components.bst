@@ -35,6 +35,7 @@ depends:
 - components/conmon.bst
 - components/cpio.bst
 - components/cracklib.bst
+- components/crun.bst
 - components/cryptsetup.bst
 - components/cups-base.bst
 - components/cups-daemon-only.bst
