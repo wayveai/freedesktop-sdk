@@ -32,6 +32,7 @@ depends:
 - components/clean-xml-catalog.bst
 - components/cmake.bst
 - components/cni.bst
+- components/conmon.bst
 - components/cpio.bst
 - components/cracklib.bst
 - components/cryptsetup.bst
