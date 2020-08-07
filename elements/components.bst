@@ -84,6 +84,7 @@ depends:
 - components/frei0r.bst
 - components/fribidi.bst
 - components/fuse.bst
+- components/fuse-overlayfs.bst
 - components/fuse3.bst
 - components/fwupd.bst
 - components/gamemode.bst
