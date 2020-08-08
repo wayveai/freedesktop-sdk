@@ -21,6 +21,6 @@ sources:
 - kind: git_tag
   url: gitlab:freedesktop-sdk/mirrors/samba/rsync.git
   track: master
-  ref: v3.2.2-0-g194cee671d5e178f20c4494f41911fa8db942935
+  ref: v3.2.3-0-ge94bad1c156fc3910f24e2b3b71a81b0b0bdeb70
   exclude:
   - '*pre*'
