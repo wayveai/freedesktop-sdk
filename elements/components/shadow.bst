@@ -46,6 +46,11 @@ public:
       for i in expiry chage; do
         chmod 4755 "${sysroot}%{bindir}/${i}"
       done
+      # FIXME: BuildStream does not support that
+      #setcap cap_setuid+ep "${sysroo}%{bindir}/newuidmap"
+      #setcap cap_setgid+ep "${sysroo}%{bindir}/newgidmap"
+      chmod 4755 "${sysroot}%{bindir}/newuidmap"
+      chmod 4755 "${sysroot}%{bindir}/newgidmap"
 
 sources:
 - kind: git_tag
