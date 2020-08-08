@@ -220,7 +220,7 @@ check_mirrors:
 
     - |
       set -e
-      if [ "${ARCH}" != powerpc64le ]; then
+      if [ "${ARCH}" != ppc64le ]; then
         make export-snap
         python3 utils/parse-review.py snap/platform.snap
         python3 utils/parse-review.py snap/glxinfo.snap
@@ -304,13 +304,13 @@ app_arm-no-cache:
   only:
     - schedules
 
-app_powerpc64le:
+app_ppc64le:
   image: $DOCKER_POWERPC64LE
   <<: *flatpak_definition
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies: []
 
@@ -394,7 +394,7 @@ minimal_systemd_vm_arm:
     DIALOG: root-login
   dependencies: []
 
-minimal_systemd_vm_powerpc64le:
+minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
   allow_failure: true
   image: $DOCKER_POWERPC64LE
@@ -402,7 +402,7 @@ minimal_systemd_vm_powerpc64le:
     - ppc64le
   <<: *vm_imageless
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -638,13 +638,13 @@ publish_arm:
   dependencies:
     - prepare_publish
 
-publish_powerpc64le:
+publish_ppc64le:
   extends: .flatpak_publish_template
   image: $DOCKER_POWERPC64LE
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies:
     - prepare_publish
@@ -692,13 +692,13 @@ publish_arm_tar:
   dependencies: []
   when: manual
 
-publish_powerpc64le_tar:
+publish_ppc64le_tar:
   extends: .publish_tar_template
   image: $DOCKER_POWERPC64LE
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   dependencies: []
   when: manual
 
@@ -965,7 +965,7 @@ publish_docker_ppc64le:
   tags:
   - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
 

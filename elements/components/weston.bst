@@ -38,7 +38,7 @@ variables:
        dmabuf-drm: intel
   - target_arch == "arm" or target_arch == "aarch64":
        dmabuf-drm: etnaviv,freedreno
-  - target_arch  == "powerpc64le":
+  - target_arch  == "ppc64le":
        dmabuf-drm: auto
 
   meson-local: >-

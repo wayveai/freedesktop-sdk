@@ -13,7 +13,7 @@ depends:
 variables:
   arch-conf: ''
   (?):
-  - target_arch in ["x86_64", "aarch64", "powerpc64le"]:
+  - target_arch in ["x86_64", "aarch64", "ppc64le"]:
       arch-conf: |
         USE_64=1
 
