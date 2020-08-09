@@ -23,6 +23,7 @@ variables:
     -DCMAKE_INSTALL_INCLUDEDIR="%{includedir}/vulkan/"
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DGLSLANG_INSTALL_DIR=%{prefix}
+    -DSPIRV_HEADERS_INSTALL_DIR=%{prefix}
 
 config:
   install-commands:
