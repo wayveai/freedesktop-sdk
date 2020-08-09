@@ -30,4 +30,4 @@ sources:
     libglnx:
       checkout: true
       url: gnome:libglnx.git
-  ref: 1.0.10-0-g66d2a683378e6a8b6012e25d9803f819c1563d2d
+  ref: 1.0.11-0-gc270877985b33ffae189ffd231c9501218db03cc
