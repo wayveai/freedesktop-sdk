@@ -8,5 +8,5 @@ depends:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:mpfr/mpfr-4.0.1.tar.xz
-  ref: 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e
+  url: ftp_gnu_org:mpfr/mpfr-4.1.0.tar.xz
+  ref: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
