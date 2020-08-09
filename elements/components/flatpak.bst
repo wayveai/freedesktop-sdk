@@ -31,10 +31,10 @@ sources:
   url: github:flatpak/flatpak.git
   track: master
   track-extra:
-  - flatpak-1.6.x
+  - flatpak-1.8.x
   match:
   - 1.[02468]*
-  ref: 1.6.5-0-g843187913d5830bfca3437aacc7d4aac1813794e
+  ref: 1.8.1-0-g2e9776f209e814e256dd7d42661d2455b6516d01
   submodules:
     libglnx:
       checkout: true
