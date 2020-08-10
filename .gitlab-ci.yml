@@ -101,6 +101,7 @@ before_script:
         export RELEASES_SERVER_ADDRESS=https://hub.flathub.org/
         ./utils/generate-version flatpak-version.yml
         case "${CI_COMMIT_TAG}" in
+          *rc*) ;&
           *beta*)
             export RELEASE_CHANNEL=beta
             export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
@@ -135,6 +136,7 @@ before_script:
   - |
     if [ -n "$CI_COMMIT_TAG" ]; then
         case "${CI_COMMIT_TAG}" in
+            *rc*) ;&
             *beta*)
                 export DOCKER_VERSION="${RUNTIME_VERSION}-beta"
                 ;;
