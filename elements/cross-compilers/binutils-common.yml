@@ -36,3 +36,6 @@ config:
           fi
         done
       done
+
+    - |
+      rm "%{install-root}%{infodir}/dir"

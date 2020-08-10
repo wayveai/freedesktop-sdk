@@ -42,3 +42,6 @@ config:
 
     - |
       rm -f "%{install-root}%{bindir}/%{cross_triplet}-%{cross_triplet}-"*
+
+    - |
+      rm "%{install-root}%{infodir}/dir"
