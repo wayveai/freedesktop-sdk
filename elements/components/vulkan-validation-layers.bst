@@ -6,6 +6,8 @@ depends:
   type: build
 - filename: components/glslang.bst
   type: build
+- filename: components/spirv-headers.bst
+  type: build
 - filename: components/spirv-tools.bst
   type: build
 - filename: components/wayland.bst
@@ -21,6 +23,7 @@ variables:
     -DCMAKE_INSTALL_INCLUDEDIR="%{includedir}/vulkan/"
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DGLSLANG_INSTALL_DIR=%{prefix}
+    -DSPIRV_HEADERS_INSTALL_DIR=%{prefix}
 
 config:
   install-commands:
@@ -31,9 +34,9 @@ config:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-ValidationLayers.git
-  ref: sdk-1.2.141.0-0-gdf79eff135bf4217d927781b08b97c07bf3a92c2
+  ref: sdk-1.2.148.0-0-g91cb71f2fa0c4d710cf188e89b4f7d1a2a0e5879
   track: master
   track-extra:
-  - sdk-1.2.141
+  - sdk-1.2.148
   match:
   - sdk-*
