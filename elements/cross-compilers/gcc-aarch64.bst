@@ -5,6 +5,7 @@ build-depends:
 - components/tar.bst
 - cross-compilers/standard-libs-aarch64.bst
 - public-stacks/buildsystem-autotools.bst
+- components/texinfo.bst
 
 depends:
 - cross-compilers/binutils-aarch64.bst

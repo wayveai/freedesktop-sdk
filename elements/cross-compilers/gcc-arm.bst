@@ -1,11 +1,11 @@
 kind: autotools
 
-
 build-depends:
 - bootstrap-import.bst
 - components/tar.bst
 - cross-compilers/standard-libs-arm.bst
 - public-stacks/buildsystem-autotools.bst
+- components/texinfo.bst
 
 depends:
 - cross-compilers/binutils-arm.bst
