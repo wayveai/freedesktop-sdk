@@ -122,22 +122,22 @@ QEMU_ARM_ARGS= \
 	$(QEMU_ARM_COMMON_ARGS) \
 	-machine highmem=off
 
-QEMU_POWERPC64LE_ARGS= \
+QEMU_PPC64LE_ARGS= \
 	$(QEMU_COMMON_ARGS) \
 	-machine pseries \
 	-append 'root=virtfs rw rootfstype=9p rootflags=trans=virtio,version=9p2000.L,cache=mmap init=/usr/lib/systemd/systemd console=ttyS0'
 
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
 ifeq ($(ARCH),x86_64)
-	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),i686)
-	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),aarch64)
-	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
-	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_ARM_ARGS)
 else ifeq ($(ARCH),ppc64le)
-	fakeroot $(QEMU) $(QEMU_POWERPC64LE_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_PPC64LE_ARGS)
 endif
 
 check-dev-files:
