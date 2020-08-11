@@ -136,15 +136,15 @@ QEMU_PPC64LE_ARGS= \
 
 run-vm: $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT)
 ifeq ($(ARCH),x86_64)
-	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),i686)
-	fakeroot $(QEMU) $(QEMU_X86_COMMON_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_X86_COMMON_ARGS)
 else ifeq ($(ARCH),aarch64)
-	fakeroot $(QEMU) $(QEMU_AARCH64_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_AARCH64_ARGS)
 else ifeq ($(ARCH),arm)
-	fakeroot $(QEMU) $(QEMU_ARM_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_ARM_ARGS)
 else ifeq ($(ARCH),ppc64le)
-	fakeroot $(QEMU) $(QEMU_PPC64LE_ARGS)
+	unshare --map-root-user $(QEMU) $(QEMU_PPC64LE_ARGS)
 endif
 
 check-dev-files:
