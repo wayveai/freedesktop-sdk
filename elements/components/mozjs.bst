@@ -63,3 +63,5 @@ sources:
   ref: cc5d177899899b25c0d37d55592962e2dfa1666e784825d4de04bf53bb497309
 - kind: patch
   path: patches/mozjs/fix-arm-build.patch
+- kind: patch
+  path: patches/mozjs/code-coverage-API.patch
