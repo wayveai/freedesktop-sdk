@@ -56,6 +56,7 @@ before_script:
     cat >> ~/.config/buildstream.conf << EOF
     scheduler:
       fetchers: 5
+      pushers: 2
     EOF
     fi
 
