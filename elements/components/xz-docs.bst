@@ -5,7 +5,7 @@ build-depends:
 - components/po4a.bst
 
 depends:
-- components/xz.bst
+- bootstrap-import.bst
 
 config:
   build-commands: []

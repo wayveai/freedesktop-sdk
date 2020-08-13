@@ -14,7 +14,6 @@ runtime-depends:
 - components/git.bst
 - components/tar.bst
 - components/gzip.bst
-- components/xz.bst
 - components/zip.bst
 
 variables:
