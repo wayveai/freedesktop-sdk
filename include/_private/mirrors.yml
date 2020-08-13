@@ -14,6 +14,8 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/freedesktop_people/
     freedesktop:
     - https://gitlab.com/freedesktop-sdk/mirrors/freedesktop/
+    ghostscript:
+    - https://gitlab.com/freedesktop-sdk/mirrors/ghostscript/
     github:
     - https://gitlab.com/freedesktop-sdk/mirrors/github/
     gitlab:
