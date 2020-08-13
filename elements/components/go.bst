@@ -8,6 +8,7 @@ depends:
 
 variables:
   optimize-debug: "false"
+  compress-debug: "false"
 
 environment:
   GOROOT_BOOTSTRAP: /usr/local/go

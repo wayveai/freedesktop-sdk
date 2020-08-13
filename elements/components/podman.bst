@@ -25,6 +25,7 @@ environment:
 variables:
   ldflags_defaults: ""
   optimize-debug: "false"
+  compress-debug: "false"
 
 config:
   build-commands:

@@ -1,6 +1,7 @@
 # Arguments for tooling and script used when stripping debug symbols
 
 optimize-debug: "true"
+compress-debug: "true"
 sourcedir: "%{debugdir}/source"
 tools: ""
 
@@ -13,6 +14,9 @@ strip-binaries: |
   OPTS=()
   if ! "%{optimize-debug}"; then
     OPTS+=("-n")
+  fi
+  if ! "%{compress-debug}"; then
+    OPTS+=("-p")
   fi
   for p in %{toolchain-prefixes}; do
     OPTS+=("-t" "${p}")
