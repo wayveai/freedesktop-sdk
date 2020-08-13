@@ -35,7 +35,7 @@ named_tmp_file::named_tmp_file(): path(nullptr) {
   while (fd == -1) {
     ret = tmpnam_r(p);
     assert(ret != nullptr);
-    fd = creat(ret, 0600);
+    fd = open(ret, O_WRONLY|O_CREAT|O_EXCL, 0600);
     }
   close(fd);
   path.reset(new std::string(p));

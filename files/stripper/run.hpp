@@ -24,9 +24,11 @@
 #ifndef RUN_HPP
 # define RUN_HPP
 
+#include "fd.hpp"
+
 #include <vector>
 #include <string>
 
-int run(std::vector<std::string> args);
+int run(std::vector<std::string> args, fd_t output = fd_t());
 
 #endif //RUN_HPP

@@ -32,10 +32,16 @@ public:
   }
 
   fd_t(std::filesystem::path const& p, int flags);
+  fd_t(std::string const& p, int flags);
 
   fd_t(fd_t const&) = delete;
   fd_t(fd_t&& other): fd(-1) {
     std::swap(fd, other.fd);
+  }
+
+  fd_t& operator=(fd_t&& other) {
+    std::swap(fd, other.fd);
+    return *this;
   }
 
   ~fd_t();
