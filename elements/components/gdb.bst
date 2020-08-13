@@ -2,35 +2,35 @@ kind: autotools
 description: GNU debugger
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/texinfo.bst
-  type: build
-- filename: components/perl.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/python3.bst
+- bootstrap-import.bst
+- components/python3.bst
+- components/debuginfod.bst
+
+build-depends:
+- components/texinfo.bst
+- components/perl.bst
+- components/flex.bst
+- components/bison.bst
 
 variables:
-  conf-link-args: |
+  conf-link-args: >-
     --enable-shared
 
-  conf-local: |
-    --disable-binutils \
-    --disable-ld \
-    --disable-gold \
-    --disable-gas \
-    --disable-sim \
-    --disable-gprof \
-    --without-zlib \
-    --with-system-zlib \
-    --with-python=/usr/bin/python3 \
-    --disable-readline \
-    --with-system-readline \
-    --disable-install-libbfd \
-    --disable-install-libiberty \
+  conf-local: >-
+    --disable-binutils
+    --disable-ld
+    --disable-gold
+    --disable-gas
+    --disable-sim
+    --disable-gprof
+    --without-zlib
+    --with-system-zlib
+    --with-python=/usr/bin/python3
+    --disable-readline
+    --with-system-readline
+    --disable-install-libbfd
+    --disable-install-libiberty
+    --with-debuginfod
     --with-separate-debug-dir="%{debugdir}"
 
 config:

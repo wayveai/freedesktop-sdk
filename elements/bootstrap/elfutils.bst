@@ -13,10 +13,12 @@ depends:
 - elements/bootstrap/include/elfutils-source.yml
 
 variables:
+  autogen: autoreconf -fvi
   conf-local: >-
     utrace_cv_CC_m32=none
     --without-lzma
     --disable-debuginfod
+    --enable-libdebuginfod=dummy
 
 config:
   install-commands:
@@ -36,3 +38,4 @@ public:
         - '%{libdir}/libasm.so'
         - '%{libdir}/libdw.so'
         - '%{libdir}/libelf.so'
+        - "%{libdir}/libdebuginfod.so"

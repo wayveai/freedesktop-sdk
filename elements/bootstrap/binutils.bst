@@ -1,13 +1,13 @@
 kind: autotools
 description: GNU Binutils
 
-depends:
-- filename: bootstrap/binutils-build-deps.bst
-  type: build
-- filename: bootstrap/glibc.bst
-  type: runtime
-- filename: bootstrap/zlib.bst
-  type: runtime
+build-depends:
+- bootstrap/binutils-build-deps.bst
+
+runtime-depends:
+- bootstrap/elfutils.bst
+- bootstrap/glibc.bst
+- bootstrap/zlib.bst
 
 (@):
 - elements/bootstrap/include/target.yml
@@ -29,6 +29,7 @@ variables:
     --enable-relro=yes
     --enable-lto
     --with-system-zlib
+    --with-debuginfod
     %{disable-source}
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 

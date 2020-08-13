@@ -1,0 +1,257 @@
+commit f7f0cdc59a13780938ae3f578955737a75e60ea9
+Author: Mark Wielaard <mark@klomp.org>
+Date:   Fri Jun 19 19:41:08 2020 +0200
+
+    debuginfod: Add --disable-libdebuginfod and --enable-libdebuginfod=dummy.
+    
+    Make it possible to build just the debuginfod client or to create a
+    dummy libdebuginfod that doesn't link against libcurl. The dummy library
+    can be used for bootstrapping. For testing purposes you can also build
+    debuginfod against the dummy libdebuginfod but then the debuginfod
+    server will not be able to do delegation.
+    
+    Signed-off-by: Mark Wielaard <mark@klomp.org>
+
+diff --git a/Makefile.am b/Makefile.am
+index bd8926b5..f68f0966 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -27,11 +27,7 @@ AM_MAKEFLAGS = --no-print-directory
+ pkginclude_HEADERS = version.h
+ 
+ SUBDIRS = config m4 lib libelf libcpu backends libebl libdwelf libdwfl libdw \
+-	  libasm src po doc tests
+-
+-if DEBUGINFOD
+-SUBDIRS += debuginfod
+-endif
++	  libasm debuginfod src po doc tests
+ 
+ EXTRA_DIST = elfutils.spec GPG-KEY NOTES CONTRIBUTING \
+ 	     COPYING COPYING-GPLV2 COPYING-LGPLV3
+diff --git a/configure.ac b/configure.ac
+index 8d3bcb7b..6f04d269 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -676,19 +676,40 @@ if test "$HAVE_BUNZIP2" = "no"; then
+   AC_MSG_WARN([No bunzip2, needed to run make check])
+ fi
+ 
+-# Look for libmicrohttpd, libcurl, libarchive, sqlite for debuginfo server
+-# minimum versions as per rhel7.  Single --enable-* option arranges to build
+-# both client and server.
+-AC_ARG_ENABLE([debuginfod],AC_HELP_STRING([--enable-debuginfod], [Build debuginfod server and client]))
++# Look for libcurl for libdebuginfod minimum version as per rhel7.
++AC_ARG_ENABLE([libdebuginfod],AC_HELP_STRING([--enable-libdebuginfod], [Build debuginfod client library (can be =dummy)]))
++AS_IF([test "x$enable_libdebuginfod" != "xno"], [
++    if test "x$enable_libdebuginfod" != "xdummy"; then
++      AC_MSG_NOTICE([checking libdebuginfod dependencies, --disable-libdebuginfod or --enable-libdebuginfo=dummy to skip])
++      enable_libdebuginfod=yes # presume success
++      PKG_PROG_PKG_CONFIG
++      PKG_CHECK_MODULES([libcurl],[libcurl >= 7.29.0],[],[enable_libdebuginfod=no])
++      if test "x$enable_libdebuginfod" = "xno"; then
++        AC_MSG_ERROR([dependencies not found, use --disable-libdebuginfod to disable or --enable-libdebuginfod=dummy to build a (bootstrap) dummy library.])
++      fi
++    else
++      AC_MSG_NOTICE([building (bootstrap) dummy libdebuginfo library])
++    fi
++])
++
++AS_IF([test "x$enable_libdebuginfod" = "xdummy"],AC_DEFINE([DUMMY_LIBDEBUGINFOD],[1],[Build dummy libdebuginfod]))
++AM_CONDITIONAL([LIBDEBUGINFOD],[test "x$enable_libdebuginfod" = "xyes" || test "x$enable_libdebuginfod" = "xdummy"])
++AM_CONDITIONAL([DUMMY_LIBDEBUGINFOD],[test "x$enable_libdebuginfod" = "xdummy"])
++
++# Look for libmicrohttpd, libarchive, sqlite for debuginfo server
++# minimum versions as per rhel7.
++AC_ARG_ENABLE([debuginfod],AC_HELP_STRING([--enable-debuginfod], [Build debuginfod server]))
+ AC_PROG_CXX
+ AS_IF([test "x$enable_debuginfod" != "xno"], [
+     AC_MSG_NOTICE([checking debuginfod C++11 support, --disable-debuginfod to skip])
+     AX_CXX_COMPILE_STDCXX(11, noext, mandatory)
+     AC_MSG_NOTICE([checking debuginfod dependencies, --disable-debuginfod to skip])
++    if test "x$enable_libdebuginfod" = "xno"; then
++      AC_MSG_ERROR([need libdebuginfod (or dummy), use --disable-debuginfod to disable.])
++    fi
+     enable_debuginfod=yes # presume success
+     PKG_PROG_PKG_CONFIG
+     PKG_CHECK_MODULES([libmicrohttpd],[libmicrohttpd >= 0.9.33],[],[enable_debuginfod=no])
+-    PKG_CHECK_MODULES([libcurl],[libcurl >= 7.29.0],[],[enable_debuginfod=no])
+     PKG_CHECK_MODULES([sqlite3],[sqlite3 >= 3.7.17],[],[enable_debuginfod=no])
+     PKG_CHECK_MODULES([libarchive],[libarchive >= 3.1.2],[],[enable_debuginfod=no])
+     if test "x$enable_debuginfod" = "xno"; then
+@@ -729,7 +750,8 @@ AC_MSG_NOTICE([
+     Deterministic archives by default  : ${default_ar_deterministic}
+     Native language support            : ${USE_NLS}
+     Extra Valgrind annotations         : ${use_vg_annotations}
+-    Debuginfod client/server support   : ${enable_debuginfod}
++    libdebuginfod client support       : ${enable_libdebuginfod}
++    Debuginfod server support          : ${enable_debuginfod}
+ 
+   EXTRA TEST FEATURES (used with make check)
+     have bunzip2 installed (required)  : ${HAVE_BUNZIP2}
+diff --git a/debuginfod/Makefile.am b/debuginfod/Makefile.am
+index 51965f65..2e8a343c 100644
+--- a/debuginfod/Makefile.am
++++ b/debuginfod/Makefile.am
+@@ -45,8 +45,12 @@ if BUILD_STATIC
+ libasm = ../libasm/libasm.a
+ libdw = ../libdw/libdw.a -lz $(zip_LIBS) $(libelf) $(libebl) -ldl -lpthread
+ libelf = ../libelf/libelf.a -lz
++if DUMMY_LIBDEBUGINFOD
+ libdebuginfod = ./libdebuginfod.a $(libcurl_LIBS)
+ else
++libdebuginfod = ./libdebuginfod.a
++endif
++else
+ libasm = ../libasm/libasm.so
+ libdw = ../libdw/libdw.so
+ libelf = ../libelf/libelf.so
+@@ -57,24 +61,45 @@ libeu = ../lib/libeu.a
+ 
+ AM_LDFLAGS = -Wl,-rpath-link,../libelf:../libdw:.
+ 
+-bin_PROGRAMS = debuginfod debuginfod-find
++bin_PROGRAMS =
++if DEBUGINFOD
++bin_PROGRAMS += debuginfod
++endif
++
++if LIBDEBUGINFOD
++bin_PROGRAMS += debuginfod-find
++endif
++
+ debuginfod_SOURCES = debuginfod.cxx
+-debuginfod_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod) $(libmicrohttpd_LIBS) $(libcurl_LIBS) $(sqlite3_LIBS) $(libarchive_LIBS) -lpthread -ldl
++debuginfod_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod) $(libmicrohttpd_LIBS) $(sqlite3_LIBS) $(libarchive_LIBS) -lpthread -ldl
+ 
+ debuginfod_find_SOURCES = debuginfod-find.c
+ debuginfod_find_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod)
+ 
++if LIBDEBUGINFOD
+ noinst_LIBRARIES = libdebuginfod.a
+ noinst_LIBRARIES += libdebuginfod_pic.a
++endif
+ 
+ libdebuginfod_a_SOURCES = debuginfod-client.c
+ libdebuginfod_pic_a_SOURCES = debuginfod-client.c
+ am_libdebuginfod_pic_a_OBJECTS = $(libdebuginfod_a_SOURCES:.c=.os)
+ 
++if DUMMY_LIBDEBUGINFOD
++AM_CPPFLAGS += -Wno-unused-parameter
++endif
++
++if LIBDEBUGINFOD
+ pkginclude_HEADERS = debuginfod.h
++endif
+ 
++if LIBDEBUGINFOD
+ libdebuginfod_so_LIBS = libdebuginfod_pic.a
++if DUMMY_LIBDEBUGINFOD
++libdebuginfod_so_LDLIBS =
++else
+ libdebuginfod_so_LDLIBS = $(libcurl_LIBS)
++endif
+ libdebuginfod.so$(EXEEXT): $(srcdir)/libdebuginfod.map $(libdebuginfod_so_LIBS)
+ 	$(AM_V_CCLD)$(LINK) $(dso_LDFLAGS) -o $@ \
+ 		-Wl,--soname,$@.$(VERSION) \
+@@ -83,7 +108,9 @@ libdebuginfod.so$(EXEEXT): $(srcdir)/libdebuginfod.map $(libdebuginfod_so_LIBS)
+ 		$(libdebuginfod_so_LDLIBS)
+ 	@$(textrel_check)
+ 	$(AM_V_at)ln -fs $@ $@.$(VERSION)
++endif
+ 
++if LIBDEBUGINFOD
+ install: install-am libdebuginfod.so
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL_PROGRAM) libdebuginfod.so $(DESTDIR)$(libdir)/libdebuginfod-$(PACKAGE_VERSION).so
+@@ -95,6 +122,7 @@ uninstall: uninstall-am
+ 	rm -f $(DESTDIR)$(libdir)/libdebuginfod.so.$(VERSION)
+ 	rm -f $(DESTDIR)$(libdir)/libdebuginfod.so
+ 	rmdir --ignore-fail-on-non-empty $(DESTDIR)$(includedir)/elfutils
++endif
+ 
+ EXTRA_DIST = libdebuginfod.map
+ MOSTLYCLEANFILES = $(am_libdebuginfod_pic_a_OBJECTS) libdebuginfod.so.$(VERSION)
+diff --git a/debuginfod/debuginfod-client.c b/debuginfod/debuginfod-client.c
+index c2aa4e10..c2e43f74 100644
+--- a/debuginfod/debuginfod-client.c
++++ b/debuginfod/debuginfod-client.c
+@@ -41,13 +41,35 @@
+ #include "config.h"
+ #include "debuginfod.h"
+ #include "system.h"
++#include <errno.h>
++#include <stdlib.h>
++
++/* We might be building a bootstrap dummy library, which is really simple. */
++#ifdef DUMMY_LIBDEBUGINFOD
++
++debuginfod_client *debuginfod_begin (void) { errno = ENOSYS; return NULL; }
++int debuginfod_find_debuginfo (debuginfod_client *c, const unsigned char *b,
++                               int s, char **p) { return -ENOSYS; }
++int debuginfod_find_executable (debuginfod_client *c, const unsigned char *b,
++                                int s, char **p) { return -ENOSYS; }
++int debuginfod_find_source (debuginfod_client *c, const unsigned char *b,
++                            int s, const char *f, char **p)  { return -ENOSYS; }
++void debuginfod_set_progressfn(debuginfod_client *c,
++			       debuginfod_progressfn_t fn) { }
++void debuginfod_set_user_data (debuginfod_client *c, void *d) { }
++void* debuginfod_get_user_data (debuginfod_client *c) { return NULL; }
++const char* debuginfod_get_url (debuginfod_client *c) { return NULL; }
++int debuginfod_add_http_header (debuginfod_client *c,
++				const char *h) { return -ENOSYS; }
++void debuginfod_end (debuginfod_client *c) { }
++
++#else /* DUMMY_LIBDEBUGINFOD */
++
+ #include <assert.h>
+ #include <dirent.h>
+ #include <stdio.h>
+-#include <stdlib.h>
+ #include <errno.h>
+ #include <unistd.h>
+-#include <errno.h>
+ #include <fcntl.h>
+ #include <fts.h>
+ #include <regex.h>
+@@ -1090,3 +1112,5 @@ __attribute__((destructor)) attribute_hidden void libdebuginfod_dtor(void)
+   /* ... so don't do this: */
+   /* curl_global_cleanup(); */
+ }
++
++#endif /* DUMMY_LIBDEBUGINFOD */
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index f0c7e55d..ef66fb88 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -24,6 +24,9 @@ notrans_dist_man1_MANS=
+ 
+ if DEBUGINFOD
+ notrans_dist_man8_MANS += debuginfod.8
++endif
++
++if LIBDEBUGINFOD
+ notrans_dist_man3_MANS += debuginfod_add_http_header.3
+ notrans_dist_man3_MANS += debuginfod_begin.3
+ notrans_dist_man3_MANS += debuginfod_end.3
+@@ -36,4 +39,3 @@ notrans_dist_man3_MANS += debuginfod_set_progressfn.3
+ notrans_dist_man3_MANS += debuginfod_set_user_data.3
+ notrans_dist_man1_MANS += debuginfod-find.1
+ endif
+-
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 53dd70a7..5ac805c5 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -210,8 +210,11 @@ endif
+ 
+ if DEBUGINFOD
+ check_PROGRAMS += debuginfod_build_id_find
++# With the dummy delegation doesn't work
++if !DUMMY_LIBDEBUGINFOD
+ TESTS += run-debuginfod-find.sh
+ endif
++endif
+ 
+ EXTRA_DIST = run-arextract.sh run-arsymtest.sh run-ar.sh \
+ 	     run-show-die-info.sh run-get-files.sh run-get-lines.sh \

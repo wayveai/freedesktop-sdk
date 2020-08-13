@@ -1,16 +1,12 @@
 kind: script
 
-depends:
-- filename: bootstrap/gnu-config.bst
-  type: build
-- filename: bootstrap/build/gcc-stage2.bst
-  type: build
-- filename: bootstrap/build/debug-utils.bst
-  type: build
-- filename: bootstrap/glibc.bst
-  type: build
-- filename: bootstrap/zlib.bst
-  type: build
+build-depends:
+- bootstrap/gnu-config.bst
+- bootstrap/build/gcc-stage2.bst
+- bootstrap/build/debug-utils.bst
+- bootstrap/glibc.bst
+- bootstrap/zlib.bst
+- bootstrap/elfutils.bst
 
 variables:
   install-root: "/"
@@ -27,6 +23,8 @@ config:
   - element: bootstrap/glibc.bst
     destination: "%{sysroot}"
   - element: bootstrap/zlib.bst
+    destination: "%{sysroot}"
+  - element: bootstrap/elfutils.bst
     destination: "%{sysroot}"
 
   commands:
