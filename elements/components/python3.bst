@@ -1,17 +1,16 @@
 kind: autotools
 description: Python 3
 
+build-depends:
+- components/bluez-headers.bst
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/expat.bst
-- filename: components/libffi.bst
-- filename: components/gdbm.bst
-- filename: components/sqlite.bst
-- filename: components/xz.bst
-- filename: components/bluez-headers.bst
-  type: build
+- bootstrap-import.bst
+- components/expat.bst
+- components/libffi.bst
+- components/gdbm.bst
+- components/sqlite.bst
 
 variables:
   conf-local: |

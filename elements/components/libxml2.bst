@@ -1,12 +1,11 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/xz.bst
-- filename: components/python3.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- components/python3.bst
+- public-stacks/buildsystem-autotools.bst
 
 variables:
   conf-local: >-

@@ -14,7 +14,6 @@ build-depends:
 - components/libgpg-error.bst
 - components/lz4.bst
 - components/util-linux.bst
-- components/xz.bst
 - components/linux-pam.bst
 - components/kmod.bst
 - components/gnu-efi-maybe.bst

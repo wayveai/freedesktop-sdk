@@ -1,9 +1,8 @@
 kind: manual
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/xz.bst
-- filename: components/gzip.bst
+- bootstrap-import.bst
+- components/gzip.bst
 
 variables:
   make-vars: GZIP_SUPPORT=1 XZ_SUPPORT=1 INSTALL_DIR="%{install-root}%{bindir}"

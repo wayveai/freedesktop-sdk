@@ -81,7 +81,6 @@ runtime-depends:
 - components/util-linux.bst
 - components/wget.bst
 - components/which.bst
-- components/xz.bst
 - components/xz-docs.bst
 - components/zip.bst
 - components/alsa-lib.bst
@@ -167,7 +166,7 @@ runtime-depends:
 - components/v4l-utils.bst
 - components/vulkan.bst
 - components/wayland.bst
-- components/webrtc-audio-processing.bst 
+- components/webrtc-audio-processing.bst
 - components/xcb-util-cursor.bst
 - components/xcb-util-image.bst
 - components/xcb-util-keysyms.bst
