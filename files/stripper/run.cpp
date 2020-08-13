@@ -29,7 +29,7 @@
 #include <iostream>
 #include <sys/wait.h>
 
-int run(std::vector<std::string> args) {
+int run(std::vector<std::string> args, fd_t output) {
   pid_t pid = fork();
   if (pid == -1) {
     throw std::system_error(errno, std::generic_category());
@@ -39,6 +39,15 @@ int run(std::vector<std::string> args) {
       argv[i] = args[i].c_str();
     }
     argv[args.size()] = nullptr;
+    if (output.get() != -1) {
+      close(1);
+      if (dup2(output.get(), 1) != 1) {
+        std::error_code ec(errno, std::generic_category());
+        std::cerr << "dup2: " << ec.message() << '\n';
+        exit(1);
+      }
+      output = fd_t{};
+    }
     execvp(argv[0], const_cast<char* const*>(argv));
     std::error_code ec(errno, std::generic_category());
     std::cerr << "execlp failed: " << ec.message() << '\n';
