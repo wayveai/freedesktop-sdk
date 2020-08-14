@@ -1,27 +1,26 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/gettext.bst
-  type: build
-- filename: components/gpgme.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: components/libcap.bst
-- filename: components/libarchive.bst
-- filename: components/libxml2.bst
-- filename: components/libsoup.bst
-- filename: components/xorg-lib-xau.bst
-- filename: components/ostree.bst
-- filename: components/fuse.bst
-- filename: components/json-glib.bst
-- filename: components/appstream-glib.bst
-- filename: components/libseccomp.bst
-- filename: components/polkit.bst
+- bootstrap-import.bst
+- components/gpgme.bst
+- components/libcap.bst
+- components/libarchive.bst
+- components/libxml2.bst
+- components/libsoup.bst
+- components/xorg-lib-xau.bst
+- components/ostree.bst
+- components/fuse.bst
+- components/json-glib.bst
+- components/appstream-glib.bst
+- components/libseccomp.bst
+- components/polkit.bst
+
+build-depends:
+- components/python3-pyparsing.bst
+- public-stacks/buildsystem-autotools.bst
+- components/git-minimal.bst
+- components/gettext.bst
+- components/gobject-introspection.bst
 
 variables:
   conf-local: --disable-documentation
@@ -45,3 +44,6 @@ sources:
     dbus-proxy:
       checkout: true
       url: github:flatpak/xdg-dbus-proxy.git
+    variant-schema-compiler:
+      checkout: true
+      url: git_https:gitlab.gnome.org/alexl/variant-schema-compiler.git
