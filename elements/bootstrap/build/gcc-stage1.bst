@@ -18,6 +18,7 @@ environment:
   PYTHON: python3
 
 variables:
+  strip-binaries: "true"
   prefix: '%{tools}'
   lib: lib
   autogen: |

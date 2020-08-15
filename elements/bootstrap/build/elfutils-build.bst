@@ -5,8 +5,6 @@ depends:
   type: build
 - filename: bootstrap/gnu-config.bst
   type: build
-- filename: bootstrap/build/tools-lib-path.bst
-  type: runtime
 
 (@):
 - elements/bootstrap/include/build.yml
