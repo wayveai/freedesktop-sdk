@@ -47,6 +47,7 @@ struct result_t {
 struct script {
   script():
     optimize(true),
+    compress(true),
     jobs(2*std::thread::hardware_concurrency()) {
   }
 
@@ -84,7 +85,7 @@ struct script {
       throw std::runtime_error("Unexpected exit from debugedit");
     }
 
-    if (optimize) {
+    if (optimize && compress) {
       int status = run(std::vector<std::string>{"eu-elfcompress", "--type=none", p.string()});
       if (status != 0) {
         throw std::runtime_error("Unexpected exit from eu-elfcompress");
@@ -221,8 +222,10 @@ struct script {
       throw std::runtime_error("objcopy failed");
     }
 
-    if (0 != run(std::vector<std::string>{"eu-elfcompress", debugfile})) {
-      throw std::runtime_error("eu-elfcompress failed");
+    if (compress) {
+      if (0 != run(std::vector<std::string>{"eu-elfcompress", debugfile})) {
+	throw std::runtime_error("eu-elfcompress failed");
+      }
     }
 
     chmod(binary.c_str(), (unsigned)st.permissions());
@@ -305,6 +308,7 @@ struct script {
 
   std::unique_ptr<thread_pool> pool;
   bool optimize;
+  bool compress;
   std::vector<std::string> toolchain_prefixes;
   std::size_t jobs;
   std::filesystem::path buildroot;
@@ -323,6 +327,7 @@ int main(int argc, char* argv[])
   static struct option long_options[] =
     {
      {"no-optimize", no_argument, nullptr, 'n'},
+     {"no-compress", no_argument, nullptr, 'p'},
      {"toolchain-prefix", required_argument, nullptr, 't'},
      {"jobs", required_argument, nullptr, 'j'},
      {nullptr, 0, nullptr, 0}
@@ -334,12 +339,13 @@ int main(int argc, char* argv[])
                 << "  Options:\n"
                 << "  -j|--jobs JOBS                Number of parallel jobs\n"
                 << "  -n|--no-optimize              Disable dwz optimization\n"
+                << "  -p|--no-compress              Disable compression\n"
                 << "  -t|--toolchain-prefix PATH    Search for toolchain in that prefix\n";
     };
 
   while (true) {
     int option_index = 0;
-    int c = getopt_long(argc, argv, "nt:j:",
+    int c = getopt_long(argc, argv, "npt:j:",
                         long_options, &option_index);
     if (c == -1)
       break;
@@ -356,6 +362,9 @@ int main(int argc, char* argv[])
     }
     case 'n':
       s.optimize = false;
+      break ;
+    case 'p':
+      s.compress = false;
       break ;
     case 't':
       s.toolchain_prefixes.push_back(optarg);

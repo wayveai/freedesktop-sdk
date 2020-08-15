@@ -13,17 +13,14 @@ depends:
 variables:
   lib: lib
   prefix: '%{tools}'
-  conf-local: |
-    --target=%{triplet} \
-    --with-sysroot=%{sysroot} \
-    --disable-nls \
-    --disable-multilib \
-    --disable-werror \
-    --disable-gdb \
-    --disable-sim \
-    --disable-readline \
-    --disable-libdecnumber \
-    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib" \
+  conf-local: >-
+    --target=%{triplet}
+    --with-sysroot=%{sysroot}
+    --disable-nls
+    --disable-multilib
+    --disable-werror
+    %{disable-source}
+    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib"
     --with-system-zlib
 
 config:
