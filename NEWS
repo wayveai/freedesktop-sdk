@@ -1,5 +1,19 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08rc.1:
+
+   * mozjs: Apply patch to allow gjs to build against
+   * binutils: Update to 2.35.0
+   * ncurses: Remove debuginfo (#1083)
+   * xorg-lib-x11: Update to 1.6.11
+   * strace: Update to 5.8
+   * perf, linux-headers: Update to 5.7.14
+   * extra-cmake-modules: Update to 5.73.0
+   * pango: Update to 1.45.5
+   * mpfr: Update to 4.1.0
+   * python3-setuptools: Update to 49.3.0
+   * vulkan: Update to 1.2.148
+
 freedesktop-sdk-20.08beta.6:
 
    * ffmpeg-full: Fix name of the extension
