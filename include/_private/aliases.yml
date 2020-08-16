@@ -11,16 +11,17 @@ ghostscript: https://git.ghostscript.com/
 github: https://github.com/
 gitlab: https://gitlab.com/
 gnome: https://gitlab.gnome.org/GNOME/
-gnu-efi: https://git.code.sf.net/p/gnu-efi/
 gnupg: https://dev.gnupg.org/source/
 kitware: https://gitlab.kitware.com/cmake/
 kernel: https://git.kernel.org/pub/scm/
 libdaemon: git://git.0pointer.de/
+netfilter: http://git.netfilter.org/
 nettle: https://git.lysator.liu.se/nettle/
 pagure: https://pagure.io/
 repo_or_cz: https://repo.or.cz/
 samba: https://git.samba.org/
 savannah: https://git.savannah.gnu.org/git/
+sourceforge_git: https://git.code.sf.net/p/
 sourceware: https://sourceware.org/git/
 tukaani: https://git.tukaani.org/
 xiph: https://git.xiph.org/
@@ -35,6 +36,7 @@ git_https: https://
 freedesktop-sdk: https://cache.sdk.freedesktop.org/
 ftp_gnu_org: https://ftp.gnu.org/gnu/
 github_files: https://github.com/
+google: https://dl.google.com/
 libsdl: https://www.libsdl.org/projects/
 oasis_open_xml: https://www.oasis-open.org/docbook/xml/
 pagure_releases: https://releases.pagure.org/

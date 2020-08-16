@@ -14,6 +14,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://github.com/ValveSoftware/steam-devices
+  url: github:ValveSoftware/steam-devices
   track: master
   ref: v1.0.0.61-0-g0563be5d6ccda6efa615fd00c46c13f7961a3b5a

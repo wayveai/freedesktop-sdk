@@ -11,7 +11,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: https://github.com/tpm2-software/tpm2-tss.git
+  url: github:tpm2-software/tpm2-tss.git
   track: master
   track-extra:
   - 2.4.x

@@ -11,7 +11,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://git.code.sf.net/p/mingw-w64/mingw-w64.git
+  url: sourceforge_git:mingw-w64/mingw-w64.git
   track: master
   track-extra:
   - v7.x
