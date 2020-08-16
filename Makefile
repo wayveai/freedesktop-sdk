@@ -19,6 +19,11 @@ VM_ARTIFACT_ROOT?=vm/minimal/virt.bst
 VM_ARTIFACT_BOOT?=vm/boot/virt.bst
 IMPORT_BOOTSTRAP?=false
 RUNTIME_VERSION?=master
+ifeq ($(RUNTIME_VERSION),master)
+TARGET_BRANCH=master
+else
+TARGET_BRANCH=release/$(RUNTIME_VERSION)
+endif
 
 SNAP_GRADE?=devel
 ARCH_OPTS=-o bootstrap_build_arch $(BOOTSTRAP_ARCH) -o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
@@ -59,7 +64,7 @@ bootstrap:
 	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
 
 check-abi:
-	REFERENCE=$$(git merge-base origin/$(RUNTIME_VERSION) HEAD) && \
+	REFERENCE=$$(git merge-base origin/$(TARGET_BRANCH) HEAD) && \
 	./utils/buildstream-abi-checker/check-abi --bst-opts="${ARCH_OPTS}" --suppressions=utils/abidiff-suppressions.ini --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
