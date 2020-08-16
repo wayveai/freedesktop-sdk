@@ -15,7 +15,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://salsa.debian.org/rousseau/ccid.git
+  url: debian_salsa:rousseau/ccid.git
   track: master
   ref: ccid-1.4.32-0-g8f33a2ff60919f579ee17012e91f927491ef70be
   submodules:

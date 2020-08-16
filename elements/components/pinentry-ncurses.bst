@@ -36,7 +36,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: https://github.com/gpg/pinentry.git
+  url: github:gpg/pinentry.git
   track: master
   match:
   - 'pinentry-*'

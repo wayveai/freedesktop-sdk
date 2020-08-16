@@ -2,6 +2,7 @@ kind: url_manifest
 
 build-depends:
   - flatpak-release.bst
+  - components.bst
   - oci/layers/flatpak.bst
   - oci/layers/debug.bst
   - oci/layers/platform.bst
