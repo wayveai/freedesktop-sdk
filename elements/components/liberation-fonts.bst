@@ -19,7 +19,7 @@ config:
 
 sources:
 - kind: tar
-  url: github:liberationfonts/liberation-fonts/files/4743886/liberation-fonts-ttf-2.1.1.tar.gz
+  url: github_files:liberationfonts/liberation-fonts/files/4743886/liberation-fonts-ttf-2.1.1.tar.gz
   ref: 8ee2c16fe0f055e60dd8375449aff72d25dd623b9cc6f24790ce9d2e91446fca
   directory: fonts
 - kind: local
