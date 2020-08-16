@@ -161,6 +161,7 @@ pylint:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
     - tags
   interruptible: true
 
@@ -269,6 +270,7 @@ check_mirrors:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
     - tags
   interruptible: true
 
@@ -358,6 +360,7 @@ app_ppc64le:
   except:
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
     - tags
 
 .vm_imageless_template: &vm_imageless
@@ -373,6 +376,7 @@ app_ppc64le:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
     - tags
   interruptible: true
 
@@ -456,6 +460,7 @@ minimal_systemd_vm_ppc64le:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   interruptible: true
 
 minimal_systemd_vm_image_x86_64:
@@ -492,6 +497,7 @@ minimal_systemd_vm_image_x86_64:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   interruptible: true
 
 minimal_efi_vm_image_x86_64:
@@ -538,6 +544,7 @@ prepare_publish_branch:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   # In order to allow Gitlab to cancel the pipeline when it becomes
   # redundent in case of batch merges. We must delay the release pipeline.
   # Once started, we should not stop it.
@@ -569,6 +576,7 @@ finish_publish:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   except:
     - schedules
   dependencies:
@@ -587,6 +595,7 @@ finish_publish_failed:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   except:
     - schedules
   when: on_failure
@@ -648,6 +657,7 @@ finish_publish_failed:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   except:
     - schedules
 
@@ -800,6 +810,7 @@ cve_report:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   dependencies: []
 
 markdown_manifest:
@@ -818,6 +829,7 @@ markdown_manifest:
     - master
     - '18.08'
     - '19.08'
+    - '/^release\/.*/'
   except:
     - schedules
   dependencies: []
