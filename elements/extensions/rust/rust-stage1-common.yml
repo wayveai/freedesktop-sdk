@@ -1,0 +1,15 @@
+build-depends:
+- bootstrap-import.bst
+
+config:
+  install-commands:
+  - |
+    bash install.sh \
+      --prefix="%{prefix}" \
+      --destdir="%{install-root}" \
+      --disable-ldconfig
+
+variables:
+# Disable debug handling in stage1 which is unnecessary and can cause
+# failures during dwz optimizations.
+  strip-binaries: "true"
