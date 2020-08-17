@@ -21,14 +21,11 @@ public:
       locale:
       - '%{datadir}/runtime/locale/**'
 
-depends:
-- filename: platform.bst
-  type: build
-- filename: multiarch/multiarch-platform.bst
-  type: build
-- filename: integration/split-locales.bst
-  type: build
-- filename: integration/split-docs.bst
-  type: build
-- filename: manifests/platform-manifest.bst
-  type: build
+build-depends:
+- platform.bst
+- components/python3-usercustomize.bst
+- components/python3-sitecustomize.bst
+- multiarch/multiarch-platform.bst
+- integration/split-locales.bst
+- integration/split-docs.bst
+- manifests/platform-manifest.bst

@@ -71,8 +71,6 @@ runtime-depends:
 - components/python3.bst
 - components/python3-setuptools.bst
 - components/python3-six.bst
-- components/python3-usercustomize.bst
-- components/python3-sitecustomize.bst
 - components/tar.bst
 - components/sndfile.bst
 - components/sqlite.bst
@@ -168,7 +166,7 @@ runtime-depends:
 - components/v4l-utils.bst
 - components/vulkan.bst
 - components/wayland.bst
-- components/webrtc-audio-processing.bst
+- components/webrtc-audio-processing.bst 
 - components/xcb-util-cursor.bst
 - components/xcb-util-image.bst
 - components/xcb-util-keysyms.bst

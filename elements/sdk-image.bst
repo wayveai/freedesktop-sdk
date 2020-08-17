@@ -18,18 +18,13 @@ config:
     - static-blocklist
     - vm-only
 
-depends:
-- filename: sdk.bst
-  type: build
-- filename: multiarch/multiarch-sdk.bst
-  type: build
-- filename: integration/split-locales.bst
-  type: build
-- filename: integration/split-docs.bst
-  type: build
-- filename: integration/flatpak-builder-configuration.bst
-  type: build
-- filename: integration/debug-app-link.bst
-  type: build
-- filename: manifests/sdk-manifest.bst
-  type: build
+build-depends:
+- sdk.bst
+- components/python3-usercustomize.bst
+- components/python3-sitecustomize.bst
+- multiarch/multiarch-sdk.bst
+- integration/split-locales.bst
+- integration/split-docs.bst
+- integration/flatpak-builder-configuration.bst
+- integration/debug-app-link.bst
+- manifests/sdk-manifest.bst
