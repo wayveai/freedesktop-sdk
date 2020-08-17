@@ -178,7 +178,18 @@ check_update_elements:
     - git config user.name "freedesktop_sdk_updater"
     - git config user.email "freedesktop_sdk_updater@libreml.com"
     - git branch master origin/master
+    - |
+      case "${CI_COMMIT_REF_NAME}" in
+        master)
+        ;;
+        release/*)
+        ;;
+        *)
+          false
+        ;;
+      esac
     - GITLAB_TOKEN=$FREEDESKTOP_API_KEY auto_updater --verbose
+      --base_branch "${CI_COMMIT_REF_NAME}"
       --nobuild
       --overwrite
       --push
