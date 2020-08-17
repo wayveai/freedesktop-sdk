@@ -70,7 +70,7 @@ public:
       - '%{includedir}/libudev.h'
       - '%{includedir}/systemd'
       - '%{includedir}/systemd/**'
-      - '%{debugdir}/dwz/%{element-name}/debug'
+      - '%{debugdir}/dwz/%{element-name}/*'
       - '%{debugdir}%{libdir}/libsystemd*.so*'
       - '%{debugdir}%{libdir}/libudev*.so*'
       - '%{sourcedir}'
