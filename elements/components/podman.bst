@@ -55,7 +55,9 @@ sources:
   url: github:containers/podman.git
   directory: src/github.com/containers/podman
   track: master
-  ref: v2.0.0-rc7-0-g5460ea87d48ea6c10a5ef3c753c57e27b3356aae
+  track-extra:
+  - v2.0
+  ref: v2.0.4-0-gcab27868766a3b01ac14ff46180af8644c41d1cd
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
