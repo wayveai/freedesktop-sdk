@@ -68,14 +68,14 @@ check-abi:
 	./utils/buildstream-abi-checker/check-abi --bst-opts="${ARCH_OPTS}" --suppressions=utils/abidiff-suppressions.ini --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
 
 export: clean-runtime
-	$(BST) build flatpak-release.bst public-stacks/flatpak-publish-tools.bst
+	$(BST) build flatpak-release.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
 	$(BST) checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
-	$(BST) shell --mount $(REPO) /mnt/$(REPO) --mount $(CHECKOUT_ROOT) /mnt/$(CHECKOUT_ROOT) public-stacks/flatpak-publish-tools.bst -- flatpak build-commit-from --src-repo=/mnt/$(CHECKOUT_ROOT) /mnt/$(REPO)
+	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO)
 
 	rm -rf $(CHECKOUT_ROOT)
 
