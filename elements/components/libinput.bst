@@ -17,9 +17,10 @@ variables:
     -Ddebug-gui=false
     -Ddocumentation=false
     -Dtests=false
+    -Dzshcompletiondir=no
 
 sources:
 - kind: git_tag
   url: freedesktop:libinput/libinput.git
   track: master
-  ref: 1.14.1-0-g7a12e460c07f070cb71e55e875e8156c924a4fd3
+  ref: 1.16.1-0-g9dbfc700fe78039f46b08fced0bb2fa8dbcb7dce
