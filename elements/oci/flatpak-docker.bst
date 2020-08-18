@@ -1,21 +1,31 @@
-kind: oci
+kind: script
 
 build-depends:
+- oci/oci-builder.bst
 - oci/sdk-oci.bst
 - oci/layers/flatpak.bst
 
-# For build time optimization
-- oci/layers/sdk.bst
-
 config:
-  mode: docker
-  images:
-  - os: linux
-    architecture: "%{go-arch}"
-    parent:
-      element: oci/sdk-oci.bst
-    layer:
-    - oci/layers/flatpak.bst
-    comment: "Import flatpak"
-    tags:
-    - freedesktopsdk/flatpak:latest
+  layout:
+  - element: oci/oci-builder.bst
+    destination: /
+  - element: oci/layers/flatpak.bst
+    destination: /layer
+  - element: oci/sdk-oci.bst
+    destination: /parent
+
+  commands:
+  - |
+    cd "%{install-root}"
+    build-oci <<EOF
+    mode: docker
+    images:
+    - os: linux
+      architecture: "%{go-arch}"
+      parent:
+        image: /parent
+      layer: /layer
+      comment: "Import flatpak"
+      tags:
+      - freedesktopsdk/flatpak:latest
+    EOF

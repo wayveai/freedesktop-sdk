@@ -156,7 +156,8 @@ pylint:
   variables:
     ARCH: x86_64
   script:
-    - find . -iname "*.py" -exec pylint {} +
+    - find . -path 'files/oci' -prune -o -iname "*.py" -exec pylint {} +
+    - pylint files/oci/oci_builder
   except:
     - master
     - '18.08'

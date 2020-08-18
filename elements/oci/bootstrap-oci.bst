@@ -1,15 +1,25 @@
-kind: oci
+kind: script
 
-depends:
-- filename: oci/layers/bootstrap.bst
-  type: build
+build-depends:
+- oci/oci-builder.bst
+- oci/layers/bootstrap.bst
 
 config:
-  mode: oci
-  gzip: False
-  images:
-  - os: linux
-    architecture: "%{go-arch}"
-    layer:
-    - oci/layers/bootstrap.bst
-    comment: "Import bootstrap layer from Freedesktop SDK"
+  layout:
+  - element: oci/oci-builder.bst
+    destination: /
+  - element: oci/layers/bootstrap.bst
+    destination: /layer
+
+  commands:
+  - |
+    cd "%{install-root}"
+    build-oci <<EOF
+    mode: oci
+    gzip: false
+    images:
+    - os: linux
+      architecture: '%{go-arch}'
+      layer: /layer
+      comment: 'Import bootstrap layer from Freedesktop SDK'
+    EOF

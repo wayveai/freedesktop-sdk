@@ -1,24 +1,31 @@
-kind: oci
+kind: script
 
-depends:
-- filename: oci/bootstrap-oci.bst
-  type: build
-- filename: oci/layers/platform.bst
-  type: build
-
-# For build time optimization
-- filename: oci/layers/bootstrap.bst
-  type: build
+build-depends:
+- oci/oci-builder.bst
+- oci/bootstrap-oci.bst
+- oci/layers/platform.bst
 
 config:
-  mode: docker
-  images:
-  - os: linux
-    architecture: "%{go-arch}"
-    parent:
-      element: oci/bootstrap-oci.bst
-    layer:
-    - oci/layers/platform.bst
-    comment: "Import platform layer from Freedesktop SDK"
-    tags:
-    - freedesktopsdk/platform:latest
+  layout:
+  - element: oci/oci-builder.bst
+    destination: /
+  - element: oci/layers/platform.bst
+    destination: /layer
+  - element: oci/bootstrap-oci.bst
+    destination: /parent
+
+  commands:
+  - |
+    cd "%{install-root}"
+    build-oci <<EOF
+    mode: docker
+    images:
+    - os: linux
+      architecture: "%{go-arch}"
+      parent:
+        image: /parent
+      layer: /layer
+      comment: "Import platform layer from Freedesktop SDK"
+      tags:
+      - freedesktopsdk/platform:latest
+    EOF
