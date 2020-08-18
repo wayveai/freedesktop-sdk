@@ -94,8 +94,21 @@ variables:
 public:
   bst:
     split-rules:
+      # We keep the debuginfo for the dynamic loader only because
+      # valgrind needs it.
+      debug:
+        - '%{sourcedir}/**'
+        - '%{sourcedir}'
+        - '%{debugdir}%{bindir}'
+        - '%{debugdir}%{bindir}/**'
+        - '%{debugdir}%{libdir}/lib*.so.debug'
+        - '%{debugdir}%{libdir}/audit'
+        - '%{debugdir}%{libdir}/audit/**'
+        - '%{debugdir}%{libdir}/gconv'
+        - '%{debugdir}%{libdir}/gconv/**'
       devel:
         (>):
+        - '%{debugdir}%{libdir}/ld-*.so.debug'
         - '%{libdir}/*.o'
         - '%{libdir}/libdl.so'
         - '%{libdir}/libnsl.so'

@@ -130,5 +130,5 @@ config:
 build-depends:
 - sdk-image.bst
 - integration/sdk-integration.bst
-- integration/linker-debuginfo.bst
+- integration/app-debug-link.bst
 - tests/check-static-libraries.bst
