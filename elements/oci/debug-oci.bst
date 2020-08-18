@@ -1,16 +1,11 @@
 kind: oci
 
-depends:
-- filename: oci/sdk-oci.bst
-  type: build
-- filename: oci/layers/debug.bst
-  type: build
+build-depends:
+- oci/sdk-oci.bst
+- oci/layers/debug.bst
 
 # For build time optimization
-- filename: oci/layers/sdk.bst
-  type: build
-- filename: integration/linker-debuginfo.bst
-  type: build
+- oci/layers/sdk.bst
 
 config:
   mode: oci

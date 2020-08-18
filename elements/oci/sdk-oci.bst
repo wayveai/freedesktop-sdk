@@ -1,16 +1,11 @@
 kind: oci
 
-depends:
-- filename: oci/platform-oci.bst
-  type: build
-- filename: oci/layers/sdk.bst
-  type: build
-- filename: integration/linker-debuginfo.bst
-  type: build
+build-depends:
+- oci/platform-oci.bst
+- oci/layers/sdk.bst
 
 # For build time optimization
-- filename: oci/layers/platform.bst
-  type: build
+- oci/layers/platform.bst
 
 config:
   mode: oci
@@ -22,5 +17,4 @@ config:
       element: oci/platform-oci.bst
     layer:
     - oci/layers/sdk.bst
-    - integration/linker-debuginfo.bst
     comment: "Import sdk layer from Freedesktop SDK"
