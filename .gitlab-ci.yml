@@ -263,8 +263,9 @@ check_mirrors:
 
     - |
       set -e
-      if [ "${ARCH}" != ppc64le ]; then
+      if [ "${ARCH}" = arm ]; then
         make export-snap
+        python3 utils/parse_review.py snap/sdk.snap
         python3 utils/parse_review.py snap/platform.snap
         python3 utils/parse_review.py snap/glxinfo.snap
         python3 utils/parse_review.py snap/vulkaninfo.snap
@@ -285,23 +286,55 @@ check_mirrors:
     - tags
   interruptible: true
 
-app_x86_64:
+
+.builder-x86_64:
   image: $DOCKER_AMD64
-  <<: *flatpak_definition
   tags:
     - x86_64
     - cache_x86_64
   variables:
     ARCH: x86_64
+
+.builder-i686:
+  image: $DOCKER_AMD64
+  tags:
+    - x86_64
+    - cache_i686
+  variables:
+    ARCH: i686
+
+.builder-aarch64:
+  image: $DOCKER_AARCH64
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
+
+.builder-arm:
+  image: $DOCKER_AARCH64
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
+.builder-ppc64le:
+  image: $DOCKER_PPC64LE
+  tags:
+    - ppc64le
+  variables:
+    ARCH: ppc64le
+  dependencies: []
+
+app_x86_64:
+  extends:
+    - .flatpak_template
+    - .builder-x86_64
   dependencies: []
 
 app_x86_64-no-cache:
-  image: $DOCKER_AMD64
-  <<: *flatpak_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .flatpak_template
+    - .builder-x86_64
   dependencies: []
   except:
     - tags
@@ -309,40 +342,27 @@ app_x86_64-no-cache:
     - schedules
 
 app_i686:
-  image: $DOCKER_AMD64
-  <<: *flatpak_definition
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
+  extends:
+    - .flatpak_template
+    - .builder-i686
   dependencies: []
 
 app_aarch64:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_definition
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .flatpak_template
+    - .builder-aarch64
   dependencies: []
 
 app_arm:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_definition
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .flatpak_template
+    - .builder-arm
   dependencies: []
 
 app_arm-no-cache:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_definition
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .flatpak_template
+    - .builder-arm
   dependencies: []
   except:
     - tags
@@ -350,13 +370,54 @@ app_arm-no-cache:
     - schedules
 
 app_ppc64le:
-  image: $DOCKER_PPC64LE
-  <<: *flatpak_definition
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
+  extends:
+    - .flatpak_template
+    - .builder-ppc64le
   allow_failure: true
+  dependencies: []
+
+.check-snap:
+  stage: snap
+  script:
+    - make export-snap
+    - python3 utils/parse_review.py snap/sdk.snap
+    - python3 utils/parse_review.py snap/platform.snap
+    - python3 utils/parse_review.py snap/glxinfo.snap
+    - python3 utils/parse_review.py snap/vulkaninfo.snap
+    - python3 utils/parse_review.py snap/clinfo.snap
+    - python3 utils/parse_review.py snap/vainfo.snap
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  only:
+    - master
+    - '18.08'
+    - '19.08'
+    - '/^release\/.*/'
+
+check_snap_x86_64:
+  extends:
+    - .check-snap
+    - .builder-x86_64
+  dependencies: []
+
+check_snap_i686:
+  extends:
+    - .check-snap
+    - .builder-i686
+  dependencies: []
+
+check_snap_aarch64:
+  extends:
+    - .check-snap
+    - .builder-aarch64
+  dependencies: []
+
+check_snap_arm:
+  extends:
+    - .check-snap
+    - .builder-arm
   dependencies: []
 
 .bootstrap_template: &bootstrap_definition
@@ -392,38 +453,30 @@ app_ppc64le:
   interruptible: true
 
 minimal_systemd_vm_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
 minimal_systemd_vm_i686:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-i686
   variables:
-    ARCH: i686
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
 minimal_systemd_vm_aarch64:
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-aarch64
   variables:
-    ARCH: aarch64
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -431,12 +484,10 @@ minimal_systemd_vm_aarch64:
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
 minimal_systemd_vm_arm:
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-arm
   variables:
-    ARCH: arm
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -445,12 +496,10 @@ minimal_systemd_vm_arm:
 minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
   allow_failure: true
-  image: $DOCKER_PPC64LE
-  tags:
-    - ppc64le
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-ppc64le
   variables:
-    ARCH: ppc64le
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -475,13 +524,10 @@ minimal_systemd_vm_ppc64le:
   interruptible: true
 
 minimal_systemd_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
+  extends:
+    - .vm_image_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     TYPE: minimal
     DIALOG: root-login
   dependencies: []
@@ -512,27 +558,21 @@ minimal_systemd_vm_image_x86_64:
   interruptible: true
 
 minimal_efi_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_efi_image
+  extends:
+    - .vm_efi_image_template
+    - .builder-x86_64
   allow_failure: true
   variables:
-    ARCH: x86_64
     TYPE: minimal
     DIALOG: root-login
   dependencies: []
 
 desktop_efi_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_efi_image
+  extends:
+    - .vm_efi_image_template
+    - .builder-x86_64
   allow_failure: true
   variables:
-    ARCH: x86_64
     TYPE: desktop
   dependencies: []
 
@@ -687,110 +727,78 @@ finish_publish_failed:
     - schedules
 
 publish_x86_64:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .flatpak_publish_template
+    - .builder-x86_64
   dependencies:
     - prepare_publish_branch
     - prepare_publish_release
 
 publish_i686:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
+  extends:
+    - .flatpak_publish_template
+    - .builder-i686
   dependencies:
     - prepare_publish_branch
     - prepare_publish_release
 
 publish_aarch64:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .flatpak_publish_template
+    - .builder-aarch64
   dependencies:
     - prepare_publish_branch
     - prepare_publish_release
 
 publish_arm:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .flatpak_publish_template
+    - .builder-arm
   dependencies:
     - prepare_publish_branch
     - prepare_publish_release
 
 publish_ppc64le:
-  extends: .flatpak_publish_template
-  image: $DOCKER_PPC64LE
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
+  extends:
+    - .flatpak_publish_template
+    - .builder-ppc64le
   allow_failure: true
   dependencies:
     - prepare_publish_branch
     - prepare_publish_release
 
 publish_x86_64_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .publish_tar_template
+    - .builder-x86_64
   dependencies: []
   when: manual
 
 publish_i686_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-  variables:
-    ARCH: i686
+  extends:
+    - .publish_tar_template
+    - .builder-i686
   dependencies: []
   when: manual
 
 publish_aarch64_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .publish_tar_template
+    - .builder-aarch64
   dependencies: []
   when: manual
 
 publish_arm_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .publish_tar_template
+    - .builder-arm
   dependencies: []
   when: manual
 
 publish_ppc64le_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_PPC64LE
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
+  extends:
+    - .publish_tar_template
+    - .builder-ppc64le
   dependencies: []
   when: manual
 
@@ -858,39 +866,27 @@ markdown_manifest:
     - schedules
 
 reproducible_x86_64:
-  image: $DOCKER_AMD64
-  <<: *reproducible
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .reproducible_template
+    - .builder-x86_64
   when: manual
 
 reproducible_i686:
-  image: $DOCKER_AMD64
-  <<: *reproducible
-  tags:
-    - x86_64
-  variables:
-    ARCH: i686
+  extends:
+    - .reproducible_template
+    - .builder-i686
   when: manual
 
 reproducible_aarch64:
-  image: $DOCKER_AARCH64
-  <<: *reproducible
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .reproducible_template
+    - .builder-aarch64
   when: manual
 
 reproducible_arm:
-  image: $DOCKER_AARCH64
-  <<: *reproducible
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .reproducible_template
+    - .builder-arm
   when: manual
 
 .snap_publish_template:
@@ -934,41 +930,27 @@ reproducible_arm:
     - schedules
 
 publish_snap_x86_64:
-  extends: .snap_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .snap_publish_template
+    - .builder-x86_64
   when: manual
 
 publish_snap_i686:
-  extends: .snap_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
+  extends:
+    - .snap_publish_template
+    - .builder-i686
   when: manual
 
 publish_snap_arm:
-  extends: .snap_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .snap_publish_template
+    - .builder-arm
   when: manual
 
 publish_snap_aarch64:
-  extends: .snap_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .snap_publish_template
+    - .builder-aarch64
   when: manual
 
 .docker_publish_template:
@@ -1013,54 +995,42 @@ publish_snap_aarch64:
   - schedules
 
 publish_docker_x86_64:
-  extends: .docker_publish_template
-  image: $DOCKER_AMD64
-  tags:
-  - x86_64
-  - cache_x86_64
+  extends:
+    - .docker_publish_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_i686:
-  extends: .docker_publish_template
-  image: $DOCKER_AMD64
-  tags:
-  - x86_64
-  - cache_i686
+  extends:
+    - .docker_publish_template
+    - .builder-i686
   variables:
-    ARCH: i686
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_aarch64:
-  extends: .docker_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-  - aarch64
+  extends:
+    - .docker_publish_template
+    - .builder-aarch64
   variables:
-    ARCH: aarch64
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_arm:
-  extends: .docker_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-  - armhf
+  extends:
+    - .docker_publish_template
+    - .builder-arm
   variables:
-    ARCH: arm
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_ppc64le:
-  extends: .docker_publish_template
-  image: $DOCKER_PPC64LE
-  tags:
-  - ppc64le
+  extends:
+    - .docker_publish_template
+    - .builder-ppc64le
   variables:
-    ARCH: ppc64le
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
 
