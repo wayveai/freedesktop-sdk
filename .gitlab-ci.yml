@@ -420,12 +420,6 @@ check_snap_arm:
     - .builder-arm
   dependencies: []
 
-check_snap_ppc64le:
-  extends:
-    - .check-snap
-    - .builder-ppc64le
-  dependencies: []
-
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
   script:
