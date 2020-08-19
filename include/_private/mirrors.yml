@@ -32,14 +32,20 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/kernel/
     libdaemon:
     - https://gitlab.com/freedesktop-sdk/mirrors/libdaemon/
+    netfilter:
+    - https://gitlab.com/freedesktop-sdk/mirrors/netfilter/
     nettle:
     - https://gitlab.com/freedesktop-sdk/mirrors/nettle/
+    pagure:
+    - https://gitlab.com/freedesktop-sdk/mirrors/pagure/
     repo_or_cz:
     - https://gitlab.com/freedesktop-sdk/mirrors/repo_or_cz/
     samba:
     - https://gitlab.com/freedesktop-sdk/mirrors/samba/
     savannah:
     - https://gitlab.com/freedesktop-sdk/mirrors/savannah/
+    sourceforge_git:
+    - https://gitlab.com/freedesktop-sdk/mirrors/sourceforge/
     sourceware:
     - https://gitlab.com/freedesktop-sdk/mirrors/sourceware/
     tukaani:
@@ -61,6 +67,8 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/ftp_gnu_org/
     github_files:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/github_files/
+    google:
+    - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/google/
     libsdl:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/libsdl/
     oasis_open_xml:

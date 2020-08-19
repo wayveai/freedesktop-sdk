@@ -42,7 +42,7 @@ variables:
 
 sources:
 - kind: git_tag
-  url: https://github.com/fwupd/fwupd.git
+  url: github:fwupd/fwupd.git
   track: master
   track-extra:
   - 1_4_X

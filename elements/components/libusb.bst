@@ -9,7 +9,7 @@ depends:
 
 sources:
 - kind: git_tag
-  url: https://github.com/libusb/libusb.git
+  url: github:libusb/libusb.git
   track: master
   match:
   - 'v*'
