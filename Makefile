@@ -181,7 +181,7 @@ test-apps: $(REPO)
 	mkdir -p runtime
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
 	flatpak remote-ls --all fdo-sdk-test-repo --columns ref,download-size,installed-size | awk "/$(FLATPAK_ARCH)/ && /$(BRANCH)/"
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable,.Debug,.Docs,.Locale}}//$(BRANCH)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable}}//$(BRANCH)
 	flatpak list
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Hello.json
@@ -197,8 +197,6 @@ test-apps: $(REPO)
 	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.flatpak.Rust.Hello.json hello
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Readline.json
-
-	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.ExampleRuntime.json
 
 test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime
 test-codecs: $(REPO)
@@ -217,6 +215,13 @@ test-codecs: $(REPO)
 	flatpak run test.codecs.no-exts
 
 	flatpak uninstall -y --all
+
+test-runtime-inheritance: export XDG_DATA_HOME=$(CURDIR)/runtime
+test-runtime-inheritance: $(REPO)
+	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable,.Debug,.Docs,.Locale}}//$(BRANCH)
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.ExampleRuntime.json
+
 
 clean-repo:
 	rm -rf $(REPO)
@@ -347,4 +352,5 @@ run-ostree-vm: $(CHECKOUT_ROOT)/ostree-vm-$(ARCH) efi_vars.fd
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
 	export-oci export-docker bootstrap test-codecs \
-	track-mesa-git update-ostree ostree-serve run-ostree-vm
+	track-mesa-git update-ostree ostree-serve run-ostree-vm \
+	test-runtime-inheritance
