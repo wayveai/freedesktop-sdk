@@ -11,10 +11,8 @@ import subprocess
 
 has_error = False
 
-child_process = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
-                                 universal_newlines=True,
-                                 stdout=subprocess.PIPE)
-output, _ = child_process.communicate()
+child_process = subprocess.run(["snap-review", "--json", sys.argv[1]],
+                               text=True, capture_output=True)
 
 if child_process.returncode == 1:
     # TODO {} before or after \n
@@ -29,7 +27,7 @@ else:
     sys.stderr.write('Unknown return code {}\n'.format(child_process.returncode))
     sys.exit(1)
 
-data = json.loads(output)
+data = json.loads(child_process.stdout)
 for section, section_value in data.items():
     for error, error_value in section_value["error"].items():
         if error_value["manual_review"]:
