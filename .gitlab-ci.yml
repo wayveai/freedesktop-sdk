@@ -972,7 +972,7 @@ publish_snap_aarch64:
 
   - |
     set -eu
-    for name in platform sdk debug flatpak; do
+    for name in platform sdk debug flatpak toolbox; do
       mkdir -p ${name}-tar-extract
       (cd ${name}-tar-extract && tar xf ../${name}-docker.tar)
       (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar -- *)
