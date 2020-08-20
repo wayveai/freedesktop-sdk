@@ -37,6 +37,7 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <algorithm>
 
 struct result_t {
   known_arch arch;
@@ -154,16 +155,15 @@ struct script {
     std::vector<std::future<void> > opt_results;
     for (auto const& value : by_arch) {
       auto const& arch = std::get<0>(value);
-      auto const& binaries = std::get<1>(value);
+      auto binaries = std::get<1>(value);
+      std::sort(std::begin(binaries), std::end(binaries));
       auto do_optimize =
         [&, arch, binaries] {
           auto debug = dwzdir / get_triplet(arch);
           auto realpath = install_root / relative(debug, "/");
           create_directories(realpath.parent_path());
-          std::vector<std::string> cmd{"dwz", "-m", realpath.string(), "-M", debug.string()};
-          for (auto const& binary : binaries) {
-            cmd.push_back(binary);
-          }
+          std::vector<std::string> cmd{"dwz", "-m", realpath, "-M", debug};
+          cmd.insert(std::end(cmd), std::begin(binaries), std::end(binaries));
           auto status = run(cmd);
           if (status != 0) {
             throw std::runtime_error("dwz failed");
