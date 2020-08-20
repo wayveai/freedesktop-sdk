@@ -3,6 +3,7 @@ kind: script
 build-depends:
 - oci/oci-builder.bst
 - oci/layers/bootstrap.bst
+- oci/layers/bootstrap-init-script.bst
 
 config:
   layout:
@@ -10,8 +11,17 @@ config:
     destination: /
   - element: oci/layers/bootstrap.bst
     destination: /layer
+  - element: oci/layers/bootstrap-init-script.bst
+    destination: /
 
   commands:
+  - |
+    if [ -d /initial_scripts ]; then
+      for i in /initial_scripts/*; do
+        "${i}" /layer
+      done
+    fi
+
   - |
     cd "%{install-root}"
     build-oci <<EOF

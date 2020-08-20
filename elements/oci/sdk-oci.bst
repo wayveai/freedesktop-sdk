@@ -4,6 +4,7 @@ build-depends:
 - oci/oci-builder.bst
 - oci/platform-oci.bst
 - oci/layers/sdk.bst
+- oci/layers/sdk-init-script.bst
 
 config:
   layout:
@@ -13,8 +14,17 @@ config:
     destination: /layer
   - element: oci/platform-oci.bst
     destination: /parent
+  - element: oci/layers/sdk-init-script.bst
+    destination: /
 
   commands:
+  - |
+    if [ -d /initial_scripts ]; then
+      for i in /initial_scripts/*; do
+        "${i}" /layer
+      done
+    fi
+
   - |
     cd "%{install-root}"
     build-oci <<EOF

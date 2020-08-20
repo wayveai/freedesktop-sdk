@@ -1,10 +1,7 @@
 kind: compose
 
 build-depends:
-- filename: sdk.bst
-- filename: components/flatpak.bst
-- filename: components/flat-manager-client.bst
-- filename: components/flatpak-builder.bst
+- oci/layers/flatpak-stack.bst
 
 config:
   exclude:
