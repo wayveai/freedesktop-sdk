@@ -1,8 +1,9 @@
 kind: distutils
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
+- bootstrap-import.bst
+- components/python3.bst
+- components/util-linux.bst
 
 config:
   configure-commands:

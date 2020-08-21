@@ -1,3 +1,3 @@
 variables:
-  python: python3
+  python: setarch %{arch} python3
   fix-pyc-timestamps: "true"
