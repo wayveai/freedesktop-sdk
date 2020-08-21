@@ -13,7 +13,7 @@ runtime-depends:
 - components/python3-chardet.bst
 
 sources:
-- kind: git_tag
-  url: github:kennethreitz/requests.git
-  track: master
-  ref: v2.22.0-0-gaeda65bbe57ac5edbcc2d80db85d010befb7d419
+- kind: pypi
+  name: requests
+  url: pypi:da/67/672b422d9daf07365259958912ba533a0ecab839d4084c487a5fe9a5405f/requests-2.24.0.tar.gz
+  sha256sum: b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b
