@@ -1,5 +1,5 @@
 variables:
-  pip: pip3
+  pip: setarch %{arch} python3 -m pip
   fix-pyc-timestamps: "true"
 
 config:
