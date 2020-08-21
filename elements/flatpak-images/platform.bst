@@ -81,3 +81,4 @@ build-depends:
 - integration/platform-integration.bst
 - tests/check-dev-files.bst
 - tests/check-rpath.bst
+- tests/platform-integration.bst
