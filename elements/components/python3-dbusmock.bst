@@ -9,7 +9,7 @@ depends:
   type: runtime
 
 sources:
-- kind: git_tag
-  url: github:martinpitt/python-dbusmock.git
-  track: master
-  ref: 0.18.3-0-g2b031b920a3ddf4cab843cf7763c8e12bd98e0ac
+- kind: pypi
+  name: python-dbusmock
+  url: pypi:e7/98/091ea52b18dd55b9e4d882360125031d1286fdbf0d9922fd624fa8f78d4c/python-dbusmock-0.19.tar.gz
+  sha256sum: 497f30eed2fcd5deaa2633b9622e4e99af4bdfba4e972b350ba630bac6fc86c2
