@@ -24,7 +24,7 @@ config:
     - mv '%{install-root}%{indep-libdir}/pkgconfig' '%{install-root}%{libdir}'
 
 sources:
-- kind: git_tag
-  url: github:pygobject/pycairo.git
-  track: master
-  ref: v1.19.1-0-g43e9c4a83d74a6771ac8f76bb3158f3dcd9af7d2
+- kind: pypi
+  name: pycairo
+  url: pypi:e8/9d/c8be300fc6b1298559d37a071c3833b0b251e0fff334d2e4c408d5789162/pycairo-1.19.1.tar.gz
+  sha256sum: 2c143183280feb67f5beb4e543fd49990c28e7df427301ede04fc550d3562e84

@@ -8,7 +8,7 @@ depends:
   type: build
 
 sources:
-- kind: git_tag
-  url: github:benjaminp/six.git
-  track: master
-  ref: 1.15.0-0-gc0be8815d13df45b6ae471c4c436cce8c192245d
+- kind: pypi
+  name: six
+  url: pypi:6b/34/415834bfdafca3c5f451532e8a8d9ba89a21c9743a0c59fbd0205c7f9426/six-1.15.0.tar.gz
+  sha256sum: 30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259

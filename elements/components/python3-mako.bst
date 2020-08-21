@@ -7,12 +7,8 @@ depends:
 - filename: components/python3-pip.bst
   type: build
 
-public:
-  cpe:
-    version-match: '(\d+)_(\d*)_(\d*)'
-
 sources:
-- kind: git_tag
-  url: github:sqlalchemy/mako.git
-  track: master
-  ref: rel_1_1_3-0-g1f87991a8c42fd67904160e5dab511ca938871bd
+- kind: pypi
+  name: mako
+  url: pypi:72/89/402d2b4589e120ca76a6aed8fee906a0f5ae204b50e455edd36eda6e778d/Mako-1.1.3.tar.gz
+  sha256sum: 8195c8c1400ceb53496064314c6736719c6f25e7479cd24c77be3d9361cddc27

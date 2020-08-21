@@ -16,11 +16,9 @@ runtime-depends:
 - components/python3-yarl.bst
 
 sources:
-- kind: git_tag
-  url: github:aio-libs/aiohttp.git
-  track: '3.6'
-  submodules:
-    vendor/http-parser:
-      checkout: true
-      url: github:nodejs/http-parser.git
-  ref: v3.6.2-0-g6a5ab96bd9cb404b4abfd5160fe8f34a29d941e5
+- kind: pypi
+  name: aiohttp
+  exclude:
+  - '^.*a[0-9]*$'
+  url: pypi:00/94/f9fa18e8d7124d7850a5715a0b9c0584f7b9375d331d35e157cee50f27cc/aiohttp-3.6.2.tar.gz
+  sha256sum: 259ab809ff0727d0e834ac5e8a283dc5e3e0ecc30c4d80b3cd17a4139ce1f326
