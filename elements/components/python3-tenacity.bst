@@ -9,8 +9,7 @@ build-depends:
 - components/python3-setuptools-scm.bst
 
 sources:
-- kind: git_tag
-  url: github:jd/tenacity.git
-  track: master
-
-  ref: 6.0.0-0-g6cb9fe14554d05494b17f47db8e85b6183f8767f
+- kind: pypi
+  name: tenacity
+  url: pypi:a9/26/dfe61bbfbe7d723fe76ff41960c96161fd32ff303be88bbbdfb428250cd4/tenacity-6.2.0.tar.gz
+  sha256sum: 29ae90e7faf488a8628432154bb34ace1cca58244c6ea399fd33f066ac71339a
