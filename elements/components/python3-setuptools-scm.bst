@@ -7,9 +7,10 @@ depends:
 
 build-depends:
 - components/python3-pip.bst
+- components/python3-wheel.bst
 
 sources:
-- kind: git_tag
-  url: github:pypa/setuptools_scm.git
-  track: master
-  ref: v3.3.3-0-gfe2ea13e9d00c7f0873f149de42b1deaca4aa924
+- kind: pypi
+  name: setuptools_scm
+  url: pypi:cd/66/fa77e809b7cb1c2e14b48c7fc8a8cd657a27f4f9abb848df0c967b6e4e11/setuptools_scm-4.1.2.tar.gz
+  sha256sum: a8994582e716ec690f33fec70cca0f85bd23ec974e3f783233e4879090a7faa8
