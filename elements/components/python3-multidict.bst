@@ -8,13 +8,8 @@ build-depends:
 - components/python3-wheel.bst
 - components/cython.bst
 
-config:
-  build-commands:
-    (<):
-    - cython -3 -o multidict/_multidict.c multidict/_multidict.pyx -I multidict
-
 sources:
-- kind: git_tag
-  url: github:aio-libs/multidict.git
-  track: master
-  ref: v4.6.1-0-g4309deb1a9679567b88ec0d108e998d903328ef1
+- kind: pypi
+  name: multidict
+  url: pypi:65/d4/fabdcc5ee4451c8a8e177e27ddfd131a53a82ecc5a3b68468b7e9f8d70b4/multidict-4.7.6.tar.gz
+  sha256sum: fbb77a75e529021e7c4a8d4e823d88ef4d23674a202be4f5addffc72cbb91430
