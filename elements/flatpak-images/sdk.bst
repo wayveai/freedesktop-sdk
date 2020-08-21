@@ -132,3 +132,4 @@ build-depends:
 - integration/sdk-integration.bst
 - integration/app-debug-link.bst
 - tests/check-static-libraries.bst
+- tests/sdk-integration.bst
