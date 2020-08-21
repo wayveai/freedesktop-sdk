@@ -85,6 +85,8 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/tar_http/
     tar_https:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/tar_https/
+    pypi:
+    - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/pypi/
 
 - name: kernel_org
   aliases:
