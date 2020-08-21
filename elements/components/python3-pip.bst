@@ -12,11 +12,9 @@ config:
       rm "%{install-root}%{bindir}/pip"
 
 sources:
-- kind: git_tag
-  url: github:pypa/pip.git
-  track: master
-  ref: 20.2.1-0-gfa2714fcd6cc641bfba45dcd93ea206aa4752b95
+- kind: pypi
+  name: pip
   exclude:
-  - '*b?'
-  - '*rc?'
-  - -*a?'
+  - '^.*(?:[ab]|rc)[0-9]*$'
+  url: pypi:73/8e/7774190ac616c69194688ffce7c1b2a097749792fea42e390e7ddfdef8bc/pip-20.2.2.tar.gz
+  sha256sum: 58a3b0b55ee2278104165c7ee7bc8e2db6f635067f3c66cf637113ec5aa71584
