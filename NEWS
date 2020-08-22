@@ -1,5 +1,15 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08rc.2:
+
+   * pipewire: Update to 0.3.10 (ABI break: new symbol)
+   * Add mini debuginfo in binaries (#767)
+   * Fix some repoducibility issue with some debuginfo files
+   * docbook-xsl: Switch to version without namespaces. Fixes some man pages
+   * libportal: Fix issue with C++ applications (#1099)
+   * alsa-lib: Add dmix pcm plugin (#1082) (ABI breaks: new symbols)
+   * systemd-libs: Add missing debuginfo.
+
 freedesktop-sdk-20.08rc.1:
 
    * mozjs: Apply patch to allow gjs to build against
