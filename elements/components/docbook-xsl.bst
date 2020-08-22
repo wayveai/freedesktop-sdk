@@ -46,8 +46,8 @@ public:
 
 sources:
 - kind: tar
-  url: github_files:docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-1.79.2.tar.gz
-  ref: 966188d7c05fc76eaca115a55893e643dd01a3486f6368733c9ad974fcee7a26
+  url: github_files:docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.gz
+  ref: f89425b44e48aad24319a2f0d38e0cb6059fdc7dbaf31787c8346c748175ca8e
 - kind: patch
-  strip-level: 2
+  strip-level: '2'
   path: patches/docbook-xsl/docbook-xsl-non-recursive_string_subst.patch

@@ -1,209 +1,208 @@
 kind: stack
 description: Stack of elements in the freedesktop runtime
 
-depends:
-- filename: components/ca-certificates.bst
-- filename: components/cracklib.bst
-- filename: components/curl.bst
-- filename: components/cyrus-sasl.bst
-- filename: components/dummy-gbm.bst
-- filename: components/e2fsprogs.bst
-- filename: components/expat.bst
-- filename: components/frei0r.bst
-- filename: components/gdbm.bst
-- filename: components/gettext.bst
-- filename: components/giflib.bst
-- filename: components/glib.bst
-- filename: components/gmp.bst
-- filename: components/gnupg.bst
-- filename: components/gnutls.bst
-- filename: components/gzip.bst
-- filename: components/gpgme.bst
-- filename: components/iana-config.bst
-- filename: components/icu.bst
-- filename: components/iso-codes.bst
-- filename: components/jpeg.bst
-- filename: components/ladspa-sdk.bst
-- filename: components/lcms.bst
-- filename: components/less.bst
-- filename: components/libarchive.bst
-- filename: components/libassuan.bst
-- filename: components/libcap.bst
-- filename: components/libexif.bst
-- filename: components/libffi.bst
-- filename: components/libfl.bst
-- filename: components/libflac.bst
-- filename: components/libgcrypt.bst
-- filename: components/libgpg-error.bst
-- filename: components/libksba.bst
-- filename: components/libidn2.bst
-- filename: components/libogg.bst
-- filename: components/libnice.bst
-- filename: components/libpng.bst
-- filename: components/libsamplerate.bst
-- filename: components/libselinux.bst
-- filename: components/libtasn1.bst
-- filename: components/libtheora.bst
-- filename: components/libtiff.bst
-- filename: components/libtool.bst
-- filename: components/libunistring.bst
-- filename: components/libvorbis.bst
-- filename: components/libvpx.bst
-- filename: components/libwebp.bst
-- filename: components/libxml2.bst
-- filename: components/libxslt.bst
-- filename: components/locales.bst
-- filename: components/lz4.bst
-- filename: components/lzip.bst
-- filename: components/nano.bst
-- filename: components/nettle.bst
-- filename: components/noopenh264.bst
-- filename: components/npth.bst
-- filename: components/nspr.bst
-- filename: components/nss.bst
-- filename: components/nsswitch-config.bst
-- filename: components/openjpeg.bst
-- filename: components/opus.bst
-- filename: components/osmesa.bst
-- filename: components/p11-kit.bst
-- filename: components/pcre2.bst
-- filename: components/procps.bst
-- filename: components/python3.bst
-- filename: components/python3-setuptools.bst
-- filename: components/python3-six.bst
-- filename: components/python3-usercustomize.bst
-- filename: components/python3-sitecustomize.bst
-- filename: components/tar.bst
-- filename: components/sndfile.bst
-- filename: components/sqlite.bst
-- filename: components/speex.bst
-- filename: components/speexdsp.bst
-- filename: components/tzdata.bst
-- filename: components/unzip.bst
-- filename: components/util-linux.bst
-- filename: components/wget.bst
-- filename: components/which.bst
-- filename: components/xz.bst
-- filename: components/xz-docs.bst
-- filename: components/zip.bst
-- filename: components/alsa-lib.bst
-- filename: components/alsa-plugins.bst
-- filename: components/appstream-glib.bst
-- filename: components/aspell.bst
-- filename: components/at-spi2-atk.bst
-- filename: components/at-spi2-core.bst
-- filename: components/atk.bst
-- filename: components/cairo.bst
-- filename: components/cups.bst
-- filename: components/libdbus.bst
-- filename: components/dejavu-fonts.bst
-- filename: components/dictionaries.bst
-- filename: components/emoji-one-font.bst
-- filename: components/fcitx.bst
-- filename: components/ffmpeg.bst
-- filename: components/fftw.bst
-- filename: components/flatpak-xdg-utils.bst
-- filename: components/fontconfig.bst
-- filename: components/freetype.bst
-- filename: components/fribidi.bst
-- filename: components/gcab.bst
-- filename: components/gdk-pixbuf.bst
-- filename: components/geoclue.bst
-- filename: components/glib-networking.bst
-- filename: components/gnu-free-fonts.bst
-- filename: components/gobject-introspection.bst
-- filename: components/google-crosextra-caladea.bst
-- filename: components/google-crosextra-carlito.bst
-- filename: components/graphite2.bst
-- filename: components/gstreamer-plugins-bad.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/gstreamer-plugins-good.bst
-- filename: components/gstreamer-plugins-ugly.bst
-- filename: components/gstreamer.bst
-- filename: components/gstreamer-libav.bst
-- filename: components/gtk3.bst
-- filename: components/harfbuzz.bst
-- filename: components/hicolor-icon-theme.bst
-- filename: components/hunspell.bst
-- filename: components/hyphen.bst
-- filename: components/ibus.bst
-- filename: components/json-glib.bst
-- filename: components/lame.bst
-- filename: components/libclc.bst
-- filename: components/libdatrie.bst
-- filename: components/libdrm.bst
-- filename: components/libepoxy.bst
-- filename: components/liberation-fonts.bst
-- filename: components/libglvnd.bst
-- filename: components/libproxy.bst
-- filename: components/libpsl.bst
-- filename: components/librsvg.bst
-- filename: components/libseccomp.bst
-- filename: components/libsoup.bst
-- filename: components/systemd-libs.bst
-- filename: components/libthai.bst
-- filename: components/libva.bst
-- filename: components/libvdpau.bst
-- filename: components/libxkbcommon.bst
-- filename: components/llvm.bst
-- filename: components/mesa-headers.bst
-- filename: components/mpg123.bst
-- filename: components/mythes.bst
-- filename: components/openal.bst
-- filename: components/opencl.bst
-- filename: components/openssh.bst
-- filename: components/orc.bst
-- filename: components/os-release.bst
-- filename: components/pango.bst
-- filename: components/pciutils.bst
-- filename: components/pipewire.bst
-- filename: components/pipewire-libjack.bst
-- filename: components/pixman.bst
-- filename: components/libpulse.bst
-- filename: components/sdl2-image.bst
-- filename: components/sdl2-mixer.bst
-- filename: components/sdl2-net.bst
-- filename: components/sdl2-ttf.bst
-- filename: components/sdl2.bst
-- filename: components/shared-mime-info.bst
-- filename: components/v4l-utils.bst
-- filename: components/vulkan.bst
-- filename: components/wayland.bst
-- filename: components/webrtc-audio-processing.bst 
-- filename: components/xcb-util-cursor.bst
-- filename: components/xcb-util-image.bst
-- filename: components/xcb-util-keysyms.bst
-- filename: components/xcb-util-renderutil.bst
-- filename: components/xcb-util-wm.bst
-- filename: components/xcb-util.bst
-- filename: components/xdg-user-dirs.bst
-- filename: components/xorg-app-xkbcomp.bst
-- filename: components/xorg-data-xkeyboard-config.bst
-- filename: components/xorg-lib-ice.bst
-- filename: components/xorg-lib-pciaccess.bst
-- filename: components/xorg-lib-sm.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xau.bst
-- filename: components/xorg-lib-xcb.bst
-- filename: components/xorg-lib-xcomposite.bst
-- filename: components/xorg-lib-xcursor.bst
-- filename: components/xorg-lib-xdamage.bst
-- filename: components/xorg-lib-xdmcp.bst
-- filename: components/xorg-lib-xext.bst
-- filename: components/xorg-lib-xfixes.bst
-- filename: components/xorg-lib-xft.bst
-- filename: components/xorg-lib-xi.bst
-- filename: components/xorg-lib-xinerama.bst
-- filename: components/xorg-lib-xkbfile.bst
-- filename: components/xorg-lib-xpm.bst
-- filename: components/xorg-lib-xrandr.bst
-- filename: components/xorg-lib-xrender.bst
-- filename: components/xorg-lib-xscrnsaver.bst
-- filename: components/xorg-lib-xshmfence.bst
-- filename: components/xorg-lib-xt.bst
-- filename: components/xorg-lib-xtrans.bst
-- filename: components/xorg-lib-xtst.bst
-- filename: components/xorg-lib-xv.bst
-- filename: components/xorg-lib-xxf86vm.bst
-- filename: components/zenity.bst
-- filename: integration/mtab.bst
+runtime-depends:
+- components/ca-certificates.bst
+- components/cracklib.bst
+- components/curl.bst
+- components/cyrus-sasl.bst
+- components/dummy-gbm.bst
+- components/e2fsprogs.bst
+- components/expat.bst
+- components/frei0r.bst
+- components/gdbm.bst
+- components/gettext.bst
+- components/giflib.bst
+- components/glib.bst
+- components/gmp.bst
+- components/gnupg.bst
+- components/gnutls.bst
+- components/gzip.bst
+- components/gpgme.bst
+- components/iana-config.bst
+- components/icu.bst
+- components/iso-codes.bst
+- components/jpeg.bst
+- components/ladspa-sdk.bst
+- components/lcms.bst
+- components/less.bst
+- components/libarchive.bst
+- components/libassuan.bst
+- components/libcap.bst
+- components/libexif.bst
+- components/libffi.bst
+- components/libfl.bst
+- components/libflac.bst
+- components/libgcrypt.bst
+- components/libgpg-error.bst
+- components/libksba.bst
+- components/libidn2.bst
+- components/libogg.bst
+- components/libnice.bst
+- components/libpng.bst
+- components/libsamplerate.bst
+- components/libselinux.bst
+- components/libtasn1.bst
+- components/libtheora.bst
+- components/libtiff.bst
+- components/libtool.bst
+- components/libunistring.bst
+- components/libvorbis.bst
+- components/libvpx.bst
+- components/libwebp.bst
+- components/libxml2.bst
+- components/libxslt.bst
+- components/locales.bst
+- components/lz4.bst
+- components/lzip.bst
+- components/nano.bst
+- components/nettle.bst
+- components/noopenh264.bst
+- components/npth.bst
+- components/nspr.bst
+- components/nss.bst
+- components/nsswitch-config.bst
+- components/openjpeg.bst
+- components/opus.bst
+- components/osmesa.bst
+- components/p11-kit.bst
+- components/pcre2.bst
+- components/procps.bst
+- components/python3.bst
+- components/python3-setuptools.bst
+- components/python3-six.bst
+- components/python3-usercustomize.bst
+- components/python3-sitecustomize.bst
+- components/tar.bst
+- components/sndfile.bst
+- components/sqlite.bst
+- components/speex.bst
+- components/speexdsp.bst
+- components/tzdata.bst
+- components/unzip.bst
+- components/util-linux.bst
+- components/wget.bst
+- components/which.bst
+- components/xz-docs.bst
+- components/zip.bst
+- components/alsa-lib.bst
+- components/alsa-plugins.bst
+- components/appstream-glib.bst
+- components/aspell.bst
+- components/at-spi2-atk.bst
+- components/at-spi2-core.bst
+- components/atk.bst
+- components/cairo.bst
+- components/cups.bst
+- components/libdbus.bst
+- components/dejavu-fonts.bst
+- components/dictionaries.bst
+- components/emoji-one-font.bst
+- components/fcitx.bst
+- components/ffmpeg.bst
+- components/fftw.bst
+- components/flatpak-xdg-utils.bst
+- components/fontconfig.bst
+- components/freetype.bst
+- components/fribidi.bst
+- components/gcab.bst
+- components/gdk-pixbuf.bst
+- components/geoclue.bst
+- components/glib-networking.bst
+- components/gnu-free-fonts.bst
+- components/gobject-introspection.bst
+- components/google-crosextra-caladea.bst
+- components/google-crosextra-carlito.bst
+- components/graphite2.bst
+- components/gstreamer-plugins-bad.bst
+- components/gstreamer-plugins-base.bst
+- components/gstreamer-plugins-good.bst
+- components/gstreamer-plugins-ugly.bst
+- components/gstreamer.bst
+- components/gstreamer-libav.bst
+- components/gtk3.bst
+- components/harfbuzz.bst
+- components/hicolor-icon-theme.bst
+- components/hunspell.bst
+- components/hyphen.bst
+- components/ibus.bst
+- components/json-glib.bst
+- components/lame.bst
+- components/libclc.bst
+- components/libdatrie.bst
+- components/libdrm.bst
+- components/libepoxy.bst
+- components/liberation-fonts.bst
+- components/libglvnd.bst
+- components/libproxy.bst
+- components/libpsl.bst
+- components/librsvg.bst
+- components/libseccomp.bst
+- components/libsoup.bst
+- components/systemd-libs.bst
+- components/libthai.bst
+- components/libva.bst
+- components/libvdpau.bst
+- components/libxkbcommon.bst
+- components/llvm.bst
+- components/mesa-headers.bst
+- components/mpg123.bst
+- components/mythes.bst
+- components/openal.bst
+- components/opencl.bst
+- components/openssh.bst
+- components/orc.bst
+- components/os-release.bst
+- components/pango.bst
+- components/pciutils.bst
+- components/pipewire.bst
+- components/pipewire-libjack.bst
+- components/pixman.bst
+- components/libpulse.bst
+- components/sdl2-image.bst
+- components/sdl2-mixer.bst
+- components/sdl2-net.bst
+- components/sdl2-ttf.bst
+- components/sdl2.bst
+- components/shared-mime-info.bst
+- components/v4l-utils.bst
+- components/vulkan.bst
+- components/wayland.bst
+- components/webrtc-audio-processing.bst
+- components/xcb-util-cursor.bst
+- components/xcb-util-image.bst
+- components/xcb-util-keysyms.bst
+- components/xcb-util-renderutil.bst
+- components/xcb-util-wm.bst
+- components/xcb-util.bst
+- components/xdg-user-dirs.bst
+- components/xorg-app-xkbcomp.bst
+- components/xorg-data-xkeyboard-config.bst
+- components/xorg-lib-ice.bst
+- components/xorg-lib-pciaccess.bst
+- components/xorg-lib-sm.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xau.bst
+- components/xorg-lib-xcb.bst
+- components/xorg-lib-xcomposite.bst
+- components/xorg-lib-xcursor.bst
+- components/xorg-lib-xdamage.bst
+- components/xorg-lib-xdmcp.bst
+- components/xorg-lib-xext.bst
+- components/xorg-lib-xfixes.bst
+- components/xorg-lib-xft.bst
+- components/xorg-lib-xi.bst
+- components/xorg-lib-xinerama.bst
+- components/xorg-lib-xkbfile.bst
+- components/xorg-lib-xpm.bst
+- components/xorg-lib-xrandr.bst
+- components/xorg-lib-xrender.bst
+- components/xorg-lib-xscrnsaver.bst
+- components/xorg-lib-xshmfence.bst
+- components/xorg-lib-xt.bst
+- components/xorg-lib-xtrans.bst
+- components/xorg-lib-xtst.bst
+- components/xorg-lib-xv.bst
+- components/xorg-lib-xxf86vm.bst
+- components/zenity.bst
+- integration/mtab.bst

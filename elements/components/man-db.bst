@@ -11,7 +11,6 @@ depends:
 - components/groff.bst
 - components/libpipeline.bst
 - components/gzip.bst
-- components/xz.bst
 - components/lzip.bst
 - components/util-linux.bst
 

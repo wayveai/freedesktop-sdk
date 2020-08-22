@@ -1,11 +1,13 @@
 kind: autotools
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
+- bootstrap/xz-build-deps.bst
+
+runtime-depends:
+- bootstrap/glibc.bst
 
 variables:
   autogen: ./autogen.sh --no-po4a
-
 
 public:
   bst:
@@ -16,3 +18,4 @@ public:
 
 (@):
 - elements/include/xz-source.yml
+- elements/bootstrap/include/target.yml

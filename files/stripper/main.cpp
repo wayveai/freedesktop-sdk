@@ -37,6 +37,7 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <algorithm>
 
 struct result_t {
   known_arch arch;
@@ -154,16 +155,15 @@ struct script {
     std::vector<std::future<void> > opt_results;
     for (auto const& value : by_arch) {
       auto const& arch = std::get<0>(value);
-      auto const& binaries = std::get<1>(value);
+      auto binaries = std::get<1>(value);
+      std::sort(std::begin(binaries), std::end(binaries));
       auto do_optimize =
         [&, arch, binaries] {
           auto debug = dwzdir / get_triplet(arch);
           auto realpath = install_root / relative(debug, "/");
           create_directories(realpath.parent_path());
-          std::vector<std::string> cmd{"dwz", "-m", realpath.string(), "-M", debug.string()};
-          for (auto const& binary : binaries) {
-            cmd.push_back(binary);
-          }
+          std::vector<std::string> cmd{"dwz", "-m", realpath, "-M", debug};
+          cmd.insert(std::end(cmd), std::begin(binaries), std::end(binaries));
           auto status = run(cmd);
           if (status != 0) {
             throw std::runtime_error("dwz failed");
@@ -183,6 +183,96 @@ struct script {
     }
 
     return !has_error;
+  }
+
+  void create_minidebug(std::filesystem::path const& toolchain,
+                        std::filesystem::path const& binary)
+  {
+    named_tmp_file dynsymbolstmp;
+    if (0 != run(std::vector<std::string>{(toolchain / "nm").string(),
+                                          "-D", binary, "--format=posix", "--defined-only"},
+        fd_t(std::filesystem::path(dynsymbolstmp.get_path()),
+             O_WRONLY))) {
+      throw std::runtime_error("nm failed");
+    }
+
+    named_tmp_file symbolstmp;
+    if (0 != run(std::vector<std::string>{(toolchain / "nm").string(),
+                                          binary, "--format=posix", "--defined-only"},
+        fd_t(std::filesystem::path(symbolstmp.get_path()),
+             O_WRONLY))) {
+      throw std::runtime_error("nm failed");
+    }
+
+    std::ifstream symbolstream(symbolstmp.get_path());
+
+    std::vector<std::string> symbols;
+
+    while (symbolstream) {
+      std::string line;
+      getline(symbolstream, line, '\n');
+      symbols.push_back(line.substr(0, line.find(' ')));
+    }
+
+    std::ifstream dynsymbolstream(dynsymbolstmp.get_path());
+
+    while (dynsymbolstream) {
+      std::string line;
+      getline(dynsymbolstream, line, '\n');
+      auto column_1 = line.find(' ');
+      auto column_2 = line.find(' ', column_1+1);
+      auto type = line.substr(column_1+1, column_2);
+      if ((type == "T") || (type == "t") || (type == "D")) {
+        auto name = line.substr(0, column_1);
+        symbols.erase(remove(begin(symbols), end(symbols), name), end(symbols));
+      }
+    }
+
+    named_tmp_file keepsymbolstmp;
+
+    {
+      std::ofstream keepsymbolstream(keepsymbolstmp.get_path());
+      for (auto const& symbol : symbols) {
+        keepsymbolstream << symbol << '\n';
+      }
+    }
+
+    if (symbols.empty()) {
+      std::cerr << "Found no symbol\n";
+      return ;
+    }
+
+    named_tmp_file debugdata;
+    if (0 != run(std::vector<std::string>{(toolchain / "objcopy").string(),
+                                          "--only-keep-debug", binary, debugdata.get_path()})) {
+      throw std::runtime_error("objcopy failed");
+    }
+
+    named_tmp_file minidebuginfo;
+    if (0 != run(std::vector<std::string>{(toolchain / "objcopy").string(),
+                                          "-S", "--remove-section", ".db_index", "--remove-section", ".comment",
+                                          "--keep-symbols="+keepsymbolstmp.get_path(), debugdata.get_path(), minidebuginfo.get_path()})) {
+      throw std::runtime_error("objcopy failed");
+    }
+
+    named_tmp_file compressed;
+    if (0 != run(std::vector<std::string>{"xz", "-zc", minidebuginfo.get_path()},
+                 fd_t(std::filesystem::path(compressed.get_path()),
+                      O_WRONLY))) {
+       throw std::runtime_error("xz failed");
+    }
+
+    auto st = status(binary);
+    if (0 != access(binary.c_str(), W_OK)) {
+      chmod(binary.c_str(), 0755);
+    }
+
+    if (0 != run(std::vector<std::string>{(toolchain / "objcopy").string(),
+                                          "--add-section", ".gnu_debugdata="+compressed.get_path(), binary})) {
+      throw std::runtime_error("objcopy failed");
+    }
+
+    chmod(binary.c_str(), (unsigned)st.permissions());
   }
 
   void strip_and_compress_file(std::filesystem::path const& toolchain,
@@ -247,6 +337,7 @@ struct script {
       for (auto& binary : binaries) {
         auto task =
           [this, toolchain, binary] {
+            create_minidebug(toolchain, binary);
             strip_and_compress_file(toolchain, binary);
           };
         final_tasks.push_back(std::make_tuple(binary, pool->post(std::move(task))));

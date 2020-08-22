@@ -5,6 +5,10 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
+variables:
+  conf-local:
+    --disable-lzma
+
 config:
   install-commands:
     (>):
