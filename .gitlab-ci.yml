@@ -1086,3 +1086,38 @@ publish_docker_finish:
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
+
+.runtime_inheritance_check_template:
+  stage: flatpak
+  script:
+  - make test-runtime-inheritance
+  only:
+    - master
+    - '18.08'
+    - '19.08'
+    - '/^release\/.*/'
+
+check_runtime_inheritance_x86_64:
+  extends:
+  - .runtime_inheritance_check_template
+  - .builder-x86_64
+
+check_runtime_inheritance_i686:
+  extends:
+  - .runtime_inheritance_check_template
+  - .builder-i686
+
+check_runtime_inheritance_arm:
+  extends:
+  - .runtime_inheritance_check_template
+  - .builder-arm
+
+check_runtime_inheritance_aarch64:
+  extends:
+  - .runtime_inheritance_check_template
+  - .builder-aarch64
+
+check_runtime_inheritance_ppc64le:
+  extends:
+  - .runtime_inheritance_check_template
+  - .builder-ppc64le
