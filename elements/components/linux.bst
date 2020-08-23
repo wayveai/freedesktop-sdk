@@ -106,8 +106,6 @@ config:
     scripts/config -e TMPFS_POSIX_ACL
     scripts/config -e EXT4_FS_POSIX_ACL
     scripts/config -e EXT4_FS_SECURITY
-    scripts/config -e XFS_POSIX_ACL
-    scripts/config -e BTRFS_FS_POSIX_ACL
     scripts/config -e SECCOMP
     scripts/config -e SECCOMP_FILTER
     scripts/config -e CHECKPOINT_RESTORE
@@ -348,6 +346,14 @@ config:
         scripts/config -m KVM
         ;;
     esac
+
+    # Useful filesystems
+    [ grep CONFIG_XFS=y .config ] || scripts/config -m XFS
+    scripts/config -e XFS_POSIX_ACL
+    [ grep CONFIG_BTRS=y .config ] || scripts/config -m BTRFS
+    scripts/config -e BTRFS_FS_POSIX_ACL
+    [ grep CONFIG_EXFAT_FS=y .config ] || scripts/config -m EXFAT_FS
+    [ grep CONFIG_VFAT_FS=y .config ] || scripts/config -m VFAT_FS
 
   install-commands:
   - |
