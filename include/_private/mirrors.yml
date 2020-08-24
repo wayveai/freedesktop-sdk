@@ -61,6 +61,8 @@ mirrors:
 - name: freedesktop_tarball_mirror
   # for sources that consist of a single, downloadable file, eg tarballs, zipfiles, and rust crates
   aliases:
+    cpan:
+    - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/cpan/
     crates:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/crates/
     ftp_gnu_org:
