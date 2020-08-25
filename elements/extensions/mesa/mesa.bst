@@ -87,7 +87,6 @@ variables:
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=true
-    -Dprefer-iris=false
 
 config:
   install-commands:
