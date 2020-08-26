@@ -663,12 +663,13 @@ finish_publish_failed:
     - |
       case "$RELEASES_SERVER_ADDRESS" in
         https://hub.flathub.org/)
-          if [ "${ARCH}" = ppc64le ]; then
-            echo "ppc64le not published to Flathub yet"
-            DO_NOT_PUSH=1
-          fi
           for ref in $(ostree --repo=repo refs --list); do
             case "${ref}" in
+              */*/ppc64le/*) ;&
+              */*/arm/*) ;&
+              */org.freedesktop.Sdk.Extension.toolchain-arm/*/*) ;&
+              */org.freedesktop.Sdk.Compat.arm/*/*) ;&
+              */org.freedesktop.Sdk.Compat.arm.Debug/*/*) ;&
               */org.freedesktop.Sdk.PreBootstrap/*/*) ;&
               */org.freedesktop.Platform.GL32.mesa-git/*/*) ;&
               */org.freedesktop.Platform.GL.mesa-git/*/*) ;&
@@ -695,22 +696,29 @@ finish_publish_failed:
       esac
 
     - flatpak build-update-repo --generate-static-deltas --prune repo
-    - |
-      if [ "${DO_NOT_PUSH:+set}" != set ]; then
-        flat-manager-client push "$(cat publish_build.txt)" repo
-      fi
+    - flat-manager-client push "$(cat publish_build.txt)" repo
+
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - tags
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
-  except:
-    - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    when: never
+  - if: '$CI_COMMIT_TAG && $FLATHUB_REPO_TOKEN && $ARCH == "arm"'
+    when: never
+  - if: '$CI_COMMIT_TAG && $FLATHUB_REPO_TOKEN && $ARCH == "ppc64le"'
+    when: never
+  - if: $CI_COMMIT_TAG
+    when: always
+  - if: '$CI_COMMIT_BRANCH == "master"'
+    when: always
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+    when: always
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+    when: always
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
+    when: always
 
 .publish_tar_template:
   stage: publish
