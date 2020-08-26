@@ -853,12 +853,13 @@ markdown_manifest:
 .reproducible_template: &reproducible
   stage: reproducible
   script:
-    - ./utils/test-reproducibility.sh reproducible-test.bst
+    - ./utils/test_reproducibility.py tests/reproducible-test.bst result_folder
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-      - ${CI_PROJECT_DIR}/results.cache
+      - ${CI_PROJECT_DIR}/result_folder               # All results of diffoscope for non-reproducible builds.
+      - ${CI_PROJECT_DIR}/reproducibility_results.txt # All elements that are not reproducible
   only:
     - schedules
 
