@@ -1,21 +1,41 @@
-kind: oci
+kind: script
 
 build-depends:
+- oci/oci-builder.bst
 - oci/platform-oci.bst
 - oci/layers/sdk.bst
-
-# For build time optimization
-- oci/layers/platform.bst
+- oci/layers/sdk-init-script.bst
 
 config:
-  mode: docker
-  images:
-  - os: linux
-    architecture: "%{go-arch}"
-    parent:
-      element: oci/platform-oci.bst
-    layer:
-    - oci/layers/sdk.bst
-    comment: "Import SDK layer from Freedesktop SDK"
-    tags:
-    - freedesktopsdk/sdk:latest
+  layout:
+  - element: oci/oci-builder.bst
+    destination: /
+  - element: oci/layers/sdk.bst
+    destination: /layer
+  - element: oci/platform-oci.bst
+    destination: /parent
+  - element: oci/layers/sdk-init-script.bst
+    destination: /
+
+  commands:
+  - |
+    if [ -d /initial_scripts ]; then
+      for i in /initial_scripts/*; do
+        "${i}" /layer
+      done
+    fi
+
+  - |
+    cd "%{install-root}"
+    build-oci <<EOF
+    mode: docker
+    images:
+    - os: linux
+      architecture: "%{go-arch}"
+      parent:
+        image: /parent
+      layer: /layer
+      comment: "Import sdk layer from Freedesktop SDK"
+      tags:
+      - freedesktopsdk/sdk:latest
+    EOF

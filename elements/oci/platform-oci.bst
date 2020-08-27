@@ -1,23 +1,40 @@
-kind: oci
+kind: script
 
-depends:
-- filename: oci/bootstrap-oci.bst
-  type: build
-- filename: oci/layers/platform.bst
-  type: build
-
-# For build time optimization
-- filename: oci/layers/bootstrap.bst
-  type: build
+build-depends:
+- oci/oci-builder.bst
+- oci/bootstrap-oci.bst
+- oci/layers/platform.bst
+- oci/layers/platform-init-script.bst
 
 config:
-  mode: oci
-  gzip: False
-  images:
-  - os: linux
-    architecture: "%{go-arch}"
-    parent:
-      element: oci/bootstrap-oci.bst
-    layer:
-    - oci/layers/platform.bst
-    comment: "Import platform layer from Freedesktop SDK"
+  layout:
+  - element: oci/oci-builder.bst
+    destination: /
+  - element: oci/layers/platform.bst
+    destination: /layer
+  - element: oci/bootstrap-oci.bst
+    destination: /parent
+  - element: oci/layers/platform-init-script.bst
+    destination: /
+
+  commands:
+  - |
+    if [ -d /initial_scripts ]; then
+      for i in /initial_scripts/*; do
+        "${i}" /layer
+      done
+    fi
+
+  - |
+    cd "%{install-root}"
+    build-oci <<EOF
+    mode: oci
+    gzip: False
+    images:
+    - os: linux
+      architecture: "%{go-arch}"
+      parent:
+        image: /parent
+      layer: /layer
+      comment: "Import platform layer from Freedesktop SDK"
+    EOF
