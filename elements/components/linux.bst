@@ -173,9 +173,12 @@ config:
     scripts/config -m IWLWIFI
     scripts/config -m IWLMVM
     scripts/config -m IWLDVM
+    scripts/config -m ATH10K
+    scripts/config -m ATH10K_PCI
     scripts/config -m RTW88
     scripts/config -e RTW88_8822BE
     scripts/config -e RTW88_8822CE
+    scripts/config -e WLAN_VENDOR_ATH
 
     # Common DRM drivers
     scripts/config -m DRM_NOUVEAU
