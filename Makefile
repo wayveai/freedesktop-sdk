@@ -239,9 +239,10 @@ export-oci:
 	$(BST) build oci/platform-oci.bst \
 	             oci/sdk-oci.bst \
 	             oci/debug-oci.bst \
-	             oci/flatpak-oci.bst
+	             oci/flatpak-oci.bst \
+	             oci/toolbox-oci.bst
 	set -e; \
-	for name in platform sdk debug flatpak; do \
+	for name in platform sdk debug flatpak toolbox; do \
 	  $(BST) checkout "oci/$${name}-oci.bst" --tar "$${name}-oci.tar"; \
 	done
 
@@ -249,9 +250,10 @@ export-docker:
 	$(BST) build oci/platform-docker.bst \
 	             oci/sdk-docker.bst \
 	             oci/debug-docker.bst \
-	             oci/flatpak-docker.bst
+	             oci/flatpak-docker.bst \
+	             oci/toolbox-docker.bst
 	set -e; \
-	for name in platform sdk debug flatpak; do \
+	for name in platform sdk debug flatpak toolbox; do \
 	  $(BST) checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
 	done
 
