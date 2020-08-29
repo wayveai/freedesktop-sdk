@@ -318,6 +318,8 @@ config:
       x86_64|i686)
         scripts/config -m I2C_PIIX4
         scripts/config -m I2C_DESIGNWARE_PLATFORM
+        scripts/config -m MFD_INTEL_LPSS_PCI
+        scripts/config -m MFD_INTEL_LPSS_ACPI
       ;;
     esac
 
