@@ -10,7 +10,6 @@ depends:
 - components/libyaml.bst
 - components/lvm2.bst
 - components/mdadm.bst
-- components/ndctl.bst
 - components/parted.bst
 - components/systemd.bst
 - components/volume-key.bst
@@ -18,6 +17,7 @@ depends:
 variables:
   conf-local: >-
     --without-dmraid
+    --without-nvdimm
     --with-mdraid
 
 sources:

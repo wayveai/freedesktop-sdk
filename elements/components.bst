@@ -259,7 +259,6 @@ depends:
 - components/mythes.bst
 - components/nano.bst
 - components/nasm.bst
-- components/ndctl.bst
 - components/nettle.bst
 - components/networkmanager.bst
 - components/newt.bst
