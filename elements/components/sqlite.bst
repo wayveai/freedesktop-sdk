@@ -36,5 +36,5 @@ sources:
   url: github:sqlite/sqlite.git
   track: master
   match:
-  - 'version-*'
+  - 'version-3.32.*'
   ref: version-3.32.1-0-gd63c76fb31a0e262fb12a93b171e95a4e30c1a2e
