@@ -1026,14 +1026,6 @@ publish_docker_aarch64:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
-publish_docker_arm:
-  extends:
-    - .docker_publish_template
-    - .builder-arm
-  variables:
-    DISABLE_CACHE_PUSH: 1
-  dependencies: []
-
 publish_docker_ppc64le:
   extends:
     - .docker_publish_template
@@ -1082,7 +1074,6 @@ publish_docker_finish:
   - armhf
   dependencies:
   - publish_docker_ppc64le
-  - publish_docker_arm
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
