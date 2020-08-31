@@ -1080,6 +1080,7 @@ publish_docker_finish:
 
 .runtime_inheritance_check_template:
   stage: flatpak
+  interruptible: true
   script:
   - make test-runtime-inheritance
   only:
