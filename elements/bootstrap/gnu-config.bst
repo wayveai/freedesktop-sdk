@@ -8,7 +8,6 @@ depends:
 sources:
 - kind: git_tag
   url: savannah:config.git
-  track: master
   ref: 2593751ef276497e312d7c4ce7fd049614c7bf80
 # No tags exist, track HEAD of the branch
 
