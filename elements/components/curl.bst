@@ -39,4 +39,6 @@ sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
+  match:
+  - 'curl-7_71_*'
   ref: curl-7_71_1-0-g5a1fc8d33808d7b22f57bdf9403cda7ff07b0670
