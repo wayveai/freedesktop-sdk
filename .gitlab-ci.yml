@@ -29,9 +29,6 @@ stages:
   - prepare-publish
   - publish
   - finish-publish
-  - publish-snap
-  - publish-docker
-  - publish-docker-finish
   - reproducible
 
 before_script:
@@ -871,7 +868,7 @@ reproducible_arm:
   when: manual
 
 .snap_publish_template:
-  stage: publish-snap
+  stage: publish
   script:
     - |
       [ -n "${SNAPCRAFT_LOGIN_FILE}" ]
@@ -935,7 +932,7 @@ publish_snap_aarch64:
   when: manual
 
 .docker_publish_template:
-  stage: publish-docker
+  stage: publish
   retry: 2
   script:
   - |
@@ -1011,7 +1008,7 @@ publish_docker_finish:
   image: docker
   services:
   - docker:dind
-  stage: publish-docker-finish
+  stage: finish-publish
   allow_failure: true
   variables:
     DOCKER_HOST: tcp://docker:2375/
