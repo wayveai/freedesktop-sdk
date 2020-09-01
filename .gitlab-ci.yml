@@ -194,7 +194,7 @@ check_update_elements:
       --push
       --create_mr
       --gitlab_project="freedesktop-sdk/freedesktop-sdk"
-      --max_merge_requests=4
+      --max_merge_requests=2
       track-elements.bst
   only:
     - schedules
