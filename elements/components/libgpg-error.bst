@@ -27,4 +27,6 @@ sources:
 - kind: git_tag
   url: gnupg:libgpg-error.git
   track: master
-  ref: gpgrt-1.38-0-g71d278824c5fe61865f7927a2ed1aa3115f9e439
+  match:
+  - 'libgpg-error-1.38'
+  ref: libgpg-error-1.38-0-g71d278824c5fe61865f7927a2ed1aa3115f9e439
