@@ -65,34 +65,32 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ "${CI_JOB_NAME}" != app_x86_64-no-cache ] && [ "${CI_JOB_NAME}" != app_arm-no-cache ]; then
-      if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
-        echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
+      echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
+      echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
 
-        {
-          echo "projects:"
-          echo "  freedesktop-sdk:"
-          echo "    artifacts:"
-          if [ -f /cache-certificate/server.crt ]; then
-            echo "    - url: https://local-cas-server:1102"
-            echo "      client-key: /etc/ssl/CAS/server.key"
-            echo "      client-cert: /etc/ssl/CAS/server.crt"
-            echo "      server-cert: /cache-certificate/server.crt"
-            if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-              echo "      push: true"
-            fi
+      {
+        echo "projects:"
+        echo "  freedesktop-sdk:"
+        echo "    artifacts:"
+        if [ -f /cache-certificate/server.crt ]; then
+          echo "    - url: https://local-cas-server:1102"
+          echo "      client-key: /etc/ssl/CAS/server.key"
+          echo "      client-cert: /etc/ssl/CAS/server.crt"
+          echo "      server-cert: /cache-certificate/server.crt"
+          if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+            echo "      push: true"
           fi
-          if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
-            echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002"
-            echo "      client-key: /etc/ssl/CAS/server.key"
-            echo "      client-cert: /etc/ssl/CAS/server.crt"
-            if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-              echo "      push: true"
-            fi
+        fi
+        if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
+          echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002"
+          echo "      client-key: /etc/ssl/CAS/server.key"
+          echo "      client-cert: /etc/ssl/CAS/server.crt"
+          if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+            echo "      push: true"
           fi
-        } >> ~/.config/buildstream.conf
-      fi
+        fi
+      } >> ~/.config/buildstream.conf
     fi
 
   # flat-manager tokens to upload the releases
@@ -242,11 +240,6 @@ check_mirrors:
   stage: flatpak
   interruptible: true
   script:
-    - |
-      if [ "${CI_JOB_NAME}" == app_x86_64-no-cache ] || [ "${CI_JOB_NAME}" == app_arm-no-cache ]; then
-        sed -i '/artifacts:/,+1 d' project.conf
-      fi
-
     - make url-manifest
     - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
     - make build
@@ -331,16 +324,6 @@ app_x86_64:
     - .builder-x86_64
   dependencies: []
 
-app_x86_64-no-cache:
-  extends:
-    - .flatpak_template
-    - .builder-x86_64
-  dependencies: []
-  except:
-    - tags
-  only:
-    - schedules
-
 app_i686:
   extends:
     - .flatpak_template
@@ -358,16 +341,6 @@ app_arm:
     - .flatpak_template
     - .builder-arm
   dependencies: []
-
-app_arm-no-cache:
-  extends:
-    - .flatpak_template
-    - .builder-arm
-  dependencies: []
-  except:
-    - tags
-  only:
-    - schedules
 
 app_ppc64le:
   extends:
