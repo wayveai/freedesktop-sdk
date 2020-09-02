@@ -19,4 +19,4 @@ sources:
 - kind: git_tag
   url: github:seccomp/libseccomp.git
   track: release-2.4
-  ref: v2.4.3-0-g1dde9d94e0848e12da20602ca38032b91d521427
+  ref: v2.4.4-0-g8c76d7bb694a3f072c5f791c812bb4e2ea385f89
