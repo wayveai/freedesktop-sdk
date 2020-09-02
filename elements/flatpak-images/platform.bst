@@ -16,7 +16,7 @@ config:
     Environment:
       GI_TYPELIB_PATH: /app/lib/girepository-1.0
       GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:%{libdir}/gstreamer-1.0
-      XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share
+      XDG_DATA_DIRS: /app/share:/usr/share:/usr/share/runtime/share:/usr/lib/extensions/vulkan/share:/run/host/user-share:/run/host/share
       ALSA_CONFIG_DIR: /usr/share/alsa
       ALSA_CONFIG_PATH: /usr/share/alsa/alsa-flatpak.conf
 
@@ -33,6 +33,13 @@ config:
       download-if: "active-gl-driver"
       enable-if: "active-gl-driver"
       autoprune-unless: active-gl-driver
+
+    Extension org.freedesktop.Platform.VulkanLayer:
+      version: "%{branch}"
+      directory: "lib/extensions/vulkan"
+      subdirectories: "true"
+      no-autodownload: "true"
+      merge-dirs: "share/vulkan/implicit_layer.d;share/vulkan/explicit_layer.d;"
 
     Extension org.freedesktop.Platform.Locale:
       directory: share/runtime/locale
