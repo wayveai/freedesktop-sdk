@@ -3,6 +3,9 @@ kind: manual
 depends:
 - filename: bootstrap-import.bst
 
+environment:
+  BSTARCH: '%{arch}'
+
 config:
   configure-commands:
   - |
