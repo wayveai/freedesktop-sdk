@@ -1,20 +1,8 @@
-kind: manual
+kind: makemaker
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
-
-config:
-  configure-commands:
-  - |
-    perl Makefile.PL PREFIX="%{prefix}" DESTDIR="%{install-root}"
-
-  install-commands:
-  - |
-    make -j1 install
-
-  - |
-    find "%{install-root}" -type f -name perllocal.pod -delete
+- bootstrap-import.bst
+- components/perl.bst
 
 sources:
 - kind: tar
