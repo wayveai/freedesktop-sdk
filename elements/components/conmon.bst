@@ -1,4 +1,4 @@
-kind: manual
+kind: make
 
 build-depends:
 - components/pkg-config.bst
@@ -16,17 +16,7 @@ variables:
   ldflags_defaults: ""
   optimize-debug: "false"
   compress-debug: "false"
-
-config:
-  build-commands:
-  - |
-    cd src/github.com/containers/conmon
-    make
-
-  install-commands:
-  - |
-    cd src/github.com/containers/conmon
-    make DESTDIR="%{install-root}" PREFIX="%{prefix}" install
+  command-subdir: src/github.com/containers/conmon
 
 sources:
 - kind: git_tag
