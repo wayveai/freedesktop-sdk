@@ -8,4 +8,4 @@ runtime-depends:
 - components/json-c.bst
 - components/pwquality.bst
 - components/util-linux.bst
-- components/lvm2.bst
+- components/lvm2-stage1.bst
