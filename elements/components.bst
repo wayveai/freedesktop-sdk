@@ -25,6 +25,7 @@ depends:
 - components/bluez-headers.bst
 - components/bluez.bst
 - components/brotli.bst
+- components/btrfs-progs.bst
 - components/ca-certificates.bst
 - components/cairo.bst
 - components/ccache.bst
@@ -240,6 +241,7 @@ depends:
 - components/lvm2.bst
 - components/lz4.bst
 - components/lzip.bst
+- components/lzo.bst
 - components/m4.bst
 - components/man-db.bst
 - components/man-pages-posix.bst
@@ -452,6 +454,7 @@ depends:
 - components/yelp-xsl.bst
 - components/zenity.bst
 - components/zip.bst
+- components/zstd.bst
 
 (?):
 - target_arch in ("x86_64", "i686"):
