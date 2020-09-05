@@ -353,12 +353,16 @@ config:
     esac
 
     # Useful filesystems
-    [ grep CONFIG_XFS=y .config ] || scripts/config -m XFS
-    scripts/config -e XFS_POSIX_ACL
-    [ grep CONFIG_BTRS=y .config ] || scripts/config -m BTRFS
-    scripts/config -e BTRFS_FS_POSIX_ACL
-    [ grep CONFIG_EXFAT_FS=y .config ] || scripts/config -m EXFAT_FS
-    [ grep CONFIG_VFAT_FS=y .config ] || scripts/config -m VFAT_FS
+    for fs in XFS BTRFS EXFAT_FS VFAT_FS F2FS_FS; do
+      [ $(scripts/config -s "${fs}") != n ] || scripts/config -m "${fs}"
+    done
+    for fs in XFS BTRFS F2FS_FS; do
+      scripts/config -e "${fs}_POSIX_ACL"
+    done
+    scripts/config -e FS_ENCRYPTION
+
+  - |
+    yes '' | make -j1 oldconfig
 
   install-commands:
   - |
