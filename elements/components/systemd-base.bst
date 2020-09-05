@@ -19,7 +19,7 @@ build-depends:
 - components/gnu-efi-maybe.bst
 - components/libxslt.bst
 - components/docbook-xsl.bst
-- components/cryptsetup.bst
+- components/cryptsetup-lvm2-stage1.bst
 
 variables:
   efi: 'false'
