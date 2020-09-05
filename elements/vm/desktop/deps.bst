@@ -50,6 +50,7 @@ runtime-depends:
 - components/iptables.bst
 - components/podman.bst
 - components/f2fs-tools.bst
+- components/btrfs-progs.bst
 
 (?):
 - not pipewire:
