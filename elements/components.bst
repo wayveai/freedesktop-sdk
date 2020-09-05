@@ -68,6 +68,7 @@ depends:
 - components/eos-updater.bst
 - components/expat.bst
 - components/extra-cmake-modules.bst
+- components/f2fs-tools.bst
 - components/fcitx.bst
 - components/ffmpeg.bst
 - components/fftw.bst

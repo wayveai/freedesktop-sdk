@@ -49,6 +49,7 @@ runtime-depends:
 - components/hosts.bst
 - components/iptables.bst
 - components/podman.bst
+- components/f2fs-tools.bst
 
 (?):
 - not pipewire:
