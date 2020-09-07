@@ -27,5 +27,5 @@ sources:
   track-extra:
   - v1.0
   match:
-  - v*
+  - v1.0.7
   ref: v1.0.7-0-gd6d98957ca8ccb1ef45922e978bb10efca0ea541
