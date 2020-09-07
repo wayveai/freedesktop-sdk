@@ -75,6 +75,8 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/oasis_open_xml/
     pagure_releases:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/pagure_releases/
+    pypi:
+    - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/pypi/
     sourceforge_download:
     - https://gitlab.com/freedesktop-sdk/mirrors/tarball-lfs-mirror/raw/master/sourceforge_download/
     sourceforge:
