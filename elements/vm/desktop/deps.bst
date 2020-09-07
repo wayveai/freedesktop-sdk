@@ -64,3 +64,4 @@ runtime-depends:
       (>):
       - vm/config/pipewire.bst
       - components/pipewire-libpulse.bst
+      - components/wireplumber.bst
