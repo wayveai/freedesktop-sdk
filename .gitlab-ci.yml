@@ -1102,3 +1102,4 @@ check_runtime_inheritance_ppc64le:
   extends:
   - .runtime_inheritance_check_template
   - .builder-ppc64le
+  allow_failure: true
