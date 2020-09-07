@@ -8,6 +8,7 @@ depends:
   type: build
 
 variables:
+  builddir: ''
   conf-local: |
     --with-trust-paths=%{ca_path}
 
@@ -22,4 +23,4 @@ sources:
 - kind: git_tag
   url: github:p11-glue/p11-kit.git
   track: master
-  ref: 0.23.20-0-g762cdaa2cd5c5ec09cc844f9a6bdc551c7f6c8ed
+  ref: 0.23.21-0-gfd8b56f3ee971f94dc6fc95411fc01e1c12153ab
