@@ -28,4 +28,6 @@ sources:
   - v1.0
   match:
   - v*
-  ref: v1.0.7-0-gd6d98957ca8ccb1ef45922e978bb10efca0ea541
+  ref: v1.0.9-0-ge61745a6b7add50d380cfd7d3883dd6c62fc2c71
+- kind: patch
+  path: patches/brotli/fix-pkg-config.patch
