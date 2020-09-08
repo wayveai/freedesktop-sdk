@@ -1,15 +1,9 @@
-kind: manual
-
-depends:
-- bootstrap-import.bst
-- components/flatpak.bst
+kind: import
 
 config:
-  install-commands:
-  - |
-    install -Dm644 -t "%{install-root}%{indep-libdir}/systemd/system" add-flathub.service
-    install -Dm644 -t "%{install-root}%{indep-libdir}/systemd/system-preset" add-flathub.preset
+  target: '%{sysconfdir}/flatpak/remotes.d'
 
 sources:
-- kind: local
-  path: files/vm/flathub-config
+- kind: remote
+  url: https://flathub.org/repo/flathub.flatpakrepo
+  ref: 3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a
