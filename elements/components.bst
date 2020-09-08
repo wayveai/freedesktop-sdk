@@ -300,7 +300,9 @@ depends:
 - components/pinentry-ncurses.bst
 - components/pipewire-base.bst
 - components/pipewire-daemon.bst
+- components/pipewire-libjack-manual.bst
 - components/pipewire-libjack.bst
+- components/pipewire-libpulse-manual.bst
 - components/pipewire-libpulse.bst
 - components/pipewire-manifest.bst
 - components/pipewire.bst

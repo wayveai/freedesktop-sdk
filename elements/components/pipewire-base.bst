@@ -46,10 +46,12 @@ public:
       - '%{debugdir}%{bindir}/pipewire.debug'
 
       libjack:
+      - '%{bindir}/pw-jack'
       - '%{libdir}/pipewire-0.3/jack/**'
       - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
 
       libpulse:
+      - '%{bindir}/pw-pulse'
       - '%{libdir}/pipewire-0.3/pulse/**'
       - '%{debugdir}%{libdir}/pipewire-0.3/pulse/**'
   cpe:
