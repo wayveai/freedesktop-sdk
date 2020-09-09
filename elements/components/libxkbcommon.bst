@@ -23,6 +23,7 @@ public:
         (>):
         - '%{libdir}/libxkbcommon.so'
         - '%{libdir}/libxkbcommon-x11.so'
+        - '%{libdir}/libxkbregistry.so'
 
 sources:
 - kind: git_tag
