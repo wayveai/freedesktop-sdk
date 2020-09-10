@@ -124,8 +124,20 @@ before_script:
 
   - |
     if [ -n "$CI_COMMIT_TAG" ] && [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
-        export SNAP_RELEASE=stable
-        export SNAP_GRADE=stable
+        case "${CI_COMMIT_TAG}" in
+          *beta*)
+            export SNAP_RELEASE=beta
+            export SNAP_GRADE=devel
+            ;;
+          *rc*)
+            export SNAP_RELEASE=candidate
+            export SNAP_GRADE=stable
+            ;;
+          *)
+            export SNAP_RELEASE=stable
+            export SNAP_GRADE=stable
+            ;;
+        esac
         ./utils/generate-version snap-version.yml
     elif [ -n "$SNAPCRAFT_LOGIN_FILE" ]; then
         export SNAP_RELEASE=edge
