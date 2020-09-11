@@ -53,8 +53,10 @@ sources:
 - kind: git_tag
   url: gnome:glib.git
   track: master
-  track-extra:
-  - glib-2-64
+  #track-extra:
+  #- glib-2-66
   match:
-  - 2.64.*
-  ref: 2.64.5-0-g2560f61370a143e6a056b99d1e918a58f40e3710
+  - 2.*[02468].*
+  ref: 2.66.0-0-gc2c12e42920d6e06c23c87398996827e53c1fc72
+- kind: patch
+  path: patches/glib/gtk-doc-1.32.patch
