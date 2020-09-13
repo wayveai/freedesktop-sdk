@@ -1,17 +1,16 @@
 kind: autotools
 
+build-depends:
+- components/flex.bst
+- components/m4.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/flex.bst
-  type: build
-- filename: components/m4.bst
-  type: build
-- filename: components/pcre2.bst
+- bootstrap-import.bst
+- components/pcre2.bst
 
 variables:
   builddir: ''
   notparallel: true
-  local_flags: -fcommon
 
 environment:
   USE_PCRE2: y
