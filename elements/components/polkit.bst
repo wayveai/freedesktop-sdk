@@ -44,15 +44,11 @@ sources:
 - kind: git_tag
   url: freedesktop:polkit/polkit.git
   track: master
-  ref: 0.117-0-g585f4f2715639394e36319d4918389d26e250e7b
+  ref: 0.118-0-gff4c2144f0fb1325275887d9e254117fcd8a1b52
 - kind: patch
   path: patches/polkit/gettext.patch
 - kind: patch
   path: patches/polkit/gettext-0.20.patch
-- kind: patch
-  path: patches/polkit/mozjs78.patch
-- kind: patch
-  path: patches/polkit/mozjs78-2.patch
 - kind: local
   path: files/polkit/sysusers.conf
   directory: data
