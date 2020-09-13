@@ -1,9 +1,10 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   conf-local: >-
@@ -12,7 +13,6 @@ variables:
     --without-golang
     --enable-systemd
     --disable-zos-remote
-  local_flags: -fcommon
 
 config:
   install-commands:
@@ -31,3 +31,5 @@ sources:
 - kind: local
   path: files/audit/tmpfiles-audit.conf
   directory: freedesktop-sdk
+- kind: patch
+  path: patches/audit/gcc10-fno-common.patch
