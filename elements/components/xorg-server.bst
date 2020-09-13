@@ -1,38 +1,36 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/xorg-proto-xorgproto.bst
+- components/xorg-util-macros.bst
+- components/wayland-protocols.bst
+
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/nettle.bst
-- filename: components/libtirpc.bst
-- filename: components/libdrm.bst
-- filename: components/dummy-gbm.bst
-- filename: components/libepoxy.bst
-- filename: components/pixman.bst
-- filename: components/xorg-lib-xkbfile.bst
-- filename: components/xorg-lib-xfont2.bst
-- filename: components/xorg-lib-xdmcp.bst
-- filename: components/xorg-lib-xshmfence.bst
-- filename: components/xorg-app-xkbcomp.bst
-- filename: components/xorg-font-util.bst
-- filename: components/xorg-proto-xorgproto.bst
-  type: build
-- filename: components/xorg-util-macros.bst
-  type: build
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: components/systemd.bst
+- bootstrap-import.bst
+- components/nettle.bst
+- components/libtirpc.bst
+- components/libdrm.bst
+- components/dummy-gbm.bst
+- components/libepoxy.bst
+- components/pixman.bst
+- components/xorg-lib-xkbfile.bst
+- components/xorg-lib-xfont2.bst
+- components/xorg-lib-xdmcp.bst
+- components/xorg-lib-xshmfence.bst
+- components/xorg-app-xkbcomp.bst
+- components/xorg-font-util.bst
+- components/wayland.bst
+- components/systemd.bst
 
 variables:
-  conf-local: |
-    --disable-xvfb \
-    --disable-xnest \
-    --disable-xwin \
-    --enable-glamor \
+  conf-local: >-
+    --disable-xvfb
+    --disable-xnest
+    --disable-xwin
+    --enable-glamor
     --enable-xwayland
-  local_flags: -fcommon
 
 sources:
 - kind: git_tag
