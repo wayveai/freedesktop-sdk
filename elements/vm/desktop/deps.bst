@@ -51,6 +51,7 @@ runtime-depends:
 - components/podman.bst
 - components/f2fs-tools.bst
 - components/btrfs-progs.bst
+- components/fscrypt.bst
 
 (?):
 - not pipewire:
