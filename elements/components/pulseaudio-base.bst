@@ -2,7 +2,6 @@ kind: meson
 
 build-depends:
 - public-stacks/buildsystem-meson.bst
-- components/git-minimal.bst
 - components/m4.bst
 - components/perl-xml-parser.bst
 - components/systemd.bst
