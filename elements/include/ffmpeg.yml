@@ -152,4 +152,6 @@ sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.2
-  ref: n4.2.1-0-g1529dfb73a5157dcb8762051ec4c8d8341762478
+  ref: n4.2.4-0-gf9f95ceebfbd7b7f43c1b7ad34e25d366e6e2d2b
+- kind: patch
+  path: patches/ffmpeg/yuv2rgb-neon-fix.patch
