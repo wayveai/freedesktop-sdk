@@ -95,6 +95,8 @@ public:
 
       static-blocklist:
         (>):
+        - '%{includedir}/lld'
+        - '%{includedir}/lld/**'
         - '%{libdir}/**/*.a.syms'
         - "%{libdir}/*.a"
         - "%{libdir}/**/*.a"
