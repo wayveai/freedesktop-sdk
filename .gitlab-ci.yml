@@ -209,8 +209,8 @@ check_update_elements:
       --gitlab_project="freedesktop-sdk/freedesktop-sdk"
       --max_merge_requests=2
       track-elements.bst
-  only:
-    - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
 check_mirrors:
   extends:
@@ -246,8 +246,8 @@ check_mirrors:
       - ${CI_PROJECT_DIR}/unmirrored_sources_list.json
       - ${CI_PROJECT_DIR}/create_mirrors_from_problem_list.py
       - ${CI_PROJECT_DIR}/README-Create-mirrors-script.md
-  only:
-    - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
 .flatpak_template:
   stage: flatpak
@@ -361,11 +361,13 @@ app_ppc64le:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
 
 check_snap_x86_64:
   extends:
@@ -461,11 +463,13 @@ minimal_systemd_vm_ppc64le:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
   interruptible: true
 
 minimal_systemd_vm_image_x86_64:
@@ -495,11 +499,13 @@ minimal_systemd_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
   interruptible: true
 
 minimal_efi_vm_image_x86_64:
@@ -758,11 +764,13 @@ cve_report:
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"
-  only:
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
   dependencies: []
 
 markdown_manifest:
@@ -796,26 +804,23 @@ markdown_manifest:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - ${CI_PROJECT_DIR}/result_folder               # All results of diffoscope for non-reproducible builds.
       - ${CI_PROJECT_DIR}/reproducibility_results.txt # All elements that are not reproducible
-  only:
-    - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "reproducible"'
 
 reproducible_x86_64:
   extends:
     - .reproducible_template
     - .builder-x86_64
-  when: manual
 
 reproducible_i686:
   extends:
     - .reproducible_template
     - .builder-i686
-  when: manual
 
 reproducible_aarch64:
   extends:
     - .reproducible_template
     - .builder-aarch64
-  when: manual
 
 .snap_publish_template:
   stage: publish
@@ -997,11 +1002,13 @@ publish_docker_finish:
   interruptible: true
   script:
   - make test-runtime-inheritance
-  only:
-    - master
-    - '18.08'
-    - '19.08'
-    - '/^release\/.*/'
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH == "18.08"'
+  - if: '$CI_COMMIT_BRANCH == "19.08"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
 
 check_runtime_inheritance_x86_64:
   extends:
