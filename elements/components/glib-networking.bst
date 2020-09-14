@@ -23,8 +23,8 @@ sources:
 - kind: git_tag
   url: gnome:glib-networking.git
   track: master
-  track-extra:
-  - glib-2-62
+  #track-extra:
+  #- glib-2-66
   match:
   - 2.*[02468].*
-  ref: 2.62.4-0-g6708b357c59d7655f10d7b69c194178c9ccc447f
+  ref: 2.66.0-0-g61d7e024ca354e6d2e39930d66a2067f3de5842c
