@@ -50,6 +50,7 @@ class BuildstreamConfiguration:
         config = None
 
         self.bst_call = bst_binary_call.split(" ")
+        self.bst_call_no_colors = [p for p in self.bst_call if p != "--colors"]
 
         if "--config" in bst_binary_call:
             config_index = self.bst_call.index("--config") + 1
@@ -240,7 +241,7 @@ def bst_show(
         # so we need to run once with --deps build and another time
         # with --deps none
 
-        bst_call = bst_config.bst_call.copy()
+        bst_call = bst_config.bst_call_no_colors.copy()
         bst_call.extend(
             [
                 "show",
