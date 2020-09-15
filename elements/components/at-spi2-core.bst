@@ -28,9 +28,7 @@ public:
 sources:
 - kind: git_tag
   url: gnome:at-spi2-core.git
-  track: master
-  track-extra:
-  - gnome-3-32
+  track: gnome-3-36
   match:
-  - AT_SPI2_CORE_*_*[02468]_*
-  ref: AT_SPI2_CORE_2_36_0-0-gcf08453489c221499dc8a7c17e0955131f9dedf7
+  - AT_SPI2_CORE_2_36_*
+  ref: AT_SPI2_CORE_2_36_1-0-g4654c91696460b9eba1592252f5528c4c37de00e
