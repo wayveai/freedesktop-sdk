@@ -9,9 +9,8 @@ Missing from Buildstream:
 
 - Disable Artifacts Server
     Currently we need to run buildstream without access to
-    internet via unshare. This works on linux but we can't
-    expect that this will work on other systems that do not
-    have this feature
+    internet via a LD_PRELOAD hack. We can't
+    expect that this will work everywhere.
 """
 
 from typing import List
@@ -131,7 +130,7 @@ def bst_build_specific(
     """Builds a single element without network connection
     to make sure we are not downloading from a artifacts server."""
     # FIXME: change this to bst build --no-cache target as soon as it's supported.
-    # do not hack around unshare.
+    # do not hack around forbid-network.
 
     bst_call = bst_config.bst_call.copy()
     bst_call.extend(["build", element_name])
@@ -141,11 +140,11 @@ def bst_build_specific(
         # script, but the proper way to do this is to have buildstream to
         # not allow artifact cache access for a specific element using a
         # command line flag.
-        unshare_call = ["unshare", "--net", "--map-current-user"]
-        unshare_call.extend(bst_call)
+        forbid_network_call = ["forbid-network"]
+        forbid_network_call.extend(bst_call)
 
-        print("BST BUILD RUNNING:", unshare_call)
-        subprocess.call(unshare_call)
+        print("BST BUILD RUNNING:", forbid_network_call)
+        subprocess.call(forbid_network_call)
     else:
         print("BST BUILD RUNNING:", bst_call)
         subprocess.call(bst_call)
