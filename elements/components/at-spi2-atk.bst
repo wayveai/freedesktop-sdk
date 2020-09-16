@@ -35,4 +35,4 @@ sources:
   - gnome-3-32
   match:
   - AT_SPI2_ATK_*_*[02468]_*
-  ref: AT_SPI2_ATK_2_34_2-0-geac8e935128753f8204ecc3904e6e3e7b231e3ea
+  ref: AT_SPI2_ATK_2_38_0-0-gb91a111f040a09e804428a81e6de214e4962247b
