@@ -1,24 +1,24 @@
 kind: meson
 
+build-depends:
+- components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
+- components/python3.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glib-networking.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/libxml2.bst
-- filename: components/sqlite.bst
-- filename: components/libpsl.bst
-- filename: components/python3.bst
-  type: build
-- filename: components/brotli.bst
+- bootstrap-import.bst
+- components/glib-networking.bst
+- components/libxml2.bst
+- components/sqlite.bst
+- components/libpsl.bst
+- components/brotli.bst
 
 variables:
   meson-local: >
     -Dgssapi=disabled
     -Dvapi=disabled
     -Dntlm=disabled
+    -Dsysprof=disabled
 
 public:
   bst:
@@ -32,8 +32,8 @@ sources:
 - kind: git_tag
   url: gnome:libsoup.git
   track: master
-  track-extra:
-  - gnome-3-32
+  #track-extra:
+  #- gnome-3-38
   match:
   - 2.[0-9][02468].*
-  ref: 2.70.0-0-g3857ea93dd3775d68010efed7ad3245714fee379
+  ref: 2.72.0-0-gae1632c176c60b7fe832024c0a958f4079767c44
