@@ -79,7 +79,7 @@ class BuildstreamConfiguration:
             self._default_cache_folder()
         else:
             with open(config, "r") as config_file:
-                parsed_config = yaml.load(config_file.read())
+                parsed_config = yaml.load(config_file.read(), Loader=yaml.SafeLoader)
                 if "artifactdir" in parsed_config:
                     self.cache_folder = os.path.join(
                         parsed_config["artifactdir"], "cas/refs"
@@ -214,10 +214,11 @@ def bst_show_extract_result(output) -> List[ElementInfo]:
     """ Parses the output of the bst show command and returns the matches, if exists. """
     result = []
     for line in output.decode("utf-8").splitlines():
+        if len(line) == 0:
+            continue
         # sdk.bst,ea449744661b5e444a6806cb5f534,waiting
         words = line.split(",")
-        if len(words) != 3:
-            continue
+        assert len(words) == 3
 
         result.append(ElementInfo(name=words[0], ref=words[1], status=words[2]))
 
@@ -262,6 +263,31 @@ def bst_show(
         sys.exit(1)
 
     return result
+
+
+def bst_fetch_required_sources(
+        bst_config: BuildstreamConfiguration, element_name: str
+):
+    seen = set([element_name])
+    queue = [element_name]
+    required = [element_name]
+
+    while queue:
+        result = bst_show(bst_config, queue, 'build')
+        queue = []
+        for elt in result:
+            if elt.name in seen:
+                continue
+            seen.add(elt.name)
+            if elt.status == 'cached':
+                continue
+            queue.append(elt.name)
+            if elt.status == 'fetch needed':
+                required.append(elt.name)
+
+    bst_fetch_sources(bst_config=bst_config, element_names=required)
+
+    return required
 
 
 def is_reproducible(
@@ -313,14 +339,6 @@ def handle_artifact_status(
     # A Comment from Valentin on the MR for this, but it's important
     # as explanation on why is this here:
 
-    # This call to bst fetch is misplaced. We need to call it for the
-    # only reason that when we run bst build  without network,
-    # we need the source to have been downloading. When BuildStream
-    # will provide an option to disable cache artifacts,
-    # this will not be needed anymore.
-    # So I want this to be moved to right before calling bst build
-    # without network, so we can just remove it all together.
-    bst_fetch_sources(bst_config=bst_config, element_names=element_names)
     pull_result = bst_show(
         bst_config=bst_config, targets=element_names, dependency_kind="none"
     )
@@ -376,6 +394,11 @@ def is_single_project_reproducible(
             bst_config=bst_config,
             element_name=element_info.name,
             element_ref=element_info.ref,
+        )
+
+        bst_fetch_required_sources(
+            bst_config=bst_config,
+            element_name=element_info.name,
         )
 
         bst_build_specific(
