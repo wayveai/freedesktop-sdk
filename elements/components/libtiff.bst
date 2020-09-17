@@ -1,9 +1,13 @@
-kind: autotools
+kind: cmake
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/jpeg.bst
+- components/lzip.bst
+- components/libwebp.bst
+
+build-depends:
+- public-stacks/buildsystem-cmake.bst
 
 config:
   install-commands:

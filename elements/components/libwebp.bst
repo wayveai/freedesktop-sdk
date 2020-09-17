@@ -1,13 +1,13 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libpng.bst
-- filename: components/jpeg.bst
-- filename: components/giflib.bst
-- filename: components/libtiff.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/libpng.bst
+- components/jpeg.bst
+- components/giflib.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
 
 variables:
   conf-local: |
