@@ -32,8 +32,8 @@ sources:
 - kind: git_tag
   url: gnome:libsoup.git
   track: master
-  track-extra:
-  - gnome-3-32
+  #track-extra:
+  #- gnome-3-36
   match:
-  - 2.[0-9][02468].*
+  - 2.70.*
   ref: 2.70.0-0-g3857ea93dd3775d68010efed7ad3245714fee379
