@@ -1,29 +1,14 @@
-kind: filter
+kind: stack
 description: |
   This element replaces Jack library by a drop-in replacement so that
   Jack clients connects to Pipewire.
   This is not to be confused with the Jack plugin for Pipewire.
 
-build-depends:
-- components/pipewire-base.bst
-
 runtime-depends:
-- components/pipewire.bst
-
-config:
-  include:
-  - libjack
-  include-orphans: False
+- components/pipewire-libjack-manual.bst
 
 public:
   bst:
-    split-rules:
-      devel:
-        (>):
-        - '%{libdir}/pipewire-0.3/jack/libjack.so'
-        - '%{libdir}/pipewire-0.3/jack/libjacknet.so'
-        - '%{libdir}/pipewire-0.3/jack/libjackserver.so'
-
     integration-commands:
     - rm -f "%{libdir}"/libjack.so*
     - rm -f "%{libdir}"/libjacknet.so*
