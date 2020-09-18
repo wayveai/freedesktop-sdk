@@ -3,14 +3,17 @@ kind: pip
 build-depends:
 - public-stacks/buildsystem-cmake.bst
 - components/python3-pip.bst
+- components/python3-wheel.bst
 - components/pkg-config.bst
 - components/flex.bst
 
 depends:
 - components/python3.bst
+- components/python3-setuptools.bst
 - components/glib.bst
 - components/libxml2.bst
 - components/json-glib.bst
+- components/llvm.bst
 
 runtime-depends:
 - components/python3-appdirs.bst

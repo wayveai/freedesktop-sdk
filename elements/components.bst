@@ -409,6 +409,7 @@ depends:
 - components/sdl2-net.bst
 - components/sdl2-ttf.bst
 - components/sdl2.bst
+- components/shaderc.bst
 - components/shadow.bst
 - components/shared-mime-info.bst
 - components/slang.bst

@@ -1,16 +1,16 @@
 kind: meson
 
+build-depends:
+- components/ffmpeg.bst
+- public-stacks/buildsystem-meson.bst
+- components/nasm.bst
+- components/hotdoc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/orc.bst
-- filename: components/gstreamer.bst
-- filename: components/gstreamer-plugins-base.bst
-- filename: components/ffmpeg.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/nasm.bst
-  type: build
+- bootstrap-import.bst
+- components/orc.bst
+- components/gstreamer.bst
+- components/gstreamer-plugins-base.bst
 
 variables:
   meson-local: |
@@ -19,8 +19,10 @@ variables:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav.git
-  track: '1.16'
-  ref: 1.16.2-0-g090cfd40aad49ad645a9bf4bdd62e65b739c95f3
+  track: master
+  track-extra:
+  - '1.18'
+  ref: 1.18.0-0-g215b3ed959f2b307065319f94855cc9e1ce7be95
   submodules:
     common:
       checkout: false

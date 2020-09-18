@@ -3,7 +3,7 @@ kind: meson
 build-depends:
 - public-stacks/buildsystem-meson.bst
 - components/gobject-introspection.bst
-- components/gtk-doc.bst
+- components/hotdoc.bst
 
 depends:
 - bootstrap-import.bst
@@ -69,8 +69,10 @@ config:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-base.git
-  track: '1.16'
-  ref: 1.16.2-0-g9d3581b2e6f12f0b7e790d1ebb63b90cf5b1ef4e
+  track: master
+  track-extra:
+  - '1.18'
+  ref: 1.18.0-0-gf21623c1f60949ed6a77e2c2c3857be942cd2db5
   submodules:
     common:
       checkout: false

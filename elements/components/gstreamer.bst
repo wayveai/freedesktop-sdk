@@ -1,19 +1,16 @@
 kind: meson
 
+build-depends:
+- components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
+- components/flex.bst
+- components/bison.bst
+- components/hotdoc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glib.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: components/libunwind.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/gtk-doc.bst
-  type: build
+- bootstrap-import.bst
+- components/glib.bst
+- components/libunwind.bst
 
 variables:
   libexecdir: "%{libdir}"
@@ -41,5 +38,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer.git
-  track: '1.16'
-  ref: 1.16.2-0-g129493687793cbc109d6211bb0e465218e383e9d
+  track: master
+  track-extra:
+  - '1.18'
+  ref: 1.18.0-0-g96148da56f9cbf23120e51ce59ab90f94d8b19b8

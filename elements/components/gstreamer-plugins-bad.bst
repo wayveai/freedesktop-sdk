@@ -27,7 +27,7 @@ build-depends:
 - public-stacks/buildsystem-meson.bst
 - components/gobject-introspection.bst
 - components/wayland-protocols.bst
-
+- components/shaderc.bst
 
 variables:
   meson-local: >-
@@ -59,28 +59,33 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{libdir}/libgstbadallocators-1.0.so'
-        - '%{libdir}/libgstbadbase-1.0.so'
-        - '%{libdir}/libgstcodecparsers-1.0.so'
-        - '%{libdir}/libgstplayer-1.0.so'
-        - '%{libdir}/libgstbadvideo-1.0.so'
-        - '%{libdir}/libgstbadaudio-1.0.so'
-        - '%{libdir}/libgstmpegts-1.0.so'
         - '%{libdir}/libgstadaptivedemux-1.0.so'
-        - '%{libdir}/libgstinsertbin-1.0.so'
-        - '%{libdir}/libgsturidownloader-1.0.so'
+        - '%{libdir}/libgstbadallocators-1.0.so'
+        - '%{libdir}/libgstbadaudio-1.0.so'
+        - '%{libdir}/libgstbadbase-1.0.so'
+        - '%{libdir}/libgstbadvideo-1.0.so'
         - '%{libdir}/libgstbasecamerabinsrc-1.0.so'
-        - '%{libdir}/libgstphotography-1.0.so'
+        - '%{libdir}/libgstcodecparsers-1.0.so'
+        - '%{libdir}/libgstcodecs-1.0.so'
+        - '%{libdir}/libgstinsertbin-1.0.so'
         - '%{libdir}/libgstisoff-1.0.so'
-        - '%{libdir}/libgstwebrtc-1.0.so'
-        - '%{libdir}/libgstwayland-1.0.so'
+        - '%{libdir}/libgstmpegts-1.0.so'
+        - '%{libdir}/libgstphotography-1.0.so'
+        - '%{libdir}/libgstplayer-1.0.so'
         - '%{libdir}/libgstsctp-1.0.so'
+        - '%{libdir}/libgsttranscoder-1.0.so'
+        - '%{libdir}/libgsturidownloader-1.0.so'
+        - '%{libdir}/libgstvulkan-1.0.so'
+        - '%{libdir}/libgstwayland-1.0.so'
+        - '%{libdir}/libgstwebrtc-1.0.so'
 
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-bad.git
-  track: '1.16'
-  ref: 1.16.2-0-ga6f26408f74a60d02ce6b4f0daee392ce847055f
+  track: master
+  track-extra:
+  - '1.18'
+  ref: 1.18.0-0-g7cb583bb0427819a6b59b783e7df67961df2155f
   submodules:
     common:
       checkout: false
@@ -89,5 +94,3 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch

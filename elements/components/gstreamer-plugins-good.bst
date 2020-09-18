@@ -3,6 +3,8 @@ kind: meson
 build-depends:
 - components/gobject-introspection.bst
 - public-stacks/buildsystem-meson.bst
+- components/nasm.bst
+- components/hotdoc.bst
 
 depends:
 - bootstrap-import.bst
@@ -39,15 +41,16 @@ variables:
     -Dtaglib=disabled
     -Dtwolame=disabled
     -Dexamples=disabled
+    -Drpicamsrc=disabled
 
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-good.git
-  track: '1.16'
-  ref: 1.16.2-0-gce0723527aa37d5f4d19ef8021c0b2eb8f83b08d
+  track: master
+  track-extra:
+  - '1.18'
+  ref: 1.18.0-0-g6ef694ce7b40dda9f2163ed5e1b1de7378505ad0
   submodules:
     common:
       checkout: false
       url: freedesktop:gstreamer/common.git
-- kind: patch
-  path: patches/gstreamer-plugins-good/fix-qtmux.patch
