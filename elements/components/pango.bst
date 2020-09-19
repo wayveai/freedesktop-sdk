@@ -1,16 +1,18 @@
 kind: meson
 
+build-depends:
+- components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
+- components/gtk-doc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/cairo.bst
-- filename: components/harfbuzz.bst
-- filename: components/fontconfig.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/fribidi.bst
-- filename: components/libthai.bst
+- bootstrap-import.bst
+- components/cairo.bst
+- components/harfbuzz.bst
+- components/fontconfig.bst
+- components/fribidi.bst
+- components/libthai.bst
+- components/xorg-lib-xft.bst
 
 public:
   bst:
@@ -20,16 +22,17 @@ public:
         - '%{libdir}/libpango-1.0.so'
         - '%{libdir}/libpangoft2-1.0.so'
         - '%{libdir}/libpangocairo-1.0.so'
+        - '%{libdir}/libpangoxft-1.0.so'
 
 # Those are the defaults which we explicitly match.
 variables:
-  meson-local: |
-    -Dgtk_doc=false \
-    -Dintrospection=true \
+  meson-local: >-
+    -Dgtk_doc=false
+    -Dintrospection=true
     -Dinstall-tests=false
 
 sources:
 - kind: git_tag
   url: gnome:pango.git
   track: master
-  ref: 1.46.1-0-g265c4e50d29d58c0e07c0db26805220c7b878f5c
+  ref: 1.46.2-0-g296711130ef90d9555bd6ada5b258bb75d622c12
