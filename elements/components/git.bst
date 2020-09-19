@@ -1,36 +1,35 @@
 kind: autotools
 
-depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
-- filename: components/python3.bst
-- filename: components/gnupg.bst
-- filename: components/curl.bst
-- filename: components/pcre2.bst
-- filename: components/expat.bst
-- filename: components/libffi.bst
-- filename: components/tar.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/ca-certificates.bst
-  type: runtime
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/tar.bst
+- components/asciidoc.bst
+- components/docbook-xsl.bst
+- components/xmlto.bst
+- components/libxslt.bst
 
+depends:
+- bootstrap-import.bst
+- components/perl.bst
+- components/python3.bst
+- components/gnupg.bst
+- components/curl.bst
+- components/pcre2.bst
+- components/expat.bst
+- components/libffi.bst
+
+runtime-depends:
+- components/ca-certificates.bst
+
+environment:
+  INSTALL_SYMLINKS: '1'
 
 variables:
   builddir: ''
-  make: make %{make-args}
-  make-install: make -j1 DESTDIR="%{install-root}" install %{make-args}
-  make-args: |
-    NO_TCLTK=YesPlease \
-    INSTALL_SYMLINKS=1 \
-    CFLAGS="$CFLAGS" \
-    LDFLAGS="$LDFLAGS" \
-    prefix=%{prefix}
+  make: make all man
+  make-install: make -j1 install install-man DESTDIR='%{install-root}'
 
 config:
-  configure-commands: []
-
   install-commands:
     (>):
     - |
