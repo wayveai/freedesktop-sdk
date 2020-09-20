@@ -52,9 +52,9 @@ public:
 sources:
 - kind: git_tag
   url: gnome:glib.git
-  track: master
-  track-extra:
-  - glib-2-60
+  track: glib-2-64
   match:
-  - 2.*[02468].*
-  ref: 2.64.0-0-g369626e3105d688afaa316d89d34e8927a8a0171
+  - 2.64.*
+  ref: 2.64.5-0-g2560f61370a143e6a056b99d1e918a58f40e3710
+- kind: patch
+  path: patches/glib/revert-added-symbols.patch
