@@ -52,9 +52,5 @@ sources:
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-g56dec037a80266add6853e4b06e2dc379de757d1
-  submodules:
-    common:
-      checkout: false
-      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-plugins-good/gstreamer-plugins-good-libsoup3.patch

@@ -89,10 +89,6 @@ sources:
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-gd3af58d5b31941caa26c3ded85d7a7b84a91f0cc
-  submodules:
-    common:
-      checkout: false
-      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch

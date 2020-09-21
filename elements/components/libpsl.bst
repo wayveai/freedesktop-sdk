@@ -23,7 +23,7 @@ sources:
   url: github:rockdaboot/libpsl.git
   track: master
   ref: 0.21.1-0-ga5e6f26cce82898c54a0caa6dda0ab924b806daf
-  submodules:
-    list:
-      checkout: true
-      url: github:publicsuffix/list.git
+- kind: git_module
+  path: list
+  url: github:publicsuffix/list.git
+  ref: 826d762a078ae21cd8bb95fa8f38ae84bb3948e7

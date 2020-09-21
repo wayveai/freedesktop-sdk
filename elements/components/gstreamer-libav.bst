@@ -26,9 +26,5 @@ sources:
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-g9db917cab4c20e72e53ed962406a0d94636a2a39
-  submodules:
-    common:
-      checkout: false
-      url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch

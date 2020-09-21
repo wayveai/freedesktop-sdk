@@ -24,7 +24,7 @@ sources:
   url: freedesktop:xorg/lib/libxcb-keysyms.git
   track: master
   ref: 0.4.0-0-g0e51ee5570a6a80bdf98770b975dfe8a57f4eeb1
-  submodules:
-    m4:
-      url: freedesktop:xorg/util/xcb-util-m4.git
-      checkout: True
+- kind: git_module
+  path: m4
+  url: freedesktop:xorg/util/xcb-util-m4.git
+  ref: f662e3a93ebdec3d1c9374382dcc070093a42fed

@@ -37,7 +37,7 @@ sources:
   url: gitlab:gnutls/libtasn1.git
   track: master
   ref: v4.18.0-0-geacec5d46cbadc08280081830e42396d2d690b1d
-  submodules:
-    gnulib:
-      checkout: true
-      url: savannah:gnulib.git
+- kind: git_module
+  path: gnulib
+  url: savannah:gnulib.git
+  ref: e20b35c9167ff7c051d0314b356d7e7a304f828f

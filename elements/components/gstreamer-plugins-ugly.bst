@@ -28,7 +28,3 @@ sources:
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-gbd1dfb44475ab04d42b217acdf90942e0b7893b5
-  submodules:
-    common:
-      checkout: false
-      url: freedesktop:gstreamer/common.git
