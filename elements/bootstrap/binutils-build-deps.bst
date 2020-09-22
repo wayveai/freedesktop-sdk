@@ -1,5 +1,8 @@
 kind: script
 
+(@):
+- elements/bootstrap/include/common.yml
+
 build-depends:
 - bootstrap/gnu-config.bst
 - bootstrap/build/gcc-stage2.bst

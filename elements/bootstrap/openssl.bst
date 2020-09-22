@@ -12,7 +12,7 @@ environment:
   RANLIB: '%{triplet}-gcc-ranlib'
 
 variables:
-  openssl-target: linux-%{arch}
+  openssl-target: linux-%{uname-arch}
   arch-conf: ''
   (?):
   - target_arch == "i686":

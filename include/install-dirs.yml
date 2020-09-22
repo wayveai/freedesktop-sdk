@@ -1,0 +1,8 @@
+variables:
+  sbindir: "%{bindir}"
+  sysconfdir: "/etc"
+  localstatedir: "/var"
+  lib: "lib/%{gcc_triplet}"
+  indep-libdir: "%{prefix}/lib"
+  debugdir: "%{indep-libdir}/debug"
+  sourcedir: "%{debugdir}/source"

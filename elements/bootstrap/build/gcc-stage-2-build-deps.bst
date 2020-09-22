@@ -1,5 +1,8 @@
 kind: script
 
+(@):
+- elements/bootstrap/include/common.yml
+
 depends:
 - filename: bootstrap/build/binutils-stage1.bst
   type: build

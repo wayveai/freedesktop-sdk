@@ -1,6 +1,8 @@
 # Project-wide configuration of autotools elements
 
 variables:
+  builddir: bst_build_dir
+
   conf-deterministic: |
     --enable-deterministic-archives
   conf-link-args: |

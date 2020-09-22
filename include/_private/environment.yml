@@ -1,7 +1,4 @@
 # Environment variables for the build
-CFLAGS:  "%{target_flags}"
-CXXFLAGS: "%{target_flags}"
-LDFLAGS:  "%{ldflags_defaults}"
 LC_ALL: en_US.UTF-8
 PYTHON: "/usr/bin/python3"
 
