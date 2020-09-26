@@ -1,0 +1,14 @@
+diff -ur cachy.old/setup.py cachy/setup.py
+--- cachy.old/setup.py	2020-09-07 17:02:45.620872141 +0200
++++ cachy/setup.py	2020-09-07 17:03:38.582375661 +0200
+@@ -5,9 +5,7 @@
+ ['cachy',
+  'cachy.contracts',
+  'cachy.serializers',
+- 'cachy.stores',
+- 'tests',
+- 'tests.stores']
++ 'cachy.stores']
+ 
+ package_data = \
+ {'': ['*']}

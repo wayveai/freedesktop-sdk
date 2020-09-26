@@ -59,7 +59,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: github:PipeWire/pipewire.git
+  url: freedesktop:PipeWire/pipewire.git
   track: master
   exclude:
   - '*.*.9*'
