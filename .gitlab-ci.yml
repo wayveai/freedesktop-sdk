@@ -10,7 +10,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: '30f46619ecba142654e184ea9e09f905a467058c'
+  DOCKER_IMAGE_ID: "9003dd6ae819b79520afab8b9b8d26128257d740"
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst14/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst14/arm64:${DOCKER_IMAGE_ID}"
   DOCKER_PPC64LE: "${DOCKER_REGISTRY}/bst14/ppc64le:${DOCKER_IMAGE_ID}"
@@ -253,6 +253,32 @@ check_mirrors:
       - ${CI_PROJECT_DIR}/README-Create-mirrors-script.md
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
+
+license_checker_arm:
+  extends:
+    - .builder-arm
+  stage: update
+  interruptible: true
+  dependencies: []
+  variables:
+    DEPS: all
+    TARGETS: manifests/release-url-manifest.bst
+    OUTPUT_DIR: ${CI_PROJECT_DIR}/buildstream_license_checker_output
+    WORK_DIR: ${CI_PROJECT_DIR}/buildstream_license_checker_working_directory
+    IGNORE_LIST: files/bst_license_checker_ignorelist
+  artifacts:
+    when: always
+    paths:
+      - ${XDG_CACHE_HOME}/buildstream/logs
+      - ${OUTPUT_DIR}
+  cache:
+    key: license_checker
+    paths:
+      - ${WORK_DIR}
+  script:
+    - bst_license_checker --deps "${DEPS}" -w ${WORK_DIR} -o ${OUTPUT_DIR} --ignorelist ${IGNORE_LIST} ${TARGETS}
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "license_check"'
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
