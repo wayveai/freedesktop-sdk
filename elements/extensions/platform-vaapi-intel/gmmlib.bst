@@ -1,8 +1,7 @@
 kind: cmake
 
-depends:
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-cmake.bst
 
 variables:
   cmake-local: >-
@@ -26,4 +25,4 @@ sources:
   - 'intel-gmmlib-*'
   exclude:
   - 'intel-gmmlib-*.pre*'
-  ref: intel-gmmlib-20.1.1-0-g09324e1fe8129b66bdf6b16ed533d56ce654eaa4
+  ref: intel-gmmlib-20.3.2-0-g2072b0d1e8ba2cba2f94bc2c1fda89d6e457a50b

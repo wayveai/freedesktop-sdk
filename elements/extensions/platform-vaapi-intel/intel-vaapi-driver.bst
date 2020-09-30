@@ -1,12 +1,12 @@
 kind: meson
 
+build-depends:
+- extensions/mesa/libdrm.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: components/libdrm.bst
-- filename: components/libva.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: extensions/mesa/libdrm.bst
-  type: build
+- components/libdrm.bst
+- components/libva.bst
 
 environment:
   PKG_CONFIG_PATH: "/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig:"
@@ -23,4 +23,4 @@ sources:
   track: master
   track-extra:
   - v2.4-branch
-  ref: 2.4.0-0-gd595d01d6421eae30824538fa6d150701ed077df
+  ref: 2.4.1-0-g9a1f0c64174f970a26380d4957583c71372fbb7c
