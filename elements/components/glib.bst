@@ -55,6 +55,6 @@ sources:
   track: glib-2-64
   match:
   - 2.64.*
-  ref: 2.64.5-0-g2560f61370a143e6a056b99d1e918a58f40e3710
+  ref: 2.64.6-0-gddf2d4c7face628938fbd6f11f8921d8033e57d2
 - kind: patch
   path: patches/glib/revert-added-symbols.patch
