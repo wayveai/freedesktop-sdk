@@ -84,7 +84,7 @@ class UrlOpenTimeout:
             except urllib.error.URLError as exception:
                 if isinstance(exception.reason, socket.timeout):
                     self._timeout = max(int(self._timeout/2), self._min)
-                    raise TimeoutError()
+                    raise TimeoutError() from exception
                 raise
             finally:
                 signal.alarm(0)
