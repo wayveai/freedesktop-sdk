@@ -21,4 +21,4 @@ sources:
 - kind: git_tag
   url: xiph:opusfile.git
   track: master
-  ref: v0.11-0-gb7c2ed3bafd9b08cd5d276894ca18fb58bcbfbc9
+  ref: v0.12-0-ga55c164e9891a9326188b7d4d216ec9a88373739
