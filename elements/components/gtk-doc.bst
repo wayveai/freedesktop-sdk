@@ -19,4 +19,4 @@ sources:
 - kind: git_tag
   url: gnome:gtk-doc.git
   track: master
-  ref: GTK_DOC_1_32-0-g7fce5688c973fca10951bfdbeab9acca034aa095
+  ref: 1.33.0-0-gcb88c112346c3224ce1e903d84c864e1af1d7e9c
