@@ -12,8 +12,8 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:mesonbuild/meson.git
-  track: '0.54'
-  ref: 0.54.3-0-g348deff3bf527280558e2f515f65e5c1b109f928
+  track: '0.55'
+  ref: 0.55.3-0-g776acd2a805c9b42b4f0375150977df42130317f
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
 - kind: patch
