@@ -27,4 +27,4 @@ sources:
 - kind: git_tag
   url: github:pygobject/pycairo.git
   track: master
-  ref: v1.19.1-0-g43e9c4a83d74a6771ac8f76bb3158f3dcd9af7d2
+  ref: v1.20.0-0-g4783b7eae1fe4eaf2c6b5c950b0c2ea3d25c5f98
