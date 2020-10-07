@@ -33,6 +33,7 @@ stages:
   - reproducible
 
 before_script:
+  - ulimit -n 1048576
   - export PATH=~/.local/bin:${PATH}
 
   - |
