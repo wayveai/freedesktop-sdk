@@ -21,3 +21,4 @@ runtime-depends:
 - components/usbutils.bst
 - components/hosts.bst
 - components/bash-config.bst
+- components/bash-completion.bst

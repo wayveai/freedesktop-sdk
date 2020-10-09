@@ -53,6 +53,7 @@ runtime-depends:
 - components/btrfs-progs.bst
 - components/fscrypt.bst
 - components/bash-config.bst
+- components/bash-completion.bst
 
 (?):
 - not pipewire:
