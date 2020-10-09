@@ -20,3 +20,4 @@ runtime-depends:
 - vm/config/useradd-default.bst
 - components/usbutils.bst
 - components/hosts.bst
+- components/bash-config.bst

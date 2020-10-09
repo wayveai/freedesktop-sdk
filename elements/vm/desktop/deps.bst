@@ -52,6 +52,7 @@ runtime-depends:
 - components/f2fs-tools.bst
 - components/btrfs-progs.bst
 - components/fscrypt.bst
+- components/bash-config.bst
 
 (?):
 - not pipewire:
