@@ -352,12 +352,6 @@ app_aarch64:
     - .builder-aarch64
   dependencies: []
 
-app_arm:
-  extends:
-    - .flatpak_template
-    - .builder-arm
-  dependencies: []
-
 app_ppc64le:
   extends:
     - .flatpak_template
@@ -401,12 +395,6 @@ check_snap_aarch64:
   extends:
     - .check-snap
     - .builder-aarch64
-  dependencies: []
-
-check_snap_arm:
-  extends:
-    - .check-snap
-    - .builder-arm
   dependencies: []
 
 .bootstrap_template: &bootstrap_definition
@@ -461,16 +449,6 @@ minimal_systemd_vm_aarch64:
     DIALOG: root-login
   dependencies: []
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
-
-minimal_systemd_vm_arm:
-  extends:
-    - .vm_imageless_template
-    - .builder-arm
-  variables:
-    VM_ARTIFACT_BOOT: vm/boot/virt.bst
-    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
-    DIALOG: root-login
-  dependencies: []
 
 minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
@@ -684,8 +662,6 @@ finish_publish_failed:
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule"'
     when: never
-  - if: '$CI_COMMIT_TAG && $FLATHUB_REPO_TOKEN && $ARCH == "arm"'
-    when: never
   - if: '$CI_COMMIT_TAG && $FLATHUB_REPO_TOKEN && $ARCH == "ppc64le"'
     when: never
   - if: $CI_COMMIT_TAG
@@ -737,14 +713,6 @@ publish_aarch64:
     - prepare_publish_branch
     - prepare_publish_release
 
-publish_arm:
-  extends:
-    - .flatpak_publish_template
-    - .builder-arm
-  dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
-
 publish_ppc64le:
   extends:
     - .flatpak_publish_template
@@ -772,13 +740,6 @@ publish_aarch64_tar:
   extends:
     - .publish_tar_template
     - .builder-aarch64
-  dependencies: []
-  when: manual
-
-publish_arm_tar:
-  extends:
-    - .publish_tar_template
-    - .builder-arm
   dependencies: []
   when: manual
 
@@ -870,12 +831,6 @@ reproducible_aarch64:
     - .builder-aarch64
   when: manual
 
-reproducible_arm:
-  extends:
-    - .reproducible_template
-    - .builder-arm
-  when: manual
-
 .snap_publish_template:
   stage: publish
   script:
@@ -926,12 +881,6 @@ publish_snap_i686:
   extends:
     - .snap_publish_template
     - .builder-i686
-  when: manual
-
-publish_snap_arm:
-  extends:
-    - .snap_publish_template
-    - .builder-arm
   when: manual
 
 publish_snap_aarch64:
@@ -1005,14 +954,6 @@ publish_docker_aarch64:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
-publish_docker_arm:
-  extends:
-    - .docker_publish_template
-    - .builder-arm
-  variables:
-    DISABLE_CACHE_PUSH: 1
-  dependencies: []
-
 publish_docker_ppc64le:
   extends:
     - .docker_publish_template
@@ -1061,7 +1002,6 @@ publish_docker_finish:
   - armhf
   dependencies:
   - publish_docker_ppc64le
-  - publish_docker_arm
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
@@ -1086,11 +1026,6 @@ check_runtime_inheritance_i686:
   extends:
   - .runtime_inheritance_check_template
   - .builder-i686
-
-check_runtime_inheritance_arm:
-  extends:
-  - .runtime_inheritance_check_template
-  - .builder-arm
 
 check_runtime_inheritance_aarch64:
   extends:
