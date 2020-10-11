@@ -23,4 +23,6 @@ sources:
 - kind: git_tag
   url: freedesktop:libinput/libinput.git
   track: master
-  ref: 1.16.1-0-g9dbfc700fe78039f46b08fced0bb2fa8dbcb7dce
+  track-extra:
+  - 1.16-branch
+  ref: 1.16.2-0-g4cfe13df443f3b74dffaeda3b268b6c2723a3458
