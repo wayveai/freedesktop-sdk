@@ -445,7 +445,7 @@ int main(int argc, char* argv[])
     case 'j': {
       std::istringstream iss(optarg);
       iss >> s.jobs;
-      if (!iss.eof() || !iss.good()) {
+      if (!iss.eof() || iss.fail()) {
         usage();
         exit(1);
       }
