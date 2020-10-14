@@ -33,6 +33,7 @@ stages:
   - reproducible
 
 before_script:
+  - ./utils/preresolve.py $BST_CACHE_SERVER_ADDRESS
   - ulimit -n 1048576
   - export PATH=~/.local/bin:${PATH}
 
