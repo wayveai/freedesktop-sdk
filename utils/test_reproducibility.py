@@ -22,6 +22,8 @@ import sys
 import tempfile
 import yaml
 
+from yattag import Doc, indent
+
 
 # pull and fetch have similar semantics, that are not really that
 # different to make clear that we are talking about artifacts or
@@ -122,6 +124,24 @@ def bst_fetch_sources(
     return ret == 0
 
 
+def is_exe(fpath: bytes) -> bool:
+    return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+
+def has_executable(program: str) -> bool:
+    fpath, _ = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return True
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return True
+
+    return False
+
+
 def bst_build_specific(
         bst_config: BuildstreamConfiguration,
         element_name: str,
@@ -140,6 +160,7 @@ def bst_build_specific(
         # script, but the proper way to do this is to have buildstream to
         # not allow artifact cache access for a specific element using a
         # command line flag.
+
         forbid_network_call = ["forbid-network"]
         forbid_network_call.extend(bst_call)
 
@@ -433,14 +454,19 @@ def bst_check_reproducibility_v2(
     runtime_deps = bst_show(
         bst_config=bst_config, targets=[element], dependency_kind="run"
     )
-    results = []
+    results = {
+        "non_reproducible": [],
+        "reproducible" : []
+    }
 
     # Try to build all dependencies.
     for runtime_dep in runtime_deps:
         if not is_single_project_reproducible(
                 bst_config=bst_config, element_info=runtime_dep, output_dir=output_dir
         ):
-            results.append(runtime_dep.name)
+            results["non_reproducible"].append(runtime_dep.name)
+        else:
+            results["reproducible"].append(runtime_dep.name)
 
     return results
 
@@ -459,9 +485,51 @@ def handle_results(results, output_dir: str) -> bool:
     print("in reproducibility_results.txt and for a more detailed")
     print(f"output, see the folder {output_dir} specified in the command")
 
-    with open("reproducibility_results.txt", "w") as file:
-        for line in results:
-            file.write(line)
+    doc, tag, text = Doc().tagtext()
+
+    with tag("html"):
+        with tag("body"):
+            with tag("table", border=1):
+                with tag("tr"):
+                    with tag("td"):
+                        text("Element Name")
+                    with tag("td"):
+                        text("Build Status")
+                    with tag("td"):
+                        text("Error log")
+
+                with tag("tr"):
+                    with tag("td", colspan=3):
+                        text("Non Reproducible Elements")
+
+                for line in results["non_reproducible"]:
+                    with tag("tr"):
+                        with tag("td"):
+                            text(line)
+                        with tag("td"):
+                            text("Failure")
+                        with tag("td"):
+                            dirname = output_dir + f"/{line}/index.html"
+                            with tag("a", href=dirname):
+                                text("index.html")
+
+                with tag("tr"):
+                    with tag("td", colspan=3):
+                        text("Reproducible Elements")
+
+                for line in results["reproducible"]:
+                    with tag("tr"):
+                        with tag("td"):
+                            text(line)
+                        with tag("td"):
+                            text("Success")
+                        with tag("td"):
+                            text(" - ")
+
+    with open("reproducibility_results.html", "w") as file:
+        result = indent(doc.getvalue())
+        file.write(result)
+
     return False
 
 
