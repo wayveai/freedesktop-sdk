@@ -28,7 +28,7 @@
 #include <filesystem>
 #include <vector>
 
-enum class known_arch { x86_64, i686, aarch64, arm, ppc64le, unknown };
+enum class known_arch { x86_64, i686, aarch64, arm, ppc64le, riscv64, unknown };
 
 std::string get_triplet(known_arch arch);
 

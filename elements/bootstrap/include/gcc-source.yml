@@ -28,3 +28,5 @@ sources:
   path: patches/gcc/gcc-do-not-override-for-build-variables-2.patch
 - kind: patch
   path: patches/gcc/gcc-disable-filesystem-ts-fix-cxx-17.patch
+- kind: patch
+  path: patches/gcc/gcc-multiarch-enable-riscv.patch
