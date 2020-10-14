@@ -165,12 +165,9 @@ before_script:
     fi
 
 pylint:
-  image: $DOCKER_AARCH64
+  extends:
+    - .builder-x86_64
   stage: flatpak
-  tags:
-    - armhf
-  variables:
-    ARCH: x86_64
   script:
     - find . -path 'files/oci' -prune -o -iname "*.py" -exec pylint {} +
     - pylint files/oci/oci_builder
@@ -183,10 +180,9 @@ pylint:
   interruptible: true
 
 check_update_elements:
-  image: $DOCKER_AARCH64
+  extends:
+    - .builder-x86_64
   stage: update
-  tags:
-    - check_update
   variables:
     GIT_SUBMODULE_STRATEGY: none
   script:
@@ -218,10 +214,9 @@ check_update_elements:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
 check_mirrors:
-  image: $DOCKER_AARCH64
+  extends:
+    - .builder-x86_64
   stage: update
-  tags:
-    - armhf
   script:
     - make url-manifest
     - |
@@ -255,9 +250,9 @@ check_mirrors:
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
-license_checker_arm:
+license_checker:
   extends:
-    - .builder-arm
+    - .builder-x86_64
   stage: update
   interruptible: true
   dependencies: []
@@ -297,19 +292,6 @@ license_checker_arm:
       if [ "${STABLE_ABI}" != "false" ]; then
         make check-abi
       fi
-
-    - |
-      set -e
-      if [ "${ARCH}" = arm ]; then
-        make export-snap
-        python3 utils/parse_review.py snap/sdk.snap
-        python3 utils/parse_review.py snap/platform.snap
-        python3 utils/parse_review.py snap/glxinfo.snap
-        python3 utils/parse_review.py snap/vulkaninfo.snap
-        python3 utils/parse_review.py snap/clinfo.snap
-        python3 utils/parse_review.py snap/vainfo.snap
-      fi
-
   artifacts:
     when: always
     paths:
@@ -346,13 +328,6 @@ license_checker_arm:
     - aarch64
   variables:
     ARCH: aarch64
-
-.builder-arm:
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
 
 .builder-ppc64le:
   image: $DOCKER_PPC64LE
@@ -1033,7 +1008,7 @@ publish_docker_finish:
   except:
   - schedules
   tags:
-  - armhf
+  - x86_64
   dependencies:
   - publish_docker_ppc64le
   - publish_docker_aarch64
