@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: github:libpwquality/libpwquality.git
   track: master
-  ref: libpwquality-1.4.3-0-g6b5f74a402136b0a32e4a6cf3394b7ddcf72ba53
+  ref: libpwquality-1.4.4-0-ge3e46f16c651e74bdb105a2b832b67795c57c0a2
