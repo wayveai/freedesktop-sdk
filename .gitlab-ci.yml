@@ -997,11 +997,6 @@ check_runtime_inheritance_x86_64:
   - .runtime_inheritance_check_template
   - .builder-x86_64
 
-check_runtime_inheritance_i686:
-  extends:
-  - .runtime_inheritance_check_template
-  - .builder-i686
-
 check_runtime_inheritance_aarch64:
   extends:
   - .runtime_inheritance_check_template
