@@ -1,6 +1,7 @@
 kind: stack
 description: Collection of things that reproducible test should run with
 
-depends:
-- filename: components/flatpak.bst
-- filename: flatpak-release-deps.bst
+runtime-depends:
+- platform.bst
+- sdk.bst
+- flatpak-release-deps.bst
