@@ -49,4 +49,4 @@ sources:
 - kind: git_tag
   url: github:jackaudio/jack2.git
   track: master
-  ref: v1.9.14-0-gb54a09bf7ef760d81fdb8544ad10e45575394624
+  ref: v1.9.15-0-gca59f52ab9f36c06134cc2c91d7ca542401f7845
