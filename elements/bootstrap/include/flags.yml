@@ -1,0 +1,43 @@
+#
+# Compiler flags for build architecture during bootstrap
+#
+
+variables:
+  # C/C++ compiler flags used in bootstrapping
+  #
+  build_common_flags: ""
+
+  # Element specific C/C++ flags used in bootstrapping
+  #
+  local_build_flags: ""
+
+  # Architecture specific C/C++ flags used in bootstrapping
+  #
+  build_x86_64_flags: ""
+  build_i686_flags: ""
+  build_aarch64_flags: ""
+  build_arm_flags: ""
+  build_powerpc64le_flags: ""
+
+  # The final composition of `build_flags` includes `build_arch_flags`
+  # which can be one of the preset arch specific definitions above
+  #
+  # build_arch_flags: ""
+  #
+  build_flags: >-
+    %{common_flags}
+    %{build_common_flags}
+    %{build_arch_flags}
+    %{local_build_flags}
+
+  (?):
+  - target_arch == "i686":
+      build_arch_flags: "%{build_i686_flags}"
+  - target_arch == "arm":
+      build_arch_flags: "%{build_arm_flags}"
+  - target_arch == "x86_64":
+      build_arch_flags: "%{build_x86_64_flags}"
+  - target_arch == "aarch64":
+      build_arch_flags: "%{build_aarch64_flags}"
+  - target_arch == "ppc64le":
+      build_arch_flags: "%{build_powerpc64le_flags}"

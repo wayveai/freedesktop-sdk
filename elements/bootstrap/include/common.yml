@@ -1,0 +1,23 @@
+(@):
+- elements/bootstrap/include/flags.yml
+
+variables:
+  bootstrapper-triplet: "%{bootstrap_build_arch}-unknown-linux-gnu"
+  sysroot: /cross-installation
+  tools: /cross
+  toolchain-prefixes: >-
+    %{tools}
+    /usr
+    %{prefix}
+
+  (?):
+  - bootstrap_build_arch == "x86_64":
+      bootstrap_build_arch: "x86_64"
+  - bootstrap_build_arch == "i686":
+      bootstrap_build_arch: "i686"
+  - bootstrap_build_arch == "aarch64":
+      bootstrap_build_arch: "aarch64"
+  - bootstrap_build_arch == "arm":
+      bootstrap_build_arch: "arm"
+  - bootstrap_build_arch == "ppc64le":
+      bootstrap_build_arch: "powerpc64le"

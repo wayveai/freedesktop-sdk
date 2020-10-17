@@ -1,0 +1,25 @@
+variables:
+  # Definition of variables related to machine architecture
+  gcc_triplet: "%{gcc_arch}-linux-%{abi}"
+  triplet: "%{arch}-unknown-linux-%{abi}"
+  gcc_arch: "%{arch}"
+  flatpak_arch: "%{arch}"
+  abi: "gnu"
+
+  (?):
+  - target_arch == "x86_64":
+      arch: "x86_64"
+  - target_arch == "i686":
+      arch: "i686"
+      # See https://wiki.debian.org/Multiarch/Tuples#Why_not_use_GNU_triplets.3F
+      gcc_arch: "i386"
+      flatpak_arch: "i386"
+  - target_arch == "aarch64":
+      arch: "aarch64"
+  - target_arch == "arm":
+      arch: "arm"
+      abi: "gnueabihf"
+  - target_arch == "ppc64le":
+      arch: "powerpc64le"
+      gcc_arch: "powerpc64le"
+      flatpak_arch: "ppc64le"

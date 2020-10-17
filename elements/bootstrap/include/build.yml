@@ -1,4 +1,5 @@
-(@): elements/bootstrap/include/arch.yml
+(@):
+- elements/bootstrap/include/common.yml
 
 variables:
   build-triplet: '%{bootstrapper-triplet}'

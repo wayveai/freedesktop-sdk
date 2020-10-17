@@ -1,6 +1,13 @@
 kind: manual
 description: GNU config scripts
 
+variables:
+  tools: /cross
+  toolchain-prefixes: >-
+    %{tools}
+    /usr
+    %{prefix}
+
 depends:
 - filename: bootstrap/build/base-sdk.bst
   type: build
