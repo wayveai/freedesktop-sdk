@@ -624,6 +624,7 @@ finish_publish_failed:
   stage: publish
   retry: 2
   script:
+    - test -f publish_build.txt
     - make export
 
     - |
