@@ -26,6 +26,8 @@ variables:
       aom_target: arm64
   - target_arch == "ppc64le":
       aom_target: ppc
+  - target_arch == "riscv64":
+      aom_target: generic
 
   cmake-local: >-
     -DAOM_TARGET_CPU="%{aom_target}"

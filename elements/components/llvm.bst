@@ -28,6 +28,8 @@ variables:
       targets: AArch64
   - target_arch == "ppc64le":
       targets: PowerPC;AMDGPU
+  - target_arch == "riscv64":
+      targets: RISCV;AMDGPU
 
   cmake-local: >-
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld'
