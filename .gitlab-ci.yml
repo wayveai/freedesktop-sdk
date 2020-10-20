@@ -822,7 +822,7 @@ markdown_manifest:
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - ${CI_PROJECT_DIR}/result_folder               # All results of diffoscope for non-reproducible builds.
-      - ${CI_PROJECT_DIR}/reproducibility_results.txt # All elements that are not reproducible
+      - ${CI_PROJECT_DIR}/reproducibility_results.html # All elements that are not reproducible
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "reproducible"'
 
