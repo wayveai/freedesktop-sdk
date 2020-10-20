@@ -2,4 +2,4 @@ sources:
 - kind: git_tag
   url: savannah:freetype/freetype2.git
   track: master
-  ref: VER-2-10-2-0-g132f19b779828b194b3fede187cee719785db4d8
+  ref: VER-2-10-3-0-g337670af0a1e94df3718c6467ca544ecb0282731
