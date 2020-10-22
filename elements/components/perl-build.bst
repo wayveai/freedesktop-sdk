@@ -1,16 +1,8 @@
-kind: manual
+kind: makemaker
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/perl.bst
-
-config:
-  configure-commands:
-  - perl Makefile.PL PREFIX="%{prefix}" DESTDIR="%{install-root}"
-
-  install-commands:
-  - |
-    make -j1 install
+- bootstrap-import.bst
+- components/perl.bst
 
 sources:
 - kind: git_tag

@@ -1,0 +1,5 @@
+config:
+  install-commands:
+    (>):
+    - |
+        find "%{install-root}" -type f -name perllocal.pod -delete

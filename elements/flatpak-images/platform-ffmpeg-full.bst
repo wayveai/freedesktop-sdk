@@ -1,8 +1,8 @@
 kind: flatpak_image
 
-depends:
-- filename: extensions/ffmpeg-full/ffmpeg.bst
-  type: build
+build-depends:
+- extensions/ffmpeg-full/ffmpeg.bst
+- extensions/ffmpeg-full/appdata.bst
 
 config:
   directory: '%{libdir}/ffmpeg/lib'

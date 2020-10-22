@@ -1,4 +1,4 @@
-kind: manual
+kind: modulebuild
 
 build-depends:
 - components/perl-build.bst
@@ -10,16 +10,6 @@ build-depends:
 depends:
 - bootstrap-import.bst
 - components/perl.bst
-
-config:
-  configure-commands:
-  - perl Build.PL --prefix "%{prefix}" --destdir "%{install-root}"
-
-  build-commands:
-  - ./Build
-
-  install-commands:
-  - ./Build install
 
 sources:
 - kind: git_tag

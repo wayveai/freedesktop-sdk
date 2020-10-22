@@ -1,4 +1,4 @@
-kind: manual
+kind: make
 
 build-depends:
 - components/pkg-config.bst
@@ -18,6 +18,7 @@ runtime-depends:
 - components/slirp4netns.bst
 - components/fuse-overlayfs.bst
 - components/iptables.bst
+- components/podman-config.bst
 
 environment:
   GOPATH: "%{build-root}"
@@ -26,29 +27,7 @@ variables:
   ldflags_defaults: ""
   optimize-debug: "false"
   compress-debug: "false"
-
-config:
-  build-commands:
-  - |
-    cd src/github.com/containers/podman
-    make
-
-  install-commands:
-  - |
-    cd src/github.com/containers/podman
-    make DESTDIR="%{install-root}" PREFIX="%{prefix}" install
-
-  - |
-    install -Dm644 registries/registries.conf "%{install-root}%{sysconfdir}/containers/registries.conf"
-
-  - |
-    cat <<EOF >policy.json
-    {
-      "default": [{"type": "insecureAcceptAnything"}],
-      "transports": {}
-    }
-    EOF
-    install -Dm644 policy.json "%{install-root}%{sysconfdir}/containers/policy.json"
+  command-subdir: src/github.com/containers/podman
 
 sources:
 - kind: git_tag
@@ -61,7 +40,3 @@ sources:
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
-- kind: git_tag
-  url: github:projectatomic/registries.git
-  directory: registries
-  ref: da9a9c87781823f45401ca49da04e269c9e3100e

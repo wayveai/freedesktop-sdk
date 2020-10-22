@@ -5,7 +5,6 @@ build-depends:
 - components/systemd.bst
 - components/gtk-doc.bst
 - components/gobject-introspection.bst
-- components/git-minimal.bst
 - components/cmake.bst
 - components/polkit.bst
 - components/help2man.bst

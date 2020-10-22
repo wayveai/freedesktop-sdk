@@ -1,16 +1,13 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/gobject-introspection.bst
+- components/vala.bst
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/glib.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/vala.bst
-  type: build
 
 public:
   bst:

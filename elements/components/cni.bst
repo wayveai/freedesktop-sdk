@@ -16,16 +16,15 @@ variables:
   ldflags_defaults: ""
   optimize-debug: "false"
   compress-debug: "false"
-
+  command-subdir: src/github.com/containernetworking/plugins
+ 
 config:
   build-commands:
   - |
-    cd src/github.com/containernetworking/plugins
     ./build_linux.sh
 
   install-commands:
   - |
-    cd src/github.com/containernetworking/plugins
     install -Dm755 -t "%{install-root}%{libexecdir}/cni" bin/*
 
 sources:

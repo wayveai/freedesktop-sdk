@@ -1,4 +1,4 @@
-kind: manual
+kind: make
 description: Base ffmpeg we ship in the SDK, no patented codecs
 
 (@):

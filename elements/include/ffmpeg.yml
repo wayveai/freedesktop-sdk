@@ -83,52 +83,52 @@ variables:
   protocols: |
     crypto,file,pipe,rtp,srtp,rtsp,tcp,udp,unix,%{extra-protocols}
 
-  conf-local: |
-    --prefix="%{ffmpeg-prefix}" \
-    --libdir="%{ffmpeg-libdir}" \
-    --disable-debug \
-    --disable-doc \
-    --disable-static \
-    --enable-optimizations \
-    --enable-shared \
-    --disable-everything \
-    --enable-ffplay \
-    --enable-ffprobe \
-    --enable-gnutls \
-    --enable-libaom \
-    --enable-libdav1d \
-    --enable-libfdk-aac \
-    --enable-libmp3lame \
-    --enable-libfontconfig \
-    --enable-libfreetype \
-    --enable-libopus \
-    --enable-libpulse \
-    --enable-libspeex \
-    --enable-libtheora \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libwebp \
-    --enable-openal \
-    --enable-opengl \
-    --enable-sdl2 \
-    --enable-vulkan \
-    --enable-zlib \
-    --enable-libv4l2 \
-    --enable-libxcb \
-    --enable-vdpau \
-    --enable-vaapi \
-    --enable-encoder=%{audio-encoders} \
-    --enable-encoder=%{video-encoders} \
-    --enable-decoder=%{audio-decoders} \
-    --enable-decoder=%{video-decoders} \
-    --enable-encoder=%{image-formats} \
-    --enable-decoder=%{image-formats} \
-    --enable-hwaccel=%{hwaccels} \
-    --enable-parser=%{parsers} \
-    --enable-muxer=%{muxers} \
-    --enable-demuxer=%{demuxers} \
-    --enable-filter=%{filters} \
-    --enable-protocol=%{protocols} \
+  conf-local: >-
+    --prefix="%{ffmpeg-prefix}"
+    --libdir="%{ffmpeg-libdir}"
+    --disable-debug
+    --disable-doc
+    --disable-static
+    --enable-optimizations
+    --enable-shared
+    --disable-everything
+    --enable-ffplay
+    --enable-ffprobe
+    --enable-gnutls
+    --enable-libaom
+    --enable-libdav1d
+    --enable-libfdk-aac
+    --enable-libmp3lame
+    --enable-libfontconfig
+    --enable-libfreetype
+    --enable-libopus
+    --enable-libpulse
+    --enable-libspeex
+    --enable-libtheora
+    --enable-libvorbis
+    --enable-libvpx
+    --enable-libwebp
+    --enable-openal
+    --enable-opengl
+    --enable-sdl2
+    --enable-vulkan
+    --enable-zlib
+    --enable-libv4l2
+    --enable-libxcb
+    --enable-vdpau
+    --enable-vaapi
+    --enable-encoder=%{audio-encoders}
+    --enable-encoder=%{video-encoders}
+    --enable-decoder=%{audio-decoders}
+    --enable-decoder=%{video-decoders}
+    --enable-encoder=%{image-formats}
+    --enable-decoder=%{image-formats}
+    --enable-hwaccel=%{hwaccels}
+    --enable-parser=%{parsers}
+    --enable-muxer=%{muxers}
+    --enable-demuxer=%{demuxers}
+    --enable-filter=%{filters}
+    --enable-protocol=%{protocols}
     --arch="%{ffmpeg-arch}"
 
   conf-extra: ''
@@ -167,14 +167,10 @@ config:
   configure-commands:
   - ./configure %{conf-local} %{conf-extra}
 
-  build-commands:
-  - make
-
-  install-commands:
-  - make -j1 DESTDIR="%{install-root}" install
-
 sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.3
   ref: n4.3.1-0-g6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+- kind: patch
+  path: patches/ffmpeg/aarch64-yuv2rgb-neon-fix-return.patch
