@@ -80,7 +80,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-bad.git
   track: '1.16'
-  ref: 1.16.2-0-ga6f26408f74a60d02ce6b4f0daee392ce847055f
+  ref: 1.16.3-0-gee8144e98b084d75ffabaef0ef3dca2af8d72061
   submodules:
     common:
       checkout: false
@@ -89,5 +89,3 @@ sources:
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
   path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch
