@@ -44,10 +44,8 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-good.git
   track: '1.16'
-  ref: 1.16.2-0-gce0723527aa37d5f4d19ef8021c0b2eb8f83b08d
+  ref: 1.16.3-0-g2bec35e0804e83e874d2db5ea7f7d440687a5275
   submodules:
     common:
       checkout: false
       url: freedesktop:gstreamer/common.git
-- kind: patch
-  path: patches/gstreamer-plugins-good/fix-qtmux.patch
