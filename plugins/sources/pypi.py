@@ -27,7 +27,7 @@ def strip_top_dir(members, attr):
 class BuildStreamTransport(xmlrpc.client.SafeTransport):
     user_agent = "buildstream/1"
 
-    def single_request(self, *args, **kwargs):
+    def single_request(self, *args, **kwargs):  # pylint: disable=W0222
         def do_request():
             return super().single_request(*args, **kwargs)
         try:
