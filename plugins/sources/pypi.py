@@ -7,6 +7,7 @@ import stat
 import contextlib
 import urllib.request
 import xmlrpc.client
+import time
 from buildstream import Source, SourceError, utils, Consistency
 
 def strip_top_dir(members, attr):
@@ -21,6 +22,22 @@ def strip_top_dir(members, attr):
                 new_path += '/'
             setattr(member, attr, new_path)
             yield member
+
+
+class BuildStreamTransport(xmlrpc.client.SafeTransport):
+    user_agent = "buildstream/1"
+
+    def single_request(self, *args, **kwargs):
+        def do_request():
+            return super().single_request(*args, **kwargs)
+        try:
+            return do_request()
+        except xmlrpc.client.Fault as error:
+            if "HTTPTooManyRequests" in error.faultString:
+                time.sleep(10)
+                return do_request()
+            raise
+
 
 class PyPISource(Source):
     def configure(self, node):
@@ -64,7 +81,7 @@ class PyPISource(Source):
         node['sha256sum'] = self.sha256sum = ref['sha256sum']
 
     def track(self):
-        index = xmlrpc.client.ServerProxy(self.index)
+        index = xmlrpc.client.ServerProxy(self.index, transport=BuildStreamTransport())
         releases = index.package_releases(self.name, True)
         if not releases:
             raise SourceError(f'{self}: Cannot find any tracking for {self.name}')
