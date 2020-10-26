@@ -5,11 +5,11 @@ depends:
 - filename: bootstrap-import.bst
 
 variables:
-  conf-local: |
-    --enable-jit
   (?):
   - (target_arch == "x86_64" or target_arch == "i686"):
       local_flags: -mshstk
+  - target_arch != "riscv64":
+      conf_local: '--enable-jit'
 
 public:
   bst:
