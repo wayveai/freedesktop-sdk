@@ -65,6 +65,8 @@ config:
     # include "arm-linux-gnueabihf/python%{version_long}/pyconfig.h"
     #elif defined(__powerpc64__)
     # include "powerpc64le-linux-gnu/python%{version_long}/pyconfig.h"
+    #elif defined(__riscv) && (__riscv_xlen == 64)
+    # include "riscv64-linux-gnu/python%{version_long}/pyconfig.h"
     #else
     # error "Unknown cross-compiler"
     #endif
