@@ -13,6 +13,7 @@ depends:
 - components/sqlite.bst
 
 variables:
+  install-conf: MAX_COMPILEALL_JOBS=0
   conf-local: |
     --enable-shared \
     --without-ensurepip \
@@ -24,6 +25,9 @@ variables:
     --with-conf-includedir="%{includedir}/%{gcc_triplet}"
   version_short: "3"
   version_long: "%{version_short}.9"
+  (?):
+  - target_arch == "riscv64":
+      install-conf: MAX_COMPILEALL_JOBS=1
 
 config:
   install-commands:
@@ -31,7 +35,7 @@ config:
     if [ -n "%{builddir}" ]; then
     cd %{builddir}
     fi
-    %{make-install} DESTSHARED=/usr/lib/python%{version_long}/lib-dynload
+    %{make-install} %{install-conf} DESTSHARED=/usr/lib/python%{version_long}/lib-dynload
 
   - |
     rm -rf %{install-root}%{bindir}/idle*
@@ -103,3 +107,5 @@ sources:
   ref: v3.9.1-0-g1e5d33e9b9b8631b36f061103a30208b206fd03a
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch
+- kind: patch
+  path: patches/python3/python3-max-compileall-jobs.patch
