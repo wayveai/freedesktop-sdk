@@ -36,6 +36,9 @@ variables:
 
 environment:
   MAXJOBS: "%{max-jobs}"
+  (?):
+  - target_arch == 'riscv64':
+      CFLAGS: "%{target_common_flags} -DNSS_USE_64"
 
 environment-nocache:
 - MAXJOBS
