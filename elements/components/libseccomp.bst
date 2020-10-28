@@ -1,9 +1,12 @@
 kind: autotools
 
-depends:
+build-depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- filename: components/gperf.bst
+
+runtime-depends:
+- filename: bootstrap-import.bst
 
 variables:
   builddir: ''
@@ -18,5 +21,5 @@ public:
 sources:
 - kind: git_tag
   url: github:seccomp/libseccomp.git
-  track: release-2.4
-  ref: v2.4.4-0-g8c76d7bb694a3f072c5f791c812bb4e2ea385f89
+  track: release-2.5
+  ref: v2.5.0-0-gf13f58efc690493fe7aa69f54cb52a118f3769c1
