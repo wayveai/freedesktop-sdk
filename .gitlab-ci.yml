@@ -110,7 +110,7 @@ before_script:
             export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
             ;;
           *)
-            test "$RELASE_CHANNEL" = "stable"
+            test "$RELEASE_CHANNEL" = "stable"
             export REPO_TOKEN="${FLATHUB_REPO_TOKEN}"
             # Check we have enabled stable ABI before we do any stable release
             [ "${STABLE_ABI}" = "true" ]
