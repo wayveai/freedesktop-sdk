@@ -1,5 +1,65 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.1:
+    * python-markdown: Update to 3.3.2
+    * glibc: Update to tip of glibc-2.31 (4bc9918)
+    * freetype: Update to 2.10.4
+    * pulseaudio: memfd support reintroduced
+    * libgcrypt: Update to 1.8.7
+    * gstreamer: Update base, good and bad to 1.63.3
+    * tzdata: Update to 2020c (ab21ad9)
+    * mesa: Update to 20.1.10
+    * asciidoc: Update to 9.0.3
+    * jack: Update to 1.9.16
+    * python3-pip: Update to 20.2.4
+    * git: Update to 2.29.0
+    * ffmpeg: Apply upstream patch fixing return value of swscale on aarch64    
+    * ffmpeg-full: Add appdata
+    * extra-cmake-modules: Update to 5.75.0
+    * intel-gmmlib: Update to 20.3.2
+    * python-setuptools: Update to 50.3.0
+    * xorg-proto-xcb.bst: Update to xcb-proto-1.14.1
+    * python3-markdown: Update to 3.3.1    
+    * openssh: Update to 8.4 P1
+    * expat: Update to 2.2.10
+    * cmake: Update to 3.18.4
+    * nano: Update to 5.3
+    * flatpak-xdg-utils: Update to 1.0.4
+    * xorg-data-xkeyboard: Update to xkeyboard-config-2.31 (ca965b9)
+    * intel-vaapi-driver: Update to 2.4.1
+    * vulkan-headers: Update to sdk-1.2.148.0
+    * opusfile: Update to 0.12
+    * meson: Update to 0.55.3
+    * gtk-doc: Update to 1.33.0
+    * glib: Update to 2.64.6
+    * ccache: Update to 3.7.11
+    * pipewire: Update to 0.3.13, fix removal of old libraries
+    * strace: Update to 5.9
+    * python3: Update to 3.8.6
+    * systemd: Update to 246.6
+    * binutils: Update to 2.35.1
+    * python3-pygments: Update to 2.7.1
+    * at-spi2-core: Update to 2.36.1
+    * llvm: Fix build for LDC
+    * xdg-desktop-portal: Update to 1.8.0
+    * gsettings-desktop-schemas: Update to 3.38.0
+    * at-spi2-atk: Update to 2.38.0
+    * glib-networking: Update to 2.64.3
+    * orc: Update to 0.4.32
+    * python3-wheel: Update to 0.35.1
+    * p11-kit: Update to 0.23.21
+    * gtk3: Update to 3.24.21
+    * libgpg-error: Update to 1.38
+    * libX11: Update to 1.6.12
+    * libseccomp: Update to 2.4.4
+    * ninja: Update to 1.10.1
+    * harfbuzz: Update to 2.7.2
+    * libpipeline: Update to 1.5.3
+    * gnupg: Update to 2.2.22
+    * libvpx: Update to 1.9.0
+    * man-pages: Update to 5.08
+    * vulkan-icd-loader: Update to sdk-1.2.148.1
+
 freedesktop-sdk-20.08.0:
 
    * Disable publish of ARM v7 runtimes
