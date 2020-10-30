@@ -190,7 +190,7 @@ check_update_elements:
     - git checkout -- snap-version.yml
     - git config user.name "freedesktop_sdk_updater"
     - git config user.email "freedesktop_sdk_updater@libreml.com"
-    - git branch "${CI_COMMIT_REF_NAME}" "origin/${CI_COMMIT_REF_NAME}"
+    - git branch -f "${CI_COMMIT_REF_NAME}" "origin/${CI_COMMIT_REF_NAME}"
     - |
       case "${CI_COMMIT_REF_NAME}" in
         master)
