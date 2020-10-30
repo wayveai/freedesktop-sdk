@@ -902,6 +902,8 @@ publish_snap_aarch64:
     - docker-pushed-digests
   only:
   - tags
+  when: manual
+  allow_failure: true
   except:
   - schedules
 
@@ -973,6 +975,8 @@ publish_docker_finish:
   - tags
   except:
   - schedules
+  when: manual
+  allow_failure: true
   tags:
   - x86_64
   dependencies:
