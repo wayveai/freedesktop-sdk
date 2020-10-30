@@ -28,14 +28,13 @@ class BuildStreamTransport(xmlrpc.client.SafeTransport):
     user_agent = "buildstream/1"
 
     def single_request(self, *args, **kwargs):  # pylint: disable=W0222
-        def do_request():
-            return super().single_request(*args, **kwargs)
+        do_request = super().single_request
         try:
-            return do_request()
+            return do_request(*args, **kwargs)
         except xmlrpc.client.Fault as error:
             if "HTTPTooManyRequests" in error.faultString:
                 time.sleep(10)
-                return do_request()
+                return do_request(*args, **kwargs)
             raise
 
 
