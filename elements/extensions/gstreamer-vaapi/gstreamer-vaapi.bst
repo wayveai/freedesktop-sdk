@@ -23,6 +23,9 @@ variables:
     -Dwith_glx=yes
     -Dwith_wayland=yes
     -Dwith_x11=yes
+    -Ddoc=disabled
+    -Dtests=disabled
+    -Dexamples=disabled
 
 sources:
 - kind: git_tag
