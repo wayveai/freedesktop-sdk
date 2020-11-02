@@ -887,7 +887,7 @@ publish_snap_aarch64:
       mkdir -p ${name}-tar-extract
       (cd ${name}-tar-extract && tar xf ../${name}-docker.tar)
       (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar -- *)
-      podman load --storage-driver=vfs -i ${name}-fixed.tar
+      podman load -i ${name}-fixed.tar
       podman push freedesktopsdk/${name}:latest docker://docker.io/freedesktopsdk/${name}:"${DOCKER_VERSION}"-"${ARCH}"
       mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
       digest="$(python3 utils/get_remote_digest.py freedesktopsdk/${name} "${DOCKER_VERSION}"-"${ARCH}")"
