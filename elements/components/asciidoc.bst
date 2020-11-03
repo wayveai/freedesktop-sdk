@@ -21,4 +21,4 @@ sources:
 - kind: git_tag
   url: github:asciidoc/asciidoc-py3.git
   track: master
-  ref: 9.0.3-0-g245751e6cbf3ebf03f1a59f774f1c5ba9af6a842
+  ref: 9.0.4-0-g8de61a75572b5b8f90c1f87634aa3767472be7a7
