@@ -6,8 +6,8 @@ import zipfile
 import stat
 import contextlib
 import urllib.request
-import xmlrpc.client
-import time
+import json
+from distutils.version import LooseVersion
 from buildstream import Source, SourceError, utils, Consistency
 
 def strip_top_dir(members, attr):
@@ -23,25 +23,11 @@ def strip_top_dir(members, attr):
             setattr(member, attr, new_path)
             yield member
 
-
-class BuildStreamTransport(xmlrpc.client.SafeTransport):
-    user_agent = "buildstream/1"
-
-    def single_request(self, *args, **kwargs):  # pylint: disable=W0222
-        do_request = super().single_request
-        try:
-            return do_request(*args, **kwargs)
-        except xmlrpc.client.Fault as error:
-            if "HTTPTooManyRequests" in error.faultString:
-                time.sleep(10)
-                return do_request(*args, **kwargs)
-            raise
-
-
 class PyPISource(Source):
     def configure(self, node):
         self.node_validate(node, ['url', 'name', 'sha256sum',
-                                  'include', 'exclude', 'index'] +
+                                  'include', 'exclude', 'index',
+                                  'scheme'] +
                            Source.COMMON_CONFIG_KEYS)
 
         self.load_ref(node)
@@ -51,9 +37,7 @@ class PyPISource(Source):
         self.include = self.node_get_member(node, list, 'include', [])
         self.exclude = self.node_get_member(node, list, 'exclude', [])
         self.index = self.node_get_member(node, str, 'index', 'https://pypi.org/pypi')
-        self.scheme = self.node_get_member(node, list, 'scheme', None)
-        if self.scheme is None and self.index == 'https://pypi.org/pypi':
-            self.scheme = 'pypi'
+        self.scheme = self.node_get_member(node, str, 'scheme', None)
 
     def preflight(self):
         pass
@@ -79,15 +63,46 @@ class PyPISource(Source):
         node['url'] = self.url = ref['url']
         node['sha256sum'] = self.sha256sum = ref['sha256sum']
 
+
     def track(self):
-        index = xmlrpc.client.ServerProxy(self.index, transport=BuildStreamTransport())
-        releases = index.package_releases(self.name, True)
+        payload = json.loads(
+            urllib.request.urlopen(f'{self.index}/{self.name}/json').read()
+        )
+        releases = payload['releases']
         if not releases:
             raise SourceError(f'{self}: Cannot find any tracking for {self.name}')
         selected_release = None
-        includes = list(map(re.compile, self.include))
-        excludes = list(map(re.compile, self.exclude))
-        for release in releases:
+        if self.include or self.exclude:
+            includes = list(map(re.compile, self.include))
+            excludes = list(map(re.compile, self.exclude))
+            selected_release = self._calculate_latest(releases,
+                                                      includes,
+                                                      excludes
+                                                      )
+        else:
+            selected_release = payload['info']['version']
+        urls = releases[selected_release]
+        found_ref = None
+        for url in urls:
+            if url['packagetype'] == 'sdist':
+                built_url = url['url']
+                if self.scheme is not None:
+                    built_url = built_url.replace(
+                        'https://', f'{self.scheme}:'
+                    )
+                found_ref = {
+                    'sha256sum': url['digests']['sha256'],
+                    'url': built_url,
+                }
+                break
+
+        if found_ref is None:
+            raise SourceError(f'{self}: Did not find any sdist for {self.name} {selected_release}')
+
+        return found_ref
+
+    def _calculate_latest(self, releases, includes, excludes):
+        for release in sorted(releases, key=LooseVersion, reverse=True):
             if excludes:
                 excluded = False
                 for exclude in excludes:
@@ -99,35 +114,11 @@ class PyPISource(Source):
             if includes:
                 for include in includes:
                     if include.match(release):
-                        selected_release = release
-                        break
-                if selected_release:
-                    break
+                        return release
             else:
-                selected_release = release
-                break
+                return release
 
-        if not selected_release:
-            raise SourceError(f'{self}: No matching release')
-
-        urls = index.release_urls(self.name, selected_release)
-        found_ref = None
-        for url in urls:
-            if url['packagetype'] == 'sdist':
-                if self.scheme is None:
-                    built_url = url['url']
-                else:
-                    built_url = f'{self.scheme}:{url["path"]}'
-                found_ref = {
-                    'sha256sum': url['sha256_digest'],
-                    'url': built_url,
-                }
-                break
-
-        if found_ref is None:
-            raise SourceError(f'{self}: Did not find any sdist for {self.name} {selected_release}')
-
-        return found_ref
+        raise SourceError(f'{self}: No matching release')
 
     def _get_mirror_dir(self):
         return os.path.join(self.get_mirror_directory(),
