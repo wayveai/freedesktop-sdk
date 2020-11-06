@@ -21,6 +21,10 @@ variables:
   strip-binaries: "true"
   prefix: '%{tools}'
   lib: lib
+  (?):
+  - target_arch == 'ppc64le':
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=26360
+      conf-extra: --with-long-double-128
   autogen: |
     autoreconf -fvi
     for conf in */configure.ac; do
