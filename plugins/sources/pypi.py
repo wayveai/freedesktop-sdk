@@ -7,7 +7,7 @@ import stat
 import contextlib
 import urllib.request
 import json
-from distutils.version import LooseVersion
+from datetime import datetime
 from buildstream import Source, SourceError, utils, Consistency
 
 def strip_top_dir(members, attr):
@@ -22,6 +22,18 @@ def strip_top_dir(members, attr):
                 new_path += '/'
             setattr(member, attr, new_path)
             yield member
+
+def make_key(item):
+    for download in item[1]:
+        if download['packagetype'] == 'sdist':
+            try:
+                date = datetime.strptime(download['upload_time_iso_8601'],
+                                         '%Y-%m-%dT%H:%M:%S.%fZ')
+            except ValueError:
+                date = datetime.strptime(download['upload_time_iso_8601'],
+                                             '%Y-%m-%dT%H:%M:%SZ')
+            return date
+    return datetime.fromtimestamp(0)
 
 class PyPISource(Source):
     def configure(self, node):
@@ -82,13 +94,12 @@ class PyPISource(Source):
         if self.include or self.exclude:
             includes = list(map(re.compile, self.include))
             excludes = list(map(re.compile, self.exclude))
-            selected_release = self._calculate_latest(releases,
-                                                      includes,
-                                                      excludes
-                                                      )
+            urls = self._calculate_latest(releases,
+                                          includes,
+                                          excludes
+                                          )
         else:
-            selected_release = payload['info']['version']
-        urls = releases[selected_release]
+            urls = releases[payload['info']['version']]
         found_ref = None
         for url in urls:
             if url['packagetype'] == 'sdist':
@@ -109,7 +120,7 @@ class PyPISource(Source):
         return found_ref
 
     def _calculate_latest(self, releases, includes, excludes):
-        for release in sorted(releases, key=LooseVersion, reverse=True):
+        for release, urls in sorted(releases.items(), key=make_key, reverse=True):
             if excludes:
                 excluded = False
                 for exclude in excludes:
@@ -121,9 +132,9 @@ class PyPISource(Source):
             if includes:
                 for include in includes:
                     if include.match(release):
-                        return release
+                        return urls
             else:
-                return release
+                return urls
 
         raise SourceError(f'{self}: No matching release')
 
