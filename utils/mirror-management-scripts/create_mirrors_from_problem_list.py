@@ -211,7 +211,7 @@ def main():
                     gitlab_instance_initialized = True
                 create_git_mirror(glb, mirror_dict['source_url'], top_group, new_mirror_url)
 
-            elif source_kind in ["tar", "zip", "remote", "cargo"]:
+            elif source_kind in ["tar", "zip", "remote", "cargo", "pypi"]:
                 if not tar_repo_initialized:
                     initialize_tar_repo(
                         tar_repo_dir, access_token, prompt_needed=args.require_prompt,

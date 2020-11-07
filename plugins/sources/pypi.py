@@ -62,24 +62,24 @@ class PyPISource(Source):
         pass
 
     def get_unique_key(self):
-        return [self.url, self.sha256sum]
+        return [self.original_url, self.sha256sum]
 
     def load_ref(self, node):
         self.sha256sum = self.node_get_member(node, str, 'sha256sum', None)
-        self.url = self.node_get_member(node, str, 'url', None)
-        if self.url is not None:
-            self.translated_url = self.translate_url(self.url)
+        self.original_url = self.node_get_member(node, str, 'url', None)
+        if self.original_url is not None:
+            self.url = self.translate_url(self.original_url)
         else:
-            self.translated_url = None
+            self.url = None
 
     def get_ref(self):
-        if self.url is None or self.sha256sum is None:
+        if self.original_url is None or self.sha256sum is None:
             return None
-        return {'url': self.url,
+        return {'url': self.original_url,
                 'sha256sum': self.sha256sum}
 
     def set_ref(self, ref, node):
-        node['url'] = self.url = ref['url']
+        node['url'] = self.original_url = ref['url']
         node['sha256sum'] = self.sha256sum = ref['sha256sum']
 
 
@@ -149,8 +149,8 @@ class PyPISource(Source):
         # More or less copied from _downloadablefilesource.py
         try:
             with self.tempdir() as tempdir:
-                default_name = os.path.basename(self.translated_url)
-                request = urllib.request.Request(self.translated_url)
+                default_name = os.path.basename(self.url)
+                request = urllib.request.Request(self.url)
                 request.add_header('Accept', '*/*')
                 request.add_header('User-Agent', 'BuildStream/1')
 
@@ -170,13 +170,13 @@ class PyPISource(Source):
                 return sha256
 
         except (urllib.error.URLError, urllib.error.ContentTooShortError, OSError) as e:
-            raise SourceError(f"{self}: Error mirroring {self.translated_url}: {e}",
+            raise SourceError(f"{self}: Error mirroring {self.url}: {e}",
                               temporary=True) from e
 
     def stage(self, directory):
         if not os.path.exists(self._get_mirror_file()):
             raise SourceError(f"{self}: Cannot find mirror file {self._get_mirror_file()}")
-        if self.translated_url.endswith('.zip'):
+        if self.url.endswith('.zip'):
             with zipfile.ZipFile(self._get_mirror_file(), mode='r') as zipf:
                 exec_rights = (stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO) & ~(stat.S_IWGRP | stat.S_IWOTH)
                 noexec_rights = exec_rights & ~(stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
@@ -201,7 +201,7 @@ class PyPISource(Source):
                 tar.extractall(path=directory, members=strip_top_dir(tar.getmembers(), 'path'))
 
     def get_consistency(self):
-        if self.url is None or self.sha256sum is None:
+        if self.original_url is None or self.sha256sum is None:
             return Consistency.INCONSISTENT
 
         if os.path.isfile(self._get_mirror_file()):
