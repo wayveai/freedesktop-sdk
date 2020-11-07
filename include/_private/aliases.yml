@@ -18,6 +18,7 @@ libdaemon: git://git.0pointer.de/
 netfilter: http://git.netfilter.org/
 nettle: https://git.lysator.liu.se/nettle/
 pagure: https://pagure.io/
+pypi: https://
 repo_or_cz: https://repo.or.cz/
 samba: https://git.samba.org/
 savannah: https://git.savannah.gnu.org/git/
@@ -41,7 +42,6 @@ google: https://dl.google.com/
 libsdl: https://www.libsdl.org/projects/
 oasis_open_xml: https://www.oasis-open.org/docbook/xml/
 pagure_releases: https://releases.pagure.org/
-pypi: https://files.pythonhosted.org/packages/
 sourceforge_download: https://downloads.sourceforge.net/
 sourceforge: https://sourceforge.net/
 sourceware_pub: https://sourceware.org/pub/
