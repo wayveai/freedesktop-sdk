@@ -27,7 +27,7 @@ class PyPISource(Source):
     def configure(self, node):
         self.node_validate(node, ['url', 'name', 'sha256sum',
                                   'include', 'exclude', 'index',
-                                  'scheme'] +
+                                  'scheme', 'match_pattern'] +
                            Source.COMMON_CONFIG_KEYS)
 
         self.load_ref(node)
@@ -38,6 +38,13 @@ class PyPISource(Source):
         self.exclude = self.node_get_member(node, list, 'exclude', [])
         self.index = self.node_get_member(node, str, 'index', 'https://pypi.org/pypi')
         self.scheme = self.node_get_member(node, str, 'scheme', None)
+        if self.scheme is not None:
+            self.match_pattern = self.node_get_member(node, str,
+                                                      "match_pattern",
+                                                      None)
+            if self.match_pattern is None:
+                raise SourceError((f"{self}: match_pattern mandatory when "
+                                   "scheme configured"))
 
     def preflight(self):
         pass
@@ -88,7 +95,7 @@ class PyPISource(Source):
                 built_url = url['url']
                 if self.scheme is not None:
                     built_url = built_url.replace(
-                        'https://', f'{self.scheme}:'
+                        self.match_pattern, f"{self.scheme}:"
                     )
                 found_ref = {
                     'sha256sum': url['digests']['sha256'],
