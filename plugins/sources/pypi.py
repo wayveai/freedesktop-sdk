@@ -7,7 +7,7 @@ import stat
 import contextlib
 import urllib.request
 import json
-from distutils.version import LooseVersion
+from datetime import datetime
 from buildstream import Source, SourceError, utils, Consistency
 
 def strip_top_dir(members, attr):
@@ -23,11 +23,23 @@ def strip_top_dir(members, attr):
             setattr(member, attr, new_path)
             yield member
 
+def make_key(item):
+    for download in item[1]:
+        if download['packagetype'] == 'sdist':
+            try:
+                date = datetime.strptime(download['upload_time_iso_8601'],
+                                         '%Y-%m-%dT%H:%M:%S.%fZ')
+            except ValueError:
+                date = datetime.strptime(download['upload_time_iso_8601'],
+                                             '%Y-%m-%dT%H:%M:%SZ')
+            return date
+    return datetime.fromtimestamp(0)
+
 class PyPISource(Source):
     def configure(self, node):
         self.node_validate(node, ['url', 'name', 'sha256sum',
                                   'include', 'exclude', 'index',
-                                  'scheme'] +
+                                  'scheme', 'match_pattern'] +
                            Source.COMMON_CONFIG_KEYS)
 
         self.load_ref(node)
@@ -38,6 +50,13 @@ class PyPISource(Source):
         self.exclude = self.node_get_member(node, list, 'exclude', [])
         self.index = self.node_get_member(node, str, 'index', 'https://pypi.org/pypi')
         self.scheme = self.node_get_member(node, str, 'scheme', None)
+        if self.scheme is not None:
+            self.match_pattern = self.node_get_member(node, str,
+                                                      "match_pattern",
+                                                      None)
+            if self.match_pattern is None:
+                raise SourceError((f"{self}: match_pattern mandatory when "
+                                   "scheme configured"))
 
     def preflight(self):
         pass
@@ -75,20 +94,19 @@ class PyPISource(Source):
         if self.include or self.exclude:
             includes = list(map(re.compile, self.include))
             excludes = list(map(re.compile, self.exclude))
-            selected_release = self._calculate_latest(releases,
-                                                      includes,
-                                                      excludes
-                                                      )
+            urls = self._calculate_latest(releases,
+                                          includes,
+                                          excludes
+                                          )
         else:
-            selected_release = payload['info']['version']
-        urls = releases[selected_release]
+            urls = releases[payload['info']['version']]
         found_ref = None
         for url in urls:
             if url['packagetype'] == 'sdist':
                 built_url = url['url']
                 if self.scheme is not None:
                     built_url = built_url.replace(
-                        'https://', f'{self.scheme}:'
+                        self.match_pattern, f"{self.scheme}:"
                     )
                 found_ref = {
                     'sha256sum': url['digests']['sha256'],
@@ -102,7 +120,7 @@ class PyPISource(Source):
         return found_ref
 
     def _calculate_latest(self, releases, includes, excludes):
-        for release in sorted(releases, key=LooseVersion, reverse=True):
+        for release, urls in sorted(releases.items(), key=make_key, reverse=True):
             if excludes:
                 excluded = False
                 for exclude in excludes:
@@ -114,9 +132,9 @@ class PyPISource(Source):
             if includes:
                 for include in includes:
                     if include.match(release):
-                        return release
+                        return urls
             else:
-                return release
+                return urls
 
         raise SourceError(f'{self}: No matching release')
 
