@@ -148,7 +148,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '20.1'
-  ref: mesa-20.1.10-0-g5fa3aae868b54512f75d91ea2d0ed4180c9cbf4a
+  track: '20.2'
+  ref: mesa-20.2.2-0-gdf2977f871fc70ebd6be48c180d117189b5861b5
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
