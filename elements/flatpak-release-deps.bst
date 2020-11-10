@@ -17,7 +17,6 @@ depends:
 - filename: flatpak-images/clinfo.bst
 - filename: flatpak-images/glxinfo.bst
 - filename: flatpak-images/glxinfo-debug.bst
-- filename: flatpak-images/rust.bst
 - filename: flatpak-images/vulkaninfo.bst
 - filename: flatpak-images/vainfo.bst
 - filename: flatpak-images/vainfo-debug.bst
