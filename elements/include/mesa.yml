@@ -8,5 +8,5 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '20.1'
-  ref: mesa-20.1.8-0-ge60a00a35653ef8d7eddc1905a66a74026ed843d
+  track: '20.2'
+  ref: mesa-20.2.2-0-gdf2977f871fc70ebd6be48c180d117189b5861b5
