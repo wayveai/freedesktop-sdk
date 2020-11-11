@@ -1,20 +1,17 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-- filename: components/python3-mako.bst
-  type: build
-- filename: components/llvm.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/python3-mako.bst
+- components/llvm.bst
+- components/bison.bst
+- components/flex.bst
 
-- filename: components/mesa-headers.bst
-  type: runtime
+depends:
+- bootstrap-import.bst
+
+runtime-depends:
+- components/mesa-headers.bst
 
 (@):
 - elements/include/mesa.yml
@@ -25,16 +22,16 @@ variables:
     -Dplatforms=drm \
     -Dopengl=true \
     -Dglx=disabled \
-    -Degl=false \
-    -Dgles1=false \
-    -Dgles2=false \
-    -Dllvm=true \
+    -Degl=disabled \
+    -Dgles1=disabled \
+    -Dgles2=disabled \
+    -Dllvm=enabled \
     -Dosmesa=gallium \
     -Ddri-drivers="" \
     -Dgallium-drivers="swrast" \
     -Dvulkan-drivers="" \
-    -Dgbm=false \
-    -Dshared-glapi=false
+    -Dgbm=disabled \
+    -Dshared-glapi=disabled
 
 config:
   install-commands:
