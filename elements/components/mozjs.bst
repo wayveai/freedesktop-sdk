@@ -6,7 +6,7 @@ build-depends:
 - components/python3.bst
 - components/which.bst
 - components/perl.bst
-- extensions/rust/rust.bst
+- components/rust.bst
 
 depends:
 - components/nspr.bst

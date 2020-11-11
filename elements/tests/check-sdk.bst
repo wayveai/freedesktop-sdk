@@ -21,6 +21,7 @@ config:
   - components/plymouth.bst
   - components/pulseaudio.bst
   - components/rtkit.bst
+  - components/rust.bst
   - components/steam-devices.bst
   - components/sudo.bst
   - components/systemd.bst

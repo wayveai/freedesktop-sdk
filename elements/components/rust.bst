@@ -1,22 +1,16 @@
 kind: manual
 
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: extensions/rust/rust-stage1.bst
-  type: build
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
-- filename: components/python3.bst
-  type: build
-- filename: components/llvm.bst
-- filename: components/libxml2.bst
-- filename: extensions/rust/ldconfig.bst
+- components/llvm.bst
+- components/libxml2.bst
+
+build-depends:
+- bootstrap-import.bst
+- components/rust-stage1.bst
+- public-stacks/buildsystem-cmake.bst
+- components/python3.bst
 
 variables:
-  prefix: /usr/lib/sdk/rust
-  lib: lib
-  debugdir: /usr/lib/debug
   optimize-debug: "false"
 
   debuginfo-level: 2
