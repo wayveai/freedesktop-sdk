@@ -64,35 +64,38 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ "${CI_JOB_NAME}" != app_x86_64-no-cache ] && [ "${CI_JOB_NAME}" != app_arm-no-cache ]; then
-      if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
-        echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
+    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
+      echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
+      echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
 
-        echo "projects:" >> ~/.config/buildstream.conf
-        echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
+      {
+        echo "projects:"
+        echo "  freedesktop-sdk:"
         echo "    artifacts:" >> ~/.config/buildstream.conf
         if [ -f /cache-certificate/server.crt ]; then
-            echo "    - url: https://local-cas-server:1102" >> ~/.config/buildstream.conf
-            echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-            echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-            echo "      server-cert: /cache-certificate/server.crt"  >> ~/.config/buildstream.conf
-            if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-              echo "      push: true" >> ~/.config/buildstream.conf
-            else
-              echo "      push: true" >> ~/.config/buildstream.conf
-            fi
-        fi
-        if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
-          echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
-          echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-          echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
+          echo "    - url: https://local-cas-server:1102"
+          echo "      client-key: /etc/ssl/CAS/server.key"
+          echo "      client-cert: /etc/ssl/CAS/server.crt"
+          echo "      server-cert: /cache-certificate/server.crt"
           if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
-             echo "      push: true" >> ~/.config/buildstream.conf
+            echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002"
+            echo "      client-key: /etc/ssl/CAS/server.key"
+            echo "      client-cert: /etc/ssl/CAS/server.crt"
+          else
+            echo "      push: true"
           fi
         fi
-      fi
+        if [ "${DISABLE_REMOTE_CACHE:+set}" != set ]; then
+          echo "    - url: https://${BST_CACHE_SERVER_ADDRESS}:11002"
+          echo "      client-key: /etc/ssl/CAS/server.key"
+          echo "      client-cert: /etc/ssl/CAS/server.crt"
+          if [ "${DISABLE_CACHE_PUSH:+set}" != set ]; then
+             echo "      push: true"
+          fi
+        fi
+      } >> ~/.config/buildstream.conf
     fi
+
 
   # flat-manager tokens to upload the releases
   - |
@@ -146,7 +149,8 @@ before_script:
     fi
 
 check_update_elements:
-  image: $DOCKER_AARCH64
+  extends:
+  - .builder-x86_64
   stage: update
   tags:
     - check_update
@@ -158,10 +162,9 @@ check_update_elements:
     - schedules
 
 check_mirrors:
-  image: $DOCKER_AARCH64
+  extends:
+  - .builder-x86_64
   stage: update
-  tags:
-    - armhf
   script:
     - make url-manifest
     - |
@@ -199,11 +202,6 @@ check_mirrors:
   stage: flatpak
   interruptible: true
   script:
-    - |
-      if [ "${CI_JOB_NAME}" == app_x86_64-no-cache ] || [ "${CI_JOB_NAME}" == app_arm-no-cache ]; then
-        sed -i '/artifacts:/,+1 d' project.conf
-      fi
-
     - make url-manifest
     - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
     - make build
@@ -240,77 +238,73 @@ check_mirrors:
     - '19.08'
     - tags
 
-app_x86_64:
+
+.builder-x86_64:
   image: $DOCKER_AMD64
-  <<: *flatpak_definition
   tags:
     - x86_64
     - cache_x86_64
   variables:
     ARCH: x86_64
-  dependencies: []
 
-app_x86_64-no-cache:
+.builder-i686:
   image: $DOCKER_AMD64
-  <<: *flatpak_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
-  dependencies: []
-  except:
-    - tags
-  only:
-    - schedules
-
-app_i686:
-  image: $DOCKER_AMD64
-  <<: *flatpak_definition
   tags:
     - x86_64
     - cache_i686
   variables:
     ARCH: i686
-  dependencies: []
 
-app_aarch64:
+.builder-aarch64:
   image: $DOCKER_AARCH64
-  <<: *flatpak_definition
   tags:
     - aarch64
   variables:
     ARCH: aarch64
-  dependencies: []
 
-app_arm:
+.builder-arm:
   image: $DOCKER_AARCH64
-  <<: *flatpak_definition
   tags:
-    - armhf
+    - aarch64
   variables:
     ARCH: arm
-  dependencies: []
 
-app_arm-no-cache:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_definition
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
-  dependencies: []
-  except:
-    - tags
-  only:
-    - schedules
-
-app_ppc64le:
-  image: $DOCKER_POWERPC64LE
-  <<: *flatpak_definition
+.builder-ppc64le:
+  image: $DOCKER_PPC64LE
   tags:
     - ppc64le
   variables:
     ARCH: ppc64le
+  dependencies: []
+
+app_x86_64:
+  extends:
+    - .flatpak_template
+    - .builder-x86_64
+  dependencies: []
+
+app_i686:
+  extends:
+    - .flatpak_template
+    - .builder-i686
+  dependencies: []
+
+app_aarch64:
+  extends:
+    - .flatpak_template
+    - .builder-aarch64
+  dependencies: []
+
+app_arm:
+  extends:
+    - .flatpak_template
+    - .builder-arm
+  dependencies: []
+
+app_ppc64le:
+  extends:
+    - .flatpak_template
+    - .builder-ppc64le
   allow_failure: true
   dependencies: []
 
@@ -344,38 +338,30 @@ app_ppc64le:
     - tags
 
 minimal_systemd_vm_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
 minimal_systemd_vm_i686:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-i686
   variables:
-    ARCH: i686
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
 
 minimal_systemd_vm_aarch64:
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-aarch64
   variables:
-    ARCH: aarch64
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -383,12 +369,10 @@ minimal_systemd_vm_aarch64:
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
 minimal_systemd_vm_arm:
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-arm
   variables:
-    ARCH: arm
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -397,12 +381,10 @@ minimal_systemd_vm_arm:
 minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
   allow_failure: true
-  image: $DOCKER_POWERPC64LE
-  tags:
-    - ppc64le
-  <<: *vm_imageless
+  extends:
+    - .vm_imageless_template
+    - .builder-ppc64le
   variables:
-    ARCH: ppc64le
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
@@ -426,13 +408,10 @@ minimal_systemd_vm_ppc64le:
     - tags
 
 minimal_systemd_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_image
+  extends:
+    - .vm_image_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     TYPE: minimal
     DIALOG: root-login
   dependencies: []
@@ -459,23 +438,20 @@ minimal_systemd_vm_image_x86_64:
     - tags
 
 minimal_efi_vm_image_x86_64:
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  <<: *vm_efi_image
+  extends:
+    - .vm_efi_image_template
+    - .builder-x86_64
   allow_failure: true
   variables:
-    ARCH: x86_64
     TYPE: minimal
     DIALOG: root-login
   dependencies: []
 
+
 prepare_publish:
-  image: $DOCKER_AMD64
+  extends:
+  - .builder-x86_64
   stage: prepare-publish
-  tags:
-    - x86_64
   script:
     - flat-manager-client create $RELEASES_SERVER_ADDRESS "${RELEASE_CHANNEL}" > publish_build.txt
   artifacts:
@@ -490,11 +466,9 @@ prepare_publish:
     - schedules
 
 finish_publish:
-  image: $DOCKER_AMD64
+  extends:
+  - .builder-x86_64
   stage: finish-publish
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - flat-manager-client commit --wait $(cat publish_build.txt)
     - flat-manager-client publish --wait $(cat publish_build.txt)
@@ -515,10 +489,9 @@ finish_publish:
     - prepare_publish
 
 finish_publish_failed:
-  image: $DOCKER_AMD64
+  extends:
+  - .builder-x86_64
   stage: finish-publish
-  tags:
-    - x86_64
   script:
     - flat-manager-client purge $(cat publish_build.txt)
   only:
@@ -595,54 +568,37 @@ finish_publish_failed:
     - schedules
 
 publish_x86_64:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .flatpak_publish_template
+    - .builder-x86_64
   dependencies:
     - prepare_publish
 
 publish_i686:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
+  extends:
+    - .flatpak_publish_template
+    - .builder-i686
   dependencies:
     - prepare_publish
 
 publish_aarch64:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .flatpak_publish_template
+    - .builder-aarch64
   dependencies:
     - prepare_publish
 
 publish_arm:
-  extends: .flatpak_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .flatpak_publish_template
+    - .builder-arm
   dependencies:
     - prepare_publish
 
 publish_ppc64le:
-  extends: .flatpak_publish_template
-  image: $DOCKER_POWERPC64LE
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
+  extends:
+    - .flatpak_publish_template
+    - .builder-ppc64le
   allow_failure: true
   dependencies:
     - prepare_publish
@@ -651,65 +607,48 @@ publish_ppc64le:
     - schedules
 
 publish_x86_64_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .publish_tar_template
+    - .builder-x86_64
   dependencies: []
   when: manual
 
 publish_i686_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-  variables:
-    ARCH: i686
+  extends:
+    - .publish_tar_template
+    - .builder-i686
   dependencies: []
   when: manual
 
 publish_aarch64_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .publish_tar_template
+    - .builder-aarch64
   dependencies: []
   when: manual
 
 publish_arm_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .publish_tar_template
+    - .builder-arm
   dependencies: []
   when: manual
 
 publish_ppc64le_tar:
-  extends: .publish_tar_template
-  image: $DOCKER_POWERPC64LE
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
+  extends:
+    - .publish_tar_template
+    - .builder-ppc64le
   dependencies: []
   when: manual
 
 cve_report:
+  extends:
+  - .builder-x86_64
   stage: finish-publish
-  image: $DOCKER_AMD64
   cache:
     key: cve
     paths:
       - "${XDG_CACHE_HOME}/cve"
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - make manifest
 
@@ -730,11 +669,9 @@ cve_report:
   dependencies: []
 
 markdown_manifest:
+  extends:
+  - .builder-x86_64
   stage: finish-publish
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - make markdown-manifest
   artifacts:
@@ -762,39 +699,27 @@ markdown_manifest:
     - schedules
 
 reproducible_x86_64:
-  image: $DOCKER_AMD64
-  <<: *reproducible
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .reproducible_template
+    - .builder-x86_64
   when: manual
 
 reproducible_i686:
-  image: $DOCKER_AMD64
-  <<: *reproducible
-  tags:
-    - x86_64
-  variables:
-    ARCH: i686
+  extends:
+    - .reproducible_template
+    - .builder-i686
   when: manual
 
 reproducible_aarch64:
-  image: $DOCKER_AARCH64
-  <<: *reproducible
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .reproducible_template
+    - .builder-aarch64
   when: manual
 
 reproducible_arm:
-  image: $DOCKER_AARCH64
-  <<: *reproducible
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .reproducible_template
+    - .builder-arm
   when: manual
 
 .snap_publish_template:
@@ -838,41 +763,27 @@ reproducible_arm:
     - schedules
 
 publish_snap_x86_64:
-  extends: .snap_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
-  variables:
-    ARCH: x86_64
+  extends:
+    - .snap_publish_template
+    - .builder-x86_64
   when: manual
 
 publish_snap_i686:
-  extends: .snap_publish_template
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_i686
-  variables:
-    ARCH: i686
+  extends:
+    - .snap_publish_template
+    - .builder-i686
   when: manual
 
 publish_snap_arm:
-  extends: .snap_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - armhf
-  variables:
-    ARCH: arm
+  extends:
+    - .snap_publish_template
+    - .builder-arm
   when: manual
 
 publish_snap_aarch64:
-  extends: .snap_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
+  extends:
+    - .snap_publish_template
+    - .builder-aarch64
   when: manual
 
 .docker_publish_template:
@@ -916,54 +827,42 @@ publish_snap_aarch64:
   - schedules
 
 publish_docker_x86_64:
-  extends: .docker_publish_template
-  image: $DOCKER_AMD64
-  tags:
-  - x86_64
-  - cache_x86_64
+  extends:
+    - .docker_publish_template
+    - .builder-x86_64
   variables:
-    ARCH: x86_64
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_i686:
-  extends: .docker_publish_template
-  image: $DOCKER_AMD64
-  tags:
-  - x86_64
-  - cache_i686
+  extends:
+    - .docker_publish_template
+    - .builder-i686
   variables:
-    ARCH: i686
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_aarch64:
-  extends: .docker_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-  - aarch64
+  extends:
+    - .docker_publish_template
+    - .builder-aarch64
   variables:
-    ARCH: aarch64
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_arm:
-  extends: .docker_publish_template
-  image: $DOCKER_AARCH64
-  tags:
-  - armhf
+  extends:
+    - .docker_publish_template
+    - .builder-arm
   variables:
-    ARCH: arm
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_ppc64le:
-  extends: .docker_publish_template
-  image: $DOCKER_POWERPC64LE
-  tags:
-  - ppc64le
+  extends:
+    - .docker_publish_template
+    - .builder-ppc64le
   variables:
-    ARCH: ppc64le
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
 
