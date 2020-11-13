@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: pytz
-  url: pypi:f4/f6/94fee50f4d54f58637d4b9987a1b862aeb6cd969e73623e02c5c00755577/pytz-2020.1.tar.gz
-  sha256sum: c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048
+  url: pypi:09/07/448a8887c7195450604dfc0305d80d74324c36ee18ed997664051d4bffe3/pytz-2020.4.tar.gz
+  sha256sum: 3e6b7dd2d1e0a59084bcee14a17af60c5c562cdc16d828e8eba2e683d3a7e268
