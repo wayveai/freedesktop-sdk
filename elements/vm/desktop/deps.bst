@@ -23,6 +23,7 @@ runtime-depends:
 - components/flatpak.bst
 - components/xdg-desktop-portal.bst
 - vm/config/flathub.bst
+- vm/config/pipewire.bst
 - vm/config/weston.bst
 - vm/config/sudo.bst
 - vm/config/networkd.bst
@@ -54,16 +55,3 @@ runtime-depends:
 - components/fscrypt.bst
 - components/bash-config.bst
 - components/bash-completion.bst
-
-(?):
-- not pipewire:
-    runtime-depends:
-      (>):
-      - vm/config/pulseaudio.bst
-      - vm/config/pipewire.bst
-- pipewire:
-    runtime-depends:
-      (>):
-      - vm/config/pipewire.bst
-      - components/pipewire-libpulse.bst
-      - components/wireplumber.bst

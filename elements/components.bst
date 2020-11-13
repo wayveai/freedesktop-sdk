@@ -306,8 +306,6 @@ depends:
 - components/pipewire-daemon.bst
 - components/pipewire-libjack-manual.bst
 - components/pipewire-libjack.bst
-- components/pipewire-libpulse-manual.bst
-- components/pipewire-libpulse.bst
 - components/pipewire-manifest.bst
 - components/pipewire.bst
 - components/pixman.bst
@@ -319,7 +317,6 @@ depends:
 - components/poppler.bst
 - components/procps.bst
 - components/pulseaudio-base.bst
-- components/pulseaudio.bst
 - components/pwquality.bst
 - components/pycairo.bst
 - components/pygobject.bst
