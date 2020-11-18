@@ -15,7 +15,7 @@ gnupg: https://dev.gnupg.org/source/
 kitware: https://gitlab.kitware.com/cmake/
 kernel: https://git.kernel.org/pub/scm/
 libdaemon: git://git.0pointer.de/
-netfilter: http://git.netfilter.org/
+netfilter: https://git.netfilter.org/
 nettle: https://git.lysator.liu.se/nettle/
 pagure: https://pagure.io/
 pypi: https://files.pythonhosted.org/packages/
