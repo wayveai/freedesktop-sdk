@@ -57,7 +57,7 @@ DIALOGS = {
         'root',
         'Password',
         'root',
-        'sh',
+        '#',
         'uname -a',
         'Linux',
         'systemctl poweroff',
@@ -69,9 +69,9 @@ DIALOGS = {
         'root',
         'Password:',
         'root',
-        '-bash-5.0#',
+        '#',
         'uname -a',
-        '-bash-5.0#',
+        '#',
         'systemctl poweroff',
         'Power down'
     ]

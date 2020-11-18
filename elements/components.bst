@@ -20,6 +20,8 @@ depends:
 - components/avahi-manifest.bst
 - components/avahi-ui.bst
 - components/avahi.bst
+- components/bash-completion.bst
+- components/bash-config.bst
 - components/bc.bst
 - components/bison.bst
 - components/bluez-headers.bst
