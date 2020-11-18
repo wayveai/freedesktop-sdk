@@ -39,6 +39,9 @@ config:
       destination: "%{install-root}"
   commands:
     - |
+      rm -rf "%{install-root}/etc"
+
+    - |
       for dir in %{required-dirs}
       do
         mkdir -p "%{install-root}${dir}"
