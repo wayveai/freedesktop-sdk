@@ -25,6 +25,8 @@ config:
     architectures:
       - "%{snap_arch}"
     grade: "%{snap_grade}"
+    assumes:
+    - snapd2.45
 
 build-depends:
 - snap-images/platform-fix-image.bst
