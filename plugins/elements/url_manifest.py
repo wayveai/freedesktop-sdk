@@ -74,9 +74,9 @@ def get_source_locations(sources):
                     'raw_url': raw_cargo_url + rest_of_url,
                     'source_url': base_cargo_url + rest_of_url,
                 })
-        if source_kind in ['git', 'git_tag', 'ostree', 'tar', 'zip', 'remote']:
+        if source_kind in ['git', 'git_tag', 'ostree', 'tar', 'zip', 'remote', 'pypi']:
             #skip over sources that don't have source URLs, like patch sources
-            if source_kind in ['tar', 'zip', 'remote', 'ostree']:
+            if source_kind in ['tar', 'zip', 'remote', 'ostree', 'pypi']:
                 source_url = source.url
             if source_kind in ['git', 'git_tag']:
                 source_url = source.translate_url(
@@ -118,7 +118,7 @@ def get_source_locations(sources):
 
 class UrlManifestElement(Element):
 
-    BST_FORMAT_VERSION = 0.2
+    BST_FORMAT_VERSION = 1
 
     def configure(self, node):
         if 'path' in node:
