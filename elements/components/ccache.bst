@@ -18,7 +18,5 @@ depends:
 sources:
 - kind: git_tag
   url: github:ccache/ccache.git
-  track: master
-  track-extra:
-  - 3.7-maint
+  track: 3.7-maint
   ref: v3.7.12-0-ga357b91272226c3dceeb5049885ff7ba555c5294
