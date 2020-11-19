@@ -1,24 +1,24 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/bison.bst
+- components/flex.bst
+- components/gtk-doc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glib.bst
-- filename: components/python3.bst
-- filename: components/python3-mako.bst
-- filename: components/python3-markdown.bst
-- filename: components/gtk-doc.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+- components/glib.bst
+- components/python3.bst
+- components/python3-mako.bst
+- components/python3-markdown.bst
+
 
 variables:
   meson-local: >-
+    -Dcairo=disabled
     -Dgtk_doc=true
-    -Ddoctool=true
+    -Ddoctool=enabled
 
 public:
   bst:
@@ -37,5 +37,5 @@ public:
 sources:
 - kind: git_tag
   url: gnome:gobject-introspection.git
-  track: gnome-3-34
-  ref: 1.62.0-0-gf330f517d8cd0bfbe67c62ba00be85dee2b338ed
+  track: gnome-3-38
+  ref: 1.66.1-0-g0de3f99f59290755de7b4909fe1d01c322657107
