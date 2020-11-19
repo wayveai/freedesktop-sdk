@@ -217,7 +217,7 @@ test-codecs: $(REPO)
 test-runtime-inheritance: export XDG_DATA_HOME=$(CURDIR)/runtime
 test-runtime-inheritance: $(REPO)
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Extension.rust-stable,.Debug,.Docs,.Locale}}//$(BRANCH)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk{,.Debug,.Docs,.Locale}}//$(BRANCH)
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.ExampleRuntime.json
 
 
