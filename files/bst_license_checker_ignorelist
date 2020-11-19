@@ -46,7 +46,6 @@ components/pipewire.bst
 components/pipewire-daemon.bst
 components/pipewire-libjack.bst
 components/pipewire-libpulse.bst
-components/pulseaudio.bst
 components/systemd.bst
 components/systemd-libs.bst
 components/xdg-desktop-portal.bst

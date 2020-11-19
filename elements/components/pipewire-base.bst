@@ -4,7 +4,6 @@ kind: meson
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
 #  - components/pipewire-libjack.bst
-#  - components/pipewire-libpulse.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -49,11 +48,6 @@ public:
       - '%{bindir}/pw-jack'
       - '%{libdir}/pipewire-0.3/jack/**'
       - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
-
-      libpulse:
-      - '%{bindir}/pw-pulse'
-      - '%{libdir}/pipewire-0.3/pulse/**'
-      - '%{debugdir}%{libdir}/pipewire-0.3/pulse/**'
   cpe:
     product: pipewire
 
@@ -63,6 +57,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.13-0-gd7714f734dcf2a346f939e11e1e3f6a2373c8632
+  ref: 0.3.16-0-g09d373f094f0e6797aef3d97cde2c0167dccc986
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch

@@ -1,5 +1,5 @@
 diff --git a/src/modules/meson.build b/src/modules/meson.build
-index a63e9ce9..7a1b96c5 100644
+index 1bac7414..9511e161 100644
 --- a/src/modules/meson.build
 +++ b/src/modules/meson.build
 @@ -10,7 +10,6 @@ pipewire_module_access = shared_library('pipewire-module-access', [ 'module-acce
@@ -55,10 +55,18 @@ index a63e9ce9..7a1b96c5 100644
    install : true,
    install_dir : modules_install_dir,
 -  install_rpath: modules_install_dir,
-   dependencies : pipewire_module_protocol_native_deps,
+   dependencies : pipewire_module_protocol_deps,
  )
  
-@@ -116,7 +109,6 @@ pipewire_module_metadata = shared_library('pipewire-module-metadata',
+@@ -96,7 +89,6 @@ pipewire_module_protocol_pulse = shared_library('pipewire-module-protocol-pulse'
+   include_directories : [configinc, spa_inc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : pipewire_module_protocol_deps,
+ )
+ 
+@@ -114,7 +106,6 @@ pipewire_module_client_node = shared_library('pipewire-module-client-node',
    link_with : pipewire_module_protocol_native,
    install : true,
    install_dir : modules_install_dir,
@@ -66,7 +74,15 @@ index a63e9ce9..7a1b96c5 100644
    dependencies : [mathlib, dl_lib, pipewire_dep],
  )
  
-@@ -141,7 +133,6 @@ pipewire_module_adapter = shared_library('pipewire-module-adapter',
+@@ -128,7 +119,6 @@ pipewire_module_metadata = shared_library('pipewire-module-metadata',
+   link_with : pipewire_module_protocol_native,
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, pipewire_dep],
+ )
+ 
+@@ -165,7 +155,6 @@ pipewire_module_adapter = shared_library('pipewire-module-adapter',
    include_directories : [configinc, spa_inc],
    install : true,
    install_dir : modules_install_dir,
@@ -74,7 +90,7 @@ index a63e9ce9..7a1b96c5 100644
    dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
  )
  
-@@ -164,6 +155,5 @@ pipewire_module_session_manager = shared_library('pipewire-module-session-manage
+@@ -188,6 +177,5 @@ pipewire_module_session_manager = shared_library('pipewire-module-session-manage
    include_directories : [configinc, spa_inc],
    install : true,
    install_dir : modules_install_dir,
