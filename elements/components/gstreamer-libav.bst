@@ -20,7 +20,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav.git
   track: '1.16'
-  ref: 1.16.2-0-g090cfd40aad49ad645a9bf4bdd62e65b739c95f3
+  ref: 1.16.3-0-g6988bdb0482b18b7a9f0c9635217a93d5057a9ff
   submodules:
     common:
       checkout: false
