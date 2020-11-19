@@ -46,4 +46,4 @@ sources:
   track: master
   exclude:
   - "*-base"
-  ref: gpgme-1.14.0-0-g6d7bf78ca5af35b0860aa20b12f799ab03752190
+  ref: gpgme-1.15.0-0-gfeea38c89d4ceb40334f884da9ab07cc4b73e757
