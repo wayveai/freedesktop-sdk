@@ -10,10 +10,16 @@ depends:
 variables:
   conf-local: |
     --disable-jack \
-    --disable-pulseaudio \
+    --enable-pulseaudio \
     --disable-samplerate \
     --disable-libav \
     --with-speex=no
+
+config:
+  install-commands:
+    (>):
+    - |
+      mv "%{install-root}%{sysconfdir}/alsa/conf.d/99-pulseaudio-default.conf.example" "%{install-root}%{sysconfdir}/alsa/conf.d/99-pulseaudio-default.conf"
 
 sources:
 - kind: git_tag
