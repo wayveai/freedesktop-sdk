@@ -1,27 +1,17 @@
-From 1ee90c2be4a0d698bb2f1d9733b79fa5cf781409 Mon Sep 17 00:00:00 2001
-From: Thomas Coldrick <othko97@gmail.com>
-Date: Tue, 29 Jan 2019 16:08:56 +0000
-Subject: [PATCH GnuPG] Don't include tests with tarred data
-
----
- configure.ac      | 1 -
- tests/Makefile.am | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
-
 diff --git a/configure.ac b/configure.ac
-index 919ab3197..aed883f93 100644
+index 2e5c28453..354af28a5 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2037,7 +2037,6 @@ tests/openpgp/Makefile
+@@ -2007,7 +2007,6 @@ tests/openpgp/Makefile
  tests/migrations/Makefile
  tests/gpgsm/Makefile
  tests/gpgme/Makefile
 -tests/pkits/Makefile
+ agent/gpg-agent.w32-manifest
  g10/gpg.w32-manifest
- ])
- 
+ g10/gpgv.w32-manifest
 diff --git a/tests/Makefile.am b/tests/Makefile.am
-index b9be6aaa6..28896f9e6 100644
+index 65978ae3f..65e928bc2 100644
 --- a/tests/Makefile.am
 +++ b/tests/Makefile.am
 @@ -18,7 +18,7 @@
@@ -33,6 +23,3 @@ index b9be6aaa6..28896f9e6 100644
  
  GPGSM = ../sm/gpgsm
  
--- 
-2.20.1
-
