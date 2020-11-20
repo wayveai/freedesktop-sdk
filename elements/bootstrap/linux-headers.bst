@@ -9,6 +9,7 @@ build-depends:
 - elements/include/linux.yml
 
 variables:
+  kernel_arch: '%{arch}'
   (?):
   - target_arch == "aarch64":
       kernel_arch: arm64
@@ -16,8 +17,6 @@ variables:
       kernel_arch: i386
   - target_arch == "ppc64le":
       kernel_arch: powerpc
-  - target_arch != "aarch64" and target_arch != "i686" and target_arch != "ppc64le":
-      kernel_arch: '%{arch}'
 
 config:
   install-commands:
