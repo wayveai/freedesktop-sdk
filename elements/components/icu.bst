@@ -35,9 +35,7 @@ sources:
 - kind: git_tag
   url: github:unicode-org/icu.git
   use-lfs: false
-  track: master
-  track-extra:
-  - maint/maint-64
+  track: maint/maint-67
   exclude:
   - "release-*-rc"
   - "*-preview"
