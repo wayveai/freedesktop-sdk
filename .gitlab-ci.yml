@@ -265,7 +265,7 @@ check_mirrors:
 .builder-arm:
   image: $DOCKER_AARCH64
   tags:
-    - aarch64
+    - armhf
   variables:
     ARCH: arm
 
