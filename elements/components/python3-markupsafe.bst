@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: markupsafe
-  url: pypi:e0/bf/acc45baeb2d7333ed724c30af188640d9cb0be4b28533edfc3e2ae5aad72/MarkupSafe-2.0.0a1.tar.gz
-  sha256sum: beac28ed60c8e838301226a7a85841d0af2068eba2dcb1a58c2d32d6c05e440e
+  url: pypi:b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
+  sha256sum: 29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b
