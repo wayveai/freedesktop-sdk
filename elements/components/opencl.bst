@@ -13,7 +13,7 @@ variables:
     --disable-update-database
 
   local_flags: -fcommon
-  
+
 public:
   bst:
     split-rules:
@@ -25,4 +25,4 @@ sources:
 - kind: git_tag
   url: github:OCL-dev/ocl-icd.git
   track: master
-  ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
+  ref: v2.2.13-0-g3b7ded60ebb7e1afddcbae6f82ac8645b276e358
