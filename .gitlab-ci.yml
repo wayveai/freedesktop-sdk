@@ -265,7 +265,7 @@ check_mirrors:
 .builder-arm:
   image: $DOCKER_AARCH64
   tags:
-    - aarch64
+    - armhf
   variables:
     ARCH: arm
 
@@ -299,7 +299,6 @@ app_arm:
   extends:
     - .flatpak_template
     - .builder-arm
-  allow_failure: true
   dependencies: []
 
 app_ppc64le:
@@ -377,7 +376,6 @@ minimal_systemd_vm_arm:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
-  allow_failure: true
   dependencies: []
 
 minimal_systemd_vm_ppc64le:
@@ -594,7 +592,6 @@ publish_arm:
   extends:
     - .flatpak_publish_template
     - .builder-arm
-  allow_failure: true
   dependencies:
     - prepare_publish
 
@@ -857,7 +854,6 @@ publish_docker_arm:
   extends:
     - .docker_publish_template
     - .builder-arm
-  allow_failure: true
   variables:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
