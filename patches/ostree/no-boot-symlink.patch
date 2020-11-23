@@ -1,5 +1,5 @@
 diff --git a/src/libostree/ostree-sysroot-cleanup.c b/src/libostree/ostree-sysroot-cleanup.c
-index 71d978e0..c3b18eca 100644
+index ffad4130..8cff4b9c 100644
 --- a/src/libostree/ostree-sysroot-cleanup.c
 +++ b/src/libostree/ostree-sysroot-cleanup.c
 @@ -216,6 +216,15 @@ cleanup_other_bootversions (OstreeSysroot       *self,
@@ -19,10 +19,10 @@ index 71d978e0..c3b18eca 100644
    /* These directories are for the other major version */
    g_string_truncate (buf, 0); g_string_append_printf (buf, "boot/loader.%d", cleanup_bootversion);
 diff --git a/src/libostree/ostree-sysroot-deploy.c b/src/libostree/ostree-sysroot-deploy.c
-index ee00c02c..41b9e079 100644
+index 0e02d1f2..6e87a6be 100644
 --- a/src/libostree/ostree-sysroot-deploy.c
 +++ b/src/libostree/ostree-sysroot-deploy.c
-@@ -1872,38 +1872,89 @@ install_deployment_kernel (OstreeSysroot   *sysroot,
+@@ -1979,17 +1979,15 @@ install_deployment_kernel (OstreeSysroot   *sysroot,
    return TRUE;
  }
  
@@ -42,12 +42,14 @@ index ee00c02c..41b9e079 100644
 +                            GCancellable   *cancellable,
 +                            GError        **error)
  {
--  GLNX_AUTO_PREFIX_ERROR ("Preparing final bootloader swap", error);
 +  glnx_autofd int boot_dfd = -1;
 +
-+  GLNX_AUTO_PREFIX_ERROR ("Preparing new bootloader directory", error);
+   GLNX_AUTO_PREFIX_ERROR ("Preparing final bootloader swap", error);
    g_assert ((current_bootversion == 0 && new_bootversion == 1) ||
              (current_bootversion == 1 && new_bootversion == 0));
+@@ -2000,23 +1998,76 @@ prepare_new_bootloader_link (OstreeSysroot  *sysroot,
+     if (errno != EEXIST)
+       return glnx_throw_errno_prefix (error, "symlinkat");
  
 -  g_autofree char *new_target = g_strdup_printf ("loader.%d", new_bootversion);
 +  if (!glnx_opendirat (sysroot->sysroot_fd, "boot", TRUE, &boot_dfd, error))
@@ -88,7 +90,7 @@ index ee00c02c..41b9e079 100644
 +      if ((errno == EINVAL)
 +          || (errno == ENOSYS))
 +        {
-+          if (glnx_renameat2_exchange (olddirfd, oldpath, newdirfd, newpath) == 0)
++         if (glnx_renameat2_exchange (olddirfd, oldpath, newdirfd, newpath) == 0)
 +            {
 +              is_atomic = FALSE;
 +              return TRUE;
@@ -127,7 +129,7 @@ index ee00c02c..41b9e079 100644
                   GCancellable   *cancellable,
                   GError        **error)
  {
-@@ -1916,11 +1967,8 @@ swap_bootloader (OstreeSysroot  *sysroot,
+@@ -2029,11 +2080,8 @@ swap_bootloader (OstreeSysroot  *sysroot,
    if (!glnx_opendirat (sysroot->sysroot_fd, "boot", TRUE, &boot_dfd, error))
      return FALSE;
  
@@ -141,7 +143,7 @@ index ee00c02c..41b9e079 100644
      return FALSE;
  
    /* Now we explicitly fsync this directory, even though it
-@@ -2141,6 +2189,7 @@ write_deployments_bootswap (OstreeSysroot     *self,
+@@ -2254,6 +2302,7 @@ write_deployments_bootswap (OstreeSysroot     *self,
                              OstreeSysrootWriteDeploymentsOpts *opts,
                              OstreeBootloader  *bootloader,
                              SyncStats         *out_syncstats,
@@ -149,7 +151,7 @@ index ee00c02c..41b9e079 100644
                              GCancellable      *cancellable,
                              GError           **error)
  {
-@@ -2203,15 +2252,16 @@ write_deployments_bootswap (OstreeSysroot     *self,
+@@ -2316,15 +2365,15 @@ write_deployments_bootswap (OstreeSysroot     *self,
          return glnx_prefix_error (error, "Bootloader write config");
      }
  
@@ -165,11 +167,10 @@ index ee00c02c..41b9e079 100644
    if (!swap_bootloader (self, bootloader, self->bootversion, new_bootversion,
 -                        cancellable, error))
 +                        is_atomic, cancellable, error))
-+
      return FALSE;
  
    return TRUE;
-@@ -2452,7 +2502,8 @@ ostree_sysroot_write_deployments_with_options (OstreeSysroot     *self,
+@@ -2565,7 +2614,8 @@ ostree_sysroot_write_deployments_with_options (OstreeSysroot     *self,
  
        /* Note equivalent of try/finally here */
        gboolean success = write_deployments_bootswap (self, new_deployments, opts, bootloader,
@@ -180,7 +181,7 @@ index ee00c02c..41b9e079 100644
         * Note we only bother remounting if a mount namespace isn't in use.
         * */
 diff --git a/src/libostree/ostree-sysroot.c b/src/libostree/ostree-sysroot.c
-index 55a61014..bed892e3 100644
+index b211fea7..01de2fc7 100644
 --- a/src/libostree/ostree-sysroot.c
 +++ b/src/libostree/ostree-sysroot.c
 @@ -514,6 +514,60 @@ compare_loader_configs_for_sorting (gconstpointer  a_pp,
