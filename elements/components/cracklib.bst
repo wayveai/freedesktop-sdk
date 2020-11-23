@@ -1,20 +1,15 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/curl.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/python3.bst
-  type: build
-- filename: components/curl.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   conf-local: >-
-    --with-python
-    PYTHON=/usr/bin/python3
-    am_cv_python_version=3.8
-    CPPFLAGS="-I%{includedir}/python3.8 -I%{includedir}/%{gcc_triplet}/python3.8"
+    --without-python
 
 config:
   configure-commands:
