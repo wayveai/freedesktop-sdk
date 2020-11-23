@@ -39,7 +39,7 @@ config:
           - opengl
           - wayland
     layout:
-      /app:
+      /var/app:
         bind: $SNAP/app
 
 depends:
