@@ -28,8 +28,8 @@ variables:
     /lib/modules
     /mnt
     /usr/local/share/fonts
-    /app
     /snap
+    /var/app
 
 config:
   layout:
@@ -40,6 +40,10 @@ config:
   commands:
     - |
       rm -rf "%{install-root}/etc"
+
+    # Because snapd does not allow binding /app, then we need to mount it in /var/app
+    - |
+      ln -s var/app "%{install-root}/app"
 
     - |
       for dir in %{required-dirs}
