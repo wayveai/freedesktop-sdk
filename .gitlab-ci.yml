@@ -205,7 +205,6 @@ check_mirrors:
     - make url-manifest
     - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
     - make build
-    - test ${ARCH} != "aarch64" && make build-vm
 
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
     - make test-apps
@@ -377,6 +376,7 @@ minimal_systemd_vm_arm:
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
   dependencies: []
+  when: manual # this is slow and we have newer supported branch
 
 minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
