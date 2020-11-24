@@ -31,6 +31,7 @@ variables:
     -Dman=true
     -Dgstreamer=true
     -Dsystemd=true
+    -Dpipewire-pulseaudio=true
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
@@ -61,6 +62,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.13-0-gd7714f734dcf2a346f939e11e1e3f6a2373c8632
+  ref: 0.3.16-0-g09d373f094f0e6797aef3d97cde2c0167dccc986
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
