@@ -23,6 +23,7 @@ public:
       devel:
         (>):
         - '%{libdir}/libcap.so'
+        - '%{libdir}/libpsx.so'
 
 sources:
 - kind: git_tag
@@ -32,6 +33,6 @@ sources:
   - 'libcap-*'
   exclude:
   - 'libcap-korg-*'
-  ref: libcap-2.43-0-gdbeb06ba295fcac6dd2e602ab489b392647b4a07
+  ref: libcap-2.45-0-gcf8fb28e420d7b54e856cd30cef18ac732f24d2c
 - kind: patch
   path: patches/libcap/libcap-disable-tests.patch
