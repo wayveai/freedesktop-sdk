@@ -133,3 +133,4 @@ build-depends:
 - integration/app-debug-link.bst
 - tests/check-static-libraries.bst
 - tests/sdk-integration.bst
+- flatpak-images/copy-ld-debug.bst
