@@ -6,6 +6,7 @@ build-depends:
 
 depends:
 - components/dbus.bst
+- components/inih.bst
 
 variables:
   meson-local: >-
@@ -35,8 +36,4 @@ sources:
 - kind: git_tag
   url: github:FeralInteractive/gamemode.git
   track: master
-  ref: 1.5.1-0-g616dca659afb78be55f0797ac0203c6e0028b8bb
-  submodules:
-    subprojects/inih:
-      url: github:benhoyt/inih.git
-      checkout: true
+  ref: 1.6-0-g5f71f57db105c5d8682d5ab795651245603133ff
