@@ -152,8 +152,6 @@ check_update_elements:
   extends:
   - .builder-x86_64
   stage: update
-  tags:
-    - check_update
   script:
     - git checkout -- snap-version.yml
     - ${BST} track --deps all track-elements.bst
