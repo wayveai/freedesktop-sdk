@@ -10,12 +10,12 @@ depends:
 
 config:
   build-commands:
-    - make
+  - make
   install-commands:
-    - make -j1 PREFIX=%{install-root}%{prefix} install
+  - make -j1 PREFIX=%{install-root}%{prefix} install
 
 sources:
 - kind: git_tag
   url: github:Oblomov/clinfo.git
   track: master
-  ref: 2.2.18.04.06-0-g59d0daf898e48d76ccbb788acbba258fa0a8ba7c
+  ref: 3.0.20.11.20-0-g1b3c83815f558e17ec69b1b3df7a03ae9313c744
