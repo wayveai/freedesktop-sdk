@@ -29,7 +29,7 @@ sources:
   url: kernel:libs/libcap/libcap.git
   track: master
   match:
-  - 'libcap-*'
+  - 'libcap-2.44*'
   exclude:
   - 'libcap-korg-*'
   ref: libcap-2.44-0-g2fa105aacc656d415ca90c33ea6fbb5ddc407b9a
