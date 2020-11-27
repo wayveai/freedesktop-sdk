@@ -12,5 +12,5 @@ depends:
 sources:
 - kind: pypi
   name: lxml
-  url: pypi:2c/4d/3ec1ea8512a7fbf57f02dee3035e2cce2d63d0e9c0ab8e4e376e01452597/lxml-4.5.2.tar.gz
-  sha256sum: cdc13a1682b2a6241080745b1953719e7fe0850b40a5c71ca574f090a1391df6
+  url: pypi:c5/2f/a0d8aa3eee6d53d5723d89e1fc32eee11e76801b424e30b55c7aa6302b01/lxml-4.6.1.tar.gz
+  sha256sum: c152b2e93b639d1f36ec5a8ca24cde4a8eefb2b6b83668fcd8e83a67badcb367
