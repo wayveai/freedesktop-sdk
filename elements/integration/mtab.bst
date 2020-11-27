@@ -7,7 +7,5 @@ depends:
 config:
   install-commands:
   - |
-    mkdir -p "%{install-root}/proc/self"
     mkdir -p "%{install-root}/etc"
-    touch "%{install-root}/proc/self/mounts"
     ln -s ../../proc/self/mounts %{install-root}/etc/mtab
