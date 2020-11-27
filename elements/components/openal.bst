@@ -27,4 +27,6 @@ sources:
 - kind: git_tag
   url: github:kcat/openal-soft.git
   track: master
+  match:
+  - 'openal-soft-1.20.*'
   ref: openal-soft-1.20.1-0-gf5e0eef34db3a3ab94b61a2f99f84f078ba947e7
