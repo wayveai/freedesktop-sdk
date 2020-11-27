@@ -46,4 +46,6 @@ sources:
   track: master
   exclude:
   - "*-base"
+  match:
+  - 'gpgme-1.14.*'
   ref: gpgme-1.14.0-0-g6d7bf78ca5af35b0860aa20b12f799ab03752190
