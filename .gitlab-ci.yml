@@ -347,6 +347,13 @@ license_checker:
     ARCH: ppc64le
   dependencies: []
 
+.builder-riscv64:
+  image: $DOCKER_AMD64
+  tags:
+    - riscv
+  variables:
+    ARCH: riscv64
+
 app_x86_64:
   extends:
     - .flatpak_template
@@ -369,6 +376,13 @@ app_ppc64le:
   extends:
     - .flatpak_template
     - .builder-ppc64le
+  allow_failure: true
+  dependencies: []
+
+app_riscv64:
+  extends:
+    - .flatpak_template
+    - .builder-riscv64
   allow_failure: true
   dependencies: []
 
