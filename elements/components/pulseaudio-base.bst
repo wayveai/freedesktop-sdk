@@ -72,6 +72,4 @@ sources:
   #- stable-13.x
   exclude:
   - v*.99.*
-  ref: v13.0-0-g200618b32f0964a479d69c9b6e5073e6931c370a
-- kind: patch
-  path: patches/pulseaudio/fix-memfd-detection.patch
+  ref: v14.0-0-gd1e0594e939e3309435c966d994b0207b10f5175
