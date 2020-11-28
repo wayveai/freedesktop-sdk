@@ -29,4 +29,4 @@ sources:
 - kind: git_tag
   url: github:xkbcommon/libxkbcommon.git
   track: master
-  ref: xkbcommon-1.0.1-0-g2c295b10aa87e9bd8c11954adcf7e92b031b92f9
+  ref: xkbcommon-1.0.3-0-gc60b77ea512bef92e481be38972b58dd71a34180
