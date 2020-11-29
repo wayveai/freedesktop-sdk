@@ -13,4 +13,4 @@ sources:
   - sdk-1.2.148
   match:
   - sdk-*
-  ref: sdk-1.2.148.0-0-gfc87182aab33a63b43db41d7a424eed27283aebf
+  ref: sdk-1.2.154.0-0-g7f9879b1b1fab53f719a9ed5e6e29533b10972b2
