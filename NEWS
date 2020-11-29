@@ -1,5 +1,42 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.2:
+    * pipewire: Update to 0.3.17
+    * vala: Update to 0.48.12
+    * libksba: Update to libksba-1.5.0
+    * clinfo: Update to 3.0.20.11.20
+    * Copy dynamic loader debug file in SDK
+    * mesa: Update to 20.2.3
+    * cmake: Update to v3.19.1
+    * flatpak: Update to 1.8.3
+    * ostree: Update to 2020.8
+    * gnupg: Update to 2.2.24
+    * gtk-doc: Update to 1.33.1
+    * python3-markdown: Update to 3.3.3
+    * jpeg: Update to 2.0.6
+    * extra-cmake-modules: Update to v5.76.0
+    * gstreamer-libav: Update to 1.16.3
+    * Add bash-completion to VM example
+    * gstreamer-libav: Update to 1.16.3
+    * glibc: Update to glibc-2.31-64-g8dc76056654f8013a54678461fb023e988a17256
+    * gmmlib: Update to intel-gmmlib-20.3.3
+    * noopenh264: Use Release_3.9.0 tag (same commit)
+    * libdrm: Update to libdrm-2.4.103
+    * gstreamer: Update to 1.16.3
+    * Remove Rust extension
+    * gdk-pixbuf: Update to 2.42.0
+    * git: Update to v2.29.2
+    * python3-setuptools: Update to v50.3.2
+    * librsvg: Update to 2.48.9
+    * gstreamer-plugins-ugly: Update to 1.16.3
+    * xorg-app-xkbcomp: Update to xkbcomp-1.4.4
+    * alsa-lib: Update to v1.2.4
+    * python3-pyparsing: Update to pyparsing_3.0.0b1
+    * libassuan: Update to libassuan-2.5.4
+    * python3-pygments: Update to 2.7.2
+    * tzdata: Update to 2020d
+    * asciidoc: Update to 9.0.4
+
 freedesktop-sdk-20.08.1:
     * python-markdown: Update to 3.3.2
     * glibc: Update to tip of glibc-2.31 (4bc9918)
