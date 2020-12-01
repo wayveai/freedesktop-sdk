@@ -28,11 +28,11 @@ public:
 variables:
   meson-local: >-
     -Dgtk_doc=false
-    -Dintrospection=true
+    -Dintrospection=enabled
     -Dinstall-tests=false
 
 sources:
 - kind: git_tag
   url: gnome:pango.git
   track: master
-  ref: 1.46.2-0-g296711130ef90d9555bd6ada5b258bb75d622c12
+  ref: 1.48.0-0-ga39fea44c7c9f982fcca6d639929545dd3e09eb7
