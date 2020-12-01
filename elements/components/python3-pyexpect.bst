@@ -9,8 +9,8 @@ depends:
 sources:
 - kind: pypi
   name: pyexpect
-  url: pypi:9d/c9/071f65d948a51c231b3bd07a5bbfab421f2f32eb8623478e7dd8833e9984/pyexpect-1.0.20.tar.gz
-  sha256sum: acaaa6f96de315dc99cac3da810156bf3829d1eb5c49180f00a4fdde82eabc76
+  url: pypi:73/2e/6993c578246bd988b67d081bcf57d2710d5e9cf8ccb16e550f7f07a9df3c/pyexpect-1.0.21.tar.gz
+  sha256sum: 96e900d6af928a94c2a75b4935ddda44872c218121d0467c549ae19e7608a9a2
 
 config:
   build-commands:
