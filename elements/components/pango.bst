@@ -28,7 +28,7 @@ public:
 variables:
   meson-local: >-
     -Dgtk_doc=false
-    -Dintrospection=true
+    -Dintrospection=enabled
     -Dinstall-tests=false
 
 sources:
