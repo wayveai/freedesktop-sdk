@@ -118,7 +118,7 @@ before_script:
         esac
     elif [ -n "$RELEASES_REPO_TOKEN" ]; then
         export REPO_TOKEN=$RELEASES_REPO_TOKEN
-        export RELEASES_SERVER_ADDRESS=https://cache.sdk.freedesktop.org/
+        export RELEASES_SERVER_ADDRESS=https://releases.freedesktop-sdk.io/
         # We always use "stable" here. This is all beta on this server.
         export RELEASE_CHANNEL=stable
     fi
@@ -620,7 +620,7 @@ finish_publish_failed:
             esac
           done
           ;;
-        https://cache.sdk.freedesktop.org/)
+        https://releases.freedesktop-sdk.io/)
           ;;
         *)
           false
