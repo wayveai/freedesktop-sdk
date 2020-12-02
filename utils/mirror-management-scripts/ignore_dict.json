@@ -15,14 +15,16 @@
     "ignore elements": [
     ],
     "ignore source_urls": [
-      "https://cache.sdk.freedesktop.org/releases/"
+      "https://cache.sdk.freedesktop.org/releases/",
+      "https://releases.freedesktop-sdk.io/releases/"
     ]
   },
   "mirror_exists_test": {
     "ignore elements": [
     ],
     "ignore source_urls": [
-      "https://cache.sdk.freedesktop.org/releases/"
+      "https://cache.sdk.freedesktop.org/releases/",
+      "https://releases.freedesktop-sdk.io/releases/"
     ]
   },
   "mirror_commit_exists_test": {
