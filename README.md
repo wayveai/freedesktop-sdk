@@ -113,7 +113,7 @@ These applications and development versions of the runtime and SDK are hosted
 on are own flatpak remote:
 
 ```
-    $ flatpak remote-add freedesktop-sdk https://cache.sdk.freedesktop.org/freedesktop-sdk.flatpakrepo
+    $ flatpak remote-add freedesktop-sdk https://releases.freedesktop-sdk.io/freedesktop-sdk.flatpakrepo
     $ flatpak install org.freedesktop.Platform.VulkanInfo
 ```
 
