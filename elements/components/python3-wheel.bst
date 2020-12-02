@@ -12,4 +12,4 @@ sources:
 - kind: git_tag
   url: github:pypa/wheel.git
   track: master
-  ref: 0.35.1-0-gbbc60829bea2eb25ccd236b9c6c16c9ee4f0d2ef
+  ref: 0.36.0-0-g39b6397ba944d82f1fe37d043382f97b78a919d6
