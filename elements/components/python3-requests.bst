@@ -15,5 +15,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: requests
-  url: pypi:da/67/672b422d9daf07365259958912ba533a0ecab839d4084c487a5fe9a5405f/requests-2.24.0.tar.gz
-  sha256sum: b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b
+  url: pypi:9f/14/4a6542a078773957aa83101336375c9597e6fe5889d20abda9c38f9f3ff2/requests-2.25.0.tar.gz
+  sha256sum: 7f1a0b932f4a60a1a65caa4263921bb7d9ee911957e0ae4a23a6dd08185ad5f8
