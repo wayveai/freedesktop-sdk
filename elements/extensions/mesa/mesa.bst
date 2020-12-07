@@ -42,12 +42,12 @@ variables:
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink
       dri_drivers: i915,i965,nouveau,r100,r200
-      vulkan_drivers: amd,intel
+      vulkan_drivers: amd,intel,swrast
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
       gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4,zink
       dri_drivers: ''
-      vulkan_drivers: freedreno
+      vulkan_drivers: freedreno,broadcom,swrast
       enable_libunwind: 'false'
   - target_arch == "ppc64le":
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
@@ -59,34 +59,34 @@ variables:
 
   meson-local: >-
     -Db_ndebug=true
-    -Ddri3=true
+    -Ddri3=enabled
     -Ddri-drivers=%{dri_drivers}
-    -Degl=true
+    -Degl=enabled
     -Dgallium-drivers=%{gallium_drivers}
     -Dgallium-nine=true
     -Dgallium-omx=disabled
     -Dgallium-opencl=icd
-    -Dgallium-va=true
-    -Dgallium-vdpau=true
-    -Dgallium-xa=false
-    -Dgallium-xvmc=false
-    -Dgbm=true
-    -Dgles1=false
-    -Dgles2=true
+    -Dgallium-va=enabled
+    -Dgallium-vdpau=enabled
+    -Dgallium-xa=disabled
+    -Dgallium-xvmc=disabled
+    -Dgbm=enabled
+    -Dgles1=disabled
+    -Dgles2=enabled
     -Dglvnd=true
     -Dglx=auto
     -Dlibunwind=%{enable_libunwind}
-    -Dllvm=true
-    -Dlmsensors=false
+    -Dllvm=enabled
+    -Dlmsensors=disabled
     -Dosmesa=none
-    -Dplatforms=x11,drm,surfaceless,wayland
+    -Dplatforms=x11,wayland
     -Dselinux=false
-    -Dshared-glapi=true
-    -Dvalgrind=false
+    -Dshared-glapi=enabled
+    -Dvalgrind=disabled
     -Dvulkan-overlay-layer=true
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
-    -Dxlib-lease=true
+    -Dxlib-lease=enabled
 
 config:
   install-commands:
@@ -147,7 +147,9 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '20.2'
-  ref: mesa-20.2.3-0-g8440307a613a49f2cf86dc009c8fb07012fdab92
+  track: master
+  track-extra:
+  - '20.3'
+  ref: mesa-20.3.0-0-g08169ff176b2fdbaf3b9b497a6e45aef4b0bfe43
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch

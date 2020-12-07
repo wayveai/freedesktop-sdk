@@ -19,7 +19,7 @@ runtime-depends:
 variables:
   meson-local: |
     -Db_ndebug=true \
-    -Dplatforms=drm \
+    -Dplatforms="" \
     -Dopengl=true \
     -Dglx=disabled \
     -Degl=disabled \
