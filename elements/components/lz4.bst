@@ -16,7 +16,7 @@ sources:
   track: dev
   track-extra:
   - release
-  ref: v1.9.2-0-gfdf2ef5809ca875c454510610764d9125ef2ebbd
+  ref: v1.9.3-0-gd44371841a2f1728a3f36839fd4b7e872d0927d3
 
 config:
 
@@ -24,5 +24,6 @@ config:
   - make CFLAGS="${CFLAGS}" BUILD_STATIC=no
 
   install-commands:
-  - make DESTDIR="%{install-root}" PREFIX="%{prefix}" LIBDIR="%{libdir}" BUILD_STATIC=no install
+  - make DESTDIR="%{install-root}" PREFIX="%{prefix}" LIBDIR="%{libdir}" BUILD_STATIC=no
+    install
 
