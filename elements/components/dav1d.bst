@@ -22,6 +22,4 @@ sources:
 - kind: git_tag
   url: git_https:code.videolan.org/videolan/dav1d.git
   track: master
-  ref: 0.7.1-0-ge9df70c4348a3f9ba7269feacd17cfb57bf23852
-- kind: patch
-  path: patches/dav1d/nasm-syntax-fix.patch
+  ref: 0.8.0-0-g2ca1bfc39fe5c182d885f2750779d5b1678d8ef9
