@@ -13,20 +13,20 @@ build-depends:
 variables:
   optimize-debug: "false"
 
-  debuginfo-level: 2
-  debuginfo-level-std: 0
+  debuginfo-level: '2'
+  debuginfo-level-std: '0'
   rust-target: '%{host-triplet}'
   (?):
   - target_arch == "i686":
       # i686 also exhausts memory on stage0
-      debuginfo-level: 0
-      debuginfo-level-std: 2
+      debuginfo-level: '0'
+      debuginfo-level-std: '2'
   - target_arch == "arm":
       rust-target: armv7-unknown-linux-gnueabihf
       # armv7 exhausts memory on stage0 librustc w/ debuginfo
       # github:rust-lang/rust/issues/45854
-      debuginfo-level: 0
-      debuginfo-level-std: 2
+      debuginfo-level: '0'
+      debuginfo-level-std: '2'
 
 environment-nocache:
 - MAXJOBS
@@ -111,7 +111,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rustc-1.44.1-src.tar.xz
-  ref: e0386295dd5f2c7842835a509e4c57989eec6c29f989a1c85478b0e06f9d38ea
-- kind: patch
-  path: patches/rust/rust-cannonicalize-install.patch
+  url: tar_https:static.rust-lang.org/dist/rustc-1.48.0-src.tar.xz
+  ref: ff0a242392a1865d7b2d08eb5ca6c1b3fd0820741d4c13a51a4b2d5d2bb53908
