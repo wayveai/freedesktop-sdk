@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: kernel:bluetooth/sbc.git
   track: master
-  ref: 1.4-0-g878912e12ae9864c7b9aca2a61d782f8e1044ffe
+  ref: 1.5-0-gb2c20a3ecf5ed00f63c94077a9762b505935ede9
