@@ -1,11 +1,12 @@
 kind: autotools
 description: GNU Bash
 
-depends:
-- filename: bootstrap/bash-build-deps.bst
-  type: build
-- filename: bootstrap/readline.bst
-  type: runtime
+build-depends:
+- bootstrap/bash-build-deps.bst
+
+runtime-depends:
+- bootstrap/readline.bst
+
 
 (@): elements/bootstrap/include/target.yml
 
@@ -66,5 +67,4 @@ sources:
   track: master
   track-tags: false
   ref: bash-5.1-0-g8868edaf2250e09c4e9a1c75ffe3274f28f38581
-- kind: patch
-  path: patches/bash/CVE-2019-18276.patch
+
