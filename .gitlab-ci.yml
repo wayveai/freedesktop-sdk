@@ -726,7 +726,7 @@ publish_ppc64le_tar:
   when: manual
 
 cve_report:
-  stage: finish-publish
+  stage: update
   image: $DOCKER_AMD64
   cache:
     key: cve
