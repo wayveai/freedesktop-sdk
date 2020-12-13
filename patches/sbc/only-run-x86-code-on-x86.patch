@@ -1,0 +1,23 @@
+From 7d796150a09ffb1774dbe193ead44f769f9b3d78 Mon Sep 17 00:00:00 2001
+From: Seppo Yli-Olli <seppo.yliolli@gmail.com>
+Date: Sun, 13 Dec 2020 20:59:34 +0200
+Subject: [PATCH] Only run x86 code on x86
+
+
+diff --git a/sbc/sbc_primitives.c b/sbc/sbc_primitives.c
+index 97a75be..e1b0167 100644
+--- a/sbc/sbc_primitives.c
++++ b/sbc/sbc_primitives.c
+@@ -630,7 +630,9 @@ void sbc_init_primitives(struct sbc_encoder_state *state)
+ 	state->implementation_info = "Generic C";
+ 
+ 	/* X86/AMD64 optimizations */
++#if defined(__x86_64__) || defined(__i386__)
+ 	sbc_init_primitives_x86(state);
++#endif
+ 
+ 	/* ARM optimizations */
+ #ifdef SBC_BUILD_WITH_ARMV6_SUPPORT
+-- 
+2.29.2
+
