@@ -13,7 +13,7 @@ build-depends:
 depends:
 - bootstrap-import.bst
 - components/glslang.bst
-- components/llvm.bst
+- extensions/mesa/llvm11.bst
 - components/libdrm.bst
 - components/libva.bst
 - components/libclc.bst
@@ -31,6 +31,7 @@ depends:
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+  PATH: "%{bindir}:/usr/bin"
   CXXFLAGS: "%{target_flags} -std=gnu++17"
 
 variables:
