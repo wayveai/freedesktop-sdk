@@ -56,20 +56,20 @@ applications.
 
 We recommend you install releases from [Flathub](https://flathub.org).
 
-The current set of commands to run your application with 19.08 are:
+The current set of commands to run your application with 20.08 are:
 
 1.  Install the new runtimes:
 
     ```
     $ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    $ flatpak install flathub org.freedesktop.Sdk//19.08
-    $ flatpak install flathub org.freedesktop.Platform//19.08
+    $ flatpak install flathub org.freedesktop.Sdk//20.08
+    $ flatpak install flathub org.freedesktop.Platform//20.08
     ```
 
 2.  Set your app manifest:
 
     ```
-    "runtime-version": "19.08"
+    "runtime-version": "20.08"
     ```
 
 3. Build and run your flatpak app as usual:
@@ -121,7 +121,7 @@ on are own flatpak remote:
 
 For the 18.08 release cycle we provided a runtime extension containing the
 codecs required to play H.264 encoded video, however things are changing for the
-19.08 release. The `ffmpeg-html5` extension is now deprecated, and cannot be
+20.08 release. The `ffmpeg-html5` extension is now deprecated, and cannot be
 relied upon, so it's not longer safe to assume a user has H.264 support.
 
 We intend to provide an `openh264` extension, which will provide a royalty free
@@ -135,7 +135,7 @@ For an example of this, see `tests/test.codecs.ffmpeg-full.json`, which is a
 flatpak manifest for an app using the full codecs.
 
 ## libudev
-Since 19.08 release, freedesktop-sdk flatpak runtime ships libudev library.
+Since 20.08 release, freedesktop-sdk flatpak runtime ships libudev library.
 This is dedicated for apps which need to link against it during build and
 later at runtime.
 
@@ -163,7 +163,7 @@ the runtime. There are multiple ways to do this, we provide many ways to consume
 
 ## Contributing
 
-For a guide to contributing, please see our [CONTRIBUTING](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/blob/19.08/CONTRIBUTING.md) file.
+For a guide to contributing, please see our [CONTRIBUTING](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/CONTRIBUTING.md) file.
 
 ## Acknowledgements
 
