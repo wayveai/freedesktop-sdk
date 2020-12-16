@@ -66,5 +66,3 @@ sources:
   track: master
   track-tags: false
   ref: bash-5.1-1-gcbe03398db1de3a93db77d910b66470f8e3b0239
-- kind: patch
-  path: patches/bash/CVE-2019-18276.patch
