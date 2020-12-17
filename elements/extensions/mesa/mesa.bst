@@ -60,34 +60,34 @@ variables:
 
   meson-local: >-
     -Db_ndebug=true
-    -Ddri3=true
+    -Ddri3=enabled
     -Ddri-drivers=%{dri_drivers}
     -Degl=true
     -Dgallium-drivers=%{gallium_drivers}
     -Dgallium-nine=true
     -Dgallium-omx=disabled
     -Dgallium-opencl=icd
-    -Dgallium-va=true
-    -Dgallium-vdpau=true
-    -Dgallium-xa=false
-    -Dgallium-xvmc=false
-    -Dgbm=true
-    -Dgles1=false
-    -Dgles2=true
+    -Dgallium-va=enabled
+    -Dgallium-vdpau=enabled
+    -Dgallium-xa=disabled
+    -Dgallium-xvmc=disabled
+    -Dgbm=enabled
+    -Dgles1=disabled
+    -Dgles2=enabled
     -Dglvnd=true
     -Dglx=auto
     -Dlibunwind=%{enable_libunwind}
-    -Dllvm=true
-    -Dlmsensors=false
+    -Dllvm=enabled
+    -Dlmsensors=disabled
     -Dosmesa=none
-    -Dplatforms=x11,drm,surfaceless,wayland
+    -Dplatforms=x11,wayland
     -Dselinux=false
-    -Dshared-glapi=true
-    -Dvalgrind=false
+    -Dshared-glapi=enabled
+    -Dvalgrind=disabled
     -Dvulkan-overlay-layer=true
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
-    -Dxlib-lease=true
+    -Dxlib-lease=enabled
     -Dprefer-iris=false
 
 config:
@@ -149,8 +149,8 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '20.2'
-  ref: mesa-20.2.4-0-g24257bfe63c59c526bfe19bf32b247bf7552aabc
+  track: '20.3'
+  ref: mesa-20.3.1-0-gd90622910ba2d726b6f43ade0a364d0eb04dd3bb
   exclude:
   - '*.0'
 - kind: patch
