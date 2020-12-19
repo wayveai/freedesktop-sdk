@@ -81,6 +81,6 @@ sources:
   track: master
   track-extra:
   - v246-stable
-  ref: v246.6-0-g2ee1c57c4ff4fd3349cf03c2e89fbd18ca0b3a4a
+  ref: v246.9-0-g90f7f6c5777e9e2a4990f299474f730459054bf4
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
