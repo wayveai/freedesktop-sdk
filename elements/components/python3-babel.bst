@@ -12,5 +12,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: babel
-  url: pypi:34/18/8706cfa5b2c73f5a549fdc0ef2e24db71812a2685959cff31cbdfc010136/Babel-2.8.0.tar.gz
-  sha256sum: 1aac2ae2d0d8ea368fa90906567f5c08463d98ade155c0c4bfedd6a0f7160e38
+  url: pypi:41/1b/5ed6e564b9ca54318df20ebe5d642ab25da4118df3c178247b8c4b26fa13/Babel-2.9.0.tar.gz
+  sha256sum: da031ab54472314f210b0adcff1588ee5d1d1d0ba4dbd07b94dba82bde791e05
