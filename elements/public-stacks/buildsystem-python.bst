@@ -1,5 +1,6 @@
 kind: stack
 
 depends:
-- filename: components/python3-pip.bst
-- filename: components/python3-setuptools.bst
+- components/python3-pip.bst
+- components/python3-setuptools.bst
+- components/python3-wheel.bst
