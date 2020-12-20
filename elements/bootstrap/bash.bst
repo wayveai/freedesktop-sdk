@@ -65,6 +65,4 @@ sources:
   url: savannah:bash.git
   track: master
   track-tags: false
-  ref: bash-5.0-18-g36f2c406ff27995392a9247dfa90672fdaf7dc43
-- kind: patch
-  path: patches/bash/CVE-2019-18276.patch
+  ref: bash-5.1-1-gcbe03398db1de3a93db77d910b66470f8e3b0239
