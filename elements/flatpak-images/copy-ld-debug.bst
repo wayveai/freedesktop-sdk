@@ -14,3 +14,4 @@ public:
 config:
   commands:
   - install -D -t '%{install-root}%{debugdir}%{libdir}' '%{debugdir}%{libdir}'/ld-*.so.debug
+  - install -D -t '%{install-root}%{debugdir}/dwz/bootstrap/glibc.bst/' '%{debugdir}/dwz/bootstrap/glibc.bst'/*
