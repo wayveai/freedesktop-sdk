@@ -36,7 +36,7 @@ sources:
   - librsvg-2.48
   exclude:
   - '*.*[13579].*'
-  ref: 2.48.8-0-ge5760d450ac862e6f639575bc2861b6fac191d60
+  ref: 2.48.9-0-gc412fae7c33c9765a450583b29d41ed83850682e
 - kind: cargo
   url: crates:crates
   ref:
