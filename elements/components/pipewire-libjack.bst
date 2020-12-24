@@ -4,7 +4,7 @@ description: |
   Jack clients connects to Pipewire.
   This is not to be confused with the Jack plugin for Pipewire.
 
-runtime-depends:
+depends:
 - components/pipewire-libjack-manual.bst
 
 public:

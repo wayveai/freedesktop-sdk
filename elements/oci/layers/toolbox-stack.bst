@@ -1,6 +1,6 @@
 kind: stack
 
-runtime-depends:
+depends:
 - sdk.bst
 - components/sudo.bst
 - components/shadow.bst

@@ -1,6 +1,6 @@
 kind: stack
 
-runtime-depends:
+depends:
 - sdk.bst
 - components/flatpak.bst
 - components/flat-manager-client.bst
