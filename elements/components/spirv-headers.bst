@@ -13,4 +13,4 @@ sources:
   # releases
   track: master
   track-tags: false
-  ref: 1.5.3-18-g3fdabd0da2932c276b25b9b4a988ba134eba1aa6
+  ref: 1.5.4.raytracing.fixed-0-gf027d53ded7e230e008d37c8b47ede7cd308e19d
