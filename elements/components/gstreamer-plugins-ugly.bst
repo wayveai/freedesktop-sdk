@@ -25,7 +25,7 @@ sources:
   track: master
   track-extra:
   - '1.18'
-  ref: 1.18.0-0-gae91a81d9aa913cee1e8310af93a8fff5445628d
+  ref: 1.18.2-0-g45c7522506ff49fcde0933c65c1eba48e1df7500
   submodules:
     common:
       checkout: false
