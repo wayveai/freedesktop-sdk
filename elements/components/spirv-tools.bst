@@ -1,10 +1,11 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
-- filename: components/spirv-headers.bst
+- bootstrap-import.bst
+- components/spirv-headers.bst
 
 variables:
   cmake-local: >-
@@ -12,6 +13,7 @@ variables:
     -DSPIRV_WERROR=Off
     -DSPIRV-Headers_SOURCE_DIR=/usr
     -DBUILD_SHARED_LIBS:BOOL=ON
+    -DSPIRV_TOOLS_BUILD_STATIC:BOOL=NO
 
   optimize-debug: "false"
 
@@ -34,6 +36,6 @@ sources:
   url: github:KhronosGroup/SPIRV-Tools.git
   track: stable
   track-tags: true
-  ref: v2020.4-0-g895927bd3f2d653f40cebab55aa6c7eabde30a86
+  ref: v2020.6-0-gb27b1afd12d05bf238ac7368bb49de73cd620a8e
   # When updating, please also track spriv-headers.bst. You have
   # to manually enable tracking spriv-headers.bst.
