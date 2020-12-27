@@ -16,7 +16,7 @@ sources:
 - kind: git_tag
   url: savannah:config.git
   track: master
-  ref: 4aa554d72b2aad99506875401f798339c0df7cec
+  ref: c8ddc8472f8efcadafc1ef53ca1d863415fddd5f
 # No tags exist, track HEAD of the branch
 
 config:
