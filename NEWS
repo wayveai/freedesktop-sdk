@@ -1,5 +1,39 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.3:
+    * gnupg-source: Update to gnupg-2.2.26
+    * doxygen: Update to Release_1_9_0
+    * po4a: Update to v0.62
+    * man-pages: Update to man-pages-5.10
+    * tzdata: Update to 2020e
+    * libepoxy: Update to 1.5.5
+    * python3: Update to v3.8.7
+    * flatpak: Update to 1.8.4
+    * cmake: Update to v3.19.2
+    * strace: Update to v5.10
+    * Add back dwz data copying
+    * bash: Update to bash-5.1
+    * kbd: Update to v2.4.0
+    * linux: Update to v5.10
+    * pipewire: Update to 0.3.18
+    * audit: Update to v3.0
+    * extra-cmake-modules: Update to v5.77.0
+    * systemd-base: Update to v246.9
+    * Use LLVM11 in mesa extension
+    * sbc: Update to 1.5
+    * gdk-pixbuf: Update to 2.42.2
+    * python3-setuptools: Update to v51.1.0
+    * python3-pygments: Update to 2.7.3
+    * aom: Update to v2.0.1
+    * mozjs: Update to 78.5.0esr
+    * noopenh264: Update to Release_3.9.1
+    * ninja: Update to v1.10.2
+    * python3-wheel: Update to 0.36.2
+    * mesa: Update to 20.3.1
+    * nano: Update to 5.4
+    * python3-pip: Update to 20.3.3
+    * gnupg: Update to 2.2.25
+
 freedesktop-sdk-20.08.2:
     * pipewire: Update to 0.3.17
     * vala: Update to 0.48.12
