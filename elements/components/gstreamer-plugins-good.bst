@@ -49,7 +49,7 @@ sources:
   track: master
   track-extra:
   - '1.18'
-  ref: 1.18.1-0-g7c44cdb0e00dd1c9932d8e5194b09fcf4e1e6fc1
+  ref: 1.18.2-0-gcc896a7e9031de420ab915ab94451ffa9c1bf26d
   submodules:
     common:
       checkout: false
