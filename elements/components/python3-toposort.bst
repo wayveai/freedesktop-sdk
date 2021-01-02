@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: toposort
-  url: pypi:e5/d8/9bc1598ddf74410beba243ffeaee8d0b3ca7e9ac5cefe77367da497433e1/toposort-1.5.tar.gz
-  sha256sum: dba5ae845296e3bf37b042c640870ffebcdeb8cd4df45adaa01d8c5476c557dd
+  url: pypi:b5/15/a657e32bddf72f69691aa0223df918b5f372eeee709cf8da9be134eac020/toposort-1.6.tar.gz
+  sha256sum: a7428f56ef844f5055bb9e9e44b343983773ae6dce0fe5b101e08e27ffbd50ac
