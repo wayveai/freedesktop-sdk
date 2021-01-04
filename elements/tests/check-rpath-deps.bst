@@ -2,7 +2,6 @@ kind: manual
 
 depends:
 - bootstrap-import.bst
-- components/python3.bst
 - components/python3-pyelftools.bst
 
 config:
