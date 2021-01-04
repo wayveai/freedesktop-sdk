@@ -7,7 +7,7 @@ build-depends:
 config:
   commands:
   - |
-    %{bindir}/find-rpath.sh %{gcc_triplet} /sysroot
+    %{bindir}/find-rpath.py %{gcc_triplet} /sysroot
 
   layout:
     - element: tests/check-rpath-deps.bst
