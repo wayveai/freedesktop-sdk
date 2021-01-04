@@ -108,14 +108,13 @@ def check_elf(elf_path: str, elf_dyn: t.Dict[str, t.List[str]], root='/', libdir
             print(f'{elf_path}: has useless path (runtime): {path}')
             found_error = True
             continue
-        if 'needed' in elf_dyn:
-            for needed_lib in elf_dyn['needed']:
-                if os.path.exists(os.path.join(real_path, needed_lib)):
-                    break
-            else:
-                print(f'{elf_path}: has useless path (no needed found): {path}')
-                found_error = True
-                continue
+        for needed_lib in elf_dyn.get('needed', []):
+            if os.path.exists(os.path.join(real_path, needed_lib)):
+                break
+        else:
+            print(f'{elf_path}: has useless path (no needed found): {path}')
+            found_error = True
+            continue
 
     return found_error
 
