@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: github:ninja-build/ninja.git
   track: release
-  ref: v1.10.1-0-ga1f879b29c9aafe6a2bc0ba885701f8f4f19f772
+  ref: v1.10.2-0-ge72d1d581c945c158ed68d9bc48911063022a2c6
