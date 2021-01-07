@@ -2,15 +2,16 @@ kind: cmake
 
 (@): elements/extensions/include/app.yml
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/vulkan.bst
-- filename: components/glslang.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xrandr.bst
-- filename: components/wayland.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+- bootstrap-import.bst
+- components/vulkan.bst
+- components/glslang.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xrandr.bst
+- components/wayland.bst
 
 variables:
   cmake-local: |
@@ -23,9 +24,9 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Tools.git
-  ref: sdk-1.2.148.0-0-g3f7ccf2cce264525d14361ac563e7a6ba9a54f54
+  ref: sdk-1.2.162-0-g9e9d7c24ed8b321815f77f31c100bbf9462193b4
   track: master
   track-extra:
-  - sdk-1.2.148
+  - sdk-1.2.162
   match:
   - sdk-*

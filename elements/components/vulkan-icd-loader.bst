@@ -1,13 +1,14 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/vulkan-headers.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xrandr.bst
-- filename: components/wayland.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+- bootstrap-import.bst
+- components/vulkan-headers.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xrandr.bst
+- components/wayland.bst
 
 variables:
   cmake-local: |
@@ -28,10 +29,10 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Loader.git
-  ref: sdk-1.2.148.1-0-g2ad4e990f5a47d3556a5912acfa9fc7dc475fc0e
+  ref: sdk-1.2.162.0-0-g7a313093b5c4af964d50a5a64e73d7df6152ea3f
   track: master
   track-extra:
-  - sdk-1.2.148
+  - sdk-1.2.162
   match:
   - sdk-*
 - kind: patch
