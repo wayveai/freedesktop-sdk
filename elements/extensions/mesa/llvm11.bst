@@ -97,7 +97,7 @@ sources:
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-11.0.0-0-g176249bd6732a8044d457092ed932768724a6f06
+  ref: llvmorg-11.0.1-0-g43ff75f2c3feef64f9d73328230d34dac8832a91
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
 - kind: patch
