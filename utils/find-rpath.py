@@ -72,7 +72,7 @@ def find_elfs(directory: str):
     for dirpath, _, filenames in os.walk(directory):
         for filename in filenames:
             fullpath = os.path.join(dirpath, filename)
-            if not os.path.isfile(fullpath):
+            if not os.path.isfile(fullpath) or os.path.islink(fullpath):
                 continue
             if not (os.access(fullpath, os.X_OK) or SO_RE.match(fullpath)):
                 continue
