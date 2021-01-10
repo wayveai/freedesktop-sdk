@@ -8,39 +8,35 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
-- components/alsa-lib.bst
 - components/dbus.bst
-- components/fftw.bst
 - components/gdbm.bst
 - components/glib.bst
 - components/libtool.bst
-- components/orc.bst
 - components/sndfile.bst
-- components/speexdsp.bst
-- components/webrtc-audio-processing.bst
 - components/xorg-lib-ice.bst
 - components/xorg-lib-sm.bst
 - components/xorg-lib-xcb.bst
 - components/xorg-lib-xtst.bst
-- components/gtk3.bst
-- components/bluez.bst
-- components/sbc.bst
 
 variables:
   meson-local: >-
+    -Dalsa=disabled
     -Dasyncns=disabled
     -Davahi=disabled
-    -Dbluez5=true
+    -Dbluez5=false
     -Ddatabase=gdbm
     -Dfftw=disabled
-    -Dgtk=enabled
+    -Dgtk=disabled
     -Djack=disabled
     -Dlirc=disabled
+    -Dorc=disabled
     -Dsoxr=disabled
+    -Dspeex=disabled
     -Dsystemd=enabled
     -Dtests=false
-    -Dudev=enabled
+    -Dudev=disabled
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
+    -Dwebrtc-aec=disabled
 
 public:
   bst:

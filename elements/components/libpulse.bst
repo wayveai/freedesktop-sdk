@@ -6,14 +6,10 @@ build-depends:
 runtime-depends:
 - bootstrap-import.bst
 - components/libdbus.bst
-- components/fftw.bst
 - components/gdbm.bst
 - components/glib.bst
 - components/libtool.bst
-- components/orc.bst
 - components/sndfile.bst
-- components/speexdsp.bst
-- components/webrtc-audio-processing.bst
 - components/xorg-lib-ice.bst
 - components/xorg-lib-sm.bst
 - components/xorg-lib-xcb.bst
