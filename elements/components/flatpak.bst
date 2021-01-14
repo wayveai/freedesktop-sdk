@@ -34,7 +34,7 @@ sources:
   match:
   - 1.[02468]*
   - 1.1[02468]*
-  ref: 1.8.4-0-g003fa230c68fa79a7b64e9ba03978a03d5e31703
+  ref: 1.10.0-0-g649ad5fe49945b834da0d616a24400c41666048c
   submodules:
     libglnx:
       checkout: true
