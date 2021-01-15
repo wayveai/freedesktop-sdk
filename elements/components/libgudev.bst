@@ -6,6 +6,7 @@ depends:
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 - filename: components/glib.bst
+- filename: components/gobject-introspection.bst
 - filename: components/util-linux.bst
 - filename: components/systemd-libs.bst
 - filename: components/gtk-doc.bst
@@ -14,8 +15,9 @@ depends:
 # umockdev depends on vala and is recursively dependent on libgudev.
 # Only useful for testing.
 variables:
-  conf-local: |
+  conf-local: >-
     --disable-umockdev
+    --enable-introspection
 
 sources:
 - kind: git_tag
