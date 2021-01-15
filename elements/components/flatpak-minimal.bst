@@ -5,7 +5,6 @@ depends:
 - components/gpgme.bst
 - components/libcap.bst
 - components/libarchive.bst
-- components/libxml2.bst
 - components/libsoup.bst
 - components/xorg-lib-xau.bst
 - components/ostree.bst
@@ -13,7 +12,6 @@ depends:
 - components/json-glib.bst
 - components/appstream-glib.bst
 - components/libseccomp.bst
-- components/polkit.bst
 
 build-depends:
 - components/python3-pyparsing.bst
@@ -23,7 +21,9 @@ build-depends:
 - components/gobject-introspection.bst
 
 variables:
-  conf-local: --disable-documentation
+  conf-local: >-
+    --disable-documentation
+    --disable-system-helper
 
 (@):
 - elements/include/flatpak.yml
