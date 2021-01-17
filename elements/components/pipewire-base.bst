@@ -4,7 +4,6 @@ kind: meson
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
 #  - components/pipewire-libjack.bst
-#  - components/pipewire-libpulse.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -31,7 +30,6 @@ variables:
     -Dman=true
     -Dgstreamer=true
     -Dsystemd=true
-    -Dpipewire-pulseaudio=true
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
@@ -50,9 +48,6 @@ public:
       - '%{libdir}/pipewire-0.3/jack/**'
       - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
 
-      libpulse:
-      - '%{libdir}/pipewire-0.3/pulse/**'
-      - '%{debugdir}%{libdir}/pipewire-0.3/pulse/**'
   cpe:
     product: pipewire
 
@@ -62,6 +57,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.18-0-ge7dffd64ebff76e2388d6e694de96d6693a6ed7d
+  ref: 0.3.19-0-gb2b45abe0198354ff43e5bf1bc0324b060dde97a
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
