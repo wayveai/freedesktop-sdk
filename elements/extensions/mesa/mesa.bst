@@ -150,6 +150,6 @@ sources:
   track: master
   track-extra:
   - '20.3'
-  ref: mesa-20.3.0-0-g08169ff176b2fdbaf3b9b497a6e45aef4b0bfe43
+  ref: mesa-20.3.3-0-g7e4d536e6308d2feb777d25f89766265cc1b183c
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
