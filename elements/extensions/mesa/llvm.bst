@@ -1,12 +1,11 @@
 kind: cmake
 
 build-depends:
-- filename: bootstrap-import.bst
-- filename: components/libffi.bst
-- filename: public-stacks/buildsystem-cmake.bst
+- public-stacks/buildsystem-cmake.bst
+- components/libffi.bst
 
 depends:
-- filename: extensions/mesa/ldconfig.bst
+- extensions/mesa/ldconfig.bst
 
 environment:
   # Work-around issue building compiler-rt with multiarch
