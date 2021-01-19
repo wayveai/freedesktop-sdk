@@ -3,9 +3,9 @@ sources:
   url: ftp_gnu_org:gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
   ref: b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
 - kind: tar
-  url: ftp_gnu_org:gmp/gmp-6.2.0.tar.xz
+  url: ftp_gnu_org:gmp/gmp-6.2.1.tar.xz
   directory: gmp
-  ref: 258e6cd51b3fbdfc185c716d55f82c08aff57df0c6fbd143cf6ed561267a1526
+  ref: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
 - kind: tar
   url: ftp_gnu_org:mpfr/mpfr-4.1.0.tar.xz
   directory: mpfr
