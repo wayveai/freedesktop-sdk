@@ -17,7 +17,5 @@ variables:
     --disable-doc \
     --disable-all-tests
 
-  local_flags: -fcommon
-
 (@):
 - elements/include/gnupg-source.yml
