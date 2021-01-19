@@ -1,18 +1,17 @@
 kind: autotools
 
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/ruby.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/ruby.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   conf-local: >-
     --enable-custom-vendordir="%{libdir}/GL/OpenCL/vendors"
     --disable-update-database
-
-  local_flags: -fcommon
 
 public:
   bst:
