@@ -31,7 +31,7 @@ public:
 sources:
 - kind: git_tag
   url: savannah:libunwind.git
-  track: v1.3-stable
-  ref: v1.3.1-0-g94aa304960927c130ecb5f664a642b32d9850688
+  track: v1.5-stable
+  ref: v1.5-0-g4c980e2b29cdb9d21cfc341abdec3a6ee46e0483
 - kind: patch
   path: patches/libunwind/libunwind-no-ppc64-libdir-hack.patch
