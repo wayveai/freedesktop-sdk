@@ -41,6 +41,6 @@ sources:
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=962596
   - archive/debian/20200601
   - debian/20200601
-  ref: debian/20190110-0-gc28799b138b044c963d24c4a69659b6e5486e3be
+  ref: archive/debian/20210119-0-g181be7ebd169b4a6fb5d90c3e6dc791e90534144
 - kind: patch
   path: patches/ca-certificates/ca-certificates-Make-it-possible-to-overwrite-python-version.patch
