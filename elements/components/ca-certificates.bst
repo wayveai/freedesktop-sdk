@@ -1,15 +1,12 @@
-kind: manual
+kind: make
+
+build-depends:
+- components/python3.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
-  type: build
+- bootstrap-import.bst
 
 config:
-  build-commands:
-  - |
-    PYTHON=python3 make
-
   install-commands:
   - |
     install -d -m 0755 "%{install-root}/usr/share/ca-certificates/mozilla"
@@ -42,5 +39,3 @@ sources:
   - archive/debian/20200601
   - debian/20200601
   ref: archive/debian/20210119-0-g181be7ebd169b4a6fb5d90c3e6dc791e90534144
-- kind: patch
-  path: patches/ca-certificates/ca-certificates-Make-it-possible-to-overwrite-python-version.patch
