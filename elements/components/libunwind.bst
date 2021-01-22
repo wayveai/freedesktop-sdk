@@ -1,13 +1,10 @@
 kind: autotools
 
-variables:
-  local_flags: -fcommon
+build-depends:
+- public-stacks/buildsystem-autotools.bst
 
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 config:
   install-commands:
