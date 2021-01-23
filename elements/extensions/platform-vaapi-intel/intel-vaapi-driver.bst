@@ -15,8 +15,6 @@ variables:
   meson-local: >-
     -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
 
-  local_flags: -fcommon
-
 sources:
 - kind: git_tag
   url: github:intel/intel-vaapi-driver.git
