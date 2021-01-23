@@ -1,12 +1,11 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
+- bootstrap-import.bst
 
 variables:
   conf-local: >-
     --disable-gssapi
-  local_flags: -fcommon
 
 public:
   bst:

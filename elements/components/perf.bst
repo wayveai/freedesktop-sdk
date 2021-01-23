@@ -16,7 +16,6 @@ depends:
 
 variables:
   kernel_arch: '%{arch}'
-  local_flags: '-fcommon'
   # Note: CFLAGS environment is ignored and should be passed as
   # EXTRA_CFLAGS instead. LFLAGS works.
   make-args: >-
