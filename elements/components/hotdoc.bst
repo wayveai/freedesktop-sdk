@@ -44,3 +44,5 @@ sources:
   sha256sum: 2774baba150923a1b201ed72c5cb06507e90daf8f5b832f475182c7231dbd75b
 - kind: patch
   path: patches/hotdoc/networkx-2.5.patch
+- kind: patch
+  path: patches/hotdoc/GIInterfaceSymbol.patch
