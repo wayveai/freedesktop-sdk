@@ -42,3 +42,5 @@ sources:
   name: hotdoc
   url: pypi:dc/2a/a24892ea609b1157c8c9a856dfe67d237adb8de49a5fffa84eb0267d8c30/hotdoc-0.12.2.tar.gz
   sha256sum: 2774baba150923a1b201ed72c5cb06507e90daf8f5b832f475182c7231dbd75b
+- kind: patch
+  path: patches/hotdoc/networkx-2.5.patch
