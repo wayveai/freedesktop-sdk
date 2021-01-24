@@ -1,5 +1,16 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.13:
+
+    * mesa: update to 20.1.3
+    * libxslt: fix CVE-2019-18197
+    * cyrus-sasl: fix CVE-2019-19906
+    * binutils: Patch CVE-2019-17450, CVE-2019-17451
+    * libarchive: Patch CVE-2019-19221
+    * e2fsprogs: Patch CVE-2019-5188
+    * ffmpeg: Update to 4.2.4 (plus patch to fix aarch64)
+    * flatpak-xdg-utils: Update to latest stable version
+
 freedesktop-sdk-19.08.12:
 
     * gnutls: Fix CVE-2020-13777
