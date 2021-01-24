@@ -8,11 +8,11 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  # linux-pam provides /etc/pam.d/ssh, so this is the pam service name
+  # linux-pam provides /etc/pam.d/sshd, so this is the pam service name
   conf-local: >-
     --with-mantype=man
     --with-pam
-    --with-pam-service=ssh
+    --with-pam-service=sshd
 
 config:
   install-commands:
