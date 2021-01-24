@@ -15,6 +15,7 @@ depends:
 - components/mesa-headers.bst
 - components/wayland.bst
 - components/xorg-lib-x11.bst
+- components/xorg-lib-xcursor.bst
 
 variables:
   conf-local: |
