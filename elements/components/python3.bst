@@ -22,6 +22,8 @@ variables:
     --with-dbmliborder=gdbm \
     --with-lto \
     --with-conf-includedir="%{includedir}/%{gcc_triplet}"
+  version_short: "3"
+  version_long: "%{version_short}.9"
 
 config:
   install-commands:
@@ -29,40 +31,40 @@ config:
     if [ -n "%{builddir}" ]; then
     cd %{builddir}
     fi
-    %{make-install} DESTSHARED=/usr/lib/python3.9/lib-dynload
+    %{make-install} DESTSHARED=/usr/lib/python%{version_long}/lib-dynload
 
   - |
     rm -rf %{install-root}%{bindir}/idle*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/idlelib
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/idlelib
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/tkinter
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/tkinter
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/turtle*
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/turtle*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/__pycache__/turtle.*
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/__pycache__/turtle.*
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/test
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/test
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/*/test
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/*/test
   - |
-    rm -rf %{install-root}%{indep-libdir}/python3.9/*/tests
+    rm -rf %{install-root}%{indep-libdir}/python%{version_long}/*/tests
 
   - |
     find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
   - |
-    cat <<EOF >"%{install-root}%{includedir}/python3.9/pyconfig.h"
+    cat <<EOF >"%{install-root}%{includedir}/python%{version_long}/pyconfig.h"
     #if defined(__x86_64__)
-    # include "x86_64-linux-gnu/python3.9/pyconfig.h"
+    # include "x86_64-linux-gnu/python%{version_long}/pyconfig.h"
     #elif defined(__i386__)
-    # include "i386-linux-gnu/python3.9/pyconfig.h"
+    # include "i386-linux-gnu/python%{version_long}/pyconfig.h"
     #elif defined(__aarch64__)
-    # include "aarch64-linux-gnu/python3.9/pyconfig.h"
+    # include "aarch64-linux-gnu/python%{version_long}/pyconfig.h"
     #elif defined(__arm__)
-    # include "arm-linux-gnueabihf/python3.9/pyconfig.h"
+    # include "arm-linux-gnueabihf/python%{version_long}/pyconfig.h"
     #elif defined(__powerpc64__)
-    # include "powerpc64le-linux-gnu/python3.9/pyconfig.h"
+    # include "powerpc64le-linux-gnu/python%{version_long}/pyconfig.h"
     #else
     # error "Unknown cross-compiler"
     #endif
@@ -70,7 +72,7 @@ config:
 
   - |
     mkdir -p %{install-root}%{bindir}
-    ln -s %{bindir}/python3 %{install-root}%{bindir}/python
+    ln -s %{bindir}/python%{version_short} %{install-root}%{bindir}/python
 
 public:
   bst:
@@ -78,13 +80,13 @@ public:
       devel:
         (>):
         - '%{bindir}/2to3*'
-        - '%{bindir}/python3-config'
-        - '%{bindir}/python3.9-config'
-        - '%{libdir}/libpython3.9.so'
-        - '%{indep-libdir}/python3.9/config-3.9-%{gcc_triplet}'
-        - '%{indep-libdir}/python3.9/config-3.9-%{gcc_triplet}/**'
-        - '%{indep-libdir}/python3.9/lib2to3'
-        - '%{indep-libdir}/python3.9/lib2to3/**'
+        - '%{bindir}/python%{version_short}-config'
+        - '%{bindir}/python%{version_long}-config'
+        - '%{libdir}/libpython%{version_long}.so'
+        - '%{indep-libdir}/python%{version_long}/config-%{version_long}-%{gcc_triplet}'
+        - '%{indep-libdir}/python%{version_long}/config-%{version_long}-%{gcc_triplet}/**'
+        - '%{indep-libdir}/python%{version_long}/lib2to3'
+        - '%{indep-libdir}/python%{version_long}/lib2to3/**'
   cpe:
     product: python
     patches:
