@@ -23,5 +23,5 @@ sources:
   url: github:libical/libical.git
   track: master
   track-extra:
-  - 3.0
-  ref: v3.0.8-0-g56becf417356d8ddfb3bbffd45426d45da76bc9f
+  - '3.0'
+  ref: v3.0.9-0-g56860913989f9787ba9b41df83b49fa2d68b9687
