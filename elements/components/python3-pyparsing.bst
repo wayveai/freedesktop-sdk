@@ -14,4 +14,4 @@ sources:
   - 'pyparsing_*'
   exclude:
   - 'pyparsing_*a*'
-  ref: pyparsing_3.0.0b1-0-g2dd2e2bb70407eea91f18de2caea5ba4527eb7dc
+  ref: pyparsing_3.0.0b2-0-g2f0f24daddb1abb22a612f03da6a5333c426d3cc
