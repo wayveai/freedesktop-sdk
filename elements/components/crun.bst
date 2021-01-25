@@ -17,17 +17,11 @@ depends:
 variables:
   builddir: ''
 
-config:
-  build-commands:
-    (<):
-    # This fixes race conditions
-    - make -C libocispec src/json_common.c
-
 sources:
 - kind: git_tag
   url: github:containers/crun.git
   track: master
-  ref: 0.14.1-0-g88886aef25302adfd40a9335372bbc2b970c8ae5
+  ref: 0.17-0-g0e9229ae34caaebcb86f1fde18de3acaf18c6d9a
 - kind: git_tag
   url: github:containers/libocispec.git
   directory: libocispec
