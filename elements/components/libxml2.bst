@@ -42,6 +42,10 @@ sources:
 - kind: patch
   path: patches/libxml2/libxml2-python3-unicode-errors.patch
 - kind: patch
+  path: patches/libxml2/Migrate-away-from-deprecated-API.patch
+- kind: patch
+  path: patches/libxml2/Add-parenthesis-for-checks.patch
+- kind: patch
   path: patches/libxml2/CVE-2019-20388.patch
 - kind: patch
   path: patches/libxml2/CVE-2019-7595.patch
