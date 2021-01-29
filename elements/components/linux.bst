@@ -142,7 +142,7 @@ config:
     scripts/config -e DM_SNAPSHOT
     scripts/config -e OVERLAY_FS
 
-    # Some useful drivers when runnig as virtual machine
+    # Some useful drivers when running as virtual machine
     scripts/config -m VIRTIO_BALLOON
     scripts/config -m VIRTIO_INPUT
     scripts/config -e VIRTIO_PMEM
