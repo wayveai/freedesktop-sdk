@@ -372,6 +372,13 @@ config:
     done
     scripts/config -e FS_ENCRYPTION
 
+    # RISC-V qemu virtual machine
+    case "%{arch}" in
+      riscv*)
+        scripts/config -e SOC_VIRT
+        ;;
+    esac
+
   - |
     yes '' | make -j1 oldconfig
 
