@@ -9,11 +9,10 @@ build-depends:
 - components/wayland-protocols.bst
 - public-stacks/buildsystem-meson.bst
 
-
 depends:
 - bootstrap-import.bst
 - components/glslang.bst
-- extensions/mesa/llvm11.bst
+- extensions/mesa/llvm.bst
 - components/libdrm.bst
 - components/libva.bst
 - components/libclc.bst
