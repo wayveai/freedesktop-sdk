@@ -1,0 +1,30 @@
+From 545467c38aa1a82c0672cf8c4be9f7e56ffaf7e3 Mon Sep 17 00:00:00 2001
+From: Seppo Yli-Olli <seppo.yliolli@gmail.com>
+Date: Sat, 30 Jan 2021 23:48:27 +0200
+Subject: [PATCH] Remove date from curl man page
+
+
+diff --git a/docs/libcurl/mksymbolsmanpage.pl b/docs/libcurl/mksymbolsmanpage.pl
+index 5a117d628..efeba54ae 100755
+--- a/docs/libcurl/mksymbolsmanpage.pl
++++ b/docs/libcurl/mksymbolsmanpage.pl
+@@ -24,7 +24,6 @@
+ my $version="7.41.0";
+ 
+ use POSIX qw(strftime);
+-my $date = strftime "%b %e, %Y", localtime;
+ my $year = strftime "%Y", localtime;
+ 
+ print <<HEADER
+@@ -49,7 +48,7 @@ print <<HEADER
+ .\\" * KIND, either express or implied.
+ .\\" *
+ .\\" **************************************************************************
+-.TH libcurl-symbols 3 "$date" "libcurl $version" "libcurl symbols"
++.TH libcurl-symbols 3 "libcurl $version" "libcurl symbols"
+ .SH NAME
+ libcurl-symbols \\- libcurl symbol version information
+ .SH "libcurl symbols"
+-- 
+2.29.2
+

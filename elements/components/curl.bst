@@ -1,11 +1,12 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/gnutls.bst
-- filename: components/nss.bst
+- bootstrap-import.bst
+- components/gnutls.bst
+- components/nss.bst
 
 # Curl must be configured --with-ca-bundle in order to find the
 # correct certificate bundle at runtime, which is later generated
@@ -40,3 +41,5 @@ sources:
   url: github:curl/curl.git
   track: master
   ref: curl-7_74_0-0-ge052859759b34d0e05ce0f17244873e5cd7b457b
+- kind: patch
+  path: patches/curl/remove-doc-timestamp.patch
