@@ -1,11 +1,12 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/libffi.bst
-- filename: components/gdbm.bst
+- bootstrap-import.bst
+- components/libffi.bst
+- components/gdbm.bst
 
 # Set '--with-compress-debug-sections=no' because of
 # https://bugs.ruby-lang.org/issues/12934
@@ -18,5 +19,5 @@ variables:
 
 sources:
 - kind: tar
-  url: tar_https:cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.xz
-  ref: b224f9844646cc92765df8288a46838511c1cec5b550d8874bd4686a904fcee7
+  url: tar_https:cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.xz
+  ref: 68bfaeef027b6ccd0032504a68ae69721a70e97d921ff328c0c8836c798f6cb1
