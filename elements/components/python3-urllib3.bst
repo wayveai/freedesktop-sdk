@@ -9,5 +9,5 @@ build-depends:
 sources:
 - kind: pypi
   name: urllib3
-  url: pypi:29/e6/d1a1d78c439cad688757b70f26c50a53332167c364edb0134cadd280e234/urllib3-1.26.2.tar.gz
-  sha256sum: 19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08
+  url: pypi:d7/8d/7ee68c6b48e1ec8d41198f694ecdc15f7596356f2ff8e6b1420300cf5db3/urllib3-1.26.3.tar.gz
+  sha256sum: de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73
