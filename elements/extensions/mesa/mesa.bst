@@ -149,7 +149,7 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '20.3'
-  ref: mesa-20.3.3-0-g7e4d536e6308d2feb777d25f89766265cc1b183c
+  ref: mesa-20.3.4-0-g6d8c68603f9496b12723216c15bf69976de57e97
   exclude:
   - '*.0'
 - kind: patch
