@@ -26,7 +26,7 @@ depends:
 - components/wayland.bst
 - components/libglvnd.bst
 - components/libvdpau.bst
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 - extensions/mesa/libdrm.bst
 
 environment:

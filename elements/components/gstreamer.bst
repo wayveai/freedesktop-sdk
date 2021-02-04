@@ -10,15 +10,19 @@ build-depends:
 depends:
 - bootstrap-import.bst
 - components/glib.bst
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 
 variables:
   libexecdir: "%{libdir}"
+  libunwind: enabled
+  (?):
+  - target_arch == "riscv64":
+      libunwind: disabled
   meson-local: >-
     -Dexamples=disabled
     -Dbenchmarks=disabled
     -Dintrospection=enabled
-    -Dlibunwind=enabled
+    -Dlibunwind='%{libunwind}'
     -Dlibdw=enabled
     -Ddbghelp=disabled
     -Dbash-completion=disabled

@@ -10,7 +10,7 @@ build-depends:
 - components/python3.bst
 
 depends:
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 - components/libcap.bst
 - components/perl.bst
 

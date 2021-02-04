@@ -7,7 +7,7 @@ build-depends:
 - extensions/mesa/libdrm.bst
 
 depends:
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 - components/linux-pam.bst
 - components/cairo.bst
 - components/colord.bst
