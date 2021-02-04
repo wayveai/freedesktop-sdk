@@ -40,9 +40,5 @@ public:
 sources:
 - kind: pypi
   name: hotdoc
-  url: pypi:dc/2a/a24892ea609b1157c8c9a856dfe67d237adb8de49a5fffa84eb0267d8c30/hotdoc-0.12.2.tar.gz
-  sha256sum: 2774baba150923a1b201ed72c5cb06507e90daf8f5b832f475182c7231dbd75b
-- kind: patch
-  path: patches/hotdoc/networkx-2.5.patch
-- kind: patch
-  path: patches/hotdoc/GIInterfaceSymbol.patch
+  url: pypi:d5/71/48402bb0ad24fcec28e72e41f00f7d276fffa000bcef7e70bba3dd286593/hotdoc-0.13.1.tar.gz
+  sha256sum: caec543e575835dcaab46c39cfbe4ac9c8f9bfbd1951fabbe8fd19fa6add5c2b
