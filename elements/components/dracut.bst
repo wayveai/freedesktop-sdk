@@ -23,4 +23,4 @@ sources:
 - kind: git_tag
   url: kernel:boot/dracut/dracut.git
   track: master
-  ref: 049-0-g225e4b94cbdb702cf512490dcd2ad9ca5f5b22c1
+  ref: 053-0-gc67b62463762de1b79c62c9077d4a3ba96a94aa1
