@@ -1,6 +1,7 @@
 kind: script
 
 build-depends:
+- components/syslinux.bst
 - vm/deploy-tools.bst
 - vm/boot/bios.bst
 - vm/minimal/filesystem.bst
@@ -17,6 +18,8 @@ config:
     destination: '/genimage'
   - element: ''
     destination: '/tmp'
+  - element: 'components/syslinux.bst'
+    destination: '/'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
   - element: 'vm/boot/bios.bst'
