@@ -1,10 +1,11 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+
 depends:
-- filename: components/libva.bst
-- filename: extensions/platform-vaapi-intel/gmmlib.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+- components/libva.bst
+- extensions/platform-vaapi-intel/gmmlib.bst
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/dri/intel-vaapi-driver/lib/pkgconfig:"
@@ -28,9 +29,9 @@ sources:
   url: github:intel/media-driver.git
   track: master
   track-extra:
-  - intel-media-20.1
+  - intel-media-20.3
   match:
   - 'intel-media-*'
   exclude:
   - 'intel-media-*.pre*'
-  ref: intel-media-20.1.1-0-g54492c0d175f298c8a2ef90955febeef30837792
+  ref: intel-media-20.3.0-0-g86ec0b6f61862806d8aed1803537728d1dfadf84

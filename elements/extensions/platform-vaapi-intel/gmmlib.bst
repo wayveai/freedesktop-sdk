@@ -1,8 +1,7 @@
 kind: cmake
 
-depends:
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-cmake.bst
 
 variables:
   cmake-local: >-

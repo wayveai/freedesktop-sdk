@@ -1,12 +1,12 @@
 kind: meson
 
+build-depends:
+- extensions/mesa/libdrm.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: components/libdrm.bst
-- filename: components/libva.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: extensions/mesa/libdrm.bst
-  type: build
+- components/libdrm.bst
+- components/libva.bst
 
 environment:
   PKG_CONFIG_PATH: "/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig:"

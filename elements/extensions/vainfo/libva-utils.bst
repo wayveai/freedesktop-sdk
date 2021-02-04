@@ -2,11 +2,12 @@ kind: meson
 
 (@): elements/extensions/include/app.yml
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libva.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+- components/libva.bst
 
 variables:
   meson-local: |
@@ -17,5 +18,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:intel/libva-utils.git
-  track: v2.5-branch
-  ref: 2.5.0-0-ga04ba9224fc80a8f60757fbe99b190d62123608c
+  track: v2.9-branch
+  ref: 2.9.1-0-g50c7f19d65e2535940e31c6711352b36d6d64fd7

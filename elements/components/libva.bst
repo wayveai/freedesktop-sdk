@@ -1,14 +1,15 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libdrm.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xext.bst
-- filename: components/xorg-lib-xfixes.bst
-- filename: components/wayland.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
+- bootstrap-import.bst
+- components/libdrm.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xext.bst
+- components/xorg-lib-xfixes.bst
+- components/wayland.bst
 
 variables:
   meson-local: |
@@ -31,7 +32,7 @@ public:
 sources:
 - kind: git_tag
   url: github:intel/libva.git
-  track: v2.7-branch
-  ref: 2.7.1-0-g5cef34fdf55b5f8a08fbfdfe5c5f8cc13b1d77ed
+  track: v2.8-branch
+  ref: 2.8.0-0-g963a4b63a7e9ada3934047c4af906c6867511ac7
 - kind: patch
   path: patches/libva/pkgconfig-driver-path.patch
