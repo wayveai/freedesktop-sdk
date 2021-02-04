@@ -11,11 +11,16 @@ variables:
   install-root: '/boot'
 
   efi-arch: "%{arch}"
+  image-name: vmlinuz
   (?):
   - target_arch == "x86_64":
       efi-arch: x64
   - target_arch == "i686":
       efi-arch: ia32
+  - target_arch == "aarch64":
+      image-name: Image
+  - target_arch == "riscv64":
+      image-name: Image
 
 config:
 
@@ -53,10 +58,10 @@ config:
     . /tmp/vars
     dracut -v --fstab --uefi \
            --uefi-stub /usr/lib/systemd/boot/efi/linux%{efi-arch}.efi.stub \
-           --no-machineid --kernel-image /boot/vmlinuz \
+           --no-machineid --kernel-image /boot/%{image-name} \
            --kver $(ls -1 /lib/modules | head -n1) \
            --kernel-cmdline "rw console=tty0 console=ttyS0 quiet" \
            --install 'fsck.ext4'
 
   - |
-    rm -f /boot/vmlinuz
+    rm -f /boot/%{image-name}
