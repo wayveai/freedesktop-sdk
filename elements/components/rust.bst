@@ -36,6 +36,9 @@ variables:
       llvm-targets: 'AArch64'
   - target_arch == "ppc64le":
       llvm-targets: 'PowerPC'
+  - target_arch == "riscv64":
+      rust-target: 'riscv64gc-unknown-linux-gnu'
+      llvm-targets: 'RISCV'
 
 environment-nocache:
 - MAXJOBS
