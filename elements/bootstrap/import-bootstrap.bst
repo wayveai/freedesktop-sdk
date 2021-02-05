@@ -12,3 +12,5 @@ sources:
       path: bootstrap/bootstrap-arm
   - target_arch == "ppc64le":
       path: bootstrap/bootstrap-ppc64le
+  - target_arch == "riscv64":
+      path: bootstrap/bootstrap-riscv64
