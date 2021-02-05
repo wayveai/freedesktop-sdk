@@ -3,11 +3,9 @@ kind: url_manifest
 build-depends:
   - flatpak-release.bst
   - components.bst
-  - components/go-stage1-386.bst
-  - components/go-stage1-amd64.bst
-  - components/go-stage1-arm64.bst
-  - components/go-stage1-armv6l.bst
-  - components/go-stage1-ppc64le.bst
+  - bootstrap/build/go-binary-amd64.bst
+  - bootstrap/build/go-binary-arm64.bst
+  - bootstrap/build/go-binary-ppc64le.bst
   - components/rust-stage1-x86-64.bst
   - components/rust-stage1-i686.bst
   - components/rust-stage1-aarch64.bst

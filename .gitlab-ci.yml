@@ -37,11 +37,6 @@ before_script:
   - ulimit -n 1048576
   - export PATH=~/.local/bin:${PATH}
 
-  - |
-    if [ "${IMPORT_BOOTSTRAP}" = true ]; then
-      mv "bootstrap/${ARCH}" bootstrap/current
-    fi
-
   # Configure Buildstream
   - mkdir -p ~/.config
   - |
@@ -411,7 +406,8 @@ check_snap_aarch64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-      - bootstrap/${ARCH}
+      - bootstrap/bootstrap-${ARCH}
+      - bootstrap/go-${ARCH}
   except:
     - '18.08'
     - '19.08'

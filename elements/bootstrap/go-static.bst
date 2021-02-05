@@ -1,20 +1,25 @@
 kind: manual
 
 build-depends:
-- go-import.bst
+- bootstrap/go-build-deps.bst
 
-depends:
-- bootstrap-import.bst
+(@):
+- elements/bootstrap/include/target.yml
 
 variables:
   optimize-debug: "false"
   compress-debug: "false"
 
 environment:
-  GOROOT_BOOTSTRAP: '%{libdir}/go'
+  GOROOT_BOOTSTRAP: /usr/local/go
   GOARCH: "%{go-arch}"
-  GOHOSTARCH: "%{go-arch}"
-  CGO_ENABLED: '1'
+  GOHOSTARCH: "%{build-go-arch}"
+  CC: gcc
+  CC_FOR_TARGET: '%{triplet}-gcc'
+  CXX_FOR_TARGET: '%{triplet}-g++'
+  # We cannot bootstrap a full go compiler on same arch as target
+  # See https://github.com/golang/go/issues/25177
+  CGO_ENABLED: '0'
 
 config:
   build-commands:
@@ -25,10 +30,14 @@ config:
   install-commands:
   - |
     install -Dm755 -t "%{install-root}%{libdir}/go" VERSION
-    install -Dm755 -t "%{install-root}%{libdir}/go/bin" bin/*
+    if [ -d bin/linux_%{go-arch} ]; then
+      install -Dm755 -t "%{install-root}%{libdir}/go/bin" bin/linux_%{go-arch}/*
+    else
+      install -Dm755 -t "%{install-root}%{libdir}/go/bin" bin/*
+    fi
 
     mkdir -p "%{install-root}%{libdir}/go/pkg"
-    for i in pkg/include pkg/linux_* pkg/tool; do
+    for i in pkg/include pkg/linux_%{go-arch} pkg/tool; do
       cp -r "${i}" "%{install-root}%{libdir}/go/pkg/"
     done
 

@@ -58,10 +58,14 @@ build:
 build-tar:
 	bst --colors $(ARCH_OPTS) build tarballs/all.bst
 
+BOOTSTRAP_COMPONENTS=bootstrap go
 bootstrap:
-	$(BST) build bootstrap/export-bootstrap.bst
+	$(BST) build $(foreach component,$(BOOTSTRAP_COMPONENTS),bootstrap/export-$(component).bst)
 	[ -d bootstrap/ ] || mkdir -p bootstrap/
-	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
+	for component in $(BOOTSTRAP_COMPONENTS); do \
+	    $(BST) checkout bootstrap/export-$${component}.bst \
+	                    bootstrap/$${component}-$(ARCH); \
+	done
 
 check-abi:
 	REFERENCE=$$(git merge-base origin/$(TARGET_BRANCH) HEAD) && \
