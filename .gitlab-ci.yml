@@ -702,14 +702,12 @@ publish_x86_64_tar:
     - .publish_tar_template
     - .builder-x86_64
   dependencies: []
-  when: manual
 
 publish_i686_tar:
   extends:
     - .publish_tar_template
     - .builder-i686
   dependencies: []
-  when: manual
 
 publish_aarch64_tar:
   extends:
@@ -723,7 +721,6 @@ publish_ppc64le_tar:
     - .publish_tar_template
     - .builder-ppc64le
   dependencies: []
-  when: manual
 
 cve_report:
   stage: update
@@ -902,8 +899,6 @@ publish_snap_aarch64:
     - docker-pushed-digests
   only:
   - tags
-  when: manual
-  allow_failure: true
   except:
   - schedules
 
@@ -975,8 +970,6 @@ publish_docker_finish:
   - tags
   except:
   - schedules
-  when: manual
-  allow_failure: true
   tags:
   - x86_64
   dependencies:
