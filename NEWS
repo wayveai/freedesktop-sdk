@@ -1,5 +1,57 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.4:
+    * binutils: Update to 2.35.2
+    * glibc: Update to glibc-2.31 (d0c84d2)
+    * libva-utils: Update to 2.9.1
+    * intel-media-driver: Update to intel-media-20.3.0
+    * libva: Update to 2.8.0
+    * pipewire: Update to 0.3.21
+    * asciidoc: Update to 9.0.5
+    * mesa: Update to mesa-20.3.4
+    * cmake: Update to v3.19.4
+    * python3-pip: Update to 21.0.1
+    * e2fsprogs: Update to v1.45.7
+    * tcl: Update to core-8-6-10
+    * wayland: Update to 1.19.0
+    * xorg-util-macros: Update to util-macros-1.19.3
+    * flatpak: Update to 1.10.1
+    * sdl2: enable support for more advanced xcursor functionality
+    * noopenh264: Update to Release_3.9.2
+    * crun: Update to 0.17
+    * pipewire: Update to 0.3.20
+    * python3-pip: Update to 21.0
+    * ca-certificates: Update to archive/debian/20210119
+    * Make Pipewire set up PulseAudio socket by default in vm examples
+    * python3-pyparsing: Update to pyparsing_3.0.0b2
+    * mozjs: Update to 78.6.1esr
+    * gtk-doc: Update to 1.33.2
+    * python3-setuptools: Update to v51.3.3
+    * python3-mako: Update to rel_1_1_4
+    * python3-pygments: Update to 2.7.4
+    * jack: Update to v1.9.17
+    * wavpack: Update to 5.4.0
+    * vulkan-tools: Update to sdk-1.2.162.1
+    * vulkan-validation-layers: Update to sdk-1.2.162.1
+    * cmake: Update to v3.19.3
+    * nano: Update to v5.5
+    * gnupg: Update to gnupg-2.2.27
+    * libdrm: Update to libdrm-2.4.104
+    * vala: Update to 0.48.13
+    * extra-cmake-modules: Update to v5.78.0
+    * python3-setuptools: Update to v51.1.2
+    * lvm2: Update to v2_03_11
+    * kmod: Update to v28
+    * vulkan-tools: Update to sdk-1.2.162.0
+    * doxygen: Update to Release_1_9_1
+    * llvm: Update to llvmorg-11.0.1
+    * spirv-tools: Update to v2020.6
+    * vulkan-icd-loader: Update to sdk-1.2.162.0
+    * git: Update to v2.30.0
+    * gmmlib: Update to intel-gmmlib-20.4.1
+    * tzdata: Update to 2020f
+    * shared-mime-info: Update to 2.1
+
 freedesktop-sdk-20.08.3:
     * gnupg-source: Update to gnupg-2.2.26
     * doxygen: Update to Release_1_9_0
