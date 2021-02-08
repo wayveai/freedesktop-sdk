@@ -58,8 +58,16 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:ftp.mozilla.org/pub/firefox/releases/78.6.1esr/source/firefox-78.6.1esr.source.tar.xz
-  base-dir: 'firefox-78.6.1'
-  ref: 0d07b74cb66b94018e3d7f11531f95c76a955e0016a3c401241d0d85062ae7ce
+  url: tar_https:ftp.mozilla.org/pub/firefox/releases/78.7.1esr/source/firefox-78.7.1esr.source.tar.xz
+  base-dir: 'firefox-78.7.1'
+  ref: 5042783e2cf94d21dd990d2083800f05bc32f8ba65532a715c7be3cb7716b837
 - kind: patch
   path: patches/mozjs/fix-arm-build.patch
+- kind: patch
+  path: patches/mozjs/0001-Add-riscv64-as-target-architecture-to-mozbuild.patch
+- kind: patch
+  path: patches/mozjs/0002-js-jit-Enable-AtomicOperations-feeling-lucky.h-on-ri.patch
+- kind: patch
+  path: patches/mozjs/0003-mfbt-tests-Define-RETURN_INSTR-for-riscv64-in-TestPo.patch
+- kind: patch
+  path: patches/mozjs/0001-Use-correct-ABI-when-building-on-Linux-for-64-bit.patch
