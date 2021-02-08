@@ -173,6 +173,7 @@ pylint:
     - '19.08'
     - '/^release\/.*/'
     - tags
+  dependencies: []
   interruptible: true
 
 check_update_elements:
