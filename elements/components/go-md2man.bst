@@ -8,6 +8,7 @@ depends:
 
 environment:
   GOPATH: "%{build-root}/go"
+  GO111MODULE: auto
 
 variables:
   optimize-debug: "false"
