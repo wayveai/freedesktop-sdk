@@ -1,3 +1,3 @@
 kind: export
 build-depends:
-- bootstrap/bootstrap.bst
+- bootstrap/go-static.bst
