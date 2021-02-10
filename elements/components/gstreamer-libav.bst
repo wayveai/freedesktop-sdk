@@ -15,6 +15,7 @@ depends:
 variables:
   meson-local: |
     '-Dc_args=-DTRIPLET=\"%{gcc_triplet}\"'
+  optimize-debug: "false"
 
 sources:
 - kind: git_tag
