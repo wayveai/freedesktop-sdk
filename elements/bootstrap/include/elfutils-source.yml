@@ -1,6 +1,4 @@
 sources:
 - kind: tar
-  url: sourceware_pub:elfutils/0.180/elfutils-0.180.tar.bz2
-  ref: b827b6e35c59d188ba97d7cf148fa8dc6f5c68eb6c5981888dfdbb758c0b569d
-- kind: patch
-  path: patches/elfutils/libdebuginfod-bootstrap.patch
+  url: sourceware_pub:elfutils/0.183/elfutils-0.183.tar.bz2
+  ref: c3637c208d309d58714a51e61e63f1958808fead882e9b607506a29e5474f2c5
