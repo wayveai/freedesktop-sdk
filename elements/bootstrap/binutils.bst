@@ -58,6 +58,7 @@ config:
 
 environment:
   LEXLIB: ' '
+  PKG_CONFIG_PATH: '%{sysroot}%{libdir}/pkgconfig'
 
 public:
   bst:
