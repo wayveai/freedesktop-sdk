@@ -87,7 +87,7 @@ depends:
 - components/freetype.bst
 - components/frei0r.bst
 - components/fribidi.bst
-- components/fscrypt.bst
+- components/fscrypt-maybe.bst
 - components/fuse.bst
 - components/fuse-overlayfs.bst
 - components/fuse3.bst
