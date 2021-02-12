@@ -1,8 +1,8 @@
 kind: pip
 
 build-depends:
+- public-stacks/buildsystem-python.bst
 - components/cython.bst
-- components/python3-pip.bst
 
 depends:
 - components/python3.bst
