@@ -1,18 +1,18 @@
 kind: meson
 description: libdrm
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/xorg-lib-pciaccess.bst
-- filename: components/libdrm.bst
+- bootstrap-import.bst
+- components/xorg-lib-pciaccess.bst
+- components/libdrm.bst
+
+(@):
+- elements/extensions/mesa/config.yml
 
 variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
-
   meson-local: |
     -Detnaviv=true \
     -Dtegra=true \
