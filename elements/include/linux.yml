@@ -3,7 +3,7 @@ sources:
   url: kernel:linux/kernel/git/stable/linux.git
   track: master
   track-extra:
-  - linux-5.8.y
+  - linux-5.10.y
   exclude:
   - '*-rc*'
   ref: v5.10-0-g2c85ebc57b3e1817b6ce1a6b703928e113a90442
