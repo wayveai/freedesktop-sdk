@@ -14,7 +14,7 @@ config:
 sources:
 - kind: pypi
   name: pip
-  url: pypi:9e/24/bc928987f35dd0167f21b13a1777c21b9c5917c9894cff93f1c1a6cb8f3b/pip-21.0.tar.gz
-  sha256sum: b330cf6467afd5d15f4c1c56f5c95e56a2bfb941c869bed4c1aa517bcb16de25
+  url: pypi:b7/2d/ad02de84a4c9fd3b1958dc9fb72764de1aa2605a9d7e943837be6ad82337/pip-21.0.1.tar.gz
+  sha256sum: 99bbde183ec5ec037318e774b0d8ae0a64352fe53b2c7fd630be1d07e94f41e5
 - kind: patch
   path: patches/pip/make-pip-temp-dirs-reproducible.patch
