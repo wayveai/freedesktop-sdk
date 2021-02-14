@@ -33,11 +33,10 @@ environment:
   PATH: "%{bindir}:/usr/bin"
   CXXFLAGS: "%{target_flags} -std=gnu++17"
 
-variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
+(@):
+- elements/extensions/mesa/config.yml
 
+variables:
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink

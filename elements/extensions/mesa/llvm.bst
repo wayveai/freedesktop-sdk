@@ -7,15 +7,17 @@ build-depends:
 depends:
 - extensions/mesa/ldconfig.bst
 
+runtime-depends:
+- extensions/mesa/llvm-bindir-compat.bst
+
 environment:
   # Work-around issue building compiler-rt with multiarch
   LD_LIBRARY_PATH: '%{build-root}/%{build-dir}/lib'
 
-variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
+(@):
+- elements/extensions/mesa/config.yml
 
+variables:
   cmake: |
     cmake -B%{build-dir} -Hllvm -G"%{generator}" %{cmake-args}
 
@@ -89,7 +91,6 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
-
 sources:
 - kind: git_tag
   track: release/11.x
