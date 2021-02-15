@@ -13,5 +13,5 @@ depends:
 sources:
 - kind: pypi
   name: dbus-deviation
-  url: pypi:1f/c3/0b4ea31404ff0e22e37ae3675687575061836b85bf18866a4a61f181e52f/dbus-deviation-0.6.0.tar.gz
-  sha256sum: cfbb3c906807d8376ae598bbc889b3a71992cdecc0637091d97ffcbcb69b7408
+  url: pypi:01/dc/047feaa6a81545e10c37d4eeff86443c90dd114c5ce13d6937c5ed38854d/dbus-deviation-0.6.1.tar.gz
+  sha256sum: e06b88efe223885d2725df51cf7c9b7b463d1c6f04ea49d4690874318d0eb7a3
