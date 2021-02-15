@@ -16,3 +16,4 @@ variables:
 
   conf-local: >-
     --disable-debuginfod
+    --disable-libdebuginfod
