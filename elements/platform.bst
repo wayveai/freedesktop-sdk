@@ -126,7 +126,6 @@ depends:
 - components/ibus.bst
 - components/json-glib.bst
 - components/lame.bst
-- components/libclc.bst
 - components/libdatrie.bst
 - components/libdrm.bst
 - components/libepoxy.bst
