@@ -48,4 +48,4 @@ config:
   - components/rust.bst
   - components/strace.bst
   - components/texinfo.bst
-  - components/valgrind.bst
+  - components/valgrind-maybe.bst

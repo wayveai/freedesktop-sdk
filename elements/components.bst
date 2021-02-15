@@ -440,7 +440,7 @@ depends:
 - components/v4l-utils.bst
 - components/vala-bootstrap.bst
 - components/vala.bst
-- components/valgrind.bst
+- components/valgrind-maybe.bst
 - components/vim.bst
 - components/volume-key.bst
 - components/vulkan-headers.bst
