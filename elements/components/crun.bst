@@ -34,4 +34,4 @@ sources:
       checkout: true
   # FIXME: this should be a submodule, but git_tag does not seem to support
   # multiple levels of submodules
-  ref: 69a096a965ae47c5a83832b87e1d0a5178ca0b30
+  ref: df96ab4041005d8bc491c1c1f63fedbf28caf9ee
