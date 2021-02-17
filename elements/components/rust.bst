@@ -16,17 +16,26 @@ variables:
   debuginfo-level: '2'
   debuginfo-level-std: '0'
   rust-target: '%{host-triplet}'
+  llvm-targets: 'AArch64;ARM;Hexagon;MSP430;Mips;NVPTX;PowerPC;Sparc;SystemZ;WebAssembly;X86'
   (?):
   - target_arch == "i686":
       # i686 also exhausts memory on stage0
       debuginfo-level: '0'
       debuginfo-level-std: '2'
+      llvm-targets: 'X86'
+  - target_arch == "x86_64":
+      llvm-targets: 'X86'
   - target_arch == "arm":
       rust-target: armv7-unknown-linux-gnueabihf
       # armv7 exhausts memory on stage0 librustc w/ debuginfo
       # github:rust-lang/rust/issues/45854
       debuginfo-level: '0'
       debuginfo-level-std: '2'
+      llvm-targets: 'ARM'
+  - target_arch == "aarch64":
+      llvm-targets: 'AArch64'
+  - target_arch == "ppc64le":
+      llvm-targets: 'PowerPC'
 
 environment-nocache:
 - MAXJOBS
@@ -40,6 +49,9 @@ config:
     cat <<EOF >config.toml
     [llvm]
     link-shared = true
+    targets = "%{llvm-targets}"
+    # disable experimental targets, we certainly don't want them (only AVR at the moment)
+    experimental-targets = ""
     [build]
     build = "%{rust-target}"
     host = ["%{rust-target}"]
