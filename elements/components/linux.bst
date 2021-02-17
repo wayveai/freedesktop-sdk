@@ -157,6 +157,11 @@ config:
     scripts/config -m VIRTIO_MMIO
     scripts/config -m CRYPTO_DEV_VIRTIO
 
+    # Input
+    scripts/config -e INPUT_EVDEV
+    scripts/config -e INPUT_TOUCHSCREEN
+    scripts/config -e INPUT_TABLET
+
     # needed by spice-vdagent
     scripts/config -m VIRTIO_VSOCKETS
     scripts/config -m INPUT_UINPUT
