@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.5:
+    * llvm in mesa extension: Update to llvmorg-11.1.0
+    * openssh: fix pam service name
+    * python3-pygments: Update to 2.8.0
+    * Rust: Update to 1.48.0
+    * extra-cmake-modules: Update to v5.79.0
+    * audit: Update to v3.0.1
+    * procps: Update to v3.3.17
+    * git: Update to v2.30.1
+    * libical: Update to v3.0.9
+    * systemd: Update to v246.10
+    * tzdata: Update to 2021a
+
 freedesktop-sdk-20.08.4:
     * binutils: Update to 2.35.2
     * glibc: Update to glibc-2.31 (d0c84d2)
