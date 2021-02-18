@@ -153,3 +153,5 @@ sources:
   ref: mesa-20.3.4-0-g6d8c68603f9496b12723216c15bf69976de57e97
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
+- kind: patch
+  path: patches/mesa/mesa-cle-build-fix.patch
