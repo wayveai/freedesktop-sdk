@@ -10,7 +10,7 @@ config:
 
   install-commands:
   - |
-    make -j1 DESTDIR="%{install-root}" install
+    make -j1 DESTDIR="%{install-root}" ZFLAGS='-b fat' install
 
 # We're really only interested in the timezone data
   - |
