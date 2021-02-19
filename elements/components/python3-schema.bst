@@ -13,5 +13,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: schema
-  url: pypi:c2/13/7332387fabc217b04ce7c4a3286fd1049444991b44cd8f143354e7f8f1fd/schema-0.7.3.tar.gz
-  sha256sum: 4cf529318cfd1e844ecbe02f41f7e5aa027463e7403666a52746f31f04f47a5e
+  url: pypi:2b/91/42bc143289fd5f032ab1b01c5da32dc162ae808a585122f27ed5bf67268f/schema-0.7.4.tar.gz
+  sha256sum: fbb6a52eb2d9facf292f233adcc6008cffd94343c63ccac9a1cb1f3e6de1db17
