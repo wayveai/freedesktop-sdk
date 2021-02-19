@@ -80,7 +80,7 @@ sources:
   url: github:systemd/systemd-stable.git
   track: main
   track-extra:
-  - v246-stable
-  ref: v246.9-0-g90f7f6c5777e9e2a4990f299474f730459054bf4
+  - v247-stable
+  ref: v247.3-0-g551dd873b0bdfb9e7e47431b2933c8b910228f0c
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
