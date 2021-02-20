@@ -12,4 +12,4 @@ sources:
 - kind: git_tag
   url: kernel:linux/kernel/git/firmware/linux-firmware.git
   track: master
-  ref: 20200316-0-g8eb0b281511d6455ca9151e52f694dc982193251
+  ref: 20210208-0-gb79d2396bc630bfd9b4058459d3e82d7c3428599
