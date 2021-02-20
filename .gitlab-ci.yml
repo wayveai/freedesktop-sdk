@@ -752,7 +752,7 @@ publish_ppc64le_tar:
   dependencies: []
 
 cve_report:
-  stage: update
+  stage: finish-publish
   image: $DOCKER_AMD64
   cache:
     key: cve
