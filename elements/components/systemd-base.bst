@@ -62,6 +62,7 @@ public:
       - '%{libdir}'
       - '%{libdir}/libsystemd*.so*'
       - '%{libdir}/libudev*.so*'
+      - '%{libdir}/libnss_resolve.so*'
       - '%{libdir}/pkgconfig'
       - '%{libdir}/pkgconfig/libsystemd.pc'
       - '%{libdir}/pkgconfig/libudev.pc'
