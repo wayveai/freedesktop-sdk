@@ -137,10 +137,10 @@ config:
     scripts/config -e SND_HDA_GENERIC
 
     # Required for live boot
-    scripts/config -e SQUASHFS
-    scripts/config -e SQUASHFS_ZLIB
-    scripts/config -e DM_SNAPSHOT
-    scripts/config -e OVERLAY_FS
+    scripts/config -m SQUASHFS
+    scripts/config -m SQUASHFS_ZLIB
+    scripts/config -m DM_SNAPSHOT
+    scripts/config -m OVERLAY_FS
 
     # Some useful drivers when running as virtual machine
     scripts/config -m VIRTIO_BALLOON
