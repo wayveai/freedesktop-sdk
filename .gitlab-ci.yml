@@ -246,6 +246,7 @@ check_mirrors:
       - ${CI_PROJECT_DIR}/unmirrored_sources_list.json
       - ${CI_PROJECT_DIR}/create_mirrors_from_problem_list.py
       - ${CI_PROJECT_DIR}/README-Create-mirrors-script.md
+  allow_failure: true
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
