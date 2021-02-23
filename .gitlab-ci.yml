@@ -500,7 +500,7 @@ minimal_systemd_vm_image_x86_64:
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   rules:
-  - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK != "default"'
+  - if: '$CI_PIPELINE_SOURCE == "schedule"'
     when: never
   - if: '$CI_COMMIT_BRANCH == "master"'
   - if: '$CI_COMMIT_BRANCH == "18.08"'
