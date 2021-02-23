@@ -1,8 +1,8 @@
 kind: distutils
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
+- bootstrap-import.bst
+- components/python3.bst
 
 config:
   configure-commands:
@@ -18,5 +18,5 @@ config:
 sources:
 - kind: git_tag
   url: github:pypa/setuptools.git
-  track: master
+  track: main
   ref: v41.2.0-0-ga3e6e68365079642d8949b26ecb810751cc15ef1
