@@ -26,4 +26,4 @@ sources:
   track: master
   exclude:
   - nettle_*rc*
-  ref: nettle_3.7_release_20210104-0-g1c88685a3421753509772823c05f3355ff6486ee
+  ref: nettle_3.7.1_release_20210217-0-gc9d9c66b8ed111ab9ebd39440ec3f8d8d91734bd
