@@ -16,4 +16,4 @@ sources:
 - kind: git_tag
   url: github:pengutronix/genimage.git
   track: master
-  ref: v13-0-gd1fbcbbde594eb64a7c20aa44be7107e8b85f61d
+  ref: v14-0-g04780e3a04ccd938511f147b83acaf21d15c2b16
