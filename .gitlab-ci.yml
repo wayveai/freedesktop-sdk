@@ -249,7 +249,7 @@ check_mirrors:
   only:
     - schedules
 
-.flatpak_template: &flatpak_definition
+.flatpak_template:
   stage: flatpak
   interruptible: true
   script:
@@ -373,7 +373,7 @@ check_snap_aarch64:
     - .builder-aarch64
   dependencies: []
 
-.bootstrap_template: &bootstrap_definition
+.bootstrap_template:
   stage: bootstrap
   script:
     - make bootstrap
@@ -774,7 +774,7 @@ markdown_manifest:
     - schedules
   dependencies: []
 
-.reproducible_template: &reproducible
+.reproducible_template:
   stage: reproducible
   script:
     - ./utils/test-reproducibility.sh reproducible-test.bst
