@@ -303,9 +303,15 @@ license_checker:
     - tags
   interruptible: true
 
+.retry_system_failure:
+  retry:
+    max: 2
+    when: runner_system_failure
 
 .builder-x86_64:
   image: $DOCKER_AMD64
+  extends:
+  - .retry_system_failure
   tags:
     - x86_64
     - cache_x86_64
@@ -314,6 +320,8 @@ license_checker:
 
 .builder-i686:
   image: $DOCKER_AMD64
+  extends:
+  - .retry_system_failure
   tags:
     - x86_64
     - cache_i686
@@ -322,6 +330,8 @@ license_checker:
 
 .builder-aarch64:
   image: $DOCKER_AARCH64
+  extends:
+  - .retry_system_failure
   tags:
     - aarch64
   variables:
@@ -329,6 +339,8 @@ license_checker:
 
 .builder-ppc64le:
   image: $DOCKER_PPC64LE
+  extends:
+  - .retry_system_failure
   tags:
     - ppc64le
   variables:
