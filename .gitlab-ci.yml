@@ -278,9 +278,15 @@ check_mirrors:
     - tags
   interruptible: true
 
+.retry_system_failure:
+  retry:
+    max: 2
+    when: runner_system_failure
 
 .builder-x86_64:
   image: $DOCKER_AMD64
+  extends:
+  - .retry_system_failure
   tags:
     - x86_64
     - cache_x86_64
@@ -289,6 +295,8 @@ check_mirrors:
 
 .builder-i686:
   image: $DOCKER_AMD64
+  extends:
+  - .retry_system_failure
   tags:
     - x86_64
     - cache_i686
@@ -297,6 +305,8 @@ check_mirrors:
 
 .builder-aarch64:
   image: $DOCKER_AARCH64
+  extends:
+  - .retry_system_failure
   tags:
     - aarch64
   variables:
@@ -304,6 +314,8 @@ check_mirrors:
 
 .builder-ppc64le:
   image: $DOCKER_PPC64LE
+  extends:
+  - .retry_system_failure
   tags:
     - ppc64le
   variables:
