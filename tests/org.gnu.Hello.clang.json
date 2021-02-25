@@ -4,10 +4,17 @@
     "runtime-version": "21.08beta",
     "sdk": "org.freedesktop.Sdk",
     "build-options": {
-	"ldflags": "-fuse-ld=lld",
+        "ldflags": "-fuse-ld=lld",
         "config-opts": [
             "CC=clang"
-        ]
+        ],
+        "arch": {
+            "riscv64": {
+                "config-opts": ["--build=riscv64"],
+                "ldflags-override": true,
+                "ldflags": ""
+            }
+        }
     },
     "command": "hello",
     "modules": [
