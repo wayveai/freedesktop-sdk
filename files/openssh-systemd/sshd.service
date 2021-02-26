@@ -16,7 +16,7 @@ ExecReload=/usr/bin/kill -HUP $MAINPID
 # ssh session.
 KillMode=process
 
-Restart=on-faiure
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
