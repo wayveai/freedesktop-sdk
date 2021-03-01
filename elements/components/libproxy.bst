@@ -27,4 +27,4 @@ sources:
 - kind: git_tag
   url: github:libproxy/libproxy.git
   track: master
-  ref: 0.4.16-0-g0da9e01980a93aa13c40de492dca3c47cde50bfc
+  ref: 0.4.17-0-ge78a5ccfe0a2340f2c73e419767f8492ffc2787a
