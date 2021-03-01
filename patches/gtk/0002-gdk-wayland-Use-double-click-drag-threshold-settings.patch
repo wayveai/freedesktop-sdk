@@ -1,0 +1,29 @@
+From 8ef7927afede4ce0571712e101fd97c1700199ba Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 27 Aug 2020 00:30:51 +0200
+Subject: [PATCH 2/4] gdk/wayland: Use double-click/drag-threshold settings
+ from g-d-s
+
+Handle both these settings, and the older settings-daemon ones for
+backwards compatibility. The keys are already checked for existence
+in the schema, so it will just use the existing ones.
+---
+ gdk/wayland/gdkscreen-wayland.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdk/wayland/gdkscreen-wayland.c b/gdk/wayland/gdkscreen-wayland.c
+index 6c8ca044b7..01e420c669 100644
+--- a/gdk/wayland/gdkscreen-wayland.c
++++ b/gdk/wayland/gdkscreen-wayland.c
+@@ -535,6 +535,8 @@ static TranslationEntry translations[] = {
+   { FALSE, "org.gnome.desktop.interface", "enable-animations", "gtk-enable-animations", G_TYPE_BOOLEAN, { .b = TRUE } },
+   { FALSE, "org.gnome.desktop.interface", "gtk-enable-primary-paste", "gtk-enable-primary-paste", G_TYPE_BOOLEAN, { .b = TRUE } },
+   { FALSE, "org.gnome.desktop.interface", "overlay-scrolling", "gtk-overlay-scrolling", G_TYPE_BOOLEAN, { .b = TRUE } },
++  { FALSE, "org.gnome.desktop.peripherals.mouse", "double-click", "gtk-double-click-time", G_TYPE_INT, { .i = 400 } },
++  { FALSE, "org.gnome.desktop.peripherals.mouse", "drag-threshold", "gtk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
+   { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "double-click", "gtk-double-click-time", G_TYPE_INT, { .i = 400 } },
+   { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "drag-threshold", "gtk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
+   { FALSE, "org.gnome.desktop.sound", "theme-name", "gtk-sound-theme-name", G_TYPE_STRING, { .s = "freedesktop" } },
+-- 
+2.30.1
+

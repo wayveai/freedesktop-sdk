@@ -69,3 +69,11 @@ sources:
   ref: 3.24.20-0-gdb39ce2b1699acaf5d0ba160cf7cc68ccf6e16d6
 - kind: patch
   path: patches/gtk3/0001-Revert-a11y-Include-window-management-buttons-in-hea.patch
+- kind: patch
+  path: patches/gtk/0001-gdk-wayland-Look-for-font-settings-in-gsettings-desk.patch
+- kind: patch
+  path: patches/gtk/0002-gdk-wayland-Use-double-click-drag-threshold-settings.patch
+- kind: patch
+  path: patches/gtk/0003-gdk-wayland-Mark-matched-settings-from-the-portal-as.patch
+- kind: patch
+  path: patches/gtk/0004-gdk-wayland-Look-for-font-settings-recursively.patch
