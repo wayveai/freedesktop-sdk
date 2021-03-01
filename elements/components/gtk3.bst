@@ -67,3 +67,11 @@ sources:
   match:
   - 3.24.21
   ref: 3.24.21-0-gab4b85f88cf822d6dbb9cda9c4d71fd10a5d3d99
+- kind: patch
+  path: patches/gtk/0001-gdk-wayland-Look-for-font-settings-in-gsettings-desk.patch
+- kind: patch
+  path: patches/gtk/0002-gdk-wayland-Use-double-click-drag-threshold-settings.patch
+- kind: patch
+  path: patches/gtk/0003-gdk-wayland-Mark-matched-settings-from-the-portal-as.patch
+- kind: patch
+  path: patches/gtk/0004-gdk-wayland-Look-for-font-settings-recursively.patch
