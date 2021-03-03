@@ -458,6 +458,7 @@ check_snap_aarch64:
     - '19.08'
     - '/^release\/.*/'
     - tags
+    - schedules
   interruptible: true
 
 minimal_systemd_vm_x86_64:
