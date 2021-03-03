@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: shellingham
-  url: pypi:4b/f0/39516ebeaca978d6607609a283b15e7637622faffc5f01ecf78a49b24cd5/shellingham-1.3.2.tar.gz
-  sha256sum: 576c1982bea0ba82fb46c36feb951319d7f42214a82634233f58b40d858a751e
+  url: pypi:9c/c9/a3e3bc667c8372a74aa4b16649c3466364cd84f7aacb73453c51b0c2c8a7/shellingham-1.4.0.tar.gz
+  sha256sum: 4855c2458d6904829bd34c299f11fdeed7cfefbf8a2c522e4caea6cd76b3171e
