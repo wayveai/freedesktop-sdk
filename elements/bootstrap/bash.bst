@@ -66,5 +66,5 @@ sources:
   url: savannah:bash.git
   track: master
   track-tags: false
-  ref: bash-5.1-5-g76404c85d492c001f59f2644074333ffb7608532
+  ref: bash-5.1-6-gf3a35a2d601a55f337f8ca02a541f8c033682247
 
