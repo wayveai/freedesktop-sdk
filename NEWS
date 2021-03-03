@@ -1,6 +1,27 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.6:
+    * gtk3: backport patches for the upcoming g-s-d release
+    * bluez: Update to 5.56
+    * python3-markdown: Update to 3.3.4
+    * cmake: Update to v3.19.6
+    * nano: Update to v5.6
+    * python3: Update to v3.8.8
+    * ffmpeg: Update to n4.3.2
+    * clinfo: Update to 3.0.21.02.21
+    * linux: Update to v5.11.2
+    * cython: Update to 0.29.22
+    * genimage: Update to v14
+    * linux: Compile features needed for live boot as modules
+    * xorg-data-xkeyboard-config: Update to xkeyboard-config-2.32
+    * xdg-desktop-portal-base: Update to 1.8.1
+    * cmake: Update to v3.19.5
+    * noopenh264: Update to Release_3.9.3
+    * strace: Update to v5.11
+    * aom: Update to v2.0.2
+
 freedesktop-sdk-20.08.5:
+    * tzdata.bst: Use '-b fat' for backward compatibility
     * llvm in mesa extension: Update to llvmorg-11.1.0
     * openssh: fix pam service name
     * python3-pygments: Update to 2.8.0
