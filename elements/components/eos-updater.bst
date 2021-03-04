@@ -6,7 +6,7 @@ depends:
   type: build
 - filename: components/gtk-doc.bst
   type: build
-- filename: components/valgrind.bst
+- filename: components/valgrind-maybe.bst
   type: build
 - filename: components/ostree.bst
 - filename: components/ostree-gobject.bst

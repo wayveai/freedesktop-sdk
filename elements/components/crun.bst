@@ -17,6 +17,12 @@ depends:
 variables:
   builddir: ''
 
+environment:
+  (?):
+  - target_arch == "riscv64":
+      # incredibly racy on riscv64
+      MAKEFLAGS: "-j1"
+
 sources:
 - kind: git_tag
   url: github:containers/crun.git

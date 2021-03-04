@@ -87,7 +87,7 @@ depends:
 - components/freetype.bst
 - components/frei0r.bst
 - components/fribidi.bst
-- components/fscrypt.bst
+- components/fscrypt-maybe.bst
 - components/fuse.bst
 - components/fuse-overlayfs.bst
 - components/fuse3.bst
@@ -223,7 +223,7 @@ depends:
 - components/libtirpc.bst
 - components/libtool.bst
 - components/libunistring.bst
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 - components/libusb.bst
 - components/libva.bst
 - components/libvdpau.bst
@@ -440,7 +440,7 @@ depends:
 - components/v4l-utils.bst
 - components/vala-bootstrap.bst
 - components/vala.bst
-- components/valgrind.bst
+- components/valgrind-maybe.bst
 - components/vim.bst
 - components/volume-key.bst
 - components/vulkan-headers.bst

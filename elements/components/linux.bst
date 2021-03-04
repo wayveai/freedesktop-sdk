@@ -27,6 +27,9 @@ variables:
       kernel_arch: i386
   - target_arch == "ppc64le":
       kernel_arch: powerpc
+  - target_arch == "riscv64":
+      kernel_arch: riscv
+      image-name: arch/riscv/boot/Image
 
 environment:
   ARCH: '%{kernel_arch}'

@@ -12,3 +12,5 @@ sources:
       path: bootstrap/go-arm
   - target_arch == "ppc64le":
       path: bootstrap/go-ppc64le
+  - target_arch == "riscv64":
+      path: bootstrap/go-riscv64

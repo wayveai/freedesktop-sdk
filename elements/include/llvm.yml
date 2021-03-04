@@ -11,3 +11,5 @@ sources:
   path: patches/llvm/llvm-fix-tsan-build.patch
 - kind: patch
   path: patches/llvm/llvm-shared-tablegen.patch
+- kind: patch
+  path: patches/llvm/llvm-riscv64-lib.patch

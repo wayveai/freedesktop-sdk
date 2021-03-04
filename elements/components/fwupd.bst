@@ -34,7 +34,7 @@ variables:
   - target_arch in ["arm", "aarch64"]:
       meson-local: >-
         -Dplugin_dell=false
-  - target_arch == "ppc64le":
+  - target_arch in ["ppc64le", "riscv64"]:
       meson-local: >-
         -Dplugin_dell=false
         -Dplugin_uefi=false

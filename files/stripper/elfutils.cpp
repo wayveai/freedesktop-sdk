@@ -35,6 +35,8 @@ known_arch get_arch(Elf32_Ehdr const* header) {
     return known_arch::arm;
   case EM_X86_64:
     return known_arch::x86_64;
+  case EM_RISCV:
+    return known_arch::riscv64;
   case EM_PPC64:
     if (header->e_ident[EI_DATA] == ELFDATA2MSB)
       return known_arch::unknown;

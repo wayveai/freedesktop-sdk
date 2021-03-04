@@ -42,7 +42,7 @@ depends:
 - components/spirv-tools.bst
 - components/strace.bst
 - components/texinfo.bst
-- components/valgrind.bst
+- components/valgrind-maybe.bst
 - components/desktop-file-utils.bst
 - components/gtk-doc.bst
 - components/itstool.bst

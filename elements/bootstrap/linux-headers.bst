@@ -17,6 +17,8 @@ variables:
       kernel_arch: i386
   - target_arch == "ppc64le":
       kernel_arch: powerpc
+  - target_arch == "riscv64" or target_arch == "riscv32":
+      kernel_arch: riscv
 
 config:
   install-commands:

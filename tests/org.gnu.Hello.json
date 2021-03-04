@@ -4,6 +4,13 @@
     "runtime-version": "21.08beta",
     "sdk": "org.freedesktop.Sdk",
     "command": "hello",
+    "build-options": {
+        "arch": {
+            "riscv64": {
+                "config-opts": ["--build=riscv64"]
+            }
+        }
+    },
     "modules": [
         {
             "name": "gnu-hello",

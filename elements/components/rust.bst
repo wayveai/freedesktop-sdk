@@ -17,6 +17,7 @@ variables:
   debuginfo-level-std: '0'
   rust-target: '%{host-triplet}'
   llvm-targets: 'AArch64;ARM;Hexagon;MSP430;Mips;NVPTX;PowerPC;Sparc;SystemZ;WebAssembly;X86'
+  build-docs: 'true'
   (?):
   - target_arch == "i686":
       # i686 also exhausts memory on stage0
@@ -36,6 +37,10 @@ variables:
       llvm-targets: 'AArch64'
   - target_arch == "ppc64le":
       llvm-targets: 'PowerPC'
+  - target_arch == "riscv64":
+      rust-target: 'riscv64gc-unknown-linux-gnu'
+      llvm-targets: 'RISCV'
+      build-docs: 'false'
 
 environment-nocache:
 - MAXJOBS
@@ -58,7 +63,7 @@ config:
     target = ["%{rust-target}"]
     cargo = "/usr/bin/cargo"
     rustc = "/usr/bin/rustc"
-    docs = true
+    docs = %{build-docs}
     submodules = false
     python = "/usr/bin/python3"
     locked-deps = true

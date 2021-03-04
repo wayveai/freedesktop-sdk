@@ -26,7 +26,7 @@ depends:
 - components/wayland.bst
 - components/libglvnd.bst
 - components/libvdpau.bst
-- components/libunwind.bst
+- components/libunwind-maybe.bst
 - extensions/mesa/libdrm.bst
 
 environment:
@@ -49,7 +49,7 @@ variables:
       dri_drivers: ''
       vulkan_drivers: freedreno,broadcom,swrast
       enable_libunwind: 'false'
-  - target_arch == "ppc64le":
+  - target_arch == "ppc64le" or target_arch == "riscv64":
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
       dri_drivers: r100,r200,nouveau
       vulkan_drivers: amd
