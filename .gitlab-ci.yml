@@ -962,32 +962,32 @@ publish_snap_aarch64:
 
 publish_docker_x86_64:
   extends:
-    - .docker_publish_template
     - .builder-x86_64
+    - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_i686:
   extends:
-    - .docker_publish_template
     - .builder-i686
+    - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_aarch64:
   extends:
-    - .docker_publish_template
     - .builder-aarch64
+    - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
   dependencies: []
 
 publish_docker_ppc64le:
   extends:
-    - .docker_publish_template
     - .builder-ppc64le
+    - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
