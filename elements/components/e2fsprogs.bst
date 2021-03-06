@@ -58,4 +58,6 @@ sources:
 - kind: git_tag
   url: kernel:fs/ext2/e2fsprogs.git
   track: master
+  match:
+  - v1.45.*
   ref: v1.45.7-0-gfa86b5c2aa3f98824e3e717074db13b7802d65b7
