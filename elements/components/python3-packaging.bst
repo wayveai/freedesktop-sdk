@@ -12,5 +12,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: packaging
-  url: pypi:d7/c5/e81b9fb8033fe78a2355ea7b1774338e1dca2c9cbd2ee140211a9e6291ab/packaging-20.8.tar.gz
-  sha256sum: 78598185a7008a470d64526a8059de9aaa449238f280fc9eb6b13ba6c4109093
+  url: pypi:86/3c/bcd09ec5df7123abcf695009221a52f90438d877a2f1499453c6938f5728/packaging-20.9.tar.gz
+  sha256sum: 5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5
