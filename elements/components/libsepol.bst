@@ -43,7 +43,7 @@ sources:
   url: github:SELinuxProject/selinux.git
   track: master
   match:
-  - libsepol-*
+  - libsepol-3.1-*
   exclude:
   - '*rc*'
   ref: libsepol-3.1-0-g7df27b78e9eecbe65a57cdfefb9e51f547231b20
