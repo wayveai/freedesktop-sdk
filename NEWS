@@ -1,5 +1,9 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.14:
+
+   * GTK: Support gsetting schema changes (#1211)
+
 freedesktop-sdk-19.08.13:
 
     * mesa: update to 20.1.3
