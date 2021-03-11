@@ -1,30 +1,28 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/perl.bst
+- components/gtk-doc.bst
+- components/gobject-introspection.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/atk.bst
-- filename: components/at-spi2-atk.bst
-- filename: components/cairo.bst
-- filename: components/gdk-pixbuf.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: components/gsettings-desktop-schemas.bst
-- filename: components/hicolor-icon-theme.bst
-- filename: components/libepoxy.bst
-- filename: components/libxkbcommon.bst
-- filename: components/pango.bst
-- filename: components/wayland.bst
-- filename: components/wayland-protocols.bst
-- filename: components/xorg-lib-xcomposite.bst
-- filename: components/xorg-lib-xdamage.bst
-- filename: components/xorg-lib-xinerama.bst
-- filename: components/xorg-lib-xi.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/perl.bst
-  type: build
-- filename: components/gtk-doc.bst
-  type: build
+- bootstrap-import.bst
+- components/atk.bst
+- components/at-spi2-atk.bst
+- components/cairo.bst
+- components/gdk-pixbuf.bst
+- components/gsettings-desktop-schemas.bst
+- components/hicolor-icon-theme.bst
+- components/libepoxy.bst
+- components/libxkbcommon.bst
+- components/pango.bst
+- components/wayland.bst
+- components/wayland-protocols.bst
+- components/xorg-lib-xcomposite.bst
+- components/xorg-lib-xdamage.bst
+- components/xorg-lib-xinerama.bst
+- components/xorg-lib-xi.bst
 
 variables:
   conf-local: |
@@ -65,3 +63,5 @@ sources:
   url: gnome:gtk.git
   track: gtk-3-24
   ref: 3.24.24-0-gde8329b3ce4b235eac9ddcbb6cd121cc83dd9e74
+- kind: patch
+  path: patches/gtk3/updateiconcache-Sort-list-of-entries.patch
