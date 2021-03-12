@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: github:tlwg/libdatrie.git
   track: master
-  ref: v0.2.12-0-gd5d104e22fd49a27aed8a1e9c5ccc836600c05e1
+  ref: v0.2.13-0-ge697a665f3590af9dc2d5d8b4f714c5e4a5f7fbd
