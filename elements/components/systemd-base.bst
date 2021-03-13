@@ -83,6 +83,6 @@ sources:
   - v246-stable
   match:
   - v246.*
-  ref: v246.10-0-g21816aec6ade814e458040d45878ec9b69d220fc
+  ref: v246.11-0-g1f922f82d85f6b4a8bdca82598389c566c72e8f7
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
