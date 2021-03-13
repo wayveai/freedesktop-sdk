@@ -20,10 +20,10 @@ public:
 config:
   configure-commands:
     (<):
-      - ./autogen.sh
+    - ./autogen.sh
 
 sources:
 - kind: git_tag
   url: savannah:acl.git
   track: master
-  ref: v2.2.53-0-g65ff056ac4c25141cc06e484bce040635e4abd3d
+  ref: v2.3.0-0-g3ba70ac91d2662e4c4401743e3d32a4913419716
