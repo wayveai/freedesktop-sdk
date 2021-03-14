@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: zipp
-  url: pypi:ce/b0/757db659e8b91cb3ea47d90350d7735817fe1df36086afc77c1c4610d559/zipp-3.4.0.tar.gz
-  sha256sum: ed5eee1974372595f9e416cc7bbeeb12335201d8081ca8a0743c954d4446e5cb
+  url: pypi:38/f9/4fa6df2753ded1bcc1ce2fdd8046f78bd240ff7647f5c9bcf547c0df77e3/zipp-3.4.1.tar.gz
+  sha256sum: 3607921face881ba3e026887d8150cca609d517579abe052ac81fc5aeffdbd76
