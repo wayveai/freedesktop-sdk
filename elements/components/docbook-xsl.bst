@@ -1,12 +1,12 @@
 kind: manual
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libxml2.bst
-- filename: components/docbook-xml.bst
-  type: runtime
-- filename: components/clean-xml-catalog.bst
-  type: runtime
+- bootstrap-import.bst
+- components/libxml2.bst
+
+runtime-depends:
+- components/docbook-xml.bst
+- components/clean-xml-catalog.bst
 
 variables:
   data: '%{datadir}/xml/docbook/xml/xsl-stylesheets'
@@ -51,3 +51,6 @@ sources:
 - kind: patch
   strip-level: '2'
   path: patches/docbook-xsl/docbook-xsl-non-recursive_string_subst.patch
+- kind: patch
+  strip-level: '2'
+  path: patches/docbook-xsl/consistent-identifiers.patch
