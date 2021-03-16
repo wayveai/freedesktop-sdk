@@ -1,6 +1,5 @@
 variables:
   prefix: '/usr/lib/sdk/toolchain-%{cross_gcc_arch}'
-  lib: lib
   debugdir: /usr/lib/debug
   cross_gcc_triplet: "%{cross_gcc_arch}-linux-%{cross_abi}"
   cross_triplet: "%{cross_arch}-unknown-linux-%{cross_abi}"
