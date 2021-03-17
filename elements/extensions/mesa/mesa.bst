@@ -16,7 +16,6 @@ depends:
 - components/llvm.bst
 - components/libdrm.bst
 - components/libva.bst
-- components/libclc.bst
 - components/opencl.bst
 - components/xorg-lib-xdamage.bst
 - components/xorg-lib-xfixes.bst
@@ -27,10 +26,11 @@ depends:
 - components/libglvnd.bst
 - components/libvdpau.bst
 - components/libunwind-maybe.bst
+- extensions/mesa/libclc.bst
 - extensions/mesa/libdrm.bst
 
 environment:
-  PKG_CONFIG_PATH: "%{libdir}/pkgconfig:"
+  PKG_CONFIG_PATH: "%{libdir}/pkgconfig:%{datadir}/pkgconfig"
   CXXFLAGS: "%{target_flags} -std=gnu++17"
 
 variables:
@@ -153,3 +153,5 @@ sources:
   ref: mesa-20.3.4-0-g6d8c68603f9496b12723216c15bf69976de57e97
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
+- kind: patch
+  path: patches/mesa/mesa-cle-build-fix.patch

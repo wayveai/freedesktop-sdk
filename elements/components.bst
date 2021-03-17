@@ -170,7 +170,6 @@ depends:
 - components/libblockdev.bst
 - components/libbytesize.bst
 - components/libcap.bst
-- components/libclc.bst
 - components/libconfuse.bst
 - components/libdaemon.bst
 - components/libdatrie.bst
