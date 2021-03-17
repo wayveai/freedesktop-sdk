@@ -1,0 +1,87 @@
+From 07631601e6602bc49b8eac3aab9d2b35968d3e7a Mon Sep 17 00:00:00 2001
+From: bobstayton <bobs@sagehill.net>
+Date: Sat, 14 Jul 2018 08:12:42 -0700
+Subject: [PATCH] fix issue #54 autoidx does not respect
+ generate.consistent.ids
+
+---
+ xsl/fo/autoidx.xsl   | 13 ++++++++++---
+ xsl/html/autoidx.xsl | 13 ++++++++++---
+ 2 files changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/xsl/fo/autoidx.xsl b/xsl/fo/autoidx.xsl
+index 909e112f1..864e0030f 100644
+--- a/xsl/fo/autoidx.xsl
++++ b/xsl/fo/autoidx.xsl
+@@ -296,7 +296,8 @@
+   <fo:block>
+     <xsl:if test="$autolink.index.see != 0">
+       <xsl:attribute name="id">
+-        <xsl:value-of select="concat('ientry-', generate-id())"/>
++        <xsl:text>ientry-</xsl:text>
++        <xsl:call-template name="object.id"/>
+       </xsl:attribute>
+     </xsl:if>
+     <xsl:if test="$axf.extensions != 0">
+@@ -791,7 +792,10 @@
+ 
+   <xsl:variable name="linkend">
+     <xsl:if test="$seetarget">
+-      <xsl:value-of select="concat('ientry-', generate-id($seetarget))"/>
++      <xsl:text>ientry-</xsl:text>
++      <xsl:call-template name="object.id">
++        <xsl:with-param name="object" select="$seetarget"/>
++      </xsl:call-template>
+     </xsl:if>
+   </xsl:variable>
+   
+@@ -853,7 +857,10 @@
+ 
+     <xsl:variable name="linkend">
+       <xsl:if test="$seealsotarget">
+-        <xsl:value-of select="concat('ientry-', generate-id($seealsotarget))"/>
++        <xsl:text>ientry-</xsl:text>
++        <xsl:call-template name="object.id">
++          <xsl:with-param name="object" select="$seealsotarget"/>
++        </xsl:call-template>
+       </xsl:if>
+     </xsl:variable>
+ 
+diff --git a/xsl/html/autoidx.xsl b/xsl/html/autoidx.xsl
+index 62fca6176..d0373d82a 100644
+--- a/xsl/html/autoidx.xsl
++++ b/xsl/html/autoidx.xsl
+@@ -307,7 +307,8 @@
+     <xsl:if test="$autolink.index.see != 0">
+       <!-- add internal id attribute to form see and seealso links -->
+       <xsl:attribute name="id">
+-        <xsl:value-of select="concat('ientry-', generate-id())"/>
++        <xsl:text>ientry-</xsl:text>
++        <xsl:call-template name="object.id"/>
+       </xsl:attribute>
+     </xsl:if>
+     <xsl:for-each select="$refs/d:primary">
+@@ -730,7 +731,10 @@
+ 
+   <xsl:variable name="linkend">
+     <xsl:if test="$seetarget">
+-      <xsl:value-of select="concat('#ientry-', generate-id($seetarget))"/>
++      <xsl:text>#ientry-</xsl:text>
++      <xsl:call-template name="object.id">
++        <xsl:with-param name="object" select="$seetarget"/>
++      </xsl:call-template>
+     </xsl:if>
+   </xsl:variable>
+ 
+@@ -789,7 +793,10 @@
+ 
+     <xsl:variable name="linkend">
+       <xsl:if test="$seealsotarget">
+-        <xsl:value-of select="concat('#ientry-', generate-id($seealsotarget))"/>
++        <xsl:text>#ientry-</xsl:text>
++        <xsl:call-template name="object.id">
++          <xsl:with-param name="object" select="$seealsotarget"/>
++        </xsl:call-template>
+       </xsl:if>
+     </xsl:variable>
+ 
