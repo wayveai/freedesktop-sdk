@@ -36,5 +36,5 @@ config:
 sources:
 - kind: git_tag
   url: github:eggert/tz.git
-  track: master
+  track: main
   ref: 2021a-0-g336c8f8262e31116878b079abba80b1626baaa8f
