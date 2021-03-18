@@ -173,6 +173,7 @@ config:
     scripts/config -m IWLWIFI
     scripts/config -m IWLMVM
     scripts/config -m IWLDVM
+    scripts/config -m ATH9K
     scripts/config -m ATH10K
     scripts/config -m ATH10K_PCI
     scripts/config -m RTW88
