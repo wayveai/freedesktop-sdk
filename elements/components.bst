@@ -503,8 +503,8 @@ depends:
 - components/xorg-lib-xxf86vm.bst
 - components/xorg-proto-xcb.bst
 - components/xorg-proto-xorgproto.bst
-- components/xorg-server.bst
 - components/xorg-util-macros.bst
+- components/xwayland.bst
 - components/xz-docs.bst
 - components/yajl.bst
 - components/yelp-tools.bst

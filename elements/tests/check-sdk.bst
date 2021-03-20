@@ -29,4 +29,4 @@ config:
   - components/wireless-regdb-bin.bst
   - components/wpa-supplicant.bst
   - components/xdg-desktop-portal.bst
-  - components/xorg-server.bst
+  - components/xwayland.bst

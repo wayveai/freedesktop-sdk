@@ -15,7 +15,7 @@ depends:
 - vm/base-filesystem.bst
 - vm/mesa-default.bst
 - components/weston.bst
-- components/xorg-server.bst
+- components/xwayland.bst
 - components/plymouth.bst
 - platform.bst
 - components/linux-pam.bst
