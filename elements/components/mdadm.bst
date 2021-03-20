@@ -12,6 +12,7 @@ variables:
   make-args: >-
     BINDIR="%{bindir}"
     MANDIR="%{mandir}"
+    SYSTEMD_DIR="$(pkg-config --variable=systemd_system_unit_dir systemd)"
     CWFLAGS=""
     CHECK_RUN_DIR=0
 
