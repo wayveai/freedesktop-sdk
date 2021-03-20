@@ -8,4 +8,5 @@ config:
 
 build-depends:
 - platform.bst
+- components/os-release.bst
 - vm/mesa-default.bst
