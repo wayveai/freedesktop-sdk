@@ -7,4 +7,5 @@ config:
 
 build-depends:
 - sdk.bst
+- components/os-release.bst
 - vm/mesa-default.bst

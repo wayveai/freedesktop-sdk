@@ -3,12 +3,10 @@ kind: manual
 (@):
 - flatpak-version.yml
 
-depends:
-- filename: bootstrap-import.bst
-- filename: components/m4.bst
-  type: build
-- filename: components/appstream-glib.bst
-  type: build
+build-depends:
+- bootstrap-import.bst
+- components/m4.bst
+- components/appstream-glib.bst
 
 config:
   build-commands:

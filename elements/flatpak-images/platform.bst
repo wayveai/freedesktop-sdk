@@ -78,6 +78,7 @@ config:
 
 build-depends:
 - platform-image.bst
+- components/os-release.bst
 - integration/platform-integration.bst
 - tests/check-dev-files.bst
 - tests/check-rpath.bst
