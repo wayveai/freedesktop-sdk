@@ -1,7 +1,7 @@
-kind: autotools
+kind: meson
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
+- public-stacks/buildsystem-meson.bst
 - components/xorg-proto-xorgproto.bst
 - components/xorg-util-macros.bst
 - components/wayland-protocols.bst
@@ -25,21 +25,15 @@ depends:
 - components/systemd.bst
 
 variables:
-  conf-local: >-
-    --disable-xvfb
-    --disable-xnest
-    --disable-xwin
-    --enable-glamor
-    --enable-xwayland
+  meson-local: >-
+    -Dxvfb=false
 
 sources:
 - kind: git_tag
   url: freedesktop:xorg/xserver.git
   track: master
   track-extra:
-  - server-1.20-branch
+  - xwayland-21.1
   match:
-  - xorg-server-*
-  exclude:
-  - xorg-server-*.99.*
-  ref: xorg-server-1.20.8-0-gf84ad082557f9cde6b8faa373eca6a0a89ba7d56
+  - xwayland-*
+  ref: xwayland-21.1.0-0-g2a327e58609e2bf53a9043eab4b36bc64168197a
