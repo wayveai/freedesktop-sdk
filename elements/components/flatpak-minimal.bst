@@ -19,6 +19,7 @@ build-depends:
 - components/git-minimal.bst
 - components/gettext.bst
 - components/gobject-introspection.bst
+- components/bison.bst
 
 variables:
   conf-local: >-
