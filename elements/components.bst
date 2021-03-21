@@ -283,9 +283,6 @@ depends:
 - components/orc.bst
 - components/os-release.bst
 - components/osmesa.bst
-- components/ostree-base.bst
-- components/ostree-gobject.bst
-- components/ostree-manifest.bst
 - components/ostree.bst
 - components/p11-kit.bst
 - components/pango.bst

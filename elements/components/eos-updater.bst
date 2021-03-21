@@ -9,7 +9,6 @@ depends:
 - filename: components/valgrind-maybe.bst
   type: build
 - filename: components/ostree.bst
-- filename: components/ostree-gobject.bst
 - filename: components/flatpak.bst
 - filename: components/gobject-introspection.bst
 - filename: components/gnupg.bst
