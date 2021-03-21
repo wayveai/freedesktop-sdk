@@ -19,6 +19,7 @@ build-depends:
 - components/python3-pyparsing.bst
 - public-stacks/buildsystem-autotools.bst
 - components/git-minimal.bst
+- components/bison.bst
 - components/gettext.bst
 - components/gobject-introspection.bst
 - components/bison.bst
