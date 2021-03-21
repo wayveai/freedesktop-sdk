@@ -16,6 +16,7 @@ depends:
 - components/mutool.bst
 - components/poppler.bst
 - components/qpdf.bst
+- components/dbus.bst
 
 variables:
   builddir: ''
