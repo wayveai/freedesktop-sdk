@@ -19,6 +19,8 @@ variables:
     --without-dmraid
     --without-nvdimm
     --with-mdraid
+  local_flags: >-
+    -Wno-error
 
 sources:
 - kind: git_tag

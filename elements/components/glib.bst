@@ -57,6 +57,4 @@ sources:
   #- glib-2-66
   match:
   - 2.*[02468].*
-  ref: 2.66.0-0-gc2c12e42920d6e06c23c87398996827e53c1fc72
-- kind: patch
-  path: patches/glib/gtk-doc-1.32.patch
+  ref: 2.68.0-0-ga58a47fd6d3da5ffb28809f212971748667dfb3c
