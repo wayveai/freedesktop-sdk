@@ -29,15 +29,15 @@ depends:
 - extensions/mesa/libclc.bst
 - extensions/mesa/libdrm.bst
 
+
+(@):
+- elements/extensions/mesa/config.yml
+
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:%{datadir}/pkgconfig"
   CXXFLAGS: "%{target_flags} -std=gnu++17"
 
 variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
-
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink

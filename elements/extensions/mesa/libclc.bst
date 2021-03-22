@@ -7,10 +7,9 @@ depends:
 build-depends:
 - public-stacks/buildsystem-cmake.bst
 
+(@):
+- elements/include/llvm.yml
+- elements/extensions/mesa/config.yml
+
 variables:
   cmake: cmake "-B%{build-dir}" -Slibclc -G"%{generator}" %{cmake-args}
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
-
-(@): elements/include/llvm.yml
