@@ -13,7 +13,7 @@ variables:
     mpeg4,msmpeg4,msmpeg4v1,msmpeg4v2,msmpeg4v3,vp6,vp6a,vp6f,wmv1,wmv2,wmv3,wmv3image
   extra-hwaccels: h263_vaapi,h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau,mpeg4_vaapi,mpeg4_vdpau
   extra-parsers: hevc,h263,h264,dca
-  extra-muxers: h263,h264,hevc
+  extra-muxers: avi,h263,h264,hevc
   extra-demuxers: avi,h263,h264,hevc,m4v,mjpeg_2000,ape,wav,xwma
 
   ffmpeg-prefix: '%{libdir}/ffmpeg'
