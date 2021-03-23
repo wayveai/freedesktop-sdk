@@ -26,4 +26,4 @@ sources:
   track: master
   track-extra:
   - 2.x-branch
-  ref: 2.24-1-0-gf5a4ba8bb298f8cbc435707d0b19b4b2ff836a8e
+  ref: 2.25-1-0-gc50869272b54bf4b4bc3825e8c3332a54678b43f
