@@ -2,17 +2,14 @@ kind: make
 description: Linux kernel configured for use in virtual machines.
 
 depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/bc.bst
-  type: build
-- filename: components/gzip.bst
-  type: build
-- filename: components/kmod.bst
+- components/kmod.bst
+
+build-depends:
+- bootstrap-import.bst
+- components/bison.bst
+- components/flex.bst
+- components/bc.bst
+- components/gzip.bst
 
 variables:
   bootdir: /boot
@@ -116,7 +113,7 @@ config:
     # Required for CPUShares= in resource control unit settings
     scripts/config -e CGROUP_SCHED
     scripts/config -e FAIR_GROUP_SCHED
-  
+
     # Required for CPUQuota= in resource control unit settings
     scripts/config -e CFS_BANDWIDTH
 
