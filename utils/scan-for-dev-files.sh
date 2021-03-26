@@ -11,7 +11,11 @@ command -v objdump > /dev/null || { echo >&2 "objdump not found"; exit 1; }
 find "$1" -type l -name "lib*.so" -print0 |
 while IFS= read -r -d '' file; do
     dirname="$(dirname "${file}")"
-    if [ "$(basename "${dirname}")" = vdpau ]; then
+    basedir="$(basename "${dirname}")"
+    if [ "${basedir}" = vdpau ]; then
+	continue
+    fi
+    if [ "${basedir}" = engines-1.1 ]; then
 	continue
     fi
     basename="$(basename "${file}")"
