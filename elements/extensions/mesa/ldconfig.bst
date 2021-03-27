@@ -1,9 +1,7 @@
 kind: stack
 
-variables:
-  prefix: "/usr/lib/%{gcc_triplet}/GL/default"
-  lib: "lib"
-  debugdir: "/usr/lib/debug"
+(@):
+- elements/extensions/mesa/config.yml
 
 public:
   bst:
