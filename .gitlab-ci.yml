@@ -10,7 +10,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: "53e3c004768a49fc04919471c473c2b7a7b711fc"
+  DOCKER_IMAGE_ID: "a0e30fe772ac13cc911cfa16bcb64cfbbc2ba03b"
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst16/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst16/arm64:${DOCKER_IMAGE_ID}"
   DOCKER_PPC64LE: "${DOCKER_REGISTRY}/bst16/ppc64le:${DOCKER_IMAGE_ID}"
