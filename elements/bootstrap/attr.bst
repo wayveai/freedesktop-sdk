@@ -18,7 +18,7 @@ public:
 config:
   configure-commands:
     (<):
-      - ./autogen.sh
+    - ./autogen.sh
 
   install-commands:
     (>):
@@ -31,4 +31,4 @@ sources:
 - kind: git_tag
   url: savannah:attr.git
   track: master
-  ref: v2.4.48-0-gcfd8e6ef491a7a5ff900ba2ba3deff7d0bebb0a6
+  ref: v2.5.0-0-g07b95f74cd9638fe8ca3510b19202fb55031b330
