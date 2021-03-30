@@ -152,7 +152,7 @@ sources:
   track: master
   track-extra:
   - '20.3'
-  ref: mesa-20.3.4-0-g6d8c68603f9496b12723216c15bf69976de57e97
+  ref: mesa-20.3.5-0-gcd3161895e7229bd81e4b0e66c7ca94e99d6f2dc
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch

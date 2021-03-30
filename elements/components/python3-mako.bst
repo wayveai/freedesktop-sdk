@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: mako
-  url: pypi:72/89/402d2b4589e120ca76a6aed8fee906a0f5ae204b50e455edd36eda6e778d/Mako-1.1.3.tar.gz
-  sha256sum: 8195c8c1400ceb53496064314c6736719c6f25e7479cd24c77be3d9361cddc27
+  url: pypi:5c/db/2d2d88b924aa4674a080aae83b59ea19d593250bfe5ed789947c21736785/Mako-1.1.4.tar.gz
+  sha256sum: 17831f0b7087c313c0ffae2bcbbd3c1d5ba9eeac9c38f2eb7b50e8c99fe9d5ab

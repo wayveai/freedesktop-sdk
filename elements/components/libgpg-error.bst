@@ -29,4 +29,4 @@ sources:
   track: master
   match:
   - libgpg-error-*
-  ref: libgpg-error-1.41-0-g98032624ae89a67ee6fe3b1db5d95032e681d163
+  ref: libgpg-error-1.42-0-g303062bf9a383de67227ff942c5482f3a87c71ed

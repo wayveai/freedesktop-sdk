@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: gitlab:libtiff/libtiff.git
   track: master
-  ref: v4.1.0-0-ge0d707dc1524d8c0e20f03396f234e0f1b07b3f4
+  ref: v4.2.0-0-g4862b0d7bcc786304ff4e8c31e8d5ccfb868fb99

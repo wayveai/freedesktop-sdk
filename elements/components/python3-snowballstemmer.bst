@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: snowballstemmer
-  url: pypi:21/1b/6b8bbee253195c61aeaa61181bb41d646363bdaa691d0b94b304d4901193/snowballstemmer-2.0.0.tar.gz
-  sha256sum: df3bac3df4c2c01363f3dd2cfa78cce2840a79b9f1c2d2de9ce8d31683992f52
+  url: pypi:a3/3d/d305c9112f35df6efb51e5acd0db7009b74d86f35580e033451b5994a0a9/snowballstemmer-2.1.0.tar.gz
+  sha256sum: e997baa4f2e9139951b6f4c631bad912dfd3c792467e2f03d7239464af90e914

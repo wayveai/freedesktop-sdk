@@ -11,5 +11,5 @@ depends:
 sources:
 - kind: pypi
   name: poetry-core
-  url: pypi:42/21/5335c7eceff3dccb3b415018bb17db0c442b599f610fd5712021d5f9403f/poetry-core-1.0.0.tar.gz
-  sha256sum: 6a664ff389b9f45382536f8fa1611a0cb4d2de7c5a5c885db1f0c600cd11fbd5
+  url: pypi:d7/5a/58944c8905bb2519ae58cfab0a663fdfd88c692a6bdc51cc99416cd2f9e8/poetry-core-1.0.2.tar.gz
+  sha256sum: ff505d656a6cf40ffbf84393d8b5bf37b78523a15def3ac473b6fad74261ee71

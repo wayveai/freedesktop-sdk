@@ -37,4 +37,4 @@ sources:
   track: master
   match:
   - 'version-*'
-  ref: version-3.34.0-0-g384f5c26f48b92e8bfcb168381d4a8caf3ea59e7
+  ref: version-3.35.2-0-g176b04c476d76ceaf81d6ae9d99efe13b11571a5

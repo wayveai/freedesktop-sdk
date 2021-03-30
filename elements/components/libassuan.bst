@@ -29,4 +29,4 @@ sources:
 - kind: git_tag
   url: gnupg:libassuan.git
   track: master
-  ref: libassuan-2.5.4-0-ge368b400f276d5d9868832e7a652ab250dd57555
+  ref: libassuan-2.5.5-0-gf8cfb565ee461946901ae3bc573abc0023d821b5
