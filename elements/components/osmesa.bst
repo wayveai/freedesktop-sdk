@@ -26,7 +26,8 @@ variables:
     -Dgles1=disabled \
     -Dgles2=disabled \
     -Dllvm=enabled \
-    -Dosmesa=gallium \
+    -Dmicrosoft-clc=disabled \
+    -Dosmesa=true \
     -Ddri-drivers="" \
     -Dgallium-drivers="swrast" \
     -Dvulkan-drivers="" \

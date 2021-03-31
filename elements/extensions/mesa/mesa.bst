@@ -17,7 +17,6 @@ depends:
 - components/libdrm.bst
 - components/libva.bst
 - components/opencl.bst
-- components/xorg-lib-xdamage.bst
 - components/xorg-lib-xfixes.bst
 - components/xorg-lib-xrandr.bst
 - components/xorg-lib-xshmfence.bst
@@ -78,7 +77,8 @@ variables:
     -Dlibunwind=%{enable_libunwind}
     -Dllvm=enabled
     -Dlmsensors=disabled
-    -Dosmesa=none
+    -Dmicrosoft-clc=disabled
+    -Dosmesa=false
     -Dplatforms=x11,wayland
     -Dselinux=false
     -Dshared-glapi=enabled
@@ -151,8 +151,8 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: master
   track-extra:
-  - '20.3'
-  ref: mesa-20.3.5-0-gcd3161895e7229bd81e4b0e66c7ca94e99d6f2dc
+  - '21.0'
+  ref: mesa-21.0.1-0-gb2493a5158f4f4233a0fe9cf5cccb5e2ae788d8c
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch
