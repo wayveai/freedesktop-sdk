@@ -62,6 +62,4 @@ sources:
 - kind: git_tag
   url: gnome:gtk.git
   track: gtk-3-24
-  ref: 3.24.24-0-gde8329b3ce4b235eac9ddcbb6cd121cc83dd9e74
-- kind: patch
-  path: patches/gtk3/updateiconcache-Sort-list-of-entries.patch
+  ref: 3.24.28-0-g23db3508899f8304482b68e04a181bb081549081
