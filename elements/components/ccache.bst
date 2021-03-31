@@ -4,6 +4,7 @@ build-depends:
 - public-stacks/buildsystem-cmake.bst
 - components/asciidoc.bst
 - components/git-minimal.bst
+- components/perl.bst
 
 depends:
 - bootstrap-import.bst
@@ -13,4 +14,4 @@ sources:
 - kind: git_tag
   url: github:ccache/ccache.git
   track: master
-  ref: v4.0-0-g7c44b8c45bd6bc185bf5bd5666f36fcac092d917
+  ref: v4.2.1-0-g1a07c09dcbba202572c5ab1bc4b736183a318aa7
