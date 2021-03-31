@@ -26,10 +26,13 @@ build-depends:
 
 variables:
   meson-local: >-
-    -Ddocs=true
-    -Dman=true
-    -Dgstreamer=true
-    -Dsystemd=true
+    -Ddocs=enabled
+    -Dman=enabled
+    -Dgstreamer=enabled
+    -Dsystemd=enabled
+    -Dbluez5-codec-ldac=disabled
+    -Dbluez5-codec-aptx=disabled
+    -Dlibcamera=disabled
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
@@ -64,6 +67,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.22-0-g22d563720a7f6ba7bdf59950f8c14488d80dfa95
+  ref: 0.3.25-0-gc324107211718043553337cb10d022fe9d2d12d8
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
