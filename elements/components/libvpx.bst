@@ -34,7 +34,8 @@ variables:
     --enable-vp9 \
     --enable-libs \
     --disable-install-docs \
-    --as=nasm
+    --as=nasm \
+    --enable-vp9-highbitdepth
 
 public:
   bst:
