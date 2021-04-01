@@ -6,4 +6,4 @@ sources:
   - linux-5.10.y
   exclude:
   - '*-rc*'
-  ref: v5.10.16-0-g1302b295c2178266649f016757d3ed136ff7f933
+  ref: v5.10.27-0-g472493c8a425f62200882c2c6acb1be2e29b3c03
