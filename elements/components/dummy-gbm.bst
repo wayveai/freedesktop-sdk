@@ -43,7 +43,8 @@ variables:
     -Dgles2=false
     -Dglx=disabled
     -Dlmsensors=false
-    -Dosmesa=none
+    -Dmicrosoft-clc=disabled
+    -Dosmesa=false
     -Dselinux=false
     -Dshared-glapi=false
     -Dvalgrind=false
