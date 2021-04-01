@@ -43,6 +43,6 @@ sources:
   - '*-alpha*'
   - '*-beta*'
   - '*-rc*'
-  ref: readline-8.0-0-g8e6ccd0373d77b86ed37a9a7d232ccfea3d6670c
+  ref: readline-8.1-0-gcf3c762ecfff5b2f445647a0f1543693984a5540
 - kind: patch
   path: patches/readline/readline-disable-rpath.patch

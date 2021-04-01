@@ -1,15 +1,16 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/nasm.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/nasm.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   meson-local: >-
     -Denable_tests=false
+    -Dxxhash_muxer=disabled
 
 public:
   bst:
@@ -22,4 +23,4 @@ sources:
 - kind: git_tag
   url: git_https:code.videolan.org/videolan/dav1d.git
   track: master
-  ref: 0.8.1-0-g6ed5fafb42c651c24b6a65fd4f50ed426fd72d65
+  ref: 0.8.2-0-gf06148e7c755098666b9c0ed97a672a51785413a

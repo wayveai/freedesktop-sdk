@@ -31,7 +31,7 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer-vaapi
   track: '1.18'
-  ref: 1.18.3-0-g5890079ecbf2f9c76a5ded398cda8fd2ac822d21
+  ref: 1.18.4-0-gb5b2e3b9208f1f93bc5b0244d29dfed157d78293
   submodules:
     common:
       checkout: true

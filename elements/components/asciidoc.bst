@@ -2,20 +2,17 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
-- components/docbook-xml.bst
-- components/docbook-xsl.bst
-- components/libxslt.bst
 
 depends:
 - bootstrap-import.bst
 - components/python3.bst
+- components/docbook-xsl.bst
+- components/libxslt.bst
 
 variables:
   builddir: ''
 
 sources:
-# We track master until 9.0.0 is tagged. The older tags are for
-# python2 version which we no longer ship in the project.
 - kind: git_tag
   url: github:asciidoc/asciidoc-py3.git
   track: main

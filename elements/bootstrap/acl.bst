@@ -39,4 +39,4 @@ sources:
 - kind: git_tag
   url: savannah:acl.git
   track: master
-  ref: v2.3.0-0-g3ba70ac91d2662e4c4401743e3d32a4913419716
+  ref: v2.3.1-0-g752c182706e2535fb4e482b25331177ebbddd2bb
