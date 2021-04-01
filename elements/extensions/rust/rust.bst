@@ -64,7 +64,7 @@ config:
     vendor = true
     verbose = 2
     extended = true
-    tools = ["cargo", "rls", "clippy", "rustfmt", "analysis", "src"]
+    tools = ["cargo"]
     [install]
     prefix = "%{prefix}"
     sysconfdir = "%{sysconfdir}"
