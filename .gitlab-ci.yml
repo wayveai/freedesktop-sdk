@@ -420,12 +420,6 @@ check_snap_i686:
     - .builder-i686
   dependencies: []
 
-check_snap_aarch64:
-  extends:
-    - .check-snap
-    - .builder-aarch64
-  dependencies: []
-
 .bootstrap_template:
   stage: bootstrap
   script:
@@ -855,11 +849,6 @@ reproducible_i686:
     - .reproducible_template
     - .builder-i686
 
-reproducible_aarch64:
-  extends:
-    - .reproducible_template
-    - .builder-aarch64
-
 .snap_publish_template:
   stage: publish
   script:
@@ -1052,11 +1041,6 @@ check_runtime_inheritance_x86_64:
   extends:
   - .runtime_inheritance_check_template
   - .builder-x86_64
-
-check_runtime_inheritance_aarch64:
-  extends:
-  - .runtime_inheritance_check_template
-  - .builder-aarch64
 
 check_runtime_inheritance_ppc64le:
   extends:
