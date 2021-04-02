@@ -4,7 +4,7 @@ sources:
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-11.0.1-0-g43ff75f2c3feef64f9d73328230d34dac8832a91
+  ref: llvmorg-11.1.0-0-g1fdec59bffc11ae37eb51a1b9869f0696bfd5312
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
 - kind: patch
