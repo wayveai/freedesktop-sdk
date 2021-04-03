@@ -80,4 +80,4 @@ sources:
 - kind: git_tag
   url: github:openssl/openssl.git
   track: OpenSSL_1_1_1-stable
-  ref: OpenSSL_1_1_1g-0-ge2e09d9fba1187f8d6aafaa34d4172f56f1ffb72
+  ref: OpenSSL_1_1_1k-0-gfd78df59b0f656aefe96e39533130454aa957c00
