@@ -1,5 +1,30 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.7:
+    * gnutls: Update to 3.6.15
+    * podman: Update to 3.1.0
+    * openssl: Update to OpenSSL_1_1_1k (NOTE: New API introduced in this update)
+    * mesa: Update to mesa-20.3.5
+    * mesa: Add support to Vulkan implicit layers for GL extensions
+    * expat: Update to R_2_3_0
+    * cmake: Update to v3.20.0
+    * attr: Update to v2.5.0
+    * extra-cmake-modules: Update to v5.80.0
+    * libassuan: Update to libassuan-2.5.5
+    * xorg-app-xkbcomp: Update to xkbcomp-1.4.5
+    * linux.bst: add support for ath9k wifi driver
+    * acl: Update to v2.3.1
+    * systemd: Update to v246.13
+    * git: Update to 2.31
+    * iso-codes: Update to iso-codes-4.6.0
+    * nano: Update to v5.6.1
+    * libselinux: Update to libselinux-3.2
+    * pipewire: Update to 0.3.22
+    * libvpx: Update to v1.10.0
+    * vala: Update to 0.48.15
+    * openssh: Update to V_8_5_P1
+    * linux: Update to v5.11.10
+
 freedesktop-sdk-20.08.6:
     * gtk3: backport patches for the upcoming g-s-d release
     * bluez: Update to 5.56
