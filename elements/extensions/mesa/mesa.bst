@@ -7,12 +7,12 @@ build-depends:
 - components/python3-mako.bst
 - components/vulkan.bst
 - components/wayland-protocols.bst
+- components/glslang.bst
 - public-stacks/buildsystem-meson.bst
 
 
 depends:
 - bootstrap-import.bst
-- components/glslang.bst
 - components/llvm.bst
 - components/libdrm.bst
 - components/libva.bst

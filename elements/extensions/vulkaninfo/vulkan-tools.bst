@@ -3,12 +3,12 @@ kind: cmake
 (@): elements/extensions/include/app.yml
 
 build-depends:
+- components/glslang.bst
 - public-stacks/buildsystem-cmake.bst
 
 depends:
 - bootstrap-import.bst
 - components/vulkan.bst
-- components/glslang.bst
 - components/xorg-lib-x11.bst
 - components/xorg-lib-xrandr.bst
 - components/wayland.bst
