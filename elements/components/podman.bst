@@ -4,6 +4,7 @@ build-depends:
 - components/pkg-config.bst
 - components/go.bst
 - components/go-md2man.bst
+- components/git-minimal.bst
 
 depends:
 - components/libseccomp.bst
@@ -35,8 +36,8 @@ sources:
   directory: src/github.com/containers/podman
   track: master
   track-extra:
-  - v2.0
-  ref: v2.0.4-0-gcab27868766a3b01ac14ff46180af8644c41d1cd
+  - v3.1
+  ref: v3.1.0-0-g9f09fb62cba8f44c18eda84db3e72aab3ae76046
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
