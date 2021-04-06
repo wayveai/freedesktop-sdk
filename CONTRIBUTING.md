@@ -114,6 +114,8 @@ git push --set-upstream origin my-branch-name
 ```
 Your branch will now begin going through our CI runners, which build the SDK on multiple architectures to ensure that your changes have not caused a break anywhere. Additionally it will check for ABI changes.
 
+Crypto components may break forward ABI (not backward ABI) compatibility for security updates on a stable branch
+
 It is also good practice to rebase your changes before pushing (so that your commits are on top of the target branch), to do this run
 ```
 git rebase origin/19.08
