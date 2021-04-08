@@ -163,7 +163,6 @@ depends:
 - components/shared-mime-info.bst
 - components/v4l-utils.bst
 - components/vulkan-icd-loader.bst
-- components/vulkan-validation-layers.bst
 - components/wayland.bst
 - components/webrtc-audio-processing.bst
 - components/xcb-util-cursor.bst
@@ -203,3 +202,9 @@ depends:
 - components/xorg-lib-xxf86vm.bst
 - components/zenity.bst
 - integration/mtab.bst
+
+(?):
+- target_arch != "i686":
+    depends:
+      (>):
+      - components/vulkan-validation-layers.bst
