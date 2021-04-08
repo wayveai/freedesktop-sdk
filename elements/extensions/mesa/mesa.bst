@@ -5,7 +5,7 @@ build-depends:
 - components/flex.bst
 - components/python3.bst
 - components/python3-mako.bst
-- components/vulkan.bst
+- components/vulkan-headers.bst
 - components/wayland-protocols.bst
 - components/glslang.bst
 - public-stacks/buildsystem-meson.bst
@@ -21,6 +21,7 @@ depends:
 - components/xorg-lib-xrandr.bst
 - components/xorg-lib-xshmfence.bst
 - components/xorg-lib-xxf86vm.bst
+- components/vulkan-icd-loader.bst
 - components/wayland.bst
 - components/libglvnd.bst
 - components/libvdpau.bst

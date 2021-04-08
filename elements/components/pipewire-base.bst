@@ -17,7 +17,7 @@ build-depends:
 - components/sdl2.bst
 - components/systemd-libs.bst
 - components/systemd.bst
-- components/vulkan.bst
+- components/vulkan-headers.bst
 - components/xmltoman.bst
 - components/doxygen.bst
 - public-stacks/buildsystem-meson.bst

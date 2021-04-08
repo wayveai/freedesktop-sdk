@@ -8,7 +8,7 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
-- components/vulkan.bst
+- components/vulkan-icd-loader.bst
 - components/xorg-lib-x11.bst
 - components/xorg-lib-xrandr.bst
 - components/wayland.bst

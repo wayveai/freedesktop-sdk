@@ -162,7 +162,8 @@ depends:
 - components/sdl2.bst
 - components/shared-mime-info.bst
 - components/v4l-utils.bst
-- components/vulkan.bst
+- components/vulkan-icd-loader.bst
+- components/vulkan-validation-layers.bst
 - components/wayland.bst
 - components/webrtc-audio-processing.bst
 - components/xcb-util-cursor.bst
