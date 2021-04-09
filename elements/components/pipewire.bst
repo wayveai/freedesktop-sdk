@@ -16,7 +16,6 @@ runtime-depends:
 config:
   exclude:
   - daemon
-  - libjack
   include-orphans: True
 
 public:
@@ -25,3 +24,4 @@ public:
       devel:
         (>):
         - '%{libdir}/libpipewire-*.so'
+        - '%{libdir}/libjack*.so'
