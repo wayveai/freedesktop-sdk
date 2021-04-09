@@ -12,9 +12,7 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:mesonbuild/meson.git
-  track: '0.55'
-  ref: 0.55.3-0-g776acd2a805c9b42b4f0375150977df42130317f
+  track: '0.57'
+  ref: 0.57.1-0-g7182685b2241e88340b6c3340afba59a26be213f
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
-- kind: patch
-  path: patches/meson/aarch64-can-potentially-build-arm.patch
