@@ -302,9 +302,7 @@ depends:
 - components/perl.bst
 - components/pinentry-ncurses.bst
 - components/pipewire-base.bst
-- components/pipewire-base.bst
 - components/pipewire-daemon.bst
-- components/pipewire-libjack.bst
 - components/pipewire-manifest.bst
 - components/pipewire.bst
 - components/pixman.bst

@@ -3,7 +3,6 @@ kind: meson
 # This element is not be used directly. Use either:
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
-#  - components/pipewire-libjack.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -13,7 +12,6 @@ build-depends:
 - components/ffmpeg.bst
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
-- components/jack.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
@@ -26,6 +24,7 @@ build-depends:
 
 variables:
   meson-local: >-
+    -Djack=disabled
     -Ddocs=enabled
     -Dman=enabled
     -Dgstreamer=enabled
@@ -33,30 +32,28 @@ variables:
     -Dbluez5-codec-ldac=disabled
     -Dbluez5-codec-aptx=disabled
     -Dlibcamera=disabled
+    -Dlibjack-path=%{libdir}
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
   bst:
     split-rules:
       daemon:
-      - '%{bindir}/pipewire'
-      - '%{debugdir}%{bindir}/pipewire.debug'
+      - '%{bindir}/pipewire*'
+      - '%{libdir}/libjackserver.so*'
+      - '%{sysconfdir}/pipewire/media-session.d'
+      - '%{sysconfdir}/pipewire/media-session.d/**'
+      - '%{sysconfdir}/pipewire/pipewire*'
+      - '%{datadir}/alsa'
+      - '%{datadir}/alsa/**'
+      - '%{datadir}/alsa-card-profile'
+      - '%{datadir}/alsa-card-profile/**'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
+      - '%{indep-libdir}/udev'
       - '%{indep-libdir}/udev/**'
-      - '%{sysconfdir}/pipewire/media-session.d/alsa-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/bluez-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/media-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/v4l2-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/with-pulseaudio'
-      - '%{sysconfdir}/pipewire/pipewire.conf'
-      - '%{sysconfdir}/pipewire/pipewire-pulse.conf'
-
-      libjack:
-      - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
-      - '%{libdir}/pipewire-0.3/jack/**'
-      - '%{sysconfdir}/pipewire/jack.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/with-jack'
+      - '%{debugdir}%{bindir}/pipewire*.debug'
+      - '%{debugdir}%{libdir}/libjackserver.so*'
 
   cpe:
     product: pipewire

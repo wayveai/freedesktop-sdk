@@ -6,7 +6,6 @@ build-depends:
 runtime-depends:
 - components/pipewire.bst
 - components/sbc.bst
-- components/jack.bst
 - components/bluez.bst
 - components/rtkit.bst
 
