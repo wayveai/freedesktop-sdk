@@ -13,6 +13,7 @@ depends:
 - components/libunwind-maybe.bst
 - components/libcap.bst
 - components/perl.bst
+- components/slang.bst
 
 variables:
   kernel_arch: '%{arch}'
