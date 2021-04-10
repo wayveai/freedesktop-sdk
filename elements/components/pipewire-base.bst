@@ -36,17 +36,24 @@ public:
   bst:
     split-rules:
       daemon:
-      - '%{sysconfdir}'
-      - '%{sysconfdir}/**'
       - '%{bindir}/pipewire'
+      - '%{debugdir}%{bindir}/pipewire.debug'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
       - '%{indep-libdir}/udev/**'
-      - '%{debugdir}%{bindir}/pipewire.debug'
+      - '%{sysconfdir}/pipewire/media-session.d/alsa-monitor.conf'
+      - '%{sysconfdir}/pipewire/media-session.d/bluez-monitor.conf'
+      - '%{sysconfdir}/pipewire/media-session.d/media-monitor.conf'
+      - '%{sysconfdir}/pipewire/media-session.d/v4l2-monitor.conf'
+      - '%{sysconfdir}/pipewire/media-session.d/with-pulseaudio'
+      - '%{sysconfdir}/pipewire/pipewire.conf'
+      - '%{sysconfdir}/pipewire/pipewire-pulse.conf'
 
       libjack:
-      - '%{libdir}/pipewire-0.3/jack/**'
       - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
+      - '%{libdir}/pipewire-0.3/jack/**'
+      - '%{sysconfdir}/pipewire/jack.conf'
+      - '%{sysconfdir}/pipewire/media-session.d/with-jack'
 
   cpe:
     product: pipewire
