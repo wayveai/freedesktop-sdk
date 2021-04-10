@@ -1,5 +1,11 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.8:
+    * libksba.bst to libksba-1.5.1
+    * pipewire: Added config files needed to run (#1223)
+    * gdk-pixbuf: Update to 2.42.6
+    * meson: Update to 0.57.1
+
 freedesktop-sdk-20.08.7:
     * gnutls: Update to 3.6.15
     * podman: Update to 3.1.0
