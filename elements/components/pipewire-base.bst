@@ -3,7 +3,6 @@ kind: meson
 # This element is not be used directly. Use either:
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
-#  - components/pipewire-libjack.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -13,7 +12,6 @@ build-depends:
 - components/ffmpeg.bst
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
-- components/jack.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
@@ -26,6 +24,7 @@ build-depends:
 
 variables:
   meson-local: >-
+    -Djack=disabled
     -Ddocs=enabled
     -Dman=enabled
     -Dgstreamer=enabled
@@ -33,24 +32,29 @@ variables:
     -Dbluez5-codec-ldac=disabled
     -Dbluez5-codec-aptx=disabled
     -Dlibcamera=disabled
+    -Dlibjack-path=%{libdir}
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
   bst:
     split-rules:
       daemon:
-      - '%{sysconfdir}'
-      - '%{sysconfdir}/**'
-      - '%{bindir}/pipewire'
+      - '%{bindir}/pipewire*'
+      - '%{libdir}/libjackserver.so*'
+      - '%{sysconfdir}/pipewire/media-session.d'
+      - '%{sysconfdir}/pipewire/media-session.d/**'
+      - '%{sysconfdir}/pipewire/pipewire*'
+      - '%{datadir}/alsa'
+      - '%{datadir}/alsa/**'
+      - '%{datadir}/alsa-card-profile'
+      - '%{datadir}/alsa-card-profile/**'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
+      - '%{indep-libdir}/udev'
       - '%{indep-libdir}/udev/**'
-      - '%{debugdir}%{bindir}/pipewire.debug'
+      - '%{debugdir}%{bindir}/pipewire*.debug'
+      - '%{debugdir}%{libdir}/libjackserver.so*'
 
-      libjack:
-      - '%{bindir}/pw-jack'
-      - '%{libdir}/pipewire-0.3/jack/**'
-      - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
   cpe:
     product: pipewire
 
