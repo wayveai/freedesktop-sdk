@@ -12,6 +12,6 @@ sources:
 - kind: git_tag
   url: github:flatpak/libportal.git
   track: master
-  ref: 0.3-0-g7b11b2a42fd4e7681bd38f3986b47108c0a3cc66
+  ref: 0.4-0-gf68764e288ede516d902b131cc4fadded3804059
 - kind: patch
   path: patches/libportal/0001-XdpParent-rename-export-and-unexport-to-avoid-collis.patch
