@@ -1,9 +1,10 @@
-diff -ur Vulkan-Loader-1.1.96.old/CMakeLists.txt Vulkan-Loader-1.1.96.patch/CMakeLists.txt
---- Vulkan-Loader-1.1.96.old/CMakeLists.txt	2018-12-18 19:02:44.000000000 +0100
-+++ Vulkan-Loader-1.1.96.patch/CMakeLists.txt	2018-12-26 14:48:58.488971652 +0100
-@@ -192,6 +192,13 @@
-     if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
-         add_definitions(-DEXTRASYSCONFDIR="/etc")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a833a03ef..fd4eac6a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -179,6 +179,15 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
      endif()
 +
 +    # NOTE: freedesktop search paths
@@ -11,14 +12,17 @@ diff -ur Vulkan-Loader-1.1.96.old/CMakeLists.txt Vulkan-Loader-1.1.96.patch/CMak
 +    add_definitions(-DVULKAN_LIB_DIR_GL="${CMAKE_INSTALL_FULL_LIBDIR}/GL")
 +    # opensource drivers
 +    add_definitions(-DVULKAN_LIB_DIR="${CMAKE_INSTALL_FULL_LIBDIR}")
++    # vulkan extension
++    add_definitions(-DVULKAN_FDO_SDK_EXT_DIR="${CMAKE_INSTALL_PREFIX}/lib/extensions/vulkan/share")
 +
  endif()
  
- # uninstall target
-diff -ur Vulkan-Loader-1.1.96.old/loader/loader.c Vulkan-Loader-1.1.96.patch/loader/loader.c
---- Vulkan-Loader-1.1.96.old/loader/loader.c	2018-12-18 19:02:44.000000000 +0100
-+++ Vulkan-Loader-1.1.96.patch/loader/loader.c	2018-12-26 14:55:31.097947954 +0100
-@@ -3589,6 +3589,15 @@
+ if(MSVC)
+diff --git a/loader/loader.c b/loader/loader.c
+index 1fdde2bdb..4451362e2 100644
+--- a/loader/loader.c
++++ b/loader/loader.c
+@@ -4003,6 +4003,19 @@ static VkResult ReadDataFilesInSearchPaths(const struct loader_instance *inst, e
  #if defined(EXTRASYSCONFDIR)
              search_path_size += DetermineDataFilePathSize(EXTRASYSCONFDIR, rel_size);
  #endif
@@ -30,11 +34,15 @@ diff -ur Vulkan-Loader-1.1.96.old/loader/loader.c Vulkan-Loader-1.1.96.patch/loa
 +#if defined(VULKAN_LIB_DIR)
 +            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR, rel_size);
 +#endif
++/* freedesktop vulkan extensions */
++#if defined(VULKAN_FDO_SDK_EXT_DIR)
++            search_path_size += DetermineDataFilePathSize(VULKAN_FDO_SDK_EXT_DIR, rel_size);
++#endif
 +
              if (is_directory_list) {
-                 search_path_size += DetermineDataFilePathSize(xdgdatahome, rel_size);
-                 search_path_size += DetermineDataFilePathSize(home_root, rel_size);
-@@ -3637,6 +3646,15 @@
+                 if (!IsHighIntegrity()) {
+                     search_path_size += DetermineDataFilePathSize(xdgdatahome, rel_size);
+@@ -4057,6 +4070,19 @@ static VkResult ReadDataFilesInSearchPaths(const struct loader_instance *inst, e
  #if defined(EXTRASYSCONFDIR)
              CopyDataFilePath(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
  #endif
@@ -46,8 +54,11 @@ diff -ur Vulkan-Loader-1.1.96.old/loader/loader.c Vulkan-Loader-1.1.96.patch/loa
 +#if defined(VULKAN_LIB_DIR)
 +            CopyDataFilePath(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
 +#endif
++/* freedesktop vulkan extensions */
++#if defined(VULKAN_FDO_SDK_EXT_DIR)
++            CopyDataFilePath(VULKAN_FDO_SDK_EXT_DIR, relative_location, rel_size, &cur_path_ptr);
++#endif
 +
              CopyDataFilePath(xdgdatadirs, relative_location, rel_size, &cur_path_ptr);
              if (is_directory_list) {
                  CopyDataFilePath(xdgdatahome, relative_location, rel_size, &cur_path_ptr);
-

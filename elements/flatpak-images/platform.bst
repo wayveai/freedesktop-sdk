@@ -34,6 +34,13 @@ config:
       enable-if: "active-gl-driver"
       autoprune-unless: active-gl-driver
 
+    Extension org.freedesktop.Platform.VulkanLayer:
+      version: "%{branch}"
+      directory: "lib/extensions/vulkan"
+      subdirectories: "true"
+      no-autodownload: "true"
+      merge-dirs: "share/vulkan/implicit_layer.d;share/vulkan/explicit_layer.d;"
+
     Extension org.freedesktop.Platform.Locale:
       directory: share/runtime/locale
       autodelete: 'true'
