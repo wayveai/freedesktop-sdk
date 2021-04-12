@@ -30,4 +30,4 @@ sources:
   match:
   # 0.48 is an LTS
   - "0.48.*"
-  ref: 0.48.15-0-g10166000cbf8963cfebae5e15fa0f13b15791308
+  ref: 0.48.16-0-g429b7194a9a520dc4a057db8aa1257520e686fdd
