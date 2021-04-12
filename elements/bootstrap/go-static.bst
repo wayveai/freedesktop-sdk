@@ -68,10 +68,10 @@ public:
 sources:
 - kind: git_tag
   url: github:golang/go.git
-  track: release-branch.go1.15
+  track: release-branch.go1.16
   match:
   - 'go*'
   exclude:
   - '*rc*'
   - '*beta*'
-  ref: go1.15.11-0-g8c163e85267d146274f68854fe02b4a495586584
+  ref: go1.16.3-0-g9baddd3f21230c55f0ad2a10f5f20579dcf0a0bb
