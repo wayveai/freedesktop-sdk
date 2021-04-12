@@ -24,11 +24,13 @@ build-depends:
 
 variables:
   meson-local: >-
+    -Daudiotestsrc=disabled
     -Djack=disabled
+    -Dvideotestsrc=disabled
+    -Dvolume=disabled
+    -Dvulkan=disabled
     -Ddocs=enabled
     -Dman=enabled
-    -Dgstreamer=enabled
-    -Dsystemd=enabled
     -Dbluez5-codec-ldac=disabled
     -Dbluez5-codec-aptx=disabled
     -Dlibcamera=disabled
