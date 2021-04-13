@@ -32,7 +32,9 @@ public:
 sources:
 - kind: git_tag
   url: github:intel/libva.git
-  track: v2.10-branch
-  ref: 2.10.0-0-ge3c7598743f10477f5799df42c806ba4945fd5c1
+  track: master
+  track-extra:
+  - v2.11-branch
+  ref: 2.11.0-0-g64d75c08a720b73f4474b9265ca6dc99f947af8b
 - kind: patch
   path: patches/libva/pkgconfig-driver-path.patch
