@@ -1,45 +1,31 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6392d2b..cec6ac7 100644
+index 0c8d1ae9..a821d4e4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -112,8 +112,6 @@ endif(MSVC)
+@@ -111,8 +111,6 @@ endif(MSVC)
  
  
  # Configure subdirectories.
 -# We depend on these for later projects, so they should come first.
 -add_subdirectory(third_party)
  
- if(SHADERC_ENABLE_SPVC)
- add_subdirectory(libshaderc_spvc)
-@@ -122,13 +120,6 @@ endif()
  add_subdirectory(libshaderc_util)
  add_subdirectory(libshaderc)
- add_subdirectory(glslc)
--add_subdirectory(examples)
--
+@@ -121,12 +119,6 @@ if(${SHADERC_ENABLE_EXAMPLES})
+     add_subdirectory(examples)
+ endif()
+ 
 -add_custom_target(build-version
 -  ${PYTHON_EXECUTABLE}
 -  ${CMAKE_CURRENT_SOURCE_DIR}/utils/update_build_version.py
 -  ${shaderc_SOURCE_DIR} ${spirv-tools_SOURCE_DIR} ${glslang_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/build-version.inc
 -  COMMENT "Update build-version.inc in the Shaderc build directory (if necessary).")
- 
+-
  function(define_pkg_config_file NAME LIBS)
    add_custom_target(${NAME}-pkg-config ALL
-diff --git a/glslc/CMakeLists.txt b/glslc/CMakeLists.txt
-index 31664d1..7b8c23e 100644
---- a/glslc/CMakeLists.txt
-+++ b/glslc/CMakeLists.txt
-@@ -43,7 +43,7 @@ if (SHADERC_ENABLE_WGSL_OUTPUT)
- endif(SHADERC_ENABLE_WGSL_OUTPUT)
- 
- target_link_libraries(glslc PRIVATE
--  glslang OSDependent OGLCompiler HLSL glslang SPIRV    # Glslang libraries
-+  glslang OSDependent OGLCompiler glslang HLSL SPIRV    # Glslang libraries
-   $<$<BOOL:${SHADERC_ENABLE_WGSL_OUTPUT}>:libtint>      # Tint libraries, optional
-   shaderc_util shaderc                                  # internal Shaderc libraries
-   ${CMAKE_THREAD_LIBS_INIT})
+     COMMAND ${CMAKE_COMMAND}
 diff --git a/libshaderc_util/src/compiler.cc b/libshaderc_util/src/compiler.cc
-index c5ce37e..4703634 100644
+index bf065895..0f3db37e 100644
 --- a/libshaderc_util/src/compiler.cc
 +++ b/libshaderc_util/src/compiler.cc
 @@ -20,7 +20,7 @@
@@ -51,15 +37,3 @@ index c5ce37e..4703634 100644
  #include "libshaderc_util/format.h"
  #include "libshaderc_util/io.h"
  #include "libshaderc_util/message.h"
-diff --git a/libshaderc_util/src/resources.cc b/libshaderc_util/src/resources.cc
-index d64e47f..0df5cc9 100644
---- a/libshaderc_util/src/resources.cc
-+++ b/libshaderc_util/src/resources.cc
-@@ -125,7 +125,6 @@ const TBuiltInResource kDefaultTBuiltInResource = {
-     /* .maxTaskWorkGroupSizeY_NV = */ 1,
-     /* .maxTaskWorkGroupSizeZ_NV = */ 1,
-     /* .maxMeshViewCountNV = */ 4,
--    /* .maxDualSourceDrawBuffersEXT = */ 1,
-     // This is the glslang TLimits structure.
-     // It defines whether or not the following features are enabled.
-     // We want them to all be enabled.

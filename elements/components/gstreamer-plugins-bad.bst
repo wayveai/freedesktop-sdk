@@ -14,7 +14,7 @@ depends:
 - components/libnice.bst
 - components/librsvg.bst
 - components/openal.bst
-- components/vulkan.bst
+- components/vulkan-icd-loader.bst
 - components/wayland.bst
 - components/curl.bst
 - components/libwebp.bst
@@ -28,6 +28,7 @@ build-depends:
 - components/gobject-introspection.bst
 - components/wayland-protocols.bst
 - components/shaderc.bst
+- components/vulkan-headers.bst
 
 variables:
   meson-local: >-

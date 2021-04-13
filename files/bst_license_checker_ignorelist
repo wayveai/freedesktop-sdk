@@ -84,7 +84,6 @@ components/cups-daemon.bst
 components/gnu-efi-maybe.bst
 components/go-stage1.bst
 components/libsmbios-maybe.bst
-components/vulkan.bst
 extensions/rust/ldconfig.bst
 extensions/rust/rust-stage1.bst
 flatpak-images/cross-toolchains.bst

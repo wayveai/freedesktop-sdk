@@ -6,8 +6,9 @@ depends:
   type: build
 
 variables:
-  cmake-local: |
+  cmake-local: >-
     -DCMAKE_SKIP_RPATH:BOOL=yes
+    -DBUILD_SHARED_LIBS:BOOL=yes
 
 sources:
 - kind: git_tag
@@ -15,4 +16,4 @@ sources:
   track: master
   match:
   - '*.*.*'
-  ref: 8.13.3743-0-gbcf6a2430e99e8fc24f9f266e99316905e6d5134
+  ref: 11.2.0-0-g5421877c380d5f92c1965c7a94620dac861297dd
