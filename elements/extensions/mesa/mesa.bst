@@ -17,7 +17,6 @@ depends:
 - components/libva.bst
 - components/libclc.bst
 - components/opencl.bst
-- components/xorg-lib-xdamage.bst
 - components/xorg-lib-xfixes.bst
 - components/xorg-lib-xrandr.bst
 - components/xorg-lib-xshmfence.bst
@@ -77,7 +76,8 @@ variables:
     -Dlibunwind=%{enable_libunwind}
     -Dllvm=enabled
     -Dlmsensors=disabled
-    -Dosmesa=none
+    -Dmicrosoft-clc=disabled
+    -Dosmesa=false
     -Dplatforms=x11,wayland
     -Dselinux=false
     -Dshared-glapi=enabled
@@ -149,8 +149,8 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '20.3'
-  ref: mesa-20.3.5-0-gcd3161895e7229bd81e4b0e66c7ca94e99d6f2dc
+  track: '21.0'
+  ref: mesa-21.0.2-0-g7419e553db13a26848f77df409144441de7477cf
   exclude:
   - '*.0'
 - kind: patch
