@@ -5,6 +5,6 @@ runtime-depends:
 
 sources:
 - kind: tar
-  url: google:go/go1.15.8.linux-ppc64le.tar.gz
+  url: google:go/go1.16.3.linux-ppc64le.tar.gz
   directory: /usr/local/go
-  ref: c6ddeab22b23ee33f5e8f06f9667e2092f48dbc6d5db553a66f7fe21da73fbfa
+  ref: 5eb046bbbbc7fe2591846a4303884cb5a01abb903e3e61e33459affe7874e811
