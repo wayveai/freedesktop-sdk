@@ -64,9 +64,9 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
-      echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-      echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
+    if [ -n "$BB_CAS_PUSH_CERT" ] && [ -n "$BB_CAS_PUSH_KEY" ]; then
+      echo "$BB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
+      echo "$BB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
 
       {
         echo "projects:"
