@@ -24,7 +24,7 @@ build-depends:
 variables:
   efi: 'false'
   (?):
-  - target_arch in ["x86_64", "i686", "arm", "aarch64"]:
+  - target_arch in ["x86_64", "i686", "arm", "aarch64", "riscv64"]:
       efi: 'true'
   meson-local: >-
     -Drootprefix=%{prefix}
@@ -85,3 +85,5 @@ sources:
   ref: v248-0-g938bdfc0fa737d86eb3ecc70506e11e5f740e0dc
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
+- kind: patch
+  path: patches/systemd/riscv-efi.patch
