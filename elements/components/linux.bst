@@ -123,6 +123,7 @@ config:
     # For UEFI systems
     scripts/config -e EFIVAR_FS
     scripts/config -e EFI_PARTITION
+    scripts/config -e EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER
 
     # RT group scheduling (effectively) makes RT scheduling unavailable for userspace
     scripts/config -d RT_GROUP_SCHED
@@ -378,6 +379,14 @@ config:
         scripts/config -e SOC_VIRT
         ;;
     esac
+
+    # Initramfs
+    scripts/config -e BLK_DEVTMPFS
+    scripts/config -e BLK_DEV_INITRD
+        for comp in GZIP BZIP2 LZMA XZ LZO LZ4 ZSTD; do
+      scripts/config -e RD_${comp}
+    done
+    scripts/config -d DEBUG_BLOCK_EXT_DEVT
 
   - |
     yes '' | make -j1 oldconfig
