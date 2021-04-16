@@ -39,9 +39,9 @@ config:
     destination: '/'
 
   commands:
-  - prepare-image.sh --sysroot / --rootpasswd root \
-                     --seed "%{uuidnamespace}" \
-                     --rootsource /dev/gpt-auto-root >/tmp/vars
+  - |
+    prepare-image.sh --sysroot / --rootpasswd root \
+                     --seed "%{uuidnamespace}" >/tmp/vars
 
   - dbus-uuidgen >/etc/machine-id
   - SYSTEMD_RELAX_ESP_CHECKS=1 bootctl --path='/boot' --no-variables install
@@ -56,12 +56,18 @@ config:
 
   - |
     . /tmp/vars
-    dracut -v --fstab --uefi \
-           --uefi-stub /usr/lib/systemd/boot/efi/linux%{efi-arch}.efi.stub \
+    dracut -v --fstab \
            --no-machineid --kernel-image /boot/%{image-name} \
            --kver $(ls -1 /lib/modules | head -n1) \
-           --kernel-cmdline "rw console=tty0 console=ttyS0 quiet" \
+           --kernel-cmdline "rw console=tty0 console=ttyS0 quiet root=UUID=${uuid_root}" \
            --install 'fsck.ext4'
 
   - |
-    rm -f /boot/%{image-name}
+    . /tmp/vars
+    cat <<EOF >/boot/loader/entries/fdsdk.conf
+    title Freedesktop SDK
+    version 1
+    options rw console=tty0 root=UUID=${uuid_root}
+    linux /%{image-name}
+    initrd /initramfs-$(ls -1 /lib/modules | head -n1).img
+    EOF
