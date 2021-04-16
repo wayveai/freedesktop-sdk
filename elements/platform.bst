@@ -154,7 +154,6 @@ runtime-depends:
 - components/pango.bst
 - components/pciutils.bst
 - components/pipewire.bst
-- components/pipewire-libjack.bst
 - components/pixman.bst
 - components/libpulse.bst
 - components/sdl2-image.bst

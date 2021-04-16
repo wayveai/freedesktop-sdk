@@ -3,7 +3,6 @@ kind: meson
 # This element is not be used directly. Use either:
 #  - components/pipewire.bst
 #  - components/pipewire-daemon.bst
-#  - components/pipewire-libjack.bst
 
 build-depends:
 - bootstrap-import.bst
@@ -13,7 +12,6 @@ build-depends:
 - components/ffmpeg.bst
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
-- components/jack.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
@@ -26,34 +24,66 @@ build-depends:
 
 variables:
   meson-local: >-
-    -Ddocs=true
-    -Dman=true
-    -Dgstreamer=true
-    -Dsystemd=true
+    -Daudiotestsrc=disabled
+    -Djack=disabled
+    -Dvideotestsrc=disabled
+    -Dvolume=disabled
+    -Dvulkan=disabled
+    -Ddocs=enabled
+    -Dman=enabled
+    -Dbluez5-codec-ldac=disabled
+    -Dbluez5-codec-aptx=disabled
+    -Dlibcamera=disabled
+    -Dlibjack-path=%{libdir}
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
   bst:
     split-rules:
       daemon:
-      - '%{bindir}/pipewire'
-      - '%{debugdir}%{bindir}/pipewire.debug'
+      - '%{bindir}/pipewire*'
+      - '%{libdir}/libjackserver.so*'
+      - '%{libdir}/spa-0.2/alsa'
+      - '%{libdir}/spa-0.2/alsa/**'
+      - '%{libdir}/spa-0.2/bluez5'
+      - '%{libdir}/spa-0.2/bluez5/**'
+      - '%{libdir}/spa-0.2/v4l2'
+      - '%{libdir}/spa-0.2/v4l2/**'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-access.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-link-factory.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-portal.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-profiler.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-pulse.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-device.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so'
+      - '%{sysconfdir}/pipewire/media-session.d'
+      - '%{sysconfdir}/pipewire/media-session.d/**'
+      - '%{sysconfdir}/pipewire/pipewire*'
+      - '%{datadir}/alsa'
+      - '%{datadir}/alsa/**'
+      - '%{datadir}/alsa-card-profile'
+      - '%{datadir}/alsa-card-profile/**'
       - '%{indep-libdir}/systemd'
       - '%{indep-libdir}/systemd/**'
+      - '%{indep-libdir}/udev'
       - '%{indep-libdir}/udev/**'
-      - '%{sysconfdir}/pipewire/media-session.d/alsa-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/bluez-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/media-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/v4l2-monitor.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/with-pulseaudio'
-      - '%{sysconfdir}/pipewire/pipewire.conf'
-      - '%{sysconfdir}/pipewire/pipewire-pulse.conf'
-
-      libjack:
-      - '%{debugdir}%{libdir}/pipewire-0.3/jack/**'
-      - '%{libdir}/pipewire-0.3/jack/**'
-      - '%{sysconfdir}/pipewire/jack.conf'
-      - '%{sysconfdir}/pipewire/media-session.d/with-jack'
+      - '%{debugdir}%{bindir}/pipewire*.debug'
+      - '%{debugdir}%{libdir}/libjackserver.so*'
+      - '%{libdir}/spa-0.2/alsa'
+      - '%{libdir}/spa-0.2/alsa/**'
+      - '%{libdir}/spa-0.2/bluez5'
+      - '%{libdir}/spa-0.2/bluez5/**'
+      - '%{libdir}/spa-0.2/v4l2'
+      - '%{libdir}/spa-0.2/v4l2/**'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-access.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-link-factory.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-portal.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-profiler.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-pulse.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-device.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so.debug'
 
   cpe:
     product: pipewire
@@ -64,6 +94,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.22-0-g22d563720a7f6ba7bdf59950f8c14488d80dfa95
+  ref: 0.3.25-0-gc324107211718043553337cb10d022fe9d2d12d8
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
