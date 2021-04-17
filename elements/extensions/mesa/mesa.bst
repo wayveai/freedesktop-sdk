@@ -42,7 +42,7 @@ variables:
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink
       dri_drivers: i915,i965,nouveau,r100,r200
-      vulkan_drivers: amd,intel,swrast
+      vulkan_drivers: amd,intel,swrast,virtio-experimental
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
       gallium_drivers: etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4,zink
@@ -84,8 +84,7 @@ variables:
     -Dselinux=false
     -Dshared-glapi=enabled
     -Dvalgrind=disabled
-    -Dvulkan-device-select-layer=true
-    -Dvulkan-overlay-layer=true
+    -Dvulkan-layers=device-select,overlay
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=enabled
@@ -152,8 +151,8 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: master
   track-extra:
-  - '21.0'
-  ref: mesa-21.0.3-0-g091978e0ec92b22773c4831e77aea19a74ed5179
+  - '21.1'
+  ref: mesa-21.1.0-0-g19ed21fba9b94e8230ccf005d2454fcd2f4417bd
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch

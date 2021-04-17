@@ -22,7 +22,6 @@ variables:
     GLES3/gl3ext.h
     GLES3/gl3platform.h
     KHR/khrplatform.h
-    vulkan/vulkan_intel.h
     GL/gl.h
     GL/glext.h
     GL/glcorearb.h
