@@ -5,6 +5,8 @@ set -eu
 sysroot=
 noboot=
 efipath=/efi
+efifstype=vfat
+efifsopts=umask=0077
 initial_scripts=/etc/fdsdk/initial_scripts
 uuidnamespace="$(uuidgen -r)"
 rootfstype="ext4"
@@ -37,6 +39,14 @@ while [ $# -gt 0 ]; do
 	    ;;
 	--efipath)
 	    efipath="$1"
+	    shift
+	    ;;
+	--efifstype)
+	    efifstype="$1"
+	    shift
+	    ;;
+	--efifsopts)
+	    efifsopts="$1"
 	    shift
 	    ;;
 	--noboot)
@@ -118,7 +128,7 @@ EOF
 
 if [ -z "${noboot}" ]; then
     cat >>"${sysroot}/etc/fstab" <<EOF
-${efi_source:-UUID=${uuid_efi}} ${efipath} vfat umask=0077 0 1
+${efi_source:-UUID=${uuid_efi}} ${efipath} ${efifstype} ${efifsopts} 0 1
 EOF
 fi
 

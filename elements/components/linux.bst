@@ -372,12 +372,19 @@ config:
     done
     scripts/config -e FS_ENCRYPTION
 
+    # RISC-V qemu virtual machine
+    case "%{arch}" in
+      riscv*)
+        scripts/config -e SOC_VIRT
+        ;;
+    esac
+
   - |
     yes '' | make -j1 oldconfig
 
   install-commands:
   - |
-    install -Dm644 "%{image-name}" '%{install-root}%{bootdir}/vmlinuz'
+    install -Dm644 -t '%{install-root}%{bootdir}' "%{image-name}"
     install -Dm644 System.map '%{install-root}%{bootdir}/System.map'
     install -Dm644 .config '%{install-root}%{bootdir}/config'
     make -j1 INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install

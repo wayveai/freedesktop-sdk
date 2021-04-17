@@ -6,7 +6,6 @@ depends:
 - components/systemd.bst
 - components/dosfstools.bst
 - components/mtools.bst
-- components/syslinux.bst
 - components/tzdata.bst
 - vm/prepare-image.bst
 - components/genimage.bst

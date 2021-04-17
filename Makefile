@@ -17,6 +17,7 @@ CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT_ROOT?=vm/minimal/virt.bst
 VM_ARTIFACT_BOOT?=vm/boot/virt.bst
+VM_KERNEL_NAME?=vmlinuz
 IMPORT_BOOTSTRAP?=false
 RUNTIME_VERSION?=master
 ifeq ($(RUNTIME_VERSION),master)
@@ -111,7 +112,7 @@ QEMU_COMMON_ARGS= \
 	-smp 4 \
 	-m 256 \
 	-nographic \
-	-kernel $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)/vmlinuz \
+	-kernel $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)/$(VM_KERNEL_NAME) \
 	-initrd $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_BOOT)/initramfs.gz \
 	-virtfs local,id=virtfs,path=$(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT_ROOT),security_model=none,mount_tag=virtfs
 
