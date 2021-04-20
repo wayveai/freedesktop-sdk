@@ -7,6 +7,7 @@ depends:
 - components/debuginfod.bst
 
 build-depends:
+- components/pkg-config.bst
 - components/texinfo.bst
 - components/perl.bst
 - components/flex.bst
@@ -45,6 +46,6 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: gdb-9-branch
-  ref: gdb-9.2-release-0-ge7fe0803b6427d3906e991bbb3b7fd2f0fd05e00
+  track: gdb-10-branch
+  ref: gdb-10.1-release-0-g1510de429446e47cb01d6030c1c172d71f9d43f6
 
