@@ -365,7 +365,7 @@ config:
     esac
 
     # Useful filesystems
-    for fs in XFS BTRFS EXFAT_FS VFAT_FS F2FS_FS; do
+    for fs in XFS BTRFS EXFAT_FS VFAT_FS F2FS_FS ISO9660_FS; do
       [ $(scripts/config -s "${fs}") != n ] || scripts/config -m "${fs}"
     done
     for fs in XFS BTRFS F2FS_FS; do
