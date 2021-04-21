@@ -35,3 +35,5 @@ sources:
   ref: v2021.04-0-gb46dd116ce03e235f2a7d4843c6278e1da44b5e1
 - kind: patch
   path: patches/u-boot/riscv-pre-load-fdt.patch
+- kind: patch
+  path: patches/u-boot/efi-partition-signature.patch
