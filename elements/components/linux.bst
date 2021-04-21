@@ -373,6 +373,10 @@ config:
     done
     scripts/config -e FS_ENCRYPTION
 
+    # Needed for FAT filesystems
+    scripts/config -e NLS_CODEPAGE_437
+    scripts/config -e NLS_ISO8859_1
+
     # RISC-V qemu virtual machine
     case "%{arch}" in
       riscv*)
