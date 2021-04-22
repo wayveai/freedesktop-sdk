@@ -5,11 +5,17 @@ depends:
 - filename: bootstrap-import.bst
 
 variables:
+  common_options: "--enable-pcre2-16 --enable-pcre2-32"
+  arch_options: ''
   (?):
   - (target_arch == "x86_64" or target_arch == "i686"):
       local_flags: -mshstk
   - target_arch != "riscv64":
-      conf_local: '--enable-jit'
+      arch_options: "--enable-jit"
+
+  conf-local: >-
+    %{common_options}
+    %{arch_options}
 
 public:
   bst:
@@ -18,6 +24,8 @@ public:
         (>):
         - '%{bindir}/pcre2-config'
         - '%{libdir}/libpcre2-8.so'
+        - '%{libdir}/libpcre2-16.so'
+        - '%{libdir}/libpcre2-32.so'
         - '%{libdir}/libpcre2-posix.so'
 
 sources:
