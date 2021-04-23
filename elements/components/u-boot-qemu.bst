@@ -17,12 +17,6 @@ variables:
 
 config:
   configure-commands:
-  - |
-    cat <<\EOF >>"configs/qemu-riscv64_smode_defconfig"
-    CONFIG_USE_PREBOOT=y
-    CONFIG_PREBOOT="setenv fdt_addr ${fdtcontroladdr}; fdt addr ${fdtcontroladdr};"
-    EOF
-
   - make "%{board}_defconfig"
 
   build-commands:
