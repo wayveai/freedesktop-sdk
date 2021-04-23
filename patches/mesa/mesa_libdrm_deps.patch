@@ -11,15 +11,15 @@ index 34a43e33f09..47834985b88 100644
    build_by_default : false,
  )
 diff --git a/src/mesa/drivers/dri/i965/meson.build b/src/mesa/drivers/dri/i965/meson.build
-index 39f8e19f7ce..1e522d0cd5b 100644
+index f4bdb38ca15..9aeecef15af 100644
 --- a/src/mesa/drivers/dri/i965/meson.build
 +++ b/src/mesa/drivers/dri/i965/meson.build
-@@ -142,7 +142,7 @@ foreach v : ['40', '45', '50', '60', '70', '75', '80', '90', '100', '110']
+@@ -142,7 +142,7 @@ foreach v : ['40', '45', '50', '60', '70', '75', '80', '90', '110']
        '-DGEN_VERSIONx10=@0@'.format(v),
      ],
      gnu_symbol_visibility : 'hidden',
--    dependencies : [dep_libdrm, idep_nir_headers],
-+    dependencies : [dep_libdrm, dep_libdrm_intel, idep_nir_headers],
+-    dependencies : [dep_libdrm, idep_nir_headers, idep_mesautil],
++    dependencies : [dep_libdrm, dep_libdrm_intel, idep_nir_headers, idep_mesautil],
    )
  endforeach
  
