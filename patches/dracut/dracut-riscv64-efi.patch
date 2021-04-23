@@ -1,0 +1,13 @@
+diff --git a/dracut.sh b/dracut.sh
+index 062ed6c1..a9cb8b04 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1195,6 +1195,8 @@ if [[ ! $print_cmdline ]]; then
+                 EFI_MACHINE_TYPE_NAME=x64;;
+             i?86)
+                 EFI_MACHINE_TYPE_NAME=ia32;;
++            riscv64)
++                EFI_MACHINE_TYPE_NAME=riscv64;;
+             *)
+                 dfatal "Architecture '$(uname -m)' not supported to create a UEFI executable"
+                 exit 1

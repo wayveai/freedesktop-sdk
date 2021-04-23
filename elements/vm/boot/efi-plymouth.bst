@@ -42,12 +42,8 @@ config:
 
   - |
     . /tmp/vars
-    dracut -v --fstab --uefi \
-           --uefi-stub /usr/lib/systemd/boot/efi/linuxx64.efi.stub \
+    dracut -v --fstab \
            --no-machineid --kernel-image /boot/vmlinuz \
            --kver $(ls -1 /lib/modules | head -n1) \
-           --kernel-cmdline "rw quiet splash" \
+           --kernel-cmdline "rw quiet splash root=UUID=${uuid_root}" \
            --install 'fsck.ext4'
-
-  - |
-    rm -f /boot/vmlinuz

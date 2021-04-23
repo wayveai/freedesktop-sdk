@@ -23,3 +23,5 @@ sources:
   url: sourceforge_git:gnu-efi/code.git
   track: master
   ref: 3.0.13-0-g59fd1e9d1d75cedfa9c1f6a06fd3f367fe644360
+- kind: patch
+  path: patches/gnu-efi/gnu-efi-riscv.patch
