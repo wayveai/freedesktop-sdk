@@ -83,6 +83,9 @@ sources:
   track-extra:
   - v248-stable
   ref: v248-0-g938bdfc0fa737d86eb3ecc70506e11e5f740e0dc
+# remove the following patch when updating systemd
+- kind: patch
+  path: patches/systemd/optional-rsync.patch
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
 - kind: patch
