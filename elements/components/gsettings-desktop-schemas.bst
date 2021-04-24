@@ -10,7 +10,7 @@ depends:
 sources:
 - kind: git_tag
   url: gnome:gsettings-desktop-schemas.git
-  track: gnome-3.38
+  track: gnome-3-38
   exclude:
   - '*.*[13579].*'
   - '*alpha*'
