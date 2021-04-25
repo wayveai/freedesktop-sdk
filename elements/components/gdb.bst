@@ -47,5 +47,5 @@ sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
   track: gdb-10-branch
-  ref: gdb-10.1-release-0-g1510de429446e47cb01d6030c1c172d71f9d43f6
+  ref: gdb-10.2-release-0-gce35d7163e779b1321058b22f005c70ce1524b25
 
