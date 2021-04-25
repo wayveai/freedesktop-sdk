@@ -87,3 +87,5 @@ sources:
   path: patches/systemd/relax-boot-device-check-btrfs.patch
 - kind: patch
   path: patches/systemd/riscv-efi.patch
+- kind: patch
+  path: patches/systemd/sign-compare-casts.patch
