@@ -11,16 +11,11 @@ variables:
   install-root: '/boot'
 
   efi-arch: "%{arch}"
-  image-name: vmlinuz
   (?):
   - target_arch == "x86_64":
       efi-arch: x64
   - target_arch == "i686":
       efi-arch: ia32
-  - target_arch == "aarch64":
-      image-name: Image
-  - target_arch == "riscv64":
-      image-name: Image
 
 config:
 
@@ -57,7 +52,7 @@ config:
   - |
     . /tmp/vars
     dracut -v --fstab \
-           --no-machineid --kernel-image /boot/%{image-name} \
+           --no-machineid --kernel-image /boot/vmlinuz \
            --kver $(ls -1 /lib/modules | head -n1) \
            --kernel-cmdline "rw console=tty0 console=ttyS0 quiet root=UUID=${uuid_root}" \
            --install 'fsck.ext4'
@@ -68,6 +63,6 @@ config:
     title Freedesktop SDK
     version 1
     options rw console=tty0 root=UUID=${uuid_root}
-    linux /%{image-name}
+    linux /vmlinuz
     initrd /initramfs-$(ls -1 /lib/modules | head -n1).img
     EOF

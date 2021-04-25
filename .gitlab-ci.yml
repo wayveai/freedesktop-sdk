@@ -464,7 +464,6 @@ minimal_systemd_vm_x86_64:
   variables:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
-    VM_KERNEL_NAME: bzImage
     DIALOG: root-login
   dependencies: []
 
@@ -475,7 +474,6 @@ minimal_systemd_vm_aarch64:
   variables:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
-    VM_KERNEL_NAME: Image
     DIALOG: root-login
   dependencies: []
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
@@ -489,7 +487,6 @@ minimal_systemd_vm_ppc64le:
   variables:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
-    VM_KERNEL_NAME: Image
     DIALOG: root-login
   dependencies: []
   when: manual

@@ -12,7 +12,6 @@ build-depends:
 - vm/minimal/qemu-firmware.bst
 
 variables:
-  image-name: vmlinuz
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
   uuid-boot: 10bf4857-5261-46d4-a178-cca1a9b5b997
   (?):
@@ -24,10 +23,8 @@ variables:
         linux-root: 69DAD710-2CE4-4E3C-B16C-21A1D49ABED3
     - target_arch == "aarch64":
         linux-root: B921B045-1DF0-41C3-AF44-4C6F280D3FAE
-        image-name: Image
     - target_arch == "riscv64":
         linux-root: 72EC70A6-CF74-40e6-BD49-4BDA08E8F224
-        image-name: Image
 
 config:
   layout:
@@ -70,7 +67,7 @@ config:
 
     label FreedesktopSDK
         menu label Freedesktop SDK
-        linux /%{image-name}
+        linux /vmlinuz
         initrd /initramfs.img
         append root=UUID=${uuid_root} rw console=tty0 console=ttyS0 quiet
     EOF

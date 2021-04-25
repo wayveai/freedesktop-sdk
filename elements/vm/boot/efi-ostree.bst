@@ -9,16 +9,11 @@ variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
 
   efi-arch: "%{arch}"
-  image-name: vmlinuz
   (?):
   - target_arch == "x86_64":
       efi-arch: x64
   - target_arch == "i686":
       efi-arch: ia32
-  - target_arch == "aarch64":
-      image-name: Image
-  - target_arch == "riscv64":
-      image-name: Image
 
 config:
 
@@ -58,7 +53,7 @@ config:
 
   - |
     version="$(ls -1 /lib/modules | head -n1)"
-    cp /boot/%{image-name} "%{install-root}/usr/lib/modules/${version}/%{image-name}"
+    cp /boot/vmlinuz "%{install-root}/usr/lib/modules/${version}/vmlinuz"
 
   - dbus-uuidgen >/etc/machine-id
   - SYSTEMD_RELAX_ESP_CHECKS=1 bootctl --path='/efi' --no-variables install
