@@ -10,7 +10,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: "a0e30fe772ac13cc911cfa16bcb64cfbbc2ba03b"
+  DOCKER_IMAGE_ID: "d5f45dc9440e0aab625507808573a7c642560894"
   DOCKER_AMD64: "${DOCKER_REGISTRY}/bst16/amd64:${DOCKER_IMAGE_ID}"
   DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst16/arm64:${DOCKER_IMAGE_ID}"
   DOCKER_PPC64LE: "${DOCKER_REGISTRY}/bst16/ppc64le:${DOCKER_IMAGE_ID}"
@@ -892,19 +892,20 @@ publish_snap_aarch64:
   - |
     [ -n "${DOCKER_HUB_ADDRESS}" ]
 
-  - make export-docker
-  # Unfortunately BuildStream adds ./ prefix in file names and podman
-  # does not accept it.
+  - |
+    DOCKER_IMAGES=(platform sdk debug flatpak)
+    BST_ELEMENTS=$(printf 'oci/%q-docker.bst ' ${DOCKER_IMAGES[@]})
+
+    $(BST} build ${BST_ELEMENTS[@]}
+    for element in ${BST_ELEMENTS[@]}; do
+       ${BST} checkout ${element} --tar - | podman load
+    done
 
   - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}" "${DOCKER_HUB_ADDRESS}"
 
   - |
     set -eu
-    for name in platform sdk debug flatpak; do
-      mkdir -p ${name}-tar-extract
-      (cd ${name}-tar-extract && tar xf ../${name}-docker.tar)
-      (cd ${name}-tar-extract && tar cf ../${name}-fixed.tar -- *)
-      podman load -i ${name}-fixed.tar
+    for name in ${DOCKER_IMAGES[@]}; do
       podman push freedesktopsdk/${name}:latest docker://docker.io/freedesktopsdk/${name}:"${DOCKER_VERSION}"-"${ARCH}"
       mkdir -p "docker-pushed-digests/${DOCKER_VERSION}"
       digest="$(python3 utils/get_remote_digest.py freedesktopsdk/${name} "${DOCKER_VERSION}"-"${ARCH}")"
