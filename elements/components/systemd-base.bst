@@ -78,9 +78,7 @@ public:
 sources:
 - kind: git_tag
   url: github:systemd/systemd-stable.git
-  track: main
-  track-extra:
-  - v246-stable
+  track: v246-stable
   match:
   - v246.*
   ref: v246.13-0-gd890e8b3e309acd8fca3be00b931399da15f9b66
