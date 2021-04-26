@@ -31,4 +31,4 @@ sources:
 - kind: git_tag
   url: savannah:attr.git
   track: master
-  ref: v2.5.0-0-g07b95f74cd9638fe8ca3510b19202fb55031b330
+  ref: v2.5.1-0-gfb7e6bacbd9c7b1b9c452b7356a3d5e5a6163366
