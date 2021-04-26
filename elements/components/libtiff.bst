@@ -28,4 +28,6 @@ sources:
 - kind: git_tag
   url: gitlab:libtiff/libtiff.git
   track: master
+  exclude:
+  - '*rc*'
   ref: v4.2.0-0-g4862b0d7bcc786304ff4e8c31e8d5ccfb868fb99
