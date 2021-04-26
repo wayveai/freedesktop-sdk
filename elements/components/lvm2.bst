@@ -1,7 +1,8 @@
 kind: autotools
 
 build-depends:
-- components/systemd-lvm2-stage1.bst
+- components/systemd-base.bst
+- components/pkg-config.bst
 
 depends:
 - bootstrap-import.bst
@@ -15,6 +16,8 @@ variables:
     --enable-dmeventd
     --enable-cmdlib
     --enable-pkgconfig
+    --enable-udev_sync
+    --enable-udev_rules
     --with-confdir=%{sysconfdir}
     --with-staticdir=%{sbindir}
     --with-usrlibdir=%{libdir}
