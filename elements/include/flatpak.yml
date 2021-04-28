@@ -7,7 +7,7 @@ sources:
   match:
   - 1.[02468]*
   - 1.1[02468]*
-  ref: 1.10.1-0-gacb2a190b32bab35e23962715dbe7c9812333fc8
+  ref: 1.10.2-0-gc614eb400ed9f9ec516d74a43e7d63783e3fe1fb
   submodules:
     libglnx:
       checkout: true
