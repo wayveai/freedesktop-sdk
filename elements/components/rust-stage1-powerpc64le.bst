@@ -6,5 +6,5 @@ kind: manual
 # That's how upstream recommends doing it.
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rust-1.47.0-powerpc64le-unknown-linux-gnu.tar.xz
-  ref: b0ebeec22a166d0899bae84dd741fe7a4c095aabdd29d7bb2a30b5767ee66221
+  url: tar_https:static.rust-lang.org/dist/rust-1.50.0-powerpc64le-unknown-linux-gnu.tar.xz
+  ref: abe91e3106dc0f97f863391188461533f16476271fb843c8c1ea3b80621571e5
