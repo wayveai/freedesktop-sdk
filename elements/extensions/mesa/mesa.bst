@@ -153,7 +153,7 @@ sources:
   track: master
   track-extra:
   - '21.0'
-  ref: mesa-21.0.2-0-g7419e553db13a26848f77df409144441de7477cf
+  ref: mesa-21.0.3-0-g091978e0ec92b22773c4831e77aea19a74ed5179
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch
