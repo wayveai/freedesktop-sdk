@@ -48,6 +48,9 @@ before_script:
     # Get a lot of output in case of errors
     logging:
       error-lines: 80
+    # Force higher parallelity
+    build:
+      max-jobs: $(( $(nproc) / 4 ))
     EOF
 
   - |
