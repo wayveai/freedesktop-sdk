@@ -1,33 +1,20 @@
 kind: meson
 
-# This element is not be used directly. Use either:
-#  - components/systemd.bst
-#  - components/systemd-libs.bst
-
 build-depends:
 - bootstrap-import.bst
 - public-stacks/buildsystem-meson.bst
 - components/gperf.bst
 - components/m4.bst
 - components/libcap.bst
-- components/libgcrypt.bst
 - components/libgpg-error.bst
 - components/lz4.bst
 - components/util-linux.bst
 - components/linux-pam.bst
 - components/kmod.bst
-- components/gnu-efi-maybe.bst
 - components/libxslt.bst
 - components/docbook-xsl.bst
-- components/cryptsetup-lvm2-stage1.bst
-- components/p11-kit.bst
-- components/libfido2.bst
 
 variables:
-  efi: 'false'
-  (?):
-  - target_arch in ["x86_64", "i686", "arm", "aarch64", "riscv64"]:
-      efi: 'true'
   meson-local: >-
     -Drootprefix=%{prefix}
     -Drootlibdir=%{libdir}
@@ -39,20 +26,20 @@ variables:
     -Dusers-gid=100
     -Dopenssl=true
     -Dpam=true
-    -Dgnu-efi=%{efi}
-    -Defi=%{efi}
+    -Dgnu-efi=false
+    -Defi=false
     -Dfirstboot=true
     -Dzlib=true
     -Dbzip2=true
     -Dxz=true
     -Dlz4=true
     -Ddefault-dnssec=no
-    -Drepart=true
-    -Dman=true
-    -Dhtml=true
-    -Dlibcryptsetup=true
-    -Dp11kit=true
-    -Dlibfido2=true
+    -Drepart=false
+    -Dman=false
+    -Dhtml=false
+    -Dlibcryptsetup=false
+    -Dp11kit=false
+    -Dlibfido2=false
 
 public:
   cpe:

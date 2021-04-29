@@ -15,6 +15,8 @@ runtime-depends:
 - components/util-linux.bst
 - components/kbd.bst
 - components/cryptsetup.bst
+- components/p11-kit.bst
+- components/libfido2.bst
 
 config:
   exclude:
