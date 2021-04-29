@@ -58,9 +58,9 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:ftp.mozilla.org/pub/firefox/releases/78.7.1esr/source/firefox-78.7.1esr.source.tar.xz
-  base-dir: 'firefox-78.7.1'
-  ref: 5042783e2cf94d21dd990d2083800f05bc32f8ba65532a715c7be3cb7716b837
+  url: tar_https:ftp.mozilla.org/pub/firefox/releases/78.10.0esr/source/firefox-78.10.0esr.source.tar.xz
+  base-dir: 'firefox-78.10.0'
+  ref: 979141a6d94bbe303815e9cd1ab1d23b5ce2f9c77d9d5486871eaecf0ea2df40
 - kind: patch
   path: patches/mozjs/fix-arm-build.patch
 - kind: patch
