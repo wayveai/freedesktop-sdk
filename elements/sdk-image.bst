@@ -20,6 +20,7 @@ config:
 
 build-depends:
 - sdk.bst
+- components/nsswitch-config.bst
 - components/python3-usercustomize.bst
 - components/python3-sitecustomize.bst
 - multiarch/multiarch-sdk.bst

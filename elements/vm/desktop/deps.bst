@@ -18,6 +18,7 @@ depends:
 - components/xwayland.bst
 - components/plymouth.bst
 - platform.bst
+- components/nsswitch-config-bootable.bst
 - components/linux-pam.bst
 - components/sudo.bst
 - components/flatpak.bst

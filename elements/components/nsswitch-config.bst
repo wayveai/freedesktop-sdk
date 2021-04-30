@@ -6,9 +6,8 @@ depends:
 config:
   install-commands:
   - |
-    mkdir -p "%{install-root}%{sysconfdir}"
-    install nsswitch.conf "%{install-root}%{sysconfdir}"
+    install -Dm644 nsswitch-flatpak.conf "%{install-root}%{sysconfdir}/nsswitch.conf"
 
 sources:
 - kind: local
-  path: files/nsswitch.conf
+  path: files/nsswitch-flatpak.conf

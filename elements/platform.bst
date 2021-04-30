@@ -61,7 +61,6 @@ depends:
 - components/npth.bst
 - components/nspr.bst
 - components/nss.bst
-- components/nsswitch-config.bst
 - components/openjpeg.bst
 - components/opus.bst
 - components/osmesa.bst
