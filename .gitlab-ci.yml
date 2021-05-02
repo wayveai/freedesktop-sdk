@@ -439,7 +439,7 @@ check_snap_i686:
     - '/^release\/.*/'
     - tags
 
-.vm_imageless_template: &vm_imageless
+.vm_imageless_template:
   stage: vm
   script:
     - make build-vm
@@ -491,7 +491,7 @@ minimal_systemd_vm_ppc64le:
   dependencies: []
   when: manual
 
-.vm_image_template: &vm_image
+.vm_image_template:
   stage: vm
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/bios.bst
@@ -519,7 +519,7 @@ minimal_systemd_vm_image_x86_64:
     DIALOG: root-login
   dependencies: []
 
-.vm_efi_image_template: &vm_efi_image
+.vm_efi_image_template:
   stage: vm
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/efi.bst
