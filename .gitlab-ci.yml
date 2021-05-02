@@ -175,7 +175,7 @@ pylint:
     - '19.08'
     - '/^release\/.*/'
     - tags
-  dependencies: []
+  needs: []
   interruptible: true
 
 check_update_elements:
@@ -255,7 +255,7 @@ license_checker:
     - .builder-x86_64
   stage: update
   interruptible: true
-  dependencies: []
+  needs: []
   variables:
     DEPS: all
     TARGETS: manifests/release-url-manifest.bst
@@ -347,7 +347,6 @@ license_checker:
     - ppc64le
   variables:
     ARCH: ppc64le
-  dependencies: []
 
 .builder-riscv64:
   image: $DOCKER_AMD64
@@ -360,26 +359,26 @@ app_x86_64:
   extends:
     - .flatpak_template
     - .builder-x86_64
-  dependencies: []
+  needs: []
 
 app_i686:
   extends:
     - .flatpak_template
     - .builder-i686
-  dependencies: []
+  needs: []
 
 app_aarch64:
   extends:
     - .flatpak_template
     - .builder-aarch64
-  dependencies: []
+  needs: []
 
 app_ppc64le:
   extends:
     - .flatpak_template
     - .builder-ppc64le
   allow_failure: true
-  dependencies: []
+  needs: []
 
 app_riscv64:
   extends:
@@ -387,7 +386,7 @@ app_riscv64:
     - .builder-riscv64
   allow_failure: true
   when: manual
-  dependencies: []
+  needs: []
 
 .check-snap:
   stage: snap
@@ -415,13 +414,15 @@ check_snap_x86_64:
   extends:
     - .check-snap
     - .builder-x86_64
-  dependencies: []
+  needs:
+    - job: check_runtime_inheritance_x86_64
+      artifacts: false
 
 check_snap_i686:
   extends:
     - .check-snap
     - .builder-i686
-  dependencies: []
+  needs: []
 
 .bootstrap_template:
   stage: bootstrap
@@ -465,7 +466,9 @@ minimal_systemd_vm_x86_64:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
-  dependencies: []
+  needs:
+    - job: app_x86_64
+      artifacts: false
 
 minimal_systemd_vm_aarch64:
   extends:
@@ -475,7 +478,9 @@ minimal_systemd_vm_aarch64:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
-  dependencies: []
+  needs:
+    - job: app_aarch64
+      artifacts: false
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
 minimal_systemd_vm_ppc64le:
@@ -488,7 +493,9 @@ minimal_systemd_vm_ppc64le:
     VM_ARTIFACT_BOOT: vm/boot/virt.bst
     VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
     DIALOG: root-login
-  dependencies: []
+  needs:
+    - job: app_ppc64le
+      artifacts: false
   when: manual
 
 .vm_image_template:
@@ -517,7 +524,9 @@ minimal_systemd_vm_image_x86_64:
   variables:
     TYPE: minimal
     DIALOG: root-login
-  dependencies: []
+  needs:
+    - job: check_snap_x86_64
+      artifacts: false
 
 .vm_efi_image_template:
   stage: vm
@@ -554,7 +563,9 @@ minimal_efi_vm_image_x86_64:
   variables:
     TYPE: minimal
     DIALOG: root-login
-  dependencies: []
+  needs:
+    - job: check_snap_x86_64
+      artifacts: false
 
 desktop_efi_vm_image_x86_64:
   extends:
@@ -563,7 +574,9 @@ desktop_efi_vm_image_x86_64:
   allow_failure: true
   variables:
     TYPE: desktop
-  dependencies: []
+  needs:
+    - job: check_snap_x86_64
+      artifacts: false
 
 prepare_publish:
   extends: .builder-x86_64
@@ -602,8 +615,16 @@ finish_publish:
     - '/^release\/.*/'
   except:
     - schedules
-  dependencies:
+  needs:
     - prepare_publish
+    - job: publish_x86_64
+      artifacts: false
+    - job: publish_i686
+      artifacts: false
+    - job: publish_aarch64
+      artifacts: false
+    - job: publish_ppc64le
+      artifacts: false
 
 finish_publish_failed:
   extends: .builder-x86_64
@@ -619,8 +640,16 @@ finish_publish_failed:
   except:
     - schedules
   when: on_failure
-  dependencies:
+  needs:
     - prepare_publish
+    - job: publish_x86_64
+      artifacts: false
+    - job: publish_i686
+      artifacts: false
+    - job: publish_aarch64
+      artifacts: false
+    - job: publish_ppc64le
+      artifacts: false
 
 .flatpak_publish_template:
   stage: publish
@@ -682,7 +711,7 @@ finish_publish_failed:
     when: on_success
   - if: '$CI_COMMIT_BRANCH == "master"'
     when: on_success
-  dependencies:
+  needs:
     - prepare_publish
 
 .publish_tar_template:
@@ -724,26 +753,26 @@ publish_x86_64_tar:
   extends:
     - .publish_tar_template
     - .builder-x86_64
-  dependencies: []
+  needs: []
 
 publish_i686_tar:
   extends:
     - .publish_tar_template
     - .builder-i686
-  dependencies: []
+  needs: []
 
 publish_aarch64_tar:
   extends:
     - .publish_tar_template
     - .builder-aarch64
-  dependencies: []
+  needs: []
   when: manual
 
 publish_ppc64le_tar:
   extends:
     - .publish_tar_template
     - .builder-ppc64le
-  dependencies: []
+  needs: []
 
 cve_report:
   extends: .builder-x86_64
@@ -772,7 +801,7 @@ cve_report:
   - if: '$CI_COMMIT_BRANCH == "18.08"'
   - if: '$CI_COMMIT_BRANCH == "19.08"'
   - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
-  dependencies: []
+  needs: []
 
 markdown_manifest:
   extends: .builder-x86_64
@@ -790,7 +819,7 @@ markdown_manifest:
     - '/^release\/.*/'
   except:
     - schedules
-  dependencies: []
+  needs: []
 
 .reproducible_template:
   stage: reproducible
@@ -921,7 +950,7 @@ publish_docker_x86_64:
     - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
-  dependencies: []
+  needs: []
 
 publish_docker_i686:
   extends:
@@ -929,7 +958,7 @@ publish_docker_i686:
     - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
-  dependencies: []
+  needs: []
 
 publish_docker_aarch64:
   extends:
@@ -937,7 +966,7 @@ publish_docker_aarch64:
     - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
-  dependencies: []
+  needs: []
 
 publish_docker_ppc64le:
   extends:
@@ -945,6 +974,7 @@ publish_docker_ppc64le:
     - .docker_publish_template
   variables:
     DISABLE_CACHE_PUSH: 1
+  needs: []
   allow_failure: true
 
 publish_docker_finish:
@@ -985,11 +1015,15 @@ publish_docker_finish:
   - schedules
   tags:
   - x86_64
-  dependencies:
-  - publish_docker_ppc64le
-  - publish_docker_aarch64
-  - publish_docker_x86_64
-  - publish_docker_i686
+  needs:
+  - job: publish_docker_ppc64le
+    artifacts: false
+  - job: publish_docker_aarch64
+    artifacts: false
+  - job: publish_docker_x86_64
+    artifacts: false
+  - job: publish_docker_i686
+    artifacts: false
 
 .runtime_inheritance_check_template:
   stage: flatpak
