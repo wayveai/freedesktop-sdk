@@ -565,7 +565,7 @@ desktop_efi_vm_image_x86_64:
     TYPE: desktop
   dependencies: []
 
-.prepare_publish_template: &prepare_publish
+prepare_publish:
   image: $DOCKER_AMD64
   stage: prepare-publish
   tags:
@@ -577,23 +577,11 @@ desktop_efi_vm_image_x86_64:
       - publish_build.txt
   except:
     - schedules
-
-prepare_publish_branch:
-  <<: *prepare_publish
   only:
     - master
     - '18.08'
     - '19.08'
     - '/^release\/.*/'
-  # In order to allow Gitlab to cancel the pipeline when it becomes
-  # redundent in case of batch merges. We must delay the release pipeline.
-  # Once started, we should not stop it.
-  when: delayed
-  start_in: 15 minutes
-
-prepare_publish_release:
-  <<: *prepare_publish
-  only:
     - tags
 
 finish_publish:
@@ -620,8 +608,7 @@ finish_publish:
   except:
     - schedules
   dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
+    - prepare_publish
 
 finish_publish_failed:
   image: $DOCKER_AMD64
@@ -640,8 +627,7 @@ finish_publish_failed:
     - schedules
   when: on_failure
   dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
+    - prepare_publish
 
 .flatpak_publish_template:
   stage: publish
@@ -703,6 +689,8 @@ finish_publish_failed:
     when: on_success
   - if: '$CI_COMMIT_BRANCH == "master"'
     when: on_success
+  dependencies:
+    - prepare_publish
 
 .publish_tar_template:
   stage: publish
@@ -722,34 +710,22 @@ publish_x86_64:
   extends:
     - .flatpak_publish_template
     - .builder-x86_64
-  dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
 
 publish_i686:
   extends:
     - .flatpak_publish_template
     - .builder-i686
-  dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
 
 publish_aarch64:
   extends:
     - .flatpak_publish_template
     - .builder-aarch64
-  dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
 
 publish_ppc64le:
   extends:
     - .flatpak_publish_template
     - .builder-ppc64le
   allow_failure: true
-  dependencies:
-    - prepare_publish_branch
-    - prepare_publish_release
 
 publish_x86_64_tar:
   extends:
