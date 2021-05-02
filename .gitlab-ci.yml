@@ -526,10 +526,8 @@ desktop_efi_vm_image_x86_64:
   dependencies: []
 
 prepare_publish:
-  image: $DOCKER_AMD64
+  extends: .builder-x86_64
   stage: prepare-publish
-  tags:
-    - x86_64
   script:
     - flat-manager-client -v create "$RELEASES_SERVER_ADDRESS" "${RELEASE_CHANNEL}" > publish_build.txt
   artifacts:
@@ -545,11 +543,8 @@ prepare_publish:
     - tags
 
 finish_publish:
-  image: $DOCKER_AMD64
+  extends: .builder-x86_64
   stage: finish-publish
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - flat-manager-client -v commit --wait "$(cat publish_build.txt)"
     - flat-manager-client -v publish --wait-update "$(cat publish_build.txt)"
@@ -571,10 +566,8 @@ finish_publish:
     - prepare_publish
 
 finish_publish_failed:
-  image: $DOCKER_AMD64
+  extends: .builder-x86_64
   stage: finish-publish
-  tags:
-    - x86_64
   script:
     - flat-manager-client purge "$(cat publish_build.txt)"
   only:
@@ -716,15 +709,12 @@ publish_ppc64le_tar:
   dependencies: []
 
 cve_report:
+  extends: .builder-x86_64
   stage: finish-publish
-  image: $DOCKER_AMD64
   cache:
     key: cve
     paths:
       - "${XDG_CACHE_HOME}/cve"
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - make manifest
 
@@ -748,11 +738,8 @@ cve_report:
   dependencies: []
 
 markdown_manifest:
+  extends: .builder-x86_64
   stage: finish-publish
-  image: $DOCKER_AMD64
-  tags:
-    - x86_64
-    - cache_x86_64
   script:
     - make markdown-manifest
   artifacts:
