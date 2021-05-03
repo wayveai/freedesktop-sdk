@@ -160,7 +160,7 @@ check_update_elements:
   only:
     - schedules
 
-check_mirrors:
+.check_mirrors:
   extends:
   - .builder-x86_64
   stage: update
