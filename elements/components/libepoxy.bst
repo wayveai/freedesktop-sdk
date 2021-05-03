@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: github:anholt/libepoxy.git
   track: master
-  ref: 1.5.5-0-g34ecb908b044446226f4cf8829419664ae0ca544
+  ref: 1.5.7-0-gf9e76359cf7da5fde70440361ffad5e9c8aee36b
