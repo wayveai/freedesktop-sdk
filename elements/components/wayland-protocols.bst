@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: git_tag
   url: freedesktop:wayland/wayland-protocols.git
-  track: master
-  ref: 1.20-0-gb0a25f26d3e8b5ad24773881a9a895dd9cc75466
+  track: main
+  ref: 1.21-0-g177ff9119da526462e5d35fbfde6c84794913787
