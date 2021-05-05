@@ -205,7 +205,7 @@ def build_image(global_conf, image):
 
     config = {
         "created": time.strftime(
-            "%Y-%m-%dT%H-%M-%SZ",
+            "%Y-%m-%dT%H:%M:%SZ",
             time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
         ),
     }
