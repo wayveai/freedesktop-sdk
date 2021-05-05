@@ -62,7 +62,7 @@ config:
     cat <<EOF >/boot/loader/entries/fdsdk.conf
     title Freedesktop SDK
     version 1
-    options rw console=tty0 root=UUID=${uuid_root}
+    options rw console=tty0 console=ttyS0 root=UUID=${uuid_root}
     linux /vmlinuz
     initrd /initramfs-$(ls -1 /lib/modules | head -n1).img
     EOF
