@@ -43,8 +43,17 @@ variables:
   autogen: |
     autoreconf -fvi
     for conf in */configure.ac; do
-      echo "$(dirname "${conf}")"
-      (cd "$(dirname "${conf}")" && autoreconf -I ../config -fvi)
+      dir="$(dirname "${conf}")"
+      case "$(dirname "${conf}")" in
+        isl)
+          args=()
+          ;;
+        *)
+          args=("-I" "../config")
+          ;;
+      esac
+      echo "autoreconf: ${dir}"
+      (cd "${dir}" && autoreconf "${args[@]}" -fvi)
     done
 
   conf-local: >-
@@ -151,6 +160,7 @@ public:
         - '%{multiarch_libdir}/libgcc_s.so'
         - '%{multiarch_libdir}/lib*.spec'
         - '%{multiarch_libdir}/libobjc.so'
+        - '%{multiarch_libdir}/libhwasan.so'
 
       static-blocklist:
         (=):
@@ -165,6 +175,7 @@ public:
         - '%{multiarch_libdir}/libtsan.a'
         - '%{multiarch_libdir}/libubsan.a'
         - '%{multiarch_libdir}/libobjc.a'
+        - '%{multiarch_libdir}/libhwasan.a'
 
       # Not actually used, included for completeness
       static-allowlist:

@@ -1,7 +1,7 @@
 sources:
 - kind: tar
-  url: ftp_gnu_org:gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
-  ref: b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
+  url: ftp_gnu_org:gcc/gcc-11.1.0/gcc-11.1.0.tar.xz
+  ref: 4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf
 - kind: tar
   url: ftp_gnu_org:gmp/gmp-6.2.1.tar.xz
   directory: gmp
@@ -23,10 +23,8 @@ sources:
 - kind: patch
   path: patches/gcc/gcc-multiarch-no-cross-structure.patch
 - kind: patch
-  path: patches/gcc/gcc-do-not-override-for-build-variables.patch
-- kind: patch
-  path: patches/gcc/gcc-do-not-override-for-build-variables-2.patch
-- kind: patch
-  path: patches/gcc/gcc-disable-filesystem-ts-fix-cxx-17.patch
-- kind: patch
   path: patches/gcc/gcc-multiarch-enable-riscv.patch
+- kind: patch
+  path: patches/gcc/gcc-using-sysroot-is-cross-compiling.patch
+- kind: patch
+  path: patches/gcc/gcc-fix-header-path.patch
