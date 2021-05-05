@@ -1,19 +1,16 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/help2man.bst
-  type: build
-- filename: components/texinfo.bst
-  type: build
-- filename: components/patch.bst
-  type: build
+- bootstrap-import.bst
+
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/bison.bst
+- components/git-minimal.bst
+- components/help2man.bst
+- components/texinfo.bst
+- components/patch.bst
+- components/gtk-doc.bst
 
 variables:
   builddir: ''
