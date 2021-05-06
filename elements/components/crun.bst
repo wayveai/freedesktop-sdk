@@ -27,7 +27,7 @@ sources:
 - kind: git_tag
   url: github:containers/crun.git
   track: master
-  ref: 0.17-0-g0e9229ae34caaebcb86f1fde18de3acaf18c6d9a
+  ref: 0.19.1-0-g1535fedf0b83fb898d449f9680000f729ba719f5
 - kind: git_tag
   url: github:containers/libocispec.git
   directory: libocispec
@@ -38,6 +38,9 @@ sources:
     image-spec:
       url: github:opencontainers/image-spec.git
       checkout: true
+    yajl:
+      url: github:containers/yajl.git
+      checkout: true
   # FIXME: this should be a submodule, but git_tag does not seem to support
   # multiple levels of submodules
-  ref: df96ab4041005d8bc491c1c1f63fedbf28caf9ee
+  ref: fa3e8338c62ae482e509884ee2edaefc8e00499e
