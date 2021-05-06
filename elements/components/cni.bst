@@ -17,7 +17,7 @@ variables:
   optimize-debug: "false"
   compress-debug: "false"
   command-subdir: src/github.com/containernetworking/plugins
- 
+
 config:
   build-commands:
   - |
@@ -32,4 +32,6 @@ sources:
   url: github:containernetworking/plugins.git
   directory: src/github.com/containernetworking/plugins
   track: master
-  ref: v0.8.6-0-gad10b6fa91aacd720f1f9ab94341a97a82a24965
+  exclude:
+  - "*rc*"
+  ref: v0.9.1-0-gfa48f7515b50272b7106702a662fadbf2ead3d18
