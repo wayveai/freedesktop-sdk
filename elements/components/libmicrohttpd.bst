@@ -7,6 +7,12 @@ build-depends:
 depends:
 - bootstrap-import.bst
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm "%{install-root}%{infodir}/dir"
+
 sources:
 - kind: git_tag
   url: git_https:git.gnunet.org/libmicrohttpd.git
