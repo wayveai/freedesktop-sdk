@@ -28,3 +28,6 @@ sources:
   directory: subprojects/cpptoml
   track: master
   ref: v0.1.1-0-gfededad7169e538ca47e11a9ee9251bc361a9a65
+- kind: patch
+  path: patches/wireplumber/cpptoml-gcc-11.patch
+  directory: subprojects/cpptoml
