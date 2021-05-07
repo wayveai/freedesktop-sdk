@@ -14,6 +14,7 @@ variables:
   cmake-local: >-
     -DCMAKE_INSTALL_LIBDIR="%{libdir}/dri/intel-vaapi-driver/lib"
     -DLIBVA_DRIVERS_PATH="%{libdir}/dri/intel-vaapi-driver"
+    -DMEDIA_BUILD_FATAL_WARNINGS=OFF
 
 public:
   bst:
