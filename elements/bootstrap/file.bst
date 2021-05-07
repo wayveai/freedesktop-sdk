@@ -16,6 +16,8 @@ variables:
    --disable-xzlib
    --disable-bzlib
 
+  make: make 'FILE_COMPILE=%{tools}/bin/file'
+
 config:
   configure-commands:
     (<):
