@@ -1,9 +1,9 @@
 sources:
 - kind: git_tag
   url: sourceware:glibc.git
-  track: release/2.32/master
+  track: release/2.33/master
   track-tags: false
-  ref: glibc-2.32-46-g1799ac8eabe87acd7b1ef7c3a483171489563482
+  ref: glibc-2.33-40-g3f5080aedd164c1f92a53552dd3e0b82ac6d2bd3
 - kind: patch
   path: patches/glibc/optimize-audit.patch
 - kind: patch
