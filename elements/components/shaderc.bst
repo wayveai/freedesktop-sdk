@@ -27,6 +27,6 @@ sources:
 - kind: git_tag
   url: github:google/shaderc.git
   track: main
-  ref: v2020.5-0-g24275a11d81a6b33ef345878f8a4ef929c95a116
+  ref: v2021.0-0-gbdd134d1b7eca01925c1919d2ea05fd3cd6843c7
 - kind: patch
   path: patches/shaderc/what-a-mess.patch
