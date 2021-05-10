@@ -1,5 +1,38 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.9:
+    * meson: Downgrade to 0.56.2
+    * libical: Upgrade to v3.0.10
+    * cythonL Uprade to 0.29.23
+    * cmake: Upgrade to v3.20.2
+    * flatpak: Upgrade to 1.10.2
+    * cni: Upgrade to 0.9.1
+    * crun: Upgrade to 0.19.1
+    * podman: Upgrade to 3.1.2
+    * conmon: Upgrade to 2.0.27
+    * strace: Upgrade to v5.12
+    * rust: Update to 1.52
+    * wayland-protocols: Update to 1.21
+    * python3-pygments: Update to 2.9.0
+    * ostree: Update to v2021.2
+    * platform-vaapi-intel: Update to intel-media-21.1
+    * libgudev: Update to 236
+    * mozjs: Update to 78.10.0esr
+    * libblockdev: Update to 2.25
+    * attr: Update to v2.5.1
+    * libportal: Update to 0.4
+    * librsvg: Update to 2.48.10
+    * git: Update to v2.31.1
+    * mesa: Update to mesa-21.0.3
+    * openssh: Update to V_8_6_P1
+    * cmake: Update to v3.20.1
+    * libdrm: Update to libdrm-2.4.105
+    * bluez: Update to 5.58
+    * pipewire: Update to 0.3.25
+    * man-pages: Update to man-pages-5.11
+    * extra-cmake-modules: Update to v5.81.0
+    * vala: Update to 0.48.17
+
 freedesktop-sdk-20.08.8:
     * libksba.bst to libksba-1.5.1
     * pipewire: Added config files needed to run (#1223)
