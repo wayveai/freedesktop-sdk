@@ -625,6 +625,7 @@ finish_publish:
       artifacts: false
     - job: publish_ppc64le
       artifacts: false
+      optional: true
 
 finish_publish_failed:
   extends: .builder-x86_64
@@ -650,6 +651,7 @@ finish_publish_failed:
       artifacts: false
     - job: publish_ppc64le
       artifacts: false
+      optional: true
 
 .flatpak_publish_template:
   stage: publish
