@@ -12,7 +12,7 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:mesonbuild/meson.git
-  track: '0.57'
-  ref: 0.57.1-0-g7182685b2241e88340b6c3340afba59a26be213f
+  track: '0.56'
+  ref: 0.56.2-0-g5f73f3b715f39217e7d063b6b112c5c80010379c
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
