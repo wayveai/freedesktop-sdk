@@ -883,7 +883,7 @@ publish_snap_aarch64:
     DOCKER_IMAGES=(platform sdk debug flatpak)
     BST_ELEMENTS=$(printf 'oci/%q-docker.bst ' ${DOCKER_IMAGES[@]})
 
-    $(BST} build ${BST_ELEMENTS[@]}
+    ${BST} build ${BST_ELEMENTS[@]}
     for element in ${BST_ELEMENTS[@]}; do
        ${BST} checkout ${element} --tar - | podman load
     done
