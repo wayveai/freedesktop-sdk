@@ -29,8 +29,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
-    --disable-stripping \
-    TIC_PATH="%{tools}/bin/tic"
+    TIC="%{tools}/bin/tic"
 
   - |
     mkdir ncursesw-build &&
@@ -48,8 +47,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
-    --disable-stripping \
-    TIC_PATH="%{tools}/bin/tic"
+    TIC="%{tools}/bin/tic"
 
   build-commands:
   - |

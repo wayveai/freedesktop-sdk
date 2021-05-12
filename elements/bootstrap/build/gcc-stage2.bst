@@ -28,8 +28,17 @@ variables:
   autogen: |
     autoreconf -fvi
     for conf in */configure.ac; do
-      echo "$(dirname "${conf}")"
-      (cd "$(dirname "${conf}")" && autoreconf -I ../config -fvi)
+      dir="$(dirname "${conf}")"
+      case "$(dirname "${conf}")" in
+        isl)
+          args=()
+          ;;
+        *)
+          args=("-I" "../config")
+          ;;
+      esac
+      echo "autoreconf: ${dir}"
+      (cd "${dir}" && autoreconf "${args[@]}" -fvi)
     done
 
 

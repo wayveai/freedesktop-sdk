@@ -1,0 +1,12 @@
+diff -ur ncurses.old/misc/run_tic.in ncurses/misc/run_tic.in
+--- ncurses.old/misc/run_tic.in	2021-05-07 00:00:36.068264071 +0200
++++ ncurses/misc/run_tic.in	2021-05-07 00:08:55.916910389 +0200
+@@ -63,7 +63,7 @@
+ # Allow tic to run either from the install-path, or from the build-directory.
+ # Do not do this if we appear to be cross-compiling.  In that case, we rely
+ # on the host's copy of tic to compile the terminfo database.
+-if test "x$cross_compiling" = "xno"
++if test "x$cross_compiling" = "xno" && test "x${TIC_PATH}" = "xtic"
+ then
+ 	if test -f ../progs/tic$suffix
+ 	then

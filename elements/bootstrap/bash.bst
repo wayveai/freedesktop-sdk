@@ -13,14 +13,15 @@ runtime-depends:
 variables:
   # bash_cv_termcap_lib is for working around undetected of libtinfo
   # because termcap is detected
-  conf-local: |
-    --with-curses \
-    --with-installed-readline="%{sysroot}%{prefix}" \
-    --enable-job-control \
-    --without-bash-malloc \
-    ac_cv_rl_version=8.0 \
-    bash_cv_getcwd_malloc=yes \
-    bash_cv_job_control_missing=present \
+  conf-local: >-
+    CC_FOR_BUILD=/usr/bin/gcc
+    --with-curses
+    --with-installed-readline="%{sysroot}%{prefix}"
+    --enable-job-control
+    --without-bash-malloc
+    ac_cv_rl_version=8.0
+    bash_cv_getcwd_malloc=yes
+    bash_cv_job_control_missing=present
     bash_cv_termcap_lib=libtinfo
 
 config:

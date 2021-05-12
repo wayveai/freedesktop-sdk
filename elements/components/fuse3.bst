@@ -23,4 +23,6 @@ sources:
 - kind: git_tag
   url: github:libfuse/libfuse.git
   track: master
-  ref: fuse-3.9.2-0-g4322cffbe992aa0768f5ce310ef18f5d5340485e
+  ref: fuse-3.10.3-0-gf6cb8f23ac80d067131af457994424d481d4da0e
+- kind: patch
+  path: patches/fuse3/gcc-11.patch

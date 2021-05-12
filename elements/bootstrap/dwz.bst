@@ -39,4 +39,4 @@ sources:
 - kind: git_tag
   track: master
   url: sourceware:dwz.git
-  ref: dwz-0.12-0-gbe35c03955bcf6e4e4a1cab1af46bb4e729284b3
+  ref: dwz-0.14-0-g24a051690bf2f016f0c961026de0895997ceee3a
