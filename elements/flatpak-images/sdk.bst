@@ -129,6 +129,7 @@ config:
 
 build-depends:
 - sdk-image.bst
+- components/os-release.bst
 - integration/sdk-integration.bst
 - integration/app-debug-link.bst
 - tests/check-static-libraries.bst

@@ -1,8 +1,8 @@
 kind: compose
 
-depends:
-- filename: platform.bst
-  type: build
+build-depends:
+- platform.bst
+- components/os-release.bst
 
 config:
   exclude:

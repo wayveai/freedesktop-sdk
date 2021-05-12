@@ -150,7 +150,6 @@ runtime-depends:
 - components/opencl.bst
 - components/openssh.bst
 - components/orc.bst
-- components/os-release.bst
 - components/pango.bst
 - components/pciutils.bst
 - components/pipewire.bst
