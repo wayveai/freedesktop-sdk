@@ -1,9 +1,5 @@
-kind: tar_element
+kind: stack
 
 depends:
-- filename: sdk-image.bst
-  type: build
-
-config:
-  filename: freedesktop-sdk-%{arch}
-  compression: xz
+- components/os-release.bst
+- sdk-image.bst
