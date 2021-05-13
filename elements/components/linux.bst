@@ -10,17 +10,22 @@ build-depends:
 - components/flex.bst
 - components/bc.bst
 - components/gzip.bst
+- components/rsync.bst
 
 variables:
   bootdir: /boot
   kernel_arch: '%{arch}'
+  src-arch: '%{kernel_arch}'
   image-name: '$(make -s image_name)'
   (?):
+  - target_arch == "x86_64":
+      src-arch: x86
   - target_arch == "aarch64":
       kernel_arch: arm64
       # The default image file is not EFI compatible
       image-name: arch/arm64/boot/Image
   - target_arch == "i686":
+      src-arch: x86
       kernel_arch: i386
   - target_arch == "ppc64le":
       kernel_arch: powerpc
@@ -402,7 +407,34 @@ config:
     install -Dm644 .config '%{install-root}%{bootdir}/config'
     make -j1 INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install
 
-    rm %{install-root}%{indep-libdir}/modules/*/{source,build}
+  - |
+    release=$(make -s kernelrelease)
+    targetdir="%{install-root}%{prefix}/src/linux-${release}"
+
+    rm "%{install-root}%{indep-libdir}/modules/${release}"/{source,build}
+
+    to_copy=(
+      Makefile
+      Module.symvers
+      .config
+      "arch/%{src-arch}/include"
+      "arch/%{src-arch}/Makefile"
+      scripts
+      include
+    )
+    if [ "$(scripts/config -s STACK_VALIDATION)" = y ]; then
+      to_copy+=(tools/objtool/objtool)
+    fi
+    for file in "${to_copy[@]}"
+    do
+      targetfile="${targetdir}/${file}"
+      dir="$(dirname "${targetfile}")"
+      [ -d "${dir}" ] || install -d "${dir}"
+      rsync -a "${file}" "${targetfile}"
+    done
+
+    ln -sr "${targetdir}" "%{install-root}%{indep-libdir}/modules/${release}/source"
+    ln -sr "${targetdir}" "%{install-root}%{indep-libdir}/modules/${release}/build"
 
   (?):
   - target_arch in ["aarch64", "arm"]:
