@@ -1,9 +1,5 @@
-kind: tar_element
+kind: stack
 
 depends:
-- filename: platform-image.bst
-  type: build
-
-config:
-  filename: freedesktop-platform-%{arch}
-  compression: xz
+- components/os-release.bst
+- platform-image.bst
