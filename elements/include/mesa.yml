@@ -10,5 +10,5 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: master
   track-extra:
-  - '21.0'
-  ref: mesa-21.0.2-0-g7419e553db13a26848f77df409144441de7477cf
+  - '21.1'
+  ref: mesa-21.1.0-0-g19ed21fba9b94e8230ccf005d2454fcd2f4417bd
