@@ -56,7 +56,12 @@ build:
 	             oci/layers/{bootstrap,debug,platform,sdk,flatpak}.bst
 
 build-tar:
-	bst --colors $(ARCH_OPTS) build tarballs/all.bst
+	rm -rf tarballs
+	mkdir -p tarballs
+	bst build tarballs/sdk.bst tarballs/platform.bst
+	bst checkout tarballs/sdk.bst --tar - | xz > tarballs/freedesktop-sdk-$(ARCH).tar.xz
+	bst checkout tarballs/platform.bst --tar - | xz > tarballs/freedesktop-platform-$(ARCH).tar.xz
+
 
 bootstrap:
 	$(BST) build bootstrap/export-bootstrap.bst
