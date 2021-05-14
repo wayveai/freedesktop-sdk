@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: github:pkgconf/pkgconf.git
   track: master
-  ref: pkgconf-1.7.3-0-gaca0674837cb6df1b29faddb8afe6b2f39733f6b
+  ref: pkgconf-1.7.4-0-g458101e787a47378d2fc74c64f649fd3a5f75e55
