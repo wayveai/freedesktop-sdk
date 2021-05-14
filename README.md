@@ -117,27 +117,23 @@ on are own flatpak remote:
     $ flatpak install org.freedesktop.Platform.VulkanInfo
 ```
 
-## HTML5 Codecs
+## Multimedia codecs
 
-For the 18.08 release cycle we provided a runtime extension containing the
-codecs required to play H.264 encoded video, however things are changing for the
-20.08 release. The `ffmpeg-html5` extension is now deprecated, and cannot be
-relied upon, so it's not longer safe to assume a user has H.264 support.
+As part of the runtime, there's ffmpeg which contains various common
+patent-free codecs. We also provide provide an `openh264` extension, which
+provides a royalty free H.264 codec. 
 
-We intend to provide an `openh264` extension, which will provide a royalty free
-H.264 codec. However, this extension will only be available for flatpak version
-1.4.2 or later. This is (at present) packaged in very few distros.
-
-The main takeaway is this: **if you need to use H.264 codecs, include the
-ffmpeg-full extension with your app**.
+If your application requires further codecs or openh264 is for some reason
+not functioning correctly for your consumers, it's also possible to declare
+ffmpeg-full extension with your app. It can be done so that the extension
+is only used when manually installed.
 
 For an example of this, see `tests/test.codecs.ffmpeg-full.json`, which is a
 flatpak manifest for an app using the full codecs.
 
 ## libudev
-Since 20.08 release, freedesktop-sdk flatpak runtime ships libudev library.
-This is dedicated for apps which need to link against it during build and
-later at runtime.
+libudev contained in freedesktop-sdk flatpak runtime is dedicated for apps
+which need to link against it during build and later at runtime.
 
 In flatpak it's use-case is limited to a simple PCI device enumarator without
 access to udevd database as upstream doesn't guarantee API stability there
