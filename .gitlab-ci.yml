@@ -390,6 +390,7 @@ app_riscv64:
 
 .check-snap:
   stage: snap
+  interruptible: true
   script:
     - make export-snap
     - python3 utils/parse_review.py snap/sdk.snap
