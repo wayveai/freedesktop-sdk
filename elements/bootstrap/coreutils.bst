@@ -19,6 +19,10 @@ variables:
     --enable-install-program=hostname,arch
     --enable-no-install-program=kill,uptime,groups
     --enable-acl
+    ac_cv_func_chown_works=yes
+    gl_cv_func_chown_slash_works=yes
+    gl_cv_func_chown_ctime_works=yes
+    gl_cv_func_chown_follows_symlink=yes
 
   make-install: make -j1 install DESTDIR="%{install-root}" INSTALL=install
 
