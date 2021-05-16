@@ -353,6 +353,7 @@ app_ppc64le:
 
 .check-snap:
   stage: snap
+  interruptible: true
   script:
     - make export-snap
     - python3 utils/parse_review.py snap/sdk.snap
@@ -743,6 +744,7 @@ publish_ppc64le_tar:
 cve_report:
   extends: .builder-x86_64
   stage: finish-publish
+  interruptible: true
   cache:
     key: cve
     paths:
@@ -772,6 +774,7 @@ cve_report:
 markdown_manifest:
   extends: .builder-x86_64
   stage: finish-publish
+  interruptible: true
   script:
     - make markdown-manifest
   artifacts:
