@@ -6,6 +6,8 @@ depends:
 
 build-depends:
 - public-stacks/buildsystem-cmake.bst
+- components/spirv-tools.bst
+- components/spirv-llvm-translator.bst
 
 (@):
 - elements/include/llvm.yml

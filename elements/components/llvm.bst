@@ -78,7 +78,6 @@ public:
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
-        - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'

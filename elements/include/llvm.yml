@@ -1,17 +1,13 @@
 sources:
 - kind: git_tag
-  track: release/11.x
+  track: main
+  track-extra:
+  - release/12.x
   exclude:
   - llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-11.1.0-0-g1fdec59bffc11ae37eb51a1b9869f0696bfd5312
+  ref: llvmorg-12.0.0-0-gd28af7c654d8db0b68c175db5ce212d74fb5e9bc
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
 - kind: patch
-  path: patches/llvm/llvm-fix-tsan-build.patch
-- kind: patch
-  path: patches/llvm/llvm-shared-tablegen.patch
-- kind: patch
   path: patches/llvm/llvm-riscv64-lib.patch
-- kind: patch
-  path: patches/llvm/llvm-gcc-11.patch
