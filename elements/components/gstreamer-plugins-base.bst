@@ -80,3 +80,5 @@ sources:
   directory: subprojects/gl-headers
   track: master
   ref: 5c8c7c0d3ca1f0b783272dac0b95e09414e49bc8
+- kind: patch
+  path: patches/gstreamer-plugins-base/decodebin3-change-stream-selection-message-owner.patch
