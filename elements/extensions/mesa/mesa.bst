@@ -155,3 +155,5 @@ sources:
   - '*.0'
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
+- kind: patch
+  path: patches/mesa/backport-missing-initialization.patch
