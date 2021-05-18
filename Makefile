@@ -56,11 +56,7 @@ build:
 	             oci/layers/{bootstrap,debug,platform,sdk,flatpak}.bst
 
 build-tar:
-	rm -rf tarballs
-	mkdir -p tarballs
-	bst build tarballs/sdk.bst tarballs/platform.bst
-	bst checkout tarballs/sdk.bst --tar - | xz > tarballs/freedesktop-sdk-$(ARCH).tar.xz
-	bst checkout tarballs/platform.bst --tar - | xz > tarballs/freedesktop-platform-$(ARCH).tar.xz
+	$(BST) build $(TAR_ELEMENTS)
 
 
 BOOTSTRAP_COMPONENTS=bootstrap go
@@ -90,13 +86,13 @@ export: clean-runtime
 
 $(REPO): export
 
-export-tar:
-	bst --colors $(ARCH_OPTS) build $(TAR_ELEMENTS)
-
+export-tar: build-tar
+	rm -rf $(TAR_CHECKOUT_ROOT)
 	mkdir -p $(TAR_CHECKOUT_ROOT)
 	set -e; for tarball in $(TARBALLS); do \
 		dir="$(ARCH)-$${tarball}"; \
-		bst --colors $(ARCH_OPTS) checkout --hardlinks "tarballs/$${tarball}.bst" "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
+		mkdir -p "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
+		$(BST) checkout "tarballs/$${tarball}.bst" --tar - | xz > "$(TAR_CHECKOUT_ROOT)/$${dir}/freedesktop-$${tarball}-$(ARCH).tar.xz"; \
 	done
 
 clean-vm:
