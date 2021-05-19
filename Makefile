@@ -88,7 +88,7 @@ export-tar: build-tar
 	set -e; for tarball in $(TARBALLS); do \
 		dir="$(ARCH)-$${tarball}"; \
 		mkdir -p "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
-		$(BST) checkout "tarballs/$${tarball}.bst" --tar - | xz > "$(TAR_CHECKOUT_ROOT)/$${dir}/freedesktop-$${tarball}-$(ARCH).tar.xz"; \
+		$(BST) checkout "tarballs/$${tarball}.bst" --tar - | xz -T0 > "$(TAR_CHECKOUT_ROOT)/$${dir}/freedesktop-$${tarball}-$(ARCH).tar.xz"; \
 	done
 
 clean-vm:
