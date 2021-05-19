@@ -370,11 +370,11 @@ config:
     esac
 
     # Useful filesystems
-    for fs in XFS BTRFS EXFAT_FS VFAT_FS F2FS_FS ISO9660_FS; do
-      [ $(scripts/config -s "${fs}") != n ] || scripts/config -m "${fs}"
+    for fs in XFS BTRFS EXFAT VFAT F2FS ISO9660; do
+      [ $(scripts/config -s "${fs}_FS") != n ] || scripts/config -m "${fs}_FS"
     done
-    for fs in XFS BTRFS F2FS_FS; do
-      scripts/config -e "${fs}_POSIX_ACL"
+    for fs in XFS BTRFS F2FS; do
+      scripts/config -e "${fs}_FS_POSIX_ACL"
     done
     scripts/config -e FS_ENCRYPTION
 
