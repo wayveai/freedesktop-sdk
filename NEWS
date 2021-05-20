@@ -1,6 +1,12 @@
 Freedesktop-SDK
 
-freedesktop-sdk-20.08.10
+freedesktop-sdk-20.08.11:
+    * Fix some reprducibility problems in acl and attr
+    * Fix enable filesystems on example VM
+    * Backport a decodebin patch (#1248)
+    * Fix reproducibility tests
+
+freedesktop-sdk-20.08.10:
     * pkg-config: Upgrade to 1.7.4
     * valgrind: Upgrade to 3.17.0
     * harfbuzz: Update to 2.7.4
