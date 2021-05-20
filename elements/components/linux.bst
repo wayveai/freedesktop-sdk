@@ -397,6 +397,9 @@ config:
     done
     scripts/config -d DEBUG_BLOCK_EXT_DEVT
 
+    # Compressed firmware
+    scripts/config -e FW_LOADER_COMPRESS
+
   - |
     yes '' | make -j1 oldconfig
 
