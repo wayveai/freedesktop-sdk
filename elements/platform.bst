@@ -63,7 +63,6 @@ depends:
 - components/nss.bst
 - components/openjpeg.bst
 - components/opus.bst
-- components/osmesa.bst
 - components/p11-kit.bst
 - components/pcre2.bst
 - components/procps.bst

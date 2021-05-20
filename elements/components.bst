@@ -282,7 +282,6 @@ depends:
 - components/opusfile.bst
 - components/orc.bst
 - components/os-release.bst
-- components/osmesa.bst
 - components/ostree.bst
 - components/p11-kit.bst
 - components/pango.bst
