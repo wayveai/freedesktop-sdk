@@ -7,6 +7,8 @@ build-depends:
 - vm/minimal/initial-scripts.bst
 - vm/prepare-image.bst
 
+environment:
+  E2FSPROGS_FAKE_TIME: '%{source-date-epoch}'
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
@@ -39,17 +41,27 @@ config:
 
   commands:
   - |
+    cp -a /sysroot /genimage/root
+
+  - |
     prepare-image.sh \
-       --sysroot /sysroot \
+       --sysroot /genimage/root \
        --seed "%{uuidnamespace}" \
        --rootpasswd "root" >/tmp/vars
 
   - |
+    find /genimage/root -depth -exec touch -h --date="@${SOURCE_DATE_EPOCH}" {} ";"
+
+  - |
+    efi_part_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name partition-efi)"
+    root_part_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name partition-root)"
+    disk_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name disk)"
+    hash_seed="$(uuidgen -s --namespace "%{uuidnamespace}" --name hash-seed)"
     . /tmp/vars
     cat >/genimage/genimage.cfg <<EOF
     image efi.img {
         vfat {
-            extraargs = "-F32 -i${id_efi} -n EFI"
+            extraargs = "--invariant -F32 -i${id_efi} -n EFI"
         }
         mountpoint = "/efi"
         size = 100M
@@ -57,8 +69,9 @@ config:
     image root.img {
         ext4  {
             label = "root"
-            extraargs = "-U ${uuid_root}"
+            extraargs = "-U ${uuid_root} -E hash_seed=${hash_seed}"
             use-mke2fs = true
+            fs-timestamp = "${SOURCE_DATE_EPOCH}"
         }
         size = 1G
     }
@@ -66,21 +79,24 @@ config:
         hdimage {
             align = 1M
             gpt = true
+            disk-uuid = "${disk_uuid}"
         }
         partition efi {
             image = "efi.img"
             partition-type-uuid = "U"
+            partition-uuid = "${efi_part_uuid}"
         }
         partition root {
             image = "root.img"
             partition-type-uuid = "%{linux-root}"
+            partition-uuid = "${root_part_uuid}"
         }
     }
     EOF
 
   - |
     cd /genimage/
-    genimage --rootpath /sysroot
+    genimage
 
   - |
     install -Dm644 -t "%{install-root}" /genimage/images/disk.img

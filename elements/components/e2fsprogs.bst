@@ -59,3 +59,5 @@ sources:
   url: kernel:fs/ext2/e2fsprogs.git
   track: master
   ref: v1.46.2-0-g67f2b54667e65cf5a478fcea8b85722be9ee6e8d
+- kind: patch
+  path: patches/e2fsprogs/reproducible.patch

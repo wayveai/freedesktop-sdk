@@ -99,7 +99,10 @@ done
 echo "Running systemd-firstboot" 1>&2
 systemd-firstboot --root "${sysroot}" --locale en_US.UTF-8 --timezone UTC
 if [ "${rootpasswd:+set}" = set ]; then
-  systemd-firstboot --root "${sysroot}" --force --root-password ${rootpasswd}
+  salt_uuid="$(uuidgen -s --namespace "${uuidnamespace}" --name salt | sed s/-//g)"
+  salt="$(for i in {0..11}; do printf "\x${salt_uuid:$(($i*2)):2}"; done | base64)"
+  hashed_passwd="$(openssl passwd -6 -salt "${salt}" "${rootpasswd}")"
+  systemd-firstboot --root "${sysroot}" --force --root-password-hashed "${hashed_passwd}"
 fi
 
 echo "Running systemctl preset-all" 1>&2
