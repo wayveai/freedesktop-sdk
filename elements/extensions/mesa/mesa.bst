@@ -149,11 +149,9 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: '21.0'
-  ref: mesa-21.0.3-0-g091978e0ec92b22773c4831e77aea19a74ed5179
+  track: '21.1'
+  ref: mesa-21.1.1-0-gabac12bc758ada9e15fa8317d819e5f1ee0fbede
   exclude:
   - '*.0'
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
-- kind: patch
-  path: patches/mesa/backport-missing-initialization.patch
