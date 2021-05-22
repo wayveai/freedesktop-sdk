@@ -188,6 +188,9 @@ config:
     scripts/config -e RTW88_8822CE
     scripts/config -e WLAN_VENDOR_ATH
 
+    # Ethernet hardware
+    scripts/config -m IGB
+
     # Common DRM drivers
     scripts/config -m DRM_NOUVEAU
     scripts/config -m DRM_RADEON
