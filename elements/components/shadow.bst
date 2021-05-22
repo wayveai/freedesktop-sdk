@@ -35,6 +35,9 @@ config:
     - touch '%{install-root}%{sysconfdir}/subuid'
     - touch '%{install-root}%{sysconfdir}/subgid'
 
+    - rm %{install-root}%{sysconfdir}/pam.d/chfn
+    - rm %{install-root}%{sysconfdir}/pam.d/chsh
+
 public:
   initial-script:
     script: |
