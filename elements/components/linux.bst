@@ -35,6 +35,8 @@ variables:
 
 environment:
   ARCH: '%{kernel_arch}'
+  # compile.h has hardcoded timestamp, let's seed it
+  KBUILD_BUILD_TIMESTAMP: 'Thu Nov 10 15:00:00 UTC 2011'
 
 config:
   configure-commands:
