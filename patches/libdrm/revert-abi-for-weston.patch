@@ -1,0 +1,61 @@
+From ce90b4697390857ebeb67134578511f57092d30f Mon Sep 17 00:00:00 2001
+From: Seppo Yli-Olli <seppo.yliolli@gmail.com>
+Date: Sun, 23 May 2021 00:12:21 +0300
+Subject: [PATCH] Revert "xf86drmMode: add drmIsKMS"
+
+This reverts commit 523b3658aa8efa746417e916c987de23740ce313.
+
+diff --git a/core-symbols.txt b/core-symbols.txt
+index 410054b3..1ff4ecaa 100644
+--- a/core-symbols.txt
++++ b/core-symbols.txt
+@@ -83,7 +83,6 @@ drmHashInsert
+ drmHashLookup
+ drmHashNext
+ drmIoctl
+-drmIsKMS
+ drmIsMaster
+ drmMalloc
+ drmMap
+diff --git a/xf86drmMode.c b/xf86drmMode.c
+index dc177241..23a31dab 100644
+--- a/xf86drmMode.c
++++ b/xf86drmMode.c
+@@ -146,16 +146,6 @@ drm_public void drmModeFreeEncoder(drmModeEncoderPtr ptr)
+  * ModeSetting functions.
+  */
+ 
+-drm_public int drmIsKMS(int fd)
+-{
+-	struct drm_mode_card_res res = {0};
+-
+-	if (drmIoctl(fd, DRM_IOCTL_MODE_GETRESOURCES, &res) != 0)
+-		return 0;
+-
+-	return res.count_crtcs > 0 && res.count_connectors > 0 && res.count_encoders > 0;
+-}
+-
+ drm_public drmModeResPtr drmModeGetResources(int fd)
+ {
+ 	struct drm_mode_card_res res, counts;
+diff --git a/xf86drmMode.h b/xf86drmMode.h
+index 4bde6e35..e1ca4a12 100644
+--- a/xf86drmMode.h
++++ b/xf86drmMode.h
+@@ -264,13 +264,6 @@ extern void drmModeFreeEncoder( drmModeEncoderPtr ptr );
+ extern void drmModeFreePlane( drmModePlanePtr ptr );
+ extern void drmModeFreePlaneResources(drmModePlaneResPtr ptr);
+ 
+-/**
+- * Check whether the DRM node supports Kernel Mode-Setting.
+- *
+- * Returns 1 if suitable for KMS, 0 otherwise.
+- */
+-extern int drmIsKMS(int fd);
+-
+ /**
+  * Retrieves all of the resources associated with a card.
+  */
+-- 
+2.31.1
+
