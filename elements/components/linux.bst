@@ -146,6 +146,8 @@ config:
     enable DEVPTS_MULTIPLE_INSTANCES
 
     # Sound with QEMU
+    module SOUND
+    module SND
     enable SND_HDA_GENERIC
 
     # Required for live boot
@@ -208,9 +210,17 @@ config:
     module DRM_NOUVEAU
     module DRM_RADEON
     module DRM_AMDGPU
+    enable DRM_AMDGPU_SI
+    enable DRM_AMDGPU_CIK
     enable DRM_AMD_DC
     enable DRM_AMD_DC_DCN
     enable DRM_AMD_DC_HDCP
+    enable DRM_AMD_DC_SI
+    enable DRM_RADEON_USERPTR
+    enable DRM_AMDGPU_USERPTR
+    enable DRM_AMD_ACP
+    module SND_SOC
+    module SND_SOC_AMD_ACP
     case "%{arch}" in
       x86_64|i686)
         module DRM_I915
@@ -390,10 +400,52 @@ config:
     enable NLS_CODEPAGE_437
     enable NLS_ISO8859_1
 
-    # RISC-V qemu virtual machine
+    # Power managment
+    enable PM
+
+    # RAM error correction
+    if has HAS_IOMEM && has EDAC_SUPPORT; then
+      enable RAS
+      module EDAC
+    fi
+
+    # PCI
+    if has HAVE_PCI; then
+      enable PCI_IOV
+      enable PCI_PRI
+      enable PCI_PASID
+      enable HOTPLUG_PCI
+      enable HOTPLUG_PCI_PCIE
+      enable PCIEPORTBUS
+      #enable PCIE_PME
+      enable PCIE_PTM
+      if has RAS; then
+        enable PCIEAER
+        module PCIEAER_INJECT
+        enable PCIE_ECRC
+        enable PCIE_DPC
+        if has ACPI; then
+          enable PCIE_EDR
+        fi
+      fi
+    fi
+
+    # RISC-V
     case "%{arch}" in
       riscv*)
+        # QEMU
         enable SOC_VIRT
+
+        # Sifive Unmatched
+        enable SOC_SIFIVE
+        enable SIFIVE_L2
+        enable PCIE_FU740
+        enable PCIE_MICROSEMI
+        enable PCI_SW_SWITCHTEC
+        enable PWM
+        module PWM_SIFIVE
+        enable COMMON_CLK_PWM
+        enable EDAC_SIFIVE
         ;;
     esac
 
@@ -453,7 +505,7 @@ config:
     ln -sr "${targetdir}" "%{install-root}%{indep-libdir}/modules/${release}/build"
 
   (?):
-  - target_arch in ["aarch64", "arm"]:
+  - target_arch in ["aarch64", "arm", "riscv64"]:
       install-commands:
         (>):
         - |
@@ -480,3 +532,5 @@ sources:
   (>):
   - kind: local
     path: files/linux/config-utils.sh
+  - kind: patch_queue
+    path: patches/sifive-unmatched/linux
