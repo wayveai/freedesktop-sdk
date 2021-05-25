@@ -3,9 +3,9 @@ sources:
   url: kernel:linux/kernel/git/stable/linux.git
   track: master
   track-extra:
-  - linux-5.11.y
+  - linux-5.12.y
   exclude:
   - '*-rc*'
-  ref: v5.11.17-0-gfeaeae9aef5e0cf1c2afad3ca403f6451125c77d
+  ref: v5.12.6-0-gc84df89f0476b1616ee3fe9de6030f018ad002c3
 - kind: patch
   path: patches/linux/riscv-allow-initrd-cmdline-loader.patch
