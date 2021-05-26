@@ -407,7 +407,7 @@ config:
     scripts/config -e FW_LOADER_COMPRESS
 
   - |
-    yes '' | make -j1 oldconfig
+    make -j1 olddefconfig
 
   install-commands:
   - |
