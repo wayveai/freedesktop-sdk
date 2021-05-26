@@ -476,7 +476,7 @@ def handle_results(results, output_dir: str) -> bool:
     print("")
 
     # Everything is ok, nothing to do.
-    if len(results) == 0:
+    if len(results["non_reproducible"]) == 0:
         print("Project is reproducible.")
         return True
 
