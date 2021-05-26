@@ -1,5 +1,26 @@
 kind: manual
 
+# NOTE:
+#
+# This element installs nss without installing the cryptographic signatures
+# of the libraries which are required for nss's "FIPS 140" mode, due to the
+# non-reproducible nature of these signature files.
+#
+# An upstream explanation of these files, and FIPS 140 mode, can be found here:
+#
+#   https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Tech_Notes/nss_tech_note6
+#   https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/FIPS_Mode_-_an_explanation
+#
+# If you need to use FIPS 140 mode, we recommend running the following commands
+# at deployment time in order to generate the required chk files:
+#
+#   shlibsign -v -i %{libdir}/libsoftokn3.so
+#   shlibsign -v -i %{libdir}/libfreebl3.so
+#   shlibsign -v -i %{libdir}/libfreeblpriv3.so
+#
+# The shlibsign program is also built and installed by this element.
+#
+
 depends:
 - bootstrap-import.bst
 - components/nspr.bst
@@ -65,8 +86,8 @@ config:
         *.a) ;;
         */*.so.TOC) ;;
         */libnssckbi.so) ;;
+        *.chk) ;;
 
-        *.chk) ;&
         *.so)
           install -Dm644 -t "%{install-root}%{libdir}/" "${lib}"
         ;;
