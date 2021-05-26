@@ -471,20 +471,7 @@ def bst_check_reproducibility_v2(
     return results
 
 
-def handle_results(results, output_dir: str) -> bool:
-    """ Get the list of results, writes the resulting file, and prints userful information to the user """
-    print("")
-
-    # Everything is ok, nothing to do.
-    if len(results["non_reproducible"]) == 0:
-        print("Project is reproducible.")
-        return True
-
-    # Project is not reproducible, complain.
-    print("Project is not reproducible, please check the results")
-    print("in reproducibility_results.txt and for a more detailed")
-    print(f"output, see the folder {output_dir} specified in the command")
-
+def write_html_report(results, output_dir: str, output_filename: str) -> None:
     doc, tag, text = Doc().tagtext()
 
     with tag("html"):
@@ -526,9 +513,27 @@ def handle_results(results, output_dir: str) -> bool:
                         with tag("td"):
                             text(" - ")
 
-    with open("reproducibility_results.html", "w") as file:
+    with open(output_filename, "w") as file:
         result = indent(doc.getvalue())
         file.write(result)
+
+
+def handle_results(results, output_dir: str) -> bool:
+    """ Get the list of results, writes the resulting file, and prints userful information to the user """
+
+    # Write the report first
+    write_html_report(results, output_dir, "reproducibility_results.html")
+
+    # Generate some overall stdout and report a successful exit status
+    # only if everything was found to be reproducible
+    print("")
+    if len(results["non_reproducible"]) == 0:
+        print("Project is reproducible.")
+        return True
+
+    print("Project is not reproducible, please check the results")
+    print("in reproducibility_results.txt and for a more detailed")
+    print(f"output, see the folder {output_dir} specified in the command")
 
     return False
 
