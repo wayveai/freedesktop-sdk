@@ -1,5 +1,11 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.12:
+    * nss: fix reproducibility issues (#1120)
+    * zstd: Update to 1.5.0
+    * mesa: Update to 21.1.1
+    * libdrm: Update to 2.4.105
+
 freedesktop-sdk-20.08.11:
     * Fix some reprducibility problems in acl and attr
     * Fix enable filesystems on example VM
