@@ -2,6 +2,8 @@ kind: meson
 
 build-depends:
 - components/bison.bst
+- components/m4.bst
+- components/appstream-glib.bst
 - components/flex.bst
 - components/python3.bst
 - components/python3-mako.bst
@@ -54,6 +56,8 @@ variables:
       enable_libunwind: 'false'
 
   optimize-debug: "false"
+  app-id: org.freedesktop.Platform.GL.default
+  appstream-xml: "%{app-id}.appdata.xml"
 
   meson-local: >-
     -Db_ndebug=true
@@ -90,8 +94,24 @@ variables:
     -Dprefer-iris=false
 
 config:
+  build-commands:
+    (>):
+    - |
+      TIMESTAMP=$(git log -1 --format="%at" HEAD)
+      VERSION=$(git describe | sed 's/mesa-//')
+      VERSION_DATE=$(date -d @"$TIMESTAMP" -Idate)
+      APPSTREAM_FILE=
+      m4 -D__VERSION__=${VERSION} -D__VERSION_DATE__=${VERSION_DATE} \
+      %{appstream-xml}.in > %{appstream-xml}
+
   install-commands:
     (>):
+    - |
+      mkdir -p %{install-root}%{datadir}/appdata
+      install %{appstream-xml} %{install-root}%{datadir}/appdata
+      appstream-compose --basename=%{app-id} --prefix=%{install-root}%{prefix} \
+      --origin=flatpak %{app-id}
+
     - |
       mkdir -p "%{install-root}%{libdir}"
       mv "%{install-root}%{sysconfdir}/OpenCL" "%{install-root}%{libdir}/"
@@ -153,5 +173,7 @@ sources:
   ref: mesa-21.1.1-0-gabac12bc758ada9e15fa8317d819e5f1ee0fbede
   exclude:
   - '*.0'
+- kind: local
+  path: files/mesa/org.freedesktop.Platform.GL.default.appdata.xml.in
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
