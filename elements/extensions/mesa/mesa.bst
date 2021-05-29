@@ -97,10 +97,11 @@ config:
   build-commands:
     (>):
     - |
-      TIMESTAMP=$(git log -1 --format="%at" HEAD)
-      VERSION=$(git describe | sed 's/mesa-//')
+      set -e
+      CURRENT_TAG=$(git describe --match mesa-* --exact-match)
+      TIMESTAMP=$(git log -1 --format="%at" ${CURRENT_TAG})
+      VERSION=$(echo ${CURRENT_TAG} | sed 's/mesa-//')
       VERSION_DATE=$(date -d @"$TIMESTAMP" -Idate)
-      APPSTREAM_FILE=
       m4 -D__VERSION__=${VERSION} -D__VERSION_DATE__=${VERSION_DATE} \
       %{appstream-xml}.in > %{appstream-xml}
 
