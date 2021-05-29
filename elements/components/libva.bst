@@ -36,3 +36,5 @@ sources:
   ref: 2.8.0-0-g963a4b63a7e9ada3934047c4af906c6867511ac7
 - kind: patch
   path: patches/libva/pkgconfig-driver-path.patch
+- kind: patch
+  path: patches/libva/0001-wayland-don-t-try-to-authenticate-with-render-nodes.patch
