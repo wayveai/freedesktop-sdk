@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="runtime">
+  <id>org.freedesktop.Platform.GL.default</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Mesa</name>
+  <summary>Mesa - The 3D Graphics Library</summary>
+  <releases>
+    <release version="__VERSION__" date="__VERSION_DATE__"/>
+  </releases>
+  <description>
+    <p>
+      This extension contains the drivers part of Mesa3D library.
+      It's intended to be used together with libdrm and other
+      graphics libraries from corresponding Freedesktop SDK runtime
+      and its derivatives.
+    </p>
+  </description>
+  <url type="homepage">https://freedesktop-sdk.gitlab.io/</url>
+</component>
+
