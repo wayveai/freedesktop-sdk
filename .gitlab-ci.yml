@@ -373,7 +373,7 @@ app_aarch64:
     - .builder-aarch64
   needs: []
 
-app_ppc64le:
+.app_ppc64le:
   extends:
     - .flatpak_template
     - .builder-ppc64le
@@ -484,7 +484,7 @@ minimal_systemd_vm_aarch64:
       artifacts: false
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
-minimal_systemd_vm_ppc64le:
+.minimal_systemd_vm_ppc64le:
   # FIXME: We should find out why this fails to boot.
   allow_failure: true
   extends:
@@ -622,9 +622,9 @@ finish_publish:
       artifacts: false
     - job: publish_aarch64
       artifacts: false
-    - job: publish_ppc64le
-      artifacts: false
-      optional: true
+#    - job: publish_ppc64le
+#      artifacts: false
+#      optional: true
 
 finish_publish_failed:
   extends: .builder-x86_64
@@ -648,9 +648,9 @@ finish_publish_failed:
       artifacts: false
     - job: publish_aarch64
       artifacts: false
-    - job: publish_ppc64le
-      artifacts: false
-      optional: true
+#    - job: publish_ppc64le
+#      artifacts: false
+#      optional: true
 
 .flatpak_publish_template:
   stage: publish
@@ -744,7 +744,7 @@ publish_aarch64:
     - .flatpak_publish_template
     - .builder-aarch64
 
-publish_ppc64le:
+.publish_ppc64le:
   extends:
     - .flatpak_publish_template
     - .builder-ppc64le
@@ -769,7 +769,7 @@ publish_aarch64_tar:
   needs: []
   when: manual
 
-publish_ppc64le_tar:
+.publish_ppc64le_tar:
   extends:
     - .publish_tar_template
     - .builder-ppc64le
@@ -971,7 +971,7 @@ publish_docker_aarch64:
     DISABLE_CACHE_PUSH: 1
   needs: []
 
-publish_docker_ppc64le:
+.publish_docker_ppc64le:
   extends:
     - .builder-ppc64le
     - .docker_publish_template
@@ -1019,7 +1019,7 @@ publish_docker_finish:
   tags:
   - x86_64
   needs:
-  - publish_docker_ppc64le
+#  - publish_docker_ppc64le
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
@@ -1042,7 +1042,7 @@ check_runtime_inheritance_x86_64:
   - .runtime_inheritance_check_template
   - .builder-x86_64
 
-check_runtime_inheritance_ppc64le:
+.check_runtime_inheritance_ppc64le:
   extends:
   - .runtime_inheritance_check_template
   - .builder-ppc64le
