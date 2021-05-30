@@ -61,7 +61,7 @@ mkdir -p "${sysroot}/etc"
 
 echo "Initial /etc/shells" 1>&2
 
-cat >"${sysroot}/etc/shells" <<EOF
+cat >>"${sysroot}/etc/shells" <<EOF
 /bin/sh
 /bin/bash
 EOF
