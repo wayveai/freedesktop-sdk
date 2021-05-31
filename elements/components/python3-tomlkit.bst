@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: tomlkit
-  url: pypi:64/e0/6c8c96024d118cb029a97752e9a6d70bd06e4fd4c8b00fd9446ad6178f1d/tomlkit-0.7.0.tar.gz
-  sha256sum: ac57f29693fab3e309ea789252fcce3061e19110085aa31af5446ca749325618
+  url: pypi:65/ed/7b7216101bc48627b630693b03392f33827901b81d4e1360a76515e3abc4/tomlkit-0.7.2.tar.gz
+  sha256sum: d7a454f319a7e9bd2e249f239168729327e4dd2d27b17dc68be264ad1ce36754
