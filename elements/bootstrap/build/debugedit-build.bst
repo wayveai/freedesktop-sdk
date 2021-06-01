@@ -1,12 +1,12 @@
 kind: autotools
 
+build-depends:
+- bootstrap/build/base-sdk.bst
+- bootstrap/gnu-config.bst
+
 depends:
-- filename: bootstrap/build/base-sdk.bst
-  type: build
-- filename: bootstrap/gnu-config.bst
-  type: build
-- filename: bootstrap/build/file-stage1.bst
-- filename: bootstrap/build/elfutils-build.bst
+- bootstrap/build/file-stage1.bst
+- bootstrap/build/elfutils-build.bst
 
 (@):
 - elements/bootstrap/include/build.yml
@@ -51,6 +51,13 @@ config:
     make include/rpm/rpmutil.h
     make include/rpm/rpmtypes.h
     make include/rpm/rpmtag.h
+    make include/rpm/rpmver.h
+    make include/rpm/rpmds.h
+    make include/rpm/rpmps.h
+    make include/rpm/rpmprob.h
+    make include/rpm/rpmlib.h
+    make include/rpm/header.h
+    make include/rpm/rpmtd.h
     make -C misc libmisc.la
     make -C rpmio librpmio.la
     make debugedit

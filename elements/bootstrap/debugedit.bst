@@ -1,18 +1,14 @@
 kind: autotools
 
-depends:
-- filename: bootstrap/debugedit-build-deps.bst
-  type: build
-- filename: bootstrap/popt.bst
-  type: runtime
-- filename: bootstrap/bzip2.bst
-  type: runtime
-- filename: bootstrap/elfutils.bst
-  type: runtime
-- filename: bootstrap/file.bst
-  type: runtime
-- filename: bootstrap/openssl.bst
-  type: runtime
+build-depends:
+- bootstrap/debugedit-build-deps.bst
+
+runtime-depends:
+- bootstrap/popt.bst
+- bootstrap/bzip2.bst
+- bootstrap/elfutils.bst
+- bootstrap/file.bst
+- bootstrap/openssl.bst
 
 (@):
 - elements/bootstrap/include/target.yml
@@ -55,6 +51,13 @@ config:
     make include/rpm/rpmutil.h
     make include/rpm/rpmtypes.h
     make include/rpm/rpmtag.h
+    make include/rpm/rpmver.h
+    make include/rpm/rpmds.h
+    make include/rpm/rpmps.h
+    make include/rpm/rpmprob.h
+    make include/rpm/rpmlib.h
+    make include/rpm/header.h
+    make include/rpm/rpmtd.h
     make -C misc libmisc.la
     make -C rpmio librpmio.la
     make debugedit
