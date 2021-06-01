@@ -57,6 +57,6 @@ sources:
 - kind: git_tag
   url: github:alsa-project/alsa-lib.git
   track: master
-  ref: v1.2.4-0-g49bd4b198e867eedb76ce8d1a504309934343532
+  ref: v1.2.5-0-g9f16fa572947044468695e956a654d4ea07f264f
 - kind: patch
   path: patches/alsa-lib/sysconfig-ostree.patch
