@@ -14,6 +14,10 @@ depends:
 - components/json-glib.bst
 - components/libgusb.bst
 
+variables:
+  meson-local: >-
+    -Dtests=false
+
 sources:
 - kind: git_tag
   url: github:hughsie/libjcat.git
