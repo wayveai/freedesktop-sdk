@@ -24,7 +24,6 @@ depends:
 - filename: bootstrap/ncurses.bst
 - filename: bootstrap/openssl.bst
 - filename: bootstrap/pcre.bst
-- filename: bootstrap/popt.bst
 - filename: bootstrap/readline.bst
 - filename: bootstrap/sed.bst
 - filename: bootstrap/symlinks.bst

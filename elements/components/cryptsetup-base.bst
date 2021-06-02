@@ -6,6 +6,7 @@ build-depends:
 - components/pwquality.bst
 - components/util-linux.bst
 - components/lvm2-stage1.bst
+- components/popt.bst
 
 variables:
   conf-local: >-
