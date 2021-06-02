@@ -1,15 +1,15 @@
 kind: manual
 
-(@): elements/bootstrap/include/target.yml
+(@):
+- elements/bootstrap/include/target.yml
+- elements/bootstrap/include/dwz-source.yml
 
-depends:
-- filename: bootstrap/dwz-build-deps.bst
-  type: build
+build-depends:
+- bootstrap/dwz-build-deps.bst
 
-- filename: bootstrap/glibc.bst
-  type: runtime
-- filename: bootstrap/elfutils.bst
-  type: runtime
+runtime-depends:
+- bootstrap/glibc.bst
+- bootstrap/elfutils.bst
 
 variables:
   make-args: >-
@@ -34,9 +34,3 @@ public:
       devel:
         (>):
         - "/**"
-
-sources:
-- kind: git_tag
-  track: master
-  url: sourceware:dwz.git
-  ref: dwz-0.14-0-g24a051690bf2f016f0c961026de0895997ceee3a
