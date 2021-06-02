@@ -4,6 +4,7 @@ depends:
 - bootstrap-import.bst
 - components/opus.bst
 - components/libogg.bst
+- components/openssl.bst
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst

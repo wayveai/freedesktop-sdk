@@ -1,7 +1,8 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
+- bootstrap-import.bst
+- components/openssl.bst
 
 config:
   configure-commands:

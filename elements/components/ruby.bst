@@ -7,6 +7,7 @@ depends:
 - bootstrap-import.bst
 - components/libffi.bst
 - components/gdbm.bst
+- components/openssl.bst
 
 # Set '--with-compress-debug-sections=no' because of
 # https://bugs.ruby-lang.org/issues/12934

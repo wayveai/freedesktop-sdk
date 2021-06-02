@@ -22,7 +22,6 @@ depends:
 - filename: bootstrap/linux-headers.bst
 - filename: bootstrap/make.bst
 - filename: bootstrap/ncurses.bst
-- filename: bootstrap/openssl.bst
 - filename: bootstrap/pcre.bst
 - filename: bootstrap/readline.bst
 - filename: bootstrap/sed.bst

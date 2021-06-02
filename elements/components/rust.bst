@@ -3,6 +3,7 @@ kind: manual
 depends:
 - components/llvm.bst
 - components/libxml2.bst
+- components/openssl.bst
 
 build-depends:
 - bootstrap-import.bst

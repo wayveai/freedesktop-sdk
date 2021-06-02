@@ -7,6 +7,7 @@ build-depends:
 - components/util-linux.bst
 - components/lvm2-stage1.bst
 - components/popt.bst
+- components/openssl.bst
 
 variables:
   conf-local: >-

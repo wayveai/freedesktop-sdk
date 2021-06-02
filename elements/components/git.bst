@@ -17,6 +17,7 @@ depends:
 - components/pcre2.bst
 - components/expat.bst
 - components/libffi.bst
+- components/openssl.bst
 
 runtime-depends:
 - components/ca-certificates.bst

@@ -8,6 +8,7 @@ depends:
 - components/gnutls.bst
 - components/nss.bst
 - components/libnghttp2.bst
+- components/openssl.bst
 
 # Curl must be configured --with-ca-bundle in order to find the
 # correct certificate bundle at runtime, which is later generated

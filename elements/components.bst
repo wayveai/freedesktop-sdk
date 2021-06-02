@@ -278,6 +278,7 @@ depends:
 - components/openjpeg.bst
 - components/openssh-systemd.bst
 - components/openssh.bst
+- components/openssl.bst
 - components/opus.bst
 - components/opusfile.bst
 - components/orc.bst
