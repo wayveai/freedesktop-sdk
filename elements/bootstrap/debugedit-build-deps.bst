@@ -11,10 +11,6 @@ depends:
 - filename: bootstrap/build/debug-utils.bst
   type: build
 
-- filename: bootstrap/openssl.bst
-  type: build
-- filename: bootstrap/popt.bst
-  type: build
 - filename: bootstrap/bzip2.bst
   type: build
 - filename: bootstrap/elfutils.bst
@@ -34,13 +30,5 @@ config:
   - element: bootstrap/build/debug-utils.bst
     destination: "/"
 
-  - element: bootstrap/openssl.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/popt.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/bzip2.bst
-    destination: "%{sysroot}"
   - element: bootstrap/elfutils.bst
-    destination: "%{sysroot}"
-  - element: bootstrap/file.bst
     destination: "%{sysroot}"
