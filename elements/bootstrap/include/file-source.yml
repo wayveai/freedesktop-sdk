@@ -5,5 +5,5 @@ public:
 sources:
 - kind: git_tag
   url: github:file/file.git
-  track: master
+  # track: master Updates blocked due to forward ABI break
   ref: FILE5_39-0-g87731415de945660b00f02207d8e9d986ef9b82e
