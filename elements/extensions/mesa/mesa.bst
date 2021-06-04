@@ -9,6 +9,7 @@ build-depends:
 - components/python3-mako.bst
 - components/vulkan.bst
 - components/wayland-protocols.bst
+- extensions/mesa/zstd.bst
 - public-stacks/buildsystem-meson.bst
 
 depends:
@@ -91,6 +92,7 @@ variables:
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=enabled
     -Dprefer-iris=false
+    -Dzstd=enabled
 
 config:
   build-commands:
