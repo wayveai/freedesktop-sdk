@@ -446,8 +446,6 @@ depends:
 - components/wget.bst
 - components/which.bst
 - components/wireless-regdb-bin.bst
-- components/wireplumber.bst
-- components/wireplumber.bst
 - components/wpa-supplicant.bst
 - components/xcb-util-cursor.bst
 - components/xcb-util-image.bst
