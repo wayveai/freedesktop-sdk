@@ -1,4 +1,4 @@
-# Copyright (c) 2020 freedesktop-sdk
+# Copyright 2020, 2021 freedesktop-sdk
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,28 +25,31 @@
 #        Valentin David <valentin.david@gmail.com> (Collect Manifest)
 #        Adam Jones <adam.jones@codethink.co.uk>   (Collect Manifest)
 #        Douglas Winship <douglas.winship@codethink.co.uk> (Url Manifest)
-"""Url Manifest Element
+#        Abderrahim Kitouni <akitouni@gnome.org> (Buildstream plugin -> script)
 
-A buildstream plugin used to produce a manifest file
-containing a list of source urls for a given dependency,
-and all its subdependencies, down to the bottom of the tree.
+# A script used to produce a manifest file containing a list of source urls for
+# a given dependency, and all its subdependencies, down to the bottom of the
+# tree.
+#
+# The manifest contains information such as:
+#     - the alias used in the url (null if no alias is used)
+#     - the 'main' source url
+#
+# The manifest file is exported as a json file to the path provided
+# under the "path" variable defined in the .bst file.
+#
+# We'd also like to include the list of mirror urls (which may be empty).
 
-The manifest contains information such as:
-    - the alias used in the url (null if no alias is used)
-    - the 'main' source url
-
-The manifest file is exported as a json file to the path provided
-under the "path" variable defined in the .bst file.
-
-We'd also like to include the list of mirror urls (which may be empty).
-Currently not possible to do that from a plugin, requires an external
-script to add mirror info to the manifest after it's created.
-"""
+from datetime import datetime
 
 import json
 import os
 import re
-from buildstream import Element, Scope
+import sys
+
+from buildstream._context import Context
+from buildstream._project import Project
+from buildstream._stream import Stream
 
 def get_source_locations(sources):
     """
@@ -116,64 +119,42 @@ def get_source_locations(sources):
     return source_locations
 
 
-class UrlManifestElement(Element):
+def message_handler(message, context): #pylint: disable=unused-argument
+    if message.depth == 0 and message.message_type == 'start':
+        print(message.message)
+        if message.detail:
+            print(message.detail)
 
-    BST_FORMAT_VERSION = 0.2
 
-    def configure(self, node):
-        if 'path' in node:
-            self.path = self.node_subst_member(node, 'path', None)
-        else:
-            self.path = None
+def bst_load_deps(elements):
+    context = Context()
+    context.load()
+    context.set_message_handler(message_handler)
 
-    def preflight(self):
-        pass
+    project = Project('.', context)
 
-    def get_unique_key(self):
-        key = {
-            'path': self.path,
-            'version': self.BST_FORMAT_VERSION
-        }
-        return key
+    stream = Stream(context, project, datetime.now())
 
-    def configure_sandbox(self, sandbox):
-        pass
+    return stream.load_selection(elements, selection='all')
 
-    def stage(self, sandbox):
-        pass
+if __name__ == '__main__':
+    manifest_file = sys.argv[1]
+    elements = sys.argv[2:]
 
-    def assemble(self, sandbox):
-        manifest = []
-        visited_names_list = []
+    manifest = []
+    visited_names_list = []
 
-        for dep in self.dependencies(Scope.ALL, recurse=True):
-            #de-duplicate list (some elements in bootstrap seem to get listed multiple times)
-            if dep.name in visited_names_list:
-                continue
-            visited_names_list.append(dep.name)
+    for dep in bst_load_deps(elements):
+        #de-duplicate list (some elements in bootstrap seem to get listed multiple times)
+        if dep.name in visited_names_list:
+            continue
+        visited_names_list.append(dep.name)
 
-            sources = get_source_locations(dep.sources())
-            if sources:
-                manifest.append({
-                    'element': dep.name, 'sources': sources})
+        sources = get_source_locations(dep.sources())
+        if sources:
+            manifest.append({'element': dep.name, 'sources': sources})
 
-        if self.path:
-            basedir = sandbox.get_directory()
-            path = os.path.join(basedir, self.path.lstrip(os.path.sep))
-            if os.path.isfile(path):
-                if path[-1].isdigit():
-                    version = int(path[-1]) + 1
-                    new_path = list(path)
-                    new_path[-1] = str(version)
-                    path = ''.join(new_path)
-                else:
-                    path = path + '-1'
-            os.makedirs(os.path.dirname(path), exist_ok=True)
+    os.makedirs(os.path.dirname(manifest_file), exist_ok=True)
 
-            with open(path, 'w') as open_file:
-                json.dump(manifest, open_file, indent=2)
-
-        return os.path.sep
-
-def setup():
-    return UrlManifestElement
+    with open(sys.argv[1], 'w') as f:
+        json.dump(manifest, f, indent=2)

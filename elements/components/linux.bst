@@ -130,8 +130,9 @@ config:
     # RT group scheduling (effectively) makes RT scheduling unavailable for userspace
     scripts/config -d RT_GROUP_SCHED
 
-    # Required for 3D acceleration in qemu
-    scripts/config -e CONFIG_DRM_VIRTIO_GPU
+    # Required for 3D acceleration in virtual machines
+    scripts/config -e DRM_VIRTIO_GPU
+    scripts/config -m DRM_VMWGFX
 
     # Required for systemd-nspawn
     scripts/config -e DEVPTS_MULTIPLE_INSTANCES
@@ -164,6 +165,9 @@ config:
     scripts/config -m VIRTIO_VSOCKETS
     scripts/config -m INPUT_UINPUT
 
+    # for virtualbox
+    scripts/config -m VBOXGUEST
+
     # For wireless networks
     scripts/config -e WIRELESS
     scripts/config -m CFG80211
@@ -183,6 +187,9 @@ config:
     scripts/config -e RTW88_8822BE
     scripts/config -e RTW88_8822CE
     scripts/config -e WLAN_VENDOR_ATH
+
+    # Ethernet hardware
+    scripts/config -m IGB
 
     # Common DRM drivers
     scripts/config -m DRM_NOUVEAU
