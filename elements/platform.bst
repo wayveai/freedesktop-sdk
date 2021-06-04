@@ -62,6 +62,7 @@ depends:
 - components/nspr.bst
 - components/nss.bst
 - components/openjpeg.bst
+- components/openssl.bst
 - components/opus.bst
 - components/p11-kit.bst
 - components/pcre2.bst

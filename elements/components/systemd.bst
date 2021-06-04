@@ -17,6 +17,7 @@ runtime-depends:
 - components/cryptsetup.bst
 - components/p11-kit.bst
 - components/libfido2.bst
+- components/openssl.bst
 
 config:
   exclude:

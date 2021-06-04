@@ -9,3 +9,4 @@ runtime-depends:
 - components/pwquality.bst
 - components/util-linux.bst
 - components/lvm2.bst
+- components/popt.bst

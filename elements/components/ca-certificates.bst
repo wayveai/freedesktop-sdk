@@ -1,9 +1,11 @@
 kind: manual
 
+build-depends:
+- components/python3.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
-  type: build
+- bootstrap-import.bst
+- components/openssl.bst
 
 config:
   build-commands:

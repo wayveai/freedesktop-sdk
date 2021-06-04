@@ -1,15 +1,10 @@
 kind: autotools
 
+build-depends:
+- components/perl.bst
+
 depends:
-- filename: bootstrap/openssl-build-deps.bst
-  type: build
-
-(@): elements/bootstrap/include/target.yml
-
-environment:
-  CC: '%{triplet}-gcc'
-  AR: '%{triplet}-gcc-ar'
-  RANLIB: '%{triplet}-gcc-ranlib'
+- bootstrap-import.bst
 
 variables:
   openssl-target: linux-%{uname-arch}

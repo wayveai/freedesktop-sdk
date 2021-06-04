@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - bootstrap-import.bst
 - components/lz4.bst
+- components/openssl.bst
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst

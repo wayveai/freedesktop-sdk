@@ -3,6 +3,7 @@ kind: autotools
 build-depends:
 - public-stacks/buildsystem-autotools.bst
 - components/linux-pam.bst
+- components/openssl.bst
 
 depends:
 - bootstrap-import.bst

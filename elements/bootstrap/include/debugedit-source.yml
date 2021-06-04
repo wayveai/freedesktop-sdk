@@ -1,4 +1,4 @@
 sources:
 - kind: tar
-  url: tar_http:ftp.rpm.org/releases/rpm-4.16.x/rpm-4.16.1.3.tar.bz2
-  ref: 513dc7f972b6e7ccfc9fc7f9c01d5310cc56ee853892e4314fa2cad71478e21d
+  url: tar_https:sourceware.org/ftp/debugedit/0.2/debugedit-0.2.tar.xz
+  ref: b78258240bb7ec5bbff109495092dcc111aa0393f135f2d2a4b43887ba26a942

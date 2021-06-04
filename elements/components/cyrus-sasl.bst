@@ -1,13 +1,14 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/groff.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/gdbm.bst
-- filename: components/groff.bst
-  type: build
-- filename: components/sqlite.bst
+- bootstrap-import.bst
+- components/gdbm.bst
+- components/sqlite.bst
+- components/openssl.bst
 
 variables:
   conf-local: |

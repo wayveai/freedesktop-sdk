@@ -10,6 +10,7 @@ depends:
 - components/expat.bst
 - components/libffi.bst
 - components/gdbm.bst
+- components/openssl.bst
 - components/sqlite.bst
 
 variables:

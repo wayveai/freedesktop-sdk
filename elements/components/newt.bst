@@ -1,11 +1,12 @@
 kind: autotools
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-autotools.bst
 
-- filename: components/slang.bst
+depends:
+- bootstrap-import.bst
+- components/slang.bst
+- components/popt.bst
 
 variables:
   builddir: ''

@@ -22,6 +22,7 @@ build-depends:
 - components/cryptsetup-lvm2-stage1.bst
 - components/p11-kit.bst
 - components/libfido2.bst
+- components/openssl.bst
 
 variables:
   efi: 'false'

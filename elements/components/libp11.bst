@@ -5,6 +5,7 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
+- components/openssl.bst
 
 sources:
 - kind: git_tag
