@@ -6,6 +6,7 @@
 
 # Add the filenames below:
 
+libc.a
 libgcc.a
 libgcov.a
 libgcc_eh.a

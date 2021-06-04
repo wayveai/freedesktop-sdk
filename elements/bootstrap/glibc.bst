@@ -133,7 +133,6 @@ public:
         (=):
         - '%{libdir}/libanl.a'
         - '%{libdir}/libBrokenLocale.a'
-        - '%{libdir}/libc.a'
         - '%{libdir}/libcrypt.a'
         - '%{libdir}/libdl.a'
         - '%{libdir}/libg.a'
@@ -150,3 +149,4 @@ public:
       static-allowlist:
         - '%{libdir}/libc_nonshared.a'
         - '%{libdir}/libmvec_nonshared.a'
+        - '%{libdir}/libc.a'
