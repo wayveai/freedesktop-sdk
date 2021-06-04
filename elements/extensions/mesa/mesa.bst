@@ -10,6 +10,7 @@ build-depends:
 - components/vulkan-headers.bst
 - components/wayland-protocols.bst
 - components/glslang.bst
+- extensions/mesa/zstd.bst
 - public-stacks/buildsystem-meson.bst
 
 
@@ -92,6 +93,7 @@ variables:
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=enabled
+    -Dzstd=enabled
 
 config:
   build-commands:
