@@ -86,8 +86,7 @@ variables:
     -Dselinux=false
     -Dshared-glapi=enabled
     -Dvalgrind=disabled
-    -Dvulkan-device-select-layer=true
-    -Dvulkan-overlay-layer=true
+    -Dvulkan-layers=device-select,overlay
     -Dvulkan-drivers=%{vulkan_drivers}
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d"
     -Dxlib-lease=enabled
