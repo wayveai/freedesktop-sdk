@@ -36,10 +36,10 @@ sources:
   directory: src/github.com/containers/podman
   track: master
   track-extra:
-  - v3.1
+  - v3.2
   exclude:
   - "*rc*"
-  ref: v3.1.2-0-g51b8ddbc22cf5b10dd76dd9243924aa66ad7db39
+  ref: v3.2.0-0-g0281ef262dd0ffae28b5fa5e4bdf545f93c08dc7
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
