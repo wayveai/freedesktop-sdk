@@ -7,6 +7,7 @@ kind: meson
 build-depends:
 - bootstrap-import.bst
 - components/alsa-lib.bst
+- components/avahi.bst
 - components/bluez.bst
 - components/dbus.bst
 - components/ffmpeg.bst
@@ -20,6 +21,7 @@ build-depends:
 - components/vulkan-headers.bst
 - components/xmltoman.bst
 - components/doxygen.bst
+- components/webrtc-audio-processing.bst
 - public-stacks/buildsystem-meson.bst
 
 variables:
@@ -50,13 +52,19 @@ public:
       - '%{libdir}/spa-0.2/v4l2'
       - '%{libdir}/spa-0.2/v4l2/**'
       - '%{libdir}/pipewire-0.3/libpipewire-module-access.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-echo-cancel.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-filter-chain.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-link-factory.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-portal.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-profiler.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-pulse.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-simple.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-pulse-tunnel.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-rt.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-device.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-zeroconf-discover.so'
       - '%{sysconfdir}/pipewire/media-session.d'
       - '%{sysconfdir}/pipewire/media-session.d/**'
       - '%{sysconfdir}/pipewire/pipewire*'
@@ -77,13 +85,19 @@ public:
       - '%{libdir}/spa-0.2/v4l2'
       - '%{libdir}/spa-0.2/v4l2/**'
       - '%{libdir}/pipewire-0.3/libpipewire-module-access.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-echo-cancel.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-filter-chain.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-link-factory.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-portal.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-profiler.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-pulse.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-protocol-simple.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-pulse-tunnel.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-rt.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-device.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so.debug'
       - '%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so.debug'
+      - '%{libdir}/pipewire-0.3/libpipewire-module-zeroconf-discover.so.debug'
 
   cpe:
     product: pipewire
@@ -94,6 +108,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.25-0-gc324107211718043553337cb10d022fe9d2d12d8
+  ref: 0.3.29-0-g1b484867eb20dbcf9ffea812834fc9142f89f652
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
