@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: sphinxcontrib-serializinghtml
-  url: pypi:ac/86/021876a9dd4eac9dae0b1d454d848acbd56d5574d350d0f835043b5ac2cd/sphinxcontrib-serializinghtml-1.1.4.tar.gz
-  sha256sum: eaa0eccc86e982a9b939b2b82d12cc5d013385ba5eadcc7e4fed23f4405f77bc
+  url: pypi:b5/72/835d6fadb9e5d02304cf39b18f93d227cd93abd3c41ebf58e6853eeb1455/sphinxcontrib-serializinghtml-1.1.5.tar.gz
+  sha256sum: aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952
