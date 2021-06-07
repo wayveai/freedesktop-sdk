@@ -30,4 +30,4 @@ sources:
   track: master
   exclude:
   - '*rc*'
-  ref: v4.2.0-0-g4862b0d7bcc786304ff4e8c31e8d5ccfb868fb99
+  ref: v4.3.0-0-gd21dcc67d0d3f4686ee989a085ad2bea9c58259d
