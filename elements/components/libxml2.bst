@@ -28,24 +28,18 @@ public:
         - '%{libdir}/xml2Conf.sh'
   cpe:
     patches:
-      - CVE-2019-7595
-      - CVE-2019-20388
+    - CVE-2019-7595
+    - CVE-2019-20388
 
 
 sources:
 - kind: git_tag
   url: gnome:libxml2.git
   track: master
-  ref: v2.9.10-0-g41a34e1f4ffae2ce401600dbb5fe43f8fe402641
+  ref: v2.9.12-0-gb48e77cf4f6fa0792c5f4b639707a2b0675e461b
 - kind: patch
   path: patches/libxml2/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
 - kind: patch
   path: patches/libxml2/libxml2-python3-unicode-errors.patch
 - kind: patch
   path: patches/libxml2/Migrate-away-from-deprecated-API.patch
-- kind: patch
-  path: patches/libxml2/Add-parenthesis-for-checks.patch
-- kind: patch
-  path: patches/libxml2/CVE-2019-20388.patch
-- kind: patch
-  path: patches/libxml2/CVE-2019-7595.patch
