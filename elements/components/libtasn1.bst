@@ -34,14 +34,11 @@ public:
         (>):
         - '%{libdir}/libtasn1.so'
 
-  cpe:
-    version-match: 'libtasn1_(\d+)_(\d+)'
-
 sources:
 - kind: git_tag
   url: gitlab:gnutls/libtasn1.git
   track: master
-  ref: libtasn1_4_17_0-0-g6e8c03bc4a42f9783a91a8166e4443ba59ba5a97
+  ref: v4.17.0-0-g6e8c03bc4a42f9783a91a8166e4443ba59ba5a97
   submodules:
     gnulib:
       checkout: true
