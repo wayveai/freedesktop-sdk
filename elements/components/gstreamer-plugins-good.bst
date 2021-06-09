@@ -49,6 +49,8 @@ sources:
   track: master
   track-extra:
   - '1.18'
+  match:
+  - 1.*[02468].*
   ref: 1.18.4-0-g941312f3d54c89475d5d50aa9dddc0a2987fcf5a
   submodules:
     common:
