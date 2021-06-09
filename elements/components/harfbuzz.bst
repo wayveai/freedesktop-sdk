@@ -30,4 +30,4 @@ sources:
 - kind: git_tag
   url: github:harfbuzz/harfbuzz.git
   track: main
-  ref: 2.8.0-0-g03538e872a0610a65fad692b33d3646f387cf578
+  ref: 2.8.1-0-gb37f03f16b39d397a626f097858e9ae550234ca0
