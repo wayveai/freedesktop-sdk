@@ -45,4 +45,6 @@ sources:
   track: master
   track-extra:
   - '1.18'
+  match:
+  - 1.*[02468].*
   ref: 1.18.4-0-geacb7aa8d12f66a3ff1970c149210972f6079b56
