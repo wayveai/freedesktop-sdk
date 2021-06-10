@@ -33,4 +33,4 @@ sources:
 - kind: git_tag
   url: github:libjpeg-turbo/libjpeg-turbo.git
   track: main
-  ref: 2.0.90-0-g4e52b66f342a803d3b8099b79607e3158d3a241c
+  ref: 2.1.0-0-gc23672ce52ae53bd846b555439aa0a070b6d2c07
