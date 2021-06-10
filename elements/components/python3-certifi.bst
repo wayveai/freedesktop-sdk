@@ -9,5 +9,5 @@ build-depends:
 sources:
 - kind: pypi
   name: certifi
-  url: pypi:06/a9/cd1fd8ee13f73a4d4f491ee219deeeae20afefa914dfb4c130cfc9dc397a/certifi-2020.12.5.tar.gz
-  sha256sum: 1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c
+  url: pypi:6d/78/f8db8d57f520a54f0b8a438319c342c61c22759d8f9a1cd2e2180b5e5ea9/certifi-2021.5.30.tar.gz
+  sha256sum: 2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee
