@@ -41,9 +41,10 @@ before_script:
   - mkdir -p ~/.config
   - |
     cat > ~/.config/buildstream.conf << EOF
-    # Get a lot of output in case of errors
+    # Get a lot of output in case of errors but less otherwise
     logging:
       error-lines: 80
+      verbose: false
     # Force higher parallelity
     build:
       max-jobs: $(( $(nproc) / 4 ))
