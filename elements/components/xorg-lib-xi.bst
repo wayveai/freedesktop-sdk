@@ -28,4 +28,6 @@ sources:
 - kind: git_tag
   url: freedesktop:xorg/lib/libxi.git
   track: master
+  exclude:
+  - libXi-*.*.99.*
   ref: libXi-1.7.10-0-ge05da79a98775edb91ffe3de3b413f156bc4d6e7
