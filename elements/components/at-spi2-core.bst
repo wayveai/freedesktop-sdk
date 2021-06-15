@@ -33,4 +33,4 @@ sources:
   - gnome-3-32
   match:
   - AT_SPI2_CORE_*_*[02468]_*
-  ref: AT_SPI2_CORE_2_40_0-0-g303ff15ea793189e1e8855b32df967e0a05fe08c
+  ref: AT_SPI2_CORE_2_40_1-0-gbaf8608964e84185f61d9424af3979a9a6e15a7c
