@@ -34,7 +34,7 @@ public:
 sources:
 - kind: git_tag
   url: github:ostreedev/ostree.git
-  track: master
+  track: main
   ref: v2021.2-0-g6a72674ec621a2282043c3a083fe1e45cd6a8761
   submodules:
     libglnx:
