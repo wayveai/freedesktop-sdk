@@ -24,6 +24,7 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DGLSLANG_INSTALL_DIR=%{prefix}
     -DSPIRV_HEADERS_INSTALL_DIR=%{prefix}
+    -DUSE_ROBIN_HOOD_HASHING:BOOL=no
 
 config:
   install-commands:
