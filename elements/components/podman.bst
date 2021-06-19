@@ -39,7 +39,7 @@ sources:
   - v3.2
   exclude:
   - "*rc*"
-  ref: v3.2.0-0-g0281ef262dd0ffae28b5fa5e4bdf545f93c08dc7
+  ref: v3.2.1-0-g152952fe6b18581615c3efd1fafef2d8142738e8
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
