@@ -406,6 +406,11 @@ config:
     # Compressed firmware
     scripts/config -e FW_LOADER_COMPRESS
 
+    # Joysticks (Xbox)
+    scripts/config -m JOYSTICK_XPAD
+    scripts/config -e JOYSTICK_XPAD_FF
+    scripts/config -e JOYSTICK_XPAD_LEDS
+
   - |
     make -j1 olddefconfig
 
