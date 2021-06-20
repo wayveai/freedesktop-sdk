@@ -172,7 +172,7 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
   track: '21.1'
-  ref: mesa-21.1.2-0-g3e59d54daad6a02ef314f8159d7e90b9849e605e
+  ref: mesa-21.1.3-0-g07ebfa36c89b4b99afefe7c90d3b63b1b95beaaa
   exclude:
   - '*.0'
 - kind: local
