@@ -8,6 +8,7 @@ depends:
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
+- components/python3-docutils.bst
 - components/systemd.bst
 
 variables:
