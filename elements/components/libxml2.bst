@@ -26,11 +26,6 @@ public:
         - '%{bindir}/xml2-config'
         - '%{libdir}/libxml2.so'
         - '%{libdir}/xml2Conf.sh'
-  cpe:
-    patches:
-    - CVE-2019-7595
-    - CVE-2019-20388
-
 
 sources:
 - kind: git_tag
