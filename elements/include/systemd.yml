@@ -4,6 +4,8 @@ sources:
   track: main
   track-extra:
   - v248-stable
+  exclude:
+  - '*rc*'
   ref: v248.3-0-g37c4cfde0ce613f0f00544d3f4e2e72bf93d9c76
 # remove the following patch when updating systemd
 - kind: patch
