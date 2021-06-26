@@ -24,9 +24,10 @@ public:
         (>):
         - '%{libdir}/libout123.so'
         - '%{libdir}/libmpg123.so'
+        - '%{libdir}/libsyn123.so'
 
 sources:
 - kind: tar
-  url: tar_https:www.mpg123.de/download/mpg123-1.25.11.tar.bz2
-  ref: df063307faa27c7d9efe63d2139b1564cfc7cdbb7c6f449c89ef8faabfa0eab2
+  url: tar_https:www.mpg123.de/download/mpg123-1.28.0.tar.bz2
+  ref: e49466853685026da5d113dc7ff026b1b2ad0b57d78df693a446add9db88a7d5
 
