@@ -8,9 +8,9 @@ depends:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Headers.git
+  ref: sdk-1.2.176.0-0-g074fa3055cfee530992bcbfa0fcb23106a82c1ab
   track: master
   track-extra:
-  - sdk-1.2.162
+  - sdk-1.2.176
   match:
   - sdk-*
-  ref: sdk-1.2.162.0-0-g87aaa16d4c8e1ac70f8f04acdcd46eed4bd77209

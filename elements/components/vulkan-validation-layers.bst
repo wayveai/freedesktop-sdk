@@ -18,12 +18,16 @@ depends:
 
 variables:
   optimize-debug: "false"
+  (?):
+  - (target_arch == "i686"):
+      local_flags: -O1
 
   cmake-local: >-
     -DCMAKE_INSTALL_INCLUDEDIR="%{includedir}/vulkan/"
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DGLSLANG_INSTALL_DIR=%{prefix}
     -DSPIRV_HEADERS_INSTALL_DIR=%{prefix}
+    -DUSE_ROBIN_HOOD_HASHING:BOOL=no
 
 config:
   install-commands:
@@ -34,9 +38,9 @@ config:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-ValidationLayers.git
-  ref: sdk-1.2.162.1-0-g17d8e593663e69e19ddf04aa3ddd4387e995e74f
+  ref: sdk-1.2.176.1-0-g20e7ab4b30cef4f211dde857c64c9428754ac7a4
   track: master
   track-extra:
-  - sdk-1.2.162
+  - sdk-1.2.176
   match:
   - sdk-*
