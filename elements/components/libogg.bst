@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: github:xiph/ogg.git
   track: master
-  ref: v1.3.4-0-gbada45718453ac27b56773ae663f7e65112f6a6e
+  ref: v1.3.5-0-ge1774cd77f471443541596e09078e78fdc342e4f
