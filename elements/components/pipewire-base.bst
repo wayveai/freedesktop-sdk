@@ -13,6 +13,7 @@ build-depends:
 - components/ffmpeg.bst
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
+- components/libusb.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
@@ -28,6 +29,7 @@ variables:
   meson-local: >-
     -Daudiotestsrc=disabled
     -Djack=disabled
+    -Droc=disabled
     -Dvideotestsrc=disabled
     -Dvolume=disabled
     -Dvulkan=disabled
@@ -108,6 +110,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.30-0-ge857856be7b64d562cdcc01c43933218a68b225e
+  ref: 0.3.31-0-gc43dabcc96e2e072cdf08e5f094bb677d9017c6b
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
