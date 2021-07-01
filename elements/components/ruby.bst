@@ -20,5 +20,5 @@ variables:
 
 sources:
 - kind: tar
-  url: tar_https:cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.xz
-  ref: 68bfaeef027b6ccd0032504a68ae69721a70e97d921ff328c0c8836c798f6cb1
+  url: tar_https:cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.1.tar.xz
+  ref: d06bccd382d03724b69f674bc46cd6957ba08ed07522694ce44b9e8ffc9c48e2
