@@ -16,3 +16,5 @@ sources:
   sha256sum: 3a83e7b1c5de94fa991ec34d9b198d94f38ed699d3524cb0fdf3b99fd23d4cc5
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
+- kind: patch
+  path: patches/meson/scan-build-parameters.patch
