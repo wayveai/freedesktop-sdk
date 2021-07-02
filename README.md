@@ -135,10 +135,10 @@ flatpak manifest for an app using the full codecs.
 libudev contained in freedesktop-sdk flatpak runtime is dedicated for apps
 which need to link against it during build and later at runtime.
 
-In flatpak it's use-case is limited to a simple PCI device enumarator without
+In flatpak its use-case is limited to a simple PCI device enumarator without
 access to udevd database as upstream doesn't guarantee API stability there
 (See https://lists.freedesktop.org/archives/systemd-devel/2014-October/024498.html)
-and mismatch between flatpak's and host versions may cause broken functionality.
+and mismatch between flatpak's and host's versions may cause broken functionality.
 
 ## Structure
 
@@ -154,7 +154,7 @@ The `plugins/` directory contains our custom Buildstream
 Freedesktop SDK aims to be an agnostic, minimal runtime, so we ship a small subset of dependencies.
 
 However, if you would like to use Freedesktop SDK for your own use case, we do support users "extending"
-the runtime. There are multiple ways to do this, we provide many ways to consume the runtime, such as ostree checkouts, Docker(OCI) container images and tarballs. Along side this as we use BuildStream to build the runtime, we also support the concept of "junctioning" the project, which is documented in this [guide](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/Using%20freedesktop-sdk#buildstream-projects).
+the runtime. There are multiple ways to do this, we provide many ways to consume the runtime, such as OSTree checkouts, Docker(OCI) container images and tarballs. Alongside this since we use BuildStream to build the runtime, we also support the concept of "junctioning" the project, which is documented in [this guide](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/Using%20freedesktop-sdk#buildstream-projects).
 
 
 ## Contributing
