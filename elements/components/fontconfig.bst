@@ -35,7 +35,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:fontconfig/fontconfig.git
-  track: master
+  track: main
   exclude:
   - 2.*.9*
   ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
