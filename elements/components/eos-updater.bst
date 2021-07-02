@@ -1,8 +1,8 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
+- filename: public-stacks/buildsystem-meson.bst
   type: build
 - filename: components/gtk-doc.bst
   type: build
@@ -18,19 +18,10 @@ depends:
 - filename: components/avahi.bst
 - filename: components/mogwai.bst
 
-variables:
-  conf-local: >-
-    --disable-Werror
-
 sources:
 - kind: git_tag
   url: github:endlessm/eos-updater.git
   track: master
   track-extra:
-  - eos3.6
-  - eos3.7
-  ref: Release_3.6.4-0-gda9ff540673df5ef9230d50a668dc28bd7b92979
-- kind: patch
-  path: patches/eos-updater/fix-newer-autoconf.patch
-- kind: patch
-  path: patches/eos-updater/remove-ostree-fork-only-calls.patch
+  - eos3.9
+  ref: Release_3.9.5-0-g6129ccc93e5493cde8b2a3a5c83eebb6124599ec
