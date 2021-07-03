@@ -1,5 +1,35 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.14:
+    * audit: Update to v3.0.2
+    * mesa: Update to mesa-21.1.4
+    * libogg: Update to v1.3.5
+    * gmmlib: Update to intel-gmmlib-21.1.3
+    * vulkan-validation-laters: Update to sdk-1.2.176.0
+    * vulkan-icd-loader: Update to sdk-1.2.176.0
+    * vulkan-headers: Update to sdk-1.2.176.0
+    * vulkan-tools: Update to sdk-1.2.176.0
+    * spirv-tools: Update to v2020.7
+    * spirv-headers: Update to f88a1f9
+    * libksba: Update to libksba-1.6.0
+    * libgcrypt: Update to libgcrypt-1.8.8
+    * bluez: Update to 5.59
+    * extra-cmake-module: Update to v5.83.0
+    * linux: Update to v5.12.12
+    * gnu-efi: Update to 3.0.13
+    * polkit: Update to 0.119
+    * pycairo: Update to v1.20.1
+    * podman: Update to 3.2.1
+    * glibc: Add libc.a to Sdk (#1260)
+    * mesa: Use ZSTD compression for the shader cache
+    * mesa: Fix building and packaging of Vulkan layers (#1263)
+    * vm: Do not overwrite /etc/shells
+    * linux-pam: Use custom PAM config for chdn and chsh
+    * linux: Enable Intel Ethernet driver
+    * linux: Enable modules for running in VirtualBox
+    * systemd: Update to v246.14
+    * rust: Update to 1.52.1
+
 freedesktop-sdk-20.08.13:
     * libva: Do not authenticate for render nodes on Wayland hosts (#1252)
     * mesa: Start showing version information in appstream data
