@@ -1,4 +1,4 @@
-kind: cmake
+kind: autotools
 
 depends:
 - bootstrap-import.bst
@@ -7,7 +7,10 @@ depends:
 - components/libwebp.bst
 
 build-depends:
-- public-stacks/buildsystem-cmake.bst
+- public-stacks/buildsystem-autotools.bst
+
+variables:
+  autogen: autoreconf -fvi
 
 config:
   install-commands:
