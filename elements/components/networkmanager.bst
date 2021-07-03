@@ -37,10 +37,10 @@ sources:
   url: freedesktop:NetworkManager/NetworkManager.git
   track: master
   track-extra:
-  - nm-1-26
+  - nm-1-32
   exclude:
   - "*-dev*"
   - "*-rc*"
-  ref: 1.26.4-0-gd256565e57af6e7f707be3f0d415eb2f225c4b78
+  ref: 1.32.2-0-gbf1b09702ed442a3efe426c8ceba4ef1e6bb1902
 - kind: patch
   path: patches/networkmanager/gettext.patch
