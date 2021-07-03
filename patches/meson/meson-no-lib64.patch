@@ -1,11 +1,24 @@
-diff -up meson-0.46.1/mesonbuild/mesonlib.py.lib64 meson-0.46.1/mesonbuild/mesonlib.py
---- meson-0.42.0/mesonbuild/mesonlib.py.lib64	2017-09-14 16:01:33.812927457 +0200
-+++ meson-0.42.0/mesonbuild/mesonlib.py	2017-09-14 16:02:17.575331515 +0200
-@@ -499,7 +499,7 @@ def default_libdir():
-             pass
-     if is_freebsd():
-         return 'lib'
+--- meson/mesonbuild/mesonlib/universal.py-old	2021-07-03 22:16:33.341748112 +0300
++++ meson/mesonbuild/mesonlib/universal.py	2021-07-03 22:17:04.167878479 +0300
+@@ -850,21 +850,6 @@ def version_compare_condition_with_min(c
+ 
+ 
+ def default_libdir() -> str:
+-    if is_debianlike():
+-        try:
+-            pc = subprocess.Popen(['dpkg-architecture', '-qDEB_HOST_MULTIARCH'],
+-                                  stdout=subprocess.PIPE,
+-                                  stderr=subprocess.DEVNULL)
+-            (stdo, _) = pc.communicate()
+-            if pc.returncode == 0:
+-                archpath = stdo.decode().strip()
+-                return 'lib/' + archpath
+-        except Exception:
+-            pass
+-    if is_freebsd() or is_irix():
+-        return 'lib'
 -    if os.path.isdir('/usr/lib64') and not os.path.islink('/usr/lib64'):
-+    if os.path.isdir('/usr/lib64') and not os.path.islink('/usr/lib64') and False: # We disable lib64 in the freedesktop sdk
-         return 'lib64'
+-        return 'lib64'
      return 'lib'
+ 
+ 
