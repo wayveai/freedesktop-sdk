@@ -81,6 +81,8 @@ sources:
       url: freedesktop:gstreamer/common.git
 - kind: patch
   path: patches/gstreamer-plugins-base/atomicity-fix-backport.patch
+- kind: patch
+  path: patches/gstreamer-plugins-base/gstgl-meson-0.58.patch  
 - kind: git_tag
   url: freedesktop:gstreamer/meson-ports/gl-headers.git
   directory: subprojects/gl-headers
