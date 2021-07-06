@@ -89,7 +89,7 @@ ostree pull-local "${checkout}/ostree/repo" "${commit}"
 
 prev_commit="$(ostree rev-parse "${ref}" 2>/dev/null || true)"
 
-ostree commit "${gpg_opts[*]}" \
+ostree commit ${gpg_opts[*]} \
        --branch="${ref}" --tree=ref="${commit}" --skip-if-unchanged
 
 new_commit="$(ostree rev-parse "${ref}")"
@@ -103,6 +103,6 @@ if [ "${new_commit}" != "${prev_commit}" ]; then
 
     ostree summary \
            ${collection_id:+--add-metadata=ostree.deploy-collection-id='"'"${collection_id}"'"'} \
-           "${gpg_opts[*]}" \
+           ${gpg_opts[*]} \
            --update
 fi
