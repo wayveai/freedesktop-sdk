@@ -18,4 +18,6 @@ sources:
 - kind: git_tag
   url: gitlab:cryptsetup/cryptsetup.git
   track: master
+  exclude:
+  - '*rc*'
   ref: v2.3.3-0-g74e94e7bdd12fdfd4e5869d14c91cee2fe242eeb

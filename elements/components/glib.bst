@@ -52,7 +52,7 @@ public:
 sources:
 - kind: git_tag
   url: gnome:glib.git
-  track: master
+  track: main
   #track-extra:
   #- glib-2-66
   match:
