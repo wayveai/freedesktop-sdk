@@ -16,8 +16,8 @@ config:
 sources:
 - kind: pypi
   name: pip
-  url: pypi:b7/2d/ad02de84a4c9fd3b1958dc9fb72764de1aa2605a9d7e943837be6ad82337/pip-21.0.1.tar.gz
-  sha256sum: 99bbde183ec5ec037318e774b0d8ae0a64352fe53b2c7fd630be1d07e94f41e5
+  url: pypi:4d/0c/3b63fe024414a8a48661cf04f0993d4b2b8ef92daed45636474c018cd5b7/pip-21.1.3.tar.gz
+  sha256sum: b5b1eb91b36894bd01b8e5a56a422c2f3838573da0b0a1c63a096bb454e3b23f
 - kind: local
   path: files/pip/reproducible_tempfile.py
 

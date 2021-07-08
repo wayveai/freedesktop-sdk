@@ -1,6 +1,8 @@
+# pylint: skip-file
 import os
+import tempfile
 from tempfile import *
-__all__ == tempfile.__all__
+__all__ = tempfile.__all__
 
 def rng(self):
     cur_pid = _os.getpid()
@@ -10,4 +12,7 @@ def rng(self):
         self._rng_pid = cur_pid
     return self._rng
 
-tempfile._RandomNameSequence.rng = propert(rng)
+tempfile._RandomNameSequence.rng = property(rng)
+if tempfile._name_sequence is not None:
+    # This is just to fail if standard library internal names change
+    tempfile._name_sequence = None
