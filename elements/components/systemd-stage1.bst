@@ -13,6 +13,7 @@ build-depends:
 - components/kmod.bst
 - components/libxslt.bst
 - components/docbook-xsl.bst
+- components/python3-jinja2.bst
 
 variables:
   meson-local: >-

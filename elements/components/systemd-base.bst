@@ -23,6 +23,7 @@ build-depends:
 - components/p11-kit.bst
 - components/libfido2.bst
 - components/openssl.bst
+- components/python3-jinja2.bst
 
 variables:
   efi: 'false'

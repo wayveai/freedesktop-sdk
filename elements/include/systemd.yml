@@ -3,12 +3,10 @@ sources:
   url: github:systemd/systemd-stable.git
   track: main
   track-extra:
-  - v248-stable
+  - v249-stable
   exclude:
   - '*rc*'
-  ref: v248.3-0-g37c4cfde0ce613f0f00544d3f4e2e72bf93d9c76
+  ref: v249-0-gf6278558da0304ec6b646bb172ce4688c7f162a5
 # remove the following patch when updating systemd
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
-- kind: patch
-  path: patches/systemd/riscv-efi.patch
