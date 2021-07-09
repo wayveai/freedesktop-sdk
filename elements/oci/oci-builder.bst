@@ -1,11 +1,13 @@
-kind: pip
+kind: compose
 
 build-depends:
-- components/python3-pip.bst
+- oci/oci-builder-base.bst
 
-depends:
-- components/python3-pyyaml.bst
-
-sources:
-- kind: local
-  path: files/oci
+config:
+  exclude:
+  - debug
+  - devel
+  - doc
+  - locale
+  - extra
+  - vm-only
