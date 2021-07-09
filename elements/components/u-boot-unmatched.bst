@@ -38,3 +38,9 @@ sources:
   path: patches/u-boot/efi-partition-signature.patch
 - kind: patch_queue
   path: patches/sifive-unmatched/u-boot
+- kind: patch
+  # This patch is a hack for vm/firmware/bootloader-unmatched.bst
+  # The DTB from U-Boot is not in sync with the one from the kernel
+  # So we need to load the kernel DTB from a special partition to
+  # override the DTB from U-Boot
+  path: patches/u-boot/unmatched-dtb.patch
