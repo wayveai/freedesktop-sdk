@@ -25,7 +25,7 @@ variables:
   - target_arch == "arm":
       targets: ARM
   - target_arch == "aarch64":
-      targets: AArch64
+      targets: AArch64;AMDGPU
   - target_arch == "ppc64le":
       targets: PowerPC;AMDGPU
   - target_arch == "riscv64":
