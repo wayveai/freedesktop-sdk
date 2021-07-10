@@ -46,370 +46,372 @@ config:
     make defconfig
 
   - |
+    . ./config-utils.sh
+
     # Modify the kernel config for additional features
 
     # Kernel Config Options
-    scripts/config -e DEVTMPFS
-    scripts/config -e CGROUPS
-    scripts/config -e INOTIFY_USER
-    scripts/config -e SIGNALFD
-    scripts/config -e TIMERFD
-    scripts/config -e EPOLL
-    scripts/config -e NET
-    scripts/config -e SYSFS
-    scripts/config -e PROC_FS
-    scripts/config -e FHANDLE
+    enable DEVTMPFS
+    enable CGROUPS
+    enable INOTIFY_USER
+    enable SIGNALFD
+    enable TIMERFD
+    enable EPOLL
+    enable NET
+    enable SYSFS
+    enable PROC_FS
+    enable FHANDLE
 
     # Kernel crypto/hash API
-    scripts/config -e CRYPTO_AES
-    scripts/config -e CRYPTO_ARC4
-    scripts/config -e CRYPTO_CBC
-    scripts/config -e CRYPTO_CMAC
-    scripts/config -e CRYPTO_DES
-    scripts/config -e CRYPTO_ECB
-    scripts/config -e CRYPTO_HMAC
-    scripts/config -e CRYPTO_MD4
-    scripts/config -e CRYPTO_MD5
-    scripts/config -e CRYPTO_SHA256
-    scripts/config -e CRYPTO_SHA512
-    scripts/config -e CRYPTO_USER_API_HASH
-    scripts/config -e CRYPTO_USER_API_SKCIPHER
-    scripts/config -e CRYPTO_XTS
+    enable CRYPTO_AES
+    enable CRYPTO_ARC4
+    enable CRYPTO_CBC
+    enable CRYPTO_CMAC
+    enable CRYPTO_DES
+    enable CRYPTO_ECB
+    enable CRYPTO_HMAC
+    enable CRYPTO_MD4
+    enable CRYPTO_MD5
+    enable CRYPTO_SHA256
+    enable CRYPTO_SHA512
+    enable CRYPTO_USER_API_HASH
+    enable CRYPTO_USER_API_SKCIPHER
+    enable CRYPTO_XTS
 
     # udev will fail to work with legacy sysfs
-    scripts/config -d SYSFS_DEPRECATED
+    remove SYSFS_DEPRECATED
 
     # Boot is very slow with systemd when legacy PTYs are present
-    scripts/config -d LEGACY_PTYS
-    scripts/config -d LEGACY_PTY_COUNT
+    remove LEGACY_PTYS
+    remove LEGACY_PTY_COUNT
 
     # Legacy hotplug confuses udev
-    scripts/config --set-str UEVENT_HELPER_PATH ""
+    value UEVENT_HELPER_PATH ""
 
     # Userspace firmware loading not supported
-    scripts/config -d FW_LOADER_USER_HELPER
+    remove FW_LOADER_USER_HELPER
 
     # Some udev/virtualization requires
-    scripts/config -e DMIID
+    enable DMIID
 
     # Support for some SCSI devices serial number retrieval
-    scripts/config -e BLK_DEV_BSG
+    enable BLK_DEV_BSG
 
     # Required for PrivateNetwork= in service units
-    scripts/config -e NET_NS
-    scripts/config -e USER_NS
+    enable NET_NS
+    enable USER_NS
 
     # Required for 9p support
-    scripts/config -e NET_9P
-    scripts/config -e NET_9P_VIRTIO
-    scripts/config -e 9P_FS
-    scripts/config -e 9P_FS_POSIX_ACL
-    scripts/config -e 9P_FS_SECURITY
-    scripts/config -e VIRTIO_PCI
+    enable NET_9P
+    enable NET_9P_VIRTIO
+    enable 9P_FS
+    enable 9P_FS_POSIX_ACL
+    enable 9P_FS_SECURITY
+    enable VIRTIO_PCI
 
     # Strongly Recommended
-    scripts/config -e IPV6
-    scripts/config -e AUTOFS4_FS
-    scripts/config -e TMPFS_XATTR
-    scripts/config -e TMPFS_POSIX_ACL
-    scripts/config -e EXT4_FS_POSIX_ACL
-    scripts/config -e EXT4_FS_SECURITY
-    scripts/config -e SECCOMP
-    scripts/config -e SECCOMP_FILTER
-    scripts/config -e CHECKPOINT_RESTORE
+    enable IPV6
+    enable AUTOFS4_FS
+    enable TMPFS_XATTR
+    enable TMPFS_POSIX_ACL
+    enable EXT4_FS_POSIX_ACL
+    enable EXT4_FS_SECURITY
+    enable SECCOMP
+    enable SECCOMP_FILTER
+    enable CHECKPOINT_RESTORE
 
     # Required for CPUShares= in resource control unit settings
-    scripts/config -e CGROUP_SCHED
-    scripts/config -e FAIR_GROUP_SCHED
+    enable CGROUP_SCHED
+    enable FAIR_GROUP_SCHED
 
     # Required for CPUQuota= in resource control unit settings
-    scripts/config -e CFS_BANDWIDTH
+    enable CFS_BANDWIDTH
 
     # Required for IPAddressDeny=, IPAddressAllow= in resource control unit settings
-    scripts/config -e CGROUP_BPF
+    enable CGROUP_BPF
 
     # For UEFI systems
-    scripts/config -e EFIVAR_FS
-    scripts/config -e EFI_PARTITION
-    scripts/config -e EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER
+    enable EFIVAR_FS
+    enable EFI_PARTITION
+    enable EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER
 
     # RT group scheduling (effectively) makes RT scheduling unavailable for userspace
-    scripts/config -d RT_GROUP_SCHED
+    remove RT_GROUP_SCHED
 
     # Required for 3D acceleration in virtual machines
-    scripts/config -e DRM_VIRTIO_GPU
-    scripts/config -m DRM_VMWGFX
+    enable DRM_VIRTIO_GPU
+    module DRM_VMWGFX
 
     # Required for systemd-nspawn
-    scripts/config -e DEVPTS_MULTIPLE_INSTANCES
+    enable DEVPTS_MULTIPLE_INSTANCES
 
     # Sound with QEMU
-    scripts/config -e SND_HDA_GENERIC
+    enable SND_HDA_GENERIC
 
     # Required for live boot
-    scripts/config -m SQUASHFS
-    scripts/config -m SQUASHFS_ZLIB
-    scripts/config -m DM_SNAPSHOT
-    scripts/config -m OVERLAY_FS
+    module SQUASHFS
+    module SQUASHFS_ZLIB
+    module DM_SNAPSHOT
+    module OVERLAY_FS
 
     # Some useful drivers when running as virtual machine
-    scripts/config -m VIRTIO_BALLOON
-    scripts/config -m VIRTIO_INPUT
-    scripts/config -e VIRTIO_PMEM
-    scripts/config -e VIRTIO_NET
-    scripts/config -e VIRTIO_BLK
-    scripts/config -e SCSI_VIRTIO
-    scripts/config -e VIRTIO_IOMMU
+    module VIRTIO_BALLOON
+    module VIRTIO_INPUT
+    enable VIRTIO_PMEM
+    enable VIRTIO_NET
+    enable VIRTIO_BLK
+    enable SCSI_VIRTIO
+    enable VIRTIO_IOMMU
 
-    scripts/config -e BLK_MQ_VIRTIO
-    scripts/config -m VIRTIO_CONSOLE
-    scripts/config -e HW_RANDOM_VIRTIO
-    scripts/config -m VIRTIO_MMIO
-    scripts/config -m CRYPTO_DEV_VIRTIO
+    enable BLK_MQ_VIRTIO
+    module VIRTIO_CONSOLE
+    enable HW_RANDOM_VIRTIO
+    module VIRTIO_MMIO
+    module CRYPTO_DEV_VIRTIO
 
     # Input
-    scripts/config -e INPUT_EVDEV
-    scripts/config -e INPUT_TOUCHSCREEN
-    scripts/config -e INPUT_TABLET
+    enable INPUT_EVDEV
+    enable INPUT_TOUCHSCREEN
+    enable INPUT_TABLET
 
     # needed by spice-vdagent
-    scripts/config -m VIRTIO_VSOCKETS
-    scripts/config -m INPUT_UINPUT
+    module VIRTIO_VSOCKETS
+    module INPUT_UINPUT
 
     # for virtualbox
-    scripts/config -m VBOXGUEST
+    module VBOXGUEST
 
     # For wireless networks
-    scripts/config -e WIRELESS
-    scripts/config -m CFG80211
-    scripts/config -e CFG80211_WEXT
-    scripts/config -e MAC80211
-    scripts/config -e NETDEVICES
-    scripts/config -e WLAN
+    enable WIRELESS
+    module CFG80211
+    enable CFG80211_WEXT
+    enable MAC80211
+    enable NETDEVICES
+    enable WLAN
 
     # Wifi hardware
-    scripts/config -m IWLWIFI
-    scripts/config -m IWLMVM
-    scripts/config -m IWLDVM
-    scripts/config -m ATH9K
-    scripts/config -m ATH10K
-    scripts/config -m ATH10K_PCI
-    scripts/config -m RTW88
-    scripts/config -e RTW88_8822BE
-    scripts/config -e RTW88_8822CE
-    scripts/config -e WLAN_VENDOR_ATH
+    module IWLWIFI
+    module IWLMVM
+    module IWLDVM
+    module ATH9K
+    module ATH10K
+    module ATH10K_PCI
+    module RTW88
+    enable RTW88_8822BE
+    enable RTW88_8822CE
+    enable WLAN_VENDOR_ATH
 
     # Ethernet hardware
-    scripts/config -m IGB
+    module IGB
 
     # Common DRM drivers
-    scripts/config -m DRM_NOUVEAU
-    scripts/config -m DRM_RADEON
-    scripts/config -m DRM_AMDGPU
-    scripts/config -e DRM_AMD_DC
-    scripts/config -e DRM_AMD_DC_DCN
-    scripts/config -e DRM_AMD_DC_HDCP
+    module DRM_NOUVEAU
+    module DRM_RADEON
+    module DRM_AMDGPU
+    enable DRM_AMD_DC
+    enable DRM_AMD_DC_DCN
+    enable DRM_AMD_DC_HDCP
     case "%{arch}" in
       x86_64|i686)
-        scripts/config -m DRM_I915
-        scripts/config -m DRM_GMA500
-        scripts/config -m DRM_GMA600
-        scripts/config -m DRM_GMA3600
+        module DRM_I915
+        module DRM_GMA500
+        module DRM_GMA600
+        module DRM_GMA3600
         ;;
       aarch64|arm)
         ;;
     esac
 
     # FUSE
-    scripts/config -m FUSE_FS
-    scripts/config -m CUSE
+    module FUSE_FS
+    module CUSE
 
     # iSCSI
-    scripts/config -e SCSI_LOWLEVEL
-    scripts/config -m ISCSI_TCP
-    scripts/config -m SCSI_ISCSI_ATTRS
+    enable SCSI_LOWLEVEL
+    module ISCSI_TCP
+    module SCSI_ISCSI_ATTRS
 
     # Encrypted disks
-    scripts/config -m DM_CRYPT
+    module DM_CRYPT
 
     # USB audio
-    scripts/config -m SND_USB_AUDIO
+    module SND_USB_AUDIO
 
     # Common USB webcams
-    scripts/config -e MEDIA_SUPPORT
-    scripts/config -e MEDIA_USB_SUPPORT
-    scripts/config -e MEDIA_CAMERA_SUPPORT
-    scripts/config -m USB_VIDEO_CLASS
-    scripts/config -m USB_GSPCA_BENQ
-    scripts/config -m USB_GSPCA_CONEX
-    scripts/config -m USB_GSPCA_CPIA1
-    scripts/config -m USB_GSPCA_DTCS033
-    scripts/config -m USB_GSPCA_ETOMS
-    scripts/config -m USB_GSPCA_FINEPIX
-    scripts/config -m USB_GSPCA_JEILINJ
-    scripts/config -m USB_GSPCA_JL2005BCD
-    scripts/config -m USB_GSPCA_KINECT
-    scripts/config -m USB_GSPCA_KONICA
-    scripts/config -m USB_GSPCA_MARS
-    scripts/config -m USB_GSPCA_MR97310A
-    scripts/config -m USB_GSPCA_NW80X
-    scripts/config -m USB_GSPCA_OV519
-    scripts/config -m USB_GSPCA_OV534
-    scripts/config -m USB_GSPCA_OV534_9
-    scripts/config -m USB_GSPCA_PAC207
-    scripts/config -m USB_GSPCA_PAC7302
-    scripts/config -m USB_GSPCA_PAC7311
-    scripts/config -m USB_GSPCA_SE401
-    scripts/config -m USB_GSPCA_SN9C2028
-    scripts/config -m USB_GSPCA_SN9C20X
-    scripts/config -m USB_GSPCA_SONIXB
-    scripts/config -m USB_GSPCA_SONIXJ
-    scripts/config -m USB_GSPCA_SPCA500
-    scripts/config -m USB_GSPCA_SPCA501
-    scripts/config -m USB_GSPCA_SPCA505
-    scripts/config -m USB_GSPCA_SPCA506
-    scripts/config -m USB_GSPCA_SPCA508
-    scripts/config -m USB_GSPCA_SPCA561
-    scripts/config -m USB_GSPCA_SPCA1528
-    scripts/config -m USB_GSPCA_SQ905
-    scripts/config -m USB_GSPCA_SQ905C
-    scripts/config -m USB_GSPCA_SQ930X
-    scripts/config -m USB_GSPCA_STK014
-    scripts/config -m USB_GSPCA_STK1135
-    scripts/config -m USB_GSPCA_STV0680
-    scripts/config -m USB_GSPCA_SUNPLUS
-    scripts/config -m USB_GSPCA_T613
-    scripts/config -m USB_GSPCA_TOPRO
-    scripts/config -m USB_GSPCA_TOUPTEK
-    scripts/config -m USB_GSPCA_TV8532
-    scripts/config -m USB_GSPCA_VC032X
-    scripts/config -m USB_GSPCA_VICAM
-    scripts/config -m USB_GSPCA_XIRLINK_CIT
-    scripts/config -m USB_GSPCA_ZC3XX
+    enable MEDIA_SUPPORT
+    enable MEDIA_USB_SUPPORT
+    enable MEDIA_CAMERA_SUPPORT
+    module USB_VIDEO_CLASS
+    module USB_GSPCA_BENQ
+    module USB_GSPCA_CONEX
+    module USB_GSPCA_CPIA1
+    module USB_GSPCA_DTCS033
+    module USB_GSPCA_ETOMS
+    module USB_GSPCA_FINEPIX
+    module USB_GSPCA_JEILINJ
+    module USB_GSPCA_JL2005BCD
+    module USB_GSPCA_KINECT
+    module USB_GSPCA_KONICA
+    module USB_GSPCA_MARS
+    module USB_GSPCA_MR97310A
+    module USB_GSPCA_NW80X
+    module USB_GSPCA_OV519
+    module USB_GSPCA_OV534
+    module USB_GSPCA_OV534_9
+    module USB_GSPCA_PAC207
+    module USB_GSPCA_PAC7302
+    module USB_GSPCA_PAC7311
+    module USB_GSPCA_SE401
+    module USB_GSPCA_SN9C2028
+    module USB_GSPCA_SN9C20X
+    module USB_GSPCA_SONIXB
+    module USB_GSPCA_SONIXJ
+    module USB_GSPCA_SPCA500
+    module USB_GSPCA_SPCA501
+    module USB_GSPCA_SPCA505
+    module USB_GSPCA_SPCA506
+    module USB_GSPCA_SPCA508
+    module USB_GSPCA_SPCA561
+    module USB_GSPCA_SPCA1528
+    module USB_GSPCA_SQ905
+    module USB_GSPCA_SQ905C
+    module USB_GSPCA_SQ930X
+    module USB_GSPCA_STK014
+    module USB_GSPCA_STK1135
+    module USB_GSPCA_STV0680
+    module USB_GSPCA_SUNPLUS
+    module USB_GSPCA_T613
+    module USB_GSPCA_TOPRO
+    module USB_GSPCA_TOUPTEK
+    module USB_GSPCA_TV8532
+    module USB_GSPCA_VC032X
+    module USB_GSPCA_VICAM
+    module USB_GSPCA_XIRLINK_CIT
+    module USB_GSPCA_ZC3XX
 
     # NVME disks
-    scripts/config -m BLK_DEV_NVME
-    scripts/config -m NVME_HWMON
+    module BLK_DEV_NVME
+    module NVME_HWMON
 
     # Memory card readers
-    scripts/config -m MISC_RTSX_PCI
-    scripts/config -m MMC
-    scripts/config -m MMC_BLOCK
-    scripts/config -m MMC_REALTEK_PCI
+    module MISC_RTSX_PCI
+    module MMC
+    module MMC_BLOCK
+    module MMC_REALTEK_PCI
 
     # Bluetooth
-    scripts/config -e BT
-    scripts/config -m BT_HCIBTUSB
+    enable BT
+    module BT_HCIBTUSB
 
     # Sound for HDA
-    scripts/config -m SND_HDA_INTEL
-    scripts/config -e SND_HDA_RECONFIG
-    scripts/config -e SND_HDA_INPUT_BEEP
-    scripts/config -e SND_HDA_PATCH_LOADER
-    scripts/config -m SND_HDA_CODEC_REALTEK
-    scripts/config -m SND_HDA_CODEC_ANALOG
-    scripts/config -m SND_HDA_CODEC_SIGMATEL
-    scripts/config -m SND_HDA_CODEC_VIA
-    scripts/config -m SND_HDA_CODEC_HDMI
-    scripts/config -m SND_HDA_CODEC_CIRRUS
-    scripts/config -m SND_HDA_CODEC_CONEXANT
-    scripts/config -m SND_HDA_CODEC_CA0110
-    scripts/config -m SND_HDA_CODEC_CA0132
-    scripts/config -e SND_HDA_CODEC_CA0132_DSP
-    scripts/config -m SND_HDA_CODEC_CMEDIA
-    scripts/config -m SND_HDA_CODEC_SI3054
+    module SND_HDA_INTEL
+    enable SND_HDA_RECONFIG
+    enable SND_HDA_INPUT_BEEP
+    enable SND_HDA_PATCH_LOADER
+    module SND_HDA_CODEC_REALTEK
+    module SND_HDA_CODEC_ANALOG
+    module SND_HDA_CODEC_SIGMATEL
+    module SND_HDA_CODEC_VIA
+    module SND_HDA_CODEC_HDMI
+    module SND_HDA_CODEC_CIRRUS
+    module SND_HDA_CODEC_CONEXANT
+    module SND_HDA_CODEC_CA0110
+    module SND_HDA_CODEC_CA0132
+    enable SND_HDA_CODEC_CA0132_DSP
+    module SND_HDA_CODEC_CMEDIA
+    module SND_HDA_CODEC_SI3054
 
     # HID drivers
-    scripts/config -m HID_MULTITOUCH
-    scripts/config -m HID_GENERIC
-    scripts/config -m I2C_HID
+    module HID_MULTITOUCH
+    module HID_GENERIC
+    module I2C_HID
 
     # CPU support
-    scripts/config -e PINCTRL
+    enable PINCTRL
     case "%{arch}" in
       x86_64|i686)
         # pinctrl_amd might not work as module if it is loaded to late
-        scripts/config -e PINCTRL_AMD
-        scripts/config -e AMD_IOMMU_V2
-        scripts/config -e X86_AMD_PLATFORM_DEVICE
+        enable PINCTRL_AMD
+        enable AMD_IOMMU_V2
+        enable X86_AMD_PLATFORM_DEVICE
         ;;
     esac
 
     # I2C/SMBus
     case "%{arch}" in
       x86_64|i686)
-        scripts/config -m I2C_PIIX4
-        scripts/config -m I2C_DESIGNWARE_PLATFORM
-        scripts/config -m MFD_INTEL_LPSS_PCI
-        scripts/config -m MFD_INTEL_LPSS_ACPI
+        module I2C_PIIX4
+        module I2C_DESIGNWARE_PLATFORM
+        module MFD_INTEL_LPSS_PCI
+        module MFD_INTEL_LPSS_ACPI
       ;;
     esac
 
     # USB Network interfaces
-    scripts/config -m USB_NET_DRIVERS
-    scripts/config -m USB_USBNET
-    scripts/config -m USB_NET_CDCETHER
-    scripts/config -m USB_NET_CDC_SUBSET
-    scripts/config -m USB_NET_RNDIS_HOST
-    scripts/config -m USB_RTL8150
-    scripts/config -m USB_RTL8152
+    module USB_NET_DRIVERS
+    module USB_USBNET
+    module USB_NET_CDCETHER
+    module USB_NET_CDC_SUBSET
+    module USB_NET_RNDIS_HOST
+    module USB_RTL8150
+    module USB_RTL8152
 
     # Required by podman
-    scripts/config -m TUN
-    scripts/config -e CGROUP_HUGETLB
-    scripts/config -e CGROUP_PIDS
-    scripts/config -e CPUSETS
-    scripts/config -e MEMCG
-    scripts/config -e CGROUP_SCHED
-    scripts/config -e BLK_CGROUP
+    module TUN
+    enable CGROUP_HUGETLB
+    enable CGROUP_PIDS
+    enable CPUSETS
+    enable MEMCG
+    enable CGROUP_SCHED
+    enable BLK_CGROUP
 
     # KVM
     case "%{arch}" in
       x86_64|i686)
-        scripts/config -m KVM
-        scripts/config -m KVM_INTEL
-        scripts/config -m KVM_AMD
+        module KVM
+        module KVM_INTEL
+        module KVM_AMD
         ;;
       aarch64)
-        scripts/config -m KVM
+        module KVM
         ;;
     esac
 
     # Useful filesystems
     for fs in XFS BTRFS EXFAT VFAT F2FS ISO9660; do
-      [ $(scripts/config -s "${fs}_FS") != n ] || scripts/config -m "${fs}_FS"
+      module "${fs}_FS"
     done
     for fs in XFS BTRFS F2FS; do
-      scripts/config -e "${fs}_FS_POSIX_ACL"
+      enable "${fs}_FS_POSIX_ACL"
     done
-    scripts/config -e FS_ENCRYPTION
+    enable FS_ENCRYPTION
 
     # Needed for FAT filesystems
-    scripts/config -e NLS_CODEPAGE_437
-    scripts/config -e NLS_ISO8859_1
+    enable NLS_CODEPAGE_437
+    enable NLS_ISO8859_1
 
     # RISC-V qemu virtual machine
     case "%{arch}" in
       riscv*)
-        scripts/config -e SOC_VIRT
+        enable SOC_VIRT
         ;;
     esac
 
     # Initramfs
-    scripts/config -e BLK_DEVTMPFS
-    scripts/config -e BLK_DEV_INITRD
+    enable BLK_DEVTMPFS
+    enable BLK_DEV_INITRD
         for comp in GZIP BZIP2 LZMA XZ LZO LZ4 ZSTD; do
-      scripts/config -e RD_${comp}
+      enable RD_${comp}
     done
-    scripts/config -d DEBUG_BLOCK_EXT_DEVT
+    remove DEBUG_BLOCK_EXT_DEVT
 
     # Compressed firmware
-    scripts/config -e FW_LOADER_COMPRESS
+    enable FW_LOADER_COMPRESS
 
     # Joysticks (Xbox)
-    scripts/config -m JOYSTICK_XPAD
-    scripts/config -e JOYSTICK_XPAD_FF
-    scripts/config -e JOYSTICK_XPAD_LEDS
+    module JOYSTICK_XPAD
+    enable JOYSTICK_XPAD_FF
+    enable JOYSTICK_XPAD_LEDS
 
   - |
     make -j1 olddefconfig
@@ -473,3 +475,8 @@ public:
 
 (@):
 - elements/include/linux.yml
+
+sources:
+  (>):
+  - kind: local
+    path: files/linux/config-utils.sh
