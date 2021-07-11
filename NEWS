@@ -1,5 +1,18 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08beta.1:
+
+  * Support for a new architecture: RISC-V
+  * Update all the components to the latest version available, check specific versions at
+    https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Release-Contents#contents
+  * Improve reproducibility tests and fix several components to be reproducible; reproducible
+    tests are run in a daily schedule
+  * Add schedule job to check license of each element and generate report
+  * Remove Rust extension (#1020)
+  * Reintroduce gstreamer-vaapi as extension
+  * openssl is not part of the bootstrap anymore
+  * A lot of other small fixes and improvements
+
 freedesktop-sdk-20.08.0:
 
    * Disable publish of ARM v7 runtimes
