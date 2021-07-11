@@ -1,4 +1,4 @@
 sources:
 - kind: tar
-  url: tar_https:sourceware.org/ftp/debugedit/0.2/debugedit-0.2.tar.xz
-  ref: b78258240bb7ec5bbff109495092dcc111aa0393f135f2d2a4b43887ba26a942
+  url: tar_https:sourceware.org/ftp/debugedit/0.3/debugedit-0.3.tar.xz
+  ref: 877d5d0c7afc09a9660ccc890adc8eb63e91087a73afb4f438fda9ea9bce39ce
