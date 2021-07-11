@@ -201,9 +201,4 @@ depends:
 - components/xorg-lib-xxf86vm.bst
 - components/zenity.bst
 - integration/mtab.bst
-
-(?):
-- target_arch != "i686":
-    depends:
-      (>):
-      - components/vulkan-validation-layers.bst
+- components/vulkan-validation-layers.bst

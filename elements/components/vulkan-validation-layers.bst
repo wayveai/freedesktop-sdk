@@ -16,6 +16,9 @@ depends:
 
 variables:
   optimize-debug: "false"
+  (?):
+  - (target_arch == "i686"):
+      local_flags: -O1
 
   cmake-local: >-
     -DCMAKE_INSTALL_INCLUDEDIR="%{includedir}/vulkan/"
