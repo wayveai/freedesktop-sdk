@@ -1,23 +1,24 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+- components/glslang.bst
+- components/spirv-headers.bst
+- components/spirv-tools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
-- filename: components/glslang.bst
-  type: build
-- filename: components/spirv-headers.bst
-  type: build
-- filename: components/spirv-tools.bst
-  type: build
-- filename: components/wayland.bst
-- filename: components/vulkan-headers.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xcb.bst
-- filename: components/xorg-lib-xrandr.bst
+- bootstrap-import.bst
+- components/wayland.bst
+- components/vulkan-headers.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xcb.bst
+- components/xorg-lib-xrandr.bst
 
 variables:
   optimize-debug: "false"
+  (?):
+  - (target_arch == "i686"):
+      local_flags: -O1
 
   cmake-local: >-
     -DCMAKE_INSTALL_INCLUDEDIR="%{includedir}/vulkan/"
