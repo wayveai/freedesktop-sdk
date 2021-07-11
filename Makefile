@@ -299,6 +299,19 @@ files/vm/ostree-config/fdsdk.gpg: ostree-gpg
 LOCAL_ADDRESS=$(shell ip route get 1.1.1.1 | cut -d" " -f7)
 OSTREE_BRANCH=freedesktop-sdk-$(BRANCH)-$(ARCH)
 
+.PHONY: vulkan-stack-update
+vulkan-stack-update:
+	test -n "${SDK_VERSION}"
+	for name in components/vulkan-icd-loader.bst \
+	components/vulkan-headers.bst \
+	components/vulkan-validation-layers.bst \
+	extensions/vulkaninfo/vulkan-tools.bst \
+	components/spirv-headers.bst \
+	components/spirv-tools.bst; do \
+	sed -ie "s/- sdk-[1-9]\..*/- sdk-${SDK_VERSION}/" elements/$${name}; \
+	bst track $${name}; \
+	done
+
 ostree-config.yml:
 	echo 'ostree-remote-url: "http://$(LOCAL_ADDRESS):8000/"' >"$@.tmp"
 	echo 'ostree-branch: "$(OSTREE_BRANCH)"' >>"$@.tmp"
