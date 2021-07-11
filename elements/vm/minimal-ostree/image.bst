@@ -71,7 +71,7 @@ config:
             label = "root"
             use-mke2fs = true
         }
-        size = 1G
+        size = 2G
     }
     image disk.img {
         hdimage {
