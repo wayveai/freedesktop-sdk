@@ -45,5 +45,15 @@ config:
     dracut -v --fstab \
            --no-machineid --kernel-image /boot/vmlinuz \
            --kver $(ls -1 /lib/modules | head -n1) \
-           --kernel-cmdline "rw quiet splash root=UUID=${uuid_root}" \
+           --kernel-cmdline "rw quiet splash" \
            --install 'fsck.ext4'
+
+  - |
+    . /tmp/vars
+    cat <<EOF >/boot/loader/entries/fdsdk.conf
+    title Freedesktop SDK
+    version 1
+    options rw quiet splash
+    linux /vmlinuz
+    initrd /initramfs-$(ls -1 /lib/modules | head -n1).img
+    EOF
