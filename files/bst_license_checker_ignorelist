@@ -141,7 +141,6 @@ bootstrap/make-build-deps.bst
 bootstrap/ncurses-build-deps.bst
 bootstrap/openssl-build-deps.bst
 bootstrap/pcre-build-deps.bst
-bootstrap/popt-build-deps.bst
 bootstrap/readline-build-deps.bst
 bootstrap/sed-build-deps.bst
 bootstrap/stripper-build-deps.bst
