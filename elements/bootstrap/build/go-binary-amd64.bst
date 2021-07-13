@@ -5,6 +5,6 @@ runtime-depends:
 
 sources:
 - kind: tar
-  url: google:go/go1.16.3.linux-amd64.tar.gz
+  url: google:go/go1.16.6.linux-amd64.tar.gz
   directory: /usr/local/go
-  ref: 951a3c7c6ce4e56ad883f97d9db74d3d6d80d5fec77455c6ada6c1f7ac4776d2
+  ref: be333ef18b3016e9d7cb7b1ff1fdb0cac800ca0be4cf2290fe613b3d069dfe0d
