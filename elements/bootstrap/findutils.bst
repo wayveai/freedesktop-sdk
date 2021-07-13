@@ -17,5 +17,5 @@ config:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:findutils/findutils-4.7.0.tar.xz
-  ref: c5fefbdf9858f7e4feb86f036e1247a54c79fc2d8e4b7064d5aaa1f47dfa789a
+  url: ftp_gnu_org:findutils/findutils-4.8.0.tar.xz
+  ref: 57127b7e97d91282c6ace556378d5455a9509898297e46e10443016ea1387164
