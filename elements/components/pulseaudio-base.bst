@@ -67,9 +67,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:pulseaudio/pulseaudio.git
-  track: master
-  #track-extra:
-  #- stable-13.x
+  # tracking disabled due to ABI break
   exclude:
   - v*.99.*
   ref: v13.0-0-g200618b32f0964a479d69c9b6e5073e6931c370a
