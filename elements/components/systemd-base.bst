@@ -25,6 +25,15 @@ build-depends:
 - components/openssl.bst
 - components/python3-jinja2.bst
 
+config:
+  install-commands:
+    (>):
+    - |
+      for name in %{install-root}%{indep-libdir}/systemd/boot/efi/*.elf.stub
+      do
+      chmod a-x ${name}
+      done
+
 variables:
   efi: 'false'
   (?):
