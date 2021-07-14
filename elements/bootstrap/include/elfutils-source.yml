@@ -1,4 +1,4 @@
 sources:
 - kind: tar
-  url: sourceware_pub:elfutils/0.183/elfutils-0.183.tar.bz2
-  ref: c3637c208d309d58714a51e61e63f1958808fead882e9b607506a29e5474f2c5
+  url: sourceware_pub:elfutils/0.185/elfutils-0.185.tar.bz2
+  ref: dc8d3e74ab209465e7f568e1b3bb9a5a142f8656e2b57d10049a73da2ae6b5a6
