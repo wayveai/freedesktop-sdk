@@ -7,8 +7,8 @@ depends:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:parted/parted-3.3.tar.xz
-  ref: 57e2b4bd87018625c515421d4524f6e3b55175b472302056391c5f7eccb83d44
+  url: ftp_gnu_org:parted/parted-3.4.tar.xz
+  ref: e1298022472da5589b7f2be1d5ee3c1b66ec3d96dfbad03dc642afd009da5342
 
 # We have decided to stay with tarballs on this one, because the build
 # system is too annoying when building from git. Parted  apparently
