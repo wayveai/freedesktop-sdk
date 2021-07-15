@@ -23,5 +23,5 @@ variables:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:wget/wget-1.20.3.tar.lz
-  ref: 69607ce8216c2d1126b7a872db594b3f21e511e660e07ca1f81be96650932abb
+  url: ftp_gnu_org:wget/wget-1.21.tar.lz
+  ref: 87ae105e76e5b550e03e009ba94341143c66623a5ecbba047f6ef850608b6596
