@@ -12,7 +12,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gdbm/gdbm-1.18.1.tar.gz
-  ref: 86e613527e5dba544e73208f42b78b7c022d4fa5a6d5498bf18c8d6f745b91dc
-- kind: patch
-  path: patches/gdbm/gcc10-fno-common.patch
+  url: ftp_gnu_org:gdbm/gdbm-1.20.tar.gz
+  ref: 3aeac05648b3482a10a2da986b9f3a380a29ad650be80b9817a435fb8114a292
