@@ -12,5 +12,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:libidn/libidn2-2.3.0.tar.lz
-  ref: 6b222435016e2d9fce34af0b21057ebc85704c27e41a781466d9287f0627dc93
+  url: ftp_gnu_org:libidn/libidn2-2.3.1.tar.gz
+  ref: 8af684943836b8b53965d5f5b6714ef13c26c91eaa36ce7d242e3d21f5d40f2d
