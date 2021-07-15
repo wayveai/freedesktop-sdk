@@ -26,5 +26,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.1.tar.xz
-  ref: 3777d7963eca5e06eb315686163b7b3f5045e2baac5e54e038ace9835e5cac6f
+  url: tar_https:www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz
+  ref: 646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752
