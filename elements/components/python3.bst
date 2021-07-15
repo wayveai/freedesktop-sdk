@@ -96,6 +96,6 @@ sources:
   exclude:
   - v*rc*
   url: github:python/cpython.git
-  ref: v3.8.8-0-g024d8058b0cb2b13dfd65c8e3804a6b194a151ba
+  ref: v3.8.11-0-gc3ffbbdf3d5645ee07c22649f2028f9dffc762ba
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch
