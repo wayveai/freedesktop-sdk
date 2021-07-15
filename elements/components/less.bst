@@ -11,5 +11,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:less/less-530.tar.gz
-  ref: 503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2
+  url: ftp_gnu_org:less/less-581.2.tar.gz
+  ref: ce34b47caf20a99740672bf560fc48d5d663c5e78e67bc254e616b9537d5d83b
