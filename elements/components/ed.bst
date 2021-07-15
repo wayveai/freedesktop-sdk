@@ -18,5 +18,5 @@ config:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:ed/ed-1.16.tar.lz
-  ref: cfc07a14ab048a758473ce222e784fbf031485bcd54a76f74acfee1f390d8b2c
+  url: ftp_gnu_org:ed/ed-1.17.tar.lz
+  ref: 71de39883c25b6fab44add80635382a10c9bf154515b94729f4a6529ddcc5e54
