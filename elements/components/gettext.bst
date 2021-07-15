@@ -31,5 +31,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gettext/gettext-0.20.2.tar.lz
-  ref: 6d84e873329f5fd4198843cecd1017159b2601e5b8f1dcf11324a78322e74ed5
+  url: ftp_gnu_org:gettext/gettext-0.21.tar.lz
+  ref: 435b546e3880ab767c967c0731b20629a0cb0ba620e6bac2f590f401c10ebb45
