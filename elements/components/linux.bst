@@ -388,7 +388,7 @@ config:
     esac
 
     # Useful filesystems
-    for fs in XFS BTRFS EXFAT VFAT F2FS ISO9660; do
+    for fs in XFS BTRFS EXFAT VFAT F2FS ISO9660 UDF; do
       module "${fs}_FS"
     done
     for fs in XFS BTRFS F2FS; do
