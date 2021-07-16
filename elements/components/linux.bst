@@ -498,7 +498,7 @@ config:
       targetfile="${targetdir}/${file}"
       dir="$(dirname "${targetfile}")"
       [ -d "${dir}" ] || install -d "${dir}"
-      rsync -a "${file}" "${targetfile}"
+      cp -aT "${file}" "${targetfile}"
     done
 
     ln -sr "${targetdir}" "%{install-root}%{indep-libdir}/modules/${release}/source"
