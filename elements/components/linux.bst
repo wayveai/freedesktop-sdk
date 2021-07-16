@@ -366,6 +366,11 @@ config:
     module USB_RTL8150
     module USB_RTL8152
 
+    # USB Serial
+    enable USB_SERIAL
+    module USB_SERIAL_SIMPLE
+    module USB_SERIAL_FTDI_SIO
+
     # Required by podman
     module TUN
     enable CGROUP_HUGETLB
