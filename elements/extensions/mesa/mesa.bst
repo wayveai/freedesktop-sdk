@@ -10,7 +10,7 @@ build-depends:
 - components/vulkan-headers.bst
 - components/wayland-protocols.bst
 - components/glslang.bst
-- extensions/mesa/zstd.bst
+- components/zstd.bst
 - public-stacks/buildsystem-meson.bst
 
 

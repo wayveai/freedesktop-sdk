@@ -202,3 +202,4 @@ depends:
 - components/zenity.bst
 - integration/mtab.bst
 - components/vulkan-validation-layers.bst
+- components/zstd.bst
