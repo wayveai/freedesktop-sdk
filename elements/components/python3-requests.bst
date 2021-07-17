@@ -11,9 +11,10 @@ runtime-depends:
 - components/python3-certifi.bst
 - components/python3-idna.bst
 - components/python3-chardet.bst
+- components/python3-charset-normalizer.bst
 
 sources:
 - kind: pypi
   name: requests
-  url: pypi:6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz
-  sha256sum: 27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804
+  url: pypi:e7/01/3569e0b535fb2e4a6c384bdbed00c55b9d78b5084e0fb7f4d0bf523d7670/requests-2.26.0.tar.gz
+  sha256sum: b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7
