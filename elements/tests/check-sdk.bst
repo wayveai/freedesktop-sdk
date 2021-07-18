@@ -13,6 +13,7 @@ config:
   - components/linux-firmware.bst
   - components/linux-pam.bst
   - components/linux.bst
+  - components/llvm.bst
   - components/open-iscsi.bst
   - components/openssh-systemd.bst
   - components/ostree.bst
