@@ -2,10 +2,10 @@ kind: cmake
 
 depends:
 - bootstrap-import.bst
-- components/llvm.bst
 
 build-depends:
 - public-stacks/buildsystem-cmake.bst
+- components/llvm.bst
 - components/spirv-tools.bst
 - components/spirv-llvm-translator.bst
 
