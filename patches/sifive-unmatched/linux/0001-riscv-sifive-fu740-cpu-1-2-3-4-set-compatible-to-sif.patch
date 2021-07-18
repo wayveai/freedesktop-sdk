@@ -1,7 +1,7 @@
-From 1e1601801a880cd9478c4d65c4c240613aedea0e Mon Sep 17 00:00:00 2001
+From 82efed54aef8ec32bd5e2f342bf72ffe4b29dffc Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Wed, 17 Feb 2021 06:06:14 -0800
-Subject: [PATCH 01/19] riscv: sifive: fu740: cpu{1,2,3,4} set compatible to
+Subject: [PATCH 1/8] riscv: sifive: fu740: cpu{1,2,3,4} set compatible to
  sifive,u74-mc
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
@@ -10,7 +10,7 @@ Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/sifive/fu740-c000.dtsi b/arch/riscv/boot/dts/sifive/fu740-c000.dtsi
-index d0d206cdb999..cd9cc025777d 100644
+index abbb960f90a0..3095d823439d 100644
 --- a/arch/riscv/boot/dts/sifive/fu740-c000.dtsi
 +++ b/arch/riscv/boot/dts/sifive/fu740-c000.dtsi
 @@ -39,7 +39,7 @@ cpu0_intc: interrupt-controller {
@@ -50,5 +50,5 @@ index d0d206cdb999..cd9cc025777d 100644
  			d-cache-sets = <64>;
  			d-cache-size = <32768>;
 -- 
-2.31.1
+2.32.0
 

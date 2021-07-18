@@ -1,7 +1,7 @@
-From 938340dd5956cfa0a4823088b4ec8539ac339cd4 Mon Sep 17 00:00:00 2001
+From 7c0dba5fd5faf94d25cc49dc518503a5aa23de67 Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Mon, 22 Feb 2021 01:33:52 -0800
-Subject: [PATCH 02/19] riscv: sifive: unmatched: update for 16GB rev3
+Subject: [PATCH 2/8] riscv: sifive: unmatched: update for 16GB rev3
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
@@ -104,5 +104,5 @@ index b1c3c596578f..e026f60af09e 100644
  				regulator-max-microamp = <200000>;
  				regulator-always-on;
 -- 
-2.31.1
+2.32.0
 

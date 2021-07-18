@@ -1,7 +1,7 @@
-From f95a538c4492cba210f7206ffbba7df8afceb22d Mon Sep 17 00:00:00 2001
+From ff480c83a7338f8aa1a42282154e66700d588efc Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Thu, 25 Mar 2021 04:34:52 -0700
-Subject: [PATCH 14/19] riscv: sifive: unmatched: add D12 PWM LED
+Subject: [PATCH 3/8] riscv: sifive: unmatched: add D12 PWM LED
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
@@ -39,5 +39,5 @@ index e026f60af09e..8461b33d1f48 100644
  		#clock-cells = <0>;
  		compatible = "fixed-clock";
 -- 
-2.31.1
+2.32.0
 
