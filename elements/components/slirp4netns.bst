@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: github:rootless-containers/slirp4netns.git
   track: master
-  ref: v1.1.4-0-gb66ffa8e262507e37fca689822d23430f3357fe8
+  ref: v1.1.11-0-g368e69ccc074628d17a9bb9a35b8f4b9f74db4c6
