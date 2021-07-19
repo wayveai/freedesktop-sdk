@@ -5,7 +5,6 @@ build-depends:
 
 depends:
 - components/mpfr.bst
-- components/pcre2.bst
 - components/python3.bst
 
 sources:

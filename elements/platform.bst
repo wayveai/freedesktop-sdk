@@ -41,7 +41,6 @@ depends:
 - components/libnice.bst
 - components/libpng.bst
 - components/libsamplerate.bst
-- components/libselinux.bst
 - components/libtasn1.bst
 - components/libtheora.bst
 - components/libtiff.bst
@@ -65,7 +64,6 @@ depends:
 - components/openssl.bst
 - components/opus.bst
 - components/p11-kit.bst
-- components/pcre2.bst
 - components/procps.bst
 - components/python3.bst
 - components/python3-setuptools.bst

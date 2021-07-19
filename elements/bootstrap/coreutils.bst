@@ -1,11 +1,12 @@
 kind: autotools
 description: GNU coreutils
 
-depends:
-- filename: bootstrap/coreutils-build-deps.bst
-  type: build
-- filename: bootstrap/acl.bst
-  type: runtime
+build-depends:
+- bootstrap/coreutils-build-deps.bst
+
+runtime-depends:
+- bootstrap/acl.bst
+- bootstrap/libselinux.bst
 
 (@):
 - elements/bootstrap/include/target.yml

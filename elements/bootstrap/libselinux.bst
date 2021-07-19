@@ -1,11 +1,14 @@
 kind: autotools
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/pcre2.bst
-- filename: components/libsepol.bst
+build-depends:
+- bootstrap/libselinux-build-deps.bst
+
+runtime-depends:
+- bootstrap/pcre2.bst
+- bootstrap/libsepol.bst
+
+(@):
+- elements/bootstrap/include/target.yml
 
 variables:
   builddir: ''
@@ -15,6 +18,8 @@ environment:
   LIBDIR: '%{libdir}'
   SHLIBDIR: '%{libdir}'
   SBINDIR: '%{sbindir}'
+  CC: '%{triplet}-gcc'
+  PKG_CONFIG_PATH: '%{sysroot}%{libdir}/pkgconfig'
 
 config:
   configure-commands: []

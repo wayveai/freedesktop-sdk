@@ -8,8 +8,11 @@ build-depends:
 - components/flex.bst
 
 variables:
-  conf-local: |
+  conf-local: >-
     --includedir="%{includedir}/security"
+  make-args: sepermitlockdir=/run/sepermit
+  make: "make %{make-args}"
+  make-install: "make %{make-args} -j1 install DESTDIR='%{install-root}'"
 
 public:
   bst:

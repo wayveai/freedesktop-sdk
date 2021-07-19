@@ -8,7 +8,6 @@ depends:
 - components/libpsl.bst
 - components/libunistring.bst
 - components/nettle.bst
-- components/pcre2.bst
 - components/util-linux.bst
 
 build-depends:

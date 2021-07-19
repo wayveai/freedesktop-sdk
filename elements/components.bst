@@ -209,8 +209,6 @@ depends:
 - components/librsvg.bst
 - components/libsamplerate.bst
 - components/libseccomp.bst
-- components/libselinux.bst
-- components/libsepol.bst
 - components/libslirp.bst
 - components/libsmbios-maybe.bst
 - components/libsoup.bst
@@ -289,7 +287,6 @@ depends:
 - components/parted.bst
 - components/patch.bst
 - components/pciutils.bst
-- components/pcre2.bst
 - components/pcsc-lite.bst
 - components/perf.bst
 - components/perl-build.bst

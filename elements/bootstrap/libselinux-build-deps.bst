@@ -7,9 +7,8 @@ build-depends:
 - bootstrap/gnu-config.bst
 - bootstrap/build/gcc-stage2.bst
 - bootstrap/build/debug-utils.bst
-- bootstrap/build/coreutils-manpages.bst
-- bootstrap/acl.bst
-- bootstrap/libselinux.bst
+- bootstrap/libsepol.bst
+- bootstrap/pcre2.bst
 
 variables:
   install-root: "/"
@@ -22,10 +21,8 @@ config:
     destination: "/"
   - element: bootstrap/build/debug-utils.bst
     destination: "/"
-  - element: bootstrap/build/coreutils-manpages.bst
-    destination: "/"
 
-  - element: bootstrap/acl.bst
+  - element: bootstrap/libsepol.bst
     destination: "%{sysroot}"
-  - element: bootstrap/libselinux.bst
+  - element: bootstrap/pcre2.bst
     destination: "%{sysroot}"

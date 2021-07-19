@@ -1,8 +1,13 @@
 kind: autotools
-description: pcre2
 
-depends:
-- filename: bootstrap-import.bst
+build-depends:
+- bootstrap/pcre2-build-deps.bst
+
+runtime-depends:
+- bootstrap/glibc.bst
+
+(@):
+- elements/bootstrap/include/target.yml
 
 variables:
   common_options: "--enable-pcre2-16 --enable-pcre2-32"

@@ -12,7 +12,6 @@ depends:
 - components/systemd.bst
 - components/dbus.bst
 - components/glib.bst
-- components/libselinux.bst
 - components/gnutls.bst
 - components/nss.bst
 - components/libpsl.bst

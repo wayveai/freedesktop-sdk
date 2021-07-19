@@ -1,12 +1,13 @@
 kind: autotools
 
 build-depends:
-- components/flex.bst
-- components/m4.bst
+- bootstrap/libsepol-build-deps.bst
 
-depends:
-- bootstrap-import.bst
-- components/pcre2.bst
+runtime-depends:
+- bootstrap/pcre2.bst
+
+(@):
+- elements/bootstrap/include/target.yml
 
 variables:
   builddir: ''
@@ -16,6 +17,8 @@ environment:
   USE_PCRE2: y
   LIBDIR: '%{libdir}'
   SHLIBDIR: '%{libdir}'
+  CC: '%{triplet}-gcc'
+  PKG_CONFIG_PATH: '%{sysroot}%{libdir}/pkgconfig'
 
 config:
   configure-commands: []

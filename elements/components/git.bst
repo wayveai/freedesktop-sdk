@@ -14,7 +14,6 @@ depends:
 - components/python3.bst
 - components/gnupg.bst
 - components/curl.bst
-- components/pcre2.bst
 - components/expat.bst
 - components/libffi.bst
 - components/openssl.bst
