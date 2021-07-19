@@ -34,12 +34,12 @@ sources:
 - kind: git_tag
   url: github:containers/podman.git
   directory: src/github.com/containers/podman
-  track: master
+  track: main
   track-extra:
   - v3.2
   exclude:
   - "*rc*"
-  ref: v3.2.1-0-g152952fe6b18581615c3efd1fafef2d8142738e8
+  ref: v3.2.3-0-g1e6fd46e91b21342f9454cf8105a92b90e398c52
 - kind: patch
   path: patches/podman/podman-stdin.patch
   directory: src/github.com/containers/podman
