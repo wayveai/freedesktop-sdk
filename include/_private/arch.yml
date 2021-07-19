@@ -19,5 +19,8 @@ go-arch: "%{arch}"
     go-arch: "arm64"
 - target_arch == "ppc64le":
     go-arch: "ppc64le"
+- target_arch == "ppc64":
+    uname-arch: "ppc64"
+    go-arch: "ppc64"
 - target_arch == "riscv64":
     go-arch: "riscv64"

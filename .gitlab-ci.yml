@@ -409,6 +409,15 @@ check_snap_i686:
     - '/^release\/.*/'
     - tags
 
+bootstrap_ppc64:
+  extends:
+    - .bootstrap_template
+    - .builder-x86_64
+  allow_failure: true
+  when: manual
+  variables:
+    ARCH: ppc64
+
 .vm_imageless_template:
   stage: vm
   script:

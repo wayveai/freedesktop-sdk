@@ -16,6 +16,10 @@ variables:
       conf-extra: >-
         --with-cpu=power8
         --with-tune=power8
+  - target_arch == "ppc64":
+      conf-extra: >-
+        --with-cpu=power8
+        --with-tune=power8
   - target_arch == "riscv64":
       conf-extra: >-
         --with-arch=rv64gc

@@ -18,6 +18,7 @@ variables:
   build_aarch64_flags: ""
   build_arm_flags: ""
   build_powerpc64le_flags: ""
+  build_powerpc64_flags: ""
   build_riscv64_flags: ""
 
   # The final composition of `build_flags` includes `build_arch_flags`
@@ -42,5 +43,7 @@ variables:
       build_arch_flags: "%{build_aarch64_flags}"
   - target_arch == "ppc64le":
       build_arch_flags: "%{build_powerpc64le_flags}"
+  - target_arch == "ppc64":
+      build_arch_flags: "%{build_powerpc64_flags}"
   - target_arch == "riscv64":
       build_arch_flags: "%{build_riscv64_flags}"
