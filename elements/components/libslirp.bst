@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: freedesktop:slirp/libslirp.git
   track: master
-  ref: v4.3.1-0-ga62d36734ffe9828d0f70df1b3898a3b4fbda755
+  ref: v4.6.1-0-gcceced0cce9d578ed01db68edf31af78eb66f858
