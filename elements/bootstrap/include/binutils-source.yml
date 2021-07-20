@@ -13,5 +13,7 @@ public:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: binutils-2_36-branch
-  ref: binutils-2_36_1-0-gf35674005e609660f5f45005a9e095541ca4c5fe
+  track: master
+  track-extra:
+  - binutils-2_37-branch
+  ref: binutils-2_37-0-g116a737f438d03a1bd6aa706b6ea0b4022f3b7e2
