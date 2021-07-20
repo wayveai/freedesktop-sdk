@@ -198,9 +198,6 @@ test-apps: $(REPO)
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.gnu.Hello.json
 	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.gnu.Hello.json hello
 
-	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.gnu.Hello.clang.json
-	flatpak-builder --arch=$(FLATPAK_ARCH) --run app tests/org.gnu.Hello.clang.json hello
-
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.Readline.json
 
 test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime

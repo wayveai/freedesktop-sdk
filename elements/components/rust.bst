@@ -1,12 +1,12 @@
 kind: manual
 
 depends:
+- bootstrap-import.bst
 - components/llvm.bst
 - components/libxml2.bst
 - components/openssl.bst
 
 build-depends:
-- bootstrap-import.bst
 - components/rust-stage1.bst
 - public-stacks/buildsystem-cmake.bst
 - components/python3.bst

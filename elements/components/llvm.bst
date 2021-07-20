@@ -1,10 +1,11 @@
 kind: cmake
 
 build-depends:
-- bootstrap-import.bst
 - components/libffi.bst
-- components/doxygen.bst
 - public-stacks/buildsystem-cmake.bst
+
+depends:
+- bootstrap-import.bst
 
 environment:
   # Work-around issue building compiler-rt with multiarch
@@ -32,7 +33,7 @@ variables:
       targets: RISCV;AMDGPU
 
   cmake-local: >-
-    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld'
+    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt'
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF
     -DBUILD_SHARED_LIBS:BOOL=OFF
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON
@@ -48,7 +49,7 @@ variables:
     -DLLVM_INCLUDE_UTILS:BOOL=ON
     -DLLVM_INSTALL_UTILS:BOOL=ON
     -DLLVM_INCLUDE_DOCS:BOOL=OFF
-    -DLLVM_ENABLE_DOXYGEN:BOOL=ON
+    -DLLVM_ENABLE_DOXYGEN:BOOL=OFF
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON
     -DLLVM_BINUTILS_INCDIR=%{includedir}
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include
@@ -72,27 +73,21 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{debugdir}%{bindir}/**'
-        - '%{debugdir}%{libdir}/LLVMgold.so.debug'
+        - '%{bindir}'
         - '%{bindir}/**'
+        - '%{datadir}'
+        - '%{datadir}/**'
+        - '%{libexecdir}'
         - '%{libexecdir}/**'
-        - '%{libdir}/libLLVM-*.*.*.so'
-        - '%{libdir}/libLLVM.so'
-        - '%{libdir}/LLVMgold.so'
-        - '%{libdir}/libLTO.so*'
-        - '%{libdir}/libclang.so'
-        - '%{libdir}/libclang-cpp.so'
-        - '%{libdir}/libRemarks.so'
         - '%{libdir}/clang'
         - '%{libdir}/clang/**'
-        - '%{datadir}/clang'
-        - '%{datadir}/clang/**'
-        - '%{datadir}/opt-viewer'
-        - '%{datadir}/opt-viewer/**'
-        - '%{datadir}/scan-build'
-        - '%{datadir}/scan-build/**'
-        - '%{datadir}/scan-view'
-        - '%{datadir}/scan-view/**'
+        - '%{libdir}/libLLVM.so'
+        - '%{libdir}/libLLVM-*.*.*.so'
+        - '%{libdir}/libclang-cpp.so'
+        - '%{libdir}/libclang.so'
+        - '%{libdir}/LLVMgold.so'
+        - '%{libdir}/libLTO.so'
+        - '%{libdir}/libRemarks.so'
 
       static-blocklist:
         (>):

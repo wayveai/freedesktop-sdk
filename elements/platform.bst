@@ -141,7 +141,6 @@ depends:
 - components/libva.bst
 - components/libvdpau.bst
 - components/libxkbcommon.bst
-- components/llvm.bst
 - components/mesa-headers.bst
 - components/mpg123.bst
 - components/mythes.bst

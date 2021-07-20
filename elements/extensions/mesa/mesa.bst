@@ -5,6 +5,7 @@ build-depends:
 - components/m4.bst
 - components/appstream-glib.bst
 - components/flex.bst
+- components/llvm.bst
 - components/python3.bst
 - components/python3-mako.bst
 - components/vulkan-headers.bst
@@ -16,7 +17,6 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
-- components/llvm.bst
 - components/libdrm.bst
 - components/libva.bst
 - components/opencl.bst
@@ -31,6 +31,7 @@ depends:
 - components/libunwind-maybe.bst
 - extensions/mesa/libclc.bst
 - extensions/mesa/libdrm.bst
+- extensions/mesa/llvm.bst
 
 
 (@):
