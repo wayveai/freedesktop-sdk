@@ -31,6 +31,6 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/drm.git
   track: master
-  ref: libdrm-2.4.105-0-g6b4e956d299c6ff09a4abf89642ccc1beb455c88
+  ref: libdrm-2.4.107-0-g9cef5dee3cd817728c83aeb3c2010c1954e4c402
 - kind: patch
   path: patches/libdrm/libdrm-disable-libdrm.patch
