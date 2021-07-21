@@ -1,16 +1,13 @@
 kind: autotools
 
+build-depends:
+- components/gobject-introspection.bst
+- components/wayland-protocols.bst
+- public-stacks/buildsystem-autotools.bst
+- components/iso-codes.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/gobject-introspection.bst
-  type: build
 - filename: components/gtk3.bst
-- filename: components/wayland-protocols.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/iso-codes.bst
-  type: build
 
 variables:
   conf-local: |
@@ -52,5 +49,5 @@ public:
 
 sources:
 - kind: tar
-  url: github_files:ibus/ibus/releases/download/1.5.22/ibus-1.5.22.tar.gz
-  ref: 8170eba58c28aa4818970751ebdeada728ebb63d535967a5c5f5c21b0017be4a
+  url: github_files:ibus/ibus/releases/download/1.5.24/ibus-1.5.24.tar.gz
+  ref: abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f
