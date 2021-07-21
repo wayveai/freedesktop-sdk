@@ -1,20 +1,21 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-  - filename: bootstrap-import.bst
-  - filename: public-stacks/buildsystem-autotools.bst
-    type: build
+- bootstrap-import.bst
 
 variables:
   common_options: "--enable-threads --enable-openmp"
   arch_options: ''
   (?):
-    - target_arch == "i686" or target_arch == "x86_64":
-        arch_options: "--enable-sse2 --enable-avx"
-    - target_arch == "aarch64":
-        arch_options: "--enable-neon"
-    - target_arch == "ppc64le":
-        arch_options: "--enable-vsx"
+  - target_arch == "i686" or target_arch == "x86_64":
+      arch_options: "--enable-sse2 --enable-avx"
+  - target_arch == "aarch64":
+      arch_options: "--enable-neon"
+  - target_arch == "ppc64le":
+      arch_options: "--enable-vsx"
         # Remember to add --enable-altivec when we will build the single
         # precision libraries.
 
@@ -32,6 +33,6 @@ public:
         - '%{libdir}/libfftw3_threads.so'
 
 sources:
-  - kind: tar
-    url: tar_http:www.fftw.org/fftw-3.3.8.tar.gz
-    ref: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
+- kind: tar
+  url: tar_http:www.fftw.org/fftw-3.3.9.tar.gz
+  ref: bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d
