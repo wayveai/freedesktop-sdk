@@ -32,6 +32,6 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:archive.mozilla.org/pub/nspr/releases/v4.26/src/nspr-4.26.tar.gz
-  ref: fc9d142d85b74ffd2e6374a0c9016f3f2dac074225e24df3070e5a72d31b773d
+  url: tar_https:archive.mozilla.org/pub/nspr/releases/v4.32/src/nspr-4.32.tar.gz
+  ref: bb6bf4f534b9559cf123dcdc6f9cd8167de950314a90a88b2a329c16836e7f6c
   base-dir: '*/nspr'
