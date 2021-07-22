@@ -23,8 +23,6 @@ variables:
   conf-link-args: |
     --enable-shared \
     --enable-static
-  prefix: '%{tools}'
-  lib: lib
   autogen: |
     autoreconf -fvi
     for conf in */configure.ac; do

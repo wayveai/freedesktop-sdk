@@ -11,8 +11,6 @@ depends:
 - elements/bootstrap/include/binutils-source.yml
 
 variables:
-  lib: lib
-  prefix: '%{tools}'
   conf-local: >-
     --target=%{triplet}
     --with-sysroot=%{sysroot}

@@ -14,7 +14,6 @@ variables:
   prefix: /glibc
   sysconfdir: /glibc/etc
   localstatedir: /glibc/var
-  lib: lib
 
   conf-local: |
     --disable-werror

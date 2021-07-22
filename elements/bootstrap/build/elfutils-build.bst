@@ -11,9 +11,6 @@ depends:
 - elements/bootstrap/include/elfutils-source.yml
 
 variables:
-  prefix: '%{tools}'
-  lib: lib
-
   conf-local: >-
     --disable-debuginfod
     --disable-libdebuginfod

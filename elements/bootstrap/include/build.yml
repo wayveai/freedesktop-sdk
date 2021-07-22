@@ -4,6 +4,8 @@
 variables:
   build-triplet: '%{bootstrapper-triplet}'
   host-triplet: '%{bootstrapper-triplet}'
+  prefix: '%{tools}'
+  lib: lib
 
 environment:
   CFLAGS:  "%{build_flags}"

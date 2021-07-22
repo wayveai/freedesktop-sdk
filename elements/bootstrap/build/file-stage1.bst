@@ -10,10 +10,6 @@ depends:
 - elements/bootstrap/include/build.yml
 - elements/bootstrap/include/file-source.yml
 
-variables:
-  prefix: '%{tools}'
-  lib: lib
-
 config:
   configure-commands:
     (<):

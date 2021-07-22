@@ -19,8 +19,6 @@ environment:
 
 variables:
   strip-binaries: "true"
-  prefix: '%{tools}'
-  lib: lib
   (?):
   - target_arch == 'ppc64le':
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26360

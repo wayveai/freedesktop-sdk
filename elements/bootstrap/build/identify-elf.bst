@@ -8,9 +8,6 @@ depends:
 
 (@): elements/bootstrap/include/build.yml
 
-variables:
-  prefix: '%{tools}'
-
 config:
   build-commands:
   - |

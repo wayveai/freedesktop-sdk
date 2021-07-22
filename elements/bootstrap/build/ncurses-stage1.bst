@@ -12,8 +12,6 @@ depends:
 - elements/bootstrap/include/ncurses-sources.yml
 
 variables:
-  prefix: '%{tools}'
-  libdir: '%{tools}/lib'
   conf-link-args: --without-shared
   conf-local: |
     --without-ada \
