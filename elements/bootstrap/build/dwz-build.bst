@@ -21,4 +21,4 @@ config:
 
   install-commands:
   - |
-    make %{make-args} -j1 install DESTDIR="%{install-root}"
+    make %{make-args} -j1 install DESTDIR="%{install-root}" prefix=%{prefix}
