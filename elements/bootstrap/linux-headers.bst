@@ -5,7 +5,7 @@ build-depends:
 - bootstrap/build/base-sdk.bst
 
 (@):
-- elements/bootstrap/include/build.yml
+- elements/bootstrap/include/common.yml
 - elements/include/linux.yml
 
 variables:
