@@ -92,7 +92,7 @@ depends:
 - components/libdbus.bst
 - components/dejavu-fonts.bst
 - components/dictionaries.bst
-- components/emoji-one-font.bst
+- components/openmoji.bst
 - components/fcitx.bst
 - components/ffmpeg.bst
 - components/fftw.bst
