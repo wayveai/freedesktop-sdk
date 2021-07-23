@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: github:Yubico/libfido2.git
   track: master
-  ref: 1.7.0-0-g999f4ae4659a04c7eb8615ae5ae20b21f6a63d0b
+  ref: 1.8.0-0-g091cebe448f366c5efdbcd796d1395d175470552
