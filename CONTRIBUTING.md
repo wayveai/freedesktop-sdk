@@ -18,7 +18,7 @@ Additionally you can [test your changes](#testing-locally) locally using our Mak
 
 ## Help & Contact
 If this guide does not answer your questions, or you encounter any problems you can contact us at:
-- freedesktop-sdk@matrix.org on [matrix](https://matrix.to/#/+freedesktop-sdk:matrix.org)
+- [#freedesktop-sdk:matrix.org](https://matrix.to/#freedesktop-sdk:matrix.org) on matrix
 - [mailing list](https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk).
 
 Let's go through each step in more detail:
