@@ -78,8 +78,6 @@ config:
     bindir = "%{bindir}"
     libdir = "%{libdir}"
     datadir = "%{datadir}"
-    infodir = "%{infodir}"
-    localstatedir = "%{localstatedir}"
     mandir = "%{mandir}"
     docdir = "%{datadir}/doc/rust"
     [rust]
@@ -129,5 +127,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rustc-1.52.1-src.tar.xz
-  ref: 521bbaebce262264e44acb164d327cba27acf6f08bd7de672d8d1e16e7ed959e
+  url: tar_https:static.rust-lang.org/dist/rustc-1.53.0-src.tar.xz
+  ref: e53a2df2c2c26f8929d551852eeae242b9a6167fba34481f92010b30def32dec
