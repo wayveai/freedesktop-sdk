@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: xdg
-  url: pypi:b0/f1/194be3c59f4224c42477d2e593c02c61961d305869fcea47fbc9d17ac67f/xdg-5.1.0.tar.gz
-  sha256sum: 3949564ca3c204e7a7fa72d85f55fb436c0e6108506e3eb61f3f4cf5be35deca
+  url: pypi:33/fe/67bc1f8ee2782bca3cdc63558a64f843bb9f88e15793475350809fbd8e01/xdg-5.1.1.tar.gz
+  sha256sum: aa619f26ccec6088b2a6018721d4ee86e602099b24644a90a8d3308a25acd06c
