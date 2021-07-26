@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: freedesktop:dbus/dbus-python.git
   track: master
-  ref: dbus-python-1.2.16-0-g39b3099e1409118c6cf1260e8966d448cb16a93e
+  ref: dbus-python-1.2.18-0-g7bf42eed2d241a0cf3879f6080e31a2e2867a2f5
