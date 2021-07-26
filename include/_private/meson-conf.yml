@@ -4,5 +4,6 @@ variables:
   meson-global: >-
     --buildtype=plain
     -Dauto_features=enabled
+    -Db_pie=true
   ninja: |
     ninja -v -j ${NINJAJOBS} -C %{build-dir}
