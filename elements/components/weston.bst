@@ -39,6 +39,6 @@ variables:
 
 sources:
 - kind: git_tag
-  track: master
+  track: main
   url: freedesktop:wayland/weston.git
-  ref: 8.0.0-0-g33b06bdece396b285882160324ac894d1db7ecb0
+  ref: 9.0.0-0-g04d3ae265d8d8f84352c8dac21ec40b2fe07e7d2
