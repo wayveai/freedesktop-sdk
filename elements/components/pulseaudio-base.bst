@@ -23,16 +23,19 @@ variables:
     -Dalsa=disabled
     -Dasyncns=disabled
     -Davahi=disabled
-    -Dbluez5=false
+    -Dbluez5=disabled
     -Ddatabase=gdbm
     -Dfftw=disabled
     -Dgtk=disabled
+    -Dgstreamer=disabled
     -Djack=disabled
+    -Delogind=disabled
     -Dlirc=disabled
     -Dorc=disabled
     -Dsoxr=disabled
     -Dspeex=disabled
     -Dsystemd=enabled
+    -Dtcpwrap=disabled
     -Dtests=false
     -Dudev=disabled
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
@@ -68,6 +71,6 @@ sources:
   #- stable-13.x
   exclude:
   - v*.99.*
-  ref: v14.0-0-gd1e0594e939e3309435c966d994b0207b10f5175
+  ref: v15.0-0-g6329a2498eb038f8a9537888280a62b00a93f68e
 - kind: patch
   path: patches/pulseaudio/meson-disable-doxygen.patch
