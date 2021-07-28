@@ -33,3 +33,5 @@ sources:
   match:
   - 'ghostscript-*'
   ref: ghostscript-9.52-0-ge49830f8efdbc3a9f4e8acaf708b68a742f515aa
+- kind: patch
+  path: patches/ghostscript/autoconf-fix.patch

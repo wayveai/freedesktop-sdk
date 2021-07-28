@@ -6,6 +6,7 @@ build-depends:
 - cross-compilers/standard-libs-arm.bst
 - public-stacks/buildsystem-autotools.bst
 - components/texinfo.bst
+- cross-compilers/autoconf-2.69.bst
 
 depends:
 - cross-compilers/binutils-arm.bst
