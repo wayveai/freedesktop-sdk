@@ -420,6 +420,7 @@ depends:
 - components/systemd.bst
 - components/tar.bst
 - components/tcl.bst
+- components/tex-gyre-fonts.bst
 - components/texinfo.bst
 - components/tpm2-tss.bst
 - components/tzdata.bst

@@ -157,6 +157,7 @@ depends:
 - components/sdl2-ttf.bst
 - components/sdl2.bst
 - components/shared-mime-info.bst
+- components/tex-gyre-fonts.bst
 - components/v4l-utils.bst
 - components/vulkan-icd-loader.bst
 - components/wayland.bst
