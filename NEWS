@@ -1,5 +1,46 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08beta.3:
+  * weston: Update to 9.0.0
+  * python3-sphinx: Update to 4.1.2
+  * meson: Build position-independent executables (PIE)
+  * podman: Update to 3.2.3
+  * crun: Update to 0.20.1
+  * slirp4netns: Update to 1.1.11
+  * libslirp: Update to 4.6.1
+  * libnftnl: Update to 1.2.0
+  * iptables: Update to 1.8.7
+  * fuse-overlayfs: Update to 1.6.0
+  * fuse3: Update to 3.10.4
+  * conmon: Update to 2.0.29
+  * autoconf: Update to 2.71
+  * bootstrap/include/build.yml: set prefix and lib variables
+  * extensions/mesa/libdrm: Update to libdrm-2.4.107
+  * pkg-config: Update to pkgconf-1.8.0
+  * python3-xdg: Update to 5.1.1
+  * ostree: Update to v2021.3
+  * libinput: Update to 1.18.0
+  * intel-media-driver: Update to intel-media-21.3.0
+  * rust: Update to 1.53.0
+  * Replace emoji-one with openmoji 
+  * aom: Update to v3.1.2
+  * libfido2: Update to 1.8.0
+  * python3-idna: Update to 3.2
+  * curl: Update to curl-7_78_0
+  * sudo: Update to 1.9.7p1
+  * nspr: Update to 4.32
+  * libtirpc: Update to 1.3.2
+  * ibus: Update to 1.5.24
+  * fftw: Update to 3.3.9
+  * systemd: Update to v249.2
+  * pipewire-base: Update to 0.3.32
+  * binutils: Update to 2.37
+  * coreutils: Make ls -Z work: move selinux to bootstrap
+  * libnghttp2: Update to v1.44.0
+  * linux: Update to v5.13.3
+  * strace: Update to v5.13
+  * python3-setuptools: Update to 57.4.0
+
 freedesktop-sdk-21.08beta.2:
   * remove llvm from the flatpak runtimes (#1215)
   * python3-requests: Update to 2.26.0
