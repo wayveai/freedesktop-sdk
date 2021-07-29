@@ -22,5 +22,5 @@ sources:
 - kind: git_tag
   url: github:containers/conmon.git
   directory: src/github.com/containers/conmon
-  track: master
-  ref: v2.0.27-0-g65fad4bfcb250df0435ea668017e643e7f462155
+  track: main
+  ref: v2.0.29-0-g7e6de6678f6ed8a18661e1d5721b81ccee293b9b
