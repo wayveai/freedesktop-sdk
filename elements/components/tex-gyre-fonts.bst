@@ -7,7 +7,7 @@ variables:
   fontdir: '%{install-root}%{datadir}/fonts'
   confdir: '%{install-root}/etc/fonts'
 
-# PostScript font replacements available under the GUST Font License 
+# PostScript font replacements available under the GUST Font License
 # which is approved as Libre by the Fedora Project.
 #
 # Font-config is directly included in 30-metric-aliases.conf which declares these
