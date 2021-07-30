@@ -40,6 +40,8 @@ variables:
     -Dudev=disabled
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
     -Dwebrtc-aec=disabled
+    -Dvalgrind=disabled
+    -Dbluez5-gstreamer=disabled
 
 public:
   bst:
