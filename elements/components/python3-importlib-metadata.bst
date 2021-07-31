@@ -11,5 +11,5 @@ depends:
 sources:
 - kind: pypi
   name: importlib-metadata
-  url: pypi:a7/08/c5f2e6193c12ceb5b5048d579e8f1f82c9957b57427da808c15b44479dec/importlib_metadata-4.6.1.tar.gz
-  sha256sum: 079ada16b7fc30dfbb5d13399a5113110dab1aa7c2bc62f66af75f0b717c8cac
+  url: pypi:78/65/3414780efd858fc0d71c8aa4191c952041a35df229f98452e274a94b689c/importlib_metadata-4.6.2.tar.gz
+  sha256sum: 75858eea2febdbbaf83e2242270a29aba654e7fbf34de4a559e2f3873878eba4
