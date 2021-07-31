@@ -162,7 +162,7 @@ struct script {
           auto debug = dwzdir / get_triplet(arch);
           auto realpath = install_root / relative(debug, "/");
           create_directories(realpath.parent_path());
-          std::vector<std::string> cmd{"dwz", "--dwarf-5", "-m", realpath, "-M", debug};
+          std::vector<std::string> cmd{"dwz", "-m", realpath, "-M", debug};
           cmd.insert(std::end(cmd), std::begin(binaries), std::end(binaries));
           auto status = run(cmd);
           if (status != 0) {
