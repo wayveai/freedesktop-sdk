@@ -104,6 +104,7 @@ depends:
 - components/gdk-pixbuf.bst
 - components/geoclue.bst
 - components/glib-networking.bst
+- components/glslang.bst
 - components/gnu-free-fonts.bst
 - components/gobject-introspection.bst
 - components/google-crosextra-caladea.bst

@@ -10,6 +10,19 @@ variables:
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DBUILD_SHARED_LIBS:BOOL=yes
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{bindir}'
+        - '%{bindir}/**'
+        - '%{libdir}/libHLSL.so'
+        - '%{libdir}/libSPIRV.so'
+        - '%{libdir}/libSPVRemapper.so'
+        - '%{libdir}/libglslang-default-resource-limits.so'
+        - '%{libdir}/libglslang.so'
+
 sources:
 - kind: git_tag
   url: github:KhronosGroup/glslang.git
