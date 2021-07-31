@@ -5,7 +5,7 @@ depends:
 
 variables:
   fontdir: '%{install-root}%{datadir}/fonts'
-  confdir: '%{install-root}/etc/fonts'
+  confdir: '%{install-root}%{sysconfdir}/fonts'
   fontname: google-crosextra-caladea
 
 config:

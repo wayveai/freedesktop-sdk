@@ -5,7 +5,7 @@ depends:
 
 variables:
   fontdir: '%{install-root}%{datadir}/fonts'
-  confdir: '%{install-root}/etc/fonts'
+  confdir: '%{install-root}%{sysconfdir}/fonts'
 
 # PostScript font replacements available under the GUST Font License
 # which is approved as Libre by the Fedora Project.
