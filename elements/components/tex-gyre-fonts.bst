@@ -25,7 +25,7 @@ config:
 
 sources:
 - kind: zip
-  url: http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
+  url: tar_http:www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
   ref: d7f8be5317bec4e644cf16c5abf876abeeb83c43dbec0ccb4eee4516b73b1bbe
 - kind: local
   path: files/font-conf/tex-gyre
