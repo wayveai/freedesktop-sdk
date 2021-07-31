@@ -17,7 +17,7 @@ config:
   install-commands:
   - |
     install -d -m 0755 "%{confdir}/conf.avail" "%{confdir}/conf.d" "%{fontdir}/tex-gyre"
-    install -p -m 0644 ./*.otf "%{fontdir}/tex-gyre"
+    install -p -m 0644 ./opentype/*.otf "%{fontdir}/tex-gyre"
 
   - |
     install -m 0644 -p "config/30-tex-gyre.conf" "%{confdir}/conf.avail/30-tex-gyre.conf"; \
@@ -25,8 +25,8 @@ config:
 
 sources:
 - kind: zip
-  url: tar_http:www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
-  ref: d7f8be5317bec4e644cf16c5abf876abeeb83c43dbec0ccb4eee4516b73b1bbe
+  url: tar_https:mirrors.ctan.org/fonts/tex-gyre.zip
+  ref: 1773c470f9e388e087b68e3426e115af2cd236845a7e05ceb25b2a503409a7a3
 - kind: local
   path: files/font-conf/tex-gyre
   directory: config
