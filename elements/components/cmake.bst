@@ -18,6 +18,8 @@ sources:
 - kind: git_tag
   url: kitware:cmake.git
   track: master
+  match:
+  - v3.20.*
   exclude:
   - v*-rc*
   ref: v3.20.2-0-g1ad4501ae97fb6c6deab096ff0ac7e03d554e26d
