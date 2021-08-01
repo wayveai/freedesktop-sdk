@@ -168,10 +168,7 @@ def build_layer(upper, lowers, legacy_config, global_conf):
         create_layer(tar, upper, lower_tars)
         tfile.seek(0)
         tar_hash = hashlib.sha256()
-        while True:
-            data = tfile.read(16*1024)
-            if len(data) == 0:
-                break
+        while data := tfile.read(16*1024):
             tar_hash.update(data)
         tfile.seek(0)
         if global_conf.gzip:
