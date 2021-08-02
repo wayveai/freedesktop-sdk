@@ -1,5 +1,26 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08beta.4:
+  * mtools: Update to 4.0.34
+  * Do not use "--dwarf-5" in our stripper (#1284)
+  * libcap: Update to libcap-2.52
+  * python3-virtualenv: Update to 20.7.0
+  * xorg-lib-xft: Update to libXft-2.3.4
+  * python3-importlib-resources: Update to 5.2.2
+  * python3-pip: Update to 21.2.2
+  * Add libglslang to the platform (#1281)
+  * python3-importlib-metadata: Update to 4.6.3
+  * python3-charset-normalizer: Update to 2.0.4
+  * e2fsprogs: Update to v1.46.3
+  * mesa: Update to mesa-21.1.6
+  * python3-importlib-metadata: Update to 4.6.2
+  * Fonts: Include TeX Gyre fonts
+  * liberation-fonts: Update to 2.1.4
+  * dav1d: Update to 0.9.1
+  * pulseaudio: Update to v15.0
+  * python3-importlib-resources: Update to 5.2.1
+  * linux: Update to v5.13.7
+
 freedesktop-sdk-21.08beta.3:
   * weston: Update to 9.0.0
   * python3-sphinx: Update to 4.1.2
