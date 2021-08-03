@@ -5,5 +5,5 @@ depends:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:mtools/mtools-4.0.32.tar.bz2
-  ref: 62498cd51ae7c79a27c879a45f0d2a8c44e1404cbb901372d09b02735ef5ad89
+  url: ftp_gnu_org:mtools/mtools-4.0.34.tar.bz2
+  ref: ada543eb1b0ffe5440d4ee42634309ea1e286d7ebb80c99ba50db5cb2c360cab
