@@ -9,7 +9,7 @@ sources:
 - kind: git_tag
   url: github:dosfstools/dosfstools.git
   track: master
-  ref: v4.1-0-g820c2f90726db0468e0a684a5dc500fbde66466f
+  ref: v4.2-0-g697f7692c951173c1b732901e13f72bd3182d575
 
 config:
   install-commands:
