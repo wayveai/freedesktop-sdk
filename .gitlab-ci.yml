@@ -505,36 +505,34 @@ minimal_systemd_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  rules:
-  - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    when: never
-  - if: '$CI_COMMIT_BRANCH == "master"'
-  - if: '$CI_COMMIT_BRANCH == "18.08"'
-  - if: '$CI_COMMIT_BRANCH == "19.08"'
-  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
+  except:
+    - master
+    - '18.08'
+    - '19.08'
+    - '/^release\/.*/'
+    - tags
+    - schedules
 
 minimal_efi_vm_image_x86_64:
   extends:
     - .vm_efi_image_template
     - .builder-x86_64
   allow_failure: true
+  needs:
+  - app_x86_64
   variables:
     TYPE: minimal
     DIALOG: root-login
-  needs:
-    - job: check_snap_x86_64
-      artifacts: false
 
 desktop_efi_vm_image_x86_64:
   extends:
     - .vm_efi_image_template
     - .builder-x86_64
   allow_failure: true
+  needs:
+  - app_x86_64
   variables:
     TYPE: desktop
-  needs:
-    - job: check_snap_x86_64
-      artifacts: false
 
 prepare_publish:
   stage: prepare-publish
