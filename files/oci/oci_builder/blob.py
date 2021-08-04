@@ -56,7 +56,10 @@ class Blob:
                 self.descriptor['size'] = file.tell()
                 file.seek(0)
                 file_hash = hashlib.sha256()
-                while data := file.read(16*1204):
+                while True:
+                    data = file.read(16*1204)
+                    if len(data) == 0:
+                        break
                     file_hash.update(data)
                 if self.global_conf.mode == 'oci':
                     self.descriptor['digest'] = 'sha256:{}'.format(file_hash.hexdigest())
