@@ -1,5 +1,10 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08beta.5:
+  * elements/components/dosfstools.bst: Update to 4.2
+  * gst-plugins-base.bst: Add patch to fix a gl/wayland assertion (#1288)
+  * Revert changes in files/oci/oci_builder/* scripts (#1289)
+
 freedesktop-sdk-21.08beta.4:
   * mtools: Update to 4.0.34
   * Do not use "--dwarf-5" in our stripper (#1284)
