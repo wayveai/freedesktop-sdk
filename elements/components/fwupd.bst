@@ -11,6 +11,7 @@ build-depends:
 - components/liberation-fonts.bst
 
 depends:
+- components/fwupd-efi-maybe.bst
 - components/glib.bst
 - components/libgudev.bst
 - components/libxmlb.bst
@@ -30,14 +31,22 @@ depends:
 - components/gnu-efi-maybe.bst
 
 variables:
+  plugin_dell: 'false'
+  plugin_msr: 'false'
+  plugin_uefi: 'false'
   (?):
   - target_arch in ["arm", "aarch64"]:
-      meson-local: >-
-        -Dplugin_dell=false
-  - target_arch in ["ppc64le", "riscv64"]:
-      meson-local: >-
-        -Dplugin_dell=false
-        -Dplugin_uefi=false
+      plugin_uefi: 'true'
+  - target_arch in ["i686", "x86_64"]:
+      plugin_dell: 'true'
+      plugin_msr: 'true'
+      plugin_uefi: 'true'
+
+  meson-local: >-
+    -Ddocs=gtkdoc
+    -Dplugin_dell=%{plugin_dell}
+    -Dplugin_msr=%{plugin_msr}
+    -Dplugin_uefi=%{plugin_uefi}
 
 sources:
 - kind: git_tag
@@ -45,4 +54,4 @@ sources:
   track: master
   track-extra:
   - 1_4_X
-  ref: 1.4.4-0-g938df7b93a92a102332e854d63d0bb44052e643a
+  ref: 1.6.2-0-g2f9eece2131754d9a46988fd0204a6751b06ce8d
