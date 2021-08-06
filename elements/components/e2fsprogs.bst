@@ -61,3 +61,5 @@ sources:
   ref: v1.46.3-0-g496669a2900e6be58dcf200b8ea1802a866ef3b8
 - kind: patch
   path: patches/e2fsprogs/reproducible.patch
+- kind: patch
+  path: patches/e2fsprogs/fix-creating-a-file-system-image.patch
