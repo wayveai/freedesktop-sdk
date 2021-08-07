@@ -1,5 +1,19 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08beta.6:
+  * freetype: Update to VER-2-11-0
+  * automake: Update to 1.16.4
+  * python3-pip: Update to 21.2.3
+  * fwupd: Update to 1.6.2
+  * libgusb: Update to 0.3.7
+  * pipewire: Update to 0.3.33
+  * systemd: Update to v249.3
+  * e2fsprogs: Fix creating a filesystem image (#1291)
+  * intel-media-driver: Update to intel-media-21.3.1
+  * mtools: Pin to 4.0.27
+  * go: Update to go1.16.7
+  * linux: Update to v5.13.8
+
 freedesktop-sdk-21.08beta.5:
   * elements/components/dosfstools.bst: Update to 4.2
   * gst-plugins-base.bst: Add patch to fix a gl/wayland assertion (#1288)
