@@ -21,5 +21,7 @@ config:
 sources:
 - kind: git_tag
   url: gnome:pygobject.git
-  track: pygobject-3-32
-  ref: 3.32.2-0-g16cc7953d7704db76f78304cfeee45556fc999d7
+  track: master
+  track-extra:
+  - pygobject-3-40
+  ref: 3.40.1-0-g8f0b2bbea727280b055317bb401213c5156af318
