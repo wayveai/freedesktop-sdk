@@ -1,11 +1,14 @@
 kind: autotools
 description: GNU automake
 
+build-depends:
+- components/help2man.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/autoconf.bst
+- bootstrap-import.bst
+- components/autoconf.bst
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:automake/automake-1.16.3.tar.xz
-  ref: ff2bf7656c4d1c6fdda3b8bebb21f09153a736bcba169aaf65eab25fa113bf3a
+  url: ftp_gnu_org:automake/automake-1.16.4.tar.xz
+  ref: 80facc09885a57e6d49d06972c0ae1089c5fa8f4d4c7cfe5baea58e5085f136d
