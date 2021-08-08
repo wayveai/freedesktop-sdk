@@ -1,9 +1,12 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/freetype.bst
-- filename: components/sdl2.bst
+- bootstrap-import.bst
+- components/freetype.bst
+- components/sdl2.bst
 
 public:
   bst:
@@ -13,6 +16,7 @@ public:
         - '%{libdir}/libSDL2_ttf.so'
 
 sources:
-- kind: tar
-  url: libsdl:SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
-  ref: a9eceb1ad88c1f1545cd7bd28e7cbc0b2c14191d40238f531a15b01b1b22cd33
+- kind: git_tag
+  url: github:libsdl-org/SDL_ttf.git
+  track: main
+  ref: release-2.0.15-0-g33cdd1881e31184b49a68b4890d1d256fc0c6dc1

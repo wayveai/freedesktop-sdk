@@ -1,13 +1,14 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- components/freetype-stage1.bst
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libpng.bst
-- filename: components/harfbuzz.bst
-- filename: components/freetype-stage1.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/brotli.bst
+- components/libpng.bst
+- components/harfbuzz.bst
 
 public:
   bst:
@@ -23,17 +24,12 @@ public:
     vendor: 'freetype'
 
 variables:
-  conf-local: |
-    --enable-freetype-config \
-    --with-zlib=yes \
-    --with-bzip2=yes \
-    --with-png=yes \
-    --with-harfbuzz=yes
-
-config:
-  configure-commands:
-    (<):
-    - ./autogen.sh
+  meson-local: >-
+    -Dbrotli=enabled
+    -Dbzip2=enabled
+    -Dharfbuzz=enabled
+    -Dpng=enabled
+    -Dzlib=enabled
 
 (@):
 - elements/include/freetype.yml
