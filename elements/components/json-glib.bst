@@ -1,11 +1,12 @@
 kind: meson
 
+build-depends:
+- components/gobject-introspection.bst
+- components/gtk-doc.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/gobject-introspection.bst
-  type: build
+- bootstrap-import.bst
 
 config:
   install-commands:
@@ -23,5 +24,5 @@ public:
 sources:
 - kind: git_tag
   url: gnome:json-glib.git
-  track: json-glib-1-4
-  ref: 1.4.4-0-g700a8bc414991d35ff3f79607547d4beedac8629
+  track: master
+  ref: 1.6.2-0-g667e2f35bd161fc74832b2a69d6294f583de361d
