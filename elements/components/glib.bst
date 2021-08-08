@@ -53,8 +53,8 @@ sources:
 - kind: git_tag
   url: gnome:glib.git
   track: main
-  #track-extra:
-  #- glib-2-66
+  track-extra:
+  - glib-2-68
   match:
   - 2.*[02468].*
-  ref: 2.68.0-0-ga58a47fd6d3da5ffb28809f212971748667dfb3c
+  ref: 2.68.3-0-g8249f624ed0095db008ee74afb7665afd25613be
