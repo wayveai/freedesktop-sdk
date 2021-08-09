@@ -5,6 +5,5 @@ depends:
 
 sources:
 - kind: tar
-  # Pinned to 4.0.27 due to regression in mcopy; see https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/398#note_1242162
-  url: ftp_gnu_org:mtools/mtools-4.0.27.tar.bz2
-  ref: 9c88c8d9244e54768e40b92c005e61ec4e084ea7c070df9184caf1a6408838b3
+  url: ftp_gnu_org:mtools/mtools-4.0.35.tar.bz2
+  ref: 34769e173751d2f0d891a08c76c80427e929b8ee43438019b8666cc3d7a44749
