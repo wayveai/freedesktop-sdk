@@ -9,10 +9,10 @@ depends:
 - filename: components/libwebp.bst
 
 variables:
-  conf-local: |
-    --disable-jpg-shared \
-    --disable-png-shared \
-    --disable-tif-shared \
+  conf-local: >-
+    --disable-jpg-shared
+    --disable-png-shared
+    --disable-tif-shared
     --disable-webp-shared
 
 public:
@@ -23,6 +23,7 @@ public:
         - '%{libdir}/libSDL2_image.so'
 
 sources:
-- kind: tar
-  url: libsdl:SDL_image/release/SDL2_image-2.0.5.tar.gz
-  ref: bdd5f6e026682f7d7e1be0b6051b209da2f402a2dd8bd1c4bd9c25ad263108d0
+- kind: git_tag
+  url: github:libsdl-org/SDL_image.git
+  track: main
+  ref: release-2.0.5-0-gab2a9c602623193d61827ccd395302d92d90fc38

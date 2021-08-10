@@ -18,17 +18,17 @@ depends:
 - components/xorg-lib-xcursor.bst
 
 variables:
-  conf-local: |
-    --enable-sdl-dlopen \
-    --disable-arts \
-    --disable-esd \
-    --disable-nas \
-    --disable-alsa \
-    --disable-oss \
-    --disable-sndio \
-    --disable-libudev \
-    --enable-video-wayland \
-    --enable-wayland-shared=no \
+  conf-local: >-
+    --enable-sdl-dlopen
+    --disable-arts
+    --disable-esd
+    --disable-nas
+    --disable-alsa
+    --disable-oss
+    --disable-sndio
+    --disable-libudev
+    --enable-video-wayland
+    --enable-wayland-shared=no
     --disable-rpath
 
 config:
@@ -77,6 +77,7 @@ public:
         - '%{libdir}/libSDL2.so'
 
 sources:
-- kind: tar
-  url: tar_https:www.libsdl.org/release/SDL2-2.0.14.tar.gz
-  ref: d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
+- kind: git_tag
+  url: github:libsdl-org/SDL.git
+  track: main
+  ref: release-2.0.16-0-g25f9ed87ff6947d9576fc9d79dee0784e638ac58

@@ -16,6 +16,7 @@ public:
         - '%{libdir}/libSDL2_net.so'
 
 sources:
-- kind: tar
-  url: libsdl:SDL_net/release/SDL2_net-2.0.1.tar.gz
-  ref: 15ce8a7e5a23dafe8177c8df6e6c79b6749a03fff1e8196742d3571657609d21
+- kind: git_tag
+  url: github:libsdl-org/SDL_net.git
+  track: main
+  ref: release-2.0.1-0-g6e513e390d18ad7950d9082863bfe33a0c62fd71
