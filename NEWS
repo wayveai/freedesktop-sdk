@@ -1,5 +1,17 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08rc.1:
+  * mesa: enable crocus, avahi gallium drivers and panfrost vulkan driver
+  * sdl2: Update to 2.0.16
+  * Fix the build of fwupd on riscv (#1294)
+  * mesa: Update to 21.2
+  * mtools.bst: Update to 4.0.35
+  * json-glib.bst: Update to 1.6.2
+  * pygobject.bst: Update to 3.40.1
+  * gobject-introspection.bst: Update to 1.68.0
+  * glib-networking.bst: Update to 2.68.2
+  * glib.bst: Update to 2.68.3
+
 freedesktop-sdk-21.08beta.6:
   * freetype: Update to VER-2-11-0
   * automake: Update to 1.16.4
