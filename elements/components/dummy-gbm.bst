@@ -68,4 +68,5 @@ sources:
     path: patches/mesa/mesa-break-build-dep-libdrm-nouveau.patch
   - kind: patch
     path: patches/mesa/mesa-disable-gbm-backends.patch
-
+  - kind: patch
+    path: patches/mesa/mesa-gbm-force-libdrm-dep.patch

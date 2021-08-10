@@ -1,13 +1,12 @@
-diff --git a/src/gbm/main/backend.c b/src/gbm/main/backend.c
-index 37ec9c16f40..b4e1a08bc1a 100644
---- a/src/gbm/main/backend.c
-+++ b/src/gbm/main/backend.c
-@@ -43,7 +43,7 @@ struct backend_desc {
+diff -ur gbm.old/src/gbm/main/backend.c gbm/src/gbm/main/backend.c
+--- gbm.old/src/gbm/main/backend.c	2021-08-10 09:12:04.696844111 +0200
++++ gbm/src/gbm/main/backend.c	2021-08-10 09:13:51.698031448 +0200
+@@ -51,7 +51,7 @@
  };
  
- static const struct backend_desc backends[] = {
--   { "gbm_dri.so", &gbm_dri_backend },
-+/*   { "gbm_dri.so", &gbm_dri_backend }, */
+ static const struct gbm_backend_desc builtin_backends[] = {
+-   { "dri", &gbm_dri_backend },
++/*   { "dri", &gbm_dri_backend },*/
  };
  
- static const void *
+ #define BACKEND_LIB_SUFFIX "_gbm"
