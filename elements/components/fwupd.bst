@@ -33,20 +33,24 @@ depends:
 variables:
   plugin_dell: 'false'
   plugin_msr: 'false'
-  plugin_uefi: 'false'
+  plugin_uefi_capsule: 'false'
+  efi_binary: 'false'
   (?):
   - target_arch in ["arm", "aarch64"]:
-      plugin_uefi: 'true'
+      plugin_uefi_capsule: 'true'
+      efi_binary: 'true'
   - target_arch in ["i686", "x86_64"]:
       plugin_dell: 'true'
       plugin_msr: 'true'
-      plugin_uefi: 'true'
+      plugin_uefi_capsule: 'true'
+      efi_binary: 'true'
 
   meson-local: >-
     -Ddocs=gtkdoc
     -Dplugin_dell=%{plugin_dell}
     -Dplugin_msr=%{plugin_msr}
-    -Dplugin_uefi=%{plugin_uefi}
+    -Dplugin_uefi_capsule=%{plugin_uefi_capsule}
+    -Defi_binary=%{efi_binary}
 
 sources:
 - kind: git_tag
