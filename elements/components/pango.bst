@@ -34,5 +34,5 @@ variables:
 sources:
 - kind: git_tag
   url: gnome:pango.git
-  track: master
+  track: main
   ref: 1.48.7-0-g467bda1e0bc2614b10e2edc46dccc9588388e045
