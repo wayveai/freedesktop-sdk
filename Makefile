@@ -18,7 +18,7 @@ VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT_ROOT?=vm/minimal/virt.bst
 VM_ARTIFACT_BOOT?=vm/boot/virt.bst
 IMPORT_BOOTSTRAP?=false
-RUNTIME_VERSION?=master
+RUNTIME_VERSION?=21.08
 ifeq ($(RUNTIME_VERSION),master)
 TARGET_BRANCH=master
 else
