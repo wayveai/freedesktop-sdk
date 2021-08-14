@@ -42,8 +42,10 @@ sources:
 - kind: git_tag
   url: github:SELinuxProject/selinux.git
   track: master
+  # Tracking limited to 3.1 since 3.2 broke ABI
   match:
-  - libsepol-3.1-*
+  - libsepol-3.1
+  - libsepol-3.1.*
   exclude:
   - '*rc*'
   ref: libsepol-3.1-0-g7df27b78e9eecbe65a57cdfefb9e51f547231b20
