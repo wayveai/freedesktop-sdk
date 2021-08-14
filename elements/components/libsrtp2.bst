@@ -1,18 +1,15 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- components/doxygen.bst
+- public-stacks/buildsystem-meson.bst
 
 depends:
 - bootstrap-import.bst
 
-build-depends:
-- public-stacks/buildsystem-autotools.bst
-
-config:
-  build-commands:
-  - |
-    %{make} -C '%{builddir}' shared_library
-  install-commands:
-  - |
-    %{make-install} -C '%{builddir}'
+variables:
+  meson-local: >-
+    -Dpcap-tests=disabled
 
 public:
   bst:
@@ -25,6 +22,6 @@ sources:
 - kind: git_tag
   url: github:cisco/libsrtp.git
   track: master
-  ref: v2-0-gd02d21111e379c297e93a9033d7b653135f732ee
-- kind: patch
-  path: patches/libsrtp2/fix-for-gcc10.patch
+  track-extra:
+  - 2_4_x_throttle
+  ref: v2.4.0-0-g063e3652feae15ec48614a91d32757781e6251b4
