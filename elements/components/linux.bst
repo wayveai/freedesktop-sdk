@@ -334,7 +334,9 @@ config:
     # HID drivers
     module HID_MULTITOUCH
     module HID_GENERIC
-    module I2C_HID
+    if has ACPI && has I2C; then
+      module I2C_HID_ACPI
+    fi
 
     # CPU support
     enable PINCTRL
