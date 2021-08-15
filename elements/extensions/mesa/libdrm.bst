@@ -33,4 +33,4 @@ sources:
   track: master
   ref: libdrm-2.4.105-0-g6b4e956d299c6ff09a4abf89642ccc1beb455c88
 - kind: patch
-  path: patches/libdrm/libdrm_disable_libdrm.patch
+  path: patches/libdrm/libdrm-disable-libdrm.patch
