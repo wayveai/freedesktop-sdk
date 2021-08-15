@@ -10,6 +10,10 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/gobject-introspection.bst
 
+variables:
+  conf-local: >-
+    --disable-gir-doc
+
 sources:
 - kind: git_tag
   url: github:endlessm/eos-metrics.git
