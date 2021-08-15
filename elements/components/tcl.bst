@@ -31,4 +31,4 @@ sources:
   exclude:
   - "*a*"
   - "rc*"
-  ref: core-8-6-10-0-g1c71c8f4dd76c373046910c03caa4e6a29073913
+  ref: core-8-6-10-0-gf19d3d1f630f128feddb2728f4c8d222934a38ee

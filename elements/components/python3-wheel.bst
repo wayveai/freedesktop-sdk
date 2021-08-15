@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: pypi
   name: wheel
-  url: pypi:ed/46/e298a50dde405e1c202e316fa6a3015ff9288423661d7ea5e8f22f589071/wheel-0.36.2.tar.gz
-  sha256sum: e11eefd162658ea59a60a0f6c7d493a7190ea4b9a85e335b33489d9f17e0245e
+  url: pypi:4e/be/8139f127b4db2f79c8b117c80af56a3078cc4824b5b94250c7f81a70e03b/wheel-0.37.0.tar.gz
+  sha256sum: e2ef7239991699e3355d54f8e968a21bb940a1dbf34a4d226741e64462516fad
