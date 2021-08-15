@@ -53,4 +53,9 @@ sources:
   track: master
   track-extra:
   - av1-normative
+  # Tracking limited to v2 since v3 broke ABI
+  match:
+  - v2.*
+  exclude:
+  - '*rc*'
   ref: v2.0.2-0-gcb1d48da8da2061e72018761788a18b8fa8013bb
