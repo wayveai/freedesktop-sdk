@@ -34,9 +34,6 @@ public:
         (>):
         - '%{libdir}/libtasn1.so'
 
-  cpe:
-    version-match: 'libtasn1_(\d+)_(\d+)'
-
 sources:
 - kind: git_tag
   url: gitlab:gnutls/libtasn1.git
