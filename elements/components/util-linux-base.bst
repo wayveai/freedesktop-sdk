@@ -4,6 +4,7 @@ build-depends:
 - public-stacks/buildsystem-autotools.bst
 - components/bison.bst
 - components/git-minimal.bst
+- components/libcap-ng.bst
 
 variables:
   conf-local: >-
@@ -13,6 +14,7 @@ variables:
     --disable-kill
     --disable-nologin
     --enable-usrdir-path
+    --enable-setpriv
 
 public:
   initial-script:
@@ -58,6 +60,8 @@ public:
       - '%{bindir}/dmesg'
 
       - '%{libdir}/libfdisk.so*'
+
+      - '%{bindir}/setpriv'
 
 config:
   install-commands:
