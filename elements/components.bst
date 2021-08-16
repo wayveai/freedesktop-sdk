@@ -428,6 +428,7 @@ depends:
 - components/unzip.bst
 - components/usbutils.bst
 - components/util-linux.bst
+- components/util-linux-full.bst
 - components/v4l-utils.bst
 - components/vala-bootstrap.bst
 - components/vala.bst

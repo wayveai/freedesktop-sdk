@@ -25,6 +25,7 @@ config:
   - components/steam-devices.bst
   - components/sudo.bst
   - components/systemd.bst
+  - components/util-linux-full.bst
   - components/vim.bst
   - components/weston.bst
   - components/wireless-regdb-bin.bst

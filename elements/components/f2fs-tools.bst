@@ -4,7 +4,7 @@ build-depends:
 - public-stacks/buildsystem-autotools.bst
 
 depends:
-- components/util-linux.bst
+- components/util-linux-full.bst
 - bootstrap-import.bst
 
 sources:

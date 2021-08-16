@@ -1,14 +1,10 @@
 kind: manual
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
-- filename: components/perl.bst
-  type: build
-- filename: components/nasm.bst
-  type: build
-- filename: components/util-linux.bst
-  type: build
+build-depends:
+- bootstrap-import.bst
+- components/perl.bst
+- components/nasm.bst
+- components/util-linux-full.bst
 
 sources:
 - kind: tar

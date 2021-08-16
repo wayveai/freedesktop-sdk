@@ -12,7 +12,7 @@ runtime-depends:
 - components/gnu-efi-maybe.bst
 - components/tzdata.bst
 - components/shadow.bst
-- components/util-linux.bst
+- components/util-linux-full.bst
 - components/kbd.bst
 - components/cryptsetup.bst
 - components/p11-kit.bst

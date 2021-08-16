@@ -8,7 +8,7 @@ build-depends:
 - components/libcap.bst
 - components/libgpg-error.bst
 - components/lz4.bst
-- components/util-linux.bst
+- components/util-linux-full.bst
 - components/linux-pam.bst
 - components/kmod.bst
 - components/libxslt.bst

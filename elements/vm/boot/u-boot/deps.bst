@@ -2,7 +2,7 @@ kind: stack
 
 runtime-depends:
 - bootstrap-import.bst
-- components/util-linux.bst
+- components/util-linux-full.bst
 - components/linux.bst
 - components/linux-firmware.bst
 - components/wireless-regdb-bin.bst

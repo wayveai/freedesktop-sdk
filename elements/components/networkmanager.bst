@@ -8,7 +8,7 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
-- components/util-linux.bst
+- components/util-linux-full.bst
 - components/systemd.bst
 - components/dbus.bst
 - components/glib.bst

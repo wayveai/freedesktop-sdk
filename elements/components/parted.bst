@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
-- components/util-linux.bst
+- components/util-linux-full.bst
 - components/lvm2.bst
 
 sources:
