@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: gnome:yelp-xsl.git
   track: master
-  ref: 3.34.0-0-gdef23391ba926c4038c82c24b50976c5a7e1713b
+  ref: 40.2-0-g023d87ef9f8c6fb305d45b5151b367dc803bd441
