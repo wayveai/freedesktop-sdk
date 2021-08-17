@@ -24,6 +24,26 @@ documentation](https://www.qemu.org/documentation/).
 `qemu-system-<arch>` should be used. Remember to enable `-enable-kvm`
 for better performance.
 
+#### CPU and Memory
+
+The default QEMU CPU is no longer capable of running software built with
+certain optimisations, on a modern system:
+
+```
+-cpu host
+```
+
+should be sufficient.
+
+Additionally, the default ram allocation is insufficient for a desktop
+system, so:
+
+```
+-m 512M
+```
+
+should also be specified.
+
 #### Disk
 
 The images provided except for [QEMU+9P](#qemu-9p) are raw images. So they
@@ -85,7 +105,7 @@ For graphics we recommend enabling OpenGL acceleration. With the GTK front end
 use:
 
 ```
--display gtk,gl=on
+-device virtio-gpu -display gtk,gl=on
 ```
 
 For the mouse (or other pointer devices), positioning will work better

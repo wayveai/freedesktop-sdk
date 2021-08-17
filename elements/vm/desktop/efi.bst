@@ -37,7 +37,7 @@ config:
     destination: '/'
 
   commands:
-  - prepare-image.sh --sysroot /sysroot --seed "%{uuidnamespace}" >/tmp/vars
+  - prepare-image.sh --rootpasswd root --sysroot /sysroot --seed "%{uuidnamespace}" >/tmp/vars
 
   - |
     . /tmp/vars
