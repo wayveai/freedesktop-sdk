@@ -35,7 +35,7 @@ public:
 sources:
 - kind: git_tag
   url: gnome:libxml2.git
-  track: master
+  # Tracking disabled due to ABI breakage
   ref: v2.9.10-0-g41a34e1f4ffae2ce401600dbb5fe43f8fe402641
 - kind: patch
   path: patches/libxml2/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
