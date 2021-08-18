@@ -1,5 +1,22 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08rc.2:
+  * libwebp: Update to v1.2.1
+  * extra-cmake-modules: Update to v5.85.0
+  * grep.bst: Update to 3.7
+  * eos-metrics.bst: Update to Release_3.9.5
+  * yelp-xsl.bst: Update to 40.2
+  * yelp-tools.bst: Update to 40.0
+  * libsrtp2: Update to v2.4.0 [ABI break]
+  * debugedit: Update to 5.0
+  * tcl: Update to core-8-6-10
+  * python3-wheel: Update to 0.37.0
+  * jpeg: Update to 2.1.1
+  * lvm2-source: Update to v2_03_13
+  * audit: Update to v3.0.5
+  * python3-virtualenv: Update to 20.7.2
+  * linux: Update to v5.13.9
+
 freedesktop-sdk-21.08rc.1:
   * mesa: enable crocus, avahi gallium drivers and panfrost vulkan driver
   * sdl2: Update to 2.0.16
