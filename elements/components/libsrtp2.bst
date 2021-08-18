@@ -22,6 +22,8 @@ sources:
 - kind: git_tag
   url: github:cisco/libsrtp.git
   track: master
+  match:
+  - v*.*.*
   track-extra:
   - 2_4_x_throttle
   ref: v2.4.0-0-g063e3652feae15ec48614a91d32757781e6251b4
