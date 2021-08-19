@@ -14,6 +14,10 @@ config:
     - rm -r "%{install-root}%{libexecdir}/installed-tests"
     - rm -r "%{install-root}%{datadir}/installed-tests"
 
+variables:
+  meson-local: >-
+    -Dgtk_doc=disabled
+
 public:
   bst:
     split-rules:
@@ -25,4 +29,4 @@ sources:
 - kind: git_tag
   url: gnome:json-glib.git
   track: master
-  ref: 1.6.2-0-g667e2f35bd161fc74832b2a69d6294f583de361d
+  ref: 1.6.4-0-gf33b07cc409531a6892acae492616f60467ca24e
