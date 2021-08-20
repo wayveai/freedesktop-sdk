@@ -16,7 +16,9 @@ runtime-depends:
 - components/zip.bst
 
 variables:
-  conf-local: --disable-documentation
+  conf-local: >-
+    --disable-documentation
+    --with-system-debugedit
 
 sources:
 - kind: git_tag
@@ -24,8 +26,8 @@ sources:
   track: master
   match:
   - 1.*
-  submodules:
-    libglnx:
-      checkout: true
-      url: gnome:libglnx.git
-  ref: 1.0.11-0-gc270877985b33ffae189ffd231c9501218db03cc
+  ref: 1.1.1-0-g10658573f207effe4c8459f265fc9f111cff7739
+- kind: git_module
+  path: subprojects/libglnx
+  url: gnome:libglnx.git
+  ref: 470af8763ff7b99bec950a6ae0a957c1dcfc8edd
