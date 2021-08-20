@@ -35,6 +35,7 @@ sources:
   track: master
   track-extra:
   - v2.11-branch
-  ref: 2.11.0-0-g64d75c08a720b73f4474b9265ca6dc99f947af8b
+  - v2.12-branch
+  ref: 2.12.0-0-gdf3268636cb86ce9e12b87d9b8600db1f7321b57
 - kind: patch
   path: patches/libva/pkgconfig-driver-path.patch
