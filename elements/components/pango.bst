@@ -31,7 +31,7 @@ variables:
 sources:
 - kind: git_tag
   url: gnome:pango.git
-  track: master
+  track: main
   match:
   - '1.45.*'
   ref: 1.45.5-0-gc8be5aecc2d3de5dd633ed491c4ccf5e8c96297c
