@@ -72,7 +72,7 @@ public:
         - '%{bindir}/*'
   cpe:
     product: network_security_services
-    version-match: '(\d+)_(\d+)_(\d+)'
+    version-match: '(\d+)_(\d+)'
 
 config:
   build-commands:
