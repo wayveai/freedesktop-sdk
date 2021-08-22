@@ -6,7 +6,7 @@ build-depends:
 depends:
 - components/python3.bst
 - components/python3-intreehooks.bst
-- components/python3-pytoml.bst
+- components/python3-toml.bst
 
 sources:
 - kind: pypi
