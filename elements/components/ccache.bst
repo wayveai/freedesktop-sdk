@@ -6,6 +6,10 @@ build-depends:
 - components/git-minimal.bst
 - components/perl.bst
 
+variables:
+  cmake-local: >-
+    -DREDIS_STORAGE_BACKEND=OFF
+
 depends:
 - bootstrap-import.bst
 - components/zstd.bst
@@ -14,4 +18,4 @@ sources:
 - kind: git_tag
   url: github:ccache/ccache.git
   track: master
-  ref: v4.3-0-g2c13bce2609a02b70c92e84cdd177a6072f44d5e
+  ref: v4.4-0-g6ac58b50ec7ad402395acba9b1a5fdcbeabf347d
