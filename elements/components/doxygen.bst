@@ -12,4 +12,4 @@ sources:
 - kind: git_tag
   url: github:doxygen/doxygen.git
   track: master
-  ref: Release_1_9_1-0-gef9b20ac7f8a8621fcfc299f8bd0b80422390f4b
+  ref: Release_1_9_2-0-gcaa4e3de211fbbef2c3adf58a6bd4c86d0eb7cb8
