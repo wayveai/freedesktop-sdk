@@ -29,4 +29,4 @@ sources:
 - kind: git_tag
   url: gnome:json-glib.git
   track: master
-  ref: 1.6.4-0-gf33b07cc409531a6892acae492616f60467ca24e
+  ref: 1.6.6-0-g3cf2b53667a73376c852e08dcadd197a5f8325b9
