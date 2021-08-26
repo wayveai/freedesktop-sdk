@@ -1,5 +1,41 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08rc.3:
+  * gcc: Update to 11.2.0
+  * libarchive: Update to v3.5.2
+  * libcap: Update to libcap-2.53
+  * python3-pip: Update to 21.2.4
+  * libglvnd: Update to v1.3.4
+  * openssl: Update to OpenSSL_1_1_1l
+  * doxygen: Update to Release_1_9_2
+  * glib: Update to 2.68.4
+  * harfbuzz: Update to 2.9.0
+  * gnu-config: Update to 191bcb9
+  * intel-media-driver: Update to intel-media-21.3.2
+  * libva: Update to 2.12.0 [ABI break]
+  * Replace deprecated pytoml for python-toml [ABI break]
+  * NSS: Update to 3.69 [ABI break]
+  * e2fsprogs: Update to v1.46.4 [ABI break]
+  * vala: Update to0.48.19
+  * python3-mako: Update to 1.1.5
+  * python3-pygments: Update to 2.10.0
+  * libepoxy: Update to 1.5.9
+  * bluez: Update to 5.61
+  * mesa: Update to mesa-21.2.1
+  * python3-poetry: Update to 1.1.8
+  * ccache: Update to v4.4
+  * python3-importlib-metadata: Update to 4.6.4
+  * json-glib: Update to 1.6.4
+  * python3-poetry-core: Update to 1.0.4
+  * Use flatpak-builder 1.1.0 with dwarf5 support
+  * cryptsetup-base: Update to v2.4.0
+  * meson: Update to 0.59.1
+  * openssh: Update to V_8_7_P1
+  * linux: Re-enable I2C_HID
+  * glibc: Update to 2.33 (c6cadbf)
+  * git: Update to v2.33.0
+  * opencl: Update to v2.3.1
+
 freedesktop-sdk-21.08rc.2:
   * libwebp: Update to v1.2.1
   * extra-cmake-modules: Update to v5.85.0
