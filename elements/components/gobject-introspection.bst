@@ -40,4 +40,4 @@ sources:
   track: master
   track-extra:
   - gnome-3-38
-  ref: 1.68.0-0-g342dc78977eef2f444b988a46e435fbafbdcb165
+  ref: 1.69.0-0-ge3e0666062d7e85f06a83f0c3dca9dfb1976af61
