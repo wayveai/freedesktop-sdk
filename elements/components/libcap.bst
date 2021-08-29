@@ -8,7 +8,7 @@ depends:
 config:
   build-commands:
   - |
-    make CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="$LDFLAGS"
+    make
 
   install-commands:
   - |
