@@ -4,6 +4,7 @@ depends:
 - bootstrap-import.bst
 - components/m4.bst
 - public-stacks/buildsystem-autotools.bst
+- components/autoconf2.69.bst
 - components/gettext.bst
 - components/bison.bst
 - components/tar.bst
