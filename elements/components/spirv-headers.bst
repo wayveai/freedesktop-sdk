@@ -11,6 +11,7 @@ sources:
   url: github:KhronosGroup/SPIRV-Headers.git
   # There is no release that can build released tools. So we do not track
   # releases
+  # See DEPS file in SPIRV-tools repo to know exactly what version to use
   track: master
   track-tags: false
-  ref: 1.5.4.raytracing.fixed-45-gf88a1f98fa7a44ccfcf33d810c72b200e7d9a78a
+  ref: e71feddb3f17c5586ff7f4cfb5ed1258b800574b
