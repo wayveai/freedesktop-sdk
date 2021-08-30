@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.0:
+  * Change references to final 21.08
+
 freedesktop-sdk-21.08rc.4:
   * python: Update to 3.9.7
   * autoconf: Add back version 2.69
