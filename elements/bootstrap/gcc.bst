@@ -41,7 +41,7 @@ variables:
   lib: lib
   multiarch_libdir: '%{prefix}/lib/%{gcc_triplet}'
   autogen: |
-    autoreconf -fvi
+    autoreconf2.69 -fvi
     for conf in */configure.ac; do
       dir="$(dirname "${conf}")"
       case "$(dirname "${conf}")" in
@@ -53,7 +53,7 @@ variables:
           ;;
       esac
       echo "autoreconf: ${dir}"
-      (cd "${dir}" && autoreconf "${args[@]}" -fvi)
+      (cd "${dir}" && autoreconf2.69 "${args[@]}" -fvi)
     done
 
   conf-local: >-
