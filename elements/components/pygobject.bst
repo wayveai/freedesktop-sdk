@@ -1,15 +1,14 @@
 kind: distutils
 
-depends:
-- filename: components/python3.bst
-- filename: components/python3-setuptools.bst
-- filename: components/gobject-introspection.bst
-- filename: components/pkg-config.bst
-  type: build
-- filename: components/python3-wheel.bst
+build-depends:
+- components/python3-setuptools.bst
+- components/python3-wheel.bst
+- components/pycairo.bst
+- components/pkg-config.bst
 
-- filename: components/pycairo.bst
-  type: build
+depends:
+- components/python3.bst
+- components/gobject-introspection.bst
 
 config:
   install-commands:

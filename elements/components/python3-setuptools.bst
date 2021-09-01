@@ -5,12 +5,6 @@ depends:
 - components/python3.bst
 - components/util-linux.bst
 
-config:
-  configure-commands:
-    (<):
-    - |
-      python3 bootstrap.py
-
 sources:
 - kind: pypi
   name: setuptools
