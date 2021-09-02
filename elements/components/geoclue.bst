@@ -1,16 +1,15 @@
 kind: meson
 
+build-depends:
+- components/gtk-doc.bst
+- components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
+
 depends:
 - filename: bootstrap-import.bst
 - filename: components/json-glib.bst
-- filename: components/gtk-doc.bst
-  type: build
 - filename: components/glib.bst
-- filename: components/gobject-introspection.bst
-  type: build
 - filename: components/libsoup.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
 
 variables:
   meson-local: |
@@ -41,4 +40,6 @@ sources:
 - kind: git_tag
   url: freedesktop:geoclue/geoclue.git
   track: master
-  ref: 2.5.5-0-g9519d67c7a9a0e97a75115f9ff99d4fb0bb81b21
+  track-extra:
+  - 2.5.x
+  ref: 2.5.7-0-g3bb60dd600a8b247fd6049e7e5b1c73c2c5fc0e8
