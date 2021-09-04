@@ -1,12 +1,13 @@
 kind: autotools
 description: libffi
 
+build-depends:
+- components/autoconf2.69.bst
+- components/texinfo.bst
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/texinfo.bst
-  type: build
+- bootstrap-import.bst
 
 public:
   bst:
@@ -16,6 +17,9 @@ public:
         - '%{libdir}/libffi.so'
         - '%{libdir}/libffi-3.2.1/include'
         - '%{libdir}/libffi-3.2.1/include/**'
+
+variables:
+  autogen: autoreconf2.69 -fvi
 
 config:
   install-commands:
