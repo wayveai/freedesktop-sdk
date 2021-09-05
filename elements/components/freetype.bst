@@ -15,7 +15,6 @@ public:
     split-rules:
       devel:
         (>):
-        - '%{bindir}/freetype-config'
         - '%{libdir}/libfreetype.so'
 
   cpe:
