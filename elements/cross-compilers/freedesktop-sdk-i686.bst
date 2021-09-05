@@ -23,3 +23,6 @@ sources:
 - kind: local
   path: include
   directory: include
+- kind: local
+  path: keys
+  directory: keys
