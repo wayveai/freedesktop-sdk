@@ -1,5 +1,16 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.1:
+  * libffi: Use autoconf 2.69 (#1315)
+  * dav1d: Update to 0.9.2
+  * intel-media-driver: Update to intel-media-21.3.3
+  * strace: Update to v5.14
+  * glibc: Update to 2.33 (9c676ef)
+  * geoclue: Update to 2.5.7
+  * libseccomp: Update to v2.5.2
+  * wayland-protocols: Update to 1.22
+  * gyp: Update to d6c5dd5
+
 freedesktop-sdk-21.08.0:
   * Change references to final 21.08
 
