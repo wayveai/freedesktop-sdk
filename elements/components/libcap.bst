@@ -1,21 +1,26 @@
-kind: manual
+kind: make
 
 depends:
 - filename: bootstrap-import.bst
 - filename: components/perl.bst
   type: build
 
+variables:
+  make-args: >-
+    DYNAMIC=yes
+    prefix="%{prefix}"
+    lib="lib/%{gcc_triplet}"
+    SBINDIR="%{sbindir}"
+    RAISE_SETFCAP=no
+
+  make: make %{make-args}
+  make-install: make -j1 install %{make-args} DESTDIR="%{install-root}"
+
 config:
-  build-commands:
-  - |
-    make
-
   install-commands:
-  - |
-    make -j1 prefix="%{prefix}" lib="lib/%{gcc_triplet}" SBINDIR="%{sbindir}" DESTDIR="%{install-root}" RAISE_SETFCAP=no install
-
-  - |
-    find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+    (>):
+    - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
 public:
   bst:
