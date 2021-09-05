@@ -4,8 +4,7 @@ description: Import the base freedesktop SDK
 sources:
 - kind: ostree
   url: freedesktop-sdk:releases/
-  # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
-  #gpg-key: keys/freedesktop-sdk.gpg
+  gpg-key: keys/freedesktop-sdk.gpg
   track: runtime/org.freedesktop.Sdk.PreBootstrap/ppc64le/19.08
   ref: eb2099e774b722f5bce9b659ba6e47854ae076ee1fb304fc99e5193c0213ca45
 
