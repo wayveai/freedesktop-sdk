@@ -472,6 +472,21 @@ config:
     enable JOYSTICK_XPAD_FF
     enable JOYSTICK_XPAD_LEDS
 
+    # Logitech game controllers
+    module HID_LOGITECH
+    module HID_LOGITECH_DJ
+    module HID_LOGITECH_HIDPP
+    enable LOGITECH_FF
+    enable LOGIRUMBLEPAD2_FF
+    enable LOGIG940_FF
+    enable LOGIWHEELS_FF
+
+    # Steam controller
+    module HID_STEAM
+
+    # Joydev API
+    module INPUT_JOYDEV
+
   - |
     make -j1 olddefconfig
 
