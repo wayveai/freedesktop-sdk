@@ -2,6 +2,7 @@ kind: compose
 
 build-depends:
 - oci/layers/toolbox-stack.bst
+- components/os-release.bst
 
 config:
   exclude:
