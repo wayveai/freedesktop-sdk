@@ -1,5 +1,37 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.15
+    * Update elements/components/gnutls.bst 3.6.16
+    * Update elements/components/perl.bst to v5.34.0
+    * Update elements/include/git.yml to v2.32.0
+    * Update elements/components/kmod.bst to v29
+    * Update elements/components/vala.bst to 0.48.18
+    * Update elements/components/nano.bst to v5.8
+    * Update elements/include/bluez.yml to 5.60
+    * Update elements/components/spirv-tools.bst to v2021.1
+    * Update elements/extensions/platform-vaapi-intel/gmmlib.bst to 21.2.1
+    * Update elements/include/lvm2-source.yml to v2_03_12
+    * Update elements/components/extra-cmake-modules.bst to v5.84.0
+    * Update elements/components/cython.bst to 0.29.24
+    * Update elements/components/audit.bst to v3.0.3
+    * Update elements/extensions/glxinfo/glu.bst to glu-9.0.2
+    * Update elements/components/libglvnd.bst to v1.3.3
+    * Update elements/components/p11-kit.bst to 0.24.0
+    * Update elements/components/ostree-base.bst to v2021.3
+    * Update elements/components/strace.bst to v5.13
+    * Update elements/components/systemd-base.bst to v246.15
+    * Update elements/components/libepoxy.bst to 1.5.8
+    * Update elements/include/linux.yml to v5.12.19
+    * Update elements/components/python3-dbus.bst to 1.2.18
+    * Update elements/components/xorg-data-xkeyboard-config.bst to 2.33
+    * Update elements/components/python3-six.bst to 1.16.0
+    * Update elements/components/pkg-config.bst to pkgconf-1.8.0
+    * Update elements/extensions/mesa/mesa.bst to mesa-21.1.7
+    * Update elements/components/xorg-lib-xft.bst to libXft-2.3.4
+    * Update elements/extensions/platform-vaapi-intel/intel-media-driver.bst to 21.3.1
+    * Update elements/components/systemd-base.bst to v246.16
+    * Update elements/components/python3-pip.bst to 21.2.3
+
 freedesktop-sdk-20.08.14:
     * audit: Update to v3.0.2
     * mesa: Update to mesa-21.1.4
