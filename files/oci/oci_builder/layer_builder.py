@@ -102,8 +102,9 @@ def create_layer(output, upper, lowers):
 
         for old_file in lower_dir_contents.get(root_rel, []):
             if old_file not in files and old_file not in dirs:
-                old_tar = lower_files[old_file]
-                old_info = old_tar.getmember(old_file)
+                full_path = os.path.join(root_rel, old_file)
+                old_tar = lower_files[full_path]
+                old_info = old_tar.getmember(full_path)
                 new_name = os.path.join(root_rel, f'.wh.{old_file}')
                 wh_tinfo = dummy_tarinfo(new_name, old_info)
                 output.addfile(wh_tinfo)
