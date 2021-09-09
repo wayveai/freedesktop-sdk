@@ -33,7 +33,7 @@ sources:
   track: '1.18'
   match:
   - 1.*[02468].*
-  ref: 1.18.4-0-gb5b2e3b9208f1f93bc5b0244d29dfed157d78293
+  ref: 1.18.5-0-gedc4d3514ba7ef17f2a8877b5a21645f380932f5
   submodules:
     common:
       checkout: true
