@@ -60,12 +60,6 @@ public:
         - '%{libdir}/gstreamer-1.0/include'
         - '%{libdir}/gstreamer-1.0/include/**'
 
-config:
-  install-commands:
-    (>):
-    - rm %{install-root}%{includedir}/GL/glext.h
-    - rm %{install-root}%{includedir}/KHR/khrplatform.h
-
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-base.git
@@ -85,8 +79,3 @@ sources:
   path: patches/gstreamer-plugins-base/gstgl-meson-0.58.patch  
 - kind: patch
   path: patches/gstreamer-plugins-base/gl-wayland-proxy-queue.patch
-- kind: git_tag
-  url: freedesktop:gstreamer/meson-ports/gl-headers.git
-  directory: subprojects/gl-headers
-  track: master
-  ref: 5c8c7c0d3ca1f0b783272dac0b95e09414e49bc8
