@@ -68,14 +68,8 @@ sources:
   - '1.18'
   match:
   - 1.*[02468].*
-  ref: 1.18.4-0-gce69d1068af058425b083aaa1b8c268b1b2e5ddd
+  ref: 1.18.5-0-g57fb883b3f8c6d7a397afc0dfc4a7c2e5af05579
   submodules:
     common:
       checkout: false
       url: freedesktop:gstreamer/common.git
-- kind: patch
-  path: patches/gstreamer-plugins-base/atomicity-fix-backport.patch
-- kind: patch
-  path: patches/gstreamer-plugins-base/gstgl-meson-0.58.patch  
-- kind: patch
-  path: patches/gstreamer-plugins-base/gl-wayland-proxy-queue.patch
