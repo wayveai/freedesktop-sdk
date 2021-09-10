@@ -14,13 +14,13 @@ build-depends:
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
 - components/libusb.bst
+- components/python3-docutils.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
 - components/systemd-libs.bst
 - components/systemd.bst
 - components/vulkan-headers.bst
-- components/xmltoman.bst
 - components/doxygen.bst
 - components/webrtc-audio-processing.bst
 - public-stacks/buildsystem-meson.bst
