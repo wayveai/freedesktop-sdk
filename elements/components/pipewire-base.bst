@@ -14,13 +14,13 @@ build-depends:
 - components/gstreamer-plugins-base.bst
 - components/gtk-doc.bst
 - components/libusb.bst
+- components/python3-docutils.bst
 - components/rtkit.bst
 - components/sbc.bst
 - components/sdl2.bst
 - components/systemd-libs.bst
 - components/systemd.bst
 - components/vulkan-headers.bst
-- components/xmltoman.bst
 - components/doxygen.bst
 - components/webrtc-audio-processing.bst
 - public-stacks/buildsystem-meson.bst
@@ -110,6 +110,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.34-0-g1924c2c29824955b5e763f1def6967f68e403c7c
+  ref: 0.3.35-0-g91069ec3d21c4c09f91f742cd1114806196e863e
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
