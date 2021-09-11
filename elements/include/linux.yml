@@ -4,6 +4,7 @@ sources:
   track: master
   track-extra:
   - linux-5.13.y
+  - linux-5.14.y
   exclude:
   - '*-rc*'
   ref: v5.13.9-0-gf259ee2f037925eaf3d0c53f7d7aa2d3fae4ea13
