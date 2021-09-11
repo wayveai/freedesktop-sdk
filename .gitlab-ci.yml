@@ -469,7 +469,7 @@ finish_publish:
   - .builder-x86_64
   stage: finish-publish
   script:
-    - flat-manager-client commit --wait $(cat publish_build.txt)
+    - flat-manager-client commit --end-of-life="The Freedesktop SDK 18.09 runtime is no longer supported as of September 1, 2021. Please ask your application developer to migrate to a supported version" --wait $(cat publish_build.txt)
     - flat-manager-client publish --wait $(cat publish_build.txt)
     - flat-manager-client purge $(cat publish_build.txt)
     - make manifest
