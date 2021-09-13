@@ -29,10 +29,12 @@ config:
   install-commands:
     (>):
     - |
+      shopt -s nullglob
       for name in %{install-root}%{indep-libdir}/systemd/boot/efi/*.elf.stub
       do
       chmod a-x ${name}
       done
+      shopt -u nullglob
 
 variables:
   efi: 'false'
