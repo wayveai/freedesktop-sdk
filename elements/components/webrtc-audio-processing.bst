@@ -23,6 +23,8 @@ sources:
 - kind: git_tag
   url: freedesktop:pulseaudio/webrtc-audio-processing.git
   track: master
+  match:
+  - v0.*
   ref: v0.3.1-0-ge882a5442ac22c93648e12837248d651d18b9247
 - kind: patch
   path: patches/webrtc-audio-processing/add-ppc-family-support.patch
