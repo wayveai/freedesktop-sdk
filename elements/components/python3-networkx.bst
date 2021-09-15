@@ -6,6 +6,9 @@ build-depends:
 depends:
 - components/python3.bst
 
+runtime-depends:
+- components/python3-decorator.bst # This should be gone with 2.6 update
+
 sources:
 - kind: pypi
   name: networkx

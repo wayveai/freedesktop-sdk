@@ -27,7 +27,6 @@ runtime-depends:
 - components/python3-networkx.bst
 - components/python3-cchardet.bst
 - components/python3-pkgconfig.bst
-- components/python3-decorator.bst
 
 environment:
   HOTDOC_BUILD_C_EXTENSION: enabled
