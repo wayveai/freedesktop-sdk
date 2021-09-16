@@ -1,5 +1,8 @@
 Freedesktop-SDK
 
+freedesktop-sdk-19.08.15:
+   * The Freedesktop SDK 19.08 runtime is no longer supported as of September 1, 2021. Please update to a supported version of freedesktop-sdk
+
 freedesktop-sdk-19.08.14:
 
    * GTK: Support gsetting schema changes (#1211)
