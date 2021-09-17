@@ -62,6 +62,10 @@ config:
     enable PROC_FS
     enable FHANDLE
 
+    # Enable access to kernel config through /proc/config.gz
+    enable IKCONFIG
+    enable IKCONFIG_PROC
+
     # Kernel crypto/hash API
     enable CRYPTO_AES
     enable CRYPTO_ARC4
