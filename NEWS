@@ -1,5 +1,35 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.3:
+  * harfbuzz.bst to 3.0.0 [Forward ABI break]
+  * xdg-desktop-portal-base.bst to 1.10.0
+  * python3-poetry.bst to 1.1.9
+  * at-spi2-core: Update to AT_SPI2_CORE_2_42_0
+  * pipewire: Update to 0.3.36 [Forward ABI break]
+  * oci_builder: Fix deleting of files in layers (#1323)
+  * python3-charset-normalizer: Update to 2.0.6
+  * curl: Update to curl-7_79_0
+  * wayland-protocols: Update to 1.23
+  * python3-virtualenv: Update to 20.8.0
+  * python3-sphinx: Update to 4.2.0
+  * libexif: Update to libexif-0_6_23-release
+  * ccache: Update to v4.4.1
+  * extra-cmake-modules: Update to v5.86.0
+  * linux: Update to v5.14.4
+  * Vulkan SDK: Update to 1.2.189
+  * pango: Update to 1.48.10
+  * libxkbcommon: Update to xkbcommon-1.3.1
+  * gstreamer: Update to 1.18.5
+  * ostree: Update to v2021.4
+  * go: Update to go1.16.8
+  * libcap: Update to libcap-2.57
+  * gstreamer-plugins-base: Update to 1.18.5
+  * gstreamer-plugins-ugly: Update to 1.18.5
+  * gstreamer-plugins-bad: Update to 1.18.5
+  * gstreamer-vaapi: Update to 1.18.5
+  * gstreamer-plugins-good: Update to 1.18.5
+  * python3-setuptools: Update to 58.0.4
+
 freedesktop-sdk-21.08.2:
   * Fix job to publish fdsdk container images
   * libcap: Make utils link to shared libcap
