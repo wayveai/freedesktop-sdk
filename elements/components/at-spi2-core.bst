@@ -30,7 +30,7 @@ sources:
   url: gnome:at-spi2-core.git
   track: master
   track-extra:
-  - gnome-3-32
+  - gnome-3-40
   match:
   - AT_SPI2_CORE_*_*[02468]_*
-  ref: AT_SPI2_CORE_2_40_1-0-gbaf8608964e84185f61d9424af3979a9a6e15a7c
+  ref: AT_SPI2_CORE_2_40_3-0-g57c644513133e9b7e259809302a25987eadfcc39
