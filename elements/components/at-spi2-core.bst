@@ -10,8 +10,8 @@ depends:
 - components/glib.bst
 
 variables:
-  conf-local: |
-    --disable-x11
+  meson-local: >-
+    -Dx11=no
 
 public:
   bst:
