@@ -3,6 +3,7 @@ kind: meson
 build-depends:
 - components/gtk-doc.bst
 - public-stacks/buildsystem-meson.bst
+- components/dbus.bst
 
 depends:
 - bootstrap-import.bst
