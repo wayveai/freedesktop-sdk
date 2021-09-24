@@ -30,4 +30,4 @@ sources:
   track: master
   exclude:
   - libXi-*.*.99.*
-  ref: libXi-1.7.10-0-ge05da79a98775edb91ffe3de3b413f156bc4d6e7
+  ref: libXi-1.8-0-gf24d7f43ab4d97203e60677a3d42e11dbc80c8b4
