@@ -39,5 +39,5 @@ public:
 sources:
 - kind: pypi
   name: hotdoc
-  url: pypi:0f/a1/4a4692054442cf6078e1dfe42f3ca20b7c6e8d232178f273c626775ce095/hotdoc-0.13.6.tar.gz
-  sha256sum: fd773f1c395a86a73689e503cfaed1b5ebf43871a3ad46378be1627c2b1f0d35
+  url: pypi:18/0a/4eb673ca5e267f84bbdf7ed5ebfb381860b7a23af546aca7a644f63964c2/hotdoc-0.13.7.tar.gz
+  sha256sum: 1123a659e2c94972c32813ec301191d333db24712a83f7e3d06dd58d47cf0098
