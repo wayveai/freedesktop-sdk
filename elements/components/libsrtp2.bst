@@ -26,4 +26,4 @@ sources:
   - v*.*.*
   track-extra:
   - 2_4_x_throttle
-  ref: v2.4.1-0-g8d51b88503c62bb2c0525de15aebe7d57ccdb4e4
+  ref: v2.4.2-0-g90d05bf8980d16e4ac3f16c19b77e296c4bc207b
