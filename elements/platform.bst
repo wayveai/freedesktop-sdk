@@ -77,7 +77,7 @@ depends:
 - components/tzdata.bst
 - components/unzip.bst
 - components/util-linux.bst
-- components/wget.bst
+- components/wget2.bst
 - components/which.bst
 - components/xz-docs.bst
 - components/zip.bst

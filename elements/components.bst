@@ -441,7 +441,7 @@ depends:
 - components/wayland.bst
 - components/webrtc-audio-processing.bst
 - components/weston.bst
-- components/wget.bst
+- components/wget2.bst
 - components/which.bst
 - components/wireless-regdb-bin.bst
 - components/wpa-supplicant.bst
