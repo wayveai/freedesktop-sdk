@@ -1,9 +1,31 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.4:
+  * hotdoc.bst to 0.13.7
+  * python3-urllib3.bst to 1.26.7
+  * tzdata.bst to 2021b
+  * python3-distlib.bst to 0.3.3
+  * po4a.bst to v0.64
+  * libcap.bst to libcap-2.58
+  * curl: Update to curl-7_79_1
+  * vala: Update to 0.54.1
+  * linux: Update to v5.14.7
+  * cmake: Update to v3.21.3
+  * mesa: Update to mesa-21.2.2
+  * gmmlib: Update to intel-gmmlib-21.3.1
+  * gstreamer-libav: Update to 1.18.5
+  * glibc: Update to glibc-2.33 (d27d1e4)
+  * gobject-introspection: Update to 1.70.0
+  * vala: Update to 0.54.0
+  * pygobject: Update to 3.42.0
+  * gsettings-desktop-schemas: Update to 41.0
+  * gnupg: Update to gnupg-2.2.31
+  * xorg-proto-xorgproto: Update to xorgproto-2021.5
+
 freedesktop-sdk-21.08.3:
-  * harfbuzz.bst to 3.0.0 [Forward ABI break]
-  * xdg-desktop-portal-base.bst to 1.10.0
-  * python3-poetry.bst to 1.1.9
+  * harfbuzz: Update to 3.0.0 [Forward ABI break]
+  * xdg-desktop-portal-base: Update to 1.10.0
+  * python3-poetry: Update to 1.1.9
   * at-spi2-core: Update to AT_SPI2_CORE_2_42_0
   * pipewire: Update to 0.3.36 [Forward ABI break]
   * oci_builder: Fix deleting of files in layers (#1323)
