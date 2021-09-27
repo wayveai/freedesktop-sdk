@@ -967,34 +967,21 @@ publish_docker_aarch64:
   allow_failure: true
 
 publish_docker_finish:
-  image: docker
-  services:
-  - docker:dind
   stage: finish-publish
   allow_failure: true
-  variables:
-    DOCKER_HOST: tcp://docker:2375/
-    DOCKER_DRIVER: overlay2
   before_script: []
   script:
-  - mkdir -p "${HOME}/.docker"
-  - |
-    cat >>"${HOME}/.docker/config.json" <<EOF
-    {
-        "experimental": "enabled"
-    }
-    EOF
-
-  - docker login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
+  - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
 
   - |
     set -eu
     for name in platform sdk debug flatpak; do
       for dir in docker-pushed-digests/*; do
         DOCKER_VERSION="$(basename "${dir}")"
-        docker manifest create freedesktopsdk/${name}:"${DOCKER_VERSION}" \
+        podman manifest create freedesktopsdk/${name}:"${DOCKER_VERSION}" \
                       $(cat "${dir}"/${name}-*.txt)
-        docker manifest push freedesktopsdk/${name}:"${DOCKER_VERSION}"
+        podman manifest push --format v2s2 \
+                      freedesktopsdk/${name}:"${DOCKER_VERSION}"
       done
     done
 
@@ -1002,8 +989,6 @@ publish_docker_finish:
   - tags
   except:
   - schedules
-  tags:
-  - x86_64
   needs:
 #  - publish_docker_ppc64le
   - publish_docker_aarch64
