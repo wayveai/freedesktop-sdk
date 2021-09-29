@@ -174,7 +174,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  track: master
+  track: main
   track-extra:
   - '21.2'
   ref: mesa-21.2.3-0-g5da276cf339c86a0bd62f45e4dc90682a6b19f25
