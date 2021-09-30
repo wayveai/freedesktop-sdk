@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: distlib
-  url: pypi:45/97/15fdbef466e12c890553cebb1d8b1995375202e30e0c83a1e51061556143/distlib-0.3.2.zip
-  sha256sum: 106fef6dc37dd8c0e2c0a60d3fca3e77460a48907f335fa28420463a6f799736
+  url: pypi:56/ed/9c876a62efda9901863e2cc8825a13a7fcbda75b4b498103a4286ab1653b/distlib-0.3.3.zip
+  sha256sum: d982d0751ff6eaaab5e2ec8e691d949ee80eddf01a62eaa96ddb11531fe16b05
