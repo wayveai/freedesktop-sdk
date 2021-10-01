@@ -25,7 +25,6 @@ import shutil
 import json
 import os
 import gzip
-import time
 from contextlib import ExitStack
 
 from .layer_builder import create_layer
@@ -204,10 +203,7 @@ def build_image(global_conf, image):
     legacy_parent = None
 
     config = {
-        "created": time.strftime(
-            "%Y-%m-%dT%H:%M:%SZ",
-            time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
-        ),
+        "created": global_conf.created
     }
 
     if 'author' in image:
