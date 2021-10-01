@@ -1,7 +1,7 @@
 kind: pip
 
 build-depends:
-- components/python3-pip.bst
+- public-stacks/buildsystem-python.bst
 
 depends:
 - components/python3.bst
@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: filelock
-  url: pypi:14/ec/6ee2168387ce0154632f856d5cc5592328e9cf93127c5c9aeca92c8c16cb/filelock-3.0.12.tar.gz
-  sha256sum: 18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59
+  url: pypi:18/3d/82769bc929807a11e455265a402c9012a31dacd72a1b85795f337bb0c3fe/filelock-3.2.0.tar.gz
+  sha256sum: 85ecb30757aa19d06bfcdad29cc332b9a3e4851bf59976aea1e8dadcbd9ef883
