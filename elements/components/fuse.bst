@@ -19,6 +19,13 @@ public:
       sysroot="${1}"
       chmod 4755 "${sysroot}%{bindir}/fusermount"
 
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/libfuse.so'
+        - '%{libdir}/libulockmgr.so'
+
 sources:
 - kind: git_tag
   url: github:libfuse/libfuse.git

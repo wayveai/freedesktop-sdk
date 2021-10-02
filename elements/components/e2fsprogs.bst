@@ -1,17 +1,20 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/util-linux.bst
+- bootstrap-import.bst
+- components/util-linux.bst
+- components/fuse.bst
 
 variables:
-  conf-local: |
-    --enable-elf-shlibs \
-    --disable-libblkid \
-    --disable-libuuid \
-    --disable-fsck \
+  conf-local: >-
+    --enable-elf-shlibs
+    --enable-fuse2fs
+    --disable-libblkid
+    --disable-libuuid
+    --disable-fsck
     --disable-uuidd
 
   make-install: make -j1 DESTDIR="%{install-root}" install install-libs
@@ -51,6 +54,7 @@ public:
         - '%{libdir}/libcom_err.so'
         - '%{libdir}/libe2p.so'
         - '%{libdir}/libext2fs.so'
+
       vm-only:
       - '%{bindir}/*'
 
