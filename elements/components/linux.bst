@@ -472,6 +472,12 @@ config:
     enable JOYSTICK_XPAD_FF
     enable JOYSTICK_XPAD_LEDS
 
+    # Make sure to enable virtual terminals in DRM
+    enable FB
+    enable FB_EFI
+    enable DRM_FBDEV_EMULATION
+    enable FRAMEBUFFER_CONSOLE
+
   - |
     make -j1 olddefconfig
 
