@@ -457,6 +457,7 @@ depends:
 - components/xdg-desktop-portal.bst
 - components/xdg-portal-interfaces.bst
 - components/xdg-user-dirs.bst
+- components/xfsprogs.bst
 - components/xmlto.bst
 - components/xmltoman.bst
 - components/xorg-app-xkbcomp.bst
