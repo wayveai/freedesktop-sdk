@@ -5,11 +5,13 @@ build-depends:
 
 config:
   forbidden:
+  - components/apparmor.bst
   - components/avahi.bst
   - components/ccid.bst
   - components/dracut.bst
   - components/gamemode.bst
   - components/iproute2.bst
+  - components/libapparmor.bst
   - components/linux-firmware.bst
   - components/linux-pam.bst
   - components/linux.bst

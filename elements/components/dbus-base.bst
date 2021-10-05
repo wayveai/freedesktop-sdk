@@ -6,6 +6,7 @@ build-depends:
 - components/systemd-libs.bst
 - components/python3.bst
 - components/systemd.bst
+- components/libapparmor.bst
 
 variables:
   conf-local: >-

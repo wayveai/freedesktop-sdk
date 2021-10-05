@@ -56,3 +56,4 @@ depends:
 - components/fscrypt-maybe.bst
 - components/bash-config.bst
 - components/bash-completion.bst
+- components/apparmor.bst

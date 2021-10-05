@@ -18,6 +18,7 @@ runtime-depends:
 - components/p11-kit.bst
 - components/libfido2.bst
 - components/openssl.bst
+- components/libapparmor.bst
 
 config:
   exclude:
