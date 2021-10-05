@@ -491,6 +491,10 @@ config:
     module NETFILTER_XT_MATCH_COMMENT
     module NETFILTER_XT_TARGET_CHECKSUM
 
+    # Security modules
+    enable SECURITY_SELINUX
+    enable SECURITY_APPARMOR
+
   - |
     make -j1 olddefconfig
 

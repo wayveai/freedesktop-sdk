@@ -4,6 +4,7 @@ depends:
 - components/alsa-lib.bst
 - components/alsa-plugins.bst
 - components/aom.bst
+- components/apparmor.bst
 - components/appstream-glib.bst
 - components/asciidoc.bst
 - components/aspell.bst
@@ -164,6 +165,7 @@ depends:
 - components/lcms.bst
 - components/less.bst
 - components/libaio.bst
+- components/libapparmor.bst
 - components/libarchive.bst
 - components/libassuan.bst
 - components/libatasmart.bst

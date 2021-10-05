@@ -24,6 +24,7 @@ build-depends:
 - components/libfido2.bst
 - components/openssl.bst
 - components/python3-jinja2.bst
+- components/apparmor.bst
 
 config:
   install-commands:
@@ -66,6 +67,7 @@ variables:
     -Dlibcryptsetup=true
     -Dp11kit=true
     -Dlibfido2=true
+    -Dapparmor=true
 
 public:
   cpe:
