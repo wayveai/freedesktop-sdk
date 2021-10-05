@@ -152,9 +152,12 @@ config:
 
     # Required for live boot
     module SQUASHFS
-    module SQUASHFS_ZLIB
+    enable SQUASHFS_ZLIB
     module DM_SNAPSHOT
     module OVERLAY_FS
+
+    # Required by snapd
+    enable SQUASHFS_XZ
 
     # Some useful drivers when running as virtual machine
     module VIRTIO_BALLOON
@@ -477,6 +480,16 @@ config:
     enable FB_EFI
     enable DRM_FBDEV_EMULATION
     enable FRAMEBUFFER_CONSOLE
+
+    # Network
+    module BRIDGE
+    module IP_NF_RAW
+    module IP6_NF_RAW
+    enable NETFILTER_ADVANCED
+
+    # Those two modules are required by multipass
+    module NETFILTER_XT_MATCH_COMMENT
+    module NETFILTER_XT_TARGET_CHECKSUM
 
   - |
     make -j1 olddefconfig
