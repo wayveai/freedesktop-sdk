@@ -491,6 +491,12 @@ config:
     # Joydev API
     module INPUT_JOYDEV
 
+    # Make sure to enable virtual terminals in DRM
+    enable FB
+    enable FB_EFI
+    enable DRM_FBDEV_EMULATION
+    enable FRAMEBUFFER_CONSOLE
+
   - |
     make -j1 olddefconfig
 
