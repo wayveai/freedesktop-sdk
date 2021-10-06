@@ -1,14 +1,16 @@
 kind: autotools
 
-depends:
-- bootstrap-import.bst
-
 build-depends:
 - components/python3.bst
 - public-stacks/buildsystem-autotools.bst
 
+depends:
+- bootstrap-import.bst
+- components/icu.bst
+
 variables:
   conf-local: >-
+    --with-icu
     --with-python=%{bindir}/python3
     CPPFLAGS="$(pkg-config --cflags-only-I python3)"
 
