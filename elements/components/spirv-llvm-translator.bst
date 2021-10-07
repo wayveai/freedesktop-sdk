@@ -17,7 +17,7 @@ config:
 sources:
 - kind: git_tag
   track: master
-  url: github:KhronosGroup/SPIRV-LLVM-Translator/
+  url: github:KhronosGroup/SPIRV-LLVM-Translator.git
   ref: v12.0.0-0-g67d3e271a28287b2c92ecef2f5e98c49134e5946
   match:
   - v*
