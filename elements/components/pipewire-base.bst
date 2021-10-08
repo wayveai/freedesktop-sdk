@@ -113,3 +113,5 @@ sources:
   ref: 0.3.38-0-g47a294c5bf52656998a7f43b13068c02001add77
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
+- kind: patch
+  path: patches/pipewire/fix-aarch64.patch
