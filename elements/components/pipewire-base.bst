@@ -110,6 +110,6 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.37-0-gc41e3553bf0a6b76d8949c081ba633f7a6343d19
+  ref: 0.3.38-0-g47a294c5bf52656998a7f43b13068c02001add77
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
