@@ -12,5 +12,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: Jinja2
-  url: pypi:39/11/8076571afd97303dfeb6e466f27187ca4970918d4b36d5326725514d3ed3/Jinja2-3.0.1.tar.gz
-  sha256sum: 703f484b47a6af502e743c9122595cc812b0271f661722403114f71a79d0f5a4
+  url: pypi:f8/86/7c0eb6e8b05385d1ce682abc0f994abd1668e148fb52603fa86e15d4c110/Jinja2-3.0.2.tar.gz
+  sha256sum: 827a0e32839ab1600d4eb1c4c33ec5a8edfbc5cb42dafa13b81f182f97784b45
