@@ -3,21 +3,24 @@ sources:
   url: github:flatpak/flatpak.git
   track: master
   track-extra:
-  - flatpak-1.8.x
+  - flatpak-1.12.x
   match:
   - 1.[02468]*
   - 1.1[02468]*
-  ref: 1.10.2-0-gc614eb400ed9f9ec516d74a43e7d63783e3fe1fb
-  submodules:
-    libglnx:
-      checkout: true
-      url: gnome:libglnx.git
-    bubblewrap:
-      checkout: true
-      url: github:projectatomic/bubblewrap.git
-    dbus-proxy:
-      checkout: true
-      url: github:flatpak/xdg-dbus-proxy.git
-    variant-schema-compiler:
-      checkout: true
-      url: git_https:gitlab.gnome.org/alexl/variant-schema-compiler.git
+  ref: 1.12.1-0-gafb3575d3113a8491af25af3bbc7bcf1cb5b9b33
+- kind: git_module
+  path: subprojects/libglnx
+  url: gnome:libglnx.git
+  ref: 013417ea72aa767aec15259271ef04846070be64
+- kind: git_module
+  path: subprojects/bubblewrap
+  url: github:projectatomic/bubblewrap.git
+  ref: b84704bb64eac3011f84346c79651c7c1234712c
+- kind: git_module
+  path: subprojects/dbus-proxy
+  url: github:flatpak/xdg-dbus-proxy.git
+  ref: 0e78d101cf9e643d738793793853a28c15e1f699
+- kind: git_module
+  path: subprojects/variant-schema-compiler
+  url: git_https:gitlab.gnome.org/alexl/variant-schema-compiler.git
+  ref: 444b2b3217d3537141c2abe24669b41aeae19525
