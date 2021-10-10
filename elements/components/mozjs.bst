@@ -16,6 +16,7 @@ environment-nocache:
 - MAXJOBS
 
 environment:
+  MACH_USE_SYSTEM_PYTHON: '1'
   MAXJOBS: '%{max-jobs}'
   PATH: /usr/bin:/usr/lib/sdk/rust/bin
   CC: gcc
@@ -58,16 +59,6 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:ftp.mozilla.org/pub/firefox/releases/78.12.0esr/source/firefox-78.12.0esr.source.tar.xz
-  base-dir: 'firefox-78.12.0'
-  ref: 8b55a8b8254ddde03db83f44c9fecfc4ae86ea126b5445a0355d915830bd7410
-- kind: patch
-  path: patches/mozjs/fix-arm-build.patch
-- kind: patch
-  path: patches/mozjs/0001-Add-riscv64-as-target-architecture-to-mozbuild.patch
-- kind: patch
-  path: patches/mozjs/0002-js-jit-Enable-AtomicOperations-feeling-lucky.h-on-ri.patch
-- kind: patch
-  path: patches/mozjs/0003-mfbt-tests-Define-RETURN_INSTR-for-riscv64-in-TestPo.patch
-- kind: patch
-  path: patches/mozjs/0001-Use-correct-ABI-when-building-on-Linux-for-64-bit.patch
+  url: tar_https:ftp.mozilla.org/pub/firefox/releases/91.2.0esr/source/firefox-91.2.0esr.source.tar.xz
+  base-dir: 'firefox-91.2.0'
+  ref: 3ef3cfd321d0c2c80ee1b41b8baf7a1ea4daf93c29e1377274933440ff5e42c3
