@@ -10,16 +10,16 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: "4af16ef8c1af9f5f234ce3adc2b0c4e8059a5c4b"
+  DOCKER_IMAGE_ID: "b45707c0b84add275f6c5c992b7ace12885154ac"
+  DOCKER_AMD64: "${DOCKER_REGISTRY}/bst16/amd64:${DOCKER_IMAGE_ID}"
+  DOCKER_AARCH64: "${DOCKER_REGISTRY}/bst16/arm64:${DOCKER_IMAGE_ID}"
+  DOCKER_PPC64LE: "${DOCKER_REGISTRY}/bst16/ppc64le:${DOCKER_IMAGE_ID}"
   SCHEDULE_TASK: default
 
   # Generic variable for invoking buildstream
   BST: bst --colors
 
   GIT_SUBMODULE_STRATEGY: "recursive"
-
-default:
-  image: "${DOCKER_REGISTRY}/bst16:${DOCKER_IMAGE_ID}"
 
 stages:
   - bootstrap
@@ -168,6 +168,8 @@ before_script:
     fi
 
 pylint:
+  extends:
+    - .builder-x86_64
   stage: flatpak
   script:
     - find . -iname "*.py" -exec pylint {} +
@@ -181,6 +183,8 @@ pylint:
   interruptible: true
 
 check_update_elements:
+  extends:
+    - .builder-x86_64
   stage: update
   variables:
     GIT_SUBMODULE_STRATEGY: none
@@ -213,6 +217,8 @@ check_update_elements:
   - if: '$CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TASK == "default"'
 
 check_mirrors:
+  extends:
+    - .builder-x86_64
   stage: update
   script:
     - make url-manifest
@@ -283,6 +289,7 @@ check_mirrors:
     when: runner_system_failure
 
 .builder-x86_64:
+  image: $DOCKER_AMD64
   extends:
   - .retry_system_failure
   tags:
@@ -292,6 +299,7 @@ check_mirrors:
     ARCH: x86_64
 
 .builder-i686:
+  image: $DOCKER_AMD64
   extends:
   - .retry_system_failure
   tags:
@@ -301,6 +309,7 @@ check_mirrors:
     ARCH: i686
 
 .builder-aarch64:
+  image: $DOCKER_AARCH64
   extends:
   - .retry_system_failure
   tags:
@@ -309,6 +318,7 @@ check_mirrors:
     ARCH: aarch64
 
 .builder-ppc64le:
+  image: $DOCKER_PPC64LE
   extends:
   - .retry_system_failure
   tags:
@@ -529,6 +539,7 @@ desktop_efi_vm_image_x86_64:
       artifacts: false
 
 prepare_publish:
+  extends: .builder-x86_64
   stage: prepare-publish
   script:
     - flat-manager-client -v create "$RELEASES_SERVER_ADDRESS" "${RELEASE_CHANNEL}" > publish_build.txt
@@ -545,6 +556,7 @@ prepare_publish:
     - tags
 
 finish_publish:
+  extends: .builder-x86_64
   stage: finish-publish
   script:
     - flat-manager-client -v commit --wait "$(cat publish_build.txt)"
@@ -576,6 +588,7 @@ finish_publish:
 #      optional: true
 
 finish_publish_failed:
+  extends: .builder-x86_64
   stage: finish-publish
   script:
     - flat-manager-client purge "$(cat publish_build.txt)"
