@@ -1,5 +1,7 @@
 kind: script
 
+(@): flatpak-version.yml
+
 build-depends:
 - oci/oci-builder.bst
 - oci/layers/bootstrap.bst
@@ -32,4 +34,5 @@ config:
       architecture: '%{go-arch}'
       layer: /layer
       comment: 'Import bootstrap layer from Freedesktop SDK'
+      created: $(date --date %{runtime-version-date} +"%Y-%m-%dT%H:%M:%SZ")
     EOF
