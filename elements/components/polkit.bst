@@ -46,6 +46,8 @@ sources:
   url: freedesktop:polkit/polkit.git
   track: master
   ref: 0.120-0-g92b910ce2273daf6a76038f6bd764fa6958d4e8e
+- kind: patch
+  path: patches/polkit/mozjs-91.patch
 - kind: local
   path: files/polkit/sysusers.conf
   directory: data
