@@ -7,6 +7,7 @@ build-depends:
 - components/which.bst
 - components/perl.bst
 - components/rust.bst
+- enable-shm.bst
 
 depends:
 - components/nspr.bst

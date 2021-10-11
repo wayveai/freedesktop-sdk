@@ -25,6 +25,4 @@ sources:
 - kind: patch
   path: patches/gcc/gcc-multiarch-enable-riscv.patch
 - kind: patch
-  path: patches/gcc/gcc-using-sysroot-is-cross-compiling.patch
-- kind: patch
   path: patches/gcc/gcc-fix-header-path.patch

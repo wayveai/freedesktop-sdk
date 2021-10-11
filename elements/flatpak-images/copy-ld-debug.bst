@@ -13,5 +13,8 @@ public:
 
 config:
   commands:
-  - install -D -t '%{install-root}%{debugdir}%{libdir}' '%{debugdir}%{libdir}'/ld-*.so.debug
+  - |
+    for path in '%{debugdir}'/usr/lib*/ld-linux*.so*.debug; do
+      install -D -t "%{install-root}$(dirname "${path}")" "${path}"
+    done
   - install -D -t '%{install-root}%{debugdir}/dwz/bootstrap/glibc.bst/' '%{debugdir}/dwz/bootstrap/glibc.bst'/*

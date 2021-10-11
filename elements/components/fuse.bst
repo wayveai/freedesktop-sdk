@@ -30,6 +30,7 @@ sources:
 - kind: git_tag
   url: github:libfuse/libfuse.git
   track: fuse_2_9_bugfix
-  ref: fuse-2.9.9-0-gd04687923194d906fe5ad82dcd546c9807bf15b6
+  track-tags: false
+  ref: fuse-2.9.9-3-g5a43d0f724c56f8836f3f92411e0de1b5f82db32
 - kind: patch
   path: patches/fuse/fuse-kernel-h-clean-includes.patch

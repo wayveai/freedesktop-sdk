@@ -47,3 +47,5 @@ sources:
   exclude:
   - "*-base"
   ref: gpgme-1.16.0-0-g1021c8645555502d914afffaa3707609809c9459
+- kind: patch
+  path: patches/gpgme/gpgme-closefrom.patch

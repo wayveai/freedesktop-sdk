@@ -4,6 +4,7 @@ description: Python 3
 build-depends:
 - components/bluez-headers.bst
 - public-stacks/buildsystem-autotools.bst
+- enable-shm.bst
 
 depends:
 - bootstrap-import.bst
