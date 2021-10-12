@@ -25,10 +25,6 @@ config:
     - cp "%{build-root}/doc/man.macros" "%{install-root}%{includedir}/tcl-private/doc/"
 
 sources:
-- kind: git_tag
-  url: github:tcltk/tcl.git
-  track: master
-  exclude:
-  - "*a*"
-  - "rc*"
-  ref: core-8-6-10-0-gf19d3d1f630f128feddb2728f4c8d222934a38ee
+- kind: tar
+  url: sourceforge_download:tcl/tcl8.6.10-src.tar.gz
+  ref: 5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed
