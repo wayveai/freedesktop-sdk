@@ -514,6 +514,19 @@ config:
     enable SECURITY_SELINUX
     enable SECURITY_APPARMOR
 
+    # SPI
+    if has HAS_IOMEM; then
+      enable SPI
+    fi
+
+    # TPM
+    module TCG_TPM
+    module TCG_CRB
+    module TCG_TIS
+    if has SPI; then
+      module TCG_TIS_SPI
+    fi
+
   - |
     make -j1 olddefconfig
 

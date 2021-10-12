@@ -17,4 +17,4 @@ sources:
   - 2.4.x
   exclude:
   - '*rc*'
-  ref: 2.4.1-0-g703a16f288bc1119a07425d36e80a3004cbe5210
+  ref: 2.4.6-0-ge7824cf41200a5d2721918867c2b4355db5fe02d

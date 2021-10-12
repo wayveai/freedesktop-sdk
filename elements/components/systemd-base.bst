@@ -25,6 +25,7 @@ build-depends:
 - components/openssl.bst
 - components/python3-jinja2.bst
 - components/apparmor.bst
+- components/tpm2-tss.bst
 
 config:
   install-commands:
@@ -68,6 +69,8 @@ variables:
     -Dp11kit=true
     -Dlibfido2=true
     -Dapparmor=true
+    -Dtpm=true
+    -Dtpm2=true
 
 public:
   cpe:

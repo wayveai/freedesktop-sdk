@@ -425,7 +425,9 @@ depends:
 - components/tcl.bst
 - components/tex-gyre-fonts.bst
 - components/texinfo.bst
+- components/tpm2-tools.bst
 - components/tpm2-tss.bst
+- components/tpm2-pkcs11.bst
 - components/tzdata.bst
 - components/udisks.bst
 - components/unzip.bst
