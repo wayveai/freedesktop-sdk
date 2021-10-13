@@ -296,6 +296,10 @@ def build_image(global_conf, image):
     if 'variant' in image:
         platform['variant'] = image['variant']
     manifest_blob.descriptor['platform'] = platform
+
+    if 'index-annotations' in image:
+        manifest_blob.descriptor['annotations'] = image['index-annotations']
+
     return manifest_blob.descriptor, {}
 
 

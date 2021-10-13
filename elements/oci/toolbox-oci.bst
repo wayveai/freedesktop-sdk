@@ -44,4 +44,6 @@ config:
         Labels:
           'com.github.containers.toolbox': 'true'
           'com.github.debarshiray.toolbox': 'true'
+      index-annotations:
+        org.opencontainers.image.ref.name: localhost/freedesktopsdk/toolbox:latest
     EOF
