@@ -1,22 +1,22 @@
 kind: manual
 description: Adds a default file to be passed to flatpak-builder
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
+build-depends:
+- bootstrap-import.bst
+- components/jq.bst
 
 config:
   build-commands:
   - |
-    cat >defaults.json <<EOF
-    {
-      'libdir': '%{libdir}',
-      'cflags': '${CFLAGS}',
-      'cxxflags': '${CXXFLAGS}',
-      'cppflags': '${CPPFLAGS}',
-      'ldflags': '-L/app/lib ${LDFLAGS}'
-    }
-    EOF
+    jq -n \
+    --arg libdir '%{libdir}' \
+    '{
+      "libdir": $libdir,
+      "cflags": ($ENV.CFLAGS // ""),
+      "cxxflags": ($ENV.CXXFLAGS // ""),
+      "cppflags": ($ENV.CPPFLAGS // ""),
+      "ldflags": "-L/app/lib \($ENV.LDFLAGS // "")"
+    }' > defaults.json
 
 
   install-commands:
