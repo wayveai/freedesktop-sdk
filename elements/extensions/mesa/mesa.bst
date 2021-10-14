@@ -176,7 +176,7 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: main
   track-extra:
-  - '21.2'
+  - '21.3'
   ref: mesa-21.2.3-0-g5da276cf339c86a0bd62f45e4dc90682a6b19f25
 - kind: local
   path: files/mesa/org.freedesktop.Platform.GL.default.appdata.xml.in
