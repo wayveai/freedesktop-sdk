@@ -157,7 +157,6 @@ config:
     # Required for live boot
     module SQUASHFS
     enable SQUASHFS_ZLIB
-    module DM_SNAPSHOT
     module OVERLAY_FS
 
     # Required by snapd
@@ -248,8 +247,13 @@ config:
     module ISCSI_TCP
     module SCSI_ISCSI_ATTRS
 
-    # Encrypted disks
+    # Device mapper
     module DM_CRYPT
+    module DM_INTEGRITY
+    module DM_UEVENT
+    module DM_RAID
+    module DM_SNAPSHOT
+    module DM_VERITY
 
     # USB audio
     module SND_USB_AUDIO
