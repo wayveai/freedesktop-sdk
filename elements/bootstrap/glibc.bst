@@ -40,22 +40,11 @@ config:
       sourcedir="%{install-root}${rtlddir}"
       targetdir="%{install-root}%{prefix}${rtlddir}"
 
-      for f in "${sourcedir}"/*; do
-        if [ -h "$f" ]; then
-          [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
-          targetpath="${targetdir}/$(basename "$f")"
-          sourcepath="${sourcedir}/$(readlink "$f")"
-          relsourcepath="$(realpath "${sourcepath}" --relative-to="${targetdir}")"
-
-          ln -s "${relsourcepath}" "${targetpath}"
-          rm "$f"
-        fi
-      done
-
+      [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
+      mv "${sourcedir}"/ld-linux*.so* "${targetdir}"/
       rm -r "${sourcedir}"
-
-      if [ "${rtlddir}" != '/lib' ]; then
-        ln -s "$(realpath "${targetdir}" --relative-to='%{install-root}')" "${sourcedir}"
+      if [ "${sourcedir}" != "%{install-root}/lib" ]; then
+        ln -sr "${targetdir}" "${sourcedir}"
       fi
 
 # ldconfig shows a warning if /etc/ld.so.conf doesn't exist
@@ -128,6 +117,7 @@ public:
         - '%{libdir}/libutil.so'
         - '%{libdir}/libnss_compat.so'
         - '%{libdir}/libm.so'
+        - '%{libdir}/libc_malloc_debug.so'
 
       static-blocklist:
         (=):
