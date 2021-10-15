@@ -2,6 +2,4 @@ sources:
 - kind: git_tag
   url: kernel:bluetooth/bluez.git
   track: master
-  ref: 5.61-0-gd61f9dc54c04f4fc5791398a0dbae59d671846bf
-- kind: patch
-  path: patches/bluez/0005-media-rename-local-function-conflicting-with-pause-2.patch
+  ref: 5.62-0-g8ac79215ffdc3df8ecd294425fbdfd94df57c27b
