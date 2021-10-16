@@ -91,7 +91,8 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:PipeWire/pipewire.git
-  track: master
+  # Tracking disabled as forward ABI stability cannot be guaranteed
+  # track: master
   exclude:
   - '*.*.9*'
   ref: 0.3.25-0-gc324107211718043553337cb10d022fe9d2d12d8
