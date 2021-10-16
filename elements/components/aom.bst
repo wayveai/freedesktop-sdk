@@ -55,4 +55,4 @@ sources:
   track: master
   track-extra:
   - av1-normative
-  ref: v3.1.2-0-gae2be8030200925895fa6e98bd274ffdb595cbf6
+  ref: v3.2.0-0-g287164de79516c25c8c84fd544f67752c170082a
