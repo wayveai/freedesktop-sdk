@@ -6,7 +6,7 @@ sources:
   - v249-stable
   exclude:
   - '*rc*'
-  ref: v249.4-0-g4d8fd88b9641fce81272f60f556543f713175403
+  ref: v249.5-0-g00b0393e65252bf631670604f58b844780b08c50
 # remove the following patch when updating systemd
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
