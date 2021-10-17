@@ -43,4 +43,4 @@ sources:
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=962596
   - archive/debian/20200601
   - debian/20200601
-  ref: archive/debian/20210119-0-g181be7ebd169b4a6fb5d90c3e6dc791e90534144
+  ref: debian/20211016-0-g07de54fdcc5806bde549e1edf60738c6bccf50e8
