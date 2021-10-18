@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:pypa/wheel.git
-  track: master
-  ref: 0.36.2-0-g4fb47f98550f3f43fc0b8c73f518592124ae21bd
+  track: main
+  ref: 0.37.0-0-gb8c4aa055cea0132776e7e53edce3538710d5b68
