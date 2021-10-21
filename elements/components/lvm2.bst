@@ -1,14 +1,11 @@
 kind: autotools
 
 build-depends:
-- components/systemd-base.bst
 - components/pkg-config.bst
 
 depends:
 - bootstrap-import.bst
 - components/libaio.bst
-
-runtime-depends:
 - components/systemd-libs.bst
 
 variables:
