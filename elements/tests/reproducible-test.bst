@@ -16,7 +16,6 @@ runtime-depends:
 - components/ostree-base.bst
 - components/pipewire-base.bst
 - components/pulseaudio-base.bst
-- components/sysprof-base.bst
 - components/systemd-base.bst
 - components/xdg-desktop-portal-base.bst
 
