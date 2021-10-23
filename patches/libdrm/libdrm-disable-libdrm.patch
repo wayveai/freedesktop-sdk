@@ -148,18 +148,31 @@ index 8d17bb2e..d0e0987e 100644
  )
  
 diff --git a/meson.build b/meson.build
-index 30f1c2e5..8a5c01fe 100644
+index 288106bd..7fc5db38 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -294,6 +294,7 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
+@@ -166,6 +166,12 @@ if _vc4 != 'false'
+   with_vc4 = _vc4 == 'true' or ['arm', 'aarch64'].contains(host_machine.cpu_family())
+ endif
+ 
++with_libdrm = true
++_libdrm = get_option('libdrm')
++if _libdrm == 'false'
++  with_libdrm = false
++endif
++
+ # XXX: Apparently only freebsd and dragonfly bsd actually need this (and
+ # gnu/kfreebsd), not openbsd and netbsd
+ with_libkms = false
+@@ -299,6 +305,7 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
  inc_root = include_directories('.')
  inc_drm = include_directories('include/drm')
  
-+if get_option('libdrm') != 'false'
++if with_libdrm
  libdrm = library(
    'drm',
    [files(
-@@ -323,11 +324,22 @@ ext_libdrm = declare_dependency(
+@@ -328,11 +335,22 @@ ext_libdrm = declare_dependency(
    link_with : libdrm,
    include_directories : [inc_root, inc_drm],
  )
@@ -183,7 +196,7 @@ index 30f1c2e5..8a5c01fe 100644
    'include/drm/mach64_drm.h', 'include/drm/mga_drm.h',
    'include/drm/msm_drm.h', 'include/drm/nouveau_drm.h',
    'include/drm/qxl_drm.h', 'include/drm/r128_drm.h',
-@@ -341,6 +353,7 @@ if with_vmwgfx
+@@ -346,6 +364,7 @@ if with_vmwgfx
    install_headers('include/drm/vmwgfx_drm.h', subdir : 'libdrm')
  endif
  
@@ -191,7 +204,7 @@ index 30f1c2e5..8a5c01fe 100644
  pkg.generate(
    name : 'libdrm',
    libraries : libdrm,
-@@ -348,6 +361,7 @@ pkg.generate(
+@@ -353,6 +372,7 @@ pkg.generate(
    version : meson.project_version(),
    description : 'Userspace interface to kernel DRM services',
  )
@@ -308,12 +321,12 @@ index edddf72b..555503d1 100644
  )
  
 diff --git a/tests/amdgpu/meson.build b/tests/amdgpu/meson.build
-index eb16a50c..689d5019 100644
+index e6e30812..3078ae42 100644
 --- a/tests/amdgpu/meson.build
 +++ b/tests/amdgpu/meson.build
-@@ -26,9 +26,9 @@ if dep_cunit.found()
-       'vce_tests.c', 'uvd_enc_tests.c', 'vcn_tests.c', 'deadlock_tests.c',
+@@ -27,9 +27,9 @@ if dep_cunit.found()
        'vm_tests.c', 'ras_tests.c', 'syncobj_tests.c', 'security_tests.c',
+       'hotunplug_tests.c'
      ),
 -    dependencies : [dep_cunit, dep_threads, dep_atomic_ops],
 +    dependencies : [dep_cunit, dep_threads, dep_atomic_ops, ext_libdrm],
@@ -392,91 +405,90 @@ index 3a048e8a..57895598 100644
 +  dependencies : [dep_threads, ext_libdrm],
    install : with_install_tests,
  )
-diff --git a/tests/kms/meson.build b/tests/kms/meson.build
-index 91371aa0..fd5aaa06 100644
---- a/tests/kms/meson.build
-+++ b/tests/kms/meson.build
-@@ -26,7 +26,7 @@ libkms_test = static_library(
-     'libkms-test-plane.c', 'libkms-test-screen.c',
-   ),
-   include_directories : [inc_root, inc_tests, inc_drm],
--  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   c_args : libdrm_c_args,
- )
- 
-diff --git a/tests/kmstest/meson.build b/tests/kmstest/meson.build
-index 4fb870f9..5b9e7a08 100644
---- a/tests/kmstest/meson.build
-+++ b/tests/kmstest/meson.build
-@@ -25,6 +25,7 @@ kmstest = executable(
-   include_directories : [
-     inc_root, inc_tests, include_directories('../../libkms'), inc_drm,
-   ],
--  link_with : [libutil, libkms, libdrm],
-+  link_with : [libutil, libkms],
-+  dependencies : [ext_libdrm],
-   install : with_install_tests,
- )
 diff --git a/tests/meson.build b/tests/meson.build
-index 196edbfa..50a07000 100644
+index 196edbfa..85df8a33 100644
 --- a/tests/meson.build
 +++ b/tests/meson.build
-@@ -52,7 +52,7 @@ drmsl = executable(
-   'drmsl',
-   files('drmsl.c'),
-   include_directories : [inc_root, inc_drm],
--  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   c_args : libdrm_c_args,
- )
+@@ -20,12 +20,14 @@
  
-@@ -60,7 +60,7 @@ hash = executable(
-   'hash',
-   files('hash.c'),
-   include_directories : [inc_root, inc_drm],
--  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   c_args : libdrm_c_args,
- )
+ inc_tests = include_directories('.')
  
-@@ -68,7 +68,7 @@ drmdevice = executable(
-   'drmdevice',
-   files('drmdevice.c'),
-   include_directories : [inc_root, inc_drm],
+-subdir('util')
+-subdir('kms')
+-subdir('modeprint')
+-subdir('proptest')
+-subdir('modetest')
+-subdir('vbltest')
++if with_libdrm
++  subdir('util')
++  subdir('kms')
++  subdir('modeprint')
++  subdir('proptest')
++  subdir('modetest')
++  subdir('vbltest')
++endif
+ if with_libkms
+   subdir('kmstest')
+ endif
+@@ -48,31 +50,33 @@ if with_nouveau
+   subdir('nouveau')
+ endif
+ 
+-drmsl = executable(
+-  'drmsl',
+-  files('drmsl.c'),
+-  include_directories : [inc_root, inc_drm],
 -  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   c_args : libdrm_c_args,
-   install : with_install_tests,
- )
-diff --git a/tests/modeprint/meson.build b/tests/modeprint/meson.build
-index 0801808a..067b18ab 100644
---- a/tests/modeprint/meson.build
-+++ b/tests/modeprint/meson.build
-@@ -23,7 +23,7 @@ modeprint = executable(
-   files('modeprint.c'),
-   c_args : libdrm_c_args,
-   include_directories : [inc_root, inc_tests, inc_drm],
--  link_with : [libdrm, libutil],
--  dependencies : dep_threads,
-+  link_with : [libutil],
-+  dependencies : [dep_threads, ext_libdrm],
-   install : with_install_tests,
- )
-diff --git a/tests/modetest/meson.build b/tests/modetest/meson.build
-index 23d84a1d..3b5039fa 100644
---- a/tests/modetest/meson.build
-+++ b/tests/modetest/meson.build
-@@ -23,7 +23,7 @@ modetest = executable(
-   files('buffers.c', 'cursor.c', 'modetest.c'),
-   c_args : [libdrm_c_args, '-Wno-pointer-arith'],
-   include_directories : [inc_root, inc_tests, inc_drm],
--  dependencies : [dep_threads, dep_cairo],
--  link_with : [libdrm, libutil],
-+  dependencies : [dep_threads, dep_cairo, ext_libdrm],
-+  link_with : [libutil],
-   install : with_install_tests,
- )
+-  c_args : libdrm_c_args,
+-)
++if with_libdrm
++  drmsl = executable(
++    'drmsl',
++    files('drmsl.c'),
++    include_directories : [inc_root, inc_drm],
++    link_with : libdrm,
++    c_args : libdrm_c_args,
++  )
+ 
+-hash = executable(
+-  'hash',
+-  files('hash.c'),
+-  include_directories : [inc_root, inc_drm],
+-  link_with : libdrm,
+-  c_args : libdrm_c_args,
+-)
++  hash = executable(
++    'hash',
++    files('hash.c'),
++    include_directories : [inc_root, inc_drm],
++    link_with : libdrm,
++    c_args : libdrm_c_args,
++  )
+ 
+-drmdevice = executable(
+-  'drmdevice',
+-  files('drmdevice.c'),
+-  include_directories : [inc_root, inc_drm],
+-  link_with : libdrm,
+-  c_args : libdrm_c_args,
+-  install : with_install_tests,
+-)
++  drmdevice = executable(
++    'drmdevice',
++    files('drmdevice.c'),
++    include_directories : [inc_root, inc_drm],
++    dependencies : [ext_libdrm],
++    c_args : libdrm_c_args,
++    install : with_install_tests,
++  )
+ 
+-test('hash', hash)
+-test('drmsl', drmsl)
+-test('drmdevice', drmdevice)
++  test('hash', hash)
++  test('drmsl', drmsl)
++  test('drmdevice', drmdevice)
++endif
 diff --git a/tests/nouveau/meson.build b/tests/nouveau/meson.build
 index ca4d44f0..c64802c6 100644
 --- a/tests/nouveau/meson.build
@@ -493,19 +505,6 @@ index ca4d44f0..c64802c6 100644
    c_args : libdrm_c_args,
  )
  
-diff --git a/tests/proptest/meson.build b/tests/proptest/meson.build
-index 9c87965a..b5a11a43 100644
---- a/tests/proptest/meson.build
-+++ b/tests/proptest/meson.build
-@@ -23,6 +23,7 @@ proptest = executable(
-   files('proptest.c'),
-   c_args : libdrm_c_args,
-   include_directories : [inc_root, inc_tests, inc_drm],
--  link_with : [libdrm, libutil],
-+  link_with : [libutil],
-+  dependencies : [ext_libdrm],
-   install : with_install_tests,
- )
 diff --git a/tests/radeon/meson.build b/tests/radeon/meson.build
 index bb345b73..33c3c68a 100644
 --- a/tests/radeon/meson.build
@@ -529,29 +528,4 @@ index 4f8c54f4..f1e4c30d 100644
 -  link_with : [libdrm, libdrm_tegra],
 +  link_with : [libdrm_tegra],
 +  dependencies : [ext_libdrm],
- )
-diff --git a/tests/util/meson.build b/tests/util/meson.build
-index 7fa1a4b7..488cc6c9 100644
---- a/tests/util/meson.build
-+++ b/tests/util/meson.build
-@@ -23,6 +23,6 @@ libutil = static_library(
-   'util',
-   [files('format.c', 'kms.c', 'pattern.c'), config_file],
-   include_directories : [inc_root, inc_drm],
--  link_with : libdrm,
-+  dependencies : [ext_libdrm],
-   dependencies : dep_cairo
- )
-diff --git a/tests/vbltest/meson.build b/tests/vbltest/meson.build
-index 6339feba..e6305728 100644
---- a/tests/vbltest/meson.build
-+++ b/tests/vbltest/meson.build
-@@ -23,6 +23,7 @@ vbltest = executable(
-   files('vbltest.c'),
-   c_args : libdrm_c_args,
-   include_directories : [inc_root, inc_tests, inc_drm],
--  link_with : [libdrm, libutil],
-+  link_with : [libutil],
-+  dependencies : [ext_libdrm],
-   install : with_install_tests,
  )
