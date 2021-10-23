@@ -31,7 +31,7 @@ environment:
 sources:
 - kind: git_tag
   url: gnome:librsvg.git
-  track: master
+  track: main
   track-extra:
   - librsvg-2.48
   exclude:
