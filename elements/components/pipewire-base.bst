@@ -107,7 +107,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:PipeWire/pipewire.git
-  track: master
+  # track: master : Frozen due to forward break
   exclude:
   - '*.*.9*'
   ref: 0.3.36-0-g4997d47f63ed2c91d74bc8e5b229e57200354ee5
