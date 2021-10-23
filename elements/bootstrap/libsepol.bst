@@ -43,9 +43,9 @@ public:
 sources:
 - kind: git_tag
   url: github:SELinuxProject/selinux.git
-  track: master
-  match:
-  - libsepol-*
-  exclude:
-  - '*rc*'
+  #track: master
+  #match:
+  #- libsepol-*
+  #exclude:
+  #- '*rc*'
   ref: libsepol-3.2-0-gcf853c1a0c2328ad6c62fb2b2cc55d4926301d6b
