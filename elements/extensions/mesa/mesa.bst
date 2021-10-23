@@ -60,8 +60,6 @@ variables:
       enable_libunwind: 'false'
 
   optimize-debug: "false"
-  app-id: org.freedesktop.Platform.GL.default
-  appstream-xml: "%{app-id}.appdata.xml"
 
   meson-local: >-
     -Db_ndebug=true
@@ -97,25 +95,28 @@ variables:
     -Dxlib-lease=enabled
     -Dzstd=enabled
 
+  app-id: >-
+    org.freedesktop.Platform.GL.default
+    org.freedesktop.Platform.GL32.default
+    
 config:
-  build-commands:
-    (>):
-    - |
-      set -e
-      CURRENT_TAG=$(git describe --match mesa-* --exact-match)
-      TIMESTAMP=$(git log -1 --format="%at" ${CURRENT_TAG})
-      VERSION=$(echo ${CURRENT_TAG} | sed 's/mesa-//')
-      VERSION_DATE=$(date -d @"$TIMESTAMP" -Idate)
-      m4 -D__VERSION__=${VERSION} -D__VERSION_DATE__=${VERSION_DATE} \
-      %{appstream-xml}.in > %{appstream-xml}
-
   install-commands:
     (>):
     - |
-      mkdir -p %{install-root}%{datadir}/appdata
-      install %{appstream-xml} %{install-root}%{datadir}/appdata
-      appstream-compose --basename=%{app-id} --prefix=%{install-root}%{prefix} \
-      --origin=flatpak %{app-id}
+      set -e
+      appdata_dir=%{install-root}%{datadir}/appdata
+      mkdir -p ${appdata_dir}
+      CURRENT_REF=$(git describe --match mesa-*)
+      TIMESTAMP=$(git log -1 --format="%at" ${CURRENT_REF})
+      VERSION_DATE=$(date -d @"$TIMESTAMP" -Idate)
+      for app_id in %{app-id}
+      do
+        m4 -D__VERSION__=${CURRENT_REF} -D__VERSION_DATE__=${VERSION_DATE} \
+        -D__APP_ID__=${app_id} \
+        appdata.template > ${appdata_dir}/${app_id}.appdata.xml
+        appstream-compose --basename ${app_id} \
+        --prefix=%{install-root}%{prefix} --origin=flatpak ${app_id}
+      done
 
     - |
       mkdir -p "%{install-root}%{libdir}"
@@ -181,7 +182,7 @@ sources:
   - '*rc*'
   ref: mesa-21.2.3-0-g5da276cf339c86a0bd62f45e4dc90682a6b19f25
 - kind: local
-  path: files/mesa/org.freedesktop.Platform.GL.default.appdata.xml.in
+  path: files/mesa/appdata.template
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
 - kind: patch
