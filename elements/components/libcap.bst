@@ -33,11 +33,11 @@ public:
 sources:
 - kind: git_tag
   url: kernel:libs/libcap/libcap.git
-  track: master
-  match:
-  - 'libcap-*'
-  exclude:
-  - 'libcap-korg-*'
+  #track: master
+  #match:
+  #- 'libcap-*'
+  #exclude:
+  #- 'libcap-korg-*'
   ref: libcap-2.59-0-g9eb56596eef5e55a596aa97ecaf8466ea559d05c
 - kind: patch
   path: patches/libcap/libcap-disable-tests.patch
