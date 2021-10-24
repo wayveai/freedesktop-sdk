@@ -19,5 +19,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: virtualenv
-  url: pypi:dd/40/9bc1b32521f78c293c1f8ca423c725737dfa9d09640dbeec61cebca7c5f2/virtualenv-20.8.1.tar.gz
-  sha256sum: bcc17f0b3a29670dd777d6f0755a4c04f28815395bca279cdcb213b97199a6b8
+  url: pypi:8b/67/67e5dd2d1676c3fa8a67c707114325d713feadb7824d9aaf2396be5401d3/virtualenv-20.9.0.tar.gz
+  sha256sum: bb55ace18de14593947354e5e6cd1be75fb32c3329651da62e92bf5d0aab7213
