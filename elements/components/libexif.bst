@@ -20,6 +20,6 @@ sources:
 - kind: git_tag
   url: github:libexif/libexif.git
   track: master
-  ref: libexif-0_6_22-release-0-g3cc7842ca200a4da4bd65850e3c20d5a1811afa7
+  ref: libexif-0_6_23-release-0-g6801b624276f6d371ea25884c9e7a8848df2a17f
   match:
   - libexif-*
