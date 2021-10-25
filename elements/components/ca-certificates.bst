@@ -2,6 +2,7 @@ kind: make
 
 build-depends:
 - components/python3.bst
+- components/python3-cryptography.bst
 
 depends:
 - bootstrap-import.bst

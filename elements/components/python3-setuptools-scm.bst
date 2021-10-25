@@ -1,12 +1,12 @@
 kind: pip
 
+build-depends:
+- components/python3-pip.bst
+
 depends:
 - components/python3.bst
 - components/python3-setuptools.bst
 - components/git.bst
-
-build-depends:
-- components/python3-pip.bst
 
 sources:
 - kind: git_tag
