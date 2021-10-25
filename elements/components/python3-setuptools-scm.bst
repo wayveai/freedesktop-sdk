@@ -1,13 +1,13 @@
 kind: pip
 
-depends:
-- components/python3.bst
-- components/python3-setuptools.bst
-- components/git.bst
-
 build-depends:
 - components/python3-pip.bst
 - components/python3-wheel.bst
+
+depends:
+- components/python3.bst
+- components/python3-setuptools.bst
+- components/git-minimal.bst
 
 sources:
 - kind: pypi
