@@ -15,7 +15,7 @@ sources:
 - kind: git_tag
   url: github:pypa/pip.git
   track: main
-  ref: 21.2.4-0-g73fc5ff71a7926e578d1771e2e10c780265a86f3
+  ref: 21.3.1-0-gf9914f3ebe223004b1d439a2b1980bd132d14f27
   exclude:
   - '*b?'
   - '*rc?'
