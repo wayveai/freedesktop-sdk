@@ -9,5 +9,5 @@ build-depends:
 sources:
 - kind: pypi
   name: pyparsing
-  url: pypi:69/42/aa0fa900c3a5f142098e1b013995e92c2f31e1de68042cb95fa4a022bb8a/pyparsing-3.0.0.tar.gz
-  sha256sum: 001cad8d467e7a9248ef9fd513f5c0d39afcbcb9a43684101853bd0ab962e479
+  url: pypi:31/c9/b29ea153b9bffaae787ecc81873b4b51bd36cc13c37586b41891beae37eb/pyparsing-3.0.1.tar.gz
+  sha256sum: 84196357aa3566d64ad123d7a3c67b0e597a115c4934b097580e5ce220b91531
