@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: filelock
-  url: pypi:fd/6e/665a6cb363bee26e40954ee812e4e733fd7cafd84c06e0c7c2357641abd6/filelock-3.3.0.tar.gz
-  sha256sum: 8c7eab13dc442dc249e95158bcc12dec724465919bdc9831fdbf0660f03d1785
+  url: pypi:8f/eb/6faad9294c8a8d59b7599a8a7c669c0e4c317fa5012bc36f1c8b379972a5/filelock-3.3.1.tar.gz
+  sha256sum: 34a9f35f95c441e7b38209775d6e0337f9a3759f3565f6c5798f19618527c76f
