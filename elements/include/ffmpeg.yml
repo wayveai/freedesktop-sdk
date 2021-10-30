@@ -171,6 +171,6 @@ sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.3
-  ref: n4.3.2-0-gf719f869907764e6412a6af6e178c46e5f915d25
+  ref: n4.3.3-0-ga77521cd5d27e955b16e8097eecefc779ffdcb6d
 - kind: patch
   path: patches/ffmpeg/aarch64-yuv2rgb-neon-fix-return.patch
