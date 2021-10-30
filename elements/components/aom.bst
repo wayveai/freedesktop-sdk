@@ -55,4 +55,6 @@ sources:
   track: master
   track-extra:
   - av1-normative
+  match:
+  - v*.*.*
   ref: v3.2.0-0-g287164de79516c25c8c84fd544f67752c170082a
