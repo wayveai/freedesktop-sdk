@@ -205,7 +205,7 @@ def main():
             print("------------------------")
             source_kind = mirror_dict['kind']
 
-            if source_kind in ["git", "git_tag"]:
+            if source_kind in ["git", "git_tag", "git_module"]:
                 if not gitlab_instance_initialized:
                     glb, top_group = initialize_gitlab_instance(access_token)
                     gitlab_instance_initialized = True
