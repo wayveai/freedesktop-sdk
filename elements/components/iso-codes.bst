@@ -9,4 +9,4 @@ sources:
 - kind: git_tag
   url: debian_salsa:iso-codes-team/iso-codes.git
   track: main
-  ref: iso-codes-4.7.0-0-g59767ed869f3952575f7d0f639a290a4c4b315e5
+  ref: v4.8.0-0-g5d0a5515f26b3858e27939c8f9a732d8bd4271ab
