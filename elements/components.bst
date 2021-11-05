@@ -53,6 +53,7 @@ depends:
 - components/dav1d.bst
 - components/dbus-base.bst
 - components/dbus-manifest.bst
+- components/dbus-tools.bst
 - components/dbus.bst
 - components/dejavu-fonts.bst
 - components/desktop-file-utils.bst

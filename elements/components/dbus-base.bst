@@ -43,6 +43,8 @@ public:
       - '%{debugdir}/dwz/**'
       - '%{sourcedir}'
       - '%{sourcedir}/**'
+      dbus-tools:
+      - '%{bindir}/dbus-send'
 
   cpe:
     product: d-bus
