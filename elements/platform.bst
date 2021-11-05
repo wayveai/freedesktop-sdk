@@ -90,6 +90,7 @@ depends:
 - components/cairo.bst
 - components/cups.bst
 - components/libdbus.bst
+- components/dbus-tools.bst
 - components/dejavu-fonts.bst
 - components/dictionaries.bst
 - components/openmoji.bst
