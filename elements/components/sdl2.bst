@@ -2,7 +2,6 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
-- components/fcitx.bst
 - components/ibus.bst
 - components/wayland-protocols.bst
 
