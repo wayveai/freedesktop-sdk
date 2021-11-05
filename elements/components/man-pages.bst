@@ -7,7 +7,7 @@ depends:
 config:
   install-commands:
   - |
-    make DESTDIR="%{install-root}" install
+    make prefix="%{prefix}" DESTDIR="%{install-root}" install
 
   - |
     # The following is provided by components/shadow.bst
