@@ -9,15 +9,15 @@ sources:
   - 1.1[02468]*
   ref: 1.12.2-0-g96aafda476c2634941dfcd68a65fe13f582eefcb
   submodules:
-    libglnx:
+    subprojects/libglnx:
       checkout: true
       url: gnome:libglnx.git
-    bubblewrap:
+    subprojects/bubblewrap:
       checkout: true
       url: github:projectatomic/bubblewrap.git
-    dbus-proxy:
+    subprojects/dbus-proxy:
       checkout: true
       url: github:flatpak/xdg-dbus-proxy.git
-    variant-schema-compiler:
+    subprojects/variant-schema-compiler:
       checkout: true
       url: git_https:gitlab.gnome.org/alexl/variant-schema-compiler.git
