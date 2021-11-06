@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: cachecontrol
-  url: pypi:ff/ba/57ab4d88e0f32e41a4682d1c8b8798c7a89aa7b54a000b2043d443e0260e/CacheControl-0.12.9.tar.gz
-  sha256sum: b5d0c98f7ee9f02e2d5a85af98b9a76c0a2c73c972c142291f823a0ed2eb7a78
+  url: pypi:d0/74/3748ee1144234a525d84c4905002a5f39795d265bcdecca74142a8df5206/CacheControl-0.12.10.tar.gz
+  sha256sum: d8aca75b82eec92d84b5d6eb8c8f66ea16f09d2adb09dbca27fe2d5fc8d3732d
