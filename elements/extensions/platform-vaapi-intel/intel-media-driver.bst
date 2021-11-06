@@ -27,11 +27,11 @@ public:
 sources:
 - kind: git_tag
   url: github:intel/media-driver.git
-  track: master
-  track-extra:
-  - intel-media-21.1
-  match:
-  - 'intel-media-*'
-  exclude:
-  - 'intel-media-*.pre*'
+  #track: master
+  #track-extra:
+  #- intel-media-21.1
+  #match:
+  #- 'intel-media-*'
+  #exclude:
+  #- 'intel-media-*.pre*'
   ref: intel-media-21.3.1-0-g30944ced91bf190afb56477603cc1800c67ea1bc
