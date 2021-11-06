@@ -110,8 +110,12 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.38-0-g47a294c5bf52656998a7f43b13068c02001add77
+  ref: 0.3.39-0-g5b7ef959d1fed35f6ddfcf94b6f57891fae23b31
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
-- kind: patch
-  path: patches/pipewire/fix-aarch64.patch
+- kind: git_tag
+  url: freedesktop:pipewire/media-session.git
+  directory: subprojects/media-session
+  track: master
+  track-tags: false
+  ref: 0.4.1-0-ge5d5cf2404786af8bcc40bdb8a2962bef4ec18b6
