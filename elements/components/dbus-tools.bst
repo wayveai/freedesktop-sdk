@@ -4,11 +4,10 @@ build-depends:
 - components/dbus-base.bst
 
 runtime-depends:
+- bootstrap-import.bst
 - components/libdbus.bst
-- components/dbus-tools.bst
 
 config:
-  exclude:
-  - dbus-libs
+  include:
   - dbus-tools
-  include-orphans: true
+  include-orphans: false
