@@ -8,5 +8,5 @@ depends:
 sources:
 - kind: pypi
   name: setuptools
-  url: pypi:80/98/8de0fd3e86d8286a2594e3fa6afc46d751130d26ebb7b1f34e9067992c6f/setuptools-58.3.0.tar.gz
-  sha256sum: b0c2461641b58fe30e11d4c3dfba316c513bdf9ec85f9fed0c871c678447205e
+  url: pypi:1e/00/05f51ceab8d3b9be4295000d8be4c830c53e5477755888994e9825606cd9/setuptools-58.5.3.tar.gz
+  sha256sum: dae6b934a965c8a59d6d230d3867ec408bb95e73bd538ff77e71fedf1eaca729
