@@ -1,7 +1,6 @@
 # Contributing
 
-Current target branch: 19.08
-Look [here](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release) for more information about branching
+Look [here](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release) for information about branching.
 
 This document outlines the basic guidelines before contributing to freedesktop-sdk. If you want to contribute to this project please follow the steps below.
 
