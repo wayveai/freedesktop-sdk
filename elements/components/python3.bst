@@ -103,7 +103,7 @@ sources:
   exclude:
   - v*rc*
   url: github:python/cpython.git
-  ref: v3.9.7-0-g1016ef37904c7ddc16fb18d3369b2a78cf428fa4
+  ref: v3.9.8-0-gbb3fdcfe95b9aeed13b7201ffbc634752ad8ecc9
 - kind: patch
   path: patches/python3/python3-multiarch-include.patch
 - kind: patch
