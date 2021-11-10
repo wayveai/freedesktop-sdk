@@ -35,7 +35,7 @@ sources:
 - kind: git_tag
   url: gitlab:gnutls/libtasn1.git
   track: master
-  ref: v4.17.0-0-g6e8c03bc4a42f9783a91a8166e4443ba59ba5a97
+  ref: v4.18.0-0-geacec5d46cbadc08280081830e42396d2d690b1d
   submodules:
     gnulib:
       checkout: true
