@@ -118,4 +118,4 @@ sources:
   directory: subprojects/media-session
   track: master
   track-tags: false
-  ref: 0.4.1-0-ge5d5cf2404786af8bcc40bdb8a2962bef4ec18b6
+  ref: 0.4.1-1-g61d05bc5b826cd706154baf000c255c69a3193c3
