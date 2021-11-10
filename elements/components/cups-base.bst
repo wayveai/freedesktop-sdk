@@ -50,6 +50,9 @@ sources:
 - kind: git_tag
   url: github:OpenPrinting/cups.git
   track: master
+  exclude:
+  - "*a*"
+  - "*b*"
   ref: v2.3.3op2-0-g3b566f73587ffa8ad9690f2399efc4508b3a9016
 - kind: local
   path: files/cups/tmpfiles.conf
