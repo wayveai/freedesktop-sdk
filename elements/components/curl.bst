@@ -43,6 +43,6 @@ sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
-  ref: curl-7_79_1-0-gc7aef0a945f9b6fb6d3f91716a21dfe2f4ea635f
+  ref: curl-7_80_0-0-g9e560d11aad028de74addc0d1edfefa5667884f4
 - kind: patch
   path: patches/curl/remove-doc-timestamp.patch
