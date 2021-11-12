@@ -113,6 +113,8 @@ sources:
   ref: 0.3.39-0-g5b7ef959d1fed35f6ddfcf94b6f57891fae23b31
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
+- kind: patch
+  path: patches/pipewire/fix-build-on-riscv64.patch  
 - kind: git_tag
   url: freedesktop:pipewire/media-session.git
   directory: subprojects/media-session
