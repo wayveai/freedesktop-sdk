@@ -27,5 +27,6 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:xorg/lib/libxi.git
-  track: master
+  # track: master
+  # Updates depend on frozen components/xorg-proto-xorgproto.bst
   ref: libXi-1.7.10-0-ge05da79a98775edb91ffe3de3b413f156bc4d6e7
