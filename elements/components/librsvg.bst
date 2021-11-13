@@ -36,7 +36,7 @@ sources:
   - librsvg-2.48
   exclude:
   - '*.*[13579].*'
-  ref: 2.52.3-0-gd921db497ccddfb89cc5c69b4745dad31eb4568b
+  ref: 2.52.4-0-g2f6f58ef7edda386badf24d2beac153f0195723a
 - kind: cargo
   url: crates:crates
   ref:
@@ -53,8 +53,8 @@ sources:
     version: 0.11.0
     sha: ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b
   - name: anyhow
-    version: 1.0.44
-    sha: 61604a8f862e1d5c3229fdd78f8b02c68dcf73a4c4b05fd636d12240aaa242c1
+    version: 1.0.45
+    sha: ee10e43ae4a853c0a3591d4e2ada1719e553be18199d9da9d4a83f5927c2f5c7
   - name: approx
     version: 0.5.0
     sha: 072df7202e63b127ab55acfe16ce97013d5b97bf160489336d3f1840fd78e99e
@@ -158,8 +158,8 @@ sources:
     version: 0.1.10
     sha: 2b2466559f260f48ad25fe6317b3c8dac77b5bdb5763ac7d9d6103530663bc90
   - name: data-url
-    version: 0.1.0
-    sha: d33fe99ccedd6e84bc035f1931bb2e6be79739d6242bd895e7311c886c50dc9c
+    version: 0.1.1
+    sha: 3a30bfce702bcfa94e906ef82421f2c0e61c076ad76030c16ee5d2e9a32fe193
   - name: deflate
     version: 0.8.6
     sha: 73770f8e1fe7d64df17ca66ad28994a0a623ea497fa69486e14984e715c5d174
@@ -311,8 +311,8 @@ sources:
     version: 1.4.0
     sha: e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646
   - name: libc
-    version: 0.2.105
-    sha: 869d572136620d55835903746bcb5cdc54cb2851fd0aeec53220b4bb65ef3013
+    version: 0.2.107
+    sha: fbe5e23404da5b4f555ef85ebed98fb4083e55a00c317800bc2a50ede9f3d219
   - name: linked-hash-map
     version: 0.5.4
     sha: 7fb9b38af92608140b86b693604b9ffcc5824240a484d1ecd4795bacb2fe88f3
@@ -422,8 +422,8 @@ sources:
     version: 0.8.5
     sha: d76e8e1493bcac0d2766c42737f34458f1c8c50c0d23bcb24ea953affb273216
   - name: paste
-    version: 1.0.5
-    sha: acbf547ad0c65e31259204bd90935776d1c693cec2f4ff7abb7a1bbbd40dfe58
+    version: 1.0.6
+    sha: 0744126afe1a6dd7f394cb50a716dbe086cb06e255e53d8d0185d82828358fb5
   - name: percent-encoding
     version: 2.1.0
     sha: d4fd5641d01c8f18a23da7b6fe29298ff4b55afcccdf78973b24cf3175fee32e
@@ -572,8 +572,8 @@ sources:
     version: 0.5.3
     sha: 3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7
   - name: rgb
-    version: 0.8.27
-    sha: 8fddb3b23626145d1776addfc307e1a1851f60ef6ca64f376bcb889697144cf0
+    version: 0.8.29
+    sha: a27fa03bb1e3e2941f52d4a555a395a72bf79b0a85fbbaab79447050c97d978c
   - name: rustc_version
     version: 0.2.3
     sha: 138e3e0acb6c9fb258b19b67cb8abd63c00679d2851805ea151465464fe9030a
@@ -623,8 +623,8 @@ sources:
     version: 1.0.130
     sha: d7bc1a1ab1961464eae040d96713baa5a724a8152c1222492465b54322ec508b
   - name: serde_json
-    version: 1.0.68
-    sha: 0f690853975602e1bfe1ccbf50504d67174e3bcf340f23b5ea9992e0587a52d8
+    version: 1.0.69
+    sha: e466864e431129c7e0d3476b92f20458e5879919a0596c6472738d9fa2d342f8
   - name: servo_arc
     version: 0.1.1
     sha: d98238b800e0d1576d8b6e3de32827c2d74bee68bb97748dcf5071fb53965432
@@ -725,8 +725,8 @@ sources:
     version: 1.2.1
     sha: be4d6b5f19ff7664e8c98d03e2139cb510db9b0a60b55f8e8709b689d939b6bc
   - name: tinyvec
-    version: 1.5.0
-    sha: f83b2a3d4d9091d0abd7eba4dc2710b1718583bd4d8992e2190720ea38f391f7
+    version: 1.5.1
+    sha: 2c1c1d5a42b6245520c249549ec267180beaffcc0615401ac8e31853d4b6d8d2
   - name: tinyvec_macros
     version: 0.1.0
     sha: cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c
