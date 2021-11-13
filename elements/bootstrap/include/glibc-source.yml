@@ -3,7 +3,7 @@ sources:
   url: sourceware:glibc.git
   track: release/2.34/master
   track-tags: false
-  ref: glibc-2.34-45-gcf8c6a634c0a04a9f5d198ef05310f85f7338839
+  ref: glibc-2.34-46-ga4f3bc23461e3f9f6053e827715984ba0d2e589a
 - kind: patch
   path: patches/glibc/optimize-audit.patch
 - kind: patch
