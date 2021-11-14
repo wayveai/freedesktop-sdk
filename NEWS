@@ -1,6 +1,61 @@
 Freedesktop-SDK
 
-freedesktop-sdk-20.08.15
+freedesktop-sdk-20.08.16:
+    * git: Update to v2.34.0
+    * man-pages: Update to man-pages-5.13
+    * flatpak: Update to 1.12.2
+    * polkit: Update to 0.120
+    * iso-codes: Update to v4.8.0
+    * libglvnd: Update to v1.3.4
+    * strace: Update to v5.14
+    * tzdata: Update to 2021e
+    * bluez: Update to to 5.62
+    * gmmlib: Update to intel-gmmlib-21.3.2
+    * ostree-base: Update to v2021.5
+    * gawk: Update to gawk-5.1.1
+    * ffmpeg: Update to n4.3.3
+    * itstool: Update to 2.0.7
+    * mesa: Update to mesa-21.1.8
+    * openssl: Update to OpenSSL_1_1_1l
+    * libselinux: Update to libselinux-3.3
+    * xdg-desktop-portal-base: Update to 1.10.0
+    * lvm2-source: Update to v2_03_14
+    * wayland-protocols: Update to 1.23
+    * python3-pip: Update to 21.3.1
+    * libical: Update to v3.0.11
+    * git: Update to v2.33.1
+    * xorg-data-xkeyboard-config: Update to xkeyboard-config-2.34
+    * gnupg-source: Update to gnupg-2.2.32
+    * libexif: Update to libexif-0_6_23-release
+    * valgrind: Update to VALGRIND_3_18_1
+    * iso-codes: Update to iso-codes-4.7.0
+    * audit: Update to v3.0.6
+    * nano: Update to v5.9
+    * libdrm: Update to libdrm-2.4.107
+    * po4a: Update to v0.64
+    * python3-pyparsing: Update to pyparsing_3.0.1
+    * libdrm.bst: Disable core libdrm tests
+    * Update Vulkan stack to 1.2.182
+    * libepoxy: Update to 1.5.9
+    * doxygen: Update to Release_1_9_2
+    * gnu-efi: Update to 3.0.14
+    * vala: Update to 0.48.19
+    * python3-mako: Update to rel_1_1_5
+    * audit: Update to v3.0.5
+    * python3-wheel.bst: Update to 0.37.0
+    * cryptsetup-base: Update to v2.4.0
+    * libtasn1: Update to v4.18.0
+    * cmake: Update to v3.20.6
+    * git: Update to v2.33.0
+    * openssh: Update to V_8_8_P1
+    * gnupg-source: Update to gnupg-2.2.29
+    * extra-cmake-modules: Update to v5.88.0
+    * python3-pip: Update to 21.2.4
+    * Switch tcl to tarball
+    * Use podman to publish manifests
+    * python3: Update to v3.8.12
+
+freedesktop-sdk-20.08.15:
     * Update elements/components/gnutls.bst 3.6.16
     * Update elements/components/perl.bst to v5.34.0
     * Update elements/include/git.yml to v2.32.0
