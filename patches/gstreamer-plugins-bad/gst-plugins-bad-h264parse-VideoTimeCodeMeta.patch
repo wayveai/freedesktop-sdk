@@ -1,0 +1,106 @@
+From 0f084d46247f9009584b482cea8196b5b871cc73 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@ltnglobal.com>
+Date: Tue, 2 Feb 2021 18:25:31 +0100
+Subject: [PATCH] h264/h265parse: Add VideoTimeCodeMeta to the outgoing buffer
+
+The parsers attempted to add the meta to the incoming buffer, which
+might not be the outgoing buffer or may not have been writable yet.
+
+To fix this, call `gst_buffer_make_writable` earlier and make sure to
+use the `parse_buffer` to add the meta.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1521
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2002>
+---
+ gst/videoparsers/gsth264parse.c | 18 +++++++++---------
+ gst/videoparsers/gsth265parse.c | 16 ++++++++--------
+ 2 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/gst/videoparsers/gsth264parse.c b/gst/videoparsers/gsth264parse.c
+index d5f2816e59..a7808b4de3 100644
+--- a/gst/videoparsers/gsth264parse.c
++++ b/gst/videoparsers/gsth264parse.c
+@@ -3134,7 +3134,14 @@ gst_h264_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+   }
+ #endif
+ 
+-  if (!gst_buffer_get_video_time_code_meta (buffer)) {
++  if (frame->out_buffer) {
++    parse_buffer = frame->out_buffer =
++        gst_buffer_make_writable (frame->out_buffer);
++  } else {
++    parse_buffer = frame->buffer = gst_buffer_make_writable (frame->buffer);
++  }
++
++  if (!gst_buffer_get_video_time_code_meta (parse_buffer)) {
+     guint i = 0;
+ 
+     for (i = 0; i < 3 && h264parse->num_clock_timestamp; i++) {
+@@ -3197,7 +3204,7 @@ gst_h264_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+           "Add time code meta %02u:%02u:%02u:%02u",
+           tim->hours_value, tim->minutes_value, tim->seconds_value, n_frames);
+ 
+-      gst_buffer_add_video_time_code_meta_full (buffer,
++      gst_buffer_add_video_time_code_meta_full (parse_buffer,
+           h264parse->parsed_fps_n,
+           h264parse->parsed_fps_d,
+           NULL,
+@@ -3210,13 +3217,6 @@ gst_h264_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+     h264parse->num_clock_timestamp = 0;
+   }
+ 
+-  if (frame->out_buffer) {
+-    parse_buffer = frame->out_buffer =
+-        gst_buffer_make_writable (frame->out_buffer);
+-  } else {
+-    parse_buffer = frame->buffer = gst_buffer_make_writable (frame->buffer);
+-  }
+-
+   if (is_interlaced) {
+     GST_BUFFER_FLAG_SET (parse_buffer, GST_VIDEO_BUFFER_FLAG_INTERLACED);
+     if (h264parse->sei_pic_struct == GST_H264_SEI_PIC_STRUCT_TOP_FIELD)
+diff --git a/gst/videoparsers/gsth265parse.c b/gst/videoparsers/gsth265parse.c
+index e94f86d24f..7747836460 100644
+--- a/gst/videoparsers/gsth265parse.c
++++ b/gst/videoparsers/gsth265parse.c
+@@ -2748,6 +2748,13 @@ gst_h265_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+     }
+   }
+ 
++  if (frame->out_buffer) {
++    parse_buffer = frame->out_buffer =
++        gst_buffer_make_writable (frame->out_buffer);
++  } else {
++    parse_buffer = frame->buffer = gst_buffer_make_writable (frame->buffer);
++  }
++
+   {
+     guint i = 0;
+ 
+@@ -2809,7 +2816,7 @@ gst_h265_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+           gst_util_uint64_scale_int (h265parse->time_code.n_frames[i], 1,
+           2 - h265parse->time_code.units_field_based_flag[i]);
+ 
+-      gst_buffer_add_video_time_code_meta_full (buffer,
++      gst_buffer_add_video_time_code_meta_full (parse_buffer,
+           h265parse->parsed_fps_n,
+           h265parse->parsed_fps_d,
+           NULL,
+@@ -2823,13 +2830,6 @@ gst_h265_parse_pre_push_frame (GstBaseParse * parse, GstBaseParseFrame * frame)
+     }
+   }
+ 
+-  if (frame->out_buffer) {
+-    parse_buffer = frame->out_buffer =
+-        gst_buffer_make_writable (frame->out_buffer);
+-  } else {
+-    parse_buffer = frame->buffer = gst_buffer_make_writable (frame->buffer);
+-  }
+-
+   if (h265parse->sei_pic_struct != GST_H265_SEI_PIC_STRUCT_FRAME) {
+     GST_BUFFER_FLAG_SET (parse_buffer, GST_VIDEO_BUFFER_FLAG_INTERLACED);
+     if (h265parse->sei_pic_struct == GST_H265_SEI_PIC_STRUCT_TOP_FIELD)
+-- 
+GitLab
+
