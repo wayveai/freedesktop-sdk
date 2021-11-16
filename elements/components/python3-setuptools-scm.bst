@@ -7,7 +7,7 @@ build-depends:
 depends:
 - components/python3.bst
 - components/python3-setuptools.bst
-- components/git-minimal.bst
+- components/git.bst
 
 sources:
 - kind: pypi
