@@ -56,3 +56,5 @@ sources:
     common:
       checkout: false
       url: freedesktop:gstreamer/common.git
+- kind: patch
+  path: patches/gstreamer-plugins-good/gstreamer-plugins-good-libsoup3.patch
