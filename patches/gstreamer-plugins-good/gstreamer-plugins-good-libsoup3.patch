@@ -1,0 +1,2977 @@
+From 877c720959fd2287345b6f911ea18b1f125f5493 Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Mon, 4 Oct 2021 09:31:02 +0100
+Subject: [PATCH 1/2] soup: Runtime compatibility support for libsoup2 and
+ libsoup3
+
+The src and sink elements no longer link against libsoup. It is now loaded at
+runtime. If any version is resident already, it is used. Otherwise we first try
+to load libsoup3 and if it's not found we fallback to libsoup2.
+
+For the unit-tests, we now build one version of the test unit file per libsoup
+version found. So if both libsoup2 and libsoup3 are available on the host, the
+CI will cover them both.
+
+Based on initial patch by Daniel Kolesa <dkolesa@igalia.com> and
+Patrick Griffis <pgriffis@igalia.com>.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1044>
+---
+ ext/soup/gstsoup.c                 |  12 +
+ ext/soup/gstsouphttpclientsink.c   | 327 +++++++--------
+ ext/soup/gstsouphttpclientsink.h   |   7 +-
+ ext/soup/gstsouphttpsrc.c          | 374 ++++++++++-------
+ ext/soup/gstsouphttpsrc.h          |  10 +-
+ ext/soup/gstsouploader.c           | 648 +++++++++++++++++++++++++++++
+ ext/soup/gstsouploader.h           | 108 +++++
+ ext/soup/gstsouputils.c            |  10 +-
+ ext/soup/gstsouputils.h            |   4 +-
+ ext/soup/meson.build               |  43 +-
+ ext/soup/stub/soup.h               | 208 +++++++++
+ tests/check/elements/souphttpsrc.c | 115 +++--
+ tests/check/meson.build            |  13 +-
+ 13 files changed, 1496 insertions(+), 383 deletions(-)
+ create mode 100644 ext/soup/gstsouploader.c
+ create mode 100644 ext/soup/gstsouploader.h
+ create mode 100644 ext/soup/stub/soup.h
+
+diff --git a/ext/soup/gstsoup.c b/ext/soup/gstsoup.c
+index 3be491d2e5..fe34c10f5c 100644
+--- a/ext/soup/gstsoup.c
++++ b/ext/soup/gstsoup.c
+@@ -1,5 +1,6 @@
+ /* GStreamer
+  * Copyright (C) 2007-2008 Wouter Cloetens <wouter@mind.be>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -20,10 +21,15 @@
+ 
+ #include "gstsouphttpsrc.h"
+ #include "gstsouphttpclientsink.h"
++#include "gstsouploader.h"
+ #include "gstsouputils.h"
+ 
+ GST_DEBUG_CATEGORY (soup_utils_debug);
+ 
++GST_DEBUG_CATEGORY (gst_soup_debug);
++
++#define GST_CAT_DEFAULT gst_soup_debug
++
+ static gboolean
+ plugin_init (GstPlugin * plugin)
+ {
+@@ -48,11 +54,17 @@ plugin_init (GstPlugin * plugin)
+   g_type_ensure (G_TYPE_TLS_DATABASE);
+   g_type_ensure (G_TYPE_TLS_INTERACTION);
+ 
++  if (!gst_soup_load_library ()) {
++    GST_WARNING ("Failed to load libsoup library");
++    return TRUE;
++  }
++
+   gst_element_register (plugin, "souphttpsrc", GST_RANK_PRIMARY,
+       GST_TYPE_SOUP_HTTP_SRC);
+   gst_element_register (plugin, "souphttpclientsink", GST_RANK_NONE,
+       GST_TYPE_SOUP_HTTP_CLIENT_SINK);
+   GST_DEBUG_CATEGORY_INIT (soup_utils_debug, "souputils", 0, "Soup utils");
++  GST_DEBUG_CATEGORY_INIT (gst_soup_debug, "soup", 0, "soup");
+ 
+   return TRUE;
+ }
+diff --git a/ext/soup/gstsouphttpclientsink.c b/ext/soup/gstsouphttpclientsink.c
+index 17c69f5ca4..dc091523bb 100644
+--- a/ext/soup/gstsouphttpclientsink.c
++++ b/ext/soup/gstsouphttpclientsink.c
+@@ -1,5 +1,6 @@
+ /* GStreamer
+  * Copyright (C) 2011 David Schleef <ds@entropywave.com>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -40,6 +41,8 @@
+ 
+ #include <gst/gst.h>
+ #include <gst/base/gstbasesink.h>
++#include <gio/gio.h>
++
+ #include "gstsouphttpclientsink.h"
+ #include "gstsouputils.h"
+ 
+@@ -58,26 +61,23 @@ static void gst_soup_http_client_sink_finalize (GObject * object);
+ 
+ static gboolean gst_soup_http_client_sink_set_caps (GstBaseSink * sink,
+     GstCaps * caps);
+-static void gst_soup_http_client_sink_get_times (GstBaseSink * sink,
+-    GstBuffer * buffer, GstClockTime * start, GstClockTime * end);
+ static gboolean gst_soup_http_client_sink_start (GstBaseSink * sink);
+ static gboolean gst_soup_http_client_sink_stop (GstBaseSink * sink);
+ static gboolean gst_soup_http_client_sink_unlock (GstBaseSink * sink);
+-static gboolean gst_soup_http_client_sink_event (GstBaseSink * sink,
+-    GstEvent * event);
+-static GstFlowReturn gst_soup_http_client_sink_preroll (GstBaseSink * sink,
+-    GstBuffer * buffer);
+ static GstFlowReturn gst_soup_http_client_sink_render (GstBaseSink * sink,
+     GstBuffer * buffer);
+-
+ static void gst_soup_http_client_sink_reset (GstSoupHttpClientSink *
+     souphttpsink);
+-static void authenticate (SoupSession * session, SoupMessage * msg,
+-    SoupAuth * auth, gboolean retrying, gpointer user_data);
+-static void callback (SoupSession * session, SoupMessage * msg,
+-    gpointer user_data);
+-static gboolean gst_soup_http_client_sink_set_proxy (GstSoupHttpClientSink *
+-    souphttpsink, const gchar * uri);
++
++static gboolean authenticate (SoupMessage * msg, SoupAuth * auth,
++    gboolean retrying, gpointer user_data);
++static void restarted (SoupMessage * msg, GBytes * body);
++static gboolean send_handle_status (SoupMessage * msg, GError * error,
++    GstSoupHttpClientSink * sink);
++
++static gboolean
++gst_soup_http_client_sink_set_proxy (GstSoupHttpClientSink * souphttpsink,
++    const gchar * uri);
+ 
+ enum
+ {
+@@ -166,7 +166,8 @@ gst_soup_http_client_sink_class_init (GstSoupHttpClientSinkClass * klass)
+   g_object_class_install_property (gobject_class, PROP_SESSION,
+       g_param_spec_object ("session", "session",
+           "SoupSession object to use for communication",
+-          SOUP_TYPE_SESSION, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
++          _soup_session_get_type (),
++          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+   g_object_class_install_property (gobject_class, PROP_COOKIES,
+       g_param_spec_boxed ("cookies", "Cookies", "HTTP request cookies",
+           G_TYPE_STRV, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+@@ -189,8 +190,8 @@ gst_soup_http_client_sink_class_init (GstSoupHttpClientSinkClass * klass)
+   g_object_class_install_property (gobject_class, PROP_SOUP_LOG_LEVEL,
+       g_param_spec_enum ("http-log-level", "HTTP log level",
+           "Set log level for soup's HTTP session log",
+-          SOUP_TYPE_LOGGER_LOG_LEVEL, DEFAULT_SOUP_LOG_LEVEL,
+-          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
++          _soup_logger_log_level_get_type (),
++          DEFAULT_SOUP_LOG_LEVEL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+   gst_element_class_add_static_pad_template (gstelement_class,
+       &gst_soup_http_client_sink_sink_template);
+@@ -201,23 +202,15 @@ gst_soup_http_client_sink_class_init (GstSoupHttpClientSinkClass * klass)
+ 
+   base_sink_class->set_caps =
+       GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_set_caps);
+-  if (0)
+-    base_sink_class->get_times =
+-        GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_get_times);
+   base_sink_class->start = GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_start);
+   base_sink_class->stop = GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_stop);
+   base_sink_class->unlock =
+       GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_unlock);
+-  base_sink_class->event = GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_event);
+-  if (0)
+-    base_sink_class->preroll =
+-        GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_preroll);
+   base_sink_class->render =
+       GST_DEBUG_FUNCPTR (gst_soup_http_client_sink_render);
+ 
+   GST_DEBUG_CATEGORY_INIT (souphttpclientsink_dbg, "souphttpclientsink", 0,
+       "souphttpclientsink element");
+-
+ }
+ 
+ static void
+@@ -240,6 +233,7 @@ gst_soup_http_client_sink_init (GstSoupHttpClientSink * souphttpsink)
+   souphttpsink->log_level = DEFAULT_SOUP_LOG_LEVEL;
+   souphttpsink->retry_delay = 5;
+   souphttpsink->retries = 0;
++  souphttpsink->sent_buffers = NULL;
+   proxy = g_getenv ("http_proxy");
+   if (proxy && !gst_soup_http_client_sink_set_proxy (souphttpsink, proxy)) {
+     GST_WARNING_OBJECT (souphttpsink,
+@@ -275,15 +269,15 @@ gst_soup_http_client_sink_set_proxy (GstSoupHttpClientSink * souphttpsink,
+     const gchar * uri)
+ {
+   if (souphttpsink->proxy) {
+-    soup_uri_free (souphttpsink->proxy);
++    gst_soup_uri_free (souphttpsink->proxy);
+     souphttpsink->proxy = NULL;
+   }
+   if (g_str_has_prefix (uri, "http://")) {
+-    souphttpsink->proxy = soup_uri_new (uri);
++    souphttpsink->proxy = gst_soup_uri_new (uri);
+   } else {
+     gchar *new_uri = g_strconcat ("http://", uri, NULL);
+ 
+-    souphttpsink->proxy = soup_uri_new (new_uri);
++    souphttpsink->proxy = gst_soup_uri_new (new_uri);
+     g_free (new_uri);
+   }
+ 
+@@ -412,7 +406,7 @@ gst_soup_http_client_sink_get_property (GObject * object, guint property_id,
+       if (souphttpsink->proxy == NULL)
+         g_value_set_static_string (value, "");
+       else {
+-        char *proxy = soup_uri_to_string (souphttpsink->proxy, FALSE);
++        char *proxy = gst_soup_uri_to_string (souphttpsink->proxy);
+ 
+         g_value_set_string (value, proxy);
+         g_free (proxy);
+@@ -462,7 +456,7 @@ gst_soup_http_client_sink_finalize (GObject * object)
+   g_free (souphttpsink->proxy_id);
+   g_free (souphttpsink->proxy_pw);
+   if (souphttpsink->proxy)
+-    soup_uri_free (souphttpsink->proxy);
++    gst_soup_uri_free (souphttpsink->proxy);
+   g_free (souphttpsink->location);
+   g_strfreev (souphttpsink->cookies);
+ 
+@@ -472,8 +466,6 @@ gst_soup_http_client_sink_finalize (GObject * object)
+   G_OBJECT_CLASS (parent_class)->finalize (object);
+ }
+ 
+-
+-
+ static gboolean
+ gst_soup_http_client_sink_set_caps (GstBaseSink * sink, GstCaps * caps)
+ {
+@@ -505,13 +497,6 @@ gst_soup_http_client_sink_set_caps (GstBaseSink * sink, GstCaps * caps)
+   return TRUE;
+ }
+ 
+-static void
+-gst_soup_http_client_sink_get_times (GstBaseSink * sink, GstBuffer * buffer,
+-    GstClockTime * start, GstClockTime * end)
+-{
+-
+-}
+-
+ static gboolean
+ thread_ready_idle_cb (gpointer data)
+ {
+@@ -530,11 +515,38 @@ static gpointer
+ thread_func (gpointer ptr)
+ {
+   GstSoupHttpClientSink *souphttpsink = GST_SOUP_HTTP_CLIENT_SINK (ptr);
++  GProxyResolver *proxy_resolver;
++  GMainContext *context;
+ 
+   GST_DEBUG ("thread start");
+ 
++  context = souphttpsink->context;
++  g_main_context_push_thread_default (context);
++
++  if (souphttpsink->proxy != NULL) {
++    char *proxy_string = gst_soup_uri_to_string (souphttpsink->proxy);
++    proxy_resolver = g_simple_proxy_resolver_new (proxy_string, NULL);
++    g_free (proxy_string);
++  } else
++    proxy_resolver = g_object_ref (g_proxy_resolver_get_default ());
++
++  souphttpsink->session =
++      _soup_session_new_with_options ("user-agent", souphttpsink->user_agent,
++      "timeout", souphttpsink->timeout, "proxy-resolver", proxy_resolver, NULL);
++
++  g_object_unref (proxy_resolver);
++
++  if (gst_soup_loader_get_api_version () < 3) {
++    g_signal_connect (souphttpsink->session, "authenticate",
++        G_CALLBACK (authenticate), souphttpsink);
++  }
++
++  GST_DEBUG ("created session");
++
+   g_main_loop_run (souphttpsink->loop);
+ 
++  g_main_context_pop_thread_default (context);
++
+   GST_DEBUG ("thread quit");
+ 
+   return NULL;
+@@ -579,24 +591,6 @@ gst_soup_http_client_sink_start (GstBaseSink * sink)
+     g_cond_wait (&souphttpsink->cond, &souphttpsink->mutex);
+     g_mutex_unlock (&souphttpsink->mutex);
+     GST_LOG_OBJECT (souphttpsink, "main loop thread running");
+-
+-    if (souphttpsink->proxy == NULL) {
+-      souphttpsink->session =
+-          soup_session_async_new_with_options (SOUP_SESSION_ASYNC_CONTEXT,
+-          souphttpsink->context, SOUP_SESSION_USER_AGENT,
+-          souphttpsink->user_agent, SOUP_SESSION_TIMEOUT, souphttpsink->timeout,
+-          SOUP_SESSION_ADD_FEATURE_BY_TYPE, SOUP_TYPE_PROXY_RESOLVER_DEFAULT,
+-          NULL);
+-    } else {
+-      souphttpsink->session =
+-          soup_session_async_new_with_options (SOUP_SESSION_ASYNC_CONTEXT,
+-          souphttpsink->context, SOUP_SESSION_USER_AGENT,
+-          souphttpsink->user_agent, SOUP_SESSION_TIMEOUT, souphttpsink->timeout,
+-          SOUP_SESSION_PROXY_URI, souphttpsink->proxy, NULL);
+-    }
+-
+-    g_signal_connect (souphttpsink->session, "authenticate",
+-        G_CALLBACK (authenticate), souphttpsink);
+   }
+ 
+   /* Set up logging */
+@@ -614,7 +608,7 @@ gst_soup_http_client_sink_stop (GstBaseSink * sink)
+   GST_DEBUG ("stop");
+ 
+   if (souphttpsink->prop_session == NULL) {
+-    soup_session_abort (souphttpsink->session);
++    _soup_session_abort (souphttpsink->session);
+     g_object_unref (souphttpsink->session);
+   }
+ 
+@@ -653,40 +647,13 @@ gst_soup_http_client_sink_unlock (GstBaseSink * sink)
+   return TRUE;
+ }
+ 
+-static gboolean
+-gst_soup_http_client_sink_event (GstBaseSink * sink, GstEvent * event)
+-{
+-  GstSoupHttpClientSink *souphttpsink = GST_SOUP_HTTP_CLIENT_SINK (sink);
+-
+-  GST_DEBUG_OBJECT (souphttpsink, "event");
+-
+-  if (GST_EVENT_TYPE (event) == GST_EVENT_EOS) {
+-    GST_DEBUG_OBJECT (souphttpsink, "got eos");
+-    g_mutex_lock (&souphttpsink->mutex);
+-    while (souphttpsink->message) {
+-      GST_DEBUG_OBJECT (souphttpsink, "waiting");
+-      g_cond_wait (&souphttpsink->cond, &souphttpsink->mutex);
+-    }
+-    g_mutex_unlock (&souphttpsink->mutex);
+-    GST_DEBUG_OBJECT (souphttpsink, "finished eos");
+-  }
+-
+-  return GST_BASE_SINK_CLASS (parent_class)->event (sink, event);
+-}
+-
+-static GstFlowReturn
+-gst_soup_http_client_sink_preroll (GstBaseSink * sink, GstBuffer * buffer)
+-{
+-  GST_DEBUG ("preroll");
+-
+-  return GST_FLOW_OK;
+-}
+-
+ static void
+ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+ {
+   GList *g;
+   guint64 n;
++  GByteArray *array;
++  GInputStream *in_stream;
+ 
+   if (souphttpsink->queued_buffers == NULL || souphttpsink->message) {
+     return;
+@@ -701,7 +668,7 @@ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+     return;
+   }
+ 
+-  souphttpsink->message = soup_message_new ("PUT", souphttpsink->location);
++  souphttpsink->message = _soup_message_new ("PUT", souphttpsink->location);
+   if (souphttpsink->message == NULL) {
+     GST_WARNING_OBJECT (souphttpsink,
+         "URI could not be parsed while creating message.");
+@@ -711,18 +678,21 @@ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+     return;
+   }
+ 
+-  soup_message_set_flags (souphttpsink->message,
++  g_signal_connect (souphttpsink->message, "restarted", G_CALLBACK (restarted),
++      souphttpsink->request_body);
++
++  _soup_message_set_flags (souphttpsink->message,
+       (souphttpsink->automatic_redirect ? 0 : SOUP_MESSAGE_NO_REDIRECT));
+ 
+   if (souphttpsink->cookies) {
+     gchar **cookie;
+ 
+     for (cookie = souphttpsink->cookies; *cookie != NULL; cookie++) {
+-      soup_message_headers_append (souphttpsink->message->request_headers,
+-          "Cookie", *cookie);
++      _soup_message_headers_append (_soup_message_get_request_headers
++          (souphttpsink->message), "Cookie", *cookie);
+     }
+   }
+-
++  array = g_byte_array_new ();
+   n = 0;
+   if (souphttpsink->offset == 0) {
+     for (g = souphttpsink->streamheader_buffers; g; g = g_list_next (g)) {
+@@ -731,11 +701,7 @@ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+ 
+       GST_DEBUG_OBJECT (souphttpsink, "queueing stream headers");
+       gst_buffer_map (buffer, &map, GST_MAP_READ);
+-      /* Stream headers are updated whenever ::set_caps is called, so there's
+-       * no guarantees about their lifetime and we ask libsoup to copy them 
+-       * into the message body with SOUP_MEMORY_COPY. */
+-      soup_message_body_append (souphttpsink->message->request_body,
+-          SOUP_MEMORY_COPY, map.data, map.size);
++      g_byte_array_append (array, map.data, map.size);
+       n += map.size;
+       gst_buffer_unmap (buffer, &map);
+     }
+@@ -747,23 +713,24 @@ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+       GstMapInfo map;
+ 
+       gst_buffer_map (buffer, &map, GST_MAP_READ);
+-      /* Queued buffers are only freed in the next iteration of the mainloop
+-       * after the message body has been written out, so we don't need libsoup
+-       * to copy those while appending to the body. However, if the buffer is
+-       * used elsewhere, it should be copied. Hence, SOUP_MEMORY_TEMPORARY. */
+-      soup_message_body_append (souphttpsink->message->request_body,
+-          SOUP_MEMORY_TEMPORARY, map.data, map.size);
++      g_byte_array_append (array, map.data, map.size);
+       n += map.size;
+       gst_buffer_unmap (buffer, &map);
+     }
+   }
+ 
++  {
++    souphttpsink->request_body = g_byte_array_free_to_bytes (array);
++    _soup_message_set_request_body_from_bytes (souphttpsink->message,
++        NULL, souphttpsink->request_body);
++  }
++
+   if (souphttpsink->offset != 0) {
+     char *s;
+     s = g_strdup_printf ("bytes %" G_GUINT64_FORMAT "-%" G_GUINT64_FORMAT "/*",
+         souphttpsink->offset, souphttpsink->offset + n - 1);
+-    soup_message_headers_append (souphttpsink->message->request_headers,
+-        "Content-Range", s);
++    _soup_message_headers_append (_soup_message_get_request_headers
++        (souphttpsink->message), "Content-Range", s);
+     g_free (s);
+   }
+ 
+@@ -773,20 +740,35 @@ send_message_locked (GstSoupHttpClientSink * souphttpsink)
+     g_list_free_full (souphttpsink->queued_buffers,
+         (GDestroyNotify) gst_buffer_unref);
+     souphttpsink->queued_buffers = NULL;
+-    g_object_unref (souphttpsink->message);
+-    souphttpsink->message = NULL;
++    g_clear_object (&souphttpsink->message);
++    g_clear_pointer (&souphttpsink->request_body, g_bytes_unref);
+     return;
+   }
+ 
++  in_stream =
++      _soup_session_send (souphttpsink->session, souphttpsink->message, NULL,
++      NULL);
++  if (in_stream == NULL) {
++    GError *error = NULL;
++
++    if (!send_handle_status (souphttpsink->message, error, souphttpsink)) {
++      g_object_unref (souphttpsink->message);
++      g_clear_pointer (&souphttpsink->request_body, g_bytes_unref);
++      g_clear_error (&error);
++      return;
++    }
++  }
+   souphttpsink->sent_buffers = souphttpsink->queued_buffers;
+-  souphttpsink->queued_buffers = NULL;
+ 
+-  GST_DEBUG_OBJECT (souphttpsink,
+-      "queue message %" G_GUINT64_FORMAT " %" G_GUINT64_FORMAT,
+-      souphttpsink->offset, n);
+-  soup_session_queue_message (souphttpsink->session, souphttpsink->message,
+-      callback, souphttpsink);
++  g_clear_pointer (&souphttpsink->request_body, g_bytes_unref);
++  g_object_unref (in_stream);
+ 
++  g_list_free_full (souphttpsink->sent_buffers,
++      (GDestroyNotify) gst_buffer_unref);
++  souphttpsink->sent_buffers = NULL;
++  souphttpsink->failures = 0;
++  souphttpsink->queued_buffers = NULL;
++  g_clear_object (&souphttpsink->message);
+   souphttpsink->offset += n;
+ }
+ 
+@@ -805,64 +787,67 @@ send_message (GstSoupHttpClientSink * souphttpsink)
+   return FALSE;
+ }
+ 
+-static void
+-callback (SoupSession * session, SoupMessage * msg, gpointer user_data)
++static gboolean
++send_handle_status (SoupMessage * msg, GError * error,
++    GstSoupHttpClientSink * sink)
+ {
+-  GstSoupHttpClientSink *souphttpsink = GST_SOUP_HTTP_CLIENT_SINK (user_data);
+-
+-  GST_DEBUG_OBJECT (souphttpsink, "callback status=%d %s",
+-      msg->status_code, msg->reason_phrase);
+-
+-  g_mutex_lock (&souphttpsink->mutex);
+-  g_cond_signal (&souphttpsink->cond);
+-  souphttpsink->message = NULL;
++  if (error) {
++    GST_DEBUG_OBJECT (sink, "callback error=%d %s",
++        error->code, error->message);
++  } else {
++    GST_DEBUG_OBJECT (sink, "callback status=%d %s",
++        _soup_message_get_status (msg), _soup_message_get_reason_phrase (msg));
++  }
+ 
+-  if (!SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {
+-    souphttpsink->failures++;
+-    if (souphttpsink->retries &&
+-        (souphttpsink->retries < 0 ||
+-            souphttpsink->retries >= souphttpsink->failures)) {
++  if (error || !SOUP_STATUS_IS_SUCCESSFUL (_soup_message_get_status (msg))) {
++    sink->failures++;
++    if (sink->retries && (sink->retries < 0 || sink->retries >= sink->failures)) {
+       guint64 retry_delay;
+-      const char *retry_after =
+-          soup_message_headers_get_one (msg->response_headers,
+-          "Retry-After");
++      const char *retry_after;
++      SoupMessageHeaders *res_hdrs;
++      if (error) {
++        retry_delay = sink->retry_delay;
++        GST_WARNING_OBJECT (sink, "Could not write to HTTP URI: "
++            "error: %d %s (retrying PUT after %" G_GINT64_FORMAT
++            " seconds)", error->code, error->message, retry_delay);
++        goto err_done;
++      }
++      res_hdrs = _soup_message_get_response_headers (msg);
++      retry_after = _soup_message_headers_get_one (res_hdrs, "Retry-After");
+       if (retry_after) {
+         gchar *end = NULL;
+         retry_delay = g_ascii_strtoull (retry_after, &end, 10);
+         if (end || errno) {
+-          retry_delay = souphttpsink->retry_delay;
++          retry_delay = sink->retry_delay;
+         } else {
+-          retry_delay = MAX (retry_delay, souphttpsink->retry_delay);
++          retry_delay = MAX (retry_delay, sink->retry_delay);
+         }
+-        GST_WARNING_OBJECT (souphttpsink, "Could not write to HTTP URI: "
++        GST_WARNING_OBJECT (sink, "Could not write to HTTP URI: "
+             "status: %d %s (retrying PUT after %" G_GINT64_FORMAT
+-            " seconds with Retry-After: %s)", msg->status_code,
+-            msg->reason_phrase, retry_delay, retry_after);
++            " seconds with Retry-After: %s)",
++            _soup_message_get_status (msg),
++            _soup_message_get_reason_phrase (msg), retry_delay, retry_after);
+       } else {
+-        retry_delay = souphttpsink->retry_delay;
+-        GST_WARNING_OBJECT (souphttpsink, "Could not write to HTTP URI: "
++        retry_delay = sink->retry_delay;
++        GST_WARNING_OBJECT (sink, "Could not write to HTTP URI: "
+             "status: %d %s (retrying PUT after %" G_GINT64_FORMAT
+-            " seconds)", msg->status_code, msg->reason_phrase, retry_delay);
++            " seconds)",
++            _soup_message_get_status (msg),
++            _soup_message_get_reason_phrase (msg), retry_delay);
+       }
+-      souphttpsink->timer = g_timeout_source_new_seconds (retry_delay);
+-      g_source_set_callback (souphttpsink->timer, (GSourceFunc) (send_message),
+-          souphttpsink, NULL);
+-      g_source_attach (souphttpsink->timer, souphttpsink->context);
++    err_done:
++      sink->timer = g_timeout_source_new_seconds (retry_delay);
++      g_source_set_callback (sink->timer, (GSourceFunc) (send_message),
++          sink, NULL);
++      g_source_attach (sink->timer, sink->context);
+     } else {
+-      souphttpsink->status_code = msg->status_code;
+-      souphttpsink->reason_phrase = g_strdup (msg->reason_phrase);
++      sink->status_code = _soup_message_get_status (msg);
++      sink->reason_phrase = g_strdup (_soup_message_get_reason_phrase (msg));
+     }
+-    g_mutex_unlock (&souphttpsink->mutex);
+-    return;
++    return FALSE;
+   }
+ 
+-  g_list_free_full (souphttpsink->sent_buffers,
+-      (GDestroyNotify) gst_buffer_unref);
+-  souphttpsink->sent_buffers = NULL;
+-  souphttpsink->failures = 0;
+-
+-  send_message_locked (souphttpsink);
+-  g_mutex_unlock (&souphttpsink->mutex);
++  return TRUE;
+ }
+ 
+ static GstFlowReturn
+@@ -870,7 +855,6 @@ gst_soup_http_client_sink_render (GstBaseSink * sink, GstBuffer * buffer)
+ {
+   GstSoupHttpClientSink *souphttpsink = GST_SOUP_HTTP_CLIENT_SINK (sink);
+   GSource *source;
+-  gboolean wake;
+ 
+   if (souphttpsink->status_code != 0) {
+     GST_ELEMENT_ERROR (souphttpsink, RESOURCE, WRITE,
+@@ -882,18 +866,15 @@ gst_soup_http_client_sink_render (GstBaseSink * sink, GstBuffer * buffer)
+ 
+   g_mutex_lock (&souphttpsink->mutex);
+   if (souphttpsink->location != NULL) {
+-    wake = (souphttpsink->queued_buffers == NULL);
+     souphttpsink->queued_buffers =
+         g_list_append (souphttpsink->queued_buffers, gst_buffer_ref (buffer));
+ 
+-    if (wake) {
+-      GST_DEBUG_OBJECT (souphttpsink, "setting callback for new buffers");
+-      source = g_idle_source_new ();
+-      g_source_set_callback (source, (GSourceFunc) (send_message),
+-          souphttpsink, NULL);
+-      g_source_attach (source, souphttpsink->context);
+-      g_source_unref (source);
+-    }
++    GST_DEBUG_OBJECT (souphttpsink, "setting callback for new buffers");
++    source = g_idle_source_new ();
++    g_source_set_callback (source, (GSourceFunc) (send_message),
++        souphttpsink, NULL);
++    g_source_attach (source, souphttpsink->context);
++    g_source_unref (source);
+   }
+   g_mutex_unlock (&souphttpsink->mutex);
+ 
+@@ -901,21 +882,29 @@ gst_soup_http_client_sink_render (GstBaseSink * sink, GstBuffer * buffer)
+ }
+ 
+ static void
+-authenticate (SoupSession * session, SoupMessage * msg,
+-    SoupAuth * auth, gboolean retrying, gpointer user_data)
++restarted (SoupMessage * msg, GBytes * body)
++{
++  _soup_message_set_request_body_from_bytes (msg, NULL, body);
++}
++
++static gboolean
++authenticate (SoupMessage * msg, SoupAuth * auth,
++    gboolean retrying, gpointer user_data)
+ {
+   GstSoupHttpClientSink *souphttpsink = GST_SOUP_HTTP_CLIENT_SINK (user_data);
+ 
+   if (!retrying) {
++    SoupStatus status_code = _soup_message_get_status (msg);
+     /* First time authentication only, if we fail and are called again with retry true fall through */
+-    if (msg->status_code == SOUP_STATUS_UNAUTHORIZED) {
++    if (status_code == SOUP_STATUS_UNAUTHORIZED) {
+       if (souphttpsink->user_id && souphttpsink->user_pw)
+-        soup_auth_authenticate (auth, souphttpsink->user_id,
++        _soup_auth_authenticate (auth, souphttpsink->user_id,
+             souphttpsink->user_pw);
+-    } else if (msg->status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
++    } else if (status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
+       if (souphttpsink->proxy_id && souphttpsink->proxy_pw)
+-        soup_auth_authenticate (auth, souphttpsink->proxy_id,
++        _soup_auth_authenticate (auth, souphttpsink->proxy_id,
+             souphttpsink->proxy_pw);
+     }
+   }
++  return FALSE;
+ }
+diff --git a/ext/soup/gstsouphttpclientsink.h b/ext/soup/gstsouphttpclientsink.h
+index a98302c55f..24faca9098 100644
+--- a/ext/soup/gstsouphttpclientsink.h
++++ b/ext/soup/gstsouphttpclientsink.h
+@@ -1,5 +1,6 @@
+ /* GStreamer
+  * Copyright (C) 2011 David Schleef <ds@entropywave.com>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -20,8 +21,9 @@
+ #ifndef _GST_SOUP_HTTP_CLIENT_SINK_H_
+ #define _GST_SOUP_HTTP_CLIENT_SINK_H_
+ 
++#include "gstsouploader.h"
++#include "gstsouputils.h"
+ #include <gst/base/gstbasesink.h>
+-#include <libsoup/soup.h>
+ 
+ G_BEGIN_DECLS
+ 
+@@ -44,6 +46,7 @@ struct _GstSoupHttpClientSink
+   GList *queued_buffers;
+   GList *sent_buffers;
+   GList *streamheader_buffers;
++  GBytes *request_body;
+ 
+   int status_code;
+   char *reason_phrase;
+@@ -57,7 +60,7 @@ struct _GstSoupHttpClientSink
+   char *location;
+   char *user_id;
+   char *user_pw;
+-  SoupURI *proxy;
++  GstSoupUri *proxy;
+   char *proxy_id;
+   char *proxy_pw;
+   char *user_agent;
+diff --git a/ext/soup/gstsouphttpsrc.c b/ext/soup/gstsouphttpsrc.c
+index ab3155efeb..8a03b1fb60 100644
+--- a/ext/soup/gstsouphttpsrc.c
++++ b/ext/soup/gstsouphttpsrc.c
+@@ -1,5 +1,6 @@
+ /* GStreamer
+  * Copyright (C) 2007-2008 Wouter Cloetens <wouter@mind.be>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -77,7 +78,7 @@
+ #endif
+ #include <gst/gstelement.h>
+ #include <gst/gst-i18n-plugin.h>
+-#include <libsoup/soup.h>
++
+ #include "gstsouphttpsrc.h"
+ #include "gstsouputils.h"
+ 
+@@ -184,9 +185,13 @@ static GstFlowReturn gst_soup_http_src_parse_status (SoupMessage * msg,
+     GstSoupHTTPSrc * src);
+ static GstFlowReturn gst_soup_http_src_got_headers (GstSoupHTTPSrc * src,
+     SoupMessage * msg);
+-static void gst_soup_http_src_authenticate_cb (SoupSession * session,
+-    SoupMessage * msg, SoupAuth * auth, gboolean retrying,
+-    GstSoupHTTPSrc * src);
++static void gst_soup_http_src_authenticate_cb_2 (SoupSession *,
++    SoupMessage * msg, SoupAuth * auth, gboolean retrying, gpointer);
++static gboolean gst_soup_http_src_authenticate_cb (SoupMessage * msg,
++    SoupAuth * auth, gboolean retrying, gpointer);
++static gboolean gst_soup_http_src_accept_certificate_cb (SoupMessage * msg,
++    GTlsCertificate * tls_certificate, GTlsCertificateFlags tls_errors,
++    gpointer user_data);
+ 
+ #define gst_soup_http_src_parent_class parent_class
+ G_DEFINE_TYPE_WITH_CODE (GstSoupHTTPSrc, gst_soup_http_src, GST_TYPE_PUSH_SRC,
+@@ -279,10 +284,10 @@ gst_soup_http_src_class_init (GstSoupHTTPSrcClass * klass)
+   g_object_class_install_property (gobject_class, PROP_SOUP_LOG_LEVEL,
+       g_param_spec_enum ("http-log-level", "HTTP log level",
+           "Set log level for soup's HTTP session log",
+-          SOUP_TYPE_LOGGER_LOG_LEVEL, DEFAULT_SOUP_LOG_LEVEL,
+-          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
++          _soup_logger_log_level_get_type (),
++          DEFAULT_SOUP_LOG_LEVEL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+- /**
++  /**
+    * GstSoupHTTPSrc::compress:
+    *
+    * If set to %TRUE, souphttpsrc will automatically handle gzip
+@@ -333,7 +338,9 @@ gst_soup_http_src_class_init (GstSoupHTTPSrcClass * klass)
+    * If this property is non-%NULL, #GstSoupHTTPSrc::ssl-use-system-ca-file
+    * value will be ignored.
+    *
+-   * Deprecated: Use #GstSoupHTTPSrc::tls-database property instead.
++   * Deprecated: Use #GstSoupHTTPSrc::tls-database property instead. This
++   * property is no-op when libsoup3 is being used at runtime.
++   *
+    * Since: 1.4
+    */
+   g_object_class_install_property (gobject_class, PROP_SSL_CA_FILE,
+@@ -341,13 +348,15 @@ gst_soup_http_src_class_init (GstSoupHTTPSrcClass * klass)
+           "Location of a SSL anchor CA file to use", DEFAULT_SSL_CA_FILE,
+           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+- /**
++  /**
+    * GstSoupHTTPSrc::ssl-use-system-ca-file:
+    *
+    * If set to %TRUE, souphttpsrc will use the system's CA file for
+    * checking certificates, unless #GstSoupHTTPSrc::ssl-ca-file or
+    * #GstSoupHTTPSrc::tls-database are non-%NULL.
+    *
++   * Deprecated: This property is no-op when libsoup3 is being used at runtime.
++   *
+    * Since: 1.4
+    */
+   g_object_class_install_property (gobject_class, PROP_SSL_USE_SYSTEM_CA_FILE,
+@@ -548,7 +557,7 @@ gst_soup_http_src_finalize (GObject * gobject)
+   g_free (src->redirection_uri);
+   g_free (src->user_agent);
+   if (src->proxy != NULL) {
+-    soup_uri_free (src->proxy);
++    gst_soup_uri_free (src->proxy);
+   }
+   g_free (src->user_id);
+   g_free (src->user_pw);
+@@ -664,13 +673,6 @@ gst_soup_http_src_set_property (GObject * object, guint prop_id,
+     case PROP_SSL_STRICT:
+       src->ssl_strict = g_value_get_boolean (value);
+       break;
+-    case PROP_SSL_CA_FILE:
+-      g_free (src->ssl_ca_file);
+-      src->ssl_ca_file = g_value_dup_string (value);
+-      break;
+-    case PROP_SSL_USE_SYSTEM_CA_FILE:
+-      src->ssl_use_system_ca_file = g_value_get_boolean (value);
+-      break;
+     case PROP_TLS_DATABASE:
+       g_clear_object (&src->tls_database);
+       src->tls_database = g_value_dup_object (value);
+@@ -686,6 +688,17 @@ gst_soup_http_src_set_property (GObject * object, guint prop_id,
+       g_free (src->method);
+       src->method = g_value_dup_string (value);
+       break;
++    case PROP_SSL_CA_FILE:
++      if (gst_soup_loader_get_api_version () == 2) {
++        g_free (src->ssl_ca_file);
++        src->ssl_ca_file = g_value_dup_string (value);
++      }
++      break;
++    case PROP_SSL_USE_SYSTEM_CA_FILE:
++      if (gst_soup_loader_get_api_version () == 2) {
++        src->ssl_use_system_ca_file = g_value_get_boolean (value);
++      }
++      break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -714,8 +727,7 @@ gst_soup_http_src_get_property (GObject * object, guint prop_id,
+       if (src->proxy == NULL)
+         g_value_set_static_string (value, "");
+       else {
+-        char *proxy = soup_uri_to_string (src->proxy, FALSE);
+-
++        char *proxy = gst_soup_uri_to_string (src->proxy);
+         g_value_set_string (value, proxy);
+         g_free (proxy);
+       }
+@@ -759,12 +771,6 @@ gst_soup_http_src_get_property (GObject * object, guint prop_id,
+     case PROP_SSL_STRICT:
+       g_value_set_boolean (value, src->ssl_strict);
+       break;
+-    case PROP_SSL_CA_FILE:
+-      g_value_set_string (value, src->ssl_ca_file);
+-      break;
+-    case PROP_SSL_USE_SYSTEM_CA_FILE:
+-      g_value_set_boolean (value, src->ssl_use_system_ca_file);
+-      break;
+     case PROP_TLS_DATABASE:
+       g_value_set_object (value, src->tls_database);
+       break;
+@@ -777,6 +783,14 @@ gst_soup_http_src_get_property (GObject * object, guint prop_id,
+     case PROP_METHOD:
+       g_value_set_string (value, src->method);
+       break;
++    case PROP_SSL_CA_FILE:
++      if (gst_soup_loader_get_api_version () == 2)
++        g_value_set_string (value, src->ssl_ca_file);
++      break;
++    case PROP_SSL_USE_SYSTEM_CA_FILE:
++      if (gst_soup_loader_get_api_version () == 2)
++        g_value_set_boolean (value, src->ssl_use_system_ca_file);
++      break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -806,8 +820,10 @@ gst_soup_http_src_add_range_header (GstSoupHTTPSrc * src, guint64 offset,
+ {
+   gchar buf[64];
+   gint rc;
++  SoupMessageHeaders *request_headers =
++      _soup_message_get_request_headers (src->msg);
+ 
+-  soup_message_headers_remove (src->msg->request_headers, "Range");
++  _soup_message_headers_remove (request_headers, "Range");
+   if (offset || stop_offset != -1) {
+     if (stop_offset != -1) {
+       g_assert (offset != stop_offset);
+@@ -821,7 +837,7 @@ gst_soup_http_src_add_range_header (GstSoupHTTPSrc * src, guint64 offset,
+     }
+     if (rc > sizeof (buf) || rc < 0)
+       return FALSE;
+-    soup_message_headers_append (src->msg->request_headers, "Range", buf);
++    _soup_message_headers_append (request_headers, "Range", buf);
+   }
+   src->read_position = offset;
+   return TRUE;
+@@ -833,6 +849,8 @@ _append_extra_header (GQuark field_id, const GValue * value, gpointer user_data)
+   GstSoupHTTPSrc *src = GST_SOUP_HTTP_SRC (user_data);
+   const gchar *field_name = g_quark_to_string (field_id);
+   gchar *field_content = NULL;
++  SoupMessageHeaders *request_headers =
++      _soup_message_get_request_headers (src->msg);
+ 
+   if (G_VALUE_TYPE (value) == G_TYPE_STRING) {
+     field_content = g_value_dup_string (value);
+@@ -853,8 +871,7 @@ _append_extra_header (GQuark field_id, const GValue * value, gpointer user_data)
+ 
+   GST_DEBUG_OBJECT (src, "Appending extra header: \"%s: %s\"", field_name,
+       field_content);
+-  soup_message_headers_append (src->msg->request_headers, field_name,
+-      field_content);
++  _soup_message_headers_append (request_headers, field_name, field_content);
+ 
+   g_free (field_content);
+ 
+@@ -905,6 +922,8 @@ gst_soup_http_src_add_extra_headers (GstSoupHTTPSrc * src)
+ static gboolean
+ gst_soup_http_src_session_open (GstSoupHTTPSrc * src)
+ {
++  GProxyResolver *proxy_resolver;
++
+   if (src->session) {
+     GST_DEBUG_OBJECT (src, "Session is already open");
+     return TRUE;
+@@ -922,9 +941,11 @@ gst_soup_http_src_session_open (GstSoupHTTPSrc * src)
+         && (src->cookies == NULL)
+         && (src->ssl_strict == DEFAULT_SSL_STRICT)
+         && (src->tls_interaction == NULL) && (src->proxy == NULL)
+-        && (src->tls_database == DEFAULT_TLS_DATABASE)
+-        && (src->ssl_ca_file == DEFAULT_SSL_CA_FILE)
+-        && (src->ssl_use_system_ca_file == DEFAULT_SSL_USE_SYSTEM_CA_FILE);
++        && (src->tls_database == DEFAULT_TLS_DATABASE);
++
++    if (gst_soup_loader_get_api_version () == 2)
++      can_share = can_share && (src->ssl_ca_file == DEFAULT_SSL_CA_FILE) &&
++          (src->ssl_use_system_ca_file == DEFAULT_SSL_USE_SYSTEM_CA_FILE);
+ 
+     query = gst_query_new_context (GST_SOUP_SESSION_CONTEXT);
+     if (gst_pad_peer_query (GST_BASE_SRC_PAD (src), query)) {
+@@ -954,27 +975,37 @@ gst_soup_http_src_session_open (GstSoupHTTPSrc * src)
+       /* We explicitly set User-Agent to NULL here and overwrite it per message
+        * to be able to have the same session with different User-Agents per
+        * source */
+-      if (src->proxy == NULL) {
+-        src->session =
+-            soup_session_new_with_options (SOUP_SESSION_USER_AGENT,
+-            NULL, SOUP_SESSION_TIMEOUT, src->timeout,
+-            SOUP_SESSION_SSL_STRICT, src->ssl_strict,
+-            SOUP_SESSION_TLS_INTERACTION, src->tls_interaction, NULL);
++      src->session =
++          _soup_session_new_with_options ("user-agent", NULL,
++          "timeout", src->timeout, "tls-interaction", src->tls_interaction,
++          /* Unset the limit the number of maximum allowed connections */
++          "max-conns", can_share ? G_MAXINT : 10,
++          "max-conns-per-host", can_share ? G_MAXINT : 2, NULL);
++
++      if (gst_soup_loader_get_api_version () == 3) {
++        if (src->proxy != NULL) {
++          char *proxy_string = gst_soup_uri_to_string (src->proxy);
++          proxy_resolver = g_simple_proxy_resolver_new (proxy_string, NULL);
++          g_free (proxy_string);
++          g_object_set (src->session, "proxy-resolver", proxy_resolver, NULL);
++          g_object_unref (proxy_resolver);
++        }
+       } else {
+-        src->session =
+-            soup_session_new_with_options (SOUP_SESSION_PROXY_URI, src->proxy,
+-            SOUP_SESSION_TIMEOUT, src->timeout,
+-            SOUP_SESSION_SSL_STRICT, src->ssl_strict,
+-            SOUP_SESSION_USER_AGENT, NULL,
+-            SOUP_SESSION_TLS_INTERACTION, src->tls_interaction, NULL);
++        g_object_set (src->session, "ssl-strict", src->ssl_strict, NULL);
++        if (src->proxy != NULL) {
++          g_object_set (src->session, "proxy-uri", src->proxy->soup_uri, NULL);
++        }
+       }
+ 
+       if (src->session) {
+         gst_soup_util_log_setup (src->session, src->log_level,
+             GST_ELEMENT (src));
+-        soup_session_add_feature_by_type (src->session,
+-            SOUP_TYPE_CONTENT_DECODER);
+-        soup_session_add_feature_by_type (src->session, SOUP_TYPE_COOKIE_JAR);
++        if (gst_soup_loader_get_api_version () < 3) {
++          _soup_session_add_feature_by_type (src->session,
++              _soup_content_decoder_get_type ());
++        }
++        _soup_session_add_feature_by_type (src->session,
++            _soup_cookie_jar_get_type ());
+ 
+         if (can_share) {
+           GstContext *context;
+@@ -984,14 +1015,10 @@ gst_soup_http_src_session_open (GstSoupHTTPSrc * src)
+           GST_DEBUG_OBJECT (src, "Sharing session %p", src->session);
+           src->session_is_shared = TRUE;
+ 
+-          /* Unset the limit the number of maximum allowed connection */
+-          g_object_set (src->session, SOUP_SESSION_MAX_CONNS, G_MAXINT,
+-              SOUP_SESSION_MAX_CONNS_PER_HOST, G_MAXINT, NULL);
+-
+           context = gst_context_new (GST_SOUP_SESSION_CONTEXT, TRUE);
+           s = gst_context_writable_structure (context);
+-          gst_structure_set (s, "session", SOUP_TYPE_SESSION, src->session,
+-              "force", G_TYPE_BOOLEAN, FALSE, NULL);
++          gst_structure_set (s, "session", _soup_session_get_type (),
++              src->session, "force", G_TYPE_BOOLEAN, FALSE, NULL);
+ 
+           gst_object_ref (src->session);
+           GST_OBJECT_UNLOCK (src);
+@@ -1014,17 +1041,21 @@ gst_soup_http_src_session_open (GstSoupHTTPSrc * src)
+       return FALSE;
+     }
+ 
+-    g_signal_connect (src->session, "authenticate",
+-        G_CALLBACK (gst_soup_http_src_authenticate_cb), src);
++    if (gst_soup_loader_get_api_version () < 3) {
++      g_signal_connect (src->session, "authenticate",
++          G_CALLBACK (gst_soup_http_src_authenticate_cb_2), src);
++    }
+ 
+     if (!src->session_is_shared) {
+       if (src->tls_database)
+         g_object_set (src->session, "tls-database", src->tls_database, NULL);
+-      else if (src->ssl_ca_file)
+-        g_object_set (src->session, "ssl-ca-file", src->ssl_ca_file, NULL);
+-      else
+-        g_object_set (src->session, "ssl-use-system-ca-file",
+-            src->ssl_use_system_ca_file, NULL);
++      else if (gst_soup_loader_get_api_version () == 2) {
++        if (src->ssl_ca_file)
++          g_object_set (src->session, "ssl-ca-file", src->ssl_ca_file, NULL);
++        else
++          g_object_set (src->session, "ssl-use-system-ca-file",
++              src->ssl_use_system_ca_file, NULL);
++      }
+     }
+     GST_OBJECT_UNLOCK (src);
+   } else {
+@@ -1041,14 +1072,14 @@ gst_soup_http_src_session_close (GstSoupHTTPSrc * src)
+ 
+   g_mutex_lock (&src->mutex);
+   if (src->msg) {
+-    soup_session_cancel_message (src->session, src->msg, SOUP_STATUS_CANCELLED);
++    gst_soup_session_cancel_message (src->session, src->msg, src->cancellable);
+     g_object_unref (src->msg);
+     src->msg = NULL;
+   }
+ 
+   if (src->session) {
+     if (!src->session_is_shared)
+-      soup_session_abort (src->session);
++      _soup_session_abort (src->session);
+     g_signal_handlers_disconnect_by_func (src->session,
+         G_CALLBACK (gst_soup_http_src_authenticate_cb), src);
+     g_object_unref (src->session);
+@@ -1059,23 +1090,58 @@ gst_soup_http_src_session_close (GstSoupHTTPSrc * src)
+ }
+ 
+ static void
+-gst_soup_http_src_authenticate_cb (SoupSession * session, SoupMessage * msg,
+-    SoupAuth * auth, gboolean retrying, GstSoupHTTPSrc * src)
++gst_soup_http_src_authenticate_cb_2 (SoupSession * session, SoupMessage * msg,
++    SoupAuth * auth, gboolean retrying, gpointer data)
++{
++  gst_soup_http_src_authenticate_cb (msg, auth, retrying, data);
++}
++
++static gboolean
++gst_soup_http_src_authenticate_cb (SoupMessage * msg, SoupAuth * auth,
++    gboolean retrying, gpointer data)
+ {
++  GstSoupHTTPSrc *src = GST_SOUP_HTTP_SRC (data);
++  SoupStatus status_code;
++
+   /* Might be from another user of the shared session */
+   if (!GST_IS_SOUP_HTTP_SRC (src) || msg != src->msg)
+-    return;
++    return FALSE;
++
++  status_code = _soup_message_get_status (msg);
+ 
+   if (!retrying) {
+-    /* First time authentication only, if we fail and are called again with retry true fall through */
+-    if (msg->status_code == SOUP_STATUS_UNAUTHORIZED) {
+-      if (src->user_id && src->user_pw)
+-        soup_auth_authenticate (auth, src->user_id, src->user_pw);
+-    } else if (msg->status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
+-      if (src->proxy_id && src->proxy_pw)
+-        soup_auth_authenticate (auth, src->proxy_id, src->proxy_pw);
++    /* First time authentication only, if we fail and are called again with
++     * retry true fall through */
++    if (status_code == SOUP_STATUS_UNAUTHORIZED) {
++      if (src->user_id && src->user_pw) {
++        _soup_auth_authenticate (auth, src->user_id, src->user_pw);
++      }
++    } else if (status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
++      if (src->proxy_id && src->proxy_pw) {
++        _soup_auth_authenticate (auth, src->proxy_id, src->proxy_pw);
++      }
+     }
+   }
++
++  return FALSE;
++}
++
++static gboolean
++gst_soup_http_src_accept_certificate_cb (SoupMessage * msg,
++    GTlsCertificate * tls_certificate, GTlsCertificateFlags tls_errors,
++    gpointer user_data)
++{
++  GstSoupHTTPSrc *src = user_data;
++
++  /* Might be from another user of the shared session */
++  if (!GST_IS_SOUP_HTTP_SRC (src) || msg != src->msg)
++    return FALSE;
++
++  /* Accept invalid certificates */
++  if (!src->ssl_strict)
++    return TRUE;
++
++  return FALSE;
+ }
+ 
+ static void
+@@ -1126,10 +1192,14 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+   GstEvent *http_headers_event;
+   GstStructure *http_headers, *headers;
+   const gchar *accept_ranges;
++  SoupMessageHeaders *request_headers = _soup_message_get_request_headers (msg);
++  SoupMessageHeaders *response_headers =
++      _soup_message_get_response_headers (msg);
++  SoupStatus status_code = _soup_message_get_status (msg);
+ 
+   GST_INFO_OBJECT (src, "got headers");
+ 
+-  if (msg->status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED &&
++  if (status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED &&
+       src->proxy_id && src->proxy_pw) {
+     /* wait for authenticate callback */
+     return GST_FLOW_OK;
+@@ -1137,19 +1207,17 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+ 
+   http_headers = gst_structure_new_empty ("http-headers");
+   gst_structure_set (http_headers, "uri", G_TYPE_STRING, src->location,
+-      "http-status-code", G_TYPE_UINT, msg->status_code, NULL);
++      "http-status-code", G_TYPE_UINT, status_code, NULL);
+   if (src->redirection_uri)
+     gst_structure_set (http_headers, "redirection-uri", G_TYPE_STRING,
+         src->redirection_uri, NULL);
+   headers = gst_structure_new_empty ("request-headers");
+-  soup_message_headers_foreach (msg->request_headers, insert_http_header,
+-      headers);
++  _soup_message_headers_foreach (request_headers, insert_http_header, headers);
+   gst_structure_set (http_headers, "request-headers", GST_TYPE_STRUCTURE,
+       headers, NULL);
+   gst_structure_free (headers);
+   headers = gst_structure_new_empty ("response-headers");
+-  soup_message_headers_foreach (msg->response_headers, insert_http_header,
+-      headers);
++  _soup_message_headers_foreach (response_headers, insert_http_header, headers);
+   gst_structure_set (http_headers, "response-headers", GST_TYPE_STRUCTURE,
+       headers, NULL);
+   gst_structure_free (headers);
+@@ -1158,7 +1226,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+       gst_message_new_element (GST_OBJECT_CAST (src),
+           gst_structure_copy (http_headers)));
+ 
+-  if (msg->status_code == SOUP_STATUS_UNAUTHORIZED) {
++  if (status_code == SOUP_STATUS_UNAUTHORIZED) {
+     /* force an error */
+     gst_structure_free (http_headers);
+     return gst_soup_http_src_parse_status (msg, src);
+@@ -1173,11 +1241,11 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+   gst_event_unref (http_headers_event);
+ 
+   /* Parse Content-Length. */
+-  if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code) &&
+-      (soup_message_headers_get_encoding (msg->response_headers) ==
++  if (SOUP_STATUS_IS_SUCCESSFUL (status_code) &&
++      (_soup_message_headers_get_encoding (response_headers) ==
+           SOUP_ENCODING_CONTENT_LENGTH)) {
+     newsize = src->request_position +
+-        soup_message_headers_get_content_length (msg->response_headers);
++        _soup_message_headers_get_content_length (response_headers);
+     if (!src->have_size || (src->content_size != newsize)) {
+       src->content_size = newsize;
+       src->have_size = TRUE;
+@@ -1195,8 +1263,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+    * doing range requests at all
+    */
+   if ((accept_ranges =
+-          soup_message_headers_get_one (msg->response_headers,
+-              "Accept-Ranges"))) {
++          _soup_message_headers_get_one (response_headers, "Accept-Ranges"))) {
+     if (g_ascii_strcasecmp (accept_ranges, "none") == 0)
+       src->seekable = FALSE;
+   }
+@@ -1205,7 +1272,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+   tag_list = gst_tag_list_new_empty ();
+ 
+   if ((value =
+-          soup_message_headers_get_one (msg->response_headers,
++          _soup_message_headers_get_one (response_headers,
+               "icy-metaint")) != NULL) {
+     gint icy_metaint;
+ 
+@@ -1226,7 +1293,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+     }
+   }
+   if ((value =
+-          soup_message_headers_get_content_type (msg->response_headers,
++          _soup_message_headers_get_content_type (response_headers,
+               &params)) != NULL) {
+     if (!g_utf8_validate (value, -1, NULL)) {
+       GST_WARNING_OBJECT (src, "Content-Type is invalid UTF-8");
+@@ -1285,7 +1352,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+     g_hash_table_destroy (params);
+ 
+   if ((value =
+-          soup_message_headers_get_one (msg->response_headers,
++          _soup_message_headers_get_one (response_headers,
+               "icy-name")) != NULL) {
+     if (g_utf8_validate (value, -1, NULL)) {
+       g_free (src->iradio_name);
+@@ -1297,7 +1364,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+     }
+   }
+   if ((value =
+-          soup_message_headers_get_one (msg->response_headers,
++          _soup_message_headers_get_one (response_headers,
+               "icy-genre")) != NULL) {
+     if (g_utf8_validate (value, -1, NULL)) {
+       g_free (src->iradio_genre);
+@@ -1308,7 +1375,7 @@ gst_soup_http_src_got_headers (GstSoupHTTPSrc * src, SoupMessage * msg)
+       }
+     }
+   }
+-  if ((value = soup_message_headers_get_one (msg->response_headers, "icy-url"))
++  if ((value = _soup_message_headers_get_one (response_headers, "icy-url"))
+       != NULL) {
+     if (g_utf8_validate (value, -1, NULL)) {
+       g_free (src->iradio_url);
+@@ -1350,24 +1417,25 @@ gst_soup_http_src_alloc_buffer (GstSoupHTTPSrc * src)
+ #define SOUP_HTTP_SRC_ERROR(src,soup_msg,cat,code,error_message)     \
+   do { \
+     GST_ELEMENT_ERROR_WITH_DETAILS ((src), cat, code, ("%s", error_message), \
+-        ("%s (%d), URL: %s, Redirect to: %s", (soup_msg)->reason_phrase, \
+-            (soup_msg)->status_code, (src)->location, GST_STR_NULL ((src)->redirection_uri)), \
+-            ("http-status-code", G_TYPE_UINT, (soup_msg)->status_code, \
++        ("%s (%d), URL: %s, Redirect to: %s", _soup_message_get_reason_phrase (soup_msg), \
++            _soup_message_get_status (soup_msg), (src)->location, GST_STR_NULL ((src)->redirection_uri)), \
++            ("http-status-code", G_TYPE_UINT, _soup_message_get_status (soup_msg), \
+              "http-redirect-uri", G_TYPE_STRING, GST_STR_NULL ((src)->redirection_uri), NULL)); \
+   } while(0)
+ 
+ static GstFlowReturn
+ gst_soup_http_src_parse_status (SoupMessage * msg, GstSoupHTTPSrc * src)
+ {
+-  if (msg->method == SOUP_METHOD_HEAD) {
+-    if (!SOUP_STATUS_IS_SUCCESSFUL (msg->status_code))
++  SoupStatus status_code = _soup_message_get_status (msg);
++  if (_soup_message_get_method (msg) == SOUP_METHOD_HEAD) {
++    if (!SOUP_STATUS_IS_SUCCESSFUL (status_code))
+       GST_DEBUG_OBJECT (src, "Ignoring error %d during HEAD request",
+-          msg->status_code);
++          status_code);
+     return GST_FLOW_OK;
+   }
+ 
+-  if (SOUP_STATUS_IS_TRANSPORT_ERROR (msg->status_code)) {
+-    switch (msg->status_code) {
++  if (SOUP_STATUS_IS_TRANSPORT_ERROR (status_code)) {
++    switch (status_code) {
+       case SOUP_STATUS_CANT_RESOLVE:
+       case SOUP_STATUS_CANT_RESOLVE_PROXY:
+         SOUP_HTTP_SRC_ERROR (src, msg, RESOURCE, NOT_FOUND,
+@@ -1396,16 +1464,18 @@ gst_soup_http_src_parse_status (SoupMessage * msg, GstSoupHTTPSrc * src)
+       case SOUP_STATUS_CANCELLED:
+         /* No error message when interrupted by program. */
+         break;
++      default:
++        break;
+     }
+     return GST_FLOW_OK;
+   }
+ 
+-  if (SOUP_STATUS_IS_CLIENT_ERROR (msg->status_code) ||
+-      SOUP_STATUS_IS_REDIRECTION (msg->status_code) ||
+-      SOUP_STATUS_IS_SERVER_ERROR (msg->status_code)) {
++  if (SOUP_STATUS_IS_CLIENT_ERROR (status_code) ||
++      SOUP_STATUS_IS_REDIRECTION (status_code) ||
++      SOUP_STATUS_IS_SERVER_ERROR (status_code)) {
+     const gchar *reason_phrase;
+ 
+-    reason_phrase = msg->reason_phrase;
++    reason_phrase = _soup_message_get_reason_phrase (msg);
+     if (reason_phrase && !g_utf8_validate (reason_phrase, -1, NULL)) {
+       GST_ERROR_OBJECT (src, "Invalid UTF-8 in reason");
+       reason_phrase = "(invalid)";
+@@ -1416,7 +1486,7 @@ gst_soup_http_src_parse_status (SoupMessage * msg, GstSoupHTTPSrc * src)
+     /* when content_size is unknown and we have just finished receiving
+      * a body message, requests that go beyond the content limits will result
+      * in an error. Here we convert those to EOS */
+-    if (msg->status_code == SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE &&
++    if (status_code == SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE &&
+         src->have_body && (!src->have_size ||
+             (src->request_position >= src->content_size))) {
+       GST_DEBUG_OBJECT (src, "Requested range out of limits and received full "
+@@ -1427,12 +1497,12 @@ gst_soup_http_src_parse_status (SoupMessage * msg, GstSoupHTTPSrc * src)
+     /* FIXME: reason_phrase is not translated and not suitable for user
+      * error dialog according to libsoup documentation.
+      */
+-    if (msg->status_code == SOUP_STATUS_NOT_FOUND) {
++    if (status_code == SOUP_STATUS_NOT_FOUND) {
+       SOUP_HTTP_SRC_ERROR (src, msg, RESOURCE, NOT_FOUND, (reason_phrase));
+-    } else if (msg->status_code == SOUP_STATUS_UNAUTHORIZED
+-        || msg->status_code == SOUP_STATUS_PAYMENT_REQUIRED
+-        || msg->status_code == SOUP_STATUS_FORBIDDEN
+-        || msg->status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
++    } else if (status_code == SOUP_STATUS_UNAUTHORIZED
++        || status_code == SOUP_STATUS_PAYMENT_REQUIRED
++        || status_code == SOUP_STATUS_FORBIDDEN
++        || status_code == SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED) {
+       SOUP_HTTP_SRC_ERROR (src, msg, RESOURCE, NOT_AUTHORIZED, (reason_phrase));
+     } else {
+       SOUP_HTTP_SRC_ERROR (src, msg, RESOURCE, OPEN_READ, (reason_phrase));
+@@ -1446,75 +1516,83 @@ gst_soup_http_src_parse_status (SoupMessage * msg, GstSoupHTTPSrc * src)
+ static void
+ gst_soup_http_src_restarted_cb (SoupMessage * msg, GstSoupHTTPSrc * src)
+ {
+-  if (soup_session_would_redirect (src->session, msg)) {
+-    src->redirection_uri =
+-        soup_uri_to_string (soup_message_get_uri (msg), FALSE);
+-    src->redirection_permanent =
+-        (msg->status_code == SOUP_STATUS_MOVED_PERMANENTLY);
+-    GST_DEBUG_OBJECT (src, "%u redirect to \"%s\" (permanent %d)",
+-        msg->status_code, src->redirection_uri, src->redirection_permanent);
+-  }
++  SoupStatus status = _soup_message_get_status (msg);
++
++  if (!SOUP_STATUS_IS_REDIRECTION (status))
++    return;
++
++  src->redirection_uri = gst_soup_message_uri_to_string (msg);
++  src->redirection_permanent = (status == SOUP_STATUS_MOVED_PERMANENTLY);
++
++  GST_DEBUG_OBJECT (src, "%u redirect to \"%s\" (permanent %d)",
++      status, src->redirection_uri, src->redirection_permanent);
+ }
+ 
+ static gboolean
+ gst_soup_http_src_build_message (GstSoupHTTPSrc * src, const gchar * method)
+ {
++  SoupMessageHeaders *request_headers;
++
+   g_return_val_if_fail (src->msg == NULL, FALSE);
+ 
+-  src->msg = soup_message_new (method, src->location);
++  src->msg = _soup_message_new (method, src->location);
+   if (!src->msg) {
+     GST_ELEMENT_ERROR (src, RESOURCE, OPEN_READ,
+         ("Error parsing URL."), ("URL: %s", src->location));
+     return FALSE;
+   }
+ 
++  request_headers = _soup_message_get_request_headers (src->msg);
++
+   /* Duplicating the defaults of libsoup here. We don't want to set a
+    * User-Agent in the session as each source might have its own User-Agent
+    * set */
+   if (!src->user_agent || !*src->user_agent) {
+     gchar *user_agent =
+-        g_strdup_printf ("libsoup/%u.%u.%u", soup_get_major_version (),
+-        soup_get_minor_version (), soup_get_micro_version ());
+-    soup_message_headers_append (src->msg->request_headers, "User-Agent",
+-        user_agent);
++        g_strdup_printf ("libsoup/%u.%u.%u", _soup_get_major_version (),
++        _soup_get_minor_version (), _soup_get_micro_version ());
++    _soup_message_headers_append (request_headers, "User-Agent", user_agent);
+     g_free (user_agent);
+   } else if (g_str_has_suffix (src->user_agent, " ")) {
+     gchar *user_agent = g_strdup_printf ("%slibsoup/%u.%u.%u", src->user_agent,
+-        soup_get_major_version (),
+-        soup_get_minor_version (), soup_get_micro_version ());
+-    soup_message_headers_append (src->msg->request_headers, "User-Agent",
+-        user_agent);
++        _soup_get_major_version (),
++        _soup_get_minor_version (), _soup_get_micro_version ());
++    _soup_message_headers_append (request_headers, "User-Agent", user_agent);
+     g_free (user_agent);
+   } else {
+-    soup_message_headers_append (src->msg->request_headers, "User-Agent",
++    _soup_message_headers_append (request_headers, "User-Agent",
+         src->user_agent);
+   }
+ 
+   if (!src->keep_alive) {
+-    soup_message_headers_append (src->msg->request_headers, "Connection",
+-        "close");
++    _soup_message_headers_append (request_headers, "Connection", "close");
+   }
+   if (src->iradio_mode) {
+-    soup_message_headers_append (src->msg->request_headers, "icy-metadata",
+-        "1");
++    _soup_message_headers_append (request_headers, "icy-metadata", "1");
+   }
+   if (src->cookies) {
+     gchar **cookie;
+ 
+     for (cookie = src->cookies; *cookie != NULL; cookie++) {
+-      soup_message_headers_append (src->msg->request_headers, "Cookie",
+-          *cookie);
++      _soup_message_headers_append (request_headers, "Cookie", *cookie);
+     }
+ 
+-    soup_message_disable_feature (src->msg, SOUP_TYPE_COOKIE_JAR);
++    _soup_message_disable_feature (src->msg, _soup_cookie_jar_get_type ());
+   }
+ 
+   if (!src->compress) {
+-    soup_message_headers_append (src->msg->request_headers, "Accept-Encoding",
+-        "identity");
++    _soup_message_headers_append (_soup_message_get_request_headers (src->msg),
++        "Accept-Encoding", "identity");
+   }
+ 
+-  soup_message_set_flags (src->msg, SOUP_MESSAGE_OVERWRITE_CHUNKS |
++  if (gst_soup_loader_get_api_version () == 3) {
++    g_signal_connect (src->msg, "accept-certificate",
++        G_CALLBACK (gst_soup_http_src_accept_certificate_cb), src);
++    g_signal_connect (src->msg, "authenticate",
++        G_CALLBACK (gst_soup_http_src_authenticate_cb), src);
++  }
++
++  _soup_message_set_flags (src->msg, SOUP_MESSAGE_OVERWRITE_CHUNKS |
+       (src->automatic_redirect ? 0 : SOUP_MESSAGE_NO_REDIRECT));
+ 
+   if (src->automatic_redirect) {
+@@ -1541,7 +1619,7 @@ gst_soup_http_src_send_message (GstSoupHTTPSrc * src)
+   g_assert (src->input_stream == NULL);
+ 
+   src->input_stream =
+-      soup_session_send (src->session, src->msg, src->cancellable, &error);
++      _soup_session_send (src->session, src->msg, src->cancellable, &error);
+ 
+   if (error)
+     GST_DEBUG_OBJECT (src, "Sending message failed: %s", error->message);
+@@ -1562,7 +1640,7 @@ gst_soup_http_src_send_message (GstSoupHTTPSrc * src)
+     goto done;
+   }
+ 
+-  if (SOUP_STATUS_IS_SUCCESSFUL (src->msg->status_code)) {
++  if (SOUP_STATUS_IS_SUCCESSFUL (_soup_message_get_status (src->msg))) {
+     GST_DEBUG_OBJECT (src, "Successfully got a reply");
+   } else {
+     /* FIXME - be more helpful to people debugging */
+@@ -1579,6 +1657,7 @@ static GstFlowReturn
+ gst_soup_http_src_do_request (GstSoupHTTPSrc * src, const gchar * method)
+ {
+   GstFlowReturn ret;
++  SoupMessageHeaders *request_headers;
+ 
+   if (src->max_retries != -1 && src->retry_count > src->max_retries) {
+     GST_DEBUG_OBJECT (src, "Max retries reached");
+@@ -1592,12 +1671,15 @@ gst_soup_http_src_do_request (GstSoupHTTPSrc * src, const gchar * method)
+ 
+   GST_LOG_OBJECT (src, "Running request for method: %s", method);
+ 
++  if (src->msg)
++    request_headers = _soup_message_get_request_headers (src->msg);
++
+   /* Update the position if we are retrying */
+   if (src->msg && src->request_position > 0) {
+     gst_soup_http_src_add_range_header (src, src->request_position,
+         src->stop_position);
+   } else if (src->msg && src->request_position == 0)
+-    soup_message_headers_remove (src->msg->request_headers, "Range");
++    _soup_message_headers_remove (request_headers, "Range");
+ 
+   /* add_range_header() has the side effect of setting read_position to
+    * the requested position. This *needs* to be set regardless of having
+@@ -1620,13 +1702,13 @@ gst_soup_http_src_do_request (GstSoupHTTPSrc * src, const gchar * method)
+ 
+   /* Check if Range header was respected. */
+   if (ret == GST_FLOW_OK && src->request_position > 0 &&
+-      src->msg->status_code != SOUP_STATUS_PARTIAL_CONTENT) {
++      _soup_message_get_status (src->msg) != SOUP_STATUS_PARTIAL_CONTENT) {
+     src->seekable = FALSE;
+     GST_ELEMENT_ERROR_WITH_DETAILS (src, RESOURCE, SEEK,
+         (_("Server does not support seeking.")),
+         ("Server does not accept Range HTTP header, URL: %s, Redirect to: %s",
+             src->location, GST_STR_NULL (src->redirection_uri)),
+-        ("http-status-code", G_TYPE_UINT, src->msg->status_code,
++        ("http-status-code", G_TYPE_UINT, _soup_message_get_status (src->msg),
+             "http-redirection-uri", G_TYPE_STRING,
+             GST_STR_NULL (src->redirection_uri), NULL));
+     ret = GST_FLOW_ERROR;
+@@ -1929,8 +2011,8 @@ gst_soup_http_src_set_context (GstElement * element, GstContext * context)
+     if (src->external_session)
+       g_object_unref (src->external_session);
+     src->external_session = NULL;
+-    gst_structure_get (s, "session", SOUP_TYPE_SESSION, &src->external_session,
+-        NULL);
++    gst_structure_get (s, "session", _soup_session_get_type (),
++        &src->external_session, NULL);
+     src->forced_external_session = FALSE;
+     gst_structure_get (s, "force", G_TYPE_BOOLEAN,
+         &src->forced_external_session, NULL);
+@@ -1999,7 +2081,7 @@ gst_soup_http_src_check_seekable (GstSoupHTTPSrc * src)
+     g_mutex_lock (&src->mutex);
+     while (!src->got_headers && !g_cancellable_is_cancelled (src->cancellable)
+         && ret == GST_FLOW_OK) {
+-      if ((src->msg && src->msg->method != SOUP_METHOD_HEAD)) {
++      if ((src->msg && _soup_message_get_method (src->msg) != SOUP_METHOD_HEAD)) {
+         /* wait for the current request to finish */
+         g_cond_wait (&src->have_headers_cond, &src->mutex);
+       } else {
+@@ -2139,7 +2221,7 @@ static gboolean
+ gst_soup_http_src_set_proxy (GstSoupHTTPSrc * src, const gchar * uri)
+ {
+   if (src->proxy) {
+-    soup_uri_free (src->proxy);
++    gst_soup_uri_free (src->proxy);
+     src->proxy = NULL;
+   }
+ 
+@@ -2147,11 +2229,11 @@ gst_soup_http_src_set_proxy (GstSoupHTTPSrc * src, const gchar * uri)
+     return TRUE;
+ 
+   if (g_strstr_len (uri, -1, "://")) {
+-    src->proxy = soup_uri_new (uri);
++    src->proxy = gst_soup_uri_new (uri);
+   } else {
+     gchar *new_uri = g_strconcat ("http://", uri, NULL);
+ 
+-    src->proxy = soup_uri_new (new_uri);
++    src->proxy = gst_soup_uri_new (new_uri);
+     g_free (new_uri);
+   }
+ 
+diff --git a/ext/soup/gstsouphttpsrc.h b/ext/soup/gstsouphttpsrc.h
+index f848cde6dc..a7184fee62 100644
+--- a/ext/soup/gstsouphttpsrc.h
++++ b/ext/soup/gstsouphttpsrc.h
+@@ -1,5 +1,6 @@
+ /* GStreamer
+  * Copyright (C) 2007-2008 Wouter Cloetens <wouter@mind.be>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -15,14 +16,13 @@
+ #ifndef __GST_SOUP_HTTP_SRC_H__
+ #define __GST_SOUP_HTTP_SRC_H__
+ 
+-#include <gst/gst.h>
++#include "gstsouputils.h"
++#include "gstsouploader.h"
++#include <gio/gio.h>
+ #include <gst/base/gstpushsrc.h>
+-#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+-#include <libsoup/soup.h>
+-
+ #define GST_TYPE_SOUP_HTTP_SRC \
+   (gst_soup_http_src_get_type())
+ #define GST_SOUP_HTTP_SRC(obj) \
+@@ -53,7 +53,7 @@ struct _GstSoupHTTPSrc {
+   gboolean redirection_permanent; /* Permanent or temporary redirect? */
+   gchar *user_agent;           /* User-Agent HTTP header. */
+   gboolean automatic_redirect; /* Follow redirects. */
+-  SoupURI *proxy;              /* HTTP proxy URI. */
++  GstSoupUri *proxy;           /* HTTP proxy URI. */
+   gchar *user_id;              /* Authentication user id for location URI. */
+   gchar *user_pw;              /* Authentication user password for location URI. */
+   gchar *proxy_id;             /* Authentication user id for proxy URI. */
+diff --git a/ext/soup/gstsouploader.c b/ext/soup/gstsouploader.c
+new file mode 100644
+index 0000000000..16697835fa
+--- /dev/null
++++ b/ext/soup/gstsouploader.c
+@@ -0,0 +1,648 @@
++/* GStreamer
++ * Copyright (C) 2021 Igalia S.L.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Library General Public License for more
++ */
++
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
++#include "gstsouploader.h"
++#include <gmodule.h>
++
++#ifdef HAVE_RTLD_NOLOAD
++#include <dlfcn.h>
++#endif
++
++#ifdef G_OS_WIN32
++#include <windows.h>
++#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) && !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
++#define GST_WINAPI_ONLY_APP
++#endif
++#endif
++
++GST_DEBUG_CATEGORY_EXTERN (gst_soup_debug);
++#define GST_CAT_DEFAULT gst_soup_debug
++
++#define LIBSOUP_3_SONAME "libsoup-3.0.so.0"
++#define LIBSOUP_2_SONAME "libsoup-2.4.so.1"
++
++#define LOAD_SYMBOL(name) G_STMT_START {                                \
++    if (!g_module_symbol (module, G_STRINGIFY (name), (gpointer *) &G_PASTE (vtable->_, name))) { \
++      GST_ERROR ("Failed to load '%s' from %s, %s", G_STRINGIFY (name), g_module_name (module), g_module_error()); \
++      goto error;                                                       \
++    }                                                                   \
++  } G_STMT_END;
++
++#define LOAD_VERSIONED_SYMBOL(version, name) G_STMT_START {             \
++  if (!g_module_symbol(module, G_STRINGIFY(name), (gpointer *)&G_PASTE(vtable->_, G_PASTE(name, G_PASTE(_, version))))) { \
++    GST_WARNING ("Failed to load '%s' from %s, %s", G_STRINGIFY(name),  \
++                g_module_name(module), g_module_error());               \
++    goto error;                                                         \
++  }                                                                     \
++  } G_STMT_END;
++
++typedef struct _GstSoupVTable
++{
++  gboolean loaded;
++  guint lib_version;
++
++  /* *INDENT-OFF* */
++
++  /* Symbols present only in libsoup 3 */
++#if GLIB_CHECK_VERSION(2, 66, 0)
++  GUri *(*_soup_message_get_uri_3)(SoupMessage * msg);
++#endif
++  SoupLogger (*_soup_logger_new_3) (SoupLoggerLogLevel level);
++  SoupMessageHeaders *(*_soup_message_get_request_headers_3) (SoupMessage * msg);
++  SoupMessageHeaders *(*_soup_message_get_response_headers_3) (SoupMessage * msg);
++  void (*_soup_message_set_request_body_from_bytes_3) (SoupMessage * msg,
++    const char * content_type, GBytes * data);
++  const char *(*_soup_message_get_reason_phrase_3) (SoupMessage * msg);
++  SoupStatus (*_soup_message_get_status_3) (SoupMessage * msg);
++
++  /* Symbols present only in libsoup 2 */
++  SoupLogger (*_soup_logger_new_2) (SoupLoggerLogLevel, int);
++  SoupURI (*_soup_uri_new_2) (const char *);
++  SoupURI *(*_soup_message_get_uri_2) (SoupMessage *);
++  char *(*_soup_uri_to_string_2) (SoupURI *, gboolean);
++  void (*_soup_message_body_append_2) (SoupMessageBody *, SoupMemoryUse,
++    gconstpointer, gsize);
++  void (*_soup_uri_free_2) (SoupURI *);
++  void (*_soup_session_cancel_message_2) (SoupSession *, SoupMessage *, guint);
++
++  /* Symbols present in libsoup 2 and libsoup 3 */
++  GType (*_soup_content_decoder_get_type) (void);
++  GType (*_soup_cookie_jar_get_type) (void);
++  guint (*_soup_get_major_version) (void);
++  guint (*_soup_get_minor_version) (void);
++  guint (*_soup_get_micro_version) (void);
++  GType (*_soup_logger_log_level_get_type) (void);
++  void (*_soup_logger_set_printer) (SoupLogger * logger, SoupLoggerPrinter printer, gpointer user_data,
++    GDestroyNotify destroy_notify);
++  void (*_soup_message_disable_feature) (SoupMessage * message, GType feature_type);
++  void (*_soup_message_headers_append) (SoupMessageHeaders * hdrs, const char * name,
++    const char * value);
++  void (*_soup_message_headers_foreach) (SoupMessageHeaders * hdrs,
++    SoupMessageHeadersForeachFunc callback, gpointer user_data);
++  goffset (*_soup_message_headers_get_content_length) (SoupMessageHeaders * hdrs);
++  const char *(*_soup_message_headers_get_content_type) (SoupMessageHeaders * hdrs,
++    GHashTable ** value);
++  SoupEncoding (*_soup_message_headers_get_encoding) (SoupMessageHeaders * hdrs);
++  const char *(*_soup_message_headers_get_one) (SoupMessageHeaders * hdrs,
++    const char * name);
++  void (*_soup_message_headers_remove) (SoupMessageHeaders * hdrs, const char * name);
++  SoupMessage *(*_soup_message_new) (const char * method, const char * location);
++  void (*_soup_message_set_flags) (SoupMessage * msg, SoupMessageFlags flags);
++  void (*_soup_session_abort) (SoupSession * session);
++  void (*_soup_session_add_feature) (SoupSession * session, SoupSessionFeature * feature);
++  void (*_soup_session_add_feature_by_type) (SoupSession * session, GType feature_type);
++  GType (*_soup_session_get_type) (void);
++
++  void (*_soup_auth_authenticate) (SoupAuth * auth, const char *username,
++    const char *password);
++  const char *(*_soup_message_get_method_3) (SoupMessage * msg);
++  GInputStream *(*_soup_session_send_finish) (SoupSession * session,
++    GAsyncResult * result, GError ** error);
++  GInputStream *(*_soup_session_send) (SoupSession * session, SoupMessage * msg,
++    GCancellable * cancellable, GError ** error);
++  /* *INDENT-ON* */
++} GstSoupVTable;
++
++static GstSoupVTable gst_soup_vtable = { 0, };
++
++gboolean
++gst_soup_load_library (void)
++{
++  GModule *module;
++  GstSoupVTable *vtable;
++  const gchar *libsoup_sonames[5] = { 0 };
++  guint len = 0;
++
++  if (gst_soup_vtable.loaded)
++    return TRUE;
++
++  g_assert (g_module_supported ());
++
++#ifdef HAVE_RTLD_NOLOAD
++  {
++    gpointer handle = NULL;
++
++    /* In order to avoid causing conflicts we detect if libsoup 2 or 3 is loaded already.
++     * If so use that. Otherwise we will try to load our own version to use preferring 3. */
++
++    if ((handle = dlopen (LIBSOUP_3_SONAME, RTLD_NOW | RTLD_NOLOAD))) {
++      libsoup_sonames[0] = LIBSOUP_3_SONAME;
++      GST_DEBUG ("LibSoup 3 found");
++    } else if ((handle = dlopen (LIBSOUP_2_SONAME, RTLD_NOW | RTLD_NOLOAD))) {
++      libsoup_sonames[0] = LIBSOUP_2_SONAME;
++      GST_DEBUG ("LibSoup 2 found");
++    } else {
++      GST_DEBUG ("Trying all libsoups");
++      libsoup_sonames[0] = LIBSOUP_3_SONAME;
++      libsoup_sonames[1] = LIBSOUP_2_SONAME;
++    }
++
++    g_clear_pointer (&handle, dlclose);
++  }
++#else
++
++#ifdef G_OS_WIN32
++
++#define LIBSOUP2_MSVC_DLL "soup-2.4-1.dll"
++#define LIBSOUP3_MSVC_DLL "soup-3.0-0.dll"
++#define LIBSOUP2_MINGW_DLL "libsoup-2.4-1.dll"
++#define LIBSOUP3_MINGW_DLL "libsoup-3.0-0.dll"
++
++  {
++#ifdef _MSC_VER
++    const char *candidates[5] = { LIBSOUP3_MSVC_DLL, LIBSOUP2_MSVC_DLL,
++      LIBSOUP3_MINGW_DLL, LIBSOUP2_MINGW_DLL, 0
++    };
++#else
++    const char *candidates[5] = { LIBSOUP3_MINGW_DLL, LIBSOUP2_MINGW_DLL,
++      LIBSOUP3_MSVC_DLL, LIBSOUP2_MSVC_DLL, 0
++    };
++#endif /* _MSC_VER */
++
++    guint len = g_strv_length ((gchar **) candidates);
++#if !GST_WINAPI_ONLY_APP
++    for (guint i = 0; i < len; i++) {
++      HMODULE phModule;
++      BOOL loaded =
++          GetModuleHandleExA (GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
++          candidates[i], &phModule);
++      if (loaded) {
++        GST_DEBUG ("%s is resident. Using it.", candidates[i]);
++        libsoup_sonames[0] = candidates[i];
++        break;
++      }
++    }
++#endif
++    if (libsoup_sonames[0] == NULL) {
++      GST_DEBUG ("No resident libsoup, trying them all");
++      for (guint i = 0; i < len; i++) {
++        libsoup_sonames[i] = candidates[i];
++      }
++    }
++  }
++#else
++  libsoup_sonames[0] = LIBSOUP_3_SONAME;
++  libsoup_sonames[1] = LIBSOUP_2_SONAME;
++#endif /* G_OS_WIN32 */
++
++#endif /* HAVE_RTLD_NOLOAD */
++
++  vtable = &gst_soup_vtable;
++  len = g_strv_length ((gchar **) libsoup_sonames);
++
++  for (guint i = 0; i < len; i++) {
++    module =
++        g_module_open (libsoup_sonames[i],
++        G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
++    if (module) {
++      GST_DEBUG ("Loaded %s", g_module_name (module));
++      if (g_strstr_len (libsoup_sonames[i], -1, "soup-2")) {
++        vtable->lib_version = 2;
++        LOAD_VERSIONED_SYMBOL (2, soup_logger_new);
++        LOAD_VERSIONED_SYMBOL (2, soup_message_body_append);
++        LOAD_VERSIONED_SYMBOL (2, soup_uri_free);
++        LOAD_VERSIONED_SYMBOL (2, soup_uri_new);
++        LOAD_VERSIONED_SYMBOL (2, soup_uri_to_string);
++        LOAD_VERSIONED_SYMBOL (2, soup_message_get_uri);
++        LOAD_VERSIONED_SYMBOL (2, soup_session_cancel_message);
++      } else {
++        vtable->lib_version = 3;
++        LOAD_VERSIONED_SYMBOL (3, soup_logger_new);
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_request_headers);
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_response_headers);
++        LOAD_VERSIONED_SYMBOL (3, soup_message_set_request_body_from_bytes);
++#if GLIB_CHECK_VERSION(2, 66, 0)
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_uri);
++#endif
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_method);
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_reason_phrase);
++        LOAD_VERSIONED_SYMBOL (3, soup_message_get_status);
++      }
++
++      LOAD_SYMBOL (soup_auth_authenticate);
++      LOAD_SYMBOL (soup_content_decoder_get_type);
++      LOAD_SYMBOL (soup_cookie_jar_get_type);
++      LOAD_SYMBOL (soup_get_major_version);
++      LOAD_SYMBOL (soup_get_micro_version);
++      LOAD_SYMBOL (soup_get_minor_version);
++      LOAD_SYMBOL (soup_logger_log_level_get_type);
++      LOAD_SYMBOL (soup_logger_set_printer);
++      LOAD_SYMBOL (soup_message_disable_feature);
++      LOAD_SYMBOL (soup_message_headers_append);
++      LOAD_SYMBOL (soup_message_headers_foreach);
++      LOAD_SYMBOL (soup_message_headers_get_content_length);
++      LOAD_SYMBOL (soup_message_headers_get_content_type);
++      LOAD_SYMBOL (soup_message_headers_get_encoding);
++      LOAD_SYMBOL (soup_message_headers_get_one);
++      LOAD_SYMBOL (soup_message_headers_remove);
++      LOAD_SYMBOL (soup_message_new);
++      LOAD_SYMBOL (soup_message_set_flags);
++      LOAD_SYMBOL (soup_session_abort);
++      LOAD_SYMBOL (soup_session_add_feature);
++      LOAD_SYMBOL (soup_session_add_feature_by_type);
++      LOAD_SYMBOL (soup_session_get_type);
++      LOAD_SYMBOL (soup_session_send);
++      LOAD_SYMBOL (soup_session_send_finish);
++
++      vtable->loaded = TRUE;
++      goto beach;
++
++    error:
++      GST_DEBUG ("Failed to find all libsoup symbols");
++      g_clear_pointer (&module, g_module_close);
++      continue;
++    } else {
++      GST_DEBUG ("Module %s not found", libsoup_sonames[i]);
++      continue;
++    }
++  beach:
++    break;
++  }
++
++  return vtable->loaded;
++}
++
++guint
++gst_soup_loader_get_api_version (void)
++{
++  return gst_soup_vtable.lib_version;
++}
++
++SoupSession *
++_soup_session_new_with_options (const char *optname1, ...)
++{
++  SoupSession *session;
++  va_list ap;
++
++  va_start (ap, optname1);
++  session =
++      (SoupSession *) g_object_new_valist (_soup_session_get_type (), optname1,
++      ap);
++  va_end (ap);
++  return session;
++}
++
++SoupLogger *
++_soup_logger_new (SoupLoggerLogLevel level)
++{
++  if (gst_soup_vtable.lib_version == 2) {
++    g_assert (gst_soup_vtable._soup_logger_new_2 != NULL);
++    return gst_soup_vtable._soup_logger_new_2 (level, -1);
++  }
++  g_assert (gst_soup_vtable._soup_logger_new_3 != NULL);
++  return gst_soup_vtable._soup_logger_new_3 (level);
++}
++
++void
++_soup_logger_set_printer (SoupLogger * logger, SoupLoggerPrinter printer,
++    gpointer printer_data, GDestroyNotify destroy)
++{
++  g_assert (gst_soup_vtable._soup_logger_set_printer != NULL);
++  gst_soup_vtable._soup_logger_set_printer (logger, printer, printer_data,
++      destroy);
++}
++
++void
++_soup_session_add_feature (SoupSession * session, SoupSessionFeature * feature)
++{
++  g_assert (gst_soup_vtable._soup_session_add_feature != NULL);
++  gst_soup_vtable._soup_session_add_feature (session, feature);
++}
++
++GstSoupUri *
++gst_soup_uri_new (const char *uri_string)
++{
++  GstSoupUri *uri = g_new0 (GstSoupUri, 1);
++  if (gst_soup_vtable.lib_version == 2) {
++    g_assert (gst_soup_vtable._soup_uri_new_2 != NULL);
++    uri->soup_uri = gst_soup_vtable._soup_uri_new_2 (uri_string);
++  } else {
++#if GLIB_CHECK_VERSION(2, 66, 0)
++    uri->uri = g_uri_parse (uri_string, SOUP_HTTP_URI_FLAGS, NULL);
++#endif
++  }
++  return uri;
++}
++
++void
++gst_soup_uri_free (GstSoupUri * uri)
++{
++#if GLIB_CHECK_VERSION(2, 66, 0)
++  if (uri->uri) {
++    g_uri_unref (uri->uri);
++  }
++#endif
++  if (uri->soup_uri) {
++    g_assert (gst_soup_vtable._soup_uri_free_2 != NULL);
++    gst_soup_vtable._soup_uri_free_2 (uri->soup_uri);
++  }
++  g_free (uri);
++}
++
++char *
++gst_soup_uri_to_string (GstSoupUri * uri)
++{
++#if GLIB_CHECK_VERSION(2, 66, 0)
++  if (uri->uri) {
++    return g_uri_to_string_partial (uri->uri, G_URI_HIDE_PASSWORD);
++  }
++#endif
++  if (uri->soup_uri) {
++    g_assert (gst_soup_vtable._soup_uri_to_string_2 != NULL);
++    return gst_soup_vtable._soup_uri_to_string_2 (uri->soup_uri, FALSE);
++  }
++  g_assert_not_reached ();
++  return NULL;
++}
++
++char *
++gst_soup_message_uri_to_string (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 2) {
++    SoupURI *uri = NULL;
++    g_assert (gst_soup_vtable._soup_message_get_uri_2 != NULL);
++    uri = gst_soup_vtable._soup_message_get_uri_2 (msg);
++    return gst_soup_vtable._soup_uri_to_string_2 (uri, FALSE);
++  } else {
++#if GLIB_CHECK_VERSION(2, 66, 0)
++    GUri *uri = NULL;
++    g_assert (gst_soup_vtable._soup_message_get_uri_3 != NULL);
++    uri = gst_soup_vtable._soup_message_get_uri_3 (msg);
++    return g_uri_to_string_partial (uri, G_URI_HIDE_PASSWORD);
++#endif
++  }
++  /*
++   * If we reach this, it means the plugin was built for old glib, but somehow
++   * we managed to load libsoup3, which requires a very recent glib. As this
++   * is a contradiction, we can assert, I guess?
++   */
++  g_assert_not_reached ();
++  return NULL;
++}
++
++guint
++_soup_get_major_version (void)
++{
++  g_assert (gst_soup_vtable._soup_get_major_version != NULL);
++  return gst_soup_vtable._soup_get_major_version ();
++}
++
++guint
++_soup_get_minor_version (void)
++{
++  g_assert (gst_soup_vtable._soup_get_minor_version != NULL);
++  return gst_soup_vtable._soup_get_minor_version ();
++}
++
++guint
++_soup_get_micro_version (void)
++{
++  g_assert (gst_soup_vtable._soup_get_micro_version != NULL);
++  return gst_soup_vtable._soup_get_micro_version ();
++}
++
++void
++_soup_message_set_request_body_from_bytes (SoupMessage * msg,
++    const char *content_type, GBytes * bytes)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_set_request_body_from_bytes_3 !=
++        NULL);
++    gst_soup_vtable._soup_message_set_request_body_from_bytes_3 (msg,
++        content_type, bytes);
++  } else {
++    gsize size;
++    gconstpointer data = g_bytes_get_data (bytes, &size);
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    g_assert (gst_soup_vtable._soup_message_body_append_2 != NULL);
++    gst_soup_vtable._soup_message_body_append_2 (msg2->request_body,
++        SOUP_MEMORY_COPY, data, size);
++  }
++}
++
++GType
++_soup_session_get_type (void)
++{
++  g_assert (gst_soup_vtable._soup_session_get_type != NULL);
++  return gst_soup_vtable._soup_session_get_type ();
++}
++
++GType
++_soup_logger_log_level_get_type (void)
++{
++  g_assert (gst_soup_vtable._soup_logger_log_level_get_type != NULL);
++  return gst_soup_vtable._soup_logger_log_level_get_type ();
++}
++
++GType
++_soup_content_decoder_get_type (void)
++{
++  g_assert (gst_soup_vtable._soup_content_decoder_get_type != NULL);
++  return gst_soup_vtable._soup_content_decoder_get_type ();
++}
++
++GType
++_soup_cookie_jar_get_type (void)
++{
++  g_assert (gst_soup_vtable._soup_cookie_jar_get_type != NULL);
++  return gst_soup_vtable._soup_cookie_jar_get_type ();
++}
++
++void
++_soup_session_abort (SoupSession * session)
++{
++  g_assert (gst_soup_vtable._soup_session_abort != NULL);
++  gst_soup_vtable._soup_session_abort (session);
++}
++
++SoupMessage *
++_soup_message_new (const char *method, const char *uri_string)
++{
++  g_assert (gst_soup_vtable._soup_message_new != NULL);
++  return gst_soup_vtable._soup_message_new (method, uri_string);
++}
++
++SoupMessageHeaders *
++_soup_message_get_request_headers (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_get_request_headers_3 != NULL);
++    return gst_soup_vtable._soup_message_get_request_headers_3 (msg);
++  } else {
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    return msg2->request_headers;
++  }
++}
++
++SoupMessageHeaders *
++_soup_message_get_response_headers (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_get_response_headers_3 != NULL);
++    return gst_soup_vtable._soup_message_get_response_headers_3 (msg);
++  } else {
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    return msg2->response_headers;
++  }
++}
++
++void
++_soup_message_headers_remove (SoupMessageHeaders * hdrs, const char *name)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_remove != NULL);
++  gst_soup_vtable._soup_message_headers_remove (hdrs, name);
++}
++
++void
++_soup_message_headers_append (SoupMessageHeaders * hdrs, const char *name,
++    const char *value)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_append != NULL);
++  gst_soup_vtable._soup_message_headers_append (hdrs, name, value);
++}
++
++void
++_soup_message_set_flags (SoupMessage * msg, SoupMessageFlags flags)
++{
++  g_assert (gst_soup_vtable._soup_message_set_flags != NULL);
++  gst_soup_vtable._soup_message_set_flags (msg, flags);
++}
++
++void
++_soup_session_add_feature_by_type (SoupSession * session, GType feature_type)
++{
++  g_assert (gst_soup_vtable._soup_session_add_feature_by_type != NULL);
++  gst_soup_vtable._soup_session_add_feature_by_type (session, feature_type);
++}
++
++void
++_soup_message_headers_foreach (SoupMessageHeaders * hdrs,
++    SoupMessageHeadersForeachFunc func, gpointer user_data)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_foreach != NULL);
++  gst_soup_vtable._soup_message_headers_foreach (hdrs, func, user_data);
++}
++
++SoupEncoding
++_soup_message_headers_get_encoding (SoupMessageHeaders * hdrs)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_get_encoding != NULL);
++  return gst_soup_vtable._soup_message_headers_get_encoding (hdrs);
++}
++
++goffset
++_soup_message_headers_get_content_length (SoupMessageHeaders * hdrs)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_get_content_length != NULL);
++  return gst_soup_vtable._soup_message_headers_get_content_length (hdrs);
++}
++
++SoupStatus
++_soup_message_get_status (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_get_status_3 != NULL);
++    return gst_soup_vtable._soup_message_get_status_3 (msg);
++  } else {
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    return msg2->status_code;
++  }
++}
++
++const char *
++_soup_message_get_reason_phrase (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_get_reason_phrase_3 != NULL);
++    return gst_soup_vtable._soup_message_get_reason_phrase_3 (msg);
++  } else {
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    return msg2->reason_phrase;
++  }
++}
++
++const char *
++_soup_message_headers_get_one (SoupMessageHeaders * hdrs, const char *name)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_get_one != NULL);
++  return gst_soup_vtable._soup_message_headers_get_one (hdrs, name);
++}
++
++void
++_soup_message_disable_feature (SoupMessage * msg, GType feature_type)
++{
++  g_assert (gst_soup_vtable._soup_message_disable_feature != NULL);
++  gst_soup_vtable._soup_message_disable_feature (msg, feature_type);
++}
++
++const char *
++_soup_message_headers_get_content_type (SoupMessageHeaders * hdrs,
++    GHashTable ** params)
++{
++  g_assert (gst_soup_vtable._soup_message_headers_get_content_type != NULL);
++  return gst_soup_vtable._soup_message_headers_get_content_type (hdrs, params);
++}
++
++void
++_soup_auth_authenticate (SoupAuth * auth, const char *username,
++    const char *password)
++{
++  g_assert (gst_soup_vtable._soup_auth_authenticate != NULL);
++  gst_soup_vtable._soup_auth_authenticate (auth, username, password);
++}
++
++const char *
++_soup_message_get_method (SoupMessage * msg)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_assert (gst_soup_vtable._soup_message_get_method_3 != NULL);
++    return gst_soup_vtable._soup_message_get_method_3 (msg);
++  } else {
++    SoupMessage2 *msg2 = (SoupMessage2 *) msg;
++    return msg2->method;
++  }
++}
++
++GInputStream *
++_soup_session_send_finish (SoupSession * session,
++    GAsyncResult * result, GError ** error)
++{
++  g_assert (gst_soup_vtable._soup_session_send_finish != NULL);
++  return gst_soup_vtable._soup_session_send_finish (session, result, error);
++}
++
++GInputStream *
++_soup_session_send (SoupSession * session, SoupMessage * msg,
++    GCancellable * cancellable, GError ** error)
++{
++  g_assert (gst_soup_vtable._soup_session_send != NULL);
++  return gst_soup_vtable._soup_session_send (session, msg, cancellable, error);
++}
++
++void
++gst_soup_session_cancel_message (SoupSession * session, SoupMessage * msg,
++    GCancellable * cancellable)
++{
++  if (gst_soup_vtable.lib_version == 3) {
++    g_cancellable_cancel (cancellable);
++  } else {
++    g_assert (gst_soup_vtable._soup_session_cancel_message_2 != NULL);
++    gst_soup_vtable._soup_session_cancel_message_2 (session, msg,
++        SOUP_STATUS_CANCELLED);
++  }
++}
+diff --git a/ext/soup/gstsouploader.h b/ext/soup/gstsouploader.h
+new file mode 100644
+index 0000000000..55199fa765
+--- /dev/null
++++ b/ext/soup/gstsouploader.h
+@@ -0,0 +1,108 @@
++/* GStreamer
++ * Copyright (C) 2021 Igalia S.L.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Library General Public License for more
++ */
++
++#ifndef __GST_SOUP_LOADER_H__
++#define __GST_SOUP_LOADER_H__
++
++#include "stub/soup.h"
++#include <gst/gst.h>
++#include <gio/gio.h>
++
++G_BEGIN_DECLS
++
++gboolean gst_soup_load_library (void);
++guint gst_soup_loader_get_api_version (void);
++
++SoupSession *_soup_session_new_with_options (const char *optname1, ...) G_GNUC_NULL_TERMINATED;
++
++SoupLogger *_soup_logger_new (SoupLoggerLogLevel);
++
++void _soup_logger_set_printer (SoupLogger *logger, SoupLoggerPrinter printer,
++                               gpointer printer_data, GDestroyNotify destroy);
++
++void _soup_session_add_feature (SoupSession *session,
++                                SoupSessionFeature *feature);
++void _soup_session_add_feature_by_type (SoupSession *session, GType feature_type);
++
++typedef struct _GstSoupUri {
++#if GLIB_CHECK_VERSION(2, 66, 0)
++  GUri *uri;
++#endif
++  SoupURI *soup_uri;
++} GstSoupUri;
++
++GstSoupUri *gst_soup_uri_new (const char *uri_string);
++void gst_soup_uri_free (GstSoupUri *uri);
++char *gst_soup_uri_to_string (GstSoupUri *uri);
++
++char *gst_soup_message_uri_to_string (SoupMessage* msg);
++
++guint _soup_get_major_version (void);
++guint _soup_get_minor_version (void);
++guint _soup_get_micro_version (void);
++
++void _soup_message_set_request_body_from_bytes (SoupMessage *msg,
++                                                const char *content_type,
++                                                GBytes *bytes);
++
++GType _soup_session_get_type (void);
++GType _soup_logger_log_level_get_type (void);
++GType _soup_content_decoder_get_type (void);
++GType _soup_cookie_jar_get_type (void);
++
++void _soup_session_abort (SoupSession * session);
++SoupMessage *_soup_message_new (const char *method, const char *uri_string);
++SoupMessageHeaders *_soup_message_get_request_headers (SoupMessage *msg);
++SoupMessageHeaders *_soup_message_get_response_headers (SoupMessage *msg);
++
++void _soup_message_headers_remove (SoupMessageHeaders *hdrs, const char *name);
++void _soup_message_headers_append (SoupMessageHeaders *hdrs, const char *name,
++                                   const char *value);
++void _soup_message_set_flags (SoupMessage *msg, SoupMessageFlags flags);
++
++void _soup_message_headers_foreach (SoupMessageHeaders *hdrs,
++                                    SoupMessageHeadersForeachFunc func,
++                                    gpointer user_data);
++
++SoupEncoding _soup_message_headers_get_encoding (SoupMessageHeaders *hdrs);
++
++goffset _soup_message_headers_get_content_length (SoupMessageHeaders *hdrs);
++
++SoupStatus _soup_message_get_status (SoupMessage *msg);
++const char *_soup_message_get_reason_phrase (SoupMessage *msg);
++
++const char *_soup_message_headers_get_one (SoupMessageHeaders *hdrs,
++                                           const char *name);
++void _soup_message_disable_feature (SoupMessage *msg, GType feature_type);
++
++const char *_soup_message_headers_get_content_type (SoupMessageHeaders *hdrs,
++                                                    GHashTable **params);
++
++void _soup_auth_authenticate (SoupAuth *auth, const char *username,
++                              const char *password);
++
++const char *_soup_message_get_method (SoupMessage *msg);
++
++GInputStream *_soup_session_send_finish (SoupSession *session,
++                                         GAsyncResult *result, GError **error);
++
++GInputStream *_soup_session_send (SoupSession *session, SoupMessage *msg,
++                                  GCancellable *cancellable,
++                                  GError **error) G_GNUC_WARN_UNUSED_RESULT;
++
++void gst_soup_session_cancel_message (SoupSession *session, SoupMessage *msg, GCancellable *cancellable);
++
++G_END_DECLS
++
++#endif /* __GST_SOUP_LOADER_H__ */
+diff --git a/ext/soup/gstsouputils.c b/ext/soup/gstsouputils.c
+index 243bc0999f..a3e402f6e9 100644
+--- a/ext/soup/gstsouputils.c
++++ b/ext/soup/gstsouputils.c
+@@ -2,6 +2,7 @@
+  *
+  * Copyright (C) 2014 Samsung Electronics. All rights reserved.
+  *     @Author: Reynaldo H. Verdejo Pinochet <r.verdejo@sisa.samsung.com>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -17,8 +18,8 @@
+ 
+ #include <glib.h>
+ #include <gst/gst.h>
+-#include <libsoup/soup.h>
+ #include "gstsouputils.h"
++#include "gstsouploader.h"
+ 
+ /*
+  * Soup logger funcs
+@@ -87,11 +88,12 @@ gst_soup_util_log_setup (SoupSession * session, SoupLoggerLogLevel level,
+   }
+ 
+   /* Create a new logger and set body_size_limit to -1 (no limit) */
+-  logger = soup_logger_new (level, -1);
+-  soup_logger_set_printer (logger, gst_soup_util_log_printer_cb,
++  logger = _soup_logger_new (level);
++
++  _soup_logger_set_printer (logger, gst_soup_util_log_printer_cb,
+       gst_object_ref (element), (GDestroyNotify) gst_object_unref);
+ 
+   /* Attach logger to session */
+-  soup_session_add_feature (session, SOUP_SESSION_FEATURE (logger));
++  _soup_session_add_feature (session, (SoupSessionFeature *) logger);
+   g_object_unref (logger);
+ }
+diff --git a/ext/soup/gstsouputils.h b/ext/soup/gstsouputils.h
+index e73525dfbc..902cf9b9bc 100644
+--- a/ext/soup/gstsouputils.h
++++ b/ext/soup/gstsouputils.h
+@@ -2,6 +2,7 @@
+  *
+  * Copyright (C) 2014 Samsung Electronics. All rights reserved.
+  *     @Author: Reynaldo H. Verdejo Pinochet <r.verdejo@sisa.samsung.com>
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -19,7 +20,8 @@
+ 
+ #include <glib.h>
+ #include <gst/gst.h>
+-#include <libsoup/soup.h>
++
++#include "stub/soup.h"
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/ext/soup/meson.build b/ext/soup/meson.build
+index 03cff4cf0d..4ed103e48c 100644
+--- a/ext/soup/meson.build
++++ b/ext/soup/meson.build
+@@ -1,28 +1,29 @@
+ soup_sources = [
+-  'gstsouphttpsrc.c',
++  'gstsoup.c',
+   'gstsouphttpclientsink.c',
++  'gstsouphttpsrc.c',
++  'gstsouploader.c',
+   'gstsouputils.c',
+-  'gstsoup.c',
+ ]
+ 
+-soup_args = [
+-  '-DSOUP_VERSION_MIN_REQUIRED=SOUP_VERSION_2_48',
+-  '-DSOUP_VERSION_MAX_ALLOWED=SOUP_DEPRECATED_IN_2_48',
+-]
++soup_opt = get_option('soup')
++if soup_opt.disabled()
++  subdir_done()
++endif
+ 
+-libsoup_dep = dependency('libsoup-2.4', version : '>=2.48', required : get_option('soup'),
+-  fallback : ['libsoup', 'libsoup_dep'])
++gmodule_dep = dependency('gmodule-2.0', fallback: ['glib', 'libgmodule_dep'])
++gobject_dep = dependency('gobject-2.0', fallback: ['glib', 'libgobject_dep'])
+ 
+-if libsoup_dep.found()
+-  gstsouphttpsrc = library('gstsoup',
+-    soup_sources,
+-    c_args : gst_plugins_good_args + soup_args,
+-    link_args : noseh_link_args,
+-    include_directories : [configinc, libsinc],
+-    dependencies : [gst_dep, gstbase_dep, gsttag_dep, libsoup_dep],
+-    install : true,
+-    install_dir : plugins_install_dir,
+-  )
+-  pkgconfig.generate(gstsouphttpsrc, install_dir : plugins_pkgconfig_install_dir)
+-  plugins += [gstsouphttpsrc]
+-endif
++libdl_dep = cc.find_library('dl', required: false)
++
++gstsouphttpsrc = library('gstsoup',
++  soup_sources,
++  c_args : gst_plugins_good_args,
++  link_args : noseh_link_args,
++  include_directories : [configinc, libsinc],
++  dependencies : [gst_dep, gstbase_dep, gsttag_dep, gmodule_dep, gobject_dep, gio_dep, libdl_dep],
++  install : true,
++  install_dir : plugins_install_dir,
++)
++pkgconfig.generate(gstsouphttpsrc, install_dir : plugins_pkgconfig_install_dir)
++plugins += [gstsouphttpsrc]
+diff --git a/ext/soup/stub/soup.h b/ext/soup/stub/soup.h
+new file mode 100644
+index 0000000000..4de65275b8
+--- /dev/null
++++ b/ext/soup/stub/soup.h
+@@ -0,0 +1,208 @@
++/* GStreamer
++ * Copyright (C) 2021 Igalia S.L.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Library General Public License for more
++ */
++
++#ifndef __GST_SOUP_STUB_H__
++#define __GST_SOUP_STUB_H__
++
++#include <glib.h>
++#include <glib-object.h>
++
++G_BEGIN_DECLS
++
++typedef enum {
++	SOUP_LOGGER_LOG_NONE,
++	SOUP_LOGGER_LOG_MINIMAL,
++	SOUP_LOGGER_LOG_HEADERS,
++	SOUP_LOGGER_LOG_BODY
++} SoupLoggerLogLevel;
++
++typedef enum {
++  SOUP_MEMORY_STATIC,
++  SOUP_MEMORY_TAKE,
++  SOUP_MEMORY_COPY,
++  SOUP_MEMORY_TEMPORARY
++} SoupMemoryUse;
++
++typedef enum {
++  SOUP_MESSAGE_NO_REDIRECT = (1 << 1),
++  /* Removed from libsoup2. In libsoup3 this enum value is allocated to
++     SOUP_MESSAGE_IDEMPOTENT which we don't use in GStreamer. */
++  SOUP_MESSAGE_OVERWRITE_CHUNKS = (1 << 3),
++} SoupMessageFlags;
++
++typedef enum {
++  SOUP_ENCODING_UNRECOGNIZED,
++  SOUP_ENCODING_NONE,
++  SOUP_ENCODING_CONTENT_LENGTH,
++  SOUP_ENCODING_EOF,
++  SOUP_ENCODING_CHUNKED,
++  SOUP_ENCODING_BYTERANGES
++} SoupEncoding;
++
++typedef enum {
++  SOUP_STATUS_NONE,
++
++  /* Transport Errors */
++  SOUP_STATUS_CANCELLED = 1,
++  SOUP_STATUS_CANT_RESOLVE,
++  SOUP_STATUS_CANT_RESOLVE_PROXY,
++  SOUP_STATUS_CANT_CONNECT,
++  SOUP_STATUS_CANT_CONNECT_PROXY,
++  SOUP_STATUS_SSL_FAILED,
++  SOUP_STATUS_IO_ERROR,
++  SOUP_STATUS_MALFORMED,
++  SOUP_STATUS_TRY_AGAIN,
++  SOUP_STATUS_TOO_MANY_REDIRECTS,
++  SOUP_STATUS_TLS_FAILED,
++
++  SOUP_STATUS_CONTINUE = 100,
++  SOUP_STATUS_SWITCHING_PROTOCOLS = 101,
++  SOUP_STATUS_PROCESSING = 102, /* WebDAV */
++
++  SOUP_STATUS_OK = 200,
++  SOUP_STATUS_CREATED = 201,
++  SOUP_STATUS_ACCEPTED = 202,
++  SOUP_STATUS_NON_AUTHORITATIVE = 203,
++  SOUP_STATUS_NO_CONTENT = 204,
++  SOUP_STATUS_RESET_CONTENT = 205,
++  SOUP_STATUS_PARTIAL_CONTENT = 206,
++  SOUP_STATUS_MULTI_STATUS = 207, /* WebDAV */
++
++  SOUP_STATUS_MULTIPLE_CHOICES = 300,
++  SOUP_STATUS_MOVED_PERMANENTLY = 301,
++  SOUP_STATUS_FOUND = 302,
++  SOUP_STATUS_MOVED_TEMPORARILY = 302, /* RFC 2068 */
++  SOUP_STATUS_SEE_OTHER = 303,
++  SOUP_STATUS_NOT_MODIFIED = 304,
++  SOUP_STATUS_USE_PROXY = 305,
++  SOUP_STATUS_NOT_APPEARING_IN_THIS_PROTOCOL = 306, /* (reserved) */
++  SOUP_STATUS_TEMPORARY_REDIRECT = 307,
++  SOUP_STATUS_PERMANENT_REDIRECT = 308,
++
++  SOUP_STATUS_BAD_REQUEST = 400,
++  SOUP_STATUS_UNAUTHORIZED = 401,
++  SOUP_STATUS_PAYMENT_REQUIRED = 402, /* (reserved) */
++  SOUP_STATUS_FORBIDDEN = 403,
++  SOUP_STATUS_NOT_FOUND = 404,
++  SOUP_STATUS_METHOD_NOT_ALLOWED = 405,
++  SOUP_STATUS_NOT_ACCEPTABLE = 406,
++  SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED = 407,
++  SOUP_STATUS_PROXY_UNAUTHORIZED = SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED,
++  SOUP_STATUS_REQUEST_TIMEOUT = 408,
++  SOUP_STATUS_CONFLICT = 409,
++  SOUP_STATUS_GONE = 410,
++  SOUP_STATUS_LENGTH_REQUIRED = 411,
++  SOUP_STATUS_PRECONDITION_FAILED = 412,
++  SOUP_STATUS_REQUEST_ENTITY_TOO_LARGE = 413,
++  SOUP_STATUS_REQUEST_URI_TOO_LONG = 414,
++  SOUP_STATUS_UNSUPPORTED_MEDIA_TYPE = 415,
++  SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE = 416,
++  SOUP_STATUS_INVALID_RANGE = SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE,
++  SOUP_STATUS_EXPECTATION_FAILED = 417,
++  SOUP_STATUS_MISDIRECTED_REQUEST = 421,  /* HTTP/2 */
++  SOUP_STATUS_UNPROCESSABLE_ENTITY = 422, /* WebDAV */
++  SOUP_STATUS_LOCKED = 423,               /* WebDAV */
++  SOUP_STATUS_FAILED_DEPENDENCY = 424,    /* WebDAV */
++
++  SOUP_STATUS_INTERNAL_SERVER_ERROR = 500,
++  SOUP_STATUS_NOT_IMPLEMENTED = 501,
++  SOUP_STATUS_BAD_GATEWAY = 502,
++  SOUP_STATUS_SERVICE_UNAVAILABLE = 503,
++  SOUP_STATUS_GATEWAY_TIMEOUT = 504,
++  SOUP_STATUS_HTTP_VERSION_NOT_SUPPORTED = 505,
++  SOUP_STATUS_INSUFFICIENT_STORAGE = 507, /* WebDAV search */
++  SOUP_STATUS_NOT_EXTENDED = 510          /* RFC 2774 */
++} SoupStatus;
++
++#define SOUP_STATUS_IS_SUCCESSFUL(status) ((status) >= 200 && (status) < 300)
++#define SOUP_STATUS_IS_REDIRECTION(status) ((status) >= 300 && (status) < 400)
++#define SOUP_STATUS_IS_CLIENT_ERROR(status) ((status) >= 400 && (status) < 500)
++#define SOUP_STATUS_IS_SERVER_ERROR(status) ((status) >= 500 && (status) < 600)
++#define SOUP_STATUS_IS_TRANSPORT_ERROR(status) ((status) > 0 && (status) < 100)
++
++typedef gpointer SoupSession;
++typedef gpointer SoupMessage;
++typedef gpointer SoupLogger;
++typedef gpointer SoupSessionFeature;
++typedef gpointer SoupURI;
++typedef gpointer SoupMessageBody;
++typedef gpointer SoupMessageHeaders;
++typedef gpointer SoupAuth;
++
++typedef struct _SoupMessage2 {
++  GObject parent;
++
++  /*< public >*/
++  const char *method;
++
++  guint status_code;
++  char *reason_phrase;
++
++  SoupMessageBody *request_body;
++  SoupMessageHeaders *request_headers;
++
++  SoupMessageBody *response_body;
++  SoupMessageHeaders *response_headers;
++} SoupMessage2;
++
++typedef void (*SoupLoggerPrinter)(SoupLogger *logger,
++                                                   SoupLoggerLogLevel level,
++                                                   char direction,
++                                                   const char *data,
++                                                   gpointer user_data);
++
++#define SOUP_HTTP_URI_FLAGS                                                    \
++  (G_URI_FLAGS_HAS_PASSWORD | G_URI_FLAGS_ENCODED_PATH |                       \
++   G_URI_FLAGS_ENCODED_QUERY | G_URI_FLAGS_ENCODED_FRAGMENT |                  \
++   G_URI_FLAGS_SCHEME_NORMALIZE)
++
++typedef void (*SoupMessageHeadersForeachFunc)(const char *name,
++                                              const char *value,
++                                              gpointer user_data);
++
++/* Do not use these variables directly; use the macros above, which
++ * ensure that they get initialized properly.
++ */
++
++#if defined(__GNUC__)
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wunused-variable"
++#endif
++static gpointer _SOUP_METHOD_OPTIONS;
++static gpointer _SOUP_METHOD_GET;
++static gpointer _SOUP_METHOD_HEAD;
++static gpointer _SOUP_METHOD_POST;
++#if defined(__GNUC__)
++#pragma GCC diagnostic pop
++#endif
++
++#define _SOUP_ATOMIC_INTERN_STRING(variable, value)                            \
++  ((const char *)(g_atomic_pointer_get(&(variable))                            \
++                      ? (variable)                                             \
++                      : (g_atomic_pointer_set(                                 \
++                             &(variable),                                      \
++                             (gpointer)g_intern_static_string(value)),         \
++                         (variable))))
++
++#define _SOUP_INTERN_METHOD(method)                                            \
++  (_SOUP_ATOMIC_INTERN_STRING(_SOUP_METHOD_##method, #method))
++
++#define SOUP_METHOD_OPTIONS _SOUP_INTERN_METHOD(OPTIONS)
++#define SOUP_METHOD_GET _SOUP_INTERN_METHOD(GET)
++#define SOUP_METHOD_HEAD _SOUP_INTERN_METHOD(HEAD)
++#define SOUP_METHOD_POST _SOUP_INTERN_METHOD(POST)
++
++G_END_DECLS
++
++#endif /* __GST_SOUP_STUB_H__ */
+diff --git a/tests/check/elements/souphttpsrc.c b/tests/check/elements/souphttpsrc.c
+index feb5c91fe6..0a299426e8 100644
+--- a/tests/check/elements/souphttpsrc.c
++++ b/tests/check/elements/souphttpsrc.c
+@@ -2,6 +2,7 @@
+  * Copyright (C) 2006-2007 Tim-Philipp Müller <tim centricular net>
+  * Copyright (C) 2008 Wouter Cloetens <wouter@mind.be>
+  * Copyright (C) 2001-2003, Ximian, Inc.
++ * Copyright (C) 2021 Igalia S.L.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Library General Public
+@@ -28,14 +29,44 @@
+ #include <glib.h>
+ #include <glib/gprintf.h>
+ 
+-#define SOUP_VERSION_MIN_REQUIRED (SOUP_VERSION_2_40)
+ #include <libsoup/soup.h>
+ #include <gst/check/gstcheck.h>
+ 
++#if ! SOUP_CHECK_VERSION(3, 0, 0)
+ #if !defined(SOUP_MINOR_VERSION) || SOUP_MINOR_VERSION < 44
+ #define SoupStatus SoupKnownStatusCode
+ #endif
++#endif
++
++#if SOUP_CHECK_VERSION(3, 0, 0)
++
++#define SOUP_AUTH_DOMAIN_BASIC_AUTH_CALLBACK "auth-callback"
++#define SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK "auth-callback"
++
++#define gst_soup_uri_free g_uri_unref
++#define gst_soup_uri_to_string(x) g_uri_to_string_partial(x, G_URI_HIDE_PASSWORD)
++#define gst_soup_uri_get_port(x) g_uri_get_port(x)
++
++#else
++
++#define gst_soup_uri_free soup_uri_free
++#define gst_soup_uri_to_string(x) soup_uri_to_string(x, FALSE)
++#define gst_soup_uri_get_port(x) soup_uri_get_port(x)
++
++#define SoupServerMessage SoupMessage
+ 
++#define soup_server_message_get_method(x) (x->method)
++#define soup_server_message_get_http_version(x) soup_message_get_http_version(x)
++#define soup_server_message_get_status(x) (x->status_code)
++#define soup_server_message_set_status(x, s, r) soup_message_set_status(x, s)
++#define soup_server_message_get_reason_phrase(x) (x->reason_phrase)
++#define soup_server_message_get_uri(x) soup_message_get_uri(x)
++#define soup_server_message_get_request_headers(x) (x->request_headers)
++#define soup_server_message_get_response_headers(x) (x->response_headers)
++#define soup_server_message_get_request_body(x) (x->request_body)
++#define soup_server_message_get_response_body(x) (x->response_body)
++
++#endif
+ 
+ gboolean redirect = TRUE;
+ 
+@@ -487,7 +518,7 @@ souphttpsrc_suite (void)
+ GST_CHECK_MAIN (souphttpsrc);
+ 
+ static void
+-do_get (SoupMessage * msg, const char *path)
++do_get (SoupServerMessage * msg, const char *path)
+ {
+   gboolean send_error_doc = FALSE;
+   char *uri;
+@@ -496,7 +527,7 @@ do_get (SoupMessage * msg, const char *path)
+ 
+   SoupStatus status = SOUP_STATUS_OK;
+ 
+-  uri = soup_uri_to_string (soup_message_get_uri (msg), FALSE);
++  uri = gst_soup_uri_to_string (soup_server_message_get_uri (msg));
+   GST_DEBUG ("request: \"%s\"", uri);
+ 
+   if (!strcmp (path, "/301"))
+@@ -518,20 +549,21 @@ do_get (SoupMessage * msg, const char *path)
+     char *redir_uri;
+ 
+     redir_uri = g_strdup_printf ("%s-redirected", uri);
+-    soup_message_headers_append (msg->response_headers, "Location", redir_uri);
++    soup_message_headers_append (soup_server_message_get_response_headers (msg),
++        "Location", redir_uri);
+     g_free (redir_uri);
+   }
+   if (status != (SoupStatus) SOUP_STATUS_OK && !send_error_doc)
+     goto leave;
+ 
+-  if (msg->method == SOUP_METHOD_GET) {
++  if (soup_server_message_get_method (msg) == SOUP_METHOD_GET) {
+     char *buf;
+ 
+     buf = g_malloc (buflen);
+     memset (buf, 0, buflen);
+-    soup_message_body_append (msg->response_body, SOUP_MEMORY_TAKE,
+-        buf, buflen);
+-  } else {                      /* msg->method == SOUP_METHOD_HEAD */
++    soup_message_body_append (soup_server_message_get_response_body (msg),
++        SOUP_MEMORY_TAKE, buf, buflen);
++  } else {                      /* method == SOUP_METHOD_HEAD */
+ 
+     char *length;
+ 
+@@ -540,13 +572,13 @@ do_get (SoupMessage * msg, const char *path)
+      * malloc.
+      */
+     length = g_strdup_printf ("%lu", (gulong) buflen);
+-    soup_message_headers_append (msg->response_headers,
++    soup_message_headers_append (soup_server_message_get_response_headers (msg),
+         "Content-Length", length);
+     g_free (length);
+   }
+ 
+ leave:
+-  soup_message_set_status (msg, status);
++  soup_server_message_set_status (msg, status, NULL);
+   g_free (uri);
+ }
+ 
+@@ -557,22 +589,29 @@ print_header (const char *name, const char *value, gpointer data)
+ }
+ 
+ static void
+-server_callback (SoupServer * server, SoupMessage * msg,
++server_callback (SoupServer * server, SoupServerMessage * msg,
+     const char *path, GHashTable * query,
+-    SoupClientContext * context, gpointer data)
++#if !SOUP_CHECK_VERSION(3, 0, 0)
++    SoupClientContext * context,
++#endif
++    gpointer data)
+ {
+-  GST_DEBUG ("%s %s HTTP/1.%d", msg->method, path,
+-      soup_message_get_http_version (msg));
+-  soup_message_headers_foreach (msg->request_headers, print_header, NULL);
+-  if (msg->request_body->length)
+-    GST_DEBUG ("%s", msg->request_body->data);
++  const char *method = soup_server_message_get_method (msg);
++
++  GST_DEBUG ("%s %s HTTP/1.%d", method, path,
++      soup_server_message_get_http_version (msg));
++  soup_message_headers_foreach (soup_server_message_get_request_headers (msg),
++      print_header, NULL);
++  if (soup_server_message_get_request_body (msg)->length)
++    GST_DEBUG ("%s", soup_server_message_get_request_body (msg)->data);
+ 
+-  if (msg->method == SOUP_METHOD_GET || msg->method == SOUP_METHOD_HEAD)
++  if (method == SOUP_METHOD_GET || method == SOUP_METHOD_HEAD)
+     do_get (msg, path);
+   else
+-    soup_message_set_status (msg, SOUP_STATUS_NOT_IMPLEMENTED);
++    soup_server_message_set_status (msg, SOUP_STATUS_NOT_IMPLEMENTED, NULL);
+ 
+-  GST_DEBUG ("  -> %d %s", msg->status_code, msg->reason_phrase);
++  GST_DEBUG ("  -> %d %s", soup_server_message_get_status (msg),
++      soup_server_message_get_reason_phrase (msg));
+ }
+ 
+ static guint
+@@ -583,8 +622,8 @@ get_port_from_server (SoupServer * server)
+ 
+   uris = soup_server_get_uris (server);
+   g_assert (g_slist_length (uris) == 1);
+-  port = soup_uri_get_port (uris->data);
+-  g_slist_free_full (uris, (GDestroyNotify) soup_uri_free);
++  port = gst_soup_uri_get_port (uris->data);
++  g_slist_free_full (uris, (GDestroyNotify) gst_soup_uri_free);
+ 
+   return port;
+ }
+@@ -606,7 +645,20 @@ run_server (gboolean use_https)
+       g_object_unref (server);
+       return NULL;
+     }
+-
++#if SOUP_CHECK_VERSION(3, 0, 0)
++    {
++      GTlsCertificate *cert =
++          g_tls_certificate_new_from_files (ssl_cert_file, ssl_key_file,
++          &err);
++      if (!cert) {
++        GST_INFO ("Failed to load certificate: %s", err->message);
++        g_error_free (err);
++        return NULL;
++      }
++      soup_server_set_tls_certificate (server, cert);
++      g_object_unref (cert);
++    }
++#else
+     if (!soup_server_set_ssl_cert_file (server, ssl_cert_file, ssl_key_file,
+             &err)) {
+       GST_INFO ("Failed to load certificate: %s", err->message);
+@@ -614,6 +666,7 @@ run_server (gboolean use_https)
+       g_error_free (err);
+       return NULL;
+     }
++#endif
+ 
+     listen_flags |= SOUP_SERVER_LISTEN_HTTPS;
+   }
+@@ -623,15 +676,15 @@ run_server (gboolean use_https)
+   {
+     SoupAuthDomain *domain;
+ 
+-    domain = soup_auth_domain_basic_new (SOUP_AUTH_DOMAIN_REALM, realm,
+-        SOUP_AUTH_DOMAIN_BASIC_AUTH_CALLBACK, basic_auth_cb,
+-        SOUP_AUTH_DOMAIN_ADD_PATH, basic_auth_path, NULL);
++    domain = soup_auth_domain_basic_new ("realm", realm,
++        SOUP_AUTH_DOMAIN_BASIC_AUTH_CALLBACK, basic_auth_cb, NULL);
++    soup_auth_domain_add_path (domain, basic_auth_path);
+     soup_server_add_auth_domain (server, domain);
+     g_object_unref (domain);
+ 
+-    domain = soup_auth_domain_digest_new (SOUP_AUTH_DOMAIN_REALM, realm,
+-        SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK, digest_auth_cb,
+-        SOUP_AUTH_DOMAIN_ADD_PATH, digest_auth_path, NULL);
++    domain = soup_auth_domain_digest_new ("realm", realm,
++        SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK, digest_auth_cb, NULL);
++    soup_auth_domain_add_path (domain, digest_auth_path);
+     soup_server_add_auth_domain (server, domain);
+     g_object_unref (domain);
+   }
+@@ -640,9 +693,7 @@ run_server (gboolean use_https)
+     GSocketAddress *address;
+     GError *err = NULL;
+ 
+-    address =
+-        g_inet_socket_address_new_from_string ("0.0.0.0",
+-        SOUP_ADDRESS_ANY_PORT);
++    address = g_inet_socket_address_new_from_string ("0.0.0.0", 0);
+     soup_server_listen (server, address, listen_flags, &err);
+     g_object_unref (address);
+ 
+diff --git a/tests/check/meson.build b/tests/check/meson.build
+index 91efc62d3e..3e551aa04d 100644
+--- a/tests/check/meson.build
++++ b/tests/check/meson.build
+@@ -112,6 +112,12 @@ good_tests = [
+ # FIXME: valgrind elements/rtp-payloading - needs fixing
+ # elements/videocrop should be disabled since it takes way too long in valgrind
+ 
++libsoup2_dep = dependency('libsoup-2.4', version : '>=2.48',
++                          required : false, fallback : ['libsoup', 'libsoup_dep'],
++                          default_options: ['sysprof=disabled'])
++libsoup3_dep = dependency('libsoup-3.0', required : false,
++                           fallback : ['libsoup3', 'libsoup_dep'])
++
+ # FIXME: unistd dependency or not tested yet on windows
+ if host_machine.system() != 'windows'
+   good_tests += [
+@@ -120,8 +126,9 @@ if host_machine.system() != 'windows'
+     [ 'elements/gdkpixbufoverlay', not gdkpixbuf_dep.found() ],
+     [ 'elements/jpegdec', not jpeglib.found() ],
+     [ 'elements/jpegenc', not jpeglib.found() ],
+-    [ 'elements/mpg123audiodec', not mpg123_dep.found(),  [gstfft_dep]],
+-    [ 'elements/souphttpsrc', not libsoup_dep.found(), [libsoup_dep] ],
++    [ 'elements/mpg123audiodec', not mpg123_dep.found(), [gstfft_dep]],
++    [ 'elements/souphttpsrc', not libsoup2_dep.found(), [libsoup2_dep], [], 'elements/souphttpsrc2'],
++    [ 'elements/souphttpsrc', not libsoup3_dep.found(), [libsoup3_dep], [], 'elements/souphttpsrc3'],
+     [ 'elements/id3v2mux', not taglib_dep.found() ],
+     [ 'elements/apev2mux', not taglib_dep.found() ],
+     [ 'elements/vp8enc', not vpx_dep.found() or not have_vp8_encoder ],
+@@ -186,7 +193,7 @@ test_deps = [gst_dep, gstbase_dep, gstnet_dep, gstcheck_dep, gstaudio_dep,
+ # FIXME: add valgrind suppression common/gst.supp gst-plugins-good.supp
+ foreach t : good_tests
+   fname = '@0@.c'.format(t.get(0))
+-  test_name = t.get(0).underscorify()
++  test_name = t.get(4, t.get(0)).underscorify()
+   extra_sources = t.get(3, [ ])
+   extra_deps = t.get(2, [ ])
+   skip_test = t.get(1, false)
+-- 
+2.33.1
+
+From 311ed0282952e42610371c692b9744daba4a93c9 Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Wed, 13 Oct 2021 14:42:15 +0100
+Subject: [PATCH 2/2] soup-stub: Gate G_URI_FLAGS_SCHEME_NORMALIZE behind glib
+ version check
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1138>
+---
+ ext/soup/stub/soup.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ext/soup/stub/soup.h b/ext/soup/stub/soup.h
+index 4de65275b8..56ddd6acdf 100644
+--- a/ext/soup/stub/soup.h
++++ b/ext/soup/stub/soup.h
+@@ -162,10 +162,16 @@ typedef void (*SoupLoggerPrinter)(SoupLogger *logger,
+                                                    const char *data,
+                                                    gpointer user_data);
+ 
++#if GLIB_CHECK_VERSION(2, 68, 0)
+ #define SOUP_HTTP_URI_FLAGS                                                    \
+   (G_URI_FLAGS_HAS_PASSWORD | G_URI_FLAGS_ENCODED_PATH |                       \
+    G_URI_FLAGS_ENCODED_QUERY | G_URI_FLAGS_ENCODED_FRAGMENT |                  \
+    G_URI_FLAGS_SCHEME_NORMALIZE)
++#else
++#define SOUP_HTTP_URI_FLAGS                                                    \
++  (G_URI_FLAGS_HAS_PASSWORD | G_URI_FLAGS_ENCODED_PATH |                       \
++   G_URI_FLAGS_ENCODED_QUERY | G_URI_FLAGS_ENCODED_FRAGMENT)
++#endif
+ 
+ typedef void (*SoupMessageHeadersForeachFunc)(const char *name,
+                                               const char *value,
+-- 
+2.33.1
+
