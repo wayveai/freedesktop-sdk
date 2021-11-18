@@ -1,13 +1,16 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/bison.bst
+- components/git-minimal.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/bison.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
+- bootstrap-import.bst
+
+variables:
+  autogen: ./bootstrap --no-git --gnulib-srcdir=%{build-root}/gnulib
+
 
 public:
   cpe:
