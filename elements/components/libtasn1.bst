@@ -17,6 +17,7 @@ variables:
   # When using --disable-static, some useless rpaths appear
   conf-link-args: >-
     --enable-shared
+  autogen: ./bootstrap --no-git --gnulib-srcdir=%{build-root}/gnulib
 
 config:
   install-commands:
