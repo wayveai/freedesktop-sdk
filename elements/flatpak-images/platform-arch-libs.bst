@@ -15,3 +15,4 @@ config:
 build-depends:
 - platform-image.bst
 - integration/compat-gl-dir.bst
+- integration/compat-vaapi-dir.bst
