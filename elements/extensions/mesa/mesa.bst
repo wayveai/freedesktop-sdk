@@ -98,7 +98,7 @@ variables:
   app-id: >-
     org.freedesktop.Platform.GL.default
     org.freedesktop.Platform.GL32.default
-    
+
 config:
   install-commands:
     (>):
@@ -180,7 +180,7 @@ sources:
   - '21.3'
   exclude:
   - '*rc*'
-  ref: mesa-21.2.3-0-g5da276cf339c86a0bd62f45e4dc90682a6b19f25
+  ref: mesa-21.3.0-0-g9a33ae946792f6ce5765b662d253b5e1915f349d
 - kind: local
   path: files/mesa/appdata.template
 - kind: patch
