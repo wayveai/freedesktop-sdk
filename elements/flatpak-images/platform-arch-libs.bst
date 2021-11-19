@@ -12,8 +12,6 @@ config:
     ExtensionOf:
       ref: runtime/org.freedesktop.Platform/%{flatpak_arch}/%{branch}
 
-depends:
-- filename: platform-image.bst
-  type: build
-- filename: integration/compat-gl-dir.bst
-  type: build
+build-depends:
+- platform-image.bst
+- integration/compat-gl-dir.bst
