@@ -1,9 +1,8 @@
 kind: manual
 description: Creates a GL subdirectory, needed for the GL32 compat extension
 
-depends:
-- filename: bootstrap-import.bst
-  type: build
+build-depends:
+- bootstrap-import.bst
 
 config:
   install-commands:
