@@ -36,6 +36,6 @@ sources:
   url: github:KhronosGroup/SPIRV-Tools.git
   track: master
   track-tags: true
-  ref: v2021.3-0-g1fbed83c8aab8517d821fcb4164c08567951938f
+  ref: sdk-1.2.198.0-0-g21e3f681e2004590c7865bc8c0195a4ab8e66c88
   # When updating, please also track spriv-headers.bst. You have
   # to manually enable tracking spriv-headers.bst.
