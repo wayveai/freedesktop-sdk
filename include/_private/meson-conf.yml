@@ -1,10 +1,23 @@
 # Project-wide configuration of meson elements
 
 variables:
+  meson-lto-flags: >-
+    -Db_lto=true
+    -Db_lto_threads=${LTOJOBS}
+
   meson-global: >-
     --buildtype=plain
     -Dauto_features=enabled
     -Db_pie=true
     -Ddefault_library=shared
+    %{meson-lto-flags}
+    
   ninja: |
     ninja -v -j ${NINJAJOBS} -C %{build-dir}
+
+environment:
+  LTOJOBS: "%{max-jobs}"
+
+environment-nocache:
+  (>):
+  - LTOJOBS

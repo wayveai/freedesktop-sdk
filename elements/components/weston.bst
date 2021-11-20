@@ -37,6 +37,8 @@ variables:
     -Dcolor-management-colord=true
     -Dpipewire=false
 
+  meson-lto-flags: ""
+
 sources:
 - kind: git_tag
   track: main
