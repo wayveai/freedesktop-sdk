@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a833a03ef..fd4eac6a1 100644
+index eba079c63..ca3ef4f07 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -179,6 +179,15 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+@@ -275,6 +275,15 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
          set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
          set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
      endif()
@@ -19,46 +19,47 @@ index a833a03ef..fd4eac6a1 100644
  
  if(MSVC)
 diff --git a/loader/loader.c b/loader/loader.c
-index 1fdde2bdb..4451362e2 100644
+index 0610c8597..3468a3881 100644
 --- a/loader/loader.c
 +++ b/loader/loader.c
-@@ -4003,6 +4003,19 @@ static VkResult ReadDataFilesInSearchPaths(const struct loader_instance *inst, e
+@@ -3015,6 +3015,20 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
  #if defined(EXTRASYSCONFDIR)
-             search_path_size += DetermineDataFilePathSize(EXTRASYSCONFDIR, rel_size);
+             search_path_size += determine_data_file_path_size(EXTRASYSCONFDIR, rel_size);
  #endif
++
 +/*freedesktop  appropriate drivers */
 +#if defined(VULKAN_LIB_DIR_GL)
-+            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR_GL, rel_size);
++            search_path_size += determine_data_file_path_size(VULKAN_LIB_DIR_GL, rel_size);
 +#endif
 +/* freedesktop opensource drivers */
 +#if defined(VULKAN_LIB_DIR)
-+            search_path_size += DetermineDataFilePathSize(VULKAN_LIB_DIR, rel_size);
++            search_path_size += determine_data_file_path_size(VULKAN_LIB_DIR, rel_size);
 +#endif
 +/* freedesktop vulkan extensions */
 +#if defined(VULKAN_FDO_SDK_EXT_DIR)
-+            search_path_size += DetermineDataFilePathSize(VULKAN_FDO_SDK_EXT_DIR, rel_size);
++            search_path_size += determine_data_file_path_size(VULKAN_FDO_SDK_EXT_DIR, rel_size);
 +#endif
 +
-             if (is_directory_list) {
-                 if (!IsHighIntegrity()) {
-                     search_path_size += DetermineDataFilePathSize(xdgdatahome, rel_size);
-@@ -4057,6 +4070,19 @@ static VkResult ReadDataFilesInSearchPaths(const struct loader_instance *inst, e
- #if defined(EXTRASYSCONFDIR)
-             CopyDataFilePath(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
+             // Only add the home folders if not ICD filenames or superuser
+             if (is_directory_list && !is_high_integrity()) {
+                 if (NULL != default_data_home) {
+@@ -3082,6 +3096,19 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
+             copy_data_file_path(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
  #endif
+ 
 +/*freedesktop  appropriate drivers */
 +#if defined(VULKAN_LIB_DIR_GL)
-+            CopyDataFilePath(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_path(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +/* freedesktop opensource drivers */
 +#if defined(VULKAN_LIB_DIR)
-+            CopyDataFilePath(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_path(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +/* freedesktop vulkan extensions */
 +#if defined(VULKAN_FDO_SDK_EXT_DIR)
-+            CopyDataFilePath(VULKAN_FDO_SDK_EXT_DIR, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_path(VULKAN_FDO_SDK_EXT_DIR, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +
-             CopyDataFilePath(xdgdatadirs, relative_location, rel_size, &cur_path_ptr);
-             if (is_directory_list) {
-                 CopyDataFilePath(xdgdatahome, relative_location, rel_size, &cur_path_ptr);
+             // Only add the home folders if not ICD filenames or superuser
+             if (is_directory_list && !is_high_integrity()) {
+                 if (NULL != default_data_home) {
