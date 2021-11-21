@@ -29,4 +29,4 @@ sources:
   track: master
   match:
   - '*.*.*'
-  ref: 11.7.0-0-g925503088e2bcd76921b1e102c37fc320bace254
+  ref: sdk-1.2.198.0-0-gc9706bdda0ac22b9856f1aa8261e5b9e15cd20c5
