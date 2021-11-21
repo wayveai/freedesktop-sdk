@@ -83,7 +83,5 @@ config:
 sources:
 - kind: git_tag
   url: kernel:utils/util-linux/util-linux.git
-  track: master
-  exclude:
-  - v*-rc*
+  # Frozen due to ABI break in next version
   ref: v2.36-0-gc8b8326b070b00b835f163cbed3c8051081f4011
