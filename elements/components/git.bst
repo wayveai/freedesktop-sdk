@@ -10,6 +10,7 @@ build-depends:
 
 depends:
 - bootstrap-import.bst
+- components/git-minimal.bst
 - components/perl.bst
 - components/python3.bst
 - components/gnupg.bst
@@ -34,6 +35,12 @@ config:
     (>):
     - |
       find "%{install-root}" -type f -name perllocal.pod -delete
+
+public:
+  bst:
+    overlap-whitelist:
+    - "%{bindir}/git"
+    - "%{debugdir}%{bindir}/git.debug"
 
 (@):
 - elements/include/git.yml

@@ -15,9 +15,7 @@ variables:
 
 config:
   install-commands:
-    (>):
-    - |
-      find "%{install-root}" -type f -name perllocal.pod -delete
+  - install -m 755 -D -t "%{install-root}%{bindir}" git
 
 (@):
 - elements/include/git.yml
