@@ -1,6 +1,9 @@
 Freedesktop-SDK
 
 freedesktop-sdk-21.08.5:
+  * platform-arch-libs.bst: Add mount point for VAAPI.Intel.i386
+  * python3-setuptools-scm: avoid overlap with git
+  * Backport fix for video playback crashes (#1521)
   * ca-certificates: Update to debian/20211016
   * python3-sphinx: Update to 4.3.0
   * libtasn1: Update to v4.18.0
@@ -8,7 +11,7 @@ freedesktop-sdk-21.08.5:
   * python3-importlib-metadata: Update to 4.8.2
   * platform.bst: Add dbus-tools.bst (#1342)
   * libseccomp: Update to v2.5.3
-  * python3: Update to v3.9.8
+  * python3: Update to v3.9.9
   * python3-cachecontrol: Update to 0.12.10
   * intel-media-driver: Update to intel-media-21.4.1
   * iso-codes: Update to v4.8.0
