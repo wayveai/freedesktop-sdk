@@ -23,25 +23,25 @@ freedesktop-sdk-21.08.5:
   * gmmlib: Update to intel-gmmlib-21.3.2
   * meson: Update to 0.59.4
   * python3-virtualenv: Update to 20.10.0
-  * lvm2-source.yml to v2_03_14
+  * lvm2-source: Update to v2_03_14
   * python3-setuptools: Update to 58.5.3
   * tzdata: Update to 2021e
-  * ffmpeg.yml to n4.3.3
+  * ffmpeg: Update to n4.3.3
   * libselinux: Update to libselinux-3.3
   * valgrind: Update to VALGRIND_3_18_1
   * python3-importlib-resources: Update to 5.4.0
   * python3-dbus: Update to 1.2.18
-  * flatpak.yml to 1.12.2
+  * flatpak: Update to 1.12.2
   * python3-idna: Update to 3.3
   * python3-poetry-core: Update to 1.0.7
   * aom: Update to v3.2.0
   * python3-pyyaml: Update to 6.0
-  * systemd.yml to v249.6
-  * git.yml to v2.33.1
-  * bluez.yml to 5.62
+  * systemd: Update to v249.6
+  * git: Update to v2.33.1
+  * bluez: Update to 5.62
   * python3-pytz: Update to 2021.3
   * python3-pip: Update to 21.3.1
-  * glibc-source.yml to glibc-2.33 (6090cf1)
+  * glibc-source: Update to glibc-2.33 (6090cf1)
   * Switch tcl to tarball
   * libical: Update to v3.0.11
   * python3-charset-normalizer: Update to 2.0.7
@@ -61,23 +61,23 @@ freedesktop-sdk-21.08.5:
   * python3-zipp: Update to 3.6.0
   * Add xfsprogs
   * python3-poetry: Update to 1.1.11
-  * gnupg-source.yml to gnupg-2.2.32
+  * gnupg-source: Update to gnupg-2.2.32
   * Use podman to publish manifests
   * python3-filelock: Update to 3.3.2
   * python3-toposort: Update to 1.7
   * libcap: Update to libcap-2.59
   * openssh: Update to V_8_8_P1
   * libsrtp2: Update to v2
-  * linux.yml to v5.15
+  * linux: Update to v5.15
   * itstool: Update to 2.0.7
 
 freedesktop-sdk-21.08.4:
-  * hotdoc.bst to 0.13.7
-  * python3-urllib3.bst to 1.26.7
-  * tzdata.bst to 2021b
-  * python3-distlib.bst to 0.3.3
-  * po4a.bst to v0.64
-  * libcap.bst to libcap-2.58
+  * hotdoc: Update to 0.13.7
+  * python3-urllib3: Update to 1.26.7
+  * tzdata: Update to 2021b
+  * python3-distlib: Update to 0.3.3
+  * po4a: Update to v0.64
+  * libcap: Update to libcap-2.58
   * curl: Update to curl-7_79_1
   * vala: Update to 0.54.1
   * linux: Update to v5.14.7
@@ -126,9 +126,9 @@ freedesktop-sdk-21.08.3:
 freedesktop-sdk-21.08.2:
   * Fix job to publish fdsdk container images
   * libcap: Make utils link to shared libcap
-  * python3-setuptools.bst to 58.0.2
-  * libcap.bst to libcap-2.56
-  * python3-setuptools.bst to 58.0.0
+  * python3-setuptools: Update to 58.0.2
+  * libcap: Update to libcap-2.56
+  * python3-setuptools: Update to 58.0.0
 
 freedesktop-sdk-21.08.1:
   * libffi: Use autoconf 2.69 (#1315)
