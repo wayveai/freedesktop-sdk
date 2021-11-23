@@ -4,8 +4,9 @@ build-depends:
 - components/dbus-base.bst
 
 runtime-depends:
-- components/libdbus.bst
 - components/dbus-tools.bst
+- components/libapparmor.bst
+- components/libdbus.bst
 
 config:
   exclude:
