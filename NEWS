@@ -1,5 +1,23 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.6:
+  * dbus: depends on libapparmor
+  * bash: Update to bash-5.1
+  * git: Update to v2.34.0
+  * po4a: Update to v0.65
+  * libcbor: Update to v0.9.0
+  * systemd: Update to v249.7
+  * gmmlib: Update to intel-gmmlib-21.3.3
+  * jpeg: Update to 2.1.2
+  * python3-setuptools: Update to 59.2.0
+  * cmake: Update to v3.22.0
+  * python3-mako: Update to 1.1.6
+  * python3-packaging: Update to 21.3
+  * python3-filelock: Update to 3.4.0
+  * python3-snowballstemmer: Update to 2.2.0
+  * Add gst-plugins-good patch to support libsoup3 (#1347)
+  * linux: Update to v5.14.18
+
 freedesktop-sdk-21.08.5:
   * platform-arch-libs.bst: Add mount point for VAAPI.Intel.i386
   * python3-setuptools-scm: avoid overlap with git
