@@ -35,7 +35,7 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree.git
   track: main
-  ref: v2021.5-0-g63bf5e606b24c7343bfe622bf6af2110ee6beabc
+  ref: v2021.6-0-gf1155c8d283c3c85d74d5e1050b0dcf8198f750a
   submodules:
     libglnx:
       checkout: true
