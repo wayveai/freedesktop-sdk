@@ -11,4 +11,4 @@ sources:
   track: main
   track-extra:
   - '21.2'
-  ref: mesa-21.2.5-0-gd1529993454aa28b0f80ee1108bd28421ba07b60
+  ref: mesa-21.2.6-0-gbc7160c0255b902cbe030af5b6475affe5faf3be
