@@ -9,5 +9,5 @@ build-depends:
 sources:
 - kind: pypi
   name: charset-normalizer
-  url: pypi:9f/c5/334c019f92c26e59637bb42bd14a190428874b2b2de75a355da394cf16c1/charset-normalizer-2.0.7.tar.gz
-  sha256sum: e019de665e2bcf9c2b64e2e5aa025fa991da8720daa3c1138cadd2fd1856aed0
+  url: pypi:2f/39/5d8ff929409113e9ff402e405a7c7880ab1fa6f118a4ab72443976a01711/charset-normalizer-2.0.8.tar.gz
+  sha256sum: 735e240d9a8506778cd7a453d97e817e536bb1fc29f4f6961ce297b9c7a917b0
