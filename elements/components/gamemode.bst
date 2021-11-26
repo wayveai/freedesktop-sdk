@@ -20,6 +20,8 @@ config:
   install-commands:
     (>):
     - |
+      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
+    - |
       install -Dm644 -t "%{install-root}%{sysconfdir}" example/gamemode.ini
 
 public:
