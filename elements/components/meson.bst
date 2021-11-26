@@ -12,7 +12,7 @@ build-depends:
 sources:
 - kind: pypi
   name: meson
-  url: pypi:32/a2/b31eb5fe8d75e29b9b271404f50fe46eae5b143794105d0ae2371e7e93d5/meson-0.59.2.tar.gz
-  sha256sum: 13dee549a7ba758b7e33ce7719f28d1d337a98d10d378a4779ccc996f5a2fc49
+  url: pypi:39/23/3a151003b1d5e558f3cb806a4be443d9ed745d579fbe085d575509511a6f/meson-0.60.2.tar.gz
+  sha256sum: 64e6968565bf1b8152f4f9d6ca8154efb9e14caa9aabf7b22e71e6c5d053e921
 - kind: patch
   path: patches/meson/meson-no-lib64.patch
