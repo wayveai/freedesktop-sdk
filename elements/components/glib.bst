@@ -13,7 +13,6 @@ depends:
 
 variables:
   meson-local: >-
-    -Dinternal_pcre=false
     -Dselinux=disabled
     -Dgtk_doc=true
 
