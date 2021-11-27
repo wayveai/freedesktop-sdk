@@ -40,16 +40,12 @@
 #
 # We'd also like to include the list of mirror urls (which may be empty).
 
-from datetime import datetime
-
 import json
 import os
 import re
 import sys
 
-from buildstream._context import Context
-from buildstream._project import Project
-from buildstream._stream import Stream
+from buildstream._frontend.app import App
 
 def get_source_locations(sources):
     """
@@ -119,24 +115,6 @@ def get_source_locations(sources):
     return source_locations
 
 
-def message_handler(message, context): #pylint: disable=unused-argument
-    if message.depth == 0 and message.message_type == 'start':
-        print(message.message)
-        if message.detail:
-            print(message.detail)
-
-
-def bst_load_deps(elements):
-    context = Context()
-    context.load()
-    context.set_message_handler(message_handler)
-
-    project = Project('.', context)
-
-    stream = Stream(context, project, datetime.now())
-
-    return stream.load_selection(elements, selection='all')
-
 if __name__ == '__main__':
     manifest_file = sys.argv[1]
     elements = sys.argv[2:]
@@ -144,15 +122,17 @@ if __name__ == '__main__':
     manifest = []
     visited_names_list = []
 
-    for dep in bst_load_deps(elements):
-        #de-duplicate list (some elements in bootstrap seem to get listed multiple times)
-        if dep.name in visited_names_list:
-            continue
-        visited_names_list.append(dep.name)
+    app = App.create({'no_interactive': True, 'colors': True, 'directory': '', 'config': '', 'log_file': '', 'option':''})
 
-        sources = get_source_locations(dep.sources())
-        if sources:
-            manifest.append({'element': dep.name, 'sources': sources})
+    with app.initialized():
+        for dep in app.stream.load_selection(elements, selection='all'):
+            if dep.name in visited_names_list:
+                continue
+            visited_names_list.append(dep.name)
+
+            sources = get_source_locations(dep.sources())
+            if sources:
+                manifest.append({'element': dep.name, 'sources': sources})
 
     os.makedirs(os.path.dirname(manifest_file), exist_ok=True)
 
