@@ -14,7 +14,6 @@ variables:
     -Dwith-sd-bus-provider=systemd
     -Dwith-examples=false
     -Dwith-util=true
-    -Dwith-daemon=true
 
 config:
   install-commands:
