@@ -59,3 +59,5 @@ sources:
   track-extra:
   - 1_4_X
   ref: 1.6.2-0-g2f9eece2131754d9a46988fd0204a6751b06ce8d
+- kind: patch
+  path: patches/fwupd/resources-dep.patch
