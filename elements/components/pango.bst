@@ -11,6 +11,7 @@ depends:
 - components/harfbuzz.bst
 - components/fontconfig.bst
 - components/fribidi.bst
+- components/json-glib.bst
 - components/libthai.bst
 - components/xorg-lib-xft.bst
 
@@ -35,4 +36,4 @@ sources:
 - kind: git_tag
   url: gnome:pango.git
   track: main
-  ref: 1.49.3-0-gd1357f8636336000190b7e7b0f0d9db0a290c596
+  ref: 1.49.4-0-g24ca0e22b8038eba7c558eb19f593dfc4892aa55
