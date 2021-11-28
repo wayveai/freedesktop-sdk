@@ -49,15 +49,6 @@ before_script:
       max-jobs: $(( $(nproc) / 4 ))
     EOF
 
-  - |
-    if echo "${CI_RUNNER_TAGS}" | grep -q few-fetchers; then
-    cat >> ~/.config/buildstream.conf << EOF
-    scheduler:
-      fetchers: 5
-      pushers: 2
-    EOF
-    fi
-
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
 
