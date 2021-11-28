@@ -13,4 +13,4 @@ sources:
   # releases
   track: master
   track-tags: false
-  ref: 1.5.4.raytracing.fixed-45-gf88a1f98fa7a44ccfcf33d810c72b200e7d9a78a
+  ref: sdk-1.2.198.0-0-g814e728b30ddd0f4509233099a3ad96fd4318c07
