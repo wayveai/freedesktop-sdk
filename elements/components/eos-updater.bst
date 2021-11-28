@@ -25,3 +25,5 @@ sources:
   track-extra:
   - eos3.9
   ref: Release_3.9.5-0-g6129ccc93e5493cde8b2a3a5c83eebb6124599ec
+- kind: patch
+  path: patches/eos-updater/remove-static-library-version.patch
