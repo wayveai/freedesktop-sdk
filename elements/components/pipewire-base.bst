@@ -114,7 +114,7 @@ sources:
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
 - kind: git_tag
-  url: freedesktop:pipewire/media-session.git
+  url: freedesktop:PipeWire/media-session.git
   directory: subprojects/media-session
   track: master
   track-tags: false
