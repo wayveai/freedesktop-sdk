@@ -29,5 +29,5 @@ public:
 sources:
 - kind: git_tag
   url: github:harfbuzz/harfbuzz.git
-  track: main
+  # Frozen since next release adds new API
   ref: 3.0.0-0-g9c387e20d65a7a366ac270d789f6ad266014c9e0
