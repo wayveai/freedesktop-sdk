@@ -56,7 +56,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:fwupd/fwupd.git
-  track: master
-  track-extra:
-  - 1_4_X
-  ref: 1.6.2-0-g2f9eece2131754d9a46988fd0204a6751b06ce8d
+  track: main
+  ref: 1.7.2-0-ga15a50bc5cfdbcc41ae27308b8c5059a1829117b
