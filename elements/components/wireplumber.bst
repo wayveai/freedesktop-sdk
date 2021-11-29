@@ -20,7 +20,7 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:pipewire/wireplumber.git
+  url: freedesktop:PipeWire/wireplumber.git
   track: master
   ref: 0.3.0-0-g996699762c2c3576299dece52c69984a50d3e90b
 - kind: git_tag
