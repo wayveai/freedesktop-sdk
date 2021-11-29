@@ -30,5 +30,5 @@ public:
 sources:
 - kind: pypi
   name: poetry
-  url: pypi:57/93/30798f4df5633eaae1de4d851428fa72d281f949366c116eb21ed41530c5/poetry-1.1.11.tar.gz
-  sha256sum: 7d7d22f55fbebb830cc85b1c69cd7a91fd85f49e5396e7a14b953645a470f69e
+  url: pypi:2e/90/0905a0ad5bb1a9eb8a820337e7c629cde76060fc1dc934e7b8ed450241b8/poetry-1.1.12.tar.gz
+  sha256sum: 5c66e2357fe37b552462a88b7d31bfa2ed8e84172208becd666933c776252567
