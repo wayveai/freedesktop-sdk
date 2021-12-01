@@ -120,7 +120,7 @@ if __name__ == '__main__':
     elements = sys.argv[2:]
 
     manifest = []
-    visited_names_list = []
+    visited_names_list = set()
 
     app = App.create({'no_interactive': True, 'colors': True, 'directory': '', 'config': '', 'log_file': '', 'option':''})
 
@@ -128,7 +128,7 @@ if __name__ == '__main__':
         for dep in app.stream.load_selection(elements, selection='all'):
             if dep.name in visited_names_list:
                 continue
-            visited_names_list.append(dep.name)
+            visited_names_list.add(dep.name)
 
             sources = get_source_locations(dep.sources())
             if sources:
