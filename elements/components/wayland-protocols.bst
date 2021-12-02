@@ -1,8 +1,7 @@
-kind: autotools
+kind: meson
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
-
+- public-stacks/buildsystem-meson.bst
 
 depends:
 - bootstrap-import.bst
@@ -11,5 +10,5 @@ depends:
 sources:
 - kind: git_tag
   url: freedesktop:wayland/wayland-protocols.git
-  # Tracking disabled due to ABI forward break
-  ref: 1.23-0-gcd153943618bcf157896a6d0f1154d0ad62078a7
+  track: main
+  ref: 1.24-0-gbb7b3985eded147104331830a370195dffd1cdab
