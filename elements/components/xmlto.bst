@@ -1,8 +1,11 @@
 kind: autotools
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/util-linux.bst
+- bootstrap-import.bst
+- components/util-linux.bst
+
+runtime-depends:
+- components/libxslt.bst
 
 sources:
 - kind: tar

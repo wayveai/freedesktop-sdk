@@ -48,7 +48,6 @@ variables:
     -Dpackage-origin="freedesktop-sdk"
     -Drsvg=enabled
     -Dsndfile=enabled
-    -Dvdpau=disabled
     -Dvulkan=enabled
     -Dwayland=enabled
     -Dwebp=enabled

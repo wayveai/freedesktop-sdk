@@ -1,0 +1,12 @@
+diff --git a/src/meson.build b/src/meson.build
+index 40798eb8..ffe94f43 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -272,6 +272,7 @@ if get_option('tests')
+     sources : [
+       'fu-firmware-dump.c',
+       daemon_src,
++      resources_src,
+     ],
+     include_directories : [
+       root_incdir,
