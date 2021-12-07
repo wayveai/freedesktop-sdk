@@ -24,7 +24,7 @@ sources:
   url: gnome:glib-networking.git
   track: master
   track-extra:
-  - glib-2-68
+  - glib-2-70
   match:
   - 2.*[02468].*
   exclude:
