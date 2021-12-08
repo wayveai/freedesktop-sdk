@@ -12,7 +12,6 @@ depends:
 - flatpak-images/platform-locale.bst
 - flatpak-images/platform-arch-libs.bst
 - flatpak-images/platform-arch-libs-debug.bst
-- flatpak-images/platform-vaapi.bst
 - flatpak-images/platform-ffmpeg-full.bst
 - flatpak-images/platform-gstreamer-vaapi.bst
 - flatpak-images/clinfo.bst
@@ -31,3 +30,7 @@ depends:
       - flatpak-images/toolchain-aarch64.bst
       - flatpak-images/toolchain-arm.bst
       - flatpak-images/toolchain-i686.bst
+- target_arch == "i686" or target_arch == "x86_64":
+    depends:
+      (>):
+        - flatpak-images/platform-vaapi-intel.bst
