@@ -13,6 +13,8 @@ runtime-depends:
 - components/cups-base.bst
 - components/dbus-base.bst
 - components/flex-base.bst
+- components/gstreamer-plugins-base.bst
+- components/linux-pam-base.bst
 - components/ostree-base.bst
 - components/pipewire-base.bst
 - components/pulseaudio-base.bst
@@ -21,8 +23,7 @@ runtime-depends:
 
 # Outputs
 - flatpak-release-deps.bst
-- platform-oci.bst
-- sdk-oci.bst
-- flatpak-oci.bst
-- toolbox-oci.bst
+- oci/platform-oci.bst
+- oci/sdk-oci.bst
+- oci/flatpak-oci.bst
 # FIXME: Add snaps when we release
