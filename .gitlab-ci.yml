@@ -623,7 +623,7 @@ finish_publish_failed:
     - '/^release\/.*/'
   except:
     - schedules
-  when: manual
+  when: on_failure
   needs:
     - prepare_publish
     - job: publish_x86_64
