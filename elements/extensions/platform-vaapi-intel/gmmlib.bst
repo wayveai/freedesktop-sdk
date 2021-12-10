@@ -25,4 +25,4 @@ sources:
   - 'intel-gmmlib-*'
   exclude:
   - 'intel-gmmlib-*.pre*'
-  ref: intel-gmmlib-21.3.3-0-ga92ef3a73433ad9bf1a18f45dbc8c0a139e2417e
+  ref: intel-gmmlib-21.3.4-0-gc239ff1d7c87017b4a73e8b7a3dcad53d8ab840c
