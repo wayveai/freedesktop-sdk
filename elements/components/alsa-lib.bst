@@ -59,6 +59,6 @@ sources:
   track: v1.2.5.1
   track-extra:
   - master
-  ref: v1.2.6-0-g85b3c276d24e688a0f300aa0090fed958cb29c51
+  ref: v1.2.6.1-0-g1454b5f118a3b92663923fe105daecfeb7e20f1b
 - kind: patch
   path: patches/alsa-lib/sysconfig-ostree.patch
