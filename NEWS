@@ -1,5 +1,30 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.7:
+  * Mesa: Update to 21.3.1
+  * NSS: Downgrade to ESR branch 3.68 (version 3.68.1) for security updates
+  * intel-media-driver: Update to 21.4.3
+  * shaderc: Update to v2021.3
+  * gnupg: Update to 2.2.33
+  * ostree: Update to v2021.6
+  * python3-charset-normalizer: Update to 2.0.9
+  * libexif: Update to 0.6.24
+  * git: Update to v2.34.1
+  * glibc: Update to 2.33 (commit c76a0ba878cac9e3e8ec54abbad9db28a50a369a)
+  * python3-setuptools: Update to 59.5.0
+  * python3-sphinx: Update to 4.3.1
+  * python3-poetry: Update to 1.1.12
+  * wayland-protocols: Update to 1.24
+  * python3-schema Update to 0.7.5
+  * go: Update to 1.16.12
+  * strace: Update to v5.15
+  * cython: Update to 0.29.25
+  * glib-networking: Update to 2.68.3
+  * alsa-plugins.bst to v1.2.6
+  * cmake: Update to v3.22.1
+  * libical: Update to v3.0.12
+  * python3-distlib: Update to 0.3.4
+
 freedesktop-sdk-21.08.6:
   * dbus: depends on libapparmor
   * bash: Update to bash-5.1
