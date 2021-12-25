@@ -6,7 +6,7 @@ sources:
   url: freedesktop-sdk:releases/
   gpg-key: keys/freedesktop-sdk.gpg
   track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/20.08
-  ref: 99c5401494aaf724308ae62522b90045e6947c9836ac1ef15af2a6e544a4ff8b
+  ref: 6d92bc830560f4871445e07f06a2d76d48c7f70e1f07b00aa9061f8e420cfb8b
 
 config:
   source: files
