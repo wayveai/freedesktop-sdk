@@ -34,3 +34,6 @@ variables:
   - bootstrap_build_arch == "riscv64":
       bootstrap_build_arch: "riscv64"
       build-go-arch: "riscv64"
+
+environment:
+  PATH: "%{tools}/bin:/bin"

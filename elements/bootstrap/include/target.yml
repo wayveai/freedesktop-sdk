@@ -4,6 +4,3 @@
 variables:
   host-triplet: '%{triplet}'
   build-triplet: '%{bootstrapper-triplet}'
-
-environment:
-  PATH: "%{tools}/bin:/bin"
