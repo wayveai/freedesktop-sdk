@@ -1,10 +1,12 @@
 kind: autotools
 description: GNU gcc Stage 1
 
+build-depends:
+- bootstrap/build/python3.bst
+- bootstrap/gnu-config.bst
+
 depends:
-- filename: bootstrap/build/binutils-stage1.bst
-- filename: bootstrap/gnu-config.bst
-  type: build
+- bootstrap/build/binutils-stage1.bst
 
 (@):
 - elements/bootstrap/include/gcc-arch-opts.yml

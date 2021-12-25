@@ -3,14 +3,12 @@ kind: script
 (@):
 - elements/bootstrap/include/common.yml
 
-depends:
-- filename: bootstrap/build/binutils-stage1.bst
-  type: build
-- filename: bootstrap/gnu-config.bst
-  type: build
+build-depends:
+- bootstrap/build/binutils-stage1.bst
+- bootstrap/build/python3.bst
+- bootstrap/gnu-config.bst
 
-- filename: bootstrap/glibc.bst
-  type: build
+- bootstrap/glibc.bst
 
 variables:
   install-root: "/"
@@ -18,6 +16,8 @@ variables:
 config:
   layout:
   - element: bootstrap/build/binutils-stage1.bst
+    destination: /
+  - element: bootstrap/build/python3.bst
     destination: /
   - element: bootstrap/gnu-config.bst
     destination: /
