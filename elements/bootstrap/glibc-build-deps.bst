@@ -3,16 +3,13 @@ kind: script
 (@):
 - elements/bootstrap/include/common.yml
 
-depends:
-- filename: bootstrap/gnu-config.bst
-  type: build
-- filename: bootstrap/build/gcc-stage1.bst
-  type: build
-- filename: bootstrap/build/debug-utils.bst
-  type: build
+build-depends:
+- bootstrap/gnu-config.bst
+- bootstrap/build/gcc-stage1.bst
+- bootstrap/build/debug-utils.bst
+- bootstrap/build/python3.bst
 
-- filename: bootstrap/linux-headers.bst
-  type: build
+- bootstrap/linux-headers.bst
 
 variables:
   install-root: "/"
@@ -24,6 +21,8 @@ config:
   - element: bootstrap/build/gcc-stage1.bst
     destination: "/"
   - element: bootstrap/build/debug-utils.bst
+    destination: "/"
+  - element: bootstrap/build/python3.bst
     destination: "/"
 
   - element: bootstrap/linux-headers.bst

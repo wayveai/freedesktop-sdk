@@ -97,14 +97,5 @@ public:
     patches:
     - CVE-2019-16056
 
-sources:
-- kind: git_tag
-  track: '3.9'
-  exclude:
-  - v*rc*
-  url: github:python/cpython.git
-  ref: v3.9.9-0-gccb0e6a3452335a4c3e2433934c3c0c5622a34cd
-- kind: patch
-  path: patches/python3/python3-multiarch-include.patch
-- kind: patch
-  path: patches/python3/python3-max-compileall-jobs.patch
+(@):
+- elements/include/python3.yml

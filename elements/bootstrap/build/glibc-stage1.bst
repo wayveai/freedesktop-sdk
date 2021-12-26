@@ -1,10 +1,9 @@
 kind: autotools
 
-depends:
-- filename: bootstrap/build/base-sdk.bst
-  type: build
-- filename: bootstrap/gnu-config.bst
-  type: build
+build-depends:
+- bootstrap/build/base-sdk.bst
+- bootstrap/build/python3.bst
+- bootstrap/gnu-config.bst
 
 (@):
 - elements/bootstrap/include/build.yml
