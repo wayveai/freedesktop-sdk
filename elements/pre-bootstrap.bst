@@ -11,4 +11,3 @@ depends:
 - components/gzip.bst # Needed by glibc-stage1-bst
 - components/texinfo.bst # Needed by make.bst
 - components/flex.bst # Needed by binutils-stage1-bst
-- components/rsync.bst # Dependency linux-headers
