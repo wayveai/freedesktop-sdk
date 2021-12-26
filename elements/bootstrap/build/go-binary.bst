@@ -9,6 +9,3 @@ kind: stack
 - bootstrap_build_arch == "aarch64":
     depends:
     - bootstrap/build/go-binary-arm64.bst
-- bootstrap_build_arch == "ppc64le":
-    depends:
-    - bootstrap/build/go-binary-ppc64le.bst
