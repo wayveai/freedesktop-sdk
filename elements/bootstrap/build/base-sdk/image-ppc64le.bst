@@ -5,7 +5,7 @@ sources:
 - kind: ostree
   url: freedesktop-sdk:releases/
   gpg-key: keys/freedesktop-sdk.gpg
-  track: runtime/org.freedesktop.Sdk.PreBootstrap/ppc64le/21.08beta
+  track: runtime/org.freedesktop.Sdk.PreBootstrap/ppc64le/21.08
   ref: c22aa3c785c53a63e86a8b24833116e90b1e9540897ec9846336ba1dca747b06
 
 config:

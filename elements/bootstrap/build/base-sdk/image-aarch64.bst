@@ -5,8 +5,8 @@ sources:
 - kind: ostree
   url: freedesktop-sdk:releases/
   gpg-key: keys/freedesktop-sdk.gpg
-  track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/21.08beta
-  ref: e848c53b8b58f674fd1e33565c9fb4bb0a6c163e6e56bc2933102c8fadb1d325
+  track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/21.08
+  ref: 711f92ac9b71751d7f2561ee3cc76858eb2159dec64ba09719af3213cea3a93c
 
 config:
   source: files
