@@ -3,9 +3,10 @@ kind: manual
 depends:
 - bootstrap-import.bst
 - components/gzip.bst
+- components/lzo.bst
 
 variables:
-  make-vars: GZIP_SUPPORT=1 XZ_SUPPORT=1 INSTALL_DIR="%{install-root}%{bindir}"
+  make-vars: GZIP_SUPPORT=1 XZ_SUPPORT=1 LZO_SUPPORT=1 INSTALL_DIR="%{install-root}%{bindir}"
 
 config:
   build-commands:
