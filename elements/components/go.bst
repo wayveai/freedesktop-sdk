@@ -1,7 +1,7 @@
 kind: manual
 
 build-depends:
-- go-import.bst
+- components/gccgo.bst
 
 depends:
 - bootstrap-import.bst
