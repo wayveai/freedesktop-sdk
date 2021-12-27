@@ -12,4 +12,3 @@ depends:
 - components/texinfo.bst # Needed by make.bst
 - components/flex.bst # Needed by binutils-stage1-bst
 - components/python3.bst # Neededs by glibc
-- components/rsync.bst # Dependency linux-headers
