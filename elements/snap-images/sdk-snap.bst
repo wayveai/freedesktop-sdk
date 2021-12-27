@@ -14,4 +14,4 @@ config:
   commands:
   - |
     mksquashfs "%{build-root}" "%{install-root}/sdk.snap" \
-        -root-owned -noappend -comp xz -no-xattrs -no-fragments
+        -root-owned -noappend -comp lzo -no-xattrs -no-fragments
