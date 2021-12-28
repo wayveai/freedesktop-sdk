@@ -1,4 +1,4 @@
-import collections
+import collections.abc
 import os
 from ruamel import yaml
 from buildstream import Element, ElementError, Scope
@@ -20,7 +20,7 @@ class SnapImageElement(Element):
         ret = {}
         for k, v in node.items():
             if not k.startswith('__bst'):
-                if isinstance(v, collections.Mapping):
+                if isinstance(v, collections.abc.Mapping):
                     ret[k] = self._clean_meta_data(v)
                 elif isinstance(v, list):
                     ret[k] = self.node_subst_list(node, k)
