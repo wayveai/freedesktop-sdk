@@ -7,6 +7,7 @@ build-depends:
 depends:
 - components/libyaml.bst
 - components/tpm2-tools.bst
+- components/sqlite.bst
 
 sources:
 - kind: git_tag
