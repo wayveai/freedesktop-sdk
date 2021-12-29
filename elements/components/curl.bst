@@ -7,20 +7,18 @@ depends:
 - bootstrap-import.bst
 - components/gnutls.bst
 - components/libnghttp2.bst
-- components/openssl.bst
 
 runtime-depends:
 - components/ca-certificates.bst
 
 # CURL OpenSSL and GnuTLS backends should be able to internally
-# resolve certs. Only these are allowed TLS backends.
+# resolve certs.
 
 variables:
   conf-local: >-
     --without-ca-bundle
     --with-ca-fallback
     --with-gnutls
-    --with-ssl
     --with-nghttp2
     --enable-debug
     --enable-optimize
