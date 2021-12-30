@@ -11,8 +11,9 @@ depends:
 runtime-depends:
 - components/ca-certificates.bst
 
-# CURL OpenSSL and GnuTLS backends should be able to internally
-# resolve certs.
+# --with-ca-fallback only works with OpenSSL and GnuTLS backends
+# so only those can be selected. We pick GnuTLS due to licensing
+# reasons
 
 variables:
   conf-local: >-
