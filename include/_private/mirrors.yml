@@ -8,6 +8,8 @@ mirrors:
     - https://gitlab.com/freedesktop-sdk/mirrors/chromium/
     debian_salsa:
     - https://gitlab.com/freedesktop-sdk/mirrors/debian_salsa/
+    fedora_rpms:
+    - https://gitlab.com/freedesktop-sdk/mirrors/fedora_rpms/
     ffmpeg:
     - https://gitlab.com/freedesktop-sdk/mirrors/ffmpeg/
     freedesktop_people:
