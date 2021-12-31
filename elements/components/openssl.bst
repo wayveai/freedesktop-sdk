@@ -34,7 +34,7 @@ config:
       %{openssl-target} \
       --prefix=%{prefix} \
       --libdir=%{lib} \
-      --openssldir=%{sysconfdir}/ssl \
+      --openssldir=%{sysconfdir}/pki/tls \
       shared \
       threads
 
