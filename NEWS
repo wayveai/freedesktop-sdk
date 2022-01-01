@@ -1,5 +1,17 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.8:
+  * Drop NSS and OpenSSL support from curl, fix host cert support
+  * Migrate from Debian root CA's to Fedora root CA's
+  * Update Mesa to 21.3.3
+  * Update extra-cmake-modules to v5.89.0
+  * Update python3-setuptools to 60.2.0
+  * Update python3-virtualenv to 20.11.2
+  * Update python3-pygments to 2.11.1
+  * Update gtk3 to 3.24.31
+  * Update python3-zipp to 3.7.0
+  * Update glibc-source.yml to glibc-2.33-62-gc493f6a0e4dcd6fff22da0df9fb2e52ecf4ffff1
+
 freedesktop-sdk-21.08.7:
   * Mesa: Update to 21.3.1
   * NSS: Downgrade to ESR branch 3.68 (version 3.68.1) for security updates
