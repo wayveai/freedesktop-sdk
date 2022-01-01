@@ -2,12 +2,15 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
+- components/openssl1.bst
 
 depends:
 - bootstrap-import.bst
 - components/libffi.bst
 - components/gdbm.bst
-- components/openssl.bst
+
+runtime-depends:
+- components/openssl1-runtime.bst
 
 # Set '--with-compress-debug-sections=no' because of
 # https://bugs.ruby-lang.org/issues/12934

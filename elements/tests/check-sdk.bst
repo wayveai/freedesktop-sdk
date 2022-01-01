@@ -23,6 +23,7 @@ config:
   - components/pipewire-daemon.bst
   - components/plymouth.bst
   - components/rtkit.bst
+  - components/ruby.bst
   - components/rust.bst
   - components/steam-devices.bst
   - components/sudo.bst

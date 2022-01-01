@@ -15,7 +15,7 @@ while IFS= read -r -d '' file; do
     if [ "${basedir}" = vdpau ]; then
 	continue
     fi
-    if [ "${basedir}" = engines-1.1 ]; then
+    if [ "${basedir}" = engines-3 ]; then
 	continue
     fi
     basename="$(basename "${file}")"

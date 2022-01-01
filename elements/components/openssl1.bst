@@ -34,7 +34,7 @@ config:
       %{openssl-target} \
       --prefix=%{prefix} \
       --libdir=%{lib} \
-      --openssldir=%{sysconfdir}/pki/tls \
+      --openssldir=%{sysconfdir}/ssl \
       shared \
       threads
 
@@ -43,14 +43,28 @@ config:
     - rm %{install-root}%{libdir}/lib*.a
 
     - |
+      for man3 in "%{install-root}%{datadir}/man/man3"/*.3; do
+        if [ -L "${man3}" ]; then
+          ln -s "$(readlink "${man3}")ssl" "${man3}ssl"
+          rm "${man3}"
+        else
+          mv "${man3}" "${man3}ssl"
+        fi
+      done
+
+    - |
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/openssl"
       mv "%{install-root}%{includedir}/openssl/opensslconf.h" "%{install-root}%{includedir}/%{gcc_triplet}/openssl/"
+
+    - |
+      rm "%{install-root}%{datadir}/man/man1/passwd.1"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/openssl'
         - '%{bindir}/c_rehash'
         - '%{libdir}/libssl.so'
         - '%{libdir}/libcrypto.so'
@@ -58,9 +72,10 @@ public:
 
   cpe:
     vendor: 'openssl'
+    version-match: '(\d+)_(\d+)_(\d+(?:[a-z])?)'
 
 sources:
 - kind: git_tag
   url: github:openssl/openssl.git
-  track: openssl-3.0
-  ref: openssl-3.0.1-0-gb4e83ed7cd99c12d27e0e220c3afa1745a68f921
+  track: OpenSSL_1_1_1-stable
+  ref: OpenSSL_1_1_1m-0-gac3cef223a4c61d6bee34527b6d4c8c6432494a7
