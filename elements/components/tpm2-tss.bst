@@ -8,6 +8,7 @@ depends:
 - components/libgcrypt.bst
 - components/json-c.bst
 - components/curl.bst
+- components/openssl.bst
 
 sources:
 - kind: git_tag

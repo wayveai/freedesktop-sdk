@@ -1,16 +1,19 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libtasn1.bst
-- filename: components/libffi.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/libtasn1.bst
+- components/libffi.bst
 
 variables:
   builddir: ''
-  conf-local: |
-    --with-trust-paths=%{ca_path}
+  meson-local: >-
+    -Dsystemd=disabled
+    -Dbash_completion=disabled
+    -Dtrust_paths=%{sysconfdir}/pki/ca-trust/source:%{datadir}/pki/ca-trust-source
 
 public:
   bst:
