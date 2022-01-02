@@ -4,6 +4,7 @@
 #Git source aliases
 chromium: https://chromium.googlesource.com/
 debian_salsa: https://salsa.debian.org/
+flathub: https://dl.flathub.org/
 ffmpeg: https://git.ffmpeg.org/
 freedesktop_people: git://people.freedesktop.org/~wtay/
 freedesktop: https://gitlab.freedesktop.org/

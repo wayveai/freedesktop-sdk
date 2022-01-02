@@ -3,10 +3,10 @@ description: Import the base freedesktop SDK
 
 sources:
 - kind: ostree
-  url: freedesktop-sdk:releases/
-  gpg-key: keys/freedesktop-sdk.gpg
-  track: runtime/org.freedesktop.Sdk.PreBootstrap/x86_64/19.08
-  ref: 3fbd964cf6c7f6a0da617cfc11434265924ced591e9c43d742d631253233f40f
+  url: flathub:repo/
+  gpg-key: keys/flathub.gpg
+  track: runtime/org.freedesktop.Sdk/x86_64/19.08
+  ref: daab4c12f9ff6d0e659fa046acf86d5ac65a2f7cf58b78fce71793a1a398bb7e
 
 config:
   source: files
