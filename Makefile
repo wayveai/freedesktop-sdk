@@ -69,8 +69,7 @@ bootstrap:
 	done
 
 check-abi:
-	REFERENCE=$$(git merge-base origin/$(TARGET_BRANCH) HEAD) && \
-	./utils/buildstream-abi-checker/check-abi --bst-opts="${ARCH_OPTS}" --suppressions=utils/abidiff-suppressions.ini --old=$${REFERENCE} --new=HEAD abi/desktop-abi-image.bst
+	$(BST) build tests/check-abi.bst
 
 export: clean-runtime
 	$(BST) build flatpak-release.bst
