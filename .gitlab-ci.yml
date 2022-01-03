@@ -4,7 +4,7 @@ variables:
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
-  BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
+  BST_CACHE_SERVER_ADDRESS: 'cache.freedesktop-sdk.io'
   RUNTIME_VERSION: '20.08'
   STABLE_ABI: 'true'
 
