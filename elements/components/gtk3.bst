@@ -75,3 +75,5 @@ sources:
   path: patches/gtk/0003-gdk-wayland-Mark-matched-settings-from-the-portal-as.patch
 - kind: patch
   path: patches/gtk/0004-gdk-wayland-Look-for-font-settings-recursively.patch
+- kind: patch
+  path: patches/gtk/0005-gdk-wayland-Do-not-use-xdg_wm_base.ping-serials-as-u.patch

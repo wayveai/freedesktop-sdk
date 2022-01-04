@@ -1,0 +1,30 @@
+From d81f58bc09435fdcf8a7addc601fc82482348770 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 4 Nov 2021 14:40:21 +0100
+Subject: [PATCH] gdk/wayland: Do not use xdg_wm_base.ping serials as "user
+ input" serials
+
+Ping/pong serials are not meant to be interpreted as user input serials
+(e.g. those given back later to the compositor on grabs). As a matter
+of fact, Mutter uses a different count (i.e. timestamps) in these, so
+using these serials may confuse the compositor into denying certain
+operations like DnD.
+
+diff --git a/gdk/wayland/gdkdisplay-wayland.c b/gdk/wayland/gdkdisplay-wayland.c
+index dee7632c3a..20f662dd21 100644
+--- a/gdk/wayland/gdkdisplay-wayland.c
++++ b/gdk/wayland/gdkdisplay-wayland.c
+@@ -124,10 +124,6 @@ xdg_wm_base_ping (void               *data,
+                   struct xdg_wm_base *xdg_wm_base,
+                   uint32_t            serial)
+ {
+-  GdkWaylandDisplay *display_wayland = data;
+-
+-  _gdk_wayland_display_update_serial (display_wayland, serial);
+-
+   GDK_NOTE (EVENTS,
+             g_message ("ping, shell %p, serial %u\n", xdg_wm_base, serial));
+ 
+-- 
+2.33.1
+
