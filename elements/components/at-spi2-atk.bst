@@ -9,6 +9,10 @@ depends:
 - filename: components/libxml2.bst
   type: build
 
+variables:
+  meson-local: >-
+    -Ddisable_p2p=true
+
 config:
   install-commands:
     (>):
