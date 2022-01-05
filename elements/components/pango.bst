@@ -36,4 +36,4 @@ sources:
 - kind: git_tag
   url: gnome:pango.git
   track: main
-  ref: 1.50.1-0-gfd62d3ff159232c4a8e7bedb5ce4ac01f1ec8eeb
+  ref: 1.50.3-0-g26aadb2508f9022cbfc72e73b558c6791f5d46d9
