@@ -1,3 +1,0 @@
-[submodule "utils/buildstream-abi-checker"]
-	path = utils/buildstream-abi-checker
-	url = ../buildstream-abi-checker

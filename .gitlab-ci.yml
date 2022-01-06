@@ -267,8 +267,13 @@ check_mirrors:
 
     - git checkout -- snap-version.yml
     - |
+      ABI_SKIP=$(git log -n 1 | grep "\[abi skip\]|\[skip abi\]" || true)
       if [ "${STABLE_ABI}" != "false" ]; then
-        make check-abi
+        if [ -z "${ABI_SKIP}" ]; then
+          make check-abi
+        else
+          echo ABI check skipped
+        fi
       fi
   artifacts:
     when: always
