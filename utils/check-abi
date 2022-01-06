@@ -205,6 +205,10 @@ def compare_tree_abis(old_checkout, new_checkout, forward_compatible):
         new_debug_dir = os.path.join(new_checkout, 'usr', 'lib', 'debug')
         new_include_dir = os.path.join(new_checkout, 'usr', 'include')
 
+        if filecmp.cmp(old_library, new_library, shallow=False):
+            # Full file equality, ABI cannot have changed
+            continue
+
         result = compare_abi(old_library, old_debug_dir, old_include_dir, new_library, new_debug_dir, new_include_dir, forward_compatible)
 
         if result.abi_was_broken:
