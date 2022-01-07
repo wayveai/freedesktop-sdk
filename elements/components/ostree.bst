@@ -35,7 +35,7 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree.git
   track: main
-  ref: v2021.6-0-gf1155c8d283c3c85d74d5e1050b0dcf8198f750a
+  ref: v2022.1-0-g6c903ab0b66e0542685108e837a23a9e29845949
 - kind: git_module
   path: libglnx
   url: gnome:libglnx.git
@@ -43,6 +43,6 @@ sources:
 - kind: git_module
   path: bsdiff
   url: github:mendsley/bsdiff.git
-  ref: 1edf9f656850c0c64dae260960fabd8249ea9c60
+  ref: b817e9491cf7b8699c8462ef9e2657ca4ccd7667
 - kind: patch
   path: patches/ostree/no-boot-symlink.patch
