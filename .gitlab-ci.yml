@@ -283,7 +283,7 @@ license_checker:
 
     - git checkout -- snap-version.yml
     - |
-      ABI_SKIP=$(git log -n 1 | grep "\[abi skip\]|\[skip abi\]" || true)
+      ABI_SKIP=$(git log -n 1 | grep -E "\[abi skip\]|\[skip abi\]" || true)
       if [ "${STABLE_ABI}" != "false" ]; then
         if [ -z "${ABI_SKIP}" ]; then 
           make check-abi
