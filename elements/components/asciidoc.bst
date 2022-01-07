@@ -15,9 +15,9 @@ variables:
 sources:
 - kind: git_tag
   url: github:asciidoc/asciidoc-py3.git
-  track: main
+  track: 9.x
   exclude:
   - '*a*'
   - '*b*'
   - '*rc*'
-  ref: 9.0.5-0-g1bc57fce4c6f048a343e5c64bf75a47f8fae1c0a
+  ref: 9.1.1-0-g08b430eb317c584aa6f02a3c4372035a4d8b92c4
