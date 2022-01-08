@@ -24,6 +24,7 @@ config:
   - components/plymouth.bst
   - components/rtkit.bst
   - components/rust.bst
+  - components/standard-streams.bst
   - components/steam-devices.bst
   - components/sudo.bst
   - components/systemd.bst
