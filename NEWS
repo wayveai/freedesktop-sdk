@@ -1,5 +1,20 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.9:
+  * setuptools: downgrade to 59.8
+  * asciidoc.bst: track the 9.x branch
+  * mesa: update to 21.3.3
+  * e2fsprogs.bst to v1.46.5
+  * libmicrohttpd.bst to v0.9.75
+  * vala: Update to 0.54.5
+  * po4a: Update to v0.66
+  * Merge `egl_external_platform.d` GL ext dir (#1341)
+  * ABI check now runs inside BuildStream
+  * nano.bst to v6.0
+  * intel-media-driver.bst to intel-media-22.1.0
+  * bash: Update to bash-5.1
+  * at-spi2-atk: Build without P2P support
+
 freedesktop-sdk-21.08.8:
   * Drop NSS and OpenSSL support from curl, fix host cert support
   * Migrate from Debian root CA's to Fedora root CA's
