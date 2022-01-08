@@ -373,9 +373,7 @@ check_snap_x86_64:
   extends:
     - .check-snap
     - .builder-x86_64
-  needs:
-    - job: check_runtime_inheritance_x86_64
-      artifacts: false
+  needs: []
 
 check_snap_i686:
   extends:
@@ -964,27 +962,3 @@ publish_docker_finish:
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
-
-.runtime_inheritance_check_template:
-  stage: flatpak
-  interruptible: true
-  script:
-  - make test-runtime-inheritance
-  rules:
-  - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    when: never
-  - if: '$CI_COMMIT_BRANCH == "master"'
-  - if: '$CI_COMMIT_BRANCH == "18.08"'
-  - if: '$CI_COMMIT_BRANCH == "19.08"'
-  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
-
-check_runtime_inheritance_x86_64:
-  extends:
-  - .runtime_inheritance_check_template
-  - .builder-x86_64
-
-.check_runtime_inheritance_ppc64le:
-  extends:
-  - .runtime_inheritance_check_template
-  - .builder-ppc64le
-  allow_failure: true
