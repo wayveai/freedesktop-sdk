@@ -397,6 +397,7 @@ app_riscv64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  interruptible: true
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule"'
     when: never
@@ -409,13 +410,11 @@ check_snap_x86_64:
   extends:
     - .check-snap
     - .builder-x86_64
-  needs: []
 
 check_snap_i686:
   extends:
     - .check-snap
     - .builder-i686
-  needs: []
 
 .bootstrap_template:
   stage: bootstrap
