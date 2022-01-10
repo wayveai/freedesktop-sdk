@@ -20,6 +20,7 @@ variables:
 
 default:
   image: "${DOCKER_REGISTRY}/bst16:${DOCKER_IMAGE_ID}"
+  interruptible: true
 
 stages:
   - bootstrap
@@ -174,7 +175,6 @@ pylint:
     - '/^release\/.*/'
     - tags
   needs: []
-  interruptible: true
 
 check_update_elements:
   stage: update
@@ -248,7 +248,6 @@ license_checker:
   extends:
     - .builder-x86_64
   stage: update
-  interruptible: true
   needs: []
   variables:
     DEPS: all
@@ -272,7 +271,6 @@ license_checker:
 
 .flatpak_template:
   stage: flatpak
-  interruptible: true
   script:
     - make url-manifest
     - python3 utils/mirror-management-scripts/check_mirrors.py --alias_test --mirror_defined_test -m "release-url-manifest/url-manifest-no-mirrors.json" -M "include/_private/mirrors.yml" -i "utils/mirror-management-scripts/ignore_dict.json" --output_file "mirror_problem_list.json"
@@ -302,7 +300,6 @@ license_checker:
     - '19.08'
     - '/^release\/.*/'
     - tags
-  interruptible: true
 
 .retry_system_failure:
   retry:
@@ -384,7 +381,6 @@ app_riscv64:
 
 .check-snap:
   stage: snap
-  interruptible: true
   script:
     - make export-snap
     - python3 utils/parse_review.py snap/sdk.snap
@@ -397,7 +393,6 @@ app_riscv64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  interruptible: true
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule"'
     when: never
@@ -448,7 +443,6 @@ check_snap_i686:
     - '/^release\/.*/'
     - tags
     - schedules
-  interruptible: true
 
 minimal_systemd_vm_x86_64:
   extends:
@@ -507,7 +501,6 @@ minimal_systemd_vm_aarch64:
   - if: '$CI_COMMIT_BRANCH == "18.08"'
   - if: '$CI_COMMIT_BRANCH == "19.08"'
   - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
-  interruptible: true
 
 minimal_systemd_vm_image_x86_64:
   extends:
@@ -543,7 +536,6 @@ minimal_systemd_vm_image_x86_64:
   - if: '$CI_COMMIT_BRANCH == "18.08"'
   - if: '$CI_COMMIT_BRANCH == "19.08"'
   - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
-  interruptible: true
 
 minimal_efi_vm_image_x86_64:
   extends:
@@ -577,6 +569,7 @@ prepare_publish:
       - publish_build.txt
   except:
     - schedules
+  interruptible: false
   only:
     - master
     - '18.08'
@@ -766,7 +759,6 @@ publish_aarch64_tar:
 cve_report:
   extends: .builder-x86_64
   stage: finish-publish
-  interruptible: true
   cache:
     key: cve
     paths:
@@ -796,7 +788,6 @@ cve_report:
 markdown_manifest:
   extends: .builder-x86_64
   stage: finish-publish
-  interruptible: true
   script:
     - make markdown-manifest
   artifacts:
