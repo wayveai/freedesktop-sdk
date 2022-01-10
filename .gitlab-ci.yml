@@ -938,17 +938,18 @@ publish_docker_finish:
   allow_failure: true
   before_script: []
   script:
-  - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
+  - podman login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}" "${DOCKER_HUB_ADDRESS}"
 
   - |
     set -eu
     for name in platform sdk debug flatpak; do
       for dir in docker-pushed-digests/*; do
         DOCKER_VERSION="$(basename "${dir}")"
-        podman manifest create freedesktopsdk/${name}:"${DOCKER_VERSION}" \
+        podman manifest create "freedesktopsdk/${name}:${DOCKER_VERSION}" \
                       $(cat "${dir}"/${name}-*.txt)
         podman manifest push --format v2s2 \
-                      freedesktopsdk/${name}:"${DOCKER_VERSION}"
+                      "freedesktopsdk/${name}:${DOCKER_VERSION}" \
+                      docker://docker.io/freedesktopsdk/"${name}:${DOCKER_VERSION}"
       done
     done
 
