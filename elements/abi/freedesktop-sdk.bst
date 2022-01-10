@@ -9,6 +9,4 @@ sources:
 - kind: git_tag
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
   track: release/20.08
-  # Fix me to track tags after 20.08 has done a release
-  track-tags: false
-  ref: freedesktop-sdk-20.08.16-71-g84c5123b2feac6aad90fe2ef747360567faf5dc0
+  ref: freedesktop-sdk-20.08.17-0-g18906b5db4240c51a54e74ebab946e979ea0e357
