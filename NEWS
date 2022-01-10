@@ -1,5 +1,39 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.17:
+    * doxygen: Updated to Release_1_9_3
+    * extra-cmake-modules: Updated to v5.89.0
+    * cython: Updated to 0.29.26
+    * python3-pygments: Updated to 2.11.2
+    * python3-wheel: Updated to 0.37.1
+    * ostree-base: Updated to v2022.1
+    * Switch snap image compression method to LZO
+    * Use ABI check inside BuildStream
+    * Add GnuTLS record version patch (#1307)
+    * bash: Updated to bash-5.1
+    * xdg-desktop-portal-base: Updated to 1.12.1
+    * Remove ppc64 build
+    * libical: Updated to v3.0.12
+    * cython: Updated to 0.29.25-1
+    * vala: Updated to 0.48.20
+    * strace: Updated to v5.15
+    * wayland-protocols: Updated to 1.24
+    * spirv-headers to sdk-1.2.198
+    * spirv-tools: Updated to sdk-1.2.198.0
+    * libexif: Updated to libexif-0_6_24-release
+    * git: Updated to v2.34.1
+    * python3-pycparser: Updated to 2.21
+    * python3-cffi: Updated to 1.15.0
+    * bash: Updated to bash-5.1
+    * ostree-base: Updated to v2021.6
+    * gnupg-source: Updated to gnupg-2.2.33
+    * python3-toml: Updated to 0.10.2
+    * cryptsetup-base: Updated to v2.4.2
+    * gmmlib: Updated to intel-gmmlib-21.3.3
+    * po4a: Updated to v0.65
+    * ca-certificates: Updated to debian/20211016
+    * flatpak-images/platform-arch-libs.bst: Add mount point for VAAPI.Intel.i386
+
 freedesktop-sdk-20.08.16:
     * git: Update to v2.34.0
     * man-pages: Update to man-pages-5.13
