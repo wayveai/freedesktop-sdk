@@ -1,4 +1,4 @@
-NAME=Freedesktop.org
+NAME=freedesktop-sdk
 VERSION="__RUNTIME_VERSION__ (Flatpak runtime)"
 VERSION_ID=__RUNTIME_VERSION__
 ID=org.freedesktop.platform
