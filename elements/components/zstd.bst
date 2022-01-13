@@ -26,5 +26,5 @@ public:
 sources:
 - kind: git_tag
   url: github:facebook/zstd.git
-  track: release
+  # Disable updates since 21.08 zstd is frozen
   ref: v1.5.0-0-ga488ba114ec17ea1054b9057c26a046fc122b3b6
