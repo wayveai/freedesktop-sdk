@@ -177,7 +177,7 @@ sources:
   track: main
   track-extra:
   - '21.3'
-  ref: mesa-21.3.3-0-ga65ad66c47f2085c584e83174bcb25da5bb8a20d
+  ref: mesa-21.3.4-0-gbfe18835b501c07e3c47b15b973f4f109f69498b
 - kind: local
   path: files/mesa/org.freedesktop.Platform.GL.default.appdata.xml.in
 - kind: patch
