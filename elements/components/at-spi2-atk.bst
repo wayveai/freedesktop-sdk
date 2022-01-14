@@ -1,13 +1,17 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/libxml2.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/atk.bst
-- filename: components/at-spi2-core.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/libxml2.bst
-  type: build
+- bootstrap-import.bst
+- components/atk.bst
+- components/at-spi2-core.bst
+
+variables:
+  meson-local: >-
+    -Ddisable_p2p=true
 
 config:
   install-commands:
