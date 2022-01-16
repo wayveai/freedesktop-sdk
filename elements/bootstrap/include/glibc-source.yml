@@ -4,9 +4,5 @@ sources:
   track: release/2.34/master
   track-tags: false
   ref: glibc-2.34-50-ge9f81c261a2ca74d31d07ff9c8e780ac8a25993c
-- kind: patch
-  path: patches/glibc/optimize-audit.patch
-- kind: patch
-  path: patches/glibc/locale-C.diff
-- kind: patch
-  path: patches/glibc/fix-dl-dst-lib.patch
+- kind: patch_queue
+  path: patches/glibc

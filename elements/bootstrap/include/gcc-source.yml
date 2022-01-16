@@ -18,11 +18,5 @@ sources:
   url: tar_http:isl.gforge.inria.fr/isl-0.24.tar.xz
   directory: isl
   ref: 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
-- kind: patch
-  path: patches/gcc/gcc-multiarch-os-dir.patch
-- kind: patch
-  path: patches/gcc/gcc-multiarch-no-cross-structure.patch
-- kind: patch
-  path: patches/gcc/gcc-multiarch-enable-riscv.patch
-- kind: patch
-  path: patches/gcc/gcc-fix-header-path.patch
+- kind: patch_queue
+  path: patches/gcc
