@@ -1,21 +1,13 @@
-kind: distutils
+kind: meson
 
 build-depends:
-- components/python3-setuptools.bst
-- components/python3-wheel.bst
-- components/pycairo.bst
-- components/pkg-config.bst
+- public-stacks/buildsystem-meson.bst
 
 depends:
 - components/python3.bst
 - components/gobject-introspection.bst
-
-config:
-  install-commands:
-    (>):
-    - |
-      mkdir -p "%{install-root}%{libdir}"
-      mv "%{install-root}%{indep-libdir}/pkgconfig" "%{install-root}%{libdir}/"
+- components/libffi.bst
+- components/pycairo.bst
 
 sources:
 - kind: git_tag
