@@ -37,9 +37,10 @@ class PatchQueueSource(Source):
 
     def stage(self, directory):
         with self.timed_activity("Applying patch queue: {}".format(self.path)):
-            for p in self.__get_patches():
-                self.call([self.host_git, '-C', directory, 'apply', p],
-                          fail="Failed to apply patch {}".format(os.path.basename(p)))
+            command = [self.host_git, '-C', directory, 'apply']
+            command.extend(self.__get_patches())
+            self.call(command,
+                      fail="Failed to apply patches from {}".format(self.path))
 
 
 def setup():
