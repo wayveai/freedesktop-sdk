@@ -11,6 +11,7 @@ depends:
 - components/atk.bst
 - components/at-spi2-atk.bst
 - components/cairo.bst
+- components/cups.bst
 - components/gdk-pixbuf.bst
 - components/gsettings-desktop-schemas.bst
 - components/hicolor-icon-theme.bst
@@ -26,6 +27,7 @@ depends:
 
 variables:
   conf-local: |
+    --enable-cups \
     --enable-xkb \
     --enable-xinerama \
     --enable-xrandr \
