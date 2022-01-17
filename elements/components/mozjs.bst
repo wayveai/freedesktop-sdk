@@ -1,7 +1,7 @@
 kind: manual
 
 build-depends:
-- components/autoconf2.13.bst # 1999 called, LOL
+- components/autoconf.bst
 - components/pkg-config.bst
 - components/python3.bst
 - components/which.bst
@@ -22,6 +22,7 @@ environment:
   PATH: /usr/bin:/usr/lib/sdk/rust/bin
   CC: gcc
   CXX: g++
+  AUTOCONF: autoconf
 
 variables:
   optimize-debug: "false"
