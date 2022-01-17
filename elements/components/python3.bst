@@ -26,7 +26,7 @@ variables:
     --with-lto \
     --with-conf-includedir="%{includedir}/%{gcc_triplet}"
   version_short: "3"
-  version_long: "%{version_short}.9"
+  version_long: "%{version_short}.10"
 
 config:
   install-commands:

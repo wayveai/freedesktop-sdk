@@ -17,3 +17,5 @@ sources:
   track: master
   track-tags: false
   ref: d6c5dd51dc3a60bf4ff32a5256713690a1a10376
+- kind: patch
+  path: patches/gyp/fix-gyp-Python-3.10-compatibility.patch

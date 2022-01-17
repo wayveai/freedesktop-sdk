@@ -50,19 +50,6 @@ index 6505af46768..3fdcb966ab8 100644
  
  #include <inttypes.h>
  
-diff --git a/Include/pytime.h b/Include/pytime.h
-index bdda1da2e6b..e67ecdb0789 100644
---- a/Include/pytime.h
-+++ b/Include/pytime.h
-@@ -2,7 +2,7 @@
- #ifndef Py_PYTIME_H
- #define Py_PYTIME_H
- 
--#include "pyconfig.h" /* include for defines */
-+#include <pyconfig.h> /* include for defines */
- #include "object.h"
- 
- /**************************************************************************
 diff --git a/Lib/distutils/sysconfig.py b/Lib/distutils/sysconfig.py
 index 37feae5df72..825e6bdb699 100644
 --- a/Lib/distutils/sysconfig.py
@@ -186,36 +173,36 @@ index 2815a8cde31..f2e905cd51b 100644
  
  #ifdef __cplusplus
 diff --git a/configure b/configure
-index 9e6fd465833..857b42af48c 100755
+index a7d2975f1f5..ba9effa817a 100755
 --- a/configure
 +++ b/configure
-@@ -623,6 +623,7 @@ ac_includes_default="\
- #endif"
- 
- ac_subst_vars='LTLIBOBJS
+@@ -626,6 +626,7 @@ ac_subst_vars='LTLIBOBJS
+ TEST_MODULES
+ LIBRARY_DEPS
+ STATIC_LIBPYTHON
 +CONFINCLUDEDIR
+ OPENSSL_RPATH
  OPENSSL_LDFLAGS
  OPENSSL_LIBS
- OPENSSL_INCLUDES
-@@ -850,6 +851,7 @@ with_computed_gotos
- with_ensurepip
+@@ -860,6 +861,7 @@ with_ensurepip
  with_openssl
+ with_openssl_rpath
  with_ssl_default_suites
 +with_conf_includedir
  with_builtin_hashlib_hashes
- '
-       ac_precious_vars='build_alias
-@@ -1584,6 +1586,8 @@ Optional Packages:
+ with_experimental_isolated_subinterpreters
+ with_static_libpython
+@@ -1620,6 +1622,8 @@ Optional Packages:
                            leave OpenSSL's defaults untouched, STRING: use a
-                           custom string, PROTOCOL_SSLv2 ignores the setting,
-                           see Doc/library/ssl.rst
-+  --with-conf-includedir=PATH 
+                           custom string, python and STRING also set TLS 1.2 as
+                           minimum TLS version
++  --with-conf-includedir=PATH
 +                          Path to pyconfig.h [EXEC_PREFIX/include]
    --with-builtin-hashlib-hashes=md5,sha1,sha256,sha512,sha3,blake2
                            builtin hash modules, md5, sha1, sha256, sha512,
                            sha3 (with shake), blake2
-@@ -17598,6 +17602,15 @@ _ACEOF
- 
+@@ -1656,6 +1660,13 @@ _ACEOF
+ ac_status=$?
  fi
  
 +# Check whether --with-conf-includedir was given.
@@ -225,11 +212,9 @@ index 9e6fd465833..857b42af48c 100755
 +  CONFINCLUDEDIR="${exec_prefix}/include"
 +fi
 +
-+
-+
- 
- # generate output files
- ac_config_files="$ac_config_files Makefile.pre Misc/python.pc Misc/python-embed.pc Misc/python-config.sh"
+ if test "$ac_init_help" = "recursive"; then
+   # If there are subdirs, report their specific --help.
+   for ac_dir in : $ac_subdirs_all; do test "x$ac_dir" = x: && continue
 diff --git a/configure.ac b/configure.ac
 index d60f05251ab..c968d8cd0c8 100644
 --- a/configure.ac
