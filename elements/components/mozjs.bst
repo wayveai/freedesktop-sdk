@@ -60,6 +60,6 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:ftp.mozilla.org/pub/firefox/releases/91.2.0esr/source/firefox-91.2.0esr.source.tar.xz
-  base-dir: 'firefox-91.2.0'
-  ref: 3ef3cfd321d0c2c80ee1b41b8baf7a1ea4daf93c29e1377274933440ff5e42c3
+  url: tar_https:ftp.mozilla.org/pub/firefox/releases/91.5.0esr/source/firefox-91.5.0esr.source.tar.xz
+  base-dir: 'firefox-91.5.0'
+  ref: f45cd9c96227e3e6eabe37962ce924b7a7ca86b6c191326c1bab18e082b4c813
