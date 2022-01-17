@@ -14,7 +14,6 @@ depends:
 - components/audit.bst
 - components/autoconf-archive.bst
 - components/autoconf.bst
-- components/autoconf2.13.bst
 - components/automake.bst
 - components/avahi-base.bst
 - components/avahi-gobject.bst
