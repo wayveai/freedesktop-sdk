@@ -1,12 +1,8 @@
 kind: manual
 description: GNU config scripts
 
-variables:
-  tools: /cross
-  toolchain-prefixes: >-
-    %{tools}
-    /usr
-    %{prefix}
+(@):
+- elements/bootstrap/include/common.yml
 
 depends:
 - filename: bootstrap/build/base-sdk.bst
