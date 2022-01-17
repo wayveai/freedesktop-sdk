@@ -28,3 +28,6 @@ depends:
 - filename: bootstrap/symlinks.bst
 - filename: bootstrap/utf-locale.bst
 - filename: bootstrap/zlib.bst
+
+sandbox:
+  build-arch: '%{bootstrap_build_arch}'

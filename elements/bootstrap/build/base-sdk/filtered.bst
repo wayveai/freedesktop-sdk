@@ -14,3 +14,6 @@ config:
   exclude:
     - filter
   include-orphans: True
+
+sandbox:
+  build-arch: '%{bootstrap_build_arch}'
