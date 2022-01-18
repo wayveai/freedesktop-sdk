@@ -15,6 +15,9 @@ while IFS= read -r -d '' file; do
     if [ "${basedir}" = engines-1.1 ]; then
 	continue
     fi
+    if [ "${basedir}" = sasl2 ]; then
+	continue
+    fi
     if [ "${basedir}" = vdpau ]; then
 	continue
     fi
