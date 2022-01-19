@@ -1,16 +1,17 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/expat.bst
-- filename: components/libxml2.bst
-- filename: components/libffi.bst
+- bootstrap-import.bst
+- components/expat.bst
+- components/libxml2.bst
+- components/libffi.bst
 
 variables:
-  conf-local: |
-    --disable-documentation
+  meson-local: >-
+    -Ddocumentation=false
 
 public:
   bst:
