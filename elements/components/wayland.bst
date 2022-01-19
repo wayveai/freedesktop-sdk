@@ -27,9 +27,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:wayland/wayland.git
-  track: master
+  track: main
   exclude:
   - '*.*.9*'
-  ref: 1.19.0-0-ge60398b1755bfcdf09f040d3769131fe0d9762fc
-- kind: patch
-  path: patches/wayland/wayland-cursor-xdg-dirs.patch
+  ref: 1.20.0-0-g75c1a93e2067220fa06208f20f8f096bb463ec08
