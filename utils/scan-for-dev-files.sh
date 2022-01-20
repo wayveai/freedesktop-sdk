@@ -12,10 +12,13 @@ find "$1" -type l -name "lib*.so" -print0 |
 while IFS= read -r -d '' file; do
     dirname="$(dirname "${file}")"
     basedir="$(basename "${dirname}")"
-    if [ "${basedir}" = vdpau ]; then
+    if [ "${basedir}" = engines-3 ]; then
 	continue
     fi
-    if [ "${basedir}" = engines-3 ]; then
+    if [ "${basedir}" = sasl2 ]; then
+	continue
+    fi
+    if [ "${basedir}" = vdpau ]; then
 	continue
     fi
     basename="$(basename "${file}")"

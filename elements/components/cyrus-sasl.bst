@@ -41,7 +41,6 @@ public:
       devel:
         (>):
         - '%{libdir}/sasl2/lib*.la'
-        - '%{libdir}/sasl2/lib*.so'
         - '%{libdir}/libsasl2.so'
   cpe:
     patches:
