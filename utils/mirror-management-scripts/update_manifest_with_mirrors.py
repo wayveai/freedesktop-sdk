@@ -91,7 +91,7 @@ def update_manifest_with_mirrors(manifest, mirror_alias_dict):
                 mirror_urls = [url_part + rest_of_url for url_part in mirror_url_parts]
                 for mirror_url in mirror_urls:
                     # There may be more than one mirror defined
-                    # We only want ones that have the approriate start
+                    # We only want ones that have the appropriate start
                     if (
                             mirror_url.startswith(mm.MIRROR_GROUP_URL)
                             or mirror_url.startswith(mm.TAR_URL_PREFIX)

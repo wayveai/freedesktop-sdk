@@ -51,7 +51,7 @@ def get_source_locations(sources):
     """
     Returns a list of source URLs and refs, currently for
     git, tar, ostree, remote, zip and tar sources.
-    Patch sources are not included in the ouput, since
+    Patch sources are not included in the output, since
     they don't have source URLs
 
     :sources A list or generator of BuildStream Sources
