@@ -151,7 +151,7 @@ config:
     install -p -m 755 update-ca-trust %{install-root}%{bindir}/update-ca-trust
 
     install -p -m 755 ca-legacy %{install-root}%{bindir}/ca-legacy
-    
+
   - |
     # /etc/ssl is provided in a Debian compatible form for (bad) code that
     # expects it: https://bugzilla.redhat.com/show_bug.cgi?id=1053882
@@ -172,7 +172,7 @@ config:
     %{install-root}%{pkidir}/tls/certs/%{openssl_format_trust_bundle}
     ln -s %{catrustdir}/extracted/%{java_bundle} \
     %{install-root}%{pkidir}/%{java_bundle}
-  
+
 public:
   bst:
     integration-commands:
@@ -183,6 +183,6 @@ sources:
   url: fedora_rpms:ca-certificates.git
   track: rawhide
   track-tags: false
-  ref: ca-certificates-2010_63-3_fc14-131-g662998d9d75a465b757ee1dfe35d626579fb0d70
+  ref: ca-certificates-2010_63-3_fc14-132-g421e34b6612a8be47dce6f91daf9b5001143413f
 - kind: patch
   path: patches/ca-certificates/directory-hash-writable.patch
