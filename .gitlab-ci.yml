@@ -22,6 +22,12 @@ default:
   image: "${DOCKER_REGISTRY}/bst16:${DOCKER_IMAGE_ID}"
   interruptible: true
 
+workflow:
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+    when: never
+
 stages:
   - bootstrap
   - update
@@ -312,14 +318,6 @@ check_mirrors:
   variables:
     ARCH: aarch64
 
-.builder-ppc64le:
-  extends:
-  - .retry_system_failure
-  tags:
-    - ppc64le
-  variables:
-    ARCH: ppc64le
-
 app_x86_64:
   extends:
     - .flatpak_template
@@ -336,13 +334,6 @@ app_aarch64:
   extends:
     - .flatpak_template
     - .builder-aarch64
-  needs: []
-
-.app_ppc64le:
-  extends:
-    - .flatpak_template
-    - .builder-ppc64le
-  allow_failure: true
   needs: []
 
 .check-snap:
@@ -432,21 +423,6 @@ minimal_systemd_vm_aarch64:
     - job: app_aarch64
       artifacts: false
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
-
-.minimal_systemd_vm_ppc64le:
-  # FIXME: We should find out why this fails to boot.
-  allow_failure: true
-  extends:
-    - .vm_imageless_template
-    - .builder-ppc64le
-  variables:
-    VM_ARTIFACT_BOOT: vm/boot/virt.bst
-    VM_ARTIFACT_FILESYSTEM: vm/minimal/virt.bst
-    DIALOG: root-login
-  needs:
-    - job: app_ppc64le
-      artifacts: false
-  when: manual
 
 .vm_image_template:
   stage: vm
@@ -568,9 +544,6 @@ finish_publish:
       artifacts: false
     - job: publish_aarch64
       artifacts: false
-#    - job: publish_ppc64le
-#      artifacts: false
-#      optional: true
 
 finish_publish_failed:
   stage: finish-publish
@@ -593,9 +566,6 @@ finish_publish_failed:
       artifacts: false
     - job: publish_aarch64
       artifacts: false
-#    - job: publish_ppc64le
-#      artifacts: false
-#      optional: true
 
 .flatpak_publish_template:
   stage: publish
@@ -648,8 +618,6 @@ finish_publish_failed:
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule"'
     when: never
-  - if: '$CI_COMMIT_TAG && $FLATHUB_REPO_TOKEN && $ARCH == "ppc64le"'
-    when: never
   - if: $CI_COMMIT_TAG
     when: on_success
   - if: '$CI_COMMIT_BRANCH == "master"'
@@ -692,12 +660,6 @@ publish_aarch64:
     - .flatpak_publish_template
     - .builder-aarch64
 
-.publish_ppc64le:
-  extends:
-    - .flatpak_publish_template
-    - .builder-ppc64le
-  allow_failure: true
-
 publish_x86_64_tar:
   extends:
     - .publish_tar_template
@@ -716,12 +678,6 @@ publish_aarch64_tar:
     - .builder-aarch64
   needs: []
   when: manual
-
-.publish_ppc64le_tar:
-  extends:
-    - .publish_tar_template
-    - .builder-ppc64le
-  needs: []
 
 cve_report:
   extends: .builder-x86_64
@@ -917,15 +873,6 @@ publish_docker_aarch64:
     DISABLE_CACHE_PUSH: 1
   needs: []
 
-.publish_docker_ppc64le:
-  extends:
-    - .builder-ppc64le
-    - .docker_publish_template
-  variables:
-    DISABLE_CACHE_PUSH: 1
-  needs: []
-  allow_failure: true
-
 publish_docker_finish:
   stage: finish-publish
   allow_failure: true
@@ -951,7 +898,6 @@ publish_docker_finish:
   except:
   - schedules
   needs:
-#  - publish_docker_ppc64le
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
