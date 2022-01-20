@@ -139,7 +139,7 @@ Since 19.08 release, freedesktop-sdk flatpak runtime ships libudev library.
 This is dedicated for apps which need to link against it during build and
 later at runtime.
 
-In flatpak it's use-case is limited to a simple PCI device enumarator without
+In flatpak it's use-case is limited to a simple PCI device enumerator without
 access to udevd database as upstream doesn't guarantee API stability there
 (See https://lists.freedesktop.org/archives/systemd-devel/2014-October/024498.html)
 and mismatch between flatpak's and host versions may cause broken functionality.

@@ -11,5 +11,5 @@ depends:
 sources:
 - kind: git_tag
   url: freedesktop:xorg/proto/xorgproto.git
-  # Tracking disabld due to ABI issues
+  # Tracking disabled due to ABI issues
   ref: xorgproto-2020.1-0-gc62e8203402cafafa5ba0357b6d1c019156c9f36
