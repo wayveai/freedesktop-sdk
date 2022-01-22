@@ -1,4 +1,4 @@
-# This element is just for opmiziation in CI. Pulling this from artifact
+# This element is just for optimization in CI. Pulling this from artifact
 # cache server does not require pulling all dependencies.
 kind: script
 

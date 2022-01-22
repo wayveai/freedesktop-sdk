@@ -85,7 +85,7 @@ support for sound, add the following to the command line:
 #### Network
 
 First, it is needed to a network backend. We recommend to use `user` as
-it does not require administrator prividlege
+it does not require administrator privilege
 
 ```
 -netdev user,id=net1
@@ -101,7 +101,7 @@ it to the previously created backend:
 
 #### Graphics
 
-For graphics we recommend enabling OpenGL accelaration. With the GTK front end
+For graphics we recommend enabling OpenGL acceleration. With the GTK front end
 use:
 
 ```
