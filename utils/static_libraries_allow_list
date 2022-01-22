@@ -31,4 +31,4 @@ libOGLCompiler.a
 libglslang.a
 # End glslang static libraries
 
-# The script could portentially be extended to recognise globs, regular expressions, and/or partial directory paths. If you think this could be useful, please raise an issue on GitLab.
+# The script could potentially be extended to recognise globs, regular expressions, and/or partial directory paths. If you think this could be useful, please raise an issue on GitLab.

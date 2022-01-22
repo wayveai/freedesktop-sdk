@@ -80,7 +80,7 @@ def main():
 
 def get_ignore_dict(ignore_filename):
     '''The 'ignore' dictionary contains a list of sources, that should be
-    ignored by the tests. This means we can supress warnings about known
+    ignored by the tests. This means we can suppress warnings about known
     issues, if we've decided we can't resolve them yet, or if we've
     implemented a workaround.'''
     if not ignore_filename:
@@ -144,7 +144,7 @@ def get_arg_parser():
     arg_parser.add_argument(
         '-c', '--mirror_commit_test', action='store_true',
         help='for each git source, test whether the ref commit actually exists in the mirror'
-        + ' respository',
+        + ' repository',
     )
 
     return arg_parser

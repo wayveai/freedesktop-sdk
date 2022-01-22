@@ -132,7 +132,7 @@ check_rpath() {
 			return 1
 		    fi
 		    if ! [ -d "${3}${resolved}" ]; then
-			echo "${abspath}: ${rpath} has non-existant path" 1>&2
+			echo "${abspath}: ${rpath} has non-existent path" 1>&2
 			return 1
 		    fi
 		    found_needed=no

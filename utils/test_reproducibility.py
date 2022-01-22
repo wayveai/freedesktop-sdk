@@ -4,7 +4,7 @@
 
 Missing from Buildstream:
 - Remove Downloadable Artifacts
-    Aparently buildstream 2 will support removing artifacts, but
+    Apparently buildstream 2 will support removing artifacts, but
     buildstream 1.5+ still lacks this possibility.
 
 - Disable Artifacts Server
@@ -43,7 +43,7 @@ class ElementInfo:
 
 
 class BuildstreamConfiguration:
-    """ Represents the user specified configuration for buildsteam """
+    """ Represents the user specified configuration for buildstream """
 
     def __init__(self):
         bst_binary_call = os.environ.get("BST", "bst")
@@ -223,7 +223,7 @@ def bst_checkout_files_to(
         ]
     )
 
-    print("BST CHEKOUT RUNNING:", bst_call)
+    print("BST CHECKOUT RUNNING:", bst_call)
     ret = subprocess.call(bst_call)
 
     if ret != 0:
@@ -325,7 +325,7 @@ def is_reproducible(
         # saves generated html on the output dir
         f"--html-dir={output_dir}",
         # I don't really like this option as I can't fine tune to ignore what
-        # I want (timestamps of generated files), and it ignores userful stuff
+        # I want (timestamps of generated files), and it ignores useful stuff
         # like file permissions. but if we don't ignore timestamps all builds
         # will be non-reproducible. a patch for diffoscope is on the way to support
         # a list of metadatas that should be ignored.
@@ -519,7 +519,7 @@ def write_html_report(results, output_dir: str, output_filename: str) -> None:
 
 
 def handle_results(results, output_dir: str) -> bool:
-    """ Get the list of results, writes the resulting file, and prints userful information to the user """
+    """ Get the list of results, writes the resulting file, and prints useful information to the user """
 
     # Write the report first
     write_html_report(results, output_dir, "reproducibility_results.html")
