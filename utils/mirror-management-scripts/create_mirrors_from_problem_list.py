@@ -13,7 +13,7 @@ IMPORTANT: Authentication:
     tarball-lfs-mirror repository, you'll need an access token from Gitlab for
     this as well. (If you tell the script to use a copy of the repository that
     already exists on your machine, then it will assume you've already set up
-    authentication credentials in the respository, and use those.
+    authentication credentials in the repository, and use those.
 
 Background:
     The freedesktop-sdk project builds a lot of software which is downloaded
@@ -38,7 +38,7 @@ Git repositories:
     We take advantage of the "groups" functionality on gitlab. We have a
     top_level group (At time of writing, this is
     https://gitlab.com/freedesktop-sdk/mirrors). Then we use subgroups (and
-    sub-sub groups) to create repositories that have the apppropriate URL.
+    sub-sub groups) to create repositories that have the appropriate URL.
 
 Git repo example:
         A raw URL, defined in a .bst file:
@@ -52,7 +52,7 @@ Git repo example:
     (Note that "bar/baz.git" (the part following the colon in the raw URL), is
     repeated in the source url and the mirror URL. Only the first part changes.)
 
-    To create a project with the approriate mirror URL, we need to make a
+    To create a project with the appropriate mirror URL, we need to make a
     project called "baz", and place it in the "bar" group, which must be in the
     "foo" group, which must then be in the top level "mirrors" group.
 
@@ -74,7 +74,7 @@ Tarballs, zip archives, and other files:
     If you don't have an already-existing local copy, then the script can clone
     a new one. However, this can take a significant amount of time, so any
     maintainer who uses this script regularly should consider maintaining a
-    persistant local copy of tarball-lfs-mirror.git.
+    persistent local copy of tarball-lfs-mirror.git.
 
 Tarball example:
         A raw URL, defined in a .bst file:
@@ -87,7 +87,7 @@ Tarball example:
             /raw/master/foo/bar/baz.tar.gz
 
     To create the download mirror, we download baz.tar.gz and put it in the
-    folder "/foo/bar" in the repository. (Then we run git add, git commmit, and
+    folder "/foo/bar" in the repository. (Then we run git add, git commit, and
     at the end, git push.)
 """
 
@@ -229,7 +229,7 @@ def push_tar_repo(tar_repo_dir, access_token, prompt_needed=True):
     '''Confirms that there are new commits to be pushed, in the
     tarball-lfs-mirror repository, and then pushes them to the remote.
 
-    Uses the GIT_ASKPASS enviornment variable, and creates a tiny script to
+    Uses the GIT_ASKPASS environment variable, and creates a tiny script to
     supply the access token as a password, to avoid having to pass the access
     token anywhere as a commandline parameter.'''
     # check whether there are new commits (and master is therefore ahead of origin/master)
@@ -317,7 +317,7 @@ def get_mirror_url_and_proceed(mirror_dict, prompt_needed=True):
     """Checks an entry in the mirror_problems file, looking for the download
     mirror urls.
     -Prints a detailed message about what's about to be created, and presents
-    a user prompt, asking whether to proceeed.
+    a user prompt, asking whether to proceed.
     -Prints an error message and returns None if no appropriate download url
     exists."""
 
@@ -335,7 +335,7 @@ def get_mirror_url_and_proceed(mirror_dict, prompt_needed=True):
 
 def create_git_mirror(gitlab_inst, source_url, top_group, new_mirror_url):
     """creates a new gitlab project, to serve as a download mirror.
-    The project is created somwhere under our "mirrors" project group, inside
+    The project is created somewhere under our "mirrors" project group, inside
     an appropriate nested set of subgroups, such that project URL will match
     the desired URL (as specified in the function arguments).
 
@@ -419,7 +419,7 @@ def create_project(gitlab_instance, parent_group_id, new_project_path, import_ur
     print_green("Creating new project at: ", new_project.http_url_to_repo)
 
 def initialize_gitlab_instance(access_token):
-    """creates a gitlab object (using the python-gilab library), which will
+    """creates a gitlab object (using the python-gitlab library), which will
     be needed to create any git projects to serve as download mirrors.
     Also creates an object to represent the top level "mirrors" project group.
 
@@ -468,7 +468,7 @@ def create_file_mirror(source_url, tar_repo_dir, new_mirror_url):
             print_red("Something went wrong while trying to create a new commit.")
             print_red("Exiting script")
             print("The script tried to download a new file to the tarball-lfs "
-                  + "repositiory, and add it in a new commit. Something has gone "
+                  + "repository, and add it in a new commit. Something has gone "
                   + "wrong, and the script is exiting without cleaning up the "
                   + "repository. You may need to navigate into the repository and "
                   + "manually delete a file, or reset to an earlier commit, to get "
@@ -521,7 +521,7 @@ def initialize_tar_repo(repo_path, access_token, prompt_needed=True):
             print_green("Ready to fetch the repository from ", TAR_REPO_URL)
             print("Into target folder: {}".format(os.path.abspath(repo_path)))
             print_red("IMPORTANT: ", "this script is about to download the "
-                      + "tarbal-lfs repository into the directory listed above. This "
+                      + "tarball-lfs repository into the directory listed above. This "
                       + "is a large repository (around 10 Gigabytes at time of writing"
                       + ") and may take some time to download. Do not proceed if you "
                       + "do not want to download a large amount of data.\n"
@@ -584,7 +584,7 @@ def report_tar_repo_creation_failure():
     """Prints an error notification, and exits the script.
     Can be called from several places in initialize_tar_repo()."""
     print_red(
-        "Somthing went wrong while creating and accessing the file mirror repository.",
+        "Something went wrong while creating and accessing the file mirror repository.",
     )
     sys.exit(1)
 
