@@ -79,6 +79,6 @@ sources:
 - kind: git_tag
   url: github:libsdl-org/SDL.git
   track: main
-  ref: release-2.0.18-0-g2e9821423a237a1206e3c09020778faacfe430be
+  ref: release-2.0.20-0-gb424665e0899769b200231ba943353a5fee1b6b6
 - kind: patch
   path: patches/sdl2/cmake-remove-static-target.patch
