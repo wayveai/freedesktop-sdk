@@ -1,3 +1,0 @@
-kind: export
-build-depends:
-- bootstrap/bootstrap.bst
