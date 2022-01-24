@@ -17,6 +17,7 @@ build-depends:
 - components/asciidoc.bst
 - components/python3.bst
 - components/docbook-xsl.bst
+- components/libxslt.bst
 
 depends:
 - components/p11-kit.bst
