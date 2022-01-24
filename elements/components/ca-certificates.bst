@@ -96,10 +96,10 @@ config:
     fi
 
   - |
-    asciidoc.py -v -d manpage -b docbook update-ca-trust.8.txt
+    asciidoc -v -d manpage -b docbook update-ca-trust.8.txt
     xsltproc --nonet "%{manpage-xsl}" update-ca-trust.8.xml
 
-    asciidoc.py -v -d manpage -b docbook ca-legacy.8.txt
+    asciidoc -v -d manpage -b docbook ca-legacy.8.txt
     xsltproc --nonet "%{manpage-xsl}" ca-legacy.8.xml
 
   install-commands:
