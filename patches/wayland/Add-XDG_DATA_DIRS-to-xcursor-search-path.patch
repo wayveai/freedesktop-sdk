@@ -1,0 +1,243 @@
+From 1aed575dc914847de297e47c6afd03a87a40d3e1 Mon Sep 17 00:00:00 2001
+From: catsout <outline941@live.com>
+Date: Fri, 3 Dec 2021 23:40:35 +0800
+Subject: [PATCH] cursor: add XDG_DATA_DIRS to xcursor search path
+
+For XDG Base Directory Specification
+The XDG_DATA_HOME is already supported.
+This patch adds XDG_DATA_DIRS support.
+
+As specifications:
+1.$XDG_DATA_DIRS defines the preference-ordered set of base directories
+to search for data files in addition to the $XDG_DATA_HOME base directory.
+2.if $XDG_DATA_DIRS is either not set or empty, a value equal to
+/usr/local/share/:/usr/share/ should be used.
+3.look in $HOME/.icons (for backwards compatibility) at first.
+
+Related:
+https://github.com/alacritty/alacritty/issues/4371
+https://github.com/flatpak/flatpak/commit/ad87b12264e2795c27a2a4da496b2e3c719767e1
+XDG Base Directory Specification
+Icon Theme Specification
+
+Signed-off-by: catsout outline941@live.com
+---
+ cursor/xcursor.c | 157 ++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 115 insertions(+), 42 deletions(-)
+
+diff --git a/cursor/xcursor.c b/cursor/xcursor.c
+index 0506680f..8a4102a5 100644
+--- a/cursor/xcursor.c
++++ b/cursor/xcursor.c
+@@ -23,6 +23,7 @@
+  * SOFTWARE.
+  */
+ 
++#define _GNU_SOURCE
+ #include "xcursor.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -609,6 +610,39 @@ XcursorFileLoadImages (FILE *file, int size)
+     return XcursorXcFileLoadImages (&f, size);
+ }
+ 
++static const char *
++_XcursorNextPath (const char *path)
++{
++    char    *colon = strchr (path, ':');
++
++    if (!colon)
++	return NULL;
++    return colon + 1;
++}
++
++static  void
++_XcursorAddPathElt (char *path, const char *elt, int len)
++{
++    int	    pathlen = strlen (path);
++
++    /* append / if the path doesn't currently have one */
++    if (path[0] == '\0' || path[pathlen - 1] != '/')
++    {
++	strcat (path, "/");
++	pathlen++;
++    }
++    if (len == -1)
++	len = strlen (elt);
++    /* strip leading slashes */
++    while (len && elt[0] == '/')
++    {
++	elt++;
++	len--;
++    }
++    strncpy (path + pathlen, elt, len);
++    path[pathlen + len] = '\0';
++}
++
+ /*
+  * From libXcursor/src/library.c
+  */
+@@ -618,11 +652,60 @@ XcursorFileLoadImages (FILE *file, int size)
+ #endif
+ 
+ #ifndef XCURSORPATH
+-#define XCURSORPATH "~/.icons:/usr/share/icons:/usr/share/pixmaps:~/.cursors:/usr/share/cursors/xorg-x11:"ICONDIR
++#define XCURSORPATH "/usr/share/icons:/usr/share/pixmaps:~/.cursors:/usr/share/cursors/xorg-x11:"ICONDIR
+ #endif
+ 
++#define XCURSORPATH_BACKWARDS_COMPATIBILITY "~/.icons"
+ #define XDG_DATA_HOME_FALLBACK "~/.local/share"
+-#define CURSORDIR "/icons"
++#define XDG_DATA_DIRS_FALLBACK "/usr/local/share"
++#define XCURSORPATH_FALLBACK "~/.icons:~/.local/share/icons:/usr/local/share/icons:"XCURSORPATH
++#define CURSORDIR "icons"
++
++static char *
++_XcursorLibraryColonAppendDir (const char *in_path, const char *dir)
++{
++    const char		*colon;
++    const char		*colon_next;
++    char		*path = NULL;
++    int		path_len = 0;
++    int		max_path_len = 0;
++    int		append_len = 0;
++    int		dir_len = strlen (dir);
++
++    // max for adding max num of '/dir', use 'dir_len + 1' as '/' is uncertain
++    max_path_len = strlen (in_path) + 1;
++    for (colon = in_path; colon; colon = _XcursorNextPath (colon)) {
++	max_path_len += dir_len + 1;
++    }
++    path = malloc (max_path_len);
++    if (path == NULL)
++	return NULL;
++
++    *path = '\0';
++    path_len = 0;
++
++    colon = in_path;
++    while (colon != NULL)
++    {
++	colon_next = strchrnul (colon, ':');
++	append_len = snprintf (path + path_len, max_path_len - path_len, "%.*s",
++	                      (int)(colon_next - colon), colon);
++	colon = _XcursorNextPath (colon);
++
++	if (append_len > 0 && append_len + (dir_len + 1) < max_path_len - path_len)
++	{
++	    path_len += append_len;
++	    _XcursorAddPathElt (path + path_len - 1, dir, dir_len);
++	    path_len += strlen (path + path_len);
++	    if (colon != NULL)
++	    {
++		path_len += snprintf (path + path_len, max_path_len - path_len, ":");
++	    }
++	}
++    }
++    return path;
++}
++
+ 
+ /** Get search path for cursor themes
+  *
+@@ -637,8 +720,10 @@ static char *
+ XcursorLibraryPath (void)
+ {
+     const char		*env_var;
++    const char		*xdg_data_home;
+     char		*path = NULL;
+-    int		pathlen = 0;
++    char		*xdg_path = NULL;
++    int		path_len = 0;
+ 
+     env_var = getenv ("XCURSOR_PATH");
+     if (env_var)
+@@ -648,41 +733,39 @@ XcursorLibraryPath (void)
+     else
+     {
+ 	env_var = getenv ("XDG_DATA_HOME");
+-	if (env_var) {
+-            pathlen = strlen (env_var) + strlen (CURSORDIR ":" XCURSORPATH) + 1;
+-            path = malloc (pathlen);
+-            snprintf (path, pathlen, "%s%s", env_var,
+-                      CURSORDIR ":" XCURSORPATH);
++	if (!env_var)
++	{
++	    env_var = XDG_DATA_HOME_FALLBACK;
+ 	}
+-	else
++	xdg_data_home = env_var;
++
++	env_var = getenv ("XDG_DATA_DIRS");
++	if (!env_var)
+ 	{
+-	    path = strdup (XDG_DATA_HOME_FALLBACK CURSORDIR ":" XCURSORPATH);
++	    env_var = XDG_DATA_DIRS_FALLBACK;
+ 	}
+-    }
+-    return path;
+-}
++	do
++	{
++	    path_len = asprintf (&xdg_path, "%s:%s", xdg_data_home, env_var);
++	    if (path_len == -1)
++		break;
+ 
+-static  void
+-_XcursorAddPathElt (char *path, const char *elt, int len)
+-{
+-    int	    pathlen = strlen (path);
++	    path = _XcursorLibraryColonAppendDir (xdg_path, CURSORDIR);
++	    free (xdg_path);
++	    if (path == NULL)
++		break;
++	    xdg_path = path;
+ 
+-    /* append / if the path doesn't currently have one */
+-    if (path[0] == '\0' || path[pathlen - 1] != '/')
+-    {
+-	strcat (path, "/");
+-	pathlen++;
+-    }
+-    if (len == -1)
+-	len = strlen (elt);
+-    /* strip leading slashes */
+-    while (len && elt[0] == '/')
+-    {
+-	elt++;
+-	len--;
++	    path_len = asprintf (&path, "%s%s%s", XCURSORPATH_BACKWARDS_COMPATIBILITY ":",
++	          xdg_path, ":" XCURSORPATH);
++	    free (xdg_path);
++	    if (path_len == -1)
++		break;
++	    return path;
++	} while (0);
++	return strdup (XCURSORPATH_FALLBACK);
+     }
+-    strncpy (path + pathlen, elt, len);
+-    path[pathlen + len] = '\0';
++    return path;
+ }
+ 
+ static char *
+@@ -760,16 +843,6 @@ _XcursorBuildFullname (const char *dir, const char *subdir, const char *file)
+     return full;
+ }
+ 
+-static const char *
+-_XcursorNextPath (const char *path)
+-{
+-    char    *colon = strchr (path, ':');
+-
+-    if (!colon)
+-	return NULL;
+-    return colon + 1;
+-}
+-
+ #define XcursorWhite(c)	((c) == ' ' || (c) == '\t' || (c) == '\n')
+ #define XcursorSep(c) ((c) == ';' || (c) == ',')
+ 
+-- 
+GitLab
+

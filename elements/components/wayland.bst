@@ -1,16 +1,17 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/expat.bst
-- filename: components/libxml2.bst
-- filename: components/libffi.bst
+- bootstrap-import.bst
+- components/expat.bst
+- components/libxml2.bst
+- components/libffi.bst
 
 variables:
-  conf-local: |
-    --disable-documentation
+  meson-local: >-
+    -Ddocumentation=false
 
 public:
   bst:
@@ -26,9 +27,9 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:wayland/wayland.git
-  track: master
+  track: main
   exclude:
   - '*.*.9*'
-  ref: 1.19.0-0-ge60398b1755bfcdf09f040d3769131fe0d9762fc
+  ref: 1.20.0-0-g75c1a93e2067220fa06208f20f8f096bb463ec08
 - kind: patch
-  path: patches/wayland/wayland-cursor-xdg-dirs.patch
+  path: patches/wayland/Add-XDG_DATA_DIRS-to-xcursor-search-path.patch
