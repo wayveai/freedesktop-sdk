@@ -17,7 +17,6 @@ CHECKOUT_ROOT=runtimes
 VM_CHECKOUT_ROOT=checkout/$(ARCH)
 VM_ARTIFACT_ROOT?=vm/minimal/virt.bst
 VM_ARTIFACT_BOOT?=vm/boot/virt.bst
-IMPORT_BOOTSTRAP?=false
 RUNTIME_VERSION?=master
 ifeq ($(RUNTIME_VERSION),master)
 TARGET_BRANCH=master
@@ -27,9 +26,6 @@ endif
 
 SNAP_GRADE?=devel
 ARCH_OPTS=-o bootstrap_build_arch $(BOOTSTRAP_ARCH) -o target_arch $(ARCH) -o snap_grade $(SNAP_GRADE)
-ifeq ($(IMPORT_BOOTSTRAP),true)
-ARCH_OPTS+= -o import_bootstrap true
-endif
 TARBALLS=            \
 	sdk          \
 	platform
@@ -60,10 +56,7 @@ build-tar:
 
 
 bootstrap:
-	$(BST) build bootstrap/export-bootstrap.bst
-	[ -d bootstrap/ ] || mkdir -p bootstrap/
-	$(BST) checkout bootstrap/export-bootstrap.bst \
-	                bootstrap/bootstrap-$(ARCH)
+	$(BST) build bootstrap/bootstrap.bst
 
 check-abi:
 	$(BST) build tests/check-abi.bst
