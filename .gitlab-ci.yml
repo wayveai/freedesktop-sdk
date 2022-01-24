@@ -405,7 +405,6 @@ check_snap_i686:
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
       - bootstrap/bootstrap-${ARCH}
-      - bootstrap/go-${ARCH}
   except:
     - '18.08'
     - '19.08'

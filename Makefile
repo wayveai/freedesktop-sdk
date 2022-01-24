@@ -59,14 +59,11 @@ build-tar:
 	$(BST) build $(TAR_ELEMENTS)
 
 
-BOOTSTRAP_COMPONENTS=bootstrap go
 bootstrap:
-	$(BST) build $(foreach component,$(BOOTSTRAP_COMPONENTS),bootstrap/export-$(component).bst)
+	$(BST) build bootstrap/export-bootstrap.bst
 	[ -d bootstrap/ ] || mkdir -p bootstrap/
-	for component in $(BOOTSTRAP_COMPONENTS); do \
-	    $(BST) checkout bootstrap/export-$${component}.bst \
-	                    bootstrap/$${component}-$(ARCH); \
-	done
+	$(BST) checkout bootstrap/export-bootstrap.bst \
+	                bootstrap/bootstrap-$(ARCH)
 
 check-abi:
 	$(BST) build tests/check-abi.bst
