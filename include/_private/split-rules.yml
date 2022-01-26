@@ -21,4 +21,22 @@ devel:
 debug:
   - "%{debugdir}/**"
 
+doc:
+  - "%{docdir}"
+  - "%{docdir}/**"
+  - "%{infodir}"
+  - "%{infodir}/**"
+  - "%{mandir}"
+  - "%{mandir}/**"
+  - "%{datadir}/gtk-doc/html/"
+  - "%{datadir}/gtk-doc/html/**"
+  - "%{datadir}/examples"
+  - "%{datadir}/examples/**"
+  - "%{datadir}/help"
+  - "%{datadir}/help/**"
+  - "%{datadir}/ri"
+  - "%{datadir}/ri/**"
+  - "%{datadir}/cmake-*/Help/"
+  - "%{datadir}/cmake-*/Help/**"
+
 static-blocklist: []
