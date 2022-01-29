@@ -716,7 +716,6 @@ cve_report:
     - make manifest
 
     - mkdir -p "${XDG_CACHE_HOME}/cve"
-    - cd "${XDG_CACHE_HOME}/cve"
     - python3 "${CI_PROJECT_DIR}/utils/update_local_cve_database.py"
 
     - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
