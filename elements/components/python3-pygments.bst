@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: pygments
-  url: pypi:b7/b3/5cba26637fe43500d4568d0ee7b7362de1fb29c0e158d50b4b69e9a40422/Pygments-2.10.0.tar.gz
-  sha256sum: f398865f7eb6874156579fdf36bc840a03cab64d1cde9e93d68f46a425ec52c6
+  url: pypi:94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz
+  sha256sum: 4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a
