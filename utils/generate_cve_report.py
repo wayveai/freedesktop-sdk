@@ -1,21 +1,66 @@
-"""Generate and HTML output with all current CVEs for a given manifest.
+"""
+Downloads CVE database and generate HTML output with all current CVEs for a given manifest.
 
 Usage:
   python3 generate-cve-report.py path/to/manifest.json output.html
 
-This requires you to run update_local_cve_database.py first in the
-same current directory.
+This tool will create files in the current
+directory:
+ - nvdcve-2.0-*.xml.gz: The cached raw XML databases from the CVE database.
+ - nvdcve-2.0-*.xml.gz.etag: Related etags for downloaded files
+
+Files are not downloaded if not modified. But we still verify with the
+remote database we have the latest version of the files.
 """
 
 import json
 import sys
-import sqlite3
+import gzip
+import glob
 import os
 import urllib.request
 import urllib.error
 
-connection = sqlite3.connect('data-2.db')
-cursor = connection.cursor()
+import packaging.version
+
+
+LOOKUP_TABLE = {}
+
+with open(sys.argv[1], 'rb') as f:
+    manifest = json.load(f)
+    for module in manifest["modules"]:
+        cpe = module["x-cpe"]
+        version = cpe.get("version")
+        if not version:
+            continue
+        vendor = cpe.get("vendor")
+        vendor_dict = LOOKUP_TABLE.setdefault(cpe.get("vendor"), {})
+        vendor_dict[cpe["product"]] = {
+            "name": module["name"],
+            "version": version,
+            "patches": cpe.get("patches", []),
+            "ignored": cpe.get("ignored", [])
+        }
+
+
+def extract_product_vulns_sub(node):
+    if "cpe_match" in node:
+        for cpe_match in node["cpe_match"]:
+            if cpe_match["vulnerable"]:
+                yield cpe_match
+    else:
+        for child in node.get("children", []):
+            yield from extract_product_vulns_sub(child)
+
+
+def extract_product_vulns(tree):
+    for item in tree['CVE_Items']:
+        summary = item['cve']['description']['description_data'][0]['value']
+        score = item['impact'].get('baseMetricV2', {}).get('cvssV2', {}).get('baseScore')
+        cve_id = item['cve']['CVE_data_meta']['ID']
+        for node in item['configurations']["nodes"]:
+            for cpe_match in extract_product_vulns_sub(node):
+                yield cve_id, summary, score, cpe_match
 
 api = os.environ.get("CI_API_V4_URL")
 project_id = os.environ.get("CI_PROJECT_ID")
@@ -39,68 +84,93 @@ def get_issues_and_mrs(cveid):
     for entry_name, url in get_entries('#', 'issues', cveid):
         yield entry_name, url
 
-with open(sys.argv[1], 'rb') as f:
-    manifest = json.load(f)
 
-with open(sys.argv[2], 'w') as out:
-    out.write('<!DOCTYPE html>\n')
-    out.write('<html><head><title>Report</title></head><body><table>\n')
+def extract_vulnerabilities(filename):
+    print(f"Processing {filename}")
+    with gzip.open(filename) as file:
+        tree = json.load(file)
+        for cve_id, summary, score, cpe_match in extract_product_vulns(tree):
+            product_name = cpe_match["cpe23Uri"]
+            vendor, name, version = product_name.split(':')[3:6]
 
-    entries = []
-    for module in manifest["modules"]:
-        name = module["name"]
-        sources = module["sources"]
-        cpe = module["x-cpe"]
-        product = cpe["product"]
-        version = cpe.get("version")
-        vendor = cpe.get("vendor")
-        patches = cpe.get("patches", [])
-        ignored = cpe.get("ignored", [])
-        if not version:
-            print("{} is missing a version".format(name))
-            continue
-
-        if vendor:
-            cursor.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
-                             WHERE cve.id=product_vuln.cve_id
-                               AND product_vuln.name=?
-                               AND product_vuln.version=?
-                               AND product_vuln.vendor=?""",
-                           (product, version, vendor))
-        else:
-            cursor.execute("""SELECT cve.id, cve.summary, cve.score FROM cve, product_vuln
-                             WHERE cve.id=product_vuln.cve_id
-                               AND product_vuln.name=?
-                               AND product_vuln.version=?""",
-                           (product, version))
-        while True:
-            row = cursor.fetchone()
-            if row is None:
-                break
-            if row[0] in patches or row[0] in ignored:
+            module = LOOKUP_TABLE.get(vendor, {}).get(name)
+            if not module:
+                module = LOOKUP_TABLE.get(None, {}).get(name)
+            if not module:
                 continue
-            entries.append((row[0], name, version, row[1], row[2]))
 
-    def by_score(entry, ): # TODO why the empty 2nd args?
-        entry_score = entry[4]
-        try:
-            return float(entry_score)
-        except ValueError:
-            return float("inf")
+            if cve_id in module["patches"] or cve_id in module["ignored"]:
+                vulnerable = False
+            elif module["version"] == version:
+                vulnerable = True
+            elif version == "*":
+                version_object = packaging.version.LegacyVersion(module["version"])
+                vulnerable = True
+                if "versionStartIncluding" in cpe_match:
+                    start = packaging.version.LegacyVersion(cpe_match["versionStartIncluding"])
+                    if version_object < start:
+                        vulnerable = False
+                elif "versionStartExcluding" in cpe_match:
+                    start = packaging.version.LegacyVersion(cpe_match["versionStartExcluding"])
+                    if version_object <= start:
+                        vulnerable = False
+                if "versionEndIncluding" in cpe_match:
+                    end = packaging.version.LegacyVersion(cpe_match["versionEndIncluding"])
+                    if version_object > end:
+                        vulnerable = False
+                elif "versionEndExcluding" in cpe_match:
+                    end = packaging.version.LegacyVersion(cpe_match["versionEndExcluding"])
+                    if version_object >= end:
+                        vulnerable = False
+            else:
+                vulnerable = False
 
-    for ID, name, version, summary, score in sorted(entries, key=by_score, reverse=True):
-        out.write('<tr>')
-        out.write('<td><a href="https://nvd.nist.gov/vuln/detail/{ID}">{ID}</a></td>'.format(ID=ID))
-        for d in [name, version, summary, score]:
-            out.write('<td>{}</td>'.format(d))
-        out.write('<td>')
-        found_entry = False
-        for entry_id, link in get_issues_and_mrs(ID):
-            out.write(f'<a href="{link}">{entry_id}</a> ')
-            found_entry = True
-        if not found_entry:
-            out.write('<span style="color: red">None</span>')
-        out.write('</td>')
-        out.write('</tr>\n')
+            yield cve_id, module["name"], module["version"], summary, score, vulnerable
 
-    out.write('</table></html>\n')
+
+
+def by_score(entry, ): # TODO why the empty 2nd args?
+    entry_score = entry[4]
+    try:
+        return float(entry_score)
+    except ValueError:
+        return float("inf")
+
+
+if __name__ == "__main__":
+    vuln_map = {}
+    for filename in sorted(glob.glob("nvdcve-1.1-*.json.gz")):
+        for cve_id, name, version, summary, score, vulnerable in extract_vulnerabilities(filename):
+            if not vulnerable:
+                try:
+                    del vuln_map[cve_id]
+                except KeyError:
+                    pass
+            else:
+                vuln_map[cve_id] = cve_id, name, version, summary, score
+
+    entries = list(vuln_map.values())
+
+    entries.sort(key=by_score, reverse=True)
+
+    with open(sys.argv[2], 'w') as out:
+        out.write('<!DOCTYPE html>\n')
+        out.write('<html><head><title>Report</title></head><body><table>\n')
+
+
+        for ID, name, version, summary, score in entries:
+            out.write('<tr>')
+            out.write('<td><a href="https://nvd.nist.gov/vuln/detail/{ID}">{ID}</a></td>'.format(ID=ID))
+            for d in [name, version, summary, score]:
+                out.write('<td>{}</td>'.format(d))
+            out.write('<td>')
+            found_entry = False
+            for entry_id, link in get_issues_and_mrs(ID):
+                out.write(f'<a href="{link}">{entry_id}</a> ')
+                found_entry = True
+            if not found_entry:
+                out.write('<span style="color: red">None</span>')
+            out.write('</td>')
+            out.write('</tr>\n')
+
+        out.write('</table></html>\n')
