@@ -11,6 +11,7 @@ variables:
     -DBUILD_SHARED_LIBS=ON
     -DBUILD_STATIC_LIBS=OFF
     -DOPENJPEG_INSTALL_LIB_DIR=%{lib}
+  local_flags: -fvisibility=hidden
 
 public:
   bst:
