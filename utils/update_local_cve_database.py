@@ -99,5 +99,5 @@ def update_year(updated_year, url_timeout):
 if __name__ == "__main__":
     url_timeout = UrlOpenTimeout()
     entries = []
-    for year in range(2010, datetime.datetime.now().year + 1):
+    for year in range(2002, datetime.datetime.now().year + 1):
         update_year(str(year), url_timeout)
