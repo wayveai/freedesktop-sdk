@@ -40,6 +40,9 @@ public:
       sysroot="${1}"
       chmod 4755 "${sysroot}%{indep-libdir}/polkit-1/polkit-agent-helper-1"
       chmod 4755 "${sysroot}%{bindir}/pkexec"
+  cpe:
+    patches:
+    - CVE-2021-4034
 
 sources:
 - kind: git_tag
@@ -48,6 +51,8 @@ sources:
   ref: 0.120-0-g92b910ce2273daf6a76038f6bd764fa6958d4e8e
 - kind: patch
   path: patches/polkit/mozjs-91.patch
+- kind: patch
+  path: patches/polkit/pkexec-local-privilege-escalation-CVE-2021-4034.patch
 - kind: local
   path: files/polkit/sysusers.conf
   directory: data
