@@ -133,10 +133,10 @@ sources:
   url: github:nss-dev/nss.git
   track: master
   track-extra:
-  - NSS_3_49_BRANCH
+  - NSS_3_68_1_BRANCH
   match:
   - 'NSS_*_RTM'
-  ref: NSS_3_49_2_RTM-0-ge9eeb425e4d857afb21e2d046dc6c8711f53ef22
+  ref: NSS_3_68_1_RTM-0-g3c9cb4c600bc7d9c5493875c65eaea2ddb408042
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
