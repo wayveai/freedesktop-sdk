@@ -1,16 +1,15 @@
 kind: autotools
 description: X.org lib x11
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/perl.bst
+- components/xorg-util-macros.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/xorg-lib-xtrans.bst
-- filename: components/xorg-lib-xcb.bst
-- filename: components/perl.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/xorg-util-macros.bst
-  type: build
+- bootstrap-import.bst
+- components/xorg-lib-xtrans.bst
+- components/xorg-lib-xcb.bst
 
 public:
   bst:
@@ -21,6 +20,8 @@ public:
         - '%{libdir}/libX11-xcb.so'
   cpe:
     product: libx11
+    patches:
+    - CVE-2021-31535
 
 sources:
 - kind: git_tag
@@ -29,3 +30,5 @@ sources:
   match:
   - "libX11-1.6.*"
   ref: libX11-1.6.12-0-g505420662577749e36640db48f6b6b9ae0236e09
+- kind: patch
+  path: patches/xorg-lib-x11/CVE-2021-31535.patch
