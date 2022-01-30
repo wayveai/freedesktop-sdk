@@ -30,7 +30,7 @@ public:
     patches:
       - CVE-2019-7595
       - CVE-2019-20388
-
+      - CVE-2021-3517
 
 sources:
 - kind: git_tag
@@ -45,3 +45,5 @@ sources:
   path: patches/libxml2/CVE-2019-20388.patch
 - kind: patch
   path: patches/libxml2/CVE-2019-7595.patch
+- kind: patch
+  path: patches/libxml2/CVE-2021-3517.patch
