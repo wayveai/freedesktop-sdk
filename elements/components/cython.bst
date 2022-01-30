@@ -9,5 +9,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: cython
-  url: pypi:09/45/10c39337ba73c38a798165f97e4798827a532eaac71071842cbe0ee13dc5/Cython-0.29.25.tar.gz
-  sha256sum: a87cbe3756e7c464acf3e9420d8741e62d3b2eace0846cb39f664ad378aab284
+  url: pypi:eb/46/80dd9e5ad67ebc766ff3229901bde4a7bc82907efe93cd7007c4df458dd5/Cython-0.29.27.tar.gz
+  sha256sum: c6a442504db906dfc13a480e96850cced994ecdc076bcf492c43515b78f70da2
