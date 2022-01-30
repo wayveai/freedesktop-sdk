@@ -45,6 +45,8 @@ public:
   cpe:
     patches:
     - CVE-2019-19906
+    ignored:
+    - CVE-2020-8032
 
 sources:
 - kind: git_tag
