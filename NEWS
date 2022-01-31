@@ -1,5 +1,31 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.18:
+    * python3-pip.bst to 22.0.2
+    * polkit: backport patch to fix CVE-2021-4034
+    * Update GnuTLS to 3.7.2
+    * Patch libxml2 for CVE-2021-3517
+    * Patch xorg-lib-x11 for CVE-2021-31535
+    * Update NSS in 20.08 to latest LTS branch (ABI fordware break)
+    * wayland-protocols: Update to 1.25
+    * cython: Update to 0.29.27
+    * audit: Update to v3.0.7
+    * git: Update to v2.35.1
+    * bluez: Update to 5.63
+    * Drop all jobs related to ppc64le (#1251)
+    * glibc: Update to new commit in glibc-2.31 branch: 3ef8be9
+    * flatpak: Update to 1.12.4
+    * libical: Update to v3.0.13
+    * p11-kit: Update to 0.24.1
+    * vala: Update to 0.48.22
+    * nano: Update to v6.0
+    * strace: Update to v5.16
+    * openssl: Update to OpenSSL_1_1_1m
+    * po4a: Update to v0.66
+    * extra-cmake-modules: Update to v5.90.0
+    * iso-codes: Update to v4.9.0
+    * at-spi2-atk: Build without P2P support
+
 freedesktop-sdk-20.08.17:
     * doxygen: Updated to Release_1_9_3
     * extra-cmake-modules: Updated to v5.89.0
