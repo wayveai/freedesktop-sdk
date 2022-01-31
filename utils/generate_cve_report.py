@@ -18,9 +18,8 @@ import sys
 import gzip
 import glob
 import os
-import urllib.request
-import urllib.error
 
+import requests
 import packaging.version
 
 
@@ -64,20 +63,19 @@ def extract_product_vulns(tree):
 
 api = os.environ.get("CI_API_V4_URL")
 project_id = os.environ.get("CI_PROJECT_ID")
+token = os.environ.get("GITLAB_TOKEN")
 
 def get_entries(entry_char, entry_type, cveid):
-    req = urllib.request.Request(f'{api}/projects/{project_id}/{entry_type}?search={cveid}')
-    try:
-        resp = urllib.request.urlopen(req)
-        entries = json.load(resp)
-        for entry in entries:
+    resp = requests.get(f'{api}/projects/{project_id}/{entry_type}?search={cveid}', headers={'Authorization': f'Bearer {token}'})
+    if resp.ok:
+        for entry in resp.json():
             iid = entry.get('iid')
             yield f'{entry_char}{iid}', entry.get('web_url')
-    except urllib.error.HTTPError:
-        pass
+    else:
+        print(resp.status_code, resp.text)
 
 def get_issues_and_mrs(cveid):
-    if not api or not project_id:
+    if not api or not project_id or not token:
         return
     for entry_name, url in get_entries('!', 'merge_requests', cveid):
         yield entry_name, url
