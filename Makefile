@@ -164,8 +164,7 @@ manifest:
 	rm -rf sdk-manifest/
 	rm -rf platform-manifest/
 
-	$(BST) build manifests/platform-manifest.bst
-	$(BST) build manifests/sdk-manifest.bst
+	$(BST) build manifests/platform-manifest.bst manifests/sdk-manifest.bst
 
 	$(BST) checkout manifests/platform-manifest.bst platform-manifest/
 	$(BST) checkout manifests/sdk-manifest.bst sdk-manifest/
