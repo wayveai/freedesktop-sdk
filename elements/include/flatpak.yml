@@ -7,7 +7,7 @@ sources:
   match:
   - 1.[02468]*
   - 1.1[02468]*
-  ref: 1.12.2-0-g96aafda476c2634941dfcd68a65fe13f582eefcb
+  ref: 1.12.4-0-g103ed5c02c8453580fac19e5122d150f44f6774f
 - kind: git_module
   path: subprojects/libglnx
   url: gnome:libglnx.git
@@ -23,4 +23,4 @@ sources:
 - kind: git_module
   path: subprojects/variant-schema-compiler
   url: git_https:gitlab.gnome.org/alexl/variant-schema-compiler.git
-  ref: 444b2b3217d3537141c2abe24669b41aeae19525
+  ref: 467e765cdf1a8b9eb8857bd9c7975e66e2d7d9ed
