@@ -138,3 +138,6 @@ fi
 echo "uuid_root='${uuid_root}'"
 echo "id_efi='${id_efi}'"
 echo "uuid_efi='${uuid_efi}'"
+
+echo "Resetting timestamps in /etc" 1>&2
+find "${sysroot}/etc" -depth -exec touch -h --date="@${SOURCE_DATE_EPOCH}" {} ";"
