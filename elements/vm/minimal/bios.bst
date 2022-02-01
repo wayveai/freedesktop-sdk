@@ -10,13 +10,14 @@ build-depends:
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
+  build-root: /genimage
 
 config:
   layout:
   - element: ''
-    destination: '/genimage'
-  - element: ''
-    destination: '/tmp'
+    destination: '%{build-root}'
+  - element: 'components/syslinux.bst'
+    destination: '/'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
   - element: 'vm/boot/bios.bst'
@@ -32,17 +33,18 @@ config:
        --sysroot /sysroot \
        --seed "%{uuidnamespace}" \
        --rootpasswd "root" \
-       --efipath /boot >/tmp/vars
+       --efipath /boot > "%{build-root}/vars"
 
   - |
-    . /tmp/vars
-    cat >/genimage/genimage.cfg <<EOF
+    . "%{build-root}/vars"
+    cat > "%{build-root}/genimage.cfg" <<EOF
     image boot.img {
         vfat {
             extraargs = "-F16 -i${id_efi} -n BOOT"
         }
         mountpoint = "/boot"
         size = 100M
+        temporary = true
     }
     image root.img {
         ext4  {
@@ -51,6 +53,7 @@ config:
             use-mke2fs = true
         }
         size = 1G
+        temporary = true
     }
     image disk.img {
         hdimage {
@@ -67,14 +70,14 @@ config:
             partition-type = "0x83"
         }
     }
+    config {
+      tmppath = "%{build-root}/tmp"
+      outputpath = "%{install-root}"
+    }
     EOF
 
-  - |
-    cd /genimage/
-    genimage --rootpath /sysroot
+  - genimage --config "%{build-root}/genimage.cfg" --rootpath /sysroot
 
-  - |
-    install -Dm644 -t "%{install-root}" /genimage/images/disk.img
 
   - syslinux --install '%{install-root}/disk.img' --directory /syslinux --offset 1048576
 
