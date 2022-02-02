@@ -14,6 +14,6 @@ config:
 sources:
 - kind: pypi
   name: pip
-  url: pypi:da/f6/c83229dcc3635cdeb51874184241a9508ada15d8baa337a41093fab58011/pip-21.3.1.tar.gz
-  sha256sum: fd11ba3d0fdb4c07fbc5ecbba0b1b719809420f25038f8ee3cd913d3faa3033a
+  url: pypi:d9/c1/146b24a7648fdf3f8b4dc6521ab0b26ac151ef903bac0b63a4e1450cb4d1/pip-22.0.2.tar.gz
+  sha256sum: 27b4b70c34ec35f77947f777070d8331adbb1e444842e98e7150c288dc0caea4
 
