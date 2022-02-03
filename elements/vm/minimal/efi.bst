@@ -12,6 +12,7 @@ environment:
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
+  build-root: /genimage
   (?):
     - target_arch == "x86_64":
         linux-root: 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
@@ -27,9 +28,7 @@ variables:
 config:
   layout:
   - element: ''
-    destination: '/genimage'
-  - element: ''
-    destination: '/tmp'
+    destination: '%{build-root}'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
   - element: 'vm/boot/efi.bst'
@@ -41,30 +40,25 @@ config:
 
   commands:
   - |
-    cp -a /sysroot /genimage/root
-
-  - |
     prepare-image.sh \
-       --sysroot /genimage/root \
+       --sysroot /sysroot \
        --seed "%{uuidnamespace}" \
-       --rootpasswd "root" >/tmp/vars
-
-  - |
-    find /genimage/root -depth -exec touch -h --date="@${SOURCE_DATE_EPOCH}" {} ";"
+       --rootpasswd "root" > "%{build-root}/vars"
 
   - |
     efi_part_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name partition-efi)"
     root_part_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name partition-root)"
     disk_uuid="$(uuidgen -s --namespace "%{uuidnamespace}" --name disk)"
     hash_seed="$(uuidgen -s --namespace "%{uuidnamespace}" --name hash-seed)"
-    . /tmp/vars
-    cat >/genimage/genimage.cfg <<EOF
+    . "%{build-root}/vars"
+    cat > "%{build-root}/genimage.cfg" <<EOF
     image efi.img {
         vfat {
             extraargs = "--invariant -F32 -i${id_efi} -n EFI"
         }
         mountpoint = "/efi"
         size = 100M
+        temporary = true
     }
     image root.img {
         ext4  {
@@ -74,6 +68,7 @@ config:
             fs-timestamp = "${SOURCE_DATE_EPOCH}"
         }
         size = 1G
+        temporary = true
     }
     image disk.img {
         hdimage {
@@ -92,11 +87,10 @@ config:
             partition-uuid = "${root_part_uuid}"
         }
     }
+    config {
+      tmppath = "%{build-root}/tmp"
+      outputpath = "%{install-root}"
+    }
     EOF
 
-  - |
-    cd /genimage/
-    genimage
-
-  - |
-    install -Dm644 -t "%{install-root}" /genimage/images/disk.img
+  - genimage --config "%{build-root}/genimage.cfg" --rootpath /sysroot
