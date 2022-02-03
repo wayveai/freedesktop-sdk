@@ -17,3 +17,7 @@ sources:
   track-extra:
   - binutils-2_37-branch
   ref: binutils-2_37-0-g116a737f438d03a1bd6aa706b6ea0b4022f3b7e2
+- kind: patch
+  path: patches/binutils/0001-bfd-Set-error-to-bfd_error_malformed_archive-only-if.patch
+- kind: patch
+  path: patches/binutils/0002-bfd-Close-the-file-descriptor-if-there-is-no-archive.patch
