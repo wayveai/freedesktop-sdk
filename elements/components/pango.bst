@@ -35,4 +35,4 @@ sources:
 - kind: git_tag
   url: gnome:pango.git
   track: pango-1-48
-  ref: 1.48.10-0-gdc5bde2a20cbb025c9d0ed29ed687740a4d027da
+  ref: 1.48.11-0-gaa565e5dee2ba3aa11345ea0fcb39befe7d1cef8
