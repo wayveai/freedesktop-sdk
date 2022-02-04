@@ -87,7 +87,7 @@ sources:
   - '1.18'
   match:
   - 1.*[02468].*
-  ref: 1.18.5-0-gd3af58d5b31941caa26c3ded85d7a7b84a91f0cc
+  ref: 1.18.6-0-g5d07db447c33fe217a6c7f8a910307c236ce1674
 - kind: patch
   path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
 - kind: patch
