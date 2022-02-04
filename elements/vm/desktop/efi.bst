@@ -9,6 +9,7 @@ build-depends:
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
+  build-root: /genimage
   (?):
     - target_arch == "x86_64":
         linux-root: 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
@@ -24,9 +25,7 @@ variables:
 config:
   layout:
   - element: ''
-    destination: '/genimage'
-  - element: ''
-    destination: '/tmp'
+    destination: '%{build-root}'
   - element: 'vm/deploy-tools.bst'
     destination: '/'
   - element: 'vm/boot/efi-plymouth.bst'
@@ -37,17 +36,18 @@ config:
     destination: '/'
 
   commands:
-  - prepare-image.sh --rootpasswd root --sysroot /sysroot --seed "%{uuidnamespace}" >/tmp/vars
+  - prepare-image.sh --rootpasswd root --sysroot /sysroot --seed "%{uuidnamespace}" > "%{build-root}/vars"
 
   - |
-    . /tmp/vars
-    cat >/genimage/genimage.cfg <<EOF
+    . "%{build-root}/vars"
+    cat > "%{build-root}/genimage.cfg" <<EOF
     image efi.img {
         vfat {
             extraargs = "-F32 -i${id_efi} -n EFI"
         }
         mountpoint = "/efi"
         size = 100M
+        temporary = true
     }
     image root.img {
         ext4  {
@@ -56,6 +56,7 @@ config:
             use-mke2fs = true
         }
         size = 10G
+        temporary = true
     }
     image disk.img {
         hdimage {
@@ -71,11 +72,11 @@ config:
             partition-type-uuid = "%{linux-root}"
         }
     }
+    config {
+      tmppath = "%{build-root}/tmp"
+      outputpath = "%{install-root}"
+    }
     EOF
 
-  - |
-    cd /genimage/
-    genimage --rootpath /sysroot
+  - genimage --config "%{build-root}/genimage.cfg" --rootpath /sysroot
 
-  - |
-    install -Dm644 -t "%{install-root}" /genimage/images/disk.img
