@@ -46,6 +46,6 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: gdb-10-branch
-  ref: gdb-10.2-release-0-gce35d7163e779b1321058b22f005c70ce1524b25
+  track: gdb-11-branch
+  ref: gdb-11.2-release-20-g652e4ccc130331c0b3f7ab6a029c1936f11106d5
 
