@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: pypi
   name: pyelftools
-  url: pypi:6b/b5/f7022f2d950327ba970ec85fb8f85c79244031092c129b6f34ab17514ae0/pyelftools-0.27.tar.gz
-  sha256sum: cde854e662774c5457d688ca41615f6594187ba7067af101232df889a6b7a66b
+  url: pypi:e9/80/00247e07e32e85b964ef81c9fd556b332f85e743e3eaf332325f579c82eb/pyelftools-0.28.tar.gz
+  sha256sum: 53e5609cac016471d40bd88dc410cd90755942c25e58a61021cfdf7abdfeacff
