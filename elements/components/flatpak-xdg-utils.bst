@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: git_tag
   url: github:flatpak/flatpak-xdg-utils.git
-  track: master
+  track: main
   ref: 1.0.4-0-gd7a5ee99f91ccf16f6c04f09c8b41888220cbf18

@@ -23,5 +23,7 @@ public:
 sources:
 - kind: git_tag
   url: github:flatpak/xdg-desktop-portal.git
-  track: master
+  track: main
+  track-extra:
+  - xdg-desktop-portal-1.12
   ref: 1.12.1-0-g6241c5e8bfb60502ac3c7bc3babede22d35f3b1c
