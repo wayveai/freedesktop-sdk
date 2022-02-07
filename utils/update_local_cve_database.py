@@ -12,48 +12,18 @@ directory:
 """
 
 import datetime
-import urllib.request
-import urllib.parse
-from contextlib import contextmanager, ExitStack
-import signal
-import socket
 import os.path
 
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
-class UrlOpenTimeout:
-
-    def __init__(self):
-        self._max = 120
-        self._min = 5
-        self._timeout = self._max
-
-    @contextmanager
-    def open(self, req):
-        with ExitStack() as stack:
-            def _timeout(signum, frame):
-                raise TimeoutError()
-            try:
-                signal.signal(signal.SIGALRM, _timeout)
-                signal.alarm(self._timeout)
-                resp = stack.enter_context(urllib.request.urlopen(req, timeout=self._timeout))
-                self._timeout = self._max
-            except TimeoutError:
-                self._timeout = max(int(self._timeout/2), self._min)
-                raise
-            except urllib.error.URLError as exception:
-                if isinstance(exception.reason, socket.timeout):
-                    self._timeout = max(int(self._timeout/2), self._min)
-                    raise TimeoutError() from exception
-                raise
-            finally:
-                signal.alarm(0)
-
-            yield resp
+TIMEOUT = (10, 30)
 
 
-def update_year(updated_year, url_timeout):
+def update_year(session, updated_year):
     url = 'https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-{}.json.gz'.format(updated_year)
-
+    headers = {}
     filename = 'nvdcve-1.1-{}.json.gz'.format(year)
     if os.path.exists(filename):
         try:
@@ -61,43 +31,35 @@ def update_year(updated_year, url_timeout):
                 etag = file.read()
         except FileNotFoundError:
             etag = None
+        else:
+            headers["If-None-Match"] = etag
     else:
         etag = None
 
-    request = urllib.request.Request(url)
-    if etag is not None:
-        request.add_header('If-None-Match', etag)
-        url_opener = url_timeout.open
-    else:
-        url_opener = urllib.request.urlopen
-    try:
-        with url_opener(request) as resp:
-            new_etag = resp.getheader('ETag')
-            assert new_etag is not None
-            with open(filename, 'wb') as file:
-                while True:
-                    buf = resp.read(4096)
-                    if not buf:
-                        print("Downloaded {}".format(file.name))
-                        break
-                    file.write(buf)
-            with open(f"{filename}.etag", "w") as file:
-                file.write(new_etag)
-    except TimeoutError:
-        if etag is None:
-            raise
-        print("Timeout, using cache for {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
-    except urllib.error.HTTPError as error:
-        if error.code == 304:
-            print("Cached {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
-        elif error.code == 404:
+    response = session.get(url, headers=headers, stream=True,
+                           timeout=TIMEOUT)
+    if not response.ok:
+        if response.status_code == 404:
             print("{} not found".format('nvdcve-1.1-{}.json.gz'.format(year)))
-            return
-        else:
-            raise
+            for _ in response.iter_content():
+                pass
+    elif response.status_code == 304:
+        response.close()
+        print("Cached {}".format('nvdcve-1.1-{}.json.gz'.format(year)))
+    else:
+        etag = response.headers["ETag"]
+        assert etag is not None
+        with open(filename, 'wb') as file:
+            for chunk in response.iter_content(1024**2):
+                file.write(chunk)
+            print("Downloaded {}".format(file.name))
+            with open(f"{filename}.etag", "w") as file:
+                file.write(etag)
 
 if __name__ == "__main__":
-    url_timeout = UrlOpenTimeout()
     entries = []
-    for year in range(2002, datetime.datetime.now().year + 1):
-        update_year(str(year), url_timeout)
+    with requests.session() as session:
+        retries = Retry(total=5, backoff_factor=1)
+        session.mount('https://', HTTPAdapter(max_retries=retries))
+        for year in range(2002, datetime.datetime.now().year + 1):
+            update_year(session, str(year))
