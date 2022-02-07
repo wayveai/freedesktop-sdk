@@ -23,7 +23,7 @@ variables:
 sources:
 - kind: git_tag
   url: github:flatpak/flatpak-builder.git
-  track: master
+  track: main
   track-extra:
   - flatpak-builder-1.2.x
   match:

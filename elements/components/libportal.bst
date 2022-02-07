@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:flatpak/libportal.git
-  track: master
+  track: main
   ref: 0.4-0-gf68764e288ede516d902b131cc4fadded3804059
