@@ -39,12 +39,7 @@ sources:
 - kind: git_tag
   url: freedesktop:plymouth/plymouth.git
   track: main
-  track-tags: false
-  ref: 0.9.4-218-g32c097cbcae1d106db4a75337a78310ad22267be
-- kind: patch
-  path: patches/plymouth/no-intltool.patch
-- kind: patch
-  path: patches/plymouth/logo-parameter.patch
+  ref: 22.02.122-0-g27764b2a2c2e21ad988cae01dc59d4bb78e5c1dc
 - kind: local
   path: files/plymouth
   directory: freedesktop-sdk
