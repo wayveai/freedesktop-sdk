@@ -8,9 +8,11 @@ depends:
 - components/python3.bst
 - components/python3-setuptools.bst
 - components/git-minimal.bst
+- components/python3-tomli.bst
+- components/python3-packaging.bst
 
 sources:
 - kind: pypi
   name: setuptools_scm
-  url: pypi:cd/66/fa77e809b7cb1c2e14b48c7fc8a8cd657a27f4f9abb848df0c967b6e4e11/setuptools_scm-4.1.2.tar.gz
-  sha256sum: a8994582e716ec690f33fec70cca0f85bd23ec974e3f783233e4879090a7faa8
+  url: pypi:4a/18/477d3d9eb2f88230ff2a41de9d8ffa3554b706352787d289f57f76bfba0b/setuptools_scm-6.4.2.tar.gz
+  sha256sum: 6833ac65c6ed9711a4d5d2266f8024cfa07c533a0e55f4c12f6eff280a5a9e30
