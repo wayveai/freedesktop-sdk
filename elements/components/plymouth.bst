@@ -38,7 +38,7 @@ config:
 sources:
 - kind: git_tag
   url: freedesktop:plymouth/plymouth.git
-  track: master
+  track: main
   track-tags: false
   ref: 0.9.4-218-g32c097cbcae1d106db4a75337a78310ad22267be
 - kind: patch
