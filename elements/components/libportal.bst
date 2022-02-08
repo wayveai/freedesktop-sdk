@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: git_tag
   url: github:flatpak/libportal.git
-  track: master
+  # Libportal 0.5 breaks ABI so we freeze
   ref: 0.4-0-gf68764e288ede516d902b131cc4fadded3804059
