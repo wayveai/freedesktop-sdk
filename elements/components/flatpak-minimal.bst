@@ -2,8 +2,8 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
+- components/bubblewrap.bst
 - components/gpgme.bst
-- components/libcap.bst
 - components/libarchive.bst
 - components/libsoup.bst
 - components/xorg-lib-xau.bst
@@ -25,6 +25,7 @@ variables:
   conf-local: >-
     --disable-documentation
     --disable-system-helper
+    --with-system-bubblewrap
 
 (@):
 - elements/include/flatpak.yml

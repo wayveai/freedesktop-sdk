@@ -12,6 +12,7 @@ sources:
   path: subprojects/libglnx
   url: gnome:libglnx.git
   ref: 013417ea72aa767aec15259271ef04846070be64
+# While we use system bwrap, we need the submodule still
 - kind: git_module
   path: subprojects/bubblewrap
   url: github:projectatomic/bubblewrap.git
