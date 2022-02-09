@@ -40,4 +40,6 @@ sources:
   track: master
   match:
   - 'pinentry-*'
+  exclude:
+  - '*-base'
   ref: pinentry-1.1.0-0-g02df3d26b986c8f2850eeba47efcb3aca9d5dbcb
