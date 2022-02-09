@@ -2,8 +2,8 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
+- components/bubblewrap.bst
 - components/gpgme.bst
-- components/libcap.bst
 - components/libarchive.bst
 - components/libxml2.bst
 - components/libsoup.bst
@@ -24,7 +24,9 @@ build-depends:
 - components/bison.bst
 
 variables:
-  conf-local: --disable-documentation
+  conf-local: >-
+    --disable-documentation
+    --with-system-bubblewrap
 
 (@):
 - elements/include/flatpak.yml
