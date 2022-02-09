@@ -1,7 +1,7 @@
-kind: autotools
+kind: meson
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
+- public-stacks/buildsystem-meson.bst
 - components/gtk-doc.bst
 - components/systemd.bst
 
@@ -9,13 +9,8 @@ depends:
 - components/glib.bst
 - components/libgudev.bst
 
-variables:
-  conf-local: >-
-    --disable-gtk-tests
-    --disable-Werror
-
 sources:
 - kind: git_tag
   url: freedesktop:hadess/iio-sensor-proxy.git
   track: master
-  ref: 3.0-0-ga4e4e55c06a83b901eac35f570aa727bec9b8231
+  ref: 3.3-0-g83d963b3451928a757eece79aa5b280d90e37e12
