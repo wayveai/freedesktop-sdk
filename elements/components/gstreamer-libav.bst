@@ -25,6 +25,6 @@ sources:
   - '1.18'
   match:
   - 1.*[02468].*
-  ref: 1.18.5-0-g9db917cab4c20e72e53ed962406a0d94636a2a39
+  ref: 1.18.6-0-g9b31c42bebe36e4f88b2b6f1bd4f98f62708d793
 - kind: patch
   path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
