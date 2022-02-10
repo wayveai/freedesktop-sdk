@@ -30,8 +30,6 @@ config:
       sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
       sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
 
-    - rm "%{install-root}/etc/default/useradd"
-
     - touch '%{install-root}%{sysconfdir}/subuid'
     - touch '%{install-root}%{sysconfdir}/subgid'
 
