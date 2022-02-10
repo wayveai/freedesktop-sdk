@@ -15,6 +15,12 @@ depends:
 - components/nss.bst
 - components/openjpeg.bst
 
+variables:
+  cmake-local: >-
+    -DENABLE_QT5=OFF
+    -DENABLE_QT6=OFF
+    -DENABLE_BOOST=OFF
+
 public:
   bst:
     split-rules:
@@ -28,4 +34,4 @@ sources:
 - kind: git_tag
   url: freedesktop:poppler/poppler.git
   track: master
-  ref: poppler-21.05.0-0-g7961ff99df6db70319548b07249194cabfc74783
+  ref: poppler-22.02.0-0-g57c948fa0656ef3ec3cbf24581460da4a9441106
