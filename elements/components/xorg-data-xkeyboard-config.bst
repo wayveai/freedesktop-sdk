@@ -19,5 +19,5 @@ variables:
 sources:
 - kind: git_tag
   url: freedesktop:xkeyboard-config/xkeyboard-config.git
-  track: master
+  # Next version switches to Meson
   ref: xkeyboard-config-2.34-0-gb5f7adf3fd85b90c1fd5d85186ea5cb0d5db69be
