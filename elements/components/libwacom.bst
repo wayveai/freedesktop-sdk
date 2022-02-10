@@ -1,16 +1,19 @@
-kind: autotools
+kind: meson
 
 build-depends:
-- bootstrap-import.bst
-- public-stacks/buildsystem-autotools.bst
+- public-stacks/buildsystem-meson.bst
 
 depends:
 - components/glib.bst
 - components/systemd.bst
 - components/libgudev.bst
 
+variables:
+  meson-local: >-
+    -Dtests=disabled
+
 sources:
 - kind: git_tag
   url: github:linuxwacom/libwacom.git
   track: master
-  ref: libwacom-1.3-0-g08cb07e95350f77f9d9f4ce7cdf9cd4325f2ccb9
+  ref: libwacom-2.0.0-0-g22a212636396fa39a36458e7ef90661c90d2e4f3
