@@ -2,7 +2,6 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
-- components/libportal.bst
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
@@ -11,6 +10,10 @@ build-depends:
 - components/fontconfig.bst
 - components/pipewire.bst
 - components/geoclue.bst
+
+variables:
+  conf-local: >-
+    --disable-libportal
 
 public:
   bst:
