@@ -30,8 +30,6 @@ config:
       sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
       sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
 
-    - rm "%{install-root}/etc/default/useradd"
-
     - touch '%{install-root}%{sysconfdir}/subuid'
     - touch '%{install-root}%{sysconfdir}/subgid'
 
@@ -59,4 +57,4 @@ sources:
 - kind: git_tag
   url: github:shadow-maint/shadow.git
   track: master
-  ref: 4.8.1-0-g2cc7da6058152ec0cd338d4e15d29bd7124ae3d7
+  ref: v4.11.1-0-geccf1c569c7ac3b9e3b535c91b6ed3c329e9ec8c
