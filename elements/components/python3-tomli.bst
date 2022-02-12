@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: tomli
-  url: pypi:3d/6e/d290c9bf16159f02b70c432386aa5bfe22c2857ff460591912fd907b61f6/tomli-2.0.0.tar.gz
-  sha256sum: c292c34f58502a1eb2bbb9f5bbc9a5ebc37bee10ffb8c2d6bbdfa8eb13cc14e1
+  url: pypi:c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
+  sha256sum: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
