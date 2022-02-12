@@ -8,6 +8,7 @@ runtime-depends:
 - components/ostree.bst
 - components/python3-requests.bst
 - components/python3-aiohttp.bst
+- components/python3-aiosignal.bst
 - components/python3-chardet.bst
 - components/pygobject.bst
 - components/python3-tenacity.bst
