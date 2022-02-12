@@ -10,5 +10,5 @@ build-depends:
 sources:
 - kind: pypi
   name: async-timeout
-  url: pypi:a1/78/aae1545aba6e87e23ecab8d212b58bb70e72164b67eb090b81bb17ad38e3/async-timeout-3.0.1.tar.gz
-  sha256sum: 0c3c816a028d47f659d6ff5c745cb2acf1f966da1fe5c19c77a70282b25f4c5f
+  url: pypi:54/6e/9678f7b2993537452710ffb1750c62d2c26df438aa621ad5fa9d1507a43a/async-timeout-4.0.2.tar.gz
+  sha256sum: 2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15
