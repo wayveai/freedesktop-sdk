@@ -17,4 +17,4 @@ sources:
 - kind: git_tag
   url: kernel:linux/kernel/git/gregkh/usbutils.git
   track: master
-  ref: v012-0-gf3a05e2e368cf17f9882c8d358f2fa205eb1ead6
+  ref: v014-0-g57fb18e59cce31a50a1ca62d1e192512c905ba00
