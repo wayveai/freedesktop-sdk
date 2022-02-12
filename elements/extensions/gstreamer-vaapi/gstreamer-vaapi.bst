@@ -30,7 +30,7 @@ variables:
 sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer-vaapi
-  track: '1.18'
+  track: '1.20'
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-gedc4d3514ba7ef17f2a8877b5a21645f380932f5

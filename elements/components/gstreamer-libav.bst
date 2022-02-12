@@ -22,7 +22,7 @@ sources:
   url: freedesktop:gstreamer/gst-libav.git
   track: master
   track-extra:
-  - '1.18'
+  - '1.20'
   match:
   - 1.*[02468].*
   ref: 1.18.6-0-g9b31c42bebe36e4f88b2b6f1bd4f98f62708d793
