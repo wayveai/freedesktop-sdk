@@ -1,4 +1,4 @@
-From 5238ed6509f6f90af38f3c8620398b4493d08805 Mon Sep 17 00:00:00 2001
+From 0f0f726a79123c7ccc24d8481951c62fd8edf220 Mon Sep 17 00:00:00 2001
 From: Martin Blanchard <tchaik@gmx.com>
 Date: Wed, 31 Mar 2021 09:52:03 +0100
 Subject: [PATCH] build: stop relying on intltool for i18n
@@ -47,25 +47,25 @@ is present. See
 https://lists.gnu.org/archive/html/autoconf-patches/2015-10/msg00000.html.
 ---
  .gitignore                                    |  6 +-
- .gitlab-ci.yml                                |  4 +-
+ .gitlab-ci.yml                                | 12 +--
  Makefile.am                                   | 12 ++-
  autogen.sh                                    |  6 +-
  configure.ac                                  |  6 +-
  contrib/fedora/REQUIRED_PACKAGES              |  1 -
  contrib/fedora/rpm/NetworkManager.spec        |  4 +-
- data/meson.build                              |  4 +-
+ data/meson.build                              |  5 +-
  ...rg.freedesktop.NetworkManager.policy.in.in | 68 ++++++++--------
  meson.build                                   |  5 --
  po/Makevars                                   | 78 +++++++++++++++++++
  po/POTFILES.in                                |  1 -
- 12 files changed, 131 insertions(+), 64 deletions(-)
+ 12 files changed, 135 insertions(+), 69 deletions(-)
  create mode 100644 po/Makevars
 
 diff --git a/.gitignore b/.gitignore
-index 041f681f00..c54c89d609 100644
+index d02bcad683..d92ac853df 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -52,7 +52,6 @@ test-*.trs
+@@ -55,7 +55,6 @@ test-*.trs
  /config.*
  /config-extra.h
  /configure
@@ -73,7 +73,7 @@ index 041f681f00..c54c89d609 100644
  
  /confdefs.h
  /conftest.[ch]
-@@ -184,7 +183,6 @@ test-*.trs
+@@ -192,7 +191,6 @@ test-*.trs
  /m4/intl.m4
  /m4/intldir.m4
  /m4/intlmacosx.m4
@@ -81,7 +81,7 @@ index 041f681f00..c54c89d609 100644
  /m4/intmax.m4
  /m4/inttypes-pri.m4
  /m4/inttypes_h.m4
-@@ -218,7 +216,6 @@ test-*.trs
+@@ -226,7 +224,6 @@ test-*.trs
  /man/common.ent
  
  /po/*.gmo
@@ -89,7 +89,7 @@ index 041f681f00..c54c89d609 100644
  /po/NetworkManager.pot
  /po/Makevars.template
  /po/Rules-quot
-@@ -472,3 +469,6 @@ test-*.trs
+@@ -482,3 +479,6 @@ test-*.trs
  /src/tests/test-systemd
  /src/tests/test-utils
  /src/tests/test-wired-defname
@@ -97,24 +97,35 @@ index 041f681f00..c54c89d609 100644
 +/m4/intltool.m4
 +/po/.intltool-merge-cache
 diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
-index 53809762bb..8d004015ae 100644
+index 9cfbd51320..e7c157ec6c 100644
 --- a/.gitlab-ci.yml
 +++ b/.gitlab-ci.yml
-@@ -47,10 +47,10 @@ variables:
+@@ -47,11 +47,11 @@ variables:
    #
    # This is done by running `ci-fairy generate-template` and possibly bump
    # ".default_tag".
--  FEDORA_TAG:  '2021-06-23.0-5c315f184899'
-+  FEDORA_TAG:  '2021-06-23.0-d480b03bb59b'
-   UBUNTU_TAG:  '2021-06-23.0-8b4104413468'
-   DEBIAN_TAG:  '2021-06-23.0-8b4104413468'
--  CENTOS_TAG:  '2021-06-23.0-5c315f184899'
-+  CENTOS_TAG:  '2021-06-23.0-d480b03bb59b'
-   ALPINE_TAG:  '2021-06-23.0-b2bb4070aa36'
+-  FEDORA_TAG:  '2021-08-30.0-7ff339b89ca1'
+-  UBUNTU_TAG:  '2021-08-30.0-432f46c6a3a4'
+-  DEBIAN_TAG:  '2021-08-30.0-432f46c6a3a4'
+-  CENTOS_TAG:  '2021-08-30.0-7ff339b89ca1'
+-  ALPINE_TAG:  '2021-08-30.0-20e22c5d34b7'
++  FEDORA_TAG:  '2021-11-09.0-311d8cc62499'
++  UBUNTU_TAG:  '2021-11-09.0-577176f5eb6c'
++  DEBIAN_TAG:  '2021-11-09.0-577176f5eb6c'
++  CENTOS_TAG:  '2021-11-09.0-311d8cc62499'
++  ALPINE_TAG:  '2021-11-09.0-a28badea28eb'
  
    FEDORA_EXEC: 'bash .gitlab-ci/fedora-install.sh'
+   UBUNTU_EXEC: 'bash .gitlab-ci/debian-install.sh'
+@@ -966,4 +966,4 @@ triage:issues:
+     - gem install gitlab-triage
+     - gitlab-triage -d --token $API_TOKEN --source-id $SOURCE_ID
+   only:
+-    - schedules
+\ No newline at end of file
++    - schedules
 diff --git a/Makefile.am b/Makefile.am
-index fd1342a925..d48b135e7f 100644
+index 1c51afbfd2..4629b3ca1e 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -169,8 +169,6 @@ endif
@@ -141,10 +152,10 @@ index fd1342a925..d48b135e7f 100644
  
  DISTCLEANFILES += $(polkit_policy_DATA)
  
-@@ -5532,9 +5533,6 @@ EXTRA_DIST += \
+@@ -5625,9 +5626,6 @@ EXTRA_DIST += \
+ 	COPYING.LGPL \
  	COPYING.GFDL \
  	\
- 	NetworkManager.pc.in \
 -	intltool-extract.in \
 -	intltool-merge.in \
 -	intltool-update.in \
@@ -169,7 +180,7 @@ index 8809806178..48a3b16252 100755
  cd $olddir
  if test -z "$NOCONFIGURE"; then
 diff --git a/configure.ac b/configure.ac
-index 15179c1adc..4600308ca7 100644
+index 1fd434b450..aba1b72135 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -138,10 +138,10 @@ AC_CHECK_DECLS([getrandom],
@@ -187,7 +198,7 @@ index 15179c1adc..4600308ca7 100644
  GETTEXT_PACKAGE=NetworkManager
  AC_SUBST(GETTEXT_PACKAGE)
 diff --git a/contrib/fedora/REQUIRED_PACKAGES b/contrib/fedora/REQUIRED_PACKAGES
-index ee2622de8d..c8c15ca867 100755
+index 112b01bd2a..637d47e979 100755
 --- a/contrib/fedora/REQUIRED_PACKAGES
 +++ b/contrib/fedora/REQUIRED_PACKAGES
 @@ -58,7 +58,6 @@ install \
@@ -199,10 +210,10 @@ index ee2622de8d..c8c15ca867 100755
      jansson-devel \
      libcurl-devel \
 diff --git a/contrib/fedora/rpm/NetworkManager.spec b/contrib/fedora/rpm/NetworkManager.spec
-index f8374519db..584b4e8443 100644
+index f3ef632cb5..5161c26222 100644
 --- a/contrib/fedora/rpm/NetworkManager.spec
 +++ b/contrib/fedora/rpm/NetworkManager.spec
-@@ -233,8 +233,7 @@ BuildRequires: meson
+@@ -236,8 +236,7 @@ BuildRequires: meson
  BuildRequires: automake
  BuildRequires: autoconf
  %endif
@@ -212,7 +223,7 @@ index f8374519db..584b4e8443 100644
  
  BuildRequires: dbus-devel >= %{dbus_version}
  BuildRequires: glib2-devel >= 2.40.0
-@@ -695,7 +694,6 @@ This tool is still experimental.
+@@ -698,7 +697,6 @@ This tool is still experimental.
  gtkdocize
  %endif
  autoreconf --install --force
@@ -221,16 +232,16 @@ index f8374519db..584b4e8443 100644
  	--with-runstatedir=%{_rundir} \
  	--disable-silent-rules \
 diff --git a/data/meson.build b/data/meson.build
-index 64a1372b41..ff3b9a37b6 100644
+index 35e3de5254..d617025a25 100644
 --- a/data/meson.build
 +++ b/data/meson.build
-@@ -58,11 +58,11 @@ if enable_polkit
+@@ -59,11 +59,10 @@ if enable_polkit
      configuration: data_conf,
    )
  
 -  custom_target(
+-    policy,
 +  i18n.merge_file(
-     policy,
      input: policy_in,
      output: '@BASENAME@',
 -    command: intltool_xml_cmd,
@@ -430,7 +441,7 @@ index 8d46dac735..13a0a5b504 100644
        <allow_inactive>no</allow_inactive>
        <allow_active>yes</allow_active>
 diff --git a/meson.build b/meson.build
-index 6082828194..cce292b2d3 100644
+index 9712dd799f..90bec44391 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -78,11 +78,6 @@ build_root = meson.current_build_dir()
@@ -530,7 +541,7 @@ index 0000000000..b858b6db7d
 +# externally.
 +DIST_DEPENDS_ON_UPDATE_PO = no
 diff --git a/po/POTFILES.in b/po/POTFILES.in
-index ac1bd52b67..9fe5d12e89 100644
+index 0cd24d9940..e21699866b 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -1,4 +1,3 @@
@@ -539,5 +550,5 @@ index ac1bd52b67..9fe5d12e89 100644
  # Please keep this file sorted alphabetically.
  data/org.freedesktop.NetworkManager.policy.in.in
 -- 
-2.31.1
+2.33.1
 
