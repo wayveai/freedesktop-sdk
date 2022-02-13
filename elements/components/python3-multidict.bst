@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: pypi
   name: multidict
-  url: pypi:65/d4/fabdcc5ee4451c8a8e177e27ddfd131a53a82ecc5a3b68468b7e9f8d70b4/multidict-4.7.6.tar.gz
-  sha256sum: fbb77a75e529021e7c4a8d4e823d88ef4d23674a202be4f5addffc72cbb91430
+  url: pypi:fa/a7/71c253cdb8a1528802bac7503bf82fe674367e4055b09c28846fdfa4ab90/multidict-6.0.2.tar.gz
+  sha256sum: 5ff3bd75f38e4c43f1f470f2df7a4d430b821c4ce22be384e1459cb57d6bb013
