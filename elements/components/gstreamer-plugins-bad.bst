@@ -84,7 +84,7 @@ sources:
   url: freedesktop:gstreamer/gst-plugins-bad.git
   track: master
   track-extra:
-  - '1.20'
+  - '1.18'
   match:
   - 1.*[02468].*
   ref: 1.18.6-0-g5d07db447c33fe217a6c7f8a910307c236ce1674

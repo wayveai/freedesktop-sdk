@@ -44,7 +44,7 @@ sources:
   url: freedesktop:gstreamer/gstreamer.git
   track: master
   track-extra:
-  - '1.20'
+  - '1.18'
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-g71c213f99ad5c8fc8f36a26238483f2bdf7d846a
