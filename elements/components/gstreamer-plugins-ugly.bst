@@ -24,7 +24,7 @@ sources:
   url: freedesktop:gstreamer/gst-plugins-ugly.git
   track: master
   track-extra:
-  - '1.20'
+  - '1.18'
   match:
   - 1.*[02468].*
   ref: 1.18.5-0-gbd1dfb44475ab04d42b217acdf90942e0b7893b5
