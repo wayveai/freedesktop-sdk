@@ -10,5 +10,5 @@ build-depends:
 sources:
 - kind: pypi
   name: attrs
-  url: pypi:c4/d4/c2b5232ecfc0783c697a81c13efc53a4fe285d4e2c00e0d8aed90495fade/attrs-20.1.0.tar.gz
-  sha256sum: 0ef97238856430dcf9228e07f316aefc17e8939fc8507e18c6501b761ef1a42a
+  url: pypi:d7/77/ebb15fc26d0f815839ecd897b919ed6d85c050feeb83e100e020df9153d2/attrs-21.4.0.tar.gz
+  sha256sum: 626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd
