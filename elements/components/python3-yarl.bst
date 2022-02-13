@@ -17,5 +17,5 @@ environment:
 sources:
 - kind: pypi
   name: yarl
-  url: pypi:ac/dd/59768bb3fa08e8b23e91575bca3ff8d2edbfbceebec8c59eaa24c4215791/yarl-1.5.1.tar.gz
-  sha256sum: c22c75b5f394f3d47105045ea551e08a3e804dc7e01b37800ca35b58f856c3d6
+  url: pypi:f6/da/46d1b3d69a9a0835dabf9d59c7eb0f1600599edd421a4c5a15ab09f527e0/yarl-1.7.2.tar.gz
+  sha256sum: 45399b46d60c253327a460e99856752009fcee5f5d3c80b2f7c0cae1c38d56dd
