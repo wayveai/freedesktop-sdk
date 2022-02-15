@@ -42,4 +42,4 @@ sources:
   - 'pinentry-*'
   exclude:
   - '*-base'
-  ref: pinentry-1.1.0-0-g02df3d26b986c8f2850eeba47efcb3aca9d5dbcb
+  ref: pinentry-1.1.1-0-gc6202b29cf60454d2560debea0371818f26c3f07
