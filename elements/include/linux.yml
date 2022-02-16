@@ -1,9 +1,7 @@
 sources:
 - kind: git_tag
   url: kernel:linux/kernel/git/stable/linux.git
-  track: master
-  track-extra:
-  - linux-5.12.y
+  track: linux-5.12.y
   exclude:
   - '*-rc*'
   ref: v5.12.19-0-g0e6f651912bdd027a6d730b68d6d1c3f4427c0ae
