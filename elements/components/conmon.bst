@@ -8,6 +8,7 @@ build-depends:
 
 depends:
 - components/glib.bst
+- components/libseccomp.bst
 
 environment:
   GOPATH: "%{build-root}"
@@ -23,4 +24,4 @@ sources:
   url: github:containers/conmon.git
   directory: src/github.com/containers/conmon
   track: main
-  ref: v2.0.29-0-g7e6de6678f6ed8a18661e1d5721b81ccee293b9b
+  ref: v2.1.0-0-gbdb4f6e56cd193d40b75ffc9725d4b74a18cb33c
