@@ -29,10 +29,10 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Loader.git
-  ref: sdk-1.2.182.0-0-g1896143df69d439b0933c1bb485f5a4587bdf2dc
+  ref: sdk-1.2.198.0-0-gfe8479aa022a011d74fd862749825e07891e854e
   track: master
   track-extra:
-  - sdk-1.2.182
+  - sdk-1.2.198
   match:
   - sdk-*
 - kind: patch
