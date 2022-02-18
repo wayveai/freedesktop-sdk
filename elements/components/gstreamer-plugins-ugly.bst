@@ -27,4 +27,4 @@ sources:
   - '1.18'
   match:
   - 1.*[02468].*
-  ref: 1.18.5-0-gbd1dfb44475ab04d42b217acdf90942e0b7893b5
+  ref: 1.18.6-0-g8f97a05e1d2cb3cd2548cde2e70ea6d335040f59
