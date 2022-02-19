@@ -9,4 +9,4 @@ sources:
   url: github:jpirko/libndp.git
   track: master
 
-  ref: v1.7-0-g96674e7d4f4d569c2c961e865cc16152dfab5f09
+  ref: v1.8-0-g009ce9cd9b950ffa1f4f94c9436027b936850d0c
