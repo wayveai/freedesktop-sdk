@@ -3,6 +3,7 @@ kind: meson
 build-depends:
 - components/gtk-doc.bst
 - components/gobject-introspection.bst
+- components/vala.bst
 - public-stacks/buildsystem-meson.bst
 
 depends:
@@ -42,4 +43,4 @@ sources:
   track: master
   track-extra:
   - 2.5.x
-  ref: 2.5.7-0-g3bb60dd600a8b247fd6049e7e5b1c73c2c5fc0e8
+  ref: 2.6.0-0-g10998ca3215fb6d21b5a32fdf78bb5feffaf4c0f
