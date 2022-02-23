@@ -88,4 +88,4 @@ sources:
   - stable/v2.37
   exclude:
   - v*-rc*
-  ref: v2.37.2-0-gf59c8fd38dfee24b93ed54a6984f879499c34ec7
+  ref: v2.37.4-0-g12f5423fc2ed08e1945fac95f3bdeb39bb915ea7
