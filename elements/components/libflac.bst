@@ -23,4 +23,6 @@ sources:
 - kind: git_tag
   url: xiph:flac.git
   track: master
-  ref: 1.3.3-0-gf764434a39e8a8715d5871bb263189e5a7298280
+  ref: 1.3.4-0-g1151c93e992bb8c7c6394e04aa880d711c531c7f
+  match:
+  - '*.*.*'
