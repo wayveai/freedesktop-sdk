@@ -16,6 +16,8 @@ depends:
 
 
 variables:
+  command-subdir: subprojects/gstreamer-vaapi
+
   meson-local: >-
     -Dwith_drm=yes
     -Dwith_encoders=yes
@@ -27,10 +29,5 @@ variables:
     -Dtests=disabled
     -Dexamples=disabled
 
-sources:
-- kind: git_tag
-  url: freedesktop:gstreamer/gstreamer-vaapi
-  track: '1.18'
-  match:
-  - 1.*[02468].*
-  ref: 1.18.6-0-gc88768774522e0794ac375736a685e21e436d2d2
+(@):
+- elements/include/gstreamer-source.yml

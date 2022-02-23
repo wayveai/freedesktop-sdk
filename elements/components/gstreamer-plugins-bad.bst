@@ -31,6 +31,8 @@ build-depends:
 - components/vulkan-headers.bst
 
 variables:
+  command-subdir: subprojects/gst-plugins-bad
+
   meson-local: >-
     -Dauto_features=auto
     -Daom=enabled
@@ -71,6 +73,7 @@ public:
         - '%{libdir}/libgstisoff-1.0.so'
         - '%{libdir}/libgstmpegts-1.0.so'
         - '%{libdir}/libgstphotography-1.0.so'
+        - '%{libdir}/libgstplay-1.0.so'
         - '%{libdir}/libgstplayer-1.0.so'
         - '%{libdir}/libgstsctp-1.0.so'
         - '%{libdir}/libgsttranscoder-1.0.so'
@@ -79,18 +82,5 @@ public:
         - '%{libdir}/libgstwayland-1.0.so'
         - '%{libdir}/libgstwebrtc-1.0.so'
 
-sources:
-- kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-bad.git
-  track: master
-  track-extra:
-  - '1.18'
-  match:
-  - 1.*[02468].*
-  ref: 1.18.6-0-g5d07db447c33fe217a6c7f8a910307c236ce1674
-- kind: patch
-  path: patches/gstreamer-plugins-bad/gst-plugins-bad-Optional-LRDF-dep-for-ladspa.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/graceful-error-noopenh264.patch
-- kind: patch
-  path: patches/gstreamer-plugins-bad/gst-plugins-bad-h264parse-VideoTimeCodeMeta.patch
+(@):
+- elements/include/gstreamer-source.yml

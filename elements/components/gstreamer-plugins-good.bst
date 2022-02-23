@@ -27,6 +27,8 @@ depends:
 - components/v4l-utils.bst
 
 variables:
+  command-subdir: subprojects/gst-plugins-good
+
   meson-local: >-
     -Dpackage-origin="freedesktop-sdk"
     -Dv4l2-libv4l2=enabled
@@ -43,14 +45,5 @@ variables:
     -Dexamples=disabled
     -Drpicamsrc=disabled
 
-sources:
-- kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-good.git
-  track: master
-  track-extra:
-  - '1.18'
-  match:
-  - 1.*[02468].*
-  ref: 1.18.6-0-g7747342a54ae56013a297b6554bfb3f12bde6784
-- kind: patch
-  path: patches/gstreamer-plugins-good/gstreamer-plugins-good-libsoup3.patch
+(@):
+- elements/include/gstreamer-source.yml

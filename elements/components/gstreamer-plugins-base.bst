@@ -23,6 +23,8 @@ depends:
 - components/sdl2.bst
 
 variables:
+  command-subdir: subprojects/gst-plugins-base
+
   (?):
   - target_arch == "i686" or target_arch == "arm":
       gl-api: opengl
@@ -60,12 +62,5 @@ public:
         - '%{libdir}/gstreamer-1.0/include'
         - '%{libdir}/gstreamer-1.0/include/**'
 
-sources:
-- kind: git_tag
-  url: freedesktop:gstreamer/gst-plugins-base.git
-  track: master
-  track-extra:
-  - '1.18'
-  match:
-  - 1.*[02468].*
-  ref: 1.18.6-0-g2d5385f55a7d29975039692629bde3981e5d29cd
+(@):
+- elements/include/gstreamer-source.yml

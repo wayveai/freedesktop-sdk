@@ -13,6 +13,8 @@ depends:
 - components/libunwind-maybe.bst
 
 variables:
+  command-subdir: subprojects/gstreamer
+
   libexecdir: "%{libdir}"
   libunwind: enabled
   (?):
@@ -39,12 +41,5 @@ public:
         - '%{libdir}/libgstreamer-1.0.so'
         - '%{libdir}/libgstcontroller-1.0.so'
 
-sources:
-- kind: git_tag
-  url: freedesktop:gstreamer/gstreamer.git
-  track: master
-  track-extra:
-  - '1.18'
-  match:
-  - 1.*[02468].*
-  ref: 1.18.6-0-g793792d5cd6be0297adec74ad35a87b764812c0b
+(@):
+- elements/include/gstreamer-source.yml
