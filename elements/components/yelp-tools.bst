@@ -15,4 +15,8 @@ sources:
 - kind: git_tag
   url: gnome:yelp-tools.git
   track: master
+  exclude:
+  - '*rc*'
+  - '*beta*'
+  - '*alpha'
   ref: 41.0-0-g6a68991ff8fe7dc1f97dd8479fc44316f0ded89b
