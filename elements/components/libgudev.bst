@@ -24,4 +24,4 @@ sources:
 - kind: git_tag
   url: gnome:libgudev.git
   track: master
-  ref: 236-0-ge4a0b196615690e4c1910af3cd57872af4f8e2ec
+  ref: 237-0-gdff7a794e55d6ad7a10e8edacd73aa047593e74c
