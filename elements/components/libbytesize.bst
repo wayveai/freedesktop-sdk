@@ -11,4 +11,4 @@ sources:
 - kind: git_tag
   url: github:storaged-project/libbytesize.git
   track: master
-  ref: 2.3-0-g96aba1e99aa40a21df980bac4f2ed3bd1e25dbde
+  ref: 2.6-0-gc9864f4dd03736839f40d225da494cb1eb64e654
