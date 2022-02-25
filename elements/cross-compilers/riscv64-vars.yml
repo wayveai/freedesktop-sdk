@@ -1,0 +1,7 @@
+(@):
+- elements/cross-compilers/common-vars.yml
+
+variables:
+  cross_gcc_arch: "riscv64"
+  cross_arch: "riscv64"
+  cross_abi: "gnu"
