@@ -5,9 +5,11 @@ build-depends:
 - components/git.bst
 - components/go.bst
 - components/go-md2man.bst
+- components/systemd.bst
 
 depends:
 - components/glib.bst
+- components/systemd-libs.bst
 
 environment:
   GOPATH: "%{build-root}"
