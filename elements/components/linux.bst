@@ -532,6 +532,13 @@ config:
       module TCG_TIS_SPI
     fi
 
+    # BPF
+    enable BPF_SYSCALL
+    enable CGROUP_BPF
+    if has HAVE_CBPF_JIT || has HAVE_EBPF_JIT; then
+      enable BPF_JIT
+    fi
+
   - |
     make -j1 olddefconfig
 
