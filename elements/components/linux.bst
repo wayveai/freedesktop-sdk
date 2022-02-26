@@ -509,7 +509,10 @@ config:
     module BRIDGE
     module IP_NF_RAW
     module IP6_NF_RAW
+    module IP6_NF_NAT
     enable NETFILTER_ADVANCED
+    module VETH
+    module BLK_DEV_NBD
 
     # Those two modules are required by multipass
     module NETFILTER_XT_MATCH_COMMENT
