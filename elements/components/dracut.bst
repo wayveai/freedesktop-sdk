@@ -23,6 +23,6 @@ sources:
 - kind: git_tag
   url: kernel:boot/dracut/dracut.git
   track: master
-  ref: 054-0-g53337dfdc3ef58e257330d506fbe1a6044ea838a
+  ref: 056-0-g631d5f72a223288aa1f48bb8e8d0313e75947400
 - kind: patch
   path: patches/dracut/dracut-riscv64-efi.patch
