@@ -324,6 +324,8 @@ config:
     # Bluetooth
     enable BT
     module BT_HCIBTUSB
+    module BT_HIDP
+    module UHID
 
     # Sound for HDA
     module SND_HDA_INTEL
