@@ -161,6 +161,7 @@ config:
 
     # Required by snapd
     enable SQUASHFS_XZ
+    enable SQUASHFS_LZO
 
     # Some useful drivers when running as virtual machine
     module VIRTIO_BALLOON
