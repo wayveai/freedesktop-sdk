@@ -1,18 +1,18 @@
-From 72d87e56718353754c3470a8b0a02399c0750ff5 Mon Sep 17 00:00:00 2001
+From 5da062c49967e5170b09796669d9f717cd1c741a Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Mon, 22 Feb 2021 01:33:52 -0800
-Subject: [PATCH 02/10] riscv: sifive: unmatched: update for 16GB rev3
+Subject: [PATCH 2/7] riscv: sifive: unmatched: update for 16GB rev3
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
- .../riscv/boot/dts/sifive/hifive-unmatched-a00.dts | 32 +++++++++----------
+ .../boot/dts/sifive/hifive-unmatched-a00.dts  | 32 +++++++++----------
  1 file changed, 16 insertions(+), 16 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
-index b1c3c59..e026f60 100644
+index b40990210fb5..f9468aa6b7ab 100644
 --- a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
 +++ b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
-@@ -72,16 +72,16 @@
+@@ -73,16 +73,16 @@ pmic@58 {
  
  		regulators {
  			vdd_bcore1: bcore1 {
@@ -33,7 +33,7 @@ index b1c3c59..e026f60 100644
  				regulator-min-microamp = <5000000>;
  				regulator-max-microamp = <5000000>;
  				regulator-always-on;
-@@ -136,48 +136,48 @@
+@@ -137,48 +137,48 @@ vdd_ldo2: ldo2 {
  			};
  
  			vdd_ldo3: ldo3 {
@@ -95,5 +95,5 @@ index b1c3c59..e026f60 100644
  				regulator-max-microamp = <200000>;
  				regulator-always-on;
 -- 
-2.7.4
+2.35.0
 

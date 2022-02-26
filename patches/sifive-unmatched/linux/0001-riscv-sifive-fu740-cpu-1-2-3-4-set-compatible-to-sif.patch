@@ -1,7 +1,7 @@
-From 82efed54aef8ec32bd5e2f342bf72ffe4b29dffc Mon Sep 17 00:00:00 2001
+From 677e14e024ce879408684ed9278120075b7fdd65 Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Wed, 17 Feb 2021 06:06:14 -0800
-Subject: [PATCH 1/8] riscv: sifive: fu740: cpu{1,2,3,4} set compatible to
+Subject: [PATCH 1/7] riscv: sifive: fu740: cpu{1,2,3,4} set compatible to
  sifive,u74-mc
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
@@ -50,5 +50,5 @@ index abbb960f90a0..3095d823439d 100644
  			d-cache-sets = <64>;
  			d-cache-size = <32768>;
 -- 
-2.32.0
+2.35.0
 
