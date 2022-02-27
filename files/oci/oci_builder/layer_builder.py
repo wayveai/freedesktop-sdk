@@ -135,7 +135,9 @@ def create_layer(output, upper, lowers):
                         if tinfo.linkname == os.readlink(path):
                             continue
                     else:
-                        assert False
+                        raise RuntimeError(
+                            f"{path} unexpected type {tinfo.type}"
+                        )
 
             if tinfo.type == tarfile.REGTYPE:
                 with open(path, 'rb') as file_stream:
