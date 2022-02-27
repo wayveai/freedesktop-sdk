@@ -1,7 +1,7 @@
-From 18428cbf039f3d763f4bfb0608b76ffc761da199 Mon Sep 17 00:00:00 2001
+From 6cd2352007187d43464660c84af294aff7121ee0 Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Fri, 2 Apr 2021 06:31:07 -0700
-Subject: [PATCH 5/8] riscv: sifive: unmatched: add D2 RGB LED
+Subject: [PATCH 5/7] riscv: sifive: unmatched: add D2 RGB LED
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
  1 file changed, 25 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
-index 9a7fa9b3bdc2..235f78ad9823 100644
+index a7a31444274c..acbb2c809a2c 100644
 --- a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
 +++ b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
 @@ -34,13 +34,37 @@ soc {
@@ -52,5 +52,5 @@ index 9a7fa9b3bdc2..235f78ad9823 100644
  
  	hfclk: hfclk {
 -- 
-2.32.0
+2.35.0
 

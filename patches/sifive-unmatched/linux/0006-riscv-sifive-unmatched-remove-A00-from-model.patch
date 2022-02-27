@@ -1,7 +1,7 @@
-From 091626f1212ade0578c9468f3df594993cbef6a9 Mon Sep 17 00:00:00 2001
+From 13c0d56e34a6a6226f4cb2854ee542d34172c850 Mon Sep 17 00:00:00 2001
 From: David Abdurachmanov <david.abdurachmanov@sifive.com>
 Date: Tue, 6 Apr 2021 05:00:11 -0700
-Subject: [PATCH 6/8] riscv: sifive: unmatched: remove "A00" from model
+Subject: [PATCH 6/7] riscv: sifive: unmatched: remove "A00" from model
 
 Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
-index 235f78ad9823..5fdd1838dda8 100644
+index acbb2c809a2c..02716c305b7e 100644
 --- a/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
 +++ b/arch/riscv/boot/dts/sifive/hifive-unmatched-a00.dts
 @@ -12,7 +12,7 @@
@@ -22,5 +22,5 @@ index 235f78ad9823..5fdd1838dda8 100644
  		     "sifive,fu740";
  
 -- 
-2.32.0
+2.35.0
 

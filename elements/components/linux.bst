@@ -161,6 +161,7 @@ config:
 
     # Required by snapd
     enable SQUASHFS_XZ
+    enable SQUASHFS_LZO
 
     # Some useful drivers when running as virtual machine
     module VIRTIO_BALLOON
@@ -323,6 +324,8 @@ config:
     # Bluetooth
     enable BT
     module BT_HCIBTUSB
+    module BT_HIDP
+    module UHID
 
     # Sound for HDA
     module SND_HDA_INTEL
@@ -508,7 +511,10 @@ config:
     module BRIDGE
     module IP_NF_RAW
     module IP6_NF_RAW
+    module IP6_NF_NAT
     enable NETFILTER_ADVANCED
+    module VETH
+    module BLK_DEV_NBD
 
     # Those two modules are required by multipass
     module NETFILTER_XT_MATCH_COMMENT
@@ -529,6 +535,13 @@ config:
     module TCG_TIS
     if has SPI; then
       module TCG_TIS_SPI
+    fi
+
+    # BPF
+    enable BPF_SYSCALL
+    enable CGROUP_BPF
+    if has HAVE_CBPF_JIT || has HAVE_EBPF_JIT; then
+      enable BPF_JIT
     fi
 
   - |
