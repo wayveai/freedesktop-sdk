@@ -21,8 +21,8 @@ freedesktop-sdk-21.08.10:
   * cython: Update to 0.29.26
   * python3-lxml: Update to 4.7.1
   * p11-kit: Update to 0.24.1
-  * systemd.yml to v249.9
-  * bluez.yml to 5.63
+  * systemd: Update to v249.9
+  * bluez: Update to 5.63
   * mozjs: Update to 91.2
   * openssl: Update to OpenSSL_1_1_1m
   * expat: Update to R_2_4_2
@@ -36,14 +36,14 @@ freedesktop-sdk-21.08.9:
   * setuptools: downgrade to 59.8
   * asciidoc.bst: track the 9.x branch
   * mesa: update to 21.3.3
-  * e2fsprogs.bst to v1.46.5
-  * libmicrohttpd.bst to v0.9.75
+  * e2fsprogs: Update to v1.46.5
+  * libmicrohttpd: Update to v0.9.75
   * vala: Update to 0.54.5
   * po4a: Update to v0.66
   * Merge `egl_external_platform.d` GL ext dir (#1341)
   * ABI check now runs inside BuildStream
-  * nano.bst to v6.0
-  * intel-media-driver.bst to intel-media-22.1.0
+  * nano: Update to v6.0
+  * intel-media-driver: Update to intel-media-22.1.0
   * bash: Update to bash-5.1
   * at-spi2-atk: Build without P2P support
 
@@ -57,7 +57,7 @@ freedesktop-sdk-21.08.8:
   * Update python3-pygments to 2.11.1
   * Update gtk3 to 3.24.31
   * Update python3-zipp to 3.7.0
-  * Update glibc-source.yml to glibc-2.33-62-gc493f6a0e4dcd6fff22da0df9fb2e52ecf4ffff1
+  * Update glibc-source: Update to glibc-2.33-62-gc493f6a0e4dcd6fff22da0df9fb2e52ecf4ffff1
 
 freedesktop-sdk-21.08.7:
   * Mesa: Update to 21.3.1
@@ -79,7 +79,7 @@ freedesktop-sdk-21.08.7:
   * strace: Update to v5.15
   * cython: Update to 0.29.25
   * glib-networking: Update to 2.68.3
-  * alsa-plugins.bst to v1.2.6
+  * alsa-plugins: Update to v1.2.6
   * cmake: Update to v3.22.1
   * libical: Update to v3.0.12
   * python3-distlib: Update to 0.3.4
