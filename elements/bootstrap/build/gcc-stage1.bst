@@ -20,7 +20,6 @@ environment:
   PYTHON: python3
 
 variables:
-  strip-binaries: "true"
   (?):
   - target_arch == 'ppc64le':
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26360
@@ -97,3 +96,5 @@ config:
 
     - |
       rm "%{install-root}%{infodir}/dir"
+
+  strip-commands: []

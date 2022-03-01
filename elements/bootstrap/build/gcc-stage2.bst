@@ -57,10 +57,6 @@ variables:
     --disable-libstdcxx-filesystem-ts
     %{conf-extra}
 
-  # strip-binaries fails when cross compiling because artifact
-  # contains 2 architectures.
-  strip-binaries: "true"
-
 config:
   install-commands:
     (>):
@@ -90,3 +86,7 @@ config:
 
     - |
       rm "%{install-root}%{infodir}/dir"
+
+  # strip-binaries fails when cross compiling because artifact
+  # contains 2 architectures.
+  strip-commands: []
