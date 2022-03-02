@@ -1,8 +1,8 @@
-kind: stack
+kind: manual
 
 depends:
-- filename: bootstrap-import.bst
-- filename: multiarch/multiarch-platform-arches.bst
+- bootstrap-import.bst
+- multiarch/multiarch-platform-arches.bst
 
 variables:
   arches: ''
@@ -15,12 +15,12 @@ variables:
       arches: >-
         arm-linux-gnueabihf
 
-public:
-  bst:
-    integration-commands:
-    - |
-      for i in %{arches}; do
-        if [ "${i}" != "%{gcc_triplet}" ]; then
-          ln -sr "/app/lib/${i}" "%{indep-libdir}/${i}"
-        fi
-      done
+config:
+  install-commands:
+  - |
+    mkdir -p %{install-root}%{indep-libdir}
+    for i in %{arches}; do
+      if [ "${i}" != "%{gcc_triplet}" ]; then
+        ln -sr "/app/lib/${i}" "%{install-root}%{indep-libdir}/${i}"
+      fi
+    done

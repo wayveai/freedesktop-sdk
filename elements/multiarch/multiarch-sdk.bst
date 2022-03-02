@@ -1,8 +1,8 @@
 kind: stack
 
 depends:
-- filename: bootstrap-import.bst
-- filename: multiarch/multiarch-sdk-arches.bst
+- bootstrap-import.bst
+- multiarch/multiarch-sdk-arches.bst
 
 variables:
   arches: '%{gcc_triplet}'

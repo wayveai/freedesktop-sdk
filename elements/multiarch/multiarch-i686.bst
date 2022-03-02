@@ -1,17 +1,16 @@
-kind: stack
+kind: script
 
-depends:
-- filename: bootstrap-import.bst
+build-depends:
+- bootstrap-import.bst
 
 variables:
   compat_arch: i386-linux-gnu
   entrypoint: ld-linux.so.2
 
-public:
-  bst:
-    (?):
-    - target_arch != "i686":
-        integration-commands:
-        - |
-          mkdir -p /usr/lib
-          ln -sf %{compat_arch}/%{entrypoint} /usr/lib/%{entrypoint}
+config:
+  (?):
+  - target_arch != "i686":
+      commands:
+      - |
+        mkdir -p %{install-root}%{indep-libdir}
+        ln -sf %{compat_arch}/%{entrypoint} %{install-root}%{indep-libdir}%{entrypoint}
