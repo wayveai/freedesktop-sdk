@@ -29,4 +29,4 @@ sources:
   track: master
   match:
   - sdk-*
-  ref: sdk-1.2.198.0-0-gc9706bdda0ac22b9856f1aa8261e5b9e15cd20c5
+  ref: sdk-1.3.204.0-0-g2742e959347ae2fac58acd0d022c92a0ff1f24bf
