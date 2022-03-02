@@ -9,7 +9,6 @@ config:
       --destdir="%{install-root}" \
       --disable-ldconfig
 
-variables:
-# Disable debug handling in stage1 which is unnecessary and can cause
-# failures during dwz optimizations.
-  strip-binaries: "true"
+  # Disable debug handling in stage1 which is unnecessary and can cause
+  # failures during dwz optimizations.
+  strip-commands: []
