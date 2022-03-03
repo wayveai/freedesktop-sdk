@@ -12,4 +12,4 @@ sources:
   track: master
   match:
   - sdk-*
-  ref: sdk-1.2.198.0-0-g814e728b30ddd0f4509233099a3ad96fd4318c07
+  ref: sdk-1.3.204.0-0-gb42ba6d92faf6b4938e6f22ddd186dbdacc98d78

@@ -12,6 +12,7 @@ depends:
 - components/xorg-lib-x11.bst
 - components/xorg-lib-xrandr.bst
 - components/wayland.bst
+- components/wayland-protocols.bst
 
 variables:
   cmake-local: |
@@ -24,9 +25,9 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Tools.git
-  ref: sdk-1.2.198.0-0-g8040a7af8919a47346cfeaf1fbc2ebfe09cfea09
+  ref: sdk-1.3.204.0-0-gb9a87a24a814e443b1adfc5a6bc2e57243446f6c
   track: master
   track-extra:
-  - sdk-1.2.198
+  - sdk-1.3.204
   match:
   - sdk-*
