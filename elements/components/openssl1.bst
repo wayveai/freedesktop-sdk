@@ -7,7 +7,7 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  openssl-target: linux-%{uname-arch}
+  openssl-target: linux-%{target_arch}
   arch-conf: ''
   (?):
   - target_arch == "i686":

@@ -3,7 +3,7 @@ kind: junction
 config:
   options:
     bootstrap_build_arch: "%{bootstrap_build_arch}"
-    target_arch: "%{uname-arch}"
+    target_arch: "%{target_arch}"
 
 sources:
 - kind: git_tag
