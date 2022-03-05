@@ -2,8 +2,8 @@ kind: junction
 
 config:
   options:
-    bootstrap_build_arch: "%{sandbox_arch}"
-    target_arch: "%{arch}"
+    bootstrap_build_arch: "%{bootstrap_build_arch}"
+    target_arch: "%{uname-arch}"
 
 sources:
 - kind: git_tag
