@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: asciidoc
-  url: pypi:4b/c0/ded4666a6d7a978b50fda85f44ba7f0939bd92838102769eca91a769aa9f/asciidoc-10.1.1.tar.gz
-  sha256sum: 33ac648f7b38fa8712cfdbbfd2465a263fea2dcd106946fcf7d59ae6473b47c5
+  url: pypi:8f/94/aa5be7907b9dd1733e4e7a1fa0bb737022d6fb13f80a9283520c66435f4d/asciidoc-10.1.4.tar.gz
+  sha256sum: e614fe7cd6ff096d2aea06733ecfb6b15411b2a0f4aef8267964a32c7f7472ac
