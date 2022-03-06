@@ -18,7 +18,7 @@ depends:
   type: build
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 config:
   build-commands:

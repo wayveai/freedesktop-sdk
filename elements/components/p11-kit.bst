@@ -9,7 +9,6 @@ depends:
 - components/libffi.bst
 
 variables:
-  builddir: ''
   meson-local: >-
     -Dsystemd=disabled
     -Dbash_completion=disabled

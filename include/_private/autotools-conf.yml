@@ -1,7 +1,7 @@
 # Project-wide configuration of autotools elements
 
 variables:
-  builddir: bst_build_dir
+  build-dir: bst_build_dir
 
   conf-deterministic: |
     --enable-deterministic-archives
@@ -47,9 +47,9 @@ config:
   configure-commands:
   - |
     %{autogen}
-    if [ -n "%{builddir}" ]; then
-      mkdir %{builddir}
-      cd %{builddir}
+    if [ -n "%{build-dir}" ]; then
+      mkdir %{build-dir}
+      cd %{build-dir}
       reldir=..
     else
       reldir=.
@@ -58,15 +58,15 @@ config:
 
   build-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      cd %{builddir}
+    if [ -n "%{build-dir}" ]; then
+      cd %{build-dir}
     fi
     %{make}
 
   install-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      cd %{builddir}
+    if [ -n "%{build-dir}" ]; then
+      cd %{build-dir}
     fi
     %{make-install}
 

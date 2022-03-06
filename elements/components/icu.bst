@@ -8,8 +8,8 @@ depends:
 config:
   configure-commands:
   - |
-    mkdir "%{builddir}"
-    cd "%{builddir}"
+    mkdir "%{build-dir}"
+    cd "%{build-dir}"
     ../icu4c/source/configure %{conf-args}
 
 public:

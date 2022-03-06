@@ -7,7 +7,7 @@ depends:
 - components/cups-daemon-only.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 config:
   install-commands:

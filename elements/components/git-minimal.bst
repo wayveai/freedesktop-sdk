@@ -11,7 +11,7 @@ environment:
   INSTALL_SYMLINKS: '1'
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 config:
   install-commands:

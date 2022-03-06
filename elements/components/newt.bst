@@ -9,7 +9,7 @@ depends:
 - components/popt.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 sources:
 - kind: git_tag

@@ -9,7 +9,7 @@ runtime-depends:
 - filename: bootstrap-import.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 public:
   bst:

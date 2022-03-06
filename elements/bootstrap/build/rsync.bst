@@ -8,7 +8,7 @@ depends:
 - elements/include/rsync-source.yml
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: >-
     --without-included-zlib
     --disable-xxhash

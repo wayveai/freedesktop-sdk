@@ -12,8 +12,8 @@ depends:
 config:
   configure-commands:
   - |
-    mkdir "%{builddir}"
-    cd "%{builddir}"
+    mkdir "%{build-dir}"
+    cd "%{build-dir}"
 
     echo slibdir=%{libdir} >configparms
     echo complocaledir=%{indep-libdir}/locale >>configparms
@@ -36,7 +36,7 @@ config:
 
 # Move the dynamic linker into the prefix
     - |
-      rtlddir=$(echo '@libc_cv_rtlddir@' | %{builddir}/config.status --file=-)
+      rtlddir=$(echo '@libc_cv_rtlddir@' | %{build-dir}/config.status --file=-)
       sourcedir="%{install-root}${rtlddir}"
       targetdir="%{install-root}%{prefix}${rtlddir}"
 

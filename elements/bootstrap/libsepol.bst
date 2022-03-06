@@ -10,7 +10,7 @@ runtime-depends:
 - elements/bootstrap/include/target.yml
 
 variables:
-  builddir: ''
+  build-dir: ''
   notparallel: true
 
 environment:

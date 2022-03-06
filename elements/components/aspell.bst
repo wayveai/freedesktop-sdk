@@ -9,7 +9,7 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: |
     --enable-curses="-ltinfow -lncursesw"
 

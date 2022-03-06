@@ -8,7 +8,7 @@ depends:
   type: build
 
 variables:
-  builddir: ''
+  build-dir: ''
 
   conf-local: |
     --disable-aload \

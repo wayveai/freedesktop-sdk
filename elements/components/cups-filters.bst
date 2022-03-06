@@ -19,7 +19,7 @@ depends:
 - components/dbus.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 sources:
 - kind: git_tag

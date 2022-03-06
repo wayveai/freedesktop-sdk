@@ -7,7 +7,7 @@ build-depends:
 - components/gnutls.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: >-
     --enable-debug
     --with-components=all

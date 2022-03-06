@@ -10,7 +10,7 @@ build-depends:
 - components/linux-pam-base.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-link-args: --enable-shared --enable-static
   conf-cmd: ./configure
   make: make -C libraries/libapparmor

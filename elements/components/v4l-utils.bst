@@ -18,8 +18,8 @@ config:
   - |
     autoreconf -ivf
   - |
-    mkdir -p %{builddir}
-    cd %{builddir}
+    mkdir -p %{build-dir}
+    cd %{build-dir}
     ../%{configure}
 
 public:

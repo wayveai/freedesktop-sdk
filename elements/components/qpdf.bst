@@ -11,7 +11,7 @@ depends:
 
 variables:
   autogen: ./autogen.sh
-  builddir: ''
+  build-dir: ''
 
 sources:
 - kind: git_tag

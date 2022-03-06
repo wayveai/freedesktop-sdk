@@ -16,7 +16,7 @@ depends:
 - filename: extensions/glxinfo/freeglut.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: |
     --enable-osmesa=no
 

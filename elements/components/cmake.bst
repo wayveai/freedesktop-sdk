@@ -11,8 +11,8 @@ config:
     echo 'list(INSERT CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES 0 "%{libdir}")' >>Modules/Platform/UnixPaths.cmake
 
   - |
-    mkdir %{builddir}
-    cd %{builddir}
+    mkdir %{build-dir}
+    cd %{build-dir}
     ../configure --prefix=%{prefix}
 
 sources:

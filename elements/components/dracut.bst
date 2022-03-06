@@ -16,7 +16,7 @@ depends:
 - filename: components/e2fsprogs.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   lib: 'lib'
 
 sources:

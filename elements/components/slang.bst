@@ -6,7 +6,7 @@ depends:
   type: build
 
 variables:
-  builddir: ''
+  build-dir: ''
   notparallel: true
 
 sources:

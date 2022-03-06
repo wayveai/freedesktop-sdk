@@ -12,7 +12,7 @@ depends:
 - components/linux-pam.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   autogen: autoreconf -fvi
   conf-local: >-
     --with-libpam

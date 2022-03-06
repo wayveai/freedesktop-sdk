@@ -14,7 +14,7 @@ depends:
 
 variables:
   autogen: autoreconf -fvi
-  builddir: ''
+  build-dir: ''
 
 public:
   bst:

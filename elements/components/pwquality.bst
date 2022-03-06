@@ -11,7 +11,7 @@ depends:
 - components/linux-pam-base.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: --with-python-binary=python3 --with-securedir=%{libdir}/security
 
 sources:

@@ -11,7 +11,7 @@ runtime-depends:
 - elements/bootstrap/include/target.yml
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 environment:
   USE_PCRE2: y
