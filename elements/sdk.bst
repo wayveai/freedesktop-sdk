@@ -37,6 +37,7 @@ depends:
 - components/perf.bst
 - components/python3-pip.bst
 - components/python3-wheel.bst
+- components/ruby.bst
 - components/spirv-tools.bst
 - components/strace.bst
 - components/texinfo.bst
