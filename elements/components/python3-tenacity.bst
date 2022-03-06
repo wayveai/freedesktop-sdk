@@ -11,5 +11,5 @@ build-depends:
 sources:
 - kind: pypi
   name: tenacity
-  url: pypi:a9/26/dfe61bbfbe7d723fe76ff41960c96161fd32ff303be88bbbdfb428250cd4/tenacity-6.2.0.tar.gz
-  sha256sum: 29ae90e7faf488a8628432154bb34ace1cca58244c6ea399fd33f066ac71339a
+  url: pypi:2c/f5/04748914f5c78f7418b803226bd56cdddd70ac369b936b3e24f5158017f1/tenacity-8.0.1.tar.gz
+  sha256sum: 43242a20e3e73291a28bcbcacfd6e000b02d3857a9a9fff56b297a27afdc932f
