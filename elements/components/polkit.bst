@@ -43,16 +43,14 @@ public:
   cpe:
     patches:
     - CVE-2021-4034
+    - CVE-2021-4115
 
 sources:
 - kind: git_tag
   url: freedesktop:polkit/polkit.git
   track: master
-  ref: 0.120-0-g92b910ce2273daf6a76038f6bd764fa6958d4e8e
-- kind: patch
-  path: patches/polkit/mozjs-91.patch
-- kind: patch
-  path: patches/polkit/pkexec-local-privilege-escalation-CVE-2021-4034.patch
+  track-tags: false
+  ref: 0.120-6-gb10a1bdb697045db40774f2a9a8c58ae5c7189c3
 - kind: local
   path: files/polkit/sysusers.conf
   directory: data
