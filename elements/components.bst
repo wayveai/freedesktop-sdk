@@ -63,6 +63,7 @@ depends:
 - components/dosfstools.bst
 - components/doxygen.bst
 - components/dracut.bst
+- components/duktape.bst
 - components/dummy-gbm.bst
 - components/e2fsprogs.bst
 - components/ed.bst
@@ -253,7 +254,6 @@ depends:
 - components/mesa-headers.bst
 - components/meson.bst
 - components/mogwai.bst
-- components/mozjs.bst
 - components/mpfr.bst
 - components/mpg123.bst
 - components/mtdev.bst

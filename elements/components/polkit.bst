@@ -8,13 +8,14 @@ build-depends:
 - components/strace.bst
 
 depends:
-- components/mozjs.bst
+- components/duktape.bst
 - components/linux-pam.bst
 - components/systemd.bst
 
 variables:
   conf-local: >-
     --enable-libsystemd-login=yes
+    --with-duktape
   local_flags: -std=gnu++17
 
 environment:
