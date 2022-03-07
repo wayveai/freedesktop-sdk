@@ -7,6 +7,7 @@ build-depends:
 - components/gnutls.bst
 
 variables:
+  # Makefiles not added to build-dir which makes it unusable
   build-dir: ''
   conf-local: >-
     --enable-debug

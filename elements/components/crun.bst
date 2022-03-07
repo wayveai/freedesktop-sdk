@@ -14,9 +14,6 @@ depends:
 - components/libseccomp.bst
 - bootstrap-import.bst
 
-variables:
-  build-dir: ''
-
 environment:
   (?):
   - target_arch == "riscv64":

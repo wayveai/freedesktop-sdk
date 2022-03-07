@@ -13,6 +13,7 @@ depends:
 - components/polkit.bst
 
 variables:
+  # XML files generated to wrong directory
   build-dir: ''
 
 sources:

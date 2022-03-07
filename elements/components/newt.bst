@@ -9,6 +9,8 @@ depends:
 - components/popt.bst
 
 variables:
+  # newt has enforcing that Makefile is up to date by using
+  # configure.ac which breaks when build-dir is used
   build-dir: ''
 
 sources:

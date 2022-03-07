@@ -16,6 +16,7 @@ depends:
 - bootstrap-import.bst
 
 variables:
+  # Makefile not generated inside buil-dir
   build-dir: ''
 
 sources:

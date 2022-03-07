@@ -2,22 +2,19 @@ kind: autotools
 
 (@): elements/extensions/include/app.yml
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/xorg-lib-xi.bst
+- components/mesa-headers.bst
+- components/freetype.bst
+
 depends:
-- filename: components/xorg-lib-xi.bst
-  type: build
-- filename: components/mesa-headers.bst
-  type: build
-- filename: components/freetype.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: extensions/glxinfo/glu.bst
-- filename: extensions/glxinfo/glew.bst
-- filename: extensions/glxinfo/freeglut.bst
+- extensions/glxinfo/glu.bst
+- extensions/glxinfo/glew.bst
+- extensions/glxinfo/freeglut.bst
 
 variables:
-  build-dir: ''
-  conf-local: |
+  conf-local: >-
     --enable-osmesa=no
 
 sources:

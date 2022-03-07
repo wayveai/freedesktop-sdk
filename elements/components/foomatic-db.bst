@@ -7,6 +7,7 @@ depends:
 - components/cups-daemon-only.bst
 
 variables:
+  # This project uses names in makefile that do not work with build-dir
   build-dir: ''
 
 config:

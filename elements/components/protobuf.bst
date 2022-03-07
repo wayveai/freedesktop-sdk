@@ -7,8 +7,8 @@ build-depends:
 depends:
 - components/python3.bst
 
-variables:
-  build-dir: ''
+environment:
+  PROTOC: "%{build-root}/%{build-dir}/src/protoc"
 
 config:
   build-commands:

@@ -1,4 +1,4 @@
-kind: autotools
+kind: make
 
 build-depends:
 - bootstrap/libsepol-build-deps.bst
@@ -10,8 +10,8 @@ runtime-depends:
 - elements/bootstrap/include/target.yml
 
 variables:
-  build-dir: ''
   notparallel: true
+  command-subdir: libsepol
 
 environment:
   USE_PCRE2: y
@@ -21,17 +21,10 @@ environment:
   PKG_CONFIG_PATH: '%{sysroot}%{libdir}/pkgconfig'
 
 config:
-  configure-commands: []
-  build-commands:
-  - |
-    cd libsepol && %{make}
-
   install-commands:
-  - |
-    cd libsepol && %{make-install}
-
-  - |
-    rm "%{install-root}/%{libdir}/libsepol.a"
+    (>):
+    - |
+      rm "%{install-root}/%{libdir}/libsepol.a"
 
 public:
   bst:

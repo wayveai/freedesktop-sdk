@@ -11,17 +11,17 @@ depends:
 - components/openssl.bst
 
 variables:
-  conf-local: |
-    --with-plugindir="%{libdir}/sasl2" \
-    --with-sqlite3 \
-    --with-openssl \
-    --disable-gssapi \
-    --with-dblib=gdbm \
-    --without-pam \
-    --without-opie \
+  # Uses generated header md5global.h into source directory
+  build-dir: ''
+  conf-local: >-
+    --with-plugindir="%{libdir}/sasl2"
+    --with-sqlite3
+    --with-openssl
+    --disable-gssapi
+    --with-dblib=gdbm
+    --without-pam
+    --without-opie
     --without-des
-
-  build-dir: ""
 
 config:
   build-commands:

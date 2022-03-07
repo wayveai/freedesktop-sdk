@@ -1,4 +1,4 @@
-kind: autotools
+kind: make
 
 build-depends:
 - bootstrap/libselinux-build-deps.bst
@@ -11,7 +11,7 @@ runtime-depends:
 - elements/bootstrap/include/target.yml
 
 variables:
-  build-dir: ''
+  command-subdir: libselinux
 
 environment:
   USE_PCRE2: y
@@ -22,17 +22,10 @@ environment:
   PKG_CONFIG_PATH: '%{sysroot}%{libdir}/pkgconfig'
 
 config:
-  configure-commands: []
-  build-commands:
-  - |
-    cd libselinux && %{make}
-
   install-commands:
-  - |
-    cd libselinux && %{make-install}
-
-  - |
-    rm "%{install-root}/%{libdir}/libselinux.a"
+    (>):
+    - |
+      rm "%{install-root}/%{libdir}/libselinux.a"
 
 public:
   bst:

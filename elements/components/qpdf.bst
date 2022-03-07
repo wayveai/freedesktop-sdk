@@ -10,8 +10,15 @@ depends:
 - components/jpeg.bst
 
 variables:
-  autogen: ./autogen.sh
+  # This build system has sha256 verification of output from autogen
+  # which breaks build-dir. It's not possible to redirect checksums
+  # to anoher directory
   build-dir: ''
+
+config:
+  configure-commands:
+    (<):
+    - rm configure
 
 sources:
 - kind: git_tag

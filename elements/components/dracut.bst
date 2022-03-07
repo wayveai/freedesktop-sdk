@@ -1,21 +1,22 @@
 kind: autotools
 
+build-depends:
+- components/pkg-config.bst
+- components/asciidoc.bst
+- components/libxslt.bst
+- components/docbook-xsl.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/pkg-config.bst
-  type: build
-- filename: components/kmod.bst
-- filename: components/asciidoc.bst
-  type: build
-- filename: components/cpio.bst
-  type: runtime
-- filename: components/libxslt.bst
-  type: build
-- filename: components/docbook-xsl.bst
-  type: build
-- filename: components/e2fsprogs.bst
+- bootstrap-import.bst
+- components/kmod.bst
+- components/e2fsprogs.bst
+
+runtime-depends:
+- components/cpio.bst
+
 
 variables:
+  # This project documents it doesn't support build-dir
   build-dir: ''
   lib: 'lib'
 

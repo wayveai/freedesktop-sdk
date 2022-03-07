@@ -9,6 +9,7 @@ depends:
 - components/util-linux.bst
 
 variables:
+  # This build system does not generate required files under build-dir
   build-dir: ''
   make-args: >-
     PKG_ROOT_SBIN_DIR='%{sbindir}'
