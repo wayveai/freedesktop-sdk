@@ -1,9 +1,11 @@
 kind: autotools
 
+build-depends:
+- components/gettext.bst
+- components/python3.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
-  type: build
+- bootstrap-import.bst
 
 sources:
 - kind: git_tag
