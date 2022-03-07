@@ -9,7 +9,7 @@ depends:
 - components/util-linux.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   make-args: >-
     PKG_ROOT_SBIN_DIR='%{sbindir}'
     PKG_ROOT_LIB_DIR='%{libdir}'

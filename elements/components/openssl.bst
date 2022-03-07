@@ -22,9 +22,9 @@ variables:
 config:
   configure-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      mkdir %{builddir}
-      cd %{builddir}
+    if [ -n "%{build-dir}" ]; then
+      mkdir %{build-dir}
+      cd %{build-dir}
         reldir=..
       else
         reldir=.

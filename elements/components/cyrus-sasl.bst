@@ -21,7 +21,7 @@ variables:
     --without-opie \
     --without-des
 
-  builddir: ""
+  build-dir: ""
 
 config:
   build-commands:

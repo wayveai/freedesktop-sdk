@@ -13,12 +13,12 @@ variables:
 config:
   build-commands:
   - |
-    cd "%{builddir}"
+    cd "%{build-dir}"
     %{make} SUBDIRS=po
 
   install-commands:
   - |
-    cd "%{builddir}"
+    cd "%{build-dir}"
     %{make-install} SUBDIRS=po
 
 sources:

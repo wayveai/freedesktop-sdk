@@ -22,8 +22,8 @@ config:
     %{autogen}
 
   - |
-    mkdir %{builddir}
-    cd %{builddir}
+    mkdir %{build-dir}
+    cd %{build-dir}
     ../expat/%{configure}
 
 sources:

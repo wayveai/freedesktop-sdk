@@ -13,7 +13,7 @@ variables:
     --with-ncurses
     --with-systemd
 
-  builddir: ''
+  build-dir: ''
 
 public:
   bst:

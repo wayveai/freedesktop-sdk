@@ -24,7 +24,7 @@ config:
   build-commands:
     (<):
     - |
-      cd "%{builddir}/data"
+      cd "%{build-dir}/data"
       make -j1 install DESTDIR="%{install-root}"
 
   install-commands:

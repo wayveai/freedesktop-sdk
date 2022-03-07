@@ -13,7 +13,7 @@ build-depends:
 - components/gtk-doc.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   # When using --disable-static, some useless rpaths appear
   conf-link-args: >-
     --enable-shared

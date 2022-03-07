@@ -13,7 +13,7 @@ depends:
 - components/polkit.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 sources:
 - kind: git_tag

@@ -8,7 +8,7 @@ depends:
 - components/python3.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 config:
   build-commands:

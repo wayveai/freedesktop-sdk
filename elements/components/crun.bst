@@ -15,7 +15,7 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
 
 environment:
   (?):

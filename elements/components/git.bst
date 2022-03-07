@@ -26,7 +26,7 @@ environment:
   INSTALL_SYMLINKS: '1'
 
 variables:
-  builddir: ''
+  build-dir: ''
   make: make all man
   make-install: make -j1 install install-man DESTDIR='%{install-root}'
 

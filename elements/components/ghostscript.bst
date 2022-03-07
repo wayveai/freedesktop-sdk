@@ -12,7 +12,7 @@ depends:
 - components/xorg-lib-xt.bst
 
 variables:
-  builddir: ''
+  build-dir: ''
   conf-local: >-
     --with-drivers=ALL
 

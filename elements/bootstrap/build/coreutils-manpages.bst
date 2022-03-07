@@ -20,5 +20,5 @@ variables:
 config:
   install-commands:
   - |
-    cd "%{builddir}"
+    cd "%{build-dir}"
     make -j1 install-man DESTDIR="%{install-root}"
