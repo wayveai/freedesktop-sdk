@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: pycairo
-  url: pypi:bc/3f/64e6e066d163fbcf13213f9eeda0fc83376243335ea46a66cefd70d62e8f/pycairo-1.20.1.tar.gz
-  sha256sum: 1ee72b035b21a475e1ed648e26541b04e5d7e753d75ca79de8c583b25785531b
+  url: pypi:92/a4/506564f574fa74c90b98690e8ecc8dbae1629f31fcfe0be69de45d9e1605/pycairo-1.21.0.tar.gz
+  sha256sum: 251907f18a552df938aa3386657ff4b5a4937dde70e11aa042bc297957f4b74b
