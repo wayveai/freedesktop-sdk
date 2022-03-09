@@ -64,12 +64,7 @@ variables:
   arch_options: ''
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
-      arch_options: --enable-static-pie --enable-cet
-  - target_arch == "aarch64":
-      arch_options: --enable-static-pie
-  - target_arch == "arm" or target_arch == "ppc64le":
-    # --enable-static-pie breaks arm build
-      arch_options: ''
+      arch_options: --enable-cet
 
   conf-local: |
     CFLAGS="$CFLAGS" \
