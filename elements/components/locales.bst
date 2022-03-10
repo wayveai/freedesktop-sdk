@@ -19,7 +19,7 @@ config:
   - |
     mkdir -p %{install-root}/usr/lib/locale
 
-    grep -v "en_US.UTF-8" %{datadir}/i18n/SUPPORTED | xargs -P $MAXJOBS -n 2 bash -c 'echo "Generating ${0}"; \
+    grep -v -e "en_US.UTF-8" -e "C.UTF-8" %{datadir}/i18n/SUPPORTED | xargs -P $MAXJOBS -n 2 bash -c 'echo "Generating ${0}"; \
     localedef --prefix=%{install-root} --no-archive -i ${0%%.*} -f ${1} ${0}'
 
 
