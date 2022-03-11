@@ -1,20 +1,21 @@
 kind: autotools
 description: X.org xcb-util-cursor
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/xorg-util-macros.bst
+- components/gperf.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/xcb-util-renderutil.bst
-- filename: components/xcb-util-image.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/xorg-util-macros.bst
-  type: build
-- filename: components/gperf.bst
-  type: build
+- bootstrap-import.bst
+- components/xcb-util-renderutil.bst
+- components/xcb-util-image.bst
 
 variables:
-  autogen: autoreconf -fvi
+  # Various files like shape_to_id.gperf get generated in wrong path
+  # with build-dir
   build-dir: ''
+  autogen: autoreconf -fvi
 
 public:
   bst:

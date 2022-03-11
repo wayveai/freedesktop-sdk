@@ -26,6 +26,8 @@ environment:
   INSTALL_SYMLINKS: '1'
 
 variables:
+  # When build-dir is used with git, only configure logs land in
+  # build-dir after running autogen
   build-dir: ''
   make: make all man
   make-install: make -j1 install install-man DESTDIR='%{install-root}'

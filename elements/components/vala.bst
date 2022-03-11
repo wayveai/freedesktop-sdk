@@ -1,20 +1,18 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/vala-bootstrap.bst
+- components/flex.bst
+- components/bison.bst
+- components/git-minimal.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/glib.bst
-- filename: components/vala-bootstrap.bst
-  type: build
-- filename: components/flex.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
+- bootstrap-import.bst
+- components/glib.bst
 
 variables:
+  # vala can't find gee if build-dir is used
   build-dir: ''
   conf-local: --disable-valadoc
   make: make bootstrap

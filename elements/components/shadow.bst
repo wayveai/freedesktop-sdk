@@ -12,8 +12,9 @@ depends:
 - components/linux-pam.bst
 
 variables:
-  build-dir: ''
   autogen: autoreconf -fvi
+  # This element appears to generate code into wrong paths with build-dir
+  build-dir: ''
   conf-local: >-
     --with-libpam
     --without-selinux

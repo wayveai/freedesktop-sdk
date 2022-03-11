@@ -8,9 +8,6 @@ build-depends:
 runtime-depends:
 - filename: bootstrap-import.bst
 
-variables:
-  build-dir: ''
-
 public:
   bst:
     split-rules:

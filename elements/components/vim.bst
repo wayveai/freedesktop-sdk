@@ -4,6 +4,9 @@ depends:
 - bootstrap-import.bst
 
 variables:
+  command-subdir: src
+  # FIXME: vim bundles configure script which is broken with
+  # build-dir. We would need to generate our own to fix things.
   build-dir: ''
 
 sources:

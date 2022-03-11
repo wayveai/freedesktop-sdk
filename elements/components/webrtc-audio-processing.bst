@@ -1,16 +1,17 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends: 
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
-  build-dir: ""
-
-config:
-  configure-commands:
-  - ./autogen.sh %{conf-args}
+  autogen: |
+    libtoolize
+    aclocal
+    automake --add-missing --copy
+    autoconf
 
 public:
   bst:

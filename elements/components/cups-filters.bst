@@ -19,6 +19,7 @@ depends:
 - components/dbus.bst
 
 variables:
+  # There's a related Python script which opens files assuming no build-dir
   build-dir: ''
 
 sources:

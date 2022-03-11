@@ -11,8 +11,12 @@ depends:
 - components/linux-pam-base.bst
 
 variables:
+  # Python package built as part of project does not support
+  # build-dir
   build-dir: ''
-  conf-local: --with-python-binary=python3 --with-securedir=%{libdir}/security
+  conf-local: >-
+    --with-python-binary=python3
+    --with-securedir=%{libdir}/security
 
 sources:
 - kind: git_tag

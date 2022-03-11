@@ -1,24 +1,22 @@
 kind: autotools
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/asciidoc.bst
-  type: build
-- filename: components/groff.bst
-  type: build
-- filename: components/xmlto.bst
-  type: build
-- filename: components/docbook-xml.bst
-  type: build
-- filename: components/docbook-xsl.bst
-  type: build
-- filename: components/libxslt.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/asciidoc.bst
+- components/groff.bst
+- components/xmlto.bst
+- components/docbook-xml.bst
+- components/docbook-xsl.bst
+- components/libxslt.bst
 
 variables:
+  # Build script generates sources and if build-dir is used
+  # it tries to generate them in directories that do not
+  # exist
   build-dir: ''
+
+depends:
+- bootstrap-import.bst
 
 config:
   build-commands:

@@ -13,8 +13,6 @@ variables:
     --with-ncurses
     --with-systemd
 
-  build-dir: ''
-
 public:
   bst:
     split-rules:

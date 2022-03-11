@@ -12,9 +12,9 @@ depends:
 - components/xorg-lib-xt.bst
 
 variables:
-  build-dir: ''
   conf-local: >-
     --with-drivers=ALL
+    --with-system-libtiff
 
   (?):
   - target_arch == "aarch64":

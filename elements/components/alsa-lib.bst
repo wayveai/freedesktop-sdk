@@ -8,14 +8,12 @@ depends:
   type: build
 
 variables:
-  build-dir: ''
-
-  conf-local: |
-    --disable-aload \
-    --disable-alisp \
-    --disable-old-symbols \
-    --with-pythonlibs="-lpthread -lm -ldl -lpython3" \
-    --with-pythonincludes=-I/usr/include/python3 \
+  conf-local: >-
+    --disable-aload
+    --disable-alisp
+    --disable-old-symbols
+    --with-pythonlibs="-lpthread -lm -ldl -lpython3"
+    --with-pythonincludes=-I/usr/include/python3
     --with-pcm-plugins=all
 
   local-config-replacement: |

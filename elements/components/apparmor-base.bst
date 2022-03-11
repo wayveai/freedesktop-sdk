@@ -10,6 +10,8 @@ build-depends:
 - components/linux-pam-base.bst
 
 variables:
+  # apparmor has a very complex build stack that makes it hard
+  # to use build-dir so we disable it
   build-dir: ''
   conf-link-args: --enable-shared --enable-static
   conf-cmd: ./configure
