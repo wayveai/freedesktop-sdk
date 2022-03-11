@@ -27,4 +27,4 @@ sources:
 - kind: git_tag
   url: github:protocolbuffers/protobuf.git
   track: master
-  ref: v3.19.4-0-g22d0e265de7d2b3d2e9a00d071313502e7d4cccf
+  ref: v3.20.0-rc1-0-g388df0041ab711228a5c041f4df041388a0ef839
