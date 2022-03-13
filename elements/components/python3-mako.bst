@@ -1,11 +1,11 @@
 kind: pip
 
+build-depends:
+- public-stacks/buildsystem-python.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/python3.bst
-- filename: components/python3-setuptools.bst
-- filename: components/python3-pip.bst
-  type: build
+- components/python3.bst
+- components/python3-markupsafe.bst
 
 public:
   cpe:
@@ -15,4 +15,4 @@ sources:
 - kind: git_tag
   url: github:sqlalchemy/mako.git
   track: main
-  ref: rel_1_1_5-0-g5b99a413679cb49ec8dd3546b1a20a6076a1abdc
+  ref: rel_1_2_0-0-gc81402434e8a277b0134262ad485debcffa20280
