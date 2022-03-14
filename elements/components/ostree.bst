@@ -35,11 +35,11 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree.git
   track: main
-  ref: v2022.1-0-g6c903ab0b66e0542685108e837a23a9e29845949
+  ref: v2022.2-0-gfbc6d21c2f71099fbab44cbdd74222b91f61c667
 - kind: git_module
   path: libglnx
   url: gnome:libglnx.git
-  ref: ef502aabf7d3a0d37f9c4d228f870ac93404447b
+  ref: c71f7aefa142c444210f1021d1af42f365ec3a7b
 - kind: git_module
   path: bsdiff
   url: github:mendsley/bsdiff.git
