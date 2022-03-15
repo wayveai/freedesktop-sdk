@@ -1,3 +1,17 @@
+"""
+BuildStream does not save file permissions, and ownership.
+include/excludes with integration commands is so complex that only
+the "compose" plugin does it correctly
+
+Because "compose" does not save file permissions and loses integration
+commands (because they are executed), that means we need to save it another
+file permissions another way.
+
+This is where collect_initial_scripts works around the issue. It provides a
+way to have integration scripts that we execute when we pack into an image
+(filesystem, tar, ostree, etc.)
+"""
+
 import os
 import re
 from buildstream import Element, ElementError, Scope
