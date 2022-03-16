@@ -183,14 +183,14 @@ alternative to containers.
 
 The kernel should be passed as parameter to QEMU with `-kernel` and
 the initramfs with `-initrd`. Some parameter to the kernel need to be
-passed with `-append`. Here are the required kernel paramters.
+passed with `-append`. Here are the required kernel parameters.
 
 ```
 root=virtfs rootflags=trans=virtio,version=9p2000.L rw
 ```
 
 Because Dracut mounts 9p root named `virtfs`, this has to be used as
-mount tagfor the virtfs parameter, e.g. `-virtfs
+mount tag for the virtfs parameter, e.g. `-virtfs
 local,mount_tag=virtfs,path=<path>`.
 
 It is possible to run the demo with `make run-vm`.

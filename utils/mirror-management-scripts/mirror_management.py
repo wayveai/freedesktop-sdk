@@ -25,7 +25,7 @@ IS_TTY = sys.stdout.isatty()
 def test_sources(manifest, test_dict, is_verbose, ignore_dict):
     '''iterates through the manifest and applies the relevant test to each
     source, ignoring any sources specified in the ignore dict. Prints the list
-    of problems to stdout (if 'is_verblose' is true), and returns the problem
+    of problems to stdout (if 'is_verbose' is true), and returns the problem
     list.'''
 
 
@@ -87,7 +87,7 @@ def mirror_defined_test(source_dict):
     '''Tests whether the alias has a mirror defined for it.
     Returns a string describing the problem, or 'None' if all is well.'''
     if source_dict['mirror_url'] is None  and source_dict['alias'] is not None:
-        # anything where the alias is 'None', shoul be caught by alias_test(),
+        # anything where the alias is 'None', should be caught by alias_test(),
         # not by this test.
         return 'no mirror url defined for alias'
     return None

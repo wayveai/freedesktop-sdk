@@ -4,7 +4,7 @@
 # This file is for Flatpak
 variables:
   runtime-version: '22.08-devel'
-  # Flatpak ignores releases in apstream data that don't have a release
+  # Flatpak ignores releases in upstream data that don't have a release
   # date. To be able to test the mechanism internally we need something
   # here and this date is used elsewhere in project for reproducible
   # builds already. For real releases date of the tag is used.
