@@ -1,25 +1,23 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/gnupg.bst
+- components/git-minimal.bst
+- components/texinfo.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libgpg-error.bst
-- filename: components/libassuan.bst
-- filename: components/gnupg.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/git-minimal.bst
-  type: build
-- filename: components/texinfo.bst
-  type: build
+- bootstrap-import.bst
+- components/libgpg-error.bst
+- components/libassuan.bst
 
 variables:
-  conf-local: |
-    --enable-maintainer-mode \
-    --disable-glibtest     \
-    --disable-gpgconf-test \
-    --disable-gpg-test     \
-    --disable-gpgsm-test   \
+  conf-local: >-
+    --enable-maintainer-mode
+    --disable-glibtest
+    --disable-gpgconf-test
+    --disable-gpg-test
+    --disable-gpgsm-test
     --disable-g13-test
 
 public:
@@ -46,6 +44,4 @@ sources:
   track: master
   exclude:
   - "*-base"
-  ref: gpgme-1.16.0-0-g1021c8645555502d914afffaa3707609809c9459
-- kind: patch
-  path: patches/gpgme/gpgme-closefrom.patch
+  ref: gpgme-1.17.1-0-gee50a38823daaa16b151a549a7dafef34bbd1e81
