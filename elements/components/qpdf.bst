@@ -12,7 +12,7 @@ depends:
 variables:
   # This build system has sha256 verification of output from autogen
   # which breaks build-dir. It's not possible to redirect checksums
-  # to anoher directory
+  # to another directory
   build-dir: ''
 
 config:

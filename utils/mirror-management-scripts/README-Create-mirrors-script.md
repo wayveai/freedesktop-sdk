@@ -28,12 +28,12 @@ unmirrored sources. This usually means that someone has added a new url source
 to the freedesktop-sdk repo, and that there isn't (yet) a download mirror for
 that source.
 
-This document also assumes that you have the appropriate permissions/priveleges
+This document also assumes that you have the appropriate permissions/privileges
 to create new download mirrors in the freedesktop-sdk group. If you don't have
 the appropriate permissions, then you probably don't need to be reading this;
 someone who does have permissions will probably resolve the issue soon.
 
-In the Job Artefacts, you should find (possibly amongst other files):
+In the Job Artifacts, you should find (possibly amongst other files):
   1. This file
   2. `unmirrored_sources_list.json` (a machine-readable list of the download
 mirrors that need to be created)
@@ -52,7 +52,7 @@ the '--automatic' option).
 
 For git repository mirrors, confirming the prompt will immediately create the
 mirror on the gitlab servers. For one-file sources (tarballs, crates etc.)
-confirming the prompt means that the source will be downloaded and commited
+confirming the prompt means that the source will be downloaded and committed
 locally. These commits are then all pushed to the remote server in a single
 batch at the end of the script.
 

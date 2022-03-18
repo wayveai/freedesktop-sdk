@@ -376,7 +376,7 @@ def get_gitlab_group_id(gitlab_instance, top_group, relative_group_path):
                 daughter_group_id = subg.id
                 break
         if daughter_group_id is not None:
-            # if we succesfully found the daughter group
+            # if we successfully found the daughter group
             # move one step down the chain
             parent_group_id = daughter_group_id
             parent_full_path = daughter_full_path

@@ -7,7 +7,7 @@ build-depends:
 
 variables:
   uuidnamespace: df2427db-01ec-4c99-96b1-be3edb3cd9f6
-  # FIXME: dracut uses wront directory when using /efi
+  # FIXME: dracut uses wrong directory when using /efi
   install-root: '/boot'
 
   efi-arch: "%{arch}"

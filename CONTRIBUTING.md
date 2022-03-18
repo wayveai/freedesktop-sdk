@@ -160,7 +160,7 @@ freedesktop-sdk. The table below outlines them and their uses.
 | Build and checkout as a flatpak repo              | `make export`            |
 | Build and export snap images                      | `make export-snap`       |
 | Build and export tarballs of freedesktop-sdk      | `make export-tar`        |
-| Build and export OCI images of freedeskto-sdk     | `make export-oci`        |
+| Build and export OCI images of freedesktop-sdk    | `make export-oci`        |
 | Build and export docker images of freedesktop-sdk | `make export-docker`     |
 | Build and run VM images of freedesktop-sdk        | `make run-vm`            |
 | Build and export manifests for platform and sdk   | `make manifest`          |
