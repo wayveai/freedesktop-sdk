@@ -7,6 +7,7 @@ depends:
 build-depends:
 - public-stacks/buildsystem-autotools.bst
 - components/flatpak.bst
+- components/fuse3.bst
 - components/glib.bst
 - components/fontconfig.bst
 - components/pipewire.bst
@@ -26,4 +27,4 @@ sources:
   track: main
   track-extra:
   - xdg-desktop-portal-1.12
-  ref: 1.12.2-0-g9f063892ea40c5111d9b64215a01e916ab4598d6
+  ref: 1.14.1-0-g6e9ab0bfdc82043b4b27b5e4f77da982ac010587
