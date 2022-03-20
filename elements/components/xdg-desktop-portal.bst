@@ -7,6 +7,7 @@ runtime-depends:
 - components/xdg-desktop-portal-manifest.bst
 - components/xdg-portal-interfaces.bst
 - components/flatpak.bst
+- components/fuse3.bst
 - components/glib.bst
 - components/fontconfig.bst
 - components/pipewire-daemon.bst
