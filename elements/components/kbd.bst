@@ -13,4 +13,4 @@ sources:
 - kind: git_tag
   url: github:legionus/kbd.git
   track: master
-  ref: v2.4.0-0-g252e622319d4f42ae085dc7760ab863227e0c683
+  ref: v2.5-rc1-0-g11683bfae542fc14f012960a58a5b9b36617af37
