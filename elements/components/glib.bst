@@ -56,4 +56,4 @@ sources:
   - glib-2-68
   match:
   - 2.*[02468].*
-  ref: 2.70.0-0-g6fd4f36bac4d3f9c7ddc809bad6d04bd3365f39b
+  ref: 2.72.0-0-g8697c1a53ccbbcde49596f2b4c043c67461c97a9
