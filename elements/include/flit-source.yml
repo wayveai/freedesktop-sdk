@@ -1,5 +1,5 @@
 sources:
 - kind: pypi
   name: flit
-  url: pypi:43/9c/59e673d4881dea932051e79d69779b6d02a87c4851dd58a86dd09ba57692/flit-3.6.0.tar.gz
-  sha256sum: b1464e006df4df4c8eeb37671c0e0ce66e1d04e4a36d91b702f180a25fde3c11
+  url: pypi:a0/62/4fe47656976da4a95bbe9ab3cc710b2c16a0b5a5ffa308780a2ab208ef50/flit-3.7.1.tar.gz
+  sha256sum: 3c9bd9c140515bfe62dd938c6610d10d6efb9e35cc647fc614fe5fb3a5036682
