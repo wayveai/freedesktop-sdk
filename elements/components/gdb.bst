@@ -5,6 +5,7 @@ depends:
 - bootstrap-import.bst
 - components/python3.bst
 - components/debuginfod.bst
+- components/gmp.bst
 
 build-depends:
 - components/pkg-config.bst
