@@ -22,9 +22,7 @@ public:
 sources:
 - kind: git_tag
   url: gnome:glib-networking.git
-  track: master
-  track-extra:
-  - glib-2-68
+  track: glib-2-68
   match:
   - 2.*[02468].*
   exclude:
