@@ -49,9 +49,7 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:dbus/dbus.git
-  track: master
-  track-extra:
-  - dbus-1.12
+  track: dbus-1.12
   match:
   - dbus-[0-9].*[02468].*[02468]
   ref: dbus-1.12.20-0-gab88811768f750777d1a8b9d9ab12f13390bfd3a
