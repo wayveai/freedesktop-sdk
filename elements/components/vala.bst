@@ -23,9 +23,7 @@ sources:
 - kind: git_tag
   # See https://wiki.gnome.org/Projects/Vala for last version
   url: gnome:vala.git
-  track: master
-  track-extra:
-  - '0.54'
+  track: '0.56'
   # Note for updates: Stable minor versions are even.
   match:
   - "*.*[02468].*"
