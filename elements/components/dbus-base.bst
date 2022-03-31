@@ -54,7 +54,7 @@ sources:
   url: freedesktop:dbus/dbus.git
   track: master
   track-extra:
-  - dbus-1.12
+  - dbus-1.14
   match:
   - dbus-[0-9].*[02468].*[02468]
   ref: dbus-1.14.0-0-g6fd1509ba3677ac434176882fbf1ca5d7603651e
