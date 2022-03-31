@@ -31,3 +31,5 @@ sources:
   url: github:harfbuzz/harfbuzz.git
   # Frozen since next release adds new API
   ref: 3.0.0-0-g9c387e20d65a7a366ac270d789f6ad266014c9e0
+- kind: patch
+  path: patches/harfbuzz/face-clarify-face_index-handling.patch
