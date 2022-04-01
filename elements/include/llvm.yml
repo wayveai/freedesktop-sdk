@@ -1,14 +1,10 @@
 sources:
 - kind: git_tag
-  track: main
-  track-extra:
-  - release/12.x
+  track: release/14.x
   exclude:
   - llvmorg-*-rc*
   - llvmorg-*-init*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-12.0.1-0-gfed41342a82f5a3a9201819a82bf7a48313e296b
+  ref: llvmorg-14.0.0-0-g329fda39c507e8740978d10458451dcdb21563be
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
-- kind: patch
-  path: patches/llvm/llvm-riscv64-lib.patch

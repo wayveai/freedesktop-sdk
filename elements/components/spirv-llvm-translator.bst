@@ -6,6 +6,11 @@ depends:
 
 build-depends:
 - public-stacks/buildsystem-cmake.bst
+- components/spirv-headers.bst
+
+variables:
+  cmake-local: >-
+    -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="%{prefix}"
 
 config:
   build-commands:
@@ -16,8 +21,10 @@ config:
 
 sources:
 - kind: git_tag
-  track: master
+  # This needs to be in sync with LLVM version
+  track: llvm_release_140
+  track-tags: false
   url: github:KhronosGroup/SPIRV-LLVM-Translator.git
-  ref: v12.0.0-0-g67d3e271a28287b2c92ecef2f5e98c49134e5946
+  ref: v7.0.0-1-981-ge95eb30ace4954a3a7e8e17a3cc22f7382d4a47e
   match:
   - v*
