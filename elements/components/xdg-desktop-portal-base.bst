@@ -6,10 +6,11 @@ depends:
 build-depends:
 - public-stacks/buildsystem-autotools.bst
 - components/flatpak.bst
-- components/glib.bst
 - components/fontconfig.bst
-- components/pipewire.bst
+- components/fuse3.bst
 - components/geoclue.bst
+- components/glib.bst
+- components/pipewire.bst
 
 variables:
   conf-local: >-
@@ -28,5 +29,5 @@ sources:
   url: github:flatpak/xdg-desktop-portal.git
   track: main
   track-extra:
-  - xdg-desktop-portal-1.12
-  ref: 1.12.3-0-g08f70031b61e8c9b8c46900b1608a4d991beafbc
+  - xdg-desktop-portal-1.14
+  ref: 1.14.2-0-geec57b25a68c10f967f04630515dd74c2bb90624
