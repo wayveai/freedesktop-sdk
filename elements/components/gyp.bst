@@ -4,6 +4,7 @@ depends:
 - bootstrap-import.bst
 - components/python3.bst
 - components/python3-setuptools.bst
+- components/python3-six.bst
 
 build-depends:
 - components/python3-pip.bst
@@ -16,4 +17,4 @@ sources:
   url: chromium:external/gyp
   track: master
   track-tags: false
-  ref: d6c5dd51dc3a60bf4ff32a5256713690a1a10376
+  ref: 203fee270b606ad8e0e9c2d6314b59eb30369579
