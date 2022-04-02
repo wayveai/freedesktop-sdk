@@ -5,6 +5,7 @@ build-depends:
 
 runtime-depends:
 - components/systemd-libs.bst
+- components/systemd-hwdb.bst
 - components/libgpg-error.bst
 - components/linux-pam.bst
 - components/kmod.bst
@@ -28,10 +29,6 @@ config:
 
 public:
   bst:
-    integration-commands:
-    - |
-      systemd-hwdb --usr update
-
     split-rules:
       runtime:
         (>):

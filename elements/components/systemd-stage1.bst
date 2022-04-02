@@ -1,19 +1,22 @@
 kind: meson
 
 build-depends:
-- bootstrap-import.bst
 - public-stacks/buildsystem-meson.bst
+- components/docbook-xsl.bst
 - components/gperf.bst
+- components/libxslt.bst
 - components/m4.bst
+- components/python3-jinja2.bst
+
+depends:
+- bootstrap-import.bst
+- components/kmod.bst
 - components/libcap.bst
 - components/libgpg-error.bst
 - components/lz4.bst
-- components/util-linux-full.bst
 - components/linux-pam.bst
-- components/kmod.bst
-- components/libxslt.bst
-- components/docbook-xsl.bst
-- components/python3-jinja2.bst
+- components/openssl.bst
+- components/util-linux-full.bst
 
 variables:
   meson-local: >-
