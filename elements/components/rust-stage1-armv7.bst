@@ -6,5 +6,5 @@ kind: manual
 # That's how upstream recommends doing it.
 sources:
 - kind: tar
-  url: tar_https:static.rust-lang.org/dist/rust-1.57.0-armv7-unknown-linux-gnueabihf.tar.xz
-  ref: 910a5be23ed2dfe82f50bd976393bf5d07e2b31510a6d080234d400412544228
+  url: tar_https:static.rust-lang.org/dist/rust-1.58.1-armv7-unknown-linux-gnueabihf.tar.xz
+  ref: 5295b337779e0abfc43b8723b982a03df785cc1bc8cc327188337e89ae9bde17
