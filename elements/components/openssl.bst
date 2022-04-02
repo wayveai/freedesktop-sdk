@@ -63,6 +63,4 @@ sources:
 - kind: git_tag
   url: github:openssl/openssl.git
   track: openssl-3.0
-  ref: openssl-3.0.1-0-gb4e83ed7cd99c12d27e0e220c3afa1745a68f921
-- kind: patch
-  path: patches/openssl/0001-Use-SOURCE_DATE_EPOCH-for-copyright-year-if-defined.patch
+  ref: openssl-3.0.2-0-g1bf649b5998ac98511203f54ce954eccfaf75467
