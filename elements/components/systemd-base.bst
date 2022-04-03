@@ -71,9 +71,11 @@ variables:
     -Dapparmor=true
     -Dtpm=true
     -Dtpm2=true
-    -Dsbat-distro=org.freedesktop.platform
-    -Dsbat-distro-summary=freedesktop-sdk
-    -Dsbat-distro-url=https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues
+    -Dsbat-distro=freedesktop-sdk
+    -Dsbat-distro-generation=1
+    -Dsbat-distro-summary="Freedesktop SDK"
+    -Dsbat-distro-url=https://gitlab.com/freedesktop-sdk/freedesktop-sdk/
+    -Dversion-tag="$(git describe --abbrev=7 | sed "s/^v//")"
 
 public:
   cpe:
