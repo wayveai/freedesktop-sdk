@@ -386,6 +386,8 @@ config:
     enable USB_SERIAL
     module USB_SERIAL_SIMPLE
     module USB_SERIAL_FTDI_SIO
+    module USB_SERIAL_CH341
+    module USB_ACM
 
     # Required by podman
     module TUN
