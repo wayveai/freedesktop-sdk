@@ -21,6 +21,10 @@ public:
         - '%{libdir}/libopenjp2.so'
         - '%{libdir}/openjpeg-2.4'
         - '%{libdir}/openjpeg-2.4/**'
+  cpe:
+    ignored:
+    - CVE-2016-7163
+    - CVE-2016-9675
 
 sources:
 - kind: git_tag
