@@ -251,7 +251,7 @@ config:
     # Device mapper
     module DM_CRYPT
     module DM_INTEGRITY
-    module DM_UEVENT
+    enable DM_UEVENT
     module DM_RAID
     module DM_SNAPSHOT
     module DM_VERITY
@@ -313,7 +313,7 @@ config:
 
     # NVME disks
     module BLK_DEV_NVME
-    module NVME_HWMON
+    enable NVME_HWMON
 
     # Memory card readers
     module MISC_RTSX_PCI
