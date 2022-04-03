@@ -546,6 +546,12 @@ config:
       enable BPF_JIT
     fi
 
+    # Secure boot
+    enable SYSTEM_BLACKLIST_KEYRING
+    enable INTEGRITY_PLATFORM_KEYRING
+    enable INTEGRITY_SIGNATURE
+    enable INTEGRITY_ASYMMETRIC_KEYS
+
   - |
     make -j1 olddefconfig
 

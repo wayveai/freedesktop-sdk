@@ -171,6 +171,29 @@ bst checkout vm/minimal/efi.bst checkout
 
 Then you can use `checkout/disk.img` QEMU with EDKII.
 
+### EFI + secure boot
+
+Note that image does not encrypt or verify integrity of the disk. A
+real secure boot system should use TPM to do that.
+
+To be build the image, you need.
+
+```
+./utils/generate-boot-keys.sh
+bst build vm/minimal-secure/efi.bst
+bst checkout vm/minimal-secure/efi.bst checkout
+```
+
+You will need to set the keys in the boot firmware (BIOS) to be able
+to securely boot:
+ - `files/boot-keys/PK.cer` is the platform key.
+ - `files/boot-keys/KEK.cer` is the key exchange key.
+ - `files/boot-keys/DB.cer` is the key that signs shim. Needs to be
+   registered in the authorized database.
+
+`VENDOR.cer` which signs the kernel and the modules is embedded in
+shim and does not need to be installed.
+
 ### QEMU + 9p
 
 This method does not use either an image file nor a bootloader. This

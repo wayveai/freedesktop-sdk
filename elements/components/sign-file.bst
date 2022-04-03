@@ -1,0 +1,14 @@
+kind: manual
+
+depends:
+- components/openssl.bst
+
+config:
+  build-commands:
+  - gcc ${CFLAGS} ${LDFLAGS} -o sign-file scripts/sign-file.c -lcrypto
+
+  install-commands:
+  - install -Dm755 -t "%{install-root}%{bindir}" sign-file
+
+(@):
+- elements/include/linux.yml
