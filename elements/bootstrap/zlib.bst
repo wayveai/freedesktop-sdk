@@ -35,4 +35,4 @@ sources:
 - kind: git_tag
   url: github:madler/zlib.git
   track: master
-  ref: v1.2.11-0-gcacf7f1d4e3d44d871b605da3b647f07d718623f
+  ref: v1.2.12-0-g21767c654d31d2dccdde4330529775c6c5fd5389
