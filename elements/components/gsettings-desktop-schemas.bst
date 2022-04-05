@@ -10,7 +10,7 @@ depends:
 sources:
 - kind: git_tag
   url: gnome:gsettings-desktop-schemas.git
-  track: master
+  # Tracking disabled post-release
   exclude:
   - '*alpha*'
   - '*beta*'
