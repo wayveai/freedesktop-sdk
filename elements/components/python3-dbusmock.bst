@@ -11,5 +11,5 @@ depends:
 sources:
 - kind: pypi
   name: python-dbusmock
-  url: pypi:f5/cb/1eaff91dc0797de8a71a5e0f21dba3293618c309fe2e2218be86b674ef4c/python-dbusmock-0.27.3.tar.gz
-  sha256sum: 24feaa524e0631854a7f0529ef757c1e4c542adef89cf04e1d4248bc512a006f
+  url: pypi:c1/ac/07192e57c80909667fb4a01eb8d9edc12d6ed726b39ae1fad9a8e226c4b1/python-dbusmock-0.27.4.tar.gz
+  sha256sum: 116b03a66edd00696087462e890288e4edef9bb57814fcfe2831a5594e68c25d
