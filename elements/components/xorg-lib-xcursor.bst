@@ -28,4 +28,4 @@ sources:
 - kind: git_tag
   url: freedesktop:xorg/lib/libxcursor.git
   track: master
-  ref: libXcursor-1.2.0-0-gb84b5d100f193fda0630c4d6fa889cd3e05ca033
+  ref: libXcursor-1.2.1-0-g27adb16027fa99d83818a0ed9f6623cb03f0c574
