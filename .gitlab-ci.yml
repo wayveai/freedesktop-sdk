@@ -730,8 +730,8 @@ cve_report:
     - python3 "${CI_PROJECT_DIR}/utils/update_local_cve_database.py"
 
     - mkdir -p "${CI_PROJECT_DIR}/cve-reports"
-    - python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.html"
-    - python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.html"
+    - GITLAB_TOKEN=$FREEDESKTOP_API_KEY python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/sdk-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/sdk.md.html"
+    - GITLAB_TOKEN=$FREEDESKTOP_API_KEY python3 "${CI_PROJECT_DIR}/utils/generate_cve_report.py" "${CI_PROJECT_DIR}/platform-manifest/usr/manifest.json" "${CI_PROJECT_DIR}/cve-reports/platform.md.html"
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"
