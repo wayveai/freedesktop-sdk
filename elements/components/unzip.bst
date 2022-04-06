@@ -21,13 +21,15 @@ public:
     vendor: 'info-zip'
     version-match: 'unzip(\d)(\d).tar.gz'
     patches:
-      - CVE-2014-9636
-      - CVE-2014-9913
-      - CVE-2015-7696
-      - CVE-2015-7697
-      - CVE-2016-9844
-      - CVE-2018-18384
-      - CVE-2019-13232
+    - CVE-2014-9636
+    - CVE-2014-9913
+    - CVE-2015-7696
+    - CVE-2015-7697
+    - CVE-2016-9844
+    - CVE-2018-18384
+    - CVE-2019-13232
+    ignored:
+    - CVE-2008-0888
 
 sources:
 - kind: tar
