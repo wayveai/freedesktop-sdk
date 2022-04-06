@@ -10,4 +10,4 @@ sources:
 - kind: git_tag
   url: netfilter:libmnl
   track: master
-  ref: libmnl-1.0.4-0-g0930a63252958f40bb0f9d09de86985c25cea039
+  ref: libmnl-1.0.5-0-g493aacf2ec9cc61a5b30d77cd55ec248f033bc74
