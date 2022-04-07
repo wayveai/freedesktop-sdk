@@ -1,15 +1,15 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/gperf.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/freetype.bst
-- filename: components/gperf.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/freetype.bst
 
 variables:
-  conf-local: |
+  conf-local: >-
     --with-templatedir="%{sysconfdir}/fonts/conf.avail"
 
 config:
@@ -41,15 +41,3 @@ sources:
   ref: 2.14.0-0-g911b19f19f1334d51c452756f9ce222c1101097b
 - kind: local
   path: files/fontconfig-flatpak.conf
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-001.patch
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-002.patch
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-003.patch
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-004.patch
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-005.patch
-- kind: patch
-  path: patches/fontconfig/new-cache-ids-006.patch
