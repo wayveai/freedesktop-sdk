@@ -24,6 +24,8 @@ sources:
 - kind: git_tag
   url: nettle:nettle.git
   track: master
+  track-extra:
+  - release-3.7-fixes
   exclude:
   - nettle_*rc*
-  ref: nettle_3.7.1_release_20210217-0-gc9d9c66b8ed111ab9ebd39440ec3f8d8d91734bd
+  ref: nettle_3.7.3_release_20210606-0-g52bacacaf4339fd78289f58919732f1f35bea1c1
