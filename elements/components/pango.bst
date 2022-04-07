@@ -25,6 +25,10 @@ public:
         - '%{libdir}/libpangocairo-1.0.so'
         - '%{libdir}/libpangoxft-1.0.so'
 
+  cpe:
+    ignored:
+    - CVE-2019-1010238
+
 # Those are the defaults which we explicitly match.
 variables:
   meson-local: >-
