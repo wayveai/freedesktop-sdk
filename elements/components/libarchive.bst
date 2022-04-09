@@ -17,6 +17,6 @@ sources:
 - kind: git_tag
   url: github:libarchive/libarchive.git
   track: master
-  ref: v3.6.0-0-g9147def1da7ad1bdd47b3559eb1bfeeb0e0f374b
+  ref: v3.6.1-0-g6c3301111caa75c76e1b2acb1afb2d71341932ef
 - kind: patch
   path: patches/libarchive/autoconf-fix.patch
