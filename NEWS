@@ -1,5 +1,57 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.19:
+    * openssh: Update to V_9_0_P1
+    * gyp: Update to 9ecf45e
+    * xorg-lib-xcursor: Update to libXcursor-1.2.1
+    * gyp: Update to 203fee2
+    * vala: Update to 0.48.24
+    * dbus-base: Update to dbus-1.12.22
+    * Suppress dbus internal ABI checks
+    * audit: Update to v3.0.8
+    * frei0r: Update to v1.8.0
+    * shared-mime-info: Update to 2.2
+    * strace: Update to v5.17
+    * kbd: Update to v2.5-rc1
+    * libvdpau: Update to 1.5
+    * libepoxy: Update to 1.5.10
+    * .gitlab-ci.yml: Use new container with buildstream 1.6.5
+    * gdk-pixbuf: Update to 2.42.8
+    * python3: Update to v3.8.13
+    * .gitlab-ci.yml: switch to the new remote cache
+    * Update elements/include/bluez.yml to 5.64
+    * tzdata: Update to 2022a
+    * Update elements/bootstrap/openssl: Update to OpenSSL_1_1_1n
+    * Update elements/include/flatpak.yml to 1.12.7
+    * extra-cmake-modules: Update to v5.92.0
+    * python3-mako: Update to rel_1_2_0
+    * python3-pip: Update to 22.0.4
+    * pycairo: Update to v1.21.0
+    * ostree-base: Update to v2022.2
+    * utils/abidiff-suppressions.ini: Ignore changes in libGLdispatch
+    * .gitlab-ci.yml: Update to new image with arch-test
+    * .gitlab-ci.yml: Update container image
+    * openssh: Update to V_8_9_P1
+    * vala: Update to 0.48.23
+    * flatpak: Update to 1.12.6
+    * nano: Update to v6.2
+    * cython: Update to 0.29.28
+    * Update vulkan stack to sdk-1.2.198.0 [forward ABI break]
+    * libgcrypt: Update to libgcrypt-1.8.9
+    * extra-cmake-modules: Update to v5.91.0
+    * nano: Update to v6.1
+    * Update to image with bst-external 0.26.0
+    * lvm2: Update to v2_03_15
+    * gnupg: Update to gnupg-2.2.34
+    * openjpeg: Update to v2.4.0
+    * Reduce desktop disk size to 5GB
+    * Simplify desktop image
+    * Add a root password to the efi image
+    * Optimize disk usage with minimal VM images
+    * vm/boot/efi*.bst: don't set the default option of the bootloader
+    * libical: Update to v3.0.14
+    * python3-pip: Update to 22.0.3
+
 freedesktop-sdk-20.08.18:
     * python3-pip.bst to 22.0.2
     * polkit: backport patch to fix CVE-2021-4034
