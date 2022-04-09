@@ -5,22 +5,18 @@ description: |
   platform if not GL extension loaded provides libgbm.  However if it
   is present in a GL extension, it should be loaded instead.
 
-depends:
-- filename: bootstrap-import.bst
-- filename: components/libdrm.bst
+build-depends:
+- public-stacks/buildsystem-meson.bst
   # It just needs one header from extension at build time to get a PCI ID.
-- filename: extensions/mesa/libdrm.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/python3.bst
-  type: build
-- filename: components/python3-mako.bst
-  type: build
-- filename: components/bison.bst
-  type: build
-- filename: components/flex.bst
-  type: build
+- extensions/mesa/libdrm.bst
+- components/python3.bst
+- components/python3-mako.bst
+- components/bison.bst
+- components/flex.bst
+
+depends:
+- bootstrap-import.bst
+- components/libdrm.bst
 
 (@):
 - elements/include/mesa.yml
@@ -64,8 +60,6 @@ config:
 
 sources:
   (>):
-  - kind: patch
-    path: patches/mesa/mesa-break-build-dep-libdrm-nouveau.patch
   - kind: patch
     path: patches/mesa/mesa-disable-gbm-backends.patch
   - kind: patch

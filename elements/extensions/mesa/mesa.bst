@@ -45,17 +45,14 @@ variables:
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       gallium_drivers: iris,crocus,nouveau,r300,r600,radeonsi,svga,swrast,virgl,zink
-      dri_drivers: i915,i965,nouveau,r100,r200
       vulkan_drivers: amd,intel,swrast,virtio-experimental
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
       gallium_drivers: asahi,etnaviv,freedreno,kmsro,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4,zink
-      dri_drivers: ''
       vulkan_drivers: freedreno,broadcom,panfrost,swrast
       enable_libunwind: 'false'
   - target_arch == "ppc64le" or target_arch == "riscv64":
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
-      dri_drivers: r100,r200,nouveau
       vulkan_drivers: amd
       enable_libunwind: 'false'
 
@@ -64,7 +61,6 @@ variables:
   meson-local: >-
     -Db_ndebug=true
     -Ddri3=enabled
-    -Ddri-drivers=%{dri_drivers}
     -Degl=enabled
     -Dgallium-drivers=%{gallium_drivers}
     -Dgallium-nine=true
@@ -85,7 +81,6 @@ variables:
     -Dmicrosoft-clc=disabled
     -Dosmesa=false
     -Dplatforms=x11,wayland
-    -Dprefer-crocus=true
     -Dselinux=false
     -Dshared-glapi=enabled
     -Dvalgrind=disabled
@@ -177,10 +172,10 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: main
   track-extra:
-  - '21.3'
+  - '22.0'
   exclude:
   - '*rc*'
-  ref: mesa-21.3.8-0-g813ee839be2ce7c3c804dc90cba5678323bcad7c
+  ref: mesa-22.0.1-0-g4a8d3189fdb81688c43c9b438c892a3423367c73
 - kind: local
   path: files/mesa/appdata.template
 - kind: patch

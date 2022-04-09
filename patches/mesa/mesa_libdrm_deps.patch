@@ -1,8 +1,8 @@
 diff --git a/src/loader/meson.build b/src/loader/meson.build
-index 34a43e33f09..47834985b88 100644
+index 6334cb9815c..3918cb9a53b 100644
 --- a/src/loader/meson.build
 +++ b/src/loader/meson.build
-@@ -51,6 +51,6 @@ libloader = static_library(
+@@ -46,6 +46,6 @@ libloader = static_library(
    c_args : loader_c_args,
    gnu_symbol_visibility : 'hidden',
    include_directories : [inc_include, inc_src, inc_util],
@@ -10,16 +10,3 @@ index 34a43e33f09..47834985b88 100644
 +  dependencies : [dep_libdrm, dep_thread, dep_libdrm_nouveau],
    build_by_default : false,
  )
-diff --git a/src/mesa/drivers/dri/i965/meson.build b/src/mesa/drivers/dri/i965/meson.build
-index f4bdb38ca15..9aeecef15af 100644
---- a/src/mesa/drivers/dri/i965/meson.build
-+++ b/src/mesa/drivers/dri/i965/meson.build
-@@ -142,7 +142,7 @@ foreach v : ['40', '45', '50', '60', '70', '75', '80', '90', '110']
-       '-DGEN_VERSIONx10=@0@'.format(v),
-     ],
-     gnu_symbol_visibility : 'hidden',
--    dependencies : [dep_libdrm, idep_nir_headers, idep_mesautil],
-+    dependencies : [dep_libdrm, dep_libdrm_intel, idep_nir_headers, idep_mesautil],
-   )
- endforeach
- 
