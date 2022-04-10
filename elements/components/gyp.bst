@@ -10,12 +10,11 @@ build-depends:
 
 runtime-depends:
 - components/ninja.bst
+- components/python3-six.bst
 
 sources:
 - kind: git_tag
   url: chromium:external/gyp
   track: master
   track-tags: false
-  ref: d6c5dd51dc3a60bf4ff32a5256713690a1a10376
-- kind: patch
-  path: patches/gyp/fix-gyp-Python-3.10-compatibility.patch
+  ref: 9ecf45e37677743503342ee4c6a76eaee80e4a7f
