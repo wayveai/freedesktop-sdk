@@ -10,21 +10,17 @@ build-depends:
 depends:
 - bootstrap-import.bst
 - components/glib.bst
-- components/libunwind-maybe.bst
+- components/libunwind.bst
 
 variables:
   command-subdir: subprojects/gstreamer
 
   libexecdir: "%{libdir}"
-  libunwind: enabled
-  (?):
-  - target_arch == "riscv64":
-      libunwind: disabled
   meson-local: >-
     -Dexamples=disabled
     -Dbenchmarks=disabled
     -Dintrospection=enabled
-    -Dlibunwind='%{libunwind}'
+    -Dlibunwind=enabled
     -Dlibdw=enabled
     -Ddbghelp=disabled
     -Dbash-completion=disabled

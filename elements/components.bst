@@ -223,7 +223,7 @@ depends:
 - components/libtirpc.bst
 - components/libtool.bst
 - components/libunistring.bst
-- components/libunwind-maybe.bst
+- components/libunwind.bst
 - components/libusb.bst
 - components/libva.bst
 - components/libvdpau.bst

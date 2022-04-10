@@ -28,7 +28,7 @@ depends:
 - components/wayland.bst
 - components/libglvnd.bst
 - components/libvdpau.bst
-- components/libunwind-maybe.bst
+- components/libunwind.bst
 - extensions/mesa/libclc.bst
 - extensions/mesa/libdrm.bst
 - extensions/mesa/llvm.bst
