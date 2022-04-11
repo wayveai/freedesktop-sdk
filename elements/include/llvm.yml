@@ -8,3 +8,6 @@ sources:
   ref: llvmorg-14.0.1-0-gc62053979489ccb002efe411c3af059addcb5d7d
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
+- kind: patch
+  # https://sources.debian.org/data/main/l/llvm-toolchain-14/1%3A14.0.0-2/debian/patches/risc/clang-riscv64-multiarch.diff
+  path: patches/llvm/clang-riscv64-multiarch.diff
