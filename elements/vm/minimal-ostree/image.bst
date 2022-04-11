@@ -15,6 +15,8 @@ variables:
       linux-root: 69DAD710-2CE4-4E3C-B16C-21A1D49ABED3
   - target_arch == "aarch64":
       linux-root: B921B045-1DF0-41C3-AF44-4C6F280D3FAE
+  - target_arch == "riscv64":
+      linux-root: 72EC70A6-CF74-40E6-BD49-4BDA08E8F224
 
   (@):
   - ostree-config.yml
