@@ -21,5 +21,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:hughsie/libjcat.git
-  track: master
-  ref: 0.1.3-0-g3c120a9132a36b100366cfe3d658ae31e6f4b7e9
+  track: main
+  ref: 0.1.11-0-gffa0b5a9a49a7880e9ab3ae3b061080f15e95e15
