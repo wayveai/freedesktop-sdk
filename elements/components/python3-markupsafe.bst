@@ -6,6 +6,11 @@ build-depends:
 depends:
 - components/python3.bst
 
+config:
+  install-commands:
+    (>):
+    - find %{install-root} -name '*.c' -delete
+
 sources:
 - kind: pypi
   name: markupsafe
