@@ -35,3 +35,5 @@ sources:
   match:
   - AT_SPI2_CORE_*_*[02468]_*
   ref: AT_SPI2_CORE_2_44_0-0-gf38e40e8685400ddb66759aa009e18c12c898de4
+- kind: patch
+  path: patches/at-spi2-core/Fix-build-with-X11-disabled.patch
