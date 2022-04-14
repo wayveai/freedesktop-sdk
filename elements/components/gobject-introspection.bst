@@ -37,7 +37,7 @@ public:
 sources:
 - kind: git_tag
   url: gnome:gobject-introspection.git
-  track: master
+  track: main
   track-extra:
   - gnome-3-38
   ref: 1.72.0-0-gc1ce7d179cfce327162bd206cdf2808bd9bd0cc7
