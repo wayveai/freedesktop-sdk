@@ -150,3 +150,11 @@ public:
         - '%{libdir}/libc_nonshared.a'
         - '%{libdir}/libmvec_nonshared.a'
         - '%{libdir}/libc.a'
+
+  cpe:
+    patches:
+    - CVE-2022-23218
+    - CVE-2022-23219
+    - CVE-2021-27645
+    - CVE-2021-33574
+    - CVE-2021-38604
