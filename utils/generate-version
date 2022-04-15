@@ -1,7 +1,8 @@
 #!/bin/sh
 timestamp=$(git log -1 --format="%at" ${CI_COMMIT_SHA})
+version=$(git describe|sed -e 's/^freedesktop-sdk-//' -e 's/branchpoint-//')
 cat >"$1" <<EOF
 variables:
-    runtime-version: '$(git describe | sed 's/^freedesktop-sdk-//')'
+    runtime-version: ${version}
     runtime-version-date: $(date -d @"$timestamp" -Idate)
 EOF
