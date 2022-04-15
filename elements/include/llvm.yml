@@ -5,6 +5,6 @@ sources:
   - llvmorg-*-rc*
   - llvmorg-*-init*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-14.0.0-0-g329fda39c507e8740978d10458451dcdb21563be
+  ref: llvmorg-14.0.1-0-gc62053979489ccb002efe411c3af059addcb5d7d
 - kind: patch
   path: patches/llvm/llvm-no-rpath.patch
