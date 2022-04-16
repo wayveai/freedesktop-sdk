@@ -135,3 +135,7 @@ public:
         - '%{libdir}/libc_nonshared.a'
         - '%{libdir}/libmvec_nonshared.a'
         - '%{libdir}/libc.a'
+
+  cpe:
+    ignored:
+    - CVE-2010-4756
