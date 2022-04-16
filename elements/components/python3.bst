@@ -89,6 +89,8 @@ public:
     product: python
     patches:
     - CVE-2019-16056
+    ignored:
+    - CVE-2007-4559
 
 sources:
 - kind: git_tag
