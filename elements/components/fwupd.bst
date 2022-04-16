@@ -57,5 +57,5 @@ sources:
   url: github:fwupd/fwupd.git
   track: master
   track-extra:
-  - 1_4_X
-  ref: 1.4.8-0-g0bb9d418a51d45b7e7c911fccc2eec04cfe44f4f
+  - 1_6_X
+  ref: 1.6.5-0-g891d5b89a18d2e77a637660113c121eded826837
