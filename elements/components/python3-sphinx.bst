@@ -27,7 +27,11 @@ runtime-depends:
 public:
   bst:
     integration-commands:
-    - python3 -c "import pkg_resources; pkg_resources.require('sphinx')"
+    - |
+      python3 << EOF
+      import importlib.metadata
+      importlib.metadata.requires('sphinx')
+      EOF
 
 sources:
 - kind: pypi

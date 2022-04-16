@@ -34,7 +34,11 @@ environment:
 public:
   bst:
     integration-commands:
-    - python3 -c "import pkg_resources; pkg_resources.require('hotdoc')"
+    - |
+      python3 << EOF
+      import importlib.metadata
+      importlib.metadata.requires('hotdoc')
+      EOF
 
 sources:
 - kind: pypi
