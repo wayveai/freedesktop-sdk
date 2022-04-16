@@ -12,8 +12,6 @@ runtime-depends:
 - components/python3-distlib.bst
 - components/python3-filelock.bst
 - components/python3-six.bst
-- components/python3-importlib-metadata.bst
-- components/python3-importlib-resources.bst
 - components/python3-pathlib2.bst
 
 sources:

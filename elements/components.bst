@@ -336,8 +336,6 @@ depends:
 - components/python3-html5lib.bst
 - components/python3-idna.bst
 - components/python3-imagesize.bst
-- components/python3-importlib-metadata.bst
-- components/python3-importlib-resources.bst
 - components/python3-intreehooks.bst
 - components/python3-jinja2.bst
 - components/python3-lxml.bst
@@ -388,7 +386,6 @@ depends:
 - components/python3-wheezy-template.bst
 - components/python3-xdg.bst
 - components/python3-yarl.bst
-- components/python3-zipp.bst
 - components/python3.bst
 - components/qpdf.bst
 - components/rsync.bst
