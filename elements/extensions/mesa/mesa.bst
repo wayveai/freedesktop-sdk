@@ -175,6 +175,7 @@ sources:
   - '22.0'
   exclude:
   - '*rc*'
+  - '*branchpoint*'
   ref: mesa-22.0.1-0-g4a8d3189fdb81688c43c9b438c892a3423367c73
 - kind: local
   path: files/mesa/appdata.template
