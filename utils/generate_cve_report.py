@@ -18,9 +18,8 @@ import sys
 import gzip
 import glob
 import os
-import urllib.request
-import urllib.error
 
+import requests
 import packaging.version
 
 
@@ -64,20 +63,19 @@ def extract_product_vulns(tree):
 
 api = os.environ.get("CI_API_V4_URL")
 project_id = os.environ.get("CI_PROJECT_ID")
+token = os.environ.get("GITLAB_TOKEN")
 
 def get_entries(entry_char, entry_type, cveid):
-    req = urllib.request.Request(f'{api}/projects/{project_id}/{entry_type}?search={cveid}')
-    try:
-        resp = urllib.request.urlopen(req)
-        entries = json.load(resp)
-        for entry in entries:
+    resp = requests.get(f'{api}/projects/{project_id}/{entry_type}?search={cveid}', headers={'Authorization': f'Bearer {token}'})
+    if resp.ok:
+        for entry in resp.json():
             iid = entry.get('iid')
             yield f'{entry_char}{iid}', entry.get('web_url')
-    except urllib.error.HTTPError:
-        pass
+    else:
+        print(resp.status_code, resp.text)
 
 def get_issues_and_mrs(cveid):
-    if not api or not project_id:
+    if not api or not project_id or not token:
         return
     for entry_name, url in get_entries('!', 'merge_requests', cveid):
         yield entry_name, url
@@ -154,23 +152,15 @@ if __name__ == "__main__":
     entries.sort(key=by_score, reverse=True)
 
     with open(sys.argv[2], 'w') as out:
-        out.write('<!DOCTYPE html>\n')
-        out.write('<html><head><title>Report</title></head><body><table>\n')
-
+        out.write("|Vulnerability|Element|Version|Summary|Score|WIP|\n")
+        out.write("|---|---|---|---|---|---|\n")
 
         for ID, name, version, summary, score in entries:
-            out.write('<tr>')
-            out.write('<td><a href="https://nvd.nist.gov/vuln/detail/{ID}">{ID}</a></td>'.format(ID=ID))
-            for d in [name, version, summary, score]:
-                out.write('<td>{}</td>'.format(d))
-            out.write('<td>')
-            found_entry = False
-            for entry_id, link in get_issues_and_mrs(ID):
-                out.write(f'<a href="{link}">{entry_id}</a> ')
-                found_entry = True
-            if not found_entry:
-                out.write('<span style="color: red">None</span>')
-            out.write('</td>')
-            out.write('</tr>\n')
+            issues_mrs = ", ".join(f"[{id}]({link})" for id, link in get_issues_and_mrs(ID)) or "None"
+            out.write(f"|[{ID}](https://nvd.nist.gov/vuln/detail/{ID})|{name}|{version}|{summary}|{score}|{issues_mrs}|\n")
 
-        out.write('</table></html>\n')
+        out.write('<!-- Markdeep: -->'
+                  '<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>'
+                  '<script src="markdeep.min.js" charset="utf-8"></script>'
+                  '<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script>'
+                  '<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>')
