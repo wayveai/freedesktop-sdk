@@ -31,11 +31,9 @@ environment:
   PKG_CONFIG_PATH: '%{libdir}/GL/default/lib/pkgconfig:'
 
 variables:
-  # FIXME Does not support pipewire 0.3
   meson-local: >-
     -Dbackend-rdp=false
     -Dcolor-management-colord=true
-    -Dpipewire=false
 
   meson-lto-flags: ""
 
