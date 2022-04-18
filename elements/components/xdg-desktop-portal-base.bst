@@ -27,4 +27,4 @@ sources:
   track: main
   track-extra:
   - xdg-desktop-portal-1.14
-  ref: 1.14.2-0-geec57b25a68c10f967f04630515dd74c2bb90624
+  ref: 1.14.3-0-g9826455119e5daee241cb8f991c2acac079f1db3
