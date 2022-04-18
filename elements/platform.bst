@@ -94,7 +94,6 @@ depends:
 - components/dbus-tools.bst
 - components/dejavu-fonts.bst
 - components/dictionaries.bst
-- components/openmoji.bst
 - components/fcitx5.bst
 - components/ffmpeg.bst
 - components/fftw.bst
