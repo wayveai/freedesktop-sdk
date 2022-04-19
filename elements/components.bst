@@ -307,7 +307,6 @@ depends:
 - components/polkit.bst
 - components/poppler.bst
 - components/procps.bst
-- components/pulseaudio-base.bst
 - components/pwquality.bst
 - components/pycairo.bst
 - components/pygobject.bst

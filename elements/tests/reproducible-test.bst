@@ -16,7 +16,6 @@ depends:
 - components/gstreamer-plugins-base.bst
 - components/linux-pam-base.bst
 - components/pipewire-base.bst
-- components/pulseaudio-base.bst
 - components/systemd-base.bst
 - components/xdg-desktop-portal-base.bst
 
