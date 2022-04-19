@@ -9,6 +9,7 @@ build-depends:
 variables:
   cmake-local: >-
     -DREDIS_STORAGE_BACKEND=OFF
+    -DCCACHE_DEV_MODE=OFF
 
 depends:
 - bootstrap-import.bst
