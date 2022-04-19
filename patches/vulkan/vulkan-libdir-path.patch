@@ -1,12 +1,11 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index eba079c63..ca3ef4f07 100644
+index d6afdc7c5..3d061f120 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -275,6 +275,15 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
-         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+@@ -287,6 +287,14 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+         target_compile_options(loader_common_options INTERFACE -fvisibility=hidden)
      endif()
-+
+ 
 +    # NOTE: freedesktop search paths
 +    # appropriate drivers
 +    add_definitions(-DVULKAN_LIB_DIR_GL="${CMAKE_INSTALL_FULL_LIBDIR}/GL")
@@ -15,14 +14,14 @@ index eba079c63..ca3ef4f07 100644
 +    # vulkan extension
 +    add_definitions(-DVULKAN_FDO_SDK_EXT_DIR="${CMAKE_INSTALL_PREFIX}/lib/extensions/vulkan/share")
 +
- endif()
+     target_compile_options(loader_common_options INTERFACE -Wpointer-arith)
  
- if(MSVC)
+     # Clang (and not gcc) warns about redefining a typedef with the same types, so disable that warning. Note that it will still
 diff --git a/loader/loader.c b/loader/loader.c
-index 0610c8597..3468a3881 100644
+index 86c283f48..c1a823047 100644
 --- a/loader/loader.c
 +++ b/loader/loader.c
-@@ -3015,6 +3015,20 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
+@@ -3054,6 +3054,20 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
  #if defined(EXTRASYSCONFDIR)
              search_path_size += determine_data_file_path_size(EXTRASYSCONFDIR, rel_size);
  #endif
@@ -40,26 +39,26 @@ index 0610c8597..3468a3881 100644
 +            search_path_size += determine_data_file_path_size(VULKAN_FDO_SDK_EXT_DIR, rel_size);
 +#endif
 +
-             // Only add the home folders if not ICD filenames or superuser
-             if (is_directory_list && !is_high_integrity()) {
-                 if (NULL != default_data_home) {
-@@ -3082,6 +3096,19 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
-             copy_data_file_path(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
+             // Only add the home folders if defined
+             if (NULL != home_data_dir) {
+                 search_path_size += determine_data_file_path_size(home_data_dir, rel_size);
+@@ -3120,6 +3134,19 @@ static VkResult read_data_files_in_search_paths(const struct loader_instance *in
+             copy_data_file_info(EXTRASYSCONFDIR, relative_location, rel_size, &cur_path_ptr);
  #endif
  
 +/*freedesktop  appropriate drivers */
 +#if defined(VULKAN_LIB_DIR_GL)
-+            copy_data_file_path(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_info(VULKAN_LIB_DIR_GL, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +/* freedesktop opensource drivers */
 +#if defined(VULKAN_LIB_DIR)
-+            copy_data_file_path(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_info(VULKAN_LIB_DIR, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +/* freedesktop vulkan extensions */
 +#if defined(VULKAN_FDO_SDK_EXT_DIR)
-+            copy_data_file_path(VULKAN_FDO_SDK_EXT_DIR, relative_location, rel_size, &cur_path_ptr);
++            copy_data_file_info(VULKAN_FDO_SDK_EXT_DIR, relative_location, rel_size, &cur_path_ptr);
 +#endif
 +
-             // Only add the home folders if not ICD filenames or superuser
-             if (is_directory_list && !is_high_integrity()) {
-                 if (NULL != default_data_home) {
+             // Only add the home folders if not NULL
+             if (NULL != home_data_dir) {
+                 copy_data_file_info(home_data_dir, relative_location, rel_size, &cur_path_ptr);
