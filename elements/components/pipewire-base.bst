@@ -120,4 +120,4 @@ sources:
   directory: subprojects/media-session
   track: master
   track-tags: false
-  ref: 0.4.1-10-gf71506321393a0f85f6da0427cd99efa99f2d1e2
+  ref: 0.4.1-11-ga87008622c9d12dba6dd75c5bbf0bff126da22fb
