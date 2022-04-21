@@ -3,6 +3,6 @@ sources:
   url: sourceware:glibc.git
   track: release/2.35/master
   track-tags: false
-  ref: glibc-2.35-36-g8e8d46d59809824054dde501b0ba0e331a747078
+  ref: glibc-2.35-38-gd3feff2232ec27f05ca619ca8b314155d9018224
 - kind: patch_queue
   path: patches/glibc
