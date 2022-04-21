@@ -14,4 +14,4 @@ sources:
   track: master
   exclude:
   - xorgproto-*.*.99.*
-  ref: xorgproto-2021.5-0-g57acac1d4c7967f4661fb1c9f86f48f34a46c48d
+  ref: xorgproto-2022.1-0-g8c8bbb903410e39140727867a26bbe501f77de8f
