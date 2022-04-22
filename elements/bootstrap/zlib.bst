@@ -34,5 +34,6 @@ public:
 sources:
 - kind: git_tag
   url: github:madler/zlib.git
-  track: master
+  # Tracking frozen due to forward ABI break in the next version
+  # track: master
   ref: v1.2.11-0-gcacf7f1d4e3d44d871b605da3b647f07d718623f
