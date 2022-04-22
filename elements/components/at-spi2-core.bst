@@ -34,6 +34,4 @@ sources:
   - gnome-42
   match:
   - AT_SPI2_CORE_*_*[02468]_*
-  ref: AT_SPI2_CORE_2_44_0-0-gf38e40e8685400ddb66759aa009e18c12c898de4
-- kind: patch
-  path: patches/at-spi2-core/Fix-build-with-X11-disabled.patch
+  ref: AT_SPI2_CORE_2_44_1-0-g9a1f0aec0b7dc55360310b6d02c2b7798511268f
