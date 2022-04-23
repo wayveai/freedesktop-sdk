@@ -40,4 +40,4 @@ sources:
   - v3.4
   exclude:
   - "*rc*"
-  ref: v3.4.6-0-gfb659cb53072c1dc2be35e6fd3f1f2740d278dab
+  ref: v3.4.7-0-g74d67f5d43bcd322a4fb11a7b58eced866f9d0b9
