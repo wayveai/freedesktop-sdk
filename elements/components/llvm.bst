@@ -1,11 +1,11 @@
 kind: cmake
 
 build-depends:
-- components/libffi.bst
 - public-stacks/buildsystem-cmake.bst
 
 depends:
 - bootstrap-import.bst
+- components/libffi.bst
 
 environment:
   # Work-around issue building compiler-rt with multiarch
