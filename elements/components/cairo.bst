@@ -1,25 +1,25 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/gtk-doc.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/pixman.bst
-- filename: components/xorg-lib-x11.bst
-- filename: components/xorg-lib-xext.bst
-- filename: components/freetype.bst
-- filename: components/fontconfig.bst
-- filename: components/gtk-doc.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/pixman.bst
+- components/xorg-lib-x11.bst
+- components/xorg-lib-xext.bst
+- components/freetype.bst
+- components/fontconfig.bst
 
 variables:
-  conf-local: |
-    --enable-xlib \
-    --enable-ft \
-    --enable-svg \
-    --enable-ps \
-    --enable-pdf \
-    --enable-tee \
+  conf-local: >-
+    --enable-xlib
+    --enable-ft
+    --enable-svg
+    --enable-ps
+    --enable-pdf
+    --enable-tee
     --enable-gobject
 
 config:
@@ -42,7 +42,8 @@ public:
   cpe:
     patches:
     - 'CVE-2018-19876'
-
+    - 'CVE-2020-35492'
+    
 sources:
 - kind: git_tag
   url: freedesktop:cairo/cairo.git
@@ -54,3 +55,5 @@ sources:
   ref: 1.16.0-0-g3ad43122b21a3299dd729dc8462d6b8f7f01142d
 - kind: patch
   path: patches/cairo/cairo-CVE-2018-19876.patch
+- kind: patch
+  path: patches/cairo/CVE-2020-35492.patch
