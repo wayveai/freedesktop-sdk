@@ -2,7 +2,12 @@ kind: autotools
 description: GNU zip
 
 depends:
-- filename: bootstrap-import.bst
+- bootstrap-import.bst
+
+(?):
+- target_arch == "i686":
+    variables:
+      conf-local: TIME_T_32_BIT_OK=yes
 
 sources:
 - kind: tar
