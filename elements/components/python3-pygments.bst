@@ -10,4 +10,4 @@ sources:
 - kind: git_tag
   url: github:pygments/pygments.git
   track: master
-  ref: 2.11.2-0-gcd3ad20dfc8a6cb43e2c0b22b14446dcc0a554d7
+  ref: 2.12.0-0-g35de421f65372fb848e86af711cc5797c622e54c
