@@ -31,4 +31,4 @@ sources:
   url: github:cpuguy83/go-md2man.git
   directory: go/src/github.com/cpuguy83/go-md2man
   track: master
-  ref: v2.0.1-0-gb1ec32e02fe539480dc03e3bf381c20066e7c6cc
+  ref: v2.0.2-0-gd97078115282836e16d0dca10b4b42ce60fc70e6
