@@ -21,6 +21,12 @@ variables:
 default:
   image: "${DOCKER_REGISTRY}/bst16:${DOCKER_IMAGE_ID}"
   interruptible: true
+  after_script:
+  - make clean
+  - rm -rf "${XDG_CACHE_HOME}/buildstream/artifacts"
+  - rm -rf "${XDG_CACHE_HOME}/buildstream/build"
+  - rm -rf "${XDG_CACHE_HOME}/buildstream/cas"
+  - rm -rf "${XDG_CACHE_HOME}/buildstream/sources"
 
 workflow:
   rules:
