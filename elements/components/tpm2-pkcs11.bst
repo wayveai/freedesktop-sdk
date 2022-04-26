@@ -6,6 +6,12 @@ build-depends:
 
 depends:
 - components/libyaml.bst
+- components/python3.bst
+- components/python3-cryptography.bst
+- components/python3-pyasn1.bst
+- components/python3-pyasn1-modules.bst
+- components/python3-pyyaml.bst
+- components/python3-tpm2-pytss.bst
 - components/tpm2-tools.bst
 - components/sqlite.bst
 
