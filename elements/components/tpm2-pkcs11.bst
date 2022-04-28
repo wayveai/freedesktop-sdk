@@ -6,6 +6,12 @@ build-depends:
 
 depends:
 - components/libyaml.bst
+- components/python3.bst
+- components/python3-cryptography.bst
+- components/python3-pyasn1.bst
+- components/python3-pyasn1-modules.bst
+- components/python3-pyyaml.bst
+- components/python3-tpm2-pytss.bst
 - components/tpm2-tools.bst
 - components/sqlite.bst
 
@@ -15,4 +21,4 @@ sources:
   track: master
   exclude:
   - '*rc*'
-  ref: 1.7.0-0-g7a04ae8d3b4b2e2b8a7036607928db765dd33333
+  ref: 1.8.0-0-gad444b3ee5e6ed45582498670eab05a6e0968395
