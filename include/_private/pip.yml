@@ -1,8 +1,11 @@
 variables:
   pip: python3 -m pip
-  fix-pyc-timestamps: "true"
 
 config:
   install-commands:
     - |
       %{pip} install --no-build-isolation --no-deps --use-feature=in-tree-build --root=%{install-root} --prefix=%{prefix} .
+
+  strip-commands:
+  - |
+    %{strip-binaries}

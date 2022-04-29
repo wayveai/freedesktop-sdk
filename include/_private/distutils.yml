@@ -1,3 +1,7 @@
 variables:
   python: python3
-  fix-pyc-timestamps: "true"
+
+config:
+  strip-commands:
+  - |
+    %{strip-binaries}
