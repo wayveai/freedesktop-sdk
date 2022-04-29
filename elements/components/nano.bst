@@ -17,7 +17,7 @@ sources:
 - kind: git_tag
   url: savannah:nano.git
   track: master
-  ref: v6.2-0-gd4d534925f7e963440f72c3baf52ee9fac4b4cf0
+  ref: v6.3-0-g25ba7712f7da39d8aa456a171b72559af36bee52
 - kind: git_tag
   url: savannah:gnulib.git
   track: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
