@@ -2,7 +2,7 @@
 <component type="runtime">
   <id>org.freedesktop.Sdk</id>
   <metadata_license>CC0</metadata_license>
-  <project_license>GPL-2.0+</project_license>
+  <project_license>MIT</project_license>
   <name>Freedesktop SDK</name>
   <summary>Tools and headers for developing applications</summary>
   <releases>
