@@ -18,5 +18,6 @@ depends:
 sources:
 - kind: pypi
   name: tpm2-pytss
-  url: pypi:b5/bd/92b4cbb46f730c82f074d01d60f8dc2a816c4b72fed9d3dc2a45eed3af5f/tpm2-pytss-1.1.0.tar.gz
-  sha256sum: 3b47756fdf7f57c6f77a66e0f2f79ead3ac919255bfe9ae53d56fba921c4add4
+  ref:
+    sha256sum: 3b47756fdf7f57c6f77a66e0f2f79ead3ac919255bfe9ae53d56fba921c4add4
+    suffix: b5/bd/92b4cbb46f730c82f074d01d60f8dc2a816c4b72fed9d3dc2a45eed3af5f/tpm2-pytss-1.1.0.tar.gz
