@@ -6,6 +6,7 @@ import zipfile
 import stat
 import contextlib
 import urllib.request
+import urllib.parse
 import json
 from datetime import datetime
 from buildstream import Source, SourceError, utils, Consistency
@@ -36,56 +37,70 @@ def make_key(item):
     return datetime.fromtimestamp(0)
 
 class PyPISource(Source):
-    def configure(self, node):
-        self.node_validate(node, ['url', 'name', 'sha256sum',
-                                  'include', 'exclude', 'index',
-                                  'scheme', 'match_pattern'] +
-                           Source.COMMON_CONFIG_KEYS)
+    REST_API = "https://pypi.org/pypi/{name}/json"
+    STORAGE_ROOT = "https://files.pythonhosted.org/packages/"
+    KEYS = [
+        "url",
+        "name",
+        "ref",
+        "include",
+        "exclude",
+    ] + Source.COMMON_CONFIG_KEYS
 
-        self.load_ref(node)
-        self.name = self.node_get_member(node, str, 'name', None)
-        if self.name is None:
-            raise SourceError(f'{self}: Missing name')
+    def configure(self, node):
+        self.node_validate(node, self.KEYS)
+
+        self.name = self.node_get_member(node, str, 'name')
+
         self.include = self.node_get_member(node, list, 'include', [])
         self.exclude = self.node_get_member(node, list, 'exclude', [])
-        self.index = self.node_get_member(node, str, 'index', 'https://pypi.org/pypi')
-        self.scheme = self.node_get_member(node, str, 'scheme', None)
-        if self.scheme is not None:
-            self.match_pattern = self.node_get_member(node, str,
-                                                      "match_pattern",
-                                                      None)
-            if self.match_pattern is None:
-                raise SourceError((f"{self}: match_pattern mandatory when "
-                                   "scheme configured"))
+
+        self.original_base_url = self.node_get_member(
+            node, str, "url", self.STORAGE_ROOT
+        )
+
+        self.base_url = self.translate_url(self.original_base_url)
+        self.load_ref(node)
+
+    @property
+    def url(self):
+        return urllib.parse.urljoin(
+            self.base_url,
+            self.ref["suffix"],
+        )
+
+    @property
+    def original_url(self):
+        if self.base_url == self.original_base_url:
+            url = self.url
+        else:
+            url = self.original_base_url + self.ref["suffix"]
+        return url
 
     def preflight(self):
         pass
 
     def get_unique_key(self):
-        return [self.original_url, self.sha256sum]
+        return [
+            self.ref["suffix"],
+            self.ref["sha256sum"]
+        ]
 
     def load_ref(self, node):
-        self.sha256sum = self.node_get_member(node, str, 'sha256sum', None)
-        self.original_url = self.node_get_member(node, str, 'url', None)
-        if self.original_url is not None:
-            self.url = self.translate_url(self.original_url)
-        else:
-            self.url = None
+        self.ref = self.node_get_member(node, dict, "ref", None)
 
     def get_ref(self):
-        if self.original_url is None or self.sha256sum is None:
-            return None
-        return {'url': self.original_url,
-                'sha256sum': self.sha256sum}
+        return {
+            "sha256sum": self.ref["sha256sum"],
+            "suffix": self.ref["suffix"],
+        }
 
     def set_ref(self, ref, node):
-        node['url'] = self.original_url = ref['url']
-        node['sha256sum'] = self.sha256sum = ref['sha256sum']
-
+        node["ref"] = self.ref = ref
 
     def track(self):
         payload = json.loads(
-            urllib.request.urlopen(f'{self.index}/{self.name}/json').read()
+            urllib.request.urlopen(self.REST_API.format(name=self.name)).read()
         )
         releases = payload['releases']
         if not releases:
@@ -103,14 +118,9 @@ class PyPISource(Source):
         found_ref = None
         for url in urls:
             if url['packagetype'] == 'sdist':
-                built_url = url['url']
-                if self.scheme is not None:
-                    built_url = built_url.replace(
-                        self.match_pattern, f"{self.scheme}:"
-                    )
                 found_ref = {
                     'sha256sum': url['digests']['sha256'],
-                    'url': built_url,
+                    'suffix': url['url'].replace(self.STORAGE_ROOT, ""),
                 }
                 break
 
@@ -143,7 +153,9 @@ class PyPISource(Source):
                             utils.url_directory_name(self.name))
 
     def _get_mirror_file(self, sha=None):
-        return os.path.join(self._get_mirror_dir(), sha or self.sha256sum)
+        if not sha:
+            sha = self.ref["sha256sum"]
+        return os.path.join(self._get_mirror_dir(), sha)
 
     def fetch(self):
         # More or less copied from _downloadablefilesource.py
@@ -165,7 +177,10 @@ class PyPISource(Source):
                 if not os.path.isdir(self._get_mirror_dir()):
                     os.makedirs(self._get_mirror_dir())
 
-                sha256 = utils.sha256sum(local_file)
+                sha256 = self.ref["sha256sum"]
+                computed = utils.sha256sum(local_file)
+                if sha256 != computed:
+                    raise SourceError(f"{self.url} expected hash {sha256}, got {computed}")
                 os.rename(local_file, self._get_mirror_file(sha256))
                 return sha256
 
@@ -176,7 +191,7 @@ class PyPISource(Source):
     def stage(self, directory):
         if not os.path.exists(self._get_mirror_file()):
             raise SourceError(f"{self}: Cannot find mirror file {self._get_mirror_file()}")
-        if self.url.endswith('.zip'):
+        if self.ref["suffix"].endswith('.zip'):
             with zipfile.ZipFile(self._get_mirror_file(), mode='r') as zipf:
                 exec_rights = (stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO) & ~(stat.S_IWGRP | stat.S_IWOTH)
                 noexec_rights = exec_rights & ~(stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
@@ -201,9 +216,11 @@ class PyPISource(Source):
                 tar.extractall(path=directory, members=strip_top_dir(tar.getmembers(), 'path'))
 
     def get_consistency(self):
-        if self.original_url is None or self.sha256sum is None:
+        if self.ref is None:
             return Consistency.INCONSISTENT
-
+        for mandatory in ("suffix", "sha256sum"):
+            if mandatory not in self.ref:
+                return Consistency.INCONSISTENT
         if os.path.isfile(self._get_mirror_file()):
             return Consistency.CACHED
         return Consistency.RESOLVED
