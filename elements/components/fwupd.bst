@@ -47,6 +47,7 @@ variables:
       efi_binary: 'true'
 
   meson-local: >-
+    -Dauto_features=disabled
     -Ddocs=gtkdoc
     -Dplugin_dell=%{plugin_dell}
     -Dplugin_msr=%{plugin_msr}
