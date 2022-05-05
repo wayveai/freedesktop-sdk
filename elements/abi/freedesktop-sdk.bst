@@ -9,4 +9,4 @@ sources:
 - kind: git_tag
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
   track: release/21.08
-  ref: freedesktop-sdk-21.08.13-0-gbed44c99b26e1ae57cf9efcd3e87aa182392741f
+  ref: freedesktop-sdk-21.08.13-11-g016a758f4ace01e26a1a68b593c768d7199773cf
