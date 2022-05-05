@@ -6,14 +6,11 @@ build-depends:
 depends:
 - components/python3.bst
 
-runtime-depends:
-- components/python3-decorator.bst # This should be gone with 2.6 update
-
 sources:
 - kind: pypi
   name: networkx
   include:
-  - '2.5'
+  - '2\.8(\.|$)'
   ref:
-    sha256sum: 109cd585cac41297f71103c3c42ac6ef7379f29788eb54cb751be5a663bb235a
-    suffix: b0/21/adfbf6168631e28577e4af9eb9f26d75fe72b2bb1d33762a5f2c425e6c2a/networkx-2.5.1.tar.gz
+    sha256sum: 4a52cf66aed221955420e11b3e2e05ca44196b4829aab9576d4d439212b0a14f
+    suffix: 3f/5e/5e9ae193c6384bd47aae5bc9bd2c48db7115f483b0ff9fef7d263e3dbb09/networkx-2.8.tar.gz
