@@ -47,6 +47,7 @@ variables:
       efi_binary: 'true'
 
   meson-local: >-
+    -Dauto_features=disabled
     -Ddocs=gtkdoc
     -Dplugin_dell=%{plugin_dell}
     -Dplugin_msr=%{plugin_msr}
@@ -59,4 +60,4 @@ sources:
   track: main
   track-extra:
   - 1_7_X
-  ref: 1.7.7-0-g76821bcb78b7557d879f5d723d6faf27464459bb
+  ref: 1.8.0-0-g9bf8724bf416577339bf5c1a487cf62fa23d5b00
