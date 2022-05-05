@@ -112,7 +112,7 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.50-0-g64cf5e80e6240284e6b757907b900507fe56f1b5
+  ref: 0.3.51-0-gebc775674a0cf254cebd6d4694944006405807e3
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
 - kind: git_tag
