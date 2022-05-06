@@ -1596,7 +1596,7 @@ index 0000000000..16697835fa
 +#include "gstsouploader.h"
 +#include <gmodule.h>
 +
-+#ifdef HAVE_RTLD_NOLOAD
++#if 1 /* HAVE_RTLD_NOLOAD */
 +#include <dlfcn.h>
 +#endif
 +
@@ -1710,7 +1710,7 @@ index 0000000000..16697835fa
 +
 +  g_assert (g_module_supported ());
 +
-+#ifdef HAVE_RTLD_NOLOAD
++#if 1 /* HAVE_RTLD_NOLOAD */
 +  {
 +    gpointer handle = NULL;
 +
