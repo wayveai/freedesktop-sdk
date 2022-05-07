@@ -2,6 +2,7 @@ kind: manual
 
 build-depends:
 - components/gccgo.bst
+- components/git-minimal.bst
 
 depends:
 - bootstrap-import.bst
