@@ -12,5 +12,5 @@ depends:
 sources:
 - kind: git_tag
   url: github:Python-Markdown/markdown.git
-  track: master
+  # Frozen, updating further introduces new runtime dependencies
   ref: 3.3.4-0-g14c2fa92302084e4850e5323ed56721e43fbbdb9
