@@ -17,3 +17,4 @@ variables:
   meson-local: >-
     -DBUILD_MANS=false
     -DBUILD_NINFOD=false
+    -DSKIP_TESTS=true
