@@ -33,4 +33,4 @@ sources:
   track: master
   exclude:
   - v*-rc*
-  ref: v3.3-0-g5dcb741f1544c5e18c9dbf96aeb8b61cc556a616
+  ref: v3.4.2-0-gf9ea41683444ebe11cfa45b05223899764df28fb
