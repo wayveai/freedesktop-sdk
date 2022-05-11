@@ -15,8 +15,5 @@ sources:
 
 variables:
   meson-local: >-
-    -DBUILD_RARPD=true
-    -DBUILD_TFTPD=true
-    -DBUILD_TRACEROUTE6=true
     -DBUILD_MANS=false
     -DBUILD_NINFOD=false
