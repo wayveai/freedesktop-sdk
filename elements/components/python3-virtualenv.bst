@@ -1,8 +1,8 @@
 kind: pip
 
 build-depends:
-- components/python3-pip.bst
-- components/python3-wheel.bst
+- public-stacks/buildsystem-python.bst
+- components/python3-setuptools-scm.bst
 
 depends:
 - components/python3.bst
