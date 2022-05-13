@@ -1,7 +1,7 @@
-kind: autotools
+kind: meson
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
+- public-stacks/buildsystem-meson.bst
 - components/gtk-doc.bst
 - components/perl-xml-parser.bst
 - components/gobject-introspection.bst
@@ -14,25 +14,19 @@ depends:
 
 variables:
   conf-local: >-
-    --enable-libsystemd-login=yes
-    --with-duktape
+    -Dsession-tracking=libsystemd-login
+    -Djs_engine=duktape
   local_flags: -std=gnu++17
 
 environment:
   XDG_DATA_DIRS: "%{datadir}:%{install-root}%{datadir}"
 
 config:
-  build-commands:
-    (<):
-    - |
-      cd "%{build-dir}/data"
-      make -j1 install DESTDIR="%{install-root}"
-
   install-commands:
     (>):
     - |
       SYSUSERSDIR=$(pkg-config --variable sysusersdir systemd)
-      install -D -m 644 data/sysusers.conf %{install-root}/$SYSUSERSDIR/polkit.conf
+      install -D -m 644 extra/sysusers.conf %{install-root}/$SYSUSERSDIR/polkit.conf
 
 public:
   initial-script:
@@ -51,7 +45,7 @@ sources:
   url: freedesktop:polkit/polkit.git
   track: master
   track-tags: false
-  ref: 0.120-20-g7d4b52c4d71c46049d87a0775de695ea914f3f1b
+  ref: 0.120-21-gc5c6b784221b9dc054548c15e94719c4e961a7f2
 - kind: local
   path: files/polkit/sysusers.conf
-  directory: data
+  directory: extra
