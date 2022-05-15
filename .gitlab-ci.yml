@@ -27,6 +27,7 @@ default:
   - rm -rf "${XDG_CACHE_HOME}/buildstream/build"
   - rm -rf "${XDG_CACHE_HOME}/buildstream/cas"
   - rm -rf "${XDG_CACHE_HOME}/buildstream/sources"
+  - rm -rf "${CI_PROJECT_DIR}/.bst"
 
 workflow:
   rules:
