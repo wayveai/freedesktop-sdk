@@ -42,4 +42,4 @@ sources:
   - libselinux-*
   exclude:
   - '*rc*'
-  ref: libselinux-3.3-0-g7f600c40bc18d8180993edcd54daf45124736776
+  ref: libselinux-3.4-0-g0a8c177dacdc1df96ea11bb8aa75e16c4fa82285
