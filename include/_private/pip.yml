@@ -1,8 +1,17 @@
 variables:
   pip: setarch %{uname-arch} python3 -m pip
-  fix-pyc-timestamps: "true"
+  pip-args: >-
+    --no-build-isolation
+    --no-deps
+    --root=%{install-root}
+    --prefix=%{prefix}
+    --no-index
 
 config:
   install-commands:
     - |
-      %{pip} install --no-build-isolation --no-deps --use-feature=in-tree-build --root=%{install-root} --prefix=%{prefix} .
+      %{pip} install %{pip-args} .
+
+  strip-commands:
+  - |
+    %{strip-binaries}
