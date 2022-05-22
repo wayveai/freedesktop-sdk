@@ -1,8 +1,8 @@
-diff --git a/src/shared/bootspec.c b/src/shared/bootspec.c
-index 13d7b2f160..7a9ebf086f 100644
---- a/src/shared/bootspec.c
-+++ b/src/shared/bootspec.c
-@@ -1032,6 +1032,9 @@ static int verify_fsroot_dir(
+diff --git a/src/shared/find-esp.c b/src/shared/find-esp.c
+index 75e639dd99..2e214d35b6 100644
+--- a/src/shared/find-esp.c
++++ b/src/shared/find-esp.c
+@@ -246,6 +246,9 @@ static int verify_fsroot_dir(
                                        (unprivileged_mode && errno == EACCES) ? LOG_DEBUG : LOG_ERR, errno,
                                        "Failed to determine block device node of \"%s\": %m", path);
  
@@ -12,7 +12,7 @@ index 13d7b2f160..7a9ebf086f 100644
          if (major(st.st_dev) == 0)
                  return log_full_errno(searching ? LOG_DEBUG : LOG_ERR,
                                        SYNTHETIC_ERRNO(searching ? EADDRNOTAVAIL : ENODEV),
-@@ -1068,6 +1071,7 @@ static int verify_fsroot_dir(
+@@ -289,6 +292,7 @@ static int verify_fsroot_dir(
                                        SYNTHETIC_ERRNO(searching ? EADDRNOTAVAIL : ENODEV),
                                        "Directory \"%s\" is not the root of the file system.", path);
  
