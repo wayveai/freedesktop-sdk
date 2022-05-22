@@ -11,6 +11,7 @@ runtime-depends:
 - components/python3-babel.bst
 - components/python3-docutils.bst
 - components/python3-imagesize.bst
+- components/python3-importlib-metadata.bst
 - components/python3-jinja2.bst
 - components/python3-packaging.bst
 - components/python3-pygments.bst
@@ -32,5 +33,5 @@ public:
 sources:
 - kind: pypi
   name: sphinx
-  url: pypi:2b/73/a12887680688cc9a2ca0efb404fa2ee2be768f9a9143b758e53fef5db858/Sphinx-4.3.1.tar.gz
-  sha256sum: 32a5b3e9a1b176cc25ed048557d4d3d01af635e6b76c5bc7a43b0a34447fbd45
+  url: pypi:d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz
+  sha256sum: 7bf8ca9637a4ee15af412d1a1d9689fec70523a68ca9bb9127c2f3eeb344e2e6
