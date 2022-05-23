@@ -13,15 +13,6 @@ variables:
   conf-local: |
     --with-udevdir=$(pkg-config --variable=udevdir udev)
 
-config:
-  configure-commands:
-  - |
-    autoreconf -ivf
-  - |
-    mkdir -p %{build-dir}
-    cd %{build-dir}
-    ../%{configure}
-
 public:
   bst:
     split-rules:
