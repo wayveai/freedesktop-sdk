@@ -7,6 +7,10 @@ depends:
 - bootstrap-import.bst
 - components/protobuf.bst
 
+variables:
+  # https://github.com/protocolbuffers/protobuf/issues/9916
+  local_flags: -std=c++17
+
 sources:
 - kind: tar
   url: github_files:protobuf-c/protobuf-c/releases/download/v1.4.0/protobuf-c-1.4.0.tar.gz
