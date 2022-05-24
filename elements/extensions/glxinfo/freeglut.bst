@@ -2,14 +2,13 @@ kind: cmake
 
 (@): elements/extensions/include/app.yml
 
-depends:
-- filename: components/xorg-lib-xi.bst
-  type: build
-- filename: components/mesa-headers.bst
-  type: build
-- filename: extensions/glxinfo/glu.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+- components/mesa-headers.bst
+- components/xorg-lib-xi.bst
+
+- extensions/glxinfo/glu.bst
+
 
 variables:
   cmake-local: >
@@ -19,6 +18,7 @@ variables:
   local_flags: -fcommon
 
 sources:
-- kind: tar
-  url: tar_https:prdownloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
-  ref: d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68
+- kind: git_tag
+  url: github:FreeGLUTProject/freeglut.git
+  track: master
+  ref: v3.2.2-0-ge3aa3d74f3c6a93b26fd66f81152d9c55506a6c6
