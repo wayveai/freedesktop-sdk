@@ -13,15 +13,6 @@ variables:
   conf-local: |
     --with-udevdir=$(pkg-config --variable=udevdir udev)
 
-config:
-  configure-commands:
-  - |
-    autoreconf -ivf
-  - |
-    mkdir -p %{build-dir}
-    cd %{build-dir}
-    ../%{configure}
-
 public:
   bst:
     split-rules:
@@ -39,4 +30,6 @@ sources:
 - kind: git_tag
   url: git_https:git.linuxtv.org/v4l-utils.git
   track: master
-  ref: v4l-utils-1.20.0-0-g3b22ab02b960e4d1e90618e9fce9b7c8a80d814a
+  track-extra:
+  - stable-1.22
+  ref: v4l-utils-1.22.1-0-g47c8c377cf299bc42cd73a5ed7f2821f24a7bc47
