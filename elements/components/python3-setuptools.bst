@@ -9,5 +9,5 @@ sources:
 - kind: pypi
   name: setuptools
   ref:
-    sha256sum: d4eebe23c2ed4d73fa69d4f78e4b59b9648cbd22c43018ee2e8b911866535463
-    suffix: 2b/ca/795fe59736dcc0bd7ff85239ebd017aec6c294983c469b40ee4ef44ca950/setuptools-62.3.0.tar.gz
+    sha256sum: a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7
+    suffix: 4a/25/ec29a23ef38b9456f9965c57a9e1221e6c246d87abbf2a31158799bca201/setuptools-62.3.2.tar.gz
