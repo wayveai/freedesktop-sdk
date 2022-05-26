@@ -2,18 +2,19 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
-- components/python3-setuptools.bst
+- components/asciidoc.bst
 - components/docbook-xsl.bst
 - components/libxslt.bst
+- components/python3-setuptools.bst
+- components/python3-sphinx.bst
 - components/xmlto.bst
-- components/asciidoc.bst
 
 depends:
+- bootstrap-import.bst
 - components/e2fsprogs.bst
 - components/lzo.bst
 - components/systemd-libs.bst
 - components/zstd.bst
-- bootstrap-import.bst
 
 variables:
   # Makefile not generated inside buil-dir
@@ -23,4 +24,4 @@ sources:
 - kind: git_tag
   url: kernel:linux/kernel/git/kdave/btrfs-progs.git
   track: master
-  ref: v5.16.2-0-g31458c9c81935abbed010221261897273a98d2c1
+  ref: v5.18-0-gf9e303584272b81b05b926a0cc9010f43af12a03
