@@ -7,17 +7,17 @@ build-depends:
 - public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/json-glib.bst
-- filename: components/glib.bst
-- filename: components/libsoup.bst
+- bootstrap-import.bst
+- components/json-glib.bst
+- components/glib.bst
+- components/libsoup.bst
 
 variables:
-  meson-local: |
-    -D3g-source=false \
-    -Dcdma-source=false \
-    -Dmodem-gps-source=false \
-    -Dnmea-source=false \
+  meson-local: >-
+    -D3g-source=false
+    -Dcdma-source=false
+    -Dmodem-gps-source=false
+    -Dnmea-source=false
     -Ddemo-agent=false
 
 config:
@@ -44,3 +44,5 @@ sources:
   track-extra:
   - 2.5.x
   ref: 2.6.0-0-g10998ca3215fb6d21b5a32fdf78bb5feffaf4c0f
+- kind: patch
+  path: patches/geoclue/libsoup3.patch

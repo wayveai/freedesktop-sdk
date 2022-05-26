@@ -12,6 +12,7 @@ config:
   - components/gamemode.bst
   - components/iproute2.bst
   - components/libapparmor.bst
+  - components/libsoup2.bst
   - components/linux-firmware.bst
   - components/linux-pam.bst
   - components/linux.bst

@@ -6,7 +6,7 @@ depends:
 - components/gpgme.bst
 - components/libarchive.bst
 - components/libxml2.bst
-- components/libsoup.bst
+- components/libsoup2.bst
 - components/xorg-lib-xau.bst
 - components/ostree.bst
 - components/fuse.bst

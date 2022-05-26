@@ -1,24 +1,23 @@
 kind: meson
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/gobject-introspection.bst
+- components/gperf.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libsoup.bst
-- filename: components/json-glib.bst
-- filename: components/gdk-pixbuf.bst
-- filename: components/gcab.bst
-- filename: components/gobject-introspection.bst
-  type: build
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/gperf.bst
-  type: build
-- filename: components/libarchive.bst
+- bootstrap-import.bst
+- components/curl.bst
+- components/gcab.bst
+- components/gdk-pixbuf.bst
+- components/libarchive.bst
+- components/json-glib.bst
 
 variables:
-  meson-local: |
-    -Dfonts=false \
-    -Ddep11=false \
-    -Drpm=false \
+  meson-local: >-
+    -Dfonts=false
+    -Ddep11=false
+    -Drpm=false
     -Dstemmer=false
 
 config:
@@ -42,3 +41,5 @@ sources:
   url: github:hughsie/appstream-glib.git
   track: master
   ref: appstream_glib_0_7_18-0-g705e8e2061e9c9ef741792b1de56c6529fb57082
+- kind: patch
+  path: patches/appstream-glib/appstream-glib-curl.patch

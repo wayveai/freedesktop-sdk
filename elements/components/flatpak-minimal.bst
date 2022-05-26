@@ -5,7 +5,7 @@ depends:
 - components/bubblewrap.bst
 - components/gpgme.bst
 - components/libarchive.bst
-- components/libsoup.bst
+- components/libsoup2.bst
 - components/xorg-lib-xau.bst
 - components/ostree.bst
 - components/fuse.bst

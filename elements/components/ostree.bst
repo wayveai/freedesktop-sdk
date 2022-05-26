@@ -7,10 +7,10 @@ build-depends:
 - components/bison.bst
 
 depends:
+- components/curl.bst
 - components/glib.bst
 - components/gpgme.bst
 - components/e2fsprogs.bst
-- components/libsoup.bst
 - components/fuse.bst
 - components/systemd.bst
 - components/libarchive.bst
@@ -23,6 +23,8 @@ variables:
     --with-systemd
     --with-libarchive
     --with-avahi
+    --with-curl
+    --without-soup
 
 public:
   bst:

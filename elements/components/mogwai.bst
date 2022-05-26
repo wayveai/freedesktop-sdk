@@ -18,3 +18,5 @@ sources:
   - eos3.6
   - eos3.7
   ref: Release_4.0.6-0-g51b13309eda38d760c607f84fb5b0006cbe70adf
+- kind: patch
+  path: patches/mogwai/libsoup3.patch

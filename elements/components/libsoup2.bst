@@ -1,16 +1,14 @@
 kind: meson
 
 build-depends:
-- public-stacks/buildsystem-meson.bst
-- components/cmake.bst
 - components/gobject-introspection.bst
+- public-stacks/buildsystem-meson.bst
 - components/python3.bst
 
 depends:
 - bootstrap-import.bst
 - components/glib-networking.bst
 - components/libxml2.bst
-- components/libnghttp2.bst
 - components/sqlite.bst
 - components/libpsl.bst
 - components/brotli.bst
@@ -21,23 +19,21 @@ variables:
     -Dvapi=disabled
     -Dntlm=disabled
     -Dsysprof=disabled
-    -Dautobahn=disabled
-    -Dhttp2_tests=disabled
-    -Dpkcs11_tests=disabled
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{libdir}/libsoup-3.0.so'
-        - '%{libdir}/libsoup-gnome-3.0.so'
+        - '%{libdir}/libsoup-2.4.so'
+        - '%{libdir}/libsoup-gnome-2.4.so'
 
 sources:
 - kind: git_tag
   url: gnome:libsoup.git
   track: master
+  #track-extra:
+  #- gnome-3-38
   match:
-  - 3.[0-9][02468].*
-  - 3.[02468].*
-  ref: 3.0.6-0-g5211c27a4c77c9bae511721cf20f0abac554d8b4
+  - 2.[0-9][02468].*
+  ref: 2.72.0-0-gae1632c176c60b7fe832024c0a958f4079767c44
