@@ -3,8 +3,8 @@ kind: autotools
 build-depends:
 - public-stacks/buildsystem-autotools.bst
 - components/gzip.bst
+- components/openssl.bst
 - components/systemd.bst
-- components/gnutls.bst
 
 variables:
   # Makefiles not added to build-dir which makes it unusable
@@ -15,7 +15,7 @@ variables:
     --with-dbusdir=/etc/dbus-1
     --enable-systemd
     --enable-threads
-    --enable-gnutls
+    --with-tls=openssl
     --with-cups-group=lp
     --with-system-groups=wheel
     --with-rundir=/run/cups
@@ -54,7 +54,7 @@ sources:
   exclude:
   - "*a*"
   - "*b*"
-  ref: v2.4.1-0-gad56dc040925c9f7b6e03008086656804c664817
+  ref: v2.4.2-0-g12ff481989924fc82ffdf1b8699753a486a33547
 - kind: local
   path: files/cups/tmpfiles.conf
 - kind: local

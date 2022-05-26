@@ -4,7 +4,7 @@ build-depends:
 - components/cups-base.bst
 
 runtime-depends:
-- components/gnutls.bst
+- components/openssl.bst
 - components/cups-manifest.bst
 
 config:
