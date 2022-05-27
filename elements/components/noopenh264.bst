@@ -7,10 +7,16 @@ build-depends:
 - public-stacks/buildsystem-meson.bst
 
 variables:
+  (@):
+  - include/_private/versions.yml
   extlibdir: "%{libdir}/openh264/extra"
   meson-local: "--libdir=%{extlibdir}"
 
 config:
+  configure-commands:
+    (<):
+    - grep "matching_version = '%{openh264-version}'" %{build-root}/meson.build
+
   install-commands:
     (>):
     - |
@@ -37,9 +43,8 @@ sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
-  track-tags: true
-  ref: Version_2.1.1-0-g3f95b4b6763598ae782b12905d429eabebcdc901
+  # There is no tag for 2.2.0
+  track-tags: false
+  ref: Version_2.1.1-13-gdfe5e4ecc78c4b13b31b8f8c611373a769fe838c
   exclude:
   - Release*
-- kind: patch
-  path: patches/noopenh264/make-version-same-as-actual-lib.patch
