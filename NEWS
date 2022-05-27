@@ -1,5 +1,101 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.13:
+  * Update xorg-lib-x11 to libX11-1.8
+  * Update nano to v6.3
+  * Update python3-jinja2 to 3.1.2
+  * Update elements/include/systemd.yml to v249.12
+  * Update libslirp to v4.7.0
+  * Update mogwai to Release_4.0.6
+  * Update crun to 1.4.5
+  * Update to GCC 11.3.0
+  * Update python3-pygments to 2.12.0
+  * Update gnupg to gnupg-2.2.35
+  * Update vulkan-icd-loader to sdk-1.2.198.1
+  * Update libgcrypt to libgcrypt-1.8.9
+  * Update go-md2man to v2.0.2
+  * Update python3-tomlkit to 0.10.2
+  * Update libgcrypt to libgcrypt-1.8.8
+  * spirv-tools: Update to sdk-1.2.198
+  * spirv-headers: Update to sdk-1.2.198
+  * Update vulkan stack to sdk-1.2.198.0
+  * Update podman to v3.4.7
+  * Update mogwai to Release_4.0.5
+  * Update vala to 0.56.1
+  * Update libseccomp to v2.5.4
+  * Update xorg-proto-xorgproto to xorgproto-2022.1
+  * Update python3-cachecontrol to 0.12.11
+  * Update python3-babel to 2.10.1
+  * Update ruby to 3.0.2
+  * cpio: Apply patches for CVE-2021-38185
+  * cairo: patch against CVE-2020-35492
+  * Update elements/include/git.yml to v2.36.0
+  * Update elements/include/ffmpeg.yml to n4.3.4
+  * Update xdg-desktop-portal-base to 1.14.3
+  * Update python3-importlib-resources to 5.7.1
+  * fwupd.bst: U update to 1.6.5
+  * Update jack to v1.9.21
+  * Update rsync to v3.2.4
+  * Update to new ABI image after abi skip with glibc
+  * Update glibc to glibc-2.33-131-g5eddc29c92612966cbf08d3f41b0132f79142eeb
+  * Update elements/include/git.yml to v2.35.3
+  * Update podman to v3.4.6
+  * Update python3-importlib-resources to 5.7.0
+  * Update elements/include/git.yml to v2.35.2
+  * Update cmake to v3.23.1
+  * Update python3-pyparsing to 3.0.8
+  * Build flit-core
+  * Update valgrind to VALGRIND_3_19_0
+  * Update python3-virtualenv to 20.14.1
+  * Update libusb to v1.0.26
+  * Update extra-cmake-modules to v5.93.0
+  * Update xorg-lib-x11 to libX11-1.7.5
+  * Add suppression for internal libX11 symbol _XkeyTable
+  * Update wireless-regdb-bin to master-2022-04-08-1
+  * Update openssh to V_9_0_P1
+  * Update libgpg-error to libgpg-error-1.45
+  * Add suppressions for nettle private symbols
+  * Update nettle to 3.7.3
+  * Update mogwai to Release_4.0.4
+  * Update cyrus-sasl to 2.1.28
+  * Update python3-dbusmock to 0.27.5
+  * Update libmnl to libmnl-1.0.5
+  * Update genpeimg to v10.0.0
+  * Update python3-dbusmock to 0.27.4
+  * Update gyp to 9ecf45e
+  * Update python3-zipp to 3.8.0
+  * Update xorg-lib-xcursor to libXcursor-1.2.1
+  * Update poppler to poppler-22.04.0
+  * Update python3-pil to 9.1.0
+  * Update xdg-desktop-portal to 1.14.2
+  * Update gyp to 203fee2
+  * harfbuzz: Add patch to fix noto-cjk-vf otc
+  * Update dbus-base to dbus-1.12.22
+  * Suppress dbus internal ABI
+  * Update shared-mime-info to 2.2
+  * Update cmake to v3.23.0
+  * Update audit to v3.0.8
+  * Update python3-tomlkit to 0.10.1
+  * Update frei0r to v1.8.0
+  * Update strace to v5.17
+  * Update foomatic-db to 67bfa2e
+  * Update gmmlib to intel-gmmlib-22.1.2
+  * Update python3-jinja2 to 3.1.1
+  * Update python3-importlib-resources to 5.6.0
+  * Update yelp-tools to 42.0
+  * Update yelp-xsl to 42.0
+  * Update inih to r55
+  * Update python3-virtualenv to 20.14.0
+  * Update libevdev to libevdev-1.12.1
+  * Update python3-jinja2 to 3.1.0
+  * Update python3-pytz to 2022.1
+  * Update inih to r54
+  * Update crun to 1.4.4
+  * Update python3-dbusmock to 0.27.3
+  * Update eos-updater to Release_3.9.7
+  * Update python3-urllib3 to 1.26.9
+  * Update elements/include/mesa.yml to mesa-21.3.8
+
 freedesktop-sdk-21.08.12:
   * openssl: Update to OpenSSL_1_1_1n
   * libepoxy: Update to 1.5.10
