@@ -7,5 +7,5 @@ depends:
 sources:
 - kind: cpan
   name: 'Pod::Parser'
-  url: cpan:authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz
-  sha256sum: dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd
+  url: cpan:authors/id/M/MA/MAREKR/Pod-Parser-1.65.tar.gz
+  sha256sum: 3ba7bdec659416a51fe2a7e59f0883e9c6a3b21bc9d001042c1d6a32d401b28a
