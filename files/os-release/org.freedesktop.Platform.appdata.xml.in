@@ -2,7 +2,7 @@
 <component type="runtime">
   <id>org.freedesktop.Platform</id>
   <metadata_license>CC0</metadata_license>
-  <project_license>GPL-2.0+</project_license>
+  <project_license>MIT</project_license>
   <name>Freedesktop Platform</name>
   <summary>Shared libraries</summary>
   <releases>
