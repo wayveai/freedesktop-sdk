@@ -3,10 +3,10 @@ sources:
   url: github:systemd/systemd-stable.git
   track: main
   track-extra:
-  - v250-stable
+  - v251-stable
   exclude:
   - '*rc*'
-  ref: v250.5-0-g4a31fa2fb040005b73253da75cf84949b8485175
+  ref: v251.1-0-gdcda9f3d078709b26a6612a9581795e64b27b509
 # remove the following patch when updating systemd
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
