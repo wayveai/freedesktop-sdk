@@ -1,15 +1,21 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/flex.bst
+- components/git-minimal.bst
+- components/gperf.bst
+- components/help2man.bst
+- components/texinfo.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/help2man.bst
-  type: build
-- filename: components/texinfo.bst
-  type: build
-- filename: components/m4.bst
-- filename: components/perl.bst
-- filename: components/flex.bst
-  type: build
+- bootstrap-import.bst
+- components/gettext.bst
+- components/m4.bst
+- components/perl.bst
+
+variables:
+  autogen: ./bootstrap --skip-po --no-git --gnulib-srcdir=%{build-root}/gnulib
 
 config:
   install-commands:
@@ -21,6 +27,15 @@ config:
       find "%{install-root}" -name "lib*.a" -exec rm {} ";"
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:bison/bison-3.7.6.tar.gz
-  ref: 69dc0bb46ea8fc307d4ca1e0b61c8c355eb207d0b0c69f4f8462328e74d7b9ea
+- kind: git_tag
+  url: savannah:bison.git
+  track: master
+  ref: v3.8.2-0-g9beba1919cad5dd08b0cac277c27896808719e4b
+- kind: git_module
+  path: gnulib
+  url: savannah:gnulib.git
+  ref: 7818455627c5e54813ac89924b8b67d0bc869146
+- kind: git_module
+  path: submodules/autoconf
+  url: savannah:autoconf.git
+  ref: 66fdaea3cfb4e758212c1891913e9a59441d49af
