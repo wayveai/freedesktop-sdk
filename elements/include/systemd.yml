@@ -10,3 +10,5 @@ sources:
 # remove the following patch when updating systemd
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
+- kind: patch
+  path: patches/systemd/coredump-Fix-format-string-type-mismatch.patch
