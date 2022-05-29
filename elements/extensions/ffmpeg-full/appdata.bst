@@ -1,14 +1,15 @@
 kind: manual
 
 build-depends:
-- components/appstream-glib.bst
+- components/appstream.bst
 
 config:
-  build-commands:
-  - appstream-util validate org.freedesktop.Platform.ffmpeg-full.appdata.xml
-
   install-commands:
-  - install -Dm644 -t "%{install-root}%{libdir}/ffmpeg/share/appdata" org.freedesktop.Platform.ffmpeg-full.appdata.xml
+  - install -Dm644 -t "%{install-root}%{libdir}/ffmpeg/share/metainfo" org.freedesktop.Platform.ffmpeg-full.appdata.xml
+  - |
+    appstreamcli compose --components org.freedesktop.Platform.ffmpeg-full \
+    --prefix %{libdir}/ffmpeg --result-root %{install-root} \
+    --origin=flatpak %{install-root}
 
 sources:
 - kind: local
