@@ -326,7 +326,6 @@ license_checker:
   - .retry_system_failure
   tags:
     - x86_64
-    - cache_x86_64
   variables:
     ARCH: x86_64
 
@@ -335,7 +334,6 @@ license_checker:
   - .retry_system_failure
   tags:
     - x86_64
-    - cache_i686
   variables:
     ARCH: i686
 
