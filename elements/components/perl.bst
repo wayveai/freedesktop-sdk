@@ -34,14 +34,12 @@ config:
 sources:
 - kind: git_tag
   url: github:perl/perl5.git
-  track: blead
-  track-extra:
-  - maint-5.30
+  track: maint-5.34
   match:
   - v5.*[02468].*
   exclude:
   - v*-RC*
-  ref: v5.34.0-0-g79a7b254d85a10b65126ad99bf10e70480569d68
+  ref: v5.34.1-0-g1181cf72936404b890ef41362f533fe2c2626f9b
 - kind: local
   path: files/perl/config.over
 - kind: patch
