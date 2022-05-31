@@ -10,5 +10,5 @@ sources:
 - kind: pypi
   name: semantic_version
   ref:
-    sha256sum: abf54873553e5e07a6fd4d5f653b781f5ae41297a493666b59dcf214006a12b2
-    suffix: cb/56/4aa487b46d09646eb1863faa7026551d8309ece2281794bf13b20f28ab94/semantic_version-2.9.0.tar.gz
+    sha256sum: bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c
+    suffix: 7d/31/f2289ce78b9b473d582568c234e104d2a342fd658cc288a7553d83bb8595/semantic_version-2.10.0.tar.gz
