@@ -1,5 +1,38 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.14:
+  * Update Perl to 5.34.1
+  * Update libxkbcommon to xkbcommon-1.4.1-0
+  * Update perl-pod-parser to 1.65
+  * Update lvm2 to v2_03_16-0
+  * Update python3-tomlkit to 0.11.0
+  * Update cmake to v3.23.2-0
+  * Update conmon to v2.1.1-0
+  * Update ninja to v1.11.0-0
+  * Update cython to 0.29.30
+  * Update python3-importlib-metadata to 4.11.4
+  * Update python3-sphinx to 4.5.0
+  * Update python3-setuptools-scm to 6.4.2
+  * Update to pip 22.1.1
+  * Update python3-pil to 9.1.1
+  * Update gtk3 to 3.24.34-0
+  * Update ccache to v4.6.1-0
+  * Update python3-filelock to 3.7.0
+  * Update extra-cmake-modules to v5.94.0-0
+  * Update gmmlib to intel-gmmlib-22.1.3-0
+  * Update python3-pyparsing to 3.0.9
+  * Update pinentry-ncurses to pinentry-1.1.1-0
+  * Update git to v2.36.1
+  * Unbreak gst-plugins-good patch
+  * Update xdg-desktop-portal-base to 1.14.4
+  * Update doxygen to Release_1_9_4
+  * Update ostree to v2022.3
+  * Update glibc to glibc-2.33 (69f1661)
+  * Update poppler to poppler-22.05.0
+  * Update fuse3 to fuse-3.11.0
+  * Update openssl to OpenSSL_1_1_1o
+  * Update slirp4netns to v1.2.0
+
 freedesktop-sdk-21.08.13:
   * Update xorg-lib-x11 to libX11-1.8
   * Update nano to v6.3
@@ -97,621 +130,621 @@ freedesktop-sdk-21.08.13:
   * Update elements/include/mesa.yml to mesa-21.3.8
 
 freedesktop-sdk-21.08.12:
-  * openssl:   * Update to OpenSSL_1_1_1n
-  * libepoxy:   * Update to 1.5.10
-  * python3-virtualenv:   * Update to 20.13.4
-  * xdg-desktop-portal-base.bst:   * Update to 1.14.1
-  * gdk-pixbuf:   * Update to 2.42.8
-  * vala:   * Update to 0.56.0
-  * gmmlib:   * Update to intel-gmmlib-22.1.0
-  * xdg-desktop-portal-base:   * Update to 1.12.2
-  * flatpak:   * Update to 1.12.7
-  * tzdata:   * Update to 2022a
-  * bluez:   * Update to 5.64
-  * python3-markupsafe:   * Update to 2.1.1
-  * extra-cmake-modules:   * Update to v5.92.0
-  * python3-importlib-metadata:   * Update to 4.11.3
-  * python3-pip:   * Update to 22.0.4
-  * libnftnl:   * Update to libnftnl-1.2.1
-  * systemd:   * Update to v249.11
-  * curl:   * Update to curl-7_82_0
-  * python3-mako:   * Update to 1.2.0
-  * libvdpau:   * Update to 1.5
-  * go:   * Update to go1.16.15
-  * ccache:   * Update to v4.6
-  * python3-lxml:   * Update to 4.8.0
-  * cmake:   * Update to v3.22.3
-  * libinput:   * Update to 1.20.0
-  * intel-media-driver:   * Update to intel-media-22.2.2
-  * python3-virtualenv:   * Update to 20.13.3
-  * pycairo:   * Update to 1.21.0
-  * crun:   * Update to 1.4.3
-  * eos-metrics:   * Update to Release_4.0.3
-  * ostree:   * Update to v2022.2
-  * gtk3:   * Update to 3.24.33
-  * dracut:   * Update to 056
-  * slirp4netns:   * Update to v1.1.12
-  * openssh:   * Update to V_8_9_P1
-  * fwupd:   * Update to 1.4.8
-  * python3-pathlib2:   * Update to 2.3.7.post1
-  * python3-poetry-core:   * Update to 1.0.8
-  * poppler:   * Update to poppler-22.03.0
-  * libflac:   * Update to 1.3.4
-  * mesa:   * Update to mesa-21.3.8
-  * python3-filelock:   * Update to 3.6.0
-  * mogwai:   * Update to Release_4.0.3
-  * python3-importlib-metadata:   * Update to 4.11.2
-  * wireless-regdb-bin:   * Update to master-2022-02-18
-  * jack:   * Update to v1.9.20
-  * python3-dbusmock:   * Update to 0.26.1
-  * bootstrap/go-static:   * Update to go1.16.15
-  * jpeg:   * Update to 2.1.3
-  * bubblewrap:   * Update to v0.6.1
-  * python3-virtualenv:   * Update to 20.13.2
-  * cython:   * Update to 0.29.28
+  * openssl: Update to OpenSSL_1_1_1n
+  * libepoxy: Update to 1.5.10
+  * python3-virtualenv: Update to 20.13.4
+  * xdg-desktop-portal-base.bst: Update to 1.14.1
+  * gdk-pixbuf: Update to 2.42.8
+  * vala: Update to 0.56.0
+  * gmmlib: Update to intel-gmmlib-22.1.0
+  * xdg-desktop-portal-base: Update to 1.12.2
+  * flatpak: Update to 1.12.7
+  * tzdata: Update to 2022a
+  * bluez: Update to 5.64
+  * python3-markupsafe: Update to 2.1.1
+  * extra-cmake-modules: Update to v5.92.0
+  * python3-importlib-metadata: Update to 4.11.3
+  * python3-pip: Update to 22.0.4
+  * libnftnl: Update to libnftnl-1.2.1
+  * systemd: Update to v249.11
+  * curl: Update to curl-7_82_0
+  * python3-mako: Update to 1.2.0
+  * libvdpau: Update to 1.5
+  * go: Update to go1.16.15
+  * ccache: Update to v4.6
+  * python3-lxml: Update to 4.8.0
+  * cmake: Update to v3.22.3
+  * libinput: Update to 1.20.0
+  * intel-media-driver: Update to intel-media-22.2.2
+  * python3-virtualenv: Update to 20.13.3
+  * pycairo: Update to 1.21.0
+  * crun: Update to 1.4.3
+  * eos-metrics: Update to Release_4.0.3
+  * ostree: Update to v2022.2
+  * gtk3: Update to 3.24.33
+  * dracut: Update to 056
+  * slirp4netns: Update to v1.1.12
+  * openssh: Update to V_8_9_P1
+  * fwupd: Update to 1.4.8
+  * python3-pathlib2: Update to 2.3.7.post1
+  * python3-poetry-core: Update to 1.0.8
+  * poppler: Update to poppler-22.03.0
+  * libflac: Update to 1.3.4
+  * mesa: Update to mesa-21.3.8
+  * python3-filelock: Update to 3.6.0
+  * mogwai: Update to Release_4.0.3
+  * python3-importlib-metadata: Update to 4.11.2
+  * wireless-regdb-bin: Update to master-2022-02-18
+  * jack: Update to v1.9.20
+  * python3-dbusmock: Update to 0.26.1
+  * bootstrap/go-static: Update to go1.16.15
+  * jpeg: Update to 2.1.3
+  * bubblewrap: Update to v0.6.1
+  * python3-virtualenv: Update to 20.13.2
+  * cython: Update to 0.29.28
 
 freedesktop-sdk-21.08.11:
   * oci_builder: Ensure skipped files don't pollute inodes map
-  * python3-pip:   * Update to 22.0.3
-  * ccid:   * Update to 1.5.0
-  * yelp-xsl:   * Update to 41.0
-  * expat:   * Update to R_2_4_6
-  * foomatic-db:   * Update to 0a40098
-  * flatpak:   * Update to 1.12.6
-  * gamemode:   * Update to 1.6.1
+  * python3-pip: Update to 22.0.3
+  * ccid: Update to 1.5.0
+  * yelp-xsl: Update to 41.0
+  * expat: Update to R_2_4_6
+  * foomatic-db: Update to 0a40098
+  * flatpak: Update to 1.12.6
+  * gamemode: Update to 1.6.1
   * Create riscv64 cross-compiler
-  * nano:   * Update to v6.2
-  * gstreamer-plugins-ugly:   * Update to 1.18.6
-  * vala:   * Update to 0.54.7
-  * cmake:   * Update to v3.22.2
-  * util-linux:   * Update to v2.37.4
-  * python3-multidict:   * Update to 6.0.2
-  * intel-media-driver:   * Update to intel-media-22.2.1
-  * python3-tomlkit:   * Update to 0.10.0
-  * libndp:   * Update to v1.8
-  * flatpak-xdg-utils:   * Update to 1.0.5
-  * python3-pil:   * Update to 9.0.1
-  * python3-markupsafe:   * Update to 2.1.0
-  * lvm2-source:   * Update to v2_03_15
-  * systemd:   * Update to v249.10
-  * dracut:   * Update to 055
-  * libbytesize:   * Update to 2.6
-  * conmon:   * Update to v2.1.0
-  * python3-charset-normalizer:   * Update to 2.0.12
-  * udisks:   * Update to udisks-2.9.2
-  * libinput:   * Update to 1.19.2
-  * gmmlib:   * Update to intel-gmmlib-22.0.2
-  * libgcrypt:   * Update to libgcrypt-1.8.9
-  * open-iscsi:   * Update to 2.1.6
-  * cython:   * Update to 0.29.27
-  * python3-tenacity:   * Update to 8.0.1
-  * jansson:   * Update to v2.14
-  * libevdev:   * Update to libevdev-1.12.0
-  * fuse3:   * Update to fuse-3.10.5
-  * libxkbcommon:   * Update to xkbcommon-1.4.0
-  * weston:   * Update to 10.0.0
-  * python3-poetry:   * Update to 1.1.13
-  * dmidecode:   * Update to dmidecode-3-3
-  * python3-yarl:   * Update to 1.7.2
-  * wireless-regdb-bin:   * Update to master-2021-08-28
-  * libblockdev:   * Update to 2.26-1
-  * genimage:   * Update to v15
-  * inih:   * Update to r53
-  * go-md2man:   * Update to v2.0.1
-  * poppler:   * Update to poppler-22.02.0
-  * iio-sensor-proxy:   * Update to 3.3
-  * python3-aiohttp:   * Update to 3.8.1
-  * python3-async-timeout:   * Update to 4.0.2
-  * xwayland:   * Update to xwayland-21.1.4
-  * usbutils:   * Update to v014
-  * eos-metrics:   * Update to Release_4.0.2
-  * mesa:   * Update to mesa-21.3.6
-  * go:   * Update to go1.16.14
-  * pcsc-lite:   * Update to 1.9.5
-  * python3-dbusmock:   * Update to 0.25.0
-  * gnupg-source:   * Update to gnupg-2.2.34
-  * fuse-overlayfs:   * Update to v1.8.2
-  * yelp-tools:   * Update to 41.0
-  * wayland-protocols:   * Update to 1.25
-  *   * Update GDB to 11.2
-  * crun:   * Update to 1.4.2
-  * libgudev:   * Update to 237
-  * python3-attrs:   * Update to 21.4.0
-  * xorg-lib-xfont2:   * Update to libXfont2-2.0.5
-  * eos-updater:   * Update to Release_3.9.6
-  * libconfuse:   * Update to v3.3
-  * genpeimg:   * Update to v9.0.0
-  * mdadm:   * Update to mdadm-4.2
-  * open-isns:   * Update to v0.101
-  * xorg-font-util:   * Update to font-util-1.3.2
-  * plymouth.bst:   * Update to 22.02.122
-  *   * Update flatpak-builder to 1.2.2
-  * doxygen:   * Update to Release_1_9_3
-  * libical:   * Update to v3.0.14
-  * git:   * Update to v2.35.1
-  * gstreamer-plugins-good:   * Update to 1.18.6
+  * nano: Update to v6.2
+  * gstreamer-plugins-ugly: Update to 1.18.6
+  * vala: Update to 0.54.7
+  * cmake: Update to v3.22.2
+  * util-linux: Update to v2.37.4
+  * python3-multidict: Update to 6.0.2
+  * intel-media-driver: Update to intel-media-22.2.1
+  * python3-tomlkit: Update to 0.10.0
+  * libndp: Update to v1.8
+  * flatpak-xdg-utils: Update to 1.0.5
+  * python3-pil: Update to 9.0.1
+  * python3-markupsafe: Update to 2.1.0
+  * lvm2-source: Update to v2_03_15
+  * systemd: Update to v249.10
+  * dracut: Update to 055
+  * libbytesize: Update to 2.6
+  * conmon: Update to v2.1.0
+  * python3-charset-normalizer: Update to 2.0.12
+  * udisks: Update to udisks-2.9.2
+  * libinput: Update to 1.19.2
+  * gmmlib: Update to intel-gmmlib-22.0.2
+  * libgcrypt: Update to libgcrypt-1.8.9
+  * open-iscsi: Update to 2.1.6
+  * cython: Update to 0.29.27
+  * python3-tenacity: Update to 8.0.1
+  * jansson: Update to v2.14
+  * libevdev: Update to libevdev-1.12.0
+  * fuse3: Update to fuse-3.10.5
+  * libxkbcommon: Update to xkbcommon-1.4.0
+  * weston: Update to 10.0.0
+  * python3-poetry: Update to 1.1.13
+  * dmidecode: Update to dmidecode-3-3
+  * python3-yarl: Update to 1.7.2
+  * wireless-regdb-bin: Update to master-2021-08-28
+  * libblockdev: Update to 2.26-1
+  * genimage: Update to v15
+  * inih: Update to r53
+  * go-md2man: Update to v2.0.1
+  * poppler: Update to poppler-22.02.0
+  * iio-sensor-proxy: Update to 3.3
+  * python3-aiohttp: Update to 3.8.1
+  * python3-async-timeout: Update to 4.0.2
+  * xwayland: Update to xwayland-21.1.4
+  * usbutils: Update to v014
+  * eos-metrics: Update to Release_4.0.2
+  * mesa: Update to mesa-21.3.6
+  * go: Update to go1.16.14
+  * pcsc-lite: Update to 1.9.5
+  * python3-dbusmock: Update to 0.25.0
+  * gnupg-source: Update to gnupg-2.2.34
+  * fuse-overlayfs: Update to v1.8.2
+  * yelp-tools: Update to 41.0
+  * wayland-protocols: Update to 1.25
+  * Update GDB to 11.2
+  * crun: Update to 1.4.2
+  * libgudev: Update to 237
+  * python3-attrs: Update to 21.4.0
+  * xorg-lib-xfont2: Update to libXfont2-2.0.5
+  * eos-updater: Update to Release_3.9.6
+  * libconfuse: Update to v3.3
+  * genpeimg: Update to v9.0.0
+  * mdadm: Update to mdadm-4.2
+  * open-isns: Update to v0.101
+  * xorg-font-util: Update to font-util-1.3.2
+  * plymouth.bst: Update to 22.02.122
+  * Update flatpak-builder to 1.2.2
+  * doxygen: Update to Release_1_9_3
+  * libical: Update to v3.0.14
+  * git: Update to v2.35.1
+  * gstreamer-plugins-good: Update to 1.18.6
   * Optimize disk usage with minimal and desktop VM images
   * Add a root password to the efi image
-  * gstreamer:   * Update to 1.18.6
-  * python3-pyelftools:   * Update to 0.28
-  * gstreamer-vaapi:   * Update to 1.18.6
-  * python3-tomlkit:   * Update to 0.9.0
-  * python3-charset-normalizer:   * Update to 2.0.11
-  * expat:   * Update to R_2_4_4
-  * pango:   * Update to 1.48.11
-  * libusb:   * Update to v1.0.25
-  * python3-importlib-metadata:   * Update to 4.10.1
-  * python3-pyparsing:   * Update to 3.0.7
-  * gstreamer-plugins-base:   * Update to 1.18.6
-  * gstreamer-libav:   * Update to 1.18.6
+  * gstreamer: Update to 1.18.6
+  * python3-pyelftools: Update to 0.28
+  * gstreamer-vaapi: Update to 1.18.6
+  * python3-tomlkit: Update to 0.9.0
+  * python3-charset-normalizer: Update to 2.0.11
+  * expat: Update to R_2_4_4
+  * pango: Update to 1.48.11
+  * libusb: Update to v1.0.25
+  * python3-importlib-metadata: Update to 4.10.1
+  * python3-pyparsing: Update to 3.0.7
+  * gstreamer-plugins-base: Update to 1.18.6
+  * gstreamer-libav: Update to 1.18.6
   * binutils: import upstream patches for thin archive support
   * Build openjpeg with -fvisiblity=hidden
-  * python3-wheel:   * Update to 0.37.1
-  * libthai:   * Update to v0.1.29
-  * libfido2:   * Update to 1.10.0
-  * flatpak:   * Update to 1.12.4
-  * libgpg-error:   * Update to libgpg-error-1.44
-  * vala:   * Update to 0.54.6
+  * python3-wheel: Update to 0.37.1
+  * libthai: Update to v0.1.29
+  * libfido2: Update to 1.10.0
+  * flatpak: Update to 1.12.4
+  * libgpg-error: Update to libgpg-error-1.44
+  * vala: Update to 0.54.6
 
 freedesktop-sdk-21.08.10:
-  * audit:   * Update to v3.0.7
-  * python3-tomlkit:   * Update to 0.8.0
-  * git:   * Update to v2.35.0
+  * audit: Update to v3.0.7
+  * python3-tomlkit: Update to 0.8.0
+  * git: Update to v2.35.0
   * polkit: backport patch to fix CVE-2021-4034
-  * xdg-desktop-portal-base:   * Update to 1.12.1
-  * rust:   * Update to 1.58.1
-  * libical:   * Update to v3.0.13
-  * python3-virtualenv:   * Update to 20.13.0
-  * python3-pygments:   * Update to 2.11.2
-  * wayland:   * Update to 1.20
+  * xdg-desktop-portal-base: Update to 1.12.1
+  * rust: Update to 1.58.1
+  * libical: Update to v3.0.13
+  * python3-virtualenv: Update to 20.13.0
+  * python3-pygments: Update to 2.11.2
+  * wayland: Update to 1.20
   * Fix some documentation typos
   * sasl: Include `*.so` symlinks in base package
-  * ca-certificates:   * Update to ca-certificates-2010_63-3_fc14
-  * expat:   * Update to R_2_4_3
-  * python3-urllib3:   * Update to 1.26.8
-  * iso-codes:   * Update to v4.9.0
-  * python3-requests:   * Update to 2.27.1
-  * cython:   * Update to 0.29.26
-  * python3-lxml:   * Update to 4.7.1
-  * p11-kit:   * Update to 0.24.1
-  * systemd:   * Update to v249.9
-  * bluez:   * Update to 5.63
-  * mozjs:   * Update to 91.2
-  * openssl:   * Update to OpenSSL_1_1_1m
-  * expat:   * Update to R_2_4_2
-  * ostree:   * Update to v2022.1
-  * python3-filelock:   * Update to 3.4.2
-  * mesa:   * Update to mesa-21.3.5
-  * gmmlib:   * Update to intel-gmmlib-22.0.1
-  * podman:   * Update to 3.4.4
+  * ca-certificates: Update to ca-certificates-2010_63-3_fc14
+  * expat: Update to R_2_4_3
+  * python3-urllib3: Update to 1.26.8
+  * iso-codes: Update to v4.9.0
+  * python3-requests: Update to 2.27.1
+  * cython: Update to 0.29.26
+  * python3-lxml: Update to 4.7.1
+  * p11-kit: Update to 0.24.1
+  * systemd: Update to v249.9
+  * bluez: Update to 5.63
+  * mozjs: Update to 91.2
+  * openssl: Update to OpenSSL_1_1_1m
+  * expat: Update to R_2_4_2
+  * ostree: Update to v2022.1
+  * python3-filelock: Update to 3.4.2
+  * mesa: Update to mesa-21.3.5
+  * gmmlib: Update to intel-gmmlib-22.0.1
+  * podman: Update to 3.4.4
 
 freedesktop-sdk-21.08.9:
   * setuptools: downgrade to 59.8
   * asciidoc.bst: track the 9.x branch
   * mesa: update to 21.3.3
-  * e2fsprogs:   * Update to v1.46.5
-  * libmicrohttpd:   * Update to v0.9.75
-  * vala:   * Update to 0.54.5
-  * po4a:   * Update to v0.66
+  * e2fsprogs: Update to v1.46.5
+  * libmicrohttpd: Update to v0.9.75
+  * vala: Update to 0.54.5
+  * po4a: Update to v0.66
   * Merge `egl_external_platform.d` GL ext dir (#1341)
   * ABI check now runs inside BuildStream
-  * nano:   * Update to v6.0
-  * intel-media-driver:   * Update to intel-media-22.1.0
-  * bash:   * Update to bash-5.1
+  * nano: Update to v6.0
+  * intel-media-driver: Update to intel-media-22.1.0
+  * bash: Update to bash-5.1
   * at-spi2-atk: Build without P2P support
 
 freedesktop-sdk-21.08.8:
   * Drop NSS and OpenSSL support from curl, fix host cert support
   * Migrate from Debian root CA's to Fedora root CA's
-  *   * Update Mesa to 21.3.3
-  *   * Update extra-cmake-modules to v5.89.0
-  *   * Update python3-setuptools to 60.2.0
-  *   * Update python3-virtualenv to 20.11.2
-  *   * Update python3-pygments to 2.11.1
-  *   * Update gtk3 to 3.24.31
-  *   * Update python3-zipp to 3.7.0
-  *   * Update glibc-source: Update to glibc-2.33-62-gc493f6a0e4dcd6fff22da0df9fb2e52ecf4ffff1
+  * Update Mesa to 21.3.3
+  * Update extra-cmake-modules to v5.89.0
+  * Update python3-setuptools to 60.2.0
+  * Update python3-virtualenv to 20.11.2
+  * Update python3-pygments to 2.11.1
+  * Update gtk3 to 3.24.31
+  * Update python3-zipp to 3.7.0
+  * Update glibc-source: Update to glibc-2.33-62-gc493f6a0e4dcd6fff22da0df9fb2e52ecf4ffff1
 
 freedesktop-sdk-21.08.7:
-  * Mesa:   * Update to 21.3.1
+  * Mesa: Update to 21.3.1
   * NSS: Downgrade to ESR branch 3.68 (version 3.68.1) for security updates
-  * intel-media-driver:   * Update to 21.4.3
-  * shaderc:   * Update to v2021.3
-  * gnupg:   * Update to 2.2.33
-  * ostree:   * Update to v2021.6
-  * python3-charset-normalizer:   * Update to 2.0.9
-  * libexif:   * Update to 0.6.24
-  * git:   * Update to v2.34.1
-  * glibc:   * Update to 2.33 (commit c76a0ba878cac9e3e8ec54abbad9db28a50a369a)
-  * python3-setuptools:   * Update to 59.5.0
-  * python3-sphinx:   * Update to 4.3.1
-  * python3-poetry:   * Update to 1.1.12
-  * wayland-protocols:   * Update to 1.24
-  * python3-schema   * Update to 0.7.5
-  * go:   * Update to 1.16.12
-  * strace:   * Update to v5.15
-  * cython:   * Update to 0.29.25
-  * glib-networking:   * Update to 2.68.3
-  * alsa-plugins:   * Update to v1.2.6
-  * cmake:   * Update to v3.22.1
-  * libical:   * Update to v3.0.12
-  * python3-distlib:   * Update to 0.3.4
+  * intel-media-driver: Update to 21.4.3
+  * shaderc: Update to v2021.3
+  * gnupg: Update to 2.2.33
+  * ostree: Update to v2021.6
+  * python3-charset-normalizer: Update to 2.0.9
+  * libexif: Update to 0.6.24
+  * git: Update to v2.34.1
+  * glibc: Update to 2.33 (commit c76a0ba878cac9e3e8ec54abbad9db28a50a369a)
+  * python3-setuptools: Update to 59.5.0
+  * python3-sphinx: Update to 4.3.1
+  * python3-poetry: Update to 1.1.12
+  * wayland-protocols: Update to 1.24
+  * python3-schema Update to 0.7.5
+  * go: Update to 1.16.12
+  * strace: Update to v5.15
+  * cython: Update to 0.29.25
+  * glib-networking: Update to 2.68.3
+  * alsa-plugins: Update to v1.2.6
+  * cmake: Update to v3.22.1
+  * libical: Update to v3.0.12
+  * python3-distlib: Update to 0.3.4
 
 freedesktop-sdk-21.08.6:
   * dbus: depends on libapparmor
-  * bash:   * Update to bash-5.1
-  * git:   * Update to v2.34.0
-  * po4a:   * Update to v0.65
-  * libcbor:   * Update to v0.9.0
-  * systemd:   * Update to v249.7
-  * gmmlib:   * Update to intel-gmmlib-21.3.3
-  * jpeg:   * Update to 2.1.2
-  * python3-setuptools:   * Update to 59.2.0
-  * cmake:   * Update to v3.22.0
-  * python3-mako:   * Update to 1.1.6
-  * python3-packaging:   * Update to 21.3
-  * python3-filelock:   * Update to 3.4.0
-  * python3-snowballstemmer:   * Update to 2.2.0
+  * bash: Update to bash-5.1
+  * git: Update to v2.34.0
+  * po4a: Update to v0.65
+  * libcbor: Update to v0.9.0
+  * systemd: Update to v249.7
+  * gmmlib: Update to intel-gmmlib-21.3.3
+  * jpeg: Update to 2.1.2
+  * python3-setuptools: Update to 59.2.0
+  * cmake: Update to v3.22.0
+  * python3-mako: Update to 1.1.6
+  * python3-packaging: Update to 21.3
+  * python3-filelock: Update to 3.4.0
+  * python3-snowballstemmer: Update to 2.2.0
   * Add gst-plugins-good patch to support libsoup3 (#1347)
-  * linux:   * Update to v5.14.18
+  * linux: Update to v5.14.18
 
 freedesktop-sdk-21.08.5:
   * platform-arch-libs.bst: Add mount point for VAAPI.Intel.i386
   * python3-setuptools-scm: avoid overlap with git
   * Backport fix for video playback crashes (#1521)
-  * ca-certificates:   * Update to debian/20211016
-  * python3-sphinx:   * Update to 4.3.0
-  * libtasn1:   * Update to v4.18.0
-  * python3-imagesize:   * Update to 1.3.0
-  * python3-importlib-metadata:   * Update to 4.8.2
+  * ca-certificates: Update to debian/20211016
+  * python3-sphinx: Update to 4.3.0
+  * libtasn1: Update to v4.18.0
+  * python3-imagesize: Update to 1.3.0
+  * python3-importlib-metadata: Update to 4.8.2
   * platform.bst: Add dbus-tools.bst (#1342)
-  * libseccomp:   * Update to v2.5.3
-  * python3:   * Update to v3.9.9
-  * python3-cachecontrol:   * Update to 0.12.10
-  * intel-media-driver:   * Update to intel-media-21.4.1
-  * iso-codes:   * Update to v4.8.0
-  * libgpg-error:   * Update to libgpg-error-1.43
-  * python3-lxml:   * Update to 4.6.4
-  * python3-cachecontrol:   * Update to 0.12.9
-  * gawk:   * Update to gawk-5.1.1
-  * mesa:   * Update to mesa-21.2.5
-  * cmake:   * Update to v3.21.4
-  * libfido2:   * Update to 1.9.0
-  * python3-pyparsing:   * Update to 3.0.1
-  * gmmlib:   * Update to intel-gmmlib-21.3.2
-  * meson:   * Update to 0.59.4
-  * python3-virtualenv:   * Update to 20.10.0
-  * lvm2-source:   * Update to v2_03_14
-  * python3-setuptools:   * Update to 58.5.3
-  * tzdata:   * Update to 2021e
-  * ffmpeg:   * Update to n4.3.3
-  * libselinux:   * Update to libselinux-3.3
-  * valgrind:   * Update to VALGRIND_3_18_1
-  * python3-importlib-resources:   * Update to 5.4.0
-  * python3-dbus:   * Update to 1.2.18
-  * flatpak:   * Update to 1.12.2
-  * python3-idna:   * Update to 3.3
-  * python3-poetry-core:   * Update to 1.0.7
-  * aom:   * Update to v3.2.0
-  * python3-pyyaml:   * Update to 6.0
-  * systemd:   * Update to v249.6
-  * git:   * Update to v2.33.1
-  * bluez:   * Update to 5.62
-  * python3-pytz:   * Update to 2021.3
-  * python3-pip:   * Update to 21.3.1
-  * glibc-source:   * Update to glibc-2.33 (6090cf1)
+  * libseccomp: Update to v2.5.3
+  * python3: Update to v3.9.9
+  * python3-cachecontrol: Update to 0.12.10
+  * intel-media-driver: Update to intel-media-21.4.1
+  * iso-codes: Update to v4.8.0
+  * libgpg-error: Update to libgpg-error-1.43
+  * python3-lxml: Update to 4.6.4
+  * python3-cachecontrol: Update to 0.12.9
+  * gawk: Update to gawk-5.1.1
+  * mesa: Update to mesa-21.2.5
+  * cmake: Update to v3.21.4
+  * libfido2: Update to 1.9.0
+  * python3-pyparsing: Update to 3.0.1
+  * gmmlib: Update to intel-gmmlib-21.3.2
+  * meson: Update to 0.59.4
+  * python3-virtualenv: Update to 20.10.0
+  * lvm2-source: Update to v2_03_14
+  * python3-setuptools: Update to 58.5.3
+  * tzdata: Update to 2021e
+  * ffmpeg: Update to n4.3.3
+  * libselinux: Update to libselinux-3.3
+  * valgrind: Update to VALGRIND_3_18_1
+  * python3-importlib-resources: Update to 5.4.0
+  * python3-dbus: Update to 1.2.18
+  * flatpak: Update to 1.12.2
+  * python3-idna: Update to 3.3
+  * python3-poetry-core: Update to 1.0.7
+  * aom: Update to v3.2.0
+  * python3-pyyaml: Update to 6.0
+  * systemd: Update to v249.6
+  * git: Update to v2.33.1
+  * bluez: Update to 5.62
+  * python3-pytz: Update to 2021.3
+  * python3-pip: Update to 21.3.1
+  * glibc-source: Update to glibc-2.33 (6090cf1)
   * Switch tcl to tarball
-  * libical:   * Update to v3.0.11
-  * python3-charset-normalizer:   * Update to 2.0.7
-  * xorg-data-xkeyboard-config:   * Update to xkeyboard-config-2.34
+  * libical: Update to v3.0.11
+  * python3-charset-normalizer: Update to 2.0.7
+  * xorg-data-xkeyboard-config: Update to xkeyboard-config-2.34
   * Add apparmor
-  * polkit:   * Update to 0.120
-  * extra-cmake-modules:   * Update to v5.88.0
-  * ostree:   * Update to v2021.5
-  * python3-certifi:   * Update to 2021.10.8
-  * ccache:   * Update to v4.5
-  * audit:   * Update to v3.0.6
-  * go:   * Update to go1.16.10
+  * polkit: Update to 0.120
+  * extra-cmake-modules: Update to v5.88.0
+  * ostree: Update to v2021.5
+  * python3-certifi: Update to 2021.10.8
+  * ccache: Update to v4.5
+  * audit: Update to v3.0.6
+  * go: Update to go1.16.10
   * linux: Add kernel configuration required to run snapd and snapcraft
-  * rust:   * Update to 1.55.0
-  * python3-jinja2:   * Update to 3.0.3
-  * nano:   * Update to v5.9
-  * python3-zipp:   * Update to 3.6.0
+  * rust: Update to 1.55.0
+  * python3-jinja2: Update to 3.0.3
+  * nano: Update to v5.9
+  * python3-zipp: Update to 3.6.0
   * Add xfsprogs
-  * python3-poetry:   * Update to 1.1.11
-  * gnupg-source:   * Update to gnupg-2.2.32
+  * python3-poetry: Update to 1.1.11
+  * gnupg-source: Update to gnupg-2.2.32
   * Use podman to publish manifests
-  * python3-filelock:   * Update to 3.3.2
-  * python3-toposort:   * Update to 1.7
-  * libcap:   * Update to libcap-2.59
-  * openssh:   * Update to V_8_8_P1
-  * libsrtp2:   * Update to v2
-  * linux:   * Update to v5.15
-  * itstool:   * Update to 2.0.7
+  * python3-filelock: Update to 3.3.2
+  * python3-toposort: Update to 1.7
+  * libcap: Update to libcap-2.59
+  * openssh: Update to V_8_8_P1
+  * libsrtp2: Update to v2
+  * linux: Update to v5.15
+  * itstool: Update to 2.0.7
 
 freedesktop-sdk-21.08.4:
-  * hotdoc:   * Update to 0.13.7
-  * python3-urllib3:   * Update to 1.26.7
-  * tzdata:   * Update to 2021b
-  * python3-distlib:   * Update to 0.3.3
-  * po4a:   * Update to v0.64
-  * libcap:   * Update to libcap-2.58
-  * curl:   * Update to curl-7_79_1
-  * vala:   * Update to 0.54.1
-  * linux:   * Update to v5.14.7
-  * cmake:   * Update to v3.21.3
-  * mesa:   * Update to mesa-21.2.2
-  * gmmlib:   * Update to intel-gmmlib-21.3.1
-  * gstreamer-libav:   * Update to 1.18.5
-  * glibc:   * Update to glibc-2.33 (d27d1e4)
-  * gobject-introspection:   * Update to 1.70.0
-  * vala:   * Update to 0.54.0
-  * pygobject:   * Update to 3.42.0
-  * gsettings-desktop-schemas:   * Update to 41.0
-  * gnupg:   * Update to gnupg-2.2.31
-  * xorg-proto-xorgproto:   * Update to xorgproto-2021.5
+  * hotdoc: Update to 0.13.7
+  * python3-urllib3: Update to 1.26.7
+  * tzdata: Update to 2021b
+  * python3-distlib: Update to 0.3.3
+  * po4a: Update to v0.64
+  * libcap: Update to libcap-2.58
+  * curl: Update to curl-7_79_1
+  * vala: Update to 0.54.1
+  * linux: Update to v5.14.7
+  * cmake: Update to v3.21.3
+  * mesa: Update to mesa-21.2.2
+  * gmmlib: Update to intel-gmmlib-21.3.1
+  * gstreamer-libav: Update to 1.18.5
+  * glibc: Update to glibc-2.33 (d27d1e4)
+  * gobject-introspection: Update to 1.70.0
+  * vala: Update to 0.54.0
+  * pygobject: Update to 3.42.0
+  * gsettings-desktop-schemas: Update to 41.0
+  * gnupg: Update to gnupg-2.2.31
+  * xorg-proto-xorgproto: Update to xorgproto-2021.5
 
 freedesktop-sdk-21.08.3:
-  * harfbuzz:   * Update to 3.0.0 [Forward ABI break]
-  * xdg-desktop-portal-base:   * Update to 1.10.0
-  * python3-poetry:   * Update to 1.1.9
-  * at-spi2-core:   * Update to AT_SPI2_CORE_2_42_0
-  * pipewire:   * Update to 0.3.36 [Forward ABI break]
+  * harfbuzz: Update to 3.0.0 [Forward ABI break]
+  * xdg-desktop-portal-base: Update to 1.10.0
+  * python3-poetry: Update to 1.1.9
+  * at-spi2-core: Update to AT_SPI2_CORE_2_42_0
+  * pipewire: Update to 0.3.36 [Forward ABI break]
   * oci_builder: Fix deleting of files in layers (#1323)
-  * python3-charset-normalizer:   * Update to 2.0.6
-  * curl:   * Update to curl-7_79_0
-  * wayland-protocols:   * Update to 1.23
-  * python3-virtualenv:   * Update to 20.8.0
-  * python3-sphinx:   * Update to 4.2.0
-  * libexif:   * Update to libexif-0_6_23-release
-  * ccache:   * Update to v4.4.1
-  * extra-cmake-modules:   * Update to v5.86.0
-  * linux:   * Update to v5.14.4
-  * Vulkan SDK:   * Update to 1.2.189
-  * pango:   * Update to 1.48.10
-  * libxkbcommon:   * Update to xkbcommon-1.3.1
-  * gstreamer:   * Update to 1.18.5
-  * ostree:   * Update to v2021.4
-  * go:   * Update to go1.16.8
-  * libcap:   * Update to libcap-2.57
-  * gstreamer-plugins-base:   * Update to 1.18.5
-  * gstreamer-plugins-ugly:   * Update to 1.18.5
-  * gstreamer-plugins-bad:   * Update to 1.18.5
-  * gstreamer-vaapi:   * Update to 1.18.5
-  * gstreamer-plugins-good:   * Update to 1.18.5
-  * python3-setuptools:   * Update to 58.0.4
+  * python3-charset-normalizer: Update to 2.0.6
+  * curl: Update to curl-7_79_0
+  * wayland-protocols: Update to 1.23
+  * python3-virtualenv: Update to 20.8.0
+  * python3-sphinx: Update to 4.2.0
+  * libexif: Update to libexif-0_6_23-release
+  * ccache: Update to v4.4.1
+  * extra-cmake-modules: Update to v5.86.0
+  * linux: Update to v5.14.4
+  * Vulkan SDK: Update to 1.2.189
+  * pango: Update to 1.48.10
+  * libxkbcommon: Update to xkbcommon-1.3.1
+  * gstreamer: Update to 1.18.5
+  * ostree: Update to v2021.4
+  * go: Update to go1.16.8
+  * libcap: Update to libcap-2.57
+  * gstreamer-plugins-base: Update to 1.18.5
+  * gstreamer-plugins-ugly: Update to 1.18.5
+  * gstreamer-plugins-bad: Update to 1.18.5
+  * gstreamer-vaapi: Update to 1.18.5
+  * gstreamer-plugins-good: Update to 1.18.5
+  * python3-setuptools: Update to 58.0.4
 
 freedesktop-sdk-21.08.2:
   * Fix job to publish fdsdk container images
   * libcap: Make utils link to shared libcap
-  * python3-setuptools:   * Update to 58.0.2
-  * libcap:   * Update to libcap-2.56
-  * python3-setuptools:   * Update to 58.0.0
+  * python3-setuptools: Update to 58.0.2
+  * libcap: Update to libcap-2.56
+  * python3-setuptools: Update to 58.0.0
 
 freedesktop-sdk-21.08.1:
   * libffi: Use autoconf 2.69 (#1315)
-  * dav1d:   * Update to 0.9.2
-  * intel-media-driver:   * Update to intel-media-21.3.3
-  * strace:   * Update to v5.14
-  * glibc:   * Update to 2.33 (9c676ef)
-  * geoclue:   * Update to 2.5.7
-  * libseccomp:   * Update to v2.5.2
-  * wayland-protocols:   * Update to 1.22
-  * gyp:   * Update to d6c5dd5
+  * dav1d: Update to 0.9.2
+  * intel-media-driver: Update to intel-media-21.3.3
+  * strace: Update to v5.14
+  * glibc: Update to 2.33 (9c676ef)
+  * geoclue: Update to 2.5.7
+  * libseccomp: Update to v2.5.2
+  * wayland-protocols: Update to 1.22
+  * gyp: Update to d6c5dd5
 
 freedesktop-sdk-21.08.0:
   * Change references to final 21.08
 
 freedesktop-sdk-21.08rc.4:
-  * python:   * Update to 3.9.7
+  * python: Update to 3.9.7
   * autoconf: Add back version 2.69
-  * alsa-lib:   * Update to 1.2.5.1
-  * glslang:   * Update to 11.6.0 [ABI break]
-  * spirv-tools:   * Update to v2021.3
-  * util-linux:   * Update to v2.37.2
-  * systemd:   * Update to v249.4
-  * python3-importlib-metadata:   * Update to 4.8.1
-  * man-pages:   * Update to man-pages-5.13
+  * alsa-lib: Update to 1.2.5.1
+  * glslang: Update to 11.6.0 [ABI break]
+  * spirv-tools: Update to v2021.3
+  * util-linux: Update to v2.37.2
+  * systemd: Update to v249.4
+  * python3-importlib-metadata: Update to 4.8.1
+  * man-pages: Update to man-pages-5.13
   * Tell pip to just build in tree
-  * libcap:   * Update to libcap-2.54 [Forward ABI break]
-  * cmake:   * Update to v3.21.2 [ABI break]
-  * gmmlib:   * Update to intel-gmmlib-21.2.2
-  * hotdoc:   * Update to 0.13.5
+  * libcap: Update to libcap-2.54 [Forward ABI break]
+  * cmake: Update to v3.21.2 [ABI break]
+  * gmmlib: Update to intel-gmmlib-21.2.2
+  * hotdoc: Update to 0.13.5
   * ffmpeg: Enable ASF and MP4 muxers/demuxers
-  * pango:   * Update to 1.48.9
-  * python3-importlib-metadata:   * Update to 4.7.1
-  * iso-codes:   * Update to iso-codes-4.7.0
-  * gnupg-source:   * Update to gnupg-2.2.30
-  * json-glib:   * Update to 1.6.6
-  * pipewire-base:   * Update to 0.3.34 [Forward ABI break]
-  * gobject-introspection:   * Update to 1.69.0 [Forward ABI break]
-  * shaderc:   * Update to v2021.2
-  * gnu-efi:   * Update to 3.0.14
+  * pango: Update to 1.48.9
+  * python3-importlib-metadata: Update to 4.7.1
+  * iso-codes: Update to iso-codes-4.7.0
+  * gnupg-source: Update to gnupg-2.2.30
+  * json-glib: Update to 1.6.6
+  * pipewire-base: Update to 0.3.34 [Forward ABI break]
+  * gobject-introspection: Update to 1.69.0 [Forward ABI break]
+  * shaderc: Update to v2021.2
+  * gnu-efi: Update to 3.0.14
 
 freedesktop-sdk-21.08rc.3:
-  * gcc:   * Update to 11.2.0
-  * libarchive:   * Update to v3.5.2
-  * libcap:   * Update to libcap-2.53
-  * python3-pip:   * Update to 21.2.4
-  * libglvnd:   * Update to v1.3.4
-  * openssl:   * Update to OpenSSL_1_1_1l
-  * doxygen:   * Update to Release_1_9_2
-  * glib:   * Update to 2.68.4
-  * harfbuzz:   * Update to 2.9.0
-  * gnu-config:   * Update to 191bcb9
-  * intel-media-driver:   * Update to intel-media-21.3.2
-  * libva:   * Update to 2.12.0 [ABI break]
+  * gcc: Update to 11.2.0
+  * libarchive: Update to v3.5.2
+  * libcap: Update to libcap-2.53
+  * python3-pip: Update to 21.2.4
+  * libglvnd: Update to v1.3.4
+  * openssl: Update to OpenSSL_1_1_1l
+  * doxygen: Update to Release_1_9_2
+  * glib: Update to 2.68.4
+  * harfbuzz: Update to 2.9.0
+  * gnu-config: Update to 191bcb9
+  * intel-media-driver: Update to intel-media-21.3.2
+  * libva: Update to 2.12.0 [ABI break]
   * Replace deprecated pytoml for python-toml [ABI break]
-  * NSS:   * Update to 3.69 [ABI break]
-  * e2fsprogs:   * Update to v1.46.4 [ABI break]
-  * vala:   * Update to0.48.19
-  * python3-mako:   * Update to 1.1.5
-  * python3-pygments:   * Update to 2.10.0
-  * libepoxy:   * Update to 1.5.9
-  * bluez:   * Update to 5.61
-  * mesa:   * Update to mesa-21.2.1
-  * python3-poetry:   * Update to 1.1.8
-  * ccache:   * Update to v4.4
-  * python3-importlib-metadata:   * Update to 4.6.4
-  * json-glib:   * Update to 1.6.4
-  * python3-poetry-core:   * Update to 1.0.4
+  * NSS: Update to 3.69 [ABI break]
+  * e2fsprogs: Update to v1.46.4 [ABI break]
+  * vala: Update to0.48.19
+  * python3-mako: Update to 1.1.5
+  * python3-pygments: Update to 2.10.0
+  * libepoxy: Update to 1.5.9
+  * bluez: Update to 5.61
+  * mesa: Update to mesa-21.2.1
+  * python3-poetry: Update to 1.1.8
+  * ccache: Update to v4.4
+  * python3-importlib-metadata: Update to 4.6.4
+  * json-glib: Update to 1.6.4
+  * python3-poetry-core: Update to 1.0.4
   * Use flatpak-builder 1.1.0 with dwarf5 support
-  * cryptsetup-base:   * Update to v2.4.0
-  * meson:   * Update to 0.59.1
-  * openssh:   * Update to V_8_7_P1
+  * cryptsetup-base: Update to v2.4.0
+  * meson: Update to 0.59.1
+  * openssh: Update to V_8_7_P1
   * linux: Re-enable I2C_HID
-  * glibc:   * Update to 2.33 (c6cadbf)
-  * git:   * Update to v2.33.0
-  * opencl:   * Update to v2.3.1
+  * glibc: Update to 2.33 (c6cadbf)
+  * git: Update to v2.33.0
+  * opencl: Update to v2.3.1
 
 freedesktop-sdk-21.08rc.2:
-  * libwebp:   * Update to v1.2.1
-  * extra-cmake-modules:   * Update to v5.85.0
-  * grep.bst:   * Update to 3.7
-  * eos-metrics.bst:   * Update to Release_3.9.5
-  * yelp-xsl.bst:   * Update to 40.2
-  * yelp-tools.bst:   * Update to 40.0
-  * libsrtp2:   * Update to v2.4.0 [ABI break]
-  * debugedit:   * Update to 5.0
-  * tcl:   * Update to core-8-6-10
-  * python3-wheel:   * Update to 0.37.0
-  * jpeg:   * Update to 2.1.1
-  * lvm2-source:   * Update to v2_03_13
-  * audit:   * Update to v3.0.5
-  * python3-virtualenv:   * Update to 20.7.2
-  * linux:   * Update to v5.13.9
+  * libwebp: Update to v1.2.1
+  * extra-cmake-modules: Update to v5.85.0
+  * grep.bst: Update to 3.7
+  * eos-metrics.bst: Update to Release_3.9.5
+  * yelp-xsl.bst: Update to 40.2
+  * yelp-tools.bst: Update to 40.0
+  * libsrtp2: Update to v2.4.0 [ABI break]
+  * debugedit: Update to 5.0
+  * tcl: Update to core-8-6-10
+  * python3-wheel: Update to 0.37.0
+  * jpeg: Update to 2.1.1
+  * lvm2-source: Update to v2_03_13
+  * audit: Update to v3.0.5
+  * python3-virtualenv: Update to 20.7.2
+  * linux: Update to v5.13.9
 
 freedesktop-sdk-21.08rc.1:
   * mesa: enable crocus, avahi gallium drivers and panfrost vulkan driver
-  * sdl2:   * Update to 2.0.16
+  * sdl2: Update to 2.0.16
   * Fix the build of fwupd on riscv (#1294)
-  * mesa:   * Update to 21.2
-  * mtools.bst:   * Update to 4.0.35
-  * json-glib.bst:   * Update to 1.6.2
-  * pygobject.bst:   * Update to 3.40.1
-  * gobject-introspection.bst:   * Update to 1.68.0
-  * glib-networking.bst:   * Update to 2.68.2
-  * glib.bst:   * Update to 2.68.3
+  * mesa: Update to 21.2
+  * mtools.bst: Update to 4.0.35
+  * json-glib.bst: Update to 1.6.2
+  * pygobject.bst: Update to 3.40.1
+  * gobject-introspection.bst: Update to 1.68.0
+  * glib-networking.bst: Update to 2.68.2
+  * glib.bst: Update to 2.68.3
 
 freedesktop-sdk-21.08beta.6:
-  * freetype:   * Update to VER-2-11-0
-  * automake:   * Update to 1.16.4
-  * python3-pip:   * Update to 21.2.3
-  * fwupd:   * Update to 1.6.2
-  * libgusb:   * Update to 0.3.7
-  * pipewire:   * Update to 0.3.33
-  * systemd:   * Update to v249.3
+  * freetype: Update to VER-2-11-0
+  * automake: Update to 1.16.4
+  * python3-pip: Update to 21.2.3
+  * fwupd: Update to 1.6.2
+  * libgusb: Update to 0.3.7
+  * pipewire: Update to 0.3.33
+  * systemd: Update to v249.3
   * e2fsprogs: Fix creating a filesystem image (#1291)
-  * intel-media-driver:   * Update to intel-media-21.3.1
+  * intel-media-driver: Update to intel-media-21.3.1
   * mtools: Pin to 4.0.27
-  * go:   * Update to go1.16.7
-  * linux:   * Update to v5.13.8
+  * go: Update to go1.16.7
+  * linux: Update to v5.13.8
 
 freedesktop-sdk-21.08beta.5:
-  * elements/components/dosfstools.bst:   * Update to 4.2
+  * elements/components/dosfstools.bst: Update to 4.2
   * gst-plugins-base.bst: Add patch to fix a gl/wayland assertion (#1288)
   * Revert changes in files/oci/oci_builder/* scripts (#1289)
 
 freedesktop-sdk-21.08beta.4:
-  * mtools:   * Update to 4.0.34
+  * mtools: Update to 4.0.34
   * Do not use "--dwarf-5" in our stripper (#1284)
-  * libcap:   * Update to libcap-2.52
-  * python3-virtualenv:   * Update to 20.7.0
-  * xorg-lib-xft:   * Update to libXft-2.3.4
-  * python3-importlib-resources:   * Update to 5.2.2
-  * python3-pip:   * Update to 21.2.2
+  * libcap: Update to libcap-2.52
+  * python3-virtualenv: Update to 20.7.0
+  * xorg-lib-xft: Update to libXft-2.3.4
+  * python3-importlib-resources: Update to 5.2.2
+  * python3-pip: Update to 21.2.2
   * Add libglslang to the platform (#1281)
-  * python3-importlib-metadata:   * Update to 4.6.3
-  * python3-charset-normalizer:   * Update to 2.0.4
-  * e2fsprogs:   * Update to v1.46.3
-  * mesa:   * Update to mesa-21.1.6
-  * python3-importlib-metadata:   * Update to 4.6.2
+  * python3-importlib-metadata: Update to 4.6.3
+  * python3-charset-normalizer: Update to 2.0.4
+  * e2fsprogs: Update to v1.46.3
+  * mesa: Update to mesa-21.1.6
+  * python3-importlib-metadata: Update to 4.6.2
   * Fonts: Include TeX Gyre fonts
-  * liberation-fonts:   * Update to 2.1.4
-  * dav1d:   * Update to 0.9.1
-  * pulseaudio:   * Update to v15.0
-  * python3-importlib-resources:   * Update to 5.2.1
-  * linux:   * Update to v5.13.7
+  * liberation-fonts: Update to 2.1.4
+  * dav1d: Update to 0.9.1
+  * pulseaudio: Update to v15.0
+  * python3-importlib-resources: Update to 5.2.1
+  * linux: Update to v5.13.7
 
 freedesktop-sdk-21.08beta.3:
-  * weston:   * Update to 9.0.0
-  * python3-sphinx:   * Update to 4.1.2
+  * weston: Update to 9.0.0
+  * python3-sphinx: Update to 4.1.2
   * meson: Build position-independent executables (PIE)
-  * podman:   * Update to 3.2.3
-  * crun:   * Update to 0.20.1
-  * slirp4netns:   * Update to 1.1.11
-  * libslirp:   * Update to 4.6.1
-  * libnftnl:   * Update to 1.2.0
-  * iptables:   * Update to 1.8.7
-  * fuse-overlayfs:   * Update to 1.6.0
-  * fuse3:   * Update to 3.10.4
-  * conmon:   * Update to 2.0.29
-  * autoconf:   * Update to 2.71
+  * podman: Update to 3.2.3
+  * crun: Update to 0.20.1
+  * slirp4netns: Update to 1.1.11
+  * libslirp: Update to 4.6.1
+  * libnftnl: Update to 1.2.0
+  * iptables: Update to 1.8.7
+  * fuse-overlayfs: Update to 1.6.0
+  * fuse3: Update to 3.10.4
+  * conmon: Update to 2.0.29
+  * autoconf: Update to 2.71
   * bootstrap/include/build.yml: set prefix and lib variables
-  * extensions/mesa/libdrm:   * Update to libdrm-2.4.107
-  * pkg-config:   * Update to pkgconf-1.8.0
-  * python3-xdg:   * Update to 5.1.1
-  * ostree:   * Update to v2021.3
-  * libinput:   * Update to 1.18.0
-  * intel-media-driver:   * Update to intel-media-21.3.0
-  * rust:   * Update to 1.53.0
+  * extensions/mesa/libdrm: Update to libdrm-2.4.107
+  * pkg-config: Update to pkgconf-1.8.0
+  * python3-xdg: Update to 5.1.1
+  * ostree: Update to v2021.3
+  * libinput: Update to 1.18.0
+  * intel-media-driver: Update to intel-media-21.3.0
+  * rust: Update to 1.53.0
   * Replace emoji-one with openmoji 
-  * aom:   * Update to v3.1.2
-  * libfido2:   * Update to 1.8.0
-  * python3-idna:   * Update to 3.2
-  * curl:   * Update to curl-7_78_0
-  * sudo:   * Update to 1.9.7p1
-  * nspr:   * Update to 4.32
-  * libtirpc:   * Update to 1.3.2
-  * ibus:   * Update to 1.5.24
-  * fftw:   * Update to 3.3.9
-  * systemd:   * Update to v249.2
-  * pipewire-base:   * Update to 0.3.32
-  * binutils:   * Update to 2.37
+  * aom: Update to v3.1.2
+  * libfido2: Update to 1.8.0
+  * python3-idna: Update to 3.2
+  * curl: Update to curl-7_78_0
+  * sudo: Update to 1.9.7p1
+  * nspr: Update to 4.32
+  * libtirpc: Update to 1.3.2
+  * ibus: Update to 1.5.24
+  * fftw: Update to 3.3.9
+  * systemd: Update to v249.2
+  * pipewire-base: Update to 0.3.32
+  * binutils: Update to 2.37
   * coreutils: Make ls -Z work: move selinux to bootstrap
-  * libnghttp2:   * Update to v1.44.0
-  * linux:   * Update to v5.13.3
-  * strace:   * Update to v5.13
-  * python3-setuptools:   * Update to 57.4.0
+  * libnghttp2: Update to v1.44.0
+  * linux: Update to v5.13.3
+  * strace: Update to v5.13
+  * python3-setuptools: Update to 57.4.0
 
 freedesktop-sdk-21.08beta.2:
   * remove llvm from the flatpak runtimes (#1215)
-  * python3-requests:   * Update to 2.26.0
-  * audit:   * Update to v3.0.3
-  * cython:   * Update to 0.29.24
-  * python3-setuptools:   * Update to 57.2.0
+  * python3-requests: Update to 2.26.0
+  * audit: Update to v3.0.3
+  * cython: Update to 0.29.24
+  * python3-setuptools: Update to 57.2.0
   * Add zstd to platform.
   * linux: Add support for UDF filesystem
-  * texinfo:   * Update to 6.8
-  * tar:   * Update to 1.34
-  * gnutls:   * Update to 3.7.2
-  * wget:   * Update to 1.21
-  * parted:   * Update to 3.4
-  * mtools:   * Update to 4.0.32
-  * m4:   * Update to 1.4.19
-  * libidn2:   * Update to 2.3.1
-  * less:   * Update to 581.2
-  * help2man:   * Update to 1.48.3
-  * gettext:   * Update to 0.21
-  * gdbm:   * Update to 1.20
-  * ed:   * Update to 1.17
-  * bison:   * Update to 3.7.6
-  * mesa:   * Update to to mesa-21.1.5
-  * python3-virtualenv:   * Update to 20.6.0
-  * python3-sphinx:   * Update to 4.1.1
-  * mozjs:   * Update to 78.12.0esr
-  * isl:   * Update to 0.24
-  * findutils:   * Update to 4.8.0
-  * pcre:   * Update to 8.45
-  * elfutils:   * Update to 0.185
-  * systemd:   * Update to v249
-  * go:   * Update to go1.16.6
-  * linux:   * Update to v5.13.1
+  * texinfo: Update to 6.8
+  * tar: Update to 1.34
+  * gnutls: Update to 3.7.2
+  * wget: Update to 1.21
+  * parted: Update to 3.4
+  * mtools: Update to 4.0.32
+  * m4: Update to 1.4.19
+  * libidn2: Update to 2.3.1
+  * less: Update to 581.2
+  * help2man: Update to 1.48.3
+  * gettext: Update to 0.21
+  * gdbm: Update to 1.20
+  * ed: Update to 1.17
+  * bison: Update to 3.7.6
+  * mesa: Update to to mesa-21.1.5
+  * python3-virtualenv: Update to 20.6.0
+  * python3-sphinx: Update to 4.1.1
+  * mozjs: Update to 78.12.0esr
+  * isl: Update to 0.24
+  * findutils: Update to 4.8.0
+  * pcre: Update to 8.45
+  * elfutils: Update to 0.185
+  * systemd: Update to v249
+  * go: Update to go1.16.6
+  * linux: Update to v5.13.1
 
 freedesktop-sdk-21.08beta.1:
 
   * Support for a new architecture: RISC-V
-  *   * Update all the components to the latest version available, check specific versions at
+  * Update all the components to the latest version available, check specific versions at
     https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Release-Contents#contents
   * Improve reproducibility tests and fix several components to be reproducible; reproducible
     tests are run in a daily schedule
@@ -727,7 +760,7 @@ freedesktop-sdk-20.08.0:
 
 freedesktop-sdk-20.08rc.2:
 
-   * pipewire:   * Update to 0.3.10 (ABI break: new symbol)
+   * pipewire: Update to 0.3.10 (ABI break: new symbol)
    * Add mini debuginfo in binaries (#767)
    * Fix some repoducibility issue with some debuginfo files
    * docbook-xsl: Switch to version without namespaces. Fixes some man pages
@@ -738,143 +771,143 @@ freedesktop-sdk-20.08rc.2:
 freedesktop-sdk-20.08rc.1:
 
    * mozjs: Apply patch to allow gjs to build against
-   * binutils:   * Update to 2.35.0
+   * binutils: Update to 2.35.0
    * ncurses: Remove debuginfo (#1083)
-   * xorg-lib-x11:   * Update to 1.6.11
-   * strace:   * Update to 5.8
-   * perf, linux-headers:   * Update to 5.7.14
-   * extra-cmake-modules:   * Update to 5.73.0
-   * pango:   * Update to 1.45.5
-   * mpfr:   * Update to 4.1.0
-   * python3-setuptools:   * Update to 49.3.0
-   * vulkan:   * Update to 1.2.148
+   * xorg-lib-x11: Update to 1.6.11
+   * strace: Update to 5.8
+   * perf, linux-headers: Update to 5.7.14
+   * extra-cmake-modules: Update to 5.73.0
+   * pango: Update to 1.45.5
+   * mpfr: Update to 4.1.0
+   * python3-setuptools: Update to 49.3.0
+   * vulkan: Update to 1.2.148
 
 freedesktop-sdk-20.08beta.6:
 
    * ffmpeg-full: Fix name of the extension
-   * perf, linux-headers:   * Update to 5.7.13
-   * libcap:   * Update to 2.42
-   * python3-pip:   * Update to 20.2.1
-   * mesa:   * Update to 20.1.5
-   * glibc:   * Update to 2.31-54
-   * pango:   * Update to 1.45.4
+   * perf, linux-headers: Update to 5.7.13
+   * libcap: Update to 2.42
+   * python3-pip: Update to 20.2.1
+   * mesa: Update to 20.1.5
+   * glibc: Update to 2.31-54
+   * pango: Update to 1.45.4
    * meson: Downgrade back to 0.54.3
-   * python3-setuptools:   * Update to 49.2.1
-   * nano:   * Update to 5.0
+   * python3-setuptools: Update to 49.2.1
+   * nano: Update to 5.0
    * gettext: Distribute non development binaries in Platform
-   * fcitx:   * Update to 4.2.9.8
-   * cmake:   * Update to 3.18.1
-   * xorg-lib-x11:   * Update to 1.6.10
-   * pipewire:   * Update to 0.3.9
-   * vala:   * Update to 0.48.8
-   * libevdev:   * Update to 1.9.1
+   * fcitx: Update to 4.2.9.8
+   * cmake: Update to 3.18.1
+   * xorg-lib-x11: Update to 1.6.10
+   * pipewire: Update to 0.3.9
+   * vala: Update to 0.48.8
+   * libevdev: Update to 1.9.1
    * Remove mesa-git extension
    * ibus: Remove useless files
-   * gdb:   * Update to 9.2
-   * vim:   * Update to 8.2.1359
-   * systemd:   * Update to 246
-   * git:   * Update to 2.28.0
+   * gdb: Update to 9.2
+   * vim: Update to 8.2.1359
+   * systemd: Update to 246
+   * git: Update to 2.28.0
 
 freedesktop-sdk-20.08beta.5:
 
    * ffmpeg-full: Enable WAV/xWMA demuxers, more codecs
    * ffmpeg: Enable webcam support, add more free codecs, additional hwaccels
    * Add v4l-utils
-   * harfbuz:   * Update to 2.7.0
-   * gcc:   * Update to 10.2.0
-   * mesa:   * Update to 20.1.4
-   * libcap:   * Update to 2.40
-   * pipewire:   * Update to 0.3.7
+   * harfbuz: Update to 2.7.0
+   * gcc: Update to 10.2.0
+   * mesa: Update to 20.1.4
+   * libcap: Update to 2.40
+   * pipewire: Update to 0.3.7
 
 freedesktop-sdk-20.08beta.4:
 
-    * spirv-headers:   * Update to 1.5.3-18
-    * spirv-tools:   * Update to v2020.4
-    * gnupg:   * Update to 2.2.21
-    * mesa:   * Update to 20.1.4
-    * ccache:   * Update to 3.7.11
-    * asciidoc:   * Update to 9.0.2
+    * spirv-headers: Update to 1.5.3-18
+    * spirv-tools: Update to v2020.4
+    * gnupg: Update to 2.2.21
+    * mesa: Update to 20.1.4
+    * ccache: Update to 3.7.11
+    * asciidoc: Update to 9.0.2
     * llvm: Add lld
-    * bash:   * Update to 5.0-18
-    * glibc:   * Update to 2.31-49
-    * meson:   * Update to 0.55.0
-    * python3:   * Update to v3.8.5
-    * libpsl.bst:   * Update to 0.21.1
-    * libvorbis:   * Update to v1.3.7
-    * gpgme:   * Update to 1.14.0
-    * python3-setuptools:   * Update to v49.2.0
-    * libsepol:   * Update to 3.1
+    * bash: Update to 5.0-18
+    * glibc: Update to 2.31-49
+    * meson: Update to 0.55.0
+    * python3: Update to v3.8.5
+    * libpsl.bst: Update to 0.21.1
+    * libvorbis: Update to v1.3.7
+    * gpgme: Update to 1.14.0
+    * python3-setuptools: Update to v49.2.0
+    * libsepol: Update to 3.1
     * libseccomp: to 2.4.3
-    * dbus:   * Update to 1.12.20
-    * cmake:   * Update to 3.18.0
-    * libgcrypt:   * Update to 1.8.6
+    * dbus: Update to 1.12.20
+    * cmake: Update to 3.18.0
+    * libgcrypt: Update to 1.8.6
     * ffmpeg: Enable vulkan
-    * man-pages:   * Update to 5.05
-    * rust:   * Update to 1.44.1
+    * man-pages: Update to 5.05
+    * rust: Update to 1.44.1
     * openssh: Apply patch for CVE-2020-12062
     * cyrus-sasl: Apply patch for CVE-2019-19906
     * libxml2: Apply patches for CVE-2019-20388, CVE-2019-7595
-    * extra-cmake-modules:   * Update to v5.72.0
-    * librsvg:   * Update to 2.48.8
+    * extra-cmake-modules: Update to v5.72.0
+    * librsvg: Update to 2.48.8
     * gst-plugins-bad: Enable SRTP
     * Add libsrtp2
-    * ffmpeg:   * Update to 4.3.1
-    * aom:   * Update to 2.0.0
+    * ffmpeg: Update to 4.3.1
+    * aom: Update to 2.0.0
     * Add perf to SDK
-    * alsa-lib:   * Update to 1.2.3.2
-    * libselinux:   * Update to 3.1
-    * python3-pygments:   * Update to 2.6.1
+    * alsa-lib: Update to 1.2.3.2
+    * libselinux: Update to 3.1
+    * python3-pygments: Update to 2.6.1
     * ffmpeg-full: Remove openh264
-    * pcre2:   * Update to 10.35
+    * pcre2: Update to 10.35
 
 freedesktop-sdk-20.08beta.3:
 
-    * xorg-proto-xorgproto:   * Update to 2020.1
+    * xorg-proto-xorgproto: Update to 2020.1
     * dbus: Remove some binaries useless for Flatpak
-    * perl:   * Update to 5.32.0
-    * glib-networking:   * Update to 2.62.4
-    * wavpack:   * Update to 5.3.0
-    * mesa:   * Update to 20.1.3
-    * ed:   * Update to 1.16
+    * perl: Update to 5.32.0
+    * glib-networking: Update to 2.62.4
+    * wavpack: Update to 5.3.0
+    * mesa: Update to 20.1.3
+    * ed: Update to 1.16
     * mesa: Do not prefer iris drivers on older hardware (#1071)
-    * cpio:   * Update to 2.13
-    * texinfo:   * Update to 6.7
-    * libcap:   * Update to 2.38
-    * extra-cmake-modules:   * Update to 5.71.0
-    * liberation-fonts:   * Update to 2.1.1
-    * gmp:   * Update to 6.2.0
-    * nasm:   * Update to 2.15.01
-    * libidn2:   * Update to 2.3.0
+    * cpio: Update to 2.13
+    * texinfo: Update to 6.7
+    * libcap: Update to 2.38
+    * extra-cmake-modules: Update to 5.71.0
+    * liberation-fonts: Update to 2.1.1
+    * gmp: Update to 6.2.0
+    * nasm: Update to 2.15.01
+    * libidn2: Update to 2.3.0
 
 freedesktop-sdk-20.08beta.2:
 
-    * ruby:   * Update to 2.7.1
-    * sed:   * Update to 4.8
-    * popt:   * Update to 1.18
-    * nspr:   * Update to 4.26
-    * fribidi:   * Update to 1.0.9
-    * gnu-config:   * Update to 5e531d3
+    * ruby: Update to 2.7.1
+    * sed: Update to 4.8
+    * popt: Update to 1.18
+    * nspr: Update to 4.26
+    * fribidi: Update to 1.0.9
+    * gnu-config: Update to 5e531d3
     * nss: Re-enable libpkix
-    * glew (glxinfo extension):   * Update to 2.2.0
-    * man-db:   * Update to 2.9.3
+    * glew (glxinfo extension): Update to 2.2.0
+    * man-db: Update to 2.9.3
     * Add doxygen
-    * elfutils:   * Update to 0.179
-    * curl.bst:   * Update to 7.71.1
+    * elfutils: Update to 0.179
+    * curl.bst: Update to 7.71.1
     * ca-certificates.bst: Revert to 20190110.
-    * ibus:   * Update to 1.5.22
-    * automake:   * Update to 1.16.2
-    * bison:   * Update to 3.6.4
-    * gnutls:   * Update to 3.6.14
-    * vala:   * Update to 0.48.7
-    * python3-pip:   * Update to 20.1.1
-    * desktop-file-utils:   * Update to 0.26
+    * ibus: Update to 1.5.22
+    * automake: Update to 1.16.2
+    * bison: Update to 3.6.4
+    * gnutls: Update to 3.6.14
+    * vala: Update to 0.48.7
+    * python3-pip: Update to 20.1.1
+    * desktop-file-utils: Update to 0.26
     * Remove libva-vdpau-driver
     * meson: Updaqte to 0.54.3
-    * mesa:   * Update to 20.1.2
-    * python3-setuptools:   * Update to 47.3.1
-    * kernel headers:   * Update to 5.7.7
-    * gtk3:   * Update to 3.25.21
-    * libglvnd:   * Update to 1.3.2
+    * mesa: Update to 20.1.2
+    * python3-setuptools: Update to 47.3.1
+    * kernel headers: Update to 5.7.7
+    * gtk3: Update to 3.25.21
+    * libglvnd: Update to 1.3.2
 
 freedesktop-sdk-20.08beta.1:
 
@@ -910,160 +943,160 @@ freedesktop-sdk-20.08beta.1:
     * Removed libcroco
     * Removed cups
     * Removed dconf
-    * linux-headers:   * Update to 5.7.3
-    * glibc:   * Update to 2.31
-    * ncurses:   * Update to 6.2
-    * binutils:   * Update to 2.34
-    * coreutils:   * Update to 8.32
-    * file:   * Update to 5.39
-    * openssl:   * Update to 1.1.1g
-    * debugedit:   * Update to 4.15.1
-    * findutils:   * Update to 4.7.0
-    * gawk:   * Update to 5.1.0
-    * gcc:   * Update to 10.1.0
-    * make:   * Update to 4.3
-    * perl:   * Update to 5.30.3
-    * pkg-config:   * Update to 1.7.3
-    * xz:   * Update to 5.2.5
-    * libxml2:   * Update to 2.9.10
-    * ccache:   * Update to 3.7.10
-    * cmake:   * Update to 3.17.3
-    * libffi:   * Update to 3.3
-    * sqlite:   * Update to 3.32.1
-    * python3:   * Update to 3.8.3
-    * util-linux:   * Update to 2.35
-    * glib:   * Update to 2.64.0
-    * help2man:   * Update to 1.47.15
-    * libtasn1:   * Update to 4.16
-    * nettle:   * Update to 3.6
-    * p11-kit:   * Update to 0.23.20
-    * nspr:   * Update to 4.24
-    * nss:   * Update to 3.49.2
-    * curl:   * Update to 7.71.0
-    * libgpg-error:   * Update to 1.38
-    * libksba:   * Update to 1.4.0
-    * gnupg:   * Update to 2.2.20
-    * ca-certificates:   * Update to 20200601
-    * git:   * Update to 2.27.0
-    * libxslt:   * Update to 1.1.34
-    * gtk-doc:   * Update to 1.32
-    * libpipeline:   * Update to 1.5.2
-    * python3-setuptools:   * Update to 47.1.1
-    * meson:   * Update to 0.54.0
-    * ninja:   * Update to 1.10.0
-    * perl-xml-parser:   * Update to 2.46
-    * strace:   * Update to 5.7
-    * valgrind:   * Update to 3.15.0
-    * wayland:   * Update to 1.18.0
-    * xorg-proto-xcb:   * Update to 1.14
-    * xorg-proto-xorgproto:   * Update to 2019.2
-    * aspell:   * Update to 0.60.8
-    * gettext:   * Update to 0.20.2
-    * libdrm:   * Update to 2.4.102
-    * e2fsprogs:   * Update to 1.45.6
-    * nano:   * Update to 4.9
-    * noopenh264:   * Update to 2.1.1
-    * xorg-lib-xcb:   * Update to 1.14
-    * xorg-lib-x11:   * Update to 1.6.9
-    * libglvnd:   * Update to 1.3.1
-    * mesa-headers:   * Update to 20.1.1
-    * osmesa:   * Update to 20.1.1
-    * alsa-lib:   * Update to 1.2.3
-    * python3-pip:   * Update to 20.1
-    * systemd-base:   * Update to 245
-    * dbus:   * Update to 1.12.18
-    * libflac:   * Update to 1.3.3
-    * orc:   * Update to 0.4.31
-    * alsa-plugins:   * Update to 1.2.2
-    * gcab:   * Update to 1.4
-    * jpeg:   * Update to 2.0.5
-    * libtiff:   * Update to 4.1.0
-    * shared-mime-info:   * Update to 2.0
-    * gdk-pixbuf:   * Update to 2.40.0
-    * libarchive:   * Update to 3.4.3
-    * gsettings-desktop-schemas:   * Update to 3.36.0
-    * glib-networking:   * Update to 2.62.3
-    * libsoup:   * Update to 2.70.0
-    * appstream-glib:   * Update to 0.7.17
-    * at-spi2-core:   * Update to 2.36.0
-    * python3-mako:   * Update to 1.1.3
-    * python3-markdown:   * Update to 3.2.2
-    * gobject-introspection:   * Update to 1.62.0
-    * atk:   * Update to 2.36.0
-    * at-spi2-atk:   * Update to 2.34.2
-    * graphite2:   * Update to 1.3.14
-    * icu:   * Update to 65.1
-    * harfbuzz:   * Update to 2.6.8
-    * freetype:   * Update to 2.10.2
-    * pixman:   * Update to 0.40.0
-    * libepoxy:   * Update to 1.5.4
-    * xorg-app-xkbcomp:   * Update to 1.4.3
-    * xorg-data-xkeyboard-config:   * Update to 2.30
-    * libxkbcommon:   * Update to 0.10.0
-    * pango:   * Update to 1.45.3
-    * frei0r:   * Update to 1.7.0
-    * giflib:   * Update to 5.2.1
-    * geoclue:   * Update to 2.5.5
-    * iso-codes:   * Update to 4.5.0
-    * lcms:   * Update to 2.10
-    * libexif:   * Update to 0.6.22
-    * libnice:   * Update to 0.1.17
-    * libsepol:   * Update to 3.0
-    * libselinux:   * Update to 3.0
-    * python3-six:   * Update to 1.15.0
-    * tzdata:   * Update to 2020a-0-g7aec41a1d9b57c581af086db5de5bf99b165c405
-    * libvpx:   * Update to 1.8.2
-    * dav1d:   * Update to 0.7.1
-    * libva:   * Update to 2.7.1
-    * libvdpau:   * Update to 1.4
-    * openal:   * Update to 1.20.1
-    * ffmpeg:   * Update to 4.3
-    * libwebp:   * Update to 1.1.0
-    * gstreamer-libav:   * Update to 1.16.2
-    * librsvg:   * Update to 2.48.7
-    * vulkan-headers:   * Update to 1.2.141
-    * vulkan-icd-loader:   * Update to 1.2.141
-    * vulkan-validation-layers:   * Update to 1.2.141
-    * wavpack:   * Update to 5.2.0
-    * libclc:   * Update to 10.0.0
-    * libseccomp:   * Update to 2.4.2
-    * llvm:   * Update to 10.0.0
-    * openssh:   * Update to 8.2
-    * pciutils:   * Update to 3.7.0
-    * pipewire:   * Update to 0.3.1
-    * xorg-lib-xpm:   * Update to 3.5.13
-    * pcre:   * Update to 8.44
-    * procps:   * Update to 3.3.16
-    * xdg-desktop-interfaces:   * Update to 1.7.2
+    * linux-headers: Update to 5.7.3
+    * glibc: Update to 2.31
+    * ncurses: Update to 6.2
+    * binutils: Update to 2.34
+    * coreutils: Update to 8.32
+    * file: Update to 5.39
+    * openssl: Update to 1.1.1g
+    * debugedit: Update to 4.15.1
+    * findutils: Update to 4.7.0
+    * gawk: Update to 5.1.0
+    * gcc: Update to 10.1.0
+    * make: Update to 4.3
+    * perl: Update to 5.30.3
+    * pkg-config: Update to 1.7.3
+    * xz: Update to 5.2.5
+    * libxml2: Update to 2.9.10
+    * ccache: Update to 3.7.10
+    * cmake: Update to 3.17.3
+    * libffi: Update to 3.3
+    * sqlite: Update to 3.32.1
+    * python3: Update to 3.8.3
+    * util-linux: Update to 2.35
+    * glib: Update to 2.64.0
+    * help2man: Update to 1.47.15
+    * libtasn1: Update to 4.16
+    * nettle: Update to 3.6
+    * p11-kit: Update to 0.23.20
+    * nspr: Update to 4.24
+    * nss: Update to 3.49.2
+    * curl: Update to 7.71.0
+    * libgpg-error: Update to 1.38
+    * libksba: Update to 1.4.0
+    * gnupg: Update to 2.2.20
+    * ca-certificates: Update to 20200601
+    * git: Update to 2.27.0
+    * libxslt: Update to 1.1.34
+    * gtk-doc: Update to 1.32
+    * libpipeline: Update to 1.5.2
+    * python3-setuptools: Update to 47.1.1
+    * meson: Update to 0.54.0
+    * ninja: Update to 1.10.0
+    * perl-xml-parser: Update to 2.46
+    * strace: Update to 5.7
+    * valgrind: Update to 3.15.0
+    * wayland: Update to 1.18.0
+    * xorg-proto-xcb: Update to 1.14
+    * xorg-proto-xorgproto: Update to 2019.2
+    * aspell: Update to 0.60.8
+    * gettext: Update to 0.20.2
+    * libdrm: Update to 2.4.102
+    * e2fsprogs: Update to 1.45.6
+    * nano: Update to 4.9
+    * noopenh264: Update to 2.1.1
+    * xorg-lib-xcb: Update to 1.14
+    * xorg-lib-x11: Update to 1.6.9
+    * libglvnd: Update to 1.3.1
+    * mesa-headers: Update to 20.1.1
+    * osmesa: Update to 20.1.1
+    * alsa-lib: Update to 1.2.3
+    * python3-pip: Update to 20.1
+    * systemd-base: Update to 245
+    * dbus: Update to 1.12.18
+    * libflac: Update to 1.3.3
+    * orc: Update to 0.4.31
+    * alsa-plugins: Update to 1.2.2
+    * gcab: Update to 1.4
+    * jpeg: Update to 2.0.5
+    * libtiff: Update to 4.1.0
+    * shared-mime-info: Update to 2.0
+    * gdk-pixbuf: Update to 2.40.0
+    * libarchive: Update to 3.4.3
+    * gsettings-desktop-schemas: Update to 3.36.0
+    * glib-networking: Update to 2.62.3
+    * libsoup: Update to 2.70.0
+    * appstream-glib: Update to 0.7.17
+    * at-spi2-core: Update to 2.36.0
+    * python3-mako: Update to 1.1.3
+    * python3-markdown: Update to 3.2.2
+    * gobject-introspection: Update to 1.62.0
+    * atk: Update to 2.36.0
+    * at-spi2-atk: Update to 2.34.2
+    * graphite2: Update to 1.3.14
+    * icu: Update to 65.1
+    * harfbuzz: Update to 2.6.8
+    * freetype: Update to 2.10.2
+    * pixman: Update to 0.40.0
+    * libepoxy: Update to 1.5.4
+    * xorg-app-xkbcomp: Update to 1.4.3
+    * xorg-data-xkeyboard-config: Update to 2.30
+    * libxkbcommon: Update to 0.10.0
+    * pango: Update to 1.45.3
+    * frei0r: Update to 1.7.0
+    * giflib: Update to 5.2.1
+    * geoclue: Update to 2.5.5
+    * iso-codes: Update to 4.5.0
+    * lcms: Update to 2.10
+    * libexif: Update to 0.6.22
+    * libnice: Update to 0.1.17
+    * libsepol: Update to 3.0
+    * libselinux: Update to 3.0
+    * python3-six: Update to 1.15.0
+    * tzdata: Update to 2020a-0-g7aec41a1d9b57c581af086db5de5bf99b165c405
+    * libvpx: Update to 1.8.2
+    * dav1d: Update to 0.7.1
+    * libva: Update to 2.7.1
+    * libvdpau: Update to 1.4
+    * openal: Update to 1.20.1
+    * ffmpeg: Update to 4.3
+    * libwebp: Update to 1.1.0
+    * gstreamer-libav: Update to 1.16.2
+    * librsvg: Update to 2.48.7
+    * vulkan-headers: Update to 1.2.141
+    * vulkan-icd-loader: Update to 1.2.141
+    * vulkan-validation-layers: Update to 1.2.141
+    * wavpack: Update to 5.2.0
+    * libclc: Update to 10.0.0
+    * libseccomp: Update to 2.4.2
+    * llvm: Update to 10.0.0
+    * openssh: Update to 8.2
+    * pciutils: Update to 3.7.0
+    * pipewire: Update to 0.3.1
+    * xorg-lib-xpm: Update to 3.5.13
+    * pcre: Update to 8.44
+    * procps: Update to 3.3.16
+    * xdg-desktop-interfaces: Update to 1.7.2
 
 freedesktop-sdk-19.08.11:
 
     * gnutls: Handle AddTrust root cert expiration (#1047)
-    * llvm:   * Update to 9.0.1
+    * llvm: Update to 9.0.1
     * intel-vaapi-driver: Add iris symlink
-    * cmake:   * Update to 3.17.2
-    * gtk3:   * Update to 3.24.20
-    * vala:   * Update to 0.48.11 (current LTS)
+    * cmake: Update to 3.17.2
+    * gtk3: Update to 3.24.20
+    * vala: Update to 0.48.11 (current LTS)
 
 freedesktop-sdk-19.08.10:
 
     * appstream-glib: Backport patch allowing future timestamps in
       validate-relax
-    * mesa:   * Update to 20.0.5
-    * git:   * Update to 2.26.2
-    * vala:   * Update to 0.44.11
+    * mesa: Update to 20.0.5
+    * git: Update to 2.26.2
+    * vala: Update to 0.44.11
     * openssl: Fix CVE-2020-1967
     * gcc: Remove unusable experimental filesystem header. Use c++17
       instead.
-    * gnutls:   * Update to 3.6.13
-    * sdl2:   * Update to 2.0.12
+    * gnutls: Update to 3.6.13
+    * sdl2: Update to 2.0.12
     * python: Swap usercustomize and sitecustomize
 
 freedesktop-sdk-19.08.09:
 
     * libpulse: Upstream patch to only use X11 config when using ssh
-    * meson:   * Update to 0.53.2
-    * mesa headers, osmesa, mesa extension:   * Update to 20.0.1
+    * meson: Update to 0.53.2
+    * mesa headers, osmesa, mesa extension: Update to 20.0.1
     * gstreamer: Fix 32 bit compatibility (#983).
     * openh264 extension: Use 2.0/2.0beta branches.
     * bash: Fix CVE-2019-18276
@@ -1071,33 +1104,33 @@ freedesktop-sdk-19.08.09:
 freedesktop-sdk-19.08.08:
 
     * pulseaudio: Add missing cmake configuration files (#973)
-    * wayland-protocols:   * Update to 1.20
+    * wayland-protocols: Update to 1.20
     * gnupg: Enable support for tofu trust model (#966)
-    * gdb:   * Update to 8.3.1
-    * openssh:   * Update to 8.1P1
-    * man-pages:   * Update to 5.04.0
-    * libsoup:   * Update to 2.66.4
-    * pango:   * Update to 1.44.7
+    * gdb: Update to 8.3.1
+    * openssh: Update to 8.1P1
+    * man-pages: Update to 5.04.0
+    * libsoup: Update to 2.66.4
+    * pango: Update to 1.44.7
     * harfbuzz: Enable gobject introspection
 
 freedesktop-sdk-19.08.07:
 
     * alsa-lib: Ignore host configuration (#857)
     * gcc: Enable graphite loop optimization (#943)
-    * libdrm:   * Update to 2.4.100.
-    * mesa:   * Update to 19.3.3
-    * libglvnd:   * Update to 1.3.0
-    * mesa-aco:   * Update to latest version
+    * libdrm: Update to 2.4.100.
+    * mesa: Update to 19.3.3
+    * libglvnd: Update to 1.3.0
+    * mesa-aco: Update to latest version
 
 freedesktop-sdk-19.08.06:
 
     * pciutils: Add multiarch dispatch header for config.h (#921)
-    * gstreamer:   * Update to 1.16.2
+    * gstreamer: Update to 1.16.2
     * Mark GL and Intel extensions with autoprune-unless
     * platform-vaapi-intel: Fix assertion failure when initializing driver
-    * librsvg:   * Update to latest ref in 2.44 branch
-    * rust:   * Update to 1.40.0
-    * mesa:   * Update to 19.2.8
+    * librsvg: Update to latest ref in 2.44 branch
+    * rust: Update to 1.40.0
+    * mesa: Update to 19.2.8
 
 freedesktop-sdk-19.08.05:
 
@@ -1110,34 +1143,34 @@ freedesktop-sdk-19.08.05:
     * coreutils: Add arch, remove groups
 
 freedesktop-sdk-19.08.04:
-    *   * Update flatpak-xdg-utils component to 1.0.1
+    * Update flatpak-xdg-utils component to 1.0.1
     * Import fcitx 4.2.9.7 to support new flatpak
-    *   * Update to shared-mime-info 1.15
+    * Update to shared-mime-info 1.15
     * Get Vala from gnome GitLab (and bootstrap it)
     * Backport drirc changes to make DOOM not crash
-    * mesa:   * Update to 19.2.1
+    * mesa: Update to 19.2.1
     * /etc/os-release: Add missing line break at end of file
-    * nss:   * Update to 3.46.1
-    * noopenh264:   * Update to 3.6.4
-    * iso-codes:   * Update to 4.4
-    * harfbuzz:   * Update to 2.6.2
-    * jpeg:   * Update to 2.0.3
+    * nss: Update to 3.46.1
+    * noopenh264: Update to 3.6.4
+    * iso-codes: Update to 4.4
+    * harfbuzz: Update to 2.6.2
+    * jpeg: Update to 2.0.3
     * Add kmod as a dependency of systemd
     * mesa-aco: Use mirror and track latest version
-    * libsoup:   * Update to 2.66.3
+    * libsoup: Update to 2.66.3
 
 freedesktop-sdk-19.08.03:
     * mesa extensions: Use LLVM 9.0.0.
-    * tzdata:   * Update to 2019c
-    * expat:   * Update to 2.2.9
-    * intel-vaapi-driver:   * Update gmmlib to 19.3.2.
+    * tzdata: Update to 2019c
+    * expat: Update to 2.2.9
+    * intel-vaapi-driver: Update gmmlib to 19.3.2.
     * ffmpeg-full extension: Add support for some Windows Media decoders.
     * python3: Add bluetooth support.
 
 freedesktop-sdk-19.08.02:
-    * e2fsprogs:   * Update to 1.45.4
-    * gstreamer:   * Update to 1.16.1
-    * shared-mime-info:   * Update to 1.14
+    * e2fsprogs: Update to 1.45.4
+    * gstreamer: Update to 1.16.1
+    * shared-mime-info: Update to 1.14
     * systemd: Fix CVE-2018-20839
     * giflib: Fix CVE-2019-15133
     * binutils: Fix CVE-2019-12972
@@ -1145,17 +1178,17 @@ freedesktop-sdk-19.08.02:
     * sqlite: Fix CVE-2019-16168
     * openh264 extension: Allow Flatpak 1.2.5 and 1.0.9
     * python3: Fix CVE-2019-16056
-    *   * Update mesa ACO extension
-    * mesa:   * Update to 19.2 in SDK and extension
+    * Update mesa ACO extension
+    * mesa: Update to 19.2 in SDK and extension
     * curl: Fix CVE-2019-5481 and CVE-2019-5482
     * gstreamer-plugins-bad: Gracefully handle noopenh264 (#885)
 
 freedesktop-sdk-19.08.01:
-    * openssl:   * Update to 1.1.1d
+    * openssl: Update to 1.1.1d
     * Add an openh264 extension
-    * ffmpeg:   * Update to n4.2.1
+    * ffmpeg: Update to n4.2.1
     * Fix Mesa's Vulkan overlay layer (#862)
-    * mesa:   * Update to 19.1.6
+    * mesa: Update to 19.1.6
     * Fix sdl2's pkgconfig (#875)
     * Fix fortran compiler (#684)
     * Do not autodownload gstreamer extensions
@@ -1182,7 +1215,7 @@ freedesktop-sdk-19.08beta.8:
 freedesktop-sdk-19.08beta.7:
     * Fix H264 support (#858)
     * Re-add missing libLLVM-9.so to .Platform
-    *   * Update mesa ACO extension
+    * Update mesa ACO extension
     * ffmpeg: Add support fot mp4 container (#856)
     * Fix gdb crashes (#842, #853)
 
@@ -1238,14 +1271,14 @@ freedesktop-sdk-19.08beta.5:
     * harfbuzz: update to 2.6.1
     * pango: update to 1.44.5
     * python3-setuptools: update to 41.2.0
-    *   * Update mesa ACO
+    * Update mesa ACO
     * fontconfig: Add forward support for 2.14 hashes
     * git: Bump to v2.23
     * python3-pip: bump to 19.2.3
     * Make vainfo as standalone app
     * gettext: Move tools to devel
     * cmake elements: Set libdir path properly
-    * gcc:   * Update to 9.2
+    * gcc: Update to 9.2
     * Simplify project.conf with includes
     * wavpack: fix multiple CVE
     * lcms: fix CVE-2018-16435
@@ -1285,103 +1318,103 @@ freedesktop-sdk-19.08beta.3:
     * desktop-file-utils: update to 0.24
     * sdl2: update to 2.0.10
     * libtasn1: update to 4.14
-    * gettext:   * Update to 0.20.1
+    * gettext: Update to 0.20.1
 
 freedesktop-sdk-19.08beta.2:
 
     * Prevent LIBVA_DRIVER_NAME leaking from host (#828)
     * intltool: Remove.
-    * mesa-headers:   * Update to 19.1.3
-    * mesa:   * Update to 19.1.3
-    * systemd:   * Update to 242 patch 85
-    * python3-mako:   * Update to 1.0.14
-    * llvm:   * Update to 8.0.1
-    * curl:   * Update to 7.65.3
-    * autoconf-archive:   * Update to 2019.01.06
-    * bison:   * Update to 3.4.1
-    * ed:   * Update to 1.15
-    * extra-cmake-modules:   * Update to 5.60.0
-    * fribidi:   * Update to 1.0.5
-    * gdbm:   * Update to 1.18.1
-    * groff:   * Update to 1.22.4
-    * help2man:   * Update to 1.47.10
-    * less:   * Update to 530
-    * libcap:   * Update to 2.27
-    * libidn2:   * Update to 2.2.0
+    * mesa-headers: Update to 19.1.3
+    * mesa: Update to 19.1.3
+    * systemd: Update to 242 patch 85
+    * python3-mako: Update to 1.0.14
+    * llvm: Update to 8.0.1
+    * curl: Update to 7.65.3
+    * autoconf-archive: Update to 2019.01.06
+    * bison: Update to 3.4.1
+    * ed: Update to 1.15
+    * extra-cmake-modules: Update to 5.60.0
+    * fribidi: Update to 1.0.5
+    * gdbm: Update to 1.18.1
+    * groff: Update to 1.22.4
+    * help2man: Update to 1.47.10
+    * less: Update to 530
+    * libcap: Update to 2.27
+    * libidn2: Update to 2.2.0
     * lzip: Upate to 1.21
-    * man-db:   * Update to 2.8.5
-    * mpg123:   * Update to 1.25.11
-    * pcre:   * Update to 8.43
-    * pcre2:   * Update to 10.33
-    * sdl2-image:   * Update to 2.0.5
-    * sdl2-ttf:   * Update to 2.0.15
-    * sqlite:   * Update to 3.29.0
-    * vala:   * Update to 0.44.6
-    * zenity:   * Update to 3.32
-    * xorg-lib-ic:   * Update to 1.0.10
-    * xorg-lib-pciaccess:   * Update to 0.16
-    * xorg-lib-sm:   * Update to 1.2.3
-    * xorg-lib-x11:   * Update to 1.6.8
-    * xorg-lib-xau:   * Update to 1.13.1
-    * xorg-lib-xcomposite:   * Update to 0.4.5
-    * xorg-lib-xcursor:   * Update to 1.2.0
+    * man-db: Update to 2.8.5
+    * mpg123: Update to 1.25.11
+    * pcre: Update to 8.43
+    * pcre2: Update to 10.33
+    * sdl2-image: Update to 2.0.5
+    * sdl2-ttf: Update to 2.0.15
+    * sqlite: Update to 3.29.0
+    * vala: Update to 0.44.6
+    * zenity: Update to 3.32
+    * xorg-lib-ic: Update to 1.0.10
+    * xorg-lib-pciaccess: Update to 0.16
+    * xorg-lib-sm: Update to 1.2.3
+    * xorg-lib-x11: Update to 1.6.8
+    * xorg-lib-xau: Update to 1.13.1
+    * xorg-lib-xcomposite: Update to 0.4.5
+    * xorg-lib-xcursor: Update to 1.2.0
     * xorg-lib-xdamage: 1.1.5
-    * xorg-lib-xdmcp:   * Update to 1.1.3
-    * xorg-lib-xext:   * Update to 1.3.4
-    * xorg-lib-xft:   * Update to 2.3.3
-    * xorg-lib-xi:   * Update to 1.7.10
-    * xorg-lib-xrender:   * Update to 1.5.2
-    * xorg-lib-xt:   * Update to 1.2.0
-    * xorg-lib-xtrans:   * Update to 1.4.0
-    * xorg-server:   * Update to 1.20.5
-    * gnutls:   * Update to 3.6.8
-    * ccache:   * Update to 3.7.2
-    * harfbuzz:   * Update to 2.5.3
-    * hunspell:   * Update to 1.7.0
-    * libselinux:   * Update to 2.9
-    * libsepol:   * Update to 2.9
-    * nano:   * Update to 4.3.0
-    * python3-six:   * Update to 1.12.0
-    * speexdsp:   * Update to 1.2.0
-    * wayland-protocols:   * Update to 1.17.0
-    * wayland:   * Update to 1.17.0
-    * debugedit:   * Update to 4.14.2.1
-    * grep:   * Update to 3.3
-    * procps:   * Update to 3.3.15
-    * sed:   * Update to 4.7
-    * linux-headers:   * Update to 5.2.1
-    * perl:   * Update to 5.30.0
-    * cmake:   * Update to 3.15.0
-    * nettle:   * Update to 3.5.1
-    * e2fsprogs:   * Update to 1.45.3
-    * libvpx:   * Update to 1.8.1
-    * iana-config:   * Update to 2019-07-16
-    * libsoup:   * Update to 2.66.2
-    * dconf:   * Update to 0.32.0
-    * gobject-introspection:   * Update to 3.32
-    * libva-utils:   * Update to 2.5.0
-    * libva:   * Update to 2.5.0
-    * libwebp:   * Update to 1.0.3
-    * man-pages:   * Update 5.01.
-    * nss:   * Update to 3.45.0
-    * openal:   * Update to 1.19.1
-    * orc:   * Update to 0.4.29
-    * p11-kit:   * Update to 0.23.16.1
-    * util-linux:   * Update to 2.34
-    * dictionaries:   * Update to 6.2.5.2
-    * libjpeg-turbo:   * Update to 2.0.2
-    * meson:   * Update to 0.51
-    * ffmpeg:   * Update to 4.1.4
-    * strace:   * Update to 5.2.0
-    * python3:   * Update to 3.7.4
-    * pkgconf:   * Update to 1.6.3
-    * pixman:   * Update to 0.38.4
-    * iso-codes:   * Update to 4.3.0
-    * gtk3:   * Update to 3.24.10
-    * gnupg:   * Update to 2.2.17
-    * freetype:   * Update to 2.10.1
-    * glibc:   * Update to 2.29 patch 30
-    * bzip2:   * Update to 1.0.8
+    * xorg-lib-xdmcp: Update to 1.1.3
+    * xorg-lib-xext: Update to 1.3.4
+    * xorg-lib-xft: Update to 2.3.3
+    * xorg-lib-xi: Update to 1.7.10
+    * xorg-lib-xrender: Update to 1.5.2
+    * xorg-lib-xt: Update to 1.2.0
+    * xorg-lib-xtrans: Update to 1.4.0
+    * xorg-server: Update to 1.20.5
+    * gnutls: Update to 3.6.8
+    * ccache: Update to 3.7.2
+    * harfbuzz: Update to 2.5.3
+    * hunspell: Update to 1.7.0
+    * libselinux: Update to 2.9
+    * libsepol: Update to 2.9
+    * nano: Update to 4.3.0
+    * python3-six: Update to 1.12.0
+    * speexdsp: Update to 1.2.0
+    * wayland-protocols: Update to 1.17.0
+    * wayland: Update to 1.17.0
+    * debugedit: Update to 4.14.2.1
+    * grep: Update to 3.3
+    * procps: Update to 3.3.15
+    * sed: Update to 4.7
+    * linux-headers: Update to 5.2.1
+    * perl: Update to 5.30.0
+    * cmake: Update to 3.15.0
+    * nettle: Update to 3.5.1
+    * e2fsprogs: Update to 1.45.3
+    * libvpx: Update to 1.8.1
+    * iana-config: Update to 2019-07-16
+    * libsoup: Update to 2.66.2
+    * dconf: Update to 0.32.0
+    * gobject-introspection: Update to 3.32
+    * libva-utils: Update to 2.5.0
+    * libva: Update to 2.5.0
+    * libwebp: Update to 1.0.3
+    * man-pages: Update 5.01.
+    * nss: Update to 3.45.0
+    * openal: Update to 1.19.1
+    * orc: Update to 0.4.29
+    * p11-kit: Update to 0.23.16.1
+    * util-linux: Update to 2.34
+    * dictionaries: Update to 6.2.5.2
+    * libjpeg-turbo: Update to 2.0.2
+    * meson: Update to 0.51
+    * ffmpeg: Update to 4.1.4
+    * strace: Update to 5.2.0
+    * python3: Update to 3.7.4
+    * pkgconf: Update to 1.6.3
+    * pixman: Update to 0.38.4
+    * iso-codes: Update to 4.3.0
+    * gtk3: Update to 3.24.10
+    * gnupg: Update to 2.2.17
+    * freetype: Update to 2.10.1
+    * glibc: Update to 2.29 patch 30
+    * bzip2: Update to 1.0.8
 
 freedesktop-sdk-19.08beta.1.1:
 
@@ -1389,56 +1422,56 @@ freedesktop-sdk-19.08beta.1.1:
 
 freedesktop-sdk-19.08beta.1:
 
-    * glslang:   * Update to 7.11.3214
-    * spriv-tools:   * Update to 2019.3
-    * vulkan-headers:   * Update to 1.1.108
-    * vulkan-validation-layers:   * Update to 1.1.108
-    * vulkan-tools:   * Update to 1.1.108
-    * libpipeline:   * Update to 1.5.1
+    * glslang: Update to 7.11.3214
+    * spriv-tools: Update to 2019.3
+    * vulkan-headers: Update to 1.1.108
+    * vulkan-validation-layers: Update to 1.1.108
+    * vulkan-tools: Update to 1.1.108
+    * libpipeline: Update to 1.5.1
     * mesa-headers: Provide d3d headers and pkgconfig file in SDK
-    * mesa:   * Update to 19.1.2
-    * libdrm:   * Update to 2.4.99 (also in mesa extension)
-    * glib:   * Update to 2.60.5
+    * mesa: Update to 19.1.2
+    * libdrm: Update to 2.4.99 (also in mesa extension)
+    * glib: Update to 2.60.5
     * mesa-headers: Fix dri path in dri.pc.
-    * tzdata:   * Update to 2019b
-    * ca-certificates:   * Update to 20190110
-    * rust:   * Update to 1.36.0
-    * mesa extension:   * Update to 19.1.1
+    * tzdata: Update to 2019b
+    * ca-certificates: Update to 20190110
+    * rust: Update to 1.36.0
+    * mesa extension: Update to 19.1.1
     * Provide dummy gbm library w/o backend for linking purpose (#821)
     * sdl2: Fix exported cmake configuration file
-    * bzip2:   * Update to 1.0.7 and use standard SONAME.
-    * gdb:   * Update to 8.3
-    * expat:   * Update to 2.2.7
+    * bzip2: Update to 1.0.7 and use standard SONAME.
+    * gdb: Update to 8.3
+    * expat: Update to 2.2.7
     * libvorbis: Apply upstream patches for CVE-2018-10392 and CVE-2018-10393
     * google-crosextra-caladea: Fixed a file name.
     * Add support for PowerPC 64 LE (>= POWER8)
-    * fdk-aac:   * Update to stripped4 branch (#806)
-    * git:   * Update to 2.22.0
-    * xorg-proto-xorgproto:   * Update to 2019.1
-    * util-linux:   * Update to 2.33.2
-    * strace:   * Update to 5.1
-    * nss:   * Update to 3.44.1
-    * nasm:   * Update to 2.14.02
-    * meson:   * Update to 0.51.0
-    * libxkbcommon:   * Update to 0.8.4
-    * libva:   * Update to 2.4.1
-    * libpsl:   * Update to 0.21.0
-    * libpng:   * Update to 1.6.37
-    * libnice:   * Update to 0.1.16
-    * itstools:   * Update to 2.0.6
-    * icu:   * Update to 64.2
-    * gpgme:   * Update to 3.24.9
-    * geoclue:   * Update to 2.60.3
-    * freetype:   * Update to 2.10.0
-    * dbus:   * Update to 1.45.2
-    * cmake:   * Update to 3.14.5
-    * atk:   * Update to 2.33.3
-    * at-spi2-{atk,core}:   * Update to 2.33.2
-    * alsa-lib, alsa-plugins:   * Update to 1.1.9
-    * gnu-config:   * Update to f83dbaa1468
-    * glibc:   * Update to 2.29 patch 25 (34fb5f61d3c)
-    * gawk:   * Update to 5.0.1
-    * file:   * Update to 5.37
+    * fdk-aac: Update to stripped4 branch (#806)
+    * git: Update to 2.22.0
+    * xorg-proto-xorgproto: Update to 2019.1
+    * util-linux: Update to 2.33.2
+    * strace: Update to 5.1
+    * nss: Update to 3.44.1
+    * nasm: Update to 2.14.02
+    * meson: Update to 0.51.0
+    * libxkbcommon: Update to 0.8.4
+    * libva: Update to 2.4.1
+    * libpsl: Update to 0.21.0
+    * libpng: Update to 1.6.37
+    * libnice: Update to 0.1.16
+    * itstools: Update to 2.0.6
+    * icu: Update to 64.2
+    * gpgme: Update to 3.24.9
+    * geoclue: Update to 2.60.3
+    * freetype: Update to 2.10.0
+    * dbus: Update to 1.45.2
+    * cmake: Update to 3.14.5
+    * atk: Update to 2.33.3
+    * at-spi2-{atk,core}: Update to 2.33.2
+    * alsa-lib, alsa-plugins: Update to 1.1.9
+    * gnu-config: Update to f83dbaa1468
+    * glibc: Update to 2.29 patch 25 (34fb5f61d3c)
+    * gawk: Update to 5.0.1
+    * file: Update to 5.37
     * gst-plugins-bad: Reenable ladspa
 
 freedesktop-sdk-19.08beta.0:
@@ -1457,22 +1490,22 @@ freedesktop-sdk-19.08beta.0:
     * glibc: Fix proble with LD_AUDIT
     * rust: update to 1.35
     * glibc: update to 2.29
-    * gawk:   * Update to 5.0.0
-    * gnupg:   * Update to 2.2.16
-    * libgpg-error:   * Update to 1.36
+    * gawk: Update to 5.0.0
+    * gnupg: Update to 2.2.16
+    * libgpg-error: Update to 1.36
     * Fix setuids (VM)
     * Add pwquality (VM)
     * Remove intltool
     * ostree: Enable GObject introspection (VM)
-    * freedesktop-sdk/freedesktop-sdk!1391:   * Update to 2.27
-    * sqlite:   * Update to 3.28
+    * freedesktop-sdk/freedesktop-sdk!1391: Update to 2.27
+    * sqlite: Update to 3.28
     * Mesa: disable xa state tracker
     * Add /etc/shells (VM)
-    * glib:   * Update to 2.60.3
-    * glib-networking:   * Update to 2.60.2
-    * openssl:   * Update to 1.1.1c
+    * glib: Update to 2.60.3
+    * glib-networking: Update to 2.60.2
+    * openssl: Update to 1.1.1c
     * libfdk-aac: update to fedora snapshot
-    * ffmpeg:   * Update to n4.1.3
+    * ffmpeg: Update to n4.1.3
     * gstreamer*: Bump to 1.16.0
     * binutils: update to 2.32
     * gstreamer-vaapi: disable gallium driver
@@ -1504,9 +1537,9 @@ freedesktop-sdk-19.08beta.0:
     * dbus: update to 1.12.12
     * glibc: upate tp 2.28-98-g5cbb73004b; fixed several CVE's
     * Add frei0r gstreamer plugin (#637)
-    * libglvnd:   * Update to the latest patch release
+    * libglvnd: Update to the latest patch release
     * Change runtime description to make information more conscise (#352,#750)
-    * libthai:   * Update to 0.1.28
+    * libthai: Update to 0.1.28
     * graphite2: update to 1.3.13
     * cmake: update to 3.14.2
     * perl: update to 5.28.2
@@ -1517,21 +1550,21 @@ freedesktop-sdk-19.08beta.0:
     * glibc: remove compatibility patch for proprietary electron apps (#683)
     * gmp: build with C++ support (#742)
     * Enable SSE2 for i686 (#739)
-    * aom:   * Update to v1.0.0-errata1
+    * aom: Update to v1.0.0-errata1
     * Provide org.freedesktop.Sdk.Minimal: minimum needed to build bootstrap
       Only published in cache.sdk.freedesktop.org
     * patch: Fix --version output (#735)
     * gnutls: update to 3.6.7
-    * libcroco:   * Update to 0.6.13
+    * libcroco: Update to 0.6.13
     * Remove sound-theme-freedesktop
-    * python3:   * Update to 3.7.3
+    * python3: Update to 3.7.3
     * gdb: update to 8.2.1
     * Remove python2 completely (#286)
     * Remove mercurial: It depends on python2
-    * bash:   * Update to 5.0
+    * bash: Update to 5.0
     * readline: update to 8.0
-    * gsettings-desktop-schemas:   * Update to 3.32
-    * icu:   * Update to 64.1
+    * gsettings-desktop-schemas: Update to 3.32
+    * icu: Update to 64.1
     * Remove openssl 1.0 (#381)
     * python3: enable LTO
     * libvpx: update to 1.8
@@ -1546,16 +1579,16 @@ freedesktop-sdk-18.08.29.1:
 freedesktop-sdk-18.08.29:
     * weston: Enable the demos
     * xorg-lib-xkbfile: Bump to 1.1.0
-    *   * Update pip and setuptools (#337)
+    * Update pip and setuptools (#337)
     * Optimize debug file size with dwz (#693)
     * Allow running VMsi in the CI without creating root filesystem images
     * Generate sysroots of freedesktop-sdk (#114)
-    *   * Update cargo to 0.34
+    * Update cargo to 0.34
     * LLVM: Stop shipping static libraries
     * systemd-base: update to 241, multiple CVE fixed
     * patch: fix multiple CVE
     * nss: update to 3.43
-    * vala:   * Update to 44.1
+    * vala: Update to 44.1
     * texinfo: update to 6.6
     * libseccomp: update to 2.4.0
     * alsa-plugins: Fix path for a configuration file (#694)
@@ -1570,23 +1603,23 @@ freedesktop-sdk-18.08.29:
     * cracklib: update to 2.9.7
     * elfutils: update to 0.176, fix several CVE
     * Add weston and dependencies to desktop-vm
-    * ibus:   * Update to 1.5.20
+    * ibus: Update to 1.5.20
     * linux: Add DRM driver for 3D acceleration in qemu
     * mesa: update to 18.3.5
     * appstream-glib: update to 0.7.15
     * libvdpau: update to 1.2
     * rust: update to 1.33.0
     * openssl: update to 1.1.1b
-    *   * Update to glibc 2.28
+    * Update to glibc 2.28
     * gcc: update to 8.3.0
     * openssl-1.0: update to 1.0.2r
     * ninja: update to 1.9
-    * gst-libav:   * Update to 1.15.2, to avoid using a arbitrary git snapshot
+    * gst-libav: Update to 1.15.2, to avoid using a arbitrary git snapshot
     * sqlite: update to 3.27.2
 
 freedesktop-sdk-18.08.28:
     * nasm: update to 2.14.02
-    * pixman:   * Update to 0.38
+    * pixman: Update to 0.38
     * libtiff: fix CVE-2019-6128
     * meson: Bump to 0.49.2
     * gtk3: Bump to 3.24.5
@@ -1637,11 +1670,11 @@ freedesktop-sdk-18.08.27:
     * libgcrypt: bump to 1.8.4
     * libassuan: bump to 2.5.2
     * nss: update to 3.42.1
-    * jq:   * Update to 1.6
+    * jq: Update to 1.6
     * glib: update to 2.58.3
     * util-linux: update to 2.33.1
     * elfutils: update to 0.175 (#613)
-    * systemd:   * Update to 240 (#619)
+    * systemd: Update to 240 (#619)
     * file: update to 5.35 
     * libtiff: update to 4.0.10 (#478)
     * gnutls: update to 3.6.6
@@ -1667,11 +1700,11 @@ freedesktop-sdk-18.08.27:
     * ruby: update to 2.5.3
     * pciutils has been added (#584)
     * Fix opencl loader patch not to overwrite loaded opencl drivers (#606)
-    * librsvg:   * Update to 2.44.12
-    * libwebp:   * Update to 1.0.2
+    * librsvg: Update to 2.44.12
+    * libwebp: Update to 1.0.2
     * nss: update to 3.41
-    * shared-mime-info:   * Update to 1.12
-    * rust:   * Update to 1.32.0
+    * shared-mime-info: Update to 1.12
+    * rust: Update to 1.32.0
     * pango: add patch to fix gobject in pkg-config
     * gdb: Separate python printers into devel (#590)
     * pango: upgrade to 1.43 (#566)
@@ -1680,13 +1713,13 @@ freedesktop-sdk-18.08.27:
 
 freedesktop-sdk-18.08.26:
     * glib: backport fix for GTK file dialog regression (#594)
-    * flatpak-xdg-utils:   * Update to 1.0 release
+    * flatpak-xdg-utils: Update to 1.0 release
     * Fix OpenCL support for several vendors (#591)
     * vulkan: upgrade to 1.1.96 (#544)
     * python: Upgrade to 3.7.2
     * Make builds more reproducible disabling python hash randomization during build (#592)
     * Several fixes to build elements with correct hardening flags
-    * libxml2:   * Update to v2.9.9 (#573)
+    * libxml2: Update to v2.9.9 (#573)
 
 freedestkop-sdk-18.08.25:
     * libxslt: Upgrade to v1.1.33 (#572)
@@ -1695,29 +1728,29 @@ freedestkop-sdk-18.08.25:
     * geoclue: Upgrade to 2.5.2 (#583)
 
 freedesktop-sdk-18.08.24:
-    * vala:   * Update to 0.42.4
+    * vala: Update to 0.42.4
     * tzdata: Upgrade to 2018i
     * librsvg: Upgrade to v2.44.11
-    * curl:   * Update to 7.63
-    * tar:   * Update to 1.31
-    * gzip:   * Update to 1.10
-    * diffutils:   * Update to 3.7
-    * harfbuzz:   * Update to 2.3.0
-    * cmake:   * Update to 3.13.2 (#559)
-    * e2fsprogs:   * Update to 1.44.5 (#558)
-    * strace:   * Update to 4.26 (#556)
+    * curl: Update to 7.63
+    * tar: Update to 1.31
+    * gzip: Update to 1.10
+    * diffutils: Update to 3.7
+    * harfbuzz: Update to 2.3.0
+    * cmake: Update to 3.13.2 (#559)
+    * e2fsprogs: Update to 1.44.5 (#558)
+    * strace: Update to 4.26 (#556)
     * sqlite: compile with SQLITE_SECURE_DELETE option (#561)
     * Uniformize OpenCL icd director (#562)
-    * dictionaries:   * Update to libreoffice-6.1.4.1 (#519)
+    * dictionaries: Update to libreoffice-6.1.4.1 (#519)
     * Python 3 standard library bytecode fixup (#554)
-    * gobject-introspection:   * Update to 1.58.3 (#557)
-    * glib:   * Update 2.58.2 (#557)
-    * llvm:   * Update to 7.0.1
-    * binutils:   * Update to 3.31.1
+    * gobject-introspection: Update to 1.58.3 (#557)
+    * glib: Update 2.58.2 (#557)
+    * llvm: Update to 7.0.1
+    * binutils: Update to 3.31.1
     * python: bump to 3.7.1 (#507)
     * perl: bump to 5.28.1
-    * meson:   * Update to 0.49.0 (#551)
-    * valgrind:   * Update to 3.14.0 (#550
+    * meson: Update to 0.49.0 (#551)
+    * valgrind: Update to 3.14.0 (#550
     * gcab: Bump to v1.2
     * Several hardening flags fixes
 
@@ -1727,29 +1760,29 @@ freedesktop-sdk-18.08.23:
     * gtk3.bst: Bump to 3.24.2 (#534)
     * Fix /var for flatpak images
     * Apply security patch for cairo (#542)
-    * libarchive:   * Update to 3.3.3 (#541)
-    * git:   * Update to 2.20.1 (#537)
-    * kerberos:   * Update to 1.16.2 (#525)
-    * libpng:   * Update to 1.6.36 (#501)
-    * cmake:   * Update to v3.13.1 (#503)
+    * libarchive: Update to 3.3.3 (#541)
+    * git: Update to 2.20.1 (#537)
+    * kerberos: Update to 1.16.2 (#525)
+    * libpng: Update to 1.6.36 (#501)
+    * cmake: Update to v3.13.1 (#503)
 
 freedesktop-sdk-18.08.22:
-    * gnutls:   * Update to 3.6.5 (#502)
-    * nettle:   * Update to 3.4.1
-    * sqlite:   * Update to 3.26.0 (#532)
+    * gnutls: Update to 3.6.5 (#502)
+    * nettle: Update to 3.4.1
+    * sqlite: Update to 3.26.0 (#532)
     * Stop using /usr/etc and /usr/var (#439, #526)
     * at-spi2-core: Explicitly disable X11 backend
-    * librsvg:   * Update to 2.44.10
+    * librsvg: Update to 2.44.10
     * mesa: enable osmesa (#500)
-    * rust:   * Update to Rust 2018
-    * mesa:   * Update mesa to 18.3.1 (#168, #529)
-    * gperf:   * Update to 3.1 (#479)
+    * rust: Update to Rust 2018
+    * mesa: Update mesa to 18.3.1 (#168, #529)
+    * gperf: Update to 3.1 (#479)
     * Include cpio in the SDK (#467)
     * Fix gtk theme (#497)
     * Others bugs fixed: #494, #382, #496
 
 freedesktop-sdk-18.08.21:
-    * mesa:   * Update to 18.2.6
+    * mesa: Update to 18.2.6
     * mesa: Set NDEBUG
     * libcap: bump to 2.26
     * Build mesa, rust and libclc against llvm7
@@ -1767,39 +1800,39 @@ freedesktop-sdk-18.08.21:
 freedesktop-sdk-18.08.20:
     * gstreamer-plugins-good: Enable gdkpixbuf and gtk plugins
     * Add missing dependencies of SDL2_image (#469)
-    * mesa:   * Update to 18.2.5
+    * mesa: Update to 18.2.5
     * html5-codecs: Install ffmpeg to the right place (#466 and #430)
-    * gnutls:   * Update to gnutls_3_6_4
+    * gnutls: Update to gnutls_3_6_4
     * unzip: install 'zipgrep' tool (#465)
     * cmake: update to 3.12.4
     * meson: update to latest
     * libglvnd and libpsl: make it depend on python3
-    * ffmpeg:   * Update to n4.1
-    * rust:   * Update to 1.30.1
+    * ffmpeg: Update to n4.1
+    * rust: Update to 1.30.1
 
 freedesktop-sdk-18.08.19:
-    * qmake:   * Update to 5.11.2
+    * qmake: Update to 5.11.2
     * sdl2: make dependencies on ibus and fcitx build only
     * Fix branch version on GL extension point
     * Bump SDL2 libraries to 2.0.9 (#451)
-    * fontconfig:   * Update to 2.13.1
+    * fontconfig: Update to 2.13.1
     * gst-libav: Use debian patches to unstable version (#324)
     * Use new "ref:" format in several elements
-    * jpeg:   * Update to 2.0.0 (#428)
+    * jpeg: Update to 2.0.0 (#428)
     * pcre2: Enable JIT support (#456)
-    * mesa:   * Update to 18.2.4
+    * mesa: Update to 18.2.4
     * gst-libav: Stop caching html5 ffmpeg codecs (#430)
-    * libdrm:   * Update to 2.4.96
-    * libxkbcommon:   * Update to xkbcommon-0.8.2
-    * libepoxy:   * Update to 1.5.3
-    * gstreamer-plugins-ugly:   * Update to 1.14.4
-    * appstream-glib:   * Update to appstream_glib_0_7_14
-    * strace:   * Update to v4.24
-    * libpng:   * Update to v1.6.35
-    * iso-codes:   * Update to iso-codes-4.1
-    * e2fsprogs:   * Update to v1.44.4
-    * ibus:   * Update to 1.5.19
-    * harfbuzz:   * Update to 2.0.2
+    * libdrm: Update to 2.4.96
+    * libxkbcommon: Update to xkbcommon-0.8.2
+    * libepoxy: Update to 1.5.3
+    * gstreamer-plugins-ugly: Update to 1.14.4
+    * appstream-glib: Update to appstream_glib_0_7_14
+    * strace: Update to v4.24
+    * libpng: Update to v1.6.35
+    * iso-codes: Update to iso-codes-4.1
+    * e2fsprogs: Update to v1.44.4
+    * ibus: Update to 1.5.19
+    * harfbuzz: Update to 2.0.2
     * zenity: Upgrade to 3.30.0
     * librsvg: Upgrade to 2.44.8
     * libsoup: Upgrade to 2.64.2
@@ -1823,7 +1856,7 @@ freedesktop-sdk-18.08.18:
     * Fix readline linkage with ncurses
     * Harden glibc build
     * Fix SIGFPE crash in libva-vdpau-driver
-    * mesa:   * Update 18.2.3
+    * mesa: Update 18.2.3
     * Use `git describe` output for the `ref:`
     * openssh: place servers in a separate domain instead remove them
     * Remove unneded patch in mesa
@@ -1839,28 +1872,28 @@ freedesktop-sdk-18.08.16:
 freedesktop-sdk-18.08.15:
     * gstreamer components: update to 1.14.4
     * Add some flag optimizations for x86_64
-    * cairo:   * Update to 1.16
-    * openssh:   * Update to 7.9p1 (#405)
-    * opus:   * Update to 1.3
+    * cairo: Update to 1.16
+    * openssh: Update to 7.9p1 (#405)
+    * opus: Update to 1.3
     * Add common compiler flags for hardening (#317)
-    * mesa:   * Update to 18.2.3
+    * mesa: Update to 18.2.3
     * Fix useles RPATH generated by libtool (#404)
-    * meson:   * Update to 0.48.1
-    * geoclue:   * Update to 2.5.1
+    * meson: Update to 0.48.1
+    * geoclue: Update to 2.5.1
     * Build libsdnfile with ogg/vorbis/flac support (#406)
 
 freedesktop-sdk-18.08.14:
     * Several improvements in the ABI check (#402,#403)
     * git: update to 2.19.1
     * cmake: Apply missing nolib64 patch (#418)
-    * mesa:   * Update to 18.2.2
-    * bash:   * Update to 4.4 patch 19
-    * librsvg:   * Update to 2.44.7
+    * mesa: Update to 18.2.2
+    * bash: Update to 4.4 patch 19
+    * librsvg: Update to 2.44.7
     * Add vim as dev-tools
     * mesa: Enable gallium-nine (#409)
     * Add buildsystem-*.bst stack elements for autotools,meson,cmake...
-    * appstream-glib:   * Update to 0.7.13
-    * meson:   * Update to 0.48.0
+    * appstream-glib: Update to 0.7.13
+    * meson: Update to 0.48.0
     * mesa: Enable xlib lease; needed for VR
 
 freedesktop-sdk-18.08.13:
@@ -1888,12 +1921,12 @@ freedesktop-sdk-18.08.10:
     * Fix mesa shader caching (#349)
     * Improve error output for mesa, gstreamer
     * openssh: Remove the server parts
-    * ca-certificates:   * Update to 20180409
-    * openssl:   * Update to 1.1.1 (we have kept OpenSSL 1.0) (#164)
-    * git:   * Update to 2.19.0
-    * curl:   * Update to 7.61.1
-    * openssh:   * Update to 7.8p1
-    * openssl:   * Update to 1.0.2p
+    * ca-certificates: Update to 20180409
+    * openssl: Update to 1.1.1 (we have kept OpenSSL 1.0) (#164)
+    * git: Update to 2.19.0
+    * curl: Update to 7.61.1
+    * openssh: Update to 7.8p1
+    * openssl: Update to 1.0.2p
     * Use URL aliases for Freedesktop projects
     * gstreamer: enable instrospection
     * More gstreamer plugins: sndfile, openal, curl, vulkan, rsvg, flac, mpg123, xvimagesink
@@ -1915,7 +1948,7 @@ freedesktop-sdk-18.08.9:
     * gdb: Upgrade to 8.2
     * libdrm: Upgrade to 2.4.94
     * Check for leftover pkgconfig files
-    * mesa:   * Update to 18.1.8
+    * mesa: Update to 18.1.8
     * gpgme: Correctly split debug symbols (#373)
     * Several CI fixes
     * Add ABI checks in the CI (#108)
@@ -1927,23 +1960,23 @@ freedesktop-sdk-18.08.8:
     * Add libtirpc to the SDK (#354)
     * popt: Install the pkgconfig file in the right place
     * sdl2-mixer: Enable support for various audio formats (#351))
-    * librsvg:   * Update to 2.44.2 (#353)
-    * pkg-config.bst:   * Update to 1.5.3
+    * librsvg: Update to 2.44.2 (#353)
+    * pkg-config.bst: Update to 1.5.3
     * Other issues fixed: #141
 
 freedesktop-sdk-18.08.7:
-    * geoclue:   * Update to 2.4.12
+    * geoclue: Update to 2.4.12
     * Make gobject-introspection a build-only dependency
     * Beef up the Makefile so it can be used to build locally, and get the CI to use it (#295)
-    * pango:   * Update to 1.42.4 (#346)
+    * pango: Update to 1.42.4 (#346)
     * Make OpenSSL ABI compatible with other distributions (#329)
     * Upstream collect-integration plugin (#341)
-    * meson:   * Update to 0.47.2
-    * librsvg:   * Update to 2.44.1 (#344, #336)
+    * meson: Update to 0.47.2
+    * librsvg: Update to 2.44.1 (#344, #336)
     * Other issues fixed: #195, #338
 
 freedesktop-sdk-18.08.6:
-    * mesa:   * Update to 18.1.7 (#339)
+    * mesa: Update to 18.1.7 (#339)
     * Configure fcitx properly (#323)
     * Add /etc/protocols and /etc/services (#331)
     * Several CI fixes
@@ -1969,8 +2002,8 @@ freedesktop-sdk-18.08.3:
 freedesktop-sdk-18.08.2:
     * Add html5 codecs extension (#174, #213)
     * Fix no audio problems with SDL (#313)
-    * mesa:   * Update to 18.1.6
-    * wayland-protocols:   * Update to 1.16
+    * mesa: Update to 18.1.6
+    * wayland-protocols: Update to 1.16
     * Fix symbol stripping (#296)
     * Other issues fixed: #293, #312, #316
 
