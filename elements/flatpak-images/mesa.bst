@@ -1,8 +1,8 @@
 kind: flatpak_image
 
-depends:
-  - filename: extensions/mesa/mesa.bst
-    type: build
+build-depends:
+- extensions/mesa/mesa.bst
+- extensions/mesa/mesa-metainfo.bst
 
 variables:
   prefix: "/usr/lib/%{gcc_triplet}/GL/default"

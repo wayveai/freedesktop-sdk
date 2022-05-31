@@ -6,7 +6,7 @@ kind: manual
 build-depends:
 - bootstrap-import.bst
 - components/m4.bst
-- components/appstream-glib.bst
+- components/appstream.bst
 
 config:
   build-commands:
@@ -23,11 +23,11 @@ config:
     ln -s "$(realpath --relative-to="%{install-root}%{sysconfdir}" "%{install-root}%{indep-libdir}/os-release")" %{install-root}%{sysconfdir}/os-release
     install issue "%{install-root}%{sysconfdir}"
     install issue.net "%{install-root}%{sysconfdir}"
-    mkdir -p "%{install-root}%{datadir}/appdata"
-    install org.freedesktop.Platform.appdata.xml "%{install-root}%{datadir}/appdata"
-    install org.freedesktop.Sdk.appdata.xml "%{install-root}%{datadir}/appdata"
-    appstream-compose --basename=org.freedesktop.Platform --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Platform
-    appstream-compose --basename=org.freedesktop.Sdk --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Sdk
+    mkdir -p "%{install-root}%{datadir}/metainfo"
+    install org.freedesktop.Platform.appdata.xml "%{install-root}%{datadir}/metainfo"
+    install org.freedesktop.Sdk.appdata.xml "%{install-root}%{datadir}/metainfo"
+    appstreamcli compose --components=org.freedesktop.Platform --result-root=%{install-root} --origin=flatpak %{install-root}
+    appstreamcli compose --components=org.freedesktop.Sdk --result-root=%{install-root} --origin=flatpak %{install-root}
 
 sources:
 - kind: local

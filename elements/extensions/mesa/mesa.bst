@@ -2,8 +2,6 @@ kind: meson
 
 build-depends:
 - components/bison.bst
-- components/m4.bst
-- components/appstream-glib.bst
 - components/flex.bst
 - components/llvm.bst
 - components/python3.bst
@@ -36,6 +34,7 @@ depends:
 
 (@):
 - elements/extensions/mesa/config.yml
+- elements/extensions/mesa/mesa-sources.yml
 
 environment:
   PKG_CONFIG_PATH: "%{libdir}/pkgconfig:%{datadir}/pkgconfig"
@@ -90,29 +89,9 @@ variables:
     -Dxlib-lease=enabled
     -Dzstd=enabled
 
-  app-id: >-
-    org.freedesktop.Platform.GL.default
-    org.freedesktop.Platform.GL32.default
-
 config:
   install-commands:
     (>):
-    - |
-      set -e
-      appdata_dir=%{install-root}%{datadir}/appdata
-      mkdir -p ${appdata_dir}
-      CURRENT_REF=$(git describe --match mesa-*)
-      TIMESTAMP=$(git log -1 --format="%at" ${CURRENT_REF})
-      VERSION_DATE=$(date -d @"$TIMESTAMP" -Idate)
-      for app_id in %{app-id}
-      do
-        m4 -D__VERSION__=${CURRENT_REF} -D__VERSION_DATE__=${VERSION_DATE} \
-        -D__APP_ID__=${app_id} \
-        appdata.template > ${appdata_dir}/${app_id}.appdata.xml
-        appstream-compose --basename ${app_id} \
-        --prefix=%{install-root}%{prefix} --origin=flatpak ${app_id}
-      done
-
     - |
       mkdir -p "%{install-root}%{libdir}"
       mv "%{install-root}%{sysconfdir}/OpenCL" "%{install-root}%{libdir}/"
@@ -166,20 +145,3 @@ public:
   cpe:
     product: mesa
     vendor: mesa3d
-
-sources:
-- kind: git_tag
-  url: freedesktop:mesa/mesa.git
-  track: main
-  track-extra:
-  - '22.0'
-  exclude:
-  - '*rc*'
-  - '*branchpoint*'
-  ref: mesa-22.0.4-0-ga8194a93115a9b68401ba0a354512b2302f5e9cc
-- kind: local
-  path: files/mesa/appdata.template
-- kind: patch
-  path: patches/mesa/mesa_libdrm_deps.patch
-- kind: patch
-  path: patches/mesa/mesa-cle-build-fix.patch
