@@ -11,7 +11,8 @@ config:
   - element: snap-images/vulkaninfo.bst
     destination: '%{build-root}'
 
-  commands:
-  - |
-    mksquashfs "%{build-root}" "%{install-root}/vulkaninfo.snap" \
-        -root-owned -noappend -comp lzo -no-xattrs -no-fragments
+(@):
+- elements/snap-images/snap-common.yml
+
+variables:
+  snap-target: vulkaninfo.snap

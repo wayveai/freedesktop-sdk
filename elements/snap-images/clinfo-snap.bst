@@ -11,7 +11,8 @@ config:
   - element: snap-images/clinfo.bst
     destination: '%{build-root}'
 
-  commands:
-  - |
-    mksquashfs "%{build-root}" "%{install-root}/clinfo.snap" \
-        -root-owned -noappend -comp lzo -no-xattrs -no-fragments
+(@):
+- elements/snap-images/snap-common.yml
+
+variables:
+  snap-target: clinfo.snap

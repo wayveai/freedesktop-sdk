@@ -11,7 +11,8 @@ config:
   - element: snap-images/glxinfo.bst
     destination: '%{build-root}'
 
-  commands:
-  - |
-    mksquashfs "%{build-root}" "%{install-root}/glxinfo.snap" \
-        -root-owned -noappend -comp lzo -no-xattrs -no-fragments
+(@):
+- elements/snap-images/snap-common.yml
+
+variables:
+  snap-target: glxinfo.snap

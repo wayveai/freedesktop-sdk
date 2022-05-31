@@ -11,7 +11,8 @@ config:
   - element: snap-images/sdk.bst
     destination: '%{build-root}'
 
-  commands:
-  - |
-    mksquashfs "%{build-root}" "%{install-root}/sdk.snap" \
-        -root-owned -noappend -comp lzo -no-xattrs -no-fragments
+(@):
+- elements/snap-images/snap-common.yml
+
+variables:
+  snap-target: sdk.snap
