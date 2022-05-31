@@ -38,13 +38,12 @@ sources:
 - kind: git_tag
   url: github:perl/perl5.git
   track: blead
-  track-extra:
-  - maint-5.30
+  # Tracking is expected to be changed to a maintenance branch post-release
   match:
   - v5.*[02468].*
   exclude:
   - v*-RC*
-  ref: v5.34.0-0-g79a7b254d85a10b65126ad99bf10e70480569d68
+  ref: v5.36.0-0-gb3c502b607191da0e743a4fa34501a05442305b3
 - kind: local
   path: files/perl/config.over
 - kind: patch
