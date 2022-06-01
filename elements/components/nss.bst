@@ -137,10 +137,10 @@ config:
 sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
-  track: NSS_3_68_1_BRANCH  # Attention! Make sure we use latest ESR release
+  track: NSS_3_68_3_BRANCH  # Attention! Make sure we use latest ESR release
   match:
   - 'NSS_*_RTM'
-  ref: NSS_3_68_1_RTM-0-g3c9cb4c600bc7d9c5493875c65eaea2ddb408042
+  ref: NSS_3_68_4_RTM-0-gb88b3aea6ea0060a0da2f6dd3b21e28940add1c7
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
