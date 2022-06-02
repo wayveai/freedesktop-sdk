@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: filelock
-  url: pypi:32/0e/e4a925976b09898ca585cdd5497f158daab6ffb59b61dab5108df00416ac/filelock-3.7.0.tar.gz
-  sha256sum: b795f1b42a61bbf8ec7113c341dad679d772567b936fbd1bf43c9a238e673e20
+  url: pypi:f3/c7/5c1aef87f1197d2134a096c0264890969213c9cbfb8a4102087e8d758b5c/filelock-3.7.1.tar.gz
+  sha256sum: 3a0fd85166ad9dbab54c9aec96737b744106dc5f15c0b09a6744a445299fcf04
