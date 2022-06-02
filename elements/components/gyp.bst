@@ -1,12 +1,10 @@
 kind: pip
 
-depends:
-- bootstrap-import.bst
-- components/python3.bst
-- components/python3-setuptools.bst
-
 build-depends:
-- components/python3-pip.bst
+- public-stacks/buildsystem-python.bst
+
+depends:
+- components/python3.bst
 
 runtime-depends:
 - components/ninja.bst
