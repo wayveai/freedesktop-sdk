@@ -1,11 +1,12 @@
 kind: meson
 description: libdrm
 
+build-depends:
+- public-stacks/buildsystem-meson.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/xorg-lib-pciaccess.bst
+- bootstrap-import.bst
+- components/xorg-lib-pciaccess.bst
 
 variables:
   meson-local: |
@@ -47,10 +48,9 @@ public:
       devel:
         (>):
         - '%{libdir}/libdrm.so'
-        - '%{libdir}/libkms.so'
 
 sources:
 - kind: git_tag
   url: freedesktop:mesa/drm.git
   track: main
-  ref: libdrm-2.4.110-0-g56f81e6776c1c100c3f627b2c1feb9dcae2aad3c
+  ref: libdrm-2.4.111-0-gf801b07a60740425604d6563e5dc399375108bc4
