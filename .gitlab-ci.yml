@@ -711,7 +711,6 @@ publish_aarch64_tar:
   when: manual
 
 cve_report:
-  extends: .builder-x86_64
   stage: finish-publish
   cache:
     key: cve
@@ -740,7 +739,6 @@ cve_report:
   needs: []
 
 markdown_manifest:
-  extends: .builder-x86_64
   stage: finish-publish
   script:
     - make markdown-manifest
