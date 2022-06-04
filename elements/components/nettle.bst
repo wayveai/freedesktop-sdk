@@ -28,4 +28,4 @@ sources:
   - release-3.7-fixes
   exclude:
   - nettle_*rc*
-  ref: nettle_3.7.3_release_20210606-0-g52bacacaf4339fd78289f58919732f1f35bea1c1
+  ref: nettle_3.8_release_20220602-0-gea4ea5e6904124b297ade0d1b182c5e530909765
