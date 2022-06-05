@@ -27,6 +27,9 @@ default:
   - rm -rf "${XDG_CACHE_HOME}/buildstream/build"
   - rm -rf "${XDG_CACHE_HOME}/buildstream/cas"
   - rm -rf "${XDG_CACHE_HOME}/buildstream/sources"
+  retry:
+    max: 2
+    when: runner_system_failure
 
 workflow:
   rules:
@@ -295,32 +298,19 @@ check_mirrors:
     - '/^release\/.*/'
     - tags
 
-.retry_system_failure:
-  retry:
-    max: 2
-    when: runner_system_failure
-
 .builder-x86_64:
-  extends:
-  - .retry_system_failure
   tags:
     - x86_64
-    - cache_x86_64
   variables:
     ARCH: x86_64
 
 .builder-i686:
-  extends:
-  - .retry_system_failure
   tags:
     - x86_64
-    - cache_i686
   variables:
     ARCH: i686
 
 .builder-aarch64:
-  extends:
-  - .retry_system_failure
   tags:
     - aarch64
   variables:
