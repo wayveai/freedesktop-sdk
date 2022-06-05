@@ -35,4 +35,4 @@ sources:
   - 'intel-media-*'
   exclude:
   - 'intel-media-*.pre*'
-  ref: intel-media-22.4.1-0-ga1888324a833b2a2671221909a8dc68f59832471
+  ref: intel-media-22.4.2-0-gd7a1feb2f2106864272fe6f550f830f41db72d58
