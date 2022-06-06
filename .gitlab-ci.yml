@@ -10,7 +10,7 @@ variables:
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
-  DOCKER_IMAGE_ID: "543571583e6271ede4c706aff60d389cf26a13e9"
+  DOCKER_IMAGE_ID: "f3d0ad45a48e6b57c02e5778f773bb86c2569bfc"
   SCHEDULE_TASK: default
 
   # Generic variable for invoking buildstream
@@ -213,6 +213,7 @@ check_update_elements:
       --overwrite
       --push
       --create_mr
+      --shuffle-branches
       --gitlab_project="freedesktop-sdk/freedesktop-sdk"
       --max_merge_requests=4
       track-elements.bst
