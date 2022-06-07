@@ -18,5 +18,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:intel/libva-utils.git
-  track: v2.9-branch
-  ref: 2.9.1-0-g50c7f19d65e2535940e31c6711352b36d6d64fd7
+  track: v2.14-branch
+  ref: 2.14.0-0-gf478fe4f9b66a19ac7ebc952223025f8771b2aba
