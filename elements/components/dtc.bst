@@ -22,6 +22,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: https://git.kernel.org/pub/scm/utils/dtc/dtc.git
-  track: master
-  ref: v1.6.0-0-g2525da3dba9beceb96651dc2986581871dbeca30
+  url: kernel:utils/dtc/dtc.git
+  track: main
+  ref: v1.6.1-0-gb6910bec11614980a21e46fbccc35934b671bd81
