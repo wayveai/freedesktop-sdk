@@ -25,6 +25,8 @@ variables:
     --disable-gas
     --disable-sim
     --disable-gprof
+    --disable-gprofng
+    --disable-libctf
     --without-zlib
     --with-system-zlib
     --with-python=/usr/bin/python3
@@ -47,6 +49,6 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:binutils-gdb.git
-  track: gdb-11-branch
-  ref: gdb-11.2-release-0-gef6ec3333e80e39ce207c6c5d5628bdd5402111d
+  track: gdb-12-branch
+  ref: gdb-12.1-release-0-ge53a8e8685685c97588f8319d993ea6cd5635e47
 
