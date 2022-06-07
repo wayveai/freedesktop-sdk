@@ -6,6 +6,6 @@ sources:
   - linux-5.15.y
   exclude:
   - '*-rc*'
-  ref: v5.15.44-0-g4e67be407725b1d8b829ed2075987037abec98ec
+  ref: v5.15.45-0-g207ca688162d4d77129981a8b4352114b97a52b5
 - kind: patch
   path: patches/linux/riscv-allow-initrd-cmdline-loader.patch
