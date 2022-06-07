@@ -4,34 +4,33 @@ build-depends:
 - public-stacks/buildsystem-autotools.bst
 
 depends:
+- components/expat.bst
 - components/freetype.bst
 - components/libpaper.bst
+- components/libpng.bst
 - components/jpeg.bst
 - components/lcms.bst
 - components/libtiff.bst
+- components/openjpeg.bst
 - components/xorg-lib-xt.bst
 
 variables:
   conf-local: >-
     --with-drivers=ALL
-    --with-system-libtiff
+    --with-system-libtiff=yes
+    --with-local-zlib=no
 
-  (?):
-  - target_arch == "aarch64":
-      # May fail to build on some builders or run on some machines otherwise
-      local_flags: -DPNG_ARM_NEON_OPT=0
-  - target_arch == "ppc64le":
-      # bundled libpng somehow fails to build because it cannot find some VSX-specific function
-      # while it should find it, temporarily disabling VSX optimizations
-      # See: https://gitlab.gnome.org/GNOME/gnome-build-meta/-/merge_requests/715#note_870364
-      local_flags: -DPNG_POWERPC_VSX_OPT=0
+config:
+  configure-commands:
+    (<):
+    - rm -r expat jpeg libpng openjpeg
 
 sources:
 - kind: git_tag
   url: ghostscript:ghostpdl.git
-  track: ghostscript-9.52
+  track: ghostpdl-9.56.1-backport
   match:
-  - 'ghostscript-*'
-  ref: ghostscript-9.52-0-ge49830f8efdbc3a9f4e8acaf708b68a742f515aa
+  - 'ghostpdl-*'
+  ref: ghostpdl-9.56.1-0-g1149c5ab914c7695caa8951bb8213f4241c51104
 - kind: patch
-  path: patches/ghostscript/autoconf-fix.patch
+  path: patches/ghostscript/autogen-Honour-NOCONFIGURE-1.patch
