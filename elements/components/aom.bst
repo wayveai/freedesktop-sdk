@@ -52,9 +52,9 @@ public:
 sources:
 - kind: git_tag
   url: git_https:aomedia.googlesource.com/aom.git
-  track: master
+  track: main
   track-extra:
   - av1-normative
   match:
   - v*.*.*
-  ref: v3.2.0-0-g287164de79516c25c8c84fd544f67752c170082a
+  ref: v3.3.0-0-g87460cef80fb03def7d97df1b47bad5432e5e2e4
