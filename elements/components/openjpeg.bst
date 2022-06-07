@@ -12,15 +12,15 @@ variables:
     -DBUILD_STATIC_LIBS=OFF
     -DOPENJPEG_INSTALL_LIB_DIR=%{lib}
   local_flags: -fvisibility=hidden
-  
+
 public:
   bst:
     split-rules:
       devel:
         (>):
         - '%{libdir}/libopenjp2.so'
-        - '%{libdir}/openjpeg-2.4'
-        - '%{libdir}/openjpeg-2.4/**'
+        - '%{libdir}/openjpeg-2.5'
+        - '%{libdir}/openjpeg-2.5/**'
   cpe:
     ignored:
     - CVE-2016-7163
@@ -29,4 +29,5 @@ public:
 sources:
 - kind: git_tag
   url: github:uclouvain/openjpeg.git
-  ref: v2.4.0-0-g37ac30ceff6640bbab502388c5e0fa0bff23f505
+  track: master
+  ref: v2.5.0-0-ga5891555eb49ed7cc26b2901ea680acda136d811
