@@ -25,10 +25,12 @@ config:
 
 sources:
 - kind: git_tag
-  url: repo_or_cz:nasm.git
+  url: github:netwide-assembler/nasm.git
   track: master
+  track-extra:
+  - nasm-2.15.xx
   exclude:
   - nasm-*rc*
-  ref: nasm-2.15.01-0-gf0dc62c6a680a3cad5baa39a05c88716fb181806
+  ref: nasm-2.15.05-0-g214f2d4c56925a280c480950bbf71389e2169e1a
 - kind: patch
   path: patches/nasm/nasm-disable-werror-attributes.patch
