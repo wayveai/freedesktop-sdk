@@ -12,3 +12,5 @@ sources:
   path: patches/systemd/relax-boot-device-check-btrfs.patch
 - kind: patch
   path: patches/systemd/coredump-Fix-format-string-type-mismatch.patch
+- kind: patch
+  path: patches/systemd/sha256-fix-compilation-on-efi-ia32.patch
