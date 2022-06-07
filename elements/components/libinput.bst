@@ -23,6 +23,8 @@ sources:
 - kind: git_tag
   url: freedesktop:libinput/libinput.git
   track: main
+  track-extra:
+  - 1.20-branch
   exclude:
   - "*.9??"
-  ref: 1.20.0-0-g7850e4aecd188bcc3779957a670017e3edb9bced
+  ref: 1.20.1-0-g562f7bcee0bf513824d30be31e2a64c40d5f2ee1
