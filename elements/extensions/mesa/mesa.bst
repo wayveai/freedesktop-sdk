@@ -9,7 +9,6 @@ build-depends:
 - components/vulkan-headers.bst
 - components/wayland-protocols.bst
 - components/glslang.bst
-- components/zstd.bst
 - public-stacks/buildsystem-meson.bst
 
 
@@ -27,6 +26,7 @@ depends:
 - components/libglvnd.bst
 - components/libvdpau.bst
 - components/libunwind.bst
+- components/zstd.bst
 - extensions/mesa/libclc.bst
 - extensions/mesa/libdrm.bst
 - extensions/mesa/llvm.bst
