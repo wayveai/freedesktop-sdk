@@ -21,6 +21,7 @@ variables:
     docdir="%{docdir}"
     build=release
     USE_SYSTEM_LIBS=yes
+    USE_SYSTEM_GUMBO=no
     USE_SYSTEM_JBIG2DEC=no
     USE_SYSTEM_LCMS2=no
 
@@ -36,16 +37,30 @@ sources:
 - kind: git_tag
   url: ghostscript:mupdf.git
   track: master
-  ref: 1.17.0-0-g96751b25462f83d6e16a9afaf8980b0c3f979c8b
+  track-extra:
+  - 1.19.x
+  # 1.19.1 is a loose tag, unassociated with the stable branch.
+  - 1.19.1
+  exclude:
+  - '*-*'
+  ref: 1.19.1-0-g652c9ddb1deea87e65c75b06561efae8c1579a57
 - kind: git_module
   path: thirdparty/mujs
   url: ghostscript:mujs.git
-  ref: 90aca80865e28a1b9be9bc5ef1118438f62e4f8f
+  ref: c3715ce3db4cc37ea46af8dbc891ecee1ca1b2ff
 - kind: git_module
   path: thirdparty/jbig2dec
   url: ghostscript:jbig2dec.git
-  ref: 7e45faa81deadc4a3b4419a9e76a17782e8034f4
+  ref: ade8a556af40d67e0762809d5136db8f3b4b3d09
+- kind: git_module
+  path: thirdparty/gumbo-parser
+  url: ghostscript:thirdparty-gumbo-parser.git
+  ref: 289f3de61d9fc6a9812a6900c23e74c4d1fbde7d
 - kind: git_module
   path: thirdparty/lcms2
   url: ghostscript:thirdparty-lcms2.git
-  ref: 05db680de2d7178be21450bc0cc909460c7d4aeb
+  ref: 558b336e330e7816c22df900b8100c029b16b0bc
+- kind: git_module
+  path: thirdparty/extract
+  url: ghostscript:extract.git
+  ref: 96f670cbb051b30cd4636d58660cb4d34b9ede11
