@@ -41,7 +41,7 @@ config:
       targetdir="%{install-root}%{prefix}${rtlddir}"
 
       [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
-      mv "${sourcedir}"/ld-linux*.so* "${targetdir}"/
+      mv "${sourcedir}"/%{dynamic-linker} "${targetdir}"/
       rm -r "${sourcedir}"
       if [ "${sourcedir}" != "%{install-root}/lib" ]; then
         ln -sr "${targetdir}" "${sourcedir}"
@@ -62,9 +62,13 @@ variables:
   # -D_FORTIFY_SOURCE=2 breaks building glibc
   target_flags_fortify_source: ''
   arch_options: ''
+  dynamic-linker: ld-linux*.so*
+
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       arch_options: --enable-cet
+  - target_arch == "ppc64":
+      dynamic-linker: ld64.so.*
 
   conf-local: |
     CFLAGS="$CFLAGS" \
