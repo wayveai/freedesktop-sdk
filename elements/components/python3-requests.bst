@@ -1,10 +1,10 @@
 kind: pip
 
+build-depends:
+- public-stacks/buildsystem-python.bst
+
 depends:
 - components/python3.bst
-
-build-depends:
-- components/python3-pip.bst
 
 runtime-depends:
 - components/python3-urllib3.bst
@@ -16,5 +16,5 @@ runtime-depends:
 sources:
 - kind: pypi
   name: requests
-  url: pypi:60/f3/26ff3767f099b73e0efa138a9998da67890793bfa475d8278f84a30fec77/requests-2.27.1.tar.gz
-  sha256sum: 68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61
+  url: pypi:e9/23/384d9953bb968731212dc37af87cb75a885dc48e0615bd6a303577c4dc4b/requests-2.28.0.tar.gz
+  sha256sum: d568723a7ebd25875d8d1eaf5dfa068cd2fc8194b2e483d7b1f7c81918dbec6b
