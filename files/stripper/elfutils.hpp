@@ -50,32 +50,46 @@ template <typename Header>
 using section_header_t = typename header_traits<Header>::section_header_t;
 
 template <typename Header>
-section_header_t<Header> const*
-get_section(mapped_file const& file, Header const* header, unsigned n) {
-  assert((header->e_shoff + header->e_shentsize*n) < file.get_size());
-  return static_cast<section_header_t<Header> const*>(file.ptr(header->e_shoff + header->e_shentsize*n));
+endianness get_endianness(Header const* header);
+
+template <typename Header>
+Header const
+sect_header_be(Header const* mm_header);
+
+template <typename Header>
+Header const
+sect_header_le(Header const* mm_header);
+
+template <typename Header>
+section_header_t<Header> const
+get_section(mapped_file const& file, Header const& header, unsigned n) {
+  assert((header.e_shoff + header.e_shentsize*n) < file.get_size());
+  auto secthdr = static_cast<section_header_t<Header> const*>(file.ptr(header.e_shoff + header.e_shentsize*n));
+  if ( get_endianness(&header) == endianness::be ) {
+    return sect_header_be(secthdr);
+  }
+  return sect_header_le(secthdr);
 }
 
 template <typename Header>
-bool has_debuglink(mapped_file const& file, Header const* header) {
-  if ((header->e_shoff + header->e_shentsize*header->e_shnum) > file.get_size()) {
+bool has_debuglink(mapped_file const& file, Header const& header) {
+  if ((header.e_shoff + header.e_shentsize*header.e_shnum) > file.get_size()) {
     throw std::runtime_error("Unexpected values for section headers");
   }
-  if ((header->e_shstrndx >= header->e_shnum)) {
+  if ((header.e_shstrndx >= header.e_shnum)) {
     throw std::runtime_error("Unexpected value for e_shstrndx");
   }
-  auto strheader = get_section(file, header, header->e_shstrndx);
-  if ((strheader->sh_offset+strheader->sh_size) >= file.get_size()) {
+  auto strheader = get_section(file, header, header.e_shstrndx);
+  if ((strheader.sh_offset+strheader.sh_size) >= file.get_size()) {
     throw std::runtime_error("String table section outside of file");
   }
-  auto strtbl = static_cast<char const*>(file.ptr(strheader->sh_offset));
-
-  for (unsigned i = 0; i < header->e_shnum; ++i) {
+  auto strtbl = static_cast<char const*>(file.ptr(strheader.sh_offset));
+  for (unsigned i = 0; i < header.e_shnum; ++i) {
     auto section = get_section(file, header, i);
-    if (section->sh_name >= strheader->sh_size) {
+    if (section.sh_name >= strheader.sh_size) {
       throw std::runtime_error("String not in within table");
     }
-    std::string name(strtbl+section->sh_name);
+    std::string name(strtbl+section.sh_name);
     if (name == ".gnu_debuglink")
       return true;
   }
@@ -83,5 +97,11 @@ bool has_debuglink(mapped_file const& file, Header const* header) {
 }
 
 bool has_debuglink(fd_t& fd);
+
+template <typename Header>
+void header_be(Header const* mm_header, Header &header);
+
+template <typename Header>
+void header_le(Header const* mm_header, Header &header);
 
 #endif //ELFUTILS_HPP

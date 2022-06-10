@@ -53,6 +53,10 @@ variables:
     -fasynchronous-unwind-tables
     -fstack-clash-protection
     -fno-omit-frame-pointer
+  target_ppc64_flags: >-
+    -fasynchronous-unwind-tables
+    -fstack-clash-protection
+    -fno-omit-frame-pointer
   target_riscv64_flags: >-
     -fasynchronous-unwind-tables
     -fstack-clash-protection
@@ -92,6 +96,8 @@ variables:
       target_arch_flags: "%{target_aarch64_flags}"
   - target_arch == "ppc64le":
       target_arch_flags: "%{target_ppc64le_flags}"
+  - target_arch == "ppc64":
+      target_arch_flags: "%{target_ppc64_flags}"
   - target_arch == "riscv64":
       target_arch_flags: "%{target_riscv64_flags}"
 

@@ -23,6 +23,10 @@ variables:
       arch: "powerpc64le"
       gcc_arch: "powerpc64le"
       flatpak_arch: "ppc64le"
+  - target_arch == "ppc64":
+      arch: "powerpc64"
+      gcc_arch: "powerpc64"
+      flatpak_arch: "ppc64"
   - target_arch == "riscv64":
       arch: "riscv64"
       gcc_arch: "riscv64"
