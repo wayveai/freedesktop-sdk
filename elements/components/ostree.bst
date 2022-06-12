@@ -37,6 +37,8 @@ sources:
 - kind: git_tag
   url: github:ostreedev/ostree.git
   track: main
+  exclude:
+  - v*.*.*
   ref: v2022.4-0-g5fa364d3997a6b24850cddaa3c22def85baff575
 - kind: git_module
   path: libglnx
