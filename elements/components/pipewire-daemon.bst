@@ -11,6 +11,7 @@ runtime-depends:
 - components/bluez-libs.bst
 - components/rtkit.bst
 - components/webrtc-audio-processing.bst
+- components/wireplumber.bst
 
 config:
   include:

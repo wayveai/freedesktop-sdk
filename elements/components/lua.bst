@@ -9,6 +9,9 @@ depends:
 variables:
   local_flags: -fPIC
 
+environment:
+  SYSCFLAGS: "%{target_flags}"
+
 config:
   configure-commands:
   - sed -ie "s|/usr/local|%{install-root}%{prefix}|" Makefile

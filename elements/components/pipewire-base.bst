@@ -45,6 +45,7 @@ variables:
     -Dlibjack-path=%{libdir}
     -Djack-devel=true
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
+    -Dsession-managers=[]
 
 public:
   bst:
@@ -116,9 +117,3 @@ sources:
   ref: 0.3.56-0-gf274e53d25ee8f483ac6fce9e516bb1830abe88b
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
-- kind: git_tag
-  url: freedesktop:PipeWire/media-session.git
-  directory: subprojects/media-session
-  track: master
-  track-tags: false
-  ref: 0.4.1-11-ga87008622c9d12dba6dd75c5bbf0bff126da22fb
