@@ -19,4 +19,6 @@ sources:
 - kind: git_tag
   url: github:libsdl-org/SDL_ttf.git
   track: main
+  match:
+  - release-*
   ref: release-2.0.15-0-g33cdd1881e31184b49a68b4890d1d256fc0c6dc1
