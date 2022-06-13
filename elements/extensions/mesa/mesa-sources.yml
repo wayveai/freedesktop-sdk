@@ -3,11 +3,11 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: main
   track-extra:
-  - '22.0'
+  - '22.1'
   exclude:
   - '*rc*'
   - '*branchpoint*'
-  ref: mesa-22.0.5-0-g18f91b5895af3900c69be1a832822f32aa837b5e
+  ref: mesa-22.1.1-0-ga730b834b019179761d0288b621b7216e6f8d958
 - kind: local
   path: files/mesa/appdata.template
 - kind: patch
