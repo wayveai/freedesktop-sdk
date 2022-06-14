@@ -14,5 +14,5 @@ sources:
   exclude:
   - '.*rc.*'
   ref:
-    sha256sum: 67fab04a955a73eb660fe7bf281b6fa71a003bc6e23a92d2f6227654c5223dbe
-    suffix: 78/6c/85c0664365d32a32806bd12d46ea5dc466aa3aa7e8086e5daf3505b8cf33/networkx-2.8.3.tar.gz
+    sha256sum: 5e53f027c0d567cf1f884dbb283224df525644e43afd1145d64c9d88a3584762
+    suffix: 5d/3b/9ca0d8bbfbf418eb158fe7b8a5e4233ddc390d995cfb1dd32726dba8c8e5/networkx-2.8.4.tar.gz
