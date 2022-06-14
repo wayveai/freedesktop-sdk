@@ -39,6 +39,7 @@ variables:
     -Dbluez5-codec-aptx=disabled
     -Dlibcamera=disabled
     -Dlibcanberra=disabled
+    -Dbluez5-codec-lc3plus=disabled
     -Dlv2=disabled
     -Dlibjack-path=%{libdir}
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
@@ -112,7 +113,7 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.51-0-gebc775674a0cf254cebd6d4694944006405807e3
+  ref: 0.3.52-0-g31bf63105749893e5e2c6ae7784e7f27aa0345ad
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
 - kind: git_tag
