@@ -1,131 +1,5 @@
-From 0f0f726a79123c7ccc24d8481951c62fd8edf220 Mon Sep 17 00:00:00 2001
-From: Martin Blanchard <tchaik@gmx.com>
-Date: Wed, 31 Mar 2021 09:52:03 +0100
-Subject: [PATCH] build: stop relying on intltool for i18n
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Recent gettext version can extract and merge back strings from and to
-various file formats, no need for intltool anymore.
-
-https://wiki.gnome.org/Initiatives/GnomeGoals/GettextMigration
-
-https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues/133
-
-https://github.com/NetworkManager/NetworkManager/pull/303
-https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/96
-
-Clarification about the use of AM_GNU_GETTEXT_REQUIRE_VERSION:
-
-In configure.ac, specify the minimum gettext version we require, rather
-than the exact one. This fixes a situation where the autoconf macros
-used for gettext will be the latest available on the system (for
-example, 0.20); but the copied-in Makefile.in.in will be for the exact
-version specified in configure.ac (in this case, 0.19).
-
-In that situation, the gettext build rules will error out at `make` time
-with the message:
-   *** error: gettext infrastructure mismatch: using a Makefile.in.in
-   from gettext version 0.19 but the autoconf macros are from gettext
-   version 0.20
-
-Avoid that by specifying a minimum version dependency rather than an
-exact one. This should not cause problems as we haven’t committed any
-generated or external gettext files into git, so each developer will end
-up regenerating the build system for their system’s version of gettext,
-as expected.
-
-See the subsection of
-https://www.gnu.org/software/gettext/manual/html_node/Version-Control-Issues.html
-for more information.
-
-Note that autoreconf currently doesn’t recognise
-AM_GNU_GETTEXT_REQUIRE_VERSION, so we must continue also using
-AM_GNU_GETTEXT_VERSION. autopoint will ignore the latter if the former
-is present. See
-https://lists.gnu.org/archive/html/autoconf-patches/2015-10/msg00000.html.
----
- .gitignore                                    |  6 +-
- .gitlab-ci.yml                                | 12 +--
- Makefile.am                                   | 12 ++-
- autogen.sh                                    |  6 +-
- configure.ac                                  |  6 +-
- contrib/fedora/REQUIRED_PACKAGES              |  1 -
- contrib/fedora/rpm/NetworkManager.spec        |  4 +-
- data/meson.build                              |  5 +-
- ...rg.freedesktop.NetworkManager.policy.in.in | 68 ++++++++--------
- meson.build                                   |  5 --
- po/Makevars                                   | 78 +++++++++++++++++++
- po/POTFILES.in                                |  1 -
- 12 files changed, 135 insertions(+), 69 deletions(-)
- create mode 100644 po/Makevars
-
-diff --git a/.gitignore b/.gitignore
-index d02bcad683..d92ac853df 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -55,7 +55,6 @@ test-*.trs
- /config.*
- /config-extra.h
- /configure
--/intltool-*
- 
- /confdefs.h
- /conftest.[ch]
-@@ -192,7 +191,6 @@ test-*.trs
- /m4/intl.m4
- /m4/intldir.m4
- /m4/intlmacosx.m4
--/m4/intltool.m4
- /m4/intmax.m4
- /m4/inttypes-pri.m4
- /m4/inttypes_h.m4
-@@ -226,7 +224,6 @@ test-*.trs
- /man/common.ent
- 
- /po/*.gmo
--/po/.intltool-merge-cache
- /po/NetworkManager.pot
- /po/Makevars.template
- /po/Rules-quot
-@@ -482,3 +479,6 @@ test-*.trs
- /src/tests/test-systemd
- /src/tests/test-utils
- /src/tests/test-wired-defname
-+/intltool-*
-+/m4/intltool.m4
-+/po/.intltool-merge-cache
-diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
-index 9cfbd51320..e7c157ec6c 100644
---- a/.gitlab-ci.yml
-+++ b/.gitlab-ci.yml
-@@ -47,11 +47,11 @@ variables:
-   #
-   # This is done by running `ci-fairy generate-template` and possibly bump
-   # ".default_tag".
--  FEDORA_TAG:  '2021-08-30.0-7ff339b89ca1'
--  UBUNTU_TAG:  '2021-08-30.0-432f46c6a3a4'
--  DEBIAN_TAG:  '2021-08-30.0-432f46c6a3a4'
--  CENTOS_TAG:  '2021-08-30.0-7ff339b89ca1'
--  ALPINE_TAG:  '2021-08-30.0-20e22c5d34b7'
-+  FEDORA_TAG:  '2021-11-09.0-311d8cc62499'
-+  UBUNTU_TAG:  '2021-11-09.0-577176f5eb6c'
-+  DEBIAN_TAG:  '2021-11-09.0-577176f5eb6c'
-+  CENTOS_TAG:  '2021-11-09.0-311d8cc62499'
-+  ALPINE_TAG:  '2021-11-09.0-a28badea28eb'
- 
-   FEDORA_EXEC: 'bash .gitlab-ci/fedora-install.sh'
-   UBUNTU_EXEC: 'bash .gitlab-ci/debian-install.sh'
-@@ -966,4 +966,4 @@ triage:issues:
-     - gem install gitlab-triage
-     - gitlab-triage -d --token $API_TOKEN --source-id $SOURCE_ID
-   only:
--    - schedules
-\ No newline at end of file
-+    - schedules
 diff --git a/Makefile.am b/Makefile.am
-index 1c51afbfd2..4629b3ca1e 100644
+index 7b6e9df546..13d2baa4f2 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -169,8 +169,6 @@ endif
@@ -137,7 +11,7 @@ index 1c51afbfd2..4629b3ca1e 100644
  ###############################################################################
  
  install-data-hook-dirs:
-@@ -211,9 +209,12 @@ polkit_policydir = $(datadir)/polkit-1/actions
+@@ -212,9 +210,12 @@ polkit_policydir = $(datadir)/polkit-1/actions
  dist_polkit_policy_in_in_files = \
  	data/org.freedesktop.NetworkManager.policy.in.in
  
@@ -152,7 +26,7 @@ index 1c51afbfd2..4629b3ca1e 100644
  
  DISTCLEANFILES += $(polkit_policy_DATA)
  
-@@ -5625,9 +5626,6 @@ EXTRA_DIST += \
+@@ -5562,9 +5563,6 @@ EXTRA_DIST += \
  	COPYING.LGPL \
  	COPYING.GFDL \
  	\
@@ -180,7 +54,7 @@ index 8809806178..48a3b16252 100755
  cd $olddir
  if test -z "$NOCONFIGURE"; then
 diff --git a/configure.ac b/configure.ac
-index 1fd434b450..aba1b72135 100644
+index e46de64a15..b4ed9deaa1 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -138,10 +138,10 @@ AC_CHECK_DECLS([getrandom],
@@ -210,10 +84,10 @@ index 112b01bd2a..637d47e979 100755
      jansson-devel \
      libcurl-devel \
 diff --git a/contrib/fedora/rpm/NetworkManager.spec b/contrib/fedora/rpm/NetworkManager.spec
-index f3ef632cb5..5161c26222 100644
+index e43a153637..4e83361453 100644
 --- a/contrib/fedora/rpm/NetworkManager.spec
 +++ b/contrib/fedora/rpm/NetworkManager.spec
-@@ -236,8 +236,7 @@ BuildRequires: meson
+@@ -251,8 +251,7 @@ BuildRequires: meson
  BuildRequires: automake
  BuildRequires: autoconf
  %endif
@@ -223,7 +97,7 @@ index f3ef632cb5..5161c26222 100644
  
  BuildRequires: dbus-devel >= %{dbus_version}
  BuildRequires: glib2-devel >= 2.40.0
-@@ -698,7 +697,6 @@ This tool is still experimental.
+@@ -744,7 +743,6 @@ Preferably use nmcli instead.
  gtkdocize
  %endif
  autoreconf --install --force
@@ -441,7 +315,7 @@ index 8d46dac735..13a0a5b504 100644
        <allow_inactive>no</allow_inactive>
        <allow_active>yes</allow_active>
 diff --git a/meson.build b/meson.build
-index 9712dd799f..90bec44391 100644
+index 9c2b94b622..b875e20d5f 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -78,11 +78,6 @@ build_root = meson.current_build_dir()
@@ -456,92 +330,8 @@ index 9712dd799f..90bec44391 100644
  top_inc = include_directories('.')
  
  perl = find_program('perl')
-diff --git a/po/Makevars b/po/Makevars
-new file mode 100644
-index 0000000000..b858b6db7d
---- /dev/null
-+++ b/po/Makevars
-@@ -0,0 +1,78 @@
-+# Makefile variables for PO directory in any package using GNU gettext.
-+
-+# Usually the message domain is the same as the package name.
-+DOMAIN = $(PACKAGE)
-+
-+# These two variables depend on the location of this directory.
-+subdir = po
-+top_builddir = ..
-+
-+# These options get passed to xgettext.
-+XGETTEXT_OPTIONS = --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments
-+
-+# This is the copyright holder that gets inserted into the header of the
-+# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
-+# package.  (Note that the msgstr strings, extracted from the package's
-+# sources, belong to the copyright holder of the package.)  Translators are
-+# expected to transfer the copyright for their translations to this person
-+# or entity, or to disclaim their copyright.  The empty string stands for
-+# the public domain; in this case the translators are expected to disclaim
-+# their copyright.
-+COPYRIGHT_HOLDER = The NetworkManager Authors.
-+
-+# This tells whether or not to prepend "GNU " prefix to the package
-+# name that gets inserted into the header of the $(DOMAIN).pot file.
-+# Possible values are "yes", "no", or empty.  If it is empty, try to
-+# detect it automatically by scanning the files in $(top_srcdir) for
-+# "GNU packagename" string.
-+PACKAGE_GNU = no
-+
-+# This is the email address or URL to which the translators shall report
-+# bugs in the untranslated strings:
-+# - Strings which are not entire sentences, see the maintainer guidelines
-+#   in the GNU gettext documentation, section 'Preparing Strings'.
-+# - Strings which use unclear terms or require additional context to be
-+#   understood.
-+# - Strings which make invalid assumptions about notation of date, time or
-+#   money.
-+# - Pluralisation problems.
-+# - Incorrect English spelling.
-+# - Incorrect formatting.
-+# It can be your email address, or a mailing list address where translators
-+# can write to without being subscribed, or the URL of a web page through
-+# which the translators can contact you.
-+MSGID_BUGS_ADDRESS = https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues
-+
-+# This is the list of locale categories, beyond LC_MESSAGES, for which the
-+# message catalogs shall be used.  It is usually empty.
-+EXTRA_LOCALE_CATEGORIES =
-+
-+# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
-+# context.  Possible values are "yes" and "no".  Set this to yes if the
-+# package uses functions taking also a message context, like pgettext(), or
-+# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
-+USE_MSGCTXT = yes
-+
-+# These options get passed to msgmerge.
-+# Useful options are in particular:
-+#   --previous            to keep previous msgids of translated messages,
-+#   --quiet               to reduce the verbosity.
-+MSGMERGE_OPTIONS =
-+
-+# These options get passed to msginit.
-+# If you want to disable line wrapping when writing PO files, add
-+# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
-+# MSGINIT_OPTIONS.
-+MSGINIT_OPTIONS =
-+
-+# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
-+# has changed.  Possible values are "yes" and "no".  Set this to no if
-+# the POT file is checked in the repository and the version control
-+# program ignores timestamps.
-+PO_DEPENDS_ON_POT = no
-+
-+# This tells whether or not to forcibly update $(DOMAIN).pot and
-+# regenerate PO files on "make dist".  Possible values are "yes" and
-+# "no".  Set this to no if the POT file and PO files are maintained
-+# externally.
-+DIST_DEPENDS_ON_UPDATE_PO = no
 diff --git a/po/POTFILES.in b/po/POTFILES.in
-index 0cd24d9940..e21699866b 100644
+index 76d20094d0..21edc14d47 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -1,4 +1,3 @@
@@ -549,6 +339,3 @@ index 0cd24d9940..e21699866b 100644
  # List of source files containing translatable strings.
  # Please keep this file sorted alphabetically.
  data/org.freedesktop.NetworkManager.policy.in.in
--- 
-2.33.1
-
