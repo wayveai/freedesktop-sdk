@@ -1,12 +1,9 @@
 sources:
 - kind: git_tag
-  url: kernel:linux/kernel/git/stable/linux.git
+  url: github:wayveai/linux.git
   track: master
   track-extra:
-  - linux-5.13.y
-  - linux-5.14.y
+  - linux-5.17.y
   exclude:
   - '*-rc*'
-  ref: v5.14.18-0-ga0265dd8262de73457aaa3ce1c5938dc152b8085
-- kind: patch
-  path: patches/linux/riscv-allow-initrd-cmdline-loader.patch
+  ref: v5.17-wayve-0.1.0
