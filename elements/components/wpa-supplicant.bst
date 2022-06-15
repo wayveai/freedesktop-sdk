@@ -53,5 +53,5 @@ config:
 sources:
 - kind: git_tag
   url: git_https:w1.fi/hostap.git
-  track: master
-  ref: hostap_2_9-0-gca8c2bd28ad53f431d6ee60ef754e98cfdb4c17b
+  track: main
+  ref: hostap_2_10-0-gcff80b4f7d3c0a47c052e8187d671710f48939e4
