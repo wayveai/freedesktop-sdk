@@ -25,9 +25,9 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Tools.git
-  ref: sdk-1.3.211.0-0-g4fdfd2b1187ab44f062d091ba3113c5e3eab5a1b
+  ref: sdk-1.3.216.0-0-gef9db7a8ec52f6c56158d83f5d57ef388c1abec1
   track: master
   track-extra:
-  - sdk-1.3.211
+  - sdk-1.3.216
   match:
   - sdk-*
