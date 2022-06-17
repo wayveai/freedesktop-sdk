@@ -29,4 +29,4 @@ sources:
   exclude:
   - SpeexDSP-*rc*
   - SpeexDSP-*beta*
-  ref: SpeexDSP-1.2.0-0-g64cbfa9bca7479a758351aa02bb4abdd76baa9e7
+  ref: SpeexDSP-1.2.1-0-g1b28a0f61bc31162979e1f26f3981fc3637095c8
