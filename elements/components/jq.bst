@@ -1,20 +1,26 @@
 kind: autotools
 description: jq JSON processor
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 config:
   configure-commands:
-    (<) :
-      - |
-        cd modules/oniguruma
-        autoreconf -v -f -i
-        cd ../..
+    (<):
+    - |
+      cd modules/oniguruma
+      autoreconf -v -f -i
+      cd ../..
 
 sources:
-- kind: tar
-  url: github_files:stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
-  ref: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
+- kind: git_tag
+  url: github:stedolan/jq.git
+  track: master
+  ref: jq-1.6-0-g2e01ff1fb69609540b2bdc4e62a60499f2b2fb8e
+- kind: git_module
+  path: modules/oniguruma
+  url: github:kkos/oniguruma.git
+  ref: 6fa38f4084b448592888ed9ee43c6e90a46b5f5c
