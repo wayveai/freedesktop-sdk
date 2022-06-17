@@ -1,16 +1,16 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/itstool.bst
 
 depends:
-- filename: bootstrap-import.bst
-- filename: components/gtk3.bst
-- filename: components/itstool.bst
-  type: build
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- components/gtk3.bst
 
 variables:
-  conf-local: |
-    --disable-webkitgtk
+  meson-local: >-
+    -Dlibnotify=false
+    -Dwebkitgtk=false
 
 config:
   install-commands:
@@ -20,5 +20,5 @@ config:
 
 sources:
 - kind: tar
-  url: tar_https:download.gnome.org/sources/zenity/3.32/zenity-3.32.0.tar.xz
-  ref: e786e733569c97372c3ef1776e71be7e7599ebe87e11e8ad67dcc2e63a82cd95
+  url: tar_https:download.gnome.org/sources/zenity/3.42/zenity-3.42.1.tar.xz
+  ref: a08e0c8e626615ee2c23ff74628eba6f8b486875dd54371ca7e2d7605b72a87c
