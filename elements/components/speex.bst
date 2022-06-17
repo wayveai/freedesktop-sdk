@@ -23,4 +23,4 @@ sources:
 - kind: git_tag
   url: xiph:speex.git
   track: master
-  ref: Speex-1.2.0-0-g7fc5f8b88519a2aafdf4b6a5c31ef3d54b560d68
+  ref: Speex-1.2.1-0-g5dceaaf3e23ee7fd17c80cb5f02a838fd6c18e01
