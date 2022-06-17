@@ -20,8 +20,8 @@ variables:
 
 sources:
 - kind: tar
-  url: tar_https:cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.1.tar.xz
-  ref: 7aefaa6b78b076515d272ec59c4616707a54fc9f2391239737d5f10af7a16caa
+  url: tar_https:cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.2.tar.xz
+  ref: ca10d017f8a1b6d247556622c841fc56b90c03b1803f87198da1e4fd3ec3bf2a
 
 config:
   install-commands:
