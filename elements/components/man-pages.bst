@@ -20,4 +20,6 @@ sources:
   track: master
   track-extra:
   - man-pages-5.04
+  exclude:
+  - '*rc*'
   ref: man-pages-5.13-0-g091fbf1fef4808f0ccfe0ff8c333aedf833b8782
