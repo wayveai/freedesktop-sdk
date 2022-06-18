@@ -33,5 +33,5 @@ public:
 sources:
 - kind: pypi
   name: sphinx
-  url: pypi:9c/4e/a1a978d4b4f0de4632e2f00e67472a6135346b35c142dea873e8e92803c1/Sphinx-5.0.1.tar.gz
-  sha256sum: f4da1187785a5bc7312cc271b0e867a93946c319d106363e102936a3d9857306
+  url: pypi:83/5f/0ebf0c94dffd7a848ebfeafc0d3147a784afffb44e2c6fcaeab7eadd67ad/Sphinx-5.0.2.tar.gz
+  sha256sum: b18e978ea7565720f26019c702cd85c84376e948370f1cd43d60265010e1c7b0
