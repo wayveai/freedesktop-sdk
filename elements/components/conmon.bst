@@ -26,4 +26,4 @@ sources:
   url: github:containers/conmon.git
   directory: src/github.com/containers/conmon
   track: main
-  ref: v2.1.2-0-g99eac3e82289c18465adeab5c522469ad14e5725
+  ref: v2.1.2-0-g2bc95ee697e87d5f7b77063cf83fc32739addafe
