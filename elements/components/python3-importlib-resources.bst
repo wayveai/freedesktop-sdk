@@ -10,5 +10,5 @@ depends:
 sources:
 - kind: pypi
   name: importlib-resources
-  url: pypi:07/3c/4e27ef7d4cea5203ed4b52b7fe96ddd08559d9f147a2a4307e7d6d98c035/importlib_resources-5.7.1.tar.gz
-  sha256sum: b6062987dfc51f0fcb809187cffbd60f35df7acb4589091f154214af6d0d49d3
+  url: pypi:a5/66/b844887f2225049abd75a0c54415d419e334b7a7e2a69c5a5c4968e30906/importlib_resources-5.8.0.tar.gz
+  sha256sum: 568c9f16cb204f9decc8d6d24a572eeea27dacbb4cee9e6b03a8025736769751
