@@ -13,6 +13,7 @@ depends:
 - components/libglvnd.bst
 - components/libnice.bst
 - components/librsvg.bst
+- components/libva.bst
 - components/openal.bst
 - components/vulkan-icd-loader.bst
 - components/wayland.bst
@@ -50,6 +51,7 @@ variables:
     -Dpackage-origin="freedesktop-sdk"
     -Drsvg=enabled
     -Dsndfile=enabled
+    -Dva=enabled
     -Dvulkan=enabled
     -Dwayland=enabled
     -Dwebp=enabled
@@ -78,6 +80,7 @@ public:
         - '%{libdir}/libgstsctp-1.0.so'
         - '%{libdir}/libgsttranscoder-1.0.so'
         - '%{libdir}/libgsturidownloader-1.0.so'
+        - '%{libdir}/libgstva-1.0.so'
         - '%{libdir}/libgstvulkan-1.0.so'
         - '%{libdir}/libgstwayland-1.0.so'
         - '%{libdir}/libgstwebrtc-1.0.so'
