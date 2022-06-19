@@ -25,4 +25,4 @@ sources:
 - kind: git_tag
   url: github:alsa-project/alsa-plugins.git
   track: master
-  ref: v1.2.6-0-g86d695c5d6ba028a3c01758a3b398312408ee0cf
+  ref: v1.2.7.1-0-ga92944bf60f7d577c730a2856881e1ff5cbfeb88
