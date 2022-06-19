@@ -80,7 +80,7 @@ sources:
   url: github:libsdl-org/SDL.git
   track: main
   ref: release-2.0.22-0-g53dea9830964eee8b5c2a7ee0a65d6e268dc78a1
-  exclude:
-  - '*RC*'
+  match:
+  - release-*
 - kind: patch
   path: patches/sdl2/cmake-remove-static-target.patch
