@@ -68,4 +68,4 @@ sources:
 - kind: git_module
   path: gnulib
   url: savannah:gnulib.git
-  ref: d682f8de7f9d384f4cfc482a3ba2960329a8db21
+  ref: a88d5ed6bd16d702896a4a5367d7320020cb8988
