@@ -40,6 +40,6 @@ sources:
   exclude:
   - "*-dev*"
   - "*-rc*"
-  ref: 1.32.2-0-gbf1b09702ed442a3efe426c8ceba4ef1e6bb1902
+  ref: 1.32.12-0-gd90c03b1b8f3e6f5ff8fbc1cbc176f0a0dec6362
 - kind: patch
   path: patches/networkmanager/gettext.patch
