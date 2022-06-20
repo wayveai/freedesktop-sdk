@@ -1,3 +1,9 @@
+environment:
+  MAX_CPU: "%{max-jobs}"
+
+environment-nocache:
+- MAX_CPU
+
 variables:
   compression: lzo
 
@@ -5,4 +11,5 @@ config:
   commands:
   - |
     mksquashfs "%{build-root}" "%{install-root}/%{snap-target}" \
-        -root-owned -noappend -comp %{compression} -no-xattrs -no-fragments
+        -root-owned -noappend -comp %{compression} -no-xattrs -no-fragments \
+        -processors ${MAX_CPU}
