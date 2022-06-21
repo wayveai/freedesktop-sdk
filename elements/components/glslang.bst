@@ -26,7 +26,5 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/glslang.git
-  track: master
-  match:
-  - '*.*.*'
+  # Frozen due to ABI break
   ref: 11.6.0-0-g2fb89a0072ae7316af1c856f22663fde4928128a
