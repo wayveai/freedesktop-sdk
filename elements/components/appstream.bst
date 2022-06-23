@@ -18,6 +18,7 @@ depends:
 - components/libyaml.bst
 - components/librsvg.bst
 - components/libxml2.bst
+- components/libxmlb.bst
 - components/pango.bst
 
 variables:
@@ -30,8 +31,3 @@ sources:
   url: github:ximion/appstream.git
   track: master
   ref: v0.15.4-0-ge1413598ec578dda89d586d48c52bb9584a07305
-- kind: git_tag
-  url: github:hughsie/libxmlb.git
-  directory: subprojects/libxmlb
-  track: main
-  ref: 0.3.9-0-gc308e39ccad6673e216f92d08b3782a4ffcb23ad

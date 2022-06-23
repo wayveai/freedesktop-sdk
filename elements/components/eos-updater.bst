@@ -1,22 +1,21 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-meson.bst
-  type: build
-- filename: components/gtk-doc.bst
-  type: build
-- filename: components/valgrind-maybe.bst
-  type: build
-- filename: components/ostree.bst
-- filename: components/flatpak.bst
-- filename: components/gobject-introspection.bst
-- filename: components/gnupg.bst
+build-depends:
+- public-stacks/buildsystem-meson.bst
+- components/gtk-doc.bst
+- components/valgrind-maybe.bst
 
-- filename: components/networkmanager.bst
-- filename: components/eos-metrics.bst
-- filename: components/avahi.bst
-- filename: components/mogwai.bst
+
+depends:
+- components/avahi.bst
+- components/eos-metrics.bst
+- components/flatpak.bst
+- components/gobject-introspection.bst
+- components/gnupg.bst
+- components/libsoup2.bst
+- components/mogwai.bst
+- components/networkmanager.bst
+- components/ostree.bst
 
 sources:
 - kind: git_tag

@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - bootstrap-import.bst
 - components/curl.bst
+- components/libsoup2.bst # flatpak-builder is using both libcurl and libsoup :(
 - components/libyaml.bst
 
 build-depends:

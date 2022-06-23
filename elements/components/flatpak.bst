@@ -6,12 +6,12 @@ depends:
 - components/gpgme.bst
 - components/libarchive.bst
 - components/libxml2.bst
-- components/libsoup2.bst
+- components/curl.bst
 - components/xorg-lib-xau.bst
 - components/ostree.bst
 - components/fuse.bst
 - components/json-glib.bst
-- components/appstream-glib.bst
+- components/appstream.bst
 - components/libseccomp.bst
 - components/polkit.bst
 
@@ -28,6 +28,7 @@ variables:
   conf-local: >-
     --disable-documentation
     --with-system-bubblewrap
+    --with-curl
 
 (@):
 - elements/include/flatpak.yml
