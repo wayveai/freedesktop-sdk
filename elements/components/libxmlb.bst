@@ -8,10 +8,12 @@ build-depends:
 depends:
 - components/glib.bst
 
+variables:
+  meson-local: >-
+    -Dtests=false
+
 sources:
 - kind: git_tag
   url: github:hughsie/libxmlb.git
-  track: master
-  track-extra:
-  - 0_1_X
-  ref: 0.1.15-0-gee4aafdd97844f1c73021a4978a43460f0835d5c
+  track: main
+  ref: 0.3.9-0-gc308e39ccad6673e216f92d08b3782a4ffcb23ad
