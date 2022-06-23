@@ -10,12 +10,11 @@ depends:
 - components/python3-cffi.bst
 
 sources:
-- kind: git_tag
-  url: github:pyca/cryptography.git
-  track: main
-  track-extra:
-  - 37.0.x
-  ref: 37.0.2-0-g5954a52f0900569a83138d71ec1c04971452ea5b
+- kind: pypi
+  name: cryptography
+  ref:
+    sha256sum: f224ad253cc9cea7568f49077007d2263efa57396a2f2f78114066fd54b5c68e
+    suffix: 51/05/bb2b681f6a77276fc423d04187c39dafdb65b799c8d87b62ca82659f9ead/cryptography-37.0.2.tar.gz
 - kind: cargo
   url: crates:crates
   cargo-lock: src/rust/Cargo.lock
