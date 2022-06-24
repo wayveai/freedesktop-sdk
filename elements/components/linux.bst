@@ -614,10 +614,3 @@ public:
 
 (@):
 - elements/include/linux.yml
-
-sources:
-  (>):
-  - kind: local
-    path: files/linux/config-utils.sh
-  - kind: patch_queue
-    path: patches/sifive-unmatched/linux

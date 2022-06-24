@@ -9,3 +9,7 @@ sources:
   ref: v5.15.46-0-gaed23654e8ed2cc776ae26a87ef773ff38b48d7f
 - kind: patch
   path: patches/linux/riscv-allow-initrd-cmdline-loader.patch
+- kind: local
+  path: files/linux/config-utils.sh
+- kind: patch_queue
+  path: patches/sifive-unmatched/linux
