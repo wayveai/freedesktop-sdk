@@ -129,6 +129,7 @@ variables:
     --enable-muxer=%{muxers}
     --enable-demuxer=%{demuxers}
     --enable-filter=%{filters}
+    --enable-indev=%{indevs}
     --enable-protocol=%{protocols}
     --arch="%{ffmpeg-arch}"
 
