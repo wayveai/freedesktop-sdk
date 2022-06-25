@@ -16,6 +16,11 @@ config:
     - |
       rm "%{install-root}%{infodir}/dir"
 
+public:
+  cpe:
+    ignored:
+    - CVE-2015-2987
+
 sources:
 - kind: tar
   url: ftp_gnu_org:ed/ed-1.18.tar.lz
