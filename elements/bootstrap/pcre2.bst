@@ -34,6 +34,7 @@ public:
         - '%{libdir}/libpcre2-posix.so'
 
 sources:
-- kind: tar
-  url: tar_https:ftp.pcre.org/pub/pcre/pcre2-10.35.tar.bz2
-  ref: 9ccba8e02b0ce78046cdfb52e5c177f0f445e421059e43becca4359c669d4613
+- kind: git_tag
+  url: github:PCRE2Project/pcre2.git
+  track: master
+  ref: pcre2-10.40-0-g3103b8f20a3b9944b177e812fde29fbfb8b90558
