@@ -22,4 +22,4 @@ sources:
   - eos4.0
   exclude:
   - Release_3.*
-  ref: Release_4.0.6-0-gb9b99b04ac76643943fd603416de9e0bf08db5bb
+  ref: Release_4.0.7-0-gb9b99b04ac76643943fd603416de9e0bf08db5bb
