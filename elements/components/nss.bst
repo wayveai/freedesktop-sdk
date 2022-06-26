@@ -74,6 +74,8 @@ public:
   cpe:
     product: network_security_services
     version-match: '(\d+)_(\d+)'
+    ignored:
+    - CVE-2013-0791
 
 config:
   build-commands:
@@ -137,10 +139,10 @@ config:
 sources:
 - kind: git_tag
   url: github:nss-dev/nss.git
-  track: NSS_3_68_3_BRANCH  # Attention! Make sure we use latest ESR release
+  track: NSS_3_79_0_BRANCH  # Attention! Make sure we use latest ESR release
   match:
   - 'NSS_*_RTM'
-  ref: NSS_3_68_4_RTM-0-gb88b3aea6ea0060a0da2f6dd3b21e28940add1c7
+  ref: NSS_3_79_4_RTM-0-gb88b3aea6ea0060a0da2f6dd3b21e28940add1c7
   directory: nss
 - kind: patch
   path: patches/nss/pkg-config-libdir.patch
