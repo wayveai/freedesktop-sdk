@@ -43,6 +43,9 @@ public:
     overlap-whitelist:
     - "%{bindir}/git"
     - "%{debugdir}%{bindir}/git.debug"
+  cpe:
+    ignored:
+    - CVE-2018-1000182
 
 (@):
 - elements/include/git.yml
