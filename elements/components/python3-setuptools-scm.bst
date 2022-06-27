@@ -9,6 +9,7 @@ depends:
 - components/python3-setuptools.bst
 - components/git-minimal.bst
 - components/python3-tomli.bst
+- components/python3-typing-extensions.bst
 - components/python3-packaging.bst
 
 sources:
