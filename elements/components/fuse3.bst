@@ -18,7 +18,9 @@ public:
       #!/bin/bash
       sysroot="${1}"
       chmod 4755 "${sysroot}%{bindir}/fusermount3"
-
+  cpe:
+    vendor: fuse_project
+      
 sources:
 - kind: git_tag
   url: github:libfuse/libfuse.git
