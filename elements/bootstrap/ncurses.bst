@@ -1,11 +1,12 @@
 kind: autotools
 description: GNU ncurses
 
-depends:
-- filename: bootstrap/ncurses-build-deps.bst
-  type: build
-- filename: bootstrap/glibc.bst
-  type: runtime
+build-depends:
+- bootstrap/ncurses-build-deps.bst
+- bootstrap/ncurses-pkgconfig-dir.bst
+
+runtime-depends:
+- bootstrap/glibc.bst
 
 (@):
 - elements/bootstrap/include/target.yml
@@ -21,6 +22,7 @@ config:
     --host=%{triplet} \
     --disable-stripping \
     --libdir=%{libdir} \
+    --with-pkg-config="%{bindir}/pkg-config" \
     --with-pkg-config-libdir="%{libdir}/pkgconfig" \
     --disable-widec \
     --with-shared \
@@ -39,6 +41,7 @@ config:
     --host=%{triplet} \
     --disable-stripping \
     --libdir=%{libdir} \
+    --with-pkg-config="%{bindir}/pkg-config" \
     --with-pkg-config-libdir="%{libdir}/pkgconfig" \
     --enable-widec \
     --with-shared \
