@@ -44,8 +44,7 @@ public:
     - "%{bindir}/git"
     - "%{debugdir}%{bindir}/git.debug"
   cpe:
-    ignored:
-    - CVE-2018-1000182
+    vendor: git-scm
 
 (@):
 - elements/include/git.yml
