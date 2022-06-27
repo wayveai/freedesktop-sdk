@@ -23,8 +23,13 @@ public:
         (>):
         - '%{libdir}/libgmp.so'
         - '%{libdir}/libgmpxx.so'
+  cpe:
+    patches:
+    - CVE-2021-43618
 
 sources:
 - kind: tar
   url: ftp_gnu_org:gmp/gmp-6.2.1.tar.xz
   ref: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
+- kind: patch
+  path: patches/gmp/mpz-inp_raw.c-Avoid-bit-size-overflows.patch
