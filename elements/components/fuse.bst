@@ -26,6 +26,9 @@ public:
         - '%{libdir}/libfuse.so'
         - '%{libdir}/libulockmgr.so'
 
+  cpe:
+    vendor: fuse_project
+
 sources:
 - kind: git_tag
   url: github:libfuse/libfuse.git
