@@ -76,6 +76,7 @@ public:
     version-match: '(\d+)_(\d+)'
     ignored:
     - CVE-2013-0791
+    - CVE-2013-1620
 
 config:
   build-commands:
