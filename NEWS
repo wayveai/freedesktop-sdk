@@ -1,5 +1,13 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08beta.1:
+
+  * Several buildstream plugins have been upstreamed: cpan, pypi, patch_queue, snap_image
+    check_forbidden
+  * Update all the components to the latest version available, check specific versions at
+    https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Release-Contents#contents
+  * A lot of other small fixes and improvements
+
 freedesktop-sdk-21.08rc.1:
   * mesa: enable crocus, avahi gallium drivers and panfrost vulkan driver
   * sdl2: Update to 2.0.16
