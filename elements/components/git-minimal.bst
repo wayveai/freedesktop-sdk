@@ -19,5 +19,9 @@ config:
   install-commands:
   - install -m 755 -D -t "%{install-root}%{bindir}" git
 
+public:
+  cpe:
+    vendor: git-scm
+  
 (@):
 - elements/include/git.yml
