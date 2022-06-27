@@ -20,6 +20,7 @@ public:
       chmod 4755 "${sysroot}%{bindir}/fusermount3"
   cpe:
     vendor: fuse_project
+    name: fuse
       
 sources:
 - kind: git_tag
