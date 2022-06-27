@@ -16,6 +16,8 @@ config:
 
 public:
   cpe:
+    ignored:
+    - CVE-2010-4226
     patches:
     - CVE-2021-38185
 
