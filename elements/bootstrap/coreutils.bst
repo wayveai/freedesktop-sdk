@@ -39,6 +39,11 @@ config:
     - |
       rm "%{install-root}%{infodir}/dir"
 
+public:
+  cpe:
+    ignored:
+    - CVE-2016-2781
+
 sources:
   (>):
   - kind: patch
