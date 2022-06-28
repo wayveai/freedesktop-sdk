@@ -1,19 +1,21 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+- components/python3.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
-- filename: components/libtasn1.bst
-- filename: components/libunistring.bst
-- filename: components/libidn2.bst
-- filename: components/nettle.bst
-- filename: components/p11-kit.bst
+- bootstrap-import.bst
+- components/libtasn1.bst
+- components/libunistring.bst
+- components/libidn2.bst
+- components/nettle.bst
+- components/p11-kit.bst
 
 variables:
 
-  conf-local: |
-    --disable-doc \
+  conf-local: >-
+    --disable-doc
     --with-default-trust-store-pkcs11="pkcs11:"
 
 public:
@@ -26,5 +28,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz
-  ref: 646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752
+  url: tar_https:www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.6.tar.xz
+  ref: 77065719a345bfb18faa250134be4c53bef70c1bd61f6c0c23ceb8b44f0262ff
