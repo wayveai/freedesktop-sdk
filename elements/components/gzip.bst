@@ -11,5 +11,5 @@ depends:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:gzip/gzip-1.10.tar.xz
-  ref: 8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0
+  url: ftp_gnu_org:gzip/gzip-1.12.tar.xz
+  ref: ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956
