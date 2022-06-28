@@ -34,5 +34,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_http:www.fftw.org/fftw-3.3.9.tar.gz
-  ref: bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d
+  url: tar_http:www.fftw.org/fftw-3.3.10.tar.gz
+  ref: 56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467
