@@ -14,5 +14,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:www.sudo.ws/dist/sudo-1.9.7p1.tar.gz
-  ref: 391431f454e55121b60c6ded0fcf30ddb80d623d7d16a6d1907cfa6a0b91d8cf
+  url: tar_https:www.sudo.ws/dist/sudo-1.9.11p3.tar.gz
+  ref: 4687e7d2f56721708f59cca2e1352c056cb23de526c22725615a42bb094f1f70
