@@ -28,6 +28,6 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:www.mpg123.de/download/mpg123-1.28.0.tar.bz2
-  ref: e49466853685026da5d113dc7ff026b1b2ad0b57d78df693a446add9db88a7d5
+  url: tar_https:www.mpg123.de/download/mpg123-1.30.0.tar.bz2
+  ref: 397ead52f0299475f2cefd38c3835977193fd9b1db6593680346c4e9109ed61c
 
