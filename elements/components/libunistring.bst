@@ -12,5 +12,5 @@ public:
 
 sources:
 - kind: tar
-  url: ftp_gnu_org:libunistring/libunistring-0.9.10.tar.xz
-  ref: eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7
+  url: ftp_gnu_org:libunistring/libunistring-1.0.tar.xz
+  ref: 5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741
