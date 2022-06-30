@@ -501,9 +501,3 @@ depends:
 - components/zenity.bst
 - components/zip.bst
 - components/zstd.bst
-
-(?):
-- target_arch in ("x86_64", "i686"):
-    depends:
-      (>):
-      - components/syslinux.bst

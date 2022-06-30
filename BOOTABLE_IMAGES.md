@@ -124,8 +124,7 @@ operation system system choose "Generic default".
 In the last page of the virtual machine create assistant, check the
 checkbox "Customize configuration before install".
 
-In the "Overview", "Hypervisor Details", "Firmware", select the required
-boot firmware, either "BIOS" or "UEFI".
+In the "Overview", "Hypervisor Details", "Firmware", select "UEFI".
 
 In "Video", change the model to "Virtio" and enable "3D acceleration".
 
@@ -134,8 +133,8 @@ the network uses `e1000` and sound uses `hda`.
 
 ## Image types
 
-There are two example of image using different bootloaders. [Legacy
-BIOS](#legacy-bios) uses Syslinux, and [EFI](#efi) uses systemd boot.
+There are one example of creation of an OS image; for [EFI](#efi) support
+we use systemd boot.
 
 For virtual machines booting, section [QEMU+9P](#qemu-9p) uses direct kernel
 boot and 9p file system.
@@ -145,18 +144,6 @@ OSTree.
 
 Finally [Desktop](#desktop) provides pieces required for making a desktop image,
 that is sound, desktop environment and flatpak application support.
-
-### Legacy BIOS
-
-The `vm/minimal/bios.bst` provides an example image booting with
-Syslinux.
-
-```
-bst build vm/minimal/bios.bst
-bst checkout vm/minimal/bios.bst checkout
-```
-
-Then you can use `checkout/disk.img` QEMU.
 
 ### EFI
 
