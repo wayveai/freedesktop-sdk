@@ -5,6 +5,7 @@ build-depends:
 - components/wayland-protocols.bst
 - public-stacks/buildsystem-autotools.bst
 - components/iso-codes.bst
+- components/systemd.bst
 
 depends:
 - filename: components/gtk3.bst
@@ -49,5 +50,5 @@ public:
 
 sources:
 - kind: tar
-  url: github_files:ibus/ibus/releases/download/1.5.24/ibus-1.5.24.tar.gz
-  ref: abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f
+  url: github_files:ibus/ibus/releases/download/1.5.26/ibus-1.5.26.tar.gz
+  ref: 5c2fd118e7bfd4e9a42c3a20e6175a263426c90b6256f94989ed3d0384f4c9fc
