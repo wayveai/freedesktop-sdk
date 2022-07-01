@@ -123,13 +123,11 @@ public:
         - '%{libdir}/libanl.a'
         - '%{libdir}/libBrokenLocale.a'
         - '%{libdir}/libcrypt.a'
-        - '%{libdir}/libdl.a'
         - '%{libdir}/libg.a'
         - '%{libdir}/libm-*.a'
         - '%{libdir}/libm.a'
         - '%{libdir}/libmcheck.a'
         - '%{libdir}/libmvec.a'
-        - '%{libdir}/libpthread.a'
         - '%{libdir}/libresolv.a'
         - '%{libdir}/librt.a'
         - '%{libdir}/libutil.a'
@@ -139,6 +137,9 @@ public:
         - '%{libdir}/libc_nonshared.a'
         - '%{libdir}/libmvec_nonshared.a'
         - '%{libdir}/libc.a'
+        # Empty compat libraries
+        - '%{libdir}/libdl.a'
+        - '%{libdir}/libpthread.a'
 
   cpe:
     ignored:
