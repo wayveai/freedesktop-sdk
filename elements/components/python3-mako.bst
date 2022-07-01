@@ -15,4 +15,4 @@ sources:
 - kind: git_tag
   url: github:sqlalchemy/mako.git
   track: main
-  ref: rel_1_2_0-0-gc81402434e8a277b0134262ad485debcffa20280
+  ref: rel_1_2_1-0-g00f1b33b13088ce17b11a63ee0d1d78aa204fceb
