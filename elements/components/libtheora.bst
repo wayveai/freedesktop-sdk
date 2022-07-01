@@ -3,6 +3,8 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/libogg.bst
+- filename: components/automake.bst
+- filename: components/libtool.bst
 
 public:
   bst:
@@ -13,7 +15,26 @@ public:
         - '%{libdir}/libtheoraenc.so'
         - '%{libdir}/libtheoradec.so'
 
+config:
+  configure-commands:
+  - |
+    %{autogen}
+  
+  build-commands:
+  - |
+    make
+
+  install-commands:
+  - |
+    make -j1 DESTDIR="%{install-root}" install
+  
 sources:
-- kind: tar
-  url: tar_https:downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.xz
-  ref: f36da409947aa2b3dcc6af0a8c2e3144bc19db2ed547d64e9171c59c66561c61
+- kind: git_tag
+  url: github:xiph/theora.git
+  track: master
+  track-extra:
+  - theora-1.1
+  exclude:
+  - '*alpha*'
+  ref: v1.1.1-0-g7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf
+
