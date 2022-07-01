@@ -10,17 +10,6 @@ variables:
 public:
   bst:
     (?):
-    - target_arch == "i686":
-        integration-commands:
-        - |
-          test %{gcc_triplet} = %{compat_arch}
-          test -f %{indep-libdir}/%{entrypoint}
-          if [ -L %{libdir}/%{entrypoint} ]; then
-            [ "$(readlink "%{libdir}/%{entrypoint}")" = "$(realpath --relative-to="%{libdir}" "%{indep-libdir}/%{entrypoint}")" ]
-          else
-            ln -srL %{indep-libdir}/%{entrypoint} %{libdir}/%{entrypoint}
-          fi
-
     - target_arch != "i686":
         integration-commands:
         - |

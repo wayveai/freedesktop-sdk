@@ -34,18 +34,28 @@ config:
     - |
       rm -r "%{install-root}%{libexecdir}/getconf"
 
-# Move the dynamic linker into the prefix
+# Move the dynamic linker into the arch prefix
     - |
+      set -x
       rtlddir=$(echo '@libc_cv_rtlddir@' | %{build-dir}/config.status --file=-)
+      dynamic_linker="$(sed "/^ld.so-version=/{;s///;q;};d" "%{build-dir}/soversions.mk")"
+      libdir=$(echo '@libdir@' | %{build-dir}/config.status --file=-)
       sourcedir="%{install-root}${rtlddir}"
-      targetdir="%{install-root}%{prefix}${rtlddir}"
+      targetdir="%{install-root}${libdir}"
 
       [ -d "${targetdir}" ] || mkdir -p "${targetdir}"
-      mv "${sourcedir}"/%{dynamic-linker} "${targetdir}"/
-      rm -r "${sourcedir}"
-      if [ "${sourcedir}" != "%{install-root}/lib" ]; then
-        ln -sr "${targetdir}" "${sourcedir}"
-      fi
+      mv "${sourcedir}/${dynamic_linker}" "${targetdir}/${dynamic_linker}"
+      rmdir "${sourcedir}"
+      prefixdir="%{install-root}%{prefix}${rtlddir}"
+      [ -d "${prefixdir}" ] || mkdir -p "${prefixdir}"
+      ln -sr "${targetdir}/${dynamic_linker}" "${prefixdir}/${dynamic_linker}"
+      case "${rtlddir}" in
+        /lib)
+          ;;
+        *)
+          ln -sr "${prefixdir}" "${sourcedir}"
+          ;;
+      esac
 
 # ldconfig shows a warning if /etc/ld.so.conf doesn't exist
     - |
@@ -62,13 +72,10 @@ variables:
   # -D_FORTIFY_SOURCE=2 breaks building glibc
   target_flags_fortify_source: ''
   arch_options: ''
-  dynamic-linker: ld-linux*.so*
 
   (?):
   - target_arch == "i686" or target_arch == "x86_64":
       arch_options: --enable-cet
-  - target_arch == "ppc64":
-      dynamic-linker: ld64.so.*
 
   conf-local: |
     CFLAGS="$CFLAGS" \
