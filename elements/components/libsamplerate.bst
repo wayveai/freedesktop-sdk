@@ -1,8 +1,11 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/sndfile.bst
+- bootstrap-import.bst
+- components/sndfile.bst
 
 variables:
   conf-local: |
@@ -17,5 +20,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_http:www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
-  ref: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
+  url: github_files:libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
+  ref: 3258da280511d24b49d6b08615bbe824d0cacc9842b0e4caf11c52cf2b043893
