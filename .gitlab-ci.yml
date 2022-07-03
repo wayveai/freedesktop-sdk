@@ -68,6 +68,8 @@ before_script:
     # Force higher parallelity
     build:
       max-jobs: $(( $(nproc) / 4 ))
+    scheduler:
+      network-retries: 4
     EOF
 
   # Create CAS directory for SSL keys
