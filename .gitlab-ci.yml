@@ -460,33 +460,6 @@ minimal_systemd_vm_aarch64:
       artifacts: false
   when: manual # skip aarch64 VM tests by default for now; the runner is too slow
 
-.vm_image_template:
-  stage: vm
-  script:
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"/bios.bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"/bios.bst ./vm
-    - utils/test_minimal_system.py --dialog "${DIALOG}" image vm/disk.img
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  rules:
-  - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    when: never
-  - if: '$CI_COMMIT_BRANCH == "master"'
-  - if: '$CI_COMMIT_BRANCH == "18.08"'
-  - if: '$CI_COMMIT_BRANCH == "19.08"'
-  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
-
-minimal_systemd_vm_image_x86_64:
-  extends:
-    - .vm_image_template
-    - .builder-x86_64
-  variables:
-    TYPE: minimal
-    DIALOG: root-login
-  needs: []
-
 .vm_efi_image_template:
   stage: vm
   script:

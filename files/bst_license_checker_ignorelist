@@ -109,7 +109,6 @@ sdk.bst
 tarballs/all.bst
 tests/reproducible-test.bst
 track-elements.bst
-vm/boot/bios/deps.bst
 vm/boot/efi-ostree/deps.bst
 vm/boot/efi-plymouth/deps.bst
 vm/boot/efi/deps.bst
@@ -159,14 +158,12 @@ tests/check-static-libraries.bst
 tests/platform-integration.bst
 tests/sdk-integration.bst
 vm/base-filesystem.bst
-vm/boot/bios.bst
 vm/boot/efi-ostree.bst
 vm/boot/efi-plymouth.bst
 vm/boot/efi.bst
 vm/boot/virt.bst
 vm/desktop/efi.bst
 vm/minimal-ostree/repo.bst
-vm/minimal/bios.bst
 vm/minimal/efi.bst
 vm/minimal/virt.bst
 
@@ -209,7 +206,6 @@ flatpak-images/toolchain-aarch64.bst
 flatpak-images/vainfo.bst
 
 # collect_initial_script elements
-vm/boot/bios/initial-scripts.bst
 vm/boot/efi/initial-scripts.bst
 vm/boot/efi-ostree/initial-scripts.bst
 vm/boot/efi-plymouth/initial-scripts.bst
