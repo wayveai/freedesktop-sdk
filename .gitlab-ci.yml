@@ -70,6 +70,7 @@ before_script:
       max-jobs: $(( $(nproc) / 4 ))
     scheduler:
       network-retries: 4
+      on-error: continue
     EOF
 
   # Create CAS directory for SSL keys
