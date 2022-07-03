@@ -1,15 +1,21 @@
-kind: distutils
+kind: manual
+
+build-depends:
+- components/python3-installer.bst
 
 depends:
-- bootstrap-import.bst
 - components/python3.bst
 - components/python3-setuptools.bst
+- components/python3-wheel.bst
 
 config:
+  build-commands:
+  - |
+    python3 setup.py bdist_wheel
+
   install-commands:
-    (>):
-    - |
-      rm "%{install-root}%{bindir}/pip"
+  - |
+    python3 -minstaller dist/*.whl --destdir %{install-root}
 
 sources:
 - kind: pypi
