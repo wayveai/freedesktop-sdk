@@ -1,5 +1,57 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08beta.2:
+  * Update openal to 1.22.2
+  * mpfr: Apply upstream cumulative patch for 4.1.0
+  * ci: Make the policy be to continue building after some element fails
+  * ci: Bump network retry count to 4
+  * Update python3-setuptools-scm to 7.0.4
+  * Update pipewire to 0.3.53-0
+  * Update harfbuzz to 4.4.1-0
+  * glibc: Fix moving of dynamic linker
+  * Bootstrap flit_core using only Python
+  * Remove BIOS support from our examples
+  * Update linux-headers from v5.15.1 -> v5.18.7
+  * Update kmod to v30-0
+  * Update python3-pil to 9.2.0
+  * Update python3-typing-extensions to 4.3.0
+  * libsamplerate: Bump to 0.2.2
+  * Update gdbm-1.20 -> gdbm-1.23
+  * Update lzip-1.21 -> lzip-1.23
+  * Update Linux PAM 1.4.0 -> 1.5.2
+  * Update libidn2 tarball from 2.3.1 -> 2.3.2
+  * sndfile: Bump to 1.1.0
+  * Update parted from 3.4->3.5
+  * Update nspr-4.32 -> nspr-4.34
+  * Update liberation-fonts from 2.1.4 -> 2.1.5
+  * Fix glibc after changes with 3.24
+  * Update mtools version 4.0.35 -> 4.0.40
+  * Update mesa to mesa-22.1.3-0
+  * Update curl to curl-7_84_0-0
+  * Update mpg123 version 1.28.0 -> 1.30.0
+  * Update man-db 2.9.3 ->  2.10.2
+  * Update libunistring 0.9.10 -> 1.0 stable version
+  * Update libaio 0.3.112 -> 0.3.113
+  * setuptools-scm: Add missing dependency 'typing-extensions'
+  * Update less-581.2 -> less-590
+  * Update help2man 1.48.3 -> 1.49.2
+  * Update harfbuzz to 4.4.0-0
+  * Update pthon3-dbusmock to 0.28.1
+  * Update polkit to 0.120-24
+  * Update fribidi 1.0.9->1.0.12
+  * Ignore coreutils CVE-2016-2781
+  * requests: Bump to include support for charset-normalizer 2.1.0
+  * Update python3-charset-normalizer to 2.1.0
+  * Update Kernel v5.15.y -> v5.18.7 and reorganize patches
+  * Update python3-virtualenv to 20.15.1
+  * Update fftw to 3.3.10
+  * Ignore CVE-2000-0006 for strace
+  * Update elfutils to 0.187
+  * Update to gzip 1.12
+  * Update GnuTLS to 3.7.6
+  * Update automake to 1.16.5
+  * aspell: Patch for CVE-2019-25051
+
 freedesktop-sdk-22.08beta.1:
 
   * Several buildstream plugins have been upstreamed: cpan, pypi, patch_queue, snap_image
