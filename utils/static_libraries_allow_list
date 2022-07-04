@@ -15,6 +15,7 @@ libgcc_eh.a
 libcaf_single.a
 libc_nonshared.a
 libpthread.a
+librt.a
 libutil.a
 
 libnldbl_nonshared.a

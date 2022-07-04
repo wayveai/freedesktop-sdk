@@ -135,7 +135,6 @@ public:
         - '%{libdir}/libmcheck.a'
         - '%{libdir}/libmvec.a'
         - '%{libdir}/libresolv.a'
-        - '%{libdir}/librt.a'
 
       # Not actually used, included for completeness
       static-allowlist:
@@ -146,6 +145,7 @@ public:
         - '%{libdir}/libanl.a'
         - '%{libdir}/libdl.a'
         - '%{libdir}/libpthread.a'
+        - '%{libdir}/librt.a'
         - '%{libdir}/libutil.a'
 
   cpe:
