@@ -53,7 +53,7 @@ sources:
   url: gnome:glib.git
   track: main
   track-extra:
-  - glib-2-68
+  - glib-2-72
   match:
   - 2.*[02468].*
-  ref: 2.72.0-0-g8697c1a53ccbbcde49596f2b4c043c67461c97a9
+  ref: 2.72.3-0-gdce30492f6087a8e1e288f1706d41142b74ca1ff
