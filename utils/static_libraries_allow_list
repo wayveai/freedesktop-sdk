@@ -6,6 +6,7 @@
 
 # Add the filenames below:
 
+libanl.a
 libc.a
 libdl.a
 libgcc.a
@@ -14,6 +15,7 @@ libgcc_eh.a
 libcaf_single.a
 libc_nonshared.a
 libpthread.a
+libutil.a
 
 libnldbl_nonshared.a
 #libnldbl_nonshared only seems to appear in app_ppc64le

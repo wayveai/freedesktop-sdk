@@ -127,7 +127,6 @@ public:
 
       static-blocklist:
         (=):
-        - '%{libdir}/libanl.a'
         - '%{libdir}/libBrokenLocale.a'
         - '%{libdir}/libcrypt.a'
         - '%{libdir}/libg.a'
@@ -137,7 +136,6 @@ public:
         - '%{libdir}/libmvec.a'
         - '%{libdir}/libresolv.a'
         - '%{libdir}/librt.a'
-        - '%{libdir}/libutil.a'
 
       # Not actually used, included for completeness
       static-allowlist:
@@ -145,8 +143,10 @@ public:
         - '%{libdir}/libmvec_nonshared.a'
         - '%{libdir}/libc.a'
         # Empty compat libraries
+        - '%{libdir}/libanl.a'
         - '%{libdir}/libdl.a'
         - '%{libdir}/libpthread.a'
+        - '%{libdir}/libutil.a'
 
   cpe:
     ignored:
