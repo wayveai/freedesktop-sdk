@@ -47,6 +47,7 @@ public:
       devel:
         (>):
         - '%{libdir}/libibus-1.0.so'
+      (@): include/_private/exclude-systemd.yml
 
 sources:
 - kind: tar
