@@ -13,6 +13,8 @@ public:
       devel:
         (>):
         - '%{libdir}/libopus.so'
+  cpe:
+    vendor: opus-codec
 
 sources:
 - kind: git_tag
