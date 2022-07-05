@@ -3,6 +3,10 @@ kind: manual
 (@):
 - flatpak-version.yml
 
+variables:
+  (@):
+  - include/_private/versions.yml
+
 build-depends:
 - bootstrap-import.bst
 - components/m4.bst
@@ -12,7 +16,10 @@ config:
   build-commands:
   - |
     for i in *.in; do
-      m4 -D__RUNTIME_VERSION__=%{runtime-version} -D__RUNTIME_VERSION_DATE__=%{runtime-version-date} "${i}" >"$(basename "${i}" .in)"
+      m4 -D__RUNTIME_VERSION__="%{runtime-version}" \
+      -D__RUNTIME_VERSION_DATE__="%{runtime-version-date}" \
+      -D__RUNTIME_BRANCH__="%{freedesktop-sdk-flatpak-branch}" \
+      "${i}" >"$(basename "${i}" .in)"
     done
 
   install-commands:
