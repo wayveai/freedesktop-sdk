@@ -22,12 +22,6 @@ variables:
     --enable-tee
     --enable-gobject
 
-config:
-  configure-commands:
-    (<):
-    - |
-      %{autogen}
-
 public:
   bst:
     split-rules:
@@ -41,8 +35,9 @@ public:
         - '%{libdir}/cairo/libcairo-trace.so'
   cpe:
     patches:
-    - 'CVE-2018-19876'
-    - 'CVE-2020-35492'
+    - CVE-2018-19876
+    - CVE-2020-35492
+    - CVE-2019-6462
     
 sources:
 - kind: git_tag
