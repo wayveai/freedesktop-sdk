@@ -33,7 +33,9 @@ sources:
 - kind: git_tag
   url: gnome:libxml2.git
   track: master
-  ref: v2.9.13-0-ga075d256fd9ff15590b86d981b75a50ead124fca
+  track-extra:
+  - 2.9
+  ref: v2.9.14-0-g7846b0a677f8d3ce72486125fa281e92ac9970e8
 - kind: patch
   path: patches/libxml2/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
 - kind: patch
