@@ -31,7 +31,7 @@ sources:
 - kind: git_tag
   url: github:containernetworking/plugins.git
   directory: src/github.com/containernetworking/plugins
-  track: master
+  track: main
   exclude:
   - "*rc*"
-  ref: v1.0.1-0-g189d0c06aa6da0c4f052d3831b091e6ea79e6675
+  ref: v1.1.0-0-g26745d375201a7e4851d2eb40aa6f2bb2bc0bb61
