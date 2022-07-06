@@ -1,5 +1,36 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08beta.3:
+  * Write runtime branch rather than exact version into /etc/os-release
+  * Update python3-imagesize to 1.4.1
+  * Upddate openssl to openssl-3.0.5
+  * Update python3-mako to 1.2.1
+  * Update meson to 0.63.0
+  * cairo: Patch for CVE-2019-6461
+  * libxml2: Bump to 2.9.14
+  * ffmpeg: Ignore CVE-2022-1475
+  * Put the systemd units into vm-only so they don't land in the runtimes
+  * Update ibus 1.5.24 -> 1.5.26
+  * wavpack: Patch for CVE-2021-44269
+  * opus: Set CPE vendor to opus-codec
+  * hunspell: Patch for CVE-2019-16707
+  * Update wayland to 1.21.0-0
+  * Update python3-cffi to 1.15.1
+  * Update pango to 1.50.8-0
+  * Update fcitx5 to 5.0.16-0
+  * Update glib to 2.72.3
+  * Split protobuf build into separate automake and pip elements
+  * Build pip with PEP517 and depend on wheel
+  * Install wheel using pypa/installer
+  * Implement element for pypa/installer
+  * Update version of man-pages-POSIX to 2017a
+  * glibc: add librt.a to the compat libs
+  * glibc: extend the list of compat libraries
+  * Update python3-setuptools to 63.1.0
+  * Update python3-lxmlto 4.9.1
+  * Update glibc to glibc-2.35-135
+  * Update linux to v5.18.9
+
 freedesktop-sdk-22.08beta.2:
   * Update openal to 1.22.2
   * mpfr: Apply upstream cumulative patch for 4.1.0
