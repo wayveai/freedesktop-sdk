@@ -9,5 +9,5 @@ depends:
 sources:
 - kind: git_tag
   url: github:fwupd/fwupd-efi.git
-  track: master
-  ref: 1.1-0-gfee1b8f6473cb403b8ae7a56961ba0557e3f3efa
+  track: main
+  ref: 1.3-0-g36ce593f58e391cca43fd388824496ff98d83480
