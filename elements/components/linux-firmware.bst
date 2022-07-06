@@ -16,7 +16,9 @@ config:
 sources:
 - kind: git_tag
   url: kernel:linux/kernel/git/firmware/linux-firmware.git
-  track: master
-  ref: 20210208-0-gb79d2396bc630bfd9b4058459d3e82d7c3428599
+  track: main
+  ref: 20220610-0-g7b71b75be8fb0fa7cceeb3dc22f97920a6be28bd
+- kind: patch
+  path: patches/linux-firmware/fix-WHENCE.patch
 - kind: local
   path: files/linux-firmware/compress.py
