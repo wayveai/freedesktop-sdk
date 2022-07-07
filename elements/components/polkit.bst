@@ -13,8 +13,8 @@ depends:
 - components/systemd.bst
 
 variables:
-  conf-local: >-
-    -Dsession-tracking=libsystemd-login
+  meson-local: >-
+    -Dsession_tracking=libsystemd-login
     -Djs_engine=duktape
   local_flags: -std=gnu++17
 
