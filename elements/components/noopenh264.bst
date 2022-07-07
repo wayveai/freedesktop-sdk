@@ -8,7 +8,7 @@ build-depends:
 
 variables:
   (@):
-  - include/_private/versions.yml
+  - include/repo_branches.yml
   extlibdir: "%{libdir}/openh264/extra"
   meson-local: "--libdir=%{extlibdir}"
 

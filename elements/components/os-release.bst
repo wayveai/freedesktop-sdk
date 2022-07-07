@@ -5,7 +5,7 @@ kind: manual
 
 variables:
   (@):
-  - include/_private/versions.yml
+  - include/repo_branches.yml
 
 build-depends:
 - bootstrap-import.bst
