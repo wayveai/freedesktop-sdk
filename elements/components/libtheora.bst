@@ -8,9 +8,8 @@ depends:
 - filename: components/libogg.bst
 
 variables:
-  autogen: ./autogen.sh --build %{conf-args}
-  make: make -C ..
-  make-install: make -j1 DESTDIR="%{install-root}" install -C ..
+  autogen: ./autogen.sh %{conf-args}
+  build-dir: ''
 
 public:
   bst:
@@ -25,13 +24,6 @@ config:
   configure-commands:
   - |
     %{autogen}
-    if [ -n "%{build-dir}" ]; then
-      mkdir %{build-dir}
-      cd %{build-dir}
-      reldir=..
-    else
-      reldir=.
-    fi
     
 sources:
 - kind: git_tag
