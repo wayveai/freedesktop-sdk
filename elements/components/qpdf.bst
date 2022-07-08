@@ -23,7 +23,7 @@ config:
 sources:
 - kind: git_tag
   url: github:qpdf/qpdf.git
-  track: master
-  ref: release-qpdf-10.0.1-0-g821a70185135df50a28ad92733f82fbe5b562556
-- kind: patch
-  path: patches/qpdf/root-tar.patch
+  track: main
+  exclude:
+  - '*cmake*'
+  ref: release-qpdf-10.6.3-0-g09a36ad62bfa787642778b8076ae5b4ba4a64fcc

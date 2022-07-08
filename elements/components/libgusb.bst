@@ -13,5 +13,5 @@ depends:
 sources:
 - kind: git_tag
   url: github:hughsie/libgusb.git
-  track: master
-  ref: 0.3.7-0-gff9c606d9d72c7dd369ad220d92729556faaaf0c
+  track: main
+  ref: 0.3.10-0-g332d5b987ffecb824426e88518e05547faf2b520

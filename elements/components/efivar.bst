@@ -1,5 +1,8 @@
 kind: make
 
+build-depends:
+- components/mandoc.bst
+
 depends:
 - bootstrap-import.bst
 
@@ -18,7 +21,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:rhboot/efivar.git
-  track: master
-  ref: 37-0-gc1d6b10e1ed4ba2be07f385eae5bceb694478a10
-- kind: patch
-  path: patches/efivar/no-werror.patch
+  track: main
+  ref: 38-0-g1753149d4176ebfb2b135ac0aaf79340bf0e7a93

@@ -24,5 +24,5 @@ variables:
 sources:
 - kind: git_tag
   url: github:hughsie/colord.git
-  track: master
-  ref: 1.4.4-0-g233e642f730e46e026c1fe45d36ea298de1e00fe
+  track: main
+  ref: 1.4.6-0-g43c19fd019da5f69d2ebc00a9908b1dd83129485
