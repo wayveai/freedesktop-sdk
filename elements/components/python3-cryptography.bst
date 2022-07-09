@@ -13,8 +13,8 @@ sources:
 - kind: pypi
   name: cryptography
   ref:
-    sha256sum: f224ad253cc9cea7568f49077007d2263efa57396a2f2f78114066fd54b5c68e
-    suffix: 51/05/bb2b681f6a77276fc423d04187c39dafdb65b799c8d87b62ca82659f9ead/cryptography-37.0.2.tar.gz
+    sha256sum: 63f9c17c0e2474ccbebc9302ce2f07b55b3b3fcb211ded18a42d5764f5c10a82
+    suffix: 89/d9/5fcd312d5cce0b4d7ee8b551a0ea99e4ea9db0fdbf6dd455a19042e3370b/cryptography-37.0.4.tar.gz
 - kind: cargo
   url: crates:crates
   cargo-lock: src/rust/Cargo.lock
