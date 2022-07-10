@@ -14,7 +14,8 @@ config:
     (<):
     - |
       cat <<EOF >configure.local
-      PREFIX=/usr
+      PREFIX=%{prefix}
+      SBINDIR=%{bindir}
       LN="ln -s"
       EOF
 
