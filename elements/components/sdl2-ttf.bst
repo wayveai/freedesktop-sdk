@@ -8,6 +8,11 @@ depends:
 - components/freetype.bst
 - components/sdl2.bst
 
+variables:
+  conf-local: >-
+    --disable-harfbuzz-builtin
+    --disable-freetype-builtin
+
 public:
   bst:
     split-rules:
@@ -21,4 +26,4 @@ sources:
   track: main
   match:
   - release-*
-  ref: release-2.0.18-0-g3e702ed9bf400b0a72534f144b8bec46ee0416cb
+  ref: release-2.20.0-0-gf5e4828ffc9d3a84f00011fede4446aecb4a685f
