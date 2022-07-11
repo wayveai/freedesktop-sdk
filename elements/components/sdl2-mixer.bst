@@ -24,4 +24,4 @@ sources:
   track: main
   match:
   - 'release*'
-  ref: release-2.0.4-0-gda75a58c19de9fedea62724a5f7770cbbe39adf9
+  ref: release-2.6.0-0-g738611693dc324001cc00f5b800e3d18fb42cb4e
