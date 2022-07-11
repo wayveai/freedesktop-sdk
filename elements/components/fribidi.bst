@@ -1,14 +1,10 @@
 kind: meson
 
-depends:
-- filename: bootstrap-import.bst
-
-
 build-depends:
-- filename: components/which.bst
-- filename: components/pkg-config.bst
-- filename: components/libtool.bst
 - public-stacks/buildsystem-meson.bst
+
+depends:
+- bootstrap-import.bst
 
 variables:
   meson-local: >-
