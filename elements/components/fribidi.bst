@@ -1,4 +1,4 @@
-kind: autotools
+kind: meson
 
 depends:
 - filename: bootstrap-import.bst
@@ -8,7 +8,11 @@ build-depends:
 - filename: components/which.bst
 - filename: components/pkg-config.bst
 - filename: components/libtool.bst
-- filename: components/automake.bst
+- public-stacks/buildsystem-meson.bst
+
+variables:
+  meson-local: >-
+    -Ddocs=false
 
 public:
   bst:
