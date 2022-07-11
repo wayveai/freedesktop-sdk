@@ -28,4 +28,4 @@ sources:
   track: main
   match:
   - release-*
-  ref: release-2.0.5-0-gab2a9c602623193d61827ccd395302d92d90fc38
+  ref: release-2.6.0-0-g7b3347c0d90d1f1e9cc4e06e145432697ca4e68f
