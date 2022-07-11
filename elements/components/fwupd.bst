@@ -7,6 +7,7 @@ build-depends:
 - components/gobject-introspection.bst
 - components/cmake.bst
 - components/polkit.bst
+- components/python3-gi-docgen.bst
 - components/help2man.bst
 - components/liberation-fonts.bst
 
@@ -48,7 +49,7 @@ variables:
 
   meson-local: >-
     -Dauto_features=disabled
-    -Ddocs=gtkdoc
+    -Ddocs=enabled
     -Dplugin_dell=%{plugin_dell}
     -Dplugin_msr=%{plugin_msr}
     -Dplugin_uefi_capsule=%{plugin_uefi_capsule}
@@ -58,4 +59,4 @@ sources:
 - kind: git_tag
   url: github:fwupd/fwupd.git
   track: main
-  ref: 1.8.1-0-gb5e7e01fc3d788ab469e1dc310bfce9d0bbdc641
+  ref: 1.8.2-0-g4c7ca5f13e289d428e1bb26bf605b7972c3003ed
