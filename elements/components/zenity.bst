@@ -19,6 +19,7 @@ config:
       rm -r "%{install-root}%{datadir}/help"
 
 sources:
-- kind: tar
-  url: tar_https:download.gnome.org/sources/zenity/3.42/zenity-3.42.1.tar.xz
-  ref: a08e0c8e626615ee2c23ff74628eba6f8b486875dd54371ca7e2d7605b72a87c
+- kind: git_tag
+  url: gnome:zenity.git
+  track: master
+  ref: 3.43.0-0-g01e6d92f23f49414ba8ec4c5b3daf49222c1e31d
