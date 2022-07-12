@@ -1,7 +1,14 @@
-kind: autotools
+kind: meson
+
+build-depends:
+- public-stacks/buildsystem-meson.bst
 
 depends:
-- filename: bootstrap-import.bst
+- bootstrap-import.bst
+
+variables:
+  meson-local: >-
+    -Ddocs=false
 
 public:
   bst:
@@ -11,6 +18,7 @@ public:
         - '%{libdir}/libfribidi.so'
 
 sources:
-- kind: tar
-  url: github_files:fribidi/fribidi/releases/download/v1.0.12/fribidi-1.0.12.tar.xz
-  ref: 0cd233f97fc8c67bb3ac27ce8440def5d3ffacf516765b91c2cc654498293495
+- kind: git_tag
+  url: github:fribidi/fribidi.git
+  track: v1.0.12
+  ref: v1.0.12-0-g6428d8469e536bcbb6e12c7b79ba6659371c435a
