@@ -1,10 +1,11 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: components/libxml2.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
+- components/libxml2.bst
 
 config:
   install-commands:
@@ -22,12 +23,9 @@ public:
         - '%{libdir}/libxslt.so'
         - '%{libdir}/libexslt.so'
         - '%{libdir}/xsltConf.sh'
-
   cpe:
-    patches:
-    - CVE-2019-11068
-    - CVE-2019-13117
-    - CVE-2019-13118
+    ignored:
+    - CVE-2022-29824
 
 sources:
 - kind: git_tag
