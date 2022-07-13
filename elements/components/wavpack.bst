@@ -7,7 +7,9 @@ depends:
 - bootstrap-import.bst
 
 variables:
-  autogen: autoreconf -vif
+  autogen: |
+    cp /usr/share/gettext/config.rpath .
+    autoreconf -vif
 
 public:
   bst:
@@ -15,14 +17,9 @@ public:
       devel:
         (>):
         - '%{libdir}/libwavpack.so'
-  cpe:
-    patches:
-    - CVE-2021-44269
 
 sources:
 - kind: git_tag
   url: github:dbry/WavPack.git
   track: master
-  ref: 5.4.0-0-g2ce3c069be548e82ea9c05741ace6583e549c6de
-- kind: patch
-  path: patches/wavpack/issue-110-sanitize-DSD-file-types-for-invalid-length.patch
+  ref: 5.5.0-0-g89ef99e84333534d9d43093a5264a398b5f1e14a
