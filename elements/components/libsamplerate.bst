@@ -19,6 +19,7 @@ public:
         - '%{libdir}/libsamplerate.so'
 
 sources:
-- kind: tar
-  url: github_files:libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
-  ref: 3258da280511d24b49d6b08615bbe824d0cacc9842b0e4caf11c52cf2b043893
+- kind: git_tag
+  url: github:libsndfile/libsamplerate.git
+  track: master
+  ref: 0.2.2-0-gc96f5e3de9c4488f4e6c97f59f5245f22fda22f7
