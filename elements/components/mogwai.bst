@@ -9,14 +9,10 @@ depends:
 - components/systemd-libs.bst
 - components/libsoup.bst
 - components/networkmanager.bst
+- components/libgsystemservice.bst
 
 sources:
 - kind: git_tag
-  url: github:endlessm/mogwai.git
-  track: master
-  track-extra:
-  - eos3.6
-  - eos3.7
-  ref: Release_4.0.6-0-g51b13309eda38d760c607f84fb5b0006cbe70adf
-- kind: patch
-  path: patches/mogwai/libsoup3.patch
+  url: freedesktop:pwithnall/mogwai.git
+  track: main
+  ref: 0.3.0-0-g6ec6fcb005856b44402ae6d6d6f391a53379357c
