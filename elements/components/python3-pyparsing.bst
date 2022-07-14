@@ -1,16 +1,22 @@
-kind: pip
+kind: manual
+
+build-depends:
+- components/python3-flit-core.bst
+- components/python3-installer.bst
 
 depends:
 - components/python3.bst
 
-build-depends:
-- components/python3-pip.bst
+config:
+  build-commands:
+  - python3 -mflit_core.wheel
+
+  install-commands:
+  - python3 -minstaller dist/*.whl --destdir %{install-root}
 
 sources:
 - kind: pypi
   name: pyparsing
-  exclude:
-  - 3.*
   ref:
-    sha256sum: c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1
-    suffix: c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz
+    sha256sum: 2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb
+    suffix: 71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz
