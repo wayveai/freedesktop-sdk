@@ -1,0 +1,27 @@
+diff --git a/libeos-updater-flatpak-installer/meson.build b/libeos-updater-flatpak-installer/meson.build
+index 2f74ff0..21dc1ec 100644
+--- a/libeos-updater-flatpak-installer/meson.build
++++ b/libeos-updater-flatpak-installer/meson.build
+@@ -56,5 +56,3 @@ libeos_updater_flatpak_installer_gir = gnome.generate_gir(libeos_updater_flatpak
+   install: true,
+   dependencies: libeos_updater_flatpak_installer_dep,
+ )
+-
+-subdir('tests')
+diff --git a/meson.build b/meson.build
+index 473de2d..c509ccb 100644
+--- a/meson.build
++++ b/meson.build
+@@ -132,7 +132,6 @@ test_env = [
+ ]
+ 
+ subdir('libeos-updater-util')
+-subdir('test-common')
+ subdir('libeos-update-server')
+ subdir('libeos-updater-flatpak-installer')
+ subdir('eos-updater')
+@@ -142,4 +141,3 @@ subdir('eos-updater-avahi')
+ subdir('eos-updater-ctl')
+ subdir('eos-updater-flatpak-installer')
+ subdir('eos-updater-prepare-volume')
+-subdir('tests')
