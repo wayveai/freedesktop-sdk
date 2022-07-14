@@ -349,7 +349,6 @@ depends:
 - components/python3-pip.bst
 - components/python3-pkgconfig.bst
 - components/python3-poetry-core.bst
-- components/python3-poetry.bst
 - components/python3-pyexpect.bst
 - components/python3-pygments.bst
 - components/python3-toml.bst
