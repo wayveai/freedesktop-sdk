@@ -6,11 +6,7 @@ sources:
   - v251-stable
   exclude:
   - '*rc*'
-  ref: v251.2-0-g253052686cbd840ac69030d31c4b186af23aba4c
+  ref: v251.3-0-g516108f273888df3dcfa4f42b140252a285a2288
 # remove the following patch when updating systemd
 - kind: patch
   path: patches/systemd/relax-boot-device-check-btrfs.patch
-- kind: patch
-  path: patches/systemd/coredump-Fix-format-string-type-mismatch.patch
-- kind: patch
-  path: patches/systemd/sha256-fix-compilation-on-efi-ia32.patch
