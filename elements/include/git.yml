@@ -6,4 +6,4 @@ sources:
   - maint
   exclude:
   - v*-rc*
-  ref: v2.37.0-0-ge4a4b31577c7419497ac30cebe30d755b97752c5
+  ref: v2.37.1-0-gbbea4dcf42b28eb7ce64a6306cdde875ae5d09ca
