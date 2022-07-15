@@ -27,4 +27,4 @@ sources:
   # Note for updates: Stable minor versions are even.
   match:
   - "*.*[02468].*"
-  ref: 0.56.1-0-gef23c1bd93e5c4f3e52f87ef98e3cf7a833a18d9
+  ref: 0.56.2-0-gf65cb3451a3d3a7a679e0774cba1f537a7c791de
