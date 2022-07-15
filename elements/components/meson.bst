@@ -1,10 +1,21 @@
-kind: pip
+kind: manual
 
 build-depends:
-- public-stacks/buildsystem-python.bst
+- components/python3-installer.bst
+- components/python3-setuptools.bst
+- components/python3-wheel.bst
 
 depends:
 - components/python3.bst
+
+config:
+  build-commands:
+  - |
+    python3 setup.py bdist_wheel
+
+  install-commands:
+  - |
+    python3 -minstaller dist/*.whl --destdir %{install-root}
 
 sources:
 - kind: pypi
