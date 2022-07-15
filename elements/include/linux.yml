@@ -6,7 +6,7 @@ sources:
   - linux-5.18.y
   exclude:
   - '*-rc*'
-  ref: v5.18.10-0-gbc560cecaa8b2517932808fa939e36371ffa036e
+  ref: v5.18.12-0-gc2e9702659dfc309dfda6116da48f200fe425aab
 - kind: local
   path: files/linux/config-utils.sh
 - kind: patch_queue
