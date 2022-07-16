@@ -8,9 +8,10 @@ build-depends:
 depends:
 - components/glib.bst
 - components/libgudev.bst
+- components/polkit.bst
 
 sources:
 - kind: git_tag
   url: freedesktop:hadess/iio-sensor-proxy.git
   track: master
-  ref: 3.3-0-g83d963b3451928a757eece79aa5b280d90e37e12
+  ref: 3.4-0-gcd6d5e653ef33f6e824e2f7f2ee61e330d4932ac
