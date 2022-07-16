@@ -13,10 +13,9 @@ variables:
   make-args: >-
     prefix="%{prefix}"
     exec_prefix="%{prefix}"
-    sbindir="%{sbindir}"
-    bindir="%{bindir}"
     mandir="%{mandir}"
     etcdir="%{sysconfdir}"
+    SBINDIR="%{sbindir}"
     LIB_DIR="%{libdir}"
 
   make: make %{make-args}
