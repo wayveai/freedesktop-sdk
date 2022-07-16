@@ -39,5 +39,7 @@ sources:
   url: gnome:gobject-introspection.git
   track: main
   track-extra:
-  - gnome-3-38
+  - gnome-42
+  match:
+  - "*.*[02468].*"
   ref: 1.72.0-0-gc1ce7d179cfce327162bd206cdf2808bd9bd0cc7
