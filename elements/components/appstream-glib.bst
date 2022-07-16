@@ -40,6 +40,4 @@ sources:
 - kind: git_tag
   url: github:hughsie/appstream-glib.git
   track: master
-  ref: appstream_glib_0_7_18-0-g705e8e2061e9c9ef741792b1de56c6529fb57082
-- kind: patch
-  path: patches/appstream-glib/appstream-glib-curl.patch
+  ref: appstream_glib_0_8_0-0-gfc9f22621846b0411173be176f06ea7c7a60b172
