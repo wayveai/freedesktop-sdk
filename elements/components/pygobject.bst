@@ -15,4 +15,4 @@ sources:
   track: master
   track-extra:
   - pygobject-3-42
-  ref: 3.42.1-0-g110abf1868c7d4175a3a6944e25b98c957e81db4
+  ref: 3.42.2-0-gf9c363a0c2fea08b140dbb9c9f072cbeb0cf1f10
