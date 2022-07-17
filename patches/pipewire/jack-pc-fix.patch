@@ -1,0 +1,19 @@
+commit 86257a001388833860ac8eeab184eed6e6320254
+Author: Hubert Figuière <hub@figuiere.net>
+Date:   Sun Jul 17 23:12:19 2022 -0400
+
+    jack.pc libraries should only be libjack
+
+diff --git a/pipewire-jack/src/meson.build b/pipewire-jack/src/meson.build
+index bb1a7f0e9..20d1ccf8e 100644
+--- a/pipewire-jack/src/meson.build
++++ b/pipewire-jack/src/meson.build
+@@ -78,7 +78,7 @@ if get_option('jack-devel') == true
+   endif
+ 
+   pkgconfig.generate(filebase : 'jack',
+-  libraries : [pipewire_jack, pipewire_jackserver],
++  libraries : [pipewire_jack],
+   name : 'jack',
+   description : 'PipeWire JACK API',
+   version : '1.9.17',
