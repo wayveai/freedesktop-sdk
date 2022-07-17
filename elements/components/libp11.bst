@@ -11,7 +11,7 @@ sources:
 - kind: git_tag
   url: github:OpenSC/libp11.git
   track: master
-  ref: libp11-0.4.11-0-g9ca6a71c890b5583c8af3b4900172626bca55e72
+  ref: libp11-0.4.12-0-g53d65dc48cf436694f7edcfc805414e608e8a2bf
 
 variables:
   openssl_conf: "%{sysconfdir}/ssl/openssl.cnf"
