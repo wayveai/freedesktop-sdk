@@ -26,6 +26,7 @@ depends:
 - components/pygobject.bst
 - components/genpeimg.bst
 - components/pango.bst
+- components/polkit.bst
 - components/protobuf-c.bst
 - components/pycairo.bst
 - components/python3-pil.bst
@@ -54,6 +55,7 @@ variables:
     -Dplugin_msr=%{plugin_msr}
     -Dplugin_uefi_capsule=%{plugin_uefi_capsule}
     -Defi_binary=%{efi_binary}
+    -Dpolkit=enabled
 
 sources:
 - kind: git_tag
