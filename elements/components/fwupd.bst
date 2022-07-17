@@ -62,3 +62,5 @@ sources:
   url: github:fwupd/fwupd.git
   track: main
   ref: 1.8.2-0-g4c7ca5f13e289d428e1bb26bf605b7972c3003ed
+- kind: patch
+  path: patches/fwupd/fix-version-check.patch
