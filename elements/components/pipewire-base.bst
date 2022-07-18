@@ -42,6 +42,7 @@ variables:
     -Dbluez5-codec-lc3plus=disabled
     -Dlv2=disabled
     -Dlibjack-path=%{libdir}
+    -Djack-devel=true
     -Dudevrulesdir=$(pkg-config --variable=udevdir udev)/rules.d
 
 public:
@@ -116,6 +117,8 @@ sources:
   ref: 0.3.55-0-g957e3a7b3832dbf61e5530f448bf7e4275fa8476
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
+- kind: patch
+  path: patches/pipewire/jack-pc-fix.patch
 - kind: git_tag
   url: freedesktop:PipeWire/media-session.git
   directory: subprojects/media-session
