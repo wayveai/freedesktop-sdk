@@ -137,3 +137,11 @@ index 3c8d6db5b..90996d6b2 100644
 -  install_rpath: modules_install_dir,
    dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
  )
+@@ -539,7 +539,6 @@ pipewire_module_avb = shared_library('pipewire-module-avb',
+   include_directories : [configinc],
+   install : true,
+   install_dir : modules_install_dir,
+-  install_rpath: modules_install_dir,
+   dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
+ )
+ endif
