@@ -35,4 +35,4 @@ sources:
 - kind: git_tag
   url: chromium:webm/libwebp.git
   track: main
-  ref: v1.2.2-0-gb0a860891dcd4c0c2d7c6149e5cccb6eb881cc21
+  ref: v1.2.3-0-g3c4a0fbfbcc606193f7e943b7e50af4077ce1a6c
