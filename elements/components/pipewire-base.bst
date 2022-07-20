@@ -9,6 +9,7 @@ build-depends:
 - components/alsa-lib.bst
 - components/avahi.bst
 - components/bluez.bst
+- components/bluez-libs.bst
 - components/dbus.bst
 - components/ffmpeg.bst
 - components/gstreamer-plugins-base.bst

@@ -24,7 +24,9 @@ depends:
 - components/bash-config.bst
 - components/bc.bst
 - components/bison.bst
+- components/bluez-base.bst
 - components/bluez-headers.bst
+- components/bluez-libs.bst
 - components/bluez.bst
 - components/brotli.bst
 - components/btrfs-progs.bst
