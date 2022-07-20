@@ -112,11 +112,9 @@ sources:
   track: master
   exclude:
   - '*.*.9*'
-  ref: 0.3.55-0-g957e3a7b3832dbf61e5530f448bf7e4275fa8476
+  ref: 0.3.56-0-gf274e53d25ee8f483ac6fce9e516bb1830abe88b
 - kind: patch
   path: patches/pipewire/remove-useless-rpaths.patch
-- kind: patch
-  path: patches/pipewire/jack-pc-fix.patch
 - kind: git_tag
   url: freedesktop:PipeWire/media-session.git
   directory: subprojects/media-session
