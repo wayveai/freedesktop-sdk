@@ -11,6 +11,11 @@ depends:
 build-depends:
 - public-stacks/buildsystem-autotools.bst
 
+public:
+  cpe:
+    ignored:
+    - CVE-2022-34903
+
 config:
   build-commands:
     (<):
