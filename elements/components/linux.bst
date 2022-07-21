@@ -552,6 +552,9 @@ config:
     enable INTEGRITY_SIGNATURE
     enable INTEGRITY_ASYMMETRIC_KEYS
 
+    # systemd-oom
+    enable PSI
+
   - |
     make -j1 olddefconfig
 
