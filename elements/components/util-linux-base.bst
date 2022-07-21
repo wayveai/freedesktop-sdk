@@ -2,6 +2,7 @@ kind: autotools
 
 build-depends:
 - public-stacks/buildsystem-autotools.bst
+- components/asciidoctor.bst
 - components/bison.bst
 - components/git-minimal.bst
 - components/libcap-ng.bst

@@ -7,6 +7,7 @@ depends:
 - components/apparmor.bst
 - components/appstream-glib.bst
 - components/asciidoc.bst
+- components/asciidoctor.bst
 - components/aspell.bst
 - components/at-spi2-atk.bst
 - components/at-spi2-core.bst
