@@ -15,6 +15,7 @@ depends:
 - components/dummy-gbm.bst
 - components/libepoxy.bst
 - components/pixman.bst
+- components/xorg-lib-xcvt.bst
 - components/xorg-lib-xkbfile.bst
 - components/xorg-lib-xfont2.bst
 - components/xorg-lib-xdmcp.bst
@@ -33,7 +34,7 @@ sources:
   url: freedesktop:xorg/xserver.git
   track: master
   track-extra:
-  - xwayland-21.1
+  - xwayland-22.1
   match:
   - xwayland-*
-  ref: xwayland-21.1.4-0-gfbc03d7e486e8c1e33f0c2d3ff9ed415c95de166
+  ref: xwayland-22.1.3-0-g9542cb1abd0fee0b33b3dfedfcc581ddc707c47b
