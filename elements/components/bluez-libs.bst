@@ -5,11 +5,7 @@ build-depends:
 
 runtime-depends:
 - bootstrap-import.bst
-- components/glib.bst
-- components/dbus.bst
-- components/libical.bst
 
 config:
-  exclude:
+  include:
   - bluez-libs
-  include-orphans: true

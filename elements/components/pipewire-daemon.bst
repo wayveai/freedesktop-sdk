@@ -8,6 +8,7 @@ runtime-depends:
 - components/pipewire.bst
 - components/sbc.bst
 - components/bluez.bst
+- components/bluez-libs.bst
 - components/rtkit.bst
 - components/webrtc-audio-processing.bst
 
