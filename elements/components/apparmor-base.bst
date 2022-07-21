@@ -6,6 +6,7 @@ build-depends:
 - components/gettext.bst
 - components/perl-pod-parser.bst
 - components/python3.bst
+- components/python3-setuptools.bst
 - components/which.bst
 - components/linux-pam-base.bst
 
@@ -76,5 +77,5 @@ public:
 
 sources:
 - kind: tar
-  url: tar_https:launchpad.net/apparmor/3.0/3.0.3/+download/apparmor-3.0.3.tar.gz
-  ref: 153db05d8f491e0596022663c19fb1166806cb473b3c6f0a7279feda2ec25a59
+  url: tar_https:launchpad.net/apparmor/3.0/3.0.4/+download/apparmor-3.0.4.tar.gz
+  ref: 09bf48d7a171f9790c39a1404bad105a788934cfe77b7490c7f5c63c2576b725
