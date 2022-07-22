@@ -13,4 +13,4 @@ config:
       commands:
       - |
         mkdir -p %{install-root}%{indep-libdir}
-        ln -sf %{compat_arch}/%{entrypoint} %{install-root}%{indep-libdir}%{entrypoint}
+        ln -sf %{compat_arch}/%{entrypoint} %{install-root}%{indep-libdir}/%{entrypoint}
