@@ -1,7 +1,11 @@
 kind: autotools
 
+build-depends:
+- components/git-minimal.bst
+- components/perl.bst
+
 depends:
-- filename: bootstrap-import.bst
+- bootstrap-import.bst
 
 public:
   initial-script:
@@ -13,6 +17,9 @@ public:
       chmod 4755 "${sysroot}%{bindir}/sudo"
 
 sources:
-- kind: tar
-  url: tar_https:www.sudo.ws/dist/sudo-1.9.11p3.tar.gz
-  ref: 4687e7d2f56721708f59cca2e1352c056cb23de526c22725615a42bb094f1f70
+- kind: git_tag
+  url: github:sudo-project/sudo.git
+  track: main
+  track-extra:
+  - sudo-1.9
+  ref: SUDO_1_9_11p3-0-gb9dab8cdad820f1914bc528e3487934c653a61a9
