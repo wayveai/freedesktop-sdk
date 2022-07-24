@@ -41,7 +41,7 @@ sources:
   - v*
   exclude:
   - v*.*.*
-  ref: v2022.4-0-g5fa364d3997a6b24850cddaa3c22def85baff575
+  ref: v2022.5-0-g15740d042c9c5258a1c082b5e228cf6f115edbb0
 - kind: git_module
   path: libglnx
   url: gnome:libglnx.git
