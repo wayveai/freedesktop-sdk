@@ -67,20 +67,77 @@ config:
     enable IKCONFIG_PROC
 
     # Kernel crypto/hash API
-    enable CRYPTO_AES
-    enable CRYPTO_ARC4
-    enable CRYPTO_CBC
-    enable CRYPTO_CMAC
-    enable CRYPTO_DES
-    enable CRYPTO_ECB
-    enable CRYPTO_HMAC
-    enable CRYPTO_MD4
-    enable CRYPTO_MD5
-    enable CRYPTO_SHA256
-    enable CRYPTO_SHA512
+    module CRYPTO_AES
+    module CRYPTO_ARC4
+    module CRYPTO_CBC
+    module CRYPTO_CMAC
+    module CRYPTO_CRC32
+    module CRYPTO_CRC32C
+    module CRYPTO_CRCT10DIF
+    module CRYPTO_DES
+    module CRYPTO_ECB
+    module CRYPTO_GHASH
+    module CRYPTO_HMAC
+    module CRYPTO_MD4
+    module CRYPTO_MD5
+    module CRYPTO_SHA1
+    module CRYPTO_SHA256
+    module CRYPTO_SHA512
+    module CRYPTO_XTS
+
     enable CRYPTO_USER_API_HASH
     enable CRYPTO_USER_API_SKCIPHER
-    enable CRYPTO_XTS
+
+    case "%{arch}" in
+      i686)
+        module CRYPTO_CRC32C_INTEL
+        module CRYPTO_CRC32_PCLMUL
+        module CRYPTO_AES_NI_INTEL
+        ;;
+      x86_64)
+        module CRYPTO_CRC32C_INTEL
+        module CRYPTO_CRC32_PCLMUL
+        module CRYPTO_AES_NI_INTEL
+        module CRYPTO_CRCT10DIF_PCLMUL
+        module CRYPTO_GHASH_CLMUL_NI_INTEL
+        module CRYPTO_SHA1_SSSE3
+        module CRYPTO_SHA256_SSSE3
+        module CRYPTO_SHA512_SSSE3
+        module CRYPTO_DES3_EDE_X86_64
+        ;;
+      arm)
+        module CRYPTO_SHA1_ARM
+        module CRYPTO_SHA1_ARM_NEON
+        module CRYPTO_SHA1_ARM_CE
+        module CRYPTO_SHA2_ARM_CE
+        module CRYPTO_SHA256_ARM
+        module CRYPTO_SHA512_ARM
+        module CRYPTO_AES_ARM
+        module CRYPTO_AES_ARM_BS
+        module CRYPTO_AES_ARM_CE
+        module CRYPTO_GHASH_ARM_CE
+        module CRYPTO_CRCT10DIF_ARM_CE
+        module CRYPTO_CRC32_ARM_CE
+        ;;
+      aarch64)
+        module CRYPTO_SHA256_ARM64
+        module CRYPTO_SHA512_ARM64
+        module CRYPTO_SHA1_ARM64_CE
+        module CRYPTO_SHA2_ARM64_CE
+        module CRYPTO_SHA512_ARM64_CE
+        module CRYPTO_GHASH_ARM64_CE
+        module CRYPTO_CRCT10DIF_ARM64_CE
+        module CRYPTO_AES_ARM64
+        module CRYPTO_AES_ARM64_CE
+        module CRYPTO_AES_ARM64_CE_CCM
+        module CRYPTO_AES_ARM64_CE_BLK
+        module CRYPTO_AES_ARM64_NEON_BLK
+        module CRYPTO_AES_ARM64_BS
+        ;;
+    esac
+
+    case "%{arch}" in
+    esac
 
     # udev will fail to work with legacy sysfs
     remove SYSFS_DEPRECATED
