@@ -15,6 +15,7 @@ depends:
 - components/gettext.bst
 - components/giflib.bst
 - components/glib.bst
+- components/glibc-gconv-cache.bst
 - components/gmp.bst
 - components/gnupg.bst
 - components/gnutls.bst
