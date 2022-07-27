@@ -32,5 +32,5 @@ public:
 sources:
 - kind: git_tag
   url: gnome:libxslt.git
-  track: master
+  # Frozen due to ABI break
   ref: v1.1.34-0-g3653123f992db24cec417d12600f4c67388025e3
