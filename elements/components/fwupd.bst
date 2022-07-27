@@ -8,6 +8,7 @@ build-depends:
 - components/cmake.bst
 - components/polkit.bst
 - components/python3-gi-docgen.bst
+- components/python3-packaging.bst
 - components/help2man.bst
 - components/liberation-fonts.bst
 
@@ -61,6 +62,4 @@ sources:
 - kind: git_tag
   url: github:fwupd/fwupd.git
   track: main
-  ref: 1.8.2-0-g4c7ca5f13e289d428e1bb26bf605b7972c3003ed
-- kind: patch
-  path: patches/fwupd/fix-version-check.patch
+  ref: 1.8.3-0-g5caaf461a8bc68d0f8c69e34ff211650dc6c0c30
