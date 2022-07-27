@@ -17,5 +17,5 @@ public:
 sources:
 - kind: git_tag
   url: github:tlwg/libdatrie.git
-  track: master
+  # Freezing due to forward ABI break
   ref: v0.2.12-0-gd5d104e22fd49a27aed8a1e9c5ccc836600c05e1
