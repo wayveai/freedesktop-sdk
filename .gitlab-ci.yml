@@ -518,7 +518,14 @@ prepare_publish:
 finish_publish:
   stage: finish-publish
   script:
-    - flat-manager-client -v commit --wait "$(cat publish_build.txt)"
+    - |
+      EOL_MESSAGE=$(utils/eol-message.py ${RUNTIME_VERSION})
+      if [ -n "{$EOL_MESSAGE}" ]; then
+        flat-manager-client -v commit --wait "$(cat publish_build.txt)" \
+          --end-of-life "${EOL_MESSAGE}"
+      else
+        flat-manager-client -v commit --wait "$(cat publish_build.txt)"
+      fi
     - flat-manager-client -v publish --wait-update "$(cat publish_build.txt)"
     - flat-manager-client -v purge "$(cat publish_build.txt)"
     - make manifest
