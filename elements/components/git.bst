@@ -35,5 +35,9 @@ config:
     - |
       find "%{install-root}" -type f -name perllocal.pod -delete
 
+public:
+  cpe:
+    vendor: git-scm      
+      
 (@):
 - elements/include/git.yml
