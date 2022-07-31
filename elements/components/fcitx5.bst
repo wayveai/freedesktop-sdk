@@ -15,6 +15,12 @@ variables:
     -DENABLE_GIR=Off \
     -DENABLE_GTK4_IM_MODULE=Off
 
+
+config:
+  install-commands:
+    (>):
+    - rm %{install-root}/%{libdir}/libFcitx5GClient.a
+    
 public:
   bst:
     split-rules:
