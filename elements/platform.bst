@@ -95,6 +95,7 @@ depends:
 - components/dictionaries.bst
 - components/openmoji.bst
 - components/fcitx.bst
+- components/fcitx5.bst
 - components/ffmpeg.bst
 - components/fftw.bst
 - components/flatpak-xdg-utils.bst
