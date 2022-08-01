@@ -43,8 +43,6 @@ sources:
 - kind: git_tag
   url: github:endlessm/noopenh264.git
   track: master
-  # There is no tag for 2.2.0
-  track-tags: false
-  ref: Version_2.1.1-13-gdfe5e4ecc78c4b13b31b8f8c611373a769fe838c
+  ref: Version_2.3.0-0-g750147f1e5af5cd9f47ffabef996c335b1ba0481
   exclude:
   - Release*
