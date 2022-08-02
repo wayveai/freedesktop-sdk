@@ -1,0 +1,52 @@
+From 467f2b0bd47e054921412bacb6c74c6addad3bf0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Wed, 18 May 2022 10:23:15 +0300
+Subject: [PATCH 1/4] matroskademux: Avoid integer-overflow resulting in heap
+ corruption in WavPack header handling code
+
+blocksize + WAVPACK4_HEADER_SIZE might overflow gsize, which then
+results in allocating a very small buffer. Into that buffer blocksize
+data is memcpy'd later which then causes out of bound writes and can
+potentially lead to anything from crashes to remote code execution.
+
+Thanks to Adam Doupe for analyzing and reporting the issue.
+
+CVE: CVE-2022-1920
+
+https://gstreamer.freedesktop.org/security/sa-2022-0004.html
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/1226
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/2612>
+
+diff --git a/gst/matroska/matroska-demux.c b/gst/matroska/matroska-demux.c
+index fea2fd9c87..e0658ad864 100644
+--- a/gst/matroska/matroska-demux.c
++++ b/gst/matroska/matroska-demux.c
+@@ -3893,7 +3893,8 @@ gst_matroska_demux_add_wvpk_header (GstElement * element,
+   } else {
+     guint8 *outdata = NULL;
+     gsize buf_size, size;
+-    guint32 block_samples, flags, crc, blocksize;
++    guint32 block_samples, flags, crc;
++    gsize blocksize;
+     GstAdapter *adapter;
+ 
+     adapter = gst_adapter_new ();
+@@ -3934,6 +3935,13 @@ gst_matroska_demux_add_wvpk_header (GstElement * element,
+         return GST_FLOW_ERROR;
+       }
+ 
++      if (blocksize > G_MAXSIZE - WAVPACK4_HEADER_SIZE) {
++        GST_ERROR_OBJECT (element, "Too big wavpack buffer");
++        gst_buffer_unmap (*buf, &map);
++        g_object_unref (adapter);
++        return GST_FLOW_ERROR;
++      }
++
+       g_assert (newbuf == NULL);
+ 
+       newbuf =
+-- 
+2.37.1
+
