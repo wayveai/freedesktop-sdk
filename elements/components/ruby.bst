@@ -12,13 +12,24 @@ depends:
 # Set '--with-compress-debug-sections=no' because of
 # https://bugs.ruby-lang.org/issues/12934
 variables:
-  conf-local: |
-    --enable-pthread \
-    --enable-ipv6 \
-    --with-compress-debug-sections=no \
+  conf-local: >-
+    --enable-pthread
+    --enable-ipv6
+    --with-compress-debug-sections=no
     --disable-rpath
 
 sources:
 - kind: tar
-  url: tar_https:cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.xz
-  ref: 570e7773100f625599575f363831166d91d49a1ab97d3ab6495af44774155c40
+  url: tar_https:cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.2.tar.xz
+  ref: ca10d017f8a1b6d247556622c841fc56b90c03b1803f87198da1e4fd3ec3bf2a
+
+config:
+  install-commands:
+    # Workaround binary extensions installation issues.
+    # https://bugs.ruby-lang.org/issues/18373
+    (<):
+    - |
+      find .bundle -name extconf.rb -exec \
+      sed -i \
+      -e '/create_makefile/i \$arch_hdrdir = "%{build-root}/%{builddir}/.ext/include/%{arch}-linux"' \
+      -e '/create_makefile/i \$DLDFLAGS << " -L%{build-root}/%{builddir}"' {} \;
