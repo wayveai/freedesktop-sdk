@@ -15,6 +15,12 @@ variables:
     -DENABLE_GIR=Off \
     -DENABLE_GTK4_IM_MODULE=Off
 
+
+config:
+  install-commands:
+    (>):
+    - rm %{install-root}/%{libdir}/libFcitx5GClient.a
+    
 public:
   bst:
     split-rules:
@@ -26,4 +32,4 @@ sources:
 - kind: git_tag
   url: github:fcitx/fcitx5-gtk.git
   track: master
-  ref: 5.0.16-0-g2a844db0324dacbf5f3334a18e6740cd8318b0af
+  ref: 5.0.17-0-g3a40b744dd7241b18b287f1e83d6fa52c452e0f6
