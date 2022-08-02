@@ -131,7 +131,7 @@ def by_score(entry, ): # TODO why the empty 2nd args?
     entry_score = entry[4]
     try:
         return float(entry_score)
-    except ValueError:
+    except (ValueError, TypeError):
         return float("inf")
 
 
