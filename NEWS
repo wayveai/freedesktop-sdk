@@ -1,5 +1,68 @@
 Freedesktop-SDK
 
+freedesktop-sdk-21.08.15:
+  * Backport CVE fixes for gstreamer-plugins-good 1.18
+  * Fix CVE checker when finding CVE's with no score
+  * Automatically set end-of-life for publish when expired
+  * Update Ruby to 3.1.2 for CVE-2022-28738
+  * Replace fcitx im module with fcitx5 version. (backport to 21.08)
+  * Update python3-setuptools-scm to 7.0.2
+  * Update python3-importlib-metadata to 4.12.0
+  * Update python3-chardet to 5.0.0
+  * Update python3-virtualenv to 20.15.0
+  * Update eos-metrics to Release_4.0.7-0
+  * Update gmmlib to intel-gmmlib-22.1.4-0
+  * Update openssl to OpenSSL_1_1_1p-0
+  * Freeze glslang due to ABI break
+  * Update sbc to 2.0-0
+  * Freeze ALSA due to ABI forward break
+  * Update python3-dbusmock to 0.28.0
+  * Rebase NetworkManager gettext patch
+  * Update networkmanager to 1.32.12
+  * Freezing SDL2-ttf 2.0.15 due to a many new symbols
+  * Update alsa-plugins to v1.2.7.1-0
+  * Update strace to v5.18-0
+  * Update speexdsp to SpeexDSP-1.2.1-0
+  * Exclude man-pages release candidates
+  * Update python3-sphinx to 5.0.2
+  * Update python3-importlib-resources to 5.8.0
+  * Update python3-babel to 2.10.3
+  * Update kbd to v2.5.1-0
+  * Update speex to Speex-1.2.1-0
+  * Update conmon to v2.1.2-0
+  * Update python3-certifi to 2022.6.15
+  * Update python3-babel to 2.10.2
+  * Update ostree to v0.14.0-0
+  * Update python3-requests to 2.28.0
+  * Match only release tags for SDL2 ttf
+  * Match only release tags for sdl2-image
+  * Update libinput to 1.21.0-0
+  * Update glibc to glibc-2.33-196
+  * Update pcsc-lite to 1.9.8-0
+  * Update fuse-overlayfs to v1.9-0
+  * Update xorg-lib-x11 to libX11-1.8.1-0
+  * Update libnftnl to libnftnl-1.2.2-0
+  * Update mesa to mesa-21.3.9-0
+  * extensions/mesa/mesa.bst: Make zstd.bst also a runtime dependency
+  * Update wireless-regdb-bin to master-2022-06-06-0
+  * Update ostree to v2022.4-0
+  * Do not pin to x86_64 what isn't absolutely mandatory
+  * Move retry into defaults
+  * Use all x86_64 builders for i686 builds
+  * Update poppler to poppler-22.06.0-0
+  * Update kbd to v2.5.0-0
+  * sqlite: Set track-extra
+  * Update python3-sphinx to 5.0.1
+  * Update libblockdev to 2.27-1-0
+  * Update iso-codes to v4.10.0-0
+  * Update python3-filelock to 3.7.1
+  * Update elements/abi/freedesktop-sdk to freedesktop-sdk-21.08.14-0
+  * Update python3-pip to 22.1.2
+  * Update python3-sphinx to 5.0.0
+  * Update python3-lxml to 4.9.0
+  * Update pcsc-lite to 1.9.7-0
+  * Update python3-certifi to 2022.5.18.1
+
 freedesktop-sdk-21.08.14:
   * Update Perl to 5.34.1
   * Update libxkbcommon to xkbcommon-1.4.1-0
