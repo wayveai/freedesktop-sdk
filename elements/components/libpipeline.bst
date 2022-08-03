@@ -20,13 +20,13 @@ variables:
 
 sources:
 - kind: git_tag
-  url: savannah:libpipeline.git
-  track: master
-  ref: 1.5.3-0-g5498dd55393e778beb6fd3b59bba297e683ce8db
+  url: gitlab:libpipeline/libpipeline.git
+  track: main
+  ref: 1.5.6-0-gfc550d5728f7cdfb918ea3203e2b40146e64ba19
 - kind: git_tag
   url: savannah:gnulib.git
   # Track the exact commit from variable GNULIB_REVISION in bootstrap.conf
-  track: 34881aff4043847f2640d90cf9aa325cc3ad08d6
+  track: 1eae0f7ea3c220d054025f2c9211700665f9f4a0
   track-tags: false
   directory: gnulib-src
-  ref: v0.1-2382-g34881aff4043847f2640d90cf9aa325cc3ad08d6
+  ref: v0.1-5128-g1eae0f7ea3c220d054025f2c9211700665f9f4a0
