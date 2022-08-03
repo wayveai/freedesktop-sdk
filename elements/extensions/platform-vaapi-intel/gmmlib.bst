@@ -20,9 +20,5 @@ public:
 sources:
 - kind: git_tag
   url: github:intel/gmmlib.git
-  track: master
-  match:
-  - 'intel-gmmlib-*'
-  exclude:
-  - 'intel-gmmlib-*.pre*'
-  ref: intel-gmmlib-21.3.3-0-ga92ef3a73433ad9bf1a18f45dbc8c0a139e2417e
+  # Tracking disabled due to forward ABI break
+  ref: intel-gmmlib-21.3.5-0-ga92ef3a73433ad9bf1a18f45dbc8c0a139e2417e
