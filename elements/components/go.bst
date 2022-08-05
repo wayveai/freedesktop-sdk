@@ -60,10 +60,13 @@ public:
 sources:
 - kind: git_tag
   url: github:golang/go.git
-  track: release-branch.go1.18
+  track: release-branch.go1.19
+  track-extra:
+  # Attempt to predict the next branchpoint.
+  - release-branch.go1.20
   match:
   - 'go*'
   exclude:
   - '*rc*'
   - '*beta*'
-  ref: go1.18.5-0-gbe59153dd8e67d83428e18a44dd29df3059c21fe
+  ref: go1.19-0-g43456202a1e55da55666fac9d56ace7654a65b64
