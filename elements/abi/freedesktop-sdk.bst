@@ -8,4 +8,5 @@ config:
 sources:
 - kind: git_tag
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
-  # When creating release, release branch must be tracked to get a ref
+  track: release/22.08
+  ref: freedesktop-sdk-22.08rc.1-1-g64966c41ca229d39a770eb9245b1cbfc7122a53f
