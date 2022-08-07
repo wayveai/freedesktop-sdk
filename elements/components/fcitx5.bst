@@ -1,26 +1,20 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+- components/extra-cmake-modules.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
-- filename: components/extra-cmake-modules.bst
-  type: build
-- filename: components/gtk3.bst
+- bootstrap-import.bst
+- components/gtk3.bst
 
 variables:
-  cmake-local: |
-    -DENABLE_GTK3_IM_MODULE=On \
-    -DENABLE_GTK2_IM_MODULE=Off \
-    -DENABLE_GIR=Off \
+  cmake-local: >-
+    -DENABLE_GTK3_IM_MODULE=On
+    -DENABLE_GTK2_IM_MODULE=Off
+    -DENABLE_GIR=Off
     -DENABLE_GTK4_IM_MODULE=Off
 
-
-config:
-  install-commands:
-    (>):
-    - rm %{install-root}/%{libdir}/libFcitx5GClient.a
-    
 public:
   bst:
     split-rules:
@@ -32,4 +26,4 @@ sources:
 - kind: git_tag
   url: github:fcitx/fcitx5-gtk.git
   track: master
-  ref: 5.0.17-0-g3a40b744dd7241b18b287f1e83d6fa52c452e0f6
+  ref: 5.0.17-0-g5fc650554826e8abe8f59eb969725b3c0778c6cb
