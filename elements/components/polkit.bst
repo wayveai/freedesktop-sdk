@@ -12,4 +12,3 @@ config:
   exclude:
   - polkit-gobject
   include-orphans: true
-
