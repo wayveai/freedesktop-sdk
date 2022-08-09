@@ -18,5 +18,9 @@ sources:
   url: tar_https:libisl.sourceforge.io/isl-0.25.tar.xz
   directory: isl
   ref: be7b210647ccadf90a2f0b000fca11a4d40546374a850db67adb32fad4b230d9
-- kind: patch_queue
-  path: patches/gcc
+- kind: patch
+  path: patches/gcc/gcc-multiarch-enable-riscv.patch
+- kind: patch
+  path: patches/gcc/gcc-multiarch-no-cross-structure.patch
+- kind: patch
+  path: patches/gcc/gcc-multiarch-os-dir.patch
