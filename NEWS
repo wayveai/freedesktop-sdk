@@ -1,5 +1,19 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08rc.2:
+  * Update gcab to v1.5
+  * Update polkit to 121-4
+  * Update python3-setuptools to 63.4.2
+  * Update glibc to glibc-2.35-166
+  * Update fcitx5 to 5.0.17-0
+  * Update mesa to mesa-22.1.5-0
+  * polkit.bst: split out libpolkit-gobject
+  * Propagate bluez-manifest through bluez and bluez-libs
+  * Create bluez-manifest.bst
+  * Override bluez-base product to be bluez
+  * .gitlab-ci.yml: Mark ABI as stable
+  * Fix bluez-libs to contain missing files
+
 freedesktop-sdk-22.08rc.1:
   * python3: Bump tp 3.10.6
   * linux: Bump to 5.18.16
