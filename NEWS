@@ -1,5 +1,90 @@
 Freedesktop-SDK
 
+freedesktop-sdk-20.08.20:
+    * Update tzdata to 2022c-0
+    * Update python3-pygments to 2.13.0-0
+    * Update extra-cmake-modules to v5.97.0-0
+    * Update strace to v5.19-0
+    * Update gdkpixbuf to 2.42.9
+    * Update tzdata to 2022b-0
+    * libxml2: Patch for CVE-2016-3709
+    * Update gnu-efi to 3.0.15-0
+    * Update nano to v6.4-0
+    * Freeze gmmlib for 20.08
+    * Freeze geoclue to 2.5.x for 20.08
+    * Fix permissions on utils/eol-message.py
+    * Fix CVE checker when finding CVE's with no score
+    * Automatically set end-of-life for publish when expired
+    * Ignore prereleases for cryptsetup
+    * Freeze libxslt for 20.08
+    * Freeze libdatrie for 20.08
+    * Freeze readline for 20.08
+    * Update cython to 0.29.32-0
+    * Freeze polkit for 20.08
+    * Update cython to 0.29.31-0
+    * Update fcitx to 4.2.9.9-0
+    * Update bluez to 5.65-0
+    * Update iso-codes to v4.11.0-0
+    * Update gyp to 9d09418
+    * Update git to v2.37.1-0
+    * Update po4a to v0.67-0
+    * Update extra-cmake-modules to v5.96.0-0
+    * Update gnupg to gnupg-2.2.36-0
+    * Update openssl to OpenSSL_1_1_1q-0
+    * Update cryptsetup-base to v2.4.2-0
+    * Update cryptsetup-base to v2.4.0-0
+    * Update python3-cffi to 1.15.1
+    * Update python3-mako to rel_1_2_1-0
+    * Update kmod to v30-0
+    * Ignore CVE-2015-20107
+    * Freeze 20.08 Vulkan to 1.2.198
+    * Update sbc to 2.0-0
+    * Freeze ALSA due to forward ABI break
+    * Update strace to v5.18-0
+    * Exclude release candidates for man-pages
+    * Update kbd to v2.5.1-0
+    * Update nasm to nasm-2.15.01-0
+    * Update speex to Speex-1.2.1-0
+    * Update speexdsp to SpeexDSP-1.2.1-0
+    * Update nasm to nasm-2.14.02-0
+    * Update extra-cmake-modules to v5.95.0-0
+    * Do not pin to x86_64 what isn't absolutely mandatory
+    * Move retry into defaults
+    * Use all x86_64 builders for i686 builds
+    * Update kbd to v2.5.0-0
+    * Update iso-codes to v4.10.0-0
+    * Update Perl to 5.34.1
+    * Update jpeg to 2.0.7-esr
+    * Update lvm2 to v2_03_16-0
+    * Update cython to 0.29.30-0
+    * Update cython to 0.29.29-0
+    * Freeze pip to 22.0
+    * Update ninja to v1.11.0-0
+    * Update extra-cmake-modules to v5.94.0-0
+    * Freeze markdown
+    * Update vulkan-icd-loader to sdk-1.2.198.1-0
+    * Image built against freedesktop-sdk 21.08.13
+    * Freeze ostree for glib dependency
+    * Update doxygen to Release_1_9_4
+    * Update nano to v6.3
+    * Ensure space-intensive things go away
+    * Update python3-pygments to 2.12.0
+    * Ignore CVE-2021-38604 for glibc
+    * cpio: Apply patches for CVE-2021-38185
+    * Patch cairo against CVE-2020-35492
+    * bootstrap/zlib.bst: Freeze tracking
+    * Update ffmpeg to n4.3.4
+    * Update rsync-source to v3.2.4
+    * Update ABI reference point for 20.08
+    * Update glibc to glibc-2.31-130-g183709983db14000d1b9224b2aea9cb50787a59e
+    * Ignore CVE-2016-7163 and CVE-2016-9675 for openjpeg 2.4.0
+    * Ignore CVE-2007-4559 for Python3
+    * Ignore CVE-2008-0888 for unzip
+    * Makefile: build manifests in a single bst call
+    * utils/generate_cve_report.py: authenticate against gitlab API (and use requests instead of urllib)
+    * utils/generate_cve_report.py: use markdeep to format CVE report
+    * Update valgrind to VALGRIND_3_19_0
+
 freedesktop-sdk-20.08.19:
     * openssh: Update to V_9_0_P1
     * gyp: Update to 9ecf45e
