@@ -28,6 +28,7 @@ public:
         - '%{libdir}/xml2Conf.sh'
   cpe:
     patches:
+      - CVE-2016-3709
       - CVE-2019-7595
       - CVE-2019-20388
       - CVE-2021-3517
@@ -47,3 +48,5 @@ sources:
   path: patches/libxml2/CVE-2019-7595.patch
 - kind: patch
   path: patches/libxml2/CVE-2021-3517.patch
+- kind: patch
+  path: patches/libxml2/Revert-Do-not-URI-escape-in-server-side-includes.patch
