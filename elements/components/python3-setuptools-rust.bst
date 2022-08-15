@@ -14,5 +14,5 @@ sources:
 - kind: pypi
   name: setuptools-rust
   ref:
-    sha256sum: 0b8aeb814afe0e9d7c31569ec0936d1f5201993530639244fa973e1742005671
-    suffix: 20/84/a98f6714ec6aafe3ec2bfa26232af3302453882a1c135f9b518a36275e22/setuptools-rust-1.5.0.tar.gz
+    sha256sum: 0e05e456645d59429cb1021370aede73c0760e9360bbfdaaefb5bced530eb9d7
+    suffix: dc/20/0b16eb0dd28c3ec6fccef77230b11e4b9ec94aa7ade1c99b1ab66d237fbe/setuptools-rust-1.5.1.tar.gz
