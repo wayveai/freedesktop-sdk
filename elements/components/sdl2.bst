@@ -27,13 +27,11 @@ variables:
     -DSDL_WAYLAND=ON
     -DSDL_WAYLAND_SHARED=OFF
     -DSDL_RPATH=OFF
+    -DSDL_STATIC=OFF
 
 config:
   install-commands:
     (>):
-    - |
-      find "%{install-root}" -name "lib*.a" -exec rm {} ";"
-
     - |
       mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/SDL2"
       mv "%{install-root}%{includedir}/SDL2/SDL_config.h" "%{install-root}%{includedir}/%{gcc_triplet}/SDL2/SDL_config.h"
