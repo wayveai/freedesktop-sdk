@@ -178,3 +178,5 @@ sources:
   url: ffmpeg:ffmpeg.git
   track: release/5.0
   ref: n5.0.1-0-g9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+- kind: patch
+  path: patches/ffmpeg/sdl-2.24.patch
