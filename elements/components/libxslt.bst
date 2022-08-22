@@ -1,6 +1,7 @@
 kind: autotools
 
 build-depends:
+- components/python3.bst
 - public-stacks/buildsystem-autotools.bst
 
 depends:
@@ -31,4 +32,4 @@ sources:
 - kind: git_tag
   url: gnome:libxslt.git
   track: master
-  ref: v1.1.35-0-g50af4e65da712ceb59f98a7feeeab2ddc3324ab9
+  ref: v1.1.37-0-g5eca7fb65b7337409a02f9f94fde608edf7d1b0a
