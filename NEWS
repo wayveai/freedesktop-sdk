@@ -1,5 +1,90 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08rc.3:
+  * .gitlab-ci.yml: Update to container with buildstream 1.95.2
+  * RISC-V: Fix build issues with curl
+  * RISC-V: Fix build issues with efivar
+  * Update libglvnd to v1.5.0-0
+  * Update appstream to v0.15.5-0
+  * Update linux to v5.18.19-0
+  * libtiff: Ignore CVE-2022-2867, CVE-2022-2868 and CVE-2022-2869
+  * zlib: Patch for CVE-2022-37434
+  * Update python3-pygments to 2.13.0
+  * Update python3-setuptools to 65.2.0
+  * Update linux-firmware to 20220815-0
+  * Update btrfs-progs to v5.19-0
+  * Update python3-charset-normalizer to 2.1.1
+  * Update shadow to 4.12.2-0
+  * Update rsync-source.yml to v3.2.5-0
+  * Update strace to v5.19-0
+  * Update eos-updater to Release_4.0.8-0
+  * .gitlab-ci.yml: Update container image with grpcio rolled back
+  * Update appstream-glib to appstream_glib_0_8_1-0
+  * Update mesa to mesa-22.1.7-0
+  * Update eos-metrics to Release_4.0.8-0
+  * Update polkit-base to 121-6
+  * Update shadow to 4.12.1-0
+  * Update xdg-desktop-portal-base to 1.15.0-0
+  * Update xorg-proto-xorgproto to xorgproto-2022.2-0
+  * Update pkg-config to pkgconf-1.9.3-0
+  * Update tzdata to 2022c-0
+  * Revert upstream patch regarding summaries
+  * .gitlab-ci.yml: Update to latest container with bst 1.6.7 / bst2 1.95.1
+  * Update extra-cmake-modules to v5.97.0-0
+  * Update python3-pytz to 2022.2.1
+  * Restore appstream-glib usage for runtime
+  * Update python3-setuptools-rust to 1.5.1
+  * Update jpeg to 2.1.4-0
+  * Update wireless-regdb-bin to master-2022-08-12-0
+  * Update meson to 0.63.1
+  * Update pango to 1.50.9-0
+  * Update tzdata to 2022b-0
+  * Update python3-filelock to 3.8.0
+  * Update pkg-config to pkgconf-1.9.2-0
+  * Update protobuf to v3.21.5-0
+  * Update xz to v5.2.6-0
+  * Update python3-pyelftools to 0.29
+  * Update git to v2.37.2-0
+  * Update gnu-efi to 3.0.15-0
+  * docutils: Create symlink for utils without .py extension
+  * Update gdk-pixbuf to 2.42.9-0
+  * libxml2: Ignore CVE-2016-3709
+  * Update python3-tomlkit to 0.11.3
+  * Update intel-media-driver to intel-media-22.5.2-0
+  * linter: Fix utils/mirror-management-scripts/create_mirrors_from_problem_list.py
+  * linter: Fix utils/mirror_managemnt/update_manifest_with_mirrors.py
+  * linter: Fix utils/mirror_managemnt/check_mirrors.py
+  * linter: Fix utils/mirror_managemnt/mirror_management.py
+  * linter: Fix utils/url_manifest.py
+  * linter: Fix utils/test_reproducibility.py
+  * linter: Fix utils/yaml_diff.py
+  * linter: Fix utils/get_remote_digest.py
+  * linter: Fix utils/test_minimal_system.py
+  * linter: Fix plugins/elements/collect_initial_scripts.py
+  * linter: Fix plugins/sources/ostree_mirror.py
+  * linter: Fix files/dictionaries/install_dicts.py
+  * linter: Fix utils/update_local_cve_database.py
+  * linter: Fix files/linux-firmware/compress.py
+  * linter: Fix utils/generate_cve_report.py
+  * linter: Fix utils/check-static-libraries.py
+  * linter: Fix files/oci/oci/oci_builder
+  * linter: Fix utils/jsontomd.py
+  * linter: Fix utils/preresolve.py
+  * linter: Fix files/iana-config/generate.py
+  * .pylintrc: Disable R0801 (duplicate code)
+  * CI: Use latest container
+  * Patch libtiff against CVE-2022-34526
+  * Update opensbi to 1.1
+  * Update python3-setuptools-rust to 1.5.0
+  * Update spirv-llvm-translator to v14.0.0-69
+  * Update libnftnl to libnftnl-1.2.3-0
+  * Rewrite GCC not to use patch_queue
+  * Update systemd to v251.4-0
+  * Update libwebp to v1.2.4-0
+  * Update python3-tomlkit to 0.11.2
+  * Add suppressions for GnuTLS 3.7.7
+  * Update GnuTLS to 3.7.7
+
 freedesktop-sdk-22.08rc.2:
   * Update gcab to v1.5
   * Update polkit to 121-4
