@@ -493,7 +493,6 @@ minimal_efi_vm_image_x86_64:
   extends:
     - .vm_efi_image_template
     - .builder-x86_64
-  allow_failure: true
   needs:
   - app_x86_64
   variables:
@@ -504,7 +503,6 @@ desktop_efi_vm_image_x86_64:
   extends:
     - .vm_efi_image_template
     - .builder-x86_64
-  allow_failure: true
   needs:
   - app_x86_64
   variables:
