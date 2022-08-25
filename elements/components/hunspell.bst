@@ -1,13 +1,14 @@
 kind: autotools
 
+build-depends:
+- public-stacks/buildsystem-autotools.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-autotools.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
-  conf-local: |
-    --with-readline \
+  conf-local: >-
+    --with-readline
     --with-ui
 
 public:
@@ -24,6 +25,4 @@ sources:
 - kind: git_tag
   url: github:hunspell/hunspell.git
   track: master
-  ref: v1.7.0-0-g4ddd8ed5ca6484b930b111aec50c2750a6119a0f
-- kind: patch
-  path: patches/hunspell/invalid-read-memory-access-624.patch
+  ref: v1.7.1-0-g1180421f50f211984211e968eb6801ffd3390b8f
