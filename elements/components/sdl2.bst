@@ -1,7 +1,7 @@
-kind: autotools
+kind: cmake
 
 build-depends:
-- public-stacks/buildsystem-autotools.bst
+- public-stacks/buildsystem-cmake.bst
 - components/ibus.bst
 - components/wayland-protocols.bst
 
@@ -17,18 +17,16 @@ depends:
 - components/xorg-lib-xcursor.bst
 
 variables:
-  conf-local: >-
-    --enable-sdl-dlopen
-    --disable-arts
-    --disable-esd
-    --disable-nas
-    --disable-alsa
-    --disable-oss
-    --disable-sndio
-    --disable-libudev
-    --enable-video-wayland
-    --enable-wayland-shared=no
-    --disable-rpath
+  cmake-local: >-
+    -DSDL_ARTS=OFF
+    -DSDL_ESD=OFF
+    -DSDL_NAS=OFF
+    -DSDL_ALSA=OFF
+    -DSDL_OSS=OFF
+    -DSDL_SNDIO=OFF
+    -DSDL_WAYLAND=ON
+    -DSDL_WAYLAND_SHARED=OFF
+    -DSDL_RPATH=OFF
 
 config:
   install-commands:
@@ -74,13 +72,12 @@ public:
         (>):
         - '%{bindir}/sdl2-config'
         - '%{libdir}/libSDL2.so'
+        - '%{libdir}/libSDL2-2.0.so'
 
 sources:
 - kind: git_tag
   url: github:libsdl-org/SDL.git
   track: main
-  ref: release-2.0.22-0-g53dea9830964eee8b5c2a7ee0a65d6e268dc78a1
+  ref: release-2.24.0-0-g8c9beb0c873f6ca5efbd88f1ad2648bfc793b2ac
   match:
   - release-*
-- kind: patch
-  path: patches/sdl2/cmake-remove-static-target.patch
