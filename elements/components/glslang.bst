@@ -1,14 +1,21 @@
 kind: cmake
 
+build-depends:
+- public-stacks/buildsystem-cmake.bst
+
 depends:
-- filename: bootstrap-import.bst
-- filename: public-stacks/buildsystem-cmake.bst
-  type: build
+- bootstrap-import.bst
 
 variables:
   cmake-local: >-
     -DCMAKE_SKIP_RPATH:BOOL=yes
     -DBUILD_SHARED_LIBS:BOOL=yes
+
+config:
+  install-commands:
+    (>):
+    - rm %{install-root}/%{libdir}/libMachineIndependent.a
+    - rm %{install-root}/%{libdir}/libGenericCodeGen.a
 
 public:
   bst:
@@ -22,6 +29,7 @@ public:
         - '%{libdir}/libSPVRemapper.so'
         - '%{libdir}/libglslang-default-resource-limits.so'
         - '%{libdir}/libglslang.so'
+        - '%{datadir}/glslang/*.cmake'
 
 sources:
 - kind: git_tag
@@ -29,4 +37,4 @@ sources:
   track: master
   match:
   - sdk-*
-  ref: sdk-1.3.216.0-0-gadbf0d3106b26daa237b10b9bf72b1af7c31092d
+  ref: sdk-1.3.224.0-0-g73c9630da979017b2f7e19c6549e2bdb93d9b238
