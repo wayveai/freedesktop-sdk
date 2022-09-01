@@ -151,3 +151,4 @@ public:
   cpe:
     ignored:
     - CVE-2010-4756
+    - CVE-2021-3998
