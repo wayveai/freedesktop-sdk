@@ -17,3 +17,9 @@ config:
 
 sandbox:
   build-arch: '%{bootstrap_build_arch}'
+
+public:
+  bst:
+    integration-commands:
+    - |
+      mv /usr/etc /etc
