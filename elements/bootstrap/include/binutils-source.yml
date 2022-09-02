@@ -9,6 +9,8 @@ variables:
 public:
   cpe:
     version-match: '([0-9]*)_([0-9]*)'
+    patches:
+    - CVE-2022-38533
 
 sources:
 - kind: git_tag
@@ -19,3 +21,5 @@ sources:
   ref: binutils-2_38-0-g20756b0fbe065a84710aa38f2457563b57546440
 - kind: patch
   path: patches/binutils/dwarf5-fixes.patch
+- kind: patch
+  path: patches/binutils/PR29482-strip-heap-buffer-overflow.patch
