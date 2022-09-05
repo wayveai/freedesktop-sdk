@@ -40,4 +40,4 @@ sources:
   - branch-3.39
   match:
   - 'version-*'
-  ref: version-3.39.2-0-g202b2a7b54ea2dd13a8a5adfd75523abe4dcf17f
+  ref: version-3.39.3-0-g230ad4565e06fded73abdea46e12d358806397e8
