@@ -1,5 +1,12 @@
 Freedesktop-SDK
 
+freedesktop-sdk-22.08.1:
+  * pipewire: Update to 0.3.57
+  * wireplumber: fix alsa enumeration
+  * binutils: Patch for CVE-2022-38533
+  * CI: Upgrade to latest container
+  * glibc: Ignore CVE-2021-3998
+
 freedesktop-sdk-22.08.0:
   * Update libxslt to v1.1.37-0
   * Update libxml2 to v2.10.2-0
